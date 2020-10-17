@@ -4,12 +4,10 @@
 name: Mega-Linter
 
 on:
-  # Trigger mega-linter at every push. Action will also be visible from Pull Requests
-  push:
-    branches-ignore: [master] # Remove this line if you also want to apply Mega-Linter on master branch
-  # Comment push section and uncomment the lines below if you want to run Mega-Linter only on Pull Requests
-#  pull_request:
-#    branches: [master]
+  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
+  push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
