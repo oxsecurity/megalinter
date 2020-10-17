@@ -22,7 +22,7 @@ jobs:
 
       # Mega-Linter
       - name: Mega-Linter
-        uses: nvuillam/mega-linter@latest
+        uses: nvuillam/mega-linter@insiders
         env:
           # All available variables are described in documentation
           # https://github.com/nvuillam/mega-linter#environment-variables
