@@ -382,11 +382,6 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 #OTHER__END
 
-###################################
-# Run to build file with versions #
-###################################
-RUN /action/lib/linterVersions.sh
-
 ######################
 # Set the entrypoint #
 ######################
