@@ -26,7 +26,7 @@ Automatically detect all [languages](#languages) and [formats](#formats) in your
 **Notes**:
 
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [additional features](#additional-features-compared-to-github-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/108/files))
+- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 
 ## Table of Contents
 
