@@ -228,11 +228,11 @@ class Megalinter:
                 current_branch = repo.active_branch.commit.hexsha
             try:
                 repo.git.pull()
-            except git.exc.GitCommandError:
+            except git.GitCommandError:
                 try:
                     repo.git.checkout(current_branch)
                     repo.git.pull()
-                except git.exc.GitCommandError:
+                except git.GitCommandError:
                     logging.error(f"Unable to pull current branch {current_branch}")
             repo.git.checkout(default_branch)
             diff = repo.git.diff(
