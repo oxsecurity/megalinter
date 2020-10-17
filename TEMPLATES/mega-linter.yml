@@ -26,7 +26,7 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://github.com/nvuillam/mega-linter#configuration
-          VALIDATE_ALL_CODEBASE: false # Validates only the diff between your branch and master. Set true to always validate all code
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section
