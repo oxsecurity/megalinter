@@ -226,7 +226,14 @@ class Megalinter:
             current_branch = os.environ.get('GITHUB_SHA', '')
             if current_branch == '':
                 current_branch = repo.active_branch.commit.hexsha
-            repo.git.pull()
+            try:
+                repo.git.pull()
+            except git.GitCommandError:
+                try:
+                    repo.git.checkout(current_branch)
+                    repo.git.pull()
+                except git.GitCommandError:
+                    logging.error(f"Unable to pull current branch {current_branch}")
             repo.git.checkout(default_branch)
             diff = repo.git.diff(
                 f"{default_branch}...{current_branch}", name_only=True)

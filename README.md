@@ -2,8 +2,9 @@
 # Mega-Linter
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
+[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/marketplace/actions/mega-linter)
+[![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
@@ -11,7 +12,7 @@ Automatically detect all [languages](#languages) and [formats](#formats) in your
 
 **TLDR;**
 
-- Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/docs/mega-linter.yml) in a folder `.github/workflows` of your repository
+- Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
 - Commit, push, and create a pull request
 - Watch !
 
@@ -25,7 +26,7 @@ Automatically detect all [languages](#languages) and [formats](#formats) in your
 **Notes**:
 
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [additional features](#additional-features-compared-to-github-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/108/files))
+- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 
 ## Table of Contents
 
@@ -171,12 +172,10 @@ This file should have the following code:
 name: Mega-Linter
 
 on:
-  # Trigger mega-linter at every push. Action will also be visible from Pull Requests
-  push:
-    branches-ignore: [master] # Remove this line if you also want to apply Mega-Linter on master branch
-  # Comment push section and uncomment the lines below if you want to run Mega-Linter only on Pull Requests
-#  pull_request:
-#    branches: [master]
+  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
+  push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
@@ -195,7 +194,7 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://github.com/nvuillam/mega-linter#configuration
-          VALIDATE_ALL_CODEBASE: false # Validates only the diff between your branch and master. Set true to always validate all code
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section
@@ -214,18 +213,18 @@ jobs:
 
 You can show Mega-Linter status with a badge in your repository README
 
-[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg)](https://github.com/marketplace/actions/mega-linter)
+[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/marketplace/actions/mega-linter)
 
 Format:
 
 ```markdown
-[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg)](https://github.com/marketplace/actions/mega-linter)
+[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/marketplace/actions/mega-linter)
 ```
 
 Example:
 
 ```markdown
-[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg)](https://github.com/marketplace/actions/mega-linter)
+[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/marketplace/actions/mega-linter)
 ```
 
 _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)

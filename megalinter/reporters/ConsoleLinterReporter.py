@@ -19,15 +19,14 @@ class ConsoleLinterReporter(Reporter):
     def initialize(self):
         linter_version = self.master.get_linter_version()
         # Linter header prints
-        msg = [f"Linting [{self.master.descriptor_id}] files",
-               f"Using [{self.master.linter_name} v{linter_version}] {self.master.linter_url}"]
+        msg = [f"### Linting [{self.master.descriptor_id}] files",
+               f"- Using [{self.master.linter_name} v{linter_version}] {self.master.linter_url}"]
         if self.master.descriptor_id != self.master.name:
-            msg += [f"Mega-Linter key: [{self.master.name}]"]
+            msg += [f"- Mega-Linter key: [{self.master.name}]"]
         if self.master.config_file is not None:
-            msg += [f"Rules config: [{self.master.config_file}"]
+            msg += [f"- Rules config: [{self.master.config_file}"]
         else:
-            msg += [f"Rules config: identified by [{self.master.linter_name}]"]
-        msg += [""]
+            msg += [f"- Rules config: identified by [{self.master.linter_name}]"]
         logging.info("\n".join(msg))
 
     def produce_report(self):

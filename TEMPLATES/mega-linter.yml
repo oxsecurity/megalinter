@@ -4,12 +4,10 @@
 name: Mega-Linter
 
 on:
-  # Trigger mega-linter at every push. Action will also be visible from Pull Requests
-  push:
-    branches-ignore: [master] # Remove this line if you also want to apply Mega-Linter on master branch
-  # Comment push section and uncomment the lines below if you want to run Mega-Linter only on Pull Requests
-#  pull_request:
-#    branches: [master]
+  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
+  push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
@@ -28,7 +26,7 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://github.com/nvuillam/mega-linter#configuration
-          VALIDATE_ALL_CODEBASE: false # Validates only the diff between your branch and master. Set true to always validate all code
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section

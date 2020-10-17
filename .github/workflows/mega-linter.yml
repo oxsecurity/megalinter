@@ -28,11 +28,9 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://github.com/nvuillam/mega-linter#environment-variables
-          VALIDATE_ALL_CODEBASE: false # Validates only the diff. Remove the line or set true to validate all repository code
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BRANCH: master
-          DISABLE_LINTERS: BASH_SHFMT,CLOUDFORMATION,PYTHON_BLACK,DOCKERFILE_HADOLINT
-          POST_GITHUB_COMMENT: false
+          DISABLE_LINTERS: CLOUDFORMATION,PYTHON_BLACK,DOCKERFILE_HADOLINT
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
