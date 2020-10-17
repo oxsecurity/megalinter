@@ -12,6 +12,8 @@ import yaml
 
 import megalinter
 
+from shutil import copyfile
+
 BRANCH = 'master'
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
 URL_RAW_ROOT = "https://github.com/nvuillam/mega-linter/raw/" + BRANCH
@@ -433,6 +435,10 @@ def validate_descriptors():
                 "Errors have been found while validating descriptor YML files, please check logs")
 
 
+def copy_files():
+    copyfile(f"{REPO_HOME}{os.path.sep}README.md", f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md")
+
+
 if __name__ == '__main__':
     logging.basicConfig(force=True,
                         level=logging.INFO,
@@ -445,3 +451,4 @@ if __name__ == '__main__':
     generate_dockerfile()
     generate_linter_test_classes()
     generate_linter_documentation()
+    copy_files()
