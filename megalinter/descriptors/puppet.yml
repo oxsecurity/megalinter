@@ -1,0 +1,21 @@
+descriptor_id: PUPPET
+descriptor_type: tooling_format
+file_extensions:
+  - ".pp"
+linters:
+  # PuppetLint
+  - linter_name: puppet-lint
+    linter_url: https://github.com/rodjek/puppet-lint
+    linter_rules_configuration_url: https://github.com/rodjek/puppet-lint#configuration-file
+    linter_rules_inline_disable_url: https://github.com/rodjek/puppet-lint#disable-checks-within-puppet-code
+    config_file_name: .puppet-lint.rc
+    cli_config_arg_name: ""
+    cli_lint_extra_args:
+      - '--fail-on-warnings'
+      - '--no-autoloader_layout-check'
+    examples:
+      - "puppet-lint myfile.pp"
+
+    install:
+      gem:
+        - puppet-lint

@@ -1,0 +1,81 @@
+---
+#########################
+#########################
+## Deploy Docker Image ##
+#########################
+#########################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to master #
+#######################################
+on:
+  push:
+    branches:
+      - "master_megalinter"
+
+###############
+# Set the Job #
+###############
+jobs:
+  build:
+    # Name the Job
+    name: Deploy Docker Image - PROD
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+    # Only run this on the main repo
+    if: github.repository == 'nvuillam/mega-linter'
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.3
+
+      #####################
+      # Run Deploy script #
+      #####################
+      - name: Deploy latest image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter
+          IMAGE_VERSION: latest
+          DOCKERFILE_PATH: Dockerfile
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      #############################
+      # Run Deploy script for GPR #
+      #############################
+      - name: Deploy Latest image to GitHub Container Registry
+        env:
+          # Set the Env Vars
+          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
+          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter
+          IMAGE_VERSION: latest
+          DOCKERFILE_PATH: Dockerfile
+          REGISTRY: GCR
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      ###############################
+      # Run tests for code coverage #
+      ###############################
+      - name: Run Test Cases and code coverage
+        shell: bash
+        run: |
+          export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
+          echo "CI_ENV=${CI_ENV}"
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e DEFAULT_BRANCH=master_megalinter -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:latest
+        timeout-minutes: 30

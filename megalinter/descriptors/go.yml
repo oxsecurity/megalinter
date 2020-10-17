@@ -1,0 +1,30 @@
+descriptor_id: GO
+descriptor_type: language
+file_extensions:
+  - ".go"
+install:
+  apk:
+    - go
+  dockerfile:
+    - |
+      ENV GOROOT=/usr/lib/go \
+          GOPATH=/go
+    - ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+    - RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
+linters:
+  # GOLANG CI LINT
+  - linter_name: golangci-lint
+    linter_url: https://github.com/golangci/golangci-lint
+    linter_banner_image_url: https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4
+    linter_rules_configuration_url: https://golangci-lint.run/usage/configuration/#config-file
+    linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint
+    config_file_name: .golangci.yml
+    cli_lint_extra_args:
+      - "run"
+    examples:
+      - "golangci-lint run myfile.go"
+      - "golangci-lint run -c .golangci.yml myfile.go"
+    install:
+      dockerfile:
+        - FROM golangci/golangci-lint:latest as golangci-lint
+        - COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/

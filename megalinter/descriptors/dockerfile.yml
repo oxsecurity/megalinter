@@ -1,0 +1,33 @@
+descriptor_id: DOCKERFILE
+descriptor_type: tooling_format
+file_names:
+  - "Dockerfile"
+test_folder: docker
+linters:
+  # dockerfilelint
+  - linter_name: dockerfilelint
+    name: DOCKERFILE_DOCKERFILELINT
+    linter_url: https://github.com/replicatedhq/dockerfilelint
+    linter_rules_configuration_url: https://github.com/replicatedhq/dockerfilelint#configuring
+    config_file_name: .dockerfilelintrc
+    examples:
+      - "dockerfilelint Dockerfile"
+      - "dockerfilelint -c .dockerfilelintrc Dockerfile"
+    install:
+      npm:
+        - dockerfilelint
+  # Hadolint
+  - linter_name: hadolint
+    name: DOCKERFILE_HADOLINT
+    linter_url: https://github.com/hadolint/hadolint
+    linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png
+    linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
+    linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
+    config_file_name: .hadolint.yml
+    examples:
+      - "hadolint Dockerfile"
+      - "hadolint -c .dockerfilelintrc Dockerfile"
+    install:
+      dockerfile:
+        - FROM hadolint/hadolint:latest-alpine as dockerfile-lint
+        - COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint

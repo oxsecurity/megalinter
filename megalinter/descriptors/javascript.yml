@@ -1,0 +1,41 @@
+descriptor_id: JAVASCRIPT
+descriptor_type: language
+file_extensions:
+  - ".js"
+install:
+  apk:
+    - npm
+    - nodejs-current
+linters:
+  # ESLINT
+  - linter_name: eslint
+    name: JAVASCRIPT_ES
+    linter_url: https://eslint.org
+    linter_banner_image_url: https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png
+    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
+    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    config_file_name: .eslintrc.yml
+    cli_config_extra_args:
+      - "--no-eslintrc"
+      - "--no-ignore"
+    examples:
+      - "eslint myfile.js"
+      - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js"
+    install:
+      npm:
+        - eslint
+        - eslint-config-airbnb
+        - eslint-config-prettier
+        - eslint-plugin-jest
+        - eslint-plugin-prettier
+        - babel-eslint
+  # STANDARD
+  - linter_name: standard
+    linter_url: https://github.com/standard/standard
+    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    name: JAVASCRIPT_STANDARD
+    examples:
+      - "standard myfile.js"
+    install:
+      npm:
+        - standard

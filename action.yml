@@ -1,0 +1,9 @@
+name: "Mega-Linter"
+author: "Nicolas Vuillamy"
+description: "Combine all available linters to automatically validate your sources without configuration !"
+runs:
+  using: "docker"
+  image: "docker://nvuillam/mega-linter:v4"
+branding:
+  icon: "check"
+  color: "green"

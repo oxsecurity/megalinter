@@ -1,0 +1,44 @@
+---
+# Mega-Linter GitHub Action configuration file
+# More info at https://github.com/nvuillam/mega-linter#mega-linter
+name: Mega-Linter
+
+# Start lint on any push and on pull requests
+on:
+  push:
+    branches-ignore: [master_megalinter]
+
+jobs:
+  build:
+    name: Mega-Linter
+    runs-on: ubuntu-latest
+    steps:
+
+      # Git Checkout
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `mega-linter`
+          fetch-depth: 0
+
+      # Mega-Linter
+      - name: Mega-Linter
+        uses: nvuillam/mega-linter@latest
+        env:
+          # All available variables are described in documentation
+          # https://github.com/nvuillam/mega-linter#environment-variables
+          VALIDATE_ALL_CODEBASE: false  # Validates only the diff. Remove the line or set true to validate all repository code
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BRANCH: master_megalinter
+          DISABLE_LINTERS: BASH_SHFMT,CLOUDFORMATION,PYTHON_BLACK,DOCKERFILE_HADOLINT
+          POST_GITHUB_COMMENT: false
+
+      # Upload Mega-Linter artifacts
+      - name: Archive production artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mega-Linter reports
+          path: |
+            report
+            mega-linter.log
