@@ -5,8 +5,10 @@ name: Mega-Linter
 
 # Start lint on any push and on pull requests
 on:
-  push:
-    branches-ignore: [master]
+  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
+  push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
