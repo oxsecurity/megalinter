@@ -12,7 +12,7 @@
 ### dockerfilelint configuration
 
 - [Configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring)
-  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.dockerfilelintrc) will be used
+  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc) will be used
 - dockerfilelint has no known capability to inline-disable rules
 
 ### Mega-linter configuration

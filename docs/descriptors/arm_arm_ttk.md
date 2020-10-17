@@ -15,7 +15,7 @@
 ### arm-ttk configuration
 
 - [Configure arm-ttk rules](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests)
-  - If custom .arm-ttk.psd1 is not found, [.arm-ttk.psd1](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.arm-ttk.psd1) will be used
+  - If custom .arm-ttk.psd1 is not found, [.arm-ttk.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.arm-ttk.psd1) will be used
 - arm-ttk has no known capability to inline-disable rules
 
 ### Mega-linter configuration

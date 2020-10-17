@@ -12,7 +12,7 @@
 ### protolint configuration
 
 - [Configure protolint rules](https://github.com/yoheimuta/protolint#rules)
-  - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.protolintrc.yml) will be used
+  - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml) will be used
 - protolint has no known capability to inline-disable rules
 
 ### Mega-linter configuration

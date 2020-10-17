@@ -18,7 +18,7 @@
 #############################
 on:
   push:
-    branches-ignore: [master, master_megalinter]
+    branches-ignore: [master, master]
   pull_request:
     branches-ignore: []
 
@@ -77,7 +77,7 @@ jobs:
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e DEFAULT_BRANCH=master_megalinter -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e DEFAULT_BRANCH=master -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
         timeout-minutes: 30
 
       #####################################
@@ -85,7 +85,7 @@ jobs:
       #####################################
       - name: Run against all code base
         shell: bash
-        run: docker run -e DEFAULT_BRANCH=master_megalinter -e POST_GITHUB_COMMENT=false -e OUTPUT_DETAILS=detailed -e FILTER_REGEX_EXCLUDE='(\.automation\/test\/)' -e DISABLE_LINTERS="BASH_SHFMT,CLOUDFORMATION,PYTHON_BLACK,DOCKERFILE_HADOLINT" -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
+        run: docker run -e DEFAULT_BRANCH=master -e POST_GITHUB_COMMENT=false -e OUTPUT_DETAILS=detailed -e FILTER_REGEX_EXCLUDE='(\.automation\/test\/)' -e DISABLE_LINTERS="BASH_SHFMT,CLOUDFORMATION,PYTHON_BLACK,DOCKERFILE_HADOLINT" -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
         timeout-minutes: 10
 
       # Upload Mega-Linter artifacts

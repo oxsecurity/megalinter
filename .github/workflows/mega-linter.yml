@@ -6,14 +6,13 @@ name: Mega-Linter
 # Start lint on any push and on pull requests
 on:
   push:
-    branches-ignore: [master_megalinter]
+    branches-ignore: [master]
 
 jobs:
   build:
     name: Mega-Linter
     runs-on: ubuntu-latest
     steps:
-
       # Git Checkout
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -27,9 +26,9 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://github.com/nvuillam/mega-linter#environment-variables
-          VALIDATE_ALL_CODEBASE: false  # Validates only the diff. Remove the line or set true to validate all repository code
+          VALIDATE_ALL_CODEBASE: false # Validates only the diff. Remove the line or set true to validate all repository code
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BRANCH: master_megalinter
+          DEFAULT_BRANCH: master
           DISABLE_LINTERS: BASH_SHFMT,CLOUDFORMATION,PYTHON_BLACK,DOCKERFILE_HADOLINT
           POST_GITHUB_COMMENT: false
 

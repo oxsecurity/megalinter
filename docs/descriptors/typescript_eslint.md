@@ -17,7 +17,7 @@
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
-  - If custom .eslintrc.yml is not found, [.eslintrc.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.eslintrc.yml) will be used
+  - If custom .eslintrc.yml is not found, [.eslintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc.yml) will be used
 - [Disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
 
 ### Mega-linter configuration

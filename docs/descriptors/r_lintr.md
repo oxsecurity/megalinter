@@ -15,7 +15,7 @@
 ### lintr configuration
 
 - [Configure lintr rules](https://github.com/jimhester/lintr#project-configuration)
-  - If custom .lintr is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.lintr) will be used
+  - If custom .lintr is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr) will be used
 - lintr has no known capability to inline-disable rules
 
 ### Mega-linter configuration

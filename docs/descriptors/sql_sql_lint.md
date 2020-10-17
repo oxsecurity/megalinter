@@ -12,7 +12,7 @@
 ### sql-lint configuration
 
 - [Configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html)
-  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.sql-config.json) will be used
+  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json) will be used
 - sql-lint has no known capability to inline-disable rules
 
 ### Mega-linter configuration

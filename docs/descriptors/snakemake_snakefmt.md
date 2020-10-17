@@ -15,7 +15,7 @@
 ### snakefmt configuration
 
 - [Configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration)
-  - If custom .snakefmt.toml is not found, [.snakefmt.toml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.snakefmt.toml) will be used
+  - If custom .snakefmt.toml is not found, [.snakefmt.toml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.snakefmt.toml) will be used
 - snakefmt has no known capability to inline-disable rules
 
 ### Mega-linter configuration

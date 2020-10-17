@@ -17,7 +17,7 @@
 ### golangci-lint configuration
 
 - [Configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
-  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.golangci.yml) will be used
+  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
 - [Disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
 
 ### Mega-linter configuration

@@ -12,7 +12,7 @@
 ### luacheck configuration
 
 - [Configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html)
-  - If custom .luacheckrc is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.luacheckrc) will be used
+  - If custom .luacheckrc is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.luacheckrc) will be used
 - [Disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html)
 
 ### Mega-linter configuration

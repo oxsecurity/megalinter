@@ -18,7 +18,7 @@
 ### npm-groovy-lint configuration
 
 - [Configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration)
-  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.groovylintrc.json) will be used
+  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json) will be used
 - [Disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source)
 
 ### Mega-linter configuration

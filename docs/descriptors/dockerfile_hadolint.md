@@ -12,7 +12,7 @@
 ### hadolint configuration
 
 - [Configure hadolint rules](https://github.com/hadolint/hadolint#configure)
-  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.hadolint.yml) will be used
+  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml) will be used
 - [Disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores)
 
 ### Mega-linter configuration

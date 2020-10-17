@@ -12,7 +12,7 @@ import yaml
 
 import megalinter
 
-BRANCH = 'master_megalinter'
+BRANCH = 'master'
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
 URL_RAW_ROOT = "https://github.com/nvuillam/mega-linter/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"

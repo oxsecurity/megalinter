@@ -13,7 +13,7 @@
 ### ansible-lint configuration
 
 - [Configure ansible-lint rules](https://github.com/ansible/ansible-lint#configuration-file)
-  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.ansible-lint.yml) will be used
+  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml) will be used
 - ansible-lint has no known capability to inline-disable rules
 
 ### Mega-linter configuration

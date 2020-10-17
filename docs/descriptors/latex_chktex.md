@@ -12,7 +12,7 @@
 ### chktex configuration
 
 - [Configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc)
-  - If custom .chktexrc is not found, [.chktexrc](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.chktexrc) will be used
+  - If custom .chktexrc is not found, [.chktexrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.chktexrc) will be used
 - chktex has no known capability to inline-disable rules
 
 ### Mega-linter configuration

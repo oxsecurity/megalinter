@@ -13,7 +13,7 @@
 ### yamllint configuration
 
 - [Configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration)
-  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.yaml-lint.yml) will be used
+  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml) will be used
 - yamllint has no known capability to inline-disable rules
 
 ### Mega-linter configuration

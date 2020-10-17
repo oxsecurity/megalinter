@@ -17,7 +17,7 @@
 ### rubocop configuration
 
 - [Configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html)
-  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.ruby-lint.yml) will be used
+  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml) will be used
 - [Disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code)
 
 ### Mega-linter configuration

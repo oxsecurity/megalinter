@@ -23,7 +23,7 @@
 ### cfn-lint configuration
 
 - cfn-lint has no known capability to configure custom rules
-  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.cfnlintrc.yml) will be used
+  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
 - cfn-lint has no known capability to inline-disable rules
 
 ### Mega-linter configuration

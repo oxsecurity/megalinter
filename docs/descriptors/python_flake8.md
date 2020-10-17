@@ -12,7 +12,7 @@
 ### flake8 configuration
 
 - [Configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration)
-  - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.flake8) will be used
+  - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8) will be used
 - [Disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors)
 
 ### Mega-linter configuration

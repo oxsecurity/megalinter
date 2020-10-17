@@ -17,7 +17,7 @@
 ### checkstyle configuration
 
 - [Configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
-  - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/sun_checks.xml) will be used
+  - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
 - [Disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
 
 ### Mega-linter configuration

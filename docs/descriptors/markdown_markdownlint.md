@@ -12,7 +12,7 @@
 ### markdownlint configuration
 
 - [Configure markdownlint rules](https://github.com/DavidAnson/markdownlint#optionsconfig)
-  - If custom .markdown-lint.yml is not found, [.markdown-lint.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.markdown-lint.yml) will be used
+  - If custom .markdown-lint.yml is not found, [.markdown-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.yml) will be used
 - [Disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration)
 
 ### Mega-linter configuration

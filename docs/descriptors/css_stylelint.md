@@ -19,7 +19,7 @@
 ### stylelint configuration
 
 - [Configure stylelint rules](https://stylelint.io/user-guide/configure)
-  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.stylelintrc.json) will be used
+  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
 - [Disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
 
 ### Mega-linter configuration

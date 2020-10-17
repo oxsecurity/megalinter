@@ -12,7 +12,7 @@
 ### phpcs configuration
 
 - [Configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file)
-  - If custom phpcs.xml is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/phpcs.xml) will be used
+  - If custom phpcs.xml is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpcs.xml) will be used
 - [Disable phpcs rules in files](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file)
 
 ### Mega-linter configuration

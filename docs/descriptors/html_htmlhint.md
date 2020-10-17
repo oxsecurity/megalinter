@@ -13,7 +13,7 @@
 ### htmlhint configuration
 
 - [Configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration)
-  - If custom .htmlhintrc is not found, [.htmlhintrc](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.htmlhintrc) will be used
+  - If custom .htmlhintrc is not found, [.htmlhintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.htmlhintrc) will be used
 - [Disable htmlhint rules in files](https://htmlhint.com/docs/user-guide/configuration)
 
 ### Mega-linter configuration

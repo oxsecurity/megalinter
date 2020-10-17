@@ -17,7 +17,7 @@
 ### dartanalyzer configuration
 
 - [Configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
-  - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/analysis_options.yml) will be used
+  - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
 - [Disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
 
 ### Mega-linter configuration

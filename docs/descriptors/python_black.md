@@ -17,7 +17,7 @@
 ### black configuration
 
 - [Configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
-  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.python-black) will be used
+  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
 - black has no known capability to inline-disable rules
 
 ### Mega-linter configuration

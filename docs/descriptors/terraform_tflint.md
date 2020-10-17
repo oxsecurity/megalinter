@@ -12,7 +12,7 @@
 ### tflint configuration
 
 - [Configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md)
-  - If custom .tflint.hcl is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.tflint.hcl) will be used
+  - If custom .tflint.hcl is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.tflint.hcl) will be used
 - [Disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md)
 
 ### Mega-linter configuration

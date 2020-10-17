@@ -12,7 +12,7 @@
 ### scalafix configuration
 
 - [Configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html)
-  - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.scalafix.conf) will be used
+  - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf) will be used
 - [Disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html)
 
 ### Mega-linter configuration

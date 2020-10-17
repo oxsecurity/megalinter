@@ -12,7 +12,7 @@
 ### coffeelint configuration
 
 - [Configure coffeelint rules](http://www.coffeelint.org/#options)
-  - If custom .coffee-lint.json is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.coffee-lint.json) will be used
+  - If custom .coffee-lint.json is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json) will be used
 - [Disable coffeelint rules in files](http://www.coffeelint.org/#options)
 
 ### Mega-linter configuration

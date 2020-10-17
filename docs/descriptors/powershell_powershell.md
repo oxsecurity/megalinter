@@ -18,7 +18,7 @@
 ### powershell configuration
 
 - [Configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit)
-  - If custom .powershell-psscriptanalyzer.psd1 is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.powershell-psscriptanalyzer.psd1) will be used
+  - If custom .powershell-psscriptanalyzer.psd1 is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1) will be used
 - [Disable powershell rules in files](https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules)
 
 ### Mega-linter configuration

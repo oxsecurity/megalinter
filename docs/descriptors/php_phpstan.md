@@ -12,7 +12,7 @@
 ### phpstan configuration
 
 - [Configure phpstan rules](https://phpstan.org/config-reference#neon-format)
-  - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/phpstan.neon) will be used
+  - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon) will be used
 - [Disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs)
 
 ### Mega-linter configuration

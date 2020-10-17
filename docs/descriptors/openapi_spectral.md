@@ -25,7 +25,7 @@
 ### spectral configuration
 
 - [Configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
-  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master_megalinter/TEMPLATES/.openapirc.yml) will be used
+  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
 - spectral has no known capability to inline-disable rules
 
 ### Mega-linter configuration
