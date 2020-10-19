@@ -250,6 +250,9 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 
+# RUST installation
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # SCALA installation
 RUN curl -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
@@ -366,6 +369,9 @@ RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos
 
 # raku installation
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && apk add --update --no-cache rakudo zef
+
+# clippy installation
+RUN rustup component add clippy
 
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin

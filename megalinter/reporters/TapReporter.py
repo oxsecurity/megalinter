@@ -26,6 +26,8 @@ class TapReporter(Reporter):
                 self.report_type = 'detailed'
 
     def add_report_item(self, file, status_code, stdout, index):
+        if self.master.cli_lint_mode == 'project':
+            return
         tap_status = "ok" if status_code == 0 else 'not ok'
         file_tap_lines = [
             f"{tap_status} {str(index)} - {os.path.basename(file)}"]
@@ -40,6 +42,8 @@ class TapReporter(Reporter):
         self.report_items += file_tap_lines
 
     def produce_report(self):
+        if self.master.cli_lint_mode == 'project':
+            return
         tap_report_lines = ["TAP version 13",
                             f"1..{str(len(self.master.files))}"]
         tap_report_lines += self.report_items

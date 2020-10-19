@@ -49,6 +49,7 @@ class Linter:
     files_names_not_ends_with = []
     active_only_if_file_found = None
 
+    cli_lint_mode = 'file'
     cli_executable = None
     cli_executable_version = None
     # Default arg name for configurations to use in linter CLI call
@@ -217,31 +218,45 @@ class Linter:
         for reporter in self.reporters:
             reporter.initialize()
 
-        # Lint every file
-        index = 0
-        for file in self.files:
-            index = index + 1
-            return_code, stdout = self.lint_file(file)
-            if return_code == 0:
-                status = "success"
-            else:
-                status = "error"
+        # Lint each file one by one
+        if self.cli_lint_mode == 'file':
+            index = 0
+            for file in self.files:
+                index = index + 1
+                return_code, stdout = self.process_linter(file)
+                if return_code == 0:
+                    status = "success"
+                else:
+                    status = "error"
+                    self.status = "error"
+                    self.return_code = 1
+                    self.number_errors = self.number_errors + 1
+                # store result
+                self.files_lint_results += [{
+                    'file': file,
+                    'status_code': return_code,
+                    'status': status,
+                    'stdout': stdout
+                }]
+                # Update reports with file result
+                for reporter in self.reporters:
+                    reporter.add_report_item(file=file,
+                                             status_code=return_code,
+                                             stdout=stdout,
+                                             index=index)
+        else:
+            # Lint all workspace in one command
+            return_code, stdout = self.process_linter()
+            if return_code != 0:
                 self.status = "error"
                 self.return_code = 1
                 self.number_errors = self.number_errors + 1
-            # store result
-            self.files_lint_results += [{
-                'file': file,
-                'status_code': return_code,
-                'status': status,
-                'stdout': stdout
-            }]
             # Update reports with file result
             for reporter in self.reporters:
-                reporter.add_report_item(file=file,
-                                         status_code=return_code,
+                reporter.add_report_item(status_code=return_code,
                                          stdout=stdout,
-                                         index=index)
+                                         file=None,
+                                         index=0)
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
         if self.return_code != 0 and self.disable_errors is True:
             self.return_code = 0
@@ -273,8 +288,8 @@ class Linter:
                 continue
             self.files += [file]
 
-    # lint a single file
-    def lint_file(self, file):
+    # lint a single file or whole project
+    def process_linter(self, file=None):
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         logging.debug('Linter command: ' + str(command))
@@ -286,12 +301,14 @@ class Linter:
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
     # noinspection PyMethodMayBeStatic
     def execute_lint_command(self, command):
+        cwd = os.getcwd() if self.cli_lint_mode == 'file' else self.workspace
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(command,
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.STDOUT,
                                      shell=True,
+                                     cwd=os.path.realpath(cwd),
                                      executable=shutil.which('bash') if sys.platform == 'win32' else '/bin/bash')
         else:
             # Use full executable path if we are on Windows
@@ -307,7 +324,8 @@ class Linter:
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             process = subprocess.run(command,
                                      stdout=subprocess.PIPE,
-                                     stderr=subprocess.STDOUT)
+                                     stderr=subprocess.STDOUT,
+                                     cwd=os.path.realpath(cwd))
         return_code = process.returncode
         return_stdout = megalinter.utils.decode_utf8(process.stdout)
         # Return linter result
@@ -368,7 +386,7 @@ class Linter:
         pass
 
     # Build the CLI command to call to lint a file (can be overridden)
-    def build_lint_command(self, file):
+    def build_lint_command(self, file=None):
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
@@ -382,7 +400,8 @@ class Linter:
         # Add other lint cli arguments after other arguments if defined
         cmd += self.cli_lint_extra_args_after
         # Append file in command arguments
-        cmd += [file]
+        if file is not None:
+            cmd += [file]
         return cmd
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)

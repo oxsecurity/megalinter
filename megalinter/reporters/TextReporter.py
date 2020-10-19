@@ -27,8 +27,12 @@ class TextReporter(Reporter):
 
     def add_report_item(self, file, status_code, stdout, index):
         status = "[SUCCESS]" if status_code == 0 else '[ERROR]'
-        file_text_lines = [
-            f"{status} {file}"]
+        if file is not None:
+            file_text_lines = [
+                f"{status} {file}"]
+        else:
+            file_text_lines = [
+                f"{status} {self.master.workspace}"]
         if self.report_type == 'detailed' or status_code != 0:
             std_out_text = stdout.rstrip(f" {os.linesep}") + os.linesep
             std_out_text = "\n    ".join(std_out_text.split(os.linesep))

@@ -30,6 +30,7 @@ class ConsoleLinterReporter(Reporter):
         logging.info("\n".join(msg))
 
     def produce_report(self):
+        # Output results file by file
         for res in self.master.files_lint_results:
             line = f"[{self.master.linter_name}] {res['file']} - {res['status'].upper()}"
             if res['status_code'] == 0:
@@ -37,3 +38,12 @@ class ConsoleLinterReporter(Reporter):
             else:
                 logging.error(line)
                 logging.error(f"--Error detail:\n{res['stdout']}")
+        # Output linter status
+        if self.master.return_code == 0 and self.master.status == "success":
+            logging.info(f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}] successfully")
+        elif self.master.return_code == 0 and self.master.status != "success":
+            logging.warning(f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]: " +
+                            "Found non blocking error(s)")
+        elif self.master.return_code != 0 and self.master.status != "success":
+            logging.error(f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]: " +
+                          "Found error(s)")

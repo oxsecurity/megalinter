@@ -1,0 +1,8 @@
+[package]
+name = "megalinter"
+version = "1.0.0"
+authors = ["Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"]
+
+[lib]
+name = "megalinter"
+path = "rust_good_1.rs"
