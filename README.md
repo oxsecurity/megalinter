@@ -94,6 +94,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/r.ico" alt="" height="32px"></a> | **R** | [lintr](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r_lintr.md#readme)| [R](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r_lintr.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/raku.ico" alt="" height="32px"></a> | **RAKU** | [raku](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku_raku.md#readme)| [RAKU](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku_raku.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px"></a> | **RUBY** | [rubocop](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby_rubocop.md#readme)| [RUBY](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby_rubocop.md#readme) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px"></a> | **RUST** | [clippy](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/rust_clippy.md#readme)| [RUST](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/rust_clippy.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px"></a> | **SCALA** | [scalafix](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/scala_scalafix.md#readme)| [SCALA](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/scala_scalafix.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sql.ico" alt="" height="32px"></a> | **SQL** | [sql-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/sql_sql_lint.md#readme)| [SQL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/sql_sql_lint.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/tsx.ico" alt="" height="32px"></a> | **TSX** | [eslint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/tsx_eslint.md#readme)| [TSX](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/tsx_eslint.md#readme) |
@@ -353,11 +354,12 @@ If you would like to help contribute to this **GitHub** Action, please see [CONT
 
 ## Additional features compared to github super-linter
 
-### More linters
+### More languages and formats linted
 
 - **C**
 - **C++**
 - **Puppet**
+- **Rust**
 - **Scala**
 
 ### New features & improvements

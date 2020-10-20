@@ -62,30 +62,41 @@ def call_super_linter(env_vars):
 
 def test_linter_success(linter, test_self):
     test_folder = linter.test_folder
+    workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
+    if os.path.exists(workspace + os.path.sep + 'good'):
+        workspace = workspace + os.path.sep + 'good'
     linter_name = linter.linter_name
-    env_vars = {'DEFAULT_WORKSPACE': os.environ["DEFAULT_WORKSPACE"] + '/' + test_folder,
-                'FILTER_REGEX_INCLUDE': "(.*_good_.*|.*\\/good\\/.*)"}
+    env_vars = {'DEFAULT_WORKSPACE': workspace,
+                'FILTER_REGEX_INCLUDE': "(.*_good_.*|.*\\/good\\/.*)",
+                'LOG_LEVEL': 'DEBUG'}
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = 'true'
     super_linter, output = call_super_linter(env_vars)
     test_self.assertTrue(len(super_linter.linters) > 0,
                          "Linters have been created and run")
-    if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
-        test_self.assertRegex(output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS")
+    # Check console output
+    if linter.cli_lint_mode == 'file':
+        if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
+            test_self.assertRegex(output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS")
+        else:
+            test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
     else:
-        test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
+        test_self.assertRegex(output, rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully")
 
 
 def test_linter_failure(linter, test_self):
     test_folder = linter.test_folder
-    workspace = os.environ["DEFAULT_WORKSPACE"] + '/' + test_folder
+    workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
+    if os.path.exists(workspace + os.path.sep + 'bad'):
+        workspace = workspace + os.path.sep + 'bad'
     linter_name = linter.linter_name
     tmp_report_folder = tempfile.gettempdir()
     env_vars = {'DEFAULT_WORKSPACE': workspace,
                 'FILTER_REGEX_INCLUDE': '(.*_bad_.*|.*\\/bad\\/.*)',
                 'OUTPUT_FORMAT': 'text',
                 'OUTPUT_DETAIL': 'detailed',
-                'REPORT_OUTPUT_FOLDER': tmp_report_folder
+                'REPORT_OUTPUT_FOLDER': tmp_report_folder,
+                'LOG_LEVEL': 'DEBUG'
                 }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = 'true'
@@ -94,12 +105,15 @@ def test_linter_failure(linter, test_self):
     test_self.assertTrue(len(super_linter.linters) > 0,
                          "Linters have been created and run")
     # Check console output
-    if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
-        test_self.assertRegex(output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - ERROR")
-        test_self.assertNotRegex(output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS")
+    if linter.cli_lint_mode == 'file':
+        if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
+            test_self.assertRegex(output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - ERROR")
+            test_self.assertNotRegex(output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS")
+        else:
+            test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
+            test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
     else:
-        test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
-        test_self.assertNotRegex(output, rf"\[{linter_name}\] .*bad.* - SUCCESS")
+        test_self.assertRegex(output, rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found error")
     # Check output log
     text_report_file_name = f"{tmp_report_folder}{os.path.sep}ERROR-mega-linter-{linter.name}.log"
     test_self.assertTrue(os.path.exists(text_report_file_name), f"Unable to find text report {text_report_file_name}")

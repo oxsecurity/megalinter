@@ -10,9 +10,9 @@ linters:
     linter_url: https://github.com/replicatedhq/dockerfilelint
     linter_rules_configuration_url: https://github.com/replicatedhq/dockerfilelint#configuring
     config_file_name: .dockerfilelintrc
+    cli_config_arg_name: ''
     examples:
       - "dockerfilelint Dockerfile"
-      - "dockerfilelint -c .dockerfilelintrc Dockerfile"
     install:
       npm:
         - dockerfilelint

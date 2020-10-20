@@ -33,10 +33,6 @@
 dockerfilelint Dockerfile
 ```
 
-```shell
-dockerfilelint -c .dockerfilelintrc Dockerfile
-```
-
 
 ### Installation on mega-linter Docker image
 

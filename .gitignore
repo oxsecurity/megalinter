@@ -81,3 +81,11 @@ __pycache__/
 coverage.xml
 
 .coverage*
+
+.automation/test/rust/bad/target/
+
+.automation/test/rust/bad/Cargo.lock
+
+.automation/test/rust/good/target/
+
+.automation/test/rust/good/Cargo.lock
