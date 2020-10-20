@@ -252,6 +252,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 
 # RUST installation
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="${HOME}/.cargo/bin:${PATH}"
 
 # SCALA installation
 RUN curl -fLo coursier https://git.io/coursier-cli && \
