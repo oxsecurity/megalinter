@@ -1,6 +1,6 @@
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://github.com/nvuillam/mega-linter#mega-linter
+# More info at https://github.com/nvuillam/mega-linter#readme
 name: Mega-Linter
 
 # Start lint on any push and on pull requests
