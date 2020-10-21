@@ -29,29 +29,29 @@ class GithubCommentReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter",
-                        "Files with error(s)", "Total files"]
-        table_data_raw = [table_header]
-        for linter in self.master.linters:
-            if linter.is_active is True:
-                emoji = ':green_circle:' if linter.status == 'success' and linter.return_code == 0 \
-                    else 'orange_circle' if linter.status != 'success' and linter.return_code == 0 \
-                    else ':red_circle:'
-                first_col = f"{emoji} {linter.descriptor_id}"
-                lang_lower = linter.descriptor_id.lower()
-                linter_name_lower = linter.linter_name.lower().replace('-', '_')
-                linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
-                linter_link = f"[{linter.linter_name}]({linter_doc_url})"
-                table_data_raw += [
-                    [first_col, linter_link, linter.number_errors, len(linter.files)]]
-
         # Post comment on GitHub pull request
         if os.environ.get('GITHUB_TOKEN', '') != '':
-            # Build message
             github_repo = os.environ['GITHUB_REPOSITORY']
             run_id = os.environ['GITHUB_RUN_ID']
             sha = os.environ.get('GITHUB_SHA')
             action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
+            table_header = ["Descriptor", "Linter",
+                            "Files with error(s)", "Total files"]
+            table_data_raw = [table_header]
+            for linter in self.master.linters:
+                if linter.is_active is True:
+                    emoji = ':green_circle:' if linter.status == 'success' and linter.return_code == 0 \
+                        else 'orange_circle' if linter.status != 'success' and linter.return_code == 0 \
+                        else ':red_circle:'
+                    first_col = f"{emoji} {linter.descriptor_id}"
+                    lang_lower = linter.descriptor_id.lower()
+                    linter_name_lower = linter.linter_name.lower().replace('-', '_')
+                    linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
+                    linter_link = f"[{linter.linter_name}]({linter_doc_url})"
+                    errors_cell = f"[{linter.number_errors}]({action_run_url})" if linter.number_errors > 0 \
+                        else linter.number_errors
+                    table_data_raw += [
+                        [first_col, linter_link, errors_cell, len(linter.files)]]
             # Build markdown table
             table_data_raw.pop(0)
             writer = MarkdownTableWriter(
