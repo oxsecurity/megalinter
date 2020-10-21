@@ -265,7 +265,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                              '', '', descriptor_label, 32)
         else:
             icon_html = '<!-- -->'
-        descriptor_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md"
+        descriptor_url = doc_url(f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
         descriptor_id_cell = f"[{descriptor_label}]({descriptor_url})" if prev_lang != linter.descriptor_id else ''
         prev_lang = linter.descriptor_id
         linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
