@@ -11,13 +11,18 @@ from pytablewriter import MarkdownTableWriter
 
 from megalinter import Reporter
 
+BRANCH = 'master'
+URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
+DOCS_URL_ROOT = URL_ROOT + "/docs"
+DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
+
 
 class GithubCommentReporter(Reporter):
     name = 'GITHUB_COMMENT'
     scope = 'mega-linter'
 
     github_api_url = 'https://api.github.com'
-    gh_url = 'https://github.com/marketplace/actions/mega-linter'
+    gh_url = 'https://github.com/nvuillam/mega-linter#readme'
 
     def manage_activation(self):
         if os.environ.get('POST_GITHUB_COMMENT', 'true') == 'true':
@@ -33,8 +38,12 @@ class GithubCommentReporter(Reporter):
                     else 'orange_circle' if linter.status != 'success' and linter.return_code == 0 \
                     else ':red_circle:'
                 first_col = f"{emoji} {linter.descriptor_id}"
+                lang_lower = linter.descriptor_id.lower()
+                linter_name_lower = linter.linter_name.lower().replace('-', '_')
+                linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
+                linter_link = f"[{linter.linter_name}]({linter_doc_url})"
                 table_data_raw += [
-                    [first_col, linter.linter_name, linter.number_errors, len(linter.files)]]
+                    [first_col, linter_link, linter.number_errors, len(linter.files)]]
 
         # Post comment on GitHub pull request
         if os.environ.get('GITHUB_TOKEN', '') != '':
