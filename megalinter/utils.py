@@ -45,6 +45,13 @@ def list_descriptor_files():
     return descriptor_files
 
 
+# Extract descriptor info from descriptor file
+def build_descriptor_info(file):
+    with open(file) as f:
+        language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
+    return language_descriptor
+
+
 # Build linter instances from a descriptor file name, and initialize them
 def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
     if linter_names is None:
