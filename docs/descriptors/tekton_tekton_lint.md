@@ -34,6 +34,37 @@ tekton-lint myfile.yml
 ```
 
 
+### Help content
+
+```shell
+Usage:
+tekton-lint <path-to-yaml-files>
+
+Options:
+$ tekton-lint --watch                # Run tekton-lint in watch mode
+$ tekton-lint --version              # Show version number
+$ tekton-lint --help                 # Show help
+$ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
+$ tekton-lint --format               # Format output. Available formatters: vscode (default) | stylish | json
+$ tekton-lint --quiet                # Report errors only - default: false
+$ tekton-lint --max-warnings <Int>   # Number of warnings to trigger nonzero exit code - default: -1
+
+Examples:
+# Globstar matching
+$ tekton-lint '**/*.yaml'
+
+# Exact file path
+$ tekton-lint my-pipeline.yaml my-task.yaml
+
+# Multiple glob patterns
+$ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
+
+# Watch mode
+$ tekton-lint --watch '**/*.yaml'
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):

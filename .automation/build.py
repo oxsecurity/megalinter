@@ -2,6 +2,7 @@
 """
 Automatically generate source code
 """
+import json
 import logging
 import os
 import re
@@ -23,6 +24,9 @@ DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + '..'
 REPO_ICONS = REPO_HOME + '/docs/assets/icons'
+
+VERSIONS_FILE = REPO_HOME + '/linter-versions.json'
+HELPS_FILE = REPO_HOME + '/linter-helps.json'
 
 
 # Automatically generate Dockerfile parts
@@ -389,6 +393,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 example,
                 "```",
                 ""]
+        # Add help info
+        with open(HELPS_FILE) as json_file:
+            linter_helps = json.load(json_file)
+            if linter.linter_name in linter_helps:
+                linter_doc_md += ["",
+                                  "### Help content",
+                                  "",
+                                  "```shell"]
+                linter_doc_md += linter_helps[linter.linter_name]
+                linter_doc_md += ["```"]
         linter_doc_md += ["",
                           "### Installation on mega-linter Docker image",
                           ""]

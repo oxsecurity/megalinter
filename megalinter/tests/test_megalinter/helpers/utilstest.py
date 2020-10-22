@@ -144,6 +144,27 @@ def test_get_linter_version(linter, test_self):
             json.dump(data, outfile, indent=4, sort_keys=True)
 
 
+def test_get_linter_help(linter, test_self):
+    # Check linter help
+    help_txt = linter.get_linter_help()
+    print('[' + linter.linter_name + '] help: ' + help_txt)
+    test_self.assertFalse(help == 'ERROR',
+                          'Returned help invalid: [' + help_txt + ']')
+    # Write in linter-helps.json
+    root_dir = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.relpath(os.path.relpath(os.path.dirname(
+        os.path.abspath(__file__))) + '/../../../..')
+    helps_file = root_dir + os.path.sep + '/linter-helps.json'
+    data = {}
+    help_lines = help_txt.split("\n")
+    if os.path.exists(helps_file):
+        with open(helps_file) as json_file:
+            data = json.load(json_file)
+    if (linter.linter_name in data and data[linter.linter_name] != help_lines) or linter.linter_name not in data:
+        data[linter.linter_name] = help_lines
+        with open(helps_file, 'w') as outfile:
+            json.dump(data, outfile, indent=4, sort_keys=True)
+
+
 def test_linter_report_tap(linter, test_self):
     test_folder = linter.test_folder
     workspace = os.environ["DEFAULT_WORKSPACE"] + '/' + test_folder

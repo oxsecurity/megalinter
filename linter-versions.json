@@ -1,7 +1,8 @@
 {
+    "eslint": "7.9.0",
     "kubeval": "0.15.0",
     "sql-lint": "0.0.15",
-    "tekton-lint": "0.5.1",
+    "tekton-lint": "0.5.0",
     "xmllint": "20904",
     "yamllint": "1.24.2"
 }
