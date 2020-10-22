@@ -1,0 +1,7 @@
+{
+    "kubeval": "0.15.0",
+    "sql-lint": "0.0.15",
+    "tekton-lint": "0.5.1",
+    "xmllint": "20904",
+    "yamllint": "1.24.2"
+}

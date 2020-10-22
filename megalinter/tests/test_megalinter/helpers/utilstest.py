@@ -1,6 +1,7 @@
 import contextlib
 import difflib
 import io
+import json
 import logging
 import os
 import tempfile
@@ -120,13 +121,27 @@ def test_linter_failure(linter, test_self):
 
 
 def test_get_linter_version(linter, test_self):
+    # Check linter version
     version = linter.get_linter_version()
     print('[' + linter.linter_name + '] version: ' + version)
     test_self.assertFalse(version == 'ERROR',
                           'Returned version invalid: [' + version + ']')
+    # Check linter version cache
     version_cache = linter.get_linter_version()
     test_self.assertTrue(version == version_cache,
                          'Version not found in linter instance cache')
+    # Write in linter-versions.json
+    root_dir = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.relpath(os.path.relpath(os.path.dirname(
+        os.path.abspath(__file__))) + '/../../../..')
+    versions_file = root_dir + os.path.sep + '/linter-versions.json'
+    data = {}
+    if os.path.exists(versions_file):
+        with open(versions_file) as json_file:
+            data = json.load(json_file)
+    if (linter.linter_name in data and data[linter.linter_name] != version) or linter.linter_name not in data:
+        data[linter.linter_name] = version
+        with open(versions_file, 'w') as outfile:
+            json.dump(data, outfile, indent=4, sort_keys=True)
 
 
 def test_linter_report_tap(linter, test_self):
