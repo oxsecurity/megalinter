@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
+
 ## Linted files
 
 - File extensions:
@@ -39,7 +41,3 @@ standard myfile.js
 
 - NPM packages (node.js):
   - [standard](https://www.npmjs.com/package/standard)
-
-### Linter web site
-- [https://github.com/standard/standard](https://github.com/standard/standard#readme)
-

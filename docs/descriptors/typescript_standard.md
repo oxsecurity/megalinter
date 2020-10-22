@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
+
 ## Linted files
 
 - File extensions:
@@ -42,7 +44,3 @@ standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-p
   - [standard](https://www.npmjs.com/package/standard)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-
-### Linter web site
-- [https://github.com/standard/standard](https://github.com/standard/standard#readme)
-

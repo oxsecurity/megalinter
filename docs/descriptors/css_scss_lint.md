@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/sds/scss-lint**](https://github.com/sds/scss-lint#readme)
+
 ## Linted files
 
 - File extensions:
@@ -48,7 +50,3 @@ scss-lint -config .scss-lint.yml myfile.scss
 
 - GEM packages (Ruby) :
   - [scss_lint](https://rubygems.org/gems/scss_lint)
-
-### Linter web site
-- [https://github.com/sds/scss-lint](https://github.com/sds/scss-lint#readme)
-

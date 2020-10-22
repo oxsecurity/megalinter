@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://metacpan.org/pod/Perl::Critic**](https://metacpan.org/pod/Perl::Critic)
+
 ## Linted files
 
 - File extensions:
@@ -43,8 +45,4 @@ perlcritic myfile.pl
 ```dockerfile
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 ```
-
-
-### Linter web site
-- [https://metacpan.org/pod/Perl::Critic](https://metacpan.org/pod/Perl::Critic)
 

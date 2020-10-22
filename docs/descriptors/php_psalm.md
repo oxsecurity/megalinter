@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://psalm.dev**](https://psalm.dev)
+
 ## Linted files
 
 - File extensions:
@@ -59,8 +61,4 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 # Linter install
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 ```
-
-
-### Linter web site
-- [https://psalm.dev](https://psalm.dev)
 

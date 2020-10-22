@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/kucherenko/jscpd/tree/master/packages/jscpd**](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
+
 ## Linted files
 
 ## Configuration
@@ -44,7 +46,3 @@ jscpd --output ./report/copy-paste/ -c .eslintrc.yml .
 
 - NPM packages (node.js):
   - [jscpd](https://www.npmjs.com/package/jscpd)
-
-### Linter web site
-- [https://github.com/kucherenko/jscpd/tree/master/packages/jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
-

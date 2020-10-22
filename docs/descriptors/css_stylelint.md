@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://stylelint.io**](https://stylelint.io)
+
 ## Linted files
 
 - File extensions:
@@ -50,7 +52,3 @@ stylelint --config .stylelintrc.json myfile.css
 - NPM packages (node.js):
   - [stylelint](https://www.npmjs.com/package/stylelint)
   - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
-
-### Linter web site
-- [https://stylelint.io](https://stylelint.io)
-

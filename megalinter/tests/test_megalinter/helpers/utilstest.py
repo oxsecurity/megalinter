@@ -148,7 +148,7 @@ def test_get_linter_help(linter, test_self):
     # Check linter help
     help_txt = linter.get_linter_help()
     print('[' + linter.linter_name + '] help: ' + help_txt)
-    test_self.assertFalse(help == 'ERROR',
+    test_self.assertFalse(help_txt == 'ERROR',
                           'Returned help invalid: [' + help_txt + ']')
     # Write in linter-helps.json
     root_dir = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.relpath(os.path.relpath(os.path.dirname(

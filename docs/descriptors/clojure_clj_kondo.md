@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/borkdude/clj-kondo**](https://github.com/borkdude/clj-kondo#readme)
+
 ## Linted files
 
 - File extensions:
@@ -53,8 +55,4 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
 ```
-
-
-### Linter web site
-- [https://github.com/borkdude/clj-kondo](https://github.com/borkdude/clj-kondo#readme)
 

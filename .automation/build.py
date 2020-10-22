@@ -299,6 +299,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}"]
 
+        # Linter URL & version
+        linter_doc_md += ["",
+                          f"- Web Site: [**{linter.linter_url}**]({doc_url(linter.linter_url)})"]
+        # Add version info
+        with open(VERSIONS_FILE) as json_file:
+            linter_versions = json.load(json_file)
+            if linter.linter_name in linter_versions:
+                linter_doc_md += [f"- Version: **{linter_versions[linter.linter_name]}**"]
+
         # Criteria used by the linter to identify files to lint
         linter_doc_md += [
             "",
@@ -403,18 +412,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                                   "```shell"]
                 linter_doc_md += linter_helps[linter.linter_name]
                 linter_doc_md += ["```"]
+        # Installation doc
         linter_doc_md += ["",
                           "### Installation on mega-linter Docker image",
                           ""]
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
-        linter_doc_md += [
-            "",
-            "### Linter web site",
-            f"- [{linter.linter_url}]({doc_url(linter.linter_url)})",
-            ""]
-
+        # Write md file
         file = open(
             f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md", 'w')
         file.write("\n".join(linter_doc_md) + "\n")

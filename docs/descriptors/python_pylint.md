@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://www.pylint.org**](https://www.pylint.org)
+
 ## Linted files
 
 - File extensions:
@@ -47,7 +49,3 @@ pylint --rcfile .python-lint myfile.py
 
 - PIP packages (Python):
   - [pylint](https://pypi.org/project/pylint)
-
-### Linter web site
-- [https://www.pylint.org](https://www.pylint.org)
-

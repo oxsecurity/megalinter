@@ -407,7 +407,7 @@ class Linter:
             return_code = 666
             output = 'ERROR'
 
-        if return_code != self.help_command_return_code:
+        if return_code != self.help_command_return_code or output.strip() == '':
             logging.warning(
                 'Unable to get help for linter [' + self.linter_name + ']')
             logging.warning(' '.join(command) + ' returned output: ' + output)

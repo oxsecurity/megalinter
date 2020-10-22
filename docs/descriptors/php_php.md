@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://www.php.net**](https://www.php.net)
+
 ## Linted files
 
 - File extensions:
@@ -51,8 +53,4 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 # Linter install
 RUN echo "No additional install for PHP built-in linter"
 ```
-
-
-### Linter web site
-- [https://www.php.net](https://www.php.net)
 

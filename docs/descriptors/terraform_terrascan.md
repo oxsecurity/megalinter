@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/accurics/terrascan**](https://github.com/accurics/terrascan#readme)
+
 ## Linted files
 
 - File extensions:
@@ -43,8 +45,4 @@ FROM accurics/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
 RUN terrascan init
 ```
-
-
-### Linter web site
-- [https://github.com/accurics/terrascan](https://github.com/accurics/terrascan#readme)
 

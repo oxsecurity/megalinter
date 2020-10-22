@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/editorconfig-checker/editorconfig-checker**](https://github.com/editorconfig-checker/editorconfig-checker#readme)
+
 ## Linted files
 
 - Activated only if file is found: `.editorconfig`
@@ -46,8 +48,4 @@ editorconfig-checker myfile.js
 FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
-
-
-### Linter web site
-- [https://github.com/editorconfig-checker/editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#readme)
 

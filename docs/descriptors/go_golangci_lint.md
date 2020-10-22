@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
+
 ## Linted files
 
 - File extensions:
@@ -57,8 +59,4 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 FROM golangci/golangci-lint:latest as golangci-lint
 COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/
 ```
-
-
-### Linter web site
-- [https://github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint#readme)
 

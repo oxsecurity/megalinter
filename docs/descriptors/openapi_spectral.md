@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/stoplightio/spectral**](https://github.com/stoplightio/spectral#readme)
+
 ## Linted files
 
 - File extensions:
@@ -55,7 +57,3 @@ spectral lint -r .openapirc.yml myfile.yml
 
 - NPM packages (node.js):
   - [@stoplight/spectral](https://www.npmjs.com/package/@stoplight/spectral)
-
-### Linter web site
-- [https://github.com/stoplightio/spectral](https://github.com/stoplightio/spectral#readme)
-

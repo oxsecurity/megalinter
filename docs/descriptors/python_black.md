@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/psf/black**](https://github.com/psf/black#readme)
+
 ## Linted files
 
 - File extensions:
@@ -47,7 +49,3 @@ black --config .python-black --diff --check myfile.py
 
 - PIP packages (Python):
   - [black](https://pypi.org/project/black)
-
-### Linter web site
-- [https://github.com/psf/black](https://github.com/psf/black#readme)
-

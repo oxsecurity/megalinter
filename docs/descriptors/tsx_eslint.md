@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://eslint.org**](https://eslint.org)
+- Version: **7.9.0**
+
 ## Linted files
 
 - File extensions:
@@ -120,7 +123,3 @@ Miscellaneous:
   - [prettyjson](https://www.npmjs.com/package/prettyjson)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-
-### Linter web site
-- [https://eslint.org](https://eslint.org)
-

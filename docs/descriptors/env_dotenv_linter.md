@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/dotenv-linter/dotenv-linter**](https://github.com/dotenv-linter/dotenv-linter#readme)
+
 ## Linted files
 
 - File extensions:
@@ -42,8 +44,4 @@ dotenv-linter myfile.env
 FROM dotenvlinter/dotenv-linter:latest as dotenv-linter
 COPY --from=dotenv-linter /dotenv-linter /usr/bin/
 ```
-
-
-### Linter web site
-- [https://github.com/dotenv-linter/dotenv-linter](https://github.com/dotenv-linter/dotenv-linter#readme)
 

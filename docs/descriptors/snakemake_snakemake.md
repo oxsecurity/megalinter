@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://snakemake.readthedocs.io/en/stable/**](https://snakemake.readthedocs.io/en/stable/)
+
 ## Linted files
 
 - File extensions:
@@ -42,7 +44,3 @@ snakemake --lint -s Snakefile
 
 - PIP packages (Python):
   - [snakemake](https://pypi.org/project/snakemake)
-
-### Linter web site
-- [https://snakemake.readthedocs.io/en/stable/](https://snakemake.readthedocs.io/en/stable/)
-

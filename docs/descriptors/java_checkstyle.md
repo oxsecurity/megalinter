@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://checkstyle.sourceforge.io**](https://checkstyle.sourceforge.io)
+
 ## Linted files
 
 - File extensions:
@@ -55,8 +57,4 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 --output /usr/bin/checkstyle
 
 ```
-
-
-### Linter web site
-- [https://checkstyle.sourceforge.io](https://checkstyle.sourceforge.io)
 

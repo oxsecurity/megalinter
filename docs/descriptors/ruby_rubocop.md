@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/rubocop-hq/rubocop**](https://github.com/rubocop-hq/rubocop#readme)
+
 ## Linted files
 
 - File extensions:
@@ -51,7 +53,3 @@ rubocop --force-exclusion -c .ruby-lint.yml myfile.rb
   - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
   - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
   - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)
-
-### Linter web site
-- [https://github.com/rubocop-hq/rubocop](https://github.com/rubocop-hq/rubocop#readme)
-

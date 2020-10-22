@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://ktlint.github.io**](https://ktlint.github.io)
+
 ## Linted files
 
 - File extensions:
@@ -44,8 +46,4 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 ```
-
-
-### Linter web site
-- [https://ktlint.github.io](https://ktlint.github.io)
 
