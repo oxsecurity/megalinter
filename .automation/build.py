@@ -171,7 +171,14 @@ def generate_documentation():
                  linters_tables_md_str)
     replace_in_file(f"{REPO_HOME}/README.md", "<!-- linters-table-start -->",
                     "<!-- linters-table-end -->", linters_tables_md_str)
-
+    # Update welcome phrase
+    welcome_phrase = f"Automatically detect[**{len(linters_by_type['language'])} languages**](#languages), " + \
+                     f"[**{len(linters_by_type['format'])} formats**](#formats), " + \
+                     f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) " + \
+                     "and [**copy-pastes**](#other) in your " + \
+                     "repository sources and apply their related linters to ensure sources are clean !"
+    replace_in_file(f"{REPO_HOME}/README.md", "<!-- welcome-phrase-start -->",
+                    "<!-- welcome-phrase-end -->", welcome_phrase)
 
 # Generate a MD page for a descriptor (language, format, tooling_format)
 def generate_descriptor_documentation(descriptor):
