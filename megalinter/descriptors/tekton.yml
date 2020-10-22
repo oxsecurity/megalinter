@@ -16,4 +16,4 @@ linters:
       - "tekton-lint myfile.yml"
     install:
       npm:
-        - 'tekton-lint@0.5.0'
+        - 'tekton-lint@0.4.2'

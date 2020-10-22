@@ -15,7 +15,7 @@
 
 ### tekton-lint configuration
 
-- tekton-lint has no known capability to configure custom rules
+- [Configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint)
 - tekton-lint has no known capability to inline-disable rules
 
 ### Mega-linter configuration
@@ -24,6 +24,9 @@
 | ----------------- | -------------- | -------------- |
 | TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| TEKTON_FILE_NAME | Rules file name | `.tektonlintrc.yaml` |
+| TEKTON_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| TEKTON_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

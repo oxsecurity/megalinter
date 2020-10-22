@@ -185,7 +185,7 @@ RUN npm install --no-cache \
                 markdownlint-cli \
                 @stoplight/spectral \
                 sql-lint \
-                tekton-lint \
+                tekton-lint@0.4.2 \
                 prettier \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
