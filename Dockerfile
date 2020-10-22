@@ -170,6 +170,7 @@ RUN npm install --no-cache \
                 stylelint \
                 stylelint-config-standard \
                 dockerfilelint \
+                graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
                 eslint \

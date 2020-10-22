@@ -1,0 +1,17 @@
+"Query"
+type Query {
+  "A"
+  a: String!
+
+  "Something"
+  something: PageInfo!
+}
+
+"PageInfo"
+type PageInfo {
+  "HasNextPage"
+  hasNextPage: Boolean!
+
+  "HasPreviousPage"
+  hasPreviousPage: Boolean!
+}
