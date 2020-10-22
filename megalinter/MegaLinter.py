@@ -75,7 +75,7 @@ class Megalinter:
         self.collect_files()
 
         # Display collection summary in log
-        table_data = [["Language", "Linter", "Criteria", "Matching files"]]
+        table_data = [["Descriptor", "Linter", "Criteria", "Matching files"]]
         for linter in self.linters:
             if len(linter.files) > 0:
                 all_criteria = linter.file_extensions + linter.file_names
@@ -248,10 +248,11 @@ class Megalinter:
                 'Listing all files in directory [' + self.workspace + '], then filter with:')
             if logging.getLogger().isEnabledFor(logging.DEBUG):
                 logging.debug(', '.join(os.listdir(self.workspace)))
+            excluded_directories = utils.list_excluded_directories()
             for (dirpath, dirnames, filenames) in os.walk(self.workspace):
                 exclude = False
                 for dir1 in dirnames:
-                    if dir1 in ['node_modules', '.git', '.rbenv', '.venv', '.terragrunt-cache']:
+                    if dir1 in excluded_directories:
                         exclude = True
                 if exclude is False:
                     all_files += [os.path.join(dirpath, file)
@@ -289,7 +290,7 @@ class Megalinter:
         # Collect matching files for each linter
         for linter in self.linters:
             linter.collect_files(filtered_files)
-            if len(linter.files) == 0:
+            if len(linter.files) == 0 and linter.linter_name != 'jscpd':
                 linter.is_active = False
 
     def initialize_logger(self):

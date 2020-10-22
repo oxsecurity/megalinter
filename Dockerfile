@@ -167,6 +167,7 @@ RUN npm install --no-cache \
                 typescript \
                 asl-validator \
                 @coffeelint/cli \
+                jscpd \
                 stylelint \
                 stylelint-config-standard \
                 dockerfilelint \
