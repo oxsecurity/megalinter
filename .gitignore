@@ -89,3 +89,9 @@ coverage.xml
 .automation/test/rust/good/target/
 
 .automation/test/rust/good/Cargo.lock
+
+.automation/test/copypaste/bad/report/
+
+.automation/test/copypaste/good/report/
+
+report/

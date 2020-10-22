@@ -144,7 +144,7 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
 # Automatically generate README linters table and a MD file for each linter
 def generate_documentation():
     descriptor_files = megalinter.utils.list_descriptor_files()
-    linters_by_type = {'language': [], 'format': [], 'tooling_format': []}
+    linters_by_type = {'language': [], 'format': [], 'tooling_format': [], 'other': []}
     descriptors = []
     for descriptor_file in descriptor_files:
         descriptor = megalinter.utils.build_descriptor_info(descriptor_file)
@@ -161,6 +161,7 @@ def generate_documentation():
     process_type(linters_by_type, 'format', 'Formats', linters_tables_md)
     process_type(linters_by_type, 'tooling_format',
                  'Tooling formats', linters_tables_md)
+    process_type(linters_by_type, 'other', 'Other', linters_tables_md)
     linters_tables_md_str = "\n".join(linters_tables_md)
     logging.info("Generated Linters table for README:\n" +
                  linters_tables_md_str)

@@ -48,7 +48,7 @@ class GithubCommentReporter(Reporter):
                     linter_name_lower = linter.linter_name.lower().replace('-', '_')
                     linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
                     linter_link = f"[{linter.linter_name}]({linter_doc_url})"
-                    errors_cell = f"[{linter.number_errors}]({action_run_url})" if linter.number_errors > 0 \
+                    errors_cell = f"[**{linter.number_errors}**]({action_run_url})" if linter.number_errors > 0 \
                         else linter.number_errors
                     table_data_raw += [
                         [first_col, linter_link, errors_cell, len(linter.files)]]
@@ -58,11 +58,11 @@ class GithubCommentReporter(Reporter):
                 headers=table_header,
                 value_matrix=table_data_raw
             )
-            table_content = str(writer)
+            table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
             emoji = ':green_circle:' if self.master.return_code == 0 else ':red_circle:'
             status_with_href = f"[**{self.master.status.upper()}**]({action_run_url}) {emoji}"
             p_r_msg = f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}" + os.linesep + os.linesep
-            p_r_msg += table_content + os.linesep + os.linesep
+            p_r_msg += table_content + os.linesep
             p_r_msg += f"See artifact Mega-Linter reports on [GitHub Action page]({action_run_url})" + \
                        os.linesep
             p_r_msg += "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate " + \
