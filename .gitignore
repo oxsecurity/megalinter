@@ -93,3 +93,5 @@ coverage.xml
 .automation/test/copypaste/bad/report/
 
 .automation/test/copypaste/good/report/
+
+report/

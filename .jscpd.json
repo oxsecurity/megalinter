@@ -1,0 +1,19 @@
+{
+  "threshold": 0,
+  "reporters": ["html","markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv'/**",
+    "**/report/**",
+    "**/*cache*/**",
+    "**/.automation/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/docs/**",
+    "**/lib/**",
+    "**/megalinter/descriptors/jsonschema.json",
+    "**/megalinter/tests/test_megalinter/MegaLinter_test.py"
+  ]
+}
