@@ -21,6 +21,7 @@ def list_excluded_directories():
                      ]
     return excluded_dirs
 
+
 # Returns directory where all .yml language descriptors are defined
 def get_descriptor_dir():
     # Compiled version (copied from DockerFile)
