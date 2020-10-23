@@ -7,13 +7,12 @@ import logging
 import os
 import re
 import sys
+from shutil import copyfile
 
 import jsonschema
 import yaml
 
 import megalinter
-
-from shutil import copyfile
 
 BRANCH = 'master'
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -179,6 +178,7 @@ def generate_documentation():
                      "repository sources and apply their related linters to ensure sources are clean !"
     replace_in_file(f"{REPO_HOME}/README.md", "<!-- welcome-phrase-start -->",
                     "<!-- welcome-phrase-end -->", welcome_phrase)
+
 
 # Generate a MD page for a descriptor (language, format, tooling_format)
 def generate_descriptor_documentation(descriptor):

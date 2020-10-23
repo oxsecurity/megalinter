@@ -13,6 +13,7 @@ linters:
     linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
     name: BASH_EXEC
     cli_executable_version: bash
+    cli_help_arg_name: "--help"
     examples:
       - "bash-exec myfile.sh"
     install:
@@ -31,6 +32,7 @@ linters:
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
+    cli_help_arg_name: "--help"
     examples:
       - "shellcheck --color=auto --external-sources myfile.sh"
     install:
@@ -43,6 +45,7 @@ linters:
     name: BASH_SHFMT
     cli_lint_extra_args:
       - "-d"
+    help_command_return_code: 2
     test_folder: shell_shfmt
     examples:
       - "shfmt -d myfile.sh"

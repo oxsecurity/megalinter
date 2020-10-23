@@ -16,9 +16,12 @@ linters:
     linter_banner_image_url: https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png
     linter_rules_configuration_url: https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md
     config_file_name: .openapirc.yml
+    cli_config_arg_name: "-r"
     cli_lint_extra_args:
       - "lint"
-    cli_config_arg_name: "-r"
+    cli_help_arg_name: "--help"
+    cli_help_extra_args:
+      - "lint"
     examples:
       - "spectral lint myfile.yml"
       - "spectral lint -r .openapirc.yml myfile.yml"

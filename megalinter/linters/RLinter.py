@@ -37,3 +37,13 @@ class RLinter(Linter):
                "--slave",
                "-e", "".join(r_commands)]
         return cmd
+
+    # Build the CLI command to request lintr help
+    def build_help_command(self):
+        # Build command in R format
+        r_commands = ["help(\"lintr\");"]
+        # Build shell command
+        cmd = ["R",
+               "--slave",
+               "-e", "".join(r_commands)]
+        return cmd
