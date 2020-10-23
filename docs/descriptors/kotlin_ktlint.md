@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://ktlint.github.io**](https://ktlint.github.io)
+- Version: **0.39.0**
+
 ## Linted files
 
 - File extensions:
@@ -36,6 +39,82 @@ ktlint myfile.kt
 ```
 
 
+### Help content
+
+```shell
+An anti-bikeshedding Kotlin linter with built-in formatter
+(https://github.com/pinterest/ktlint).
+
+Usage:
+  ktlint <flags> [patterns]
+  java -jar ktlint <flags> [patterns]
+
+Examples:
+  # check the style of all Kotlin files inside the current dir (recursively)
+  # (hidden folders will be skipped)
+  ktlint
+
+  # check only certain locations (prepend ! to negate the pattern,
+  # Ktlint uses .gitignore pattern style syntax)
+  ktlint "src/**/*.kt" "!src/**/*Test.kt"
+
+  # auto-correct style violations
+  ktlint -F "src/**/*.kt"
+
+  # custom reporter
+  ktlint --reporter=plain?group_by_file
+  # multiple reporters can be specified like this
+  ktlint --reporter=plain \
+    --reporter=checkstyle,output=ktlint-checkstyle-report.xml
+  # 3rd-party reporter
+  ktlint --reporter=csv,artifact=com.github.user:repo:master-SNAPSHOT
+
+Flags:
+  -a, --android              Turn on Android Kotlin Style Guide compatibility
+      --color                Make output colorful
+      --color-name=<colorName>
+                             Customize the output color
+      --debug                Turn on debug output
+      --disabled_rules=<disabledRules>
+                             Comma-separated list of rules to globally disable
+  -F, --format               Fix any deviations from the code style
+      --limit=<limit>        Maximum number of errors to show (default: show all)
+      --relative             Print files relative to the working directory (e.g.
+                               dir/file.kt instead of /home/user/project/dir/file.kt)
+      --reporter=<reporters> A reporter to use (built-in: plain (default), plain?
+                               group_by_file, json, checkstyle, html). To use a
+                               third-party reporter specify a path to a JAR file on
+                               the filesystem.
+  -R, --ruleset=<rulesets>   A path to a JAR file containing additional ruleset(s)
+      --stdin                Read file from stdin
+  -v, --verbose              Show error codes
+      --editorconfig=<editorConfigPath>
+                             Path to .editorconfig
+      --experimental         Enabled experimental rules (ktlint-ruleset-experimental)
+  -h, --help                 Show this help message and exit.
+  -V, --version              Print version information and exit.
+Commands:
+  installGitPreCommitHook, --install-git-pre-commit-hook  Install git hook to
+                                                            automatically check
+                                                            files for style
+                                                            violations on commit
+  installGitPrePushHook, --install-git-pre-push-hook      Install git hook to
+                                                            automatically check
+                                                            files for style
+                                                            violations before
+                                                            push
+  printAST, --print-ast                                   Print AST (useful
+                                                            when
+                                                            writing/debugging
+                                                            rules)
+  applyToIDEA, --apply-to-idea                            Update Intellij IDEA
+                                                            Kotlin codestyle
+                                                            settings (global)
+  applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA
+                                                            project settings
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -44,8 +123,4 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 ```
-
-
-### Linter web site
-- [https://ktlint.github.io](https://ktlint.github.io)
 

@@ -41,3 +41,15 @@ class ArmLinter(Linter):
                '-Command', '\n'.join(pwsh_script)
                ]
         return cmd
+
+    # Build the CLI command to get linter help
+    def build_help_command(self):
+        pwsh_script = ["Import-Module " + self.arm_ttk_psd1 + " ;",
+                       '$TAZ_V = (Test-AzTemplate -help);',
+                       'Write-Output $TAZ_V;']
+        cmd = [("powershell" if sys.platform == 'win32' else 'pwsh'),
+               '-NoProfile',
+               '-NoLogo',
+               '-Command', '\n'.join(pwsh_script)
+               ]
+        return cmd

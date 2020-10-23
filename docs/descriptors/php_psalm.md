@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://psalm.dev**](https://psalm.dev)
+- Version: **4.0.1**
+
 ## Linted files
 
 - File extensions:
@@ -43,6 +46,164 @@ psalm --config=psalm.xml myfile.php
 ```
 
 
+### Help content
+
+```shell
+Usage:
+    psalm [options] [file...]
+
+Basic configuration:
+    -c, --config=psalm.xml
+        Path to a psalm.xml configuration file. Run psalm --init to create one.
+
+    --use-ini-defaults
+        Use PHP-provided ini defaults for memory and error display
+
+    --memory-limit=LIMIT
+        Use a specific memory limit. Cannot be combined with --use-ini-defaults
+
+    --disable-extension=[extension]
+        Used to disable certain extensions while Psalm is running.
+
+    --threads=INT
+        If greater than one, Psalm will run analysis on multiple threads, speeding things up.
+
+    --no-diff
+        Turns off Psalm’s diff mode, checks all files regardless of whether they've changed
+
+    --diff-methods
+        Only checks methods that have changed since last run (and their dependents)
+
+Surfacing issues:
+    --show-info[=BOOLEAN]
+        Show non-exception parser findings (defaults to false).
+
+    --show-snippet[=true]
+        Show code snippets with errors. Options are 'true' or 'false'
+
+    --find-dead-code[=auto]
+    --find-unused-code[=auto]
+        Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'
+
+    --find-unused-psalm-suppress
+        Finds all @psalm-suppress annotations that aren’t used
+
+    --find-references-to=[class|method|property]
+        Searches the codebase for references to the given fully-qualified class or method,
+        where method is in the format class::methodName
+
+    --no-suggestions
+        Hide suggestions
+
+    --taint-analysis
+        Run Psalm in taint analysis mode – see https://psalm.dev/docs/security_analysis for more info
+
+Issue baselines:
+    --set-baseline=PATH
+        Save all current error level issues to a file, to mark them as info in subsequent runs
+
+        Add --include-php-versions to also include a list of PHP extension versions
+
+    --use-baseline=PATH
+        Allows you to use a baseline other than the default baseline provided in your config
+
+    --ignore-baseline
+        Ignore the error baseline
+
+    --update-baseline
+        Update the baseline by removing fixed issues. This will not add new issues to the baseline
+
+        Add --include-php-versions to also include a list of PHP extension versions
+
+Plugins:
+    --plugin=PATH
+        Executes a plugin, an alternative to using the Psalm config
+
+Output:
+    -m, --monochrome
+        Enable monochrome output
+
+    --output-format=console
+        Changes the output format.
+        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube, github,
+                           phpstorm
+
+    --no-progress
+        Disable the progress indicator
+
+    --long-progress
+        Use a progress indicator suitable for Continuous Integration logs
+
+    --stats
+        Shows a breakdown of Psalm's ability to infer types in the codebase
+
+Reports:
+    --report=PATH
+        The path where to output report file. The output format is based on the file extension.
+        (Currently supported formats: ".json", ".xml", ".txt", ".emacs", ".pylint", ".console",
+        "checkstyle.xml", "sonarqube.json", "summary.json", "junit.xml")
+
+    --report-show-info[=BOOLEAN]
+        Whether the report should include non-errors in its output (defaults to true)
+
+Caching:
+    --clear-cache
+        Clears all cache files that Psalm uses for this specific project
+
+    --clear-global-cache
+        Clears all cache files that Psalm uses for all projects
+
+    --no-cache
+        Runs Psalm without using cache
+
+    --no-reflection-cache
+        Runs Psalm without using cached representations of unchanged classes and files.
+        Useful if you want the afterClassLikeVisit plugin hook to run every time you visit a file.
+
+    --no-file-cache
+        Runs Psalm without using caching every single file for later diffing.
+        This reduces the space Psalm uses on disk and file I/O.
+
+Miscellaneous:
+    -h, --help
+        Display this help message
+
+    -v, --version
+        Display the Psalm version
+
+    -i, --init [source_dir=src] [level=3]
+        Create a psalm config file in the current directory that points to [source_dir]
+        at the required level, from 1, most strict, to 8, most permissive.
+
+    --debug
+        Debug information
+
+    --debug-by-line
+        Debug information on a line-by-line level
+
+    --debug-emitted-issues
+        Print a php backtrace to stderr when emitting issues.
+
+    -r, --root
+        If running Psalm globally you'll need to specify a project root. Defaults to cwd
+
+    --generate-json-map=PATH
+        Generate a map of node references and types in JSON format, saved to the given path.
+
+    --generate-stubs=PATH
+        Generate stubs for the project and dump the file in the given path
+
+    --shepherd[=host]
+        Send data to Shepherd, Psalm's GitHub integration tool.
+
+    --alter
+        Run Psalter
+
+    --language-server
+        Run Psalm Language Server
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -59,8 +220,4 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 # Linter install
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 ```
-
-
-### Linter web site
-- [https://psalm.dev](https://psalm.dev)
 

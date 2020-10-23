@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/martysweet/cfn-lint**](https://github.com/martysweet/cfn-lint#readme)
+- Version: **0.38.0**
+
 ## Linted files
 
 - File extensions:
@@ -49,13 +52,70 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 ```
 
 
+### Help content
+
+```shell
+usage:
+Basic: cfn-lint test.yaml
+Ignore a rule: cfn-lint -i E3012 -- test.yaml
+Configure a rule: cfn-lint -x E3012:strict=false -t test.yaml
+Lint all yaml files in a folder: cfn-lint dir/**/*.yaml
+
+CloudFormation Linter
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Standard:
+  TEMPLATE              The CloudFormation template to be linted
+  -t TEMPLATE [TEMPLATE ...], --template TEMPLATE [TEMPLATE ...]
+                        The CloudFormation template to be linted
+  -b, --ignore-bad-template
+                        Ignore failures with Bad template
+  --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
+                        Ignore templates
+  -f {quiet,parseable,json,junit}, --format {quiet,parseable,json,junit}
+                        Output Format
+  -l, --list-rules      list all the rules
+  -r REGIONS [REGIONS ...], --regions REGIONS [REGIONS ...]
+                        list the regions to validate against.
+  -i IGNORE_CHECKS [IGNORE_CHECKS ...], --ignore-checks IGNORE_CHECKS [IGNORE_CHECKS ...]
+                        only check rules whose id do not match these values
+  -c INCLUDE_CHECKS [INCLUDE_CHECKS ...], --include-checks INCLUDE_CHECKS [INCLUDE_CHECKS ...]
+                        include rules whose id match these values
+  -m MANDATORY_CHECKS [MANDATORY_CHECKS ...], --mandatory-checks MANDATORY_CHECKS [MANDATORY_CHECKS ...]
+                        always check rules whose id match these values,
+                        regardless of template exclusions
+  -e, --include-experimental
+                        Include experimental rules
+  -x CONFIGURE_RULES [CONFIGURE_RULES ...], --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
+                        Provide configuration for a rule. Format
+                        RuleId:key=value. Example: E3012:strict=false
+  --config-file CONFIG_FILE
+                        Specify the cfnlintrc file to use
+  -v, --version         Version of cfn-lint
+  --output-file OUTPUT_FILE
+                        Writes the output to the specified file, ideal for
+                        producing reports
+
+Advanced / Debugging:
+  -D, --debug           Enable debug logging
+  -I, --info            Enable information logging
+  -a APPEND_RULES [APPEND_RULES ...], --append-rules APPEND_RULES [APPEND_RULES ...]
+                        specify one or more rules directories using one or
+                        more --append-rules arguments.
+  -o OVERRIDE_SPEC, --override-spec OVERRIDE_SPEC
+                        A CloudFormation Spec override file that allows
+                        customization
+  -g, --build-graph     Creates a file in the same directory as the template
+                        that models the template's resources in DOT format
+  -u, --update-specs    Update the CloudFormation Specs
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
   - [asl-validator](https://www.npmjs.com/package/asl-validator)
 - PIP packages (Python):
   - [cfn-lint](https://pypi.org/project/cfn-lint)
-
-### Linter web site
-- [https://github.com/martysweet/cfn-lint](https://github.com/martysweet/cfn-lint#readme)
-

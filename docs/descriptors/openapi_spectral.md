@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/stoplightio/spectral**](https://github.com/stoplightio/spectral#readme)
+- Version: **5.6.0**
+
 ## Linted files
 
 - File extensions:
@@ -51,11 +54,35 @@ spectral lint -r .openapirc.yml myfile.yml
 ```
 
 
+### Help content
+
+```shell
+spectral lint [documents..]
+
+lint JSON/YAML documents from files or URLs
+
+Positionals:
+  documents  Location of JSON/YAML documents. Can be either a file, a glob or fetchable resource(s) on the web.  [array] [default: []]
+
+Options:
+  --version                    Show version number  [boolean]
+  --help                       Show help  [boolean]
+  --encoding, -e               text encoding to use  [string] [default: "utf8"]
+  --format, -f                 formatter to use for outputting results  [string] [default: "stylish"]
+  --output, -o                 output to a file instead of stdout  [string]
+  --resolver                   path to custom json-ref-resolver instance  [string]
+  --ruleset, -r                path/URL to a ruleset file  [string]
+  --skip-rule, -s              ignore certain rules if they are causing trouble  [string]
+  --fail-severity, -F          results of this level or above will trigger a failure exit code  [string] [choices: "error", "warn", "info", "hint"] [default: "error"]
+  --display-only-failures, -D  only output results equal to or greater than --fail-severity  [boolean] [default: false]
+  --ignore-unknown-format      do not warn about unmatched formats  [boolean] [default: false]
+  --show-unmatched-globs       show unmatched glob patterns  [boolean] [default: false]
+  --verbose, -v                increase verbosity  [boolean]
+  --quiet, -q                  no logging - output only  [boolean]
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
   - [@stoplight/spectral](https://www.npmjs.com/package/@stoplight/spectral)
-
-### Linter web site
-- [https://github.com/stoplightio/spectral](https://github.com/stoplightio/spectral#readme)
-

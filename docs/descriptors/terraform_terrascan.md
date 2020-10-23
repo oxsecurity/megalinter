@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/accurics/terrascan**](https://github.com/accurics/terrascan#readme)
+- Version: **1.1.0**
+
 ## Linted files
 
 - File extensions:
@@ -35,6 +38,33 @@ terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f myfile.tf
 ```
 
 
+### Help content
+
+```shell
+Terrascan
+
+Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
+For more information, please visit https://docs.accurics.com
+
+Usage:
+  terrascan [command]
+
+Available Commands:
+  init        Initialize Terrascan
+  scan        Detect compliance and security violations across Infrastructure as Code.
+  server      Run Terrascan as an API server
+  version     Terrascan version
+
+Flags:
+  -c, --config-path string   config file path
+  -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
+  -x, --log-type string      log output type (console, json) (default "console")
+  -o, --output string        output type (json, yaml, xml) (default "yaml")
+
+Use "terrascan [command] --help" for more information about a command.
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -43,8 +73,4 @@ FROM accurics/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
 RUN terrascan init
 ```
-
-
-### Linter web site
-- [https://github.com/accurics/terrascan](https://github.com/accurics/terrascan#readme)
 

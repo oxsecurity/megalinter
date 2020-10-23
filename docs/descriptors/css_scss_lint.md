@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/sds/scss-lint**](https://github.com/sds/scss-lint#readme)
+- Version: **0.59.0**
+
 ## Linted files
 
 - File extensions:
@@ -44,11 +47,28 @@ scss-lint -config .scss-lint.yml myfile.scss
 ```
 
 
+### Help content
+
+```shell
+Usage: scss-lint [options] [scss-files]
+    -f, --format Formatter           Specify how to display lints
+    -r, --require path               Require Ruby file
+    -i, --include-linter linter,...  Specify which linters you want to run
+    -x, --exclude-linter linter,...  Specify which linters you don't want to run
+    -c, --config config-file         Specify which configuration file you want to use
+    -e, --exclude file,...           List of file names to exclude
+        --stdin-file-path file-path  Specify the path to assume for the file passed via STDIN
+    -o, --out path                   Write output to a file instead of STDOUT
+        --[no-]color                 Force output to be colorized
+        --show-formatters            Shows available formatters
+        --show-linters               Display available linters
+    -h, --help                       Display help documentation
+    -v, --version                    Display version
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - GEM packages (Ruby) :
   - [scss_lint](https://rubygems.org/gems/scss_lint)
-
-### Linter web site
-- [https://github.com/sds/scss-lint](https://github.com/sds/scss-lint#readme)
-

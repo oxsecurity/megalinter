@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://metacpan.org/pod/Perl::Critic**](https://metacpan.org/pod/Perl::Critic)
+- Version: **1.138**
+
 ## Linted files
 
 - File extensions:
@@ -37,14 +40,41 @@ perlcritic myfile.pl
 ```
 
 
+### Help content
+
+```shell
+Usage:
+      perlcritic [-12345 | --brutal | --cruel | --harsh | --stern | --gentle]
+                 [--severity number | name] [{-p | --profile} file | --noprofile]
+                 [--top [ number ]] [--theme expression] [--include pattern]
+                 [--exclude pattern] [{-s | --single-policy} pattern]
+                 [--only | --noonly] [--profile-strictness {warn|fatal|quiet}]
+                 [--force | --noforce] [--statistics] [--statistics-only]
+                 [--count | -C] [--verbose {number | format}] [--allow-unsafe]
+                 [--color | --nocolor] [--pager pager] [--quiet]
+                 [--color-severity-highest color_specification]
+                 [--color-severity-high color_specification]
+                 [--color-severity-medium color_specification]
+                 [--color-severity-low color_specification]
+                 [--color-severity-lowest color_specification]
+                 [--files-with-violations | -l]
+                 [--files-without-violations | -L]
+                 [--program-extensions file_name_extension]
+                 {FILE | DIRECTORY | STDIN}
+
+      perlcritic --profile-proto
+
+      perlcritic { --list | --list-enabled | --list-themes | --doc pattern [...] }
+
+      perlcritic { --help | --options | --man | --version }
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 ```
-
-
-### Linter web site
-- [https://metacpan.org/pod/Perl::Critic](https://metacpan.org/pod/Perl::Critic)
 

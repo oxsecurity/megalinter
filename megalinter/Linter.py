@@ -52,6 +52,7 @@ class Linter:
     cli_lint_mode = 'file'
     cli_executable = None
     cli_executable_version = None
+    cli_executable_help = None
     # Default arg name for configurations to use in linter CLI call
     cli_config_arg_name = '-c'
     cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
@@ -61,10 +62,14 @@ class Linter:
     # Default arg name for configurations to use in linter version call
     cli_version_arg_name = '--version'
     cli_version_extra_args = []  # Extra arguments to send to cli everytime
+    cli_help_arg_name = '-h'
+    cli_help_extra_args = []  # Extra arguments to send to cli everytime
 
     version_extract_regex = r"\d+(\.\d+)+"
     # If linter --version does not return 0 when it is in success, override. ex: 1
     version_command_return_code = 0
+    # If linter --version does not return 0 when it is in success, override. ex: 1
+    help_command_return_code = 0
 
     report_folder = ''
     reporters = []
@@ -91,6 +96,8 @@ class Linter:
             self.cli_executable = self.linter_name
         if self.cli_executable_version is None:
             self.cli_executable_version = self.cli_executable
+        if self.cli_executable_help is None:
+            self.cli_executable_help = self.cli_executable_version
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
 
@@ -378,6 +385,36 @@ class Linter:
         else:
             return output
 
+    # Returns linter help (can be overridden in special cases, like version has special format)
+    def get_linter_help(self):
+        command = self.build_help_command()
+        if sys.platform == 'win32':
+            cli_absolute = shutil.which(command[0])
+            if cli_absolute is not None:
+                command[0] = cli_absolute
+        logging.debug('Linter help command: ' + str(command))
+        try:
+            process = subprocess.run(command,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.STDOUT)
+            return_code = process.returncode
+            output = megalinter.utils.decode_utf8(process.stdout)
+            logging.debug(
+                'Linter help result: ' + str(return_code) + " " + output)
+        except FileNotFoundError:
+            logging.warning(
+                'Unable to call command [' + ' '.join(command) + ']')
+            return_code = 666
+            output = 'ERROR'
+
+        if return_code != self.help_command_return_code or output.strip() == '':
+            logging.warning(
+                'Unable to get help for linter [' + self.linter_name + ']')
+            logging.warning(' '.join(command) + ' returned output: ' + output)
+            return 'ERROR'
+        else:
+            return output
+
     ########################################
     # Methods that can be overridden below #
     ########################################
@@ -409,4 +446,11 @@ class Linter:
         cmd = [self.cli_executable_version]
         cmd += self.cli_version_extra_args
         cmd += [self.cli_version_arg_name]
+        return cmd
+
+    # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
+    def build_help_command(self):
+        cmd = [self.cli_executable_help]
+        cmd += self.cli_help_extra_args
+        cmd += [self.cli_help_arg_name]
         return cmd

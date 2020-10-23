@@ -2,17 +2,17 @@
 """
 Automatically generate source code
 """
+import json
 import logging
 import os
 import re
 import sys
+from shutil import copyfile
 
 import jsonschema
 import yaml
 
 import megalinter
-
-from shutil import copyfile
 
 BRANCH = 'master'
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -23,6 +23,9 @@ DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + '..'
 REPO_ICONS = REPO_HOME + '/docs/assets/icons'
+
+VERSIONS_FILE = REPO_HOME + '/linter-versions.json'
+HELPS_FILE = REPO_HOME + '/linter-helps.json'
 
 
 # Automatically generate Dockerfile parts
@@ -167,6 +170,14 @@ def generate_documentation():
                  linters_tables_md_str)
     replace_in_file(f"{REPO_HOME}/README.md", "<!-- linters-table-start -->",
                     "<!-- linters-table-end -->", linters_tables_md_str)
+    # Update welcome phrase
+    welcome_phrase = f"Automatically detect[**{len(linters_by_type['language'])} languages**](#languages), " + \
+                     f"[**{len(linters_by_type['format'])} formats**](#formats), " + \
+                     f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) " + \
+                     "and [**copy-pastes**](#other) in your " + \
+                     "repository sources and apply their related linters to ensure sources are clean !"
+    replace_in_file(f"{REPO_HOME}/README.md", "<!-- welcome-phrase-start -->",
+                    "<!-- welcome-phrase-end -->", welcome_phrase)
 
 
 # Generate a MD page for a descriptor (language, format, tooling_format)
@@ -295,6 +306,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}"]
 
+        # Linter URL & version
+        linter_doc_md += ["",
+                          f"- Web Site: [**{linter.linter_url}**]({doc_url(linter.linter_url)})"]
+        # Add version info
+        with open(VERSIONS_FILE) as json_file:
+            linter_versions = json.load(json_file)
+            if linter.linter_name in linter_versions and linter_versions[linter.linter_name] != '0.0.0':
+                linter_doc_md += [f"- Version: **{linter_versions[linter.linter_name]}**"]
+
         # Criteria used by the linter to identify files to lint
         linter_doc_md += [
             "",
@@ -389,18 +409,24 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 example,
                 "```",
                 ""]
+        # Add help info
+        with open(HELPS_FILE) as json_file:
+            linter_helps = json.load(json_file)
+            if linter.linter_name in linter_helps:
+                linter_doc_md += ["",
+                                  "### Help content",
+                                  "",
+                                  "```shell"]
+                linter_doc_md += linter_helps[linter.linter_name]
+                linter_doc_md += ["```"]
+        # Installation doc
         linter_doc_md += ["",
                           "### Installation on mega-linter Docker image",
                           ""]
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
-        linter_doc_md += [
-            "",
-            "### Linter web site",
-            f"- [{linter.linter_url}]({doc_url(linter.linter_url)})",
-            ""]
-
+        # Write md file
         file = open(
             f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md", 'w')
         file.write("\n".join(linter_doc_md) + "\n")

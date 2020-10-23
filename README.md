@@ -8,7 +8,9 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
-Automatically detect all [languages](#languages) and [formats](#formats) in your repository and apply their related linters to ensure sources are clean !
+<!-- welcome-phrase-start -->
+Automatically detect[**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) and [**copy-pastes**](#other) in your repository sources and apply their related linters to ensure sources are clean !
+<!-- welcome-phrase-end -->
 
 **TLDR;**
 
@@ -365,6 +367,7 @@ If you would like to help contribute to this **GitHub** Action, please see [CONT
 
 - **C**
 - **C++**
+- **Copy-Paste detection**
 - **GraphQL**
 - **Puppet**
 - **Rust**
@@ -395,6 +398,7 @@ If you would like to help contribute to this **GitHub** Action, please see [CONT
     - Link to official page explaining **how to customize the linter rules**
     - Link to official page explaining **how to disable rules from source comments**
     - **Examples** of linter command line calls behind the hood
+    - **Help** command text
     - Installation commands
   - README
     - Separate languages, formats and tooling formats in the linters table

@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/borkdude/clj-kondo**](https://github.com/borkdude/clj-kondo#readme)
+- Version: **2020.09.09**
+
 ## Linted files
 
 - File extensions:
@@ -46,6 +49,41 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ```
 
 
+### Help content
+
+```shell
+clj-kondo v2020.09.09
+
+
+Options:
+
+  --lint <file>: a file can either be a normal file, directory or classpath. In the
+    case of a directory or classpath, only .clj, .cljs and .cljc will be
+    processed. Use - as filename for reading from stdin.
+
+  --lang <lang>: if lang cannot be derived from the file extension this option will be
+    used. Supported values: clj, cljs, cljc.
+
+  --cache-dir: when this option is provided, the cache will be resolved to this
+    directory. If --cache is false, this option will be ignored.
+
+  --cache: if false, won't use cache. Otherwise, will try to resolve cache
+  using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
+  nearest `.clj-kondo` directory in the current and parent directories.
+
+  --config <config>: config may be a file or an EDN expression. See
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2020.09.09/doc/configuration
+
+  --config-dir <config-dir>: use this config directory instead of auto-detected
+    .clj-kondo dir.
+
+  --run-as-pod: run clj-kondo as a babashka pod
+
+  --parallel: lint sources in parallel.
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -53,8 +91,4 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
 ```
-
-
-### Linter web site
-- [https://github.com/borkdude/clj-kondo](https://github.com/borkdude/clj-kondo#readme)
 

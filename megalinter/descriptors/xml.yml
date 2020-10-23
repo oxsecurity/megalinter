@@ -7,6 +7,8 @@ linters:
   - linter_name: xmllint
     linter_url: http://xmlsoft.org/xmllint.html
     version_extract_regex: "(?<=libxml version )\\d+(\\d+)+"
+    cli_help_arg_name: "--help"
+    help_command_return_code: 1
     examples:
       - "xmllint myfile.xml"
     install:

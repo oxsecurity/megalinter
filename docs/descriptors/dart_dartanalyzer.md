@@ -7,6 +7,8 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli**](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
+
 ## Linted files
 
 - File extensions:
@@ -43,6 +45,37 @@ dartanalyzer --fatal-infos --fatal-warnings --options analysis_options.yml myfil
 ```
 
 
+### Help content
+
+```shell
+Usage: dartanalyzer [options...] <directory or list of files>
+
+    --dart-sdk                    The path to the Dart SDK.
+    --options                     Path to an analysis options file.
+    --package-root                The path to a package root directory (deprecated). This option cannot be used with --packages.
+    --[no-]declaration-casts      Disable declaration casts in strong mode (https://goo.gl/cTLz40)
+                                  This option is now ignored and will be removed in a future release.
+    --[no-]implicit-casts         Disable implicit casts in strong mode (https://goo.gl/cTLz40).
+    --no-implicit-dynamic         Disable implicit dynamic (https://goo.gl/m0UgXD).
+    --packages                    The path to the package resolution configuration file, which supplies a mapping of package names
+                                  to paths. This option cannot be used with --package-root.
+    --[no-]lints                  Show lint results.
+    --format                      Specifies the format in which errors are displayed; the only currently allowed value is 'machine'.
+    --version                     Print the analyzer version.
+    --enable-experiment           Enable one or more experimental features. If multiple features are being added, they should be comma separated.
+    --no-hints                    Do not show hint results.
+    --fatal-infos                 Treat infos as fatal.
+    --fatal-warnings              Treat non-type warnings as fatal.
+-h, --help                        Display this help message. Add --verbose to show hidden options.
+-v, --verbose                     Verbose output.
+    --default-language-version    The default language version when it is not specified via other ways (internal, tests only).
+
+Run "dartanalyzer -h -v" for verbose help output, including less commonly used options.
+For more information, see https://www.dartlang.org/tools/analyzer.
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -57,8 +90,4 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/
 ```
-
-
-### Linter web site
-- [https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
 

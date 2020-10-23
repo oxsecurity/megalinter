@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/kucherenko/jscpd/tree/master/packages/jscpd**](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
+- Version: **3.3.19**
+
 ## Linted files
 
 ## Configuration
@@ -40,11 +43,60 @@ jscpd --output ./report/copy-paste/ -c .eslintrc.yml .
 ```
 
 
+### Help content
+
+```shell
+Usage: jscpd [options] <path ...>
+
+detector of copy/paste in files
+
+Options:
+  -V, --version              output the version number
+  -l, --min-lines [number]   min size of duplication in code lines (Default is
+                             5)
+  -k, --min-tokens [number]  min size of duplication in code tokens (Default is
+                             50)
+  -x, --max-lines [number]   max size of source in lines (Default is 1000)
+  -z, --max-size [string]    max size of source in bytes, examples: 1kb, 1mb,
+                             120kb (Default is 100kb)
+  -t, --threshold [number]   threshold for duplication, in case duplications >=
+                             threshold jscpd will exit with error
+  -c, --config [string]      path to config file (Default is .jscpd.json in
+                             <path>)
+  -i, --ignore [string]      glob pattern for files what should be excluded
+                             from duplication detection
+  -r, --reporters [string]   reporters or list of reporters separated with coma
+                             to use (Default is time,console)
+  -o, --output [string]      reporters to use (Default is ./report/)
+  -m, --mode [string]        mode of quality of search, can be "strict", "mild" and "weak" (Default is "function mild(token) {
+      return strict(token) && token.type !== 'empty' && token.type !== 'new_line';
+  }")
+  -f, --format [string]      format or formats separated by coma (Example
+                             php,javascript,python)
+  -p, --pattern [string]     glob pattern to file search (Example **/*.txt)
+  -b, --blame                blame authors of duplications (get information
+                             about authors from git)
+  -s, --silent               do not write detection progress and result to a
+                             console
+  --store [string]           use for define custom store (e.g. --store leveldb
+                             used for big codebase)
+  -a, --absolute             use absolute path in reports
+  -n, --noSymlinks           dont use symlinks for detection in files
+  --ignoreCase               ignore case of symbols in code (experimental)
+  -g, --gitignore            ignore all files from .gitignore file
+  --formats-exts [string]    list of formats with file extensions
+                             (javascript:es,es6;dart:dt)
+  -d, --debug                show debug information, not run detection
+                             process(options list and selected files)
+  -v, --verbose              show full information during detection process
+  --list                     show list of total supported formats
+  --skipLocal                skip duplicates in local folders, just detect
+                             cross folders duplications
+  -h, --help                 display help for command
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
   - [jscpd](https://www.npmjs.com/package/jscpd)
-
-### Linter web site
-- [https://github.com/kucherenko/jscpd/tree/master/packages/jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
-

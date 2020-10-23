@@ -97,3 +97,5 @@ jobs:
           path: |
             report
             mega-linter.log
+            linter-helps.json
+            linter-versions.json

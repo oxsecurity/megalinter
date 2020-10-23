@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/psf/black**](https://github.com/psf/black#readme)
+- Version: **20.8**
+
 ## Linted files
 
 - File extensions:
@@ -43,11 +46,82 @@ black --config .python-black --diff --check myfile.py
 ```
 
 
+### Help content
+
+```shell
+Usage: black [OPTIONS] [SRC]...
+
+  The uncompromising code formatter.
+
+Options:
+  -c, --code TEXT                 Format the code passed in as a string.
+  -l, --line-length INTEGER       How many characters per line to allow.
+                                  [default: 88]
+
+  -t, --target-version [py27|py33|py34|py35|py36|py37|py38]
+                                  Python versions that should be supported by
+                                  Black's output. [default: per-file auto-
+                                  detection]
+
+  --pyi                           Format all input files like typing stubs
+                                  regardless of file extension (useful when
+                                  piping source on standard input).
+
+  -S, --skip-string-normalization
+                                  Don't normalize string quotes or prefixes.
+  --check                         Don't write the files back, just return the
+                                  status.  Return code 0 means nothing would
+                                  change.  Return code 1 means some files
+                                  would be reformatted. Return code 123 means
+                                  there was an internal error.
+
+  --diff                          Don't write the files back, just output a
+                                  diff for each file on stdout.
+
+  --color / --no-color            Show colored diff. Only applies when
+                                  `--diff` is given.
+
+  --fast / --safe                 If --fast given, skip temporary sanity
+                                  checks. [default: --safe]
+
+  --include TEXT                  A regular expression that matches files and
+                                  directories that should be included on
+                                  recursive searches.  An empty value means
+                                  all files are included regardless of the
+                                  name.  Use forward slashes for directories
+                                  on all platforms (Windows, too).  Exclusions
+                                  are calculated first, inclusions later.
+                                  [default: \.pyi?$]
+
+  --exclude TEXT                  A regular expression that matches files and
+                                  directories that should be excluded on
+                                  recursive searches.  An empty value means no
+                                  paths are excluded. Use forward slashes for
+                                  directories on all platforms (Windows, too).
+                                  Exclusions are calculated first, inclusions
+                                  later.  [default: /(\.direnv|\.eggs|\.git|\.
+                                  hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_bu
+                                  ild|buck-out|build|dist)/]
+
+  --force-exclude TEXT            Like --exclude, but files and directories
+                                  matching this regex will be excluded even
+                                  when they are passed explicitly as arguments
+
+  -q, --quiet                     Don't emit non-error messages to stderr.
+                                  Errors are still emitted; silence those with
+                                  2>/dev/null.
+
+  -v, --verbose                   Also emit messages to stderr about files
+                                  that were not changed or were ignored due to
+                                  --exclude=.
+
+  --version                       Show the version and exit.
+  --config FILE                   Read configuration from FILE path.
+  -h, --help                      Show this message and exit.
+
+```
+
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
   - [black](https://pypi.org/project/black)
-
-### Linter web site
-- [https://github.com/psf/black](https://github.com/psf/black#readme)
-

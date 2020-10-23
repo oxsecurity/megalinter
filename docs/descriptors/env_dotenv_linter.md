@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/dotenv-linter/dotenv-linter**](https://github.com/dotenv-linter/dotenv-linter#readme)
+- Version: **2.2.0**
+
 ## Linted files
 
 - File extensions:
@@ -35,6 +38,34 @@ dotenv-linter myfile.env
 ```
 
 
+### Help content
+
+```shell
+dotenv-linter 2.2.0
+Mikhail Grachev <work@mgrachev.com>
+Lightning-fast linter for .env files
+
+USAGE:
+    dotenv-linter [FLAGS] [OPTIONS] <input>...
+
+FLAGS:
+    -f, --fix            Automatically fixes warnings
+    -h, --help           Prints help information
+        --no-backup      Prevents .env files from being backed up when modified by -f/--fix
+    -q, --quiet          Doesn't display additional information
+    -r, --recursive      Recursively search and check .env files
+        --show-checks    Shows list of available checks
+    -v, --version        Prints version information
+
+OPTIONS:
+    -e, --exclude <FILE_NAME>...    Excludes files from check
+    -s, --skip <CHECK_NAME>...      Skips checks
+
+ARGS:
+    <input>...    files or paths [default: /]
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -42,8 +73,4 @@ dotenv-linter myfile.env
 FROM dotenvlinter/dotenv-linter:latest as dotenv-linter
 COPY --from=dotenv-linter /dotenv-linter /usr/bin/
 ```
-
-
-### Linter web site
-- [https://github.com/dotenv-linter/dotenv-linter](https://github.com/dotenv-linter/dotenv-linter#readme)
 

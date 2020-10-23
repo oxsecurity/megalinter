@@ -7,6 +7,9 @@
   </a>
 </div>
 
+- Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
+- Version: **15.0.0**
+
 ## Linted files
 
 - File extensions:
@@ -35,11 +38,39 @@ standard myfile.js
 ```
 
 
+### Help content
+
+```shell
+standard - Use JavaScript Standard Style (https://standardjs.com)
+
+Usage:
+    standard <flags> [FILES...]
+
+    If FILES is omitted, all JavaScript source files (*.js, *.jsx, *.mjs, *.cjs)
+    in the current working directory are checked, recursively.
+
+    Certain paths (node_modules/, coverage/, vendor/, *.min.js, bundle.js, and
+    files/folders that begin with '.' like .git/) are automatically ignored.
+
+    Paths in a project's root .gitignore file are also automatically ignored.
+
+Flags:
+        --fix       Automatically fix problems
+    -v, --verbose   Show rule names for errors (to ignore specific rules)
+        --version   Show current version
+    -h, --help      Show usage information
+
+Flags (advanced):
+        --stdin     Read file text from stdin
+        --global    Declare global variable
+        --plugin    Use custom eslint plugin
+        --env       Use custom eslint environment
+        --parser    Use custom js parser (e.g. babel-eslint)
+
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
   - [standard](https://www.npmjs.com/package/standard)
-
-### Linter web site
-- [https://github.com/standard/standard](https://github.com/standard/standard#readme)
-

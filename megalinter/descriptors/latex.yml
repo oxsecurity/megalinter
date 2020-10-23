@@ -11,6 +11,7 @@ linters:
     cli_lint_extra_args:
       - "-q"
     cli_config_arg_name: "-l"
+    help_command_return_code: 1
     examples:
       - "chktex -q myfile.tex"
       - "chktex -q -l .chktexrc myfile.tex"
