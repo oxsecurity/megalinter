@@ -41,6 +41,47 @@ editorconfig-checker myfile.js
 ```
 
 
+### Help content
+
+```shell
+USAGE:
+  -config string
+    	config
+  -debug
+    	print debugging information
+  -disable-end-of-line
+    	disables the trailing whitespace check
+  -disable-indent-size
+    	disables only the indent-size check
+  -disable-indentation
+    	disables the indentation check
+  -disable-insert-final-newline
+    	disables the final newline check
+  -disable-max-line-length
+    	disables only the max-line-length check
+  -disable-trim-trailing-whitespace
+    	disables the trailing whitespace check
+  -dry-run
+    	show which files would be checked
+  -exclude string
+    	a regex which files should be excluded from checking - needs to be a valid regular expression
+  -h	print the help
+  -help
+    	print the help
+  -ignore-defaults
+    	ignore default excludes
+  -init
+    	creates an initial configuration
+  -no-color
+    	dont print colors
+  -v	print debugging information
+  -verbose
+    	print debugging information
+  -version
+    	print the version number
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :

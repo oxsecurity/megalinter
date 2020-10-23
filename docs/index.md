@@ -367,6 +367,7 @@ If you would like to help contribute to this **GitHub** Action, please see [CONT
 
 - **C**
 - **C++**
+- **Copy-Paste detection**
 - **GraphQL**
 - **Puppet**
 - **Rust**
@@ -397,6 +398,7 @@ If you would like to help contribute to this **GitHub** Action, please see [CONT
     - Link to official page explaining **how to customize the linter rules**
     - Link to official page explaining **how to disable rules from source comments**
     - **Examples** of linter command line calls behind the hood
+    - **Help** command text
     - Installation commands
   - README
     - Separate languages, formats and tooling formats in the linters table

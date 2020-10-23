@@ -312,7 +312,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Add version info
         with open(VERSIONS_FILE) as json_file:
             linter_versions = json.load(json_file)
-            if linter.linter_name in linter_versions:
+            if linter.linter_name in linter_versions and linter_versions[linter.linter_name] != '0.0.0':
                 linter_doc_md += [f"- Version: **{linter_versions[linter.linter_name]}**"]
 
         # Criteria used by the linter to identify files to lint

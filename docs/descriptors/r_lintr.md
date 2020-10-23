@@ -3,6 +3,7 @@
 # lintr
 
 - Web Site: [**https://github.com/jimhester/lintr**](https://github.com/jimhester/lintr#readme)
+- Version: **2.0.1.9000**
 
 ## Linted files
 
@@ -38,6 +39,14 @@
 R --slave -e "errors <- lintr::lint('myfile.r'); print(errors); quit(save = 'no', status = if (length(errors) > 0) 1 else 0) "
 ```
 
+
+### Help content
+
+```shell
+No documentation for ‘lintr’ in specified packages and libraries:
+you could try ‘??lintr’
+
+```
 
 ### Installation on mega-linter Docker image
 

@@ -3,6 +3,7 @@
 # coffeelint
 
 - Web Site: [**http://www.coffeelint.org**](http://www.coffeelint.org)
+- Version: **4.1.1**
 
 ## Linted files
 
@@ -39,6 +40,38 @@ coffeelint myfile.coffee
 coffeelint -f .coffee-lint.json myfile.coffee
 ```
 
+
+### Help content
+
+```shell
+Usage: coffeelint [options] source [...]
+
+Options:
+  -f, --file          Specify a custom configuration file.
+      --rules         Specify a custom rule or directory of rules.
+      --makeconfig    Prints a default config file                     [boolean]
+      --trimconfig    Compares your config with the default and prints a minimal
+                      configuration                                    [boolean]
+      --noconfig      Ignores any config file.                         [boolean]
+  -h, --help          Show help                                        [boolean]
+  -v, --version       Show version number                              [boolean]
+  -r                  (not used, but left for backward compatibility)  [boolean]
+      --reporter      built in reporter (default, csv, jslint, checkstyle, raw),
+                      or module, or path to reporter file.
+      --csv           [deprecated] use --reporter csv                  [boolean]
+      --jslint        [deprecated] use --reporter jslint               [boolean]
+      --nocolor       [deprecated] use --color=never                   [boolean]
+      --checkstyle    [deprecated] use --reporter checkstyle           [boolean]
+      --color=<when>  When to colorize the output. <when> can be one of always,
+                      never , or auto.
+  -s, --stdin         Lint the source from stdin                       [boolean]
+  -q, --quiet         Only print errors.                               [boolean]
+      --literate      Used with --stdin to process as Literate CoffeeScript
+                                                                       [boolean]
+  -c, --cache         Cache linting results                            [boolean]
+      --ext           Specify an additional file extension, separated by comma.
+
+```
 
 ### Installation on mega-linter Docker image
 

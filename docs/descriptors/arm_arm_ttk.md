@@ -54,6 +54,17 @@ pwsh -NoProfile -NoLogo -Command "
 ```
 
 
+### Help content
+
+```shell
+[91mTest-AzTemplate: 
+[96mLine |
+[96m   2 | [0m $TAZ_V = (Test-AzTemplate [96m-help[0m);
+[96m     | [91m                           ~~~~~
+[91m[96m     | [91mA parameter cannot be found that matches parameter name 'help'.[0m
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :

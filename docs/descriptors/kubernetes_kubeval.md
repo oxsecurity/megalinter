@@ -3,7 +3,7 @@
 # kubeval
 
 - Web Site: [**https://github.com/instrumenta/kubeval**](https://github.com/instrumenta/kubeval#readme)
-- Version: **0.15.0**
+- Version: **dev**
 
 ## Linted files
 
@@ -40,6 +40,36 @@
 kubeval -strict myfile.yml
 ```
 
+
+### Help content
+
+```shell
+Validate a Kubernetes YAML file against the relevant schema
+
+Usage:
+  kubeval <file> [file...] [flags]
+
+Flags:
+      --additional-schema-locations strings   Comma-seperated list of secondary base URLs used to download schemas
+  -d, --directories strings                   A comma-separated list of directories to recursively search for YAML documents
+      --exit-on-error                         Immediately stop execution when the first error is encountered
+  -f, --filename string                       filename to be displayed when testing manifests read from stdin (default "stdin")
+      --force-color                           Force colored output even if stdout is not a TTY
+  -h, --help                                  help for kubeval
+      --ignore-missing-schemas                Skip validation for resource definitions without a schema
+  -i, --ignored-filename-patterns strings     A comma-separated list of regular expressions specifying filenames to ignore
+      --insecure-skip-tls-verify              If true, the server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+  -v, --kubernetes-version string             Version of Kubernetes to validate against (default "master")
+      --openshift                             Use OpenShift schemas instead of upstream Kubernetes
+  -o, --output string                         The format of the output of this script. Options are: [stdout json tap]
+      --quiet                                 Silences any output aside from the direct results
+      --reject-kinds strings                  Comma-separated list of case-sensitive kinds to prohibit validating against schemas
+  -s, --schema-location string                Base URL used to download schemas. Can also be specified with the environment variable KUBEVAL_SCHEMA_LOCATION.
+      --skip-kinds strings                    Comma-separated list of case-sensitive kinds to skip when validating against schemas
+      --strict                                Disallow additional properties not in schema
+      --version                               version for kubeval
+
+```
 
 ### Installation on mega-linter Docker image
 

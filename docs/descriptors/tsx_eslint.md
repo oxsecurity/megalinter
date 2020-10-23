@@ -8,7 +8,7 @@
 </div>
 
 - Web Site: [**https://eslint.org**](https://eslint.org)
-- Version: **7.9.0**
+- Version: **7.11.0**
 
 ## Linted files
 

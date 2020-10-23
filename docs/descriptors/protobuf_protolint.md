@@ -3,6 +3,7 @@
 # protolint
 
 - Web Site: [**https://github.com/yoheimuta/protolint**](https://github.com/yoheimuta/protolint#readme)
+- Version: **0.26.0**
 
 ## Linted files
 
@@ -39,6 +40,28 @@ protolint lint myfile.proto
 protolint lint --config_path .protolintrc.yml myfile.proto
 ```
 
+
+### Help content
+
+```shell
+Usage of lint:
+  -config_dir_path string
+    	path/to/the_directory_including_protolint.yaml
+  -config_path string
+    	path/to/protolint.yaml. Note that if both are set, config_dir_path is ignored.
+  -fix
+    	mode that the command line can automatically fix some of the problems
+  -no-error-on-unmatched-pattern
+    	exits with 0 when no file is matched
+  -output_file string
+    	path/to/output.txt
+  -plugin value
+    	plugins to provide custom lint rule set. Note that it's necessary to specify it as path format'
+  -reporter value
+    	formatter to output results in the specific format. Available reporters are "plain"(default), "junit", "json", and "unix".
+  -v	verbose output that includes parsing process details
+
+```
 
 ### Installation on mega-linter Docker image
 

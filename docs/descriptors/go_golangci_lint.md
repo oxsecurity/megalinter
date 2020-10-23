@@ -8,6 +8,7 @@
 </div>
 
 - Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
+- Version: **1.31.0**
 
 ## Linted files
 
@@ -44,6 +45,38 @@ golangci-lint run myfile.go
 golangci-lint run -c .golangci.yml myfile.go
 ```
 
+
+### Help content
+
+```shell
+Smart, fast linters runner. Run it in cloud for every GitHub pull request on https://golangci.com
+
+Usage:
+  golangci-lint [flags]
+  golangci-lint [command]
+
+Available Commands:
+  cache       Cache control and information
+  completion  Output completion script
+  config      Config
+  help        Help
+  linters     List current linters configuration
+  run         Run this tool in cloud on every github pull request in https://golangci.com for free (public repos)
+  version     Version
+
+Flags:
+      --color string              Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
+  -j, --concurrency int           Concurrency (default NumCPU) (default 2)
+      --cpu-profile-path string   Path to CPU profile output file
+  -h, --help                      help for golangci-lint
+      --mem-profile-path string   Path to memory profile output file
+      --trace-path string         Path to trace output file
+  -v, --verbose                   verbose output
+      --version                   Print version
+
+Use "golangci-lint [command] --help" for more information about a command.
+
+```
 
 ### Installation on mega-linter Docker image
 

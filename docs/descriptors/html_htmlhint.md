@@ -3,6 +3,7 @@
 # <a href="https://github.com/htmlhint/HTMLHint" target="blank" title="Visit linter Web Site"><img src="https://raw.githubusercontent.com/htmlhint/HTMLHint/master/website/static/img/htmlhint.png" alt="htmlhint" height="100px"></a>htmlhint
 
 - Web Site: [**https://github.com/htmlhint/HTMLHint**](https://github.com/htmlhint/HTMLHint#readme)
+- Version: **0.14.1**
 
 ## Linted files
 
@@ -40,6 +41,40 @@ htmlhint myfile.html
 htmlhint --config .htmlhintrc myfile.html
 ```
 
+
+### Help content
+
+```shell
+Usage: htmlhint <file|folder|pattern|stdin|url ...> [options]
+
+Options:
+  -V, --version                                                    output the version number
+  -l, --list                                                       show all of the rules available
+  -c, --config <file>                                              custom configuration file
+  -r, --rules <ruleid, ruleid=value ...>                           set all of the rules available
+  -R, --rulesdir <file|folder>                                     load custom rules from file or folder
+  -f, --format <checkstyle|compact|html|json|junit|markdown|unix>  output messages as custom format
+  -i, --ignore <pattern, pattern ...>                              add pattern to exclude matches
+  --nocolor                                                        disable color
+  --warn                                                           Warn only, exit with 0
+  -h, --help                                                       display help for command
+  Examples:
+
+    htmlhint
+    htmlhint www
+    htmlhint www/test.html
+    htmlhint www/**/*.xhtml
+    htmlhint www/**/*.{htm,html}
+    htmlhint http://www.alibaba.com/
+    cat test.html | htmlhint stdin
+    htmlhint --list
+    htmlhint --rules tag-pair,id-class-value=underline test.html
+    htmlhint --config .htmlhintrc test.html
+    htmlhint --ignore **/build/**,**/test/**
+    htmlhint --rulesdir ./rules/
+
+
+```
 
 ### Installation on mega-linter Docker image
 

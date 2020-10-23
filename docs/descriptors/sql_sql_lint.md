@@ -41,6 +41,29 @@ sql-lint --config .sql-config.json myfile.sql
 ```
 
 
+### Help content
+
+```shell
+Usage: sql-lint [options]
+
+Options:
+  -V, --version          output the version number
+  --fix [string]         The .sql string to fix
+  -d, --driver <string>  The driver to use, must be one of ['mysql',
+                         'postgres']
+  -v, --verbose          Brings back information on the what it's linting and
+                         the tokens generated
+  --format <string>      The format of the output, can be one of ['simple',
+                         'json'] (default: "simple")
+  --host <string>        The host for the connection
+  --user <string>        The user for the connection
+  --password <string>    The password for the connection
+  --port <string>        The port for the connection
+  --config <string>      The path to the configuration file
+  -h, --help             display help for command
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
