@@ -334,12 +334,30 @@ Check out the [note](#how-it-works) in **How it Works** to understand more about
 
 ### Azure
 
-Check out this [article](https://blog.tyang.org/2020/06/27/use-github-super-linter-in-azure-pipelines/)
-Follow the same instructions, just replace super-linter by mega-linter
+```yaml
+  - job: megalinter
+    displayName: Mega-Linter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: |
+        docker pull nvuillam/mega-linter:latest
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
+      displayName: 'Code Scan using  Mega-Linter'
+```
 
 ### GitLab
 
-Check out this [snippet](https://gitlab.com/snippets/1988376)
+```yaml
+megalinter:
+  stage: linting
+  image: nvuillam/mega-linter:v4
+  script: [ "true" ]
+  variables:
+    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
+    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
+    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
+```
 
 ### Visual Studio Code
 
@@ -358,7 +376,7 @@ Below are a list of the known limitations for the **Mega-Linter**:
 
 ## How to contribute
 
-If you would like to help contribute to this **GitHub** Action, please see [CONTRIBUTING](https://github.com/github/mega-linter/blob/master/.github/CONTRIBUTING.md)
+If you would like to help contribute to this repository, please see [CONTRIBUTING](https://github.com/github/mega-linter/blob/master/.github/CONTRIBUTING.md)
 
 ---
 

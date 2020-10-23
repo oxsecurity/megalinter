@@ -17,7 +17,7 @@ You can follow the link below on how to install and configure **Docker** on your
 ## Download the latest Mega-Linter Docker container
 
 - Pull the latest **Docker** container down from **DockerHub**
-  - `docker pull nvuillam/mega-linter:latest`
+  - `docker pull nvuillam/mega-linter:v4`
     Once the container has been downloaded to your local environment, you can then begin the process, or running the container against your codebase.
 
 ## Run the container Locally
@@ -33,9 +33,9 @@ You can add as many **Additional** flags as needed, documented in [README.md](..
 
 ### Example
 
-```bash
-docker pull github/mega-linter:latest
+```shell
 git clone https://github.com/nvuillam/npm-groovy-lint.git
+docker pull github/mega-linter:latest
 docker run -e FILTER_REGEX_INCLUDE='(.*lib/.*)' -e FILTER_REGEX_EXCLUDE='(.*lib/example/.*)' -v ~/npm-groovy-lint:/tmp/lint nvuillam/mega-linter
 ```
 
