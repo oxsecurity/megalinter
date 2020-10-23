@@ -1,5 +1,10 @@
 <!-- markdownlint-disable MD033 MD041 -->
-# Mega-Linter
+
+<div align="center">
+  <a href="https://github.com/nvuillam/mega-linter#readme" target="blank" title="Visit Mega-Linter Web Site">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square-small.png" alt="Mega-Linter" height="150px">
+  </a>
+</div>
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
