@@ -175,7 +175,7 @@ def generate_documentation():
                      f"[**{len(linters_by_type['format'])} formats**](#formats), " + \
                      f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) " + \
                      "and [**copy-pastes**](#other) in your " + \
-                     "repository sources and apply their related linters to ensure sources are clean !"
+                     "repository sources and apply their related linters to ensure your projects are clean !"
     replace_in_file(f"{REPO_HOME}/README.md", "<!-- welcome-phrase-start -->",
                     "<!-- welcome-phrase-end -->", welcome_phrase)
 
