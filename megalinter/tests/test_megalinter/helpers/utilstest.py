@@ -170,8 +170,8 @@ def test_get_linter_help(linter, test_self):
     if os.path.exists(helps_file):
         with open(helps_file) as json_file:
             data = json.load(json_file)
-    if (linter.linter_name in data and data[linter.linter_name] != help_lines) or linter.linter_name not in data:
-        data[linter.linter_name] = help_lines
+    if (linter.linter_name in data and data[linter.linter_name] != help_lines_clean) or linter.linter_name not in data:
+        data[linter.linter_name] = help_lines_clean
         with open(helps_file, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
