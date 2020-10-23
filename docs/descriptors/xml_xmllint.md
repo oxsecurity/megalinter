@@ -36,7 +36,7 @@ xmllint myfile.xml
 ### Help content
 
 ```shell
-Unknown option -h
+Unknown option --help
 Usage : xmllint [options] XMLfiles ...
 	Parse the XML files and output the result of the parsing
 	--version : display the version of the XML library used

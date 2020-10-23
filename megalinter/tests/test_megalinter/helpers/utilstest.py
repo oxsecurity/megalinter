@@ -158,11 +158,14 @@ def test_get_linter_help(linter, test_self):
     help_lines = help_txt.split("\n")
     help_lines_clean = []
     for help_line in help_lines:
-        line_clean = help_line.rstrip()\
-            .replace('\\t', '  ')\
-            .replace('\\r', '')\
-            .replace(r"(\[..m)", '')\
-            .replace(r"(\[.m)", '')
+        line_clean = help_line \
+            .replace('\\t', '  ') \
+            .replace('\t', '  ') \
+            .replace('\\r', '') \
+            .replace('\r', '') \
+            .replace(r"(\[..m)", '') \
+            .replace(r"(\[.m)", '') \
+            .rstrip()
         help_lines_clean += [line_clean]
     if os.path.exists(helps_file):
         with open(helps_file) as json_file:
