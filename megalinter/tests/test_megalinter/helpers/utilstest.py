@@ -156,6 +156,14 @@ def test_get_linter_help(linter, test_self):
     helps_file = root_dir + os.path.sep + '/linter-helps.json'
     data = {}
     help_lines = help_txt.split("\n")
+    help_lines_clean = []
+    for help_line in help_lines:
+        line_clean = help_line.rstrip()\
+            .replace('\t', '  ')\
+            .replace('\r', '')\
+            .replace(r"(\[..m)", '')\
+            .replace(r"(\[.m)", '')
+        help_lines_clean += [line_clean]
     if os.path.exists(helps_file):
         with open(helps_file) as json_file:
             data = json.load(json_file)
