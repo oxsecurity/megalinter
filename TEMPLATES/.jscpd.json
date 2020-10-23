@@ -1,12 +1,21 @@
 {
   "threshold": 0,
-  "reporters": ["html","markdown"],
+  "reporters": [
+    "html",
+    "markdown"
+  ],
   "ignore": [
     "**/node_modules/**",
     "**/.git/**",
     "**/.rbenv/**",
     "**/.venv'/**",
     "**/report/**",
-    "**/*cache*/**"
+    "**/*cache*/**",
+    "**/*.json",
+    "**/*.yaml",
+    "**/*.yml",
+    "**/*.md",
+    "**/*.html",
+    "**/*.xml"
   ]
 }
