@@ -14,7 +14,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Automatically detect[**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) and [**copy-pastes**](#other) in your repository sources and apply their related linters to ensure sources are clean !
+Automatically detect [**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) and [**copy-pastes**](#other) in your repository sources and apply their related linters to ensure sources are clean !
 <!-- welcome-phrase-end -->
 
 **TLDR;**

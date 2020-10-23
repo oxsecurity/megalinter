@@ -171,7 +171,7 @@ def generate_documentation():
     replace_in_file(f"{REPO_HOME}/README.md", "<!-- linters-table-start -->",
                     "<!-- linters-table-end -->", linters_tables_md_str)
     # Update welcome phrase
-    welcome_phrase = f"Automatically detect[**{len(linters_by_type['language'])} languages**](#languages), " + \
+    welcome_phrase = f"Automatically detect [**{len(linters_by_type['language'])} languages**](#languages), " + \
                      f"[**{len(linters_by_type['format'])} formats**](#formats), " + \
                      f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) " + \
                      "and [**copy-pastes**](#other) in your " + \
