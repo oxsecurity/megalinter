@@ -159,8 +159,8 @@ def test_get_linter_help(linter, test_self):
     help_lines_clean = []
     for help_line in help_lines:
         line_clean = help_line.rstrip()\
-            .replace('\t', '  ')\
-            .replace('\r', '')\
+            .replace('\\t', '  ')\
+            .replace('\\r', '')\
             .replace(r"(\[..m)", '')\
             .replace(r"(\[.m)", '')
         help_lines_clean += [line_clean]
