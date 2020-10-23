@@ -55,10 +55,10 @@ npm-groovy-lint [options]
   -p, --path path::String      Directory containing the files to lint (default: current directory) - default: .
   -f, --files String           Comma-separated list of Ant-style file patterns specifying files that must be included
   -s, --source String          Source text to lint (if no path/files arguments)
-  --sourcefilepath String      Full path of the file whose content is sent in source argument 
+  --sourcefilepath String      Full path of the file whose content is sent in source argument
   --parse                      Try to parse the source code with GroovyShell and return errors (use argument --no-parse if you want to deactivate)
   -c, --config String          Custom path to directory containing GroovyLint config file.
- Default: Found groovylintrc.js/json/yml/package.json config file, or default npm-groovy-lint config if not defined. 
+ Default: Found groovylintrc.js/json/yml/package.json config file, or default npm-groovy-lint config if not defined.
 Note: command-line arguments have priority on config file properties - default: /
   --format                     Format source code
   --fix                        Automatically fix problems when possible

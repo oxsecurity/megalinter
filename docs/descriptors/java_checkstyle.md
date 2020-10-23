@@ -54,9 +54,9 @@ Usage: java [-options] class [args...]
    or  java [-options] -jar jarfile [args...]
            (to execute a jar file)
 where options include:
-    -d32	  use a 32-bit data model if available
-    -d64	  use a 64-bit data model if available
-    -server	  to select the "server" VM
+    -d32    use a 32-bit data model if available
+    -d64    use a 64-bit data model if available
+    -server    to select the "server" VM
                   The default VM is server,
                   because you are running on a server-class machine.
 

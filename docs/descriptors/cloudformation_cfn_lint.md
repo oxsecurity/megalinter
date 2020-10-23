@@ -55,7 +55,7 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 ### Help content
 
 ```shell
-usage: 
+usage:
 Basic: cfn-lint test.yaml
 Ignore a rule: cfn-lint -i E3012 -- test.yaml
 Configure a rule: cfn-lint -x E3012:strict=false -t test.yaml

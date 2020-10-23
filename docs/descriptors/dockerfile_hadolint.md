@@ -46,8 +46,8 @@ hadolint -c .dockerfilelintrc Dockerfile
 ```shell
 hadolint - Dockerfile Linter written in Haskell
 
-Usage: hadolint [-v|--version] [-c|--config FILENAME] [-f|--format ARG] 
-                [DOCKERFILE...] [--ignore RULECODE] 
+Usage: hadolint [-v|--version] [-c|--config FILENAME] [-f|--format ARG]
+                [DOCKERFILE...] [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
   Lint Dockerfile for errors and best practices
 

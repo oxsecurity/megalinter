@@ -50,7 +50,7 @@ Usage: scalafix [options] [<path> ...]
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
 semantic linter and rewrite rules. Syntactic rules can run on source code
 without compilation. Semantic rules can run on source code that has been
-compiled with the SemanticDB compiler plugin. 
+compiled with the SemanticDB compiler plugin.
 
 Common options:
 

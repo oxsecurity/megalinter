@@ -57,7 +57,7 @@ pwsh -NoProfile -NoLogo -Command "
 ### Help content
 
 ```shell
-[91mTest-AzTemplate: 
+[91mTest-AzTemplate:
 [96mLine |
 [96m   2 | [0m $TAZ_V = (Test-AzTemplate [96m-help[0m);
 [96m     | [91m                           ~~~~~

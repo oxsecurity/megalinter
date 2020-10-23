@@ -66,7 +66,7 @@ Flags (advanced):
         --plugin    Use custom eslint plugin
         --env       Use custom eslint environment
         --parser    Use custom js parser (e.g. babel-eslint)
-    
+
 
 ```
 

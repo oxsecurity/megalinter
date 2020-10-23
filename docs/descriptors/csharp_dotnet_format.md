@@ -37,17 +37,17 @@ dotnet-format --folder --check --exclude / --include myfile.cs
 
 ```shell
 dotnet-format:
-  
+
   dotnet-format
 
 Usage:
-  
+
   dotnet-format
   [options]
   [<project>]
 
 Arguments:
-  <project>    
+  <project>
                The
                solution
                or
@@ -73,7 +73,7 @@ Arguments:
                one.
 
 Options:
-  -f, --folder <folder>           
+  -f, --folder <folder>
                                   Whether
                                   to
                                   treat
@@ -87,7 +87,7 @@ Options:
                                   files.
                                   [default:
                                   ]
-  --files, --include <include>    
+  --files, --include <include>
                                   A
                                   list
                                   of
@@ -108,7 +108,7 @@ Options:
                                   empty.
                                   [default:
                                   System.String[]]
-  --exclude <exclude>             
+  --exclude <exclude>
                                   A
                                   list
                                   of
@@ -123,7 +123,7 @@ Options:
                                   formatting.
                                   [default:
                                   System.String[]]
-  --check, --dry-run              
+  --check, --dry-run
                                   Formats
                                   files
                                   without
@@ -142,7 +142,7 @@ Options:
                                   files
                                   were
                                   formatted.
-  --report <report>               
+  --report <report>
                                   Accepts
                                   a
                                   file
@@ -161,7 +161,7 @@ Options:
                                   directory.
                                   [default:
                                   ]
-  -v, --verbosity <verbosity>     
+  -v, --verbosity <verbosity>
                                   Set
                                   the
                                   verbosity
@@ -175,11 +175,11 @@ Options:
                                   d[etailed],
                                   and
                                   diag[nostic]
-  --version                       
+  --version
                                   Show
                                   version
                                   information
-  -?, -h, --help                  
+  -?, -h, --help
                                   Show
                                   help
                                   and

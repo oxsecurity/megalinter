@@ -3,7 +3,7 @@
 # <a href="https://github.com/phpstan/phpstan" target="blank" title="Visit linter Web Site"><img src="https://i.imgur.com/MOt7taM.png" alt="phpstan" height="100px"></a>phpstan
 
 - Web Site: [**https://github.com/phpstan/phpstan**](https://github.com/phpstan/phpstan#readme)
-- Version: **0.12.50**
+- Version: **0.12.51**
 
 ## Linted files
 
@@ -59,19 +59,19 @@ Options:
 
 Help:
   The list command lists all commands:
-  
+
     php /usr/local/bin/phpstan list
-  
+
   You can also display the commands for a specific namespace:
-  
+
     php /usr/local/bin/phpstan list test
-  
+
   You can also output the information in other formats by using the --format option:
-  
+
     php /usr/local/bin/phpstan list --format=xml
-  
+
   It's also possible to get raw list of commands (useful for embedding command runner):
-  
+
     php /usr/local/bin/phpstan list --raw
 
 ```

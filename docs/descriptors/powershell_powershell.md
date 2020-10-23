@@ -93,9 +93,9 @@ All parameters are case-insensitive.
     Parameters passed to the script are passed as literal strings, after
     interpretation by the current shell. For example, if you are in cmd.exe and
     want to pass an environment variable value, you would use the cmd.exe
-    syntax: "pwsh -File .\test.ps1 -TestParam %windir%"
+    syntax: "pwsh -File .  est.ps1 -TestParam %windir%"
 
-    In contrast, running "pwsh -File .\test.ps1 -TestParam $env:windir" in
+    In contrast, running "pwsh -File .  est.ps1 -TestParam $env:windir" in
     cmd.exe results in the script receiving the literal string "$env:windir"
     because it has no special meaning to the current cmd.exe shell. The
     "$env:windir" style of environment variable reference can be used inside a
@@ -292,7 +292,7 @@ Hides the copyright banner at startup.
     Displays help for pwsh. If you are typing a pwsh command in PowerShell,
     prepend the command parameters with a hyphen (-), not a forward slash (/).
     You can use either a hyphen or forward slash in Cmd.exe.
-    
+
 
 ```
 
