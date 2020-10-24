@@ -77,6 +77,8 @@ class GithubCommentReporter(Reporter):
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
             for pr in pr_list:
+                if pr.is_merged():
+                    continue
                 try:
                     pr.create_issue_comment(p_r_msg)
                     logging.debug(f'Posted Github comment: {p_r_msg}')
