@@ -35,8 +35,7 @@ class GithubCommentReporter(Reporter):
             run_id = os.environ['GITHUB_RUN_ID']
             sha = os.environ.get('GITHUB_SHA')
             action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
-            table_header = ["Descriptor", "Linter",
-                            "Files with error(s)", "Total files"]
+            table_header = ["Descriptor", "Linter", "Found", "Errors"]
             table_data_raw = [table_header]
             for linter in self.master.linters:
                 if linter.is_active is True:
@@ -51,7 +50,7 @@ class GithubCommentReporter(Reporter):
                     errors_cell = f"[**{linter.number_errors}**]({action_run_url})" if linter.number_errors > 0 \
                         else linter.number_errors
                     table_data_raw += [
-                        [first_col, linter_link, errors_cell, len(linter.files)]]
+                        [first_col, linter_link, len(linter.files), errors_cell]]
             # Build markdown table
             table_data_raw.pop(0)
             writer = MarkdownTableWriter(
@@ -63,10 +62,12 @@ class GithubCommentReporter(Reporter):
             status_with_href = f"[**{self.master.status.upper()}**]({action_run_url}) {emoji}"
             p_r_msg = f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}" + os.linesep + os.linesep
             p_r_msg += table_content + os.linesep
-            p_r_msg += f"See artifact Mega-Linter reports on [GitHub Action page]({action_run_url})" + \
+            p_r_msg += f"See errors details in [**artifact Mega-Linter reports** on " \
+                       f"GitHub Action page]({action_run_url})" + \
                        os.linesep
-            p_r_msg += "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate " + \
-                       "all sources, not only the diff_" + os.linesep
+            if self.master.validate_all_code_base is False:
+                p_r_msg += "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate " + \
+                           "all sources, not only the diff_" + os.linesep
             logging.debug("\n" + p_r_msg)
             # Post comment on pull request if found
             github_auth = os.environ['PAT'] if os.environ.get(
@@ -76,6 +77,8 @@ class GithubCommentReporter(Reporter):
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
             for pr in pr_list:
+                if pr.is_merged():
+                    continue
                 try:
                     pr.create_issue_comment(p_r_msg)
                     logging.debug(f'Posted Github comment: {p_r_msg}')
