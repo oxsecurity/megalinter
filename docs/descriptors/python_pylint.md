@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://www.pylint.org**](https://www.pylint.org)
 - Version: **2.6.0**
-
-## Linted files
-
-- File extensions:
-  - `.py`
 
 ## Configuration
 
@@ -25,15 +22,24 @@
 
 ### Mega-linter configuration
 
+- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PYTHON_PYLINT_FILE_NAME | Rules file name | `.python-lint` |
-| PYTHON_PYLINT_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PYTHON_PYLINT_FILE_NAME | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-lint` |
+| PYTHON_PYLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.py`
+
 
 ### Example calls
 

@@ -7,13 +7,9 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/editorconfig-checker/editorconfig-checker**](https://github.com/editorconfig-checker/editorconfig-checker#readme)
-
-## Linted files
-
-- Activated only if file is found: `.editorconfig`
-- File extensions:
-  - `*`
 
 ## Configuration
 
@@ -24,15 +20,25 @@
 
 ### Mega-linter configuration
 
+- Enable editorconfig-checker by adding `EDITORCONFIG` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| EDITORCONFIG_FILE_NAME | Rules file name | `.ecrc` |
-| EDITORCONFIG_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| EDITORCONFIG_FILE_NAME | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
+| EDITORCONFIG_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | EDITORCONFIG_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- Activated only if file is found: `.editorconfig`
+- File extensions:
+  - `*`
+
 
 ### Example calls
 

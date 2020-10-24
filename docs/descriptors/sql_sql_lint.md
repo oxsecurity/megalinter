@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/joereynolds/sql-lint**](https://github.com/joereynolds/sql-lint#readme)
 - Version: **0.0.15**
 
-## Linted files
-
-- File extensions:
-  - `.sql`
-
 ## Configuration
 
 ### sql-lint configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable sql-lint by adding `SQL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable sql-lint by adding `SQL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| SQL_FILE_NAME | Rules file name | `.sql-config.json` |
-| SQL_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| SQL_FILE_NAME | sql-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.sql-config.json` |
+| SQL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SQL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.sql`
+
 
 ### Example calls
 

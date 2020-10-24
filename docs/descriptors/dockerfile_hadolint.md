@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/hadolint/hadolint**](https://github.com/hadolint/hadolint#readme)
 - Version: **1.18.2**
 
-## Linted files
-
-- File names:
-  - `Dockerfile`
-
 ## Configuration
 
 ### hadolint configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable hadolint by adding `DOCKERFILE_HADOLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable hadolint by adding `DOCKERFILE_HADOLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| DOCKERFILE_HADOLINT_FILE_NAME | Rules file name | `.hadolint.yml` |
-| DOCKERFILE_HADOLINT_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| DOCKERFILE_HADOLINT_FILE_NAME | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.hadolint.yml` |
+| DOCKERFILE_HADOLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File names:
+  - `Dockerfile`
+
 
 ### Example calls
 

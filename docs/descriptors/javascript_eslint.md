@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://eslint.org**](https://eslint.org)
 - Version: **7.11.0**
-
-## Linted files
-
-- File extensions:
-  - `.js`
 
 ## Configuration
 
@@ -25,15 +22,24 @@
 
 ### Mega-linter configuration
 
+- Enable eslint by adding `JAVASCRIPT_ES` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable eslint by adding `JAVASCRIPT_ES` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| JAVASCRIPT_ES_FILE_NAME | Rules file name | `.eslintrc.yml` |
-| JAVASCRIPT_ES_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| JAVASCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
+| JAVASCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVASCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.js`
+
 
 ### Example calls
 

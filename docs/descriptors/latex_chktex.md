@@ -5,11 +5,6 @@
 - Web Site: [**https://www.nongnu.org/chktex**](https://www.nongnu.org/chktex)
 - Version: **1.7.6**
 
-## Linted files
-
-- File extensions:
-  - `.tex`
-
 ## Configuration
 
 ### chktex configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable chktex by adding `LATEX` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable chktex by adding `LATEX` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| LATEX_FILE_NAME | Rules file name | `.chktexrc` |
-| LATEX_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| LATEX_FILE_NAME | chktex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.chktexrc` |
+| LATEX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | LATEX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.tex`
+
 
 ### Example calls
 

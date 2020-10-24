@@ -5,14 +5,6 @@
 - Web Site: [**https://github.com/jimhester/lintr**](https://github.com/jimhester/lintr#readme)
 - Version: **2.0.1.9000**
 
-## Linted files
-
-- File extensions:
-  - `.r`
-  - `.R`
-  - `.Rmd`
-  - `.RMD`
-
 ## Configuration
 
 ### lintr configuration
@@ -23,15 +15,27 @@
 
 ### Mega-linter configuration
 
+- Enable lintr by adding `R` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable lintr by adding `R` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| R_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| R_FILE_NAME | Rules file name | `.lintr` |
-| R_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| R_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| R_FILE_NAME | lintr configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.lintr` |
+| R_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | R_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.r`
+  - `.R`
+  - `.Rmd`
+  - `.RMD`
+
 
 ### Example calls
 

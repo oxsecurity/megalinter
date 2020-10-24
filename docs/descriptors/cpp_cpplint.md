@@ -5,7 +5,27 @@
 - Web Site: [**https://github.com/cpplint/cpplint**](https://github.com/cpplint/cpplint#readme)
 - Version: **1.5.4**
 
-## Linted files
+## Configuration
+
+### cpplint configuration
+
+- cpplint has no known capability to configure custom rules
+- cpplint has no known capability to inline-disable rules
+
+### Mega-linter configuration
+
+- Enable cpplint by adding `CPP_CPPLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable cpplint by adding `CPP_CPPLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CPP_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| CPP_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| CPP_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.cpp`
@@ -20,21 +40,6 @@
   - `.h++`
   - `.cuh`
 
-## Configuration
-
-### cpplint configuration
-
-- cpplint has no known capability to configure custom rules
-- cpplint has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CPP_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CPP_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-
-## Behind the scenes
 
 ### Example calls
 

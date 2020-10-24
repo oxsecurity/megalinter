@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
 - Version: **15.0.0**
-
-## Linted files
-
-- File extensions:
-  - `.ts`
 
 ## Configuration
 
@@ -24,12 +21,22 @@
 
 ### Mega-linter configuration
 
+- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TYPESCRIPT_STANDARD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.ts`
+
 
 ### Example calls
 

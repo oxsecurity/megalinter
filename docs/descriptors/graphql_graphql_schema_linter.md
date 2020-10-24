@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/cjoudrey/graphql-schema-linter**](https://github.com/cjoudrey/graphql-schema-linter#readme)
 - Version: **1.0.1**
 
-## Linted files
-
-- File extensions:
-  - `.graphql`
-
 ## Configuration
 
 ### graphql-schema-linter configuration
@@ -19,15 +14,24 @@
 
 ### Mega-linter configuration
 
+- Enable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAME | Rules file name | `.graphql-schema-linterrc` |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAME | graphql-schema-linter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.graphql-schema-linterrc` |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.graphql`
+
 
 ### Example calls
 

@@ -5,11 +5,6 @@
 - Web Site: [**http://xmlsoft.org/xmllint.html**](http://xmlsoft.org/xmllint.html)
 - Version: **20910**
 
-## Linted files
-
-- File extensions:
-  - `.xml`
-
 ## Configuration
 
 ### xmllint configuration
@@ -19,12 +14,22 @@
 
 ### Mega-linter configuration
 
+- Enable xmllint by adding `XML` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable xmllint by adding `XML` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| XML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| XML_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.xml`
+
 
 ### Example calls
 

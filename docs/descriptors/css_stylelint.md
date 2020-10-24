@@ -7,15 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://stylelint.io**](https://stylelint.io)
 - Version: **13.7.2**
-
-## Linted files
-
-- File extensions:
-  - `.css`
-  - `.scss`
-  - `.saas`
 
 ## Configuration
 
@@ -27,15 +22,26 @@
 
 ### Mega-linter configuration
 
+- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CSS_STYLELINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CSS_STYLELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| CSS_STYLELINT_FILE_NAME | Rules file name | `.stylelintrc.json` |
-| CSS_STYLELINT_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| CSS_STYLELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| CSS_STYLELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| CSS_STYLELINT_FILE_NAME | stylelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.stylelintrc.json` |
+| CSS_STYLELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_STYLELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.css`
+  - `.scss`
+  - `.saas`
+
 
 ### Example calls
 

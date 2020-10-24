@@ -5,12 +5,6 @@
 - Web Site: [**https://github.com/adrienverge/yamllint**](https://github.com/adrienverge/yamllint#readme)
 - Version: **1.25.0**
 
-## Linted files
-
-- File extensions:
-  - `.yml`
-  - `.yaml`
-
 ## Configuration
 
 ### yamllint configuration
@@ -21,15 +15,25 @@
 
 ### Mega-linter configuration
 
+- Enable yamllint by adding `YAML` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable yamllint by adding `YAML` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| YAML_FILE_NAME | Rules file name | `.yaml-lint.yml` |
-| YAML_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| YAML_FILE_NAME | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.yaml-lint.yml` |
+| YAML_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | YAML_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.yml`
+  - `.yaml`
+
 
 ### Example calls
 

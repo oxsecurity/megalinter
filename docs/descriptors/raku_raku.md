@@ -5,16 +5,6 @@
 - Web Site: [**https://raku.org/**](https://raku.org/)
 - Version: **2020.09**
 
-## Linted files
-
-- File extensions:
-  - `.raku`
-  - `.rakumod`
-  - `.rakutest`
-  - `.pm6`
-  - `.pl6`
-  - `.p6`
-
 ## Configuration
 
 ### raku configuration
@@ -24,15 +14,29 @@
 
 ### Mega-linter configuration
 
+- Enable raku by adding `RAKU` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable raku by adding `RAKU` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| RAKU_FILE_NAME | Rules file name | `META6.json` |
-| RAKU_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| RAKU_FILE_NAME | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `META6.json` |
+| RAKU_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RAKU_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.raku`
+  - `.rakumod`
+  - `.rakutest`
+  - `.pm6`
+  - `.pl6`
+  - `.p6`
+
 
 ### Example calls
 

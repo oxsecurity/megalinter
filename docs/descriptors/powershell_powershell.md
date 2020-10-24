@@ -5,17 +5,6 @@
 - Web Site: [**https://github.com/PowerShell/PSScriptAnalyzer**](https://github.com/PowerShell/PSScriptAnalyzer#readme)
 - Version: **7.0.3**
 
-## Linted files
-
-- File extensions:
-  - `.ps1`
-  - `.psm1`
-  - `.psd1`
-  - `.ps1xml`
-  - `.pssc`
-  - `.psrc`
-  - `.cdxml`
-
 ## Configuration
 
 ### powershell configuration
@@ -26,15 +15,30 @@
 
 ### Mega-linter configuration
 
+- Enable powershell by adding `POWERSHELL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable powershell by adding `POWERSHELL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| POWERSHELL_FILE_NAME | Rules file name | `.powershell-psscriptanalyzer.psd1` |
-| POWERSHELL_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| POWERSHELL_FILE_NAME | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.powershell-psscriptanalyzer.psd1` |
+| POWERSHELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | POWERSHELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.ps1`
+  - `.psm1`
+  - `.psd1`
+  - `.ps1xml`
+  - `.pssc`
+  - `.psrc`
+  - `.cdxml`
+
 
 ### Example calls
 

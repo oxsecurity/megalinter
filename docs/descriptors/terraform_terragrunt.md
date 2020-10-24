@@ -5,11 +5,6 @@
 - Web Site: [**https://terragrunt.gruntwork.io**](https://terragrunt.gruntwork.io)
 - Version: **0.25.4**
 
-## Linted files
-
-- File extensions:
-  - `.hcl`
-
 ## Configuration
 
 ### terragrunt configuration
@@ -19,15 +14,24 @@
 
 ### Mega-linter configuration
 
+- Enable terragrunt by adding `TERRAFORM` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable terragrunt by adding `TERRAFORM` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| TERRAFORM_FILE_NAME | Rules file name | `terragrunt.hcl` |
-| TERRAFORM_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TERRAFORM_FILE_NAME | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `terragrunt.hcl` |
+| TERRAFORM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TERRAFORM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.hcl`
+
 
 ### Example calls
 

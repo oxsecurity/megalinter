@@ -5,14 +5,6 @@
 - Web Site: [**https://github.com/koalaman/shellcheck**](https://github.com/koalaman/shellcheck#readme)
 - Version: **0.7.1**
 
-## Linted files
-
-- File extensions:
-  - `.sh`
-  - `.bash`
-  - `.dash`
-  - `.ksh`
-
 ## Configuration
 
 ### shellcheck configuration
@@ -22,12 +14,25 @@
 
 ### Mega-linter configuration
 
+- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| BASH_SHELLCHECK_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| BASH_SHELLCHECK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| BASH_SHELLCHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.sh`
+  - `.bash`
+  - `.dash`
+  - `.ksh`
+
 
 ### Example calls
 

@@ -5,7 +5,28 @@
 - Web Site: [**https://github.com/instrumenta/kubeval**](https://github.com/instrumenta/kubeval#readme)
 - Version: **dev**
 
-## Linted files
+## Configuration
+
+### kubeval configuration
+
+- kubeval has no known capability to configure custom rules
+- kubeval has no known capability to inline-disable rules
+
+### Mega-linter configuration
+
+- Enable kubeval by adding `KUBERNETES_KUBEVAL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable kubeval by adding `KUBERNETES_KUBEVAL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| KUBERNETES_KUBEVAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| KUBERNETES_DIRECTORY | Directory containing KUBERNETES files | `kubernetes` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.yml`
@@ -17,22 +38,6 @@
   - `kustomize.config.k8s.io`
   - `tekton`
 
-## Configuration
-
-### kubeval configuration
-
-- kubeval has no known capability to configure custom rules
-- kubeval has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| KUBERNETES_DIRECTORY | Directory containing KUBERNETES files | `kubernetes` |
-
-## Behind the scenes
 
 ### Example calls
 

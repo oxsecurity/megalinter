@@ -5,17 +5,6 @@
 - Web Site: [**https://github.com/nvuillam/npm-groovy-lint**](https://github.com/nvuillam/npm-groovy-lint#readme)
 - Version: **7.6.4**
 
-## Linted files
-
-- File extensions:
-  - `.groovy`
-  - `.gvy`
-  - `.gradle`
-  - `.nf`
-
-- File names:
-  - `Jenkinsfile`
-
 ## Configuration
 
 ### npm-groovy-lint configuration
@@ -26,15 +15,30 @@
 
 ### Mega-linter configuration
 
+- Enable npm-groovy-lint by adding `GROOVY` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable npm-groovy-lint by adding `GROOVY` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| GROOVY_FILE_NAME | Rules file name | `.groovylintrc.json` |
-| GROOVY_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| GROOVY_FILE_NAME | npm-groovy-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.groovylintrc.json` |
+| GROOVY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GROOVY_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.groovy`
+  - `.gvy`
+  - `.gradle`
+  - `.nf`
+
+- File names:
+  - `Jenkinsfile`
+
 
 ### Example calls
 

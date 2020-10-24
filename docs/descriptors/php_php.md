@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://www.php.net**](https://www.php.net)
 - Version: **7.3.23**
-
-## Linted files
-
-- File extensions:
-  - `.php`
 
 ## Configuration
 
@@ -24,12 +21,22 @@
 
 ### Mega-linter configuration
 
+- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PHP_BUILTIN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.php`
+
 
 ### Example calls
 

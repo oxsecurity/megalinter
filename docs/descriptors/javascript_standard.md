@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
 - Version: **15.0.0**
-
-## Linted files
-
-- File extensions:
-  - `.js`
 
 ## Configuration
 
@@ -24,12 +21,22 @@
 
 ### Mega-linter configuration
 
+- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| JAVASCRIPT_STANDARD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.js`
+
 
 ### Example calls
 

@@ -5,12 +5,6 @@
 - Web Site: [**https://github.com/ansible/ansible-lint**](https://github.com/ansible/ansible-lint#readme)
 - Version: **4.2.0**
 
-## Linted files
-
-- File extensions:
-  - `.yml`
-  - `.yaml`
-
 ## Configuration
 
 ### ansible-lint configuration
@@ -21,16 +15,26 @@
 
 ### Mega-linter configuration
 
+- Enable ansible-lint by adding `ANSIBLE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable ansible-lint by adding `ANSIBLE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| ANSIBLE_FILE_NAME | Rules file name | `.ansible-lint.yml` |
-| ANSIBLE_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| ANSIBLE_FILE_NAME | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ansible-lint.yml` |
+| ANSIBLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | ANSIBLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 | ANSIBLE_DIRECTORY | Directory containing ANSIBLE files | `ansible` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.yml`
+  - `.yaml`
+
 
 ### Example calls
 

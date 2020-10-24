@@ -5,14 +5,6 @@
 - Web Site: [**https://tiswww.case.edu/php/chet/bash/bashtop.html**](https://tiswww.case.edu/php/chet/bash/bashtop.html)
 - Version: **5.0.17**
 
-## Linted files
-
-- File extensions:
-  - `.sh`
-  - `.bash`
-  - `.dash`
-  - `.ksh`
-
 ## Configuration
 
 ### bash-exec configuration
@@ -22,13 +14,26 @@
 
 ### Mega-linter configuration
 
+- Enable bash-exec by adding `BASH_EXEC` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable bash-exec by adding `BASH_EXEC` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | ERROR_ON_MISSING_EXEC_BIT | If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead | false |
-| BASH_EXEC_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| BASH_EXEC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| BASH_EXEC_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| BASH_EXEC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| BASH_EXEC_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.sh`
+  - `.bash`
+  - `.dash`
+  - `.ksh`
+
 
 ### Example calls
 

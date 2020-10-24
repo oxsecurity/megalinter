@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/dotnet/format**](https://github.com/dotnet/format#readme)
 - Version: **4.1.131201**
 
-## Linted files
-
-- File extensions:
-  - `.cs`
-
 ## Configuration
 
 ### dotnet-format configuration
@@ -19,12 +14,22 @@
 
 ### Mega-linter configuration
 
+- Enable dotnet-format by adding `CSHARP` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable dotnet-format by adding `CSHARP` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| CSHARP_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.cs`
+
 
 ### Example calls
 

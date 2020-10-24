@@ -4,14 +4,6 @@
 
 - Web Site: [**https://github.com/Azure/arm-ttk**](https://github.com/Azure/arm-ttk#readme)
 
-## Linted files
-
-- File extensions:
-  - `.json`
-
-- Detected file content:
-  - `schema.management.azure.com`
-
 ## Configuration
 
 ### arm-ttk configuration
@@ -22,15 +14,27 @@
 
 ### Mega-linter configuration
 
+- Enable arm-ttk by adding `ARM` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable arm-ttk by adding `ARM` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| ARM_FILE_NAME | Rules file name | `.arm-ttk.psd1` |
-| ARM_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| ARM_FILE_NAME | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
+| ARM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | ARM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.json`
+
+- Detected file content:
+  - `schema.management.azure.com`
+
 
 ### Example calls
 

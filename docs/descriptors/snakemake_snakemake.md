@@ -7,16 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://snakemake.readthedocs.io/en/stable/**](https://snakemake.readthedocs.io/en/stable/)
 - Version: **5.26.1**
-
-## Linted files
-
-- File extensions:
-  - `.smk`
-
-- File names:
-  - `Snakefile`
 
 ## Configuration
 
@@ -27,12 +21,25 @@
 
 ### Mega-linter configuration
 
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| SNAKEMAKE_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.smk`
+
+- File names:
+  - `Snakefile`
+
 
 ### Example calls
 

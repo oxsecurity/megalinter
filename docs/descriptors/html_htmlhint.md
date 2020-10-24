@@ -5,12 +5,6 @@
 - Web Site: [**https://github.com/htmlhint/HTMLHint**](https://github.com/htmlhint/HTMLHint#readme)
 - Version: **0.14.1**
 
-## Linted files
-
-- File extensions:
-  - `.html`
-  - `.htm`
-
 ## Configuration
 
 ### htmlhint configuration
@@ -21,15 +15,25 @@
 
 ### Mega-linter configuration
 
+- Enable htmlhint by adding `HTML` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable htmlhint by adding `HTML` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| HTML_FILE_NAME | Rules file name | `.htmlhintrc` |
-| HTML_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| HTML_FILE_NAME | htmlhint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.htmlhintrc` |
+| HTML_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | HTML_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.html`
+  - `.htm`
+
 
 ### Example calls
 

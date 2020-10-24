@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://eslint.org**](https://eslint.org)
 - Version: **7.11.0**
-
-## Linted files
-
-- File extensions:
-  - `.tsx`
 
 ## Configuration
 
@@ -25,15 +22,24 @@
 
 ### Mega-linter configuration
 
+- Enable eslint by adding `TSX` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable eslint by adding `TSX` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| TSX_FILE_NAME | Rules file name | `.eslintrc.yml` |
-| TSX_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TSX_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
+| TSX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TSX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.tsx`
+
 
 ### Example calls
 
