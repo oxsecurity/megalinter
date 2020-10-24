@@ -7,10 +7,35 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/stoplightio/spectral**](https://github.com/stoplightio/spectral#readme)
 - Version: **5.6.0**
 
-## Linted files
+## Configuration
+
+### spectral configuration
+
+- [Configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
+  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
+- spectral has no known capability to inline-disable rules
+
+### Mega-linter configuration
+
+- Enable spectral by adding `OPENAPI` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable spectral by adding `OPENAPI` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| OPENAPI_FILE_NAME | spectral configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.openapirc.yml` |
+| OPENAPI_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| OPENAPI_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.yml`
@@ -23,25 +48,6 @@
   - `openapi:`
   - `swagger:`
 
-## Configuration
-
-### spectral configuration
-
-- [Configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
-  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
-- spectral has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| OPENAPI_FILE_NAME | Rules file name | `.openapirc.yml` |
-| OPENAPI_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| OPENAPI_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
 
 ### Example calls
 

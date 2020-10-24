@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://checkstyle.sourceforge.io**](https://checkstyle.sourceforge.io)
 - Version: **8.36.2**
-
-## Linted files
-
-- File extensions:
-  - `.java`
 
 ## Configuration
 
@@ -25,15 +22,24 @@
 
 ### Mega-linter configuration
 
+- Enable checkstyle by adding `JAVA` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable checkstyle by adding `JAVA` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| JAVA_FILE_NAME | Rules file name | `sun_checks.xml` |
-| JAVA_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| JAVA_FILE_NAME | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
+| JAVA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.java`
+
 
 ### Example calls
 

@@ -5,15 +5,6 @@
 - Web Site: [**https://github.com/IBM/tekton-lint**](https://github.com/IBM/tekton-lint#readme)
 - Version: **0.4.2**
 
-## Linted files
-
-- File extensions:
-  - `.yml`
-  - `.yaml`
-
-- Detected file content:
-  - `apiVersion: tekton`
-
 ## Configuration
 
 ### tekton-lint configuration
@@ -23,15 +14,28 @@
 
 ### Mega-linter configuration
 
+- Enable tekton-lint by adding `TEKTON` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable tekton-lint by adding `TEKTON` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| TEKTON_FILE_NAME | Rules file name | `.tektonlintrc.yaml` |
-| TEKTON_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TEKTON_FILE_NAME | tekton-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tektonlintrc.yaml` |
+| TEKTON_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TEKTON_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.yml`
+  - `.yaml`
+
+- Detected file content:
+  - `apiVersion: tekton`
+
 
 ### Example calls
 

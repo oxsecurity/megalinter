@@ -7,10 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/kucherenko/jscpd/tree/master/packages/jscpd**](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
 - Version: **3.3.19**
-
-## Linted files
 
 ## Configuration
 
@@ -22,15 +22,21 @@
 
 ### Mega-linter configuration
 
+- Enable jscpd by adding `COPYPASTE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable jscpd by adding `COPYPASTE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| COPYPASTE_FILE_NAME | Rules file name | `.jscpd.json` |
-| COPYPASTE_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| COPYPASTE_FILE_NAME | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
+| COPYPASTE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COPYPASTE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
 
 ### Example calls
 

@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/zaach/jsonlint**](https://github.com/zaach/jsonlint#readme)
 - Version: **1.6.3**
 
-## Linted files
-
-- File extensions:
-  - `.json`
-
 ## Configuration
 
 ### jsonlint configuration
@@ -19,12 +14,22 @@
 
 ### Mega-linter configuration
 
+- Enable jsonlint by adding `JSON` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable jsonlint by adding `JSON` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| JSON_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.json`
+
 
 ### Example calls
 

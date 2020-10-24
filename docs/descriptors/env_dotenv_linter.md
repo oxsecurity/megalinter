@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/dotenv-linter/dotenv-linter**](https://github.com/dotenv-linter/dotenv-linter#readme)
 - Version: **2.2.0**
-
-## Linted files
-
-- File extensions:
-  - `.env`
 
 ## Configuration
 
@@ -24,12 +21,22 @@
 
 ### Mega-linter configuration
 
+- Enable dotenv-linter by adding `ENV` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable dotenv-linter by adding `ENV` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| ENV_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.env`
+
 
 ### Example calls
 

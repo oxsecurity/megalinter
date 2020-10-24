@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/accurics/terrascan**](https://github.com/accurics/terrascan#readme)
 - Version: **1.1.0**
-
-## Linted files
-
-- File extensions:
-  - `.tf`
 
 ## Configuration
 
@@ -24,12 +21,22 @@
 
 ### Mega-linter configuration
 
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TERRAFORM_TERRASCAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.tf`
+
 
 ### Example calls
 

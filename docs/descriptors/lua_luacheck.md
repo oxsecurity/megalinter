@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/luarocks/luacheck**](https://github.com/luarocks/luacheck#readme)
 - Version: **0.23.0**
 
-## Linted files
-
-- File extensions:
-  - `.lua`
-
 ## Configuration
 
 ### luacheck configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable luacheck by adding `LUA` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable luacheck by adding `LUA` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| LUA_FILE_NAME | Rules file name | `.luacheckrc` |
-| LUA_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| LUA_FILE_NAME | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
+| LUA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | LUA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.lua`
+
 
 ### Example calls
 

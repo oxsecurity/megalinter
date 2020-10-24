@@ -5,14 +5,6 @@
 - Web Site: [**https://github.com/snakemake/snakefmt**](https://github.com/snakemake/snakefmt#readme)
 - Version: **0.2.2**
 
-## Linted files
-
-- File extensions:
-  - `.smk`
-
-- File names:
-  - `Snakefile`
-
 ## Configuration
 
 ### snakefmt configuration
@@ -23,15 +15,27 @@
 
 ### Mega-linter configuration
 
+- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| SNAKEMAKE_SNAKEFMT_FILE_NAME | Rules file name | `.snakefmt.toml` |
-| SNAKEMAKE_SNAKEFMT_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| SNAKEMAKE_SNAKEFMT_FILE_NAME | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.snakefmt.toml` |
+| SNAKEMAKE_SNAKEFMT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.smk`
+
+- File names:
+  - `Snakefile`
+
 
 ### Example calls
 

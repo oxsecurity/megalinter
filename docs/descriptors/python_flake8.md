@@ -5,11 +5,6 @@
 - Web Site: [**https://flake8.pycqa.org**](https://flake8.pycqa.org)
 - Version: **3.8.4**
 
-## Linted files
-
-- File extensions:
-  - `.py`
-
 ## Configuration
 
 ### flake8 configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PYTHON_FLAKE8_FILE_NAME | Rules file name | `.flake8` |
-| PYTHON_FLAKE8_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PYTHON_FLAKE8_FILE_NAME | flake8 configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.flake8` |
+| PYTHON_FLAKE8_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_FLAKE8_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.py`
+
 
 ### Example calls
 

@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/phpstan/phpstan**](https://github.com/phpstan/phpstan#readme)
 - Version: **0.12.51**
 
-## Linted files
-
-- File extensions:
-  - `.php`
-
 ## Configuration
 
 ### phpstan configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PHP_PHPSTAN_FILE_NAME | Rules file name | `phpstan.neon` |
-| PHP_PHPSTAN_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PHP_PHPSTAN_FILE_NAME | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpstan.neon` |
+| PHP_PHPSTAN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PHPSTAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.php`
+
 
 ### Example calls
 

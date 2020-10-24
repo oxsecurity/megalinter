@@ -5,14 +5,6 @@
 - Web Site: [**https://github.com/mvdan/sh**](https://github.com/mvdan/sh#readme)
 - Version: **3.1.2**
 
-## Linted files
-
-- File extensions:
-  - `.sh`
-  - `.bash`
-  - `.dash`
-  - `.ksh`
-
 ## Configuration
 
 ### shfmt configuration
@@ -22,12 +14,25 @@
 
 ### Mega-linter configuration
 
+- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| BASH_SHFMT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| BASH_SHFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| BASH_SHFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| BASH_SHFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| BASH_SHFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.sh`
+  - `.bash`
+  - `.dash`
+  - `.ksh`
+
 
 ### Example calls
 

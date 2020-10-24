@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/rodjek/puppet-lint**](https://github.com/rodjek/puppet-lint#readme)
 - Version: **2.4.2**
 
-## Linted files
-
-- File extensions:
-  - `.pp`
-
 ## Configuration
 
 ### puppet-lint configuration
@@ -19,15 +14,24 @@
 
 ### Mega-linter configuration
 
+- Enable puppet-lint by adding `PUPPET` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable puppet-lint by adding `PUPPET` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PUPPET_FILE_NAME | Rules file name | `.puppet-lint.rc` |
-| PUPPET_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PUPPET_FILE_NAME | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.puppet-lint.rc` |
+| PUPPET_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PUPPET_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.pp`
+
 
 ### Example calls
 

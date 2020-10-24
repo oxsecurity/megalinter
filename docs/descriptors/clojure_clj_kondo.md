@@ -7,16 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/borkdude/clj-kondo**](https://github.com/borkdude/clj-kondo#readme)
 - Version: **2020.09.09**
-
-## Linted files
-
-- File extensions:
-  - `.clj`
-  - `.cljs`
-  - `.cljc`
-  - `.edn`
 
 ## Configuration
 
@@ -28,15 +22,27 @@
 
 ### Mega-linter configuration
 
+- Enable clj-kondo by adding `CLOJURE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable clj-kondo by adding `CLOJURE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| CLOJURE_FILE_NAME | Rules file name | `.clj-kondo/config.edn` |
-| CLOJURE_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| CLOJURE_FILE_NAME | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clj-kondo/config.edn` |
+| CLOJURE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOJURE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.clj`
+  - `.cljs`
+  - `.cljc`
+  - `.edn`
+
 
 ### Example calls
 

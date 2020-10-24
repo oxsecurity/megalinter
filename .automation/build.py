@@ -294,7 +294,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if hasattr(linter, 'linter_banner_image_url') and linter.linter_banner_image_url is not None:
             linter_doc_md += [
                 image_link(linter.linter_banner_image_url, linter.linter_name,
-                           doc_url(linter.linter_url), "Visit linter Web Site", "center", 150)
+                           doc_url(linter.linter_url), "Visit linter Web Site", "center", 150),
+                "",
+                '## Linter'
             ]
         # Text + image as title
         elif hasattr(linter, 'linter_image_url') and linter.linter_image_url is not None:
@@ -315,31 +317,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             if linter.linter_name in linter_versions and linter_versions[linter.linter_name] != '0.0.0':
                 linter_doc_md += [f"- Version: **{linter_versions[linter.linter_name]}**"]
 
-        # Criteria used by the linter to identify files to lint
-        linter_doc_md += [
-            "",
-            "## Linted files",
-            ""]
-        if linter.active_only_if_file_found is not None:
-            linter_doc_md += [
-                f"- Activated only if file is found: `{linter.active_only_if_file_found}`"]
-        if len(linter.file_extensions) > 0:
-            linter_doc_md += ['- File extensions:']
-            for file_extension in linter.file_extensions:
-                linter_doc_md += [f"  - `{file_extension}`"]
-            linter_doc_md += [""]
-        if len(linter.file_names) > 0:
-            linter_doc_md += ['- File names:']
-            for file_name in linter.file_names:
-                linter_doc_md += [f"  - `{file_name}`"]
-            linter_doc_md += [""]
-        if len(linter.file_contains) > 0:
-            linter_doc_md += ['- Detected file content:']
-            for file_contains_expr in linter.file_contains:
-                linter_doc_md += [f"  - `{file_contains_expr}`"]
-            linter_doc_md += [""]
         # How to configure this linter
         linter_doc_md += [
+            "",
             "## Configuration",
             ""]
         # Linter-specific configuration
@@ -370,8 +350,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         linter_doc_md += ['']
         # Mega-linter variables
+        activation_url = "https://github.com/nvuillam/mega-linter#activation-and-deactivation"
         linter_doc_md += [
             "### Mega-linter configuration",
+            "",
+            f"- Enable {linter.linter_name} by adding `{linter.name}` in [ENABLE_LINTERS variable]({activation_url})",
+            f"- Disable {linter.linter_name} by adding `{linter.name}` in [DISABLE_LINTERS variable]({activation_url})",
             "",
             "| Variable | Description | Default value |",
             "| ----------------- | -------------- | -------------- |"]
@@ -381,16 +365,20 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"| {variable['name']} | {variable['description']} | {variable['default_value']} |"
                 ]
         linter_doc_md += [
-            f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter |  |",
-            f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |"
+            f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
+            f"Ex: `\\/(src|lib)\\/` |  |",
+            f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
+            f"Ex: `\\/(test|examples)\\/` |  |"
         ]
         if linter.config_file_name is not None:
             linter_doc_md += [
-                f"| {linter.name}_FILE_NAME | Rules file name | `{linter.config_file_name}` |",
-                f"| {linter.name}_RULES_PATH | Path where to find rules | "
-                "Workspace folder, then mega-linter default rules |",
-                f"| {linter.name}_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |",
+                f"| {linter.name}_FILE_NAME | {linter.linter_name} configuration file name</br>"
+                f"Use `LINTER_DEFAULT` to let the linter find it | "
+                f"`{linter.config_file_name}` |",
+                f"| {linter.name}_RULES_PATH | Path where to find linter configuration file | "
+                "Workspace folder, then Mega-Linter default rules |"
             ]
+        linter_doc_md += [f"| {linter.name}_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |"]
         if linter.files_sub_directory is not None:
             linter_doc_md += [
                 f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
@@ -399,6 +387,31 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += [
             "",
             "## Behind the scenes",
+            ""]
+        # Criteria used by the linter to identify files to lint
+        linter_doc_md += [
+            "### How are identified applicable files",
+            ""]
+        if linter.active_only_if_file_found is not None:
+            linter_doc_md += [
+                f"- Activated only if file is found: `{linter.active_only_if_file_found}`"]
+        if len(linter.file_extensions) > 0:
+            linter_doc_md += ['- File extensions:']
+            for file_extension in linter.file_extensions:
+                linter_doc_md += [f"  - `{file_extension}`"]
+            linter_doc_md += [""]
+        if len(linter.file_names) > 0:
+            linter_doc_md += ['- File names:']
+            for file_name in linter.file_names:
+                linter_doc_md += [f"  - `{file_name}`"]
+            linter_doc_md += [""]
+        if len(linter.file_contains) > 0:
+            linter_doc_md += ['- Detected file content:']
+            for file_contains_expr in linter.file_contains:
+                linter_doc_md += [f"  - `{file_contains_expr}`"]
+            linter_doc_md += [""]
+
+        linter_doc_md += [
             "",
             "### Example calls",
             ""

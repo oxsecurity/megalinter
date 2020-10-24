@@ -7,13 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/rubocop-hq/rubocop**](https://github.com/rubocop-hq/rubocop#readme)
 - Version: **0.82.0**
-
-## Linted files
-
-- File extensions:
-  - `.rb`
 
 ## Configuration
 
@@ -25,15 +22,24 @@
 
 ### Mega-linter configuration
 
+- Enable rubocop by adding `RUBY` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable rubocop by adding `RUBY` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| RUBY_FILE_NAME | Rules file name | `.ruby-lint.yml` |
-| RUBY_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| RUBY_FILE_NAME | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ruby-lint.yml` |
+| RUBY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RUBY_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.rb`
+
 
 ### Example calls
 

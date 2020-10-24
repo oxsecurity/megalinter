@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/DavidAnson/markdownlint**](https://github.com/DavidAnson/markdownlint#readme)
 - Version: **0.24.0**
 
-## Linted files
-
-- File extensions:
-  - `.md`
-
 ## Configuration
 
 ### markdownlint configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable markdownlint by adding `MARKDOWN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable markdownlint by adding `MARKDOWN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| MARKDOWN_FILE_NAME | Rules file name | `.markdown-lint.yml` |
-| MARKDOWN_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| MARKDOWN_FILE_NAME | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.markdown-lint.yml` |
+| MARKDOWN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | MARKDOWN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.md`
+
 
 ### Example calls
 

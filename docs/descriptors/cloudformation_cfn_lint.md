@@ -7,19 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/martysweet/cfn-lint**](https://github.com/martysweet/cfn-lint#readme)
 - Version: **0.38.0**
-
-## Linted files
-
-- File extensions:
-  - `.yml`
-  - `.yaml`
-  - `.json`
-
-- Detected file content:
-  - `AWSTemplateFormatVersion`
-  - `(AWS|Alexa|Custom)::`
 
 ## Configuration
 
@@ -31,15 +22,30 @@
 
 ### Mega-linter configuration
 
+- Enable cfn-lint by adding `CLOUDFORMATION` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable cfn-lint by adding `CLOUDFORMATION` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| CLOUDFORMATION_FILE_NAME | Rules file name | `.cfnlintrc.yml` |
-| CLOUDFORMATION_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| CLOUDFORMATION_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
+| CLOUDFORMATION_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOUDFORMATION_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.yml`
+  - `.yaml`
+  - `.json`
+
+- Detected file content:
+  - `AWSTemplateFormatVersion`
+  - `(AWS|Alexa|Custom)::`
+
 
 ### Example calls
 

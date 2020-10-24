@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/yoheimuta/protolint**](https://github.com/yoheimuta/protolint#readme)
 - Version: **0.26.0**
 
-## Linted files
-
-- File extensions:
-  - `.proto`
-
 ## Configuration
 
 ### protolint configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable protolint by adding `PROTOBUF` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable protolint by adding `PROTOBUF` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PROTOBUF_FILE_NAME | Rules file name | `.protolintrc.yml` |
-| PROTOBUF_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PROTOBUF_FILE_NAME | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.protolintrc.yml` |
+| PROTOBUF_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PROTOBUF_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.proto`
+
 
 ### Example calls
 

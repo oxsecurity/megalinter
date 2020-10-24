@@ -5,12 +5,6 @@
 - Web Site: [**https://github.com/cpplint/cpplint**](https://github.com/cpplint/cpplint#readme)
 - Version: **1.5.4**
 
-## Linted files
-
-- File extensions:
-  - `.c`
-  - `.h`
-
 ## Configuration
 
 ### cpplint configuration
@@ -20,12 +14,23 @@
 
 ### Mega-linter configuration
 
+- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| C_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| C_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| C_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| C_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| C_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.c`
+  - `.h`
+
 
 ### Example calls
 

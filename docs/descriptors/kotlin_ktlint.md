@@ -7,14 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://ktlint.github.io**](https://ktlint.github.io)
 - Version: **0.39.0**
-
-## Linted files
-
-- File extensions:
-  - `.kt`
-  - `.kts`
 
 ## Configuration
 
@@ -25,12 +21,23 @@
 
 ### Mega-linter configuration
 
+- Enable ktlint by adding `KOTLIN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable ktlint by adding `KOTLIN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| KOTLIN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.kt`
+  - `.kts`
+
 
 ### Example calls
 

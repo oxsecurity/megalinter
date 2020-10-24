@@ -7,12 +7,9 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli**](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
-
-## Linted files
-
-- File extensions:
-  - `.dart`
 
 ## Configuration
 
@@ -24,15 +21,24 @@
 
 ### Mega-linter configuration
 
+- Enable dartanalyzer by adding `DART` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| DART_FILE_NAME | Rules file name | `analysis_options.yml` |
-| DART_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| DART_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| DART_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
+| DART_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DART_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.dart`
+
 
 ### Example calls
 

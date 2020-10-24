@@ -7,15 +7,10 @@
   </a>
 </div>
 
+## Linter
+
 - Web Site: [**https://metacpan.org/pod/Perl::Critic**](https://metacpan.org/pod/Perl::Critic)
 - Version: **1.138**
-
-## Linted files
-
-- File extensions:
-  - `.pl`
-  - `.pm`
-  - `.t`
 
 ## Configuration
 
@@ -26,12 +21,24 @@
 
 ### Mega-linter configuration
 
+- Enable perlcritic by adding `PERL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable perlcritic by adding `PERL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PERL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.pl`
+  - `.pm`
+  - `.t`
+
 
 ### Example calls
 

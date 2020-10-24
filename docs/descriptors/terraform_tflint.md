@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/terraform-linters/tflint**](https://github.com/terraform-linters/tflint#readme)
 - Version: **0.20.3**
 
-## Linted files
-
-- File extensions:
-  - `.tf`
-
 ## Configuration
 
 ### tflint configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| TERRAFORM_TFLINT_FILE_NAME | Rules file name | `.tflint.hcl` |
-| TERRAFORM_TFLINT_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TERRAFORM_TFLINT_FILE_NAME | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tflint.hcl` |
+| TERRAFORM_TFLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TERRAFORM_TFLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.tf`
+
 
 ### Example calls
 

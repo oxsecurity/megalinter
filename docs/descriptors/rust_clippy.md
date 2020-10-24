@@ -5,11 +5,6 @@
 - Web Site: [**https://github.com/rust-lang/rust-clippy**](https://github.com/rust-lang/rust-clippy#readme)
 - Version: **0.0.212**
 
-## Linted files
-
-- File extensions:
-  - `.rs`
-
 ## Configuration
 
 ### clippy configuration
@@ -19,15 +14,24 @@
 
 ### Mega-linter configuration
 
+- Enable clippy by adding `RUST` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable clippy by adding `RUST` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| RUST_FILE_NAME | Rules file name | `.clippy.toml` |
-| RUST_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| RUST_FILE_NAME | clippy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clippy.toml` |
+| RUST_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RUST_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.rs`
+
 
 ### Example calls
 

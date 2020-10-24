@@ -5,11 +5,6 @@
 - Web Site: [**https://scalacenter.github.io/scalafix/**](https://scalacenter.github.io/scalafix/)
 - Version: **0.9.21**
 
-## Linted files
-
-- File extensions:
-  - `.scala`
-
 ## Configuration
 
 ### scalafix configuration
@@ -20,15 +15,24 @@
 
 ### Mega-linter configuration
 
+- Enable scalafix by adding `SCALA` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable scalafix by adding `SCALA` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| SCALA_FILE_NAME | Rules file name | `.scalafix.conf` |
-| SCALA_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
+| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
+| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| SCALA_FILE_NAME | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scalafix.conf` |
+| SCALA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SCALA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
+
+### How are identified applicable files
+
+- File extensions:
+  - `.scala`
+
 
 ### Example calls
 
