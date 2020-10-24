@@ -26,8 +26,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | PHP_BUILTIN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes

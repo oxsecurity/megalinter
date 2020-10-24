@@ -19,8 +19,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | PUPPET_FILE_NAME | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.puppet-lint.rc` |
 | PUPPET_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PUPPET_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

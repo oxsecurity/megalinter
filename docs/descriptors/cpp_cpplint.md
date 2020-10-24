@@ -19,8 +19,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CPP_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| CPP_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| CPP_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| CPP_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | CPP_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes

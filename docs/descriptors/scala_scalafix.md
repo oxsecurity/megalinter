@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | SCALA_FILE_NAME | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scalafix.conf` |
 | SCALA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SCALA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

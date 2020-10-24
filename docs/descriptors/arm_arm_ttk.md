@@ -19,8 +19,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | ARM_FILE_NAME | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
 | ARM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | ARM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

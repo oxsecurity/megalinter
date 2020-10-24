@@ -27,8 +27,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TYPESCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TYPESCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | TYPESCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
 | TYPESCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TYPESCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

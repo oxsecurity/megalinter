@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | MARKDOWN_FILE_NAME | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.markdown-lint.yml` |
 | MARKDOWN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | MARKDOWN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

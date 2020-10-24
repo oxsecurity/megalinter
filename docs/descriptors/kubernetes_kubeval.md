@@ -19,8 +19,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | KUBERNETES_KUBEVAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 | KUBERNETES_DIRECTORY | Directory containing KUBERNETES files | `kubernetes` |
 

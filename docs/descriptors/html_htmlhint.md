@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | HTML_FILE_NAME | htmlhint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.htmlhintrc` |
 | HTML_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | HTML_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

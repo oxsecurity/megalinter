@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | POWERSHELL_FILE_NAME | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.powershell-psscriptanalyzer.psd1` |
 | POWERSHELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | POWERSHELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

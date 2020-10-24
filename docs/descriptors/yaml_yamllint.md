@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | YAML_FILE_NAME | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.yaml-lint.yml` |
 | YAML_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | YAML_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

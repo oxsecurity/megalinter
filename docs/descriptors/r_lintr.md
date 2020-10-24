@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| R_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| R_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | R_FILE_NAME | lintr configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.lintr` |
 | R_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | R_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

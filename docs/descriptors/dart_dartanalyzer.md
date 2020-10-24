@@ -26,8 +26,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| DART_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | DART_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
 | DART_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DART_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

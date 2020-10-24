@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | PHP_PHPSTAN_FILE_NAME | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpstan.neon` |
 | PHP_PHPSTAN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PHPSTAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

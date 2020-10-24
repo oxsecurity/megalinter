@@ -27,8 +27,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | JAVA_FILE_NAME | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
 | JAVA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

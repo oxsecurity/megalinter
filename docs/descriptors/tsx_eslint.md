@@ -27,8 +27,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | TSX_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
 | TSX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TSX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | LUA_FILE_NAME | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
 | LUA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | LUA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

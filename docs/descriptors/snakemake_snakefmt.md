@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | SNAKEMAKE_SNAKEFMT_FILE_NAME | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.snakefmt.toml` |
 | SNAKEMAKE_SNAKEFMT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

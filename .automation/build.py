@@ -366,9 +366,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 ]
         linter_doc_md += [
             f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-            f"Ex: `\\/(src|lib)\\/` |  |",
+            f"Ex: `\\/(src\\|lib)\\/` |  |",
             f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-            f"Ex: `\\/(test|examples)\\/` |  |"
+            f"Ex: `\\/(test\\|examples)\\/` |  |"
         ]
         if linter.config_file_name is not None:
             linter_doc_md += [

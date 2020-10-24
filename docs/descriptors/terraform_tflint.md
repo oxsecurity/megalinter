@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | TERRAFORM_TFLINT_FILE_NAME | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tflint.hcl` |
 | TERRAFORM_TFLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TERRAFORM_TFLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

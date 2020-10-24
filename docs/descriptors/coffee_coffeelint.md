@@ -20,8 +20,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | COFFEE_FILE_NAME | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.coffee-lint.json` |
 | COFFEE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COFFEE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

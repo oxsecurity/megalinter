@@ -27,8 +27,8 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src|lib)\/` |  |
-| PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test|examples)\/` |  |
+| PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
+| PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
 | PYTHON_BLACK_FILE_NAME | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-black` |
 | PYTHON_BLACK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_BLACK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
