@@ -20,13 +20,12 @@ class ConsoleReporter(Reporter):
         super().__init__(params)
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter",
-                        "Files with error(s)", "Total files"]
+        table_header = ["Descriptor", "Linter", "Found", "Errors"]
         table_data = [table_header]
         for linter in self.master.linters:
             if linter.is_active is True:
                 table_data += [
-                    [linter.descriptor_id, linter.linter_name, str(linter.number_errors), str(len(linter.files))]]
+                    [linter.descriptor_id, linter.linter_name, str(len(linter.files)), str(linter.number_errors)]]
         table = terminaltables.AsciiTable(table_data)
         table.title = "----SUMMARY"
         # Output table in console
