@@ -12,7 +12,7 @@ from megalinter import Linter
 class RLinter(Linter):
 
     # Build the CLI command to call to lint a file
-    def build_lint_command(self, file):
+    def build_lint_command(self, file=None):
         # lintr requires .lintr in folder: copy it there if necessary
         dir_name = os.path.dirname(file)
         if not os.path.exists(dir_name + os.path.sep + self.config_file_name):

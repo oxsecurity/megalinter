@@ -23,6 +23,7 @@ import glob
 import logging
 import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -57,6 +58,7 @@ class Linter:
     cli_config_arg_name = '-c'
     cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
     cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+    cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
     # Extra arguments to send to cli everytime, just before file argument
     cli_lint_extra_args_after = []
     # Default arg name for configurations to use in linter version call
@@ -201,6 +203,10 @@ class Linter:
         elif self.descriptor_id + "_FILTER_REGEX_INCLUDE" in os.environ:
             self.filter_regex_include = os.environ[self.descriptor_id +
                                                    "_FILTER_REGEX_INCLUDE"]
+
+        # User arguments from config
+        if os.environ.get(self.name + "_ARGUMENTS", '') != '':
+            self.cli_lint_user_args = shlex.split(os.environ.get(self.name + "_ARGUMENTS"))
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if os.environ.get(self.name + "_DISABLE_ERRORS", "false") == 'true':
@@ -427,6 +433,8 @@ class Linter:
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
+        # Add user-defined extra arguments if defined
+        cmd += self.cli_lint_user_args
         # Add config arguments if defined
         if self.config_file is not None:
             if self.cli_config_arg_name.endswith('='):

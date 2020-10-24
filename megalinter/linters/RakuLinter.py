@@ -26,8 +26,13 @@ class RakuLinter(megalinter.Linter):
             logging.debug(f"{return_code} : {return_stdout}")
 
     # Build the CLI command to call to lint a file
-    def build_lint_command(self, file):
-        cmd = [self.cli_executable,
-               "-I", self.workspace + os.path.sep + 'lib',
-               "-c", file]
+    def build_lint_command(self, file=None):
+        cmd = [self.cli_executable]
+        # Add other lint cli arguments if defined
+        cmd += self.cli_lint_extra_args
+        # Add user-defined extra arguments if defined
+        cmd += self.cli_lint_user_args
+        cmd += [
+            "-I", self.workspace + os.path.sep + 'lib',
+            "-c", file]
         return cmd

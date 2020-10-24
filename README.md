@@ -407,8 +407,9 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
   - Have a centralized exclude list (node_modules,.rbenv, etc...) to **ignore all unwanted folders from the beginning**
 
 - **Enhanced Configuration**
-  - Configure **include and exclude regexes** for a **single language or linter**: ex: JAVASCRIPT_FILTER_REGEX_INCLUDE
-  - Configure **non blocking errors** for a **single language or linter**: ex: JAVASCRIPT_DISABLE_ERRORS
+  - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
+  - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
+  - Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`
   - **Simplify languages and linters variables**
     - ENABLE = list of languages and formats to apply lint on codebase (default: all)
     - ENABLE_LINTERS = list of linters to apply lint on codebase (default: all)
