@@ -3,7 +3,7 @@
 # snakefmt
 
 - Web Site: [**https://github.com/snakemake/snakefmt**](https://github.com/snakemake/snakefmt#readme)
-- Version: **0.2.2**
+- Version: **0.2.3**
 
 ## Configuration
 
@@ -64,7 +64,7 @@ Usage: snakefmt [OPTIONS] [SRC]...
   Snakefile` to avoid this.
 
 Options:
-  -l, --line-length INT  Lines longer than INT will be wrapped.  [default: 88]
+  -l, --line-length INT  Lines longer than INT will be wrapped. [default: 88]
   --check                Don't write the files back, just return the status.
                          Return code 0 means nothing would change. Return code
                          1 means some files would be reformatted. Return code

@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/dotenv-linter/dotenv-linter**](https://github.com/dotenv-linter/dotenv-linter#readme)
-- Version: **2.2.0**
+- Version: **2.2.1**
 
 ## Configuration
 
@@ -49,7 +49,7 @@ dotenv-linter myfile.env
 ### Help content
 
 ```shell
-dotenv-linter 2.2.0
+dotenv-linter 2.2.1
 Mikhail Grachev <work@mgrachev.com>
 Lightning-fast linter for .env files
 

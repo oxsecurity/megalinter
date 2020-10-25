@@ -23,7 +23,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
 - Commit, push, and create a pull request
 - Watch !
 
-![Demo Gif](https://raw.githubusercontent.com/nvuillam/mega-linter/DemoGif/doc/assets/images/demo_with_comments.gif)
+![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
 
 **Notes**:
 
