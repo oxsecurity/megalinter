@@ -27,8 +27,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PYTHON_PYLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PYTHON_PYLINT_FILE_NAME | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-lint` |
 | PYTHON_PYLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

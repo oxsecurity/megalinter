@@ -19,8 +19,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| RUST_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | RUST_FILE_NAME | clippy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clippy.toml` |
 | RUST_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RUST_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

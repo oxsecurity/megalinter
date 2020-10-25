@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| SQL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | SQL_FILE_NAME | sql-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.sql-config.json` |
 | SQL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SQL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

@@ -365,10 +365,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"| {variable['name']} | {variable['description']} | {variable['default_value']} |"
                 ]
         linter_doc_md += [
+            f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
+            f"Ex: `-s --foo \"bar\"` |  |",
             f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-            f"Ex: `\\/(src\\|lib)\\/` |  |",
+            f"Ex: `\\/(src\\|lib)\\/` | Include every file |",
             f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-            f"Ex: `\\/(test\\|examples)\\/` |  |"
+            f"Ex: `\\/(test\\|examples)\\/` | Exclude no file |"
         ]
         if linter.config_file_name is not None:
             linter_doc_md += [

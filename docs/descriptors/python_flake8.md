@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PYTHON_FLAKE8_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PYTHON_FLAKE8_FILE_NAME | flake8 configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.flake8` |
 | PYTHON_FLAKE8_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_FLAKE8_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

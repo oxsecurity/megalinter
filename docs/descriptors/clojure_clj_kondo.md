@@ -27,8 +27,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| CLOJURE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | CLOJURE_FILE_NAME | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clj-kondo/config.edn` |
 | CLOJURE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOJURE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

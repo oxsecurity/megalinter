@@ -19,8 +19,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAME | graphql-schema-linter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.graphql-schema-linterrc` |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

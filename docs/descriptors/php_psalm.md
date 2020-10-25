@@ -27,8 +27,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_PSALM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PHP_PSALM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PHP_PSALM_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PHP_PSALM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PHP_PSALM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PHP_PSALM_FILE_NAME | psalm configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `psalm.xml` |
 | PHP_PSALM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PSALM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

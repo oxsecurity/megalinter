@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PROTOBUF_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PROTOBUF_FILE_NAME | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.protolintrc.yml` |
 | PROTOBUF_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PROTOBUF_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

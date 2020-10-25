@@ -27,8 +27,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| COPYPASTE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | COPYPASTE_FILE_NAME | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
 | COPYPASTE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COPYPASTE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
