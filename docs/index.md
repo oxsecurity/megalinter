@@ -23,12 +23,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
 - Commit, push, and create a pull request
 - Watch !
 
-**The end goal of this tool:**
-
-- Prevent broken code from being uploaded to the default branch (_Usually_ `master`)
-- Help establish coding best practices across multiple languages
-- Build guidelines for code layout and format
-- Automate the process to help streamline code reviews
+![Demo Gif](https://raw.githubusercontent.com/nvuillam/mega-linter/DemoGif/doc/assets/images/demo_with_comments.gif)
 
 **Notes**:
 
