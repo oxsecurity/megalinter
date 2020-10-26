@@ -3,7 +3,7 @@
 # snakefmt
 
 - Web Site: [**https://github.com/snakemake/snakefmt**](https://github.com/snakemake/snakefmt#readme)
-- Version: **0.2.2**
+- Version: **0.2.3**
 
 ## Configuration
 
@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| SNAKEMAKE_SNAKEFMT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | SNAKEMAKE_SNAKEFMT_FILE_NAME | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.snakefmt.toml` |
 | SNAKEMAKE_SNAKEFMT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -63,7 +64,7 @@ Usage: snakefmt [OPTIONS] [SRC]...
   Snakefile` to avoid this.
 
 Options:
-  -l, --line-length INT  Lines longer than INT will be wrapped.  [default: 88]
+  -l, --line-length INT  Lines longer than INT will be wrapped. [default: 88]
   --check                Don't write the files back, just return the status.
                          Return code 0 means nothing would change. Return code
                          1 means some files would be reformatted. Return code

@@ -21,6 +21,8 @@ linters:
     config_file_name: .golangci.yml
     cli_lint_extra_args:
       - "run"
+    cli_version_arg_name: 'version'
+    version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
     examples:
       - "golangci-lint run myfile.go"
       - "golangci-lint run -c .golangci.yml myfile.go"

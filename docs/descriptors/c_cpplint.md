@@ -19,8 +19,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| C_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| C_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| C_CPPLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| C_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| C_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | C_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
@@ -71,7 +72,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['hxx', 'c', 'cuh', 'cc', 'h++', 'cu', 'c++', 'cpp', 'hh', 'hpp', 'h', 'cxx'].
+  Default linted extensions are ['cpp', 'hh', 'h', 'hpp', 'cxx', 'c', 'cc', 'cu', 'c++', 'h++', 'cuh', 'hxx'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -187,7 +188,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=hxx,c,cuh,cc,h++,cu,c++,cpp,hh,hpp,h,cxx
+        --extensions=cpp,hh,h,hpp,cxx,c,cc,cu,c++,h++,cuh,hxx
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -201,10 +202,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'hxx', 'cuh', 'h++', 'hh', 'hpp', 'h'} will be assumed to be headers)
+     (by default, only files with extensions {'hh', 'h', 'hpp', 'h++', 'cuh', 'hxx'} will be assumed to be headers)
 
       Examples:
-        --headers=hxx,cuh,h++,hh,hpp,h
+        --headers=hh,h,hpp,h++,cuh,hxx
         --headers=hpp,hxx
         --headers=hpp
 

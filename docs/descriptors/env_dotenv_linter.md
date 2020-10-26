@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/dotenv-linter/dotenv-linter**](https://github.com/dotenv-linter/dotenv-linter#readme)
-- Version: **2.2.0**
+- Version: **2.2.1**
 
 ## Configuration
 
@@ -26,8 +26,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| ENV_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | ENV_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
@@ -48,7 +49,7 @@ dotenv-linter myfile.env
 ### Help content
 
 ```shell
-dotenv-linter 2.2.0
+dotenv-linter 2.2.1
 Mikhail Grachev <work@mgrachev.com>
 Lightning-fast linter for .env files
 

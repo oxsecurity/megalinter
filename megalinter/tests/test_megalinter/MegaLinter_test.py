@@ -33,19 +33,17 @@ class MegalinterTest(unittest.TestCase):
 
     def test_disable_language(self):
         super_linter, output = utilstest.call_super_linter(
-            {"DISABLE": 'JAVASCRIPT'})
+            {"DISABLE": 'GROOVY'})
         self.assertTrue(len(super_linter.linters) > 0,
                         "Linters have been created and run")
-        utilstest.assert_is_skipped('JAVASCRIPT_ES', output, self)
-        utilstest.assert_is_skipped('JAVASCRIPT_STANDARD', output, self)
+        utilstest.assert_is_skipped('GROOVY', output, self)
 
     def test_disable_language_legacy(self):
         super_linter, output = utilstest.call_super_linter(
-            {"VALIDATE_JAVASCRIPT": 'false'})
+            {"VALIDATE_GROOVY": 'false'})
         self.assertTrue(len(super_linter.linters) > 0,
                         "Linters have been created and run")
-        utilstest.assert_is_skipped('JAVASCRIPT_ES', output, self)
-        utilstest.assert_is_skipped('JAVASCRIPT_STANDARD', output, self)
+        utilstest.assert_is_skipped('GROOVY', output, self)
 
     def test_disable_linter(self):
         super_linter, output = utilstest.call_super_linter(
@@ -130,7 +128,7 @@ class MegalinterTest(unittest.TestCase):
 
     def test_custom_config_on_language(self):
         super_linter, output = utilstest.call_super_linter({
-            'DISABLE_LINTERS': 'JAVASCRIPT_STANDARD',
+            'ENABLE_LINTERS': 'JAVASCRIPT_ES',
             'JAVASCRIPT_LINTER_RULES_PATH': '.',
             "JAVASCRIPT_FILE_NAME": '.eslintrc-custom.yml',
             "JAVASCRIPT_FILTER_REGEX_INCLUDE": '(.*_good_.*|.*\\/good\\/.*)',
@@ -153,15 +151,30 @@ class MegalinterTest(unittest.TestCase):
 
     def test_custom_config_on_linter(self):
         super_linter, output = utilstest.call_super_linter({
+            'ENABLE_LINTERS': 'JAVASCRIPT_ES',
             'JAVASCRIPT_ES_LINTER_RULES_PATH': '.',
             "JAVASCRIPT_ES_FILE_NAME": '.eslintrc-custom.yml',
-            "JAVASCRIPT_ES_FILTER_REGEX_INCLUDE": '(.*_good_.*|.*\\/good\\/.*)',
-            "JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE": '(.*_bad_.*|.*\\/bad\\/.*)',
+            "JAVASCRIPT_FILTER_REGEX_INCLUDE": '(.*_good_.*|.*\\/good\\/.*)',
+            "JAVASCRIPT_FILTER_REGEX_EXCLUDE": '(.*_bad_.*|.*\\/bad\\/.*)',
             'MULTI_STATUS': 'false'
         })
         self.assertTrue(len(super_linter.linters) > 0,
                         "Linters have been created and run")
         self.assertIn('Linting [JAVASCRIPT] files', output)
+
+    def test_user_arguments_on_linter(self):
+        super_linter, output = utilstest.call_super_linter({
+            'ENABLE_LINTERS': 'JAVASCRIPT_ES',
+            "JAVASCRIPT_ES_FILTER_REGEX_INCLUDE": '(.*_good_.*|.*\\/good\\/.*)',
+            "JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE": '(.*_bad_.*|.*\\/bad\\/.*)',
+            "JAVASCRIPT_ES_ARGUMENTS": '--debug --env-info',
+            'MULTI_STATUS': 'false',
+            "LOG_LEVEL": 'DEBUG'
+        })
+        self.assertTrue(len(super_linter.linters) > 0,
+                        "Linters have been created and run")
+        self.assertIn('Linting [JAVASCRIPT] files', output)
+        self.assertIn('--debug --env-info', output)
 
     def test_alpaca(self):
         res = megalinter.alpaca()

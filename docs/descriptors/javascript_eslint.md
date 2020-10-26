@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://eslint.org**](https://eslint.org)
-- Version: **7.11.0**
+- Version: **7.12.0**
 
 ## Configuration
 
@@ -27,8 +27,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| JAVASCRIPT_ES_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | JAVASCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
 | JAVASCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVASCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

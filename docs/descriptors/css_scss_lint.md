@@ -26,8 +26,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CSS_SCSS_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| CSS_SCSS_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| CSS_SCSS_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CSS_SCSS_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CSS_SCSS_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | CSS_SCSS_LINT_FILE_NAME | scss-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scss-lint.yml` |
 | CSS_SCSS_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_SCSS_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

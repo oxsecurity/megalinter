@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| GROOVY_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | GROOVY_FILE_NAME | npm-groovy-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.groovylintrc.json` |
 | GROOVY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GROOVY_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

@@ -13,7 +13,7 @@ class ArmLinter(Linter):
     arm_ttk_psd1 = os.environ.get('ARM_TTK_PSD1', '/usr/bin/arm-ttk')
 
     # Build the CLI command to call to lint a file with a powershell script
-    def build_lint_command(self, file):
+    def build_lint_command(self, file=None):
         pwsh_script = ["Import-Module " + self.arm_ttk_psd1 + " ;"]
         if self.config_file is not None:
             pwsh_script += [

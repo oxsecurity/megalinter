@@ -26,8 +26,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| TERRAFORM_TERRASCAN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | TERRAFORM_TERRASCAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes

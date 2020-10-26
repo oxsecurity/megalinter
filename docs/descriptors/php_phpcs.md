@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_PHPCS_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PHP_PHPCS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PHP_PHPCS_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PHP_PHPCS_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PHP_PHPCS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PHP_PHPCS_FILE_NAME | phpcs configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpcs.xml` |
 | PHP_PHPCS_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PHPCS_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/martysweet/cfn-lint**](https://github.com/martysweet/cfn-lint#readme)
-- Version: **0.38.0**
+- Version: **0.39.0**
 
 ## Configuration
 
@@ -27,8 +27,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| CLOUDFORMATION_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | CLOUDFORMATION_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
 | CLOUDFORMATION_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOUDFORMATION_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

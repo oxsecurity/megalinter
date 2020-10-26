@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PYTHON_FLAKE8_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PYTHON_FLAKE8_FILE_NAME | flake8 configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.flake8` |
 | PYTHON_FLAKE8_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_FLAKE8_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -94,8 +95,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E226', 'W503', 'E126', 'E121', 'E24',
-                        'E123', 'E704', 'W504'])
+                        (Default: ['E123', 'E226', 'E126', 'W503', 'E121',
+                        'E704', 'E24', 'W504'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

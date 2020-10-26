@@ -3,7 +3,7 @@
 # <a href="https://github.com/phpstan/phpstan" target="blank" title="Visit linter Web Site"><img src="https://i.imgur.com/MOt7taM.png" alt="phpstan" height="100px"></a>phpstan
 
 - Web Site: [**https://github.com/phpstan/phpstan**](https://github.com/phpstan/phpstan#readme)
-- Version: **0.12.51**
+- Version: **0.12.52**
 
 ## Configuration
 
@@ -20,8 +20,9 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` |  |
-| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` |  |
+| PHP_PHPSTAN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | PHP_PHPSTAN_FILE_NAME | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpstan.neon` |
 | PHP_PHPSTAN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PHPSTAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
