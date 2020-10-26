@@ -20,11 +20,13 @@ linters:
     linter_rules_configuration_url: http://docs.oclint.org/en/stable/howto/thresholds.html#configuration-file
     linter_rules_inline_disable_url: http://docs.oclint.org/en/stable/howto/suppress.html
     config_file_name: .oclint
+    cli_version_arg_name: '-version'
+    cli_help_arg_name: '-help'
     examples:
       - "oclint myfile.c"
-      - "oclint myfile.c"
+      - "oclint -c .oclint myfile.c"
     install:
-      docker:
-        - RUN git clone -b v$OCLINT_VERSION https://github.com/oclint/oclint /app && \
-          cd /app/oclint-scripts && ./make
-        - ENV PATH="${PATH}:/app/build/oclint-release/bin"
+      dockerfile:
+        - |
+          RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q -
+        - ENV PATH="${PATH}:~/oclint-release/bin"

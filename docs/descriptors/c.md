@@ -20,3 +20,4 @@
 | Linter | Configuration key |
 | ------ | ----------------- |
 | [cpplint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_cpplint.md#readme) | [C_CPPLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_cpplint.md#readme) |
+| [oclint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_oclint.md#readme) | [C_OCLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_oclint.md#readme) |

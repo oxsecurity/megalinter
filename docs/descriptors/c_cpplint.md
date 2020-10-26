@@ -36,7 +36,7 @@
 ### Example calls
 
 ```shell
-cpplint myfile.cpp
+cpplint myfile.c
 ```
 
 

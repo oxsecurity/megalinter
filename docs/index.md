@@ -14,7 +14,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Automatically detect [**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) and [**copy-pastes**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
+Automatically detect [**36 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) and [**copy-pastes**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
 <!-- welcome-phrase-end -->
 
 **TLDR;**
@@ -71,6 +71,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <!-- --> |  | [shellcheck](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)| [BASH_SHELLCHECK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme) |
 | <!-- --> |  | [shfmt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme)| [BASH_SHFMT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/c.ico" alt="" height="32px"></a> | [**C**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c.md#readme) | [cpplint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_cpplint.md#readme)| [C_CPPLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_cpplint.md#readme) |
+| <!-- --> |  | [oclint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_oclint.md#readme)| [C_OCLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/c_oclint.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/clojure.ico" alt="" height="32px"></a> | [**CLOJURE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/clojure.md#readme) | [clj-kondo](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/clojure_clj_kondo.md#readme)| [CLOJURE](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/clojure_clj_kondo.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/coffee.ico" alt="" height="32px"></a> | [**COFFEE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/coffee.md#readme) | [coffeelint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/coffee_coffeelint.md#readme)| [COFFEE](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/coffee_coffeelint.md#readme) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/cpp.ico" alt="" height="32px"></a> | [**C++** (CPP)](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cpp.md#readme) | [cpplint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cpp_cpplint.md#readme)| [CPP_CPPLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cpp_cpplint.md#readme) |
