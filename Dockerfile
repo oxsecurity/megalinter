@@ -110,6 +110,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                erlang \
                 go \
                 openjdk8-jre \
                 npm \
@@ -224,6 +225,13 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
+# ERLANG installation
+RUN wget https://s3.amazonaws.com/rebar3/rebar3 && \
+chmod +x rebar3 && \
+./rebar3 local install
+
+ENV PATH="${PATH}:/root/.cache/rebar3/bin"
+
 # GO installation
 ENV GOROOT=/usr/lib/go \
     GOPATH=/go
@@ -304,6 +312,11 @@ COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
 COPY --from=dotenv-linter /dotenv-linter /usr/bin/
+
+# elvis installation
+RUN git clone https://github.com/inaka/elvis.git && \
+    cd elvis && \
+    rebar3 do compile, escriptize
 
 # golangci-lint installation
 COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/

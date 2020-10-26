@@ -1,0 +1,31 @@
+descriptor_id: ERLANG
+descriptor_type: language
+file_extensions:
+  - '.erl'
+  - '.hrl'
+install:
+  apk:
+    - erlang
+  dockerfile:
+    - |
+      RUN wget https://s3.amazonaws.com/rebar3/rebar3 && \
+      chmod +x rebar3 && \
+      ./rebar3 local install
+    - ENV PATH="${PATH}:/root/.cache/rebar3/bin"
+linters:
+  # ELVIS
+  - linter_name: elvis
+    name: ERLANG_ELVIS
+    linter_url: https://github.com/inaka/elvis
+    linter_image_url: http://www.reactiongifs.com/wp-content/uploads/2013/01/elvis-dance.gif
+    linter_rules_configuration_url: https://github.com/inaka/elvis/blob/master/README.md#configuration
+    config_file_name: elvis.config
+    cli_config_arg_name: ''
+    examples:
+      - "elvis myfile.erl"
+    install:
+      dockerfile:
+        - |
+          RUN git clone https://github.com/inaka/elvis.git && \
+              cd elvis && \
+              rebar3 do compile, escriptize
