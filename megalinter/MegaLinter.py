@@ -88,7 +88,7 @@ class Megalinter:
         logging.info("")
         for table_line in table.table.splitlines():
             logging.info(table_line)
-        logging.info("")
+        logging.info(" ")
 
         # Run linters
         for linter in self.linters:
