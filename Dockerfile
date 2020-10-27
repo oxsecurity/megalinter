@@ -283,7 +283,7 @@ ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt
 
 # oclint installation
-RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q -
+RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q - && ls
 
 ENV PATH="${PATH}:~/oclint-release/bin"
 
