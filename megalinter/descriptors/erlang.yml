@@ -8,10 +8,17 @@ install:
     - erlang
   dockerfile:
     - |
-      RUN wget https://s3.amazonaws.com/rebar3/rebar3 && \
-      chmod +x rebar3 && \
-      ./rebar3 local install
-    - ENV PATH="${PATH}:/root/.cache/rebar3/bin"
+      RUN set -xe \
+        && REBAR3_DOWNLOAD_URL="https://github.com/erlang/rebar3/archive/3.14.1.tar.gz" \
+        && REBAR3_DOWNLOAD_SHA256="b01275b6cbdb354dcf9ed686fce2b5f9dfdd58972ded9e970e31b9215a8521f2" \
+        && curl -fSL -o rebar3-src.tar.gz "${REBAR3_DOWNLOAD_URL}" \
+        && echo "${REBAR3_DOWNLOAD_SHA256}  rebar3-src.tar.gz" | sha256sum -c - \
+        && mkdir -p /usr/src/rebar3-src \
+        && tar -xzf rebar3-src.tar.gz -C /usr/src/rebar3-src --strip-components=1 \
+        && rm -f rebar3-src.tar.gz \
+        && cd /usr/src/rebar3-src \
+        && HOME="${PWD}" ./bootstrap \
+        && install -v ./rebar3 /usr/local/bin/
 linters:
   # ELVIS
   - linter_name: elvis
