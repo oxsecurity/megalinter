@@ -450,8 +450,9 @@ class Linter:
         # Append file in command arguments
         if file is not None:
             cmd += [file]
+        # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == 'list_of_files':
-            cmd += [','.join(self.files)]
+            cmd += self.files
         return cmd
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
