@@ -1,5 +1,6 @@
 descriptor_id: COPYPASTE
 descriptor_type: other
+lint_all_files: true
 linters:
   # JSCPD
   - linter_name: jscpd

@@ -49,6 +49,8 @@ class Linter:
     file_contains = []
     files_names_not_ends_with = []
     active_only_if_file_found = None
+    lint_all_files = False
+    lint_all_other_linters_files = False
 
     cli_lint_mode = 'file'
     cli_executable = None
@@ -293,7 +295,8 @@ class Linter:
                 continue
             elif self.files_sub_directory is not None and self.files_sub_directory not in file:
                 continue
-            elif not megalinter.utils.check_file_extension_or_name(file, self.file_extensions, self.file_names):
+            elif self.lint_all_other_linters_files is False and \
+                    not megalinter.utils.check_file_extension_or_name(file, self.file_extensions, self.file_names):
                 continue
             elif file.endswith(tuple(self.files_names_not_ends_with)):
                 continue

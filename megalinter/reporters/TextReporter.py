@@ -48,10 +48,11 @@ class TextReporter(Reporter):
         doc_name = f"{lang_lower}_{linter_name_lower}"
         doc_url = f"https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/{doc_name}.md"
         # Finalize lines
-        text_report_lines = [f"Results of {self.master.linter_name} linter",
-                             f"See documentation on {doc_url}",
-                             '-----------------------------------------------',
-                             ""]
+        text_report_lines = [
+            f"Results of {self.master.linter_name} linter (version {self.master.get_linter_version()})",
+            f"See documentation on {doc_url}",
+            '-----------------------------------------------',
+            ""]
         text_report_lines += self.report_items
         text_file_name = f"{self.report_folder}{os.path.sep}" \
                          f"{self.master.status.upper()}-mega-linter-{self.master.name}.log"
