@@ -1,0 +1,19 @@
+descriptor_id: SPELL
+descriptor_type: other
+lint_all_other_linters_files: true
+linters:
+  # CSPELL
+  - linter_name: cspell
+    name: SPELL_CSPELL
+    linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
+    linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default
+    linter_rules_configuration_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization
+    linter_rules_inline_disable_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code
+    config_file_name: cspell.json
+    cli_lint_mode: list_of_files
+    examples:
+      - "cspell myfile.any"
+      - "cspell -c cspell.json myfile.any"
+    install:
+      npm:
+        - cspell

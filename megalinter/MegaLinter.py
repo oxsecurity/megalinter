@@ -290,7 +290,7 @@ class Megalinter:
         # Collect matching files for each linter
         for linter in self.linters:
             linter.collect_files(filtered_files)
-            if len(linter.files) == 0 and linter.linter_name != 'jscpd':
+            if len(linter.files) == 0 and linter.lint_all_files is False:
                 linter.is_active = False
 
     def initialize_logger(self):

@@ -14,12 +14,13 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Automatically detect [**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) and [**copy-pastes**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
+Automatically detect [**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
 <!-- welcome-phrase-end -->
 
 **TLDR;**
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
+- If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
 - Watch !
 
@@ -144,6 +145,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <!-- --> | Language / Format | Linter | Configuration key |
 | --- | ----------------- | -------------- | ------------ |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px"></a> | [**COPYPASTE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste.md#readme) | [jscpd](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)| [COPYPASTE](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/spell.ico" alt="" height="32px"></a> | [**SPELL**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell.md#readme) | [cspell](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)| [SPELL_CSPELL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme) |
 
 <!-- linters-table-end -->
 
@@ -209,6 +211,7 @@ jobs:
           # https://github.com/nvuillam/mega-linter#configuration
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
           # ADD YOUR CUSTOM ENV VARIABLES HERE
 
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section
@@ -394,6 +397,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 - **Puppet**
 - **Rust**
 - **Scala**
+- **Spell checker**
 
 ### New features & improvements
 
