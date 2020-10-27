@@ -14,6 +14,7 @@ linters:
     install:
       pip:
         - cpplint
+  # OCLINT
   - linter_name: oclint
     name: C_OCLINT
     linter_url: http://oclint.org/
@@ -28,5 +29,5 @@ linters:
     install:
       dockerfile:
         - |
-          RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q -
+          RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q - && ls
         - ENV PATH="${PATH}:~/oclint-release/bin"
