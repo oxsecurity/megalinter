@@ -184,6 +184,7 @@ RUN npm install --no-cache \
                 jsonlint \
                 markdownlint-cli \
                 @stoplight/spectral \
+                cspell \
                 sql-lint \
                 tekton-lint@0.4.2 \
                 prettier \
