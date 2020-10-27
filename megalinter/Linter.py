@@ -317,7 +317,7 @@ class Linter:
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
     # noinspection PyMethodMayBeStatic
     def execute_lint_command(self, command):
-        cwd = os.getcwd() if self.cli_lint_mode == 'file' else self.workspace
+        cwd = os.getcwd() if self.cli_lint_mode in ['file', 'list_of_files'] else self.workspace
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(command,
@@ -450,6 +450,8 @@ class Linter:
         # Append file in command arguments
         if file is not None:
             cmd += [file]
+        elif self.cli_lint_mode == 'list_of_files':
+            cmd += [','.join(self.files)]
         return cmd
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)

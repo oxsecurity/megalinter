@@ -397,6 +397,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 - **Puppet**
 - **Rust**
 - **Scala**
+- **Spell checker**
 
 ### New features & improvements
 
