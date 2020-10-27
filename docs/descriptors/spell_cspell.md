@@ -45,7 +45,7 @@ cspell -c cspell.json myfile.any
 ### Help content
 
 ```shell
-Usage: bin [options] [command] <files...>
+Usage: cspell [options] [command] <files...>
 
 Spelling Checker for Code
 
