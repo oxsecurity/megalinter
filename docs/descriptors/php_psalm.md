@@ -76,7 +76,7 @@ Basic configuration:
         If greater than one, Psalm will run analysis on multiple threads, speeding things up.
 
     --no-diff
-        Turns off Psalm’s diff mode, checks all files regardless of whether they've changed
+        Turns off Psalmâ€™s diff mode, checks all files regardless of whether they've changed
 
     --diff-methods
         Only checks methods that have changed since last run (and their dependents)
@@ -93,7 +93,7 @@ Surfacing issues:
         Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'
 
     --find-unused-psalm-suppress
-        Finds all @psalm-suppress annotations that aren’t used
+        Finds all @psalm-suppress annotations that arenâ€™t used
 
     --find-references-to=[class|method|property]
         Searches the codebase for references to the given fully-qualified class or method,
@@ -103,7 +103,7 @@ Surfacing issues:
         Hide suggestions
 
     --taint-analysis
-        Run Psalm in taint analysis mode – see https://psalm.dev/docs/security_analysis for more info
+        Run Psalm in taint analysis mode â€“ see https://psalm.dev/docs/security_analysis for more info
 
 Issue baselines:
     --set-baseline=PATH

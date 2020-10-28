@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
-- Version: **15.0.0**
+- Version: **15.0.1**
 
 ## Configuration
 
