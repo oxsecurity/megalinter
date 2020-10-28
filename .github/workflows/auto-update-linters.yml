@@ -1,0 +1,85 @@
+---
+on:
+  # Run when there is an update in master
+  push:
+    branches:
+      - "master"
+      - "AutoUpdate"
+  # Automatically run every day at midnight
+  schedule:
+    - cron: '0 0 * * *'
+
+###############
+# Set the Job #
+###############
+jobs:
+  build_help_versions:
+    # Name the Job
+    name: Auto-Update Linters
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+    # Prevent duplicate run from happening when a forked push is committed
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    # Set max build time for the job
+    timeout-minutes: 30
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.3
+        with:
+          # Full git history is needed to get a proper list of changed files within `mega-linter`
+          fetch-depth: 0
+
+      ########################
+      # Get the current date #
+      ########################
+      - name: Get current date
+        run: echo "::set-env name=BUILD_DATE::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+      ###################################
+      # Build image locally for testing #
+      ###################################
+      - name: Build image
+        shell: bash
+        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        timeout-minutes: 30
+
+      #####################################
+      # Run Linter against Test code base #
+      #####################################
+      - name: Collect latest versions and help
+        shell: bash
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e DEFAULT_BRANCH=master -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
+        timeout-minutes: 30
+
+      # Upload Mega-Linter artifacts
+      - name: Archive production artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mega-Linter reports
+          path: |
+            docs/descriptors
+            report
+            mega-linter.log
+            linter-helps.json
+            linter-versions.json
+
+      # Create pull request if there are updates
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
+          commit-message: "[automation] Auto-update linters version, help and documentation"
+          delete-branch: true
+          title: "[automation] Auto-update linters version, help and documentation"
+          labels: dependencies
+      - name: Create PR output
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"

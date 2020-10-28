@@ -3,6 +3,18 @@
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
+if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
+  echo "UPGRADING LINTER VERSION"
+  # Run only get_linter_version test methods
+  pytest -v --durations=0 -k _get_linter_version megalinter/
+  # Run only get_linter_help test methods
+  pytest -v --durations=0 -k _get_linter_help megalinter/
+  cd /tmp/lint || exit 1
+  chmod +x build.sh
+  bash build.sh
+  exit $?
+fi
+
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
   echo "RUNNING TEST CASES"

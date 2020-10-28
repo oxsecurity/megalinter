@@ -2,5 +2,5 @@
 
 PYTHONPATH=.
 export PYTHONPATH
-
-python .automation/build.py
+ls
+python ./.automation/build.py
