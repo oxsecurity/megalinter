@@ -9,7 +9,6 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   pytest -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
   pytest -v --durations=0 -k _get_linter_help megalinter/
-  chmod +x ./build.sh
   bash ./build.sh
   exit $?
 fi
