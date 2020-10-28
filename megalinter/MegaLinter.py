@@ -49,7 +49,7 @@ class Megalinter:
         self.disable_linters = utils.get_dict_string_list(
             os.environ, 'DISABLE_LINTERS', [])
         self.manage_default_linter_activation()
-
+        self.apply_fixes = os.environ.get('APPLY_FIXES', 'none')
         # Report vars
         self.report_folder = os.environ.get(
             'REPORT_OUTPUT_FOLDER', self.github_workspace + os.path.sep + 'report')
@@ -180,7 +180,8 @@ class Megalinter:
                               'disable_linters': self.disable_linters,
                               'workspace': self.workspace,
                               'github_workspace': self.github_workspace,
-                              'report_folder': self.report_folder}
+                              'report_folder': self.report_folder,
+                              'apply_fixes': self.apply_fixes}
 
         # Build linters from descriptor files
         all_linters = utils.list_all_linters(linter_init_params)

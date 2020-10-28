@@ -7,7 +7,7 @@ on:
       - "AutoUpdate"
   # Automatically run every day at midnight
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
 
 ###############
 # Set the Job #
@@ -70,8 +70,14 @@ jobs:
             linter-helps.json
             linter-versions.json
 
+      # This step will evaluate the repo status and report the change
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
       # Create pull request if there are updates
       - name: Create Pull Request
+        if: steps.changes.outputs.changed == 1
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PAT }}
