@@ -193,10 +193,10 @@ on:
   pull_request:
     branches: [master]
 
-env:
+# env: #Uncomment to activate variables below
   # Apply linter fixes configuration
   # APPLY_FIXES: all # Uncomment to apply fixes provided by linters. You can also specify the list of fixing linters
-  # APPLY_FIXES_EVENT: all , push, pull_request (default)
+  # APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request (default), push, all)
   # APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
 jobs:
