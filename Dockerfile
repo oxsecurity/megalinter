@@ -110,6 +110,9 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                lttng-ust-dev \
+                zlib \
+                zlib-dev \
                 go \
                 openjdk8-jre \
                 npm \
@@ -132,6 +135,8 @@ RUN apk add --update --no-cache \
                 ruby-rdoc \
                 ansible-lint \
                 R \
+                R-dev \
+                R-doc \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

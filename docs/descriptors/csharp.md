@@ -33,3 +33,7 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 ```
 
+- APK packages (Linux):
+  - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
+  - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
+  - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)
