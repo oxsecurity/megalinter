@@ -4,6 +4,10 @@ descriptor_type: language
 file_extensions:
   - ".cs"
 install:
+  apk:
+    - lttng-ust-dev
+    - zlib
+    - zlib-dev
   dockerfile:
     - |
       RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
