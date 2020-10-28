@@ -50,9 +50,9 @@ oclint -c .oclint myfile.c
 - Dockerfile commands :
 ```dockerfile
 RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q - \
-    && chmod +x oclint-20.10/oclint-release/bin/oclint
+    && chmod +x oclint-20.10/bin/oclint
 
-ENV PATH="oclint-20.10/oclint-release/bin:${PATH}"
+ENV PATH="oclint-20.10/bin:${PATH}"
 RUN oclint -help
 ```
 
