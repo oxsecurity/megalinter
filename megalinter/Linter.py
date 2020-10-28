@@ -60,6 +60,7 @@ class Linter:
     cli_config_arg_name = '-c'
     cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
     cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+    cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
     cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
     # Extra arguments to send to cli everytime, just before file argument
     cli_lint_extra_args_after = []
@@ -108,6 +109,9 @@ class Linter:
         self.manage_activation(params)
 
         if self.is_active is True:
+            self.apply_fixes = True if params.get('apply_fixes', 'none') == 'all' or self.name in params.get(
+                'apply_fixes', '').split(',') else False
+
             # Config items
             self.linter_rules_path = params['linter_rules_path'] if "linter_rules_path" in params else '.'
             self.default_rules_location = params[
@@ -436,6 +440,9 @@ class Linter:
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
+        # Add fix argument if defined
+        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+            cmd += [self.cli_lint_fix_arg_name]
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
         # Add config arguments if defined
