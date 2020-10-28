@@ -64,3 +64,5 @@ RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos
 
 - APK packages (Linux):
   - [R](https://pkgs.alpinelinux.org/packages?branch=edge&name=R)
+  - [R-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-dev)
+  - [R-doc](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-doc)
