@@ -50,7 +50,7 @@ def list_descriptor_files():
     descriptors_dir = get_descriptor_dir()
     linters_glob_pattern = descriptors_dir + '/*.yml'
     descriptor_files = []
-    for descriptor_file in glob.glob(linters_glob_pattern):
+    for descriptor_file in sorted(glob.glob(linters_glob_pattern)):
         descriptor_files += [descriptor_file]
     return descriptor_files
 

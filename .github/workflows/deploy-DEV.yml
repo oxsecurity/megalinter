@@ -18,7 +18,7 @@
 #############################
 on:
   push:
-    branches-ignore: [master, master]
+    branches-ignore: [master]
   pull_request:
     branches-ignore: []
 

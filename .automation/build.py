@@ -99,7 +99,7 @@ def generate_dockerfile():
     replace_in_file(f"{REPO_HOME}/Dockerfile", "#NPM__START",
                     "#NPM__END", npm_install_command)
     # Python pip packages
-    pip_install_command = 'RUN pip3 install \\\n          ' + \
+    pip_install_command = 'RUN pip3 install --no-cache-dir \\\n          ' + \
                           " \\\n          ".join(
                               list(dict.fromkeys(pip_packages)))
     replace_in_file(f"{REPO_HOME}/Dockerfile", "#PIP__START",
