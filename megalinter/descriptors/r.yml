@@ -17,6 +17,8 @@ linters:
     install:
       apk:
         - R
+        - R-dev
+        - R-doc
       dockerfile:
         - FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
         - COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
