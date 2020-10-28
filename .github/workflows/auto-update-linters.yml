@@ -5,9 +5,9 @@ on:
     branches:
       - "master"
       - "AutoUpdate"
-  # Automatically run every day
+  # Automatically run every day at midnight
   schedule:
-  - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 ###############
 # Set the Job #
@@ -74,10 +74,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          author: Nicolas Vuillamy <nicolas.vuillamy@gmail.com>
-          commit-message: [automation] Auto-update linters version, help and documentation
+          author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
+          commit-message: "[automation] Auto-update linters version, help and documentation"
           delete-branch: true
-          title: [automation] Auto-update linters version, help and documentation
+          title: "[automation] Auto-update linters version, help and documentation"
           labels: dependencies
       - name: Create PR output
         run: |
