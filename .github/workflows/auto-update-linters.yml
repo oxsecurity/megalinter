@@ -75,9 +75,9 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           author: Nicolas Vuillamy <nicolas.vuillamy@gmail.com>
-          commit-message: Auto-update linters version, help and documentation
+          commit-message: [automation] Auto-update linters version, help and documentation
           delete-branch: true
-          title: Auto-update linters version, help and documentation
+          title: [automation] Auto-update linters version, help and documentation
           labels: dependencies
       - name: Create PR output
         run: |
