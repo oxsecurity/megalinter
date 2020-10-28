@@ -3,7 +3,7 @@
 # <a href="https://raku.org/" target="blank" title="Visit linter Web Site"><img src="https://raku.org/camelia-logo.png" alt="raku" height="100px"></a>raku
 
 - Web Site: [**https://raku.org/**](https://raku.org/)
-- Version: **2020.09**
+- Version: **2020.10**
 
 ## Configuration
 
