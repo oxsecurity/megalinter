@@ -288,10 +288,10 @@ ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt
 
 # oclint installation
-RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q - \
-    && ls && ls oclint-20.10 && oclintchmod +x oclint-20.10/bin/oclint
+RUN wget -qO- https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz | tar xvz - \
+    && ls && ls oclint-0.13.1 && chmod +x oclint-0.13.1/bin/oclint
 
-ENV PATH="oclint-20.10/bin:${PATH}"
+ENV PATH="oclint-0.13.1/bin:${PATH}"
 RUN oclint -help
 
 # clj-kondo installation
