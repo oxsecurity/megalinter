@@ -14,4 +14,22 @@ linters:
     install:
       pip:
         - cpplint
-
+  # OCLINT
+  - linter_name: oclint
+    name: C_OCLINT
+    linter_url: http://oclint.org/
+    linter_rules_configuration_url: http://docs.oclint.org/en/stable/howto/thresholds.html#configuration-file
+    linter_rules_inline_disable_url: http://docs.oclint.org/en/stable/howto/suppress.html
+    config_file_name: .oclint
+    cli_version_arg_name: '-version'
+    cli_help_arg_name: '-help'
+    examples:
+      - "oclint myfile.c"
+      - "oclint -c .oclint myfile.c"
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q - \
+              && chmod +x oclint-20.10/oclint-release/bin/oclint
+        - ENV PATH="oclint-20.10/oclint-release/bin:${PATH}"
+        - RUN oclint -help

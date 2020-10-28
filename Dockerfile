@@ -282,6 +282,13 @@ COPY --from=shellcheck /bin/shellcheck /usr/bin/
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt
 
+# oclint installation
+RUN wget --tries=5 https://github.com/oclint/oclint/archive/v20.10.zip -O - -q | unzip -q - \
+    && chmod +x oclint-20.10/oclint-release/bin/oclint
+
+ENV PATH="oclint-20.10/oclint-release/bin:${PATH}"
+RUN oclint -help
+
 # clj-kondo installation
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
 
