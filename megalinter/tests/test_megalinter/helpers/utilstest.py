@@ -18,6 +18,8 @@ def linter_test_setup(params=None):
     # Root to lint
     sub_lint_root = params['sub_lint_root'] if 'sub_lint_root' in params \
         else f'{os.path.sep}.automation{os.path.sep}test'
+    # Ignore report folder
+    os.environ['FILTER_REGEX_EXCLUDE'] = '\\/(report)\\/'
     # TAP Output deactivated by default
     os.environ['OUTPUT_FORMAT'] = 'text'
     os.environ['OUTPUT_DETAIL'] = 'detailed'

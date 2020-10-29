@@ -30,6 +30,9 @@ class RakuLinter(megalinter.Linter):
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
+        # Add fix argument if defined
+        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+            cmd += [self.cli_lint_fix_arg_name]
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
         cmd += [

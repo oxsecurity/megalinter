@@ -20,6 +20,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
 **TLDR;**
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
+- If you want a new commit to be automatically created with fixes applied by linters, uncomment `# APPLY_FIXES: all`
 - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
 - Watch !
@@ -192,6 +193,12 @@ on:
   pull_request:
     branches: [master]
 
+# env: #Uncomment to activate variables below
+  # Apply linter fixes configuration
+  # APPLY_FIXES: all # Uncomment to apply fixes provided by linters. You can also specify the list of fixing linters
+  # APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request (default), push, all)
+  # APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
+
 jobs:
   build:
     name: Mega-Linter
@@ -282,6 +289,14 @@ DISABLE = PHP
 ```config
 DISABLE_LINTERS = PHP_STAN,PHP_PSALM
 ```
+
+### Apply fixes
+
+Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 env variables defined at top level
+
+- **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`GROOVY`)
+- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`
+- **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
 ### Shared variables
 
