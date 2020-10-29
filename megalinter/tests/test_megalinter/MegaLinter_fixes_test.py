@@ -3,11 +3,8 @@
 Unit tests for Megalinter class
 
 """
-import logging
 import os
 import unittest
-
-from git import Repo
 
 from megalinter.tests.test_megalinter.helpers import utilstest
 
@@ -21,6 +18,8 @@ class MegalinterFixesTest(unittest.TestCase):
         utilstest.git_reset_updates()
         super_linter, output = utilstest.call_super_linter({
             'APPLY_FIXES': 'all',
+            'DISABLE_LINTERS': 'JAVASCRIPT_STANDARD',
+            'LOG_LEVEL': 'DEBUG',
             'MULTI_STATUS': 'false'
         })
         self.assertTrue(len(super_linter.linters) > 0,
@@ -33,6 +32,8 @@ class MegalinterFixesTest(unittest.TestCase):
         utilstest.git_reset_updates()
         super_linter, output = utilstest.call_super_linter({
             'APPLY_FIXES': 'JAVASCRIPT_ES',
+            'DISABLE_LINTERS': 'JAVASCRIPT_STANDARD',
+            'LOG_LEVEL': 'DEBUG',
             'MULTI_STATUS': 'false'
         })
         self.assertTrue(len(super_linter.linters) > 0,
@@ -40,4 +41,3 @@ class MegalinterFixesTest(unittest.TestCase):
         self.assertIn('Linting [JAVASCRIPT] files', output)
         utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
         utilstest.assert_file_has_been_updated('javascript_for_fixes_1.groovy', False, self)
-
