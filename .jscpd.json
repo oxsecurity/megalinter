@@ -15,7 +15,5 @@
     "**/lib/**",
     "**/megalinter/descriptors/jsonschema.json",
     "**/megalinter/linters/RakuLinter.py",
-    "**/megalinter/tests/test_megalinter/MegaLinter_test.py",
-    "**/megalinter/tests/test_megalinter/MegaLinter_fixes_test.py"
-  ]
+    "**/megalinter/tests/test_megalinter/MegaLinter_test.py"  ]
 }

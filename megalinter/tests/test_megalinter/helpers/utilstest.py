@@ -8,7 +8,12 @@ import tempfile
 import unittest
 import warnings
 
+from git import Repo
+
 from megalinter import Megalinter
+
+REPO_HOME = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.dirname(
+    os.path.abspath(__file__)) + os.path.sep + '..' + os.path.sep + '..' + os.path.sep + '..'
 
 
 # Define env variables before any test case
@@ -247,3 +252,22 @@ def assert_is_skipped(skipped_item, output, test_self):
     test_self.assertRegex(output,
                           rf"(?<=Skipped linters:)*({skipped_item})(?=.*[\n])",
                           'No trace of skipped item ' + skipped_item + ' in log')
+
+
+def assert_file_has_been_updated(file_name, bool_val, test_self):
+    repo = Repo(REPO_HOME)
+    changed_files = [item.a_path for item in repo.index.diff(None)]
+    logging.info('Updated files (git):\n' + "\n".join(changed_files))
+    updated = False
+    for changed_file in changed_files:
+        if file_name in changed_file:
+            updated = True
+    if bool_val is True:
+        test_self.assertTrue(updated, f"{file_name} has been updated")
+    else:
+        test_self.assertFalse(updated, f"{file_name} has not been updated")
+
+
+def git_reset_updates():
+    repo = Repo(REPO_HOME)
+    repo.git.reset('--hard')

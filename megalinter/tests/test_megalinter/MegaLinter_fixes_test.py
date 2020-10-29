@@ -11,9 +11,6 @@ from git import Repo
 
 from megalinter.tests.test_megalinter.helpers import utilstest
 
-REPO_HOME = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.dirname(
-    os.path.abspath(__file__)) + os.path.sep + '..' + os.path.sep + '..' + os.path.sep + '..'
-
 
 class MegalinterFixesTest(unittest.TestCase):
     def setUp(self):
@@ -21,6 +18,7 @@ class MegalinterFixesTest(unittest.TestCase):
             {'sub_lint_root': f'{os.path.sep}.automation{os.path.sep}test{os.path.sep}sample_project_fixes'})
 
     def test_apply_fixes_on_all_linters(self):
+        utilstest.git_reset_updates()
         super_linter, output = utilstest.call_super_linter({
             'APPLY_FIXES': 'all',
             'MULTI_STATUS': 'false'
@@ -28,12 +26,11 @@ class MegalinterFixesTest(unittest.TestCase):
         self.assertTrue(len(super_linter.linters) > 0,
                         "Linters have been created and run")
         self.assertIn('Linting [JAVASCRIPT] files', output)
-        repo = Repo(REPO_HOME)
-        changed_files = [item.a_path for item in repo.index.diff(None)]
-        logging.info('Updated files:\n'+"\n".join(changed_files))
-        self.assertTrue(len(changed_files) > 0)
+        utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
+        utilstest.assert_file_has_been_updated('javascript_for_fixes_1.groovy', True, self)
 
     def test_apply_fixes_on_one_linter(self):
+        utilstest.git_reset_updates()
         super_linter, output = utilstest.call_super_linter({
             'APPLY_FIXES': 'JAVASCRIPT_ES',
             'MULTI_STATUS': 'false'
@@ -41,6 +38,6 @@ class MegalinterFixesTest(unittest.TestCase):
         self.assertTrue(len(super_linter.linters) > 0,
                         "Linters have been created and run")
         self.assertIn('Linting [JAVASCRIPT] files', output)
-        repo = Repo(REPO_HOME)
-        changed_files = [item.a_path for item in repo.index.diff(None)]
-        logging.info('Updated files:\n'+"\n".join(changed_files))
+        utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
+        utilstest.assert_file_has_been_updated('javascript_for_fixes_1.groovy', False, self)
+
