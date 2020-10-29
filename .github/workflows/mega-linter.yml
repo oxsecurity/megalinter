@@ -70,15 +70,9 @@ jobs:
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
       # Push new commit if applicable
-      - name: Commit applied linter fixes
-        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m "[Mega-Linter] Apply linters fixes" -a
-      - name: Push applied linter fixes
+      - name: Commit and push applied linter fixes
         if: (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
-        uses: ad-m/github-push-action@master
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.PAT }}
-          branch: ${{ github.event.pull_request.head.ref || github.ref }}
+          commit_message: '[Mega-Linter] Apply linters fixes'
+          token: ${{ secrets.PAT }}
