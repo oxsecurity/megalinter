@@ -44,4 +44,3 @@ class MegalinterFixesTest(unittest.TestCase):
         repo = Repo(REPO_HOME)
         changed_files = [item.a_path for item in repo.index.diff(None)]
         logging.info('Updated files:\n'+"\n".join(changed_files))
-        self.assertTrue(len(changed_files) > 0)
