@@ -256,8 +256,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        "| <!-- --> | Language / Format | Linter | Configuration key |",
-        "| --- | ----------------- | -------------- | ------------ |"]
+        "| <!-- --> | Language / Format | Linter | Configuration key | Fix |",
+        "| --- | ----------------- | -------------- | ------------ | ------- |"]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ''
     for linter in descriptor_linters:
@@ -280,10 +280,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         descriptor_url = doc_url(f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
         descriptor_id_cell = f"[{descriptor_label}]({descriptor_url})" if prev_lang != linter.descriptor_id else ''
         prev_lang = linter.descriptor_id
+        fix_col = '' if linter.cli_lint_fix_arg_name is None else ':heavy_check_mark:'
         linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         linters_tables_md += [
             f"| {icon_html} | {descriptor_id_cell} | [{linter.linter_name}]({doc_url(linter_doc_url)})"
-            f"| [{linter.name}]({doc_url(linter_doc_url)}) |"]
+            f"| [{linter.name}]({doc_url(linter_doc_url)})"
+            f"| {fix_col} |"]
 
         # Build individual linter doc
         linter_doc_md = [
