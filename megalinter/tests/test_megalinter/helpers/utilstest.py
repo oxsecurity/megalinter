@@ -73,6 +73,7 @@ def test_linter_success(linter, test_self):
     workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
     if os.path.exists(workspace + os.path.sep + 'good'):
         workspace = workspace + os.path.sep + 'good'
+    assert os.path.exists(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
     env_vars = {'DEFAULT_WORKSPACE': workspace,
                 'FILTER_REGEX_INCLUDE': "(.*_good_.*|.*\\/good\\/.*)",
@@ -99,6 +100,7 @@ def test_linter_failure(linter, test_self):
     workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
     if os.path.exists(workspace + os.path.sep + 'bad'):
         workspace = workspace + os.path.sep + 'bad'
+    assert os.path.exists(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
     tmp_report_folder = tempfile.gettempdir()
     env_vars = {'DEFAULT_WORKSPACE': workspace,
@@ -190,6 +192,7 @@ def test_get_linter_help(linter, test_self):
 def test_linter_report_tap(linter, test_self):
     test_folder = linter.test_folder
     workspace = os.environ["DEFAULT_WORKSPACE"] + '/' + test_folder
+    assert os.path.exists(workspace), f"Test folder {workspace} is not existing"
     expected_file_name = ''
     # Identify expected report if defined
     reports_with_extension = []
