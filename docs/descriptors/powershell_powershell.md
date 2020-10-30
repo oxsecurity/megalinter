@@ -317,6 +317,7 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
     | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
+RUN pwsh -c 'Install-PackageProvider Nuget -MinimumVersion 2.8.5.201 –Force'
 # Linter install
 ARG PSSA_VERSION='latest'
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
