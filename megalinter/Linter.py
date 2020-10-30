@@ -38,7 +38,8 @@ class Linter:
         # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
         # Ex: JAVASCRIPT
         self.descriptor_id = "Field 'descriptor_id' must be overridden at custom linter class level"
-        self.name = None  # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
+        # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
+        self.name = None
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         # ex: https://eslint.org/
         self.linter_url = "Field 'linter_url' must be overridden at custom linter class level"

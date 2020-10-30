@@ -266,4 +266,3 @@ def assert_file_has_been_updated(file_name, bool_val, test_self):
         test_self.assertTrue(updated, f"{file_name} has been updated")
     else:
         test_self.assertFalse(updated, f"{file_name} has not been updated")
-

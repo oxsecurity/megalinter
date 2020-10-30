@@ -40,4 +40,3 @@ class MegalinterFixesTest(unittest.TestCase):
         utilstest.assert_file_has_been_updated('markdown_for_fixes_1.groovy', True, self)
         utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
         utilstest.assert_file_has_been_updated('javascript_for_fixes_1.groovy', True, self)
-
