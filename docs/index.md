@@ -475,7 +475,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ### Improve robustness & stability
 
-- [Test classes](https://github.com/nvuillam/mega-linter/blob/master/megalinter/tests/test_megalinter/MegaLinter_test.py) for each capability
+- [Test classes](https://github.com/nvuillam/mega-linter/blob/master/megalinter/tests/test_megalinter) for each capability
 - [Test classes for each linter](https://github.com/nvuillam/mega-linter/tree/master/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/nvuillam/mega-linter/blob/master/.automation/build.py)
 - Setup **code coverage** [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 - **Development CD / CI**
