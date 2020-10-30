@@ -79,7 +79,6 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
-ARG PSSA_VERSION='latest'
 #ARG__END
 
 ####################
@@ -370,8 +369,10 @@ RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 
 # powershell installation
-RUN pwsh -c 'Install-PackageProvider Nuget -MinimumVersion 2.8.5.201 –Force'
-RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+RUN pwsh -c '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 ; \
+             Install-PackageProvider -Name NuGet ; \
+             Install-Module -Name PSScriptAnalyzer -RequiredVersion latest -Scope AllUsers -Force'
+
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
