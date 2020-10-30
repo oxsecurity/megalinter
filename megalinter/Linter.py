@@ -57,7 +57,7 @@ class Linter:
         self.lint_all_other_linters_files = False
 
         self.cli_lint_mode = 'file'
-        self.cli_executable = self.cli_executable if hasattr(self, 'cli_executable') else None
+        self.cli_executable = None
         self.cli_executable_version = None
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
