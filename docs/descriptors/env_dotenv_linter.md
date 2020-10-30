@@ -24,6 +24,8 @@
 - Enable dotenv-linter by adding `ENV` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable dotenv-linter by adding `ENV` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `ENV` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | ENV_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -43,6 +45,10 @@
 
 ```shell
 dotenv-linter myfile.env
+```
+
+```shell
+dotenv-linter --fix myfile.env
 ```
 
 

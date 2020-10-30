@@ -24,6 +24,8 @@
 - Enable ktlint by adding `KOTLIN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable ktlint by adding `KOTLIN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `KOTLIN` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | KOTLIN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -44,6 +46,10 @@
 
 ```shell
 ktlint myfile.kt
+```
+
+```shell
+ktlint --format myfile.kt
 ```
 
 

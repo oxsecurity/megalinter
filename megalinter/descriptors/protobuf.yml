@@ -8,14 +8,16 @@ linters:
     linter_url: https://github.com/yoheimuta/protolint
     linter_rules_configuration_url: https://github.com/yoheimuta/protolint#rules
     config_file_name: .protolintrc.yml
+    cli_config_arg_name: "--config_path"
     cli_lint_extra_args:
       - "lint"
-    cli_config_arg_name: "--config_path"
+    cli_lint_fix_arg_name: '--fix'
     cli_version_arg_name: 'version'
     help_command_return_code: 2
     examples:
       - "protolint lint myfile.proto"
       - "protolint lint --config_path .protolintrc.yml myfile.proto"
+      - "protolint lint -fix --config_path .protolintrc.yml myfile.proto"
     install:
       dockerfile:
         - FROM yoheimuta/protolint:latest as protolint

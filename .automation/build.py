@@ -351,11 +351,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += ['']
         # Mega-linter variables
         activation_url = "https://github.com/nvuillam/mega-linter#activation-and-deactivation"
+        apply_fixes_url = "https://github.com/nvuillam/mega-linter#apply-fixes"
         linter_doc_md += [
             "### Mega-linter configuration",
             "",
             f"- Enable {linter.linter_name} by adding `{linter.name}` in [ENABLE_LINTERS variable]({activation_url})",
-            f"- Disable {linter.linter_name} by adding `{linter.name}` in [DISABLE_LINTERS variable]({activation_url})",
+            f"- Disable {linter.linter_name} by adding `{linter.name}` in [DISABLE_LINTERS variable]({activation_url})"]
+        if linter.cli_lint_fix_arg_name is not None:
+            linter_doc_md += [
+                "",
+                f"- Enable **auto-fixes** by adding `{linter.name}` in [APPLY_FIXES variable]({apply_fixes_url})"
+            ]
+        linter_doc_md += [
             "",
             "| Variable | Description | Default value |",
             "| ----------------- | -------------- | -------------- |"]

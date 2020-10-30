@@ -18,6 +18,8 @@
 - Enable protolint by adding `PROTOBUF` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable protolint by adding `PROTOBUF` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `PROTOBUF` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PROTOBUF_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -43,6 +45,10 @@ protolint lint myfile.proto
 
 ```shell
 protolint lint --config_path .protolintrc.yml myfile.proto
+```
+
+```shell
+protolint lint -fix --config_path .protolintrc.yml myfile.proto
 ```
 
 

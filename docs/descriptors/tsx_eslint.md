@@ -25,6 +25,8 @@
 - Enable eslint by adding `TSX` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable eslint by adding `TSX` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `TSX` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | TSX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -50,6 +52,10 @@ eslint myfile.tsx
 
 ```shell
 eslint -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.tsx
+```
+
+```shell
+eslint --fix -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.tsx
 ```
 
 

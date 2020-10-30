@@ -17,6 +17,8 @@
 - Enable puppet-lint by adding `PUPPET` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable puppet-lint by adding `PUPPET` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `PUPPET` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PUPPET_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -37,7 +39,11 @@
 ### Example calls
 
 ```shell
-puppet-lint myfile.pp
+puppet-lint --fail-on-warnings --no-autoloader_layout-check myfile.pp
+```
+
+```shell
+puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 ```
 
 

@@ -96,7 +96,7 @@ class Linter:
 
         self.is_active = params['default_linter_activation']
         if self.name is None:
-            self.name = self.descriptor_id
+            self.name = self.descriptor_id + '_' + self.linter_name.upper()
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
         if self.cli_executable_version is None:
