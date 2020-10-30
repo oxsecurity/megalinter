@@ -13,7 +13,7 @@ from git import Repo
 from megalinter import Megalinter
 
 REPO_HOME = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.dirname(
-    os.path.abspath(__file__)) + os.path.sep + '..' + os.path.sep + '..' + os.path.sep + '..'
+    os.path.abspath(__file__)) + os.path.sep + '..' + os.path.sep + '..' + os.path.sep + '..' + os.path.sep + '..'
 
 
 # Define env variables before any test case
