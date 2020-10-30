@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable scalafix by adding `SCALA` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable scalafix by adding `SCALA` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| SCALA_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| SCALA_FILE_NAME | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scalafix.conf` |
-| SCALA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| SCALA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| SCALA_SCALAFIX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| SCALA_SCALAFIX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SCALA_SCALAFIX_FILE_NAME | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scalafix.conf` |
+| SCALA_SCALAFIX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| SCALA_SCALAFIX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

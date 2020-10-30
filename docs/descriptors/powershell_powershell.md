@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable powershell by adding `POWERSHELL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable powershell by adding `POWERSHELL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| POWERSHELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| POWERSHELL_FILE_NAME | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.powershell-psscriptanalyzer.psd1` |
-| POWERSHELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| POWERSHELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| POWERSHELL_POWERSHELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| POWERSHELL_POWERSHELL_FILE_NAME | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.powershell-psscriptanalyzer.psd1` |
+| POWERSHELL_POWERSHELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| POWERSHELL_POWERSHELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

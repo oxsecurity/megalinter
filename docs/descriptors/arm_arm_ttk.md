@@ -14,17 +14,17 @@
 
 ### Mega-linter configuration
 
-- Enable arm-ttk by adding `ARM` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable arm-ttk by adding `ARM` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable arm-ttk by adding `ARM_ARM_TTK` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable arm-ttk by adding `ARM_ARM_TTK` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ARM_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| ARM_FILE_NAME | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
-| ARM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| ARM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| ARM_ARM_TTK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| ARM_ARM_TTK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| ARM_ARM_TTK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| ARM_ARM_TTK_FILE_NAME | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
+| ARM_ARM_TTK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| ARM_ARM_TTK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

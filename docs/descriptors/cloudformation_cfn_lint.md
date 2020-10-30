@@ -22,17 +22,17 @@
 
 ### Mega-linter configuration
 
-- Enable cfn-lint by adding `CLOUDFORMATION` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable cfn-lint by adding `CLOUDFORMATION` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CLOUDFORMATION_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| CLOUDFORMATION_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
-| CLOUDFORMATION_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| CLOUDFORMATION_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| CLOUDFORMATION_CFN_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CLOUDFORMATION_CFN_LINT_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
+| CLOUDFORMATION_CFN_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

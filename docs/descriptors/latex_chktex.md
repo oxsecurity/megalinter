@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable chktex by adding `LATEX` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable chktex by adding `LATEX` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable chktex by adding `LATEX_CHKTEX` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable chktex by adding `LATEX_CHKTEX` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| LATEX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| LATEX_FILE_NAME | chktex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.chktexrc` |
-| LATEX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| LATEX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| LATEX_CHKTEX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| LATEX_CHKTEX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| LATEX_CHKTEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| LATEX_CHKTEX_FILE_NAME | chktex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.chktexrc` |
+| LATEX_CHKTEX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| LATEX_CHKTEX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

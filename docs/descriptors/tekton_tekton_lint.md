@@ -14,17 +14,17 @@
 
 ### Mega-linter configuration
 
-- Enable tekton-lint by adding `TEKTON` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable tekton-lint by adding `TEKTON` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable tekton-lint by adding `TEKTON_TEKTON_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable tekton-lint by adding `TEKTON_TEKTON_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TEKTON_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| TEKTON_FILE_NAME | tekton-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tektonlintrc.yaml` |
-| TEKTON_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| TEKTON_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TEKTON_TEKTON_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| TEKTON_TEKTON_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| TEKTON_TEKTON_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| TEKTON_TEKTON_LINT_FILE_NAME | tekton-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tektonlintrc.yaml` |
+| TEKTON_TEKTON_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| TEKTON_TEKTON_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

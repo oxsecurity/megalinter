@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable ansible-lint by adding `ANSIBLE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable ansible-lint by adding `ANSIBLE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ANSIBLE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| ANSIBLE_FILE_NAME | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ansible-lint.yml` |
-| ANSIBLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| ANSIBLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| ANSIBLE_ANSIBLE_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| ANSIBLE_ANSIBLE_LINT_FILE_NAME | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ansible-lint.yml` |
+| ANSIBLE_ANSIBLE_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 | ANSIBLE_DIRECTORY | Directory containing ANSIBLE files | `ansible` |
 
 ## Behind the scenes

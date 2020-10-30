@@ -14,17 +14,17 @@
 
 ### Mega-linter configuration
 
-- Enable terragrunt by adding `TERRAFORM` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable terragrunt by adding `TERRAFORM` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| TERRAFORM_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| TERRAFORM_FILE_NAME | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `terragrunt.hcl` |
-| TERRAFORM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| TERRAFORM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TERRAFORM_TERRAGRUNT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| TERRAFORM_TERRAGRUNT_FILE_NAME | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `terragrunt.hcl` |
+| TERRAFORM_TERRAGRUNT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
