@@ -79,6 +79,7 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
+ARG PSSA_VERSION='latest'
 #ARG__END
 
 ####################
@@ -251,13 +252,13 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 
 # POWERSHELL installation
 RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-    | grep browser_download_url \
-    | grep linux-alpine-x64 \
-    | cut -d '"' -f 4 \
-    | xargs -n 1 wget -O - \
-    | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+        && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+        && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 
 # RUST installation
@@ -369,10 +370,7 @@ RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 
 # powershell installation
-RUN pwsh -c '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 ; \
-             Install-PackageProvider -Name NuGet ; \
-             Install-Module -Name PSScriptAnalyzer -RequiredVersion latest -Scope AllUsers -Force'
-
+RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
