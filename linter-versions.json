@@ -49,7 +49,7 @@
     "snakemake": "5.26.1",
     "spectral": "5.6.0",
     "sql-lint": "0.0.15",
-    "standard": "15.0.1",
+    "standard": "16.0.0",
     "stylelint": "13.7.2",
     "tekton-lint": "0.4.2",
     "terragrunt": "0.25.4",
