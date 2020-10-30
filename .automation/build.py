@@ -268,11 +268,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         descriptor_label = f"**{linter.descriptor_label}** ({linter.descriptor_id})" \
             if hasattr(linter, 'descriptor_label') else f"**{linter.descriptor_id}**"
         if prev_lang != linter.descriptor_id and \
-                os.path.exists(REPO_ICONS + '/' + linter.descriptor_id.lower() + '.ico'):
+                os.path.isfile(REPO_ICONS + '/' + linter.descriptor_id.lower() + '.ico'):
             icon_html = icon(f"{DOCS_URL_RAW_ROOT}/assets/icons/{linter.descriptor_id.lower()}.ico",
                              '', '', descriptor_label, 32)
         elif prev_lang != linter.descriptor_id and \
-                os.path.exists(REPO_ICONS + '/default.ico'):
+                os.path.isfile(REPO_ICONS + '/default.ico'):
             icon_html = icon(f"{DOCS_URL_RAW_ROOT}/assets/icons/default.ico",
                              '', '', descriptor_label, 32)
         else:
@@ -338,7 +338,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Default rules riles
         if linter.config_file_name is not None:
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
-            if os.path.exists(f"{REPO_HOME}{os.path.sep}{config_file}"):
+            if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [f"  - If custom {linter.config_file_name} is not found, "
                                   f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name})"
                                   " will be used"]

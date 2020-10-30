@@ -56,7 +56,7 @@ class TextReporter(Reporter):
         text_report_lines += self.report_items
         text_file_name = f"{self.report_folder}{os.path.sep}" \
                          f"{self.master.status.upper()}-mega-linter-{self.master.name}.log"
-        if not os.path.exists(os.path.dirname(text_file_name)):
+        if not os.path.isdir(os.path.dirname(text_file_name)):
             os.makedirs(os.path.dirname(text_file_name))
         with open(text_file_name, 'w', encoding='utf-8') as text_file:
             text_file_content = "\n".join(text_report_lines) + "\n"

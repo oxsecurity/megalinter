@@ -118,7 +118,7 @@ class Linter:
             self.default_rules_location = params[
                 'default_rules_location'] if "default_rules_location" in params else '.'
             self.workspace = params['workspace'] if "workspace" in params else '.'
-            self.github_workspace = params['github_workspace'] if "workspace" in params else '.'
+            self.github_workspace = params['github_workspace'] if "github_workspace" in params else '.'
             self.config_file = None
             self.filter_regex_include = None
             self.filter_regex_exclude = None
@@ -134,7 +134,7 @@ class Linter:
             if self.files_sub_directory is not None:
                 self.files_sub_directory = os.environ.get(
                     f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory)
-                if not os.path.exists(self.workspace + os.path.sep + self.files_sub_directory):
+                if not os.path.isdir(self.workspace + os.path.sep + self.files_sub_directory):
                     self.is_active = False
 
             # Some linters require a file to be existing, else they are deactivated ( ex: .editorconfig )
@@ -189,17 +189,18 @@ class Linter:
             self.linter_rules_path = os.environ[self.descriptor_id + "_RULES_PATH"]
 
         # Linter config file:
-        # 1: repo + config_name_name
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 1: repo + config_file_name
         # 2: linter_rules_path + config_file_name
         # 3: mega-linter default rules path + config_file_name
         if self.config_file_name is not None and self.config_file_name != "LINTER_DEFAULT":
-            if os.path.exists(self.workspace + os.path.sep + self.config_file_name):
+            if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
-            elif os.path.exists(self.linter_rules_path + os.path.sep + self.config_file_name):
+            elif os.path.isfile(self.linter_rules_path + os.path.sep + self.config_file_name):
                 self.config_file = self.linter_rules_path + os.path.sep + self.config_file_name
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
-            elif os.path.exists(self.default_rules_location + os.path.sep + self.config_file_name):
+            elif os.path.isfile(self.default_rules_location + os.path.sep + self.config_file_name):
                 self.config_file = self.default_rules_location + \
                                    os.path.sep + self.config_file_name
 

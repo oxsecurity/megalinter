@@ -25,12 +25,12 @@ def list_excluded_directories():
 # Returns directory where all .yml language descriptors are defined
 def get_descriptor_dir():
     # Compiled version (copied from DockerFile)
-    if os.path.exists('/megalinter-descriptors'):
+    if os.path.isdir('/megalinter-descriptors'):
         return '/megalinter-descriptors'
     # Dev / Test version
     else:
         descriptor_dir = os.path.realpath(os.path.dirname(os.path.abspath(__file__)) + '/descriptors')
-        assert os.path.exists(descriptor_dir), f"Descriptor dir {descriptor_dir} not found !"
+        assert os.path.isdir(descriptor_dir), f"Descriptor dir {descriptor_dir} not found !"
         return descriptor_dir
 
 
@@ -106,7 +106,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 def build_linter(language, linter_name):
     language_descriptor_file = get_descriptor_dir() + os.path.sep + \
                                language.lower() + '.yml'
-    assert os.path.exists(
+    assert os.path.isfile(
         language_descriptor_file), f"Unable to find {language_descriptor_file}"
     linters = build_descriptor_linters(
         language_descriptor_file, None, [linter_name])
