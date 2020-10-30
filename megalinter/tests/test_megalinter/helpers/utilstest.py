@@ -267,7 +267,3 @@ def assert_file_has_been_updated(file_name, bool_val, test_self):
     else:
         test_self.assertFalse(updated, f"{file_name} has not been updated")
 
-
-def git_reset_updates():
-    repo = Repo(REPO_HOME)
-    repo.git.reset('--hard')

@@ -294,7 +294,7 @@ DISABLE_LINTERS = PHP_STAN,PHP_PSALM
 
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 env variables defined at top level
 
-- **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`GROOVY`)
+- **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
