@@ -22,6 +22,7 @@ linters:
     examples:
       - "eslint myfile.js"
       - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js"
+      - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.js"
     install:
       npm:
         - eslint
@@ -35,8 +36,10 @@ linters:
     linter_url: https://github.com/standard/standard
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
+    cli_lint_fix_arg_name: '--fix'
     examples:
       - "standard myfile.js"
+      - "standard --fix myfile.js"
     install:
       npm:
-        - standard
+        - "standard@15.0.1"

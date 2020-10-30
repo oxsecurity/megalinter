@@ -45,6 +45,10 @@
 standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts
 ```
 
+```shell
+standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts
+```
+
 
 ### Help content
 

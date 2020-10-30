@@ -185,7 +185,7 @@ RUN npm install --no-cache \
                 eslint-plugin-jest \
                 eslint-plugin-prettier \
                 babel-eslint \
-                standard \
+                standard@15.0.1 \
                 jsonlint \
                 markdownlint-cli \
                 @stoplight/spectral \

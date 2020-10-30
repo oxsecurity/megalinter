@@ -52,6 +52,10 @@ eslint myfile.ts
 eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.ts
 ```
 
+```shell
+eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.ts
+```
+
 
 ### Help content
 

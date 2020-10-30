@@ -52,6 +52,10 @@ eslint myfile.js
 eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js
 ```
 
+```shell
+eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.js
+```
+
 
 ### Help content
 

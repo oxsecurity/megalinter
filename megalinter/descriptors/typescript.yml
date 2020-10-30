@@ -17,9 +17,11 @@ linters:
     cli_config_extra_args:
       - "--no-eslintrc"
       - "--no-ignore"
+    cli_lint_fix_arg_name: '--fix'
     examples:
       - "eslint myfile.ts"
       - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.ts"
+      - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.ts"
     install:
       npm:
         - eslint
@@ -42,10 +44,12 @@ linters:
       - '@typescript-eslint/parser'
       - '--plugin'
       - '@typescript-eslint/eslint-plugin'
+    cli_lint_fix_arg_name: '--fix'
     examples:
       - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts"
+      - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts"
     install:
       npm:
-        - standard
+        - "standard@15.0.1"
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"

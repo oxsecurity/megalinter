@@ -32,56 +32,56 @@ import megalinter
 
 
 class Linter:
-    # Definition fields: can be overridden at custom linter class level
-    # Ex: JAVASCRIPT
-    descriptor_id = "Field 'descriptor_id' must be overridden at custom linter class level"
-    name = None  # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
-    linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
-    # ex: https://eslint.org/
-    linter_url = "Field 'linter_url' must be overridden at custom linter class level"
-    test_folder = None  # Override only if different from language.lowercase()
-
-    file_extensions = []  # Array of strings defining file extensions. Ex: ['.js','.cjs']
-    file_names = []  # Array of file names. Ex: ['Dockerfile']
-    # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
-    config_file_name = None
-    files_sub_directory = None
-    file_contains = []
-    files_names_not_ends_with = []
-    active_only_if_file_found = None
-    lint_all_files = False
-    lint_all_other_linters_files = False
-
-    cli_lint_mode = 'file'
-    cli_executable = None
-    cli_executable_version = None
-    cli_executable_help = None
-    # Default arg name for configurations to use in linter CLI call
-    cli_config_arg_name = '-c'
-    cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
-    cli_lint_extra_args = []  # Extra arguments to send to cli everytime
-    cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
-    cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
-    # Extra arguments to send to cli everytime, just before file argument
-    cli_lint_extra_args_after = []
-    # Default arg name for configurations to use in linter version call
-    cli_version_arg_name = '--version'
-    cli_version_extra_args = []  # Extra arguments to send to cli everytime
-    cli_help_arg_name = '-h'
-    cli_help_extra_args = []  # Extra arguments to send to cli everytime
-
-    version_extract_regex = r"\d+(\.\d+)+"
-    # If linter --version does not return 0 when it is in success, override. ex: 1
-    version_command_return_code = 0
-    # If linter --version does not return 0 when it is in success, override. ex: 1
-    help_command_return_code = 0
-
-    report_folder = ''
-    reporters = []
-
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
         self.linter_version_cache = None
+        # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
+        # Ex: JAVASCRIPT
+        self.descriptor_id = "Field 'descriptor_id' must be overridden at custom linter class level"
+        self.name = None  # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
+        self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
+        # ex: https://eslint.org/
+        self.linter_url = "Field 'linter_url' must be overridden at custom linter class level"
+        self.test_folder = None  # Override only if different from language.lowercase()
+
+        self.file_extensions = []  # Array of strings defining file extensions. Ex: ['.js','.cjs']
+        self.file_names = []  # Array of file names. Ex: ['Dockerfile']
+        # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
+        self.config_file_name = None
+        self.files_sub_directory = None
+        self.file_contains = []
+        self.files_names_not_ends_with = []
+        self.active_only_if_file_found = None
+        self.lint_all_files = False
+        self.lint_all_other_linters_files = False
+
+        self.cli_lint_mode = 'file'
+        self.cli_executable = None
+        self.cli_executable_version = None
+        self.cli_executable_help = None
+        # Default arg name for configurations to use in linter CLI call
+        self.cli_config_arg_name = '-c'
+        self.cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
+        self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
+        self.cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
+        # Extra arguments to send to cli everytime, just before file argument
+        self.cli_lint_extra_args_after = []
+        # Default arg name for configurations to use in linter version call
+        self.cli_version_arg_name = '--version'
+        self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_help_arg_name = '-h'
+        self.cli_help_extra_args = []  # Extra arguments to send to cli everytime
+
+        self.version_extract_regex = r"\d+(\.\d+)+"
+        # If linter --version does not return 0 when it is in success, override. ex: 1
+        self.version_command_return_code = 0
+        # If linter --version does not return 0 when it is in success, override. ex: 1
+        self.help_command_return_code = 0
+
+        self.report_folder = ''
+        self.reporters = []
+
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)

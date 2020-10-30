@@ -45,6 +45,10 @@
 standard myfile.js
 ```
 
+```shell
+standard --fix myfile.js
+```
+
 
 ### Help content
 

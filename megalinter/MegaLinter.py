@@ -311,7 +311,7 @@ class Megalinter:
                             level=logging_level,
                             format='%(asctime)s [%(levelname)s] %(message)s',
                             handlers=[
-                                logging.FileHandler(log_file),
+                                logging.FileHandler(log_file, 'w', 'utf-8'),
                                 logging.StreamHandler(sys.stdout)
                             ])
 
