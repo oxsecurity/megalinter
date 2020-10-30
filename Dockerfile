@@ -157,7 +157,7 @@ RUN pip3 install --no-cache-dir \
           pylint \
           black \
           flake8 \
-          snakemake \
+          snakemake==5.26.1 \
           snakefmt \
           yamllint
 #PIP__END
