@@ -21,17 +21,17 @@
 
 ### Mega-linter configuration
 
-- Enable dartanalyzer by adding `DART` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable dartanalyzer by adding `DART` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| DART_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| DART_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
-| DART_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| DART_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| DART_DARTANALYZER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| DART_DARTANALYZER_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
+| DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| DART_DARTANALYZER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

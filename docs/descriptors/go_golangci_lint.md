@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
-- Version: **master**
+- Version: **1.32.1**
 
 ## Configuration
 
@@ -22,17 +22,17 @@
 
 ### Mega-linter configuration
 
-- Enable golangci-lint by adding `GO` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable golangci-lint by adding `GO` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| GO_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GO_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| GO_FILE_NAME | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.golangci.yml` |
-| GO_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| GO_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| GO_GOLANGCI_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| GO_GOLANGCI_LINT_FILE_NAME | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.golangci.yml` |
+| GO_GOLANGCI_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| GO_GOLANGCI_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -79,6 +79,7 @@ Flags:
       --mem-profile-path string   Path to memory profile output file
       --trace-path string         Path to trace output file
   -v, --verbose                   verbose output
+      --version                   Print version
 
 Use "golangci-lint [command] --help" for more information about a command.
 

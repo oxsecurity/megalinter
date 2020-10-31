@@ -14,17 +14,19 @@
 
 ### Mega-linter configuration
 
-- Enable puppet-lint by adding `PUPPET` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable puppet-lint by adding `PUPPET` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PUPPET_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| PUPPET_FILE_NAME | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.puppet-lint.rc` |
-| PUPPET_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| PUPPET_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| PUPPET_PUPPET_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PUPPET_PUPPET_LINT_FILE_NAME | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.puppet-lint.rc` |
+| PUPPET_PUPPET_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| PUPPET_PUPPET_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -37,7 +39,11 @@
 ### Example calls
 
 ```shell
-puppet-lint myfile.pp
+puppet-lint --fail-on-warnings --no-autoloader_layout-check myfile.pp
+```
+
+```shell
+puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 ```
 
 

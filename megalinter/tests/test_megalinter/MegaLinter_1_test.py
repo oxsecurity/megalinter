@@ -104,7 +104,7 @@ class MegalinterTest(unittest.TestCase):
         utilstest.assert_is_skipped('GROOVY', output, self)
 
     def test_validate_all_code_base_false(self):
-        os.environ["GITHUB_WORKSPACE"] = '/tmp/lint' if os.path.exists('/tmp/lint') else os.path.relpath(
+        os.environ["GITHUB_WORKSPACE"] = '/tmp/lint' if os.path.isdir('/tmp/lint') else os.path.relpath(
             os.path.relpath(os.path.dirname(
                 os.path.abspath(__file__))) + '/../../..')
         super_linter, output = utilstest.call_super_linter({

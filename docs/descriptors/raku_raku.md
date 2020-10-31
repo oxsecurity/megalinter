@@ -14,17 +14,17 @@
 
 ### Mega-linter configuration
 
-- Enable raku by adding `RAKU` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable raku by adding `RAKU` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| RAKU_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| RAKU_FILE_NAME | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `META6.json` |
-| RAKU_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| RAKU_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| RAKU_RAKU_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| RAKU_RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| RAKU_RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| RAKU_RAKU_FILE_NAME | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `META6.json` |
+| RAKU_RAKU_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| RAKU_RAKU_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

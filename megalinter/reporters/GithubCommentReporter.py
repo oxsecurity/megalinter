@@ -35,7 +35,7 @@ class GithubCommentReporter(Reporter):
             run_id = os.environ['GITHUB_RUN_ID']
             sha = os.environ.get('GITHUB_SHA')
             action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
-            table_header = ["Descriptor", "Linter", "Found", "Errors"]
+            table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
             table_data_raw = [table_header]
             for linter in self.master.linters:
                 if linter.is_active is True:
@@ -49,8 +49,9 @@ class GithubCommentReporter(Reporter):
                     linter_link = f"[{linter.linter_name}]({linter_doc_url})"
                     errors_cell = f"[**{linter.number_errors}**]({action_run_url})" if linter.number_errors > 0 \
                         else linter.number_errors
+                    nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ''
                     table_data_raw += [
-                        [first_col, linter_link, len(linter.files), errors_cell]]
+                        [first_col, linter_link, len(linter.files), nb_fixed_cell, errors_cell]]
             # Build markdown table
             table_data_raw.pop(0)
             writer = MarkdownTableWriter(
@@ -77,10 +78,23 @@ class GithubCommentReporter(Reporter):
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
             for pr in pr_list:
+                # Ignore if PR is already merged
                 if pr.is_merged():
                     continue
+                # Check if there is already a comment from Mega-Linter
+                existing_comment = None
+                existing_comments = pr.get_issue_comments()
+                for comment in existing_comments:
+                    if "See errors details in [**artifact Mega-Linter reports** on" in comment.body:
+                        existing_comment = comment
+                # Process comment
                 try:
-                    pr.create_issue_comment(p_r_msg)
+                    # Edit if there is already a Mega-Linter comment
+                    if existing_comment is not None:
+                        existing_comment.edit(p_r_msg)
+                    # Or create a new PR comment
+                    else:
+                        pr.create_issue_comment(p_r_msg)
                     logging.debug(f'Posted Github comment: {p_r_msg}')
                     logging.info(f'Posted summary as comment on {github_repo} #PR{pr.number}')
                 except github.GithubException as e:

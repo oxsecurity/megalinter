@@ -15,17 +15,19 @@
 
 ### Mega-linter configuration
 
-- Enable protolint by adding `PROTOBUF` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable protolint by adding `PROTOBUF` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| PROTOBUF_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| PROTOBUF_FILE_NAME | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.protolintrc.yml` |
-| PROTOBUF_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| PROTOBUF_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| PROTOBUF_PROTOLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PROTOBUF_PROTOLINT_FILE_NAME | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.protolintrc.yml` |
+| PROTOBUF_PROTOLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| PROTOBUF_PROTOLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -43,6 +45,10 @@ protolint lint myfile.proto
 
 ```shell
 protolint lint --config_path .protolintrc.yml myfile.proto
+```
+
+```shell
+protolint lint -fix --config_path .protolintrc.yml myfile.proto
 ```
 
 

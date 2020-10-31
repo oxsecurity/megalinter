@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://psalm.dev**](https://psalm.dev)
-- Version: **4.0.1**
+- Version: **4.1.0**
 
 ## Configuration
 
@@ -76,10 +76,7 @@ Basic configuration:
         If greater than one, Psalm will run analysis on multiple threads, speeding things up.
 
     --no-diff
-        Turns off Psalmâ€™s diff mode, checks all files regardless of whether they've changed
-
-    --diff-methods
-        Only checks methods that have changed since last run (and their dependents)
+        Turns off Psalm’s diff mode, checks all files regardless of whether they've changed
 
 Surfacing issues:
     --show-info[=BOOLEAN]
@@ -93,7 +90,7 @@ Surfacing issues:
         Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'
 
     --find-unused-psalm-suppress
-        Finds all @psalm-suppress annotations that arenâ€™t used
+        Finds all @psalm-suppress annotations that aren’t used
 
     --find-references-to=[class|method|property]
         Searches the codebase for references to the given fully-qualified class or method,
@@ -103,7 +100,7 @@ Surfacing issues:
         Hide suggestions
 
     --taint-analysis
-        Run Psalm in taint analysis mode â€“ see https://psalm.dev/docs/security_analysis for more info
+        Run Psalm in taint analysis mode – see https://psalm.dev/docs/security_analysis for more info
 
 Issue baselines:
     --set-baseline=PATH
@@ -218,7 +215,10 @@ Miscellaneous:
 # Parent descriptor install
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && gpg --keyserver pool.sks-keyservers.net --recv-keys 0x9D8A98B29B2D5D79 \
+    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
+    && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \

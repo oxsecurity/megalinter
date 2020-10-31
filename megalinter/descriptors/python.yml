@@ -19,7 +19,8 @@ linters:
       pip:
         - pylint
   # BLACK
-  - linter_name: black
+  - class: PythonBlackLinter
+    linter_name: black
     name: PYTHON_BLACK
     linter_url: https://github.com/psf/black
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
@@ -29,9 +30,11 @@ linters:
     cli_lint_extra_args:
       - "--diff"
       - "--check"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for PythonBlackLinter class behavior
     examples:
       - "black --diff --check myfile.py"
       - "black --config .python-black --diff --check myfile.py"
+      - "black --config .python-black myfile.py" # format
     install:
       pip:
         - black

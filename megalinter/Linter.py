@@ -32,55 +32,58 @@ import megalinter
 
 
 class Linter:
-    # Definition fields: can be overridden at custom linter class level
-    # Ex: JAVASCRIPT
-    descriptor_id = "Field 'descriptor_id' must be overridden at custom linter class level"
-    name = None  # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
-    linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
-    # ex: https://eslint.org/
-    linter_url = "Field 'linter_url' must be overridden at custom linter class level"
-    test_folder = None  # Override only if different from language.lowercase()
-
-    file_extensions = []  # Array of strings defining file extensions. Ex: ['.js','.cjs']
-    file_names = []  # Array of file names. Ex: ['Dockerfile']
-    # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
-    config_file_name = None
-    files_sub_directory = None
-    file_contains = []
-    files_names_not_ends_with = []
-    active_only_if_file_found = None
-    lint_all_files = False
-    lint_all_other_linters_files = False
-
-    cli_lint_mode = 'file'
-    cli_executable = None
-    cli_executable_version = None
-    cli_executable_help = None
-    # Default arg name for configurations to use in linter CLI call
-    cli_config_arg_name = '-c'
-    cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
-    cli_lint_extra_args = []  # Extra arguments to send to cli everytime
-    cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
-    # Extra arguments to send to cli everytime, just before file argument
-    cli_lint_extra_args_after = []
-    # Default arg name for configurations to use in linter version call
-    cli_version_arg_name = '--version'
-    cli_version_extra_args = []  # Extra arguments to send to cli everytime
-    cli_help_arg_name = '-h'
-    cli_help_extra_args = []  # Extra arguments to send to cli everytime
-
-    version_extract_regex = r"\d+(\.\d+)+"
-    # If linter --version does not return 0 when it is in success, override. ex: 1
-    version_command_return_code = 0
-    # If linter --version does not return 0 when it is in success, override. ex: 1
-    help_command_return_code = 0
-
-    report_folder = ''
-    reporters = []
-
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
         self.linter_version_cache = None
+        # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
+        # Ex: JAVASCRIPT
+        self.descriptor_id = "Field 'descriptor_id' must be overridden at custom linter class level"
+        # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
+        self.name = None
+        self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
+        # ex: https://eslint.org/
+        self.linter_url = "Field 'linter_url' must be overridden at custom linter class level"
+        self.test_folder = None  # Override only if different from language.lowercase()
+
+        self.file_extensions = []  # Array of strings defining file extensions. Ex: ['.js','.cjs']
+        self.file_names = []  # Array of file names. Ex: ['Dockerfile']
+        # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
+        self.config_file_name = None
+        self.files_sub_directory = None
+        self.file_contains = []
+        self.files_names_not_ends_with = []
+        self.active_only_if_file_found = None
+        self.lint_all_files = False
+        self.lint_all_other_linters_files = False
+
+        self.cli_lint_mode = 'file'
+        self.cli_executable = None
+        self.cli_executable_version = None
+        self.cli_executable_help = None
+        # Default arg name for configurations to use in linter CLI call
+        self.cli_config_arg_name = '-c'
+        self.cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
+        self.no_config_if_fix = False
+        self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
+        self.cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
+        # Extra arguments to send to cli everytime, just before file argument
+        self.cli_lint_extra_args_after = []
+        # Default arg name for configurations to use in linter version call
+        self.cli_version_arg_name = '--version'
+        self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
+        self.cli_help_arg_name = '-h'
+        self.cli_help_extra_args = []  # Extra arguments to send to cli everytime
+
+        self.version_extract_regex = r"\d+(\.\d+)+"
+        # If linter --version does not return 0 when it is in success, override. ex: 1
+        self.version_command_return_code = 0
+        # If linter --version does not return 0 when it is in success, override. ex: 1
+        self.help_command_return_code = 0
+
+        self.report_folder = ''
+        self.reporters = []
+
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
@@ -95,7 +98,7 @@ class Linter:
 
         self.is_active = params['default_linter_activation']
         if self.name is None:
-            self.name = self.descriptor_id
+            self.name = self.descriptor_id + '_' + self.linter_name.upper().replace('-', '_')
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
         if self.cli_executable_version is None:
@@ -108,12 +111,15 @@ class Linter:
         self.manage_activation(params)
 
         if self.is_active is True:
+            self.apply_fixes = True if params.get('apply_fixes', 'none') == 'all' or self.name in params.get(
+                'apply_fixes', '').split(',') else False
+
             # Config items
             self.linter_rules_path = params['linter_rules_path'] if "linter_rules_path" in params else '.'
             self.default_rules_location = params[
                 'default_rules_location'] if "default_rules_location" in params else '.'
             self.workspace = params['workspace'] if "workspace" in params else '.'
-            self.github_workspace = params['github_workspace'] if "workspace" in params else '.'
+            self.github_workspace = params['github_workspace'] if "github_workspace" in params else '.'
             self.config_file = None
             self.filter_regex_include = None
             self.filter_regex_exclude = None
@@ -129,7 +135,7 @@ class Linter:
             if self.files_sub_directory is not None:
                 self.files_sub_directory = os.environ.get(
                     f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory)
-                if not os.path.exists(self.workspace + os.path.sep + self.files_sub_directory):
+                if not os.path.isdir(self.workspace + os.path.sep + self.files_sub_directory):
                     self.is_active = False
 
             # Some linters require a file to be existing, else they are deactivated ( ex: .editorconfig )
@@ -145,9 +151,11 @@ class Linter:
             # Runtime items
             self.files = []
             self.disable_errors = False
+            self.try_fix = False
             self.status = "success"
             self.return_code = 0
             self.number_errors = 0
+            self.number_fixed = 0
             self.files_lint_results = []
 
     # Enable or disable linter
@@ -184,17 +192,18 @@ class Linter:
             self.linter_rules_path = os.environ[self.descriptor_id + "_RULES_PATH"]
 
         # Linter config file:
-        # 1: repo + config_name_name
+        # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
+        # 1: repo + config_file_name
         # 2: linter_rules_path + config_file_name
         # 3: mega-linter default rules path + config_file_name
         if self.config_file_name is not None and self.config_file_name != "LINTER_DEFAULT":
-            if os.path.exists(self.workspace + os.path.sep + self.config_file_name):
+            if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
-            elif os.path.exists(self.linter_rules_path + os.path.sep + self.config_file_name):
+            elif os.path.isfile(self.linter_rules_path + os.path.sep + self.config_file_name):
                 self.config_file = self.linter_rules_path + os.path.sep + self.config_file_name
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
-            elif os.path.exists(self.default_rules_location + os.path.sep + self.config_file_name):
+            elif os.path.isfile(self.default_rules_location + os.path.sep + self.config_file_name):
                 self.config_file = self.default_rules_location + \
                                    os.path.sep + self.config_file_name
 
@@ -246,19 +255,24 @@ class Linter:
                     self.status = "error"
                     self.return_code = 1
                     self.number_errors = self.number_errors + 1
+                fixed = megalinter.utils.check_updated_file(file)
+                if fixed is True:
+                    self.number_fixed = self.number_fixed + 1
                 # store result
                 self.files_lint_results += [{
                     'file': file,
                     'status_code': return_code,
                     'status': status,
-                    'stdout': stdout
+                    'stdout': stdout,
+                    'fixed': fixed
                 }]
                 # Update reports with file result
                 for reporter in self.reporters:
                     reporter.add_report_item(file=file,
                                              status_code=return_code,
                                              stdout=stdout,
-                                             index=index)
+                                             index=index,
+                                             fixed=fixed)
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -436,10 +450,14 @@ class Linter:
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
+        # Add fix argument if defined
+        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+            cmd += [self.cli_lint_fix_arg_name]
+            self.try_fix = True
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
-        # Add config arguments if defined
-        if self.config_file is not None:
+        # Add config arguments if defined (except for case when no_config_if_fix is True)
+        if self.config_file is not None and not (self.no_config_if_fix is True and self.try_fix is True):
             if self.cli_config_arg_name.endswith('='):
                 cmd += [self.cli_config_arg_name + self.config_file]
             elif self.cli_config_arg_name != '':

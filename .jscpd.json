@@ -13,7 +13,10 @@
     "**/.idea/**",
     "**/docs/**",
     "**/lib/**",
+    "**/sample_project_fixes/**",
     "**/megalinter/descriptors/jsonschema.json",
-    "**/megalinter/tests/test_megalinter/MegaLinter_test.py"
+    "**/megalinter/linters/RakuLinter.py",
+    "**/megalinter/tests/test_megalinter/MegaLinter_1_test.py",
+    "**/megalinter/tests/test_megalinter/MegaLinter_2_fixes_test.py"
   ]
 }

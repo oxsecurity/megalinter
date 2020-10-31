@@ -13,9 +13,11 @@ linters:
     cli_config_extra_args:
       - "--no-eslintrc"
       - "--no-ignore"
+    cli_lint_fix_arg_name: '--fix'
     examples:
       - "eslint myfile.jsx"
       - "eslint -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.jsx"
+      - "eslint --fix -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.jsx"
     install:
       npm:
         - eslint

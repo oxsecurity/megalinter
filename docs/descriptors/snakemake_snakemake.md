@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://snakemake.readthedocs.io/en/stable/**](https://snakemake.readthedocs.io/en/stable/)
-- Version: **5.26.1**
+- Version: **5.27.3**
 
 ## Configuration
 
@@ -67,24 +67,26 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
+                 [--wms-monitor [WMS_MONITOR]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
                  [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
-                 [--lint [{text,json}]] [--export-cwl FILE] [--list]
-                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
-                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
+                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
+                 [--export-cwl FILE] [--list] [--list-target-rules] [--dag]
+                 [--rulegraph] [--filegraph] [--d3dag] [--summary]
+                 [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock] [--list-version-changes]
                  [--list-code-changes] [--list-input-changes]
                  [--list-params-changes] [--list-untracked]
                  [--delete-all-output] [--delete-temp-output]
-                 [--bash-completion] [--keep-incomplete] [--version]
-                 [--reason] [--gui [PORT]] [--printshellcmds] [--debug-dag]
-                 [--stats FILE] [--nocolor] [--quiet] [--print-compilation]
-                 [--verbose] [--force-use-threads] [--allow-ambiguity]
-                 [--nolock] [--ignore-incomplete]
+                 [--bash-completion] [--keep-incomplete] [--drop-metadata]
+                 [--version] [--reason] [--gui [PORT]] [--printshellcmds]
+                 [--debug-dag] [--stats FILE] [--nocolor] [--quiet]
+                 [--print-compilation] [--verbose] [--force-use-threads]
+                 [--allow-ambiguity] [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--notemp] [--keep-remote]
                  [--keep-target-files]
@@ -315,6 +317,10 @@ EXECUTION:
                         or by solving an ilp. The ilp scheduler aims to reduce
                         runtime and hdd usage by best possible use of
                         resources. (default: greedy)
+  --wms-monitor [WMS_MONITOR]
+                        IP and port of workflow management system to monitor
+                        the execution of snakemake (e.g. http://127.0.0.1:5000
+                        (default: None)
   --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
@@ -368,6 +374,15 @@ UTILITIES:
                         (work in progress, more lints to be added in the
                         future). If no argument is provided, plain text output
                         is used. (default: None)
+  --generate-unit-tests [TESTPATH]
+                        Automatically generate unit tests for each workflow
+                        rule. This assumes that all input files of each job
+                        are already present. Rules without a job with present
+                        input files will be skipped (a warning will be
+                        issued). For each rule, one test case will be created
+                        in the specified test folder (.tests/unit by default).
+                        After successfull execution, tests can be run with
+                        'pytest TESTPATH'. (default: None)
   --export-cwl FILE     Compile workflow to CWL and store it in given FILE.
                         (default: None)
   --list, -l            Show available rules in given Snakefile. (default:
@@ -486,6 +501,10 @@ UTILITIES:
                         an open terminal session. (default: False)
   --keep-incomplete     Do not remove incomplete output files by failed jobs.
                         (default: False)
+  --drop-metadata       Drop metadata file tracking information after job
+                        finishes. Provenance-information based reports (e.g.
+                        --report and the --list_x_changes functions) will be
+                        empty or incomplete. (default: False)
   --version, -v         show program's version number and exit
 
 OUTPUT:

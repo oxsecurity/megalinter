@@ -10,6 +10,12 @@ on:
   pull_request:
     branches: [master]
 
+env: #Uncomment to activate variables below
+  # Apply linter fixes configuration
+  APPLY_FIXES: all # Uncomment to apply fixes provided by linters. You can also specify the list of fixing linters
+  APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
+  APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
+
 jobs:
   build:
     name: Mega-Linter
@@ -31,8 +37,8 @@ jobs:
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
-          DISABLE: SPELL
-          DISABLE_LINTERS: BASH_SHFMT,CLOUDFORMATION,DOCKERFILE_HADOLINT,PYTHON_BLACK
+          DISABLE: CLOUDFORMATION,SPELL
+          DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT,PYTHON_BLACK
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
@@ -43,3 +49,31 @@ jobs:
           path: |
             report
             mega-linter.log
+
+      # This step will evaluate the repo status and report the change
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
+      # Create pull request if applicable
+      - name: Create Pull Request with applied fixes
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: "[Mega-Linter] Apply linters automatic fixes"
+          title: "[Mega-Linter] Apply linters automatic fixes"
+          labels: bot
+      - name: Create PR output
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+
+      # Push new commit if applicable
+      - name: Commit and push applied linter fixes
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[Mega-Linter] Apply linters fixes"
+          token: ${{ secrets.PAT }}

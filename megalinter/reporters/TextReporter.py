@@ -25,7 +25,7 @@ class TextReporter(Reporter):
             if os.environ.get('OUTPUT_DETAIL', '') == 'detailed':
                 self.report_type = 'detailed'
 
-    def add_report_item(self, file, status_code, stdout, index):
+    def add_report_item(self, file, status_code, stdout, index, fixed=False):
         status = "[SUCCESS]" if status_code == 0 else '[ERROR]'
         if file is not None:
             file_text_lines = [
@@ -33,6 +33,8 @@ class TextReporter(Reporter):
         else:
             file_text_lines = [
                 f"{status} {self.master.workspace}"]
+        if fixed is True:
+            file_text_lines[0] = file_text_lines[0] + ' - FIXED'
         if self.report_type == 'detailed' or status_code != 0:
             std_out_text = stdout.rstrip(f" {os.linesep}") + os.linesep
             std_out_text = "\n    ".join(std_out_text.split(os.linesep))
@@ -56,7 +58,7 @@ class TextReporter(Reporter):
         text_report_lines += self.report_items
         text_file_name = f"{self.report_folder}{os.path.sep}" \
                          f"{self.master.status.upper()}-mega-linter-{self.master.name}.log"
-        if not os.path.exists(os.path.dirname(text_file_name)):
+        if not os.path.isdir(os.path.dirname(text_file_name)):
             os.makedirs(os.path.dirname(text_file_name))
         with open(text_file_name, 'w', encoding='utf-8') as text_file:
             text_file_content = "\n".join(text_report_lines) + "\n"

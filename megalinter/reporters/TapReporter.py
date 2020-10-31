@@ -25,7 +25,7 @@ class TapReporter(Reporter):
             if os.environ.get('OUTPUT_DETAIL', '') == 'detailed':
                 self.report_type = 'detailed'
 
-    def add_report_item(self, file, status_code, stdout, index):
+    def add_report_item(self, file, status_code, stdout, index, fixed=False):
         if self.master.cli_lint_mode == 'project':
             return
         tap_status = "ok" if status_code == 0 else 'not ok'
@@ -48,7 +48,7 @@ class TapReporter(Reporter):
                             f"1..{str(len(self.master.files))}"]
         tap_report_lines += self.report_items
         tap_file_name = f"{self.report_folder}{os.path.sep}mega-linter-{self.master.name}.tap"
-        if not os.path.exists(os.path.dirname(tap_file_name)):
+        if not os.path.isdir(os.path.dirname(tap_file_name)):
             os.makedirs(os.path.dirname(tap_file_name))
         with open(tap_file_name, 'w', encoding='utf-8') as tap_file:
             tap_file_content = "\n".join(tap_report_lines) + "\n"

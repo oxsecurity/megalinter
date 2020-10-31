@@ -38,4 +38,4 @@ plugins:
 #########
 # Rules #
 #########
-rules: {}
+rules: { }

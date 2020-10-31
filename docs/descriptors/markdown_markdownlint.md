@@ -15,17 +15,19 @@
 
 ### Mega-linter configuration
 
-- Enable markdownlint by adding `MARKDOWN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable markdownlint by adding `MARKDOWN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| MARKDOWN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| MARKDOWN_FILE_NAME | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.markdown-lint.yml` |
-| MARKDOWN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| MARKDOWN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| MARKDOWN_MARKDOWNLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| MARKDOWN_MARKDOWNLINT_FILE_NAME | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.markdown-lint.yml` |
+| MARKDOWN_MARKDOWNLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -43,6 +45,10 @@ markdownlint myfile.css
 
 ```shell
 markdownlint -c .markdown-lint.yml myfile.md
+```
+
+```shell
+markdownlint --fix -c .markdown-lint.yml myfile.md
 ```
 
 

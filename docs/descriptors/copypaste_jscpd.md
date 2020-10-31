@@ -22,17 +22,17 @@
 
 ### Mega-linter configuration
 
-- Enable jscpd by adding `COPYPASTE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable jscpd by adding `COPYPASTE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| COPYPASTE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| COPYPASTE_FILE_NAME | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
-| COPYPASTE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| COPYPASTE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| COPYPASTE_JSCPD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| COPYPASTE_JSCPD_FILE_NAME | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
+| COPYPASTE_JSCPD_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| COPYPASTE_JSCPD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

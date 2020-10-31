@@ -28,7 +28,7 @@ class Megalinter:
         self.initialize_logger()
         self.display_header()
         # Mega-Linter default rules location
-        self.default_rules_location = '/action/lib/.automation' if os.path.exists('/action/lib/.automation') \
+        self.default_rules_location = '/action/lib/.automation' if os.path.isdir('/action/lib/.automation') \
             else os.path.relpath(os.path.relpath(os.path.dirname(os.path.abspath(__file__)) + '/../TEMPLATES'))
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + '.github/linters'
@@ -49,7 +49,7 @@ class Megalinter:
         self.disable_linters = utils.get_dict_string_list(
             os.environ, 'DISABLE_LINTERS', [])
         self.manage_default_linter_activation()
-
+        self.apply_fixes = os.environ.get('APPLY_FIXES', 'none')
         # Report vars
         self.report_folder = os.environ.get(
             'REPORT_OUTPUT_FOLDER', self.github_workspace + os.path.sep + 'report')
@@ -109,29 +109,29 @@ class Megalinter:
         default_workspace = os.environ.get('DEFAULT_WORKSPACE', '')
         github_workspace = os.environ.get('GITHUB_WORKSPACE', '')
         # Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint
-        if default_workspace == '' and github_workspace != '' and os.path.exists(github_workspace + '/tmp/lint'):
+        if default_workspace == '' and github_workspace != '' and os.path.isdir(github_workspace + '/tmp/lint'):
             logging.debug('Context: Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint')
             return github_workspace + '/tmp/lint'
         # Docker run without override of DEFAULT_WORKSPACE
-        elif default_workspace != '' and os.path.exists('/tmp/lint' + os.path.sep + default_workspace):
+        elif default_workspace != '' and os.path.isdir('/tmp/lint' + os.path.sep + default_workspace):
             logging.debug('Context: Docker run without override of DEFAULT_WORKSPACE')
             return default_workspace + '/tmp/lint' + os.path.sep + default_workspace
         # Docker run with override of DEFAULT_WORKSPACE for test cases
-        elif default_workspace != '' and os.path.exists(default_workspace):
+        elif default_workspace != '' and os.path.isdir(default_workspace):
             logging.debug('Context: Docker run with override of DEFAULT_WORKSPACE for test cases')
             return default_workspace
         # Docker run test classes without override of DEFAULT_WORKSPACE
-        elif os.path.exists('/tmp/lint'):
+        elif os.path.isdir('/tmp/lint'):
             logging.debug('Context: Docker run test classes without override of DEFAULT_WORKSPACE')
             return '/tmp/lint'
         # Github action with override of DEFAULT_WORKSPACE
         elif default_workspace != '' and github_workspace != '' \
-                and os.path.exists(github_workspace + os.path.sep + default_workspace):
+                and os.path.isdir(github_workspace + os.path.sep + default_workspace):
             logging.debug('Context: Github action with override of DEFAULT_WORKSPACE')
             return github_workspace + os.path.sep + default_workspace
         # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint
         elif default_workspace == '' and github_workspace != '' \
-                and github_workspace != '/' and os.path.exists(github_workspace):
+                and github_workspace != '/' and os.path.isdir(github_workspace):
             logging.debug('Context: Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint')
             return github_workspace
         # Unable to identify workspace
@@ -180,7 +180,8 @@ class Megalinter:
                               'disable_linters': self.disable_linters,
                               'workspace': self.workspace,
                               'github_workspace': self.github_workspace,
-                              'report_folder': self.report_folder}
+                              'report_folder': self.report_folder,
+                              'apply_fixes': self.apply_fixes}
 
         # Build linters from descriptor files
         all_linters = utils.list_all_linters(linter_init_params)
@@ -240,7 +241,7 @@ class Megalinter:
             repo.git.checkout(current_branch)
             logging.info(f"Git diff :\n{diff}")
             for diff_line in diff.splitlines():
-                if os.path.exists(self.workspace + os.path.sep + diff_line):
+                if os.path.isfile(self.workspace + os.path.sep + diff_line):
                     all_files += [self.workspace + os.path.sep + diff_line]
         else:
             # List all files under workspace root directory
@@ -310,7 +311,7 @@ class Megalinter:
                             level=logging_level,
                             format='%(asctime)s [%(levelname)s] %(message)s',
                             handlers=[
-                                logging.FileHandler(log_file),
+                                logging.FileHandler(log_file, 'w', 'utf-8'),
                                 logging.StreamHandler(sys.stdout)
                             ])
 

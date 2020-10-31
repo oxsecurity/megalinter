@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable luacheck by adding `LUA` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable luacheck by adding `LUA` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| LUA_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| LUA_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| LUA_FILE_NAME | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
-| LUA_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| LUA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| LUA_LUACHECK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| LUA_LUACHECK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| LUA_LUACHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| LUA_LUACHECK_FILE_NAME | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
+| LUA_LUACHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| LUA_LUACHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -120,7 +120,7 @@ Options for configuring allowed globals:
                             luajit - globals of LuaJIT 2.x;
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;
-                            love - globals added by LÃ–VE;
+                            love - globals added by LÖVE;
                             busted - globals added by Busted 2.0, by default
                             added for files ending with _spec.lua within spec,
                             test, and tests subdirectories;

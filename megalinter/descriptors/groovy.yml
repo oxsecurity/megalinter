@@ -19,6 +19,7 @@ linters:
     cli_lint_extra_args:
       - '--failon'
       - 'warning'
+    # cli_lint_fix_arg_name: '--fix' # Disabled while it does not work
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:
       - "npm-groovy-lint --failon warning --path . --files myfile.groovy"

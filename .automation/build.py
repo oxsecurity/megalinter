@@ -256,8 +256,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        "| <!-- --> | Language / Format | Linter | Configuration key |",
-        "| --- | ----------------- | -------------- | ------------ |"]
+        "| <!-- --> | Language / Format | Linter | Configuration key | Fix |",
+        "| --- | ----------------- | -------------- | ------------ | ------- |"]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ''
     for linter in descriptor_linters:
@@ -268,11 +268,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         descriptor_label = f"**{linter.descriptor_label}** ({linter.descriptor_id})" \
             if hasattr(linter, 'descriptor_label') else f"**{linter.descriptor_id}**"
         if prev_lang != linter.descriptor_id and \
-                os.path.exists(REPO_ICONS + '/' + linter.descriptor_id.lower() + '.ico'):
+                os.path.isfile(REPO_ICONS + '/' + linter.descriptor_id.lower() + '.ico'):
             icon_html = icon(f"{DOCS_URL_RAW_ROOT}/assets/icons/{linter.descriptor_id.lower()}.ico",
                              '', '', descriptor_label, 32)
         elif prev_lang != linter.descriptor_id and \
-                os.path.exists(REPO_ICONS + '/default.ico'):
+                os.path.isfile(REPO_ICONS + '/default.ico'):
             icon_html = icon(f"{DOCS_URL_RAW_ROOT}/assets/icons/default.ico",
                              '', '', descriptor_label, 32)
         else:
@@ -280,10 +280,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         descriptor_url = doc_url(f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
         descriptor_id_cell = f"[{descriptor_label}]({descriptor_url})" if prev_lang != linter.descriptor_id else ''
         prev_lang = linter.descriptor_id
+        fix_col = '' if linter.cli_lint_fix_arg_name is None else ':heavy_check_mark:'
         linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         linters_tables_md += [
             f"| {icon_html} | {descriptor_id_cell} | [{linter.linter_name}]({doc_url(linter_doc_url)})"
-            f"| [{linter.name}]({doc_url(linter_doc_url)}) |"]
+            f"| [{linter.name}]({doc_url(linter_doc_url)})"
+            f"| {fix_col} |"]
 
         # Build individual linter doc
         linter_doc_md = [
@@ -336,7 +338,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Default rules riles
         if linter.config_file_name is not None:
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
-            if os.path.exists(f"{REPO_HOME}{os.path.sep}{config_file}"):
+            if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [f"  - If custom {linter.config_file_name} is not found, "
                                   f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name})"
                                   " will be used"]
@@ -351,11 +353,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += ['']
         # Mega-linter variables
         activation_url = "https://github.com/nvuillam/mega-linter#activation-and-deactivation"
+        apply_fixes_url = "https://github.com/nvuillam/mega-linter#apply-fixes"
         linter_doc_md += [
             "### Mega-linter configuration",
             "",
             f"- Enable {linter.linter_name} by adding `{linter.name}` in [ENABLE_LINTERS variable]({activation_url})",
-            f"- Disable {linter.linter_name} by adding `{linter.name}` in [DISABLE_LINTERS variable]({activation_url})",
+            f"- Disable {linter.linter_name} by adding `{linter.name}` in [DISABLE_LINTERS variable]({activation_url})"]
+        if linter.cli_lint_fix_arg_name is not None:
+            linter_doc_md += [
+                "",
+                f"- Enable **auto-fixes** by adding `{linter.name}` in [APPLY_FIXES variable]({apply_fixes_url})"
+            ]
+        linter_doc_md += [
             "",
             "| Variable | Description | Default value |",
             "| ----------------- | -------------- | -------------- |"]

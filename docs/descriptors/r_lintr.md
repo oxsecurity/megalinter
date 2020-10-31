@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable lintr by adding `R` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable lintr by adding `R` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| R_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| R_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| R_FILE_NAME | lintr configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.lintr` |
-| R_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| R_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| R_LINTR_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| R_LINTR_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| R_LINTR_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| R_LINTR_FILE_NAME | lintr configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.lintr` |
+| R_LINTR_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| R_LINTR_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -48,8 +48,8 @@ R --slave -e "errors <- lintr::lint('myfile.r'); print(errors); quit(save = 'no'
 ### Help content
 
 ```shell
-No documentation for â€˜lintrâ€™ in specified packages and libraries:
-you could try â€˜??lintrâ€™
+No documentation for ‘lintr’ in specified packages and libraries:
+you could try ‘??lintr’
 
 ```
 
