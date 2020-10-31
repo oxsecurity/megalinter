@@ -72,8 +72,8 @@ jobs:
 
       # Push new commit if applicable
       - name: Commit and push applied linter fixes
-        if: (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: '[Mega-Linter] Apply linters fixes'
+          commit_message: "[Mega-Linter] Apply linters fixes"
           token: ${{ secrets.PAT }}
