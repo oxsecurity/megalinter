@@ -25,7 +25,7 @@ class TapReporter(Reporter):
             if os.environ.get('OUTPUT_DETAIL', '') == 'detailed':
                 self.report_type = 'detailed'
 
-    def add_report_item(self, file, status_code, stdout, index):
+    def add_report_item(self, file, status_code, stdout, index, fixed=False):
         if self.master.cli_lint_mode == 'project':
             return
         tap_status = "ok" if status_code == 0 else 'not ok'

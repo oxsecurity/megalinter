@@ -25,6 +25,8 @@
 - Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_BLACK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -50,6 +52,10 @@ black --diff --check myfile.py
 
 ```shell
 black --config .python-black --diff --check myfile.py
+```
+
+```shell
+black --config .python-black myfile.py
 ```
 
 

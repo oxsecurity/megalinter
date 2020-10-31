@@ -850,4 +850,4 @@ ENVIRONMENT MODULES:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [snakemake==5.26.1](https://pypi.org/project/snakemake==5.26.1)
+  - [snakemake](https://pypi.org/project/snakemake)
