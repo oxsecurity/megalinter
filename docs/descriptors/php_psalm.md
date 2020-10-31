@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://psalm.dev**](https://psalm.dev)
-- Version: **4.0.1**
+- Version: **4.1.0**
 
 ## Configuration
 
@@ -77,9 +77,6 @@ Basic configuration:
 
     --no-diff
         Turns off Psalm’s diff mode, checks all files regardless of whether they've changed
-
-    --diff-methods
-        Only checks methods that have changed since last run (and their dependents)
 
 Surfacing issues:
     --show-info[=BOOLEAN]

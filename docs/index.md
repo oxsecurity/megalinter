@@ -232,6 +232,33 @@ jobs:
             report
             mega-linter.log
 
+      # This step will evaluate the repo status and report the change
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
+      # Create pull request if applicable
+      - name: Create Pull Request with applied fixes
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: "[Mega-Linter] Apply linters automatic fixes"
+          title: "[Mega-Linter] Apply linters automatic fixes"
+          labels: bot
+      - name: Create PR output
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+
+      # Push new commit if applicable
+      - name: Commit and push applied linter fixes
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: '[Mega-Linter] Apply linters fixes'
+          token: ${{ secrets.PAT }}
 ```
 
 ### Add Mega-Linter badge in your repository README

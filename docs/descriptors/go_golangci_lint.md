@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
-- Version: **master**
+- Version: **1.32.1**
 
 ## Configuration
 
@@ -79,6 +79,7 @@ Flags:
       --mem-profile-path string   Path to memory profile output file
       --trace-path string         Path to trace output file
   -v, --verbose                   verbose output
+      --version                   Print version
 
 Use "golangci-lint [command] --help" for more information about a command.
 
