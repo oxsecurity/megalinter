@@ -49,8 +49,9 @@ class GithubCommentReporter(Reporter):
                     linter_link = f"[{linter.linter_name}]({linter_doc_url})"
                     errors_cell = f"[**{linter.number_errors}**]({action_run_url})" if linter.number_errors > 0 \
                         else linter.number_errors
+                    nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ''
                     table_data_raw += [
-                        [first_col, linter_link, len(linter.files), len(linter.number_fixed), errors_cell]]
+                        [first_col, linter_link, len(linter.files), nb_fixed_cell, errors_cell]]
             # Build markdown table
             table_data_raw.pop(0)
             writer = MarkdownTableWriter(

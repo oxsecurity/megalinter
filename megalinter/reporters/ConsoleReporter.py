@@ -24,8 +24,9 @@ class ConsoleReporter(Reporter):
         table_data = [table_header]
         for linter in self.master.linters:
             if linter.is_active is True:
+                nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ''
                 table_data += [
-                    [linter.descriptor_id, linter.linter_name, str(len(linter.files)), str(linter.number_fixed),
+                    [linter.descriptor_id, linter.linter_name, str(len(linter.files)), nb_fixed_cell,
                      str(linter.number_errors)]]
         table = terminaltables.AsciiTable(table_data)
         table.title = "----SUMMARY"
