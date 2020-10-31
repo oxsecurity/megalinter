@@ -34,7 +34,7 @@ class TextReporter(Reporter):
             file_text_lines = [
                 f"{status} {self.master.workspace}"]
         if fixed is True:
-            file_text_lines[0] = file_text_lines[0]+' - FIXED'
+            file_text_lines[0] = file_text_lines[0] + ' - FIXED'
         if self.report_type == 'detailed' or status_code != 0:
             std_out_text = stdout.rstrip(f" {os.linesep}") + os.linesep
             std_out_text = "\n    ".join(std_out_text.split(os.linesep))

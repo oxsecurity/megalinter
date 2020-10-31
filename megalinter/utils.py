@@ -203,8 +203,8 @@ def decode_utf8(stdout):
 def check_updated_file(file):
     repo = Repo(REPO_HOME)
     changed_files = [item.a_path for item in repo.index.diff(None)]
-    file_base_name = os.path.basename(file)
+    file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
-        if os.path.basename(changed_file) == file_base_name:
+        if os.path.abspath(changed_file) == file_absolute:
             return True
     return False
