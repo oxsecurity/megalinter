@@ -17,7 +17,7 @@ linters:
       - "snakemake --lint -s Snakefile"
     install:
       pip:
-        - "snakemake==5.26.1"
+        - snakemake
   # Snake Fmt
   - linter_name: snakefmt
     name: SNAKEMAKE_SNAKEFMT
