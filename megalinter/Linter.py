@@ -63,6 +63,7 @@ class Linter:
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = '-c'
         self.cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
+        self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
         self.cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
@@ -443,12 +444,14 @@ class Linter:
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined
+        fix = False
         if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
             cmd += [self.cli_lint_fix_arg_name]
+            fix = True
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
-        # Add config arguments if defined
-        if self.config_file is not None:
+        # Add config arguments if defined (except for case when no_config_if_fix is True)
+        if self.config_file is not None and not (self.no_config_if_fix is True and fix is True):
             if self.cli_config_arg_name.endswith('='):
                 cmd += [self.cli_config_arg_name + self.config_file]
             elif self.cli_config_arg_name != '':

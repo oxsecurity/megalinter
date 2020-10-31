@@ -11,6 +11,7 @@ linters:
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
     config_file_name: .markdown-lint.yml
     cli_lint_fix_arg_name: '--fix'
+    no_config_if_fix: true
     examples:
       - "markdownlint myfile.css"
       - "markdownlint -c .markdown-lint.yml myfile.md"
