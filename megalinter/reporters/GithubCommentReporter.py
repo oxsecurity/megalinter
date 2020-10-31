@@ -77,10 +77,23 @@ class GithubCommentReporter(Reporter):
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
             for pr in pr_list:
+                # Ignore if PR is already merged
                 if pr.is_merged():
                     continue
+                # Check if there is already a comment from Mega-Linter
+                existing_comment = None
+                existing_comments = pr.get_issue_comments()
+                for comment in existing_comments:
+                    if "See errors details in [**artifact Mega-Linter reports** on" in comment.body:
+                        existing_comment = comment
+                # Process comment
                 try:
-                    pr.create_issue_comment(p_r_msg)
+                    # Edit if there is already a Mega-Linter comment
+                    if existing_comment is not None:
+                        existing_comment.edit(p_r_msg)
+                    # Or create a new PR comment
+                    else:
+                        pr.create_issue_comment(p_r_msg)
                     logging.debug(f'Posted Github comment: {p_r_msg}')
                     logging.info(f'Posted summary as comment on {github_repo} #PR{pr.number}')
                 except github.GithubException as e:
