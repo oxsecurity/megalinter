@@ -18,8 +18,6 @@
 - Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
-
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GROOVY_NPM_GROOVY_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
