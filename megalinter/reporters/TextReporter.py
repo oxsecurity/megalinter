@@ -25,7 +25,7 @@ class TextReporter(Reporter):
             if os.environ.get('OUTPUT_DETAIL', '') == 'detailed':
                 self.report_type = 'detailed'
 
-    def add_report_item(self, file, status_code, stdout, index):
+    def add_report_item(self, file, status_code, stdout, index, fixed=False):
         status = "[SUCCESS]" if status_code == 0 else '[ERROR]'
         if file is not None:
             file_text_lines = [
@@ -33,6 +33,8 @@ class TextReporter(Reporter):
         else:
             file_text_lines = [
                 f"{status} {self.master.workspace}"]
+        if fixed is True:
+            file_text_lines[0] = file_text_lines[0]+' - FIXED'
         if self.report_type == 'detailed' or status_code != 0:
             std_out_text = stdout.rstrip(f" {os.linesep}") + os.linesep
             std_out_text = "\n    ".join(std_out_text.split(os.linesep))

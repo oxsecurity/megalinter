@@ -35,7 +35,7 @@ class GithubCommentReporter(Reporter):
             run_id = os.environ['GITHUB_RUN_ID']
             sha = os.environ.get('GITHUB_SHA')
             action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
-            table_header = ["Descriptor", "Linter", "Found", "Errors"]
+            table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
             table_data_raw = [table_header]
             for linter in self.master.linters:
                 if linter.is_active is True:
@@ -50,7 +50,7 @@ class GithubCommentReporter(Reporter):
                     errors_cell = f"[**{linter.number_errors}**]({action_run_url})" if linter.number_errors > 0 \
                         else linter.number_errors
                     table_data_raw += [
-                        [first_col, linter_link, len(linter.files), errors_cell]]
+                        [first_col, linter_link, len(linter.files), len(linter.number_fixed), errors_cell]]
             # Build markdown table
             table_data_raw.pop(0)
             writer = MarkdownTableWriter(

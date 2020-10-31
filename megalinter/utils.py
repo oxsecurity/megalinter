@@ -8,8 +8,12 @@ import os
 import re
 
 import yaml
+from git import Repo
 
 from megalinter.Linter import Linter
+
+REPO_HOME = '/tmp/lint' if os.path.isdir('/tmp/lint') else os.path.dirname(
+    os.path.abspath(__file__)) + os.path.sep + '..'
 
 
 def list_excluded_directories():
@@ -194,3 +198,13 @@ def decode_utf8(stdout):
     except Exception:
         res = str(stdout)
     return res
+
+
+def check_updated_file(file):
+    repo = Repo(REPO_HOME)
+    changed_files = [item.a_path for item in repo.index.diff(None)]
+    file_base_name = os.path.basename(file)
+    for changed_file in changed_files:
+        if os.path.basename(changed_file) == file_base_name:
+            return True
+    return False

@@ -151,9 +151,11 @@ class Linter:
             # Runtime items
             self.files = []
             self.disable_errors = False
+            self.try_fix = False
             self.status = "success"
             self.return_code = 0
             self.number_errors = 0
+            self.number_fixed = 0
             self.files_lint_results = []
 
     # Enable or disable linter
@@ -253,19 +255,24 @@ class Linter:
                     self.status = "error"
                     self.return_code = 1
                     self.number_errors = self.number_errors + 1
+                fixed = megalinter.utils.check_updated_file(file)
+                if fixed is True:
+                    self.number_fixed = self.number_fixed + 1
                 # store result
                 self.files_lint_results += [{
                     'file': file,
                     'status_code': return_code,
                     'status': status,
-                    'stdout': stdout
+                    'stdout': stdout,
+                    'fixed': fixed
                 }]
                 # Update reports with file result
                 for reporter in self.reporters:
                     reporter.add_report_item(file=file,
                                              status_code=return_code,
                                              stdout=stdout,
-                                             index=index)
+                                             index=index,
+                                             fixed=fixed)
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -444,14 +451,13 @@ class Linter:
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined
-        fix = False
         if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
             cmd += [self.cli_lint_fix_arg_name]
-            fix = True
+            self.try_fix = True
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
-        if self.config_file is not None and not (self.no_config_if_fix is True and fix is True):
+        if self.config_file is not None and not (self.no_config_if_fix is True and self.try_fix is True):
             if self.cli_config_arg_name.endswith('='):
                 cmd += [self.cli_config_arg_name + self.config_file]
             elif self.cli_config_arg_name != '':
