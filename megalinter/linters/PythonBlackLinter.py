@@ -4,8 +4,6 @@ Use black to lint/format python files
 https://github.com/psf/black
 """
 
-import os.path
-
 from megalinter import Linter
 
 
