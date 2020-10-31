@@ -125,8 +125,7 @@ class Megalinter:
             logging.debug('Context: Docker run test classes without override of DEFAULT_WORKSPACE')
             return '/tmp/lint'
         # Github action with override of DEFAULT_WORKSPACE
-        elif default_workspace != '' and github_workspace != '' \
-                and os.path.isdir(github_workspace + os.path.sep + default_workspace):
+        elif default_workspace != '' and github_workspace != '' and os.path.isdir(github_workspace + os.path.sep + default_workspace):
             logging.debug('Context: Github action with override of DEFAULT_WORKSPACE')
             return github_workspace + os.path.sep + default_workspace
         # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint

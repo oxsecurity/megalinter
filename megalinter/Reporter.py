@@ -28,7 +28,7 @@ class Reporter:
         pass
 
     # Method produce_report can be overridden at custom report class
-    def add_report_item(self, **kwargs):
+    def add_report_item(self,**kwargs):
         pass
 
     # Method produce_report can be overridden at custom report class
