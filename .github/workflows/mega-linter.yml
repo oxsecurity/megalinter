@@ -56,6 +56,16 @@ jobs:
         if: ${{ success() }} || ${{ failure() }}
         uses: UnicornGlobal/has-changes-action@v1.0.11
 
+      - name: Debug
+        if: ${{ success() }} || ${{ failure() }}
+        run: |
+          echo "steps.changes.outputs.changed : ${{ steps.changes.outputs.changed }}"
+          echo "github.event_name : ${{ github.event_name }}"
+          echo "github.ref : ${{ github.ref }}"
+          echo "env.APPLY_FIXES - ${{ env.APPLY_FIXES }}"
+          echo "env.APPLY_FIXES_EVENT - ${{ env.APPLY_FIXES_EVENT }}"
+          echo "env.APPLY_FIXES_MODE - ${{ env.APPLY_FIXES_MODE }}"
+
       # Create pull request if applicable
       - name: Create Pull Request with applied fixes
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
