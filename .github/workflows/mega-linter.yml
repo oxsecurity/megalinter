@@ -62,7 +62,7 @@ jobs:
           echo "steps.changes.outputs.changed : ${{ steps.changes.outputs.changed }}"
           echo "github.event_name : ${{ github.event_name }}"
           echo "github.ref : ${{ github.ref }}"
-          echo "github.ref : ${{ github.event.pull_request.head.ref || github.ref }}"
+          echo "github.event.pull_request.head.ref : ${{ github.event.pull_request.head.ref }}"
           echo "env.APPLY_FIXES - ${{ env.APPLY_FIXES }}"
           echo "env.APPLY_FIXES_EVENT - ${{ env.APPLY_FIXES_EVENT }}"
           echo "env.APPLY_FIXES_MODE - ${{ env.APPLY_FIXES_MODE }}"
