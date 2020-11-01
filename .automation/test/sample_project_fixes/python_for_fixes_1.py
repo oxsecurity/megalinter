@@ -14,8 +14,8 @@ github_token = getenv("GITHUB_TOKEN", default=None)
 if github_token is None:
     sys.exit(
         "GitHub Token is not set."
-        +"Please set the GITHUB_TOKEN env variable in your system or "
-        +"the .env file of your project."
+        + "Please set the GITHUB_TOKEN env variable in your system or "
+        + "the .env file of your project."
     )
 
 client_id = getenv("CLIENT_ID", default="copy_labels.py")
@@ -46,7 +46,9 @@ def create_label(repo_id, label):
         }
     }
 
-    with open(       path.join(path.dirname(__file__), "queries/create_label.gql"), "r"    ) as query_file:
+    with open(
+        path.join(path.dirname(__file__), "queries/create_label.gql"), "r"
+    ) as query_file:
         query = "".join(query_file.readlines())
 
     payload = {"query": query, "variables": query_variables}
@@ -89,7 +91,9 @@ def get_labels(owner, repo):
         return repo_id, labels
     else:
         raise Exception(
-            "[ERROR] getting issue labels. Status Code: {status_code} - Message: {result}".format( status_code=status_code, result=result["message"] )
+            "[ERROR] getting issue labels. Status Code: {status_code} - Message: {result}".format(
+                status_code=status_code, result=result["message"]
+            )
         )
 
 

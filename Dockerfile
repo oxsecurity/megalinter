@@ -185,6 +185,7 @@ RUN npm install --no-cache \
                 eslint-plugin-jest \
                 eslint-plugin-prettier \
                 babel-eslint \
+                @typescript-eslint/parser \
                 standard@15.0.1 \
                 jsonlint \
                 markdownlint-cli \
@@ -194,8 +195,7 @@ RUN npm install --no-cache \
                 tekton-lint@0.4.2 \
                 prettier \
                 prettyjson \
-                @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser
+                @typescript-eslint/eslint-plugin
 #NPM__END
 
 # Add node packages to path #

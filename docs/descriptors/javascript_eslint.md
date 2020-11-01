@@ -131,3 +131,4 @@ Miscellaneous:
   - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
   - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
   - [babel-eslint](https://www.npmjs.com/package/babel-eslint)
+  - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)

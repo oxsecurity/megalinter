@@ -31,6 +31,7 @@ linters:
         - eslint-plugin-jest
         - eslint-plugin-prettier
         - babel-eslint
+        - "@typescript-eslint/parser"
   # STANDARD
   - linter_name: standard
     linter_url: https://github.com/standard/standard
