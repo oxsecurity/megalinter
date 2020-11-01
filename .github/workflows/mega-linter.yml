@@ -25,6 +25,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.PAT || env.GITHUB_TOKEN }}
           # Full git history is needed to get a proper list of changed files within `mega-linter`
           fetch-depth: 0
 
@@ -56,25 +57,12 @@ jobs:
         if: ${{ success() }} || ${{ failure() }}
         uses: UnicornGlobal/has-changes-action@v1.0.11
 
-      - name: Debug
-        if: ${{ success() }} || ${{ failure() }}
-        run: |
-          echo "steps.changes.outputs.changed : ${{ steps.changes.outputs.changed }}"
-          echo "github.event_name : ${{ github.event_name }}"
-          echo "github.ref : ${{ github.ref }}"
-          echo "github.head_ref : ${{ github.head_ref }}"
-          echo "github.event.pull_request.head.ref : ${{ github.event.pull_request.head.ref }}"
-          echo "env.APPLY_FIXES - ${{ env.APPLY_FIXES }}"
-          echo "env.APPLY_FIXES_EVENT - ${{ env.APPLY_FIXES_EVENT }}"
-          echo "env.APPLY_FIXES_MODE - ${{ env.APPLY_FIXES_MODE }}"
-          sudo chown -Rc $UID .git/
-
       # Create pull request if applicable
       - name: Create Pull Request with applied fixes
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT || env.GITHUB_TOKEN }}
           commit-message: "[Mega-Linter] Apply linters automatic fixes"
           title: "[Mega-Linter] Apply linters automatic fixes"
           labels: bot
@@ -85,6 +73,9 @@ jobs:
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
       # Push new commit if applicable
+      - name: Prepare commit
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
+        run: sudo chown -Rc $UID .git/
       - name: Commit and push applied linter fixes
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
         uses: stefanzweifel/git-auto-commit-action@v4
