@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 MD041 -->
+<!-- markdownlint-disable MD013 MD033 MD041 -->
 
 <div align="center">
   <a href="https://github.com/nvuillam/mega-linter#readme" target="blank" title="Visit Mega-Linter Web Site">
