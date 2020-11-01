@@ -190,7 +190,7 @@ RUN npm install --no-cache \
                 jsonlint \
                 markdownlint-cli \
                 @stoplight/spectral@5.6.0 \
-                cspell \
+                cspell@4.1.3 \
                 sql-lint \
                 tekton-lint@0.4.2 \
                 prettier \
