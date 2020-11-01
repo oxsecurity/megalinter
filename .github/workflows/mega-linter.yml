@@ -67,6 +67,7 @@ jobs:
           echo "env.APPLY_FIXES - ${{ env.APPLY_FIXES }}"
           echo "env.APPLY_FIXES_EVENT - ${{ env.APPLY_FIXES_EVENT }}"
           echo "env.APPLY_FIXES_MODE - ${{ env.APPLY_FIXES_MODE }}"
+          sudo chown -Rc $UID .git/
 
       # Create pull request if applicable
       - name: Create Pull Request with applied fixes
