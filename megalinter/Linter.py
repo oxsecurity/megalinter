@@ -457,7 +457,7 @@ class Linter:
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
-        if self.config_file is not None and not (self.no_config_if_fix is True and self.try_fix is True):
+        if self.config_file is not None:
             if self.cli_config_arg_name.endswith('='):
                 cmd += [self.cli_config_arg_name + self.config_file]
             elif self.cli_config_arg_name != '':
