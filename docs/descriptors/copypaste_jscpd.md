@@ -46,7 +46,7 @@ jscpd --output ./report/copy-paste/ .
 ```
 
 ```shell
-jscpd --output ./report/copy-paste/ -c .eslintrc.yml .
+jscpd --output ./report/copy-paste/ -c .jscpd.json .
 ```
 
 

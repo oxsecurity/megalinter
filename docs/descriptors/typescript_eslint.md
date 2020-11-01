@@ -17,7 +17,7 @@
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
-  - If custom .eslintrc.yml is not found, [.eslintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc.yml) will be used
+  - If custom .eslintrc-ts.yml is not found, [.eslintrc-ts.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc-ts.yml) will be used
 - [Disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
 
 ### Mega-linter configuration
@@ -32,7 +32,7 @@
 | TYPESCRIPT_ES_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | TYPESCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| TYPESCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
+| TYPESCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc-ts.yml` |
 | TYPESCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TYPESCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
@@ -51,11 +51,11 @@ eslint myfile.ts
 ```
 
 ```shell
-eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.ts
+eslint -c .eslintrc-ts.yml --no-eslintrc --no-ignore myfile.ts
 ```
 
 ```shell
-eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.ts
+eslint -c .eslintrc-ts.yml --no-eslintrc --no-ignore --fix myfile.ts
 ```
 
 
