@@ -120,7 +120,7 @@ Options for configuring allowed globals:
                             luajit - globals of LuaJIT 2.x;
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;
-                            love - globals added by LÖVE;
+                            love - globals added by LÃ–VE;
                             busted - globals added by Busted 2.0, by default
                             added for files ending with _spec.lua within spec,
                             test, and tests subdirectories;

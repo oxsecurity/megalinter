@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://checkstyle.sourceforge.io**](https://checkstyle.sourceforge.io)
-- Version: **8.36.2**
+- Version: **8.37**
 
 ## Configuration
 
