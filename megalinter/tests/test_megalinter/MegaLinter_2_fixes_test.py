@@ -4,6 +4,7 @@ Unit tests for Megalinter class
 
 """
 import os
+import time
 import unittest
 
 from megalinter.tests.test_megalinter.helpers import utilstest
@@ -29,6 +30,7 @@ class MegalinterFixesTest(unittest.TestCase):
             len(super_linter.linters) > 0, "Linters have been created and run"
         )
         self.assertIn("Linting [JAVASCRIPT] files", output)
+        time.sleep(5)
         utilstest.assert_file_has_been_updated("javascript_for_fixes_1.js", True, self)
         utilstest.assert_file_has_been_updated("env_for_fixes_1.env", False, self)
 
@@ -40,6 +42,7 @@ class MegalinterFixesTest(unittest.TestCase):
             len(super_linter.linters) > 0, "Linters have been created and run"
         )
         self.assertIn("Linting [JAVASCRIPT] files", output)
+        time.sleep(5)
         # Markdown lint fix (disabled while it does not work)
         # utilstest.assert_file_has_been_updated('markdown_for_fixes_1.md', True, self)
         # eslint fix
