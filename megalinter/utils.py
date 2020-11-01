@@ -205,6 +205,6 @@ def check_updated_file(file):
     changed_files = [item.a_path for item in repo.index.diff(None)]
     file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
-        if os.path.abspath(changed_file) == file_absolute:
+        if changed_file in file_absolute:
             return True
     return False
