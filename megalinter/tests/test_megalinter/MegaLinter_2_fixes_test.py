@@ -21,10 +21,8 @@ class MegalinterFixesTest(unittest.TestCase):
         super_linter, output = utilstest.call_super_linter(
             {
                 "APPLY_FIXES": "JAVASCRIPT_ES",
-                "ENABLE": "JAVASCRIPT",
-                "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LOG_LEVEL": "DEBUG",
-                "MULTI_STATUS": "false",
+                "MULTI_STATUS": "false"
             }
         )
         self.assertTrue(
