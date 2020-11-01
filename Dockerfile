@@ -188,7 +188,7 @@ RUN npm install --no-cache \
                 standard@15.0.1 \
                 jsonlint \
                 markdownlint-cli \
-                @stoplight/spectral \
+                @stoplight/spectral@5.6.0 \
                 cspell \
                 sql-lint \
                 tekton-lint@0.4.2 \
