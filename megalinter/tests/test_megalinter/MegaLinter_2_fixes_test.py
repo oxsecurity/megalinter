@@ -22,7 +22,7 @@ class MegalinterFixesTest(unittest.TestCase):
             {
                 "APPLY_FIXES": "JAVASCRIPT_ES",
                 "LOG_LEVEL": "DEBUG",
-                "MULTI_STATUS": "false"
+                "MULTI_STATUS": "false",
             }
         )
         self.assertTrue(
