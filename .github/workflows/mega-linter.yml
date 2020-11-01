@@ -38,7 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
           DISABLE: CLOUDFORMATION,SPELL
-          DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT,PYTHON_BLACK
+          DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
