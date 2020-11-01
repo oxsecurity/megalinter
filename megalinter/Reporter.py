@@ -12,9 +12,9 @@ class Reporter:
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None):
-        self.master = params['master']
-        self.report_folder = params['report_folder']
-        if not hasattr(self, 'is_active'):
+        self.master = params["master"]
+        self.report_folder = params["report_folder"]
+        if not hasattr(self, "is_active"):
             self.is_active = False
         self.report_items = []
         self.manage_activation()
@@ -28,7 +28,7 @@ class Reporter:
         pass
 
     # Method produce_report can be overridden at custom report class
-    def add_report_item(self,**kwargs):
+    def add_report_item(self, **kwargs):
         pass
 
     # Method produce_report can be overridden at custom report class
