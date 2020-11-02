@@ -13,7 +13,7 @@ linters:
     linter_banner_image_url: https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
-    config_file_name: .eslintrc-ts.yml
+    config_file_name: .eslintrc.yml
     cli_config_extra_args:
       - "--no-eslintrc"
       - "--no-ignore"
@@ -27,8 +27,12 @@ linters:
         - eslint
         - eslint-config-airbnb
         - eslint-config-prettier
+        - eslint-config-standard
+        - eslint-plugin-import
         - eslint-plugin-jest
+        - eslint-plugin-node
         - eslint-plugin-prettier
+        - eslint-plugin-promise
         - babel-eslint
         - prettier
         - prettyjson

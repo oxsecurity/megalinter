@@ -21,15 +21,18 @@ linters:
     cli_lint_fix_arg_name: '--fix'
     examples:
       - "eslint myfile.js"
-      - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js"
-      - "eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.js"
+      - "eslint --fix myfile.js"
     install:
       npm:
         - eslint
         - eslint-config-airbnb
         - eslint-config-prettier
+        - eslint-config-standard
+        - eslint-plugin-import
         - eslint-plugin-jest
+        - eslint-plugin-node
         - eslint-plugin-prettier
+        - eslint-plugin-promise
         - babel-eslint
   # STANDARD
   - linter_name: standard

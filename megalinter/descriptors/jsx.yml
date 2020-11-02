@@ -21,3 +21,4 @@ linters:
     install:
       npm:
         - eslint
+        - eslint-plugin-react
