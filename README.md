@@ -21,7 +21,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
 - If you want a new commit to be automatically created with fixes applied by linters, uncomment `# APPLY_FIXES: all`
-- If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
+- If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml` 
 - Commit, push, and create a pull request
 - Watch !
 
