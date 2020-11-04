@@ -324,6 +324,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             "",
             "## Configuration",
             ""]
+        if hasattr(linter, 'linter_text') and linter.linter_text:
+            linter_doc_md += linter.linter_text.split(os.linesep)
         # Linter-specific configuration
         linter_doc_md += [
             f"### {linter.linter_name} configuration",

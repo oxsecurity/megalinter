@@ -14,6 +14,9 @@
 
 ## Configuration
 
+eslint requires a custom configuration file applicable to your project.
+You can create it by typing `npx eslint --init` in the root of your repository
+
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
