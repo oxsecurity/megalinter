@@ -14,6 +14,7 @@
     "**/docs/**",
     "**/lib/**",
     "**/sample_project_fixes/**",
+    "**/*.yml",
     "**/megalinter/descriptors/jsonschema.json",
     "**/megalinter/linters/RakuLinter.py",
     "**/megalinter/tests/test_megalinter/MegaLinter_1_test.py",
