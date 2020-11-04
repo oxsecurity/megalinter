@@ -12,12 +12,6 @@ from git import Repo
 
 from megalinter.Linter import Linter
 
-REPO_HOME = (
-    "/tmp/lint"
-    if os.path.isdir("/tmp/lint")
-    else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
-)
-
 
 def list_excluded_directories():
     excluded_dirs = ["node_modules", ".git", ".rbenv", ".venv", ".terragrunt-cache"]
@@ -212,8 +206,8 @@ def decode_utf8(stdout):
     return res
 
 
-def check_updated_file(file):
-    repo = Repo(REPO_HOME)
+def check_updated_file(file, repo_home):
+    repo = Repo(repo_home)
     changed_files = [item.a_path for item in repo.index.diff(None)]
     file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
