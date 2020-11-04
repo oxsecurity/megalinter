@@ -14,10 +14,12 @@
 
 ## Configuration
 
+eslint requires a custom configuration file applicable to your project.
+You can create it by typing `npx eslint --init` in the root of your repository
+
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
-  - If custom .eslintrc.yml is not found, [.eslintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc.yml) will be used
 - [Disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
 
 ### Mega-linter configuration
@@ -32,7 +34,7 @@
 | TSX_ESLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | TSX_ESLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | TSX_ESLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| TSX_ESLINT_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
+| TSX_ESLINT_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.json` |
 | TSX_ESLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TSX_ESLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
@@ -51,11 +53,11 @@ eslint myfile.tsx
 ```
 
 ```shell
-eslint -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.tsx
+eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx
 ```
 
 ```shell
-eslint --fix -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.tsx
+eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx
 ```
 
 

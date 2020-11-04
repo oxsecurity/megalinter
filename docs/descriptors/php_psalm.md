@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://psalm.dev**](https://psalm.dev)
-- Version: **4.1.0**
+- Version: **4.1.1**
 
 ## Configuration
 

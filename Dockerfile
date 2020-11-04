@@ -182,14 +182,19 @@ RUN npm install --no-cache \
                 eslint \
                 eslint-config-airbnb \
                 eslint-config-prettier \
+                eslint-config-standard \
+                eslint-plugin-import \
                 eslint-plugin-jest \
+                eslint-plugin-node \
                 eslint-plugin-prettier \
+                eslint-plugin-promise \
                 babel-eslint \
                 standard@15.0.1 \
                 jsonlint \
+                eslint-plugin-react \
                 markdownlint-cli \
-                @stoplight/spectral \
-                cspell \
+                @stoplight/spectral@5.6.0 \
+                cspell@4.1.3 \
                 sql-lint \
                 tekton-lint@0.4.2 \
                 prettier \

@@ -3,7 +3,7 @@
 # <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell" target="blank" title="Visit linter Web Site"><img src="https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default" alt="cspell" height="100px"></a>cspell
 
 - Web Site: [**https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell**](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme)
-- Version: **4.1.2**
+- Version: **4.1.3**
 
 ## Configuration
 

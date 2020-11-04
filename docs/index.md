@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 MD041 -->
+<!-- markdownlint-disable MD013 MD033 MD041 -->
 
 <div align="center">
   <a href="https://github.com/nvuillam/mega-linter#readme" target="blank" title="Visit Mega-Linter Web Site">
@@ -20,7 +20,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
 **TLDR;**
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
-- If you want a new commit to be automatically created with fixes applied by linters, uncomment `# APPLY_FIXES: all`
+- If you want to **apply formatters and auto-fixers** in a new commit/PR, uncomment [**APPLY_FIXES** variables](#apply-fixes)
 - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
 - Watch !
@@ -31,7 +31,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
 
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [additional features](#additional-features-compared-to-github-super-linter)
 - If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
-- If you want to use some advanced additional features like applying fixes during CI, please take 5 minutes to migrate to [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
+- If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
 
 ## Table of Contents
 
@@ -46,6 +46,7 @@ Automatically detect [**35 languages**](#languages), [**11 formats**](#formats),
     - [Add Mega-Linter badge in your repository README](#add-mega-linter-badge-in-your-repository-readme)
   - [Configuration](#configuration)
     - [Activation and deactivation](#activation-and-deactivation)
+    - [Apply fixes](#apply-fixes)
     - [Shared variables](#shared-variables)
     - [Linter specific variables](#linter-specific-variables)
     - [Filter linted files](#filter-linted-files)
@@ -209,6 +210,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.PAT || env.GITHUB_TOKEN }}
           fetch-depth: 0
 
       # Mega-Linter
@@ -222,7 +224,7 @@ jobs:
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
           # ADD YOUR CUSTOM ENV VARIABLES HERE
 
-      # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section
+      # Upload Mega-Linter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v2
@@ -235,6 +237,7 @@ jobs:
       # This step will evaluate the repo status and report the change
       - name: Check if there are changes
         id: changes
+        if: ${{ success() }} || ${{ failure() }}
         uses: UnicornGlobal/has-changes-action@v1.0.11
 
       # Create pull request if applicable
@@ -242,7 +245,7 @@ jobs:
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT || env.GITHUB_TOKEN }}
           commit-message: "[Mega-Linter] Apply linters automatic fixes"
           title: "[Mega-Linter] Apply linters automatic fixes"
           labels: bot
@@ -253,12 +256,15 @@ jobs:
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
       # Push new commit if applicable
+      - name: Prepare commit
+        if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
+        run: sudo chown -Rc $UID .git/
       - name: Commit and push applied linter fixes
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: '[Mega-Linter] Apply linters fixes'
-          token: ${{ secrets.PAT }}
+          branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
+          commit_message: "[Mega-Linter] Apply linters fixes"
 ```
 
 ### Add Mega-Linter badge in your repository README
@@ -325,6 +331,11 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 - **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
+
+You may see github permission errors, or workflows not run on the new commit. To solve these issues:
+
+- [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
+- [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
 ### Shared variables
 

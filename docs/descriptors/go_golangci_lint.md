@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
-- Version: **1.32.1**
+- Version: **1.32.2**
 
 ## Configuration
 

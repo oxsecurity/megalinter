@@ -14,10 +14,12 @@
 
 ## Configuration
 
+eslint requires a custom configuration file applicable to your project.
+You can create it by typing `npx eslint --init` in the root of your repository
+
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
-  - If custom .eslintrc.yml is not found, [.eslintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc.yml) will be used
 - [Disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
 
 ### Mega-linter configuration
@@ -32,7 +34,7 @@
 | JAVASCRIPT_ES_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| JAVASCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.yml` |
+| JAVASCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.json` |
 | JAVASCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVASCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
@@ -51,11 +53,11 @@ eslint myfile.js
 ```
 
 ```shell
-eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js
+eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
 ```
 
 ```shell
-eslint -c .eslintrc.yml --no-eslintrc --no-ignore --fix myfile.js
+eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js
 ```
 
 
@@ -128,6 +130,10 @@ Miscellaneous:
   - [eslint](https://www.npmjs.com/package/eslint)
   - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
   - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
+  - [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)
+  - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
   - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
+  - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
   - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
+  - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
   - [babel-eslint](https://www.npmjs.com/package/babel-eslint)
