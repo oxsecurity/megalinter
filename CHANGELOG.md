@@ -1,6 +1,6 @@
 # Changelog
 
-## [insiders]
+## [4.3.2] 2020-10-01
 
 - Add spell checker **cspell**
 - Add Github Action Workflow to automatically:
