@@ -322,7 +322,12 @@ class Linter:
                     self.status = "error"
                     self.return_code = 1
                     self.number_errors = self.number_errors + 1
-                fixed = megalinter.utils.check_updated_file(file, self.github_workspace)
+                if self.try_fix is True:
+                    fixed = megalinter.utils.check_updated_file(
+                        file, self.github_workspace
+                    )
+                else:
+                    fixed = False
                 if fixed is True:
                     self.number_fixed = self.number_fixed + 1
                 # store result
