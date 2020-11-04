@@ -7,10 +7,16 @@ import logging
 import os
 import re
 
+import git
 import yaml
-from git import Repo
 
 from megalinter.Linter import Linter
+
+REPO_HOME_DEFAULT = (
+    "/tmp/lint"
+    if os.path.isdir("/tmp/lint")
+    else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
+)
 
 
 def list_excluded_directories():
@@ -207,7 +213,10 @@ def decode_utf8(stdout):
 
 
 def check_updated_file(file, repo_home):
-    repo = Repo(repo_home)
+    try:
+        repo = git.Repo(repo_home)
+    except git.InvalidGitRepositoryError:
+        repo = git.Repo(REPO_HOME_DEFAULT)
     changed_files = [item.a_path for item in repo.index.diff(None)]
     file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
