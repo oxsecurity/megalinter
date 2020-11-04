@@ -18,6 +18,7 @@ REPO_HOME_DEFAULT = (
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 )
 
+
 def list_excluded_directories():
     excluded_dirs = ["node_modules", ".git", ".rbenv", ".venv", ".terragrunt-cache"]
     return excluded_dirs
