@@ -191,7 +191,7 @@ def test_get_linter_help(linter, test_self):
 
 def test_linter_report_tap(linter, test_self):
     test_folder = linter.test_folder
-    workspace = os.environ["DEFAULT_WORKSPACE"] + '/' + test_folder
+    workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     expected_file_name = ''
     # Identify expected report if defined

@@ -21,7 +21,7 @@ class MegalinterFixesTest(unittest.TestCase):
     def test_1_apply_fixes_on_one_linter(self):
         super_linter, output = utilstest.call_super_linter(
             {
-                "APPLY_FIXES": "JAVASCRIPT_ES",
+                "APPLY_FIXES": "JAVASCRIPT_STANDARD",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
             }
@@ -44,7 +44,7 @@ class MegalinterFixesTest(unittest.TestCase):
         self.assertIn("Linting [JAVASCRIPT] files", output)
         time.sleep(5)
         # Markdown lint fix (disabled while it does not work)
-        # utilstest.assert_file_has_been_updated('markdown_for_fixes_1.md', True, self)
+        utilstest.assert_file_has_been_updated('markdown_for_fixes_1.md', True, self)
         # eslint fix
         utilstest.assert_file_has_been_updated("javascript_for_fixes_1.js", True, self)
         # dotenv-linter fix
