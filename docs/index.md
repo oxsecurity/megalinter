@@ -210,7 +210,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT || env.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       # Mega-Linter
@@ -245,7 +245,7 @@ jobs:
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.PAT || env.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[Mega-Linter] Apply linters automatic fixes"
           title: "[Mega-Linter] Apply linters automatic fixes"
           labels: bot
