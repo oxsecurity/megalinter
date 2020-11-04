@@ -18,7 +18,10 @@ function BuildFileList() {
   VALIDATE_ALL_CODEBASE="${1}"
   debug "Validate all code base: ${VALIDATE_ALL_CODEBASE}..."
 
-  if [ "${VALIDATE_ALL_CODEBASE}" == "false" ]; then
+  TEST_CASE_RUN="${2}"
+  debug "TEST_CASE_RUN: ${TEST_CASE_RUN}..."
+
+  if [ "${VALIDATE_ALL_CODEBASE}" == "false" ] && [ "${TEST_CASE_RUN}" != "true" ]; then
     # Need to build a list of all files changed
     # This can be pulled from the GITHUB_EVENT_PATH payload
 
@@ -50,29 +53,53 @@ function BuildFileList() {
       fatal "[${SWITCH_CMD}]"
     fi
 
-    ################
-    # print header #
-    ################
-    debug "----------------------------------------------"
-    debug "Generating Diff with:[git diff --name-only '${DEFAULT_BRANCH}...${GITHUB_SHA}' --diff-filter=d]"
+    if [ "${GITHUB_EVENT_NAME}" == "push" ]; then
+      ################
+      # push event   #
+      ################
+      ################
+      # print header #
+      ################
+      debug "----------------------------------------------"
+      debug "Generating Diff with:[git diff-tree --no-commit-id --name-only -r \"${GITHUB_SHA}]\""
 
-    #################################################
-    # Get the Array of files changed in the commits #
-    #################################################
-    mapfile -t RAW_FILE_ARRAY < <(git -C "${GITHUB_WORKSPACE}" diff --name-only "${DEFAULT_BRANCH}...${GITHUB_SHA}" --diff-filter=d 2>&1)
+      #################################################
+      # Get the Array of files changed in the commits #
+      #################################################
+      mapfile -t RAW_FILE_ARRAY < <(git diff-tree --no-commit-id --name-only -r "${GITHUB_SHA}" 2>&1)
+    else
+      ################
+      # PR event     #
+      ################
+      ################
+      # print header #
+      ################
+      debug "----------------------------------------------"
+      debug "Generating Diff with:[git diff --name-only '${DEFAULT_BRANCH}...${GITHUB_SHA}' --diff-filter=d]"
+
+      #################################################
+      # Get the Array of files changed in the commits #
+      #################################################
+      mapfile -t RAW_FILE_ARRAY < <(git -C "${GITHUB_WORKSPACE}" diff --name-only "${DEFAULT_BRANCH}...${GITHUB_SHA}" --diff-filter=d 2>&1)
+    fi
   else
+    WORKSPACE_PATH="${GITHUB_WORKSPACE}"
+    if [ "${TEST_CASE_RUN}" == "true" ]; then
+        WORKSPACE_PATH="${GITHUB_WORKSPACE}/${TEST_CASE_FOLDER}"
+    fi
+
     ################
     # print header #
     ################
     debug "----------------------------------------------"
-    debug "Populating the file list with all the files in the ${GITHUB_WORKSPACE} workspace"
-    mapfile -t RAW_FILE_ARRAY < <(find "${GITHUB_WORKSPACE}" \
+    debug "Populating the file list with all the files in the ${WORKSPACE_PATH} workspace"
+    mapfile -t RAW_FILE_ARRAY < <(find "${WORKSPACE_PATH}" \
     -path "*/node_modules" -prune -o \
     -path "*/.git" -prune -o \
     -path "*/.venv" -prune -o \
     -path "*/.rbenv" -prune -o \
     -path "*/.terragrunt-cache" -prune -o \
-    -type f 2>&1)
+    -type f 2>&1 |  grep -v -w '\.git' | sort )
   fi
 
   #######################
@@ -98,7 +125,7 @@ function BuildFileList() {
     ###############################
     warn "No files were found in the GITHUB_WORKSPACE:[${GITHUB_WORKSPACE}] to lint!"
   fi
-  
+
   ################################################
   # Iterate through the array of all files found #
   ################################################
@@ -115,6 +142,19 @@ function BuildFileList() {
     # Print file #
     ##############
     debug "File:[${FILE}], File_type:[${FILE_TYPE}], Base_file:[${BASE_FILE}]"
+
+    ########################################################
+    # Don't include test cases if not running in test mode #
+    ########################################################
+    if [[ ${FILE} == *"${TEST_CASE_FOLDER}"* ]] && [ "${TEST_CASE_RUN}" != "true" ]; then
+      debug "TEST_CASE_RUN (${TEST_CASE_RUN}) is not true. Skipping ${FILE}..."
+      continue
+    ##################################################
+    # Include test cases if not running in test mode #
+    ##################################################
+    elif [[ ${FILE} != *"${TEST_CASE_FOLDER}"* ]] && [ "${TEST_CASE_RUN}" == "true" ]; then
+      debug "TEST_CASE_RUN (${TEST_CASE_RUN}) is true. Skipping ${FILE}..."
+    fi
 
     # Editorconfig-checker should check every file
     FILE_ARRAY_EDITORCONFIG+=("${FILE}")
@@ -391,6 +431,7 @@ function BuildFileList() {
       FILE_ARRAY_PYTHON_BLACK+=("${FILE}")
       FILE_ARRAY_PYTHON_PYLINT+=("${FILE}")
       FILE_ARRAY_PYTHON_FLAKE8+=("${FILE}")
+      FILE_ARRAY_PYTHON_ISORT+=("${FILE}")
 
     ######################
     # Get the RAKU files #
@@ -453,7 +494,7 @@ function BuildFileList() {
     ############################
     # Get the Terragrunt files #
     ############################
-    elif [ "${FILE_TYPE}" == "hcl" ]; then
+    elif [ "${FILE_TYPE}" == "hcl" ] && [[ ${FILE} != *".tflint.hcl"* ]]; then
       ################################
       # Append the file to the array #
       ################################
@@ -534,6 +575,10 @@ function BuildFileList() {
       ##############################################
       CheckFileType "${FILE}"
     fi
+    ##########################################
+    # Print line break after each file debug #
+    ##########################################
+    debug ""
   done
 
   if [ "${VALIDATE_ALL_CODEBASE}" == "false" ]; then
