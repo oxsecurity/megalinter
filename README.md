@@ -14,7 +14,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Automatically detect [**35 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
+Automatically detect [**36 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
 <!-- welcome-phrase-end -->
 
 **TLDR;**
@@ -97,6 +97,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px"></a> | [**PYTHON**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python.md#readme) | [pylint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_pylint.md#readme)| [PYTHON_PYLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_pylint.md#readme)|  |
 | <!-- --> |  | [black](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_black.md#readme)| [PYTHON_BLACK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_black.md#readme)| :heavy_check_mark: |
 | <!-- --> |  | [flake8](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_flake8.md#readme)| [PYTHON_FLAKE8](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_flake8.md#readme)|  |
+| <!-- --> |  | [isort](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_isort.md#readme)| [PYTHON_ISORT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_isort.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/r.ico" alt="" height="32px"></a> | [**R**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r.md#readme) | [lintr](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r_lintr.md#readme)| [R_LINTR](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r_lintr.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/raku.ico" alt="" height="32px"></a> | [**RAKU**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku.md#readme) | [raku](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku_raku.md#readme)| [RAKU_RAKU](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku_raku.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px"></a> | [**RUBY**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby.md#readme) | [rubocop](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby_rubocop.md#readme)| [RUBY_RUBOCOP](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby_rubocop.md#readme)| :heavy_check_mark: |
