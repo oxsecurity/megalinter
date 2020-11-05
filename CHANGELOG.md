@@ -1,5 +1,10 @@
 # Changelog
 
+## Insiders (master)
+
+- Add python iSort
+- Refresh fork
+
 ## [4.3.2] 2020-11-04
 
 - Add spell checker **cspell**
