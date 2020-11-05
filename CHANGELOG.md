@@ -2,7 +2,8 @@
 
 ## Insiders (master)
 
-- Add python iSort
+- Add Python [iSort](https://pycqa.github.io/isort/)
+- Quick fix "PR Comment" reporter (orange light emoji)
 - Refresh fork
 
 ## [4.3.2] 2020-11-04
