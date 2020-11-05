@@ -454,7 +454,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 - **Scala**
 - **Spell checker**
 
-### Apply fixes
+### Automatically apply fixes
 
 Mega-Linter can **automatically apply fixes performed by linters**, and **push them to the same branch**, or **create a Pull Request** that you can validate
 
