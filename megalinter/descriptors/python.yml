@@ -20,8 +20,7 @@ linters:
         - pylint
 
   # BLACK
-  - class: PythonBlackOrIsortLinter
-    linter_name: black
+  - linter_name: black
     name: PYTHON_BLACK
     linter_url: https://github.com/psf/black
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
@@ -32,6 +31,9 @@ linters:
       - "--diff"
       - "--check"
     cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_remove_args:
+      - "--diff"
+      - "--check"
     examples:
       - "black --diff --check myfile.py"
       - "black --config .python-black --diff --check myfile.py"
@@ -56,8 +58,7 @@ linters:
         - flake8
 
   # ISORT
-  - class: PythonBlackOrIsortLinter
-    linter_name: isort
+  - linter_name: isort
     name: PYTHON_ISORT
     linter_url: https://pycqa.github.io/isort/
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
@@ -71,6 +72,9 @@ linters:
       - "--profile"
       - "black"
     cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_remove_args:
+      - "--diff"
+      - "--check"
     examples:
       - "isort --diff --check --profile black myfile.py"
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"

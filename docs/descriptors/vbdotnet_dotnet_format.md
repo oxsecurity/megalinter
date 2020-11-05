@@ -14,34 +14,34 @@
 
 ### Mega-linter configuration
 
-- Enable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSHARP_DOTNET_FORMAT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CSHARP_DOTNET_FORMAT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| CSHARP_DOTNET_FORMAT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| VBDOTNET_DOTNET_FORMAT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
 - File extensions:
-  - `.cs`
+  - `.vb`
 
 
 ### Example calls
 
 ```shell
-dotnet-format --folder --check --exclude / --include myfile.cs
+dotnet-format --folder --check --exclude / --include myfile.vb
 ```
 
 ```shell
-dotnet-format --folder --exclude / --include myfile.cs
+dotnet-format --folder --exclude / --include myfile.vb
 ```
 
 
@@ -205,13 +205,6 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-# Parent descriptor install
-RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel Current -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
-# Linter install
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+RUN echo "dotnet-format installation is managed from csharp descriptor"
 ```
 

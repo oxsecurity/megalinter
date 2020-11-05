@@ -404,6 +404,9 @@ RUN terrascan init
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
+# dotnet-format installation
+RUN echo "dotnet-format installation is managed from csharp descriptor"
+
 #OTHER__END
 
 ######################
