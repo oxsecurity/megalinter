@@ -34,7 +34,7 @@
     "perlcritic": "1.138",
     "php": "7.3.24",
     "phpcs": "3.5.8",
-    "phpstan": "0.12.53",
+    "phpstan": "0.12.54",
     "powershell": "7.0.3",
     "protolint": "0.26.0",
     "psalm": "4.1.1",
