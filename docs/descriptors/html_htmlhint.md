@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable htmlhint by adding `HTML` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable htmlhint by adding `HTML` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| HTML_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| HTML_FILE_NAME | htmlhint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.htmlhintrc` |
-| HTML_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| HTML_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| HTML_HTMLHINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| HTML_HTMLHINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| HTML_HTMLHINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| HTML_HTMLHINT_FILE_NAME | htmlhint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.htmlhintrc` |
+| HTML_HTMLHINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| HTML_HTMLHINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

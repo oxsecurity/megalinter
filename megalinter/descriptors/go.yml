@@ -2,6 +2,7 @@ descriptor_id: GO
 descriptor_type: language
 file_extensions:
   - ".go"
+test_folder: golang
 install:
   apk:
     - go

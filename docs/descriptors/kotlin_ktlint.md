@@ -21,15 +21,17 @@
 
 ### Mega-linter configuration
 
-- Enable ktlint by adding `KOTLIN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable ktlint by adding `KOTLIN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| KOTLIN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| KOTLIN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| KOTLIN_KTLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| KOTLIN_KTLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| KOTLIN_KTLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -44,6 +46,10 @@
 
 ```shell
 ktlint myfile.kt
+```
+
+```shell
+ktlint --format myfile.kt
 ```
 
 

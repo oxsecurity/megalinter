@@ -16,4 +16,4 @@ linters:
       - "cspell -c cspell.json myfile.any"
     install:
       npm:
-        - cspell
+        - "cspell@4.1.3"

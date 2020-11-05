@@ -25,6 +25,8 @@
 - Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | CSS_STYLELINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -52,6 +54,10 @@ stylelint myfile.css
 
 ```shell
 stylelint --config .stylelintrc.json myfile.css
+```
+
+```shell
+stylelint --fix --config .stylelintrc.json myfile.css
 ```
 
 

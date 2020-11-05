@@ -157,6 +157,7 @@ RUN pip3 install --no-cache-dir \
           pylint \
           black \
           flake8 \
+          isort \
           snakemake \
           snakefmt \
           yamllint
@@ -182,14 +183,19 @@ RUN npm install --no-cache \
                 eslint \
                 eslint-config-airbnb \
                 eslint-config-prettier \
+                eslint-config-standard \
+                eslint-plugin-import \
                 eslint-plugin-jest \
+                eslint-plugin-node \
                 eslint-plugin-prettier \
+                eslint-plugin-promise \
                 babel-eslint \
-                standard \
+                standard@15.0.1 \
                 jsonlint \
+                eslint-plugin-react \
                 markdownlint-cli \
-                @stoplight/spectral \
-                cspell \
+                @stoplight/spectral@5.6.0 \
+                cspell@4.1.3 \
                 sql-lint \
                 tekton-lint@0.4.2 \
                 prettier \
@@ -240,7 +246,10 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 # PHP installation
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && gpg --keyserver pool.sks-keyservers.net --recv-keys 0x9D8A98B29B2D5D79 \
+    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
+    && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
@@ -249,13 +258,13 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 
 # POWERSHELL installation
 RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-    | grep browser_download_url \
-    | grep linux-alpine-x64 \
-    | cut -d '"' -f 4 \
-    | xargs -n 1 wget -O - \
-    | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+        && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+        && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 
 # RUST installation

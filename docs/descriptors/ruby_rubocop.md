@@ -22,17 +22,19 @@
 
 ### Mega-linter configuration
 
-- Enable rubocop by adding `RUBY` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable rubocop by adding `RUBY` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| RUBY_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| RUBY_FILE_NAME | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ruby-lint.yml` |
-| RUBY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| RUBY_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| RUBY_RUBOCOP_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| RUBY_RUBOCOP_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| RUBY_RUBOCOP_FILE_NAME | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ruby-lint.yml` |
+| RUBY_RUBOCOP_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| RUBY_RUBOCOP_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -50,6 +52,10 @@ rubocop --force-exclusion myfile.rb
 
 ```shell
 rubocop --force-exclusion -c .ruby-lint.yml myfile.rb
+```
+
+```shell
+rubocop --force-exclusion --safe-auto-correct -c .ruby-lint.yml myfile.rb
 ```
 
 

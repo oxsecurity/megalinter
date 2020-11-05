@@ -22,17 +22,17 @@
 
 ### Mega-linter configuration
 
-- Enable clj-kondo by adding `CLOJURE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable clj-kondo by adding `CLOJURE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| CLOJURE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| CLOJURE_FILE_NAME | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clj-kondo/config.edn` |
-| CLOJURE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| CLOJURE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| CLOJURE_CLJ_KONDO_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CLOJURE_CLJ_KONDO_FILE_NAME | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clj-kondo/config.edn` |
+| CLOJURE_CLJ_KONDO_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| CLOJURE_CLJ_KONDO_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

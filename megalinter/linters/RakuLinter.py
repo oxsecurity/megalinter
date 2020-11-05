@@ -14,7 +14,7 @@ class RakuLinter(megalinter.Linter):
 
     # To execute before linting files
     def before_lint_files(self):
-        if os.path.exists(self.workspace + os.path.sep + self.config_file_name):  # META6.json
+        if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):  # META6.json
             pre_command = f"cd {self.workspace} && zef install --deps-only --/test ."
             logging.debug('Raku before_lint_files: ' + pre_command)
             process = subprocess.run(pre_command,
@@ -30,6 +30,9 @@ class RakuLinter(megalinter.Linter):
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
+        # Add fix argument if defined
+        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+            cmd += [self.cli_lint_fix_arg_name]
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
         cmd += [

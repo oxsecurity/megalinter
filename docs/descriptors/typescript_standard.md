@@ -24,6 +24,8 @@
 - Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 - Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | TYPESCRIPT_STANDARD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -43,6 +45,10 @@
 
 ```shell
 standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts
+```
+
+```shell
+standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts
 ```
 
 

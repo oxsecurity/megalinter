@@ -17,7 +17,7 @@ linters:
       - '.'
     examples:
       - "jscpd --output ./report/copy-paste/ ."
-      - "jscpd --output ./report/copy-paste/ -c .eslintrc.yml ."
+      - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
     install:
       npm:
         - jscpd

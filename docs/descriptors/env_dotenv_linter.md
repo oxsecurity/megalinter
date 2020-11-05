@@ -21,15 +21,17 @@
 
 ### Mega-linter configuration
 
-- Enable dotenv-linter by adding `ENV` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable dotenv-linter by adding `ENV` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| ENV_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| ENV_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| ENV_DOTENV_LINTER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| ENV_DOTENV_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| ENV_DOTENV_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| ENV_DOTENV_LINTER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 
@@ -43,6 +45,10 @@
 
 ```shell
 dotenv-linter myfile.env
+```
+
+```shell
+dotenv-linter --fix myfile.env
 ```
 
 

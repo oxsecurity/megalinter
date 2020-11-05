@@ -20,17 +20,17 @@
 
 ### Mega-linter configuration
 
-- Enable editorconfig-checker by adding `EDITORCONFIG` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable editorconfig-checker by adding `EDITORCONFIG` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| EDITORCONFIG_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| EDITORCONFIG_FILE_NAME | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
-| EDITORCONFIG_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| EDITORCONFIG_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAME | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

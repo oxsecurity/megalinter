@@ -15,17 +15,17 @@
 
 ### Mega-linter configuration
 
-- Enable coffeelint by adding `COFFEE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable coffeelint by adding `COFFEE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| COFFEE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| COFFEE_FILE_NAME | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.coffee-lint.json` |
-| COFFEE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| COFFEE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| COFFEE_COFFEELINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| COFFEE_COFFEELINT_FILE_NAME | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.coffee-lint.json` |
+| COFFEE_COFFEELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| COFFEE_COFFEELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
 

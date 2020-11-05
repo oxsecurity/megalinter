@@ -15,7 +15,7 @@ class RLinter(Linter):
     def build_lint_command(self, file=None):
         # lintr requires .lintr in folder: copy it there if necessary
         dir_name = os.path.dirname(file)
-        if not os.path.exists(dir_name + os.path.sep + self.config_file_name):
+        if not os.path.isfile(dir_name + os.path.sep + self.config_file_name):
             copyfile(self.config_file, dir_name +
                      os.path.sep + self.config_file_name)
         # Build command in R format

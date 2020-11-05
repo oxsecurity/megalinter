@@ -27,4 +27,4 @@ linters:
       - "spectral lint -r .openapirc.yml myfile.yml"
     install:
       npm:
-        - "@stoplight/spectral"
+        - "@stoplight/spectral@5.6.0"

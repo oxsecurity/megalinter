@@ -17,8 +17,8 @@ ACTIONS_RUNNER_DEBUG="${ACTIONS_RUNNER_DEBUG:-false}" # Boolean to see even more
 # Log Vars                                                       #
 # Define these early, so we can use debug logging ASAP if needed #
 ##################################################################
-LOG_FILE="${LOG_FILE:-super-linter.log}" # Default log file name (located in GITHUB_WORKSPACE folder)
-LOG_LEVEL="${LOG_LEVEL:-VERBOSE}"        # Default log level (VERBOSE, DEBUG, TRACE)
+LOG_FILE="${LOG_FILE:-super-linter.log}"                             # Default log file name (located in GITHUB_WORKSPACE folder)
+LOG_LEVEL="${LOG_LEVEL:-VERBOSE}"                                    # Default log level (VERBOSE, DEBUG, TRACE)
 
 if [[ ${ACTIONS_RUNNER_DEBUG} == true ]]; then LOG_LEVEL="DEBUG"; fi
 # Boolean to see trace logs
@@ -30,6 +30,15 @@ export LOG_DEBUG
 # Boolean to see verbose logs (info function)
 LOG_VERBOSE=$(if [[ ${LOG_LEVEL} == "VERBOSE" || ${LOG_LEVEL} == "DEBUG" || ${LOG_LEVEL} == "TRACE" ]]; then echo "true"; fi)
 export LOG_VERBOSE
+# Boolean to see notice logs
+LOG_NOTICE=$(if [[ ${LOG_LEVEL} == "NOTICE" || ${LOG_LEVEL} == "VERBOSE" || ${LOG_LEVEL} == "DEBUG" || ${LOG_LEVEL} == "TRACE" ]]; then echo "true"; fi)
+export LOG_NOTICE
+# Boolean to see warn logs
+LOG_WARN=$(if [[ ${LOG_LEVEL} == "WARN" || ${LOG_LEVEL} == "NOTICE" || ${LOG_LEVEL} == "VERBOSE" || ${LOG_LEVEL} == "DEBUG" || ${LOG_LEVEL} == "TRACE" ]]; then echo "true"; fi)
+export LOG_WARN
+# Boolean to see error logs
+LOG_ERROR=$(if [[ ${LOG_LEVEL} == "ERROR" || ${LOG_LEVEL} == "WARN" || ${LOG_LEVEL} == "NOTICE" || ${LOG_LEVEL} == "VERBOSE" || ${LOG_LEVEL} == "DEBUG" || ${LOG_LEVEL} == "TRACE" ]]; then echo "true"; fi)
+export LOG_ERROR
 
 #########################
 # Source Function Files #
@@ -48,122 +57,88 @@ source /action/lib/worker.sh # Source the function script(s)
 ###########
 # Default Vars
 DEFAULT_RULES_LOCATION='/action/lib/.automation' # Default rules files location
-GITHUB_API_URL='https://api.github.com'          # GitHub API root url
-# Ansible Vars
-ANSIBLE_FILE_NAME='.ansible-lint.yml'                                 # Name of the file
-ANSIBLE_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${ANSIBLE_FILE_NAME}" # Path to the Ansible lint rules
-# Azure Resource Manager Vars
-ARM_FILE_NAME='.arm-ttk.psd1'                                 # Name of the file
-ARM_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${ARM_FILE_NAME}" # Path to the ARM lint rules
-# Cloudformation Vars
-CLOUDFORMATION_FILE_NAME='.cfnlintrc.yml'                                           # Name of the file
-CLOUDFORMATION_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${CLOUDFORMATION_FILE_NAME}" # Path to the cloudformation lint rules
-# Clojure Vars
-CLOJURE_FILE_NAME='.clj-kondo/config.edn'                             # Name of the file
-CLOJURE_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${CLOJURE_FILE_NAME}" # Path to the Clojure lint rules
-# Coffee Vars
-COFFEESCRIPT_FILE_NAME='.coffee-lint.json'                                      # Name of the file
-COFFEESCRIPT_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${COFFEESCRIPT_FILE_NAME}" # Path to the coffeescript lint rules
-# CSS Vars
-CSS_FILE_NAME="${CSS_FILE_NAME:-.stylelintrc.json}"           # Name of the file
-CSS_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${CSS_FILE_NAME}" # Path to the CSS lint rules
-# Dart Vars
-DART_FILE_NAME='analysis_options.yml'                           # Name of the file
-DART_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${DART_FILE_NAME}" # Path to the DART lint rules
-# Dockerfile Vars
-DOCKERFILE_FILE_NAME='.dockerfilelintrc'                                    # Name of the file
-DOCKERFILE_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${DOCKERFILE_FILE_NAME}" # Path to the Docker lint rules
-# Dockerfile Hadolint Vars
-DOCKERFILE_HADOLINT_FILE_NAME="${DOCKERFILE_HADOLINT_FILE_NAME:-.hadolint.yml}"               # Name of the file
-DOCKERFILE_HADOLINT_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${DOCKERFILE_HADOLINT_FILE_NAME}" # Path to the Docker lint rules
-# Editorconfig Vars
-EDITORCONFIG_FILE_NAME="${EDITORCONFIG_FILE_NAME:-.ecrc}"                       # Name of the file
-EDITORCONFIG_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${EDITORCONFIG_FILE_NAME}" # Path to the Editorconfig lint rules
-# Golang Vars
-GO_FILE_NAME='.golangci.yml'                                # Name of the file
-GO_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${GO_FILE_NAME}" # Path to the Go lint rules
-# Groovy Vars
-GROOVY_FILE_NAME='.groovylintrc.json'                               # Name of the file
-GROOVY_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${GROOVY_FILE_NAME}" # Path to the Groovy lint rules
-# HTML Vars
-HTML_FILE_NAME='.htmlhintrc'                                    # Name of the file
-HTML_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${HTML_FILE_NAME}" # Path to the HTML lint rules
-# Java Vars
-JAVA_FILE_NAME="sun_checks.xml"                                 # Name of the Java config file
-JAVA_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${JAVA_FILE_NAME}" # Path to the Java lint rules
-# Javascript Vars
-JAVASCRIPT_FILE_NAME="${JAVASCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"          # Name of the file
-JAVASCRIPT_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${JAVASCRIPT_FILE_NAME}" # Path to the Javascript lint rules
-JAVASCRIPT_STANDARD_LINTER_RULES=''                                         # ENV string to pass when running js standard
-# Default linter path
 LINTER_RULES_PATH="${LINTER_RULES_PATH:-.github/linters}" # Linter Path Directory
-# LaTeX Vars
-LATEX_FILE_NAME='.chktexrc'                                       # Name of the file
-LATEX_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${LATEX_FILE_NAME}" # Path to the Latex lint rules
-# Lua Vars
-LUA_FILE_NAME='.luacheckrc'                                   # Name of the file
-LUA_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${LUA_FILE_NAME}" # Path to the Lua lint rules
-# MD Vars
-MARKDOWN_FILE_NAME="${MARKDOWN_CONFIG_FILE:-.markdown-lint.yml}"        # Name of the file
-MARKDOWN_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${MARKDOWN_FILE_NAME}" # Path to the markdown lint rules
-# OpenAPI Vars
-OPENAPI_FILE_NAME='.openapirc.yml'                                    # Name of the file
-OPENAPI_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${OPENAPI_FILE_NAME}" # Path to the OpenAPI lint rules
-# PHPCS Vars
-PHP_PHPCS_FILE_NAME='phpcs.xml'                                     # Name of the file
-PHP_PHPCS_LINTER_RULES="${GITHUB_WORKSPACE}/${PHP_PHPCS_FILE_NAME}" # Path to the PHP CodeSniffer lint rules in the repository
-if [ ! -f "$PHP_PHPCS_LINTER_RULES" ]; then
-  PHP_PHPCS_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PHP_PHPCS_FILE_NAME}" # Path to the PHP CodeSniffer lint rules
-fi
-# PHPStan Vars
-PHP_PHPSTAN_FILE_NAME='phpstan.neon'                                    # Name of the file
-PHP_PHPSTAN_LINTER_RULES="${GITHUB_WORKSPACE}/${PHP_PHPSTAN_FILE_NAME}" # Path to the PHPStan lint rules in the repository
-if [ ! -f "$PHP_PHPSTAN_LINTER_RULES" ]; then
-  PHP_PHPSTAN_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PHP_PHPSTAN_FILE_NAME}" # Path to the PHPStan lint rules
-fi
-# Psalm Vars
-PHP_PSALM_FILE_NAME='psalm.xml'                                     # Name of the file
-PHP_PSALM_LINTER_RULES="${GITHUB_WORKSPACE}/${PHP_PSALM_FILE_NAME}" # Path to the Psalm lint rules in the repository
-if [ ! -f "$PHP_PSALM_LINTER_RULES" ]; then
-  PHP_PSALM_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PHP_PSALM_FILE_NAME}" # Path to the Psalm lint rules
-fi
-# Powershell Vars
-POWERSHELL_FILE_NAME='.powershell-psscriptanalyzer.psd1'                    # Name of the file
-POWERSHELL_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${POWERSHELL_FILE_NAME}" # Path to the Powershell lint rules
-# Protocol Buffers Vars
-PROTOBUF_FILE_NAME='.protolintrc.yml'                                   # Name of the file
-PROTOBUF_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PROTOBUF_FILE_NAME}" # Path to the Protocol Buffers lint rules
-# Python Vars
-PYTHON_PYLINT_FILE_NAME="${PYTHON_PYLINT_CONFIG_FILE:-.python-lint}"              # Name of the file
-PYTHON_PYLINT_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PYTHON_PYLINT_FILE_NAME}" # Path to the python lint rules
-PYTHON_FLAKE8_FILE_NAME="${PYTHON_FLAKE8_CONFIG_FILE:-.flake8}"                   # Name of the file
-PYTHON_FLAKE8_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PYTHON_FLAKE8_FILE_NAME}" # Path to the python lint rules
-PYTHON_BLACK_FILE_NAME="${PYTHON_BLACK_CONFIG_FILE:-.python-black}"               # Name of the file
-PYTHON_BLACK_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${PYTHON_BLACK_FILE_NAME}"   # Path to the python lint rules
-# R Vars
-R_FILE_NAME='.lintr'                                      # Name of the file
-R_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${R_FILE_NAME}" # Path to the R lint rules
-# Ruby Vars
-RUBY_FILE_NAME="${RUBY_CONFIG_FILE:-.ruby-lint.yml}"            # Name of the file
-RUBY_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${RUBY_FILE_NAME}" # Path to the ruby lint rules
-# Snakemake Vars
-SNAKEMAKE_SNAKEFMT_FILE_NAME="${SNAKEMAKE_SNAKEFMT_CONFIG_FILE:-.snakefmt.toml}"            # Name of the file
-SNAKEMAKE_SNAKEFMT_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${SNAKEMAKE_SNAKEFMT_FILE_NAME}" # Path to the snakemake lint rules
-# SQL Vars
-SQL_FILE_NAME=".sql-config.json"                              # Name of the file
-SQL_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${SQL_FILE_NAME}" # Path to the SQL lint rules
-# Terraform Vars
-TERRAFORM_FILE_NAME='.tflint.hcl'                                         # Name of the file
-TERRAFORM_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${TERRAFORM_FILE_NAME}" # Path to the Terraform lint rules
-# Typescript Vars
-TYPESCRIPT_FILE_NAME="${TYPESCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"          # Name of the file
-TYPESCRIPT_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${TYPESCRIPT_FILE_NAME}" # Path to the Typescript lint rules
-TYPESCRIPT_STANDARD_LINTER_RULES=''                                         # ENV string to pass when running js standard
-# Version File info
+GITHUB_API_URL='https://api.github.com'          # GitHub API root url
 VERSION_FILE='/action/lib/linter-versions.txt' # File to store linter versions
-# YAML Vars
-YAML_FILE_NAME="${YAML_CONFIG_FILE:-.yaml-lint.yml}"            # Name of the file
-YAML_LINTER_RULES="${DEFAULT_RULES_LOCATION}/${YAML_FILE_NAME}" # Path to the yaml lint rules
+
+###############
+# Rules files #
+###############
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+ANSIBLE_FILE_NAME=".ansible-lint.yml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+ARM_FILE_NAME=".arm-ttk.psd1"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+CLOJURE_FILE_NAME=".clj-kondo/config.edn"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+CLOUDFORMATION_FILE_NAME=".cfnlintrc.yml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+COFFEESCRIPT_FILE_NAME=".coffee-lint.json"
+CSS_FILE_NAME="${CSS_FILE_NAME:-.stylelintrc.json}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+DART_FILE_NAME="analysis_options.yml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+DOCKERFILE_FILE_NAME=".dockerfilelintrc"
+DOCKERFILE_HADOLINT_FILE_NAME="${DOCKERFILE_HADOLINT_FILE_NAME:-.hadolint.yaml}"
+EDITORCONFIG_FILE_NAME="${EDITORCONFIG_FILE_NAME:-.ecrc}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+GO_FILE_NAME=".golangci.yml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+GROOVY_FILE_NAME=".groovylintrc.json"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+HTML_FILE_NAME=".htmlhintrc"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+JAVA_FILE_NAME="sun_checks.xml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+JAVASCRIPT_ES_FILE_NAME="${JAVASCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+JAVASCRIPT_STANDARD_FILE_NAME="${JAVASCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+JSX_FILE_NAME="${JAVASCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+LATEX_FILE_NAME=".chktexrc"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+LUA_FILE_NAME=".luacheckrc"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+MARKDOWN_FILE_NAME="${MARKDOWN_CONFIG_FILE:-.markdown-lint.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+OPENAPI_FILE_NAME=".openapirc.yml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PHP_PHPCS_FILE_NAME="phpcs.xml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PHP_PHPSTAN_FILE_NAME="phpstan.neon"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PHP_PSALM_FILE_NAME="psalm.xml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+POWERSHELL_FILE_NAME=".powershell-psscriptanalyzer.psd1"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PROTOBUF_FILE_NAME=".protolintrc.yml"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PYTHON_BLACK_FILE_NAME="${PYTHON_BLACK_CONFIG_FILE:-.python-black}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PYTHON_FLAKE8_FILE_NAME="${PYTHON_FLAKE8_CONFIG_FILE:-.flake8}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PYTHON_ISORT_FILE_NAME="${PYTHON_ISORT_CONFIG_FILE:-.isort.cfg}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+PYTHON_PYLINT_FILE_NAME="${PYTHON_PYLINT_CONFIG_FILE:-.python-lint}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+R_FILE_NAME=".lintr"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+RUBY_FILE_NAME="${RUBY_CONFIG_FILE:-.ruby-lint.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+SNAKEMAKE_SNAKEFMT_FILE_NAME="${SNAKEMAKE_SNAKEFMT_CONFIG_FILE:-.snakefmt.toml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+SQL_FILE_NAME=".sql-config.json"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+TERRAFORM_FILE_NAME=".tflint.hcl"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+TSX_FILE_NAME="${TYPESCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+TYPESCRIPT_ES_FILE_NAME="${TYPESCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+TYPESCRIPT_STANDARD_FILE_NAME="${TYPESCRIPT_ES_CONFIG_FILE:-.eslintrc.yml}"
+# shellcheck disable=SC2034  # Variable is referenced indirectly
+YAML_FILE_NAME="${YAML_CONFIG_FILE:-.yaml-lint.yml}"
 
 ##################
 # Language array #
@@ -172,13 +147,14 @@ LANGUAGE_ARRAY=('ANSIBLE' 'ARM' 'BASH' 'BASH_EXEC' 'CLOUDFORMATION' 'CLOJURE' 'C
   'DART' 'DOCKERFILE' 'DOCKERFILE_HADOLINT' 'EDITORCONFIG' 'ENV' 'GO' 'GROOVY' 'HTML'
   'JAVA' 'JAVASCRIPT_ES' 'JAVASCRIPT_STANDARD' 'JSON' 'JSX' 'KUBERNETES_KUBEVAL' 'KOTLIN' 'LATEX' 'LUA' 'MARKDOWN'
   'OPENAPI' 'PERL' 'PHP_BUILTIN' 'PHP_PHPCS' 'PHP_PHPSTAN' 'PHP_PSALM' 'POWERSHELL'
-  'PROTOBUF' 'PYTHON_BLACK' 'PYTHON_PYLINT' 'PYTHON_FLAKE8' 'R' 'RAKU' 'RUBY' 'SHELL_SHFMT' 'SNAKEMAKE_LINT' 'SNAKEMAKE_SNAKEFMT' 'STATES' 'SQL'
+  'PROTOBUF' 'PYTHON_BLACK' 'PYTHON_PYLINT' 'PYTHON_FLAKE8' 'PYTHON_ISORT' 'R' 'RAKU' 'RUBY' 'SHELL_SHFMT' 'SNAKEMAKE_LINT' 'SNAKEMAKE_SNAKEFMT' 'STATES' 'SQL'
   'TEKTON' 'TERRAFORM' 'TERRAFORM_TERRASCAN' 'TERRAGRUNT' 'TSX' 'TYPESCRIPT_ES' 'TYPESCRIPT_STANDARD' 'XML' 'YAML')
 
 ##############################
 # Linter command names array #
 ##############################
 declare -A LINTER_NAMES_ARRAY
+LINTER_NAMES_ARRAY['ANSIBLE']="ansible-lint"
 LINTER_NAMES_ARRAY['ARM']="arm-ttk"
 LINTER_NAMES_ARRAY['BASH']="shellcheck"
 LINTER_NAMES_ARRAY['BASH_EXEC']="bash-exec"
@@ -216,7 +192,8 @@ LINTER_NAMES_ARRAY['PROTOBUF']="protolint"
 LINTER_NAMES_ARRAY['PYTHON_BLACK']="black"
 LINTER_NAMES_ARRAY['PYTHON_PYLINT']="pylint"
 LINTER_NAMES_ARRAY['PYTHON_FLAKE8']="flake8"
-LINTER_NAMES_ARRAY['R']="lintr"
+LINTER_NAMES_ARRAY['PYTHON_ISORT']="isort"
+LINTER_NAMES_ARRAY['R']="R"
 LINTER_NAMES_ARRAY['RAKU']="raku"
 LINTER_NAMES_ARRAY['RUBY']="rubocop"
 LINTER_NAMES_ARRAY['SHELL_SHFMT']="shfmt"
@@ -242,20 +219,20 @@ LINTED_LANGUAGES_ARRAY=() # Will be filled at run time with all languages that w
 ###################
 # GitHub ENV Vars #
 ###################
-ANSIBLE_DIRECTORY="${ANSIBLE_DIRECTORY}"         # Ansible Directory
-DEFAULT_BRANCH="${DEFAULT_BRANCH:-master}"       # Default Git Branch to use (master by default)
-DISABLE_ERRORS="${DISABLE_ERRORS}"               # Boolean to enable warning-only output without throwing errors
-FILTER_REGEX_INCLUDE="${FILTER_REGEX_INCLUDE}"   # RegExp defining which files will be processed by linters (all by default)
-FILTER_REGEX_EXCLUDE="${FILTER_REGEX_EXCLUDE}"   # RegExp defining which files will be excluded from linting (none by default)
-GITHUB_EVENT_PATH="${GITHUB_EVENT_PATH}"         # Github Event Path
-GITHUB_REPOSITORY="${GITHUB_REPOSITORY}"         # GitHub Org/Repo passed from system
-GITHUB_RUN_ID="${GITHUB_RUN_ID}"                 # GitHub RUn ID to point to logs
-GITHUB_SHA="${GITHUB_SHA}"                       # GitHub sha from the commit
-GITHUB_TOKEN="${GITHUB_TOKEN}"                   # GitHub Token passed from environment
-GITHUB_WORKSPACE="${GITHUB_WORKSPACE}"           # Github Workspace
-MULTI_STATUS="${MULTI_STATUS:-true}"             # Multiple status are created for each check ran
-TEST_CASE_RUN="${TEST_CASE_RUN}"                 # Boolean to validate only test cases
-VALIDATE_ALL_CODEBASE="${VALIDATE_ALL_CODEBASE}" # Boolean to validate all files
+ANSIBLE_DIRECTORY="${ANSIBLE_DIRECTORY}"                             # Ansible Directory
+DEFAULT_BRANCH="${DEFAULT_BRANCH:-master}"                           # Default Git Branch to use (master by default)
+DISABLE_ERRORS="${DISABLE_ERRORS}"                                   # Boolean to enable warning-only output without throwing errors
+FILTER_REGEX_INCLUDE="${FILTER_REGEX_INCLUDE}"                       # RegExp defining which files will be processed by linters (all by default)
+FILTER_REGEX_EXCLUDE="${FILTER_REGEX_EXCLUDE}"                       # RegExp defining which files will be excluded from linting (none by default)
+GITHUB_EVENT_PATH="${GITHUB_EVENT_PATH}"                             # Github Event Path
+GITHUB_REPOSITORY="${GITHUB_REPOSITORY}"                             # GitHub Org/Repo passed from system
+GITHUB_RUN_ID="${GITHUB_RUN_ID}"                                     # GitHub RUn ID to point to logs
+GITHUB_SHA="${GITHUB_SHA}"                                           # GitHub sha from the commit
+GITHUB_TOKEN="${GITHUB_TOKEN}"                                       # GitHub Token passed from environment
+GITHUB_WORKSPACE="${GITHUB_WORKSPACE}"                               # Github Workspace
+MULTI_STATUS="${MULTI_STATUS:-true}"                                 # Multiple status are created for each check ran
+TEST_CASE_RUN="${TEST_CASE_RUN}"                                     # Boolean to validate only test cases
+VALIDATE_ALL_CODEBASE="${VALIDATE_ALL_CODEBASE}"                     # Boolean to validate all files
 
 ################
 # Default Vars #
@@ -268,23 +245,23 @@ DEFAULT_TEST_CASE_RUN='false'                       # Flag to tell code to run o
 ###############################################################
 # Default Vars that are called in Subs and need to be ignored #
 ###############################################################
-DEFAULT_DISABLE_ERRORS='false'                                  # Default to enabling errors
-export DEFAULT_DISABLE_ERRORS                                   # Workaround SC2034
+DEFAULT_DISABLE_ERRORS='false'                          # Default to enabling errors
+export DEFAULT_DISABLE_ERRORS                           # Workaround SC2034
 ERROR_ON_MISSING_EXEC_BIT="${ERROR_ON_MISSING_EXEC_BIT:-false}" # Default to report a warning if a shell script doesn't have the executable bit set to 1
 export ERROR_ON_MISSING_EXEC_BIT
-RAW_FILE_ARRAY=()                   # Array of all files that were changed
-export RAW_FILE_ARRAY               # Workaround SC2034
-TEST_CASE_FOLDER='.automation/test' # Folder for test cases we should always ignore
-export TEST_CASE_FOLDER             # Workaround SC2034
-WARNING_ARRAY_TEST=()               # Array of warning linters that did not have an expected test result.
-export WARNING_ARRAY_TEST           # Workaround SC2034
+RAW_FILE_ARRAY=()                                       # Array of all files that were changed
+export RAW_FILE_ARRAY                                   # Workaround SC2034
+TEST_CASE_FOLDER='.automation/test'                     # Folder for test cases we should always ignore
+export TEST_CASE_FOLDER                                 # Workaround SC2034
+WARNING_ARRAY_TEST=()                                   # Array of warning linters that did not have an expected test result.
+export WARNING_ARRAY_TEST                               # Workaround SC2034
 
 ##############
 # Format     #
 ##############
-OUTPUT_FORMAT="${OUTPUT_FORMAT}"                      # Output format to be generated. Default none
-OUTPUT_FOLDER="${OUTPUT_FOLDER:-super-linter.report}" # Folder where the reports are generated. Default super-linter.report
-OUTPUT_DETAILS="${OUTPUT_DETAILS:-simpler}"           # What level of details. (simpler or detailed). Default simpler
+OUTPUT_FORMAT="${OUTPUT_FORMAT}"                            # Output format to be generated. Default none
+OUTPUT_FOLDER="${OUTPUT_FOLDER:-super-linter.report}"       # Folder where the reports are generated. Default super-linter.report
+OUTPUT_DETAILS="${OUTPUT_DETAILS:-simpler}"                 # What level of details. (simpler or detailed). Default simpler
 
 ##########################
 # Array of changed files #
@@ -294,6 +271,24 @@ for LANGUAGE in "${LANGUAGE_ARRAY[@]}"; do
   debug "Setting ${FILE_ARRAY_VARIABLE_NAME} variable..."
   eval "${FILE_ARRAY_VARIABLE_NAME}=()"
 done
+
+#####################################
+# Validate we have linter installed #
+#####################################
+for LANGUAGE in "${LANGUAGE_ARRAY[@]}"; do
+  LINTER_NAME="${LINTER_NAMES_ARRAY["${LANGUAGE}"]}"
+  debug "Checking if linter with name ${LINTER_NAME} for the ${LANGUAGE} language is available..."
+
+  if ! command -v "${LINTER_NAME}" 1&>/dev/null 2>&1; then
+    # Failed
+    fatal "Failed to find [${LINTER_NAME}] in system!"
+  else
+    # Success
+    debug "Successfully found binary for ${F[W]}[${LINTER_NAME}]${F[B]}."
+  fi
+done
+
+
 
 ################################################################################
 ########################## FUNCTIONS BELOW #####################################
@@ -317,7 +312,7 @@ Header() {
   info "---------------------------------------------"
   info "---------------------------------------------"
   info "The Super-Linter source code can be found at:"
-  info " - https://github.com/nvuillam/mega-linter"
+  info " - https://github.com/github/super-linter"
   info "---------------------------------------------"
 }
 ################################################################################
@@ -328,6 +323,18 @@ GetLinterVersions() {
   #########################
   debug "---------------------------------------------"
   debug "Linter Version Info:"
+
+  if ! [ -e "${VERSION_FILE}" ] && [ "${WRITE_LINTER_VERSIONS_FILE}" = "true" ]; then
+    debug "Building linter version file..."
+    # shellcheck source=/dev/null
+    source /action/lib/linterVersions.sh # Source the function script(s)
+    if BuildLinterVersions "${VERSION_FILE}" "${LINTER_NAMES_ARRAY[@]}"; then
+      info "Linter version file built correctly."
+      exit
+    else
+      fatal "Error while building the versions file."
+    fi
+  fi
 
   ################################
   # Cat the linter versions file #
@@ -344,7 +351,7 @@ GetLinterVersions() {
   ##############################
   if [ ${ERROR_CODE} -ne 0 ]; then
     # Failure
-    warn "Failed to view version file:[${VERSION_FILE}]"
+    fatal "Failed to view version file:[${VERSION_FILE}]"
   else
     # Success
     debug "${CAT_CMD}"
@@ -366,6 +373,9 @@ GetLinterRules() {
   LANGUAGE_NAME="${1}" # Name of the language were looking for
   debug "Getting linter rules for ${LANGUAGE_NAME}..."
 
+  DEFAULT_RULES_LOCATION="${2}"
+  debug "Default rules location: ${DEFAULT_RULES_LOCATION}..."
+
   #######################################################
   # Need to create the variables for the real variables #
   #######################################################
@@ -381,6 +391,9 @@ GetLinterRules() {
     return
   fi
 
+  debug "Initializing LANGUAGE_LINTER_RULES value to an empty string..."
+  eval "${LANGUAGE_LINTER_RULES}="
+
   ##########################
   # Get the file extension #
   ##########################
@@ -388,10 +401,12 @@ GetLinterRules() {
   FILE_NAME=$(basename "${!LANGUAGE_FILE_NAME}" ".${FILE_EXTENSION}")
   debug "${LANGUAGE_NAME} language rule file (${!LANGUAGE_FILE_NAME}) has ${FILE_NAME} name and ${FILE_EXTENSION} extension"
 
-  ###############################
-  # Set the secondary file name #
-  ###############################
+  ########################################
+  # Set the secondary file name and path #
+  ########################################
+  debug "Initializing SECONDARY_FILE_NAME and SECONDARY_LANGUAGE_FILE_PATH..."
   SECONDARY_FILE_NAME=''
+  SECONDARY_LANGUAGE_FILE_PATH=
 
   #################################
   # Check for secondary file name #
@@ -404,39 +419,91 @@ GetLinterRules() {
     SECONDARY_FILE_NAME="$FILE_NAME.yml"
   fi
 
+  ###############################
+  # Set Flag for set Rules File #
+  ###############################
+  SET_RULES=0
+
   #####################################
   # Validate we have the linter rules #
   #####################################
-  if [ -f "${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${!LANGUAGE_FILE_NAME}" ]; then
+  LANGUAGE_FILE_PATH="${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${!LANGUAGE_FILE_NAME}"
+  debug "Checking if the user-provided:[${!LANGUAGE_FILE_NAME}] and exists at:[${LANGUAGE_FILE_PATH}]"
+  if [ -f "${LANGUAGE_FILE_PATH}" ]; then
     info "----------------------------------------------"
-    info "User provided file:[${!LANGUAGE_FILE_NAME}], setting rules file..."
+    info "User provided file:[${LANGUAGE_FILE_PATH}] exists, setting rules file..."
 
     ########################################
     # Update the path to the file location #
     ########################################
-    eval "${LANGUAGE_LINTER_RULES}=${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${!LANGUAGE_FILE_NAME}"
+    eval "${LANGUAGE_LINTER_RULES}=${LANGUAGE_FILE_PATH}"
+    ######################
+    # Set the rules flag #
+    ######################
+    SET_RULES=1
   else
-    debug "  -> Codebase does NOT have file:[${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${!LANGUAGE_FILE_NAME}]"
-    # Check if we have secondary name to check
-    if [ -n "$SECONDARY_FILE_NAME" ]; then
-      debug "${LANGUAGE_NAME} language rule file has a secondary rules file name to check: ${SECONDARY_FILE_NAME}"
-      # We have a secondary name to validate
-      if [ -f "${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${SECONDARY_FILE_NAME}" ]; then
-        info "----------------------------------------------"
-        info "User provided file:[${SECONDARY_FILE_NAME}], setting rules file..."
+    # Failed to find the primary rules file
+    debug "  -> Codebase does NOT have file:[${LANGUAGE_FILE_PATH}]."
+  fi
 
-        ########################################
-        # Update the path to the file location #
-        ########################################
-        eval "${LANGUAGE_LINTER_RULES}=${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${SECONDARY_FILE_NAME}"
-      fi
+  ####################################################
+  # Check if we have secondary file name to look for #
+  ####################################################
+  if [ -n "$SECONDARY_FILE_NAME" ] && [ "${SET_RULES}" -eq 0 ]; then
+    # Set the path
+    SECONDARY_LANGUAGE_FILE_PATH="${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${SECONDARY_FILE_NAME}"
+    debug "${LANGUAGE_NAME} language rule file has a secondary rules file name to check (${SECONDARY_FILE_NAME}). Path:[${SECONDARY_LANGUAGE_FILE_PATH}]"
+
+    if [ -f "${SECONDARY_LANGUAGE_FILE_PATH}" ]; then
+      info "----------------------------------------------"
+      info "User provided file:[${SECONDARY_LANGUAGE_FILE_PATH}] exists, setting rules file..."
+
+      ########################################
+      # Update the path to the file location #
+      ########################################
+      eval "${LANGUAGE_LINTER_RULES}=${SECONDARY_LANGUAGE_FILE_PATH}"
+      ######################
+      # Set the rules flag #
+      ######################
+      SET_RULES=1
     fi
+  fi
 
+  ##############################################################
+  # We didnt find rules from user, setting to default template #
+  ##############################################################
+  if [ "${SET_RULES}" -eq 0 ]; then
     ########################################################
     # No user default provided, using the template default #
     ########################################################
-    debug "  -> Codebase does NOT have file:[${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${!LANGUAGE_FILE_NAME}], nor file:[${GITHUB_WORKSPACE}/${LINTER_RULES_PATH}/${SECONDARY_FILE_NAME}], using Default rules at:[${!LANGUAGE_LINTER_RULES}]"
+    eval "${LANGUAGE_LINTER_RULES}=${DEFAULT_RULES_LOCATION}/${!LANGUAGE_FILE_NAME}"
+    debug "  -> Codebase does NOT have file:[${LANGUAGE_FILE_PATH}], nor the file:[${SECONDARY_LANGUAGE_FILE_PATH}], using Default rules at:[${!LANGUAGE_LINTER_RULES}]"
+    ######################
+    # Set the rules flag #
+    ######################
+    SET_RULES=1
   fi
+
+  ####################
+  # Debug Print info #
+  ####################
+  debug "  -> Language rules file variable (${LANGUAGE_LINTER_RULES}) value is:[${!LANGUAGE_LINTER_RULES}]"
+
+  ############################
+  # Validate the file exists #
+  ############################
+  if [ -e "${!LANGUAGE_LINTER_RULES}" ]; then
+    # Found the rules file
+    debug "  -> ${LANGUAGE_LINTER_RULES} rules file (${!LANGUAGE_LINTER_RULES}) exists."
+  else
+    # Here we expect a rules file, so fail if not available.
+    fatal "  -> ${LANGUAGE_LINTER_RULES} rules file (${!LANGUAGE_LINTER_RULES}) doesn't exist. Terminating..."
+  fi
+
+  ######################
+  # Export the results #
+  ######################
+  eval "export ${LANGUAGE_LINTER_RULES}"
 }
 ################################################################################
 #### Function GetStandardRules #################################################
@@ -460,9 +527,9 @@ GetStandardRules() {
   # Only env vars that are marked as true
   GET_ENV_ARRAY=()
   if [[ ${LINTER} == "javascript" ]]; then
-    mapfile -t GET_ENV_ARRAY < <(yq .env "${JAVASCRIPT_LINTER_RULES}" | grep true)
+    mapfile -t GET_ENV_ARRAY < <(yq .env "${JAVASCRIPT_STANDARD_LINTER_RULES}" | grep true)
   elif [[ ${LINTER} == "typescript" ]]; then
-    mapfile -t GET_ENV_ARRAY < <(yq .env "${TYPESCRIPT_LINTER_RULES}" | grep true)
+    mapfile -t GET_ENV_ARRAY < <(yq .env "${TYPESCRIPT_STANDARD_LINTER_RULES}" | grep true)
   fi
 
   #######################
@@ -522,6 +589,7 @@ DetectOpenAPIFile() {
   # Pull in vars #
   ################
   FILE="${1}"
+  debug "Checking if ${FILE} is an OpenAPI file..."
 
   ###############################
   # Check the file for keywords #
@@ -555,6 +623,7 @@ DetectTektonFile() {
   # Pull in vars #
   ################
   FILE="${1}"
+  debug "Checking if ${FILE} is a Tekton file..."
 
   ###############################
   # Check the file for keywords #
@@ -588,6 +657,7 @@ DetectARMFile() {
   # Pull in vars #
   ################
   FILE="${1}" # Name of the file/path we are validating
+  debug "Checking if ${FILE} is an ARM file..."
 
   ###############################
   # Check the file for keywords #
@@ -621,6 +691,7 @@ DetectCloudFormationFile() {
   # Pull in Vars #
   ################
   FILE="${1}" # File that we need to validate
+  debug "Checking if ${FILE} is a Cloud Formation file..."
 
   # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html
   # AWSTemplateFormatVersion is optional
@@ -669,6 +740,7 @@ DetectAWSStatesFIle() {
   # Pull in Vars #
   ################
   FILE="${1}" # File that we need to validate
+  debug "Checking if ${FILE} is a AWS states descriptor..."
 
   # https://states-language.net/spec.html#example
   ###############################
@@ -910,11 +982,11 @@ CallStatusAPI() {
     ##############################################
     SEND_STATUS_CMD=$(
       curl -f -s -X POST \
-      --url "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
-      -H 'accept: application/vnd.github.v3+json' \
-      -H "authorization: Bearer ${GITHUB_TOKEN}" \
-      -H 'content-type: application/json' \
-      -d "{ \"state\": \"${STATUS}\",
+        --url "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+        -H 'accept: application/vnd.github.v3+json' \
+        -H "authorization: Bearer ${GITHUB_TOKEN}" \
+        -H 'content-type: application/json' \
+        -d "{ \"state\": \"${STATUS}\",
         \"target_url\": \"https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\",
         \"description\": \"${MESSAGE}\", \"context\": \"--> Linted: ${LANGUAGE}\"
       }" 2>&1
@@ -1102,6 +1174,11 @@ if [ -n "${OUTPUT_FORMAT}" ]; then
   fi
 fi
 
+##################################
+# Get and print all version info #
+##################################
+GetLinterVersions
+
 #######################
 # Get GitHub Env Vars #
 #######################
@@ -1112,22 +1189,21 @@ GetGitHubVars
 ########################################################
 # Initialize variables that depend on GitHub variables #
 ########################################################
-DEFAULT_ANSIBLE_DIRECTORY="${GITHUB_WORKSPACE}/ansible"     # Default Ansible Directory
-export DEFAULT_ANSIBLE_DIRECTORY                            # Workaround SC2034
-REPORT_OUTPUT_FOLDER="${GITHUB_WORKSPACE}/${OUTPUT_FOLDER}" # Location for the report folder
+DEFAULT_ANSIBLE_DIRECTORY="${GITHUB_WORKSPACE}/ansible"          # Default Ansible Directory
+export DEFAULT_ANSIBLE_DIRECTORY                                 # Workaround SC2034
+REPORT_OUTPUT_FOLDER="${GITHUB_WORKSPACE}/${OUTPUT_FOLDER}"      # Location for the report folder
 
 ############################
 # Validate the environment #
 ############################
 GetValidationInfo
-ValidatePowershellModules
 
 ########################
 # Get the linter rules #
 ########################
 for LANGUAGE in "${LANGUAGE_ARRAY[@]}"; do
   debug "Loading rules for ${LANGUAGE}..."
-  eval "GetLinterRules ${LANGUAGE}"
+  eval "GetLinterRules ${LANGUAGE} ${DEFAULT_RULES_LOCATION}"
 done
 
 # Load rules for a couple of special cases
@@ -1148,18 +1224,18 @@ LINTER_COMMANDS_ARRAY['CSHARP']="dotnet-format --folder --check --exclude / --in
 LINTER_COMMANDS_ARRAY['CSS']="stylelint --config ${CSS_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['DART']="dartanalyzer --fatal-infos --fatal-warnings --options ${DART_LINTER_RULES}"
 # NOTE: dockerfilelint's "-c" option expects the folder *containing* the DOCKER_LINTER_RULES file
-LINTER_COMMANDS_ARRAY['DOCKERFILE']="dockerfilelint -c $(dirname ${DOCKERFILE_LINTER_RULES})"
+LINTER_COMMANDS_ARRAY['DOCKERFILE']="dockerfilelint -c $(dirname "${DOCKERFILE_LINTER_RULES}")"
 LINTER_COMMANDS_ARRAY['DOCKERFILE_HADOLINT']="hadolint -c ${DOCKERFILE_HADOLINT_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['EDITORCONFIG']="editorconfig-checker -config ${EDITORCONFIG_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['ENV']="dotenv-linter"
 LINTER_COMMANDS_ARRAY['GO']="golangci-lint run -c ${GO_LINTER_RULES}"
-LINTER_COMMANDS_ARRAY['GROOVY']="npm-groovy-lint -c $GROOVY_LINTER_RULES --failon warning"
+LINTER_COMMANDS_ARRAY['GROOVY']="npm-groovy-lint -c ${GROOVY_LINTER_RULES} --failon warning"
 LINTER_COMMANDS_ARRAY['HTML']="htmlhint --config ${HTML_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['JAVA']="java -jar /usr/bin/checkstyle -c ${JAVA_LINTER_RULES}"
-LINTER_COMMANDS_ARRAY['JAVASCRIPT_ES']="eslint --no-eslintrc -c ${JAVASCRIPT_LINTER_RULES}"
+LINTER_COMMANDS_ARRAY['JAVASCRIPT_ES']="eslint --no-eslintrc -c ${JAVASCRIPT_ES_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['JAVASCRIPT_STANDARD']="standard ${JAVASCRIPT_STANDARD_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['JSON']="jsonlint"
-LINTER_COMMANDS_ARRAY['JSX']="eslint --no-eslintrc -c ${JAVASCRIPT_LINTER_RULES}"
+LINTER_COMMANDS_ARRAY['JSX']="eslint --no-eslintrc -c ${JSX_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['KOTLIN']="ktlint"
 LINTER_COMMANDS_ARRAY['KUBERNETES_KUBEVAL']="kubeval --strict"
 LINTER_COMMANDS_ARRAY['LATEX']="chktex -q -l ${LATEX_LINTER_RULES}"
@@ -1176,6 +1252,7 @@ LINTER_COMMANDS_ARRAY['PROTOBUF']="protolint lint --config_path ${PROTOBUF_LINTE
 LINTER_COMMANDS_ARRAY['PYTHON_BLACK']="black --config ${PYTHON_BLACK_LINTER_RULES} --diff --check"
 LINTER_COMMANDS_ARRAY['PYTHON_PYLINT']="pylint --rcfile ${PYTHON_PYLINT_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['PYTHON_FLAKE8']="flake8 --config=${PYTHON_FLAKE8_LINTER_RULES}"
+LINTER_COMMANDS_ARRAY['PYTHON_ISORT']="isort --check --diff --sp ${PYTHON_ISORT_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['R']="lintr"
 LINTER_COMMANDS_ARRAY['RAKU']="raku"
 LINTER_COMMANDS_ARRAY['RUBY']="rubocop -c ${RUBY_LINTER_RULES} --force-exclusion"
@@ -1188,43 +1265,39 @@ LINTER_COMMANDS_ARRAY['TEKTON']="tekton-lint"
 LINTER_COMMANDS_ARRAY['TERRAFORM']="tflint -c ${TERRAFORM_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['TERRAFORM_TERRASCAN']="terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f "
 LINTER_COMMANDS_ARRAY['TERRAGRUNT']="terragrunt hclfmt --terragrunt-check --terragrunt-hclfmt-file "
-LINTER_COMMANDS_ARRAY['TSX']="eslint --no-eslintrc -c ${TYPESCRIPT_LINTER_RULES}"
-LINTER_COMMANDS_ARRAY['TYPESCRIPT_ES']="eslint --no-eslintrc -c ${TYPESCRIPT_LINTER_RULES}"
+LINTER_COMMANDS_ARRAY['TSX']="eslint --no-eslintrc -c ${TSX_LINTER_RULES}"
+LINTER_COMMANDS_ARRAY['TYPESCRIPT_ES']="eslint --no-eslintrc -c ${TYPESCRIPT_ES_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['TYPESCRIPT_STANDARD']="standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin ${TYPESCRIPT_STANDARD_LINTER_RULES}"
 LINTER_COMMANDS_ARRAY['XML']="xmllint"
 LINTER_COMMANDS_ARRAY['YAML']="yamllint -c ${YAML_LINTER_RULES}"
 
-##################################
-# Get and print all version info #
-##################################
-GetLinterVersions
 
-###########################################
-# Check to see if this is a test case run #
-###########################################
-if [[ ${TEST_CASE_RUN} != "false" ]]; then
-
-  #############################################
-  # Set the multi status to off for test runs #
-  #############################################
-  MULTI_STATUS='false'
-
-  ###########################
-  # Run only the test cases #
-  ###########################
-  # Code will exit from inside this loop
-  RunTestCases
-fi
+debug "--- Linter commands ---"
+debug "-----------------------"
+for i in "${!LINTER_COMMANDS_ARRAY[@]}"; do
+  debug "Linter key: $i, command: ${LINTER_COMMANDS_ARRAY[$i]}"
+done
+debug "---------------------------------------------"
 
 ###########################################
 # Build the list of files for each linter #
 ###########################################
-BuildFileList "${VALIDATE_ALL_CODEBASE}"
+BuildFileList "${VALIDATE_ALL_CODEBASE}" "${TEST_CASE_RUN}"
 
 ###############
 # Run linters #
 ###############
 EDITORCONFIG_FILE_PATH="${GITHUB_WORKSPACE}"/.editorconfig
+
+####################################
+# Print ENV before running linters #
+####################################
+debug "--- ENV (before running linters) ---"
+debug "------------------------------------"
+PRINTENV=$(printenv | sort)
+debug "ENV:"
+debug "${PRINTENV}"
+debug "------------------------------------"
 
 for LANGUAGE in "${LANGUAGE_ARRAY[@]}"; do
   debug "Running linter for the ${LANGUAGE} language..."
@@ -1245,7 +1318,7 @@ for LANGUAGE in "${LANGUAGE_ARRAY[@]}"; do
       fi
     elif [ "${LANGUAGE}" = "R" ] && [ ! -f "${GITHUB_WORKSPACE}/.lintr" ] && ((${#FILE_ARRAY_R[@]})); then
         info "No .lintr configuration file found, using defaults."
-        cp $R_LINTER_RULES "$GITHUB_WORKSPACE"
+        cp "$R_LINTER_RULES" "$GITHUB_WORKSPACE"
     # Check if there's local configuration for the Raku linter
     elif [ "${LANGUAGE}" = "RAKU" ] && [ -e "${GITHUB_WORKSPACE}/META6.json" ]; then
       cd "${GITHUB_WORKSPACE}" && zef install --deps-only --/test .
@@ -1278,8 +1351,8 @@ for LANGUAGE in "${LANGUAGE_ARRAY[@]}"; do
       LANGUAGE_FILE_ARRAY="${FILE_ARRAY_VARIABLE_NAME}"[@]
       debug "${FILE_ARRAY_VARIABLE_NAME} file array contents: ${!LANGUAGE_FILE_ARRAY}"
 
-      debug "Invoking ${LINTER_NAME} linter..."
-      LintCodebase "${LANGUAGE}" "${LINTER_NAME}" "${LINTER_COMMAND}" "${FILTER_REGEX_INCLUDE}" "${FILTER_REGEX_EXCLUDE}" "${!LANGUAGE_FILE_ARRAY}"
+      debug "Invoking ${LINTER_NAME} linter. TEST_CASE_RUN: ${TEST_CASE_RUN}"
+      LintCodebase "${LANGUAGE}" "${LINTER_NAME}" "${LINTER_COMMAND}" "${FILTER_REGEX_INCLUDE}" "${FILTER_REGEX_EXCLUDE}" "${TEST_CASE_RUN}" "${!LANGUAGE_FILE_ARRAY}"
     fi
   fi
 done

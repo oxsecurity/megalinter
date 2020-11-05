@@ -12,9 +12,9 @@ class Reporter:
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None):
-        self.master = params['master']
-        self.report_folder = params['report_folder']
-        if not hasattr(self, 'is_active'):
+        self.master = params["master"]
+        self.report_folder = params["report_folder"]
+        if not hasattr(self, "is_active"):
             self.is_active = False
         self.report_items = []
         self.manage_activation()
