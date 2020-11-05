@@ -3,7 +3,7 @@
 # <a href="https://scalacenter.github.io/scalafix/" target="blank" title="Visit linter Web Site"><img src="https://scalacenter.github.io/scalafix/img/scalacenter2x.png" alt="scalafix" height="100px"></a>scalafix
 
 - Web Site: [**https://scalacenter.github.io/scalafix/**](https://scalacenter.github.io/scalafix/)
-- Version: **0.9.21**
+- Version: **0.9.23**
 
 ## Configuration
 
@@ -49,7 +49,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.9.21
+Scalafix 0.9.23
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -89,6 +89,10 @@ Common options:
   --syntactic
     Run only syntactic rules, ignore semantic rules even if they are explicitly
     configured in .scalafix.conf or via --rules
+
+  --triggered
+    Overlay the default rules & rule settings in .scalafix.conf with the `triggered`
+    section
 
   --verbose
     Print out additional diagnostics while running scalafix.

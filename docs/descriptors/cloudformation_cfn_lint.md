@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/martysweet/cfn-lint**](https://github.com/martysweet/cfn-lint#readme)
-- Version: **0.39.0**
+- Version: **0.40.0**
 
 ## Configuration
 
