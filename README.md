@@ -14,10 +14,10 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Automatically detect [**36 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources and apply their related linters to ensure your projects are clean !
+**Mega-Linter** analyzes [**36 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
-**TLDR;**
+**TLDR;** (install and use out of the box in 3mn)
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
 - If you want to **apply formatters and auto-fixers** in a new commit/PR, uncomment [**APPLY_FIXES** variables](#apply-fixes)
@@ -453,6 +453,12 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 - **Rust**
 - **Scala**
 - **Spell checker**
+
+### Apply fixes
+
+Mega-Linter can **automatically apply fixes performed by linters**, and **push them to the same branch**, or **create a Pull Request** that you can validate
+
+This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
 ### New features & improvements
 
