@@ -157,6 +157,7 @@ RUN pip3 install --no-cache-dir \
           pylint \
           black \
           flake8 \
+          isort \
           snakemake \
           snakefmt \
           yamllint

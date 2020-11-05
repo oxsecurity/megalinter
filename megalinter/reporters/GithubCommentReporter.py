@@ -40,7 +40,7 @@ class GithubCommentReporter(Reporter):
             for linter in self.master.linters:
                 if linter.is_active is True:
                     emoji = ':green_circle:' if linter.status == 'success' and linter.return_code == 0 \
-                        else 'orange_circle' if linter.status != 'success' and linter.return_code == 0 \
+                        else ':orange_circle:' if linter.status != 'success' and linter.return_code == 0 \
                         else ':red_circle:'
                     first_col = f"{emoji} {linter.descriptor_id}"
                     lang_lower = linter.descriptor_id.lower()

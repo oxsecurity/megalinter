@@ -48,8 +48,8 @@ R --slave -e "errors <- lintr::lint('myfile.r'); print(errors); quit(save = 'no'
 ### Help content
 
 ```shell
-No documentation for ‘lintr’ in specified packages and libraries:
-you could try ‘??lintr’
+No documentation for â€˜lintrâ€™ in specified packages and libraries:
+you could try â€˜??lintrâ€™
 
 ```
 
