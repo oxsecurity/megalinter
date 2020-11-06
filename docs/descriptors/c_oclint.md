@@ -53,7 +53,7 @@ RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.
     && mkdir oclint-release \
     && tar xf oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz -C oclint-release --strip-components 1 \
     && rm oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \
-    && ls /oclint-release
+    && ls /oclint-release/bin
 
 ENV OCLINT_HOME /oclint-release
 ENV PATH $OCLINT_HOME/bin:$PATH
