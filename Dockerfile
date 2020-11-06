@@ -297,11 +297,13 @@ ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt
 
 # oclint installation
-RUN wget -qO- https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz | tar xvz - \
-    && ls && ls oclint-0.13.1 && chmod +x oclint-0.13.1/bin/oclint
+RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \
+    && mkdir oclint-release \
+    && tar xf oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz -C oclint-release --strip-components 1
 
-ENV PATH="oclint-0.13.1/bin:${PATH}"
-RUN oclint -help
+ENV OCLINT_HOME /oclint-release
+ENV PATH $OCLINT_HOME/bin:$PATH
+RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc
 
 # clj-kondo installation
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
