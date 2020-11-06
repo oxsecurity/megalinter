@@ -63,5 +63,5 @@ RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
 ```
 
 - APK packages (Linux):
-  - [ncurses](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses)
-  - [ncurses-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses-libs)
+  - [ncurses5](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses5)
+  - [ncurses5-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses5-libs)

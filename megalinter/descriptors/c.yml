@@ -28,8 +28,8 @@ linters:
       - "oclint -c .oclint myfile.c"
     install:
       apk:
-        - ncurses
-        - ncurses-libs
+        - ncurses5
+        - ncurses5-libs
       dockerfile:
         - |
           RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \

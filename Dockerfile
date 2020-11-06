@@ -134,8 +134,8 @@ RUN apk add --update --no-cache \
                 ruby-bundler \
                 ruby-rdoc \
                 ansible-lint \
-                ncurses \
-                ncurses-libs \
+                ncurses5 \
+                ncurses5-libs \
                 R \
                 R-dev \
                 R-doc \
