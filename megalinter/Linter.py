@@ -570,7 +570,7 @@ class Linter:
             cmd += self.files
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
-        if self.try_fix is True and '-megalinter-fix-flag' in cmd:
+        if self.try_fix is True and '--megalinter-fix-flag' in cmd:
             for arg in self.cli_lint_fix_remove_args:
                 cmd.remove(arg)
             cmd.remove('--megalinter-fix-flag')
