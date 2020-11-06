@@ -8,7 +8,7 @@ import os.path
 from megalinter import Linter
 
 
-class CSharpDotnetFormatLinter(Linter):
+class DotnetFormatLinter(Linter):
 
     # Build the CLI command to call to lint a file
     def build_lint_command(self, file=None):

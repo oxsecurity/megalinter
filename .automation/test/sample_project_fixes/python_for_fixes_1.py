@@ -9,7 +9,7 @@ import requests  # pylint: disable=import-error
 
 env = load_dotenv()
 api_url = getenv("API_URL", default="https://api.github.com/graphql")
-github_token = getenv("GITHUB_TOKEN", default=None)
+github_token =      getenv("GITHUB_TOKEN",default=None)
 
 if github_token is None:
     sys.exit(

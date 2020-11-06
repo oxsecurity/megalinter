@@ -55,5 +55,10 @@ class MegalinterFixesTest(unittest.TestCase):
         utilstest.assert_file_has_been_updated("ruby_for_fixes_1.rb", True, self)
         # black fix
         utilstest.assert_file_has_been_updated("python_for_fixes_1.py", True, self)
+        # dotnet linter VB .NET fix
+        utilstest.assert_file_has_been_updated("vbdotnet_for_fixes_1.vb", True, self)
+        # dotnet linter C# fix
+        utilstest.assert_file_has_been_updated("csharp_for_fixes_1.cs", True, self)
+
         # npm-groovy-lint fix (disabled while it does not work)
         # utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
