@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class scala_scalafix_test(TestCase, LinterTestRoot):
-    descriptor_id = 'SCALA'
-    linter_name = 'scalafix'
+    descriptor_id = "SCALA"
+    linter_name = "scalafix"

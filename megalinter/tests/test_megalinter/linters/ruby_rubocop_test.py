@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class ruby_rubocop_test(TestCase, LinterTestRoot):
-    descriptor_id = 'RUBY'
-    linter_name = 'rubocop'
+    descriptor_id = "RUBY"
+    linter_name = "rubocop"

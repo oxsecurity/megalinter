@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class rust_clippy_test(TestCase, LinterTestRoot):
-    descriptor_id = 'RUST'
-    linter_name = 'clippy'
+    descriptor_id = "RUST"
+    linter_name = "clippy"

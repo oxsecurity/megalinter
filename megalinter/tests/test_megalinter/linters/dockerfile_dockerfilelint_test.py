@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class dockerfile_dockerfilelint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'DOCKERFILE'
-    linter_name = 'dockerfilelint'
+    descriptor_id = "DOCKERFILE"
+    linter_name = "dockerfilelint"

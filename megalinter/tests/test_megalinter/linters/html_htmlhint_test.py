@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class html_htmlhint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'HTML'
-    linter_name = 'htmlhint'
+    descriptor_id = "HTML"
+    linter_name = "htmlhint"

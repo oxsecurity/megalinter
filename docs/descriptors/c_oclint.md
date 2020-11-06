@@ -55,8 +55,9 @@ RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.
 
 ENV OCLINT_HOME /oclint-release
 ENV PATH $OCLINT_HOME/bin:$PATH
-RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc
+RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
+    && ln -sf /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5
 ```
 
 - APK packages (Linux):
-  - [ncurses-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses-libs)
+  - [ncurses](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses)

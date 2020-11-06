@@ -28,7 +28,7 @@ linters:
       - "oclint -c .oclint myfile.c"
     install:
       apk:
-        - ncurses-libs
+        - ncurses
       dockerfile:
         - |
           RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \
@@ -36,4 +36,6 @@ linters:
               && tar xf oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz -C oclint-release --strip-components 1
         - ENV OCLINT_HOME /oclint-release
         - ENV PATH $OCLINT_HOME/bin:$PATH
-        - RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc
+        - |
+          RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
+              && ln -sf /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5

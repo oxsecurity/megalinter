@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class perl_perlcritic_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PERL'
-    linter_name = 'perlcritic'
+    descriptor_id = "PERL"
+    linter_name = "perlcritic"

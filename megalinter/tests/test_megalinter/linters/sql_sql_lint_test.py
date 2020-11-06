@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class sql_sql_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'SQL'
-    linter_name = 'sql-lint'
+    descriptor_id = "SQL"
+    linter_name = "sql-lint"

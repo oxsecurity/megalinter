@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class bash_shellcheck_test(TestCase, LinterTestRoot):
-    descriptor_id = 'BASH'
-    linter_name = 'shellcheck'
+    descriptor_id = "BASH"
+    linter_name = "shellcheck"

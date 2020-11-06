@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class tsx_eslint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'TSX'
-    linter_name = 'eslint'
+    descriptor_id = "TSX"
+    linter_name = "eslint"

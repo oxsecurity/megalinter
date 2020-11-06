@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class kotlin_ktlint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'KOTLIN'
-    linter_name = 'ktlint'
+    descriptor_id = "KOTLIN"
+    linter_name = "ktlint"

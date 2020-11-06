@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class latex_chktex_test(TestCase, LinterTestRoot):
-    descriptor_id = 'LATEX'
-    linter_name = 'chktex'
+    descriptor_id = "LATEX"
+    linter_name = "chktex"

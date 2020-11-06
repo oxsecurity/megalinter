@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class typescript_eslint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'TYPESCRIPT'
-    linter_name = 'eslint'
+    descriptor_id = "TYPESCRIPT"
+    linter_name = "eslint"

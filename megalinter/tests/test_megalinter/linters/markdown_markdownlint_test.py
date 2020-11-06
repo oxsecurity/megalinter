@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class markdown_markdownlint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'MARKDOWN'
-    linter_name = 'markdownlint'
+    descriptor_id = "MARKDOWN"
+    linter_name = "markdownlint"

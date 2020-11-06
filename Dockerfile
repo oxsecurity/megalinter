@@ -134,7 +134,7 @@ RUN apk add --update --no-cache \
                 ruby-bundler \
                 ruby-rdoc \
                 ansible-lint \
-                ncurses-libs \
+                ncurses \
                 R \
                 R-dev \
                 R-doc \
@@ -304,7 +304,8 @@ RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.
 
 ENV OCLINT_HOME /oclint-release
 ENV PATH $OCLINT_HOME/bin:$PATH
-RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc
+RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
+    && ln -sf /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5
 
 # clj-kondo installation
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/

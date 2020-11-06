@@ -145,8 +145,8 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
-    descriptor_id = '{linter.descriptor_id}'
-    linter_name = '{linter.linter_name}'
+    descriptor_id = "{linter.descriptor_id}"
+    linter_name = "{linter.linter_name}"
 """
         file = open(
             f"{REPO_HOME}/megalinter/tests/test_megalinter/linters/{lang_lower}_{linter_name_lower}_test.py",
