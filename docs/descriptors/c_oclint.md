@@ -63,3 +63,5 @@ RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
 
 - APK packages (Linux):
   - [rpm](https://pkgs.alpinelinux.org/packages?branch=edge&name=rpm)
+  - [ncurses5](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses5)
+  - [ncurses5-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses5-libs)
