@@ -134,6 +134,7 @@ RUN apk add --update --no-cache \
                 ruby-bundler \
                 ruby-rdoc \
                 ansible-lint \
+                rpm \
                 ncurses5 \
                 ncurses5-libs \
                 R \
@@ -302,12 +303,12 @@ RUN go get mvdan.cc/sh/v3/cmd/shfmt
 RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \
     && mkdir oclint-release \
     && tar xf oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz -C oclint-release --strip-components 1 \
-    && rm oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz
+    && rm oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \
+    && ls /oclint-release
 
 ENV OCLINT_HOME /oclint-release
 ENV PATH $OCLINT_HOME/bin:$PATH
 RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
-    && ln -sf /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5 \
     && oclint -version
 
 
