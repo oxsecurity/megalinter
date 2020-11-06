@@ -74,6 +74,7 @@ class Linter:
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
+        self.cli_lint_fix_remove_args = []  # Arguments to remove in case fix argument is sent
         self.cli_lint_user_args = (
             []
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
