@@ -308,6 +308,9 @@ RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc
 # clj-kondo installation
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
 
+# oclint installation
+RUN echo 'oclint installed by C descriptor'
+
 # dotnet-format installation
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
@@ -366,6 +369,9 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && make -b install \
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
     && luarocks install luacheck
+
+# oclint installation
+RUN echo 'oclint installed by C descriptor'
 
 # perlcritic installation
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic

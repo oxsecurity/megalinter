@@ -4,6 +4,7 @@
 
 - Add Visual Basic .NET language & dotnet-format
 - Refactor removal of arguments for formatters (from custom class to Linter generic class)
+- Add oclint for C, C++ and Objective-C
 
 ## [4.4.0] 2020-11-05
 

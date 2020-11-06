@@ -1,29 +1,10 @@
-descriptor_id: CPP
-descriptor_label: "C++"
+descriptor_id: OBJECTIVEC
+descriptor_label: "Objective-C"
 descriptor_type: language
 file_extensions:
-  - '.cpp'
-  - '.h'
-  - '.cc'
-  - '.hpp'
-  - '.cxx'
-  - '.cu'
-  - '.hxx'
-  - '.c++'
-  - '.hh'
-  - '.h++'
-  - '.cuh'
+  - '.m'
+  - '.mm'
 linters:
-  # CPPLINT
-  - linter_name: cpplint
-    name: CPP_CPPLINT
-    linter_url: https://github.com/cpplint/cpplint
-    cli_help_arg_name: "--help"
-    examples:
-      - "cpplint myfile.cpp"
-    install:
-      pip:
-        - cpplint
   # OCLINT
   - linter_name: oclint
     name: C_OCLINT
@@ -34,8 +15,8 @@ linters:
     cli_version_arg_name: '-version'
     cli_help_arg_name: '-help'
     examples:
-      - "oclint myfile.cpp"
-      - "oclint -c .oclint myfile.cpp"
+      - "oclint myfile.m"
+      - "oclint -c .oclint myfile.m"
     install:
       dockerfile:
         - RUN echo 'oclint installed by C descriptor'
