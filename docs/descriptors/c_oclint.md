@@ -51,13 +51,17 @@ oclint -c .oclint myfile.c
 ```dockerfile
 RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz \
     && mkdir oclint-release \
-    && tar xf oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz -C oclint-release --strip-components 1
+    && tar xf oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz -C oclint-release --strip-components 1 \
+    && rm oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz
 
 ENV OCLINT_HOME /oclint-release
 ENV PATH $OCLINT_HOME/bin:$PATH
 RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
-    && ln -sf /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5
+    && ln -sf /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5 \
+    && oclint -version
+
 ```
 
 - APK packages (Linux):
   - [ncurses](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses)
+  - [ncurses-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=ncurses-libs)
