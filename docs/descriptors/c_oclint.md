@@ -58,7 +58,7 @@ RUN wget https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.
 ENV OCLINT_HOME /oclint-release
 ENV PATH $OCLINT_HOME/bin:$PATH
 RUN echo 'PATH=$OCLINT_HOME/bin:$PATH' >> ~/.bashrc \
-    && oclint -version
+    && bash oclint -version
 
 ```
 
