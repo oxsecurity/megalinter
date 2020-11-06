@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class cpp_oclint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'CPP'
-    linter_name = 'oclint'
+    descriptor_id = "CPP"
+    linter_name = "oclint"

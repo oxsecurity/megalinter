@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class objectivec_oclint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'OBJECTIVEC'
-    linter_name = 'oclint'
+    descriptor_id = "OBJECTIVEC"
+    linter_name = "oclint"
