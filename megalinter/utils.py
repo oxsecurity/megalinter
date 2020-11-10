@@ -9,7 +9,6 @@ import re
 
 import git
 import yaml
-
 from megalinter.Linter import Linter
 
 REPO_HOME_DEFAULT = (
@@ -89,8 +88,8 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
         # Browse linters defined for language
         for linter_descriptor in language_descriptor.get("linters"):
             if (
-                    len(linter_names) > 0
-                    and linter_descriptor["linter_name"] not in linter_names
+                len(linter_names) > 0
+                and linter_descriptor["linter_name"] not in linter_names
             ):
                 continue
 
@@ -116,14 +115,14 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 # Build a single linter instance from language and linter name
 def build_linter(language, linter_name):
     language_descriptor_file = (
-            get_descriptor_dir() + os.path.sep + language.lower() + ".yml"
+        get_descriptor_dir() + os.path.sep + language.lower() + ".yml"
     )
     assert os.path.isfile(
         language_descriptor_file
     ), f"Unable to find {language_descriptor_file}"
     linters = build_descriptor_linters(language_descriptor_file, None, [linter_name])
     assert (
-            len(linters) == 1
+        len(linters) == 1
     ), f"Unable to find linter {linter_name} in {language_descriptor_file}"
     return linters[0]
 
