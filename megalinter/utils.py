@@ -89,8 +89,8 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
         # Browse linters defined for language
         for linter_descriptor in language_descriptor.get("linters"):
             if (
-                len(linter_names) > 0
-                and linter_descriptor["linter_name"] not in linter_names
+                    len(linter_names) > 0
+                    and linter_descriptor["linter_name"] not in linter_names
             ):
                 continue
 
@@ -116,14 +116,14 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 # Build a single linter instance from language and linter name
 def build_linter(language, linter_name):
     language_descriptor_file = (
-        get_descriptor_dir() + os.path.sep + language.lower() + ".yml"
+            get_descriptor_dir() + os.path.sep + language.lower() + ".yml"
     )
     assert os.path.isfile(
         language_descriptor_file
     ), f"Unable to find {language_descriptor_file}"
     linters = build_descriptor_linters(language_descriptor_file, None, [linter_name])
     assert (
-        len(linters) == 1
+            len(linters) == 1
     ), f"Unable to find linter {linter_name} in {language_descriptor_file}"
     return linters[0]
 
@@ -185,7 +185,10 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
 # Regexes must start with '(' to be identified are regex
 def file_contains(file_name, regex_or_str_list):
     with open(file_name) as f:
-        content = f.read()
+        try:
+            content = f.read()
+        except UnicodeDecodeError:
+            return False
         for regex_or_str in regex_or_str_list:
             if regex_or_str[0] == "(":
                 regex = re.compile(regex_or_str)
