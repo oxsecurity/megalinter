@@ -9,7 +9,7 @@
 #############################################################################################
 #FROM__START
 FROM koalaman/shellcheck:latest as shellcheck
-FROM borkdude/clj-kondo:2020.11.07 as clj-kondo
+FROM borkdude/clj-kondo as clj-kondo
 FROM hadolint/hadolint:latest-alpine as dockerfile-lint
 FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
 FROM dotenvlinter/dotenv-linter:latest as dotenv-linter
@@ -134,6 +134,7 @@ RUN apk add --update --no-cache \
                 ruby-bundler \
                 ruby-rdoc \
                 ansible-lint \
+                libc6-compat \
                 R \
                 R-dev \
                 R-doc \

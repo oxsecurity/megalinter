@@ -334,6 +334,13 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
+If you use **apply fixes**, add the following lines in your `.gitignore file`
+
+```
+*.log
+report/
+```
+
 You may see github permission errors, or workflows not run on the new commit. To solve these issues:
 
 - [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value

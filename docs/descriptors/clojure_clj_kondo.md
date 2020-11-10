@@ -95,7 +95,9 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
+FROM borkdude/clj-kondo as clj-kondo
 COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
 ```
 
+- APK packages (Linux):
+  - [libc6-compat](https://pkgs.alpinelinux.org/packages?branch=edge&name=libc6-compat)
