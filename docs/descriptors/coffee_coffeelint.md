@@ -3,7 +3,7 @@
 # coffeelint
 
 - Web Site: [**http://www.coffeelint.org**](http://www.coffeelint.org)
-- Version: **4.1.1**
+- Version: **4.1.2**
 
 ## Configuration
 
