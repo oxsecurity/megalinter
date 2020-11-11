@@ -27,8 +27,9 @@ linters:
         default_value: "false"
   # Shellcheck
   - linter_name: shellcheck
-    linter_url: https://github.com/koalaman/shellcheck
     name: BASH_SHELLCHECK
+    linter_url: https://github.com/koalaman/shellcheck
+    linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"

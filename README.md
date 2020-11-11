@@ -336,7 +336,7 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 
 If you use **apply fixes**, add the following lines in your `.gitignore file`
 
-```
+```shell
 *.log
 report/
 ```

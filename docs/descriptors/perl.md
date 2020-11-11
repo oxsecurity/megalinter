@@ -8,6 +8,11 @@
   - `.pl`
   - `.pm`
   - `.t`
+  - ``
+
+- Detected file content:
+  - `#!/usr/bin/env perl`
+  - `#!/usr/bin/perl`
 
 ## Mega-linter configuration
 

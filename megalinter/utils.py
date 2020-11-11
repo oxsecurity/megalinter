@@ -9,7 +9,6 @@ import re
 
 import git
 import yaml
-
 from megalinter.Linter import Linter
 
 REPO_HOME_DEFAULT = (
@@ -185,7 +184,10 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
 # Regexes must start with '(' to be identified are regex
 def file_contains(file_name, regex_or_str_list):
     with open(file_name) as f:
-        content = f.read()
+        try:
+            content = f.read()
+        except UnicodeDecodeError:
+            return False
         for regex_or_str in regex_or_str_list:
             if regex_or_str[0] == "(":
                 regex = re.compile(regex_or_str)

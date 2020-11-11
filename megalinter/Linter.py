@@ -74,7 +74,9 @@ class Linter:
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
-        self.cli_lint_fix_remove_args = []  # Arguments to remove in case fix argument is sent
+        self.cli_lint_fix_remove_args = (
+            []
+        )  # Arguments to remove in case fix argument is sent
         self.cli_lint_user_args = (
             []
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
@@ -571,10 +573,10 @@ class Linter:
             cmd += self.files
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
-        if self.try_fix is True and '--megalinter-fix-flag' in cmd:
+        if self.try_fix is True and "--megalinter-fix-flag" in cmd:
             for arg in self.cli_lint_fix_remove_args:
                 cmd.remove(arg)
-            cmd.remove('--megalinter-fix-flag')
+            cmd.remove("--megalinter-fix-flag")
         return cmd
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
@@ -590,3 +592,8 @@ class Linter:
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
         return cmd
+
+    # Provide additional details in text reporter logs
+    # noinspection PyMethodMayBeStatic
+    def complete_text_reporter_report(self, _reporter_self):
+        return []
