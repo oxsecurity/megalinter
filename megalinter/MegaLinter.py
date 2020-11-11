@@ -294,7 +294,7 @@ class Megalinter:
             )
             all_files += [
                 os.path.join(self.workspace, file)
-                for file in sorted(os.listdir())
+                for file in sorted(os.listdir(self.workspace))
                 if os.path.isfile(os.path.join(self.workspace, file))
             ]
             if logging.getLogger().isEnabledFor(logging.DEBUG):
