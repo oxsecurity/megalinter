@@ -293,14 +293,12 @@ class Megalinter:
                 + "], then filter with:"
             )
             all_files += [
-                os.path.join(self.workspace, file) for file in sorted(os.listdir())
+                os.path.join(self.workspace, file)
+                for file in sorted(os.listdir())
                 if os.path.isfile(os.path.join(self.workspace, file))
             ]
             if logging.getLogger().isEnabledFor(logging.DEBUG):
-                logging.debug(
-                    "Root dir content:\n"
-                    + "\n- ".join(all_files)
-                )
+                logging.debug("Root dir content:\n" + "\n- ".join(all_files))
             excluded_directories = utils.list_excluded_directories()
             for (dirpath, dirnames, filenames) in os.walk(self.workspace):
                 exclude = False
