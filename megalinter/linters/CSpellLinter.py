@@ -22,6 +22,8 @@ class CSpellLinter(Linter):
             word = re.match(r"Unknown word \((.*)\)", log_line)
             if word:
                 whitelisted_words += [word.group(0)]
+        if len(whitelisted_words) == 0:
+            return []
         # Sort and make list unique
         whitelisted_words_clean = sorted(set(whitelisted_words))
         # Generate possible .cspell.json file
@@ -32,11 +34,11 @@ class CSpellLinter(Linter):
         }
         cspell_example_json = json.dumps(cspell_example, indent=4)
         additional_report = f"""
-        You can skip this misspellings by defining the following .cspell.json file at the root of your repository
-        Of course, please correct real typos before :)
+You can skip this misspellings by defining the following .cspell.json file at the root of your repository
+Of course, please correct real typos before :)
 
-        {cspell_example_json}
+{cspell_example_json}
 
-        """
+"""
         logging.debug(f'Generated additional TextReporter log for CSpellLinter:\n{additional_report}')
         return additional_report.split(os.linesep)
