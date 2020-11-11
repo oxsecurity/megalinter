@@ -305,7 +305,7 @@ class Megalinter:
                     all_files += [
                         os.path.join(dirpath, file) for file in sorted(filenames)
                     ]
-
+            logging.debug("All found files before filtering:\n"+all_files.join(os.linesep))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
             logging.info("- File extensions: " + ", ".join(self.file_extensions))
