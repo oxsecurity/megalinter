@@ -28,7 +28,7 @@ class CSpellLinter(Linter):
         cspell_example = {
             "version": 0.1,
             "language": "en",
-            "words": whitelisted_words_clean
+            "words": whitelisted_words_clean,
         }
         cspell_example_json = json.dumps(cspell_example, indent=4)
         additional_report = f"""
@@ -38,5 +38,7 @@ class CSpellLinter(Linter):
         {cspell_example_json}
 
         """
-        logging.debug(f'Generated additional TextReporter log for CSpellLinter:\n{additional_report}')
+        logging.debug(
+            f"Generated additional TextReporter log for CSpellLinter:\n{additional_report}"
+        )
         return additional_report.split(os.linesep)
