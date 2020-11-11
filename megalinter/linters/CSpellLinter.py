@@ -19,9 +19,8 @@ class CSpellLinter(Linter):
         # Collect detected words from logs
         whitelisted_words = []
         for log_line in reporter_self.report_items:
-            word = re.match(r"Unknown word \((.*)\)", log_line)
-            if word:
-                whitelisted_words += [word.group(0)]
+            words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)
+            whitelisted_words += words
         if len(whitelisted_words) == 0:
             return []
         # Sort and make list unique
