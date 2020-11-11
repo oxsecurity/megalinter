@@ -353,7 +353,7 @@ class Megalinter:
                 linter.is_active = False
 
     def initialize_logger(self):
-        logging_level_key = os.environ.get("LOG_LEVEL", "INFO")
+        logging_level_key = os.environ.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
             "INFO": logging.INFO,
             "DEBUG": logging.DEBUG,
