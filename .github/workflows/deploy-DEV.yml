@@ -85,7 +85,7 @@ jobs:
       #####################################
       - name: Run against all code base
         shell: bash
-        run: docker run -e DEFAULT_BRANCH=master -e OUTPUT_DETAILS=detailed -e FILTER_REGEX_EXCLUDE='(\.automation/test)' -e DISABLE="CLOUDFORMATION,SPELL" -e DISABLE_LINTERS="BASH_SHFMT,DOCKERFILE_HADOLINT,PYTHON_BLACK,PYTHON_ISORT" -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
+        run: docker run -e LOG_LEVEL=DEBUG -e DEFAULT_BRANCH=master -e OUTPUT_DETAILS=detailed -e FILTER_REGEX_EXCLUDE='(\.automation/test)' -e DISABLE="CLOUDFORMATION,SPELL" -e DISABLE_LINTERS="BASH_SHFMT,DOCKERFILE_HADOLINT,PYTHON_BLACK,PYTHON_ISORT" -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
         timeout-minutes: 10
 
       # Upload Mega-Linter artifacts

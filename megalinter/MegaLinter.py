@@ -12,7 +12,6 @@ import sys
 
 import git
 import terminaltables
-
 from megalinter import utils
 
 
@@ -293,19 +292,28 @@ class Megalinter:
                 + self.workspace
                 + "], then filter with:"
             )
+            all_files += [
+                os.path.join(self.workspace, file)
+                for file in sorted(os.listdir())
+                if os.path.isfile(os.path.join(self.workspace, file))
+            ]
             if logging.getLogger().isEnabledFor(logging.DEBUG):
-                logging.debug(", ".join(os.listdir(self.workspace)))
+                logging.debug("Root dir content:\n" + "\n- ".join(all_files))
             excluded_directories = utils.list_excluded_directories()
             for (dirpath, dirnames, filenames) in os.walk(self.workspace):
                 exclude = False
                 for dir1 in dirnames:
                     if dir1 in excluded_directories:
                         exclude = True
+                        logging.debug(f"Excluded directory ${dir1}")
                 if exclude is False:
                     all_files += [
                         os.path.join(dirpath, file) for file in sorted(filenames)
                     ]
-
+            all_files = sorted(set(all_files))
+            logging.debug(
+                "All found files before filtering:\n" + "\n- ".join(all_files)
+            )
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
             logging.info("- File extensions: " + ", ".join(self.file_extensions))
@@ -352,7 +360,7 @@ class Megalinter:
                 linter.is_active = False
 
     def initialize_logger(self):
-        logging_level_key = os.environ.get("LOG_LEVEL", "INFO")
+        logging_level_key = os.environ.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
             "INFO": logging.INFO,
             "DEBUG": logging.DEBUG,
