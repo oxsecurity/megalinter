@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://eslint.org**](https://eslint.org)
-- Version: **7.12.1**
+- Version: **7.13.0**
 
 ## Configuration
 
