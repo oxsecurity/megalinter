@@ -183,7 +183,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
 # Can receive a list of strings, regexes, or even mixed :).
 # Regexes must start with '(' to be identified are regex
 def file_contains(file_name, regex_or_str_list):
-    with open(file_name) as f:
+    with open(file_name, "r", encoding="utf-8") as f:
         try:
             content = f.read()
         except UnicodeDecodeError:
