@@ -40,5 +40,7 @@ Of course, please correct real typos before :)
 {cspell_example_json}
 
 """
-        logging.debug(f'Generated additional TextReporter log for CSpellLinter:\n{additional_report}')
+        logging.debug(
+            f"Generated additional TextReporter log for CSpellLinter:\n{additional_report}"
+        )
         return additional_report.split(os.linesep)
