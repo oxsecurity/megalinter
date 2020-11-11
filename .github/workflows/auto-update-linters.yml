@@ -85,7 +85,7 @@ jobs:
           commit-message: "[automation] Auto-update linters version, help and documentation"
           delete-branch: true
           title: "[automation] Auto-update linters version, help and documentation"
-          labels: dependencies
+          labels: dependencies,automerge
       - name: Create PR output
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"

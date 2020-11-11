@@ -5,6 +5,7 @@
 - Add Visual Basic .NET language & dotnet-format
 - Refactor removal of arguments for formatters (from custom class to Linter generic class)
 - Perl: lint files with no extension containing Perl shebang
+- Add automerge for PR issues from linter versions updates
 
 ## [4.4.0] 2020-11-05
 
