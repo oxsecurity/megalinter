@@ -3,7 +3,7 @@
 # <a href="https://github.com/htmlhint/HTMLHint" target="blank" title="Visit linter Web Site"><img src="https://raw.githubusercontent.com/htmlhint/HTMLHint/master/website/static/img/htmlhint.png" alt="htmlhint" height="100px"></a>htmlhint
 
 - Web Site: [**https://github.com/htmlhint/HTMLHint**](https://github.com/htmlhint/HTMLHint#readme)
-- Version: **0.14.1**
+- Version: **0.14.2**
 
 ## Configuration
 
