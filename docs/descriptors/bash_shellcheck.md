@@ -10,7 +10,7 @@
 ### shellcheck configuration
 
 - shellcheck has no known capability to configure custom rules
-- shellcheck has no known capability to inline-disable rules
+- [Disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore)
 
 ### Mega-linter configuration
 

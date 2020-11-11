@@ -112,7 +112,7 @@ class Linter:
         self.is_active = params["default_linter_activation"]
         if self.name is None:
             self.name = (
-                self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
+                    self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
@@ -129,7 +129,7 @@ class Linter:
             self.apply_fixes = (
                 True
                 if params.get("apply_fixes", "none") == "all"
-                or self.name in params.get("apply_fixes", "").split(",")
+                   or self.name in params.get("apply_fixes", "").split(",")
                 else False
             )
 
@@ -173,7 +173,7 @@ class Linter:
                     f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory
                 )
                 if not os.path.isdir(
-                    self.workspace + os.path.sep + self.files_sub_directory
+                        self.workspace + os.path.sep + self.files_sub_directory
                 ):
                     self.is_active = False
 
@@ -206,30 +206,30 @@ class Linter:
         elif self.name in params["disable_linters"]:
             self.is_active = False
         elif (
-            self.descriptor_id in params["disable_descriptors"]
-            or self.name in params["disable_linters"]
+                self.descriptor_id in params["disable_descriptors"]
+                or self.name in params["disable_linters"]
         ):
             self.is_active = False
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
         elif (
-            "VALIDATE_" + self.name in os.environ
-            and os.environ["VALIDATE_" + self.name] == "false"
+                "VALIDATE_" + self.name in os.environ
+                and os.environ["VALIDATE_" + self.name] == "false"
         ):
             self.is_active = False
         elif (
-            "VALIDATE_" + self.descriptor_id in os.environ
-            and os.environ["VALIDATE_" + self.descriptor_id] == "false"
+                "VALIDATE_" + self.descriptor_id in os.environ
+                and os.environ["VALIDATE_" + self.descriptor_id] == "false"
         ):
             self.is_active = False
         elif (
-            "VALIDATE_" + self.name in os.environ
-            and os.environ["VALIDATE_" + self.name] == "true"
+                "VALIDATE_" + self.name in os.environ
+                and os.environ["VALIDATE_" + self.name] == "true"
         ):
             self.is_active = True
         elif (
-            "VALIDATE_" + self.descriptor_id in os.environ
-            and os.environ["VALIDATE_" + self.descriptor_id] == "true"
+                "VALIDATE_" + self.descriptor_id in os.environ
+                and os.environ["VALIDATE_" + self.descriptor_id] == "true"
         ):
             self.is_active = True
 
@@ -253,24 +253,24 @@ class Linter:
         # 2: linter_rules_path + config_file_name
         # 3: mega-linter default rules path + config_file_name
         if (
-            self.config_file_name is not None
-            and self.config_file_name != "LINTER_DEFAULT"
+                self.config_file_name is not None
+                and self.config_file_name != "LINTER_DEFAULT"
         ):
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
             elif os.path.isfile(
-                self.linter_rules_path + os.path.sep + self.config_file_name
+                    self.linter_rules_path + os.path.sep + self.config_file_name
             ):
                 self.config_file = (
-                    self.linter_rules_path + os.path.sep + self.config_file_name
+                        self.linter_rules_path + os.path.sep + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
             elif os.path.isfile(
-                self.default_rules_location + os.path.sep + self.config_file_name
+                    self.default_rules_location + os.path.sep + self.config_file_name
             ):
                 self.config_file = (
-                    self.default_rules_location + os.path.sep + self.config_file_name
+                        self.default_rules_location + os.path.sep + self.config_file_name
                 )
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
@@ -279,7 +279,7 @@ class Linter:
         elif self.descriptor_id + "_FILTER_REGEX_INCLUDE" in os.environ:
             self.filter_regex_include = os.environ[
                 self.descriptor_id + "_FILTER_REGEX_INCLUDE"
-            ]
+                ]
 
         # User arguments from config
         if os.environ.get(self.name + "_ARGUMENTS", "") != "":
@@ -299,7 +299,7 @@ class Linter:
         elif self.descriptor_id + "_FILTER_REGEX_EXCLUDE" in os.environ:
             self.filter_regex_exclude = os.environ[
                 self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
-            ]
+                ]
 
     # Processes the linter
     def run(self):
@@ -381,31 +381,31 @@ class Linter:
         # Filter all files to keep only the ones matching with the current linter
         for file in all_files:
             if (
-                self.filter_regex_include is not None
-                and re.search(self.filter_regex_include, file) is None
+                    self.filter_regex_include is not None
+                    and re.search(self.filter_regex_include, file) is None
             ):
                 continue
             elif (
-                self.filter_regex_exclude is not None
-                and re.search(self.filter_regex_exclude, file) is not None
+                    self.filter_regex_exclude is not None
+                    and re.search(self.filter_regex_exclude, file) is not None
             ):
                 continue
             elif (
-                self.files_sub_directory is not None
-                and self.files_sub_directory not in file
+                    self.files_sub_directory is not None
+                    and self.files_sub_directory not in file
             ):
                 continue
             elif (
-                self.lint_all_other_linters_files is False
-                and not megalinter.utils.check_file_extension_or_name(
-                    file, self.file_extensions, self.file_names
-                )
+                    self.lint_all_other_linters_files is False
+                    and not megalinter.utils.check_file_extension_or_name(
+                file, self.file_extensions, self.file_names
+            )
             ):
                 continue
             elif file.endswith(tuple(self.files_names_not_ends_with)):
                 continue
             elif len(self.file_contains) > 0 and not megalinter.utils.file_contains(
-                file, self.file_contains
+                    file, self.file_contains
             ):
                 continue
             self.files += [file]
@@ -590,3 +590,8 @@ class Linter:
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
         return cmd
+
+    # Provide additional details in text reporter logs
+    # noinspection PyMethodMayBeStatic
+    def complete_text_reporter_report(self, _reporter_self):
+        return []

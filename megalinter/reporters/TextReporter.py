@@ -56,6 +56,7 @@ class TextReporter(Reporter):
             '-----------------------------------------------',
             ""]
         text_report_lines += self.report_items
+        text_report_lines += self.master.complete_text_reporter_report(self)
         text_file_name = f"{self.report_folder}{os.path.sep}" \
                          f"{self.master.status.upper()}-mega-linter-{self.master.name}.log"
         if not os.path.isdir(os.path.dirname(text_file_name)):
