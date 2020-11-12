@@ -4,3 +4,4 @@ PYTHONPATH=.
 export PYTHONPATH
 ls
 python ./.automation/build.py
+mkdocs build
