@@ -15,6 +15,8 @@ setup(name='megalinter',
       install_requires=[
           'gitpython',
           'jsonschema',
+          'mkdocs',
+          'mkdocs-material',
           'pygithub',
           'pytablewriter',
           'pytest-cov',
