@@ -660,11 +660,18 @@ def validate_descriptors():
             )
 
 
-def copy_files():
+def generate_index_md():
+    target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
     copyfile(
         f"{REPO_HOME}{os.path.sep}README.md",
-        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md",
+        target_file,
     )
+    with open(target_file, 'r+') as f:
+        content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(content.replace(DOCS_URL_ROOT, ''))
+    logging.info(f"Copied and updated {target_file}")
 
 
 if __name__ == "__main__":
@@ -679,4 +686,4 @@ if __name__ == "__main__":
     generate_dockerfile()
     generate_linter_test_classes()
     generate_documentation()
-    copy_files()
+    generate_index_md()

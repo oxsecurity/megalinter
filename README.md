@@ -13,21 +13,19 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
-## Quick Start
-
 <!-- welcome-phrase-start -->
 **Mega-Linter** analyzes [**37 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
-**TLDR;** (install and use out of the box in 3mn)
+![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
+
+## Quick Start
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
 - If you want to **apply formatters and auto-fixers** in a new commit/PR, uncomment [**APPLY_FIXES** variables](#apply-fixes)
 - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
 - Watch !
-
-![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
 
 **Notes**:
 
@@ -386,7 +384,7 @@ See linters specific variables in their [Mega-Linter documentation](#languages)
 You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets. This allows for greater flexibility for each individual code base. The Template rules all try to follow the standards we believe should be enabled at the basic level.
 
 - Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
-  - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/github/mega-linter/tree/master/TEMPLATES)
+  - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES)
 
 ## Docker Hub
 
@@ -444,13 +442,13 @@ Below are a list of the known limitations for the **Mega-Linter**:
 
 ## How to contribute
 
-If you would like to help contribute to this repository, please see [CONTRIBUTING](https://github.com/github/mega-linter/blob/master/.github/CONTRIBUTING.md)
+If you would like to help contribute to this repository, please see [CONTRIBUTING](https://github.com/nvuillam/mega-linter/blob/master/.github/CONTRIBUTING.md)
 
 ---
 
 ### License
 
-- [MIT License](https://github.com/github/mega-linter/blob/master/LICENSE)
+- [MIT License](https://github.com/nvuillam/mega-linter/blob/master/LICENSE)
 
 ## Additional features compared to github super-linter
 
@@ -464,6 +462,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 - **Rust**
 - **Scala**
 - **Spell checker**
+- **Visual Basic .NET**
 
 ### Automatically apply fixes
 
