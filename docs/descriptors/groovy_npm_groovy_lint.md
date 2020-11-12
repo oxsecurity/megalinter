@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

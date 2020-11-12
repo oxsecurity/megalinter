@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

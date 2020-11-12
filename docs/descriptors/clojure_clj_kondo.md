@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

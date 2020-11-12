@@ -14,8 +14,8 @@
 
 ### Mega-linter configuration
 
-- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

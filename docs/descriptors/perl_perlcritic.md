@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

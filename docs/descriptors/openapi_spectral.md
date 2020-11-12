@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

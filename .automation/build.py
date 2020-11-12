@@ -429,9 +429,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += [""]
         # Mega-linter variables
         activation_url = (
-            "index.md#activation-and-deactivation"
+            "../index.md#activation-and-deactivation"
         )
-        apply_fixes_url = "index.md#apply-fixes"
+        apply_fixes_url = "../index.md#apply-fixes"
         linter_doc_md += [
             "### Mega-linter configuration",
             "",

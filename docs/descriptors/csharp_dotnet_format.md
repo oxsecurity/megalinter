@@ -14,10 +14,10 @@
 
 ### Mega-linter configuration
 
-- Enable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSHARP_DOTNET_FORMAT` in [APPLY_FIXES variable](index.md#apply-fixes)
+- Enable **auto-fixes** by adding `CSHARP_DOTNET_FORMAT` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

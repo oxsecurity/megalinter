@@ -15,10 +15,10 @@
 
 ### Mega-linter configuration
 
-- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](index.md#apply-fixes)
+- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

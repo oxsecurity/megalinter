@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
-- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
