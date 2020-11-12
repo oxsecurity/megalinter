@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png" alt="dartanalyzer" height="150px">
+    <img src="https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png" alt="dartanalyzer" height="150px" class="megalinter-banner">
   </a>
 </div>
 

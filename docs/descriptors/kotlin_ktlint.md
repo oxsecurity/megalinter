@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://ktlint.github.io" target="blank" title="Visit linter Web Site">
-    <img src="https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png" alt="ktlint" height="150px">
+    <img src="https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png" alt="ktlint" height="150px" class="megalinter-banner">
   </a>
 </div>
 

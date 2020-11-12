@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://www.php.net" target="blank" title="Visit linter Web Site">
-    <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="php" height="150px">
+    <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="php" height="150px" class="megalinter-banner">
   </a>
 </div>
 

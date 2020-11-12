@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://checkstyle.sourceforge.io" target="blank" title="Visit linter Web Site">
-    <img src="https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png" alt="checkstyle" height="150px">
+    <img src="https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png" alt="checkstyle" height="150px" class="megalinter-banner">
   </a>
 </div>
 

@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://pycqa.github.io/isort/" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png" alt="isort" height="150px">
+    <img src="https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png" alt="isort" height="150px" class="megalinter-banner">
   </a>
 </div>
 

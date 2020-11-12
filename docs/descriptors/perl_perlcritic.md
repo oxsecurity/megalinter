@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://metacpan.org/pod/Perl::Critic" target="blank" title="Visit linter Web Site">
-    <img src="https://chrisdolan.net/madmongers/images/perl-critic-logo.gif" alt="perlcritic" height="150px">
+    <img src="https://chrisdolan.net/madmongers/images/perl-critic-logo.gif" alt="perlcritic" height="150px" class="megalinter-banner">
   </a>
 </div>
 

@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/accurics/terrascan#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png" alt="terrascan" height="150px">
+    <img src="https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png" alt="terrascan" height="150px" class="megalinter-banner">
   </a>
 </div>
 

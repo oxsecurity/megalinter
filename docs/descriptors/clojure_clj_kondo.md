@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/borkdude/clj-kondo#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png" alt="clj-kondo" height="150px">
+    <img src="https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png" alt="clj-kondo" height="150px" class="megalinter-banner">
   </a>
 </div>
 

@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://eslint.org" target="blank" title="Visit linter Web Site">
-    <img src="https://i.imgur.com/CFdruO8.jpg" alt="eslint" height="150px">
+    <img src="https://i.imgur.com/CFdruO8.jpg" alt="eslint" height="150px" class="megalinter-banner">
   </a>
 </div>
 

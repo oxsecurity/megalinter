@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://stylelint.io" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png" alt="stylelint" height="150px">
+    <img src="https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png" alt="stylelint" height="150px" class="megalinter-banner">
   </a>
 </div>
 

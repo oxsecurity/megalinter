@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true" alt="jscpd" height="150px">
+    <img src="https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true" alt="jscpd" height="150px" class="megalinter-banner">
   </a>
 </div>
 

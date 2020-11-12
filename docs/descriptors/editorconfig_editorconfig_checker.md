@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/editorconfig-checker/editorconfig-checker#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png" alt="editorconfig-checker" height="150px">
+    <img src="https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png" alt="editorconfig-checker" height="150px" class="megalinter-banner">
   </a>
 </div>
 

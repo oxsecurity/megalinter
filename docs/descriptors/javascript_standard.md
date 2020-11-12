@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/standard/standard#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="standard" height="150px">
+    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="standard" height="150px" class="megalinter-banner">
   </a>
 </div>
 

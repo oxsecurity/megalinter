@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/martysweet/cfn-lint#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png" alt="cfn-lint" height="150px">
+    <img src="https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png" alt="cfn-lint" height="150px" class="megalinter-banner">
   </a>
 </div>
 

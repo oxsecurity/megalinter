@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://snakemake.readthedocs.io/en/stable/" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png" alt="snakemake" height="150px">
+    <img src="https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png" alt="snakemake" height="150px" class="megalinter-banner">
   </a>
 </div>
 

@@ -10,6 +10,7 @@ theme:
   features:
     - navigation.instant
     - navigation.expand
+  logo: assets/mega-linter-square-small.png
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji

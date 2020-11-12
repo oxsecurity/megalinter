@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/rubocop-hq/rubocop#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png" alt="rubocop" height="150px">
+    <img src="https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png" alt="rubocop" height="150px" class="megalinter-banner">
   </a>
 </div>
 
