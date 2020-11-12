@@ -13,6 +13,8 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
+## Quick Start
+
 <!-- welcome-phrase-start -->
 **Mega-Linter** analyzes [**37 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
@@ -36,6 +38,7 @@
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
+  - [Quick start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
     - [Formats](#formats)

@@ -29,7 +29,7 @@ You can follow the link below on how to install and configure **Docker** on your
 
 ### Flags for running Locally
 
-You can add as many **Additional** flags as needed, documented in [README.md](../README.md#Environment-variables)
+You can add as many **Additional** flags as needed, documented in [Configuration](index.md#Configuration)
 
 ### Example
 

@@ -1,6 +1,7 @@
 site_name: Mega-Linter
 site_url: https://nvuillam.github.io/mega-linter/
 repo_url: https://github.com/nvuillam/mega-linter
+site_author: Nicolas Vuillamy
 site_description: Mega-Linter documentation
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -13,8 +14,13 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 nav:
   - Home: index.md
-  - Languages: index.md
-  - Linters: index.md
+  - Quick Start: index.md#quick-start
+  - Linters:
+      - Languages: index.md#languages
+      - Formats: index.md#formats
+      - Tooling formats: index.md#tooling-formats
+  - Installation: index.md#languages
+  - Configuration: index.md#configuration
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
