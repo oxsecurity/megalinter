@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class markdown_markdown_link_check_test(TestCase, LinterTestRoot):
-    descriptor_id = 'MARKDOWN'
-    linter_name = 'markdown-link-check'
+    descriptor_id = "MARKDOWN"
+    linter_name = "markdown-link-check"
