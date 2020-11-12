@@ -670,7 +670,7 @@ def generate_index_md():
         content = f.read()
         f.seek(0)
         f.truncate()
-        f.write(content.replace(DOCS_URL_ROOT, ''))
+        f.write(content.replace(DOCS_URL_ROOT + '/', ''))
     logging.info(f"Copied and updated {target_file}")
 
 
