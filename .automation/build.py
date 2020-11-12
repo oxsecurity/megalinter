@@ -347,7 +347,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_banner_image_url is not None
         ):
             linter_doc_md += [
-                image_link(
+                banner_link(
                     linter.linter_banner_image_url,
                     linter.linter_name,
                     doc_url(linter.linter_url),
@@ -569,11 +569,11 @@ def doc_url(href):
     return href
 
 
-def image_link(src, alt, link, title, align, maxheight):
+def banner_link(src, alt, link, title, align, maxheight):
     return f"""
 <div align=\"{align}\">
   <a href=\"{link}\" target=\"blank\" title=\"{title}\">
-    <img src=\"{src}\" alt=\"{alt}\" height=\"{maxheight}px\">
+    <img src=\"{src}\" alt=\"{alt}\" height=\"{maxheight}px\" class="megalinter-banner">
   </a>
 </div>"""
 
@@ -581,12 +581,12 @@ def image_link(src, alt, link, title, align, maxheight):
 def logo_link(src, alt, link, title, maxheight):
     return (
         f'<a href="{link}" target="blank" title="{title}">'
-        f'<img src="{src}" alt="{alt}" height="{maxheight}px"></a>'
+        f'<img src="{src}" alt="{alt}" height="{maxheight}px" class="megalinter-logo"></a>'
     )
 
 
 def icon(src, alt, _link, _title, height):
-    return f'<img src="{src}" alt="{alt}" height="{height}px"></a>'
+    return f'<img src="{src}" alt="{alt}" height="{height}px class="megalinter-icon"></a>'
 
 
 def merge_install_attr(item):
