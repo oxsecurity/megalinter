@@ -40,7 +40,7 @@
 ### Example calls
 
 ```shell
-markdownlint myfile.css
+markdownlint myfile.md
 ```
 
 ```shell
