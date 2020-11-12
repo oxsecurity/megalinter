@@ -156,8 +156,7 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
         logging.info("Updated " + file.name)
 
 
-# Automatically generate README linters table and a MD file for each linter
-def generate_documentation():
+def list_descriptors_for_build():
     descriptor_files = megalinter.utils.list_descriptor_files()
     linters_by_type = {"language": [], "format": [], "tooling_format": [], "other": []}
     descriptors = []
@@ -166,6 +165,12 @@ def generate_documentation():
         descriptors += [descriptor]
         descriptor_linters = megalinter.utils.build_descriptor_linters(descriptor_file)
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
+    return descriptors, linters_by_type
+
+
+# Automatically generate README linters table and a MD file for each linter
+def generate_documentation():
+    descriptors, linters_by_type = list_descriptors_for_build()
     # Build descriptors documentation
     for descriptor in descriptors:
         generate_descriptor_documentation(descriptor)
@@ -288,15 +293,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
     for linter in descriptor_linters:
-        lang_lower = linter.descriptor_id.lower()
-        linter_name_lower = linter.linter_name.lower().replace("-", "_")
-
-        # Append in general linter tables (for README)
-        descriptor_label = (
-            f"**{linter.descriptor_label}** ({linter.descriptor_id})"
-            if hasattr(linter, "descriptor_label")
-            else f"**{linter.descriptor_id}**"
-        )
+        lang_lower,linter_name_lower,descriptor_label = get_linter_base_info(linter)
         if prev_lang != linter.descriptor_id and os.path.isfile(
             REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
         ):
@@ -530,6 +527,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [""]
     return linters_tables_md
 
+def get_linter_base_info(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
+    descriptor_label = (
+        f"**{linter.descriptor_label}** ({linter.descriptor_id})"
+        if hasattr(linter, "descriptor_label")
+        else f"**{linter.descriptor_id}**"
+    )
+    return lang_lower,linter_name_lower,descriptor_label
 
 def get_install_md(item):
     linter_doc_md = []
@@ -682,6 +688,31 @@ def generate_index_md():
     )
 
 
+def generate_mkdocs_yml():
+    logging.info("Generating mkdocs dynamic yml...")
+    descriptors, linters_by_type = list_descriptors_for_build()
+    process_type_mkdocs_yml(linters_by_type, "language")
+    process_type_mkdocs_yml(linters_by_type, "format")
+    process_type_mkdocs_yml(linters_by_type, "tooling_format")
+    process_type_mkdocs_yml(linters_by_type, "other")
+
+
+def process_type_mkdocs_yml(linters_by_type, type1):
+    descriptor_linters = linters_by_type[type1]
+    mkdocs_yml = []
+    prev_lang = ""
+    for linter in descriptor_linters:
+        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
+        if prev_lang != lang_lower:
+            mkdocs_yml += [
+                f'       - "{descriptor_label}":'
+            ]
+        prev_lang = lang_lower
+    # Update mkdocs.yml file
+    replace_in_file(
+        f"{REPO_HOME}/mkdocs.yml", f"# {type1}-start", f"# {type1}-end", "\n".join(mkdocs_yml)
+    )
+
 if __name__ == "__main__":
     logging.basicConfig(
         force=True,
@@ -695,3 +726,4 @@ if __name__ == "__main__":
     generate_linter_test_classes()
     generate_documentation()
     generate_index_md()
+    generate_mkdocs_yml()

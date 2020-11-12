@@ -5,27 +5,48 @@ edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 site_description: Mega-Linter documentation
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
+google_analytics: ["G-3DM50255LC", "nvuillam.github.io/mega-linter"]
 theme:
   name: material
   features:
     - navigation.instant
     - navigation.expand
-  logo: assets/mega-linter-square-small.png
+  logo: assets/images/mega-linter-square.png
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-nav:
-  - "Home": "index.md"
-  - "Quick Start": "#quick-start"
-  - "Linters":
-      - "Languages": "#languages"
-      - "Formats": "#formats"
-      - "Tooling formats": "#tooling-formats"
-  - "Installation": "#installation"
-  - "Configuration": "#configuration"
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
 extra_css:
   - stylesheets/extra.css
+nav:
+  - "Home": "index.md"
+  - "Quick Start": "#quick-start"
+  - "Installation": "#installation"
+  - "Configuration": "#configuration"
+  - "Languages":
+      # language-start
+      - "Bash":
+          - "bash-exec": "descriptors/bash_bash_exec.md"
+          - "shellcheck": "descriptors/bash_shellcheck.md"
+    # language-end
+  - "Formats":
+      # format-start
+      - "Bash":
+          - "bash-exec": "descriptors/bash_bash_exec.md"
+          - "shellcheck": "descriptors/bash_shellcheck.md"
+    # format-end
+  - "Tooling Formats":
+      # tooling_format-start
+      - "Bash":
+          - "bash-exec": "descriptors/bash_bash_exec.md"
+          - "shellcheck": "descriptors/bash_shellcheck.md"
+    # tooling_formats-end
+  - "Other":
+      # other-start
+      - "Bash":
+          - "bash-exec": "descriptors/bash_bash_exec.md"
+          - "shellcheck": "descriptors/bash_shellcheck.md"
+    # other-end
