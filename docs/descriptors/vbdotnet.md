@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [dotnet-format](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/vbdotnet_dotnet_format.md#readme) | [VBDOTNET](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/vbdotnet_dotnet_format.md#readme) |
+| [dotnet-format](vbdotnet_dotnet_format.md) | [VBDOTNET](vbdotnet_dotnet_format.md) |

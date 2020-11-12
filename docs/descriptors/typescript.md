@@ -18,8 +18,8 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [eslint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/typescript_eslint.md#readme) | [TYPESCRIPT_ES](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/typescript_eslint.md#readme) |
-| [standard](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/typescript_standard.md#readme) | [TYPESCRIPT_STANDARD](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/typescript_standard.md#readme) |
+| [eslint](typescript_eslint.md) | [TYPESCRIPT_ES](typescript_eslint.md) |
+| [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) |
 
 ## Behind the scenes
 

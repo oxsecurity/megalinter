@@ -21,4 +21,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [lintr](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r_lintr.md#readme) | [R](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/r_lintr.md#readme) |
+| [lintr](r_lintr.md) | [R](r_lintr.md) |

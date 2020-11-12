@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

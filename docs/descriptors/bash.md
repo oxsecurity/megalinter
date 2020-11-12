@@ -21,6 +21,6 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [bash-exec](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme) | [BASH_EXEC](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme) |
-| [shellcheck](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme) | [BASH_SHELLCHECK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme) |
-| [shfmt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme) | [BASH_SHFMT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme) |
+| [bash-exec](bash_bash_exec.md) | [BASH_EXEC](bash_bash_exec.md) |
+| [shellcheck](bash_shellcheck.md) | [BASH_SHELLCHECK](bash_shellcheck.md) |
+| [shfmt](bash_shfmt.md) | [BASH_SHFMT](bash_shfmt.md) |

@@ -14,8 +14,8 @@
 
 ### Mega-linter configuration
 
-- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

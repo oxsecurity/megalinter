@@ -19,4 +19,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [htmlhint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/html_htmlhint.md#readme) | [HTML](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/html_htmlhint.md#readme) |
+| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) |

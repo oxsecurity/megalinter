@@ -19,4 +19,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [ktlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/kotlin_ktlint.md#readme) | [KOTLIN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/kotlin_ktlint.md#readme) |
+| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) |

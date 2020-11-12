@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [eslint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/tsx_eslint.md#readme) | [TSX](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/tsx_eslint.md#readme) |
+| [eslint](tsx_eslint.md) | [TSX](tsx_eslint.md) |

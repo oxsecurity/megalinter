@@ -15,4 +15,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [cspell](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme) | [SPELL_CSPELL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme) |
+| [cspell](spell_cspell.md) | [SPELL_CSPELL](spell_cspell.md) |

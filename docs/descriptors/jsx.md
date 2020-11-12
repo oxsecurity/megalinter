@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [eslint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/jsx_eslint.md#readme) | [JSX](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/jsx_eslint.md#readme) |
+| [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) |

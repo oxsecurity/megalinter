@@ -263,9 +263,7 @@ def generate_descriptor_documentation(descriptor):
     ]
     for linter in descriptor.get("linters", []):
         linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
-        linter_doc_url = (
-            f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
-        )
+        linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
         descriptor_md += [
             f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
             f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
@@ -431,9 +429,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += [""]
         # Mega-linter variables
         activation_url = (
-            "https://github.com/nvuillam/mega-linter#activation-and-deactivation"
+            "index.md#activation-and-deactivation"
         )
-        apply_fixes_url = "https://github.com/nvuillam/mega-linter#apply-fixes"
+        apply_fixes_url = "index.md#apply-fixes"
         linter_doc_md += [
             "### Mega-linter configuration",
             "",

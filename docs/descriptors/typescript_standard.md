@@ -21,10 +21,10 @@
 
 ### Mega-linter configuration
 
-- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

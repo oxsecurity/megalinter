@@ -21,4 +21,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [clj-kondo](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/clojure_clj_kondo.md#readme) | [CLOJURE](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/clojure_clj_kondo.md#readme) |
+| [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) |

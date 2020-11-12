@@ -18,6 +18,6 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [tflint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_tflint.md#readme) | [TERRAFORM_TFLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_tflint.md#readme) |
-| [terrascan](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terrascan.md#readme) | [TERRAFORM_TERRASCAN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terrascan.md#readme) |
-| [terragrunt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terragrunt.md#readme) | [TERRAFORM](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terragrunt.md#readme) |
+| [tflint](terraform_tflint.md) | [TERRAFORM_TFLINT](terraform_tflint.md) |
+| [terrascan](terraform_terrascan.md) | [TERRAFORM_TERRASCAN](terraform_terrascan.md) |
+| [terragrunt](terraform_terragrunt.md) | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md) |

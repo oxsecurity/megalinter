@@ -21,10 +21,10 @@
 
 ### Mega-linter configuration
 
-- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](index.md#activation-and-deactivation)
+- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
