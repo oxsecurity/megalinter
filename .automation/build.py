@@ -661,18 +661,26 @@ def validate_descriptors():
 
 
 def generate_index_md():
+    # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
     copyfile(
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
     )
+    # Replace hardcoded links into relative links
     with open(target_file, 'r+') as f:
         content = f.read()
         f.seek(0)
         f.truncate()
         f.write(content.replace(DOCS_URL_ROOT + '/', ''))
     logging.info(f"Copied and updated {target_file}")
-
+    # Remove TOC in target file
+    replace_in_file(
+        target_file,
+        "<!-- table-of-contents-start -->",
+        "<!-- table-of-contents-end -->",
+        "",
+    )
 
 if __name__ == "__main__":
     logging.basicConfig(

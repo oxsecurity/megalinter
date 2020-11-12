@@ -32,7 +32,7 @@
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [additional features](#additional-features-compared-to-github-super-linter)
 - If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
-
+<!-- table-of-contents-start -->
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
@@ -62,7 +62,7 @@
   - [Limitations](#limitations)
   - [How to contribute](#how-to-contribute)
     - [License](#license)
-
+<!-- table-of-contents-end -->
 ## Supported Linters
 
 Developers on **GitHub** can call the **GitHub Action** to lint their code base with the following list of linters:
