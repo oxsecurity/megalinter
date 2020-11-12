@@ -579,7 +579,7 @@ def banner_link(src, alt, link, title, align, maxheight):
     return f"""
 <div align=\"{align}\">
   <a href=\"{link}\" target=\"blank\" title=\"{title}\">
-    <img src=\"{src}\" alt=\"{alt}\" height=\"{maxheight}px\" class="megalinter-banner">
+    <img src=\"{src}\" alt=\"{alt}\" height=\"{maxheight}px\" class=\"megalinter-banner\">
   </a>
 </div>"""
 
@@ -587,12 +587,12 @@ def banner_link(src, alt, link, title, align, maxheight):
 def logo_link(src, alt, link, title, maxheight):
     return (
         f'<a href="{link}" target="blank" title="{title}">'
-        f'<img src="{src}" alt="{alt}" height="{maxheight}px" class="megalinter-logo"></a>'
+        f'<img src="{src}" alt="{alt}" height="{maxheight}px" class=\"megalinter-logo\"></a>'
     )
 
 
 def icon(src, alt, _link, _title, height):
-    return f'<img src="{src}" alt="{alt}" height="{height}px class="megalinter-icon"></a>'
+    return f'<img src="{src}" alt="{alt}" height="{height}px" class="megalinter-icon"></a>'
 
 
 def merge_install_attr(item):
@@ -703,11 +703,19 @@ def process_type_mkdocs_yml(linters_by_type, type1):
     prev_lang = ""
     for linter in descriptor_linters:
         lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
+        # Language menu
         if prev_lang != lang_lower:
+            descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
             mkdocs_yml += [
-                f'       - "{descriptor_label}":'
+                f'      - "{descriptor_label}":',
+                f'          - "index": "descriptors/{lang_lower}.md"'
             ]
+
         prev_lang = lang_lower
+        # Linters menus
+        mkdocs_yml += [
+            f'          - "{linter.linter_name}": "descriptors/{lang_lower}_{linter_name_lower}.md"'
+        ]
     # Update mkdocs.yml file
     replace_in_file(
         f"{REPO_HOME}/mkdocs.yml", f"# {type1}-start", f"# {type1}-end", "\n".join(mkdocs_yml)

@@ -1,12 +1,14 @@
 .megalinter-banner { 
-  max-height: 50px;
+  height: 50px;
+  max-height: 150px;
 } 
 
 .megalinter-logo { 
+  height: 70px;
   max-height: 70px;
 } 
 
 .megalinter-icon { 
-  max-height: 20px;
-  max-width: 30px;
+  max-height: 32px;
+  max-width: 32px;
 } 
