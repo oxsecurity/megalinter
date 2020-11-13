@@ -24,8 +24,6 @@ linters:
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
     config_file_name: .markdown-link-check.json
-    cli_lint_extra_args:
-      - '-r'  # Retry when 429
     linter_version_cache: "0.0.0"  # markdown-link-check does notnumber provide version :/
     examples:
       - "markdown-link-check myfile.md"
