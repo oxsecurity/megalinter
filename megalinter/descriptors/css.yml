@@ -26,6 +26,9 @@ linters:
   # SCSS Lint
   - linter_name: scss-lint
     name: CSS_SCSS_LINT
+    file_extensions:
+      - ".scss"
+      - ".saas"
     linter_url: https://github.com/sds/scss-lint
     linter_banner_image_url: https://raw.githubusercontent.com/sds/scss-lint/master/logo/horizontal.png
     linter_rules_configuration_url: https://github.com/sds/scss-lint#configuration
