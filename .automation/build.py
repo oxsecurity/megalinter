@@ -2,6 +2,7 @@
 """
 Automatically generate source code
 """
+# pylint: disable=import-error
 import json
 import logging
 import os
@@ -214,8 +215,8 @@ def generate_documentation():
     # Update mkdocs.yml file
     replace_in_file(
         f"{REPO_HOME}/mkdocs.yml",
-        f"# site_description-start",
-        f"# site_description-end",
+        "# site_description-start",
+        "# site_description-end",
         'site_description: '+md_to_text(welcome_phrase),
     )
 
