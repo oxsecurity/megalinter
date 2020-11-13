@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [puppet-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/puppet_puppet_lint.md#readme) | [PUPPET](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/puppet_puppet_lint.md#readme) |
+| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) |

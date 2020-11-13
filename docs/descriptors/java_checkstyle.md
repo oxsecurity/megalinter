@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://checkstyle.sourceforge.io" target="blank" title="Visit linter Web Site">
-    <img src="https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png" alt="checkstyle" height="150px">
+    <img src="https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png" alt="checkstyle" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

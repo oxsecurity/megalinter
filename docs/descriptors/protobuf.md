@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [protolint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/protobuf_protolint.md#readme) | [PROTOBUF](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/protobuf_protolint.md#readme) |
+| [protolint](protobuf_protolint.md) | [PROTOBUF](protobuf_protolint.md) |

@@ -14,8 +14,8 @@
 
 ### Mega-linter configuration
 
-- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

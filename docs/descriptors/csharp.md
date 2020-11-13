@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [dotnet-format](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/csharp_dotnet_format.md#readme) | [CSHARP](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/csharp_dotnet_format.md#readme) |
+| [dotnet-format](csharp_dotnet_format.md) | [CSHARP](csharp_dotnet_format.md) |
 
 ## Behind the scenes
 

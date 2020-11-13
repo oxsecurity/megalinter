@@ -19,4 +19,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [yamllint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/yaml_yamllint.md#readme) | [YAML](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/yaml_yamllint.md#readme) |
+| [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |

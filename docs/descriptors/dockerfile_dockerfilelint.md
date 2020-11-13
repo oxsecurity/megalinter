@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

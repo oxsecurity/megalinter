@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [rubocop](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby_rubocop.md#readme) | [RUBY](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ruby_rubocop.md#readme) |
+| [rubocop](ruby_rubocop.md) | [RUBY](ruby_rubocop.md) |
 
 ## Behind the scenes
 

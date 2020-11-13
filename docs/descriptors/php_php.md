@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://www.php.net" target="blank" title="Visit linter Web Site">
-    <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="php" height="150px">
+    <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="php" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

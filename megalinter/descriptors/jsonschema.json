@@ -136,7 +136,7 @@
           {
             "linter_name": "eslint",
             "linter_url": "https://eslint.org",
-            "linter_banner_image_url": "https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png",
+            "linter_banner_image_url": "https://i.imgur.com/CFdruO8.jpg",
             "name": "JAVASCRIPT_ES",
             "config_file_name": ".eslintrc.yml",
             "cli_config_extra_args": [
@@ -183,7 +183,7 @@
           {
             "linter_name": "eslint",
             "linter_url": "https://eslint.org",
-            "linter_banner_image_url": "https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png",
+            "linter_banner_image_url": "https://i.imgur.com/CFdruO8.jpg",
             "name": "JAVASCRIPT_ES",
             "config_file_name": ".eslintrc.yml",
             "cli_config_extra_args": [

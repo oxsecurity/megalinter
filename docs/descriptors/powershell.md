@@ -24,7 +24,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [powershell](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/powershell_powershell.md#readme) | [POWERSHELL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/powershell_powershell.md#readme) |
+| [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) |
 
 ## Behind the scenes
 

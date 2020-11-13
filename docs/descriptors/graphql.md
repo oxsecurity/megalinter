@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [graphql-schema-linter](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/graphql_graphql_schema_linter.md#readme) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/graphql_graphql_schema_linter.md#readme) |
+| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) |

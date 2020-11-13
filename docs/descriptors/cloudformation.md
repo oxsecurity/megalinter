@@ -24,4 +24,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [cfn-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cloudformation_cfn_lint.md#readme) | [CLOUDFORMATION](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cloudformation_cfn_lint.md#readme) |
+| [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) |

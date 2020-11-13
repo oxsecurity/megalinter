@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [sql-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/sql_sql_lint.md#readme) | [SQL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/sql_sql_lint.md#readme) |
+| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) |

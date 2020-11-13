@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [clippy](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/rust_clippy.md#readme) | [RUST](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/rust_clippy.md#readme) |
+| [clippy](rust_clippy.md) | [RUST](rust_clippy.md) |
 
 ## Behind the scenes
 

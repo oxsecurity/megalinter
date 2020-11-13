@@ -24,4 +24,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [npm-groovy-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/groovy_npm_groovy_lint.md#readme) | [GROOVY](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/groovy_npm_groovy_lint.md#readme) |
+| [npm-groovy-lint](groovy_npm_groovy_lint.md) | [GROOVY](groovy_npm_groovy_lint.md) |

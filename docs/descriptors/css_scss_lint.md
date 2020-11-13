@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/sds/scss-lint#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/sds/scss-lint/master/logo/horizontal.png" alt="scss-lint" height="150px">
+    <img src="https://raw.githubusercontent.com/sds/scss-lint/master/logo/horizontal.png" alt="scss-lint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

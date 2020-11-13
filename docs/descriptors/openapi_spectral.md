@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/stoplightio/spectral#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png" alt="spectral" height="150px">
+    <img src="https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png" alt="spectral" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -156,8 +156,7 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
         logging.info("Updated " + file.name)
 
 
-# Automatically generate README linters table and a MD file for each linter
-def generate_documentation():
+def list_descriptors_for_build():
     descriptor_files = megalinter.utils.list_descriptor_files()
     linters_by_type = {"language": [], "format": [], "tooling_format": [], "other": []}
     descriptors = []
@@ -166,6 +165,12 @@ def generate_documentation():
         descriptors += [descriptor]
         descriptor_linters = megalinter.utils.build_descriptor_linters(descriptor_file)
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
+    return descriptors, linters_by_type
+
+
+# Automatically generate README linters table and a MD file for each linter
+def generate_documentation():
+    descriptors, linters_by_type = list_descriptors_for_build()
     # Build descriptors documentation
     for descriptor in descriptors:
         generate_descriptor_documentation(descriptor)
@@ -258,9 +263,7 @@ def generate_descriptor_documentation(descriptor):
     ]
     for linter in descriptor.get("linters", []):
         linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
-        linter_doc_url = (
-            f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
-        )
+        linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
         descriptor_md += [
             f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
             f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
@@ -288,15 +291,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
     for linter in descriptor_linters:
-        lang_lower = linter.descriptor_id.lower()
-        linter_name_lower = linter.linter_name.lower().replace("-", "_")
-
-        # Append in general linter tables (for README)
-        descriptor_label = (
-            f"**{linter.descriptor_label}** ({linter.descriptor_id})"
-            if hasattr(linter, "descriptor_label")
-            else f"**{linter.descriptor_id}**"
-        )
+        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
         if prev_lang != linter.descriptor_id and os.path.isfile(
             REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
         ):
@@ -347,7 +342,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_banner_image_url is not None
         ):
             linter_doc_md += [
-                image_link(
+                banner_link(
                     linter.linter_banner_image_url,
                     linter.linter_name,
                     doc_url(linter.linter_url),
@@ -433,10 +428,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         linter_doc_md += [""]
         # Mega-linter variables
-        activation_url = (
-            "https://github.com/nvuillam/mega-linter#activation-and-deactivation"
-        )
-        apply_fixes_url = "https://github.com/nvuillam/mega-linter#apply-fixes"
+        activation_url = "../index.md#activation-and-deactivation"
+        apply_fixes_url = "../index.md#apply-fixes"
         linter_doc_md += [
             "### Mega-linter configuration",
             "",
@@ -531,6 +524,17 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     return linters_tables_md
 
 
+def get_linter_base_info(linter):
+    lang_lower = linter.descriptor_id.lower()
+    linter_name_lower = linter.linter_name.lower().replace("-", "_")
+    descriptor_label = (
+        f"**{linter.descriptor_label}** ({linter.descriptor_id})"
+        if hasattr(linter, "descriptor_label")
+        else f"**{linter.descriptor_id}**"
+    )
+    return lang_lower, linter_name_lower, descriptor_label
+
+
 def get_install_md(item):
     linter_doc_md = []
     if "dockerfile" in item["install"]:
@@ -569,11 +573,11 @@ def doc_url(href):
     return href
 
 
-def image_link(src, alt, link, title, align, maxheight):
+def banner_link(src, alt, link, title, align, maxheight):
     return f"""
 <div align=\"{align}\">
   <a href=\"{link}\" target=\"blank\" title=\"{title}\">
-    <img src=\"{src}\" alt=\"{alt}\" height=\"{maxheight}px\">
+    <img src=\"{src}\" alt=\"{alt}\" height=\"{maxheight}px\" class=\"megalinter-banner\">
   </a>
 </div>"""
 
@@ -581,12 +585,14 @@ def image_link(src, alt, link, title, align, maxheight):
 def logo_link(src, alt, link, title, maxheight):
     return (
         f'<a href="{link}" target="blank" title="{title}">'
-        f'<img src="{src}" alt="{alt}" height="{maxheight}px"></a>'
+        f'<img src="{src}" alt="{alt}" height="{maxheight}px" class="megalinter-logo"></a>'
     )
 
 
 def icon(src, alt, _link, _title, height):
-    return f'<img src="{src}" alt="{alt}" height="{height}px"></a>'
+    return (
+        f'<img src="{src}" alt="{alt}" height="{height}px" class="megalinter-icon"></a>'
+    )
 
 
 def merge_install_attr(item):
@@ -659,10 +665,63 @@ def validate_descriptors():
             )
 
 
-def copy_files():
+def generate_index_md():
+    # Copy README.md into /docs/index.md
+    target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
     copyfile(
         f"{REPO_HOME}{os.path.sep}README.md",
-        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md",
+        target_file,
+    )
+    # Replace hardcoded links into relative links
+    with open(target_file, "r+") as f:
+        content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(content.replace(DOCS_URL_ROOT + "/", ""))
+    logging.info(f"Copied and updated {target_file}")
+    # Remove TOC in target file
+    replace_in_file(
+        target_file,
+        "<!-- table-of-contents-start -->",
+        "<!-- table-of-contents-end -->",
+        "",
+    )
+
+
+def generate_mkdocs_yml():
+    logging.info("Generating mkdocs dynamic yml...")
+    descriptors, linters_by_type = list_descriptors_for_build()
+    process_type_mkdocs_yml(linters_by_type, "language")
+    process_type_mkdocs_yml(linters_by_type, "format")
+    process_type_mkdocs_yml(linters_by_type, "tooling_format")
+    process_type_mkdocs_yml(linters_by_type, "other")
+
+
+def process_type_mkdocs_yml(linters_by_type, type1):
+    descriptor_linters = linters_by_type[type1]
+    mkdocs_yml = []
+    prev_lang = ""
+    for linter in descriptor_linters:
+        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
+        # Language menu
+        if prev_lang != lang_lower:
+            descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
+            mkdocs_yml += [
+                f'      - "{descriptor_label}":',
+                f'          - "index": "descriptors/{lang_lower}.md"',
+            ]
+
+        prev_lang = lang_lower
+        # Linters menus
+        mkdocs_yml += [
+            f'          - "{linter.linter_name}": "descriptors/{lang_lower}_{linter_name_lower}.md"'
+        ]
+    # Update mkdocs.yml file
+    replace_in_file(
+        f"{REPO_HOME}/mkdocs.yml",
+        f"# {type1}-start",
+        f"# {type1}-end",
+        "\n".join(mkdocs_yml),
     )
 
 
@@ -678,4 +737,5 @@ if __name__ == "__main__":
     generate_dockerfile()
     generate_linter_test_classes()
     generate_documentation()
-    copy_files()
+    generate_index_md()
+    generate_mkdocs_yml()

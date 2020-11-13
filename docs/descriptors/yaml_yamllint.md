@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable yamllint by adding `YAML_YAMLLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable yamllint by adding `YAML_YAMLLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable yamllint by adding `YAML_YAMLLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable yamllint by adding `YAML_YAMLLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

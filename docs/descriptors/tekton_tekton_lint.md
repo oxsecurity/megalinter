@@ -14,8 +14,8 @@
 
 ### Mega-linter configuration
 
-- Enable tekton-lint by adding `TEKTON_TEKTON_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable tekton-lint by adding `TEKTON_TEKTON_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable tekton-lint by adding `TEKTON_TEKTON_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable tekton-lint by adding `TEKTON_TEKTON_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

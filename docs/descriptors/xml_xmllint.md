@@ -14,8 +14,8 @@
 
 ### Mega-linter configuration
 
-- Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

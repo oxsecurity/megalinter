@@ -28,4 +28,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [cpplint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cpp_cpplint.md#readme) | [CPP_CPPLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cpp_cpplint.md#readme) |
+| [cpplint](cpp_cpplint.md) | [CPP_CPPLINT](cpp_cpplint.md) |

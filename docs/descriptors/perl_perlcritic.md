@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://metacpan.org/pod/Perl::Critic" target="blank" title="Visit linter Web Site">
-    <img src="https://chrisdolan.net/madmongers/images/perl-critic-logo.gif" alt="perlcritic" height="150px">
+    <img src="https://chrisdolan.net/madmongers/images/perl-critic-logo.gif" alt="perlcritic" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

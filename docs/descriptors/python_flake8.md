@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

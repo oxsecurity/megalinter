@@ -18,8 +18,8 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [eslint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/javascript_eslint.md#readme) | [JAVASCRIPT_ES](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/javascript_eslint.md#readme) |
-| [standard](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/javascript_standard.md#readme) | [JAVASCRIPT_STANDARD](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/javascript_standard.md#readme) |
+| [eslint](javascript_eslint.md) | [JAVASCRIPT_ES](javascript_eslint.md) |
+| [standard](javascript_standard.md) | [JAVASCRIPT_STANDARD](javascript_standard.md) |
 
 ## Behind the scenes
 

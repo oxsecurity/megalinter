@@ -15,4 +15,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [jscpd](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme) | [COPYPASTE](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme) |
+| [jscpd](copypaste_jscpd.md) | [COPYPASTE](copypaste_jscpd.md) |

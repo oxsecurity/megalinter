@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/dotenv-linter/dotenv-linter#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/logo.svg" alt="dotenv-linter" height="150px">
+    <img src="https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/logo.svg" alt="dotenv-linter" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -21,10 +21,10 @@
 
 ### Mega-linter configuration
 
-- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [golangci-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/go_golangci_lint.md#readme) | [GO](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/go_golangci_lint.md#readme) |
+| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
 
 ## Behind the scenes
 

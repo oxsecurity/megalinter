@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

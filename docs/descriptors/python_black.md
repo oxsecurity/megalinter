@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/psf/black#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png" alt="black" height="150px">
+    <img src="https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png" alt="black" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,10 +22,10 @@
 
 ### Mega-linter configuration
 
-- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

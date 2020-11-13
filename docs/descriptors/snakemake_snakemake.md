@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://snakemake.readthedocs.io/en/stable/" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png" alt="snakemake" height="150px">
+    <img src="https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png" alt="snakemake" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -21,8 +21,8 @@
 
 ### Mega-linter configuration
 
-- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

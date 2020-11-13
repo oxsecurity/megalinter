@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [jsonlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/json_jsonlint.md#readme) | [JSON](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/json_jsonlint.md#readme) |
+| [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) |

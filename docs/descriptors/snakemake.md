@@ -21,5 +21,5 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [snakemake](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/snakemake_snakemake.md#readme) | [SNAKEMAKE_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/snakemake_snakemake.md#readme) |
-| [snakefmt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/snakemake_snakefmt.md#readme) | [SNAKEMAKE_SNAKEFMT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/snakemake_snakefmt.md#readme) |
+| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md) |
+| [snakefmt](snakemake_snakefmt.md) | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) |

@@ -13,7 +13,7 @@ linters:
       eslint requires a custom configuration file applicable to your project.
       You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://eslint.org
-    linter_banner_image_url: https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png
+    linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
     config_file_name: .eslintrc.json
@@ -21,7 +21,7 @@ linters:
       - "--no-eslintrc"
     cli_lint_extra_args:
       - "--no-ignore"
-    cli_lint_fix_arg_name: '--fix'
+    cli_lint_fix_arg_name: "--fix"
     examples:
       - "eslint myfile.ts"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
@@ -48,11 +48,11 @@ linters:
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: TYPESCRIPT_STANDARD
     cli_lint_extra_args:
-      - '--parser'
-      - '@typescript-eslint/parser'
-      - '--plugin'
-      - '@typescript-eslint/eslint-plugin'
-    cli_lint_fix_arg_name: '--fix'
+      - "--parser"
+      - "@typescript-eslint/parser"
+      - "--plugin"
+      - "@typescript-eslint/eslint-plugin"
+    cli_lint_fix_arg_name: "--fix"
     examples:
       - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin myfile.ts"
       - "standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --fix myfile.ts"

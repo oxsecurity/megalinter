@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [luacheck](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/lua_luacheck.md#readme) | [LUA](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/lua_luacheck.md#readme) |
+| [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) |

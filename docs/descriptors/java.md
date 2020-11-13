@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [checkstyle](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/java_checkstyle.md#readme) | [JAVA](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/java_checkstyle.md#readme) |
+| [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) |
 
 ## Behind the scenes
 

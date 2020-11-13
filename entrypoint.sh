@@ -33,9 +33,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 
 else
   # Normal run
-  LOG_LEVEL="${LOG_LEVEL:-INFO}"        # Default log level (VERBOSE, DEBUG, TRACE)
+  LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
   if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
-        printenv
+    printenv
   fi
   python -m megalinter.run
 fi

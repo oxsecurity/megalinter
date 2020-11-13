@@ -23,4 +23,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [raku](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku_raku.md#readme) | [RAKU](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/raku_raku.md#readme) |
+| [raku](raku_raku.md) | [RAKU](raku_raku.md) |

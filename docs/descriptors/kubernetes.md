@@ -25,4 +25,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [kubeval](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/kubernetes_kubeval.md#readme) | [KUBERNETES_KUBEVAL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/kubernetes_kubeval.md#readme) |
+| [kubeval](kubernetes_kubeval.md) | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md) |
