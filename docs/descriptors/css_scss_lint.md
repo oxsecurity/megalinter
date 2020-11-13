@@ -38,7 +38,6 @@
 ### How are identified applicable files
 
 - File extensions:
-  - `.css`
   - `.scss`
   - `.saas`
 
