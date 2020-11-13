@@ -120,7 +120,7 @@ nav:
       - "Visual Basic .NET (VBDOTNET)":
           - "index": "descriptors/vbdotnet.md"
           - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
-  # language-end
+# language-end
   - "Formats":
       # format-start
       - "CSS":
@@ -145,6 +145,7 @@ nav:
       - "MARKDOWN":
           - "index": "descriptors/markdown.md"
           - "markdownlint": "descriptors/markdown_markdownlint.md"
+          - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
       - "PROTOBUF":
           - "index": "descriptors/protobuf.md"
           - "protolint": "descriptors/protobuf_protolint.md"
@@ -154,7 +155,7 @@ nav:
       - "YAML":
           - "index": "descriptors/yaml.md"
           - "yamllint": "descriptors/yaml_yamllint.md"
-  # format-end
+# format-end
   - "Tooling Formats":
       # tooling_format-start
       - "ANSIBLE":
@@ -194,7 +195,7 @@ nav:
           - "tflint": "descriptors/terraform_tflint.md"
           - "terrascan": "descriptors/terraform_terrascan.md"
           - "terragrunt": "descriptors/terraform_terragrunt.md"
-  # tooling_format-end
+# tooling_format-end
   - "Other":
       # other-start
       - "COPYPASTE":

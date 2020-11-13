@@ -18,5 +18,5 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [markdownlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdownlint.md#readme) | [MARKDOWN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdownlint.md#readme) |
-| [markdown-link-check](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdown_link_check.md#readme) | [MARKDOWN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdown_link_check.md#readme) |
+| [markdownlint](markdown_markdownlint.md) | [MARKDOWN](markdown_markdownlint.md) |
+| [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) |

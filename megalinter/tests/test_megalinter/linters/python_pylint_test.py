@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class python_pylint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PYTHON'
-    linter_name = 'pylint'
+    descriptor_id = "PYTHON"
+    linter_name = "pylint"

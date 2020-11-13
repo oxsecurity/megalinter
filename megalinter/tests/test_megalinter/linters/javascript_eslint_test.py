@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class javascript_eslint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'JAVASCRIPT'
-    linter_name = 'eslint'
+    descriptor_id = "JAVASCRIPT"
+    linter_name = "eslint"

@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class copypaste_jscpd_test(TestCase, LinterTestRoot):
-    descriptor_id = 'COPYPASTE'
-    linter_name = 'jscpd'
+    descriptor_id = "COPYPASTE"
+    linter_name = "jscpd"

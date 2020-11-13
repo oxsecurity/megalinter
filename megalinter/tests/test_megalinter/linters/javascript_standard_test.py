@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class javascript_standard_test(TestCase, LinterTestRoot):
-    descriptor_id = 'JAVASCRIPT'
-    linter_name = 'standard'
+    descriptor_id = "JAVASCRIPT"
+    linter_name = "standard"

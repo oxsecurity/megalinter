@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class clojure_clj_kondo_test(TestCase, LinterTestRoot):
-    descriptor_id = 'CLOJURE'
-    linter_name = 'clj-kondo'
+    descriptor_id = "CLOJURE"
+    linter_name = "clj-kondo"

@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class dart_dartanalyzer_test(TestCase, LinterTestRoot):
-    descriptor_id = 'DART'
-    linter_name = 'dartanalyzer'
+    descriptor_id = "DART"
+    linter_name = "dartanalyzer"

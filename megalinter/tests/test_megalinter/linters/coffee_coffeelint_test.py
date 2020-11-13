@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class coffee_coffeelint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'COFFEE'
-    linter_name = 'coffeelint'
+    descriptor_id = "COFFEE"
+    linter_name = "coffeelint"

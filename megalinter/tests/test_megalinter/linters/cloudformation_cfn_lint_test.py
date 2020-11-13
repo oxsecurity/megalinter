@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class cloudformation_cfn_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'CLOUDFORMATION'
-    linter_name = 'cfn-lint'
+    descriptor_id = "CLOUDFORMATION"
+    linter_name = "cfn-lint"

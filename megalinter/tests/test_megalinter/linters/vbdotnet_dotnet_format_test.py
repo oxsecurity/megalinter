@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class vbdotnet_dotnet_format_test(TestCase, LinterTestRoot):
-    descriptor_id = 'VBDOTNET'
-    linter_name = 'dotnet-format'
+    descriptor_id = "VBDOTNET"
+    linter_name = "dotnet-format"

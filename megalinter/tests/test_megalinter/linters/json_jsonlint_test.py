@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class json_jsonlint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'JSON'
-    linter_name = 'jsonlint'
+    descriptor_id = "JSON"
+    linter_name = "jsonlint"

@@ -13,8 +13,8 @@
 
 ### Mega-linter configuration
 
-- Enable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

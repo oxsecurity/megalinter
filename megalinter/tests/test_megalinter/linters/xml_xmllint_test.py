@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class xml_xmllint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'XML'
-    linter_name = 'xmllint'
+    descriptor_id = "XML"
+    linter_name = "xmllint"

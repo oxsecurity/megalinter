@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class css_scss_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'CSS'
-    linter_name = 'scss-lint'
+    descriptor_id = "CSS"
+    linter_name = "scss-lint"

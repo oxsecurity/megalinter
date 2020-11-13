@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class tekton_tekton_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'TEKTON'
-    linter_name = 'tekton-lint'
+    descriptor_id = "TEKTON"
+    linter_name = "tekton-lint"

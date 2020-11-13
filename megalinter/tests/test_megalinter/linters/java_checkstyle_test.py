@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class java_checkstyle_test(TestCase, LinterTestRoot):
-    descriptor_id = 'JAVA'
-    linter_name = 'checkstyle'
+    descriptor_id = "JAVA"
+    linter_name = "checkstyle"
