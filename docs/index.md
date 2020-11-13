@@ -128,17 +128,9 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 
 <!-- linters-table-end -->
 
-## How it Works
-
-The mega-linter finds issues and reports them to the console output. Fixes are suggested in the console output but not automatically fixed, and a status check will show up as failed on the pull request.
-
-The design of the **Mega-Linter** is currently to allow linting to occur in **GitHub Actions** as a part of continuous integration occurring on pull requests as the commits get pushed. It works best when commits are being pushed early and often to a branch with an open or draft pull request. There is some desire to move this closer to local development for faster feedback on linting errors but this is not yet supported.
-
 ## Installation
 
-**Mega-Linter** is an application based on a Docker image containing core architecture and all linters
-
-To use it as **GitHub Action** you will need to complete the following:
+### GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
 2. Copy the [example workflow from below](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
@@ -150,8 +142,6 @@ To use it as **GitHub Action** you will need to complete the following:
 
 - If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **GitHub Mega-Linter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
 - You can also use it [outside of GitHub Actions](#run-mega-linter-outside-github-actions) (CircleCI, Azure Pipelines, Jenkins, or even locally with a docker run)
-
-### Example connecting GitHub Action Workflow
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
 
@@ -242,6 +232,44 @@ jobs:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "[Mega-Linter] Apply linters fixes"
 ```
+
+### Azure
+
+```yaml
+  - job: megalinter
+    displayName: Mega-Linter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: |
+        docker pull nvuillam/mega-linter:latest
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
+      displayName: 'Code Scan using  Mega-Linter'
+```
+
+### GitLab
+
+```yaml
+megalinter:
+  stage: linting
+  image: nvuillam/mega-linter:v4
+  script: [ "true" ]
+  variables:
+    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
+    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
+    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
+```
+
+### Visual Studio Code
+
+You can checkout this repository using [Container Remote Development](https://code.visualstudio.com/docs/remote/containers), and debug the linter using the `Test Linter` task.
+![Example](https://user-images.githubusercontent.com/15258962/85165778-2d2ce700-b21b-11ea-803e-3f6709d8e609.gif)
+
+We will also support [GitHub Codespaces](https://github.com/features/codespaces/) once it becomes available
+
+### Local
+
+If you find that you need to run mega-linter locally, you can follow the documentation at [Running mega-linter locally](https://github.com/nvuillam/mega-linter/blob/master/docs/run-linter-locally.md)
 
 ### Add Mega-Linter badge in your repository README
 
@@ -363,48 +391,6 @@ You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets
 
 The **Docker** container that is built from this repository is located at [nvuillam/mega-linter](https://hub.docker.com/r/nvuillam/mega-linter)
 
-## Run Mega-Linter outside GitHub Actions
-
-### Local (troubleshooting/debugging/enhancements)
-
-If you find that you need to run mega-linter locally, you can follow the documentation at [Running mega-linter locally](https://github.com/nvuillam/mega-linter/blob/master/docs/run-linter-locally.md)
-
-Check out the [note](#how-it-works) in **How it Works** to understand more about the **Mega-Linter** linting locally versus via continuous integration.
-
-### Azure
-
-```yaml
-  - job: megalinter
-    displayName: Mega-Linter
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - script: |
-        docker pull nvuillam/mega-linter:latest
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
-      displayName: 'Code Scan using  Mega-Linter'
-```
-
-### GitLab
-
-```yaml
-megalinter:
-  stage: linting
-  image: nvuillam/mega-linter:v4
-  script: [ "true" ]
-  variables:
-    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
-    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
-    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
-```
-
-### Visual Studio Code
-
-You can checkout this repository using [Container Remote Development](https://code.visualstudio.com/docs/remote/containers), and debug the linter using the `Test Linter` task.
-![Example](https://user-images.githubusercontent.com/15258962/85165778-2d2ce700-b21b-11ea-803e-3f6709d8e609.gif)
-
-We will also support [GitHub Codespaces](https://github.com/features/codespaces/) once it becomes available
-
 ## Limitations
 
 Below are a list of the known limitations for the **Mega-Linter**:
@@ -419,7 +405,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ---
 
-### License
+## License
 
 - [MIT License](https://github.com/nvuillam/mega-linter/blob/master/LICENSE)
 
