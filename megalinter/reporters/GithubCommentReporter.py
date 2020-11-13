@@ -22,7 +22,7 @@ class GithubCommentReporter(Reporter):
     scope = 'mega-linter'
 
     github_api_url = 'https://api.github.com'
-    gh_url = 'https://github.com/nvuillam/mega-linter#readme'
+    gh_url = 'https://nvuillam.github.io/mega-linter'
 
     def manage_activation(self):
         if os.environ.get('POST_GITHUB_COMMENT', 'true') == 'true':

@@ -22,7 +22,8 @@ class Megalinter:
         if params is None:
             params = {}
         self.workspace = self.get_workspace()
-        self.github_workspace = os.environ.get("GITHUB_WORKSPACE", self.workspace)
+        self.github_workspace = os.environ.get(
+            "GITHUB_WORKSPACE", self.workspace)
         self.initialize_logger()
         self.display_header()
         # Mega-Linter default rules location
@@ -31,7 +32,8 @@ class Megalinter:
             if os.path.isdir("/action/lib/.automation")
             else os.path.relpath(
                 os.path.relpath(
-                    os.path.dirname(os.path.abspath(__file__)) + "/../TEMPLATES"
+                    os.path.dirname(os.path.abspath(
+                        __file__)) + "/../TEMPLATES"
                 )
             )
         )
@@ -45,11 +47,13 @@ class Megalinter:
         self.default_linter_activation = True
 
         # Get enable / disable vars
-        self.enable_descriptors = utils.get_dict_string_list(os.environ, "ENABLE", [])
+        self.enable_descriptors = utils.get_dict_string_list(
+            os.environ, "ENABLE", [])
         self.enable_linters = utils.get_dict_string_list(
             os.environ, "ENABLE_LINTERS", []
         )
-        self.disable_descriptors = utils.get_dict_string_list(os.environ, "DISABLE", [])
+        self.disable_descriptors = utils.get_dict_string_list(
+            os.environ, "DISABLE", [])
         self.disable_linters = utils.get_dict_string_list(
             os.environ, "DISABLE_LINTERS", []
         )
@@ -132,7 +136,8 @@ class Megalinter:
         elif default_workspace != "" and os.path.isdir(
             "/tmp/lint" + os.path.sep + default_workspace
         ):
-            logging.debug("Context: Docker run without override of DEFAULT_WORKSPACE")
+            logging.debug(
+                "Context: Docker run without override of DEFAULT_WORKSPACE")
             return default_workspace + "/tmp/lint" + os.path.sep + default_workspace
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
@@ -152,7 +157,8 @@ class Megalinter:
             and github_workspace != ""
             and os.path.isdir(github_workspace + os.path.sep + default_workspace)
         ):
-            logging.debug("Context: Github action with override of DEFAULT_WORKSPACE")
+            logging.debug(
+                "Context: Github action with override of DEFAULT_WORKSPACE")
             return github_workspace + os.path.sep + default_workspace
         # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint
         elif (
@@ -178,7 +184,8 @@ class Megalinter:
         # Linter rules root path
         if "LINTER_RULES_PATH" in os.environ:
             self.linter_rules_path = (
-                self.github_workspace + os.path.sep + os.environ["LINTER_RULES_PATH"]
+                self.github_workspace + os.path.sep +
+                os.environ["LINTER_RULES_PATH"]
             )
         # Filtering regex (inclusion)
         if "FILTER_REGEX_INCLUDE" in os.environ:
@@ -239,7 +246,8 @@ class Megalinter:
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):
-        reporter_init_params = {"master": self, "report_folder": self.report_folder}
+        reporter_init_params = {"master": self,
+                                "report_folder": self.report_folder}
         self.reporters = utils.list_active_reporters_for_scope(
             "mega-linter", reporter_init_params
         )
@@ -253,7 +261,8 @@ class Megalinter:
         self.file_extensions = list(
             collections.OrderedDict.fromkeys(self.file_extensions)
         )
-        self.file_names = list(collections.OrderedDict.fromkeys(self.file_names))
+        self.file_names = list(
+            collections.OrderedDict.fromkeys(self.file_names))
 
     # Collect list of files matching extensions and regex
     def collect_files(self):
@@ -277,9 +286,11 @@ class Megalinter:
                     repo.git.checkout(current_branch)
                     repo.git.pull()
                 except git.GitCommandError:
-                    logging.error(f"Unable to pull current branch {current_branch}")
+                    logging.error(
+                        f"Unable to pull current branch {current_branch}")
             repo.git.checkout(default_branch)
-            diff = repo.git.diff(f"{default_branch}...{current_branch}", name_only=True)
+            diff = repo.git.diff(
+                f"{default_branch}...{current_branch}", name_only=True)
             repo.git.checkout(current_branch)
             logging.info(f"Git diff :\n{diff}")
             for diff_line in diff.splitlines():
@@ -316,7 +327,8 @@ class Megalinter:
             )
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
-            logging.info("- File extensions: " + ", ".join(self.file_extensions))
+            logging.info("- File extensions: " +
+                         ", ".join(self.file_extensions))
         if len(self.file_names) > 0:
             logging.info("- File names: " + ", ".join(self.file_names))
         if self.filter_regex_include is not None:
@@ -394,20 +406,24 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("GitHub Actions Multi Language Linter"))
+        logging.info(utils.format_hyphens(
+            "GitHub Actions Multi Language Linter"))
         logging.info(utils.format_hyphens(""))
         logging.info(
-            " - Image Creation Date: " + os.environ.get("BUILD_DATE", "No docker image")
+            " - Image Creation Date: " +
+            os.environ.get("BUILD_DATE", "No docker image")
         )
         logging.info(
-            " - Image Revision: " + os.environ.get("BUILD_REVISION", "No docker image")
+            " - Image Revision: " +
+            os.environ.get("BUILD_REVISION", "No docker image")
         )
         logging.info(
-            " - Image Version: " + os.environ.get("BUILD_VERSION", "No docker image")
+            " - Image Version: " +
+            os.environ.get("BUILD_VERSION", "No docker image")
         )
         logging.info(utils.format_hyphens(""))
-        logging.info("The Mega-Linter source code can be found at:")
-        logging.info(" - https://github.com/nvuillam/mega-linter")
+        logging.info("The Mega-Linter documentation can be found at:")
+        logging.info(" - https://nvuillam.github.io/mega-linter")
         logging.info(utils.format_hyphens(""))
         # Display env variables for debug mode
         for name, value in sorted(os.environ.items()):

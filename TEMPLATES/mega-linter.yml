@@ -1,6 +1,6 @@
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://github.com/nvuillam/mega-linter#readme
+# More info at https://nvuillam.github.io/mega-linter
 name: Mega-Linter
 
 on:
