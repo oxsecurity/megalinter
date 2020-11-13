@@ -14,6 +14,7 @@ theme:
         - navigation.instant
         - navigation.expand
     logo: assets/images/mega-linter-square.png
+    favicon: assets/images/mega-linter-square.png
 markdown_extensions:
     - pymdownx.emoji:
           emoji_index: !!python/name:materialx.emoji.twemoji
