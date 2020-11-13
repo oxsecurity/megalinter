@@ -45,6 +45,21 @@ markdown-link-check -c .markdown-link-check.json myfile.md
 ```
 
 
+### Help content
+
+```shell
+Usage: markdown-link-check [options] [filenameOrUrl]
+
+Options:
+  -p, --progress         show progress bar
+  -c, --config [config]  apply a config file (JSON), holding e.g. url specific
+                         header configuration
+  -q, --quiet            displays errors only
+  -v, --verbose          displays detailed error information
+  -h, --help             display help for command
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):

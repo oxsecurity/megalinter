@@ -3,7 +3,7 @@
 # snakefmt
 
 - Web Site: [**https://github.com/snakemake/snakefmt**](https://github.com/snakemake/snakefmt#readme)
-- Version: **0.2.3**
+- Version: **0.2.4**
 
 ## Configuration
 

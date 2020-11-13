@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://snakemake.readthedocs.io/en/stable/**](https://snakemake.readthedocs.io/en/stable/)
-- Version: **5.27.4**
+- Version: **5.28.0**
 
 ## Configuration
 
@@ -69,7 +69,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
                  [--wms-monitor [WMS_MONITOR]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
-                 [--groups GROUPS [GROUPS ...]]
+                 [--no-subworkflows] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
@@ -113,7 +113,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--google-lifesciences]
                  [--google-lifesciences-regions GOOGLE_LIFESCIENCES_REGIONS [GOOGLE_LIFESCIENCES_REGIONS ...]]
                  [--google-lifesciences-location GOOGLE_LIFESCIENCES_LOCATION]
-                 [--google-lifesciences-keep-cache] [--use-conda]
+                 [--google-lifesciences-keep-cache] [--tes URL] [--use-conda]
                  [--list-conda-envs] [--conda-prefix DIR]
                  [--conda-cleanup-envs]
                  [--conda-cleanup-pkgs [{tarballs,cache}]]
@@ -324,6 +324,9 @@ EXECUTION:
   --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
+  --no-subworkflows, --nosw
+                        Do not evaluate or execute subworkflows. (default:
+                        False)
 
 GROUPING:
   --groups GROUPS [GROUPS ...]
@@ -808,6 +811,10 @@ GOOGLE_LIFE_SCIENCE:
                         in Google Cloud Storage. By default, the caches are
                         deleted at the shutdown step of the workflow.
                         (default: False)
+
+TES:
+  --tes URL             Send workflow tasks to GA4GH TES server specified by
+                        url. (default: None)
 
 CONDA:
   --use-conda           If defined in the rule, run job in a conda
