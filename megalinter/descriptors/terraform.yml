@@ -30,7 +30,7 @@ linters:
       - "-t"
       - "aws"
       - "-f"
-    cli_version_arg_name: 'version'
+    cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
       - "terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f myfile.tf"
@@ -41,6 +41,7 @@ linters:
         - RUN terrascan init
   # TERRAGRUNT
   - linter_name: terragrunt
+    name: TERRAFORM_TERRAGRUNT
     file_extensions:
       - ".hcl"
     files_names_not_ends_with:

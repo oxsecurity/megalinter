@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://pycqa.github.io/isort/" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png" alt="isort" height="150px">
+    <img src="https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png" alt="isort" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,10 +22,10 @@
 
 ### Mega-linter configuration
 
-- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

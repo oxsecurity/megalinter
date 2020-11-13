@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true" alt="jscpd" height="150px">
+    <img src="https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true" alt="jscpd" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -15,10 +15,10 @@
 
 ### Mega-linter configuration
 
-- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

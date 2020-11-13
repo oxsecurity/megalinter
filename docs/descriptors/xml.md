@@ -18,4 +18,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [xmllint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/xml_xmllint.md#readme) | [XML](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/xml_xmllint.md#readme) |
+| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |

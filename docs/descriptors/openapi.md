@@ -26,4 +26,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [spectral](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/openapi_spectral.md#readme) | [OPENAPI](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/openapi_spectral.md#readme) |
+| [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) |

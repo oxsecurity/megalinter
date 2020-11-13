@@ -18,10 +18,10 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [php](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_php.md#readme) | [PHP_BUILTIN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_php.md#readme) |
-| [phpcs](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_phpcs.md#readme) | [PHP_PHPCS](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_phpcs.md#readme) |
-| [phpstan](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_phpstan.md#readme) | [PHP_PHPSTAN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_phpstan.md#readme) |
-| [psalm](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_psalm.md#readme) | [PHP_PSALM](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/php_psalm.md#readme) |
+| [php](php_php.md) | [PHP_BUILTIN](php_php.md) |
+| [phpcs](php_phpcs.md) | [PHP_PHPCS](php_phpcs.md) |
+| [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) |
+| [psalm](php_psalm.md) | [PHP_PSALM](php_psalm.md) |
 
 ## Behind the scenes
 

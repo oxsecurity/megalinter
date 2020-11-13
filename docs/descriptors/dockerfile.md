@@ -18,5 +18,5 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [dockerfilelint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/dockerfile_dockerfilelint.md#readme) | [DOCKERFILE_DOCKERFILELINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/dockerfile_dockerfilelint.md#readme) |
-| [hadolint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/dockerfile_hadolint.md#readme) | [DOCKERFILE_HADOLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/dockerfile_hadolint.md#readme) |
+| [dockerfilelint](dockerfile_dockerfilelint.md) | [DOCKERFILE_DOCKERFILELINT](dockerfile_dockerfilelint.md) |
+| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) |

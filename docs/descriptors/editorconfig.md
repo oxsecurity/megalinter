@@ -19,4 +19,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [editorconfig-checker](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/editorconfig_editorconfig_checker.md#readme) | [EDITORCONFIG](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/editorconfig_editorconfig_checker.md#readme) |
+| [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) |

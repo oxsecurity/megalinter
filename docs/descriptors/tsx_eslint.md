@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://eslint.org" target="blank" title="Visit linter Web Site">
-    <img src="https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png" alt="eslint" height="150px">
+    <img src="https://i.imgur.com/CFdruO8.jpg" alt="eslint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -24,10 +24,10 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ### Mega-linter configuration
 
-- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

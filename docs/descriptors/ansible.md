@@ -19,4 +19,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [ansible-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme) | [ANSIBLE](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme) |
+| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) |

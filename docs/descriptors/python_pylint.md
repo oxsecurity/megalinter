@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://www.pylint.org" target="blank" title="Visit linter Web Site">
-    <img src="https://www.pylint.org/pylint.svg" alt="pylint" height="150px">
+    <img src="https://www.pylint.org/pylint.svg" alt="pylint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

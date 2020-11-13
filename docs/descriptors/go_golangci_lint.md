@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/golangci/golangci-lint#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4" alt="golangci-lint" height="150px">
+    <img src="https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4" alt="golangci-lint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,8 +22,8 @@
 
 ### Mega-linter configuration
 
-- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -20,5 +20,5 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [stylelint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme) | [CSS_STYLELINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme) |
-| [scss-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme) | [CSS_SCSS_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme) |
+| [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) |
+| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) |

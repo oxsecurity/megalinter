@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [scalafix](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/scala_scalafix.md#readme) | [SCALA](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/scala_scalafix.md#readme) |
+| [scalafix](scala_scalafix.md) | [SCALA](scala_scalafix.md) |
 
 ## Behind the scenes
 

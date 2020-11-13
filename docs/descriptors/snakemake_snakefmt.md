@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

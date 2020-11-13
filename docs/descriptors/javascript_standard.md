@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/standard/standard#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="standard" height="150px">
+    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="standard" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -21,10 +21,10 @@
 
 ### Mega-linter configuration
 
-- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

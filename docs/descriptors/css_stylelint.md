@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://stylelint.io" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png" alt="stylelint" height="150px">
+    <img src="https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png" alt="stylelint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,10 +22,10 @@
 
 ### Mega-linter configuration
 
-- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

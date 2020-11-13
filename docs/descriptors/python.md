@@ -18,7 +18,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [pylint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_pylint.md#readme) | [PYTHON_PYLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_pylint.md#readme) |
-| [black](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_black.md#readme) | [PYTHON_BLACK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_black.md#readme) |
-| [flake8](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_flake8.md#readme) | [PYTHON_FLAKE8](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_flake8.md#readme) |
-| [isort](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_isort.md#readme) | [PYTHON_ISORT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/python_isort.md#readme) |
+| [pylint](python_pylint.md) | [PYTHON_PYLINT](python_pylint.md) |
+| [black](python_black.md) | [PYTHON_BLACK](python_black.md) |
+| [flake8](python_flake8.md) | [PYTHON_FLAKE8](python_flake8.md) |
+| [isort](python_isort.md) | [PYTHON_ISORT](python_isort.md) |

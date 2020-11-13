@@ -25,7 +25,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [perlcritic](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/perl_perlcritic.md#readme) | [PERL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/perl_perlcritic.md#readme) |
+| [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) |
 
 ## Behind the scenes
 

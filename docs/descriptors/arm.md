@@ -21,4 +21,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [arm-ttk](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme) | [ARM](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme) |
+| [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) |

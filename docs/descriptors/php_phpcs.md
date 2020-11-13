@@ -15,8 +15,8 @@
 
 ### Mega-linter configuration
 
-- Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

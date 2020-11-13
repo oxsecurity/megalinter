@@ -14,8 +14,8 @@
 
 ### Mega-linter configuration
 
-- Enable kubeval by adding `KUBERNETES_KUBEVAL` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable kubeval by adding `KUBERNETES_KUBEVAL` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable kubeval by adding `KUBERNETES_KUBEVAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable kubeval by adding `KUBERNETES_KUBEVAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

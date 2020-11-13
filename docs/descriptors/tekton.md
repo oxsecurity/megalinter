@@ -22,4 +22,4 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
-| [tekton-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/tekton_tekton_lint.md#readme) | [TEKTON](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/tekton_tekton_lint.md#readme) |
+| [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) |

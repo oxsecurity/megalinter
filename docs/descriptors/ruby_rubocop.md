@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/rubocop-hq/rubocop#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png" alt="rubocop" height="150px">
+    <img src="https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png" alt="rubocop" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -22,10 +22,10 @@
 
 ### Mega-linter configuration
 
-- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](https://github.com/nvuillam/mega-linter#apply-fixes)
+- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](../index.md#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

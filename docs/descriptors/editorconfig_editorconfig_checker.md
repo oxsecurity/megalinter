@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/editorconfig-checker/editorconfig-checker#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png" alt="editorconfig-checker" height="150px">
+    <img src="https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png" alt="editorconfig-checker" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -20,8 +20,8 @@
 
 ### Mega-linter configuration
 
-- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
-- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](https://github.com/nvuillam/mega-linter#activation-and-deactivation)
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
