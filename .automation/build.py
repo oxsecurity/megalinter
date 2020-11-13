@@ -8,14 +8,13 @@ import logging
 import os
 import re
 import sys
-from bs4 import BeautifulSoup
 from shutil import copyfile
 
 import jsonschema
 import markdown
-
 import megalinter
 import yaml
+from bs4 import BeautifulSoup
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -217,7 +216,7 @@ def generate_documentation():
         f"{REPO_HOME}/mkdocs.yml",
         "# site_description-start",
         "# site_description-end",
-        'site_description: '+md_to_text(welcome_phrase),
+        "site_description: " + md_to_text(welcome_phrase),
     )
 
 
@@ -612,7 +611,7 @@ def icon(src, alt, _link, _title, height):
 
 def md_to_text(md):
     html = markdown.markdown(md)
-    soup = BeautifulSoup(html, features='html.parser')
+    soup = BeautifulSoup(html, features="html.parser")
     return soup.get_text()
 
 
