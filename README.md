@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
 <div align="center">
-  <a href="https://github.com/nvuillam/mega-linter#readme" target="blank" title="Visit Mega-Linter Web Site">
+  <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
     <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square-small.png" alt="Mega-Linter" height="150px">
   </a>
 </div>

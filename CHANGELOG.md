@@ -1,5 +1,9 @@
 # Changelog
 
+## [insiders] (master)
+
+- Automatic build of documentation with mkdocs-material
+
 ## [4.5.0] 2020-11-11
 
 - Add Visual Basic .NET language & dotnet-format
