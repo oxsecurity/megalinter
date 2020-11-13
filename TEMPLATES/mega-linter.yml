@@ -32,7 +32,7 @@ jobs:
         uses: nvuillam/mega-linter@v4
         env:
           # All available variables are described in documentation
-          # https://github.com/nvuillam/mega-linter#configuration
+          # https://nvuillam.github.io/mega-linter/#configuration
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
@@ -56,6 +56,7 @@ jobs:
 
       # Create pull request if applicable
       - name: Create Pull Request with applied fixes
+        id: cpr
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
         uses: peter-evans/create-pull-request@v3
         with:

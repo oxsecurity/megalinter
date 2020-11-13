@@ -1,8 +1,10 @@
 # Changelog
 
-## [insiders] (master)
+## [4.6.0] 2020-11-13
 
 - Automatic build of documentation with mkdocs-material
+- Automatic deployment to [https://nvuillam.github.io/mega-linter/](https://nvuillam.github.io/mega-linter/)
+- Add [markdown-link-check](https://github.com/tcort/markdown-link-check)
 
 ## [4.5.0] 2020-11-11
 
