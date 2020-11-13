@@ -12,9 +12,6 @@ setup(
     install_requires=[
         "gitpython",
         "jsonschema",
-        "mdx_truly_sane_lists",
-        "mkdocs",
-        "mkdocs-material",
         "pygithub",
         "pytablewriter",
         "pytest-cov",
@@ -22,6 +19,8 @@ setup(
         "requests",
         "terminaltables",
         "yq",
+        "mkdocs-material",
+        "mdx_truly_sane_lists",
     ],
     zip_safe=False,
 )
