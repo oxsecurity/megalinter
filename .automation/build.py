@@ -2,6 +2,7 @@
 """
 Automatically generate source code
 """
+# pylint: disable=import-error
 import json
 import logging
 import os
@@ -10,8 +11,10 @@ import sys
 from shutil import copyfile
 
 import jsonschema
+import markdown
 import megalinter
 import yaml
+from bs4 import BeautifulSoup
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -201,11 +204,19 @@ def generate_documentation():
         + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
         + "IDE/toolbox are used by their developers !"
     )
+    # Update README.md file
     replace_in_file(
         f"{REPO_HOME}/README.md",
         "<!-- welcome-phrase-start -->",
         "<!-- welcome-phrase-end -->",
         welcome_phrase,
+    )
+    # Update mkdocs.yml file
+    replace_in_file(
+        f"{REPO_HOME}/mkdocs.yml",
+        "# site_description-start",
+        "# site_description-end",
+        "site_description: " + md_to_text(welcome_phrase),
     )
 
 
@@ -596,6 +607,12 @@ def icon(src, alt, _link, _title, height):
     return (
         f'<img src="{src}" alt="{alt}" height="{height}px" class="megalinter-icon"></a>'
     )
+
+
+def md_to_text(md):
+    html = markdown.markdown(md)
+    soup = BeautifulSoup(html, features="html.parser")
+    return soup.get_text()
 
 
 def merge_install_attr(item):

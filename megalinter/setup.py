@@ -12,6 +12,7 @@ setup(
     install_requires=[
         "gitpython",
         "jsonschema",
+        "markdown",
         "pygithub",
         "pytablewriter",
         "pytest-cov",
@@ -21,6 +22,7 @@ setup(
         "yq",
         "mkdocs-material",
         "mdx_truly_sane_lists",
+        "beautifulsoup4",
     ],
     zip_safe=False,
 )

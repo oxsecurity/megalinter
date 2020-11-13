@@ -59,6 +59,7 @@ jobs:
 
       # Create pull request if applicable
       - name: Create Pull Request with applied fixes
+        id: cpr
         if: steps.changes.outputs.changed == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request'
         uses: peter-evans/create-pull-request@v3
         with:

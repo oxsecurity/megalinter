@@ -9,6 +9,7 @@
 ### markdown-link-check configuration
 
 - [Configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format)
+  - If custom .markdown-link-check.json is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json) will be used
 - [Disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments)
 
 ### Mega-linter configuration
