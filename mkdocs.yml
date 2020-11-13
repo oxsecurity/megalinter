@@ -205,4 +205,4 @@ nav:
           - "index": "descriptors/spell.md"
           - "cspell": "descriptors/spell_cspell.md"
 # other-end
-    - "Mega-Linter vs Super-Linter": "#additional-features-compared-to-github-super-linter"
+    - "Mega-Linter vs Super-Linter": "#mega-linter-vs-super-linter"
