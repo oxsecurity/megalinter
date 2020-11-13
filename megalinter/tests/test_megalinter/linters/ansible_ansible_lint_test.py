@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class ansible_ansible_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'ANSIBLE'
-    linter_name = 'ansible-lint'
+    descriptor_id = "ANSIBLE"
+    linter_name = "ansible-lint"

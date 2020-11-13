@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class groovy_npm_groovy_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'GROOVY'
-    linter_name = 'npm-groovy-lint'
+    descriptor_id = "GROOVY"
+    linter_name = "npm-groovy-lint"

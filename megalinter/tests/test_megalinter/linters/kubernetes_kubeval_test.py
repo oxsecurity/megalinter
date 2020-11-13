@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class kubernetes_kubeval_test(TestCase, LinterTestRoot):
-    descriptor_id = 'KUBERNETES'
-    linter_name = 'kubeval'
+    descriptor_id = "KUBERNETES"
+    linter_name = "kubeval"

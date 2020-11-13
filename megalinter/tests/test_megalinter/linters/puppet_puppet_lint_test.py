@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class puppet_puppet_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PUPPET'
-    linter_name = 'puppet-lint'
+    descriptor_id = "PUPPET"
+    linter_name = "puppet-lint"

@@ -50,4 +50,4 @@ If you need to run the container locally and gain access to its command line, yo
 
 ### Found issues
 
-If you find a _bug_ or _issue_, please open a **GitHub** issue at: [nvuillam/mega-linter/issues](https://github.com/nvuillam/super-linter/issues)
+If you find a _bug_ or _issue_, please open a **GitHub** issue at: [nvuillam/mega-linter/issues](https://github.com/nvuillam/mega-linter/issues)

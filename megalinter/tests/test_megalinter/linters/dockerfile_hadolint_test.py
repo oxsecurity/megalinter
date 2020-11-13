@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class dockerfile_hadolint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'DOCKERFILE'
-    linter_name = 'hadolint'
+    descriptor_id = "DOCKERFILE"
+    linter_name = "hadolint"

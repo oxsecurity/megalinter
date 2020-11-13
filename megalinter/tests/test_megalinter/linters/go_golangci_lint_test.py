@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class go_golangci_lint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'GO'
-    linter_name = 'golangci-lint'
+    descriptor_id = "GO"
+    linter_name = "golangci-lint"

@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class graphql_graphql_schema_linter_test(TestCase, LinterTestRoot):
-    descriptor_id = 'GRAPHQL'
-    linter_name = 'graphql-schema-linter'
+    descriptor_id = "GRAPHQL"
+    linter_name = "graphql-schema-linter"

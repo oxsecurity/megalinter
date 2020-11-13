@@ -406,8 +406,8 @@ class Megalinter:
             " - Image Version: " + os.environ.get("BUILD_VERSION", "No docker image")
         )
         logging.info(utils.format_hyphens(""))
-        logging.info("The Mega-Linter source code can be found at:")
-        logging.info(" - https://github.com/nvuillam/mega-linter")
+        logging.info("The Mega-Linter documentation can be found at:")
+        logging.info(" - https://nvuillam.github.io/mega-linter")
         logging.info(utils.format_hyphens(""))
         # Display env variables for debug mode
         for name, value in sorted(os.environ.items()):

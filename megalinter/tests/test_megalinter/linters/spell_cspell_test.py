@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class spell_cspell_test(TestCase, LinterTestRoot):
-    descriptor_id = 'SPELL'
-    linter_name = 'cspell'
+    descriptor_id = "SPELL"
+    linter_name = "cspell"

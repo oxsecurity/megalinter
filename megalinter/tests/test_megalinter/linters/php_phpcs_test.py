@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class php_phpcs_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PHP'
-    linter_name = 'phpcs'
+    descriptor_id = "PHP"
+    linter_name = "phpcs"

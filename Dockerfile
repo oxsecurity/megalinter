@@ -39,18 +39,18 @@ ARG BUILD_VERSION
 # Label the instance and set maintainer #
 #########################################
 LABEL com.github.actions.name="Mega-Linter" \
-      com.github.actions.description="Lint your code base with GitHub Actions" \
+      com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
       com.github.actions.icon="code" \
       com.github.actions.color="red" \
-      maintainer="GitHub DevOps <github_devops@github.com>" \
+      maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
       org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.revision=$BUILD_REVISION \
       org.opencontainers.image.version=$BUILD_VERSION \
-      org.opencontainers.image.authors="GitHub DevOps <github_devops@github.com>" \
-      org.opencontainers.image.url="https://github.com/nvuillam/mega-linter" \
+      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.url="https://nvuillam.github.io/mega-linter" \
       org.opencontainers.image.source="https://github.com/nvuillam/mega-linter" \
-      org.opencontainers.image.documentation="https://github.com/nvuillam/mega-linter" \
-      org.opencontainers.image.vendor="GitHub" \
+      org.opencontainers.image.documentation="https://nvuillam.github.io/mega-linter" \
+      org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
 
 #################################################
@@ -194,6 +194,7 @@ RUN npm install --no-cache \
                 jsonlint \
                 eslint-plugin-react \
                 markdownlint-cli \
+                markdown-link-check \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \

@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class arm_arm_ttk_test(TestCase, LinterTestRoot):
-    descriptor_id = 'ARM'
-    linter_name = 'arm-ttk'
+    descriptor_id = "ARM"
+    linter_name = "arm-ttk"

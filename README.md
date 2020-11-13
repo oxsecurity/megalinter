@@ -2,19 +2,19 @@
 
 <div align="center">
   <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square-small.png" alt="Mega-Linter" height="150px">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square-small.png" alt="Mega-Linter" height="100px">
   </a>
 </div>
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
-[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter#readme)
+[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-**Mega-Linter** analyzes [**37 languages**](#languages), [**11 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+**Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
 ![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
@@ -29,7 +29,7 @@
 
 **Notes**:
 
-- This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [additional features](#additional-features-compared-to-github-super-linter)
+- This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
 - If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
 <!-- table-of-contents-start -->
@@ -42,9 +42,12 @@
     - [Formats](#formats)
     - [Tooling formats](#tooling-formats)
     - [Other](#other)
-  - [How it Works](#how-it-works)
   - [Installation](#installation)
-    - [Example connecting GitHub Action Workflow](#example-connecting-github-action-workflow)
+    - [GitHub Action](#github-action)
+    - [Azure](#azure)
+    - [GitLab](#gitlab)
+    - [Visual Studio Code](#visual-studio-code)
+    - [Local](#local)
     - [Add Mega-Linter badge in your repository README](#add-mega-linter-badge-in-your-repository-readme)
   - [Configuration](#configuration)
     - [Activation and deactivation](#activation-and-deactivation)
@@ -53,16 +56,11 @@
     - [Linter specific variables](#linter-specific-variables)
     - [Filter linted files](#filter-linted-files)
     - [Template rules files](#template-rules-files)
-  - [Filter linted files](#filter-linted-files)
   - [Docker Hub](#docker-hub)
-  - [Run Mega-Linter outside GitHub Actions](#run-mega-linter-outside-github-actions)
-    - [Local (troubleshooting/debugging/enhancements)](#local-troubleshootingdebuggingenhancements)
-    - [Azure](#azure)
-    - [GitLab](#gitlab)
-    - [Visual Studio Code](#visual-studio-code)
   - [Limitations](#limitations)
   - [How to contribute](#how-to-contribute)
-    - [License](#license)
+  - [License](#license)
+  - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
 <!-- table-of-contents-end -->
 ## Supported Linters
 
@@ -123,6 +121,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/json.ico" alt="" height="32px" class="megalinter-icon"></a> | [**JSON**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/json.md#readme) | [jsonlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/json_jsonlint.md#readme)| [JSON_JSONLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/json_jsonlint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/latex.ico" alt="" height="32px" class="megalinter-icon"></a> | [**LATEX**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/latex.md#readme) | [chktex](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/latex_chktex.md#readme)| [LATEX_CHKTEX](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/latex_chktex.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/markdown.ico" alt="" height="32px" class="megalinter-icon"></a> | [**MARKDOWN**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown.md#readme) | [markdownlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdownlint.md#readme)| [MARKDOWN_MARKDOWNLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdownlint.md#readme)| :heavy_check_mark: |
+| <!-- --> |  | [markdown-link-check](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdown_link_check.md#readme)| [MARKDOWN_MARKDOWN_LINK_CHECK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/markdown_markdown_link_check.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/protobuf.ico" alt="" height="32px" class="megalinter-icon"></a> | [**PROTOBUF**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/protobuf.md#readme) | [protolint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/protobuf_protolint.md#readme)| [PROTOBUF_PROTOLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/protobuf_protolint.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/xml.ico" alt="" height="32px" class="megalinter-icon"></a> | [**XML**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/xml.md#readme) | [xmllint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/xml_xmllint.md#readme)| [XML_XMLLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/xml_xmllint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/yaml.ico" alt="" height="32px" class="megalinter-icon"></a> | [**YAML**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/yaml.md#readme) | [yamllint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/yaml_yamllint.md#readme)| [YAML_YAMLLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/yaml_yamllint.md#readme)|  |
@@ -156,17 +155,9 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 
 <!-- linters-table-end -->
 
-## How it Works
-
-The mega-linter finds issues and reports them to the console output. Fixes are suggested in the console output but not automatically fixed, and a status check will show up as failed on the pull request.
-
-The design of the **Mega-Linter** is currently to allow linting to occur in **GitHub Actions** as a part of continuous integration occurring on pull requests as the commits get pushed. It works best when commits are being pushed early and often to a branch with an open or draft pull request. There is some desire to move this closer to local development for faster feedback on linting errors but this is not yet supported.
-
 ## Installation
 
-**Mega-Linter** is an application based on a Docker image containing core architecture and all linters
-
-To use it as **GitHub Action** you will need to complete the following:
+### GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
 2. Copy the [example workflow from below](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
@@ -179,8 +170,6 @@ To use it as **GitHub Action** you will need to complete the following:
 - If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **GitHub Mega-Linter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
 - You can also use it [outside of GitHub Actions](#run-mega-linter-outside-github-actions) (CircleCI, Azure Pipelines, Jenkins, or even locally with a docker run)
 
-### Example connecting GitHub Action Workflow
-
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
 
 - `.github/workflows/mega-linter.yml`
@@ -190,7 +179,7 @@ This file should have the following code:
 ```yml
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://github.com/nvuillam/mega-linter#readme
+# More info at https://nvuillam.github.io/mega-linter
 name: Mega-Linter
 
 on:
@@ -271,22 +260,60 @@ jobs:
           commit_message: "[Mega-Linter] Apply linters fixes"
 ```
 
+### Azure
+
+```yaml
+  - job: megalinter
+    displayName: Mega-Linter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: |
+        docker pull nvuillam/mega-linter:latest
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
+      displayName: 'Code Scan using  Mega-Linter'
+```
+
+### GitLab
+
+```yaml
+megalinter:
+  stage: linting
+  image: nvuillam/mega-linter:v4
+  script: [ "true" ]
+  variables:
+    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
+    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
+    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
+```
+
+### Visual Studio Code
+
+You can checkout this repository using [Container Remote Development](https://code.visualstudio.com/docs/remote/containers), and debug the linter using the `Test Linter` task.
+![Example](https://user-images.githubusercontent.com/15258962/85165778-2d2ce700-b21b-11ea-803e-3f6709d8e609.gif)
+
+We will also support [GitHub Codespaces](https://github.com/features/codespaces/) once it becomes available
+
+### Local
+
+If you find that you need to run mega-linter locally, you can follow the documentation at [Running mega-linter locally](https://github.com/nvuillam/mega-linter/blob/master/docs/run-linter-locally.md)
+
 ### Add Mega-Linter badge in your repository README
 
 You can show Mega-Linter status with a badge in your repository README
 
-[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter#readme)
+[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 
 Format:
 
 ```markdown
-[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter#readme)
+[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 ```
 
 Example:
 
 ```markdown
-[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter#readme)
+[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 ```
 
 _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
@@ -391,48 +418,6 @@ You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets
 
 The **Docker** container that is built from this repository is located at [nvuillam/mega-linter](https://hub.docker.com/r/nvuillam/mega-linter)
 
-## Run Mega-Linter outside GitHub Actions
-
-### Local (troubleshooting/debugging/enhancements)
-
-If you find that you need to run mega-linter locally, you can follow the documentation at [Running mega-linter locally](https://github.com/nvuillam/mega-linter/blob/master/docs/run-linter-locally.md)
-
-Check out the [note](#how-it-works) in **How it Works** to understand more about the **Mega-Linter** linting locally versus via continuous integration.
-
-### Azure
-
-```yaml
-  - job: megalinter
-    displayName: Mega-Linter
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - script: |
-        docker pull nvuillam/mega-linter:latest
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
-      displayName: 'Code Scan using  Mega-Linter'
-```
-
-### GitLab
-
-```yaml
-megalinter:
-  stage: linting
-  image: nvuillam/mega-linter:v4
-  script: [ "true" ]
-  variables:
-    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
-    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
-    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
-```
-
-### Visual Studio Code
-
-You can checkout this repository using [Container Remote Development](https://code.visualstudio.com/docs/remote/containers), and debug the linter using the `Test Linter` task.
-![Example](https://user-images.githubusercontent.com/15258962/85165778-2d2ce700-b21b-11ea-803e-3f6709d8e609.gif)
-
-We will also support [GitHub Codespaces](https://github.com/features/codespaces/) once it becomes available
-
 ## Limitations
 
 Below are a list of the known limitations for the **Mega-Linter**:
@@ -447,11 +432,11 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ---
 
-### License
+## License
 
 - [MIT License](https://github.com/nvuillam/mega-linter/blob/master/LICENSE)
 
-## Additional features compared to github super-linter
+## Mega-Linter vs Super-Linter
 
 ### More languages and formats linted
 

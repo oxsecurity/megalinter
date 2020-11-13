@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class yaml_yamllint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'YAML'
-    linter_name = 'yamllint'
+    descriptor_id = "YAML"
+    linter_name = "yamllint"

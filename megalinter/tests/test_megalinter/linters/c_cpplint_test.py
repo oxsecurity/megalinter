@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class c_cpplint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'C'
-    linter_name = 'cpplint'
+    descriptor_id = "C"
+    linter_name = "cpplint"
