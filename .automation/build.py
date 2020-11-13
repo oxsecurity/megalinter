@@ -291,7 +291,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
     for linter in descriptor_linters:
-        lang_lower,linter_name_lower,descriptor_label = get_linter_base_info(linter)
+        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
         if prev_lang != linter.descriptor_id and os.path.isfile(
             REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
         ):
@@ -428,9 +428,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         linter_doc_md += [""]
         # Mega-linter variables
-        activation_url = (
-            "../index.md#activation-and-deactivation"
-        )
+        activation_url = "../index.md#activation-and-deactivation"
         apply_fixes_url = "../index.md#apply-fixes"
         linter_doc_md += [
             "### Mega-linter configuration",
@@ -525,6 +523,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [""]
     return linters_tables_md
 
+
 def get_linter_base_info(linter):
     lang_lower = linter.descriptor_id.lower()
     linter_name_lower = linter.linter_name.lower().replace("-", "_")
@@ -533,7 +532,8 @@ def get_linter_base_info(linter):
         if hasattr(linter, "descriptor_label")
         else f"**{linter.descriptor_id}**"
     )
-    return lang_lower,linter_name_lower,descriptor_label
+    return lang_lower, linter_name_lower, descriptor_label
+
 
 def get_install_md(item):
     linter_doc_md = []
@@ -585,12 +585,14 @@ def banner_link(src, alt, link, title, align, maxheight):
 def logo_link(src, alt, link, title, maxheight):
     return (
         f'<a href="{link}" target="blank" title="{title}">'
-        f'<img src="{src}" alt="{alt}" height="{maxheight}px" class=\"megalinter-logo\"></a>'
+        f'<img src="{src}" alt="{alt}" height="{maxheight}px" class="megalinter-logo"></a>'
     )
 
 
 def icon(src, alt, _link, _title, height):
-    return f'<img src="{src}" alt="{alt}" height="{height}px" class="megalinter-icon"></a>'
+    return (
+        f'<img src="{src}" alt="{alt}" height="{height}px" class="megalinter-icon"></a>'
+    )
 
 
 def merge_install_attr(item):
@@ -706,7 +708,7 @@ def process_type_mkdocs_yml(linters_by_type, type1):
             descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
             mkdocs_yml += [
                 f'      - "{descriptor_label}":',
-                f'          - "index": "descriptors/{lang_lower}.md"'
+                f'          - "index": "descriptors/{lang_lower}.md"',
             ]
 
         prev_lang = lang_lower
@@ -716,8 +718,12 @@ def process_type_mkdocs_yml(linters_by_type, type1):
         ]
     # Update mkdocs.yml file
     replace_in_file(
-        f"{REPO_HOME}/mkdocs.yml", f"# {type1}-start", f"# {type1}-end", "\n".join(mkdocs_yml)
+        f"{REPO_HOME}/mkdocs.yml",
+        f"# {type1}-start",
+        f"# {type1}-end",
+        "\n".join(mkdocs_yml),
     )
+
 
 if __name__ == "__main__":
     logging.basicConfig(
