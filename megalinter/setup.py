@@ -12,6 +12,7 @@ setup(
     install_requires=[
         "gitpython",
         "jsonschema",
+        "mdx_truly_sane_lists",
         "mkdocs",
         "mkdocs-material",
         "pygithub",

@@ -16,6 +16,7 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - mdx_truly_sane_lists
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
@@ -119,7 +120,7 @@ nav:
       - "Visual Basic .NET (VBDOTNET)":
           - "index": "descriptors/vbdotnet.md"
           - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
-# language-end
+  # language-end
   - "Formats":
       # format-start
       - "CSS":
@@ -153,7 +154,7 @@ nav:
       - "YAML":
           - "index": "descriptors/yaml.md"
           - "yamllint": "descriptors/yaml_yamllint.md"
-# format-end
+  # format-end
   - "Tooling Formats":
       # tooling_format-start
       - "ANSIBLE":
@@ -193,7 +194,7 @@ nav:
           - "tflint": "descriptors/terraform_tflint.md"
           - "terrascan": "descriptors/terraform_terrascan.md"
           - "terragrunt": "descriptors/terraform_terragrunt.md"
-# tooling_format-end
+  # tooling_format-end
   - "Other":
       # other-start
       - "COPYPASTE":
