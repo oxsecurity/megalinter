@@ -1,3 +1,4 @@
+/* stylelint-disable SelectorFormat */
 .megalinter-banner {
   height: 50px;
   max-height: 150px;
@@ -18,5 +19,5 @@
 }
 
 .md-typeset table:not([class]) {
-   display: table;
+  display: table;
 }
