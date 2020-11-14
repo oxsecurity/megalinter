@@ -1,8 +1,0 @@
-{
-    "retryOn429": true,
-    "retryCount": 5,
-    "fallbackRetryDelay": "5s",
-    "ignorePatterns": [
-        "(github\\.com/nvuillam/mega-linter)"
-    ]
-}
