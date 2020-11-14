@@ -32,7 +32,8 @@ class ConsoleLinterReporter(Reporter):
     def produce_report(self):
         # Output results file by file
         for res in self.master.files_lint_results:
-            line = f"[{self.master.linter_name}] {res['file']} - {res['status'].upper()}"
+            file_nm = res['file'].replace("/tmp/lint/", "")
+            line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()}"
             if res['fixed'] is True:
                 line += ' - FIXED'
             if res['status_code'] == 0:

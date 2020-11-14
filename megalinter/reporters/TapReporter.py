@@ -28,9 +28,10 @@ class TapReporter(Reporter):
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
         if self.master.cli_lint_mode == 'project':
             return
+        file_nm = file.replace("/tmp/lint/", "")
         tap_status = "ok" if status_code == 0 else 'not ok'
         file_tap_lines = [
-            f"{tap_status} {str(index)} - {os.path.basename(file)}"]
+            f"{tap_status} {str(index)} - {file_nm}"]
         if self.report_type == 'detailed' and stdout != '' and status_code != 0:
             std_out_tap = stdout.rstrip(f" {os.linesep}") + os.linesep
             std_out_tap = "\\n".join(std_out_tap.split(os.linesep))
