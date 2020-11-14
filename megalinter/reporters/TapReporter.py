@@ -19,11 +19,17 @@ class TapReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
+        # Super-Linter legacy variables
         output_format = os.environ.get("OUTPUT_FORMAT", "")
         if output_format.startswith("tap"):
             self.is_active = True
             if os.environ.get("OUTPUT_DETAIL", "") == "detailed":
                 self.report_type = "detailed"
+        # Mega-Linter vars (false by default)
+        elif os.environ.get("TEXT_REPORTER", "false") == "true":
+            self.is_active = True
+        else:
+            self.is_active = False
 
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
         if self.master.cli_lint_mode == "project":

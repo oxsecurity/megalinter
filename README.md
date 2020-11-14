@@ -56,6 +56,7 @@
     - [Linter specific variables](#linter-specific-variables)
     - [Filter linted files](#filter-linted-files)
     - [Template rules files](#template-rules-files)
+  - [Reporters](#reporters)
   - [Docker Hub](#docker-hub)
   - [Limitations](#limitations)
   - [How to contribute](#how-to-contribute)
@@ -414,6 +415,16 @@ You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets
 
 - Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
   - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES)
+
+## Reporters
+
+Mega-Linter can generate various reports that you can activate / deactivate and customize
+
+- [Text files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TextReporter.md)
+- [Pull Request comments](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubCommentReporter.md)
+- [GitHub Status](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubStatusReporter.md)
+- [TAP files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TapReporter.md)
+- [Console](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/ConsoleReporter.md)
 
 ## Docker Hub
 

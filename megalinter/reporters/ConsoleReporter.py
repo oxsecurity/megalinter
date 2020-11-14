@@ -27,7 +27,7 @@ class ConsoleReporter(Reporter):
                     str(linter.number_fixed) if linter.try_fix is True else ""
                 )
                 if linter.cli_lint_mode == "project":
-                    found = "yes" if len(linter.files) > 0 else "no"
+                    found = "yes"
                     errors = "yes" if linter.number_errors > 0 else "no"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
