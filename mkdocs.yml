@@ -25,6 +25,18 @@ extra_javascript:
     - javascripts/tables.js
 extra_css:
     - stylesheets/extra.css
+extra:
+    social:
+        - icon: fontawesome/regular/question-circle
+          link: https://github.com/nvuillam/mega-linter/issues
+          title: Need help ? Post an issue :)
+        - icon: fontawesome/brands/github
+          link: https://github.com/nvuillam/mega-linter
+        - icon: fontawesome/brands/docker
+          link: https://hub.docker.com/r/nvuillam/mega-linter
+        - icon: fontawesome/brands/twitter
+          link: https://twitter.com/nvuillam
+    generator: false
 nav:
     - "Home": "index.md"
     - "Quick Start": "./#quick-start"
@@ -209,9 +221,9 @@ nav:
           - "cspell": "descriptors/spell_cspell.md"
 # other-end
     - "Reporters":
-        - "Text files": "reporters/TextReporter.md"
-        - "Pull Request comments": "reporters/GitHubCommentReporter.md"
-        - "GitHub Status": "reporters/GitHubStatusReporter.md"
-        - "TAP files": "reporters/TapReporter.md"
-        - "Console": "reporters/ConsoleReporter.md"
+          - "Text files": "reporters/TextReporter.md"
+          - "Pull Request comments": "reporters/GitHubCommentReporter.md"
+          - "GitHub Status": "reporters/GitHubStatusReporter.md"
+          - "TAP files": "reporters/TapReporter.md"
+          - "Console": "reporters/ConsoleReporter.md"
     - "Mega-Linter vs Super-Linter": "./#mega-linter-vs-super-linter"
