@@ -317,7 +317,7 @@ def test_linter_report_tap(linter, test_self):
                     )
                     if produced_line.strip().startswith("message:"):
                         continue
-                    if " ok " in produced_line:
+                    if "ok " in produced_line:
                         test_self.assertEqual(produced_line.split('-')[0],
                                               expected_line.replace("/tmp/lint/", "").split('-')[0])
                     else:
