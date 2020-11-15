@@ -19,18 +19,26 @@ class TextReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        output_format = os.environ.get("OUTPUT_FORMAT", "text")
+        # Super-Linter legacy variables
+        output_format = os.environ.get("OUTPUT_FORMAT", "")
         if output_format.startswith("text"):
             self.is_active = True
             if os.environ.get("OUTPUT_DETAIL", "") == "detailed":
                 self.report_type = "detailed"
+        # Mega-Linter vars (true by default)
+        elif os.environ.get("TEXT_REPORTER", "true") != "true":
+            self.is_active = False
+        else:
+            self.is_active = True
 
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
         status = "[SUCCESS]" if status_code == 0 else "[ERROR]"
         if file is not None:
-            file_text_lines = [f"{status} {file}"]
+            file_nm = file.replace("/tmp/lint/", "")
+            file_text_lines = [f"{status} {file_nm}"]
         else:
-            file_text_lines = [f"{status} {self.master.workspace}"]
+            workspace_nm = self.master.workspace.replace("/tmp/lint/", "")
+            file_text_lines = [f"{status} {workspace_nm}"]
         if fixed is True:
             file_text_lines[0] = file_text_lines[0] + " - FIXED"
         if self.report_type == "detailed" or status_code != 0:

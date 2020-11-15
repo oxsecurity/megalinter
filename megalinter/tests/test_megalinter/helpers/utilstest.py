@@ -6,7 +6,6 @@ import logging
 import os
 import tempfile
 import unittest
-import warnings
 
 from git import Repo
 
@@ -306,13 +305,6 @@ def test_linter_report_tap(linter, test_self):
                 if li[0] != " " and li not in ["- \\n", "-  ", "+ \\n", "+  "]
             ]
             if len(diffs) > 0:
-                msg = [
-                    "Differences with expected TAP\n"
-                    f"Produced:\n\n{content_produced}\n\n"
-                    f"Expected:\n\n{content_expected}\n\n"
-                    f"Diff: ({len(diffs)})\n\n {str(diffs) if len(diffs) < 20 else 'Too many diffs for display'}"
-                ]
-                warnings.warn(msg[0])
                 # Compare just the lines not containing 'message'
                 expected_lines = content_expected.splitlines()
                 produced_lines = content_produced.splitlines()
@@ -325,7 +317,11 @@ def test_linter_report_tap(linter, test_self):
                     )
                     if produced_line.strip().startswith("message:"):
                         continue
-                    test_self.assertEqual(produced_line, expected_line)
+                    if "ok " in produced_line:
+                        test_self.assertEqual(produced_line.split('-')[0],
+                                              expected_line.replace("/tmp/lint/", "").split('-')[0])
+                    else:
+                        test_self.assertEqual(produced_line, expected_line.replace("/tmp/lint/", ""))
                     identical_nb = identical_nb + 1
                 logging.warning(
                     "Produced and expected TAP files are different "

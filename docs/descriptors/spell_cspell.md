@@ -7,6 +7,9 @@
 
 ## Configuration
 
+Mega-Linter generates content of a cspell.json at the end of the error log artifact
+Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+
 ### cspell configuration
 
 - [Configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization)

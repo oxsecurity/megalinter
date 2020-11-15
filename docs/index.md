@@ -17,7 +17,11 @@
 **Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
-![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
+<!-- table-of-contents-start -->
+
+<!-- table-of-contents-end -->
 
 ## Quick Start
 
@@ -32,9 +36,11 @@
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
 - If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
-<!-- table-of-contents-start -->
 
-<!-- table-of-contents-end -->
+## Demo
+
+![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
+
 ## Supported Linters
 
 Developers on **GitHub** can call the **GitHub Action** to lint their code base with the following list of linters:
@@ -388,6 +394,16 @@ You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets
 - Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
   - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES)
 
+## Reporters
+
+Mega-Linter can generate various reports that you can activate / deactivate and customize
+
+- [Text files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TextReporter.md)
+- [Pull Request comments](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubCommentReporter.md)
+- [GitHub Status](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubStatusReporter.md)
+- [TAP files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TapReporter.md)
+- [Console](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/ConsoleReporter.md)
+
 ## Docker Hub
 
 The **Docker** container that is built from this repository is located at [nvuillam/mega-linter](https://hub.docker.com/r/nvuillam/mega-linter)
@@ -414,19 +430,16 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ### More languages and formats linted
 
-- **C**
-- **C++**
-- **Copy-Paste detection**
-- **GraphQL**
-- **Puppet**
-- **Rust**
-- **Scala**
-- **Spell checker**
-- **Visual Basic .NET**
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+
+### More reporters
+
+- [Text files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TextReporter.md)
+- [Pull Request comments](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubCommentReporter.md)
 
 ### Automatically apply fixes
 
-Mega-Linter can **automatically apply fixes performed by linters**, and **push them to the same branch**, or **create a Pull Request** that you can validate
+Mega-Linter can [**automatically apply fixes performed by linters**](#apply-fixes), and **push them to the same branch**, or **create a Pull Request** that you can validate
 
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
@@ -448,6 +461,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
     - Variables VALIDATE_XXX are still taken in account (but should not be used in association with ENABLE and DISABLE variables)
 
 - **Enhanced Documentation**
+  - [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
   - **One page per linter documentation** :
     - **All variables** that can be used with this linter
     - List of **file extensions, names and filters** applied by the linter
@@ -475,7 +489,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
   - easier evolutive maintenance
   - less conflicts to manage between PRs.
   - Few special cases require a [python linter class](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors))
-- [Default behaviours for all linters](https://github.com/nvuillam/mega-linter/blob/master/megalinter/LinterTemplate.py), with possibility to override part of them for special cases
+- [Default behaviours for all linters](https://github.com/nvuillam/mega-linter/blob/master/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
   - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://github.com/nvuillam/mega-linter/blob/master/README.md#supported-linters)
@@ -498,3 +512,4 @@ This is pretty handy, especially for linter errors related to formatting (in tha
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action
   - Validate descriptor YML files with json schema during build
+  - Automated job to upgrade linters to their latest stable version

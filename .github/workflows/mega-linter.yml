@@ -37,8 +37,8 @@ jobs:
           # https://nvuillam.github.io/mega-linter/#shared-variables
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts)'
-          DISABLE: CLOUDFORMATION,SPELL
+          FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|lib/)'
+          DISABLE: CLOUDFORMATION
           DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT
 
       # Upload Mega-Linter artifacts

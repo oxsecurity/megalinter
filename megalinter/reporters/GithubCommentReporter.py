@@ -24,7 +24,9 @@ class GithubCommentReporter(Reporter):
     gh_url = "https://nvuillam.github.io/mega-linter"
 
     def manage_activation(self):
-        if os.environ.get("POST_GITHUB_COMMENT", "true") == "true":
+        if os.environ.get("GITHUB_COMMENT_REPORTER", "true") != "true":
+            self.is_active = False
+        elif os.environ.get("POST_GITHUB_COMMENT", "true") == "true": # Legacy - true by default
             self.is_active = True
 
     def produce_report(self):
@@ -50,19 +52,29 @@ class GithubCommentReporter(Reporter):
                     linter_name_lower = linter.linter_name.lower().replace("-", "_")
                     linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
                     linter_link = f"[{linter.linter_name}]({linter_doc_url})"
-                    errors_cell = (
-                        f"[**{linter.number_errors}**]({action_run_url})"
-                        if linter.number_errors > 0
-                        else linter.number_errors
-                    )
                     nb_fixed_cell = (
                         str(linter.number_fixed) if linter.try_fix is True else ""
                     )
+                    if linter.cli_lint_mode == "project":
+                        found = "yes"
+                        nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
+                        errors_cell = (
+                            f"[**yes**]({action_run_url})"
+                            if linter.number_errors > 0
+                            else "no"
+                        )
+                    else:
+                        found = str(len(linter.files))
+                        errors_cell = (
+                            f"[**{linter.number_errors}**]({action_run_url})"
+                            if linter.number_errors > 0
+                            else linter.number_errors
+                        )
                     table_data_raw += [
                         [
                             first_col,
                             linter_link,
-                            len(linter.files),
+                            found,
                             nb_fixed_cell,
                             errors_cell,
                         ]

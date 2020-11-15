@@ -26,6 +26,8 @@ class GithubStatusReporter(Reporter):
         # Disable status for each linter if MULTI_STATUS is 'false'
         if "MULTI_STATUS" in os.environ and os.environ["MULTI_STATUS"] == 'false':
             self.is_active = False
+        elif os.environ.get("GITHUB_STATUS_REPORTER", "true") != "true":
+            self.is_active = False
 
     def produce_report(self):
         if 'GITHUB_REPOSITORY' in os.environ and 'GITHUB_SHA' in os.environ and \
