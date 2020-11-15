@@ -26,7 +26,9 @@ class GithubCommentReporter(Reporter):
     def manage_activation(self):
         if os.environ.get("GITHUB_COMMENT_REPORTER", "true") != "true":
             self.is_active = False
-        elif os.environ.get("POST_GITHUB_COMMENT", "true") == "true": # Legacy - true by default
+        elif (
+            os.environ.get("POST_GITHUB_COMMENT", "true") == "true"
+        ):  # Legacy - true by default
             self.is_active = True
 
     def produce_report(self):

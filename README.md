@@ -427,11 +427,11 @@ You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets
 
 Mega-Linter can generate various reports that you can activate / deactivate and customize
 
-- [Text files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TextReporter.md)
-- [Pull Request comments](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubCommentReporter.md)
-- [GitHub Status](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubStatusReporter.md)
-- [TAP files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TapReporter.md)
-- [Console](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/ConsoleReporter.md)
+- [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
+- [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
+- [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md)
+- [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md)
+- [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md)
 
 ## Docker Hub
 
@@ -463,8 +463,8 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ### More reporters
 
-- [Text files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TextReporter.md)
-- [Pull Request comments](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubCommentReporter.md)
+- [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
+- [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
 
 ### Automatically apply fixes
 
