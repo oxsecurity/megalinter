@@ -17,26 +17,14 @@
 **Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
-![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
-## Quick Start
-
-- Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
-- If you want to **apply formatters and auto-fixers** in a new commit/PR, uncomment [**APPLY_FIXES** variables](#apply-fixes)
-- If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
-- Commit, push, and create a pull request
-- Watch !
-
-**Notes**:
-
-- This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
-- If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
 <!-- table-of-contents-start -->
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
   - [Quick start](#quick-start)
+  - [Demo](#demo)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
     - [Formats](#formats)
@@ -63,6 +51,25 @@
   - [License](#license)
   - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
 <!-- table-of-contents-end -->
+
+## Quick Start
+
+- Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
+- If you want to **apply formatters and auto-fixers** in a new commit/PR, uncomment [**APPLY_FIXES** variables](#apply-fixes)
+- If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
+- Commit, push, and create a pull request
+- Watch !
+
+**Notes**:
+
+- This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
+- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
+
+## Demo
+
+![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
+
 ## Supported Linters
 
 Developers on **GitHub** can call the **GitHub Action** to lint their code base with the following list of linters:
