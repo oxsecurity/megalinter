@@ -452,19 +452,16 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ### More languages and formats linted
 
-- **C**
-- **C++**
-- **Copy-Paste detection**
-- **GraphQL**
-- **Puppet**
-- **Rust**
-- **Scala**
-- **Spell checker**
-- **Visual Basic .NET**
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+
+### More reporters
+
+- [Text files](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/TextReporter.md)
+- [Pull Request comments](https://github.com/nvuillam/mega-linter/blob/master/docs/reporters/GitHubCommentReporter.md)
 
 ### Automatically apply fixes
 
-Mega-Linter can **automatically apply fixes performed by linters**, and **push them to the same branch**, or **create a Pull Request** that you can validate
+Mega-Linter can [**automatically apply fixes performed by linters**](#apply-fixes), and **push them to the same branch**, or **create a Pull Request** that you can validate
 
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
@@ -486,6 +483,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
     - Variables VALIDATE_XXX are still taken in account (but should not be used in association with ENABLE and DISABLE variables)
 
 - **Enhanced Documentation**
+  - [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
   - **One page per linter documentation** :
     - **All variables** that can be used with this linter
     - List of **file extensions, names and filters** applied by the linter
@@ -513,7 +511,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
   - easier evolutive maintenance
   - less conflicts to manage between PRs.
   - Few special cases require a [python linter class](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors))
-- [Default behaviours for all linters](https://github.com/nvuillam/mega-linter/blob/master/megalinter/LinterTemplate.py), with possibility to override part of them for special cases
+- [Default behaviours for all linters](https://github.com/nvuillam/mega-linter/blob/master/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
   - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://github.com/nvuillam/mega-linter/blob/master/README.md#supported-linters)
@@ -536,3 +534,4 @@ This is pretty handy, especially for linter errors related to formatting (in tha
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action
   - Validate descriptor YML files with json schema during build
+  - Automated job to upgrade linters to their latest stable version
