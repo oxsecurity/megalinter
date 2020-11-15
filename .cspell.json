@@ -75,6 +75,7 @@
         "editorconfig",
         "evolutive",
         "favicon",
+        "fontawesome",
         "gitlab",
         "golangci",
         "hadolint",
