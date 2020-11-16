@@ -26,7 +26,7 @@ class GroovyNpmGroovyLintLinter(Linter):
         cmd += self.cli_lint_user_args
         cmd += [
             "--path ", dir_name,
-            "--files ", file_name]
+            "--files ", f"**/{file_name}"]
         if self.config_file is not None:
             cmd += [self.cli_config_arg_name, self.config_file]
         return cmd
