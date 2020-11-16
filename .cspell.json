@@ -479,6 +479,13 @@
         "wipeverb",
         "xinclude",
         "xmlout",
-        "yappi"
+        "yappi",
+        "Alexa",
+        "CPUs",
+        "accurics",
+        "gemrc",
+        "openapirc",
+        "rspec",
+        "tektonlintrc"
     ]
 }
