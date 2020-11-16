@@ -60,4 +60,4 @@ class MegalinterFixesTest(unittest.TestCase):
         # dotnet linter C# fix
         utilstest.assert_file_has_been_updated("csharp_for_fixes_1.cs", True, self)
         # npm-groovy-lint fix
-        utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
+        utilstest.assert_file_has_been_updated("groovy_for_fixes_1.groovy", True, self)

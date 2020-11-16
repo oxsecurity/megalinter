@@ -636,7 +636,7 @@ def md_package_list(package_list, indent, start_url):
     for package_id_v in package_list:
         if package_id_v.startswith("@"):
             package_id = package_id_v
-            if package_id.count('@') == 2:
+            if package_id.count("@") == 2:
                 package_id = "@" + package_id.split("@")[1]
         else:
             package_id = package_id_v.split("@")[0].split(":")[0]
