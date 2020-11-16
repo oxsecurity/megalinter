@@ -43,7 +43,7 @@ class MegalinterFixesTest(unittest.TestCase):
         )
         self.assertIn("Linting [JAVASCRIPT] files", output)
         time.sleep(5)
-        # Markdown lint fix (disabled while it does not work)
+        # Markdown lint fix
         utilstest.assert_file_has_been_updated("markdown_for_fixes_1.md", True, self)
         # eslint fix
         utilstest.assert_file_has_been_updated("javascript_for_fixes_1.js", True, self)
@@ -59,6 +59,5 @@ class MegalinterFixesTest(unittest.TestCase):
         utilstest.assert_file_has_been_updated("vbdotnet_for_fixes_1.vb", True, self)
         # dotnet linter C# fix
         utilstest.assert_file_has_been_updated("csharp_for_fixes_1.cs", True, self)
-
-        # npm-groovy-lint fix (disabled while it does not work)
-        # utilstest.assert_file_has_been_updated('groovy_for_fixes_1.groovy', True, self)
+        # npm-groovy-lint fix
+        utilstest.assert_file_has_been_updated("groovy_for_fixes_1.groovy", True, self)

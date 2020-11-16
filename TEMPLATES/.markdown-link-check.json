@@ -1,4 +1,4 @@
 {
     "retryOn429": true,
-    "retryCount": 3
+    "retryCount": 5
 }

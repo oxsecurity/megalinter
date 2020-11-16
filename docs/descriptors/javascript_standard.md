@@ -87,4 +87,4 @@ Flags (advanced):
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [standard](https://www.npmjs.com/package/standard)
+  - [standard@15.0.1](https://www.npmjs.com/package/standard)

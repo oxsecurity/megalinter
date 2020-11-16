@@ -160,8 +160,8 @@ Usage: rubocop [options] [file1, file2, ...]
 ### Installation on mega-linter Docker image
 
 - GEM packages (Ruby) :
-  - [rubocop](https://rubygems.org/gems/rubocop)
-  - [rubocop-github](https://rubygems.org/gems/rubocop-github)
-  - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
-  - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
-  - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)
+  - [rubocop:0.82.0](https://rubygems.org/gems/rubocop)
+  - [rubocop-github:0.16.0](https://rubygems.org/gems/rubocop-github)
+  - [rubocop-performance:1.7.1](https://rubygems.org/gems/rubocop-performance)
+  - [rubocop-rails:2.5](https://rubygems.org/gems/rubocop-rails)
+  - [rubocop-rspec:1.41.0](https://rubygems.org/gems/rubocop-rspec)

@@ -1,5 +1,9 @@
 # Changelog
 
+## [insiders] (master)
+
+- Activate auto-fix for Groovy
+
 ## [4.7.0] 2020-11-16
 
 - Update markdown-link-check default config

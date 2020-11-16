@@ -636,9 +636,11 @@ def md_package_list(package_list, indent, start_url):
     for package_id_v in package_list:
         if package_id_v.startswith("@"):
             package_id = package_id_v
+            if package_id.count("@") == 2:
+                package_id = "@" + package_id.split("@")[1]
         else:
             package_id = package_id_v.split("@")[0].split(":")[0]
-        res += [f"{indent}- [{package_id}]({start_url}{package_id})"]
+        res += [f"{indent}- [{package_id_v}]({start_url}{package_id})"]
     return res
 
 
