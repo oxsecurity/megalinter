@@ -3,7 +3,7 @@
 # <a href="https://github.com/nvuillam/npm-groovy-lint" target="blank" title="Visit linter Web Site"><img src="https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6" alt="npm-groovy-lint" height="100px" class="megalinter-logo"></a>npm-groovy-lint
 
 - Web Site: [**https://github.com/nvuillam/npm-groovy-lint**](https://github.com/nvuillam/npm-groovy-lint#readme)
-- Version: **7.6.4**
+- Version: **8.0.0**
 
 ## Configuration
 
