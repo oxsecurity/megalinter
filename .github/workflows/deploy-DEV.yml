@@ -22,6 +22,9 @@ on:
   pull_request:
     branches-ignore: []
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
 ###############
 # Set the Job #
 ###############

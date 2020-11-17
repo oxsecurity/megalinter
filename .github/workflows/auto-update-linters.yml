@@ -9,6 +9,9 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
 ###############
 # Set the Job #
 ###############
