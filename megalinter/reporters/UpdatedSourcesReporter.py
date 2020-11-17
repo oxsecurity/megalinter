@@ -31,7 +31,7 @@ class UpdatedSourcesReporter(Reporter):
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
         for updated_file in updated_files:
             updated_file_clean = updated_file.replace("/tmp/lint/", "")
-            target_file = f"{self.report_folder}{os.path.sep}{updated_sources_dir}{os.path.sep}{updated_file_clean}"
+            target_file = f"{updated_sources_dir}{os.path.sep}{updated_file_clean}"
             os.makedirs(os.path.dirname(target_file), exist_ok=True)
             shutil.copy(updated_file, target_file)
             logging.debug(f"Copied {updated_file} to {target_file}")
