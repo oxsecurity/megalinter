@@ -24,10 +24,13 @@ class UpdatedSourcesReporter(Reporter):
             self.is_active = False
 
     def produce_report(self):
-        logging.debug(f'Start updated Sources Reporter')
+        logging.debug("Start updated Sources Reporter")
         # Copy updated files in report folder
         updated_files = utils.list_updated_files(self.master.github_workspace)
-        updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources"),
+        logging.debug("Updated files :\n" + "\n -".join(updated_files))
+        updated_dir = (
+            os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources"),
+        )
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
         for updated_file in updated_files:
             updated_file_clean = updated_file.replace("/tmp/lint/", "")
@@ -37,8 +40,12 @@ class UpdatedSourcesReporter(Reporter):
             logging.debug(f"Copied {updated_file} to {target_file}")
         # Log
         if len(updated_files) > 0:
-            logging.info(f'Updated Sources Reporter: copied {str(len(updated_files))} fixed source files'
-                         f' in folder {updated_sources_dir}.'
-                         f'Copy-paste it in your local repo to apply linters updates')
+            logging.info(
+                f"Updated Sources Reporter: copied {str(len(updated_files))} fixed source files"
+                f" in folder {updated_sources_dir}."
+                f"Copy-paste it in your local repo to apply linters updates"
+            )
         else:
-            logging.info(f'Updated Sources Reporter: No source file has been formatted or fixed')
+            logging.info(
+                u"Updated Sources Reporter: No source file has been formatted or fixed"
+            )

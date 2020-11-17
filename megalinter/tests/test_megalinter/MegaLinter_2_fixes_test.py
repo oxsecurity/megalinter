@@ -45,22 +45,24 @@ class MegalinterFixesTest(unittest.TestCase):
         time.sleep(5)
         # Check fixable files has been updated
         fixable_files = [
-            "csharp_for_fixes_1.cs"
+            "csharp_for_fixes_1.cs",
             "env_for_fixes_1.env",
-            "groovy_for_fixes_1.groovy"
+            "groovy_for_fixes_1.groovy",
             "javascript_for_fixes_1.js",
             "kotlin_for_fixes_1.kt",
             "markdown_for_fixes_1.md",
             "python_for_fixes_1.py",
             "ruby_for_fixes_1.rb",
-            "vbdotnet_for_fixes_1.vb"
+            "vbdotnet_for_fixes_1.vb",
         ]
-        updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources"),
+        updated_dir = (
+            os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources"),
+        )
         updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}{updated_dir}"
         for fixable_file in fixable_files:
             # Check linters applied updates
             utilstest.assert_file_has_been_updated(fixable_file, True, self)
             # Check UpdatedSourcesReporter result
             self.assertTrue(
-                os.path.exists(updated_sources_dir+os.path.sep+fixable_file)
+                os.path.exists(updated_sources_dir + os.path.sep + fixable_file)
             )

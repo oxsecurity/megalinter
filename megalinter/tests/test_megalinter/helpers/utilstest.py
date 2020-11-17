@@ -8,7 +8,6 @@ import tempfile
 import unittest
 
 from git import Repo
-
 from megalinter import Megalinter
 
 REPO_HOME = (
@@ -290,7 +289,9 @@ def test_linter_report_tap(linter, test_self):
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check TAP file has been produced
-    tmp_tap_file_name = f"{tmp_report_folder}{os.path.sep}tap{os.path.sep}mega-linter-{linter.name}.tap"
+    tmp_tap_file_name = (
+        f"{tmp_report_folder}{os.path.sep}tap{os.path.sep}mega-linter-{linter.name}.tap"
+    )
     test_self.assertTrue(
         os.path.isfile(tmp_tap_file_name), f"TAP report not found {tmp_tap_file_name}"
     )
@@ -318,10 +319,14 @@ def test_linter_report_tap(linter, test_self):
                     if produced_line.strip().startswith("message:"):
                         continue
                     if "ok " in produced_line:
-                        test_self.assertEqual(produced_line.split('-')[0],
-                                              expected_line.replace("/tmp/lint/", "").split('-')[0])
+                        test_self.assertEqual(
+                            produced_line.split("-")[0],
+                            expected_line.replace("/tmp/lint/", "").split("-")[0],
+                        )
                     else:
-                        test_self.assertEqual(produced_line, expected_line.replace("/tmp/lint/", ""))
+                        test_self.assertEqual(
+                            produced_line, expected_line.replace("/tmp/lint/", "")
+                        )
                     identical_nb = identical_nb + 1
                 logging.warning(
                     "Produced and expected TAP files are different "

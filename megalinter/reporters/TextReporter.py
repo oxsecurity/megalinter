@@ -63,7 +63,9 @@ class TextReporter(Reporter):
         ]
         text_report_lines += self.report_items
         text_report_lines += self.master.complete_text_reporter_report(self)
-        text_report_sub_folder = os.environ.get("TEXT_REPORTER_SUB_FOLDER", "linters_logs")
+        text_report_sub_folder = os.environ.get(
+            "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
+        )
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
