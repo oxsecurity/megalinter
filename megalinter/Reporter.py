@@ -14,6 +14,7 @@ class Reporter:
     def __init__(self, params=None):
         self.master = params["master"]
         self.report_folder = params["report_folder"]
+        # Any reporter is inactive by default except if __init__ is overridden on sub class
         if not hasattr(self, "is_active"):
             self.is_active = False
         self.report_items = []

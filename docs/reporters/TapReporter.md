@@ -24,4 +24,4 @@ If you are not using GitHub Actions, you can export `mega-linter.log` and folder
 | Variable | Description | Default value |
 | ----------------- | -------------- | :--------------: |
 | TAP_REPORTER | Activates/deactivates reporter | true |
-
+| TAP_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing text logs | tap |

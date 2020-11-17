@@ -71,7 +71,7 @@ def print_output(output):
             print(line)
 
 
-def call_super_linter(env_vars):
+def call_mega_linter(env_vars):
     prev_environ = os.environ.copy()
     usage_stdout = io.StringIO()
     with contextlib.redirect_stdout(usage_stdout):
@@ -79,8 +79,8 @@ def call_super_linter(env_vars):
         for env_var_key, env_var_value in env_vars.items():
             os.environ[env_var_key] = env_var_value
         # Call linter
-        super_linter = Megalinter()
-        super_linter.run()
+        mega_linter = Megalinter()
+        mega_linter.run()
         # Set back env variable previous values
         for env_var_key, env_var_value in env_vars.items():
             if env_var_key in prev_environ:
@@ -89,7 +89,7 @@ def call_super_linter(env_vars):
                 del os.environ[env_var_key]
     output = usage_stdout.getvalue().strip()
     print_output(output)
-    return super_linter, output
+    return mega_linter, output
 
 
 def test_linter_success(linter, test_self):
@@ -108,9 +108,9 @@ def test_linter_success(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
-    super_linter, output = call_super_linter(env_vars)
+    mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
-        len(super_linter.linters) > 0, "Linters have been created and run"
+        len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
     if linter.cli_lint_mode == "file":
@@ -147,10 +147,10 @@ def test_linter_failure(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
-    super_linter, output = call_super_linter(env_vars)
+    mega_linter, output = call_mega_linter(env_vars)
     # Check linter run
     test_self.assertTrue(
-        len(super_linter.linters) > 0, "Linters have been created and run"
+        len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
     if linter.cli_lint_mode == "file":
@@ -285,12 +285,12 @@ def test_linter_report_tap(linter, test_self):
     }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = "true"
-    super_linter, _output = call_super_linter(env_vars)
+    mega_linter, _output = call_mega_linter(env_vars)
     test_self.assertTrue(
-        len(super_linter.linters) > 0, "Linters have been created and run"
+        len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check TAP file has been produced
-    tmp_tap_file_name = f"{tmp_report_folder}{os.path.sep}mega-linter-{linter.name}.tap"
+    tmp_tap_file_name = f"{tmp_report_folder}{os.path.sep}tap{os.path.sep}mega-linter-{linter.name}.tap"
     test_self.assertTrue(
         os.path.isfile(tmp_tap_file_name), f"TAP report not found {tmp_tap_file_name}"
     )

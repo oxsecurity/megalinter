@@ -50,8 +50,11 @@ class TapReporter(Reporter):
             return
         tap_report_lines = ["TAP version 13", f"1..{str(len(self.master.files))}"]
         tap_report_lines += self.report_items
+        tap_report_sub_folder = os.environ.get("TAP_REPORTER_SUB_FOLDER", "text")
         tap_file_name = (
-            f"{self.report_folder}{os.path.sep}mega-linter-{self.master.name}.tap"
+            f"{self.report_folder}{os.path.sep}"
+            f"{tap_report_sub_folder}{os.path.sep}"
+            f"mega-linter-{self.master.name}.tap"
         )
         if not os.path.isdir(os.path.dirname(tap_file_name)):
             os.makedirs(os.path.dirname(tap_file_name))

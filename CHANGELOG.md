@@ -1,5 +1,9 @@
 # Changelog
 
+## [insiders] (master)
+
+- New reporter: Updated sources
+
 ## [4.7.1] 2020-11-16
 
 - Activate auto-fix for Groovy
