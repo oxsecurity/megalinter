@@ -47,5 +47,5 @@ class UpdatedSourcesReporter(Reporter):
             )
         else:
             logging.info(
-                u"Updated Sources Reporter: No source file has been formatted or fixed"
+                "Updated Sources Reporter: No source file has been formatted or fixed"
             )
