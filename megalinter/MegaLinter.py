@@ -379,6 +379,8 @@ class Megalinter:
             + os.path.sep
             + os.environ.get("LOG_FILE", "mega-linter.log")
         )
+        if not os.path.isdir(os.path.dirname(log_file)):
+            os.makedirs(os.path.dirname(log_file))
         logging.basicConfig(
             force=True,
             level=logging_level,
