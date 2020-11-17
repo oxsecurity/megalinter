@@ -96,11 +96,15 @@ def test_linter_success(linter, test_self):
     workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
+    tmp_report_folder = tempfile.gettempdir()
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
+        "OUTPUT_FORMAT": "text",
+        "OUTPUT_DETAIL": "detailed",
+        "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
     }
     linter_key = "VALIDATE_" + linter.name
@@ -124,6 +128,14 @@ def test_linter_success(linter, test_self):
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
         )
+    # Check text reporter output log
+    text_report_file_name = (
+        f"{tmp_report_folder}{os.path.sep}linters_logs{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
+    )
+    test_self.assertTrue(
+        os.path.isfile(text_report_file_name),
+        f"Unable to find text report {text_report_file_name}",
+    )
 
 
 def test_linter_failure(linter, test_self):
@@ -168,9 +180,9 @@ def test_linter_failure(linter, test_self):
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found error",
         )
-    # Check output log
+    # Check text reporter output log
     text_report_file_name = (
-        f"{tmp_report_folder}{os.path.sep}ERROR-mega-linter-{linter.name}.log"
+        f"{tmp_report_folder}{os.path.sep}linters_logs{os.path.sep}ERROR-mega-linter-{linter.name}.log"
     )
     test_self.assertTrue(
         os.path.isfile(text_report_file_name),
