@@ -18,7 +18,7 @@ fi
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
   echo "RUNNING TEST CASES"
-  pytest -v --durations=0 --cov=megalinter --cov-report=xml megalinter/
+  pytest -v --timeout=60 --durations=0 --cov=megalinter --cov-report=xml megalinter/
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
   # Manage return code

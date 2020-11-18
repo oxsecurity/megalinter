@@ -16,6 +16,7 @@ setup(
         "pygithub",
         "pytablewriter",
         "pytest-cov",
+        "pytest-timeout",
         "pyyaml",
         "requests",
         "terminaltables",
