@@ -5,6 +5,7 @@
         "**/node_modules/**",
         "**/vscode-extension/**",
         "**/.git/**",
+        "report",
         ".vscode"
     ],
     "words": [

@@ -7,6 +7,7 @@ import os
 import time
 import unittest
 
+from megalinter import utils
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -64,5 +65,6 @@ class MegalinterFixesTest(unittest.TestCase):
             utilstest.assert_file_has_been_updated(fixable_file, True, self)
             # Check UpdatedSourcesReporter result
             self.assertTrue(
-                os.path.exists(updated_sources_dir + os.path.sep + fixable_file)
+                os.path.exists(utils.REPO_HOME_DEFAULT + os.path.sep + updated_sources_dir
+                               + os.path.sep + fixable_file)
             )
