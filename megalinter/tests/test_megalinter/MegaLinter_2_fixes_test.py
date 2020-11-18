@@ -64,7 +64,7 @@ class MegalinterFixesTest(unittest.TestCase):
             file_name = (
                 updated_sources_dir
                 + os.path.sep
-                + fixable_file.replace('/tmp/lint', "")
+                + fixable_file.replace("/tmp/lint", "")
             )
             self.assertTrue(
                 os.path.isfile(file_name),
