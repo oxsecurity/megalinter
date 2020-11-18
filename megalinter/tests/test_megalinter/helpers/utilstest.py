@@ -102,8 +102,7 @@ def test_linter_success(linter, test_self):
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
-        "OUTPUT_FORMAT": "text",
-        "OUTPUT_DETAIL": "detailed",
+        "TEXT_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
     }
@@ -130,7 +129,8 @@ def test_linter_success(linter, test_self):
         )
     # Check text reporter output log
     text_report_file_name = (
-        f"{tmp_report_folder}{os.path.sep}linters_logs{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
+        f"{tmp_report_folder}{os.path.sep}"
+        f"{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
     )
     test_self.assertTrue(
         os.path.isfile(text_report_file_name),
@@ -182,7 +182,8 @@ def test_linter_failure(linter, test_self):
         )
     # Check text reporter output log
     text_report_file_name = (
-        f"{tmp_report_folder}{os.path.sep}linters_logs{os.path.sep}ERROR-mega-linter-{linter.name}.log"
+        f"{tmp_report_folder}{os.path.sep}linters_logs"
+        f"{os.path.sep}ERROR-mega-linter-{linter.name}.log"
     )
     test_self.assertTrue(
         os.path.isfile(text_report_file_name),
