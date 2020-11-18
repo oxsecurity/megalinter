@@ -129,7 +129,7 @@ def test_linter_success(linter, test_self):
         )
     # Check text reporter output log
     text_report_file_name = (
-        f"{tmp_report_folder}{os.path.sep}"
+        f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
     )
     test_self.assertTrue(
