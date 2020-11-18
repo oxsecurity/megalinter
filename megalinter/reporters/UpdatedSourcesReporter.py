@@ -36,7 +36,9 @@ class UpdatedSourcesReporter(Reporter):
                 continue
             target_file = f"{updated_sources_dir}{os.path.sep}{updated_file_clean}"
             os.makedirs(os.path.dirname(target_file), exist_ok=True)
-            shutil.copy(utils.REPO_HOME_DEFAULT + os.path.sep + updated_file, target_file)
+            shutil.copy(
+                utils.REPO_HOME_DEFAULT + os.path.sep + updated_file, target_file
+            )
             logging.debug(f"Copied {updated_file} to {target_file}")
         # Log
         if len(updated_files) > 0:
