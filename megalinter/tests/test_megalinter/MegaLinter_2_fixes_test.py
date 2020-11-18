@@ -64,7 +64,14 @@ class MegalinterFixesTest(unittest.TestCase):
             # Check linters applied updates
             utilstest.assert_file_has_been_updated(fixable_file, True, self)
             # Check UpdatedSourcesReporter result
-            file_name = utils.REPO_HOME_DEFAULT + os.path.sep + updated_sources_dir + os.path.sep + fixable_file
+            file_name = (
+                utils.REPO_HOME_DEFAULT
+                + os.path.sep
+                + updated_sources_dir
+                + os.path.sep
+                + fixable_file
+            )
             self.assertTrue(
-                os.path.isfile(file_name), f"File {file_name} not found in UpdatedSources report"
+                os.path.isfile(file_name),
+                f"File {file_name} not found in UpdatedSources report",
             )
