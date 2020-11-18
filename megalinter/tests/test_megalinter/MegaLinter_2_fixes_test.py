@@ -7,7 +7,6 @@ import os
 import time
 import unittest
 
-from megalinter import utils
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
