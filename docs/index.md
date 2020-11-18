@@ -17,6 +17,10 @@
 **Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
+<!-- online-doc-start -->
+
+<!-- online-doc-end -->
+
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
@@ -340,8 +344,10 @@ DISABLE_LINTERS = PHP_STAN,PHP_PSALM
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 env variables defined at top level
 
 - **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
-- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`
+- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
+
+If you do not want fixes to be automatically applied, but access them in a zipped file, you can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md)
 
 If you use **apply fixes**, add the following lines in your `.gitignore file`
 
@@ -367,10 +373,7 @@ You may see github permission errors, or workflows not run on the new commit. To
 | **LINTER_RULES_PATH**             | `.github/linters`     | Directory for all linter configuration rules.                                                                                                                                    |
 | **LOG_FILE**                      | `mega-linter.log`     | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                 |
 | **LOG_LEVEL**                     | `INFO`                | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
-| **MULTI_STATUS**                  | `true`                | A status API is made for each language that is linted to make visual parsing easier.                                                                                             |
-| **OUTPUT_FORMAT**                 | `none`                | The report format to be generated, besides the stdout one. Output format of tap is currently using v13 of the specification. Supported formats: tap                              |
-| **OUTPUT_FOLDER**                 | `mega-linter.report`  | The location where the output reporting will be generated to. Output folder must not previously exist.                                                                           |
-| **OUTPUT_DETAILS**                | `simpler`             | What level of details to be reported. Supported formats: simpler or detailed.                                                                                                    |
+| **OUTPUT_FOLDER**                 | `report`              | The location where the output reporting will be generated to.                                                                                                                    |
 | **VALIDATE_ALL_CODEBASE**         | `true`                | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation. |
 
 ### Filter linted files
@@ -379,9 +382,9 @@ If you need to lint only a folder or exclude some files from linting, you can us
 
 Examples:
 
-- Lint only src folder: `FILTER_REGEX_INCLUDE: .*src/.*`
-- Do not lint files inside test folder: `FILTER_REGEX_EXCLUDE: .*test/.*`
-- Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: .*test/.*.js`
+- Lint only src folder: `FILTER_REGEX_INCLUDE: (src/)`
+- Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
+- Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
 ### Linter specific variables
 
@@ -400,6 +403,7 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
+- [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [GitHub Status](reporters/GitHubStatusReporter.md)
 - [TAP files](reporters/TapReporter.md)
 - [Console](reporters/ConsoleReporter.md)
@@ -413,7 +417,7 @@ The **Docker** container that is built from this repository is located at [nvuil
 Below are a list of the known limitations for the **Mega-Linter**:
 
 - Due to being completely packaged at run time, you will not be able to update dependencies or change versions of the enclosed linters and binaries
-- Additional details from `package.json` are not read by the **Mega-Linter**
+- Additional details from `package.json` are not read by the **Mega-Linter** (use `<LINTER_KEY>_FILE=LINTER_DEFAULT` to use it)
 - Downloading additional codebases as dependencies from private repositories will fail due to lack of permissions
 
 ## How to contribute
@@ -428,6 +432,8 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 ## Mega-Linter vs Super-Linter
 
+The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions
+
 ### More languages and formats linted
 
 - **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
@@ -436,6 +442,7 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
+- [Updated sources](reporters/UpdatedSourcesReporter.md)
 
 ### Automatically apply fixes
 
@@ -444,10 +451,6 @@ Mega-Linter can [**automatically apply fixes performed by linters**](#apply-fixe
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
 ### New features & improvements
-
-- **Enhanced performances**
-  - **Optimized file listing management**: Collect all linters, then collect all files matching extensions associated with linters, then for each linter set the list of files after applying additional filters (include regex, exclude regex, linter custom filters)
-  - Have a centralized exclude list (node_modules,.rbenv, etc...) to **ignore all unwanted folders from the beginning**
 
 - **Enhanced Configuration**
   - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
@@ -481,6 +484,10 @@ This is pretty handy, especially for linter errors related to formatting (in tha
   - Reports stored as artefacts on GitHub Action run
     - General log
     - One report file by linter
+
+- **Enhanced performances**
+  - **Optimized file listing management**: Collect all linters, then collect all files matching extensions associated with linters, then for each linter set the list of files after applying additional filters (include regex, exclude regex, linter custom filters)
+  - Have a centralized exclude list (node_modules,.rbenv, etc...) to **ignore all unwanted folders from the beginning**
 
 ### Simplify architecture and evolutive maintenance
 

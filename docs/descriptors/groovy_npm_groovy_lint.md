@@ -46,11 +46,15 @@
 ### Example calls
 
 ```shell
-npm-groovy-lint --failon warning --path . --files myfile.groovy
+npm-groovy-lint --path . --files myfile.groovy
 ```
 
 ```shell
-npm-groovy-lint --failon warning --path . --files myfile.groovy -c .groovylintrc.json
+npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json
+```
+
+```shell
+npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix
 ```
 
 

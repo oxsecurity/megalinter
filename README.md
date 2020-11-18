@@ -17,6 +17,10 @@
 **Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
+<!-- online-doc-start -->
+See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
+<!-- online-doc-end -->
+
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
