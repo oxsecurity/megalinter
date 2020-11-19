@@ -77,4 +77,4 @@ $ tekton-lint --watch '**/*.yaml'
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [tekton-lint@0.4.2](https://www.npmjs.com/package/tekton-lint)
+  - [tekton-lint](https://www.npmjs.com/package/tekton-lint)

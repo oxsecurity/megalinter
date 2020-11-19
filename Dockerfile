@@ -177,6 +177,7 @@ RUN npm install --no-cache \
                 stylelint \
                 stylelint-config-standard \
                 dockerfilelint \
+                gherkin-lint \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
@@ -198,7 +199,7 @@ RUN npm install --no-cache \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
-                tekton-lint@0.4.2 \
+                tekton-lint \
                 prettier \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \

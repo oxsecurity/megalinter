@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Add Gherkin (Cucumber language) & gherkin-lint
+
 ## [4.8.0]
 
 - New reporter: [Updated sources](https://nvuillam.github.io/mega-linter/reporters/UpdatedSourcesReporter/)
