@@ -20,7 +20,7 @@
     "flake8": "3.8.4",
     "golangci-lint": "1.32.2",
     "graphql-schema-linter": "1.0.1",
-    "hadolint": "1.18.2",
+    "hadolint": "1.19.0",
     "htmlhint": "0.14.2",
     "isort": "5.6.4",
     "jscpd": "3.3.19",

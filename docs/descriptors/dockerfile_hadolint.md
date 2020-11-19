@@ -3,7 +3,7 @@
 # <a href="https://github.com/hadolint/hadolint" target="blank" title="Visit linter Web Site"><img src="https://hadolint.github.io/hadolint/img/cat_container.png" alt="hadolint" height="100px" class="megalinter-logo"></a>hadolint
 
 - Web Site: [**https://github.com/hadolint/hadolint**](https://github.com/hadolint/hadolint#readme)
-- Version: **1.18.2**
+- Version: **1.19.0**
 
 ## Configuration
 
