@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://snakemake.readthedocs.io/en/stable/**](https://snakemake.readthedocs.io/en/stable/)
-- Version: **5.28.0**
+- Version: **5.29.0**
 
 ## Configuration
 
