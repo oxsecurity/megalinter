@@ -37,7 +37,9 @@ class TextReporter(Reporter):
             file_nm = file.replace("/tmp/lint/", "").replace("/github/workspace/", "")
             file_text_lines = [f"{status} {file_nm}"]
         else:
-            workspace_nm = self.master.workspace.replace("/tmp/lint/", "").replace("/github/workspace/", "./")
+            workspace_nm = self.master.workspace.replace("/tmp/lint/", "").replace(
+                "/github/workspace/", "./"
+            )
             file_text_lines = [f"{status} {workspace_nm}"]
         if fixed is True:
             file_text_lines[0] = file_text_lines[0] + " - FIXED"
