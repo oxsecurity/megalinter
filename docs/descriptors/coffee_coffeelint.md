@@ -82,3 +82,21 @@ Options:
 
 - NPM packages (node.js):
   - [@coffeelint/cli](https://www.npmjs.com/package/@coffeelint/cli)
+
+### Example success log
+
+```shell
+some sample logs
+another sample logs
+and again new sample logs !
+```
+
+
+### Example error log
+
+```shell
+some sample logs
+another sample logs
+and again new sample logs !
+```
+
