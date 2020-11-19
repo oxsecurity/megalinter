@@ -43,7 +43,9 @@ class UpdatedSourcesReporter(Reporter):
                 shutil.copy(source_file, target_file)
                 logging.debug(f"Copied {source_file} to {target_file}")
             except FileNotFoundError as copy_err:
-                logging.warning(f"Unable to copy {source_file} to {target_file} ({str(copy_err)})")
+                logging.warning(
+                    f"Unable to copy {source_file} to {target_file} ({str(copy_err)})"
+                )
         # Log
         if len(updated_files) > 0:
             logging.info(
