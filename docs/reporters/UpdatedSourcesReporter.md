@@ -13,13 +13,13 @@ Click on Artifacts then click on **Mega-Linter reports**
 
 ![Screenshot](../assets/images/TextReporter_1.jpg)
 
-Open the downloaded zip file and browse linters text reports
+Open the downloaded zip file and copy the content of folder **updated_sources**
 
-![Screenshot](../assets/images/TextReporter_2.jpg)
+![Screenshot](../assets/images/UpdatedSourcesReporter_1.jpg)
 
-![Screenshot](../assets/images/TextReporter_3.jpg)
+![Screenshot](../assets/images/UpdatedSourcesReporter_2.jpg)
 
-![Screenshot](../assets/images/TextReporter_4.jpg)
+Paste the result in your repository
 
 ### Other CI tools
 
