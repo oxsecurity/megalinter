@@ -34,10 +34,10 @@ class TextReporter(Reporter):
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
         status = "[SUCCESS]" if status_code == 0 else "[ERROR]"
         if file is not None:
-            file_nm = file.replace("/tmp/lint/", "")
+            file_nm = file.replace("/tmp/lint/", "").replace("/github/workspace/", "")
             file_text_lines = [f"{status} {file_nm}"]
         else:
-            workspace_nm = self.master.workspace.replace("/tmp/lint/", "")
+            workspace_nm = self.master.workspace.replace("/tmp/lint/", "").replace("/github/workspace/", "./")
             file_text_lines = [f"{status} {workspace_nm}"]
         if fixed is True:
             file_text_lines[0] = file_text_lines[0] + " - FIXED"
