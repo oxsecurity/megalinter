@@ -3,7 +3,7 @@
 # <a href="https://github.com/phpstan/phpstan" target="blank" title="Visit linter Web Site"><img src="https://i.imgur.com/MOt7taM.png" alt="phpstan" height="100px" class="megalinter-logo"></a>phpstan
 
 - Web Site: [**https://github.com/phpstan/phpstan**](https://github.com/phpstan/phpstan#readme)
-- Version: **0.12.55**
+- Version: **0.12.56**
 
 ## Configuration
 

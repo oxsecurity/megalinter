@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://stylelint.io**](https://stylelint.io)
-- Version: **13.7.2**
+- Version: **13.8.0**
 
 ## Configuration
 
