@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|lib/)'
           MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
-          DISABLE: CLOUDFORMATION
+          DISABLE: CLOUDFORMATION,TEKTON
           DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT
 
       # Upload Mega-Linter artifacts

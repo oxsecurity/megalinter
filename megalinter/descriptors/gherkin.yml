@@ -1,0 +1,17 @@
+descriptor_id: GHERKIN
+descriptor_type: tooling_format
+file_extensions:
+  - ".feature"
+linters:
+  # GHERKIN-LINT
+  - linter_name: gherkin-lint
+    linter_url: https://github.com/vsiakka/gherkin-lint
+    linter_rules_configuration_url: https://github.com/vsiakka/gherkin-lint#rule-configuration
+    config_file_name: ".gherkin-lintrc"
+    linter_version_cache: "0.0.0" # Not implemented on gherkin-lint
+    examples:
+      - "gherkin-lint myfile.feature"
+      - "gherkin-lint -c .gherkin-lintrc myfile.feature"
+    install:
+      npm:
+        - gherkin-lint

@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter analyzes 37 languages, 12 formats, 15 tooling formats , copy-pastes and spell in your repository sources, generate reports in several formats, and can even apply auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+site_description: Mega-Linter analyzes 37 languages, 12 formats, 16 tooling formats , copy-pastes and spell in your repository sources, generate reports in several formats, and can even apply auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 google_analytics: ["G-3DM50255LC", "nvuillam.github.io/mega-linter"]
@@ -189,6 +189,9 @@ nav:
       - "EDITORCONFIG":
           - "index": "descriptors/editorconfig.md"
           - "editorconfig-checker": "descriptors/editorconfig_editorconfig_checker.md"
+      - "GHERKIN":
+          - "index": "descriptors/gherkin.md"
+          - "gherkin-lint": "descriptors/gherkin_gherkin_lint.md"
       - "KUBERNETES":
           - "index": "descriptors/kubernetes.md"
           - "kubeval": "descriptors/kubernetes_kubeval.md"
