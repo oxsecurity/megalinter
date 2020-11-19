@@ -71,7 +71,7 @@ class TextReporter(Reporter):
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{self.master.status.upper()}-mega-linter-{self.master.name}.log"
+            f"{self.master.status.upper()}-{self.master.name}.log"
         )
         if not os.path.isdir(os.path.dirname(text_file_name)):
             os.makedirs(os.path.dirname(text_file_name))

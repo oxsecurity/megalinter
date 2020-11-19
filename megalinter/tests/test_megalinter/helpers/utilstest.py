@@ -4,6 +4,7 @@ import io
 import json
 import logging
 import os
+import shutil
 import tempfile
 import unittest
 
@@ -128,14 +129,16 @@ def test_linter_success(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
         )
     # Check text reporter output log
-    text_report_file_name = (
+    report_file_name = f"SUCCESS-{linter.name}.log"
+    text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
-        f"{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
+        f"{os.path.sep}{report_file_name}"
     )
     test_self.assertTrue(
-        os.path.isfile(text_report_file_name),
-        f"Unable to find text report {text_report_file_name}",
+        os.path.isfile(text_report_file),
+        f"Unable to find text report {text_report_file}",
     )
+    copy_logs_for_doc(mega_linter, text_report_file, test_folder, report_file_name)
 
 
 def test_linter_failure(linter, test_self):
@@ -181,14 +184,27 @@ def test_linter_failure(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found error",
         )
     # Check text reporter output log
-    text_report_file_name = (
+    report_file_name = f"ERROR-{linter.name}.log"
+    text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
-        f"{os.path.sep}ERROR-mega-linter-{linter.name}.log"
+        f"{os.path.sep}{report_file_name}"
     )
     test_self.assertTrue(
-        os.path.isfile(text_report_file_name),
-        f"Unable to find text report {text_report_file_name}",
+        os.path.isfile(text_report_file),
+        f"Unable to find text report {text_report_file}",
     )
+    copy_logs_for_doc(mega_linter, text_report_file, test_folder, report_file_name)
+
+
+# Copy logs for documentation
+def copy_logs_for_doc(mega_linter, text_report_file, test_folder, report_file_name):
+    if os.environ.get("MEGALINTER_COPY_LOGS","false") == "false":
+        return
+    updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}dev{os.path.sep}" \
+                          f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}reports"
+    target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace('.log', '.txt')
+    os.makedirs(os.path.dirname(target_file), exist_ok=True)
+    shutil.copy(text_report_file, target_file)
 
 
 def test_get_linter_version(linter, test_self):

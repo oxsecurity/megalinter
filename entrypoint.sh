@@ -18,6 +18,8 @@ fi
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
   echo "RUNNING TEST CASES"
+  MEGALINTER_COPY_LOGS=true
+  export MEGALINTER_COPY_LOGS
   pytest -v --timeout=60 --durations=0 --cov=megalinter --cov-report=xml megalinter/
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
