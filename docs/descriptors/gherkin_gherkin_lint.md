@@ -45,6 +45,23 @@ gherkin-lint -c .gherkin-lintrc myfile.feature
 ```
 
 
+### Help content
+
+```shell
+Usage: gherkin-lint [options] <feature-files>
+
+Options:
+  -f, --format [format]  output format. Possible values: json, stylish.
+                         Defaults to stylish
+  -i, --ignore <...>     comma seperated list of files/glob patterns that the
+                         linter should ignore, overrides .gherkin-lintignore
+                         file
+  -c, --config [config]  configuration file, defaults to .gherkin-lintrc
+  -r, --rulesdir <...>   additional rule directories (default: [])
+  -h, --help             display help for command
+
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):

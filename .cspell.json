@@ -923,6 +923,7 @@
         "\u04bbcoffeescript",
         "\u0636clojure",
         "\u077bcbad",
-        "lintrc"
+        "lintrc",
+        "lintignore"
     ]
 }

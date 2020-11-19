@@ -3,7 +3,7 @@
 # tekton-lint
 
 - Web Site: [**https://github.com/IBM/tekton-lint**](https://github.com/IBM/tekton-lint#readme)
-- Version: **0.4.2**
+- Version: **0.5.2**
 
 ## Configuration
 
@@ -52,11 +52,13 @@ Usage:
 tekton-lint <path-to-yaml-files>
 
 Options:
-$ tekton-lint --watch   # Run tekton-lint in watch mode
-$ tekton-lint --version # Show version number
-$ tekton-lint --help    # Show help
+$ tekton-lint --watch                # Run tekton-lint in watch mode
+$ tekton-lint --version              # Show version number
+$ tekton-lint --help                 # Show help
 $ tekton-lint --color / --no-color   # Forcefully enable/disable colored output
-$ tekton-lint --format  # Format output. Available formatters: vscode (default) | stylish | json
+$ tekton-lint --format               # Format output. Available formatters: vscode (default) | stylish | json
+$ tekton-lint --quiet                # Report errors only - default: false
+$ tekton-lint --max-warnings <Int>   # Number of warnings to trigger nonzero exit code - default: -1
 
 Examples:
 # Globstar matching
