@@ -223,6 +223,7 @@ nav:
     - "Reporters":
           - "Text files": "reporters/TextReporter.md"
           - "Pull Request comments": "reporters/GitHubCommentReporter.md"
+          - "Updated sources": "reporters/UpdatedSourcesReporter.md"
           - "GitHub Status": "reporters/GitHubStatusReporter.md"
           - "TAP files": "reporters/TapReporter.md"
           - "Console": "reporters/ConsoleReporter.md"

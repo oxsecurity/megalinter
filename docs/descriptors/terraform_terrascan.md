@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/accurics/terrascan**](https://github.com/accurics/terrascan#readme)
-- Version: **1.1.0**
+- Version: **1.2.0**
 
 ## Configuration
 

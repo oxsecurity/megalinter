@@ -3,13 +3,13 @@
 # <a href="https://github.com/DavidAnson/markdownlint" target="blank" title="Visit linter Web Site"><img src="https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default" alt="markdownlint" height="100px" class="megalinter-logo"></a>markdownlint
 
 - Web Site: [**https://github.com/DavidAnson/markdownlint**](https://github.com/DavidAnson/markdownlint#readme)
-- Version: **0.24.0**
+- Version: **0.25.0**
 
 ## Configuration
 
 ### markdownlint configuration
 
-- [Configure markdownlint rules](https://github.com/DavidAnson/markdownlint#optionsconfig)
+- [Configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration)
   - If custom .markdown-lint.json is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json) will be used
 - [Disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration)
 
@@ -55,23 +55,20 @@ markdownlint --fix -c .markdown-lint.json myfile.md
 ### Help content
 
 ```shell
+Usage: markdownlint [options] <files|directories|globs>
 
-  Usage: markdownlint [options] <files|directories|globs>
+MarkdownLint Command Line Interface
 
-  MarkdownLint Command Line Interface
-
-  Options:
-
-    -h, --help                                  output usage information
-    -V, --version                               output the version number
-    -f, --fix                                   fix basic errors (does not work with STDIN)
-    -s, --stdin                                 read from STDIN (does not work with files)
-    -o, --output [outputFile]                   write issues to file (no console)
-    -c, --config [configFile]                   configuration file (JSON, JSONC, JS, or YAML)
-    -i, --ignore [file|directory|glob]          file(s) to ignore/exclude
-    -p, --ignore-path [file]                    path to file with ignore pattern(s)
-    -r, --rules  [file|directory|glob|package]  custom rule files
-
+Options:
+  -V, --version                               output the version number
+  -f, --fix                                   fix basic errors (does not work with STDIN)
+  -s, --stdin                                 read from STDIN (does not work with files)
+  -o, --output [outputFile]                   write issues to file (no console)
+  -c, --config [configFile]                   configuration file (JSON, JSONC, JS, or YAML)
+  -i, --ignore [file|directory|glob]          file(s) to ignore/exclude (default: [])
+  -p, --ignore-path [file]                    path to file with ignore pattern(s)
+  -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
+  -h, --help                                  display help for command
 
 ```
 
