@@ -2,7 +2,11 @@
 
 ## [insiders] (master)
 
-- New reporter: Updated sources
+Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
+
+## [4.8.0]
+
+- New reporter: [Updated sources](https://nvuillam.github.io/mega-linter/reporters/UpdatedSourcesReporter/)
 
 ## [4.7.1] 2020-11-16
 
