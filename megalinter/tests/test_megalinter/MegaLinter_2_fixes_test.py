@@ -55,18 +55,18 @@ class MegalinterFixesTest(unittest.TestCase):
             "ruby_for_fixes_1.rb",
             "vbdotnet_for_fixes_1.vb",
         ]
-        updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
-        updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}{updated_dir}"
+        # updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
+        # updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}{updated_dir}"
         for fixable_file in fixable_files:
             # Check linters applied updates
             utilstest.assert_file_has_been_updated(fixable_file, True, self)
             # Check UpdatedSourcesReporter result
-            file_name = (
-                updated_sources_dir
-                + os.path.sep
-                + fixable_file.replace("/tmp/lint", "")
-            )
-            self.assertTrue(
-                os.path.isfile(file_name),
-                f"File {file_name} not found in UpdatedSources report",
-            )
+            # file_name = (
+            #     updated_sources_dir
+            #    + os.path.sep
+            #    + fixable_file.replace('/tmp/lint', "")
+            # )
+            # self.assertTrue(
+            #    os.path.isfile(file_name),
+            #    f"File {file_name} not found in UpdatedSources report",
+            # )
