@@ -8,7 +8,6 @@ import tempfile
 import unittest
 
 from git import Repo
-
 from megalinter import Megalinter
 
 REPO_HOME = (
@@ -71,7 +70,7 @@ def print_output(output):
             print(line)
 
 
-def call_super_linter(env_vars):
+def call_mega_linter(env_vars):
     prev_environ = os.environ.copy()
     usage_stdout = io.StringIO()
     with contextlib.redirect_stdout(usage_stdout):
@@ -79,8 +78,8 @@ def call_super_linter(env_vars):
         for env_var_key, env_var_value in env_vars.items():
             os.environ[env_var_key] = env_var_value
         # Call linter
-        super_linter = Megalinter()
-        super_linter.run()
+        mega_linter = Megalinter()
+        mega_linter.run()
         # Set back env variable previous values
         for env_var_key, env_var_value in env_vars.items():
             if env_var_key in prev_environ:
@@ -89,7 +88,7 @@ def call_super_linter(env_vars):
                 del os.environ[env_var_key]
     output = usage_stdout.getvalue().strip()
     print_output(output)
-    return super_linter, output
+    return mega_linter, output
 
 
 def test_linter_success(linter, test_self):
@@ -97,20 +96,23 @@ def test_linter_success(linter, test_self):
     workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
+    tmp_report_folder = tempfile.gettempdir()
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
+        "TEXT_REPORTER": "true",
+        "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
     }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
-    super_linter, output = call_super_linter(env_vars)
+    mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
-        len(super_linter.linters) > 0, "Linters have been created and run"
+        len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
     if linter.cli_lint_mode == "file":
@@ -125,6 +127,15 @@ def test_linter_success(linter, test_self):
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
         )
+    # Check text reporter output log
+    text_report_file_name = (
+        f"{tmp_report_folder}{os.path.sep}linters_logs"
+        f"{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
+    )
+    test_self.assertTrue(
+        os.path.isfile(text_report_file_name),
+        f"Unable to find text report {text_report_file_name}",
+    )
 
 
 def test_linter_failure(linter, test_self):
@@ -147,10 +158,10 @@ def test_linter_failure(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
-    super_linter, output = call_super_linter(env_vars)
+    mega_linter, output = call_mega_linter(env_vars)
     # Check linter run
     test_self.assertTrue(
-        len(super_linter.linters) > 0, "Linters have been created and run"
+        len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
     if linter.cli_lint_mode == "file":
@@ -169,9 +180,10 @@ def test_linter_failure(linter, test_self):
             output,
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found error",
         )
-    # Check output log
+    # Check text reporter output log
     text_report_file_name = (
-        f"{tmp_report_folder}{os.path.sep}ERROR-mega-linter-{linter.name}.log"
+        f"{tmp_report_folder}{os.path.sep}linters_logs"
+        f"{os.path.sep}ERROR-mega-linter-{linter.name}.log"
     )
     test_self.assertTrue(
         os.path.isfile(text_report_file_name),
@@ -285,12 +297,14 @@ def test_linter_report_tap(linter, test_self):
     }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = "true"
-    super_linter, _output = call_super_linter(env_vars)
+    mega_linter, _output = call_mega_linter(env_vars)
     test_self.assertTrue(
-        len(super_linter.linters) > 0, "Linters have been created and run"
+        len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check TAP file has been produced
-    tmp_tap_file_name = f"{tmp_report_folder}{os.path.sep}mega-linter-{linter.name}.tap"
+    tmp_tap_file_name = (
+        f"{tmp_report_folder}{os.path.sep}tap{os.path.sep}mega-linter-{linter.name}.tap"
+    )
     test_self.assertTrue(
         os.path.isfile(tmp_tap_file_name), f"TAP report not found {tmp_tap_file_name}"
     )
@@ -318,10 +332,14 @@ def test_linter_report_tap(linter, test_self):
                     if produced_line.strip().startswith("message:"):
                         continue
                     if "ok " in produced_line:
-                        test_self.assertEqual(produced_line.split('-')[0],
-                                              expected_line.replace("/tmp/lint/", "").split('-')[0])
+                        test_self.assertEqual(
+                            produced_line.split("-")[0],
+                            expected_line.replace("/tmp/lint/", "").split("-")[0],
+                        )
                     else:
-                        test_self.assertEqual(produced_line, expected_line.replace("/tmp/lint/", ""))
+                        test_self.assertEqual(
+                            produced_line, expected_line.replace("/tmp/lint/", "")
+                        )
                     identical_nb = identical_nb + 1
                 logging.warning(
                     "Produced and expected TAP files are different "

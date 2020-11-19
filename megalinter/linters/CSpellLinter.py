@@ -29,7 +29,13 @@ class CSpellLinter(Linter):
         cspell_example = {
             "version": 0.1,
             "language": "en",
-            "ignorePaths": ["**/node_modules/**", "**/vscode-extension/**", "**/.git/**", ".vscode"],
+            "ignorePaths": [
+                "**/node_modules/**",
+                "**/vscode-extension/**",
+                "**/.git/**",
+                ".vscode",
+                "report",
+            ],
             "words": whitelisted_words_clean,
         }
         cspell_example_json = json.dumps(cspell_example, indent=4)

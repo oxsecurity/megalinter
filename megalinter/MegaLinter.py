@@ -23,6 +23,9 @@ class Megalinter:
             params = {}
         self.workspace = self.get_workspace()
         self.github_workspace = os.environ.get("GITHUB_WORKSPACE", self.workspace)
+        self.report_folder = os.environ.get(
+            "REPORT_OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"
+        )
         self.initialize_logger()
         self.display_header()
         # Mega-Linter default rules location
@@ -55,10 +58,6 @@ class Megalinter:
         )
         self.manage_default_linter_activation()
         self.apply_fixes = os.environ.get("APPLY_FIXES", "none")
-        # Report vars
-        self.report_folder = os.environ.get(
-            "REPORT_OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"
-        )
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -376,10 +375,12 @@ class Megalinter:
             else logging.INFO
         )
         log_file = (
-            self.github_workspace
+            self.report_folder
             + os.path.sep
             + os.environ.get("LOG_FILE", "mega-linter.log")
         )
+        if not os.path.isdir(os.path.dirname(log_file)):
+            os.makedirs(os.path.dirname(log_file))
         logging.basicConfig(
             force=True,
             level=logging_level,

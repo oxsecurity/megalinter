@@ -708,6 +708,13 @@ def generate_index_md():
         "<!-- table-of-contents-end -->",
         "",
     )
+    # Remove link to online doc
+    replace_in_file(
+        target_file,
+        "<!-- online-doc-start -->",
+        "<!-- online-doc-end -->",
+        "",
+    )
 
 
 def generate_mkdocs_yml():

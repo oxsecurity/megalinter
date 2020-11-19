@@ -19,7 +19,14 @@ REPO_HOME_DEFAULT = (
 
 
 def list_excluded_directories():
-    excluded_dirs = ["node_modules", ".git", ".rbenv", ".venv", ".terragrunt-cache"]
+    excluded_dirs = [
+        "node_modules",
+        ".git",
+        "report",
+        ".rbenv",
+        ".venv",
+        ".terragrunt-cache",
+    ]
     return excluded_dirs
 
 
@@ -214,12 +221,17 @@ def decode_utf8(stdout):
     return res
 
 
-def check_updated_file(file, repo_home):
+def list_updated_files(repo_home):
     try:
         repo = git.Repo(repo_home)
     except git.InvalidGitRepositoryError:
         repo = git.Repo(REPO_HOME_DEFAULT)
     changed_files = [item.a_path for item in repo.index.diff(None)]
+    return changed_files
+
+
+def check_updated_file(file, repo_home):
+    changed_files = list_updated_files(repo_home)
     file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
         if changed_file in file_absolute:

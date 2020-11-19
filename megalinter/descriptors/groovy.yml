@@ -24,7 +24,7 @@ linters:
     examples:
       - "npm-groovy-lint --path . --files myfile.groovy"
       - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json"
-      - - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
+      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
     install:
       npm:
         - npm-groovy-lint

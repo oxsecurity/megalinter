@@ -1,6 +1,7 @@
 # Text Reporter
 
 Posts a pack of text logs , zipped as a GitHub Action artifact
+
 - General execution log `mega-linter.log` (same as [ConsoleReporter](ConsoleReporter.md) log)
 - A separate log file for each processed linter
 
@@ -31,4 +32,4 @@ If you are not using GitHub Actions, you can export `mega-linter.log` and folder
 | Variable | Description | Default value |
 | ----------------- | -------------- | :--------------: |
 | TEXT_REPORTER | Activates/deactivates reporter | true |
-
+| TEXT_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing text logs | text |

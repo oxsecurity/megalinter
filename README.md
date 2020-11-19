@@ -17,6 +17,10 @@
 **Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**15 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
+<!-- online-doc-start -->
+See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
+<!-- online-doc-end -->
+
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
@@ -369,8 +373,10 @@ DISABLE_LINTERS = PHP_STAN,PHP_PSALM
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 env variables defined at top level
 
 - **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
-- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`
+- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
+
+If you do not want fixes to be automatically applied, but access them in a zipped file, you can use [**Updated sources reporter**](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 
 If you use **apply fixes**, add the following lines in your `.gitignore file`
 
@@ -426,6 +432,7 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 
 - [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
 - [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
+- [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 - [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md)
 - [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md)
 - [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md)
@@ -464,6 +471,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 - [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
 - [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
+- [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 
 ### Automatically apply fixes
 

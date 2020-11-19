@@ -13,4 +13,3 @@ Click on **Details** to access detailed logs
 | Variable | Description | Default value |
 | ----------------- | -------------- | :--------------: |
 | GITHUB_STATUS_REPORTER | Activates/deactivates reporter | true |
-
