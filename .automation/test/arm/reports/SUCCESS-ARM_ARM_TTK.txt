@@ -1,0 +1,33 @@
+Results of arm-ttk linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_ttk/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/arm/arm_good_1.json
+                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_good_1.json  deploymentTemplate
+        [+] adminUsername Should Not Be A Literal (85 ms)
+    
+        [+] apiVersions Should Be Recent (112 ms)
+        [+] artifacts parameter (14 ms)
+        [+] DependsOn Best Practices (8 ms)
+        [+] Deployment Resources Must Not Be Debug (8 ms)
+        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (20 ms)
+        [+] DeploymentTemplate Schema Is Correct (4 ms)
+        [+] Dynamic Variable References Should Not Use Concat (4 ms)
+        [+] IDs Should Be Derived From ResourceIDs (22 ms)
+        [+] Location Should Not Be Hardcoded (33 ms)
+        [+] ManagedIdentityExtension must not be used (3 ms)
+        [+] Min And Max Value Are Numbers (7 ms)
+        [+] Outputs Must Not Contain Secrets (12 ms)
+        [+] Parameters Must Be Referenced (11 ms)
+        [+] Parameters Property Must Exist (3 ms)
+        [+] providers apiVersions Is Not Permitted (2 ms)
+        [+] ResourceIds should not contain (11 ms)
+        [+] Resources Should Have Location (3 ms)
+        [+] Secure String Parameters Cannot Have Default (4 ms)
+        [+] Template Should Not Contain Blanks (7 ms)
+        [+] Variables Must Be Referenced (24 ms)
+        [+] Virtual Machines Should Not Be Preview (88 ms)
+        [+] VM Images Should Use Latest Version (3 ms)
+        [+] VM Size Should Be A Parameter (16 ms)
+    
+
