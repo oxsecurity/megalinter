@@ -5,7 +5,6 @@ https://github.com/nvuillam/npm-groovy-lint
 """
 import json
 import logging
-import os.path
 import re
 
 from megalinter import Linter
