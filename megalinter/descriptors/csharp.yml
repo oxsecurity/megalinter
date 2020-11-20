@@ -31,7 +31,7 @@ linters:
       - "--check"
     examples:
       - "dotnet-format --folder --check --exclude / --include myfile.cs"
-      - "dotnet-format --folder --exclude / --include myfile.cs"
+      - "dotnet-format --folder --exclude / --include myfile.cs" # Fix
     install:
       dockerfile:
         - RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
