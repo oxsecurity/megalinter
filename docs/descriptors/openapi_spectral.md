@@ -49,6 +49,8 @@
   - `openapi:`
   - `swagger:`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -93,3 +95,53 @@ Options:
 
 - NPM packages (node.js):
   - [@stoplight/spectral@5.6.0](https://www.npmjs.com/package/@stoplight/spectral)
+
+### Example success log
+
+```shell
+Results of spectral linter (version 5.6.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_spectral/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/openapi/openapi_good_1.yml
+    OpenAPI 3.x detected
+    No results with a severity of 'error' or higher found!
+
+[SUCCESS] .automation/test/openapi/openapi_good_2.json
+    OpenAPI 3.x detected
+    No results with a severity of 'error' or higher found!
+
+```
+
+### Example error log
+
+```shell
+Results of spectral linter (version 5.6.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_spectral/
+-----------------------------------------------
+
+[ERROR] .automation/test/openapi/openapi_bad_1.yml
+    OpenAPI 3.x detected
+    
+    .automation/test/openapi/openapi_bad_1.yml
+     1:1  warning  info-contact      Info object should contain `contact` object.
+     1:1  warning  info-description  OpenAPI object info `description` must be present and non-empty string.
+     1:1  warning  oas3-api-servers  OpenAPI `servers` must be present and non-empty array.
+     1:1    error  oas3-schema       Object should have required property `info`.
+     1:1  warning  openapi-tags      OpenAPI object should have non-empty `tags` array.
+    
+    ✖ 5 problems (1 error, 4 warnings, 0 infos, 0 hints)
+
+[ERROR] .automation/test/openapi/openapi_bad_2.json
+    OpenAPI 3.x detected
+    
+    .automation/test/openapi/openapi_bad_2.json
+     1:1  warning  info-contact      Info object should contain `contact` object.
+     1:1  warning  info-description  OpenAPI object info `description` must be present and non-empty string.
+     1:1  warning  oas3-api-servers  OpenAPI `servers` must be present and non-empty array.
+     1:1    error  oas3-schema       Object should have required property `info`.
+     1:1  warning  openapi-tags      OpenAPI object should have non-empty `tags` array.
+    
+    ✖ 5 problems (1 error, 4 warnings, 0 infos, 0 hints)
+
+```

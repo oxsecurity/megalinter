@@ -38,6 +38,8 @@
 - File extensions:
   - `.tf`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -82,3 +84,48 @@ COPY --from=terrascan /go/bin/terrascan /usr/bin/
 RUN terrascan init
 ```
 
+
+### Example success log
+
+```shell
+Results of terrascan linter (version 1.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/terraform_terrascan/good/terraform_good_1.tf
+    results:
+        violations: []
+        count:
+            low: 0
+            medium: 0
+            high: 0
+            total: 0
+
+```
+
+### Example error log
+
+```shell
+Results of terrascan linter (version 1.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+-----------------------------------------------
+
+[ERROR] .automation/test/terraform_terrascan/bad/terraform_bad_1.tf
+    results:
+        violations:
+            - rule_name: instanceWithNoVpc
+              description: Instance should be configured in vpc. AWS VPCs provides the controls to facilitate a formal process for approving and testing all network connections and changes to the firewall and router configurations.
+              rule_id: AWS.Instance.NetworkSecurity.Medium.0506
+              severity: MEDIUM
+              category: Network Security
+              resource_name: instanceWithNoVpc
+              resource_type: aws_instance
+              file: terraform_bad_1.tf
+              line: 1
+        count:
+            low: 0
+            medium: 1
+            high: 0
+            total: 1
+
+```

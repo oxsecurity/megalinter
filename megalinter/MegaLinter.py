@@ -276,7 +276,9 @@ class Megalinter:
                     repo.git.checkout(current_branch)
                     repo.git.pull()
                 except git.GitCommandError:
-                    logging.error(f"Unable to pull current branch {current_branch}")
+                    logging.info(
+                        f"Warning: Unable to pull current branch {current_branch}"
+                    )
             repo.git.checkout(default_branch)
             diff = repo.git.diff(f"{default_branch}...{current_branch}", name_only=True)
             repo.git.checkout(current_branch)
@@ -420,7 +422,7 @@ class Megalinter:
         if self.status == "success":
             logging.info("Successfully linted all files without errors")
         else:
-            logging.error("Error(s) has been found during linting")
+            logging.error("Error(s) have been found during linting")
             if self.cli is True:
                 if os.environ.get("DISABLE_ERRORS", "false") == "true":
                     sys.exit(0)

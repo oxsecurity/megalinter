@@ -43,6 +43,8 @@
 - File extensions:
   - `.rb`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -165,3 +167,52 @@ Usage: rubocop [options] [file1, file2, ...]
   - [rubocop-performance:1.7.1](https://rubygems.org/gems/rubocop-performance)
   - [rubocop-rails:2.5](https://rubygems.org/gems/rubocop-rails)
   - [rubocop-rspec:1.41.0](https://rubygems.org/gems/rubocop-rspec)
+
+### Example success log
+
+```shell
+Results of rubocop linter (version 0.82.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rubocop/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/ruby/ruby_good_1.rb
+    Inspecting 1 file
+    .
+    
+    1 file inspected, no offenses detected
+
+```
+
+### Example error log
+
+```shell
+Results of rubocop linter (version 0.82.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rubocop/
+-----------------------------------------------
+
+[ERROR] .automation/test/ruby/ruby_bad_1.rb
+    Inspecting 1 file
+    C
+    
+    Offenses:
+    
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:1:1: C: Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:11: C: Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+    File.open('/tmp/urls.txt', " w" ) do | file|
+              ^^^^^^^^^^^^^^^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:32: C: Layout/SpaceInsideParens: Space inside parentheses detected.
+    File.open('/tmp/urls.txt', " w" ) do | file|
+                                   ^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:39: C: Layout/SpaceAroundBlockParameters: Space before first block parameter detected.
+    File.open('/tmp/urls.txt', " w" ) do | file|
+                                          ^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:12:24: C: Layout/SpaceAroundBlockParameters: Space after last block parameter detected.
+      Hook.active.map do |h |
+                           ^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:13:13: C: Layout/SpaceInsideArrayLiteralBrackets: Do not use space inside array brackets.
+        urls = [ ARRAY_OF_URLS_CALLING_INSTANCE]
+                ^
+    
+    1 file inspected, 6 offenses detected
+
+```

@@ -1,0 +1,7 @@
+Results of cpplint linter (version 1.5.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/c_cpplint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/c/c_good_01.c
+    Done processing .automation/test/c/c_good_01.c
+

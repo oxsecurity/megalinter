@@ -16,7 +16,6 @@
 
 eslint requires a custom configuration file applicable to your project.
 You can create it by typing `npx eslint --init` in the root of your repository
-
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
@@ -45,6 +44,8 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - File extensions:
   - `.jsx`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -129,3 +130,31 @@ Miscellaneous:
 - NPM packages (node.js):
   - [eslint](https://www.npmjs.com/package/eslint)
   - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
+
+### Example success log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/jsx/jsx_good_1.jsx
+    Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+
+```
+
+### Example error log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/jsx/jsx_bad_1.jsx
+    
+    .automation/test/jsx/jsx_bad_1.jsx
+      8:1  error  Parsing error: Unexpected token const
+    
+    ✖ 1 problem (1 error, 0 warnings)
+
+```

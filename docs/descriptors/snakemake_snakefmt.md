@@ -37,6 +37,8 @@
 - File names:
   - `Snakefile`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -106,3 +108,49 @@ Options:
 
 - PIP packages (Python):
   - [snakefmt](https://pypi.org/project/snakefmt)
+
+### Example success log
+
+```shell
+Results of snakefmt linter (version 0.2.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakefmt/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/snakemake/snakemake_good_1.smk
+    =====> Diff for .automation/test/snakemake/snakemake_good_1.smk <=====
+    
+    
+    [INFO] All 1 file(s) would be left unchanged 🎉
+
+```
+
+### Example error log
+
+```shell
+Results of snakefmt linter (version 0.2.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakefmt/
+-----------------------------------------------
+
+[ERROR] .automation/test/snakemake/snakemake_bad_1.smk
+    =====> Diff for .automation/test/snakemake/snakemake_bad_1.smk <=====
+    
+    --- original
+    +++ new
+    @@ -1,10 +1,11 @@
+     rule all:
+         input:
+    -        file1='result.txt',
+    +        file1="result.txt",
+    +
+     
+     rule simulation:
+         output:
+    -        file1="result.txt"
+    +        file1="result.txt",
+         shell:
+             """
+             touch {output}
+    
+    [INFO] 1 file(s) would be changed 😬
+
+```

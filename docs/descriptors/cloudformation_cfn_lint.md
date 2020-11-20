@@ -47,6 +47,8 @@
   - `AWSTemplateFormatVersion`
   - `(AWS|Alexa|Custom)::`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -126,3 +128,49 @@ Advanced / Debugging:
   - [asl-validator](https://www.npmjs.com/package/asl-validator)
 - PIP packages (Python):
   - [cfn-lint](https://pypi.org/project/cfn-lint)
+
+### Example success log
+
+```shell
+Results of cfn-lint linter (version 0.41.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_2.yaml
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_3.json
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_4.yaml
+    
+
+```
+
+### Example error log
+
+```shell
+Results of cfn-lint linter (version 0.41.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_1.json
+    E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
+    .automation/test/cloudformation/cloudformation_bad_1.json:6:10
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_2.yaml
+    E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
+    .automation/test/cloudformation/cloudformation_bad_2.yaml:5:5
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_3.json
+    E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
+    .automation/test/cloudformation/cloudformation_bad_3.json:11:13
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_4.yaml
+    E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
+    .automation/test/cloudformation/cloudformation_bad_4.yaml:9:7
+
+```

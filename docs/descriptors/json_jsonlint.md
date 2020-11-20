@@ -31,6 +31,8 @@
 - File extensions:
   - `.json`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -65,3 +67,49 @@ Options:
 
 - NPM packages (node.js):
   - [jsonlint](https://www.npmjs.com/package/jsonlint)
+
+### Example success log
+
+```shell
+Results of jsonlint linter (version 1.6.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_jsonlint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/json/json_good_1.json
+    {
+      "arrow_spacing": {
+        "level": "ignore"
+      },
+      "braces_spacing": {
+        "level": "ignore",
+        "spaces": 0,
+        "empty_object_spaces": 0
+      }
+    }
+
+```
+
+### Example error log
+
+```shell
+Results of jsonlint linter (version 1.6.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_jsonlint/
+-----------------------------------------------
+
+[ERROR] .automation/test/json/json_bad_1.json
+    Error: Parse error on line 6:
+    ...ng": {    "level": 'ignore',    "space
+    ----------------------^
+    Expecting 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '[', got 'undefined'
+        at Object.parseError (/node_modules/jsonlint/lib/jsonlint.js:55:11)
+        at Object.parse (/node_modules/jsonlint/lib/jsonlint.js:132:22)
+        at parse (/node_modules/jsonlint/lib/cli.js:82:14)
+        at main (/node_modules/jsonlint/lib/cli.js:135:14)
+        at Object.<anonymous> (/node_modules/jsonlint/lib/cli.js:179:1)
+        at Module._compile (internal/modules/cjs/loader.js:1201:30)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:1221:10)
+        at Module.load (internal/modules/cjs/loader.js:1050:32)
+        at Function.Module._load (internal/modules/cjs/loader.js:938:14)
+        at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+
+```

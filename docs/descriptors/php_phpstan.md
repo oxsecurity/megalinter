@@ -34,6 +34,8 @@
 - File extensions:
   - `.php`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -102,3 +104,61 @@ RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 
 ```
 
+
+### Example success log
+
+```shell
+Results of phpstan linter (version 0.12.56)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/php/php_good_1.php
+    
+     [OK] No errors
+
+[SUCCESS] .automation/test/php/php_good_2.php
+    
+     [OK] No errors
+
+```
+
+### Example error log
+
+```shell
+Results of phpstan linter (version 0.12.56)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
+-----------------------------------------------
+
+[ERROR] .automation/test/php/php_bad_1.php
+     ------ ---------------------------------------------- 
+      Line   php_bad_1.php                                 
+     ------ ---------------------------------------------- 
+      3      Invalid numeric literal on line 3             
+      3      Invalid numeric literal on line 3             
+      3      Syntax error, unexpected '=' on line 3        
+      3      Syntax error, unexpected T_LNUMBER on line 3  
+      3      Syntax error, unexpected T_STRING on line 3   
+      3      Syntax error, unexpected T_STRING on line 3   
+     ------ ---------------------------------------------- 
+    
+     [ERROR] Found 6 errors                                                         
+    
+    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Invalid numeric literal on line 3
+    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Invalid numeric literal on line 3
+    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected '=' on line 3
+    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_LNUMBER on line 3
+    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_STRING on line 3
+    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_STRING on line 3
+
+[ERROR] .automation/test/php/php_bad_2.php
+     ------ ----------------------------------------- 
+      Line   php_bad_2.php                            
+     ------ ----------------------------------------- 
+      15     Syntax error, unexpected '}' on line 15  
+     ------ ----------------------------------------- 
+    
+     [ERROR] Found 1 error                                                          
+    
+    ::error file=mp/lint/.automation/test/php/php_bad_2.php,line=15,col=0::Syntax error, unexpected '}' on line 15
+
+```

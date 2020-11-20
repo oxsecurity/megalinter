@@ -42,6 +42,8 @@
 - File names:
   - `Jenkinsfile`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -103,3 +105,52 @@ Note: command-line arguments have priority on config file properties - default: 
 
 - NPM packages (node.js):
   - [npm-groovy-lint](https://www.npmjs.com/package/npm-groovy-lint)
+
+### Example success log
+
+```shell
+Results of npm-groovy-lint linter (version 8.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/groovy/groovy_good_01.groovy
+    [4m.automation/test/groovy/groovy_good_01.groovy[24m
+    
+    
+    npm-groovy-lint results in [1m1[22m linted files:
+    ┌─────────┬───────────┬─────────────┐
+    │ (index) │ Severity  │ Total found │
+    ├─────────┼───────────┼─────────────┤
+    │    0    │  'Error'  │      0      │
+    │    1    │ 'Warning' │      0      │
+    │    2    │  'Info'   │      0      │
+    └─────────┴───────────┴─────────────┘
+
+```
+
+### Example error log
+
+```shell
+Results of npm-groovy-lint linter (version 8.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/groovy/groovy_bad_01.groovy
+    [4m.automation/test/groovy/groovy_bad_01.groovy[24m
+      4     [31merror  [39m  Unexpected input: '$' @ line 4, column 16.  NglParseError           
+      2     [90minfo   [39m  Line ends with whitespace characters  TrailingWhitespace      
+    
+    
+    npm-groovy-lint results in [1m1[22m linted files:
+    ┌─────────┬───────────┬─────────────┐
+    │ (index) │ Severity  │ Total found │
+    ├─────────┼───────────┼─────────────┤
+    │    0    │  'Error'  │      1      │
+    │    1    │ 'Warning' │      0      │
+    │    2    │  'Info'   │      1      │
+    └─────────┴───────────┴─────────────┘
+    Failure: 1 error(s) have been found 
+     0 warning(s) have been found 
+     1 info(s) have been found
+
+```

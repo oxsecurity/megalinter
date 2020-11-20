@@ -1,0 +1,13 @@
+Results of xmllint linter (version 20910)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmllint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/xml/xml_good_1.xml
+    <?xml version="1.0"?>
+    <note>
+      <to>Tove</to>
+      <from>Jani</from>
+      <heading>Reminder</heading>
+      <body>Don't forget me this weekend!</body>
+    </note>
+

@@ -33,6 +33,8 @@
 - File extensions:
   - `.graphql`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -66,3 +68,32 @@ Options:
 
 - NPM packages (node.js):
   - [graphql-schema-linter](https://www.npmjs.com/package/graphql-schema-linter)
+
+### Example success log
+
+```shell
+Results of graphql-schema-linter linter (version 1.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_graphql_schema_linter/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/graphql/graphql_good_1.graphql
+    
+    
+    ✔ 0 errors detected
+
+```
+
+### Example error log
+
+```shell
+Results of graphql-schema-linter linter (version 1.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_graphql_schema_linter/
+-----------------------------------------------
+
+[ERROR] .automation/test/graphql/graphql_bad_1.graphql
+    .automation/test/graphql/graphql_bad_1.graphql
+    8:11 Unknown type "Book". invalid-graphql-schema
+    
+    ✖ 1 error detected
+
+```

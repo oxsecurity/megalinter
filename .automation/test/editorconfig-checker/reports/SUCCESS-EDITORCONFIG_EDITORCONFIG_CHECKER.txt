@@ -1,0 +1,7 @@
+Results of editorconfig-checker linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorconfig_editorconfig_checker/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/editorconfig-checker/editorconfig-checker_good_1.ext
+    
+

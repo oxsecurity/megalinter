@@ -33,6 +33,8 @@
 - File extensions:
   - `.cs`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -215,3 +217,31 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 ```
 
+
+### Example success log
+
+```shell
+Results of dotnet-format linter (version 4.1.131201)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/csharp_dotnet_format/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/csharp/csharp_good_01.cs
+      Formatting code files in workspace '.automation/test/csharp'.
+      Format complete in 1181ms.
+
+```
+
+### Example error log
+
+```shell
+Results of dotnet-format linter (version 4.1.131201)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/csharp_dotnet_format/
+-----------------------------------------------
+
+[ERROR] .automation/test/csharp/csharp_bad_01.cs
+      Formatting code files in workspace '.automation/test/csharp'.
+      csharp/csharp_bad_01.cs(1,33): Fix whitespace formatting.
+      Formatted code file '.automation/test/csharp/csharp_bad_01.cs'.
+      Format complete in 1295ms.
+
+```

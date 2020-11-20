@@ -1,0 +1,7 @@
+Results of puppet-lint linter (version 2.4.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/puppet/puppet_good_1.pp
+    
+

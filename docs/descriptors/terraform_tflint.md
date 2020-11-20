@@ -34,6 +34,8 @@
 - File extensions:
   - `.tf`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -102,3 +104,35 @@ FROM wata727/tflint:latest as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 
+
+### Example success log
+
+```shell
+Results of tflint linter (version 0.20.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
+    
+
+```
+
+### Example error log
+
+```shell
+Results of tflint linter (version 0.20.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/
+-----------------------------------------------
+
+[ERROR] .automation/test/terraform/bad/terraform_bad_1.tf
+    Failed to load configurations. 1 error(s) occurred:
+    
+    [31mError[0m: Invalid expression
+    
+      on .automation/test/terraform/bad/terraform_bad_1.tf line 3, in resource "aws_instance" "bad":
+       3:   instance_type =            [1;4m# invalid type![0m
+       4: }
+    
+    Expected the start of an expression, but found an invalid expression token.
+
+```

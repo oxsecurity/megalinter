@@ -1,0 +1,7 @@
+Results of isort linter (version 5.6.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_isort/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/python/python_good_1.py
+    
+

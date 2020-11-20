@@ -1,0 +1,16 @@
+Results of cfn-lint linter (version 0.41.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_2.yaml
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_3.json
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_4.yaml
+    
+

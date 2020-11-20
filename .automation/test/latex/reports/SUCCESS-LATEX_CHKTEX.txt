@@ -1,0 +1,7 @@
+Results of chktex linter (version 1.7.6)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_chktex/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/latex/latex_good_1.tex
+    
+

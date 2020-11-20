@@ -1,0 +1,46 @@
+Results of phpcs linter (version 3.5.8)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpcs/
+-----------------------------------------------
+
+[ERROR] .automation/test/php/php_bad_1.php
+    
+    FILE: .automation/test/php/php_bad_1.php
+    ----------------------------------------------------------------------
+    FOUND 7 ERRORS AFFECTING 1 LINE
+    ----------------------------------------------------------------------
+     3 | ERROR | [x] Expected at least 1 space before "-"; 0 found
+     3 | ERROR | [x] Expected at least 1 space after "-"; 0 found
+     3 | ERROR | [x] Expected at least 1 space before "="; 0 found
+     3 | ERROR | [x] Expected at least 1 space after "="; 0 found
+     3 | ERROR | [x] Expected at least 1 space before "-"; 0 found
+     3 | ERROR | [x] Expected at least 1 space before "-"; 0 found
+     3 | ERROR | [x] Expected at least 1 space after "-"; 0 found
+    ----------------------------------------------------------------------
+    PHPCBF CAN FIX THE 7 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+    ----------------------------------------------------------------------
+    
+    Time: 40ms; Memory: 6MB
+
+[ERROR] .automation/test/php/php_bad_2.php
+    
+    FILE: .automation/test/php/php_bad_2.php
+    ----------------------------------------------------------------------
+    FOUND 4 ERRORS AND 1 WARNING AFFECTING 4 LINES
+    ----------------------------------------------------------------------
+      1 | WARNING | [ ] A file should declare new symbols (classes,
+        |         |     functions, constants, etc.) and cause no other
+        |         |     side effects, or it should execute logic with
+        |         |     side effects, but should not do both. The first
+        |         |     symbol is defined on line 6 and the first side
+        |         |     effect is on line 10.
+      6 | ERROR   | [x] Opening brace should be on a new line
+     14 | ERROR   | [x] Space before opening parenthesis of function call
+        |         |     prohibited
+     15 | ERROR   | [x] Newline required after opening brace
+     15 | ERROR   | [x] Closing brace must be on a line by itself
+    ----------------------------------------------------------------------
+    PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+    ----------------------------------------------------------------------
+    
+    Time: 39ms; Memory: 6MB
+

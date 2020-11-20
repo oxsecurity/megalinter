@@ -1,0 +1,18 @@
+Results of clippy linter (version 0.0.212)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_clippy/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rust/good
+        Checking megalinter v1.0.0 (.automation/test/rust/good)
+    warning: function is never used: `main`
+     --> rust_good_1.rs:9:4
+      |
+    9 | fn main() {
+      |    ^^^^
+      |
+      = note: `#[warn(dead_code)]` on by default
+    
+    warning: 1 warning emitted
+    
+        Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+

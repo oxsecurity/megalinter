@@ -1,0 +1,7 @@
+Results of clj-kondo linter (version 2020.09.09)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_clj_kondo/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/clojure/clojure_good_1.clj
+    linting took 14ms, errors: 0, warnings: 0
+

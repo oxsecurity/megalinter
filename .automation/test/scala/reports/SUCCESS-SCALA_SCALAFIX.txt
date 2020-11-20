@@ -1,0 +1,7 @@
+Results of scalafix linter (version 0.9.23)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/scala/scala_good_1.scala
+    
+

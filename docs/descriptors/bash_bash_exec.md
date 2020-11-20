@@ -35,6 +35,8 @@
   - `.dash`
   - `.ksh`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -87,3 +89,27 @@ RUN printf '#!/bin/bash \\n\\nif [[ -x "$1" ]]; then exit 0; else echo "Error: F
 
 ```
 
+
+### Example success log
+
+```shell
+Results of bash-exec linter (version 5.0.17)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_bash_exec/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/shell/shell_good_1.sh
+    
+
+```
+
+### Example error log
+
+```shell
+Results of bash-exec linter (version 5.0.17)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_bash_exec/
+-----------------------------------------------
+
+[ERROR] .automation/test/shell/shell_bad_1.sh
+    Error: File:[.automation/test/shell/shell_bad_1.sh] is not executable
+
+```

@@ -41,6 +41,8 @@
   - `.scss`
   - `.saas`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -78,3 +80,27 @@ Usage: scss-lint [options] [scss-files]
 
 - GEM packages (Ruby) :
   - [scss_lint](https://rubygems.org/gems/scss_lint)
+
+### Example success log
+
+```shell
+Results of scss-lint linter (version 0.59.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_scss_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/scss/scss_good_01.scss
+    
+
+```
+
+### Example error log
+
+```shell
+Results of scss-lint linter (version 0.59.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_scss_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/scss/scss_bad_01.scss
+    .automation/test/scss/scss_bad_01.scss:15:1 [E] Syntax: Syntax Error: Invalid CSS after "  }": expected selector or at-rule, was "}"
+
+```

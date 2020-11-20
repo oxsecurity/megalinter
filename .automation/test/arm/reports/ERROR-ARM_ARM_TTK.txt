@@ -1,0 +1,38 @@
+Results of arm-ttk linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_ttk/
+-----------------------------------------------
+
+[ERROR] .automation/test/arm/arm_bad_1.json
+                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_bad_1.json  deploymentTemplate
+        [+] adminUsername Should Not Be A Literal (69 ms)
+    
+        [+] apiVersions Should Be Recent (97 ms)
+        [+] artifacts parameter (11 ms)
+        [+] DependsOn Best Practices (6 ms)
+        [+] Deployment Resources Must Not Be Debug (7 ms)
+        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (17 ms)
+        [+] DeploymentTemplate Schema Is Correct (4 ms)
+        [+] Dynamic Variable References Should Not Use Concat (3 ms)
+        [+] IDs Should Be Derived From ResourceIDs (18 ms)
+        [+] Location Should Not Be Hardcoded (27 ms)
+        [+] ManagedIdentityExtension must not be used (3 ms)
+        [+] Min And Max Value Are Numbers (7 ms)
+        [+] Outputs Must Not Contain Secrets (10 ms)
+        [+] Parameters Must Be Referenced (10 ms)
+        [+] Parameters Property Must Exist (3 ms)
+        [+] providers apiVersions Is Not Permitted (2 ms)
+        [+] ResourceIds should not contain (10 ms)
+        [+] Resources Should Have Location (2 ms)
+        [+] Secure String Parameters Cannot Have Default (3 ms)
+        [-] Template Should Not Contain Blanks (21 ms) 
+    ::error::        Empty property:  [] found on line: 28 Index:1331
+    ::error::        Empty property:  "" found on line: 3 Index:121
+    
+        [-] Variables Must Be Referenced (80 ms) 
+    ::error::        Unreferenced variable: Network.Location
+    ::error::        Unreferenced variable: Test.Blank.Variable
+    
+        [+] Virtual Machines Should Not Be Preview (18 ms)
+        [+] VM Images Should Use Latest Version (1 ms)
+        [+] VM Size Should Be A Parameter (13 ms)
+

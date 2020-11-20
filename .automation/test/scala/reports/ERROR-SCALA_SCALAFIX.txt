@@ -1,0 +1,9 @@
+Results of scalafix linter (version 0.9.23)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
+-----------------------------------------------
+
+[ERROR] .automation/test/scala/scala_bad_1.scala
+    .automation/test/scala/scala_bad_1.scala:3:34: error: [DisableSyntax.offensive] Please consider a less offensive word such as 'extension' or 'enrichment'
+            println("Hello, world of pimps !")
+                                     ^^^^
+

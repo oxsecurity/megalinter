@@ -34,6 +34,8 @@
 - File extensions:
   - `.sql`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -73,3 +75,27 @@ Options:
 
 - NPM packages (node.js):
   - [sql-lint](https://www.npmjs.com/package/sql-lint)
+
+### Example success log
+
+```shell
+Results of sql-lint linter (version 0.0.15)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/sql/sql_good_1.sql
+    
+
+```
+
+### Example error log
+
+```shell
+Results of sql-lint linter (version 0.0.15)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/sql/sql_bad_1.sql
+    .automation/test/sql/sql_bad_1.sql:1 [sql-lint: missing-where] DELETE statement missing WHERE clause.
+
+```

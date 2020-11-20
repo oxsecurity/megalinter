@@ -5,7 +5,7 @@ Text reporter
 import logging
 import os
 
-from megalinter import Reporter
+from megalinter import Reporter, utils
 
 
 class TextReporter(Reporter):
@@ -34,18 +34,17 @@ class TextReporter(Reporter):
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
         status = "[SUCCESS]" if status_code == 0 else "[ERROR]"
         if file is not None:
-            file_nm = file.replace("/tmp/lint/", "").replace("/github/workspace/", "")
+            file_nm = utils.normalize_log_string(file)
             file_text_lines = [f"{status} {file_nm}"]
         else:
-            workspace_nm = self.master.workspace.replace("/tmp/lint/", "").replace(
-                "/github/workspace/", "./"
-            )
+            workspace_nm = utils.normalize_log_string(self.master.workspace)
             file_text_lines = [f"{status} {workspace_nm}"]
         if fixed is True:
             file_text_lines[0] = file_text_lines[0] + " - FIXED"
         if self.report_type == "detailed" or status_code != 0:
             std_out_text = stdout.rstrip(f" {os.linesep}") + os.linesep
-            std_out_text = "\n    ".join(std_out_text.split(os.linesep))
+            std_out_text = "\n    ".join(std_out_text.splitlines())
+            std_out_text = utils.normalize_log_string(std_out_text)
             detailed_lines = ["    " + std_out_text, ""]
             file_text_lines += detailed_lines
         self.report_items += file_text_lines
@@ -71,7 +70,7 @@ class TextReporter(Reporter):
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"
-            f"{self.master.status.upper()}-mega-linter-{self.master.name}.log"
+            f"{self.master.status.upper()}-{self.master.name}.log"
         )
         if not os.path.isdir(os.path.dirname(text_file_name)):
             os.makedirs(os.path.dirname(text_file_name))

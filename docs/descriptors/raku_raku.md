@@ -38,6 +38,8 @@
   - `.pl6`
   - `.p6`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -135,3 +137,30 @@ The following environment variables are respected:
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && apk add --update --no-cache rakudo zef
 ```
 
+
+### Example success log
+
+```shell
+Results of raku linter (version 2020.10)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/raku/raku_good_1.raku
+    Syntax OK
+
+```
+
+### Example error log
+
+```shell
+Results of raku linter (version 2020.10)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
+-----------------------------------------------
+
+[ERROR] .automation/test/raku/raku_bad_1.raku
+    [31m===[0mSORRY![31m===[0m Error while compiling .automation/test/raku/raku_bad_1.raku
+    Variable '$foo' is not declared.  Did you mean '@foo'?
+    at .automation/test/raku/raku_bad_1.raku:4
+    ------> [32m<BOL>[33m⏏[31m$foo[1] = 42[0m
+
+```

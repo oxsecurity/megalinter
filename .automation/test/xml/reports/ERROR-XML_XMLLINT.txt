@@ -1,0 +1,9 @@
+Results of xmllint linter (version 20910)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmllint/
+-----------------------------------------------
+
+[ERROR] .automation/test/xml/xml_bad_1.xml
+    .automation/test/xml/xml_bad_1.xml:7: parser error : EndTag: '</' not found
+    
+    ^
+

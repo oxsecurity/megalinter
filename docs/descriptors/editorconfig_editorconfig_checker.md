@@ -40,6 +40,8 @@
 - File extensions:
   - `*`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -97,3 +99,32 @@ FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
 
+
+### Example success log
+
+```shell
+Results of editorconfig-checker linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorconfig_editorconfig_checker/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/editorconfig-checker/editorconfig-checker_good_1.ext
+    
+
+```
+
+### Example error log
+
+```shell
+Results of editorconfig-checker linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorconfig_editorconfig_checker/
+-----------------------------------------------
+
+[ERROR] .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext
+    [33;1m.automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:[33;0m
+    [31;1m	1: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
+    [31;1m	2: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
+    [31;1m	3: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
+    [31;1m
+    3 errors found[33;0m
+
+```

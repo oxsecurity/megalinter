@@ -1,0 +1,9 @@
+Results of yamllint linter (version 1.25.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yamllint/
+-----------------------------------------------
+
+[ERROR] .automation/test/yaml/yml_bad_1.yml
+    .automation/test/yaml/yml_bad_1.yml
+      10:1      warning  missing document start "---"  (document-start)
+      11:16     error    syntax error: mapping values are not allowed here (syntax)
+

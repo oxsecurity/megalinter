@@ -34,6 +34,8 @@
 - File extensions:
   - `.scala`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -200,3 +202,29 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 ```
 
+
+### Example success log
+
+```shell
+Results of scalafix linter (version 0.9.23)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/scala/scala_good_1.scala
+    
+
+```
+
+### Example error log
+
+```shell
+Results of scalafix linter (version 0.9.23)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
+-----------------------------------------------
+
+[ERROR] .automation/test/scala/scala_bad_1.scala
+    .automation/test/scala/scala_bad_1.scala:3:34: error: [DisableSyntax.offensive] Please consider a less offensive word such as 'extension' or 'enrichment'
+            println("Hello, world of pimps !")
+                                     ^^^^
+
+```

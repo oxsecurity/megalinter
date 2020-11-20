@@ -1,0 +1,7 @@
+Results of kubeval linter (version dev)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
+-----------------------------------------------
+
+[ERROR] .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml
+    ERR  - .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml: Missing 'metadata.name' key
+

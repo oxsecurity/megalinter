@@ -41,6 +41,8 @@
 - File extensions:
   - `.java`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -124,3 +126,36 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 
 ```
 
+
+### Example success log
+
+```shell
+Results of checkstyle linter (version 8.37)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/java/java_good_1.java
+    Starting audit...
+    Audit done.
+
+```
+
+### Example error log
+
+```shell
+Results of checkstyle linter (version 8.37)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
+-----------------------------------------------
+
+[ERROR] .automation/test/java/java_bad_1.java
+    Starting audit...
+    [ERROR] .automation/test/java/java_bad_1.java:1:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
+    [ERROR] .automation/test/java/java_bad_1.java:1:7: Name 'java_bad_1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. [TypeName]
+    [ERROR] .automation/test/java/java_bad_1.java:2:1: '{' at column 1 should be on the previous line. [LeftCurly]
+    [ERROR] .automation/test/java/java_bad_1.java:4:29: Parameter args should be final. [FinalParameters]
+    [ERROR] .automation/test/java/java_bad_1.java:4:40: Array brackets at illegal position. [ArrayTypeStyle]
+    [ERROR] .automation/test/java/java_bad_1.java:5:5: '{' at column 5 should be on the previous line. [LeftCurly]
+    Audit done.
+    Checkstyle ends with 6 errors.
+
+```

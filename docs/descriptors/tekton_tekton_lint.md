@@ -37,6 +37,8 @@
 - Detected file content:
   - `apiVersion: tekton`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -80,3 +82,34 @@ $ tekton-lint --watch '**/*.yaml'
 
 - NPM packages (node.js):
   - [tekton-lint](https://www.npmjs.com/package/tekton-lint)
+
+### Example success log
+
+```shell
+Results of tekton-lint linter (version 0.5.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/tekton_tekton_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/tekton/good/tekton_good_1.yml
+    .automation/test/tekton/good/tekton_good_1.yml:
+    warning (20,14,20,20): Invalid image: 'ubuntu'. Specify the image tag instead of using ':latest'
+    warning (22,14,22,51): Invalid image: 'gcr.io/example-builders/build-example'. Specify the image tag instead of using ':latest'
+    warning (26,14,26,50): Invalid image: 'gcr.io/example-builders/push-example'. Specify the image tag instead of using ':latest'
+
+```
+
+### Example error log
+
+```shell
+Results of tekton-lint linter (version 0.5.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/tekton_tekton_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/tekton/bad/tekton_bad_1.yml
+    .automation/test/tekton/bad/tekton_bad_1.yml:
+    warning (20,14,20,20): Invalid image: 'ubuntu'. Specify the image tag instead of using ':latest'
+    warning (22,14,22,51): Invalid image: 'gcr.io/example-builders/build-example'. Specify the image tag instead of using ':latest'
+    warning (26,14,26,50): Invalid image: 'gcr.io/example-builders/push-example'. Specify the image tag instead of using ':latest'
+    error   (29,17,29,31): Task 'example-task-name' wants to mount volume 'example-volume' in step 'dockerfile-pushexample', but this volume is not defined.
+
+```

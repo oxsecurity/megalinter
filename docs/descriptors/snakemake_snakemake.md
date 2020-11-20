@@ -41,6 +41,8 @@
 - File names:
   - `Snakefile`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -877,3 +879,40 @@ ENVIRONMENT MODULES:
 
 - PIP packages (Python):
   - [snakemake](https://pypi.org/project/snakemake)
+
+### Example success log
+
+```shell
+Results of snakemake linter (version 5.29.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/snakemake/snakemake_good_1.smk
+    Congratulations, your workflow is in a good condition!
+
+```
+
+### Example error log
+
+```shell
+Results of snakemake linter (version 5.29.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
+-----------------------------------------------
+
+[ERROR] .automation/test/snakemake/snakemake_bad_1.smk
+    Lints for rule simulation (line 11, .automation/test/snakemake/snakemake_bad_1.smk):
+        * No log directive defined:
+          Without a log directive, all output will be printed to the terminal. In
+          distributed environments, this means that errors are harder to discover.
+          In local environments, output of concurrent jobs will be mixed and become
+          unreadable.
+          Also see:
+          https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#log-files
+        * Specify a conda environment or container for each rule.:
+          This way, the used software for each specific step is documented, and the
+          workflow can be executed on any machine without prerequisites.
+          Also see:
+          https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#integrated-package-management
+          https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#running-jobs-in-containers
+
+```

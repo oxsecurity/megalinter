@@ -1,0 +1,8 @@
+Results of dartanalyzer linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/dart/dart_good_1.dart
+    Analyzing .automation/test/dart/dart_good_1.dart...
+    No issues found!
+

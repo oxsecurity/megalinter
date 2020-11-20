@@ -1,0 +1,7 @@
+Results of perlcritic linter (version 1.138)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_perlcritic/
+-----------------------------------------------
+
+[ERROR] .automation/test/perl/perl_bad_1.pl
+    Code before strictures are enabled at line 14, column 1.  See page 429 of PBP.  (Severity: 5)
+

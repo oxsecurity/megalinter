@@ -41,6 +41,8 @@
   - `.kt`
   - `.kts`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -138,3 +140,31 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     mv "ktlint" /usr/bin/
 ```
 
+
+### Example success log
+
+```shell
+Results of ktlint linter (version 0.39.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/kotlin/kotlint_good_1.kt
+    
+
+```
+
+### Example error log
+
+```shell
+Results of ktlint linter (version 0.39.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
+-----------------------------------------------
+
+[ERROR] .automation/test/kotlin/kotlin_bad_1.kt
+    .automation/test/kotlin/kotlin_bad_1.kt:1:1: File must end with a newline (\n)
+    .automation/test/kotlin/kotlin_bad_1.kt:2:20: Unnecessary semicolon
+    .automation/test/kotlin/kotlin_bad_1.kt:3:16: Redundant curly braces
+    .automation/test/kotlin/kotlin_bad_1.kt:3:27: Unnecessary semicolon
+    .automation/test/kotlin/kotlin_bad_1.kt:5:15: Unnecessary semicolon
+
+```

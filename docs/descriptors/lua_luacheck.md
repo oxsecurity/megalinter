@@ -34,6 +34,8 @@
 - File extensions:
   - `.lua`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -249,3 +251,33 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && luarocks install luacheck
 ```
 
+
+### Example success log
+
+```shell
+Results of luacheck linter (version 0.23.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luacheck/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/lua/lua_good_1.lua
+    Checking .automation/test/lua/lua_good_1.lua [0m[32m[1mOK[0m
+    
+    Total: [0m[0m[1m0[0m warnings / [0m[0m[1m0[0m errors in 1 file
+
+```
+
+### Example error log
+
+```shell
+Results of luacheck linter (version 0.23.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luacheck/
+-----------------------------------------------
+
+[ERROR] .automation/test/lua/lua_bad_1.lua
+    Checking .automation/test/lua/lua_bad_1.lua [0m[1m1 error[0m
+    
+        .automation/test/lua/lua_bad_1.lua:10:1: expected 'end' (to close 'function' on line 7) near <eof>
+    
+    Total: [0m[0m[1m0[0m warnings / [0m[31m[1m1[0m error in 1 file
+
+```

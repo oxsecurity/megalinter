@@ -15,7 +15,7 @@ Click on Artifacts then click on **Mega-Linter reports**
 
 ![Screenshot](../assets/images/TextReporter_1.jpg)
 
-Open the downloaded zip file and browse linters text reports
+Open the downloaded zip file and browse **linters_logs** folder for reports
 
 ![Screenshot](../assets/images/TextReporter_2.jpg)
 

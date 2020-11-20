@@ -1,0 +1,11 @@
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/tsx/tsx_bad_1.tsx
+    
+    .automation/test/tsx/tsx_bad_1.tsx
+      7:10  error  Parsing error: '=' expected
+    
+    ✖ 1 problem (1 error, 0 warnings)
+

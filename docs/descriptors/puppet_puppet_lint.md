@@ -35,6 +35,8 @@
 - File extensions:
   - `.pp`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -160,3 +162,30 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 
 - GEM packages (Ruby) :
   - [puppet-lint](https://rubygems.org/gems/puppet-lint)
+
+### Example success log
+
+```shell
+Results of puppet-lint linter (version 2.4.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/puppet/puppet_good_1.pp
+    
+
+```
+
+### Example error log
+
+```shell
+Results of puppet-lint linter (version 2.4.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/puppet/puppet_bad_1.pp
+    WARNING: double quoted string containing no variables on line 4
+    WARNING: double quoted string containing no variables on line 5
+    WARNING: line has more than 140 characters on line 7
+    WARNING: class not documented on line 1
+
+```

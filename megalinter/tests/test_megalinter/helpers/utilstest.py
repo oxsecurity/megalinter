@@ -4,11 +4,12 @@ import io
 import json
 import logging
 import os
+import shutil
 import tempfile
 import unittest
 
 from git import Repo
-from megalinter import Megalinter
+from megalinter import Megalinter, utils
 
 REPO_HOME = (
     "/tmp/lint"
@@ -128,14 +129,16 @@ def test_linter_success(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\] successfully",
         )
     # Check text reporter output log
-    text_report_file_name = (
+    report_file_name = f"SUCCESS-{linter.name}.log"
+    text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
-        f"{os.path.sep}SUCCESS-mega-linter-{linter.name}.log"
+        f"{os.path.sep}{report_file_name}"
     )
     test_self.assertTrue(
-        os.path.isfile(text_report_file_name),
-        f"Unable to find text report {text_report_file_name}",
+        os.path.isfile(text_report_file),
+        f"Unable to find text report {text_report_file}",
     )
+    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
 
 def test_linter_failure(linter, test_self):
@@ -181,14 +184,29 @@ def test_linter_failure(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found error",
         )
     # Check text reporter output log
-    text_report_file_name = (
+    report_file_name = f"ERROR-{linter.name}.log"
+    text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
-        f"{os.path.sep}ERROR-mega-linter-{linter.name}.log"
+        f"{os.path.sep}{report_file_name}"
     )
     test_self.assertTrue(
-        os.path.isfile(text_report_file_name),
-        f"Unable to find text report {text_report_file_name}",
+        os.path.isfile(text_report_file),
+        f"Unable to find text report {text_report_file}",
     )
+    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+
+
+# Copy logs for documentation
+def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
+    updated_sources_dir = (
+        f"{REPO_HOME}{os.path.sep}report{os.path.sep}updated_dev_sources{os.path.sep}"
+        f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}reports"
+    )
+    target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace(
+        ".log", ".txt"
+    )
+    os.makedirs(os.path.dirname(target_file), exist_ok=True)
+    shutil.copy(text_report_file, target_file)
 
 
 def test_get_linter_version(linter, test_self):
@@ -214,13 +232,13 @@ def test_get_linter_version(linter, test_self):
     versions_file = root_dir + os.path.sep + "/linter-versions.json"
     data = {}
     if os.path.isfile(versions_file):
-        with open(versions_file) as json_file:
+        with open(versions_file, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
     if (
         linter.linter_name in data and data[linter.linter_name] != version
     ) or linter.linter_name not in data:
         data[linter.linter_name] = version
-        with open(versions_file, "w") as outfile:
+        with open(versions_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
 
@@ -241,7 +259,7 @@ def test_get_linter_help(linter, test_self):
     )
     helps_file = root_dir + os.path.sep + "/linter-helps.json"
     data = {}
-    help_lines = help_txt.split("\n")
+    help_lines = help_txt.splitlines()
     help_lines_clean = []
     for help_line in help_lines:
         line_clean = (
@@ -255,13 +273,13 @@ def test_get_linter_help(linter, test_self):
         )
         help_lines_clean += [line_clean]
     if os.path.isfile(helps_file):
-        with open(helps_file) as json_file:
+        with open(helps_file, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
     if (
         linter.linter_name in data and data[linter.linter_name] != help_lines_clean
     ) or linter.linter_name not in data:
         data[linter.linter_name] = help_lines_clean
-        with open(helps_file, "w") as outfile:
+        with open(helps_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
 
@@ -334,11 +352,11 @@ def test_linter_report_tap(linter, test_self):
                     if "ok " in produced_line:
                         test_self.assertEqual(
                             produced_line.split("-")[0],
-                            expected_line.replace("/tmp/lint/", "").split("-")[0],
+                            utils.normalize_log_string(expected_line).split("-")[0],
                         )
                     else:
                         test_self.assertEqual(
-                            produced_line, expected_line.replace("/tmp/lint/", "")
+                            produced_line, utils.normalize_log_string(expected_line)
                         )
                     identical_nb = identical_nb + 1
                 logging.warning(

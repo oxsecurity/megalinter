@@ -40,6 +40,8 @@
 - File extensions:
   - `.dart`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -98,3 +100,30 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && rm -r dart-sdk/
 ```
 
+
+### Example success log
+
+```shell
+Results of dartanalyzer linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/dart/dart_good_1.dart
+    Analyzing .automation/test/dart/dart_good_1.dart...
+    No issues found!
+
+```
+
+### Example error log
+
+```shell
+Results of dartanalyzer linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+-----------------------------------------------
+
+[ERROR] .automation/test/dart/dart_bad_1.dart
+    Analyzing .automation/test/dart/dart_bad_1.dart...
+      lint • Use `;` instead of `{}` for empty constructor bodies. • .automation/test/dart/dart_bad_1.dart:4:25 • empty_constructor_bodies
+    1 lint found.
+
+```

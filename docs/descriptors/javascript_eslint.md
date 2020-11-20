@@ -16,7 +16,6 @@
 
 eslint requires a custom configuration file applicable to your project.
 You can create it by typing `npx eslint --init` in the root of your repository
-
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
@@ -45,6 +44,8 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - File extensions:
   - `.js`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -137,3 +138,31 @@ Miscellaneous:
   - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
   - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
   - [babel-eslint](https://www.npmjs.com/package/babel-eslint)
+
+### Example success log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/javascript/javascript_good_1.js
+    
+
+```
+
+### Example error log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/javascript/javascript_bad_1.js
+    
+    .automation/test/javascript/javascript_bad_1.js
+      4:40  error  Parsing error: Unterminated regular expression
+    
+    ✖ 1 problem (1 error, 0 warnings)
+
+```

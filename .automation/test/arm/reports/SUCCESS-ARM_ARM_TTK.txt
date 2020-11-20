@@ -1,0 +1,32 @@
+Results of arm-ttk linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_ttk/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/arm/arm_good_1.json
+                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_good_1.json  deploymentTemplate
+        [+] adminUsername Should Not Be A Literal (70 ms)
+    
+        [+] apiVersions Should Be Recent (67 ms)
+        [+] artifacts parameter (12 ms)
+        [+] DependsOn Best Practices (8 ms)
+        [+] Deployment Resources Must Not Be Debug (8 ms)
+        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (17 ms)
+        [+] DeploymentTemplate Schema Is Correct (4 ms)
+        [+] Dynamic Variable References Should Not Use Concat (69 ms)
+        [+] IDs Should Be Derived From ResourceIDs (33 ms)
+        [+] Location Should Not Be Hardcoded (30 ms)
+        [+] ManagedIdentityExtension must not be used (2 ms)
+        [+] Min And Max Value Are Numbers (6 ms)
+        [+] Outputs Must Not Contain Secrets (9 ms)
+        [+] Parameters Must Be Referenced (9 ms)
+        [+] Parameters Property Must Exist (3 ms)
+        [+] providers apiVersions Is Not Permitted (2 ms)
+        [+] ResourceIds should not contain (9 ms)
+        [+] Resources Should Have Location (2 ms)
+        [+] Secure String Parameters Cannot Have Default (3 ms)
+        [+] Template Should Not Contain Blanks (6 ms)
+        [+] Variables Must Be Referenced (28 ms)
+        [+] Virtual Machines Should Not Be Preview (16 ms)
+        [+] VM Images Should Use Latest Version (1 ms)
+        [+] VM Size Should Be A Parameter (15 ms)
+

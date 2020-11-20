@@ -1,0 +1,7 @@
+Results of sql-lint linter (version 0.0.15)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/sql/sql_bad_1.sql
+    .automation/test/sql/sql_bad_1.sql:1 [sql-lint: missing-where] DELETE statement missing WHERE clause.
+

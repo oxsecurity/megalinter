@@ -33,6 +33,8 @@
 - File extensions:
   - `.md`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -64,3 +66,40 @@ Options:
 
 - NPM packages (node.js):
   - [markdown-link-check](https://www.npmjs.com/package/markdown-link-check)
+
+### Example success log
+
+```shell
+Results of markdown-link-check linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown_markdown_link_check/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/markdown/markdown_good_1.md
+    
+    FILE: .automation/test/markdown/markdown_good_1.md
+    [✓] https://github.com
+    
+    1 links checked.
+
+```
+
+### Example error log
+
+```shell
+Results of markdown-link-check linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown_markdown_link_check/
+-----------------------------------------------
+
+[ERROR] .automation/test/markdown/markdown_bad_1.md
+    
+    FILE: .automation/test/markdown/markdown_bad_1.md
+    [✓] https://github.com
+    [✓] #wesh
+    [✖] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com
+    
+    3 links checked.
+    
+    ERROR: 1 dead links found!
+    [✖] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com → Status: 0
+
+```

@@ -6,7 +6,7 @@ https://testanything.org/
 import logging
 import os
 
-from megalinter import Reporter
+from megalinter import Reporter, utils
 
 
 class TapReporter(Reporter):
@@ -36,12 +36,12 @@ class TapReporter(Reporter):
             return
         if file is None:
             return
-        file_nm = file.replace("/tmp/lint/", "")
+        file_nm = utils.normalize_log_string(file)
         tap_status = "ok" if status_code == 0 else "not ok"
         file_tap_lines = [f"{tap_status} {str(index)} - {file_nm}"]
         if self.report_type == "detailed" and stdout != "" and status_code != 0:
             std_out_tap = stdout.rstrip(f" {os.linesep}") + os.linesep
-            std_out_tap = "\\n".join(std_out_tap.split(os.linesep))
+            std_out_tap = "\\n".join(std_out_tap.splitlines())
             std_out_tap = std_out_tap.replace(":", " ")
             detailed_lines = ["  ---", f"  message: {std_out_tap}", "  ..."]
             file_tap_lines += detailed_lines

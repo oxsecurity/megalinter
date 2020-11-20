@@ -1,0 +1,8 @@
+Results of black linter (version 20.8)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/python/python_good_1.py
+    All done! ✨ 🍰 ✨
+    1 file would be left unchanged.
+

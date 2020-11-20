@@ -7,9 +7,8 @@
 
 ## Configuration
 
-Mega-Linter generates content of a cspell.json at the end of the error log artifact
+Mega-Linter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
 Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
-
 ### cspell configuration
 
 - [Configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization)
@@ -25,7 +24,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 | SPELL_CSPELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | SPELL_CSPELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | SPELL_CSPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| SPELL_CSPELL_FILE_NAME | cspell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `cspell.json` |
+| SPELL_CSPELL_FILE_NAME | cspell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cspell.json` |
 | SPELL_CSPELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SPELL_CSPELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
@@ -33,6 +32,8 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ### How are identified applicable files
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -98,3 +99,47 @@ Examples:
 
 - NPM packages (node.js):
   - [cspell@4.1.3](https://www.npmjs.com/package/cspell)
+
+### Example success log
+
+```shell
+Results of cspell linter (version 4.1.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_cspell/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/spell
+    CSpell: Files checked: 1, Issues found: 0 in 0 files
+
+```
+
+### Example error log
+
+```shell
+Results of cspell linter (version 4.1.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_cspell/
+-----------------------------------------------
+
+[ERROR] .automation/test/spell
+    .automation/test/spell/spell_bad_1.js:1:28 - Unknown word (Blablabla)
+    CSpell: Files checked: 1, Issues found: 1 in 1 files
+
+
+You can skip this misspellings by defining the following .cspell.json file at the root of your repository
+Of course, please correct real typos before :)
+
+{
+    "version": 0.1,
+    "language": "en",
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/**",
+        ".vscode",
+        "report"
+    ],
+    "words": [
+        "Blablabla"
+    ]
+}
+
+```

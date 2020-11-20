@@ -1,0 +1,12 @@
+Results of phpstan linter (version 0.12.56)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/php/php_good_1.php
+    
+     [OK] No errors
+
+[SUCCESS] .automation/test/php/php_good_2.php
+    
+     [OK] No errors
+

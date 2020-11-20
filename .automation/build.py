@@ -36,7 +36,7 @@ def generate_dockerfile():
     # Get install instructions at descriptor level
     descriptor_files = megalinter.utils.list_descriptor_files()
     for descriptor_file in descriptor_files:
-        with open(descriptor_file) as f:
+        with open(descriptor_file, "r", encoding="utf-8") as f:
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
             if "install" in descriptor:
                 descriptor_and_linters += [descriptor]
@@ -153,6 +153,7 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
         file = open(
             f"{REPO_HOME}/megalinter/tests/test_megalinter/linters/{lang_lower}_{linter_name_lower}_test.py",
             "w",
+            encoding="utf-8",
         )
         file.write(test_class_code)
         file.close()
@@ -288,7 +289,7 @@ def generate_descriptor_documentation(descriptor):
         descriptor_md += ["", "### Installation", ""]
         descriptor_md += get_install_md(descriptor)
     # Write MD file
-    file = open(f"{REPO_HOME}/docs/descriptors/{lang_lower}.md", "w")
+    file = open(f"{REPO_HOME}/docs/descriptors/{lang_lower}.md", "w", encoding="utf-8")
     file.write("\n".join(descriptor_md) + "\n")
     file.close()
     logging.info("Updated " + file.name)
@@ -392,7 +393,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"- Web Site: [**{linter.linter_url}**]({doc_url(linter.linter_url)})",
         ]
         # Add version info
-        with open(VERSIONS_FILE) as json_file:
+        with open(VERSIONS_FILE, "r", encoding="utf-8") as json_file:
             linter_versions = json.load(json_file)
             if (
                 linter.linter_name in linter_versions
@@ -405,7 +406,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # How to configure this linter
         linter_doc_md += ["", "## Configuration", ""]
         if hasattr(linter, "linter_text") and linter.linter_text:
-            linter_doc_md += linter.linter_text.split(os.linesep)
+            linter_doc_md += linter.linter_text.splitlines()
         # Linter-specific configuration
         linter_doc_md += [f"### {linter.linter_name} configuration", ""]
         # Rules configuration URL
@@ -511,12 +512,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             for file_contains_expr in linter.file_contains:
                 linter_doc_md += [f"  - `{file_contains_expr}`"]
             linter_doc_md += [""]
-
+        linter_doc_md += [
+            "<!-- markdownlint-disable -->",
+            "<!-- /* cSpell:disable */ -->",
+        ]  # Do not check spelling of examples and logs
         linter_doc_md += ["", "### Example calls", ""]
         for example in linter.examples:
             linter_doc_md += ["```shell", example, "```", ""]
         # Add help info
-        with open(HELPS_FILE) as json_file:
+        with open(HELPS_FILE, "r", encoding="utf-8") as json_file:
             linter_helps = json.load(json_file)
             if linter.linter_name in linter_helps:
                 linter_doc_md += ["", "### Help content", "", "```shell"]
@@ -527,9 +531,42 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
+        # Example log files
+        test_report_folder = (
+            REPO_HOME
+            + os.path.sep
+            + ".automation"
+            + os.path.sep
+            + "test"
+            + os.path.sep
+            + linter.test_folder
+            + os.path.sep
+            + "reports"
+        )
+        success_log_file_example = (
+            test_report_folder + os.path.sep + f"SUCCESS-{linter.name}.txt"
+        )
+        if os.path.isfile(success_log_file_example):
+            with open(success_log_file_example, "r", encoding="utf-8") as file:
+                success_log_file_content = file.read()
+            linter_doc_md += ["", "### Example success log", "", "```shell"]
+            linter_doc_md += success_log_file_content.splitlines()
+            linter_doc_md += ["```"]
+        error_log_file_example = (
+            test_report_folder + os.path.sep + f"ERROR-{linter.name}.txt"
+        )
+        if os.path.isfile(error_log_file_example):
+            with open(error_log_file_example, "r", encoding="utf-8") as file:
+                success_log_file_content = file.read()
+            linter_doc_md += ["", "### Example error log", "", "```shell"]
+            linter_doc_md += success_log_file_content.splitlines()
+            linter_doc_md += ["```"]
+
         # Write md file
         file = open(
-            f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md", "w"
+            f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md",
+            "w",
+            encoding="utf-8",
         )
         file.write("\n".join(linter_doc_md) + "\n")
         file.close()
@@ -646,14 +683,14 @@ def md_package_list(package_list, indent, start_url):
 
 def replace_in_file(file_path, start, end, content):
     # Read in the file
-    with open(file_path, "r") as file:
+    with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
     # Replace the target string
     replacement = f"{start}\n{content}\n{end}"
     regex = rf"{start}([\s\S]*?){end}"
     file_content = re.sub(regex, replacement, file_content, re.DOTALL)
     # Write the file out again
-    with open(file_path, "w") as file:
+    with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
     logging.info("Updated " + file.name)
 
@@ -661,13 +698,13 @@ def replace_in_file(file_path, start, end, content):
 # Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
     with open(
-        f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r"
+        f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r", encoding="utf-8"
     ) as schema_file:
         descriptor_schema = schema_file.read()
         descriptor_files = megalinter.utils.list_descriptor_files()
         errors = 0
         for descriptor_file in descriptor_files:
-            with open(descriptor_file, "r") as descriptor_file1:
+            with open(descriptor_file, "r", encoding="utf-8") as descriptor_file1:
                 logging.info("Validating " + os.path.basename(descriptor_file))
                 descriptor = descriptor_file1.read()
                 try:
@@ -695,7 +732,7 @@ def generate_index_md():
         target_file,
     )
     # Replace hardcoded links into relative links
-    with open(target_file, "r+") as f:
+    with open(target_file, "r+", encoding="utf-8") as f:
         content = f.read()
         f.seek(0)
         f.truncate()

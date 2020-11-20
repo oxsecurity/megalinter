@@ -1,0 +1,13 @@
+Results of terrascan linter (version 1.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/terraform_terrascan/good/terraform_good_1.tf
+    results:
+        violations: []
+        count:
+            low: 0
+            medium: 0
+            high: 0
+            total: 0
+

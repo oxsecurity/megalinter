@@ -1,0 +1,9 @@
+Results of jscpd linter (version 3.3.19)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/copypaste/good
+    HTML report saved to report/copy-paste/html/
+    Markdown report saved to report/copy-paste/jscpd-report.md
+    Detection time:: 28.123ms
+

@@ -4,7 +4,7 @@ Output results in console
 """
 import logging
 
-from megalinter import Reporter
+from megalinter import Reporter, utils
 
 
 class ConsoleLinterReporter(Reporter):
@@ -34,9 +34,7 @@ class ConsoleLinterReporter(Reporter):
     def produce_report(self):
         # Output results file by file
         for res in self.master.files_lint_results:
-            file_nm = (
-                res["file"].replace("/tmp/lint/", "").replace("/github/workspace/", "")
-            )
+            file_nm = utils.normalize_log_string(res["file"])
             line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()}"
             if res["fixed"] is True:
                 line += " - FIXED"

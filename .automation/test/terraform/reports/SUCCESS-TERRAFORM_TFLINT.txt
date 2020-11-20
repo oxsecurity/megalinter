@@ -1,0 +1,7 @@
+Results of tflint linter (version 0.20.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
+    
+

@@ -1,0 +1,29 @@
+Results of clj-kondo linter (version 2020.09.09)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_clj_kondo/
+-----------------------------------------------
+
+[ERROR] .automation/test/clojure/clojure_bad_1.clj
+    .automation/test/clojure/clojure_bad_1.clj:5:5: warning: namespace clojure.set is required but never used
+    .automation/test/clojure/clojure_bad_1.clj:8:2: error: unresolved symbol but-last
+    .automation/test/clojure/clojure_bad_1.clj:12:1: error: clojure.string/join is called with 0 args but expects 1 or 2
+    .automation/test/clojure/clojure_bad_1.clj:15:17: warning: unused binding y
+    .automation/test/clojure/clojure_bad_1.clj:17:3: warning: redundant do
+    .automation/test/clojure/clojure_bad_1.clj:19:5: warning: inline def
+    .automation/test/clojure/clojure_bad_1.clj:22:7: warning: Redundant let expression.
+    .automation/test/clojure/clojure_bad_1.clj:22:13: warning: unused binding z
+    .automation/test/clojure/clojure_bad_1.clj:24:9: error: y is called with 1 arg but expects 0
+    .automation/test/clojure/clojure_bad_1.clj:26:9: error: recur argument count mismatch (expected 2, got 0)
+    .automation/test/clojure/clojure_bad_1.clj:29:9: error: h is called with 1 arg but expects 0
+    .automation/test/clojure/clojure_bad_1.clj:30:9: error: f is called with 1 arg but expects 0
+    .automation/test/clojure/clojure_bad_1.clj:34:1: warning: redefined var #'foo/private-fn
+    .automation/test/clojure/clojure_bad_1.clj:34:8: warning: Unused private var foo/private-fn
+    .automation/test/clojure/clojure_bad_1.clj:38:6: error: Expected: number, received: keyword.
+    .automation/test/clojure/clojure_bad_1.clj:42:1: error: java.lang.Thread/sleep is called with 3 args but expects 1 or 2
+    .automation/test/clojure/clojure_bad_1.clj:48:1: error: foo/foo-fn is called with 0 args but expects 2
+    .automation/test/clojure/clojure_bad_1.clj:51:1: error: #'foo/private-fn is private
+    .automation/test/clojure/clojure_bad_1.clj:54:7: error: duplicate key :a
+    .automation/test/clojure/clojure_bad_1.clj:56:5: error: duplicate set element 1
+    .automation/test/clojure/clojure_bad_1.clj:58:7: error: missing value for key :b
+    .automation/test/clojure/clojure_bad_1.clj:64:3: warning: missing test assertion
+    linting took 14ms, errors: 13, warnings: 9
+

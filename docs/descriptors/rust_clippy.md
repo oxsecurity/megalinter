@@ -33,6 +33,8 @@
 - File extensions:
   - `.rs`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -94,3 +96,54 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN rustup component add clippy
 ```
 
+
+### Example success log
+
+```shell
+Results of clippy linter (version 0.0.212)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_clippy/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rust/good
+        Checking megalinter v1.0.0 (.automation/test/rust/good)
+    warning: function is never used: `main`
+     --> rust_good_1.rs:9:4
+      |
+    9 | fn main() {
+      |    ^^^^
+      |
+      = note: `#[warn(dead_code)]` on by default
+    
+    warning: 1 warning emitted
+    
+        Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+
+```
+
+### Example error log
+
+```shell
+Results of clippy linter (version 0.0.212)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_clippy/
+-----------------------------------------------
+
+[ERROR] .automation/test/rust/bad
+        Checking megalinter v1.0.0 (.automation/test/rust/bad)
+    error: mismatched closing delimiter: `}`
+      --> rust_bad_1.rs:14:1
+       |
+    9  | fn main() {
+       |           - closing delimiter possibly meant for this
+    ...
+    13 |     println!("Hello World!"
+       |             - unclosed delimiter
+    14 | }
+       | ^ mismatched closing delimiter
+    
+    error: aborting due to previous error
+    
+    error: could not compile `megalinter`
+    
+    To learn more, run the command again with --verbose.
+
+```

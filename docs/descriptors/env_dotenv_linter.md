@@ -40,6 +40,8 @@
 - File extensions:
   - `.env`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -88,3 +90,35 @@ FROM dotenvlinter/dotenv-linter:latest as dotenv-linter
 COPY --from=dotenv-linter /dotenv-linter /usr/bin/
 ```
 
+
+### Example success log
+
+```shell
+Results of dotenv-linter linter (version 2.2.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/env/env_good_1.env
+    
+
+```
+
+### Example error log
+
+```shell
+Results of dotenv-linter linter (version 2.2.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/
+-----------------------------------------------
+
+[ERROR] .automation/test/env/env_bad_1.env
+    .automation/test/env/env_bad_1.env:1 LeadingCharacter: Invalid leading character detected
+    .automation/test/env/env_bad_1.env:2 KeyWithoutValue: The MY_ENV key should be with a value or have an equal sign
+    .automation/test/env/env_bad_1.env:3 IncorrectDelimiter: The DB-NAME key has incorrect delimiter
+    .automation/test/env/env_bad_1.env:3 UnorderedKey: The DB-NAME key should go before the LOGGER_LEVEL key
+    .automation/test/env/env_bad_1.env:4 LowercaseKey: The DEbUG_hTTP key should be in uppercase
+    .automation/test/env/env_bad_1.env:4 UnorderedKey: The DEbUG_hTTP key should go before the LOGGER_LEVEL key
+    .automation/test/env/env_bad_1.env:5 UnorderedKey: The DB_NAME key should go before the DEbUG_hTTP key
+    
+    Found 7 problems
+
+```

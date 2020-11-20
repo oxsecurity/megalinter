@@ -31,6 +31,8 @@
 - File extensions:
   - `.xml`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -126,3 +128,35 @@ To report bugs or get some help check: http://xmlsoft.org/bugs.html
   - [libxml2-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-dev)
   - [libxml2-utils](https://pkgs.alpinelinux.org/packages?branch=edge&name=libxml2-utils)
   - [libgcc](https://pkgs.alpinelinux.org/packages?branch=edge&name=libgcc)
+
+### Example success log
+
+```shell
+Results of xmllint linter (version 20910)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmllint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/xml/xml_good_1.xml
+    <?xml version="1.0"?>
+    <note>
+      <to>Tove</to>
+      <from>Jani</from>
+      <heading>Reminder</heading>
+      <body>Don't forget me this weekend!</body>
+    </note>
+
+```
+
+### Example error log
+
+```shell
+Results of xmllint linter (version 20910)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmllint/
+-----------------------------------------------
+
+[ERROR] .automation/test/xml/xml_bad_1.xml
+    .automation/test/xml/xml_bad_1.xml:7: parser error : EndTag: '</' not found
+    
+    ^
+
+```

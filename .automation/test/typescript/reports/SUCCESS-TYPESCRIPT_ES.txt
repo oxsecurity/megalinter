@@ -1,0 +1,7 @@
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/typescript/typescript_good_1.ts
+    
+

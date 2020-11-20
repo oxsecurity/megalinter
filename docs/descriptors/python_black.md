@@ -43,6 +43,8 @@
 - File extensions:
   - `.py`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -138,3 +140,30 @@ Options:
 
 - PIP packages (Python):
   - [black](https://pypi.org/project/black)
+
+### Example success log
+
+```shell
+Results of black linter (version 20.8)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/python/python_good_1.py
+    All done! ✨ 🍰 ✨
+    1 file would be left unchanged.
+
+```
+
+### Example error log
+
+```shell
+Results of black linter (version 20.8)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+-----------------------------------------------
+
+[ERROR] .automation/test/python/python_bad_1.py
+    error: cannot format .automation/test/python/python_bad_1.py: Cannot parse: 15:23: if github_token is None
+    Oh no! 💥 💔 💥
+    1 file would fail to reformat.
+
+```

@@ -40,6 +40,8 @@
 - File extensions:
   - `.ts`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -91,3 +93,28 @@ Flags (advanced):
   - [standard@15.0.1](https://www.npmjs.com/package/standard)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
+
+### Example success log
+
+```shell
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_standard/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/typescript/typescript_good_1.ts
+    
+
+```
+
+### Example error log
+
+```shell
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_standard/
+-----------------------------------------------
+
+[ERROR] .automation/test/typescript/typescript_bad_1.ts
+    standard: Use JavaScript Standard Style (https://standardjs.com)
+      .automation/test/typescript/typescript_bad_1.ts:5:39: Parsing error: Unterminated regular expression literal.
+
+```

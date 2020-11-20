@@ -32,6 +32,8 @@
   - `.c`
   - `.h`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -258,3 +260,30 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
 
 - PIP packages (Python):
   - [cpplint](https://pypi.org/project/cpplint)
+
+### Example success log
+
+```shell
+Results of cpplint linter (version 1.5.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/c_cpplint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/c/c_good_01.c
+    Done processing .automation/test/c/c_good_01.c
+
+```
+
+### Example error log
+
+```shell
+Results of cpplint linter (version 1.5.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/c_cpplint/
+-----------------------------------------------
+
+[ERROR] .automation/test/c/c_bad_01.c
+    .automation/test/c/c_bad_01.c:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+    .automation/test/c/c_bad_01.c:6:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+    Done processing .automation/test/c/c_bad_01.c
+    Total errors found: 2
+
+```

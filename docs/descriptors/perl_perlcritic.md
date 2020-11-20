@@ -45,6 +45,8 @@
   - `#!/usr/bin/env perl`
   - `#!/usr/bin/perl`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -91,3 +93,30 @@ Usage:
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 ```
 
+
+### Example success log
+
+```shell
+Results of perlcritic linter (version 1.138)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_perlcritic/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/perl/perl_good_1.pl
+    .automation/test/perl/perl_good_1.pl source OK
+
+[SUCCESS] .automation/test/perl/perl_good_2
+    .automation/test/perl/perl_good_2 source OK
+
+```
+
+### Example error log
+
+```shell
+Results of perlcritic linter (version 1.138)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_perlcritic/
+-----------------------------------------------
+
+[ERROR] .automation/test/perl/perl_bad_1.pl
+    Code before strictures are enabled at line 14, column 1.  See page 429 of PBP.  (Severity: 5)
+
+```

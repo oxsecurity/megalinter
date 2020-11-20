@@ -34,6 +34,8 @@
   - `.dash`
   - `.ksh`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -73,3 +75,38 @@ FROM koalaman/shellcheck:latest as shellcheck
 COPY --from=shellcheck /bin/shellcheck /usr/bin/
 ```
 
+
+### Example success log
+
+```shell
+Results of shellcheck linter (version 0.7.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shellcheck/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/shell/shell_good_1.sh
+    
+
+```
+
+### Example error log
+
+```shell
+Results of shellcheck linter (version 0.7.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shellcheck/
+-----------------------------------------------
+
+[ERROR] .automation/test/shell/shell_bad_1.sh
+    
+    In .automation/test/shell/shell_bad_1.sh line 10:
+    if [ $ERROR_CODE -ne 0]; then
+    ^-- SC1009: The mentioned syntax error was in this if expression.
+       ^-- SC1073: Couldn't parse this test expression. Fix to allow more checks.
+                           ^-- SC1020: You need a space before the ].
+                           ^-- SC1072: Missing space before ]. Fix any mentioned problems and try again.
+    
+    For more information:
+      https://www.shellcheck.net/wiki/SC1020 -- You need a space before the ].
+      https://www.shellcheck.net/wiki/SC1072 -- Missing space before ]. Fix any m...
+      https://www.shellcheck.net/wiki/SC1073 -- Couldn't parse this test expressi...
+
+```

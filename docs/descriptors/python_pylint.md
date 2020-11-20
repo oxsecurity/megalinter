@@ -41,6 +41,8 @@
 - File extensions:
   - `.py`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -193,3 +195,28 @@ Options:
 
 - PIP packages (Python):
   - [pylint](https://pypi.org/project/pylint)
+
+### Example success log
+
+```shell
+Results of pylint linter (version 2.6.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_pylint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/python/python_good_1.py
+    
+
+```
+
+### Example error log
+
+```shell
+Results of pylint linter (version 2.6.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_pylint/
+-----------------------------------------------
+
+[ERROR] .automation/test/python/python_bad_1.py
+    ************* Module python_bad_1
+    .automation/test/python/python_bad_1.py:15:24: E0001: invalid syntax (<unknown>, line 15) (syntax-error)
+
+```

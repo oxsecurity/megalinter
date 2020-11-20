@@ -36,6 +36,8 @@
 - File extensions:
   - `.md`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -76,3 +78,31 @@ Options:
 
 - NPM packages (node.js):
   - [markdownlint-cli](https://www.npmjs.com/package/markdownlint-cli)
+
+### Example success log
+
+```shell
+Results of markdownlint linter (version 0.25.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown_markdownlint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/markdown/markdown_good_1.md
+    
+
+```
+
+### Example error log
+
+```shell
+Results of markdownlint linter (version 0.25.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown_markdownlint/
+-----------------------------------------------
+
+[ERROR] .automation/test/markdown/markdown_bad_1.md
+    .automation/test/markdown/markdown_bad_1.md:1 MD041/first-line-heading/first-line-h1 First line in file should be a top level heading [Context: "## Bad Markdown"]
+    .automation/test/markdown/markdown_bad_1.md:5 MD001/heading-increment/header-increment Heading levels should only increment by one level at a time [Expected: h3; Actual: h6]
+    .automation/test/markdown/markdown_bad_1.md:11:1 MD007/ul-indent Unordered list indentation [Expected: 4; Actual: 6]
+    .automation/test/markdown/markdown_bad_1.md:13 MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
+    .automation/test/markdown/markdown_bad_1.md:20:16 MD034/no-bare-urls Bare URL used [Context: "https://github.com"]
+
+```

@@ -33,6 +33,8 @@
 - File extensions:
   - `.vb`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -208,3 +210,33 @@ Options:
 RUN echo "dotnet-format installation is managed from csharp descriptor"
 ```
 
+
+### Example success log
+
+```shell
+Results of dotnet-format linter (version 4.1.131201)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/vbdotnet_dotnet_format/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/vbdotnet/vbdotnet_good_1.vb
+      Formatting code files in workspace '.automation/test/vbdotnet'.
+      Format complete in 1063ms.
+
+```
+
+### Example error log
+
+```shell
+Results of dotnet-format linter (version 4.1.131201)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/vbdotnet_dotnet_format/
+-----------------------------------------------
+
+[ERROR] .automation/test/vbdotnet/vbdotnet_bad_1.vb
+      Formatting code files in workspace '.automation/test/vbdotnet'.
+      vbdotnet/vbdotnet_bad_1.vb(4,4): Fix whitespace formatting.
+      vbdotnet/vbdotnet_bad_1.vb(4,20): Fix whitespace formatting.
+      vbdotnet/vbdotnet_bad_1.vb(5,7): Fix whitespace formatting.
+      Formatted code file '.automation/test/vbdotnet/vbdotnet_bad_1.vb'.
+      Format complete in 1188ms.
+
+```

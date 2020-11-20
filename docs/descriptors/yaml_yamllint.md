@@ -35,6 +35,8 @@
   - `.yml`
   - `.yaml`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -82,3 +84,29 @@ optional arguments:
 
 - PIP packages (Python):
   - [yamllint](https://pypi.org/project/yamllint)
+
+### Example success log
+
+```shell
+Results of yamllint linter (version 1.25.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yamllint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/yaml/yml_good_1.yml
+    
+
+```
+
+### Example error log
+
+```shell
+Results of yamllint linter (version 1.25.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yamllint/
+-----------------------------------------------
+
+[ERROR] .automation/test/yaml/yml_bad_1.yml
+    .automation/test/yaml/yml_bad_1.yml
+      10:1      warning  missing document start "---"  (document-start)
+      11:16     error    syntax error: mapping values are not allowed here (syntax)
+
+```

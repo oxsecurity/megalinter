@@ -45,6 +45,8 @@
   - `.scss`
   - `.saas`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -216,3 +218,38 @@ stylelint --fix --config .stylelintrc.json myfile.css
 - NPM packages (node.js):
   - [stylelint](https://www.npmjs.com/package/stylelint)
   - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
+
+### Example success log
+
+```shell
+Results of stylelint linter (version 13.8.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/css/css_good_01.css
+    
+
+```
+
+### Example error log
+
+```shell
+Results of stylelint linter (version 13.8.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/
+-----------------------------------------------
+
+[ERROR] .automation/test/css/css_bad_01.css
+    
+    .automation/test/css/css_bad_01.css
+     2:1   ✖  Expected empty line before comment   comment-empty-line-before
+     3:1   ✖  Expected empty line before comment   comment-empty-line-before
+     5:5   ✖  Expected indentation of 2 spaces     indentation              
+     5:33  ✖  Expected "#FFFFFF" to be "#ffffff"   color-hex-case           
+     5:33  ✖  Expected "#FFFFFF" to be "#FFF"      color-hex-length         
+     6:5   ✖  Expected indentation of 2 spaces     indentation              
+     7:5   ✖  Expected indentation of 2 spaces     indentation              
+     8:5   ✖  Expected indentation of 2 spaces     indentation              
+     8:12  ✖  Expected "#AAAAAA" to be "#aaaaaa"   color-hex-case           
+     8:12  ✖  Expected "#AAAAAA" to be "#AAA"      color-hex-length
+
+```

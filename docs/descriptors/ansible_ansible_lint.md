@@ -36,6 +36,8 @@
   - `.yml`
   - `.yaml`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -87,3 +89,58 @@ Options:
 
 - APK packages (Linux):
   - [ansible-lint](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible-lint)
+
+### Example success log
+
+```shell
+Results of ansible-lint linter (version 4.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_ansible_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/ansible/ansible/ansible_good_1.yml
+    Examining .automation/test/ansible/ansible/ansible_good_1.yml of type playbook
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-api-config-apply.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-config-apply.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
+
+```
+
+### Example error log
+
+```shell
+Results of ansible-lint linter (version 4.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_ansible_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/ansible/ansible/ansible_bad_1.yml
+    Traceback (most recent call last):
+      File "/usr/bin/ansible-lint", line 11, in <module>
+        load_entry_point('ansible-lint==4.2.0', 'console_scripts', 'ansible-lint')()
+      File "/usr/lib/python3.8/site-packages/ansiblelint/__main__.py", line 187, in main
+        matches.extend(runner.run())
+      File "/usr/lib/python3.8/site-packages/ansiblelint/__init__.py", line 267, in run
+        for child in ansiblelint.utils.find_children(arg, self.playbook_dir):
+      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 163, in find_children
+        for child in play_children(basedir, item, playbook[1], playbook_dir):
+      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 215, in play_children
+        return delegate_map[k](basedir, k, v, parent_type)
+      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 246, in _taskshandlers_children
+        results.extend(_roles_children(basedir, k, [th['action'].get('name')],
+      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 285, in _roles_children
+        results.extend(_look_for_role_files(basedir, role, main=main))
+      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 330, in _look_for_role_files
+        role_path = _rolepath(basedir, role)
+      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 299, in _rolepath
+        path_dwim(basedir, os.path.join('roles', role)),
+      File "/usr/lib/python3.8/posixpath.py", line 90, in join
+        genericpath._check_arg_types('join', a, *p)
+      File "/usr/lib/python3.8/genericpath.py", line 152, in _check_arg_types
+        raise TypeError(f'{funcname}() argument must be str, bytes, or '
+    TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
+
+```

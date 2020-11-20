@@ -34,6 +34,8 @@
 - File names:
   - `Dockerfile`
 
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -78,3 +80,34 @@ FROM hadolint/hadolint:latest-alpine as dockerfile-lint
 COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
 ```
 
+
+### Example success log
+
+```shell
+Results of hadolint linter (version 1.19.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfile_hadolint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/docker/good/Dockerfile
+    
+
+[SUCCESS] .automation/test/docker/good/Dockerfile.dev
+    
+
+```
+
+### Example error log
+
+```shell
+Results of hadolint linter (version 1.19.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfile_hadolint/
+-----------------------------------------------
+
+[ERROR] .automation/test/docker/bad/Dockerfile
+    .automation/test/docker/bad/Dockerfile:1 DL3007 Using latest is prone to errors if the image will ever update. Pin the version explicitly to a release tag
+    .automation/test/docker/bad/Dockerfile:8 DL3021 COPY with more than 2 arguments requires the last argument to end with /
+    .automation/test/docker/bad/Dockerfile:9 DL3004 Do not use sudo as it leads to unpredictable behavior. Use a tool like gosu to enforce root
+    .automation/test/docker/bad/Dockerfile:11 DL3020 Use COPY instead of ADD for files and folders
+    .automation/test/docker/bad/Dockerfile:14 DL3025 Use arguments JSON notation for CMD and ENTRYPOINT arguments
+
+```
