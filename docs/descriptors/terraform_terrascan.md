@@ -72,7 +72,6 @@ Flags:
   -o, --output string        output type (json, yaml, xml) (default "yaml")
 
 Use "terrascan [command] --help" for more information about a command.
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -122,7 +122,6 @@ main documentation ChkTeX.dvi, ChkTeX.ps or ChkTeX.pdf:
 
 Any of the above arguments can be made permanent by setting them in the
 chktexrc file (~/.chktexrc).
-
 ```
 
 ### Installation on mega-linter Docker image

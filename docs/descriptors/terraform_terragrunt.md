@@ -98,7 +98,6 @@ VERSION:
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
 
-
 ```
 
 ### Installation on mega-linter Docker image

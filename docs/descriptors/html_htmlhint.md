@@ -80,7 +80,6 @@ Options:
     htmlhint --ignore **/build/**,**/test/**
     htmlhint --rulesdir ./rules/
 
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -71,7 +71,6 @@ Options:
   -p, --ignore-path [file]                    path to file with ignore pattern(s)
   -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
   -h, --help                                  display help for command
-
 ```
 
 ### Installation on mega-linter Docker image

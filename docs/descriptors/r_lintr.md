@@ -52,7 +52,6 @@ R --slave -e "errors <- lintr::lint('myfile.r'); print(errors); quit(save = 'no'
 ```shell
 No documentation for ‘lintr’ in specified packages and libraries:
 you could try ‘??lintr’
-
 ```
 
 ### Installation on mega-linter Docker image

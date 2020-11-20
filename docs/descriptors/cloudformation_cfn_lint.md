@@ -119,7 +119,6 @@ Advanced / Debugging:
   -g, --build-graph     Creates a file in the same directory as the template
                         that models the template's resources in DOT format
   -u, --update-specs    Update the CloudFormation Specs
-
 ```
 
 ### Installation on mega-linter Docker image

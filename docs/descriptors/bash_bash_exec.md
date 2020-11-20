@@ -77,7 +77,6 @@ Use the `bashbug' command to report bugs.
 
 bash home page: <http://www.gnu.org/software/bash>
 General help using GNU software: <http://www.gnu.org/gethelp/>
-
 ```
 
 ### Installation on mega-linter Docker image

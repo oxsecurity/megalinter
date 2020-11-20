@@ -82,7 +82,6 @@ Usage: dartanalyzer [options...] <directory or list of files>
 Run "dartanalyzer -h -v" for verbose help output, including less commonly used options.
 For more information, see https://www.dartlang.org/tools/analyzer.
 
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -39,7 +39,7 @@
     "phpstan": "0.12.56",
     "powershell": "7.1.0",
     "protolint": "0.26.0",
-    "psalm": "4.1.1",
+    "psalm": "4.2.0",
     "puppet-lint": "2.4.2",
     "pylint": "2.6.0",
     "raku": "2020.10",

@@ -60,7 +60,6 @@ Options:
    -q, --quiet              do not print the parsed json to STDOUT  [false]
    -p, --pretty-print       force pretty printing even if invalid
 
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -82,7 +82,6 @@ Options:
                         repeatable.
   -c C                  Specify configuration file to use.  Defaults to
                         ".ansible-lint"
-
 ```
 
 ### Installation on mega-linter Docker image

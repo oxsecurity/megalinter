@@ -118,7 +118,6 @@ Usage : xmllint [options] XMLfiles ...
 
 Libxml project home page: http://xmlsoft.org/
 To report bugs or get some help check: http://xmlsoft.org/bugs.html
-
 ```
 
 ### Installation on mega-linter Docker image

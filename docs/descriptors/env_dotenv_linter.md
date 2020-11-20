@@ -79,7 +79,6 @@ OPTIONS:
 
 ARGS:
     <input>...    files or paths [default: /]
-
 ```
 
 ### Installation on mega-linter Docker image

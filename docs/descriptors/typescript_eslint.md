@@ -122,7 +122,6 @@ Miscellaneous:
   -h, --help                      Show help
   -v, --version                   Output the version number
   --print-config path::String     Print the configuration for the given file
-
 ```
 
 ### Installation on mega-linter Docker image

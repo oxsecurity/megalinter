@@ -350,7 +350,6 @@ optional arguments:
                         different sections.
   --only-modified, --om
                         Suppresses verbose output for non-modified files.
-
 ```
 
 ### Installation on mega-linter Docker image

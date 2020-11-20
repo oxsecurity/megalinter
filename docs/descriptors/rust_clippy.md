@@ -82,7 +82,6 @@ Some common cargo commands are (see all commands with --list):
 
 See 'cargo help <command>' for more information on a specific command.
 
-
 ```
 
 ### Installation on mega-linter Docker image

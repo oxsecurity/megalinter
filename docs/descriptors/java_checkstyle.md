@@ -110,7 +110,6 @@ where options include:
     -splash:<imagepath>
                   show splash screen with specified image
 See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
-
 ```
 
 ### Installation on mega-linter Docker image

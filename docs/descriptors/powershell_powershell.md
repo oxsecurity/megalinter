@@ -357,7 +357,6 @@ All parameters are case-insensitive.
     Displays help for pwsh. If you are typing a pwsh command in PowerShell,
     prepend the command parameters with a hyphen (-), not a forward slash (/).
 
-
 ```
 
 ### Installation on mega-linter Docker image
