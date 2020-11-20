@@ -34,6 +34,7 @@
 - File extensions:
   - `.coffee`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -86,17 +87,35 @@ Options:
 ### Example success log
 
 ```shell
-some sample logs
-another sample logs
-and again new sample logs !
-```
+Results of coffeelint linter (version 4.1.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_coffeelint/
+-----------------------------------------------
 
+[SUCCESS] .automation/test/coffeescript/coffeescript_good_1.coffee
+      ⚡ .automation/test/coffeescript/coffeescript_good_1.coffee
+         ⚡ #65-65: Line contains inconsistent indentation. (indentation) Expected 2 got 3.
+    
+    ⚡ Warning! » 0 errors and 1 warning in 1 file
+    
+
+
+```
 
 ### Example error log
 
 ```shell
-some sample logs
-another sample logs
-and again new sample logs !
-```
+Results of coffeelint linter (version 4.1.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_coffeelint/
+-----------------------------------------------
 
+[ERROR] .automation/test/coffeescript/coffeescript_bad_1.coffee
+      ✗ .automation/test/coffeescript/coffeescript_bad_1.coffee
+         ✗ #39: [stdin]:39:29: error: unmatched )
+    module.exports = (robot) -> )
+                                ^. (coffeescript_error)
+    
+    ✗ Lint! » 1 error and 0 warnings in 1 file
+    
+
+
+```

@@ -512,7 +512,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             for file_contains_expr in linter.file_contains:
                 linter_doc_md += [f"  - `{file_contains_expr}`"]
             linter_doc_md += [""]
-
+        linter_doc_md += ["<!-- /* cSpell:disable */ -->"] # Do not check spelling of examples and logs
         linter_doc_md += ["", "### Example calls", ""]
         for example in linter.examples:
             linter_doc_md += ["```shell", example, "```", ""]

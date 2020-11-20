@@ -33,6 +33,7 @@
 - File extensions:
   - `.hcl`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -107,3 +108,35 @@ FROM alpine/terragrunt:latest as terragrunt
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ```
 
+
+### Example success log
+
+```shell
+Results of terragrunt linter (version 0.25.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
+    [terragrunt] 2020/11/20 08:07:25 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
+    [terragrunt] 2020/11/20 08:07:25 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of terragrunt linter (version 0.25.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
+-----------------------------------------------
+
+[ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 08:07:25 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
+    [terragrunt] 2020/11/20 08:07:25 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 08:07:25 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 08:07:25 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
+    
+
+
+```

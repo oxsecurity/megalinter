@@ -43,6 +43,7 @@
 - File extensions:
   - `.py`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -356,3 +357,49 @@ optional arguments:
 - PIP packages (Python):
   - [isort](https://pypi.org/project/isort)
   - [black](https://pypi.org/project/black)
+
+### Example success log
+
+```shell
+Results of isort linter (version 5.6.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_isort/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/python/python_good_1.py
+    
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of isort linter (version 5.6.4)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_isort/
+-----------------------------------------------
+
+[ERROR] .automation/test/python/python_bad_1.py
+    ERROR: .automation/test/python/python_bad_1.py Imports are incorrectly sorted and/or formatted.
+    --- .automation/test/python/python_bad_1.py:before	2020-11-20 07:41:34.933288
+    +++ .automation/test/python/python_bad_1.py:after	2020-11-20 08:06:21.220232
+    @@ -1,11 +1,11 @@
+     import json
+    +import sys
+     from os import getenv, path
+     from pprint import pprint
+    -import sys
+     
+    -import click # pylint: disable=import-error
+    -from dotenv import load_dotenv # pylint: disable=import-error
+    -import requests # pylint: disable=import-error
+    +import click  # pylint: disable=import-error
+    +import requests  # pylint: disable=import-error
+    +from dotenv import load_dotenv  # pylint: disable=import-error
+     
+     env = load_dotenv()
+     api_url = getenv(API_URL, default='https://api.github.com/graphql' )
+    
+
+
+```

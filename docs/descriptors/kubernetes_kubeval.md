@@ -39,6 +39,7 @@
   - `kustomize.config.k8s.io`
   - `tekton`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -85,3 +86,31 @@ FROM garethr/kubeval:latest as kubeval
 COPY --from=kubeval /kubeval /usr/bin/
 ```
 
+
+### Example success log
+
+```shell
+Results of kubeval linter (version dev)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml
+    PASS - .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml contains a valid Deployment (nginx-deployment)
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of kubeval linter (version dev)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
+-----------------------------------------------
+
+[ERROR] .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml
+    ERR  - .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml: Missing 'metadata.name' key
+    
+
+
+```

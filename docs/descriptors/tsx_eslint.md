@@ -45,6 +45,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - File extensions:
   - `.tsx`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -138,3 +139,35 @@ Miscellaneous:
   - [prettyjson](https://www.npmjs.com/package/prettyjson)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
+
+### Example success log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/tsx/tsx_good_1.tsx
+    Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/tsx/tsx_bad_1.tsx
+    
+    .automation/test/tsx/tsx_bad_1.tsx
+      7:10  error  Parsing error: '=' expected
+    
+    ✖ 1 problem (1 error, 0 warnings)
+    
+
+
+```

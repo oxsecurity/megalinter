@@ -33,6 +33,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ### How are identified applicable files
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -98,3 +99,52 @@ Examples:
 
 - NPM packages (node.js):
   - [cspell@4.1.3](https://www.npmjs.com/package/cspell)
+
+### Example success log
+
+```shell
+Results of cspell linter (version 4.1.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_cspell/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/spell
+    CSpell: Files checked: 1, Issues found: 0 in 0 files
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of cspell linter (version 4.1.3)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_cspell/
+-----------------------------------------------
+
+[ERROR] .automation/test/spell
+    .automation/test/spell/spell_bad_1.js:1:28 - Unknown word (Blablabla)
+    CSpell: Files checked: 1, Issues found: 1 in 1 files
+    
+
+
+You can skip this misspellings by defining the following .cspell.json file at the root of your repository
+Of course, please correct real typos before :)
+
+{
+    "version": 0.1,
+    "language": "en",
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/**",
+        ".vscode",
+        "report"
+    ],
+    "words": [
+        "Blablabla"
+    ]
+}
+
+
+
+```

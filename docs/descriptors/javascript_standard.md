@@ -40,6 +40,7 @@
 - File extensions:
   - `.js`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -88,3 +89,32 @@ Flags (advanced):
 
 - NPM packages (node.js):
   - [standard@15.0.1](https://www.npmjs.com/package/standard)
+
+### Example success log
+
+```shell
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_standard/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/javascript/javascript_good_1.js
+    
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_standard/
+-----------------------------------------------
+
+[ERROR] .automation/test/javascript/javascript_bad_1.js
+    standard: Use JavaScript Standard Style (https://standardjs.com)
+      .automation/test/javascript/javascript_bad_1.js:4:40: Parsing error: Unterminated regular expression
+    
+
+
+```

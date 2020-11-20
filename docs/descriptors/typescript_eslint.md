@@ -45,6 +45,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - File extensions:
   - `.ts`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -142,3 +143,35 @@ Miscellaneous:
   - [prettyjson](https://www.npmjs.com/package/prettyjson)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
+
+### Example success log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/typescript/typescript_good_1.ts
+    
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/typescript/typescript_bad_1.ts
+    
+    .automation/test/typescript/typescript_bad_1.ts
+      5:39  error  Parsing error: Unterminated regular expression literal
+    
+    ✖ 1 problem (1 error, 0 warnings)
+    
+
+
+```

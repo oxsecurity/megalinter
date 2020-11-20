@@ -36,6 +36,7 @@
 - Detected file content:
   - `schema.management.azure.com`
 
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -85,3 +86,87 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
     && chmod a+x /usr/bin/arm-ttk
 ```
 
+
+### Example success log
+
+```shell
+Results of arm-ttk linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_ttk/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/arm/arm_good_1.json
+                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_good_1.json  deploymentTemplate
+        [+] adminUsername Should Not Be A Literal (125 ms)
+    
+        [+] apiVersions Should Be Recent (79 ms)
+        [+] artifacts parameter (15 ms)
+        [+] DependsOn Best Practices (9 ms)
+        [+] Deployment Resources Must Not Be Debug (8 ms)
+        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (20 ms)
+        [+] DeploymentTemplate Schema Is Correct (4 ms)
+        [+] Dynamic Variable References Should Not Use Concat (4 ms)
+        [+] IDs Should Be Derived From ResourceIDs (31 ms)
+        [+] Location Should Not Be Hardcoded (36 ms)
+        [+] ManagedIdentityExtension must not be used (3 ms)
+        [+] Min And Max Value Are Numbers (7 ms)
+        [+] Outputs Must Not Contain Secrets (13 ms)
+        [+] Parameters Must Be Referenced (11 ms)
+        [+] Parameters Property Must Exist (3 ms)
+        [+] providers apiVersions Is Not Permitted (3 ms)
+        [+] ResourceIds should not contain (12 ms)
+        [+] Resources Should Have Location (3 ms)
+        [+] Secure String Parameters Cannot Have Default (4 ms)
+        [+] Template Should Not Contain Blanks (7 ms)
+        [+] Variables Must Be Referenced (25 ms)
+        [+] Virtual Machines Should Not Be Preview (120 ms)
+        [+] VM Images Should Use Latest Version (1 ms)
+        [+] VM Size Should Be A Parameter (20 ms)
+    
+
+
+```
+
+### Example error log
+
+```shell
+Results of arm-ttk linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_ttk/
+-----------------------------------------------
+
+[ERROR] .automation/test/arm/arm_bad_1.json
+                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_bad_1.json  deploymentTemplate
+        [+] adminUsername Should Not Be A Literal (93 ms)
+    
+        [+] apiVersions Should Be Recent (84 ms)
+        [+] artifacts parameter (23 ms)
+        [+] DependsOn Best Practices (8 ms)
+        [+] Deployment Resources Must Not Be Debug (9 ms)
+        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (21 ms)
+        [+] DeploymentTemplate Schema Is Correct (4 ms)
+        [+] Dynamic Variable References Should Not Use Concat (5 ms)
+        [+] IDs Should Be Derived From ResourceIDs (26 ms)
+        [+] Location Should Not Be Hardcoded (36 ms)
+        [+] ManagedIdentityExtension must not be used (3 ms)
+        [+] Min And Max Value Are Numbers (8 ms)
+        [+] Outputs Must Not Contain Secrets (14 ms)
+        [+] Parameters Must Be Referenced (13 ms)
+        [+] Parameters Property Must Exist (4 ms)
+        [+] providers apiVersions Is Not Permitted (3 ms)
+        [+] ResourceIds should not contain (13 ms)
+        [+] Resources Should Have Location (3 ms)
+        [+] Secure String Parameters Cannot Have Default (4 ms)
+        [-] Template Should Not Contain Blanks (26 ms) 
+    ::error::        Empty property:  [] found on line: 28 Index:1331
+    ::error::        Empty property:  "" found on line: 3 Index:121
+    
+        [-] Variables Must Be Referenced (28 ms) 
+    ::error::        Unreferenced variable: Network.Location
+    ::error::        Unreferenced variable: Test.Blank.Variable
+    
+        [+] Virtual Machines Should Not Be Preview (133 ms)
+        [+] VM Images Should Use Latest Version (1 ms)
+        [+] VM Size Should Be A Parameter (18 ms)
+    
+
+
+```
