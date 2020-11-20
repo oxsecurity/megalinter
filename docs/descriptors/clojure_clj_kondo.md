@@ -90,7 +90,6 @@ Options:
 
   --parallel: lint sources in parallel.
 
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -127,7 +127,6 @@ The following environment variables are respected:
   NQP_HOME    Override the path of the NQP runtime files
 
 
-
 ```
 
 ### Installation on mega-linter Docker image

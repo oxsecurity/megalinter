@@ -210,7 +210,6 @@ stylelint --fix --config .stylelintrc.json myfile.css
 
       When glob pattern matches no files, the process will exit without throwing an error.
 
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -98,7 +98,6 @@ Note: command-line arguments have priority on config file properties - default: 
   --insight                    npm-groovy-lint collects anonymous usage statistics using package https://www.npmjs.com/package/insight. If you do not want to share them, use --no-insight option
   -h, --help                   Show help (npm-groovy-lint -help OPTIONNAME to see option detail)
   -v, --version                Show version
-
 ```
 
 ### Installation on mega-linter Docker image

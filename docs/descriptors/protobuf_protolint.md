@@ -73,7 +73,6 @@ Usage of lint:
   -reporter value
       formatter to output results in the specific format. Available reporters are "plain"(default), "junit", "json", and "unix".
   -v  verbose output that includes parsing process details
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -88,7 +88,6 @@ Options:
   --show-unmatched-globs       show unmatched glob patterns  [boolean] [default: false]
   --verbose, -v                increase verbosity  [boolean]
   --quiet, -q                  no logging - output only  [boolean]
-
 ```
 
 ### Installation on mega-linter Docker image

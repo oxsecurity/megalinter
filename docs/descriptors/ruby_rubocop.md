@@ -156,7 +156,6 @@ Usage: rubocop [options] [file1, file2, ...]
         --safe-auto-correct          Run auto-correct only when it's safe.
     -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense
                                      reports. This is useful for editor integration.
-
 ```
 
 ### Installation on mega-linter Docker image

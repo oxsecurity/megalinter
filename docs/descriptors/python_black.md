@@ -133,7 +133,6 @@ Options:
   --version                       Show the version and exit.
   --config FILE                   Read configuration from FILE path.
   -h, --help                      Show this message and exit.
-
 ```
 
 ### Installation on mega-linter Docker image

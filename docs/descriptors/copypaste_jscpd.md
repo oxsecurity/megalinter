@@ -102,7 +102,6 @@ Options:
   --skipLocal                skip duplicates in local folders, just detect
                              cross folders duplications
   -h, --help                 display help for command
-
 ```
 
 ### Installation on mega-linter Docker image

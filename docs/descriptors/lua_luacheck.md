@@ -230,7 +230,6 @@ Links:
 
    Luacheck on GitHub: https://github.com/luarocks/luacheck
    Luacheck documentation: https://luacheck.readthedocs.org
-
 ```
 
 ### Installation on mega-linter Docker image

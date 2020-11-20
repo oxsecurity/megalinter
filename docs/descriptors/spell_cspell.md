@@ -92,7 +92,6 @@ Examples:
     cspell "**/*.txt" "**/*.js"     Check both .js and .txt files.
     cat LICENSE | cspell stdin      Read from stdin the contents of LICENSE
 
-
 ```
 
 ### Installation on mega-linter Docker image

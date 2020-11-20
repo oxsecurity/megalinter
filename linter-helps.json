@@ -28,16 +28,14 @@
         "                        path to directories or files to skip. This option is",
         "                        repeatable.",
         "  -c C                  Specify configuration file to use.  Defaults to",
-        "                        \".ansible-lint\"",
-        ""
+        "                        \".ansible-lint\""
     ],
     "arm-ttk": [
         "\u001b[91mTest-AzTemplate:",
         "\u001b[96mLine |",
         "\u001b[96m   2 | \u001b[0m $TAZ_V = (Test-AzTemplate \u001b[96m-help\u001b[0m);",
         "\u001b[96m     | \u001b[91m                           ~~~~~",
-        "\u001b[91m\u001b[96m     | \u001b[91mA parameter cannot be found that matches parameter name 'help'.\u001b[0m",
-        ""
+        "\u001b[91m\u001b[96m     | \u001b[91mA parameter cannot be found that matches parameter name 'help'.\u001b[0m"
     ],
     "bash-exec": [
         "GNU bash, version 5.0.17(1)-release-(x86_64-alpine-linux-musl)",
@@ -68,8 +66,7 @@
         "Use the `bashbug' command to report bugs.",
         "",
         "bash home page: <http://www.gnu.org/software/bash>",
-        "General help using GNU software: <http://www.gnu.org/gethelp/>",
-        ""
+        "General help using GNU software: <http://www.gnu.org/gethelp/>"
     ],
     "black": [
         "Usage: black [OPTIONS] [SRC]...",
@@ -140,8 +137,7 @@
         "",
         "  --version                       Show the version and exit.",
         "  --config FILE                   Read configuration from FILE path.",
-        "  -h, --help                      Show this message and exit.",
-        ""
+        "  -h, --help                      Show this message and exit."
     ],
     "cfn-lint": [
         "usage:",
@@ -198,8 +194,7 @@
         "                        customization",
         "  -g, --build-graph     Creates a file in the same directory as the template",
         "                        that models the template's resources in DOT format",
-        "  -u, --update-specs    Update the CloudFormation Specs",
-        ""
+        "  -u, --update-specs    Update the CloudFormation Specs"
     ],
     "checkstyle": [
         "Usage: java [-options] class [args...]",
@@ -253,8 +248,7 @@
         "                  load Java programming language agent, see java.lang.instrument",
         "    -splash:<imagepath>",
         "                  show splash screen with specified image",
-        "See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.",
-        ""
+        "See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details."
     ],
     "chktex": [
         "ChkTeX v1.7.6 - Copyright 1995-96 Jens T. Berger Thielemann.",
@@ -327,8 +321,7 @@
         "  http://www.nongnu.org/chktex/ChkTeX.pdf",
         "",
         "Any of the above arguments can be made permanent by setting them in the",
-        "chktexrc file (~/.chktexrc).",
-        ""
+        "chktexrc file (~/.chktexrc)."
     ],
     "clippy": [
         "Rust's package manager",
@@ -366,7 +359,6 @@
         "    uninstall   Uninstall a Rust binary",
         "",
         "See 'cargo help <command>' for more information on a specific command.",
-        "",
         ""
     ],
     "clj-kondo": [
@@ -398,7 +390,6 @@
         "  --run-as-pod: run clj-kondo as a babashka pod",
         "",
         "  --parallel: lint sources in parallel.",
-        "",
         ""
     ],
     "coffeelint": [
@@ -427,8 +418,7 @@
         "      --literate      Used with --stdin to process as Literate CoffeeScript",
         "                                                                       [boolean]",
         "  -c, --cache         Cache linting results                            [boolean]",
-        "      --ext           Specify an additional file extension, separated by comma.",
-        ""
+        "      --ext           Specify an additional file extension, separated by comma."
     ],
     "cpplint": [
         "",
@@ -460,7 +450,7 @@
         "  suppresses errors of all categories on that line.",
         "",
         "  The files passed in will be linted; at least one file must be provided.",
-        "  Default linted extensions are ['h++', 'cxx', 'cc', 'c++', 'hxx', 'hpp', 'cu', 'hh', 'cuh', 'cpp', 'c', 'h'].",
+        "  Default linted extensions are ['h', 'cuh', 'cc', 'c', 'cpp', 'cu', 'hxx', 'cxx', 'hpp', 'c++', 'h++', 'hh'].",
         "  Other file types will be ignored.",
         "  Change the extensions with the --extensions flag.",
         "",
@@ -576,7 +566,7 @@
         "      The allowed file extensions that cpplint will check",
         "",
         "      Examples:",
-        "        --extensions=h++,cxx,cc,c++,hxx,hpp,cu,hh,cuh,cpp,c,h",
+        "        --extensions=h,cuh,cc,c,cpp,cu,hxx,cxx,hpp,c++,h++,hh",
         "",
         "    includeorder=default|standardcfirst",
         "      For the build/include_order rule, the default is to blindly assume angle",
@@ -590,10 +580,10 @@
         "    headers=x,y,...",
         "      The header extensions that cpplint will treat as .h in checks. Values are",
         "      automatically added to --extensions list.",
-        "     (by default, only files with extensions {'h++', 'hxx', 'hpp', 'hh', 'cuh', 'h'} will be assumed to be headers)",
+        "     (by default, only files with extensions {'h', 'cuh', 'hxx', 'hpp', 'h++', 'hh'} will be assumed to be headers)",
         "",
         "      Examples:",
-        "        --headers=h++,hxx,hpp,hh,cuh,h",
+        "        --headers=h,cuh,hxx,hpp,h++,hh",
         "        --headers=hpp,hxx",
         "        --headers=hpp",
         "",
@@ -638,8 +628,7 @@
         "    The above example disables build/include_order warning and enables",
         "    build/include_alpha as well as excludes all .cc from being",
         "    processed by linter, in the current directory (where the .cfg",
-        "    file is located) and all sub-directories.",
-        ""
+        "    file is located) and all sub-directories."
     ],
     "cspell": [
         "Usage: cspell [options] [command] <files...>",
@@ -684,7 +673,6 @@
         "    cspell \"src/**/*.js\"            Only check .js under src",
         "    cspell \"**/*.txt\" \"**/*.js\"     Check both .js and .txt files.",
         "    cat LICENSE | cspell stdin      Read from stdin the contents of LICENSE",
-        "",
         ""
     ],
     "dartanalyzer": [
@@ -712,7 +700,6 @@
         "",
         "Run \"dartanalyzer -h -v\" for verbose help output, including less commonly used options.",
         "For more information, see https://www.dartlang.org/tools/analyzer.",
-        "",
         ""
     ],
     "dockerfilelint": [
@@ -735,8 +722,7 @@
         "  dockerfilelint 'FROM latest'      Lint the contents given as a string on the command",
         "                                    line",
         "",
-        "  dockerfilelint < Dockerfile       Lint the contents of Dockerfile via stdin",
-        ""
+        "  dockerfilelint < Dockerfile       Lint the contents of Dockerfile via stdin"
     ],
     "dotenv-linter": [
         "dotenv-linter 2.2.1",
@@ -760,8 +746,7 @@
         "    -s, --skip <CHECK_NAME>...      Skips checks",
         "",
         "ARGS:",
-        "    <input>...    files or paths [default: /]",
-        ""
+        "    <input>...    files or paths [default: /]"
     ],
     "dotnet-format": [
         "dotnet-format:",
@@ -913,7 +898,6 @@
         "                                  and",
         "                                  usage",
         "                                  information",
-        "",
         ""
     ],
     "editorconfig-checker": [
@@ -951,8 +935,7 @@
         "  -verbose",
         "      print debugging information",
         "  -version",
-        "      print the version number",
-        ""
+        "      print the version number"
     ],
     "eslint": [
         "eslint [options] file.js [file.js] [dir]",
@@ -1011,8 +994,7 @@
         "  --debug                         Output debugging information",
         "  -h, --help                      Show help",
         "  -v, --version                   Output the version number",
-        "  --print-config path::String     Print the configuration for the given file",
-        ""
+        "  --print-config path::String     Print the configuration for the given file"
     ],
     "flake8": [
         "usage: flake8 [options] file file ...",
@@ -1061,8 +1043,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['E126', 'E704', 'E123', 'W504', 'E226',",
-        "                        'E121', 'W503', 'E24'])",
+        "                        (Default: ['E121', 'E226', 'E24', 'E123', 'E704',",
+        "                        'E126', 'W504', 'W503'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
@@ -1113,8 +1095,7 @@
         "  --exclude-from-doctest EXCLUDE_FROM_DOCTEST",
         "                        Skip these files when running doctests",
         "",
-        "Installed plugins: mccabe: 0.6.1, pycodestyle: 2.6.0, pyflakes: 2.2.0",
-        ""
+        "Installed plugins: mccabe: 0.6.1, pycodestyle: 2.6.0, pyflakes: 2.2.0"
     ],
     "gherkin-lint": [
         "Usage: gherkin-lint [options] <feature-files>",
@@ -1127,8 +1108,7 @@
         "                         file",
         "  -c, --config [config]  configuration file, defaults to .gherkin-lintrc",
         "  -r, --rulesdir <...>   additional rule directories (default: [])",
-        "  -h, --help             display help for command",
-        ""
+        "  -h, --help             display help for command"
     ],
     "golangci-lint": [
         "Smart, fast linters runner. Run it in cloud for every GitHub pull request on https://golangci.com",
@@ -1156,8 +1136,7 @@
         "  -v, --verbose                   verbose output",
         "      --version                   Print version",
         "",
-        "Use \"golangci-lint [command] --help\" for more information about a command.",
-        ""
+        "Use \"golangci-lint [command] --help\" for more information about a command."
     ],
     "graphql-schema-linter": [
         "Usage: graphql-schema-linter [options] [schema.graphql ...]",
@@ -1174,8 +1153,7 @@
         "  -o, --only <rules>               This option is DEPRECATED. Use `--rules` instead.",
         "  -e, --except <rules>             This option is DEPRECATED. Use `--rules` instead.",
         "  --version                        output the version number",
-        "  -h, --help                       output usage information",
-        ""
+        "  -h, --help                       output usage information"
     ],
     "hadolint": [
         "hadolint - Dockerfile Linter written in Haskell",
@@ -1195,8 +1173,7 @@
         "                           config file is ignored",
         "  --trusted-registry REGISTRY (e.g. docker.io)",
         "                           A docker registry to allow to appear in FROM",
-        "                           instructions",
-        ""
+        "                           instructions"
     ],
     "htmlhint": [
         "Usage: htmlhint <file|folder|pattern|stdin|url ...> [options]",
@@ -1226,7 +1203,6 @@
         "    htmlhint --config .htmlhintrc test.html",
         "    htmlhint --ignore **/build/**,**/test/**",
         "    htmlhint --rulesdir ./rules/",
-        "",
         ""
     ],
     "isort": [
@@ -1515,8 +1491,7 @@
         "                        unaltered and keep their relative positions within the",
         "                        different sections.",
         "  --only-modified, --om",
-        "                        Suppresses verbose output for non-modified files.",
-        ""
+        "                        Suppresses verbose output for non-modified files."
     ],
     "jscpd": [
         "Usage: jscpd [options] <path ...>",
@@ -1565,8 +1540,7 @@
         "  --list                     show list of total supported formats",
         "  --skipLocal                skip duplicates in local folders, just detect",
         "                             cross folders duplications",
-        "  -h, --help                 display help for command",
-        ""
+        "  -h, --help                 display help for command"
     ],
     "jsonlint": [
         "",
@@ -1584,7 +1558,6 @@
         "   -e, --environment        which specification of JSON Schema the validation file uses  [json-schema-draft-03]",
         "   -q, --quiet              do not print the parsed json to STDOUT  [false]",
         "   -p, --pretty-print       force pretty printing even if invalid",
-        "",
         ""
     ],
     "ktlint": [
@@ -1657,8 +1630,7 @@
         "                                                            Kotlin codestyle",
         "                                                            settings (global)",
         "  applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA",
-        "                                                            project settings",
-        ""
+        "                                                            project settings"
     ],
     "kubeval": [
         "Validate a Kubernetes YAML file against the relevant schema",
@@ -1684,13 +1656,11 @@
         "  -s, --schema-location string                Base URL used to download schemas. Can also be specified with the environment variable KUBEVAL_SCHEMA_LOCATION.",
         "      --skip-kinds strings                    Comma-separated list of case-sensitive kinds to skip when validating against schemas",
         "      --strict                                Disallow additional properties not in schema",
-        "      --version                               version for kubeval",
-        ""
+        "      --version                               version for kubeval"
     ],
     "lintr": [
         "No documentation for \u2018lintr\u2019 in specified packages and libraries:",
-        "you could try \u2018??lintr\u2019",
-        ""
+        "you could try \u2018??lintr\u2019"
     ],
     "luacheck": [
         "Usage: luacheck ([--config <config>] | [--no-config])",
@@ -1871,8 +1841,7 @@
         "Links:",
         "",
         "   Luacheck on GitHub: https://github.com/luarocks/luacheck",
-        "   Luacheck documentation: https://luacheck.readthedocs.org",
-        ""
+        "   Luacheck documentation: https://luacheck.readthedocs.org"
     ],
     "markdown-link-check": [
         "Usage: markdown-link-check [options] [filenameOrUrl]",
@@ -1883,8 +1852,7 @@
         "                         header configuration",
         "  -q, --quiet            displays errors only",
         "  -v, --verbose          displays detailed error information",
-        "  -h, --help             display help for command",
-        ""
+        "  -h, --help             display help for command"
     ],
     "markdownlint": [
         "Usage: markdownlint [options] <files|directories|globs>",
@@ -1900,8 +1868,7 @@
         "  -i, --ignore [file|directory|glob]          file(s) to ignore/exclude (default: [])",
         "  -p, --ignore-path [file]                    path to file with ignore pattern(s)",
         "  -r, --rules  [file|directory|glob|package]  custom rule files (default: [])",
-        "  -h, --help                                  display help for command",
-        ""
+        "  -h, --help                                  display help for command"
     ],
     "npm-groovy-lint": [
         "npm-groovy-lint [options]",
@@ -1938,8 +1905,7 @@
         "  --returnrules                Return rule descriptions and url if this argument is set",
         "  --insight                    npm-groovy-lint collects anonymous usage statistics using package https://www.npmjs.com/package/insight. If you do not want to share them, use --no-insight option",
         "  -h, --help                   Show help (npm-groovy-lint -help OPTIONNAME to see option detail)",
-        "  -v, --version                Show version",
-        ""
+        "  -v, --version                Show version"
     ],
     "perlcritic": [
         "Usage:",
@@ -1966,7 +1932,6 @@
         "      perlcritic { --list | --list-enabled | --list-themes | --doc pattern [...] }",
         "",
         "      perlcritic { --help | --options | --man | --version }",
-        "",
         ""
     ],
     "php": [
@@ -2011,7 +1976,6 @@
         "  --re <name>      Show information about extension <name>.",
         "  --rz <name>      Show information about Zend extension <name>.",
         "  --ri <name>      Show configuration for extension <name>.",
-        "",
         ""
     ],
     "phpcs": [
@@ -2081,7 +2045,6 @@
         " <standard>     The name or path of the coding standard to use",
         " <stdinPath>    If processing STDIN, the file path that STDIN will be processed as",
         " <tabWidth>     The number of spaces each tab represents",
-        "",
         ""
     ],
     "phpstan": [
@@ -2113,8 +2076,7 @@
         "",
         "  It's also possible to get raw list of commands (useful for embedding command runner):",
         "",
-        "    php /usr/local/bin/phpstan list --raw",
-        ""
+        "    php /usr/local/bin/phpstan list --raw"
     ],
     "powershell": [
         "",
@@ -2416,7 +2378,6 @@
         "",
         "    Displays help for pwsh. If you are typing a pwsh command in PowerShell,",
         "    prepend the command parameters with a hyphen (-), not a forward slash (/).",
-        "",
         ""
     ],
     "protolint": [
@@ -2435,8 +2396,7 @@
         "      plugins to provide custom lint rule set. Note that it's necessary to specify it as path format'",
         "  -reporter value",
         "      formatter to output results in the specific format. Available reporters are \"plain\"(default), \"junit\", \"json\", and \"unix\".",
-        "  -v  verbose output that includes parsing process details",
-        ""
+        "  -v  verbose output that includes parsing process details"
     ],
     "psalm": [
         "Usage:",
@@ -2528,7 +2488,7 @@
         "    --report=PATH",
         "        The path where to output report file. The output format is based on the file extension.",
         "        (Currently supported formats: \".json\", \".xml\", \".txt\", \".emacs\", \".pylint\", \".console\",",
-        "        \"checkstyle.xml\", \"sonarqube.json\", \"summary.json\", \"junit.xml\")",
+        "        \".sarif\", \"checkstyle.xml\", \"sonarqube.json\", \"summary.json\", \"junit.xml\")",
         "",
         "    --report-show-info[=BOOLEAN]",
         "        Whether the report should include non-errors in its output (defaults to true)",
@@ -2587,8 +2547,7 @@
         "        Run Psalter",
         "",
         "    --language-server",
-        "        Run Psalm Language Server",
-        ""
+        "        Run Psalm Language Server"
     ],
     "puppet-lint": [
         "    puppet-lint",
@@ -2693,8 +2652,7 @@
         "                                     Skip the variable_is_lowercase check.",
         "        --no-variable_contains_dash-check",
         "                                     Skip the variable_contains_dash check.",
-        "        --no-documentation-check     Skip the documentation check.",
-        ""
+        "        --no-documentation-check     Skip the documentation check."
     ],
     "pylint": [
         "Usage: pylint [options]",
@@ -2826,8 +2784,7 @@
         "    --msg-template=<template>",
         "                        Template used to display messages. This is a python",
         "                        new-style format string used to format the message",
-        "                        information. See doc for all details.",
-        ""
+        "                        information. See doc for all details."
     ],
     "raku": [
         "/usr/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]",
@@ -2904,7 +2861,6 @@
         "  PERL6LIB    Modify the module search path # to be deprecated",
         "  RAKUDO_HOME Override the path of the Rakudo runtime files",
         "  NQP_HOME    Override the path of the NQP runtime files",
-        "",
         "",
         ""
     ],
@@ -3000,8 +2956,7 @@
         "    -x, --fix-layout                 Run only layout cops, with auto-correct on.",
         "        --safe-auto-correct          Run auto-correct only when it's safe.",
         "    -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense",
-        "                                     reports. This is useful for editor integration.",
-        ""
+        "                                     reports. This is useful for editor integration."
     ],
     "scalafix": [
         "Scalafix 0.9.23",
@@ -3139,7 +3094,6 @@
         "",
         "  --cwd <path> (default: \"/\")",
         "    The current working directory",
-        "",
         ""
     ],
     "scss-lint": [
@@ -3157,7 +3111,6 @@
         "        --show-linters               Display available linters",
         "    -h, --help                       Display help documentation",
         "    -v, --version                    Display version",
-        "",
         ""
     ],
     "shellcheck": [
@@ -3177,7 +3130,6 @@
         "  -W NUM              --wiki-link-count=NUM      The number of wiki links to show, when applicable",
         "  -x                  --external-sources         Allow 'source' outside of FILES",
         "                      --help                     Show this usage summary and exit",
-        "",
         ""
     ],
     "shfmt": [
@@ -3215,8 +3167,7 @@
         "  -f        recursively find all shell files and print the paths",
         "  -tojson   print syntax tree to stdout as a typed JSON",
         "",
-        "For more information, see 'man shfmt' and https://github.com/mvdan/sh.",
-        ""
+        "For more information, see 'man shfmt' and https://github.com/mvdan/sh."
     ],
     "snakefmt": [
         "Usage: snakefmt [OPTIONS] [SRC]...",
@@ -3265,8 +3216,7 @@
         "",
         "  -h, --help             Show this message and exit.",
         "  -V, --version          Show the version and exit.",
-        "  -v, --verbose          Turns on debug-level logging.",
-        ""
+        "  -v, --verbose          Turns on debug-level logging."
     ],
     "snakemake": [
         "usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]",
@@ -4086,8 +4036,7 @@
         "                        can be combined with --use-conda and --use-",
         "                        singularity, which will then be only used as a",
         "                        fallback for rules which don't define environment",
-        "                        modules. (default: False)",
-        ""
+        "                        modules. (default: False)"
     ],
     "spectral": [
         "spectral lint [documents..]",
@@ -4111,8 +4060,7 @@
         "  --ignore-unknown-format      do not warn about unmatched formats  [boolean] [default: false]",
         "  --show-unmatched-globs       show unmatched glob patterns  [boolean] [default: false]",
         "  --verbose, -v                increase verbosity  [boolean]",
-        "  --quiet, -q                  no logging - output only  [boolean]",
-        ""
+        "  --quiet, -q                  no logging - output only  [boolean]"
     ],
     "sql-lint": [
         "Usage: sql-lint [options]",
@@ -4131,8 +4079,7 @@
         "  --password <string>    The password for the connection",
         "  --port <string>        The port for the connection",
         "  --config <string>      The path to the configuration file",
-        "  -h, --help             display help for command",
-        ""
+        "  -h, --help             display help for command"
     ],
     "standard": [
         "standard - Use JavaScript Standard Style (https://standardjs.com)",
@@ -4160,7 +4107,6 @@
         "        --plugin    Use custom eslint plugin",
         "        --env       Use custom eslint environment",
         "        --parser    Use custom js parser (e.g. babel-eslint)",
-        "",
         ""
     ],
     "stylelint": [
@@ -4307,7 +4253,6 @@
         "    --allow-empty-input, --aei",
         "",
         "      When glob pattern matches no files, the process will exit without throwing an error.",
-        "",
         ""
     ],
     "tekton-lint": [
@@ -4335,7 +4280,6 @@
         "",
         "# Watch mode",
         "$ tekton-lint --watch '**/*.yaml'",
-        "",
         ""
     ],
     "terragrunt": [
@@ -4386,7 +4330,6 @@
         "",
         "AUTHOR(S):",
         "   Gruntwork <www.gruntwork.io>",
-        "",
         ""
     ],
     "terrascan": [
@@ -4410,8 +4353,7 @@
         "  -x, --log-type string      log output type (console, json) (default \"console\")",
         "  -o, --output string        output type (json, yaml, xml) (default \"yaml\")",
         "",
-        "Use \"terrascan [command] --help\" for more information about a command.",
-        ""
+        "Use \"terrascan [command] --help\" for more information about a command."
     ],
     "tflint": [
         "Usage:",
@@ -4455,7 +4397,6 @@
         "",
         "Help Options:",
         "  -h, --help                                      Show this help message",
-        "",
         ""
     ],
     "xmllint": [
@@ -4532,8 +4473,7 @@
         "  --xpath expr: evaluate the XPath expression, imply --noout",
         "",
         "Libxml project home page: http://xmlsoft.org/",
-        "To report bugs or get some help check: http://xmlsoft.org/bugs.html",
-        ""
+        "To report bugs or get some help check: http://xmlsoft.org/bugs.html"
     ],
     "yamllint": [
         "usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA]",
@@ -4560,7 +4500,6 @@
         "  -s, --strict          return non-zero exit code on warnings as well as",
         "                        errors",
         "  --no-warnings         output only error level problems",
-        "  -v, --version         show program's version number and exit",
-        ""
+        "  -v, --version         show program's version number and exit"
     ]
 }

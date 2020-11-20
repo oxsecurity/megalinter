@@ -872,7 +872,6 @@ ENVIRONMENT MODULES:
                         singularity, which will then be only used as a
                         fallback for rules which don't define environment
                         modules. (default: False)
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -128,7 +128,6 @@ Commands:
                                                             settings (global)
   applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA
                                                             project settings
-
 ```
 
 ### Installation on mega-linter Docker image

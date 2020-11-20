@@ -97,8 +97,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E126', 'E704', 'E123', 'W504', 'E226',
-                        'E121', 'W503', 'E24'])
+                        (Default: ['E121', 'E226', 'E24', 'E123', 'E704',
+                        'E126', 'W504', 'W503'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-
@@ -150,7 +150,6 @@ pyflakes:
                         Skip these files when running doctests
 
 Installed plugins: mccabe: 0.6.1, pycodestyle: 2.6.0, pyflakes: 2.2.0
-
 ```
 
 ### Installation on mega-linter Docker image
