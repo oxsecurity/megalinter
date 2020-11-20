@@ -4,36 +4,36 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_
 
 [ERROR] .automation/test/arm/arm_bad_1.json
                                                                                                                                                                                                                                                                                                                                                                                                                     Validating arm\arm_bad_1.json  deploymentTemplate
-        [+] adminUsername Should Not Be A Literal (80 ms)
+        [+] adminUsername Should Not Be A Literal (93 ms)
     
-        [+] apiVersions Should Be Recent (79 ms)
-        [+] artifacts parameter (15 ms)
-        [+] DependsOn Best Practices (9 ms)
-        [+] Deployment Resources Must Not Be Debug (8 ms)
+        [+] apiVersions Should Be Recent (84 ms)
+        [+] artifacts parameter (23 ms)
+        [+] DependsOn Best Practices (8 ms)
+        [+] Deployment Resources Must Not Be Debug (9 ms)
         [+] DeploymentTemplate Must Not Contain Hardcoded Uri (21 ms)
         [+] DeploymentTemplate Schema Is Correct (4 ms)
         [+] Dynamic Variable References Should Not Use Concat (5 ms)
-        [+] IDs Should Be Derived From ResourceIDs (25 ms)
-        [+] Location Should Not Be Hardcoded (38 ms)
+        [+] IDs Should Be Derived From ResourceIDs (26 ms)
+        [+] Location Should Not Be Hardcoded (36 ms)
         [+] ManagedIdentityExtension must not be used (3 ms)
-        [+] Min And Max Value Are Numbers (7 ms)
-        [+] Outputs Must Not Contain Secrets (12 ms)
-        [+] Parameters Must Be Referenced (11 ms)
+        [+] Min And Max Value Are Numbers (8 ms)
+        [+] Outputs Must Not Contain Secrets (14 ms)
+        [+] Parameters Must Be Referenced (13 ms)
         [+] Parameters Property Must Exist (4 ms)
-        [+] providers apiVersions Is Not Permitted (2 ms)
-        [+] ResourceIds should not contain (11 ms)
+        [+] providers apiVersions Is Not Permitted (3 ms)
+        [+] ResourceIds should not contain (13 ms)
         [+] Resources Should Have Location (3 ms)
         [+] Secure String Parameters Cannot Have Default (4 ms)
-        [-] Template Should Not Contain Blanks (31 ms) 
+        [-] Template Should Not Contain Blanks (26 ms) 
     ::error::        Empty property:  [] found on line: 28 Index:1331
     ::error::        Empty property:  "" found on line: 3 Index:121
     
-        [-] Variables Must Be Referenced (26 ms) 
+        [-] Variables Must Be Referenced (28 ms) 
     ::error::        Unreferenced variable: Network.Location
     ::error::        Unreferenced variable: Test.Blank.Variable
     
-        [+] Virtual Machines Should Not Be Preview (17 ms)
+        [+] Virtual Machines Should Not Be Preview (133 ms)
         [+] VM Images Should Use Latest Version (1 ms)
-        [+] VM Size Should Be A Parameter (17 ms)
+        [+] VM Size Should Be A Parameter (18 ms)
     
 

@@ -192,6 +192,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
     [37m      L97 |[90m</bad>[39m
     [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
     
-    Scanned 1 files, found 92 errors in 1 files (26 ms)
+    Scanned 1 files, found 92 errors in 1 files (31 ms)
     
 

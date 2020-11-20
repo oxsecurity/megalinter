@@ -11,7 +11,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     No errors found!
     ------------------------------
     
-    Checks took 0.23 seconds and used 37.498MB of memory
+    Checks took 0.24 seconds and used 37.498MB of memory
     Psalm was unable to infer types in the codebase
     
 
@@ -24,7 +24,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     No errors found!
     ------------------------------
     
-    Checks took 0.26 seconds and used 34.796MB of memory
+    Checks took 0.27 seconds and used 34.796MB of memory
     Psalm was unable to infer types in the codebase
     
 

@@ -3,9 +3,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 01:19:14 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
-    [terragrunt] 2020/11/20 01:19:14 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 01:19:14 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 01:19:14 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
+    [terragrunt] 2020/11/20 08:07:25 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
+    [terragrunt] 2020/11/20 08:07:25 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 08:07:25 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 08:07:25 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
     
 

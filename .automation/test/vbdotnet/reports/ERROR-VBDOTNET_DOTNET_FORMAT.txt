@@ -8,6 +8,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/vbdotnet
       vbdotnet/vbdotnet_bad_1.vb(4,20): Fix whitespace formatting.
       vbdotnet/vbdotnet_bad_1.vb(5,7): Fix whitespace formatting.
       Formatted code file '.automation/test/vbdotnet/vbdotnet_bad_1.vb'.
-      Format complete in 1240ms.
+      Format complete in 1313ms.
     
 

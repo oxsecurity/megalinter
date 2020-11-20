@@ -4,6 +4,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/vbdotnet
 
 [SUCCESS] .automation/test/vbdotnet/vbdotnet_good_1.vb
       Formatting code files in workspace '.automation/test/vbdotnet'.
-      Format complete in 1177ms.
+      Format complete in 1204ms.
     
 
