@@ -1,6 +1,5 @@
 from snakemake.utils import min_version
 min_version("5.14.0")
-configfile: "config.yaml" # snakemake keywords are treated like classes i.e. 2 newlines
 SAMPLES = ['s1', 's2'] # strings are normalised
 CONDITIONS = ["a", "b", "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglong"] # long lines are wrapped
 include: "rules/foo.smk" # 2 newlines

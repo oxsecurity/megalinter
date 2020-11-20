@@ -1,7 +1,3 @@
 import scala.List
-
-object Hello {
-    def main(args: Array[String]) = {
-        println("Hello, world")
-    }
-}
+import scala.collection.{immutable, mutable}
+object Foo { immutable.Seq.empty[Int] }
