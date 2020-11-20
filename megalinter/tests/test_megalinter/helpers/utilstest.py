@@ -9,7 +9,6 @@ import tempfile
 import unittest
 
 from git import Repo
-
 from megalinter import Megalinter, utils
 
 REPO_HOME = (

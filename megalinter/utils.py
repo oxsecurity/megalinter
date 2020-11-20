@@ -240,7 +240,9 @@ def check_updated_file(file, repo_home):
 
 
 def normalize_log_string(str_in):
-    return str_in.replace("/tmp/lint/", "") \
-              .replace("tmp/lint/", "") \
-              .replace("/github/workspace/", "") \
-              .replace("github/workspace/", "")
+    return (
+        str_in.replace("/tmp/lint/", "")
+        .replace("tmp/lint/", "")
+        .replace("/github/workspace/", "")
+        .replace("github/workspace/", "")
+    )
