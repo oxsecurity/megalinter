@@ -40,6 +40,28 @@ linters:
       dockerfile:
         - FROM koalaman/shellcheck:latest as shellcheck
         - COPY --from=shellcheck /bin/shellcheck /usr/bin/
+    ide:
+      atom:
+        - name: linter-shellcheck
+          url: https://github.com/AtomLinter/linter-shellcheck
+      emacs:
+        - name: flycheck
+          url: https://github.com/flycheck/flycheck
+        - name: flymake-shellcheck
+          url: https://github.com/federicotdn/flymake-shellcheck
+      sublime:
+        - name: SublimeLinter-shellcheck
+          url: https://github.com/SublimeLinter/SublimeLinter-shellcheck
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+        - name: noemake
+          url: https://github.com/neomake/neomake
+        - name: syntastic
+          url: https://github.com/scrooloose/syntastic
+      vscode:
+        - name: vscode-shellcheck
+          url: https://github.com/timonwong/vscode-shellcheck
   # SHFMT
   - linter_name: shfmt
     linter_url: https://github.com/mvdan/sh

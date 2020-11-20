@@ -24,6 +24,21 @@
 | BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | BASH_SHELLCHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use shellcheck in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| atom | [linter-shellcheck](https://github.com/AtomLinter/linter-shellcheck) |
+| emacs | [flycheck](https://github.com/flycheck/flycheck) |
+| emacs | [flymake-shellcheck](https://github.com/federicotdn/flymake-shellcheck) |
+| sublime | [SublimeLinter-shellcheck](https://github.com/SublimeLinter/SublimeLinter-shellcheck) |
+| vim | [ale](https://github.com/w0rp/ale) |
+| vim | [noemake](https://github.com/neomake/neomake) |
+| vim | [syntastic](https://github.com/scrooloose/syntastic) |
+| vscode | [vscode-shellcheck](https://github.com/timonwong/vscode-shellcheck) |
+
 ## Behind the scenes
 
 ### How are identified applicable files
