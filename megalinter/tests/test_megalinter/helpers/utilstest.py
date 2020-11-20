@@ -259,7 +259,7 @@ def test_get_linter_help(linter, test_self):
     )
     helps_file = root_dir + os.path.sep + "/linter-helps.json"
     data = {}
-    help_lines = help_txt.split("\n")
+    help_lines = help_txt.splitlines()
     help_lines_clean = []
     for help_line in help_lines:
         line_clean = (

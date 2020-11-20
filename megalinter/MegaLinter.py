@@ -276,7 +276,9 @@ class Megalinter:
                     repo.git.checkout(current_branch)
                     repo.git.pull()
                 except git.GitCommandError:
-                    logging.info(f"Warning: Unable to pull current branch {current_branch}")
+                    logging.info(
+                        f"Warning: Unable to pull current branch {current_branch}"
+                    )
             repo.git.checkout(default_branch)
             diff = repo.git.diff(f"{default_branch}...{current_branch}", name_only=True)
             repo.git.checkout(current_branch)

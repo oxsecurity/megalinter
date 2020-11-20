@@ -49,4 +49,4 @@ Of course, please correct real typos before :)
         logging.debug(
             f"Generated additional TextReporter log for CSpellLinter:\n{additional_report}"
         )
-        return additional_report.split(os.linesep)
+        return additional_report.splitlines()

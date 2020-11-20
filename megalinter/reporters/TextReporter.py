@@ -43,7 +43,7 @@ class TextReporter(Reporter):
             file_text_lines[0] = file_text_lines[0] + " - FIXED"
         if self.report_type == "detailed" or status_code != 0:
             std_out_text = stdout.rstrip(f" {os.linesep}") + os.linesep
-            std_out_text = "\n    ".join(std_out_text.split(os.linesep))
+            std_out_text = "\n    ".join(std_out_text.splitlines())
             std_out_text = utils.normalize_log_string(std_out_text)
             detailed_lines = ["    " + std_out_text, ""]
             file_text_lines += detailed_lines

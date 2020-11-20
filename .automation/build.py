@@ -153,7 +153,7 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
         file = open(
             f"{REPO_HOME}/megalinter/tests/test_megalinter/linters/{lang_lower}_{linter_name_lower}_test.py",
             "w",
-            encoding="utf-8"
+            encoding="utf-8",
         )
         file.write(test_class_code)
         file.close()
@@ -406,7 +406,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # How to configure this linter
         linter_doc_md += ["", "## Configuration", ""]
         if hasattr(linter, "linter_text") and linter.linter_text:
-            linter_doc_md += linter.linter_text.split(os.linesep)
+            linter_doc_md += linter.linter_text.splitlines()
         # Linter-specific configuration
         linter_doc_md += [f"### {linter.linter_name} configuration", ""]
         # Rules configuration URL
@@ -512,7 +512,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             for file_contains_expr in linter.file_contains:
                 linter_doc_md += [f"  - `{file_contains_expr}`"]
             linter_doc_md += [""]
-        linter_doc_md += ["<!-- /* cSpell:disable */ -->"] # Do not check spelling of examples and logs
+        linter_doc_md += [
+            "<!-- markdownlint-disable -->"
+            "<!-- /* cSpell:disable */ -->"
+        ]  # Do not check spelling of examples and logs
         linter_doc_md += ["", "### Example calls", ""]
         for example in linter.examples:
             linter_doc_md += ["```shell", example, "```", ""]
@@ -547,7 +550,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             with open(success_log_file_example, "r", encoding="utf-8") as file:
                 success_log_file_content = file.read()
             linter_doc_md += ["", "### Example success log", "", "```shell"]
-            linter_doc_md += success_log_file_content.split(os.linesep)
+            linter_doc_md += success_log_file_content.splitlines()
             linter_doc_md += ["```"]
         error_log_file_example = (
             test_report_folder + os.path.sep + f"ERROR-{linter.name}.txt"
@@ -556,12 +559,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             with open(error_log_file_example, "r", encoding="utf-8") as file:
                 success_log_file_content = file.read()
             linter_doc_md += ["", "### Example error log", "", "```shell"]
-            linter_doc_md += success_log_file_content.split(os.linesep)
+            linter_doc_md += success_log_file_content.splitlines()
             linter_doc_md += ["```"]
 
         # Write md file
         file = open(
-            f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md", "w", encoding="utf-8"
+            f"{REPO_HOME}/docs/descriptors/{lang_lower}_{linter_name_lower}.md",
+            "w",
+            encoding="utf-8",
         )
         file.write("\n".join(linter_doc_md) + "\n")
         file.close()

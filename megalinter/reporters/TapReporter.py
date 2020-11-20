@@ -41,7 +41,7 @@ class TapReporter(Reporter):
         file_tap_lines = [f"{tap_status} {str(index)} - {file_nm}"]
         if self.report_type == "detailed" and stdout != "" and status_code != 0:
             std_out_tap = stdout.rstrip(f" {os.linesep}") + os.linesep
-            std_out_tap = "\\n".join(std_out_tap.split(os.linesep))
+            std_out_tap = "\\n".join(std_out_tap.splitlines())
             std_out_tap = std_out_tap.replace(":", " ")
             detailed_lines = ["  ---", f"  message: {std_out_tap}", "  ..."]
             file_tap_lines += detailed_lines
