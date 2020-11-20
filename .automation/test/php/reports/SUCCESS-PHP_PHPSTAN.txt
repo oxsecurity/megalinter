@@ -5,10 +5,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
 [SUCCESS] .automation/test/php/php_good_1.php
     
      [OK] No errors
-    
 
 [SUCCESS] .automation/test/php/php_good_2.php
     
      [OK] No errors
-    
 

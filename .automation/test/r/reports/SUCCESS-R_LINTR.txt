@@ -6,5 +6,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
     Warning message:
     In readLines(filename) :
       incomplete final line found on '.automation/test/r/r_good_1.r'
-    
 

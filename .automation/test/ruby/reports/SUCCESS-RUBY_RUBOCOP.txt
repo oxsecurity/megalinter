@@ -7,5 +7,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rub
     .
     
     1 file inspected, no offenses detected
-    
 

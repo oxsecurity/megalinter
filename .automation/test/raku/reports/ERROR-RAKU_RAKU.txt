@@ -7,5 +7,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_rak
     Variable '$foo' is not declared.  Did you mean '@foo'?
     at .automation/test/raku/raku_bad_1.raku:4
     ------> [32m<BOL>[33m⏏[31m$foo[1] = 42[0m
-    
 

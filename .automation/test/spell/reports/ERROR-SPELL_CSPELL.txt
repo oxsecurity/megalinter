@@ -5,7 +5,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_cs
 [ERROR] .automation/test/spell
     .automation/test/spell/spell_bad_1.js:1:28 - Unknown word (Blablabla)
     CSpell: Files checked: 1, Issues found: 1 in 1 files
-    
 
 
 You can skip this misspellings by defining the following .cspell.json file at the root of your repository
@@ -25,5 +24,4 @@ Of course, please correct real typos before :)
         "Blablabla"
     ]
 }
-
 

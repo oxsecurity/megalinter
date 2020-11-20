@@ -8,5 +8,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_esli
       7:10  error  Parsing error: '=' expected
     
     ✖ 1 problem (1 error, 0 warnings)
-    
 

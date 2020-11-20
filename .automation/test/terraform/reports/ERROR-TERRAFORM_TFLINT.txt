@@ -12,5 +12,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
        4: }
     
     Expected the start of an expression, but found an invalid expression token.
-    
 

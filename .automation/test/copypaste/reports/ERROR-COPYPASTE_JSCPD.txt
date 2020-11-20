@@ -15,5 +15,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
         at /node_modules/@jscpd/finder/dist/in-files-detector.js:80:26
         at Array.forEach (<anonymous>)
         at /node_modules/@jscpd/finder/dist/in-files-detector.js:79:28
-    
 

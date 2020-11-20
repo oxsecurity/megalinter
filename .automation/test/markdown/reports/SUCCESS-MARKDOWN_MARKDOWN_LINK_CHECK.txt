@@ -8,5 +8,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
     [✓] https://github.com
     
     1 links checked.
-    
 

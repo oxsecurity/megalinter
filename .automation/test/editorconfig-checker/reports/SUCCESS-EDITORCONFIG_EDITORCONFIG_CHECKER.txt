@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorco
 
 [SUCCESS] .automation/test/editorconfig-checker/editorconfig-checker_good_1.ext
     
-    
 

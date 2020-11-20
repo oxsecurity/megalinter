@@ -13,5 +13,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_jso
         "empty_object_spaces": 0
       }
     }
-    
 

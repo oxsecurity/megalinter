@@ -8,5 +8,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascri
       4:40  error  Parsing error: Unterminated regular expression
     
     ✖ 1 problem (1 error, 0 warnings)
-    
 

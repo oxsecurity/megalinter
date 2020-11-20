@@ -6,11 +6,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfi
     
     File:   .automation/test/docker/good/Dockerfile
     Issues: None found 👍
-    
 
 [SUCCESS] .automation/test/docker/good/Dockerfile.dev
     
     File:   .automation/test/docker/good/Dockerfile.dev
     Issues: None found 👍
-    
 

@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_she
 
 [SUCCESS] .automation/test/shell/shell_good_1.sh
     
-    
 

@@ -13,5 +13,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
     
     ERROR: 1 dead links found!
     [✖] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com → Status: 0
-    
 

@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
 
 [SUCCESS] .automation/test/markdown/markdown_good_1.md
     
-    
 

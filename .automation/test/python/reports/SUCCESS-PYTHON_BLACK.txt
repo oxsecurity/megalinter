@@ -5,5 +5,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
 [SUCCESS] .automation/test/python/python_good_1.py
     All done! ✨ 🍰 ✨
     1 file would be left unchanged.
-    
 

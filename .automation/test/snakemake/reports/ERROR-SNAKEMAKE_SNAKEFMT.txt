@@ -23,5 +23,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
              touch {output}
     
     [INFO] 1 file(s) would be changed 😬
-    
 

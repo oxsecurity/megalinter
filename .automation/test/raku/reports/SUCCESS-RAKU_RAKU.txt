@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_rak
 
 [SUCCESS] .automation/test/raku/raku_good_1.raku
     Syntax OK
-    
 

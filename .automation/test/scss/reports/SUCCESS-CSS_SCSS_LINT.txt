@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_scss
 
 [SUCCESS] .automation/test/scss/scss_good_01.scss
     
-    
 

@@ -5,6 +5,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
 [SUCCESS] .automation/test/copypaste/good
     HTML report saved to report/copy-paste/html/
     Markdown report saved to report/copy-paste/jscpd-report.md
-    Detection time:: 29.111ms
-    
+    Detection time:: 28.123ms
 

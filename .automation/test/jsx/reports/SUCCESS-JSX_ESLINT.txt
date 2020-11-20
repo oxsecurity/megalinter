@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_esli
 
 [SUCCESS] .automation/test/jsx/jsx_good_1.jsx
     Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
-    
 

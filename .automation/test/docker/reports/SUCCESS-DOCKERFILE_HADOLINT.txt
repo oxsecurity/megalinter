@@ -4,9 +4,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfi
 
 [SUCCESS] .automation/test/docker/good/Dockerfile
     
-    
 
 [SUCCESS] .automation/test/docker/good/Dockerfile.dev
-    
     
 

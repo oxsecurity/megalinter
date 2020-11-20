@@ -17,5 +17,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
           Also see:
           https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#integrated-package-management
           https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#running-jobs-in-containers
-    
 

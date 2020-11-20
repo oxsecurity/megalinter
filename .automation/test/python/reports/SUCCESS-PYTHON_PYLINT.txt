@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_p
 
 [SUCCESS] .automation/test/python/python_good_1.py
     
-    
 

@@ -12,5 +12,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_che
     [ERROR] .automation/test/java/java_bad_1.java:5:5: '{' at column 5 should be on the previous line. [LeftCurly]
     Audit done.
     Checkstyle ends with 6 errors.
-    
 

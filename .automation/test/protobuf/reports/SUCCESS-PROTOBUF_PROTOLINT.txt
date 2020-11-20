@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/protobuf
 
 [SUCCESS] .automation/test/protobuf/protobuf_good_1.proto
     
-    
 

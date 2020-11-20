@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shf
 
 [SUCCESS] .automation/test/shell_shfmt/shell-shfmt_good_1.sh
     
-    
 

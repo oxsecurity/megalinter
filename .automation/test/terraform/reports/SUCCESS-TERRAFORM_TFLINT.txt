@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 
 [SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
     
-    
 

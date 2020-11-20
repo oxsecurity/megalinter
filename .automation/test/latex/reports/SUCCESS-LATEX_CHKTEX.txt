@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_ch
 
 [SUCCESS] .automation/test/latex/latex_good_1.tex
     
-    
 

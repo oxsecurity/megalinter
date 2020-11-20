@@ -7,5 +7,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/c_cpplin
     .automation/test/c/c_bad_01.c:6:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
     Done processing .automation/test/c/c_bad_01.c
     Total errors found: 2
-    
 

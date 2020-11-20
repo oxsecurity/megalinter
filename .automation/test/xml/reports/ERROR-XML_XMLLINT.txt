@@ -6,5 +6,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmll
     .automation/test/xml/xml_bad_1.xml:7: parser error : EndTag: '</' not found
     
     ^
-    
 

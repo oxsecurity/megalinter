@@ -4,13 +4,10 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.ps1
     
-    
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.psd1
     
-    
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.psm1
-    
     
 

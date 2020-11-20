@@ -9,5 +9,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_c
                                 ^. (coffeescript_error)
     
     ✗ Lint! » 1 error and 0 warnings in 1 file
-    
 

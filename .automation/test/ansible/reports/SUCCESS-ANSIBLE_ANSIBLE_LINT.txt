@@ -12,5 +12,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
-    
 

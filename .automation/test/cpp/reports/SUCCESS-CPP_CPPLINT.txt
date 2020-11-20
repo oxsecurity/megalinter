@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cppl
 
 [SUCCESS] .automation/test/cpp/cpp_good_01.cpp
     Done processing .automation/test/cpp/cpp_good_01.cpp
-    
 

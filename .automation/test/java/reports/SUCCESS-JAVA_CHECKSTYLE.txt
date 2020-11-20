@@ -5,5 +5,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_che
 [SUCCESS] .automation/test/java/java_good_1.java
     Starting audit...
     Audit done.
-    
 

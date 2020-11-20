@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_
 
 [SUCCESS] .automation/test/sql/sql_good_1.sql
     
-    
 

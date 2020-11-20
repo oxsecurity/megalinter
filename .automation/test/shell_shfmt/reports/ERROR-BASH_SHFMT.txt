@@ -21,5 +21,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shf
     +    echo "${HELLO_WORLD}"
     +    exit 1
      fi
-    
 

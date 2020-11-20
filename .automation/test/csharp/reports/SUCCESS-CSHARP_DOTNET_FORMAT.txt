@@ -4,6 +4,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/csharp_d
 
 [SUCCESS] .automation/test/csharp/csharp_good_01.cs
       Formatting code files in workspace '.automation/test/csharp'.
-      Format complete in 1396ms.
-    
+      Format complete in 1181ms.
 

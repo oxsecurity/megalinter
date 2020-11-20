@@ -5,10 +5,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_
 [SUCCESS] .automation/test/openapi/openapi_good_1.yml
     OpenAPI 3.x detected
     No results with a severity of 'error' or higher found!
-    
 
 [SUCCESS] .automation/test/openapi/openapi_good_2.json
     OpenAPI 3.x detected
     No results with a severity of 'error' or higher found!
-    
 

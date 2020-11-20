@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dote
 
 [SUCCESS] .automation/test/env/env_good_1.env
     
-    
 

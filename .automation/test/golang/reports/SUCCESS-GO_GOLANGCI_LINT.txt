@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golan
 
 [SUCCESS] .automation/test/golang/golang_good_01.go
     
-    
 

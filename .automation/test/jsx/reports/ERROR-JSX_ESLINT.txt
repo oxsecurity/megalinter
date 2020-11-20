@@ -8,5 +8,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_esli
       8:1  error  Parsing error: Unexpected token const
     
     ✖ 1 problem (1 error, 0 warnings)
-    
 

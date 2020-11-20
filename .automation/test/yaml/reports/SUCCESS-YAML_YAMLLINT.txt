@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yam
 
 [SUCCESS] .automation/test/yaml/yml_good_1.yml
     
-    
 

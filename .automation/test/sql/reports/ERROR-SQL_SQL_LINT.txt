@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_
 
 [ERROR] .automation/test/sql/sql_bad_1.sql
     .automation/test/sql/sql_bad_1.sql:1 [sql-lint: missing-where] DELETE statement missing WHERE clause.
-    
 

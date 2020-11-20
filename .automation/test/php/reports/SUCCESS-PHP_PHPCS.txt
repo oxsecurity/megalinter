@@ -4,9 +4,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpc
 
 [SUCCESS] .automation/test/php/php_good_1.php
     
-    
 
 [SUCCESS] .automation/test/php/php_good_2.php
-    
     
 

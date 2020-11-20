@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_sc
 
 [SUCCESS] .automation/test/scala/scala_good_1.scala
     
-    
 

@@ -8,5 +8,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_k
     .automation/test/kotlin/kotlin_bad_1.kt:3:16: Redundant curly braces
     .automation/test/kotlin/kotlin_bad_1.kt:3:27: Unnecessary semicolon
     .automation/test/kotlin/kotlin_bad_1.kt:5:15: Unnecessary semicolon
-    
 

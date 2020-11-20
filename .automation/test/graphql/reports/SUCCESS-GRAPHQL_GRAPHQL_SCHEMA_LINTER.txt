@@ -6,5 +6,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_
     
     
     ✔ 0 errors detected
-    
 

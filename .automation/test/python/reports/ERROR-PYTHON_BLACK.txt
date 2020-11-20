@@ -6,5 +6,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
     error: cannot format .automation/test/python/python_bad_1.py: Cannot parse: 15:23: if github_token is None
     Oh no! 💥 💔 💥
     1 file would fail to reformat.
-    
 

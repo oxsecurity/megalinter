@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_cs
 
 [SUCCESS] .automation/test/spell
     CSpell: Files checked: 1, Issues found: 0 in 0 files
-    
 

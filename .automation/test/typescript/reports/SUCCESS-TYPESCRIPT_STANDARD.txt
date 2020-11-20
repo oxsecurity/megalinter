@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
 
 [SUCCESS] .automation/test/typescript/typescript_good_1.ts
     
-    
 

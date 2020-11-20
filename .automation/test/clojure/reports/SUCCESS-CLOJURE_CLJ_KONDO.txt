@@ -3,6 +3,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_
 -----------------------------------------------
 
 [SUCCESS] .automation/test/clojure/clojure_good_1.clj
-    linting took 15ms, errors: 0, warnings: 0
-    
+    linting took 14ms, errors: 0, warnings: 0
 

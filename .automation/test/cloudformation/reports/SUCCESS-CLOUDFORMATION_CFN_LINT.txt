@@ -4,17 +4,13 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudfor
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
     
-    
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_2.yaml
-    
     
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_3.json
     
-    
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_4.yaml
-    
     
 

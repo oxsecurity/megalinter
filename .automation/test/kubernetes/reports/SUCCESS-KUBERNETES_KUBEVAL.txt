@@ -4,5 +4,4 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernet
 
 [SUCCESS] .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml
     PASS - .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml contains a valid Deployment (nginx-deployment)
-    
 
