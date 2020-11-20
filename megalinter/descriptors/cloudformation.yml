@@ -22,3 +22,13 @@ linters:
         - cfn-lint
       npm:
         - asl-validator
+    ide:
+      atom:
+        - name: atom-cfn-lint
+          url: https://atom.io/packages/atom-cfn-lint
+      idea:
+        - name: cfn-lint
+          url: https://plugins.jetbrains.com/plugin/10973-cfn-lint
+      vscode:
+        - name: vscode-cfn-lint
+          url: https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint

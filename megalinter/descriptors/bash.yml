@@ -76,3 +76,25 @@ linters:
       dockerfile:
         - ENV GO111MODULE=on
         - RUN go get mvdan.cc/sh/v3/cmd/shfmt
+    ide:
+      atom:
+        - name: format-shell
+          url: https://atom.io/packages/format-shell
+      emacs:
+        - name: emacs-shfmt
+          url: https://github.com/purcell/emacs-shfmt/
+      idea:
+        - name: shell-scripts
+          url: https://www.jetbrains.com/help/idea/shell-scripts.html
+      micro:
+        - name: micro
+          url: https://micro-editor.github.io/
+      sublime:
+        - name: Sublime-Pretty-Shell
+          url: https://github.com/aerobounce/Sublime-Pretty-Shell
+      vim:
+        - name: vim-shfmt
+          url: https://github.com/z0mbix/vim-shfmt
+      vscode:
+        - name: shell-format
+          url: https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format

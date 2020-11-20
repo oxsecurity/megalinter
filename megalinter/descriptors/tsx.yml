@@ -35,3 +35,30 @@ linters:
         - prettyjson
         - "@typescript-eslint/eslint-plugin"
         - "@typescript-eslint/parser"
+    ide:
+      atom:
+        - name: linter-eslint
+          url: https://atom.io/packages/linter-eslint
+      brackets:
+        - name: brackets-eslint
+          url: https://github.com/brackets-userland/brackets-eslint
+      eclipse:
+        - name: Tern-Linter-ESLint
+          url: https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint
+      emacs:
+        - name: flycheck
+          url: http://www.flycheck.org/en/latest/languages.html#javascript
+      idea:
+        - name: ESLint Plugin
+          url: https://plugins.jetbrains.com/plugin/7494-eslint
+      sublime:
+        - name: SublimeLinter-eslint
+          url: https://github.com/roadhump/SublimeLinter-eslint
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+        - name: Syntastic
+          url: https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript
+      vscode:
+        - name: vscode-eslint
+          url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint

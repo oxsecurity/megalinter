@@ -18,3 +18,16 @@ linters:
     install:
       npm:
         - htmlhint
+    ide:
+      atom:
+        - name: atom-htmlhint
+          url: https://github.com/htmlhint/atom-htmlhint
+      brackets:
+        - name: brackets-htmlhint
+          url: https://github.com/htmlhint/brackets-htmlhint
+      sublime:
+        - name: SublimeLinter-contrib-htmlhint
+          url: https://github.com/htmlhint/SublimeLinter-contrib-htmlhint
+      vscode:
+        - name: vscode-htmlhint
+          url: https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint

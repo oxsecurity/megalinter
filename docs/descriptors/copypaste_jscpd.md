@@ -34,6 +34,14 @@
 | COPYPASTE_JSCPD_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COPYPASTE_JSCPD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use jscpd in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-jscpd](https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

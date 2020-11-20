@@ -24,6 +24,20 @@
 | BASH_SHFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | BASH_SHFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use shfmt in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [format-shell](https://atom.io/packages/format-shell) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [emacs-shfmt](https://github.com/purcell/emacs-shfmt/) |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [shell-scripts](https://www.jetbrains.com/help/idea/shell-scripts.html) |
+| micro | [micro](https://micro-editor.github.io/) |
+| [Sublime Text](https://www.sublimetext.com/) | [Sublime-Pretty-Shell](https://github.com/aerobounce/Sublime-Pretty-Shell) |
+| [vim](https://www.vim.org/) | [vim-shfmt](https://github.com/z0mbix/vim-shfmt) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

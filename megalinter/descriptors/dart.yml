@@ -18,7 +18,6 @@ linters:
     examples:
       - "dartanalyzer --fatal-infos --fatal-warnings myfile.dart"
       - "dartanalyzer --fatal-infos --fatal-warnings --options analysis_options.yml myfile.dart"
-
     install:
       ## stable dart sdk: https://dart.dev/get-dart#release-channels
       ## install alpine-pkg-glibc (glibc compatibility layer package for Alpine Linux)
@@ -33,3 +32,10 @@ linters:
               && chmod +x dart-sdk/bin/dart* \
               && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
               && rm -r dart-sdk/
+    ide:
+      idea:
+        - name: dart-jetbrains-plugin
+          url: https://dart.dev/tools/jetbrains-plugin
+      vscode:
+        - name: dart-code
+          url: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code

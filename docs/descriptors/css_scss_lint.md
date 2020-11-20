@@ -33,6 +33,16 @@
 | CSS_SCSS_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_SCSS_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use scss-lint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [linter-scss-lint](https://atom.io/packages/linter-scss-lint) |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [scss-lint-plugin](https://github.com/idok/scss-lint-plugin) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [scss-lint](https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

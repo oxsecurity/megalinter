@@ -34,6 +34,10 @@ IDE_LIST = {
         "label": "Atom",
         "url": "https://atom.io/"
     },
+    "brackets": {
+        "label": "Brackets",
+        "url": "http://brackets.io/"
+    },
     "eclipse": {
         "label": "Eclipse",
         "url": "https://www.eclipse.org/"
@@ -42,9 +46,9 @@ IDE_LIST = {
         "label": "Emacs",
         "url": "https://www.gnu.org/software/emacs/"
     },
-    "intellij": {
-        "label": "IntelliJ IDEA",
-        "url": "https://jetbrains.com/idea"
+    "idea": {
+        "label": "IDEA",
+        "url": "https://www.jetbrains.com/products.html#type=ide"
     },
     "pycharm": {
         "label": "PyCharm",

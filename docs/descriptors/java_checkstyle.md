@@ -34,6 +34,16 @@
 | JAVA_CHECKSTYLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVA_CHECKSTYLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use checkstyle in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://github.com/jshiell/checkstyle-idea) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

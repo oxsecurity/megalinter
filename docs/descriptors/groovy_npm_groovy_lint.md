@@ -29,6 +29,14 @@
 | GROOVY_NPM_GROOVY_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use npm-groovy-lint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Groovy Lint](https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

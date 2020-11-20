@@ -33,6 +33,15 @@
 | DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DART_DARTANALYZER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use dartanalyzer in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
+
 ## Behind the scenes
 
 ### How are identified applicable files
@@ -97,6 +106,7 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && chmod +x dart-sdk/bin/dart* \
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/
+
 ```
 
 

@@ -34,6 +34,16 @@
 | CLOUDFORMATION_CFN_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use cfn-lint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint) |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

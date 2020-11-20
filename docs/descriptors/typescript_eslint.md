@@ -37,6 +37,22 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | TYPESCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TYPESCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use eslint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [linter-eslint](https://atom.io/packages/linter-eslint) |
+| [Brackets](http://brackets.io/) | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint) |
+| [Eclipse](https://www.eclipse.org/) | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript) |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [ESLint Plugin](https://plugins.jetbrains.com/plugin/7494-eslint) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint) |
+| [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
+| [vim](https://www.vim.org/) | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

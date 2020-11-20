@@ -33,6 +33,21 @@
 | JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | JAVASCRIPT_STANDARD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use standard in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [linter-js-standard](https://atom.io/packages/linter-js-standard) |
+| [Atom](https://atom.io/) | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine) |
+| [Atom](https://atom.io/) | [standard-formatter](https://atom.io/packages/standard-formatter) |
+| [Brackets](http://brackets.io/) | [brackets-standard](https://github.com/ishamf/brackets-standard/) |
+| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |
+| [Sublime Text](https://www.sublimetext.com/) | [StandardFormat](https://packagecontrol.io/packages/StandardFormat) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

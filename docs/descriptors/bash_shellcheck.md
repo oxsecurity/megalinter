@@ -30,14 +30,14 @@ Use shellcheck in your favorites IDE to catch errors before CI
 
 | IDE | Extension Name |
 | ----------------- | -------------- |
-| atom | [linter-shellcheck](https://github.com/AtomLinter/linter-shellcheck) |
-| emacs | [flycheck](https://github.com/flycheck/flycheck) |
-| emacs | [flymake-shellcheck](https://github.com/federicotdn/flymake-shellcheck) |
-| sublime | [SublimeLinter-shellcheck](https://github.com/SublimeLinter/SublimeLinter-shellcheck) |
-| vim | [ale](https://github.com/w0rp/ale) |
-| vim | [noemake](https://github.com/neomake/neomake) |
-| vim | [syntastic](https://github.com/scrooloose/syntastic) |
-| vscode | [vscode-shellcheck](https://github.com/timonwong/vscode-shellcheck) |
+| [Atom](https://atom.io/) | [linter-shellcheck](https://github.com/AtomLinter/linter-shellcheck) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/flycheck/flycheck) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [flymake-shellcheck](https://github.com/federicotdn/flymake-shellcheck) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-shellcheck](https://github.com/SublimeLinter/SublimeLinter-shellcheck) |
+| [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
+| [vim](https://www.vim.org/) | [noemake](https://github.com/neomake/neomake) |
+| [vim](https://www.vim.org/) | [syntastic](https://github.com/scrooloose/syntastic) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-shellcheck](https://github.com/timonwong/vscode-shellcheck) |
 
 ## Behind the scenes
 

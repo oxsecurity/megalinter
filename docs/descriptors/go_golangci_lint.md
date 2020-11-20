@@ -34,6 +34,20 @@
 | GO_GOLANGCI_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GO_GOLANGCI_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use golangci-lint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [go-plus](https://atom.io/packages/go-plus) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |
+| goland | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint) |
+| [vim](https://www.vim.org/) | [vim-go](https://github.com/fatih/vim-go) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

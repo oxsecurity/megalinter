@@ -27,6 +27,17 @@
 | HTML_HTMLHINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | HTML_HTMLHINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use htmlhint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [atom-htmlhint](https://github.com/htmlhint/atom-htmlhint) |
+| [Brackets](http://brackets.io/) | [brackets-htmlhint](https://github.com/htmlhint/brackets-htmlhint) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-htmlhint](https://github.com/htmlhint/SublimeLinter-contrib-htmlhint) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-htmlhint](https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

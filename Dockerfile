@@ -313,6 +313,7 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/
 
+
 # hadolint installation
 COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
 

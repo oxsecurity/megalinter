@@ -27,6 +27,15 @@
 | DOCKERFILE_HADOLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use hadolint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [linter-hadolint](https://atom.io/packages/linter-hadolint) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [hadolint](https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

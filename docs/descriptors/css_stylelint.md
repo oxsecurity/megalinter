@@ -36,6 +36,19 @@
 | CSS_STYLELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_STYLELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use stylelint in your favorites IDE to catch errors before CI
+
+| IDE | Extension Name |
+| ----------------- | -------------- |
+| [Atom](https://atom.io/) | [linter-stylelint](https://github.com/AtomLinter/linter-stylelint) |
+| [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/flycheck/flycheck) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-stylelint](https://github.com/SublimeLinter/SublimeLinter-stylelint) |
+| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-stylelint_d](https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d) |
+| [vim](https://www.vim.org/) | [ale](https://github.com/dense-analysis/ale) |
+| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files
