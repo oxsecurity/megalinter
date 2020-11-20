@@ -9,7 +9,8 @@ import tempfile
 import unittest
 
 from git import Repo
-from megalinter import Megalinter
+
+from megalinter import Megalinter, utils
 
 REPO_HOME = (
     "/tmp/lint"
@@ -138,7 +139,7 @@ def test_linter_success(linter, test_self):
         os.path.isfile(text_report_file),
         f"Unable to find text report {text_report_file}",
     )
-    copy_logs_for_doc(mega_linter, text_report_file, test_folder, report_file_name)
+    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
 
 def test_linter_failure(linter, test_self):
@@ -193,11 +194,11 @@ def test_linter_failure(linter, test_self):
         os.path.isfile(text_report_file),
         f"Unable to find text report {text_report_file}",
     )
-    copy_logs_for_doc(mega_linter, text_report_file, test_folder, report_file_name)
+    copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
 
 # Copy logs for documentation
-def copy_logs_for_doc(mega_linter, text_report_file, test_folder, report_file_name):
+def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     updated_sources_dir = (
         f"{REPO_HOME}{os.path.sep}report{os.path.sep}updated_dev_sources{os.path.sep}"
         f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}reports"
@@ -352,11 +353,11 @@ def test_linter_report_tap(linter, test_self):
                     if "ok " in produced_line:
                         test_self.assertEqual(
                             produced_line.split("-")[0],
-                            expected_line.replace("/tmp/lint/", "").split("-")[0],
+                            utils.normalize_log_string(expected_line).split("-")[0],
                         )
                     else:
                         test_self.assertEqual(
-                            produced_line, expected_line.replace("/tmp/lint/", "")
+                            produced_line, utils.normalize_log_string(expected_line)
                         )
                     identical_nb = identical_nb + 1
                 logging.warning(

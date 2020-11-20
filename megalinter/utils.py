@@ -237,3 +237,10 @@ def check_updated_file(file, repo_home):
         if changed_file in file_absolute:
             return True
     return False
+
+
+def normalize_log_string(str_in):
+    return str_in.replace("/tmp/lint/", "") \
+              .replace("tmp/lint/", "") \
+              .replace("/github/workspace/", "") \
+              .replace("github/workspace/", "")

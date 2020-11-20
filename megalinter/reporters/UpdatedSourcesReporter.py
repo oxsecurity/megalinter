@@ -31,7 +31,7 @@ class UpdatedSourcesReporter(Reporter):
         updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
         for updated_file in updated_files:
-            updated_file_clean = updated_file.replace("/tmp/lint/", "")
+            updated_file_clean = utils.normalize_log_string(updated_file)
             if updated_file_clean in ["linter-helps.json", "linter-versions.json"]:
                 continue
             source_file = utils.REPO_HOME_DEFAULT + os.path.sep + updated_file

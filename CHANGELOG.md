@@ -5,6 +5,8 @@
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
 - Add Gherkin (Cucumber language) & gherkin-lint
+- Store log files as artifacts during test cases
+- Add examples of success and failed linter logs in documentation
 
 ## [4.8.0]
 
