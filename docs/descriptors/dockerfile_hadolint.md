@@ -34,6 +34,7 @@
 - File names:
   - `Dockerfile`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -89,12 +90,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfi
 
 [SUCCESS] .automation/test/docker/good/Dockerfile
     
-    
 
 [SUCCESS] .automation/test/docker/good/Dockerfile.dev
     
-    
-
 
 ```
 
@@ -111,7 +109,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfi
     .automation/test/docker/bad/Dockerfile:9 DL3004 Do not use sudo as it leads to unpredictable behavior. Use a tool like gosu to enforce root
     .automation/test/docker/bad/Dockerfile:11 DL3020 Use COPY instead of ADD for files and folders
     .automation/test/docker/bad/Dockerfile:14 DL3025 Use arguments JSON notation for CMD and ENTRYPOINT arguments
-    
-
 
 ```

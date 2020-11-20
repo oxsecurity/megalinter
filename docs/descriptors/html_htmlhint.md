@@ -35,6 +35,7 @@
   - `.html`
   - `.htm`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -98,9 +99,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
     
        Config loaded: .github/linters/.htmlhintrc
     
-    Scanned 1 files, no errors found (22 ms).
-    
-
+    Scanned 1 files, no errors found (18 ms).
 
 ```
 
@@ -301,8 +300,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
     [37m      L97 |[90m</bad>[39m
     [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
     
-    Scanned 1 files, found 92 errors in 1 files (31 ms)
-    
-
+    Scanned 1 files, found 92 errors in 1 files (23 ms)
 
 ```

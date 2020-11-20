@@ -44,6 +44,7 @@
   - `.cljc`
   - `.edn`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -109,9 +110,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_
 -----------------------------------------------
 
 [SUCCESS] .automation/test/clojure/clojure_good_1.clj
-    linting took 15ms, errors: 0, warnings: 0
-    
-
+    linting took 14ms, errors: 0, warnings: 0
 
 ```
 
@@ -145,8 +144,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_
     .automation/test/clojure/clojure_bad_1.clj:56:5: error: duplicate set element 1
     .automation/test/clojure/clojure_bad_1.clj:58:7: error: missing value for key :b
     .automation/test/clojure/clojure_bad_1.clj:64:3: warning: missing test assertion
-    linting took 16ms, errors: 13, warnings: 9
-    
-
+    linting took 14ms, errors: 13, warnings: 9
 
 ```

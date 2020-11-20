@@ -43,6 +43,7 @@
 - File extensions:
   - `.py`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -367,8 +368,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_i
 
 [SUCCESS] .automation/test/python/python_good_1.py
     
-    
-
 
 ```
 
@@ -381,8 +380,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_i
 
 [ERROR] .automation/test/python/python_bad_1.py
     ERROR: .automation/test/python/python_bad_1.py Imports are incorrectly sorted and/or formatted.
-    --- .automation/test/python/python_bad_1.py:before	2020-11-20 07:41:34.933288
-    +++ .automation/test/python/python_bad_1.py:after	2020-11-20 08:06:21.220232
+    --- .automation/test/python/python_bad_1.py:before	2020-11-20 08:56:09.345060
+    +++ .automation/test/python/python_bad_1.py:after	2020-11-20 09:19:34.379229
     @@ -1,11 +1,11 @@
      import json
     +import sys
@@ -399,7 +398,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_i
      
      env = load_dotenv()
      api_url = getenv(API_URL, default='https://api.github.com/graphql' )
-    
-
 
 ```

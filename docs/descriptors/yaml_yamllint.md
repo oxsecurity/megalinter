@@ -35,6 +35,7 @@
   - `.yml`
   - `.yaml`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -93,8 +94,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yam
 
 [SUCCESS] .automation/test/yaml/yml_good_1.yml
     
-    
-
 
 ```
 
@@ -109,7 +108,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yam
     .automation/test/yaml/yml_bad_1.yml
       10:1      warning  missing document start "---"  (document-start)
       11:16     error    syntax error: mapping values are not allowed here (syntax)
-    
-
 
 ```

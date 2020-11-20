@@ -33,6 +33,7 @@
 - File extensions:
   - `.cs`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -226,9 +227,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/csharp_d
 
 [SUCCESS] .automation/test/csharp/csharp_good_01.cs
       Formatting code files in workspace '.automation/test/csharp'.
-      Format complete in 1396ms.
-    
-
+      Format complete in 1181ms.
 
 ```
 
@@ -243,8 +242,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/csharp_d
       Formatting code files in workspace '.automation/test/csharp'.
       csharp/csharp_bad_01.cs(1,33): Fix whitespace formatting.
       Formatted code file '.automation/test/csharp/csharp_bad_01.cs'.
-      Format complete in 1489ms.
-    
-
+      Format complete in 1295ms.
 
 ```

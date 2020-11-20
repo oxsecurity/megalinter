@@ -40,6 +40,7 @@
 - File extensions:
   - `.dart`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -110,8 +111,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dar
 [SUCCESS] .automation/test/dart/dart_good_1.dart
     Analyzing .automation/test/dart/dart_good_1.dart...
     No issues found!
-    
-
 
 ```
 
@@ -126,7 +125,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dar
     Analyzing .automation/test/dart/dart_bad_1.dart...
       lint • Use `;` instead of `{}` for empty constructor bodies. • .automation/test/dart/dart_bad_1.dart:4:25 • empty_constructor_bodies
     1 lint found.
-    
-
 
 ```

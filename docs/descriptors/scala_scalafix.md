@@ -34,6 +34,7 @@
 - File extensions:
   - `.scala`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -211,8 +212,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_sc
 
 [SUCCESS] .automation/test/scala/scala_good_1.scala
     
-    
-
 
 ```
 
@@ -227,7 +226,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_sc
     .automation/test/scala/scala_bad_1.scala:3:34: error: [DisableSyntax.offensive] Please consider a less offensive word such as 'extension' or 'enrichment'
             println("Hello, world of pimps !")
                                      ^^^^
-    
-
 
 ```

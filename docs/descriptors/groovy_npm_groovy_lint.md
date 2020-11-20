@@ -42,6 +42,7 @@
 - File names:
   - `Jenkinsfile`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -124,8 +125,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_n
     │    1    │ 'Warning' │      0      │
     │    2    │  'Info'   │      0      │
     └─────────┴───────────┴─────────────┘
-    
-
 
 ```
 
@@ -153,7 +152,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_n
     Failure: 1 error(s) have been found 
      0 warning(s) have been found 
      1 info(s) have been found
-    
-
 
 ```

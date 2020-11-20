@@ -34,6 +34,7 @@
 - File names:
   - `Dockerfile`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -85,14 +86,11 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfi
     
     File:   .automation/test/docker/good/Dockerfile
     Issues: None found 👍
-    
 
 [SUCCESS] .automation/test/docker/good/Dockerfile.dev
     
     File:   .automation/test/docker/good/Dockerfile.dev
     Issues: None found 👍
-    
-
 
 ```
 
@@ -168,7 +166,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfi
                                                Dockerfile](https://github.com/docker-library/redis/blob/b375650fb6
                                                9b7db819e90c0033433c705b28656e/3.0/Dockerfile)
                                                and you should be able to easily see the instructions used.
-    
-
 
 ```

@@ -33,6 +33,7 @@
 - File extensions:
   - `.hcl`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -117,10 +118,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
-    [terragrunt] 2020/11/20 08:07:25 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
-    [terragrunt] 2020/11/20 08:07:25 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
-    
-
+    [terragrunt] 2020/11/20 09:20:32 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
+    [terragrunt] 2020/11/20 09:20:32 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
 
 ```
 
@@ -132,11 +131,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 08:07:25 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
-    [terragrunt] 2020/11/20 08:07:25 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 08:07:25 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 08:07:25 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
-    
-
+    [terragrunt] 2020/11/20 09:20:31 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
+    [terragrunt] 2020/11/20 09:20:31 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 09:20:31 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/11/20 09:20:31 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
 
 ```

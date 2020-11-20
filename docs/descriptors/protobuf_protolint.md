@@ -36,6 +36,7 @@
 - File extensions:
   - `.proto`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -93,8 +94,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/protobuf
 
 [SUCCESS] .automation/test/protobuf/protobuf_good_1.proto
     
-    
-
 
 ```
 
@@ -140,7 +139,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/protobuf
     [.automation/test/protobuf/protobuf_bad_1.proto:23:1] Message name "outer" must be UpperCamelCase
     [.automation/test/protobuf/protobuf_bad_1.proto:26:5] Message name "inner" must be UpperCamelCase
     [.automation/test/protobuf/protobuf_bad_1.proto:47:5] RPC name "search" must be UpperCamelCase
-    
-
 
 ```

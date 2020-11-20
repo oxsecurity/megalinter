@@ -41,6 +41,7 @@
 - File names:
   - `Snakefile`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -888,8 +889,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
 
 [SUCCESS] .automation/test/snakemake/snakemake_good_1.smk
     Congratulations, your workflow is in a good condition!
-    
-
 
 ```
 
@@ -915,7 +914,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
           Also see:
           https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#integrated-package-management
           https://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#running-jobs-in-containers
-    
-
 
 ```

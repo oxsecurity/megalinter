@@ -41,6 +41,7 @@
 - File extensions:
   - `.go`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -111,8 +112,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golan
 
 [SUCCESS] .automation/test/golang/golang_good_01.go
     
-    
-
 
 ```
 
@@ -125,10 +124,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golan
 
 [ERROR] .automation/test/golang/golang_bad_01.go
     level=error msg="[linters context] typechecking error: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if'"
-    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1009: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
+    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1021: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
     level=warning msg="[runner] Can't run linter unused: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
     level=error msg="Running error: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
-    
-
 
 ```

@@ -37,6 +37,7 @@
 - File names:
   - `Snakefile`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -120,8 +121,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
     
     
     [INFO] All 1 file(s) would be left unchanged 🎉
-    
-
 
 ```
 
@@ -153,7 +152,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
              touch {output}
     
     [INFO] 1 file(s) would be changed 😬
-    
-
 
 ```

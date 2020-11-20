@@ -40,6 +40,7 @@
 - File extensions:
   - `*`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -108,8 +109,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorco
 
 [SUCCESS] .automation/test/editorconfig-checker/editorconfig-checker_good_1.ext
     
-    
-
 
 ```
 
@@ -127,7 +126,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorco
     [31;1m	3: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
     [31;1m
     3 errors found[33;0m
-    
-
 
 ```

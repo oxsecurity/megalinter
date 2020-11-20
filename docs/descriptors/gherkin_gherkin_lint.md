@@ -33,6 +33,7 @@
 - File extensions:
   - `.feature`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -77,8 +78,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_
 
 [SUCCESS] .automation/test/gherkin/gherkin_good_01.feature
     
-    
-
 
 ```
 
@@ -94,7 +93,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_
       [38;5;243m8 [0m    Scenario name is already used in: .automation/test/gherkin/gherkin_bad_01.feature:4    [38;5;243mno-dupe-scenario-names[0m
       [38;5;243m11[0m    Trailing spaces are not allowed                                                                  [38;5;243mno-trailing-spaces[0m
       [38;5;243m12[0m    Multiple empty lines are not allowed                                                             [38;5;243mno-multiple-empty-lines[0m
-    
-
 
 ```

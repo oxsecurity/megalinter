@@ -34,6 +34,7 @@
 - File extensions:
   - `.tf`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -113,8 +114,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 
 [SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
     
-    
-
 
 ```
 
@@ -135,7 +134,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
        4: }
     
     Expected the start of an expression, but found an invalid expression token.
-    
-
 
 ```

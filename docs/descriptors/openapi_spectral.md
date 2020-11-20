@@ -49,6 +49,7 @@
   - `openapi:`
   - `swagger:`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -105,13 +106,10 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_
 [SUCCESS] .automation/test/openapi/openapi_good_1.yml
     OpenAPI 3.x detected
     No results with a severity of 'error' or higher found!
-    
 
 [SUCCESS] .automation/test/openapi/openapi_good_2.json
     OpenAPI 3.x detected
     No results with a severity of 'error' or higher found!
-    
-
 
 ```
 
@@ -133,7 +131,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_
      1:1  warning  openapi-tags      OpenAPI object should have non-empty `tags` array.
     
     ✖ 5 problems (1 error, 4 warnings, 0 infos, 0 hints)
-    
 
 [ERROR] .automation/test/openapi/openapi_bad_2.json
     OpenAPI 3.x detected
@@ -146,7 +143,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_
      1:1  warning  openapi-tags      OpenAPI object should have non-empty `tags` array.
     
     ✖ 5 problems (1 error, 4 warnings, 0 infos, 0 hints)
-    
-
 
 ```

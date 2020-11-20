@@ -33,6 +33,7 @@
 - File extensions:
   - `.graphql`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -79,8 +80,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_
     
     
     ✔ 0 errors detected
-    
-
 
 ```
 
@@ -96,7 +95,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_
     8:11 Unknown type "Book". invalid-graphql-schema
     
     ✖ 1 error detected
-    
-
 
 ```

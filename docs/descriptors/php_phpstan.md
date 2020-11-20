@@ -34,6 +34,7 @@
 - File extensions:
   - `.php`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -114,13 +115,10 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
 [SUCCESS] .automation/test/php/php_good_1.php
     
      [OK] No errors
-    
 
 [SUCCESS] .automation/test/php/php_good_2.php
     
      [OK] No errors
-    
-
 
 ```
 
@@ -151,7 +149,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
     ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_LNUMBER on line 3
     ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_STRING on line 3
     ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_STRING on line 3
-    
 
 [ERROR] .automation/test/php/php_bad_2.php
      ------ ----------------------------------------- 
@@ -163,7 +160,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
      [ERROR] Found 1 error                                                          
     
     ::error file=mp/lint/.automation/test/php/php_bad_2.php,line=15,col=0::Syntax error, unexpected '}' on line 15
-    
-
 
 ```

@@ -33,6 +33,7 @@
 - File extensions:
   - `.rs`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -115,9 +116,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_cli
     
     warning: 1 warning emitted
     
-        Finished dev [unoptimized + debuginfo] target(s) in 0.11s
-    
-
+        Finished dev [unoptimized + debuginfo] target(s) in 0.10s
 
 ```
 
@@ -146,7 +145,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_cli
     error: could not compile `megalinter`
     
     To learn more, run the command again with --verbose.
-    
-
 
 ```

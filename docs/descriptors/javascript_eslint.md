@@ -16,7 +16,6 @@
 
 eslint requires a custom configuration file applicable to your project.
 You can create it by typing `npx eslint --init` in the root of your repository
-
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
@@ -45,6 +44,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - File extensions:
   - `.js`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -148,8 +148,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascri
 
 [SUCCESS] .automation/test/javascript/javascript_good_1.js
     
-    
-
 
 ```
 
@@ -166,7 +164,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascri
       4:40  error  Parsing error: Unterminated regular expression
     
     ✖ 1 problem (1 error, 0 warnings)
-    
-
 
 ```

@@ -39,6 +39,7 @@
   - `kustomize.config.k8s.io`
   - `tekton`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -96,8 +97,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernet
 
 [SUCCESS] .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml
     PASS - .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml contains a valid Deployment (nginx-deployment)
-    
-
 
 ```
 
@@ -110,7 +109,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernet
 
 [ERROR] .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml
     ERR  - .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml: Missing 'metadata.name' key
-    
-
 
 ```

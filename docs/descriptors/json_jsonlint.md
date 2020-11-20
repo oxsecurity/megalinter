@@ -31,6 +31,7 @@
 - File extensions:
   - `.json`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -85,8 +86,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_jso
         "empty_object_spaces": 0
       }
     }
-    
-
 
 ```
 
@@ -112,7 +111,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_jso
         at Module.load (internal/modules/cjs/loader.js:1050:32)
         at Function.Module._load (internal/modules/cjs/loader.js:938:14)
         at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
-    
-
 
 ```

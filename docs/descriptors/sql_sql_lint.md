@@ -34,6 +34,7 @@
 - File extensions:
   - `.sql`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -84,8 +85,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_
 
 [SUCCESS] .automation/test/sql/sql_good_1.sql
     
-    
-
 
 ```
 
@@ -98,7 +97,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_
 
 [ERROR] .automation/test/sql/sql_bad_1.sql
     .automation/test/sql/sql_bad_1.sql:1 [sql-lint: missing-where] DELETE statement missing WHERE clause.
-    
-
 
 ```

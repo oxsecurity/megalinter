@@ -40,6 +40,7 @@
 - File extensions:
   - `.env`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -99,8 +100,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dote
 
 [SUCCESS] .automation/test/env/env_good_1.env
     
-    
-
 
 ```
 
@@ -121,7 +120,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dote
     .automation/test/env/env_bad_1.env:5 UnorderedKey: The DB_NAME key should go before the DEbUG_hTTP key
     
     Found 7 problems
-    
-
 
 ```

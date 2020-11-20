@@ -41,6 +41,7 @@
   - `.kt`
   - `.kts`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -149,8 +150,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_k
 
 [SUCCESS] .automation/test/kotlin/kotlint_good_1.kt
     
-    
-
 
 ```
 
@@ -167,7 +166,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_k
     .automation/test/kotlin/kotlin_bad_1.kt:3:16: Redundant curly braces
     .automation/test/kotlin/kotlin_bad_1.kt:3:27: Unnecessary semicolon
     .automation/test/kotlin/kotlin_bad_1.kt:5:15: Unnecessary semicolon
-    
-
 
 ```

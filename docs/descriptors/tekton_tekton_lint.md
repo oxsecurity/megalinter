@@ -37,6 +37,7 @@
 - Detected file content:
   - `apiVersion: tekton`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -94,8 +95,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/tekton_t
     warning (20,14,20,20): Invalid image: 'ubuntu'. Specify the image tag instead of using ':latest'
     warning (22,14,22,51): Invalid image: 'gcr.io/example-builders/build-example'. Specify the image tag instead of using ':latest'
     warning (26,14,26,50): Invalid image: 'gcr.io/example-builders/push-example'. Specify the image tag instead of using ':latest'
-    
-
 
 ```
 
@@ -112,7 +111,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/tekton_t
     warning (22,14,22,51): Invalid image: 'gcr.io/example-builders/build-example'. Specify the image tag instead of using ':latest'
     warning (26,14,26,50): Invalid image: 'gcr.io/example-builders/push-example'. Specify the image tag instead of using ':latest'
     error   (29,17,29,31): Task 'example-task-name' wants to mount volume 'example-volume' in step 'dockerfile-pushexample', but this volume is not defined.
-    
-
 
 ```

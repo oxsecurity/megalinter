@@ -32,6 +32,7 @@
   - `.c`
   - `.h`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -269,8 +270,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/c_cpplin
 
 [SUCCESS] .automation/test/c/c_good_01.c
     Done processing .automation/test/c/c_good_01.c
-    
-
 
 ```
 
@@ -286,7 +285,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/c_cpplin
     .automation/test/c/c_bad_01.c:6:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
     Done processing .automation/test/c/c_bad_01.c
     Total errors found: 2
-    
-
 
 ```

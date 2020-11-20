@@ -38,6 +38,7 @@
   - `.pl6`
   - `.p6`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -146,8 +147,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_rak
 
 [SUCCESS] .automation/test/raku/raku_good_1.raku
     Syntax OK
-    
-
 
 ```
 
@@ -163,7 +162,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_rak
     Variable '$foo' is not declared.  Did you mean '@foo'?
     at .automation/test/raku/raku_bad_1.raku:4
     ------> [32m<BOL>[33m⏏[31m$foo[1] = 42[0m
-    
-
 
 ```

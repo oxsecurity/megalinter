@@ -38,6 +38,7 @@
 
 ### How are identified applicable files
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -119,9 +120,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
 [SUCCESS] .automation/test/copypaste/good
     HTML report saved to report/copy-paste/html/
     Markdown report saved to report/copy-paste/jscpd-report.md
-    Detection time:: 29.111ms
-    
-
+    Detection time:: 28.123ms
 
 ```
 
@@ -145,7 +144,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
         at /node_modules/@jscpd/finder/dist/in-files-detector.js:80:26
         at Array.forEach (<anonymous>)
         at /node_modules/@jscpd/finder/dist/in-files-detector.js:79:28
-    
-
 
 ```

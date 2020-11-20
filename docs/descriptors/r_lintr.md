@@ -37,6 +37,7 @@
   - `.Rmd`
   - `.RMD`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -79,8 +80,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
     Warning message:
     In readLines(filename) :
       incomplete final line found on '.automation/test/r/r_good_1.r'
-    
-
 
 ```
 
@@ -118,7 +117,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
     style:.automation/test/r/r_bad_1.r:40:8::Put spaces around all infix operators.
     style:.automation/test/r/r_bad_1.r:40:9::Place a space before left parenthesis, except in a function call.
     style:.automation/test/r/r_bad_1.r:43:1::Trailing blank lines are superfluous.
-    
-
 
 ```

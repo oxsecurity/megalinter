@@ -45,6 +45,7 @@
   - `.scss`
   - `.saas`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -227,8 +228,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_styl
 
 [SUCCESS] .automation/test/css/css_good_01.css
     
-    
-
 
 ```
 
@@ -252,7 +251,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_styl
      8:5   ✖  Expected indentation of 2 spaces     indentation              
      8:12  ✖  Expected "#AAAAAA" to be "#aaaaaa"   color-hex-case           
      8:12  ✖  Expected "#AAAAAA" to be "#AAA"      color-hex-length
-    
-
 
 ```

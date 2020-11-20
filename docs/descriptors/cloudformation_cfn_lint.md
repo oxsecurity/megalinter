@@ -47,6 +47,7 @@
   - `AWSTemplateFormatVersion`
   - `(AWS|Alexa|Custom)::`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -137,20 +138,15 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudfor
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
     
-    
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_2.yaml
-    
     
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_3.json
     
-    
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_4.yaml
     
-    
-
 
 ```
 
@@ -164,22 +160,17 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudfor
 [ERROR] .automation/test/cloudformation/cloudformation_bad_1.json
     E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
     .automation/test/cloudformation/cloudformation_bad_1.json:6:10
-    
 
 [ERROR] .automation/test/cloudformation/cloudformation_bad_2.yaml
     E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
     .automation/test/cloudformation/cloudformation_bad_2.yaml:5:5
-    
 
 [ERROR] .automation/test/cloudformation/cloudformation_bad_3.json
     E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
     .automation/test/cloudformation/cloudformation_bad_3.json:11:13
-    
 
 [ERROR] .automation/test/cloudformation/cloudformation_bad_4.yaml
     E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
     .automation/test/cloudformation/cloudformation_bad_4.yaml:9:7
-    
-
 
 ```

@@ -41,6 +41,7 @@
   - `.h++`
   - `.cuh`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -278,8 +279,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cppl
 
 [SUCCESS] .automation/test/cpp/cpp_good_01.cpp
     Done processing .automation/test/cpp/cpp_good_01.cpp
-    
-
 
 ```
 
@@ -295,7 +294,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cppl
     .automation/test/cpp/cpp_bad_01.cpp:6:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
     Done processing .automation/test/cpp/cpp_bad_01.cpp
     Total errors found: 2
-    
-
 
 ```

@@ -35,6 +35,7 @@
   - `.dash`
   - `.ksh`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -98,8 +99,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_bas
 
 [SUCCESS] .automation/test/shell/shell_good_1.sh
     
-    
-
 
 ```
 
@@ -112,7 +111,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_bas
 
 [ERROR] .automation/test/shell/shell_bad_1.sh
     Error: File:[.automation/test/shell/shell_bad_1.sh] is not executable
-    
-
 
 ```

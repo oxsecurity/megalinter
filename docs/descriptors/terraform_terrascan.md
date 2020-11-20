@@ -38,6 +38,7 @@
 - File extensions:
   - `.tf`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -99,8 +100,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
             medium: 0
             high: 0
             total: 0
-    
-
 
 ```
 
@@ -128,7 +127,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
             medium: 1
             high: 0
             total: 1
-    
-
 
 ```

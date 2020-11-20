@@ -41,6 +41,7 @@
 - File extensions:
   - `.py`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -204,8 +205,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_p
 
 [SUCCESS] .automation/test/python/python_good_1.py
     
-    
-
 
 ```
 
@@ -219,7 +218,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_p
 [ERROR] .automation/test/python/python_bad_1.py
     ************* Module python_bad_1
     .automation/test/python/python_bad_1.py:15:24: E0001: invalid syntax (<unknown>, line 15) (syntax-error)
-    
-
 
 ```

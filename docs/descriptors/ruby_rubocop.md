@@ -43,6 +43,7 @@
 - File extensions:
   - `.rb`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -179,8 +180,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rub
     .
     
     1 file inspected, no offenses detected
-    
-
 
 ```
 
@@ -215,7 +214,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rub
                 ^
     
     1 file inspected, 6 offenses detected
-    
-
 
 ```

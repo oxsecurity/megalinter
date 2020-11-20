@@ -41,6 +41,7 @@
 - File extensions:
   - `.java`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -136,8 +137,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_che
 [SUCCESS] .automation/test/java/java_good_1.java
     Starting audit...
     Audit done.
-    
-
 
 ```
 
@@ -158,7 +157,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_che
     [ERROR] .automation/test/java/java_bad_1.java:5:5: '{' at column 5 should be on the previous line. [LeftCurly]
     Audit done.
     Checkstyle ends with 6 errors.
-    
-
 
 ```

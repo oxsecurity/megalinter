@@ -34,6 +34,7 @@
 - File extensions:
   - `.tex`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -143,8 +144,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_ch
 
 [SUCCESS] .automation/test/latex/latex_good_1.tex
     
-    
-
 
 ```
 
@@ -494,7 +493,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_ch
     
     Warning 17 in .automation/test/latex/latex_bad_1.tex line 232: Number of `{' doesn't match the number of `}'!
     [7m[0m
-    
-
 
 ```

@@ -40,6 +40,7 @@
 - File extensions:
   - `.ts`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -102,8 +103,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
 
 [SUCCESS] .automation/test/typescript/typescript_good_1.ts
     
-    
-
 
 ```
 
@@ -117,7 +116,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
 [ERROR] .automation/test/typescript/typescript_bad_1.ts
     standard: Use JavaScript Standard Style (https://standardjs.com)
       .automation/test/typescript/typescript_bad_1.ts:5:39: Parsing error: Unterminated regular expression literal.
-    
-
 
 ```

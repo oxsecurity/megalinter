@@ -40,6 +40,7 @@
 - File extensions:
   - `.js`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -99,8 +100,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascri
 
 [SUCCESS] .automation/test/javascript/javascript_good_1.js
     
-    
-
 
 ```
 
@@ -114,7 +113,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascri
 [ERROR] .automation/test/javascript/javascript_bad_1.js
     standard: Use JavaScript Standard Style (https://standardjs.com)
       .automation/test/javascript/javascript_bad_1.js:4:40: Parsing error: Unterminated regular expression
-    
-
 
 ```

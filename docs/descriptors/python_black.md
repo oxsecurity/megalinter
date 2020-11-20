@@ -43,6 +43,7 @@
 - File extensions:
   - `.py`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -150,8 +151,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
 [SUCCESS] .automation/test/python/python_good_1.py
     All done! ✨ 🍰 ✨
     1 file would be left unchanged.
-    
-
 
 ```
 
@@ -166,7 +165,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
     error: cannot format .automation/test/python/python_bad_1.py: Cannot parse: 15:23: if github_token is None
     Oh no! 💥 💔 💥
     1 file would fail to reformat.
-    
-
 
 ```

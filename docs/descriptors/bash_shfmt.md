@@ -34,6 +34,7 @@
   - `.dash`
   - `.ksh`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -102,8 +103,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shf
 
 [SUCCESS] .automation/test/shell_shfmt/shell-shfmt_good_1.sh
     
-    
-
 
 ```
 
@@ -133,7 +132,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shf
     +    echo "${HELLO_WORLD}"
     +    exit 1
      fi
-    
-
 
 ```

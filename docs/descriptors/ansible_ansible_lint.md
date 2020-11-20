@@ -36,6 +36,7 @@
   - `.yml`
   - `.yaml`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -106,8 +107,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
-    
-
 
 ```
 
@@ -143,7 +142,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_
       File "/usr/lib/python3.8/genericpath.py", line 152, in _check_arg_types
         raise TypeError(f'{funcname}() argument must be str, bytes, or '
     TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
-    
-
 
 ```

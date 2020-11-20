@@ -41,6 +41,7 @@
 - File extensions:
   - `.php`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -233,7 +234,7 @@ RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 ### Example success log
 
 ```shell
-Results of psalm linter (version 4.1.1)
+Results of psalm linter (version 4.2.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
 -----------------------------------------------
 
@@ -246,9 +247,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     No errors found!
     ------------------------------
     
-    Checks took 0.24 seconds and used 37.498MB of memory
+    Checks took 0.22 seconds and used 38.143MB of memory
     Psalm was unable to infer types in the codebase
-    
 
 [SUCCESS] .automation/test/php/php_good_2.php
     Scanning files...
@@ -259,17 +259,15 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     No errors found!
     ------------------------------
     
-    Checks took 0.27 seconds and used 34.796MB of memory
+    Checks took 0.25 seconds and used 35.475MB of memory
     Psalm was unable to infer types in the codebase
-    
-
 
 ```
 
 ### Example error log
 
 ```shell
-Results of psalm linter (version 4.1.1)
+Results of psalm linter (version 4.2.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
 -----------------------------------------------
 
@@ -343,9 +341,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     [0;31m15 errors[0m found
     ------------------------------
     
-    Checks took 0.24 seconds and used 37.678MB of memory
+    Checks took 0.22 seconds and used 38.325MB of memory
     Psalm was unable to infer types in the codebase
-    
 
 [ERROR] .automation/test/php/php_bad_2.php
     Scanning files...
@@ -378,9 +375,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     to see what it can fix.
     ------------------------------
     
-    Checks took 0.25 seconds and used 33.894MB of memory
+    Checks took 0.23 seconds and used 34.656MB of memory
     Psalm was unable to infer types in the codebase
-    
-
 
 ```

@@ -34,6 +34,7 @@
 - File extensions:
   - `.coffee`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -96,8 +97,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_c
          ⚡ #65-65: Line contains inconsistent indentation. (indentation) Expected 2 got 3.
     
     ⚡ Warning! » 0 errors and 1 warning in 1 file
-    
-
 
 ```
 
@@ -115,7 +114,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_c
                                 ^. (coffeescript_error)
     
     ✗ Lint! » 1 error and 0 warnings in 1 file
-    
-
 
 ```

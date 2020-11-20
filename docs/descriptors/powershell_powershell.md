@@ -40,6 +40,7 @@
   - `.psrc`
   - `.cdxml`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -390,16 +391,12 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.ps1
     
-    
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.psd1
-    
     
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.psm1
     
-    
-
 
 ```
 
@@ -421,6 +418,12 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
                                                                        throw statem
                                                                       ents in catch
                                                                        blocks.
+    PSUseDeclaredVarsMoreThanAssignment Warning      powershell 9     The variable
+    s                                                _bad_1.ps1       'VariableThat
+                                                                      IsNotUsedLate
+                                                                      r' is assigne
+                                                                      d but never u
+                                                                      sed.
     PSAvoidTrailingWhitespace           Information  powershell 11    Line has trai
                                                      _bad_1.ps1       ling whitespa
                                                                       ce
@@ -466,13 +469,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
                                                                       String for mo
                                                                       re informatio
                                                                       n.
-    PSUseDeclaredVarsMoreThanAssignment Warning      powershell 9     The variable
-    s                                                _bad_1.ps1       'VariableThat
-                                                                      IsNotUsedLate
-                                                                      r' is assigne
-                                                                      d but never u
-                                                                      sed.
-    
 
 [ERROR] .automation/test/powershell/powershell_bad_1.psd1
     
@@ -487,7 +483,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
                                                      1                tement block
                                                                       or type defin
                                                                       ition.
-    
 
 [ERROR] .automation/test/powershell/powershell_bad_1.psm1
     
@@ -497,7 +492,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
                                                      _bad_1.psm        missing the
                                                      1                terminator: "
                                                                       .
-    
-
 
 ```

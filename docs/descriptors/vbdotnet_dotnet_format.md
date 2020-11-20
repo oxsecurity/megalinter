@@ -33,6 +33,7 @@
 - File extensions:
   - `.vb`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -219,9 +220,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/vbdotnet
 
 [SUCCESS] .automation/test/vbdotnet/vbdotnet_good_1.vb
       Formatting code files in workspace '.automation/test/vbdotnet'.
-      Format complete in 1204ms.
-    
-
+      Format complete in 1063ms.
 
 ```
 
@@ -238,8 +237,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/vbdotnet
       vbdotnet/vbdotnet_bad_1.vb(4,20): Fix whitespace formatting.
       vbdotnet/vbdotnet_bad_1.vb(5,7): Fix whitespace formatting.
       Formatted code file '.automation/test/vbdotnet/vbdotnet_bad_1.vb'.
-      Format complete in 1313ms.
-    
-
+      Format complete in 1188ms.
 
 ```

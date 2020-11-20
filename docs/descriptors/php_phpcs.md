@@ -34,6 +34,7 @@
 - File extensions:
   - `.php`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -151,12 +152,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpc
 
 [SUCCESS] .automation/test/php/php_good_1.php
     
-    
 
 [SUCCESS] .automation/test/php/php_good_2.php
     
-    
-
 
 ```
 
@@ -184,8 +182,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpc
     PHPCBF CAN FIX THE 7 MARKED SNIFF VIOLATIONS AUTOMATICALLY
     ----------------------------------------------------------------------
     
-    Time: 52ms; Memory: 6MB
-    
+    Time: 40ms; Memory: 6MB
 
 [ERROR] .automation/test/php/php_bad_2.php
     
@@ -208,8 +205,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpc
     PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
     ----------------------------------------------------------------------
     
-    Time: 44ms; Memory: 6MB
-    
-
+    Time: 39ms; Memory: 6MB
 
 ```

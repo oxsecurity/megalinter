@@ -31,6 +31,7 @@
 - File extensions:
   - `.xml`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -143,8 +144,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmll
       <heading>Reminder</heading>
       <body>Don't forget me this weekend!</body>
     </note>
-    
-
 
 ```
 
@@ -159,7 +158,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmll
     .automation/test/xml/xml_bad_1.xml:7: parser error : EndTag: '</' not found
     
     ^
-    
-
 
 ```

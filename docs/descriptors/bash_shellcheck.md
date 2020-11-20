@@ -34,6 +34,7 @@
   - `.dash`
   - `.ksh`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -84,8 +85,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_she
 
 [SUCCESS] .automation/test/shell/shell_good_1.sh
     
-    
-
 
 ```
 
@@ -109,7 +108,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_she
       https://www.shellcheck.net/wiki/SC1020 -- You need a space before the ].
       https://www.shellcheck.net/wiki/SC1072 -- Missing space before ]. Fix any m...
       https://www.shellcheck.net/wiki/SC1073 -- Couldn't parse this test expressi...
-    
-
 
 ```

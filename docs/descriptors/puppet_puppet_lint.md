@@ -35,6 +35,7 @@
 - File extensions:
   - `.pp`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -171,8 +172,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_p
 
 [SUCCESS] .automation/test/puppet/puppet_good_1.pp
     
-    
-
 
 ```
 
@@ -188,7 +187,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_p
     WARNING: double quoted string containing no variables on line 5
     WARNING: line has more than 140 characters on line 7
     WARNING: class not documented on line 1
-    
-
 
 ```

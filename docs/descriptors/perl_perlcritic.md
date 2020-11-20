@@ -45,6 +45,7 @@
   - `#!/usr/bin/env perl`
   - `#!/usr/bin/perl`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -102,12 +103,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_per
 
 [SUCCESS] .automation/test/perl/perl_good_1.pl
     .automation/test/perl/perl_good_1.pl source OK
-    
 
 [SUCCESS] .automation/test/perl/perl_good_2
     .automation/test/perl/perl_good_2 source OK
-    
-
 
 ```
 
@@ -120,7 +118,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_per
 
 [ERROR] .automation/test/perl/perl_bad_1.pl
     Code before strictures are enabled at line 14, column 1.  See page 429 of PBP.  (Severity: 5)
-    
-
 
 ```

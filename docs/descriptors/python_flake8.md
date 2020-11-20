@@ -34,6 +34,7 @@
 - File extensions:
   - `.py`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -166,8 +167,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_f
 
 [SUCCESS] .automation/test/python/python_good_1.py
     
-    
-
 
 ```
 
@@ -195,7 +194,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_f
     .automation/test/python/python_bad_1.py:110:1: E302 expected 2 blank lines, found 1
     .automation/test/python/python_bad_1.py:153:1: E305 expected 2 blank lines after class or function definition, found 1
     .automation/test/python/python_bad_1.py:156:18: E261 at least two spaces before inline comment
-    
-
 
 ```

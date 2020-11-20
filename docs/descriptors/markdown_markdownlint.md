@@ -36,6 +36,7 @@
 - File extensions:
   - `.md`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -87,8 +88,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
 
 [SUCCESS] .automation/test/markdown/markdown_good_1.md
     
-    
-
 
 ```
 
@@ -105,7 +104,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
     .automation/test/markdown/markdown_bad_1.md:11:1 MD007/ul-indent Unordered list indentation [Expected: 4; Actual: 6]
     .automation/test/markdown/markdown_bad_1.md:13 MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
     .automation/test/markdown/markdown_bad_1.md:20:16 MD034/no-bare-urls Bare URL used [Context: "https://github.com"]
-    
-
 
 ```

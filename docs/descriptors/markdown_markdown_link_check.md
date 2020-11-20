@@ -33,6 +33,7 @@
 - File extensions:
   - `.md`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -79,8 +80,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
     [✓] https://github.com
     
     1 links checked.
-    
-
 
 ```
 
@@ -102,7 +101,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown
     
     ERROR: 1 dead links found!
     [✖] http://www.glouglouglglsdgdfgfdgsfgdfgdf.com → Status: 0
-    
-
 
 ```

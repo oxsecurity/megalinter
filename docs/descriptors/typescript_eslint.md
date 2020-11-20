@@ -16,7 +16,6 @@
 
 eslint requires a custom configuration file applicable to your project.
 You can create it by typing `npx eslint --init` in the root of your repository
-
 ### eslint configuration
 
 - [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
@@ -45,6 +44,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - File extensions:
   - `.ts`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -153,8 +153,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
 
 [SUCCESS] .automation/test/typescript/typescript_good_1.ts
     
-    
-
 
 ```
 
@@ -171,7 +169,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
       5:39  error  Parsing error: Unterminated regular expression literal
     
     ✖ 1 problem (1 error, 0 warnings)
-    
-
 
 ```

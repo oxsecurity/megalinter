@@ -41,6 +41,7 @@
   - `.scss`
   - `.saas`
 
+<!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 
 ### Example calls
@@ -89,8 +90,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_scss
 
 [SUCCESS] .automation/test/scss/scss_good_01.scss
     
-    
-
 
 ```
 
@@ -103,7 +102,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_scss
 
 [ERROR] .automation/test/scss/scss_bad_01.scss
     .automation/test/scss/scss_bad_01.scss:15:1 [E] Syntax: Syntax Error: Invalid CSS after "  }": expected selector or at-rule, was "}"
-    
-
 
 ```
