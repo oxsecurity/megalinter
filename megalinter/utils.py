@@ -70,7 +70,7 @@ def list_descriptor_files():
 
 # Extract descriptor info from descriptor file
 def build_descriptor_info(file):
-    with open(file) as f:
+    with open(file, "r", encoding="utf-8") as f:
         language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
     return language_descriptor
 
@@ -81,7 +81,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
         linter_names = []
     linters = []
     # Dynamic generation from yaml
-    with open(file) as f:
+    with open(file, "r", encoding="utf-8") as f:
         language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
 
         # Build common attributes

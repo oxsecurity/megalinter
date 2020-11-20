@@ -232,13 +232,13 @@ def test_get_linter_version(linter, test_self):
     versions_file = root_dir + os.path.sep + "/linter-versions.json"
     data = {}
     if os.path.isfile(versions_file):
-        with open(versions_file) as json_file:
+        with open(versions_file, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
     if (
         linter.linter_name in data and data[linter.linter_name] != version
     ) or linter.linter_name not in data:
         data[linter.linter_name] = version
-        with open(versions_file, "w") as outfile:
+        with open(versions_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
 
@@ -273,13 +273,13 @@ def test_get_linter_help(linter, test_self):
         )
         help_lines_clean += [line_clean]
     if os.path.isfile(helps_file):
-        with open(helps_file) as json_file:
+        with open(helps_file, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
     if (
         linter.linter_name in data and data[linter.linter_name] != help_lines_clean
     ) or linter.linter_name not in data:
         data[linter.linter_name] = help_lines_clean
-        with open(helps_file, "w") as outfile:
+        with open(helps_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
 
