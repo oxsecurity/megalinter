@@ -18,6 +18,7 @@ if os.path.isfile(config_file):
 else:
     logging.info(f"No {config_file} config file found: use only environment variables")
 
+
 def get(config_var=None, default=None):
     if config_var is None:
         return RUNTIME_CONFIG
