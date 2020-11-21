@@ -36,14 +36,14 @@
 
 ## IDE Integration
 
-Use clj-kondo in your favorites IDE to catch errors before CI
+Use clj-kondo in your favorite IDE to catch errors before Mega-Linter !
 
-| IDE | Extension Name |
-| ----------------- | -------------- |
-| [Atom](https://atom.io/) | [linter-kondo](https://atom.io/packages/linter-kondo) |
-| [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo) |
-| [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) |
-| [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint) |
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-kondo](https://atom.io/packages/linter-kondo) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint) |
 
 ## Behind the scenes
 

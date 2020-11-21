@@ -29,6 +29,15 @@
 | PROTOBUF_PROTOLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PROTOBUF_PROTOLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use protolint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [Protocol Buffer Linter](https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Protolint](https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

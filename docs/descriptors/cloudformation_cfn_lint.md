@@ -36,13 +36,13 @@
 
 ## IDE Integration
 
-Use cfn-lint in your favorites IDE to catch errors before CI
+Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
 
-| IDE | Extension Name |
-| ----------------- | -------------- |
-| [Atom](https://atom.io/) | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint) |
-| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) |
-| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) |
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) |
 
 ## Behind the scenes
 

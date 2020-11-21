@@ -538,7 +538,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if hasattr(linter, 'ide'):
             linter_doc_md += ["", "## IDE Integration", ""]
             linter_doc_md += [
-                f"Use {linter.linter_name} in your favorites IDE to catch errors before CI", ""]
+                f"Use {linter.linter_name} in your favorite IDE to catch errors before Mega-Linter !", ""]
             linter_doc_md += [
                 "| <!-- --> | IDE | Extension Name |",
                 "| :--: | ----------------- | -------------- |",
@@ -556,7 +556,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         32,
                     )
                     linter_doc_md += [
-                        f"| {icon_html}| {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
+                        f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
 
         # Behind the scenes section

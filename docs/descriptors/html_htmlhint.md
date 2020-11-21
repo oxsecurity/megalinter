@@ -29,14 +29,14 @@
 
 ## IDE Integration
 
-Use htmlhint in your favorites IDE to catch errors before CI
+Use htmlhint in your favorite IDE to catch errors before Mega-Linter !
 
-| IDE | Extension Name |
-| ----------------- | -------------- |
-| [Atom](https://atom.io/) | [atom-htmlhint](https://github.com/htmlhint/atom-htmlhint) |
-| [Brackets](http://brackets.io/) | [brackets-htmlhint](https://github.com/htmlhint/brackets-htmlhint) |
-| [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-htmlhint](https://github.com/htmlhint/SublimeLinter-contrib-htmlhint) |
-| [Visual Studio Code](https://code.visualstudio.com/) | [vscode-htmlhint](https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint) |
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-htmlhint](https://github.com/htmlhint/atom-htmlhint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-htmlhint](https://github.com/htmlhint/brackets-htmlhint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-htmlhint](https://github.com/htmlhint/SublimeLinter-contrib-htmlhint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-htmlhint](https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint) |
 
 ## Behind the scenes
 

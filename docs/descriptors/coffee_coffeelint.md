@@ -29,12 +29,12 @@
 
 ## IDE Integration
 
-Use coffeelint in your favorites IDE to catch errors before CI
+Use coffeelint in your favorite IDE to catch errors before Mega-Linter !
 
-| IDE | Extension Name |
-| ----------------- | -------------- |
-| [Atom](https://atom.io/) | [linter-coffeelint](https://atom.io/packages/linter-coffeelint) |
-| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) |
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-coffeelint](https://atom.io/packages/linter-coffeelint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) |
 
 ## Behind the scenes
 

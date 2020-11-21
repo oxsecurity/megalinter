@@ -35,12 +35,12 @@
 
 ## IDE Integration
 
-Use dartanalyzer in your favorites IDE to catch errors before CI
+Use dartanalyzer in your favorite IDE to catch errors before Mega-Linter !
 
-| IDE | Extension Name |
-| ----------------- | -------------- |
-| [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
-| [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
 
 ## Behind the scenes
 
