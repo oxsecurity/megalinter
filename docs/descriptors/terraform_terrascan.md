@@ -40,7 +40,7 @@
 ### Example calls
 
 ```shell
-terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f myfile.tf
+terrascan scan -i terraform -t all -f myfile.tf
 ```
 
 

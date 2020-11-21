@@ -25,15 +25,15 @@ linters:
     linter_banner_image_url: https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png
     cli_lint_extra_args:
       - "scan"
-      - "-p"
-      - "/root/.terrascan/pkg/policies/opa/rego/"
+      - "-i"
+      - "terraform"
       - "-t"
-      - "aws"
+      - "all"
       - "-f"
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
-      - "terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f myfile.tf"
+      - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
         - FROM accurics/terrascan:latest as terrascan
