@@ -9,9 +9,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-env:
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
 ###############
 # Set the Job #
 ###############
@@ -42,7 +39,7 @@ jobs:
       # Get the current date #
       ########################
       - name: Get current date
-        run: echo "::set-env name=BUILD_DATE::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       ###################################
       # Build image locally for testing #
@@ -57,7 +54,7 @@ jobs:
       #####################################
       - name: Collect latest versions and help
         shell: bash
-        run: docker run -e UPGRADE_LINTERS_VERSION=true -e DEFAULT_BRANCH=master -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
         timeout-minutes: 30
 
       # Upload Mega-Linter artifacts

@@ -1,8 +1,20 @@
 #!/usr/bin/env python3
+import logging
 import os
 
 # Initialize runtime config
+import yaml
+
+import megalinter
+
 RUNTIME_CONFIG = os.environ.copy()
+config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
+config_file = megalinter.utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
+# if .megalinter.yml is found, merge its values with environment variables (with priority to env values)
+if os.path.isfile(config_file):
+    config = yaml.load(config_file, Loader=yaml.FullLoader)
+    RUNTIME_CONFIG = {**config, **RUNTIME_CONFIG}
+    logging.info(f"Merged environment variables into config found in {config_file}")
 
 
 def get(config_var=None, default=None):

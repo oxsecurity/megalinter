@@ -1,0 +1,7 @@
+# Configuration file for Mega-Linter
+# See all available variables at https://nvuillam.github.io/mega-linter/#configuration and in linters documentation
+
+FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|lib/)'
+MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
+DISABLE: CLOUDFORMATION,TEKTON
+DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT
