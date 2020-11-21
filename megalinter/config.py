@@ -6,6 +6,7 @@ import os
 import yaml
 from megalinter import utils
 
+print("NICO")
 RUNTIME_CONFIG = os.environ.copy()
 config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
 config_file = utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
