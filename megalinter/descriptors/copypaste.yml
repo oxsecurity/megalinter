@@ -5,6 +5,7 @@ linters:
   # JSCPD
   - linter_name: jscpd
     linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
+    linter_repo: https://github.com/kucherenko/jscpd
     linter_banner_image_url: https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true
     linter_rules_configuration_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file
     linter_rules_inline_disable_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks

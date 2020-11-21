@@ -47,6 +47,7 @@ linters:
     files_names_not_ends_with:
       - ".tflint.hcl"
     linter_url: https://terragrunt.gruntwork.io
+    linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     config_file_name: terragrunt.hcl

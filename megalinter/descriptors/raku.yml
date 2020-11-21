@@ -12,6 +12,7 @@ linters:
   - class: RakuLinter
     linter_name: raku
     linter_url: https://raku.org/
+    linter_repo: https://github.com/rakudo/rakudo
     linter_image_url: https://raku.org/camelia-logo.png
     config_file_name: META6.json
     cli_lint_extra_args:

@@ -9,6 +9,7 @@ linters:
   - linter_name: stylelint
     name: CSS_STYLELINT
     linter_url: https://stylelint.io
+    linter_repo: https://github.com/stylelint/stylelint
     linter_banner_image_url: https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png
     linter_rules_configuration_url: https://stylelint.io/user-guide/configure
     linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code

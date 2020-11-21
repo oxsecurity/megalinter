@@ -30,6 +30,7 @@ linters:
   # PHP Built in Linter
   - linter_name: php
     linter_url: https://www.php.net
+    linter_repo: https://github.com/php/php-src
     linter_banner_image_url: https://www.php.net/images/logos/new-php-logo.svg
     name: PHP_BUILTIN
     cli_lint_extra_args:
@@ -101,6 +102,7 @@ linters:
   - linter_name: psalm
     name: PHP_PSALM
     linter_url: https://psalm.dev
+    linter_repo: https://github.com/vimeo/psalm
     linter_banner_image_url: https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1
     linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
