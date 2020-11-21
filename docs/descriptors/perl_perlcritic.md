@@ -9,17 +9,14 @@
 
 ## Linter
 
-- Web Site: [**https://metacpan.org/pod/Perl::Critic**](https://metacpan.org/pod/Perl::Critic)
-- Version: **1.138**
+## perlcritic documentation
 
-## Configuration
+- Version in Mega-Linter: **1.138**
+- Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic)
+- See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION)
+- See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES)
 
-### perlcritic configuration
-
-- [Configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION)
-- [Disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES)
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

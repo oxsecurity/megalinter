@@ -9,18 +9,15 @@
 
 ## Linter
 
-- Web Site: [**https://psalm.dev**](https://psalm.dev)
-- Version: **4.2.1**
+## psalm documentation
 
-## Configuration
-
-### psalm configuration
-
-- [Configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
+- Version in Mega-Linter: **4.2.1**
+- Visit [Official Web Site](https://psalm.dev)
+- See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
   - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml) will be used
-- [Disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
+- See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
 
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

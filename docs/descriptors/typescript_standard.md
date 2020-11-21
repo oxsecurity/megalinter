@@ -9,17 +9,14 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/standard/standard**](https://github.com/standard/standard#readme)
-- Version: **15.0.1**
+## standard documentation
 
-## Configuration
+- Version in Mega-Linter: **15.0.1**
+- Visit [Official Web Site](https://github.com/standard/standard#readme)
 
-### standard configuration
+[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard)
 
-- standard has no known capability to configure custom rules
-- standard has no known capability to inline-disable rules
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

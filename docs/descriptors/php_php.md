@@ -9,17 +9,12 @@
 
 ## Linter
 
-- Web Site: [**https://www.php.net**](https://www.php.net)
-- Version: **7.3.24**
+## php documentation
 
-## Configuration
+- Version in Mega-Linter: **7.3.24**
+- Visit [Official Web Site](https://www.php.net)
 
-### php configuration
-
-- php has no known capability to configure custom rules
-- php has no known capability to inline-disable rules
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

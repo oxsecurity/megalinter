@@ -12,7 +12,7 @@
 - Detected file content:
   - `apiVersion: tekton`
 
-## Mega-linter configuration
+## Configuration in Mega-Linter
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

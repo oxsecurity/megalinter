@@ -15,7 +15,7 @@
   - `#!/usr/bin/env perl`
   - `#!/usr/bin/perl`
 
-## Mega-linter configuration
+## Configuration in Mega-Linter
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

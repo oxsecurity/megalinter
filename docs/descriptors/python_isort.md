@@ -9,18 +9,15 @@
 
 ## Linter
 
-- Web Site: [**https://pycqa.github.io/isort/**](https://pycqa.github.io/isort/)
-- Version: **5.6.4**
+## isort documentation
 
-## Configuration
-
-### isort configuration
-
-- [Configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/)
+- Version in Mega-Linter: **5.6.4**
+- Visit [Official Web Site](https://pycqa.github.io/isort/)
+- See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/)
   - If custom .isort.cfg is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg) will be used
-- [Disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/)
+- See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/)
 
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

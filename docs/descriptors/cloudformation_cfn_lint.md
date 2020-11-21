@@ -9,18 +9,15 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/martysweet/cfn-lint**](https://github.com/martysweet/cfn-lint#readme)
-- Version: **0.41.0**
+## cfn-lint documentation
 
-## Configuration
-
-### cfn-lint configuration
-
-- cfn-lint has no known capability to configure custom rules
+- Version in Mega-Linter: **0.41.0**
+- Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme)
   - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
-- cfn-lint has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint)
+
+## Configuration in Mega-Linter
 
 - Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

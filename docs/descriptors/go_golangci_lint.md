@@ -9,18 +9,17 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
-- Version: **1.32.2**
+## golangci-lint documentation
 
-## Configuration
-
-### golangci-lint configuration
-
-- [Configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
+- Version in Mega-Linter: **1.32.2**
+- Visit [Official Web Site](https://github.com/golangci/golangci-lint#readme)
+- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
   - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
-- [Disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
+- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
 
-### Mega-linter configuration
+[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint)
+
+## Configuration in Mega-Linter
 
 - Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
