@@ -15,7 +15,8 @@ if os.path.isfile(config_file):
         config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
         RUNTIME_CONFIG = {**config_data, **RUNTIME_CONFIG}
         logging.info(f"Merged environment variables into config found in {config_file}")
-
+else:
+    logging.info(f"No {config_file} config file found: use only environment variables")
 
 def get(config_var=None, default=None):
     if config_var is None:
