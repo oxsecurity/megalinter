@@ -2,10 +2,9 @@
 import logging
 import os
 
-from megalinter import utils
-
 # Initialize runtime config
 import yaml
+from megalinter import utils
 
 RUNTIME_CONFIG = os.environ.copy()
 config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
