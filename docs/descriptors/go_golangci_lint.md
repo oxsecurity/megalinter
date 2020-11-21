@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## golangci-lint documentation
 
 - Version in Mega-Linter: **1.32.2**

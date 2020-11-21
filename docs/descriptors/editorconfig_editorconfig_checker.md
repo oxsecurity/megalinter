@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## editorconfig-checker documentation
 
 - Visit [Official Web Site](https://github.com/editorconfig-checker/editorconfig-checker#readme)

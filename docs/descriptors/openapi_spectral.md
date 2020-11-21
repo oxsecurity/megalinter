@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## spectral documentation
 
 - Version in Mega-Linter: **5.6.0**

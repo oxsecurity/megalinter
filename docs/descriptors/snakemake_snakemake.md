@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## snakemake documentation
 
 - Version in Mega-Linter: **5.29.0**

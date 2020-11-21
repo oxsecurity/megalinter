@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## scss-lint documentation
 
 - Version in Mega-Linter: **0.59.0**

@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## psalm documentation
 
 - Version in Mega-Linter: **4.2.1**

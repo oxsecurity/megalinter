@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## terrascan documentation
 
 - Version in Mega-Linter: **1.2.0**

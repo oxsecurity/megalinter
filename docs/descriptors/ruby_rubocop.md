@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## rubocop documentation
 
 - Version in Mega-Linter: **0.82.0**

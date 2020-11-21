@@ -382,8 +382,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     "center",
                     150,
                 ),
-                "",
-                "## Linter",
             ]
         # Text + image as title
         elif (

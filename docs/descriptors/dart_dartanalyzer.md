@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## dartanalyzer documentation
 
 - Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)

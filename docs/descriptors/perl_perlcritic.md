@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## perlcritic documentation
 
 - Version in Mega-Linter: **1.138**

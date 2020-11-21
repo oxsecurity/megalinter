@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## isort documentation
 
 - Version in Mega-Linter: **5.6.4**

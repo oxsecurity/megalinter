@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## standard documentation
 
 - Version in Mega-Linter: **15.0.1**

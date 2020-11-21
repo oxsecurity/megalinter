@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## cfn-lint documentation
 
 - Version in Mega-Linter: **0.41.0**

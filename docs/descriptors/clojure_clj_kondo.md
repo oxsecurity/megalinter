@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## clj-kondo documentation
 
 - Version in Mega-Linter: **2020.09.09**

@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## checkstyle documentation
 
 - Version in Mega-Linter: **8.37**

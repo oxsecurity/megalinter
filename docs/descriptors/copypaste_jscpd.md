@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## jscpd documentation
 
 - Version in Mega-Linter: **3.3.21**

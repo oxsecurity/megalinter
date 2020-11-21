@@ -7,8 +7,6 @@
   </a>
 </div>
 
-## Linter
-
 ## php documentation
 
 - Version in Mega-Linter: **7.3.24**
