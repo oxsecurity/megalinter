@@ -63,7 +63,7 @@ Projects need to contain clean code, in order to **avoid technical debt**, who m
 
 By using **code formatters and code linters**, you insure that your code base is **easier to read** and **respects best practices** from the beginning and at each step lifecycle of the project
 
-Not all developers have the good habit to use linters in their IDEs, making code revieww harder and longer to process
+Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process
 
 By using **Mega-Linter**, you ensure that:
 

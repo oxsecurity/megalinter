@@ -95,12 +95,10 @@ def generate_dockerfile():
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(
-        f"{REPO_HOME}/Dockerfile", "#FROM__START", "#FROM__END", "\n".join(
-            docker_from)
+        f"{REPO_HOME}/Dockerfile", "#FROM__START", "#FROM__END", "\n".join(docker_from)
     )
     replace_in_file(
-        f"{REPO_HOME}/Dockerfile", "#ARG__START", "#ARG__END", "\n".join(
-            docker_arg)
+        f"{REPO_HOME}/Dockerfile", "#ARG__START", "#ARG__END", "\n".join(docker_arg)
     )
     replace_in_file(
         f"{REPO_HOME}/Dockerfile",
@@ -178,14 +176,12 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
 
 def list_descriptors_for_build():
     descriptor_files = megalinter.utils.list_descriptor_files()
-    linters_by_type = {"language": [], "format": [],
-                       "tooling_format": [], "other": []}
+    linters_by_type = {"language": [], "format": [], "tooling_format": [], "other": []}
     descriptors = []
     for descriptor_file in descriptor_files:
         descriptor = megalinter.utils.build_descriptor_info(descriptor_file)
         descriptors += [descriptor]
-        descriptor_linters = megalinter.utils.build_descriptor_linters(
-            descriptor_file)
+        descriptor_linters = megalinter.utils.build_descriptor_linters(descriptor_file)
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
     return descriptors, linters_by_type
 
@@ -205,8 +201,7 @@ def generate_documentation():
     )
     process_type(linters_by_type, "other", "Other", linters_tables_md)
     linters_tables_md_str = "\n".join(linters_tables_md)
-    logging.info("Generated Linters table for README:\n" +
-                 linters_tables_md_str)
+    logging.info("Generated Linters table for README:\n" + linters_tables_md_str)
     replace_in_file(
         f"{REPO_HOME}/README.md",
         "<!-- linters-table-start -->",
@@ -308,8 +303,7 @@ def generate_descriptor_documentation(descriptor):
         descriptor_md += ["", "### Installation", ""]
         descriptor_md += get_install_md(descriptor)
     # Write MD file
-    file = open(f"{REPO_HOME}/docs/descriptors/{lang_lower}.md",
-                "w", encoding="utf-8")
+    file = open(f"{REPO_HOME}/docs/descriptors/{lang_lower}.md", "w", encoding="utf-8")
     file.write("\n".join(descriptor_md) + "\n")
     file.close()
     logging.info("Updated " + file.name)
@@ -326,8 +320,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
     for linter in descriptor_linters:
-        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(
-            linter)
+        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
         if prev_lang != linter.descriptor_id and os.path.isfile(
             REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
         ):
@@ -350,8 +343,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             )
         else:
             icon_html = "<!-- -->"
-        descriptor_url = doc_url(
-            f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
+        descriptor_url = doc_url(f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}.md")
         descriptor_id_cell = (
             f"[{descriptor_label}]({descriptor_url})"
             if prev_lang != linter.descriptor_id
@@ -392,8 +384,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         # Text + image as title
         elif (
-            hasattr(
-                linter, "linter_image_url") and linter.linter_image_url is not None
+            hasattr(linter, "linter_image_url") and linter.linter_image_url is not None
         ):
             linter_doc_md += [
                 "# "
@@ -540,7 +531,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
 
-        # Behind the scenes section
+                    # Behind the scenes section
                     ide_icon = ide
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
@@ -579,8 +570,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 linter_doc_md += linter_helps[linter.linter_name]
                 linter_doc_md += ["```"]
         # Installation doc
-        linter_doc_md += ["",
-                          "### Installation on mega-linter Docker image", ""]
+        linter_doc_md += ["", "### Installation on mega-linter Docker image", ""]
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
@@ -769,8 +759,7 @@ def validate_descriptors():
                 try:
                     jsonschema.validate(
                         instance=yaml.load(descriptor, Loader=yaml.FullLoader),
-                        schema=yaml.load(descriptor_schema,
-                                         Loader=yaml.FullLoader),
+                        schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
                     )
                 except jsonschema.exceptions.ValidationError as validation_error:
                     logging.error(
@@ -828,12 +817,10 @@ def process_type_mkdocs_yml(linters_by_type, type1):
     mkdocs_yml = []
     prev_lang = ""
     for linter in descriptor_linters:
-        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(
-            linter)
+        lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
         # Language menu
         if prev_lang != lang_lower:
-            descriptor_label = descriptor_label.replace(
-                "*", "").replace(r"\(.*\)", "")
+            descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
             mkdocs_yml += [
                 f'      - "{descriptor_label}":',
                 f'          - "index": "descriptors/{lang_lower}.md"',
