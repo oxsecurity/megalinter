@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://github.com/kucherenko/jscpd/tree/master/packages/jscpd**](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
-- Version: **3.3.19**
+- Version: **3.3.21**
 
 ## Configuration
 
@@ -74,13 +74,13 @@ Options:
                              <path>)
   -i, --ignore [string]      glob pattern for files what should be excluded
                              from duplication detection
-  -r, --reporters [string]   reporters or list of reporters separated with coma
-                             to use (Default is time,console)
+  -r, --reporters [string]   reporters or list of reporters separated with
+                             comma to use (Default is time,console)
   -o, --output [string]      reporters to use (Default is ./report/)
   -m, --mode [string]        mode of quality of search, can be "strict", "mild" and "weak" (Default is "function mild(token) {
       return strict(token) && token.type !== 'empty' && token.type !== 'new_line';
   }")
-  -f, --format [string]      format or formats separated by coma (Example
+  -f, --format [string]      format or formats separated by comma (Example
                              php,javascript,python)
   -p, --pattern [string]     glob pattern to file search (Example **/*.txt)
   -b, --blame                blame authors of duplications (get information
