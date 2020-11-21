@@ -55,7 +55,7 @@ linters:
       vim:
         - name: ale
           url: https://github.com/w0rp/ale
-        - name: noemake
+        - name: neomake
           url: https://github.com/neomake/neomake
         - name: syntastic
           url: https://github.com/scrooloose/syntastic
