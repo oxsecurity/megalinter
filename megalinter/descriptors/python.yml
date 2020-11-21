@@ -18,7 +18,22 @@ linters:
     install:
       pip:
         - pylint
-
+    ide:
+      eclipse:
+        - name: PyLint
+          url: https://pydev.org/manual_adv_pylint.html
+      idea:
+        - name: PyCharm (Native Support)
+          url: https://www.jetbrains.com/pycharm/
+      vim:
+        - name: pylint.vim
+          url: https://www.vim.org/scripts/script.php?script_id=891
+      visual_studio:
+        - name: Native Support
+          url: https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019
+      vscode:
+        - name: Native Support
+          url: https://code.visualstudio.com/docs/python/linting#_pylint
   # BLACK
   - linter_name: black
     name: PYTHON_BLACK
@@ -30,7 +45,7 @@ linters:
     cli_lint_extra_args:
       - "--diff"
       - "--check"
-    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
@@ -41,6 +56,26 @@ linters:
     install:
       pip:
         - black
+    ide:
+      atom:
+        - name: python-black
+          url: https://atom.io/packages/python-black
+      emacs:
+        - name: blacken
+          url: https://github.com/pythonic-emacs/blacken
+        - name: reformatter.el
+          url: https://github.com/purcell/reformatter.el
+        - name: elpy
+          url: https://github.com/jorgenschaefer/elpy
+      idea:
+        - name: black
+          url: https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea
+      sublime:
+        - name: sublack
+          url: https://github.com/jgirardet/sublack
+      vscode:
+        - name: VsCode Python Extension
+          url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
 
   # FLAKE8
   - linter_name: flake8
@@ -56,6 +91,16 @@ linters:
     install:
       pip:
         - flake8
+    ide:
+      atom:
+        - name: linter-flake8
+          url: https://atom.io/packages/linter-flake8
+      idea:
+        - name: flake8-support
+          url: https://plugins.jetbrains.com/plugin/11563-flake8-support
+      vscode:
+        - name: Native Support
+          url: https://code.visualstudio.com/docs/python/linting#_flake8
 
   # ISORT
   - linter_name: isort
@@ -71,7 +116,7 @@ linters:
       - "--check"
       - "--profile"
       - "black"
-    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
@@ -83,3 +128,23 @@ linters:
       pip:
         - isort
         - black
+    ide:
+      atom:
+        - name: atom-python-isort
+          url: https://github.com/bh/atom-python-isort
+        - name: atom-isort
+          url: https://atom.io/packages/atom-isort
+      emacs:
+        - name: py-isort.el
+          url: https://github.com/paetzke/py-isort.el
+      sublime:
+        - name: isort plugin
+          url: https://github.com/jcugat/sublime-text-isort-plugin#install
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+        - name: vim-isort
+          url: https://github.com/fisadev/vim-isort#installation
+      vscode:
+        - name: VsCode Python Extension
+          url: https://github.com/Microsoft/vscode-python

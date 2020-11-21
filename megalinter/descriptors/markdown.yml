@@ -10,7 +10,7 @@ linters:
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
     config_file_name: .markdown-lint.json
-    cli_lint_fix_arg_name: '--fix'
+    cli_lint_fix_arg_name: "--fix"
     examples:
       - "markdownlint myfile.md"
       - "markdownlint -c .markdown-lint.json myfile.md"
@@ -18,13 +18,26 @@ linters:
     install:
       npm:
         - markdownlint-cli
+    ide:
+      atom:
+        - name: linter-node-markdownlint
+          url: https://atom.io/packages/linter-node-markdownlint
+      sublime:
+        - name: SublimeLinter-contrib-markdownlint
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-markdownlint
+      vim:
+        - name: coc-markdownlint
+          url: https://github.com/fannheyward/coc-markdownlint
+      vscode:
+        - name: vscode-markdownlint
+          url: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
   # Markdown Link Check
   - linter_name: markdown-link-check
     linter_url: https://github.com/tcort/markdown-link-check
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
     config_file_name: .markdown-link-check.json
-    linter_version_cache: "0.0.0"  # markdown-link-check does notnumber provide version :/
+    linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"

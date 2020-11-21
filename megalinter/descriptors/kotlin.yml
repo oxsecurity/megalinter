@@ -8,7 +8,7 @@ linters:
   - linter_name: ktlint
     linter_url: https://ktlint.github.io
     linter_banner_image_url: https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png
-    cli_lint_fix_arg_name: '--format'
+    cli_lint_fix_arg_name: "--format"
     examples:
       - "ktlint myfile.kt"
       - "ktlint --format myfile.kt"
@@ -18,3 +18,10 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
               chmod a+x ktlint && \
               mv "ktlint" /usr/bin/
+    ide:
+      emacs:
+        - name: flycheck-kotlin
+          url: https://github.com/whirm/flycheck-kotlin
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale

@@ -15,3 +15,7 @@ linters:
     install:
       npm:
         - sql-lint
+    ide:
+      vim:
+        - name: ale
+          url: https://github.com/dense-analysis/ale/

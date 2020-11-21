@@ -18,6 +18,13 @@ linters:
     install:
       pip:
         - snakemake
+    ide:
+      idea:
+        - name: SnakeCharm
+          url: https://plugins.jetbrains.com/plugin/11947-snakecharm
+      vscode:
+        - name: VsCode SnakeMake
+          url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
   # Snake Fmt
   - linter_name: snakefmt
     name: SNAKEMAKE_SNAKEFMT
