@@ -10,6 +10,8 @@
   - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8) will be used
 - See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors)
 
+[![flake8 - GitHub](https://gh-card.dev/repos/PyCQA/flake8.svg?fullname=)](https://github.com/PyCQA/flake8)
+
 ## Configuration in Mega-Linter
 
 - Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

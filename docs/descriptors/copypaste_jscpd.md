@@ -17,6 +17,8 @@
   - If custom .jscpd.json is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json) will be used
 - See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks)
 
+[![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd)
+
 ## Configuration in Mega-Linter
 
 - Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

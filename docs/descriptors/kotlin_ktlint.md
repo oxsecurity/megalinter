@@ -14,6 +14,8 @@
 - Version in Mega-Linter: **0.39.0**
 - Visit [Official Web Site](https://ktlint.github.io)
 
+[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint)
+
 ## Configuration in Mega-Linter
 
 - Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

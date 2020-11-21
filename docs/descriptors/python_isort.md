@@ -17,6 +17,8 @@
   - If custom .isort.cfg is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg) will be used
 - See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/)
 
+[![isort - GitHub](https://gh-card.dev/repos/PyCQA/isort.svg?fullname=)](https://github.com/PyCQA/isort)
+
 ## Configuration in Mega-Linter
 
 - Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

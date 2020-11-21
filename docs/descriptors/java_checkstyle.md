@@ -17,6 +17,8 @@
   - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
 - See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
 
+[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle)
+
 ## Configuration in Mega-Linter
 
 - Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

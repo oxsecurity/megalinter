@@ -7,6 +7,8 @@
 - Version in Mega-Linter: **2020.10**
 - Visit [Official Web Site](https://raku.org/)
 
+[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo)
+
 ## Configuration in Mega-Linter
 
 - Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

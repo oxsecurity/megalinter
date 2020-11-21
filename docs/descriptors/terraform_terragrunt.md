@@ -8,6 +8,8 @@
 - Visit [Official Web Site](https://terragrunt.gruntwork.io)
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file)
 
+[![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt)
+
 ## Configuration in Mega-Linter
 
 - Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

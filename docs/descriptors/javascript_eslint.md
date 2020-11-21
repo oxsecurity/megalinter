@@ -19,6 +19,8 @@ You can create it by typing `npx eslint --init` in the root of your repository
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring)
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
 
+[![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint)
+
 ## Configuration in Mega-Linter
 
 - Enable eslint by adding `JAVASCRIPT_ES` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

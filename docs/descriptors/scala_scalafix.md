@@ -10,6 +10,8 @@
   - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf) will be used
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html)
 
+[![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix)
+
 ## Configuration in Mega-Linter
 
 - Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

@@ -14,6 +14,8 @@
 - Version in Mega-Linter: **7.3.24**
 - Visit [Official Web Site](https://www.php.net)
 
+[![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src)
+
 ## Configuration in Mega-Linter
 
 - Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

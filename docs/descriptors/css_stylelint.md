@@ -17,6 +17,8 @@
   - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
 - See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
 
+[![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint)
+
 ## Configuration in Mega-Linter
 
 - Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

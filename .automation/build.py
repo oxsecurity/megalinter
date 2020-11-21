@@ -703,14 +703,14 @@ def md_to_text(md):
     return soup.get_text()
 
 
-def get_repo(linter):
+def get_repo(linter, check_github=True):
     if linter.linter_url:
         parse_res = parse(linter.linter_url)
-        if parse_res is not None:
+        if parse_res is not None and ((check_github is True and parse_res.github is True) or check_github is False):
             return parse_res
-    if hasattr(linter, 'repo_url'):
-        parse_res = parse(linter.repo_url)
-        if parse_res is not None:
+    if hasattr(linter, 'linter_repo'):
+        parse_res = parse(linter.linter_repo)
+        if parse_res is not None and ((check_github is True and parse_res.github is True) or check_github is False):
             return parse_res
     return None
 

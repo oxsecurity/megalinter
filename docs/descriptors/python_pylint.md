@@ -17,6 +17,8 @@
   - If custom .python-lint is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint) will be used
 - See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html)
 
+[![pylint - GitHub](https://gh-card.dev/repos/PyCQA/pylint.svg?fullname=)](https://github.com/PyCQA/pylint)
+
 ## Configuration in Mega-Linter
 
 - Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
