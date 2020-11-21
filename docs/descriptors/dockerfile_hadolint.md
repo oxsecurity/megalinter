@@ -69,7 +69,6 @@ Available options:
   --trusted-registry REGISTRY (e.g. docker.io)
                            A docker registry to allow to appear in FROM
                            instructions
-
 ```
 
 ### Installation on mega-linter Docker image

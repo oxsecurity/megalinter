@@ -200,7 +200,6 @@ Options:
                                   usage
                                   information
 
-
 ```
 
 ### Installation on mega-linter Docker image

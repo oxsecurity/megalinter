@@ -67,7 +67,6 @@ Examples:
                                     line
 
   dockerfilelint < Dockerfile       Lint the contents of Dockerfile via stdin
-
 ```
 
 ### Installation on mega-linter Docker image

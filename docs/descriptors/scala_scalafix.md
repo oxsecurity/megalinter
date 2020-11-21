@@ -187,7 +187,6 @@ Less common options:
   --cwd <path> (default: "/")
     The current working directory
 
-
 ```
 
 ### Installation on mega-linter Docker image

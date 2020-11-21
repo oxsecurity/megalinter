@@ -64,7 +64,6 @@ Usage: shellcheck [OPTIONS...] FILES...
   -x                  --external-sources         Allow 'source' outside of FILES
                       --help                     Show this usage summary and exit
 
-
 ```
 
 ### Installation on mega-linter Docker image

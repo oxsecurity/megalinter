@@ -80,7 +80,6 @@ Help:
   It's also possible to get raw list of commands (useful for embedding command runner):
 
     php /usr/local/bin/phpstan list --raw
-
 ```
 
 ### Installation on mega-linter Docker image

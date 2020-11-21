@@ -77,7 +77,6 @@ Options:
                                                                        [boolean]
   -c, --cache         Cache linting results                            [boolean]
       --ext           Specify an additional file extension, separated by comma.
-
 ```
 
 ### Installation on mega-linter Docker image

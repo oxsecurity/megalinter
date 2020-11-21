@@ -77,7 +77,6 @@ optional arguments:
                         errors
   --no-warnings         output only error level problems
   -v, --version         show program's version number and exit
-
 ```
 
 ### Installation on mega-linter Docker image

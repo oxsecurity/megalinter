@@ -75,7 +75,6 @@ $ tekton-lint path/to/my/pipeline.yaml 'path/to/my/tasks/*.yaml'
 # Watch mode
 $ tekton-lint --watch '**/*.yaml'
 
-
 ```
 
 ### Installation on mega-linter Docker image

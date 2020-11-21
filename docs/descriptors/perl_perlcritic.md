@@ -83,7 +83,6 @@ Usage:
 
       perlcritic { --help | --options | --man | --version }
 
-
 ```
 
 ### Installation on mega-linter Docker image

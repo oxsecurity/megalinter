@@ -68,7 +68,6 @@ Options:
   --port <string>        The port for the connection
   --config <string>      The path to the configuration file
   -h, --help             display help for command
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -10,7 +10,7 @@
 ## Linter
 
 - Web Site: [**https://eslint.org**](https://eslint.org)
-- Version: **7.13.0**
+- Version: **7.14.0**
 
 ## Configuration
 
@@ -122,7 +122,6 @@ Miscellaneous:
   -h, --help                      Show help
   -v, --version                   Output the version number
   --print-config path::String     Print the configuration for the given file
-
 ```
 
 ### Installation on mega-linter Docker image

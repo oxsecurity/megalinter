@@ -101,7 +101,6 @@ Options:
   -h, --help             Show this message and exit.
   -V, --version          Show the version and exit.
   -v, --verbose          Turns on debug-level logging.
-
 ```
 
 ### Installation on mega-linter Docker image

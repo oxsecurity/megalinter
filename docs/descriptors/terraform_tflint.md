@@ -93,7 +93,6 @@ Application Options:
 Help Options:
   -h, --help                                      Show this help message
 
-
 ```
 
 ### Installation on mega-linter Docker image

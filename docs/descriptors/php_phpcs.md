@@ -118,7 +118,6 @@ Usage: phpcs [-nwlsaepqvi] [-d key[=value]] [--colors] [--no-colors]
  <stdinPath>    If processing STDIN, the file path that STDIN will be processed as
  <tabWidth>     The number of spaces each tab represents
 
-
 ```
 
 ### Installation on mega-linter Docker image

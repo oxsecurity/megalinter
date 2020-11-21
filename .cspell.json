@@ -924,6 +924,7 @@
         "\u0636clojure",
         "\u077bcbad",
         "lintrc",
-        "lintignore"
+        "lintignore",
+        "sarif"
     ]
 }

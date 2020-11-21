@@ -59,7 +59,6 @@ Options:
   -q, --quiet            displays errors only
   -v, --verbose          displays detailed error information
   -h, --help             display help for command
-
 ```
 
 ### Installation on mega-linter Docker image

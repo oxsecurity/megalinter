@@ -155,7 +155,6 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
         --no-variable_contains_dash-check
                                      Skip the variable_contains_dash check.
         --no-documentation-check     Skip the documentation check.
-
 ```
 
 ### Installation on mega-linter Docker image

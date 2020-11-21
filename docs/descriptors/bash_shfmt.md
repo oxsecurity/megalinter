@@ -82,7 +82,6 @@ Utilities:
   -tojson   print syntax tree to stdout as a typed JSON
 
 For more information, see 'man shfmt' and https://github.com/mvdan/sh.
-
 ```
 
 ### Installation on mega-linter Docker image

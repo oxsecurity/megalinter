@@ -61,7 +61,6 @@ Options:
   -e, --except <rules>             This option is DEPRECATED. Use `--rules` instead.
   --version                        output the version number
   -h, --help                       output usage information
-
 ```
 
 ### Installation on mega-linter Docker image

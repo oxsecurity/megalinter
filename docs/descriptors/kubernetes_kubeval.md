@@ -76,7 +76,6 @@ Flags:
       --skip-kinds strings                    Comma-separated list of case-sensitive kinds to skip when validating against schemas
       --strict                                Disallow additional properties not in schema
       --version                               version for kubeval
-
 ```
 
 ### Installation on mega-linter Docker image

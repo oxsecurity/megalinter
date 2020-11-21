@@ -61,7 +61,6 @@ Options:
   -c, --config [config]  configuration file, defaults to .gherkin-lintrc
   -r, --rulesdir <...>   additional rule directories (default: [])
   -h, --help             display help for command
-
 ```
 
 ### Installation on mega-linter Docker image

@@ -84,7 +84,6 @@ Flags:
       --version                   Print version
 
 Use "golangci-lint [command] --help" for more information about a command.
-
 ```
 
 ### Installation on mega-linter Docker image

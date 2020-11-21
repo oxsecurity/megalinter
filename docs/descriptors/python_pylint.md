@@ -188,7 +188,6 @@ Options:
                         Template used to display messages. This is a python
                         new-style format string used to format the message
                         information. See doc for all details.
-
 ```
 
 ### Installation on mega-linter Docker image

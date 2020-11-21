@@ -83,7 +83,6 @@ Flags (advanced):
         --env       Use custom eslint environment
         --parser    Use custom js parser (e.g. babel-eslint)
 
-
 ```
 
 ### Installation on mega-linter Docker image

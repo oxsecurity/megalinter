@@ -73,7 +73,6 @@ Usage: scss-lint [options] [scss-files]
     -h, --help                       Display help documentation
     -v, --version                    Display version
 
-
 ```
 
 ### Installation on mega-linter Docker image
