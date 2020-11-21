@@ -12,6 +12,8 @@ from shutil import copyfile
 
 import jsonschema
 import markdown
+from webpreview import web_preview
+
 import megalinter
 import yaml
 from bs4 import BeautifulSoup
@@ -28,6 +30,7 @@ REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
+LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
@@ -108,33 +111,33 @@ def generate_dockerfile():
     )
     # apk packages
     apk_install_command = (
-        "RUN apk add --update --no-cache \\\n                "
-        + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
+            "RUN apk add --update --no-cache \\\n                "
+            + " \\\n                ".join(list(dict.fromkeys(apk_packages)))
     )
     replace_in_file(
         f"{REPO_HOME}/Dockerfile", "#APK__START", "#APK__END", apk_install_command
     )
     # NPM packages
     npm_install_command = (
-        "RUN npm install --no-cache \\\n                "
-        + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
+            "RUN npm install --no-cache \\\n                "
+            + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
     )
     replace_in_file(
         f"{REPO_HOME}/Dockerfile", "#NPM__START", "#NPM__END", npm_install_command
     )
     # Python pip packages
     pip_install_command = (
-        "RUN pip3 install --no-cache-dir \\\n          "
-        + " \\\n          ".join(list(dict.fromkeys(pip_packages)))
+            "RUN pip3 install --no-cache-dir \\\n          "
+            + " \\\n          ".join(list(dict.fromkeys(pip_packages)))
     )
     replace_in_file(
         f"{REPO_HOME}/Dockerfile", "#PIP__START", "#PIP__END", pip_install_command
     )
     # Ruby gem packages
     gem_install_command = (
-        "RUN echo 'gem: --no-document' >> ~/.gemrc && \\\n"
-        + "    gem install \\\n          "
-        + " \\\n          ".join(list(dict.fromkeys(gem_packages)))
+            "RUN echo 'gem: --no-document' >> ~/.gemrc && \\\n"
+            + "    gem install \\\n          "
+            + " \\\n          ".join(list(dict.fromkeys(gem_packages)))
     )
     replace_in_file(
         f"{REPO_HOME}/Dockerfile", "#GEM__START", "#GEM__END", gem_install_command
@@ -210,14 +213,14 @@ def generate_documentation():
     )
     # Update welcome phrase
     welcome_phrase = (
-        f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "
-        + f"[**{len(linters_by_type['format'])} formats**](#formats), "
-        + f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) "
-        + ", [**copy-pastes**](#other) and [**spell**](#other) in your "
-        + "repository sources, generate **reports in several formats**, "
-        + "and can even [**apply auto-fixes**](#apply-fixes) "
-        + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
-        + "IDE/toolbox are used by their developers !"
+            f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "
+            + f"[**{len(linters_by_type['format'])} formats**](#formats), "
+            + f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) "
+            + ", [**copy-pastes**](#other) and [**spell**](#other) in your "
+            + "repository sources, generate **reports in several formats**, "
+            + "and can even [**apply auto-fixes**](#apply-fixes) "
+            + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
+            + "IDE/toolbox are used by their developers !"
     )
     # Update README.md file
     replace_in_file(
@@ -322,7 +325,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     for linter in descriptor_linters:
         lang_lower, linter_name_lower, descriptor_label = get_linter_base_info(linter)
         if prev_lang != linter.descriptor_id and os.path.isfile(
-            REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
+                REPO_ICONS + "/" + linter.descriptor_id.lower() + ".ico"
         ):
             icon_html = icon(
                 f"{DOCS_URL_RAW_ROOT}/assets/icons/{linter.descriptor_id.lower()}.ico",
@@ -332,7 +335,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 32,
             )
         elif prev_lang != linter.descriptor_id and os.path.isfile(
-            REPO_ICONS + "/default.ico"
+                REPO_ICONS + "/default.ico"
         ):
             icon_html = icon(
                 f"{DOCS_URL_RAW_ROOT}/assets/icons/default.ico",
@@ -367,8 +370,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ]
         # Header image as title
         if (
-            hasattr(linter, "linter_banner_image_url")
-            and linter.linter_banner_image_url is not None
+                hasattr(linter, "linter_banner_image_url")
+                and linter.linter_banner_image_url is not None
         ):
             linter_doc_md += [
                 banner_link(
@@ -384,7 +387,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         # Text + image as title
         elif (
-            hasattr(linter, "linter_image_url") and linter.linter_image_url is not None
+                hasattr(linter, "linter_image_url") and linter.linter_image_url is not None
         ):
             linter_doc_md += [
                 "# "
@@ -410,8 +413,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         with open(VERSIONS_FILE, "r", encoding="utf-8") as json_file:
             linter_versions = json.load(json_file)
             if (
-                linter.linter_name in linter_versions
-                and linter_versions[linter.linter_name] != "0.0.0"
+                    linter.linter_name in linter_versions
+                    and linter_versions[linter.linter_name] != "0.0.0"
             ):
                 linter_doc_md += [
                     f"- Version: **{linter_versions[linter.linter_name]}**"
@@ -425,8 +428,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += [f"### {linter.linter_name} configuration", ""]
         # Rules configuration URL
         if (
-            hasattr(linter, "linter_rules_configuration_url")
-            and linter.linter_rules_configuration_url is not None
+                hasattr(linter, "linter_rules_configuration_url")
+                and linter.linter_rules_configuration_url is not None
         ):
             linter_doc_md += [
                 f"- [Configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
@@ -445,8 +448,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     " will be used"
                 ]
         if (
-            hasattr(linter, "linter_rules_inline_disable_url")
-            and linter.linter_rules_inline_disable_url is not None
+                hasattr(linter, "linter_rules_inline_disable_url")
+                and linter.linter_rules_inline_disable_url is not None
         ):
             linter_doc_md += [
                 f"- [Disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
@@ -530,9 +533,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     linter_doc_md += [
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
-
-                    # Behind the scenes section
-                    ide_icon = ide
+        # Behind the scenes section
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
         linter_doc_md += ["### How are identified applicable files", ""]
@@ -576,18 +577,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += get_install_md(item)
         # Example log files
         test_report_folder = (
-            REPO_HOME
-            + os.path.sep
-            + ".automation"
-            + os.path.sep
-            + "test"
-            + os.path.sep
-            + linter.test_folder
-            + os.path.sep
-            + "reports"
+                REPO_HOME
+                + os.path.sep
+                + ".automation"
+                + os.path.sep
+                + "test"
+                + os.path.sep
+                + linter.test_folder
+                + os.path.sep
+                + "reports"
         )
         success_log_file_example = (
-            test_report_folder + os.path.sep + f"SUCCESS-{linter.name}.txt"
+                test_report_folder + os.path.sep + f"SUCCESS-{linter.name}.txt"
         )
         if os.path.isfile(success_log_file_example):
             with open(success_log_file_example, "r", encoding="utf-8") as file:
@@ -596,7 +597,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += success_log_file_content.splitlines()
             linter_doc_md += ["```"]
         error_log_file_example = (
-            test_report_folder + os.path.sep + f"ERROR-{linter.name}.txt"
+                test_report_folder + os.path.sep + f"ERROR-{linter.name}.txt"
         )
         if os.path.isfile(error_log_file_example):
             with open(error_log_file_example, "r", encoding="utf-8") as file:
@@ -708,10 +709,10 @@ def merge_install_attr(item):
         if elt in item["install"]:
             if elt == "dockerfile":
                 item["install"][elt] = (
-                    ["# Parent descriptor install"]
-                    + elt_val
-                    + ["# Linter install"]
-                    + item["install"][elt]
+                        ["# Parent descriptor install"]
+                        + elt_val
+                        + ["# Linter install"]
+                        + item["install"][elt]
                 )
             else:
                 item["install"][elt] = elt_val + item["install"][elt]
@@ -747,7 +748,7 @@ def replace_in_file(file_path, start, end, content):
 # Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
     with open(
-        f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r", encoding="utf-8"
+            f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r", encoding="utf-8"
     ) as schema_file:
         descriptor_schema = schema_file.read()
         descriptor_files = megalinter.utils.list_descriptor_files()
@@ -840,6 +841,29 @@ def process_type_mkdocs_yml(linters_by_type, type1):
     )
 
 
+# Collect linters info from linter url, later used to build link preview card within linter documentation
+def collect_linter_previews():
+    linters = megalinter.utils.list_all_linters()
+    # Read file
+    with open(LINKS_PREVIEW_FILE, "r", encoding="utf-8") as json_file:
+        data = json.load(json_file)
+    updated = False
+    # Collect info using web_preview
+    for linter in linters:
+        if linter.linter_name not in data or os.environ.get("REFRESH_LINTER_PREVIEWS", "false") == "true":
+            logging.info(f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}")
+            title, description, image = web_preview(linter.linter_url,parser='html.parser', timeout=1000)
+            item = {"title": title,
+                    "description": description,
+                    "image": image}
+            data[linter.linter_name] = item
+            updated = True
+    # Update file
+    if updated is True:
+        with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(data, outfile, indent=4, sort_keys=True)
+
+
 if __name__ == "__main__":
     logging.basicConfig(
         force=True,
@@ -848,6 +872,7 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout)],
     )
     # noinspection PyTypeChecker
+    collect_linter_previews()
     validate_descriptors()
     generate_dockerfile()
     generate_linter_test_classes()
