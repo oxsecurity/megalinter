@@ -6,6 +6,7 @@ linters:
   # Dart Analyzer
   - linter_name: dartanalyzer
     linter_url: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli
+    linter_repo: https://github.com/dart-lang/sdk
     linter_banner_image_url: https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png
     linter_rules_configuration_url: https://dart.dev/guides/language/analysis-options#the-analysis-options-file
     linter_rules_inline_disable_url: https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file

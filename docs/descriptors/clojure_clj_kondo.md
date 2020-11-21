@@ -9,18 +9,16 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/borkdude/clj-kondo**](https://github.com/borkdude/clj-kondo#readme)
-- Version: **2020.09.09**
+## clj-kondo documentation
 
-## Configuration
-
-### clj-kondo configuration
-
-- [Configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration)
+- Version in Mega-Linter: **2020.09.09**
+- Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme)
+- See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration)
   - If custom .clj-kondo/config.edn is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn) will be used
-- clj-kondo has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![clj-kondo - GitHub](https://gh-card.dev/repos/borkdude/clj-kondo.svg?fullname=)](https://github.com/borkdude/clj-kondo)
+
+## Configuration in Mega-Linter
 
 - Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

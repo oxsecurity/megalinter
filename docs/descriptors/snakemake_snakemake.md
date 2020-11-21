@@ -9,17 +9,14 @@
 
 ## Linter
 
-- Web Site: [**https://snakemake.readthedocs.io/en/stable/**](https://snakemake.readthedocs.io/en/stable/)
-- Version: **5.29.0**
+## snakemake documentation
 
-## Configuration
+- Version in Mega-Linter: **5.29.0**
+- Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/)
 
-### snakemake configuration
+[![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake)
 
-- snakemake has no known capability to configure custom rules
-- snakemake has no known capability to inline-disable rules
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

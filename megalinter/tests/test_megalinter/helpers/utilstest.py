@@ -229,7 +229,9 @@ def test_get_linter_version(linter, test_self):
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
     )
-    versions_file = root_dir + os.path.sep + "/linter-versions.json"
+    versions_file = (
+        root_dir + os.path.sep + "/.automation/generated/linter-versions.json"
+    )
     data = {}
     if os.path.isfile(versions_file):
         with open(versions_file, "r", encoding="utf-8") as json_file:
@@ -257,7 +259,7 @@ def test_get_linter_help(linter, test_self):
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
     )
-    helps_file = root_dir + os.path.sep + "/linter-helps.json"
+    helps_file = root_dir + os.path.sep + "/.automation/generated/linter-helps.json"
     data = {}
     help_lines = help_txt.splitlines()
     help_lines_clean = []

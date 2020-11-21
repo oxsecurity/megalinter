@@ -9,18 +9,16 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/stoplightio/spectral**](https://github.com/stoplightio/spectral#readme)
-- Version: **5.6.0**
+## spectral documentation
 
-## Configuration
-
-### spectral configuration
-
-- [Configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
+- Version in Mega-Linter: **5.6.0**
+- Visit [Official Web Site](https://github.com/stoplightio/spectral#readme)
+- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
   - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
-- spectral has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral)
+
+## Configuration in Mega-Linter
 
 - Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

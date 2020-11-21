@@ -9,18 +9,17 @@
 
 ## Linter
 
-- Web Site: [**https://www.pylint.org**](https://www.pylint.org)
-- Version: **2.6.0**
+## pylint documentation
 
-## Configuration
-
-### pylint configuration
-
-- [Configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc)
+- Version in Mega-Linter: **2.6.0**
+- Visit [Official Web Site](https://www.pylint.org)
+- See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc)
   - If custom .python-lint is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint) will be used
-- [Disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html)
+- See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html)
 
-### Mega-linter configuration
+[![pylint - GitHub](https://gh-card.dev/repos/PyCQA/pylint.svg?fullname=)](https://github.com/PyCQA/pylint)
+
+## Configuration in Mega-Linter
 
 - Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

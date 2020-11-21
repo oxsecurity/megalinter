@@ -9,17 +9,15 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/accurics/terrascan**](https://github.com/accurics/terrascan#readme)
-- Version: **1.2.0**
+## terrascan documentation
 
-## Configuration
+- Version in Mega-Linter: **1.2.0**
+- Visit [Official Web Site](https://github.com/accurics/terrascan#readme)
+- See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
 
-### terrascan configuration
+[![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan)
 
-- [Configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
-- terrascan has no known capability to inline-disable rules
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

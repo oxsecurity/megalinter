@@ -1,0 +1,307 @@
+{
+    "ansible-lint": {
+        "description": "Best practices checker for Ansible. Contribute to ansible/ansible-lint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/1507452?s=400&v=4",
+        "title": "ansible/ansible-lint"
+    },
+    "arm-ttk": {
+        "description": "Azure Resource Manager Template Toolkit. Contribute to Azure/arm-ttk development by creating an account on GitHub.",
+        "image": "https://avatars0.githubusercontent.com/u/6844498?s=400&v=4",
+        "title": "Azure/arm-ttk"
+    },
+    "bash-exec": {
+        "description": "None",
+        "image": null,
+        "title": "The GNU Bourne-Again Shell"
+    },
+    "black": {
+        "description": "The uncompromising Python code formatter. Contribute to psf/black development by creating an account on GitHub.",
+        "image": "https://repository-images.githubusercontent.com/125266328/48aef880-6cce-11e9-9e3c-3ca0dd3ac138",
+        "title": "psf/black"
+    },
+    "cfn-lint": {
+        "description": "A CloudFormation JSON and YAML Validator. Contribute to martysweet/cfn-lint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/20517404?s=400&v=4",
+        "title": "martysweet/cfn-lint"
+    },
+    "checkstyle": {
+        "description": "\n        Checkstyle is a development tool to help programmers write Java code\n        that adheres to a coding standard. It automates the process of\n        checking Java code to spare humans of this boring (but important)\n        task. This makes it ideal for projects that want to enforce a coding\n        standard.\n      ",
+        "image": null,
+        "title": "checkstyle \u2013 Checkstyle 8.37"
+    },
+    "chktex": {
+        "description": "\nThe latest version is:\n1.7.6\n   -\nGPG\n  Signature released on September 9, 2016.\nThere are also\nolder versions\navailable, should they be necessary.\n   ChkTeX is also available\n   on CTAN and\n   as part of TeXLive.\n ",
+        "image": null,
+        "title": "ChkTeX - LaTeX semantic checker"
+    },
+    "clippy": {
+        "description": "A bunch of lints to catch common mistakes and improve your Rust code - rust-lang/rust-clippy",
+        "image": "https://avatars1.githubusercontent.com/u/5430905?s=400&v=4",
+        "title": "rust-lang/rust-clippy"
+    },
+    "clj-kondo": {
+        "description": "A linter for Clojure code that sparks joy. Contribute to borkdude/clj-kondo development by creating an account on GitHub.",
+        "image": "https://avatars1.githubusercontent.com/u/284934?s=400&v=4",
+        "title": "borkdude/clj-kondo"
+    },
+    "coffeelint": {
+        "description": "\n          CoffeeLint is a style checker that helps keep\n          CoffeeScript\n          code clean and consistent. CoffeeScript does a great job at\n          insulating programmers from many of\n          JavaScript's bad parts, but it won't help enforce a consistent style\n          across a code base. CoffeeLint can help with that.\n        ",
+        "image": null,
+        "title": "CoffeeLint - Lint your CoffeeScript"
+    },
+    "cpplint": {
+        "description": "Static code checker for C++. Contribute to cpplint/cpplint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/23239423?s=400&v=4",
+        "title": "cpplint/cpplint"
+    },
+    "cspell": {
+        "description": "A Spell Checker for Code! Contribute to streetsidesoftware/cspell development by creating an account on GitHub.",
+        "image": "https://avatars0.githubusercontent.com/u/50543896?s=400&v=4",
+        "title": "streetsidesoftware/cspell"
+    },
+    "dartanalyzer": {
+        "description": "The Dart SDK, including the VM, dart2js, core libraries, and more. - dart-lang/sdk",
+        "image": "https://repository-images.githubusercontent.com/35726310/78196080-8aee-11ea-8736-5d358571e7db",
+        "title": "dart-lang/sdk"
+    },
+    "dockerfilelint": {
+        "description": "An opinionated Dockerfile linter. Contribute to replicatedhq/dockerfilelint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/13105802?s=400&v=4",
+        "title": "replicatedhq/dockerfilelint"
+    },
+    "dotenv-linter": {
+        "description": "\u26a1\ufe0fLightning-fast linter for .env files. Written in Rust \ud83e\udd80 - dotenv-linter/dotenv-linter",
+        "image": "https://repository-images.githubusercontent.com/225030271/65b96b80-83f8-11ea-9e14-2ff25bdc4308",
+        "title": "dotenv-linter/dotenv-linter"
+    },
+    "dotnet-format": {
+        "description": "Home for the dotnet-format command. Contribute to dotnet/format development by creating an account on GitHub.",
+        "image": "https://avatars0.githubusercontent.com/u/9141961?s=400&v=4",
+        "title": "dotnet/format"
+    },
+    "editorconfig-checker": {
+        "description": "A tool to verify that your files are in harmony with your .editorconfig - editorconfig-checker/editorconfig-checker",
+        "image": "https://avatars0.githubusercontent.com/u/26415196?s=400&v=4",
+        "title": "editorconfig-checker/editorconfig-checker"
+    },
+    "eslint": {
+        "description": "None",
+        "image": "https://eslint.org/assets/img/favicon.512x512.png",
+        "title": "ESLint - Pluggable JavaScript linter"
+    },
+    "flake8": {
+        "description": "To install Flake8, open an interactive shell and run:",
+        "image": null,
+        "title": "Flake8: Your Tool For Style Guide Enforcement \u2014 flake8 3.8.4 documentation"
+    },
+    "gherkin-lint": {
+        "description": "A Gherkin linter/validator written in javascript. Contribute to vsiakka/gherkin-lint development by creating an account on GitHub.",
+        "image": "https://avatars1.githubusercontent.com/u/14342371?s=400&v=4",
+        "title": "vsiakka/gherkin-lint"
+    },
+    "golangci-lint": {
+        "description": "Fast linters Runner for Go. Contribute to golangci/golangci-lint development by creating an account on GitHub.",
+        "image": "https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4",
+        "title": "golangci/golangci-lint"
+    },
+    "graphql-schema-linter": {
+        "description": "Validate GraphQL schema definitions against a set of rules - cjoudrey/graphql-schema-linter",
+        "image": "https://avatars0.githubusercontent.com/u/385270?s=400&v=4",
+        "title": "cjoudrey/graphql-schema-linter"
+    },
+    "hadolint": {
+        "description": "Dockerfile linter, validate inline bash, written in Haskell - hadolint/hadolint",
+        "image": "https://avatars1.githubusercontent.com/u/34047791?s=400&v=4",
+        "title": "hadolint/hadolint"
+    },
+    "htmlhint": {
+        "description": "\u2699\ufe0f The static code analysis tool you need for your HTML - htmlhint/HTMLHint",
+        "image": "https://avatars0.githubusercontent.com/u/42865284?s=400&v=4",
+        "title": "htmlhint/HTMLHint"
+    },
+    "isort": {
+        "description": "",
+        "image": null,
+        "title": "isort"
+    },
+    "jscpd": {
+        "description": "Copy/paste detector for programming source code. Contribute to kucherenko/jscpd development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/159307?s=400&v=4",
+        "title": "kucherenko/jscpd"
+    },
+    "jsonlint": {
+        "description": "A JSON parser and validator with a CLI. Contribute to zaach/jsonlint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/3903?s=400&v=4",
+        "title": "zaach/jsonlint"
+    },
+    "ktlint": {
+        "description": "An anti-bikeshedding Kotlin linter with built-in formatter.",
+        "image": null,
+        "title": "ktlint"
+    },
+    "kubeval": {
+        "description": "Validate your Kubernetes configuration files, supports multiple Kubernetes versions - instrumenta/kubeval",
+        "image": "https://avatars2.githubusercontent.com/u/49038473?s=400&v=4",
+        "title": "instrumenta/kubeval"
+    },
+    "lintr": {
+        "description": "Static Code Analysis for R. Contribute to jimhester/lintr development by creating an account on GitHub.",
+        "image": "https://avatars0.githubusercontent.com/u/205275?s=400&v=4",
+        "title": "jimhester/lintr"
+    },
+    "luacheck": {
+        "description": " A tool for linting and static analysis of Lua code.  - luarocks/luacheck",
+        "image": "https://avatars3.githubusercontent.com/u/17838737?s=400&v=4",
+        "title": "luarocks/luacheck"
+    },
+    "markdown-link-check": {
+        "description": "checks that all of the hyperlinks in a markdown text to determine if they are alive or dead - tcort/markdown-link-check",
+        "image": "https://avatars2.githubusercontent.com/u/216720?s=400&v=4",
+        "title": "tcort/markdown-link-check"
+    },
+    "markdownlint": {
+        "description": "A Node.js style checker and lint tool for Markdown/CommonMark files. - DavidAnson/markdownlint",
+        "image": "https://avatars2.githubusercontent.com/u/1828270?s=400&v=4",
+        "title": "DavidAnson/markdownlint"
+    },
+    "npm-groovy-lint": {
+        "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files using command line - nvuillam/npm-groovy-lint",
+        "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",
+        "title": "nvuillam/npm-groovy-lint"
+    },
+    "perlcritic": {
+        "description": "Critique Perl source code for best-practices.",
+        "image": null,
+        "title": "Perl::Critic"
+    },
+    "php": {
+        "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
+        "image": null,
+        "title": "PHP: Hypertext Preprocessor"
+    },
+    "phpcs": {
+        "description": "PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards. - squizlabs/PHP_CodeSniffer",
+        "image": "https://avatars2.githubusercontent.com/u/997547?s=400&v=4",
+        "title": "squizlabs/PHP_CodeSniffer"
+    },
+    "phpstan": {
+        "description": "PHP Static Analysis Tool - discover bugs in your code without running it! - phpstan/phpstan",
+        "image": "https://avatars3.githubusercontent.com/u/16435710?s=400&v=4",
+        "title": "phpstan/phpstan"
+    },
+    "powershell": {
+        "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
+        "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
+        "title": "PowerShell/PSScriptAnalyzer"
+    },
+    "protolint": {
+        "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions.  - yoheimuta/protolint",
+        "image": "https://avatars1.githubusercontent.com/u/1223268?s=400&v=4",
+        "title": "yoheimuta/protolint"
+    },
+    "psalm": {
+        "description": "It\u2019s easy to make great things in PHP, but bugs can creep in just as easily. Psalm is a free & open-source static analysis tool that helps you identify problems in your code, so you can sleep a little better.",
+        "image": null,
+        "title": "Psalm - a static analysis tool for PHP"
+    },
+    "puppet-lint": {
+        "description": "Check that your Puppet manifests conform to the style guide - rodjek/puppet-lint",
+        "image": "https://avatars3.githubusercontent.com/u/80629?s=400&v=4",
+        "title": "rodjek/puppet-lint"
+    },
+    "pylint": {
+        "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
+        "image": null,
+        "title": "Pylint - code analysis for Python | www.pylint.org"
+    },
+    "raku": {
+        "description": "Home page for Raku, the newest member of the family of languages known as Perl.",
+        "image": null,
+        "title": "Raku Programming Language"
+    },
+    "rubocop": {
+        "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide. - rubocop-hq/rubocop",
+        "image": "https://avatars1.githubusercontent.com/u/39672756?s=400&v=4",
+        "title": "rubocop-hq/rubocop"
+    },
+    "scalafix": {
+        "description": "Refactoring and linting tool for Scala",
+        "image": "https://scalacenter.github.io//scalafix/img/scalacenter2x.png",
+        "title": "Scalafix \u00b7 Refactoring and linting tool for Scala"
+    },
+    "scss-lint": {
+        "description": "Configurable tool for writing clean, consistent SCSS - sds/scss-lint",
+        "image": "https://avatars3.githubusercontent.com/u/677877?s=400&v=4",
+        "title": "sds/scss-lint"
+    },
+    "shellcheck": {
+        "description": "ShellCheck, a static analysis tool for shell scripts - koalaman/shellcheck",
+        "image": "https://avatars2.githubusercontent.com/u/2818758?s=400&v=4",
+        "title": "koalaman/shellcheck"
+    },
+    "shfmt": {
+        "description": "A shell parser, formatter, and interpreter with bash support; includes shfmt - mvdan/sh",
+        "image": "https://avatars2.githubusercontent.com/u/3576549?s=400&v=4",
+        "title": "mvdan/sh"
+    },
+    "snakefmt": {
+        "description": "The uncompromising Snakemake code formatter. Contribute to snakemake/snakefmt development by creating an account on GitHub.",
+        "image": "https://avatars2.githubusercontent.com/u/33450111?s=400&v=4",
+        "title": "snakemake/snakefmt"
+    },
+    "snakemake": {
+        "description": "The Snakemake workflow management system is a tool to create reproducible and scalable data analyses.\nWorkflows are described via a human readable, Python based language.\nThey can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition.\nFinally, Snakemake workflows can entail a description of required software, which will be automatically deployed to any execution environment.",
+        "image": null,
+        "title": "Snakemake \u2014 Snakemake 5.29.0 documentation"
+    },
+    "spectral": {
+        "description": "A flexible JSON/YAML linter for creating automated style guides, with baked in support for OpenAPI v2 & v3. - stoplightio/spectral",
+        "image": "https://repository-images.githubusercontent.com/144890632/35951800-6167-11e9-8549-03f3c25e6cd4",
+        "title": "stoplightio/spectral"
+    },
+    "sql-lint": {
+        "description": "An SQL linter. Contribute to joereynolds/sql-lint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/9536682?s=400&v=4",
+        "title": "joereynolds/sql-lint"
+    },
+    "standard": {
+        "description": "\ud83c\udf1f JavaScript Style Guide, with linter & automatic code fixer - standard/standard",
+        "image": "https://avatars3.githubusercontent.com/u/29208316?s=400&v=4",
+        "title": "standard/standard"
+    },
+    "stylelint": {
+        "description": "# stylelint",
+        "image": null,
+        "title": "A mighty, modern style linter \u00b7 stylelint"
+    },
+    "tekton-lint": {
+        "description": "Linter for Tekton definitions. Contribute to IBM/tekton-lint development by creating an account on GitHub.",
+        "image": "https://avatars0.githubusercontent.com/u/1459110?s=400&v=4",
+        "title": "IBM/tekton-lint"
+    },
+    "terragrunt": {
+        "description": "Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state.",
+        "image": "https://terragrunt.gruntwork.io/assets/img/terragrunt-thumbnail.png",
+        "title": "Terragrunt | Terraform wrapper"
+    },
+    "terrascan": {
+        "description": "Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure. - accurics/terrascan",
+        "image": "https://repository-images.githubusercontent.com/103084166/07590180-05c2-11eb-88e6-a9735b161b72",
+        "title": "accurics/terrascan"
+    },
+    "tflint": {
+        "description": "TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12) - terraform-linters/tflint",
+        "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
+        "title": "terraform-linters/tflint"
+    },
+    "xmllint": {
+        "description": "None",
+        "image": null,
+        "title": "xmllint"
+    },
+    "yamllint": {
+        "description": "A linter for YAML files. Contribute to adrienverge/yamllint development by creating an account on GitHub.",
+        "image": "https://avatars3.githubusercontent.com/u/5244945?s=400&v=4",
+        "title": "adrienverge/yamllint"
+    }
+}

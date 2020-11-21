@@ -8,7 +8,7 @@
 - File extensions:
   - `.rs`
 
-## Mega-linter configuration
+## Configuration in Mega-Linter
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

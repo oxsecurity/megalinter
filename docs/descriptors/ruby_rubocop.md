@@ -9,18 +9,17 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/rubocop-hq/rubocop**](https://github.com/rubocop-hq/rubocop#readme)
-- Version: **0.82.0**
+## rubocop documentation
 
-## Configuration
-
-### rubocop configuration
-
-- [Configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html)
+- Version in Mega-Linter: **0.82.0**
+- Visit [Official Web Site](https://github.com/rubocop-hq/rubocop#readme)
+- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html)
   - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml) will be used
-- [Disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code)
+- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code)
 
-### Mega-linter configuration
+[![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop)
+
+## Configuration in Mega-Linter
 
 - Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

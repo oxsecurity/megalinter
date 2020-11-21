@@ -9,16 +9,15 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/editorconfig-checker/editorconfig-checker**](https://github.com/editorconfig-checker/editorconfig-checker#readme)
+## editorconfig-checker documentation
 
-## Configuration
+- Visit [Official Web Site](https://github.com/editorconfig-checker/editorconfig-checker#readme)
+- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
+- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
 
-### editorconfig-checker configuration
+[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker)
 
-- [Configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
-- [Disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

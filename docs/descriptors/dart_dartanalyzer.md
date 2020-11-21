@@ -9,17 +9,16 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli**](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
+## dartanalyzer documentation
 
-## Configuration
-
-### dartanalyzer configuration
-
-- [Configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
+- Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
+- See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
   - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
-- [Disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
+- See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
 
-### Mega-linter configuration
+[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk)
+
+## Configuration in Mega-Linter
 
 - Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

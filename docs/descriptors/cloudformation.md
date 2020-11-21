@@ -14,7 +14,7 @@
   - `AWSTemplateFormatVersion`
   - `(AWS|Alexa|Custom)::`
 
-## Mega-linter configuration
+## Configuration in Mega-Linter
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

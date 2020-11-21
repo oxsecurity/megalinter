@@ -9,17 +9,14 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/dotenv-linter/dotenv-linter**](https://github.com/dotenv-linter/dotenv-linter#readme)
-- Version: **2.2.1**
+## dotenv-linter documentation
 
-## Configuration
+- Version in Mega-Linter: **2.2.1**
+- Visit [Official Web Site](https://github.com/dotenv-linter/dotenv-linter#readme)
 
-### dotenv-linter configuration
+[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter)
 
-- dotenv-linter has no known capability to configure custom rules
-- dotenv-linter has no known capability to inline-disable rules
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

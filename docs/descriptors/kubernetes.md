@@ -15,7 +15,7 @@
   - `kustomize.config.k8s.io`
   - `tekton`
 
-## Mega-linter configuration
+## Configuration in Mega-Linter
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

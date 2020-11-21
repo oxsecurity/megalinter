@@ -9,18 +9,17 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/kucherenko/jscpd/tree/master/packages/jscpd**](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
-- Version: **3.3.21**
+## jscpd documentation
 
-## Configuration
-
-### jscpd configuration
-
-- [Configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file)
+- Version in Mega-Linter: **3.3.21**
+- Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
+- See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file)
   - If custom .jscpd.json is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json) will be used
-- [Disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks)
+- See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks)
 
-### Mega-linter configuration
+[![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd)
+
+## Configuration in Mega-Linter
 
 - Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

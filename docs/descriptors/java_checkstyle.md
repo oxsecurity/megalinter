@@ -9,18 +9,17 @@
 
 ## Linter
 
-- Web Site: [**https://checkstyle.sourceforge.io**](https://checkstyle.sourceforge.io)
-- Version: **8.37**
+## checkstyle documentation
 
-## Configuration
-
-### checkstyle configuration
-
-- [Configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
+- Version in Mega-Linter: **8.37**
+- Visit [Official Web Site](https://checkstyle.sourceforge.io)
+- See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
   - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
-- [Disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
+- See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
 
-### Mega-linter configuration
+[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle)
+
+## Configuration in Mega-Linter
 
 - Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

@@ -215,7 +215,7 @@ nav:
           - "terrascan": "descriptors/terraform_terrascan.md"
           - "terragrunt": "descriptors/terraform_terragrunt.md"
 # tooling_format-end
-    - "Other":
+    - "Other checks":
           # other-start
       - "COPYPASTE":
           - "index": "descriptors/copypaste.md"

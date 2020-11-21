@@ -9,18 +9,16 @@
 
 ## Linter
 
-- Web Site: [**https://github.com/psf/black**](https://github.com/psf/black#readme)
-- Version: **20.8**
+## black documentation
 
-## Configuration
-
-### black configuration
-
-- [Configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
+- Version in Mega-Linter: **20.8**
+- Visit [Official Web Site](https://github.com/psf/black#readme)
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
   - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
-- black has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black)
+
+## Configuration in Mega-Linter
 
 - Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)

@@ -15,6 +15,8 @@ import markdown
 import megalinter
 import yaml
 from bs4 import BeautifulSoup
+from giturlparse import parse
+from webpreview import web_preview
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -26,8 +28,9 @@ DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 
-VERSIONS_FILE = REPO_HOME + "/linter-versions.json"
-HELPS_FILE = REPO_HOME + "/linter-helps.json"
+VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
+HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
+LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
@@ -272,7 +275,7 @@ def generate_descriptor_documentation(descriptor):
         descriptor_md += [""]
     # Mega-linter variables
     descriptor_md += [
-        "## Mega-linter configuration",
+        "## Configuration in Mega-Linter",
         "",
         "| Variable | Description | Default value |",
         "| ----------------- | -------------- | -------------- |",
@@ -401,12 +404,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         else:
             linter_doc_md += [f"# {linter.linter_name}"]
 
+        # Linter text , if defined in YML descriptor
+        if hasattr(linter, "linter_text") and linter.linter_text:
+            linter_doc_md += [""]
+            linter_doc_md += linter.linter_text.splitlines()
+
+        # Linter-specific configuration
+        linter_doc_md += ["", f"## {linter.linter_name} documentation", ""]
         # Linter URL & version
-        linter_doc_md += [
-            "",
-            f"- Web Site: [**{linter.linter_url}**]({doc_url(linter.linter_url)})",
-        ]
-        # Add version info
         with open(VERSIONS_FILE, "r", encoding="utf-8") as json_file:
             linter_versions = json.load(json_file)
             if (
@@ -414,28 +419,20 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 and linter_versions[linter.linter_name] != "0.0.0"
             ):
                 linter_doc_md += [
-                    f"- Version: **{linter_versions[linter.linter_name]}**"
+                    f"- Version in Mega-Linter: **{linter_versions[linter.linter_name]}**"
                 ]
-
-        # How to configure this linter
-        linter_doc_md += ["", "## Configuration", ""]
-        if hasattr(linter, "linter_text") and linter.linter_text:
-            linter_doc_md += linter.linter_text.splitlines()
-        # Linter-specific configuration
-        linter_doc_md += [f"### {linter.linter_name} configuration", ""]
+        linter_doc_md += [
+            f"- Visit [Official Web Site]({doc_url(linter.linter_url)})",
+        ]
         # Rules configuration URL
         if (
             hasattr(linter, "linter_rules_configuration_url")
             and linter.linter_rules_configuration_url is not None
         ):
             linter_doc_md += [
-                f"- [Configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
+                f"- See [How to configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
             ]
-        else:
-            linter_doc_md += [
-                f"- {linter.linter_name} has no known capability to configure custom rules"
-            ]
-        # Default rules riles
+        # Default rules
         if linter.config_file_name is not None:
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
@@ -449,18 +446,26 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_rules_inline_disable_url is not None
         ):
             linter_doc_md += [
-                f"- [Disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
-            ]
-        else:
-            linter_doc_md += [
-                f"- {linter.linter_name} has no known capability to inline-disable rules"
+                f"- See [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
             ]
         linter_doc_md += [""]
+        # Github repo svg preview
+        repo = get_repo(linter)
+        if repo is not None and repo.github is True:
+            linter_doc_md += [
+                f"[![{repo.repo} - GitHub](https://gh-card.dev/repos/{repo.owner}/{repo.repo}.svg?fullname=)]"
+                f"(https://github.com/{repo.owner}/{repo.repo})",
+                "",
+            ]
+        else:
+            logging.warning(
+                f"Unable to find github repository for {linter.linter_name}"
+            )
         # Mega-linter variables
         activation_url = "../index.md#activation-and-deactivation"
         apply_fixes_url = "../index.md#apply-fixes"
         linter_doc_md += [
-            "### Mega-linter configuration",
+            "## Configuration in Mega-Linter",
             "",
             f"- Enable {linter.linter_name} by adding `{linter.name}` in [ENABLE_LINTERS variable]({activation_url})",
             f"- Disable {linter.linter_name} by adding `{linter.name}` in [DISABLE_LINTERS variable]({activation_url})",
@@ -530,9 +535,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     linter_doc_md += [
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
-
-                    # Behind the scenes section
-                    ide_icon = ide
+        # Behind the scenes section
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
         linter_doc_md += ["### How are identified applicable files", ""]
@@ -701,6 +704,22 @@ def md_to_text(md):
     return soup.get_text()
 
 
+def get_repo(linter, check_github=True):
+    if linter.linter_url:
+        parse_res = parse(linter.linter_url)
+        if parse_res is not None and (
+            (check_github is True and parse_res.github is True) or check_github is False
+        ):
+            return parse_res
+    if hasattr(linter, "linter_repo"):
+        parse_res = parse(linter.linter_repo)
+        if parse_res is not None and (
+            (check_github is True and parse_res.github is True) or check_github is False
+        ):
+            return parse_res
+    return None
+
+
 def merge_install_attr(item):
     if "descriptor_install" not in item:
         return
@@ -840,6 +859,38 @@ def process_type_mkdocs_yml(linters_by_type, type1):
     )
 
 
+# Collect linters info from linter url, later used to build link preview card within linter documentation
+def collect_linter_previews():
+    linters = megalinter.utils.list_all_linters()
+    # Read file
+    with open(LINKS_PREVIEW_FILE, "r", encoding="utf-8") as json_file:
+        data = json.load(json_file)
+    updated = False
+    # Collect info using web_preview
+    for linter in linters:
+        if (
+            linter.linter_name not in data
+            or os.environ.get("REFRESH_LINTER_PREVIEWS", "false") == "true"
+        ):
+            logging.info(
+                f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}"
+            )
+            title, description, image = web_preview(
+                linter.linter_url, parser="html.parser", timeout=1000
+            )
+            item = {
+                "title": megalinter.utils.decode_utf8(title),
+                "description": megalinter.utils.decode_utf8(description),
+                "image": image,
+            }
+            data[linter.linter_name] = item
+            updated = True
+    # Update file
+    if updated is True:
+        with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(data, outfile, indent=4, sort_keys=True)
+
+
 if __name__ == "__main__":
     logging.basicConfig(
         force=True,
@@ -848,6 +899,7 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler(sys.stdout)],
     )
     # noinspection PyTypeChecker
+    collect_linter_previews()
     validate_descriptors()
     generate_dockerfile()
     generate_linter_test_classes()

@@ -9,18 +9,17 @@
 
 ## Linter
 
-- Web Site: [**https://stylelint.io**](https://stylelint.io)
-- Version: **13.8.0**
+## stylelint documentation
 
-## Configuration
-
-### stylelint configuration
-
-- [Configure stylelint rules](https://stylelint.io/user-guide/configure)
+- Version in Mega-Linter: **13.8.0**
+- Visit [Official Web Site](https://stylelint.io)
+- See [How to configure stylelint rules](https://stylelint.io/user-guide/configure)
   - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
-- [Disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
+- See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
 
-### Mega-linter configuration
+[![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint)
+
+## Configuration in Mega-Linter
 
 - Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
