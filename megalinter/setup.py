@@ -25,7 +25,7 @@ setup(
         "mkdocs-material",
         "mdx_truly_sane_lists",
         "beautifulsoup4",
-        "giturlparse"
+        "giturlparse",
     ],
     zip_safe=False,
 )
