@@ -526,6 +526,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
             for ide, ide_extensions in linter.ide.items():
                 for ide_extension in ide_extensions:
+                    ide_icon = ide
                     if not os.path.isfile(f"{REPO_ICONS}/{ide}.ico"):
                         ide_icon = "default"
                     icon_html = icon(
