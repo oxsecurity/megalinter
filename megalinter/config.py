@@ -24,6 +24,14 @@ def get(config_var=None, default=None):
     return RUNTIME_CONFIG.get(config_var, default)
 
 
+def get_list(config_var,default=None):
+    var = get(config_var, None)
+    if var is not None:
+        if isinstance(var, list):
+            return var
+        return var.split(",")
+    return default
+
 def set_value(config_var, val):
     RUNTIME_CONFIG[config_var] = val
 

@@ -207,12 +207,6 @@ def file_contains(file_name, regex_or_str_list):
     return False
 
 
-def get_dict_string_list(dict_obj, key, default):
-    if key in dict_obj:
-        return dict_obj[key].split(",")
-    return default
-
-
 def decode_utf8(stdout):
     # noinspection PyBroadException
     try:

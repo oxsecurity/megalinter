@@ -48,14 +48,10 @@ class Megalinter:
         self.default_linter_activation = True
 
         # Get enable / disable vars
-        self.enable_descriptors = utils.get_dict_string_list(config.get(), "ENABLE", [])
-        self.enable_linters = utils.get_dict_string_list(
-            config.get(), "ENABLE_LINTERS", []
-        )
-        self.disable_descriptors = utils.get_dict_string_list(config.get(), "DISABLE", [])
-        self.disable_linters = utils.get_dict_string_list(
-            config.get(), "DISABLE_LINTERS", []
-        )
+        self.enable_descriptors = config.get_list("ENABLE", [])
+        self.enable_linters = config.get_list("ENABLE_LINTERS", [])
+        self.disable_descriptors = utils.get_list("DISABLE", [])
+        self.disable_linters = utils.get_list("DISABLE_LINTERS", [])
         self.manage_default_linter_activation()
         self.apply_fixes = config.get("APPLY_FIXES", "none")
         # Load optional configuration
