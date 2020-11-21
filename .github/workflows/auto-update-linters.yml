@@ -9,9 +9,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-env:
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
 ###############
 # Set the Job #
 ###############
@@ -42,7 +39,7 @@ jobs:
       # Get the current date #
       ########################
       - name: Get current date
-        run: echo "::set-env name=BUILD_DATE::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
       ###################################
       # Build image locally for testing #
