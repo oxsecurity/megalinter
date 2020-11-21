@@ -28,6 +28,14 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 | SPELL_CSPELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SPELL_CSPELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use cspell in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

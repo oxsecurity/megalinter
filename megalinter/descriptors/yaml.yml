@@ -15,3 +15,10 @@ linters:
     install:
       pip:
         - yamllint
+    ide:
+      emacs:
+        - name: flycheck
+          url: https://github.com/krzysztof-magosa/flycheck-yamllint
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale

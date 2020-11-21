@@ -21,3 +21,7 @@ linters:
     install:
       npm:
         - "cspell@4.1.3"
+    ide:
+      vscode:
+        - name: Code Spell Checker
+          url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker

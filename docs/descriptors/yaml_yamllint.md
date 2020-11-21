@@ -27,6 +27,15 @@
 | YAML_YAMLLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | YAML_YAMLLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use yamllint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/krzysztof-magosa/flycheck-yamllint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

@@ -170,7 +170,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 **NOTES:**
 
 - If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **GitHub Mega-Linter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
-- You can also use it [outside of GitHub Actions](#run-mega-linter-outside-github-actions) (CircleCI, Azure Pipelines, Jenkins, or even locally with a docker run)
+- You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run)
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
 
@@ -366,7 +366,7 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
-If you do not want fixes to be automatically applied, but access them in a zipped file, you can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md)
+Note: You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
 
 If you use **apply fixes**, add the following lines in your `.gitignore file`
 
