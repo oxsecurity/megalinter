@@ -8,6 +8,7 @@ __all__ = [
     'Megalinter',
     'Linter',
     'Reporter',
+    'config',
     'utils',
     'alpaca'
 ]

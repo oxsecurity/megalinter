@@ -7,7 +7,7 @@ import logging
 import os
 
 import github
-from megalinter import Reporter
+from megalinter import Reporter, config
 from pytablewriter import MarkdownTableWriter
 
 BRANCH = "master"
@@ -24,19 +24,19 @@ class GithubCommentReporter(Reporter):
     gh_url = "https://nvuillam.github.io/mega-linter"
 
     def manage_activation(self):
-        if os.environ.get("GITHUB_COMMENT_REPORTER", "true") != "true":
+        if config.get("GITHUB_COMMENT_REPORTER", "true") != "true":
             self.is_active = False
         elif (
-            os.environ.get("POST_GITHUB_COMMENT", "true") == "true"
+            config.get("POST_GITHUB_COMMENT", "true") == "true"
         ):  # Legacy - true by default
             self.is_active = True
 
     def produce_report(self):
         # Post comment on GitHub pull request
-        if os.environ.get("GITHUB_TOKEN", "") != "":
-            github_repo = os.environ["GITHUB_REPOSITORY"]
-            run_id = os.environ["GITHUB_RUN_ID"]
-            sha = os.environ.get("GITHUB_SHA")
+        if config.get("GITHUB_TOKEN", "") != "":
+            github_repo = config.get("GITHUB_REPOSITORY")
+            run_id = config.get("GITHUB_RUN_ID")
+            sha = config.get("GITHUB_SHA")
             action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
             table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
             table_data_raw = [table_header]
@@ -110,9 +110,9 @@ class GithubCommentReporter(Reporter):
             logging.debug("\n" + p_r_msg)
             # Post comment on pull request if found
             github_auth = (
-                os.environ["PAT"]
-                if os.environ.get("PAT", "") != ""
-                else os.environ["GITHUB_TOKEN"]
+                config.get("PAT")
+                if config.get("PAT", "") != ""
+                else config.get("GITHUB_TOKEN")
             )
             g = github.Github(github_auth)
             repo = g.get_repo(github_repo)

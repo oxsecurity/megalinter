@@ -868,7 +868,7 @@ def collect_linter_previews():
     for linter in linters:
         if (
             linter.linter_name not in data
-            or os.environ.get("REFRESH_LINTER_PREVIEWS", "false") == "true"
+            or megalinter.config.get("REFRESH_LINTER_PREVIEWS", "false") == "true"
         ):
             logging.info(
                 f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}"

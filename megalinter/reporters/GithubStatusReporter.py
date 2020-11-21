@@ -4,11 +4,9 @@ GitHub Status reporter
 Post a GitHub status for each linter
 """
 import logging
-import os
-
 import requests
 
-from megalinter import Reporter
+from megalinter import Reporter, config
 
 
 class GithubStatusReporter(Reporter):
@@ -24,24 +22,24 @@ class GithubStatusReporter(Reporter):
 
     def manage_activation(self):
         # Disable status for each linter if MULTI_STATUS is 'false'
-        if "MULTI_STATUS" in os.environ and os.environ["MULTI_STATUS"] == 'false':
+        if config.exists("MULTI_STATUS") and config.get("MULTI_STATUS") == 'false':
             self.is_active = False
-        elif os.environ.get("GITHUB_STATUS_REPORTER", "true") != "true":
+        elif config.get("GITHUB_STATUS_REPORTER", "true") != "true":
             self.is_active = False
 
     def produce_report(self):
-        if 'GITHUB_REPOSITORY' in os.environ and 'GITHUB_SHA' in os.environ and \
-                'GITHUB_TOKEN' in os.environ and 'GITHUB_RUN_ID' in os.environ:
-            github_repo = os.environ['GITHUB_REPOSITORY']
-            sha = os.environ['GITHUB_SHA']
-            run_id = os.environ['GITHUB_RUN_ID']
+        if config.exists('GITHUB_REPOSITORY') and config.exists('GITHUB_SHA') and \
+                config.exists('GITHUB_TOKEN') and config.exists('GITHUB_RUN_ID'):
+            github_repo = config.get('GITHUB_REPOSITORY')
+            sha = config.get('GITHUB_SHA')
+            run_id = config.get('GITHUB_RUN_ID')
             success_msg = 'No errors were found in the linting process'
             error_not_blocking = 'Errors were detected but are considered not blocking'
             error_msg = 'Errors were detected, please view logs'
             url = f"{self.github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 'accept': 'application/vnd.github.v3+json',
-                'authorization': f"Bearer {os.environ['GITHUB_TOKEN']}",
+                'authorization': f"Bearer {config.get('GITHUB_TOKEN')}",
                 'content-type': 'application/json'
             }
             target_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# Center the string and complete blanks with hyphens (-)
 import glob
 import importlib
 import logging
