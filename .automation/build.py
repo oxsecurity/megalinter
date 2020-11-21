@@ -26,8 +26,8 @@ DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 
-VERSIONS_FILE = REPO_HOME + "/linter-versions.json"
-HELPS_FILE = REPO_HOME + "/linter-helps.json"
+VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
+HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},

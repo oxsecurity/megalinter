@@ -20,6 +20,7 @@ setup(
         "pyyaml",
         "requests",
         "terminaltables",
+        "webpreview",
         "yq",
         "mkdocs-material",
         "mdx_truly_sane_lists",
