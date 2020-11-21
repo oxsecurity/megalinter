@@ -2,14 +2,14 @@
 import logging
 import os
 
-import megalinter
+from megalinter import utils
 
 # Initialize runtime config
 import yaml
 
 RUNTIME_CONFIG = os.environ.copy()
 config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
-config_file = megalinter.utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
+config_file = utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
 # if .megalinter.yml is found, merge its values with environment variables (with priority to env values)
 if os.path.isfile(config_file):
     with open(config_file, "r", encoding="utf-8") as config_file_stream:
