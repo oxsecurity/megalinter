@@ -50,10 +50,6 @@ IDE_LIST = {
         "label": "IDEA",
         "url": "https://www.jetbrains.com/products.html#type=ide"
     },
-    "pycharm": {
-        "label": "PyCharm",
-        "url": "https://www.jetbrains.com/pycharm/"
-    },
     "sublime": {
         "label": "Sublime Text",
         "url": "https://www.sublimetext.com/"
@@ -544,13 +540,23 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += [
                 f"Use {linter.linter_name} in your favorites IDE to catch errors before CI", ""]
             linter_doc_md += [
-                "| IDE | Extension Name |",
-                "| ----------------- | -------------- |",
+                "| <!-- --> | IDE | Extension Name |",
+                "| :--: | ----------------- | -------------- |",
             ]
             for ide, ide_extensions in linter.ide.items():
                 for ide_extension in ide_extensions:
+                    ide_icon = ide
+                    if not os.path.isfile(f"{REPO_ICONS}/{ide}.ico"):
+                        ide_icon = 'default'
+                    icon_html = icon(
+                        f"{DOCS_URL_RAW_ROOT}/assets/icons/{ide_icon}.ico",
+                        "",
+                        "",
+                        ide_extension['name'],
+                        32,
+                    )
                     linter_doc_md += [
-                        f"| {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
+                        f"| {icon_html}| {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
 
         # Behind the scenes section
