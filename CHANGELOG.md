@@ -4,6 +4,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Core
+  - Allow configuration to be defined in a `.mega-linter.yml` file
+
 - New Linters
   - Add Gherkin (Cucumber language) & gherkin-lint
 
