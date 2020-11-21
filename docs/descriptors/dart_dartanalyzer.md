@@ -16,6 +16,8 @@
   - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
 - See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
 
+[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk)
+
 ## Configuration in Mega-Linter
 
 - Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

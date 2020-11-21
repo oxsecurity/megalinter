@@ -10,6 +10,7 @@ linters:
       Mega-Linter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
       Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
     linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
+    linter_repo: https://github.com/streetsidesoftware/cspell
     linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization
     linter_rules_inline_disable_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code

@@ -14,6 +14,8 @@
 - Version in Mega-Linter: **5.29.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/)
 
+[![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake)
+
 ## Configuration in Mega-Linter
 
 - Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)

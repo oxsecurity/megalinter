@@ -12,6 +12,8 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization)
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code)
 
+[![cspell - GitHub](https://gh-card.dev/repos/streetsidesoftware/cspell.svg?fullname=)](https://github.com/streetsidesoftware/cspell)
+
 ## Configuration in Mega-Linter
 
 - Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
