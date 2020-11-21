@@ -84,6 +84,8 @@ linters:
       - "analyse"
       - "--no-progress"
       - "--no-ansi"
+      - "--memory-limit"
+      - "1G"
     examples:
       - "phpstan analyse --no-progress --no-ansi myfile.php"
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
