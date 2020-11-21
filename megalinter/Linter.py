@@ -241,13 +241,17 @@ class Linter:
         if megalinter.config.exists(self.name + "_FILE_NAME"):
             self.config_file_name = megalinter.config.get(self.name + "_FILE_NAME")
         elif megalinter.config.exists(self.descriptor_id + "_FILE_NAME"):
-            self.config_file_name = megalinter.config.get(self.descriptor_id + "_FILE_NAME")
+            self.config_file_name = megalinter.config.get(
+                self.descriptor_id + "_FILE_NAME"
+            )
 
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if megalinter.config.exists(self.name + "_RULES_PATH"):
             self.linter_rules_path = megalinter.config.get(self.name + "_RULES_PATH")
         elif megalinter.config.exists(self.descriptor_id + "_RULES_PATH"):
-            self.linter_rules_path = megalinter.config.get(self.descriptor_id + "_RULES_PATH")
+            self.linter_rules_path = megalinter.config.get(
+                self.descriptor_id + "_RULES_PATH"
+            )
 
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
@@ -277,7 +281,9 @@ class Linter:
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
         if megalinter.config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = megalinter.config.get(self.name + "_FILTER_REGEX_INCLUDE")
+            self.filter_regex_include = megalinter.config.get(
+                self.name + "_FILTER_REGEX_INCLUDE"
+            )
         elif megalinter.config.exists(self.descriptor_id + "_FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = megalinter.config.get(
                 self.descriptor_id + "_FILTER_REGEX_INCLUDE"
@@ -292,12 +298,17 @@ class Linter:
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if megalinter.config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
-        elif megalinter.config.get(self.descriptor_id + "_DISABLE_ERRORS", "false") == "true":
+        elif (
+            megalinter.config.get(self.descriptor_id + "_DISABLE_ERRORS", "false")
+            == "true"
+        ):
             self.disable_errors = True
 
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
         if megalinter.config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = megalinter.config.get(self.name + "_FILTER_REGEX_EXCLUDE")
+            self.filter_regex_exclude = megalinter.config.get(
+                self.name + "_FILTER_REGEX_EXCLUDE"
+            )
         elif megalinter.config.exists(self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude = megalinter.config.get(
                 self.descriptor_id + "_FILTER_REGEX_EXCLUDE"

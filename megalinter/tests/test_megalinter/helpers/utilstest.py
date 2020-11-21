@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 from git import Repo
-from megalinter import Megalinter, utils, config
+from megalinter import Megalinter, config, utils
 
 REPO_HOME = (
     "/tmp/lint"
@@ -52,12 +52,15 @@ def linter_test_setup(params=None):
 
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
-    config.set_value("DEFAULT_WORKSPACE", (
-        config.get("DEFAULT_WORKSPACE") + sub_lint_root
-        if config.exists("DEFAULT_WORKSPACE")
-        and os.path.isdir(config.get("DEFAULT_WORKSPACE") + sub_lint_root)
-        else root_dir + sub_lint_root
-    ))
+    config.set_value(
+        "DEFAULT_WORKSPACE",
+        (
+            config.get("DEFAULT_WORKSPACE") + sub_lint_root
+            if config.exists("DEFAULT_WORKSPACE")
+            and os.path.isdir(config.get("DEFAULT_WORKSPACE") + sub_lint_root)
+            else root_dir + sub_lint_root
+        ),
+    )
     assert os.path.isdir(config.get("DEFAULT_WORKSPACE")), (
         "DEFAULT_WORKSPACE "
         + config.get("DEFAULT_WORKSPACE")

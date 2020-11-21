@@ -7,7 +7,7 @@ import logging
 import os
 import shutil
 
-from megalinter import Reporter, utils, config
+from megalinter import Reporter, config, utils
 
 
 class UpdatedSourcesReporter(Reporter):

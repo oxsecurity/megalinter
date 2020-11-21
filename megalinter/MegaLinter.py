@@ -12,7 +12,7 @@ import sys
 
 import git
 import terminaltables
-from megalinter import utils, config
+from megalinter import config, utils
 
 
 class Megalinter:
@@ -373,9 +373,7 @@ class Megalinter:
             else logging.INFO
         )
         log_file = (
-            self.report_folder
-            + os.path.sep
-            + config.get("LOG_FILE", "mega-linter.log")
+            self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
         )
         if not os.path.isdir(os.path.dirname(log_file)):
             os.makedirs(os.path.dirname(log_file))

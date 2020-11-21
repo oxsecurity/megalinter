@@ -2,10 +2,10 @@
 import logging
 import os
 
+import megalinter
+
 # Initialize runtime config
 import yaml
-
-import megalinter
 
 RUNTIME_CONFIG = os.environ.copy()
 config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
@@ -24,13 +24,14 @@ def get(config_var=None, default=None):
     return RUNTIME_CONFIG.get(config_var, default)
 
 
-def get_list(config_var,default=None):
+def get_list(config_var, default=None):
     var = get(config_var, None)
     if var is not None:
         if isinstance(var, list):
             return var
         return var.split(",")
     return default
+
 
 def set_value(config_var, val):
     RUNTIME_CONFIG[config_var] = val

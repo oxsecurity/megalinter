@@ -6,7 +6,7 @@ https://testanything.org/
 import logging
 import os
 
-from megalinter import Reporter, utils, config
+from megalinter import Reporter, config, utils
 
 
 class TapReporter(Reporter):
