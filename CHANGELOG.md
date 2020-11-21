@@ -4,10 +4,15 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Add Gherkin (Cucumber language) & gherkin-lint
-- Store log files as artifacts during test cases
-- Add examples of success and failed linter logs in documentation
-- Remove `/tmp/lint` and `/github/workspace` from log files
+- New Linters
+  - Add Gherkin (Cucumber language) & gherkin-lint
+
+- Logs
+  - Store log files as artifacts during test cases
+  - Add examples of success and failed linter logs in documentation
+  - Remove `/tmp/lint` and `/github/workspace` from log files
+
+- Add list of supported IDE in each linter documentation
 
 ## [4.8.0]
 

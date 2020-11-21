@@ -11,13 +11,17 @@ linters:
     config_file_name: .jscpd.json
     cli_lint_mode: project
     cli_lint_extra_args:
-      - '--output'
-      - './report/copy-paste/'
+      - "--output"
+      - "./report/copy-paste/"
     cli_lint_extra_args_after:
-      - '.'
+      - "."
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
     install:
       npm:
         - jscpd
+    ide:
+      vscode:
+        - name: vscode-jscpd
+          url: https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd

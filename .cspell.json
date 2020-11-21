@@ -925,6 +925,20 @@
         "\u077bcbad",
         "lintrc",
         "lintignore",
-        "sarif"
+        "sarif",
+        "Syntastic",
+        "cilint",
+        "elpy",
+        "flycheck",
+        "flymake",
+        "goland",
+        "golandci",
+        "jetbrains",
+        "reformatter",
+        "rstudio",
+        "standardjs",
+        "sublack",
+        "syntastic",
+        "neomake"
     ]
 }

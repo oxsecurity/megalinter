@@ -35,10 +35,14 @@ linters:
     config_file_name: .powershell-psscriptanalyzer.psd1
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
-      - "pwsh -NoProfile -NoLogo -Command \"Invoke-ScriptAnalyzer -EnableExit -Path myfile.ps1\""
-      - "pwsh -NoProfile -NoLogo -Command \"Invoke-ScriptAnalyzer -EnableExit -Settings .powershell-psscriptanalyzer.psd1 -Path myfile.ps1\""
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Path myfile.ps1"'
+      - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Settings .powershell-psscriptanalyzer.psd1 -Path myfile.ps1"'
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
     install:
       dockerfile:
         - ARG PSSA_VERSION='latest'
         - RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
+    ide:
+      vscode:
+        - name: VsCode PowerShell extension
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell

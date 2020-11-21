@@ -20,3 +20,10 @@ linters:
         - FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
         - COPY --from=chktex /usr/bin/chktex /usr/bin/
         - RUN cd ~ && touch .chktexrc
+    ide:
+      atom:
+        - name: linter-chktex
+          url: https://atom.io/packages/linter-chktex
+      vscode:
+        - name: latex-workshop
+          url: https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop

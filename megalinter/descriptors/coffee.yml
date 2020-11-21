@@ -17,3 +17,10 @@ linters:
     install:
       npm:
         - "@coffeelint/cli"
+    ide:
+      atom:
+        - name: linter-coffeelint
+          url: https://atom.io/packages/linter-coffeelint
+      idea:
+        - name: coffeelint
+          url: https://plugins.jetbrains.com/plugin/7723-coffeelint

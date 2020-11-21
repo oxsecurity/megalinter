@@ -18,7 +18,7 @@ linters:
     config_file_name: .ruby-lint.yml
     cli_lint_extra_args:
       - "--force-exclusion"
-    cli_lint_fix_arg_name: '--safe-auto-correct'
+    cli_lint_fix_arg_name: "--safe-auto-correct"
     examples:
       - "rubocop --force-exclusion myfile.rb"
       - "rubocop --force-exclusion -c .ruby-lint.yml myfile.rb"
@@ -30,3 +30,29 @@ linters:
         - rubocop-performance:1.7.1
         - rubocop-rails:2.5
         - rubocop-rspec:1.41.0
+    ide:
+      atom:
+        - name: linter-rubocop
+          url: https://github.com/AtomLinter/linter-rubocop
+      brackets:
+        - name: brackets-rubocop
+          url: https://github.com/smockle-archive/brackets-rubocop
+      emacs:
+        - name: rubocop-emacs
+          url: https://github.com/rubocop-hq/rubocop-emacs
+        - name: flycheck
+          url: https://github.com/flycheck/flycheck
+      idea:
+        - name: RubyMine
+          url: https://www.jetbrains.com/help/idea/2017.1/rubocop.html
+      sublime:
+        - name: sublime_rubocop
+          url: https://github.com/pderichs/sublime_rubocop
+      vim:
+        - name: vim-rubocop
+          url: https://github.com/ngmy/vim-rubocop
+        - name: ale
+          url: https://github.com/w0rp/ale
+      vscode:
+        - name: VsCode Ruby Extension
+          url: https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby

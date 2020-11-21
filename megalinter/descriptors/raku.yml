@@ -23,3 +23,13 @@ linters:
     install:
       dockerfile:
         - RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && apk add --update --no-cache rakudo zef
+    ide:
+      atom:
+        - name: language-perl6
+          url: https://atom.io/packages/language-perl6
+      comma:
+        - name: Native Support
+          url: https://commaide.com/
+      vscode:
+        - name: Perl6 Language Support
+          url: https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp

@@ -29,6 +29,20 @@ REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 VERSIONS_FILE = REPO_HOME + "/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/linter-helps.json"
 
+IDE_LIST = {
+    "atom": {"label": "Atom", "url": "https://atom.io/"},
+    "brackets": {"label": "Brackets", "url": "http://brackets.io/"},
+    "eclipse": {"label": "Eclipse", "url": "https://www.eclipse.org/"},
+    "emacs": {"label": "Emacs", "url": "https://www.gnu.org/software/emacs/"},
+    "idea": {
+        "label": "IDEA",
+        "url": "https://www.jetbrains.com/products.html#type=ide",
+    },
+    "sublime": {"label": "Sublime Text", "url": "https://www.sublimetext.com/"},
+    "vim": {"label": "vim", "url": "https://www.vim.org/"},
+    "vscode": {"label": "Visual Studio Code", "url": "https://code.visualstudio.com/"},
+}
+
 
 # Automatically generate Dockerfile parts
 def generate_dockerfile():
@@ -490,6 +504,35 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
                 f"| `{linter.files_sub_directory}` |"
             ]
+        # IDE Integration
+        if hasattr(linter, "ide"):
+            linter_doc_md += ["", "## IDE Integration", ""]
+            linter_doc_md += [
+                f"Use {linter.linter_name} in your favorite IDE to catch errors before Mega-Linter !",
+                "",
+            ]
+            linter_doc_md += [
+                "| <!-- --> | IDE | Extension Name |",
+                "| :--: | ----------------- | -------------- |",
+            ]
+            for ide, ide_extensions in linter.ide.items():
+                for ide_extension in ide_extensions:
+                    ide_icon = ide
+                    if not os.path.isfile(f"{REPO_ICONS}/{ide}.ico"):
+                        ide_icon = "default"
+                    icon_html = icon(
+                        f"{DOCS_URL_RAW_ROOT}/assets/icons/{ide_icon}.ico",
+                        "",
+                        "",
+                        ide_extension["name"],
+                        32,
+                    )
+                    linter_doc_md += [
+                        f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
+                    ]
+
+                    # Behind the scenes section
+                    ide_icon = ide
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
         linter_doc_md += ["### How are identified applicable files", ""]
@@ -644,6 +687,12 @@ def icon(src, alt, _link, _title, height):
     return (
         f'<img src="{src}" alt="{alt}" height="{height}px" class="megalinter-icon"></a>'
     )
+
+
+def md_ide(ide):
+    if ide in IDE_LIST:
+        return f"[{IDE_LIST[ide]['label']}]({IDE_LIST[ide]['url']})"
+    return ide
 
 
 def md_to_text(md):

@@ -39,6 +39,7 @@ extra:
     generator: false
 nav:
     - "Home": "index.md"
+    - "Why Mega-Linter ?": "./#why_mega-linter"
     - "Quick Start": "./#quick-start"
     - "Installation": "./#installation"
     - "Configuration": "./#configuration"

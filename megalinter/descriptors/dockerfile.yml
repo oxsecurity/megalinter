@@ -10,7 +10,7 @@ linters:
     linter_url: https://github.com/replicatedhq/dockerfilelint
     linter_rules_configuration_url: https://github.com/replicatedhq/dockerfilelint#configuring
     config_file_name: .dockerfilelintrc
-    cli_config_arg_name: ''
+    cli_config_arg_name: ""
     examples:
       - "dockerfilelint Dockerfile"
     install:
@@ -31,3 +31,10 @@ linters:
       dockerfile:
         - FROM hadolint/hadolint:latest-alpine as dockerfile-lint
         - COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
+    ide:
+      atom:
+        - name: linter-hadolint
+          url: https://atom.io/packages/linter-hadolint
+      vscode:
+        - name: hadolint
+          url: https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint

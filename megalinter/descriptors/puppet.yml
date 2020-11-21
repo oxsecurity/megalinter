@@ -10,13 +10,17 @@ linters:
     linter_rules_inline_disable_url: https://github.com/rodjek/puppet-lint#disable-checks-within-puppet-code
     config_file_name: .puppet-lint.rc
     cli_config_arg_name: ""
-    cli_lint_fix_arg_name: '--fix'
+    cli_lint_fix_arg_name: "--fix"
     cli_lint_extra_args:
-      - '--fail-on-warnings'
-      - '--no-autoloader_layout-check'
+      - "--fail-on-warnings"
+      - "--no-autoloader_layout-check"
     examples:
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check myfile.pp"
       - "puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp"
     install:
       gem:
         - puppet-lint
+    ide:
+      vscode:
+        - name: Puppet VsCode Extension
+          url: https://puppet-vscode.github.io/docs/features/linting/

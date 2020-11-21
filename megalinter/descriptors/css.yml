@@ -14,7 +14,7 @@ linters:
     linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
-    cli_lint_fix_arg_name: '--fix'
+    cli_lint_fix_arg_name: "--fix"
     examples:
       - "stylelint myfile.css"
       - "stylelint --config .stylelintrc.json myfile.css"
@@ -23,6 +23,24 @@ linters:
       npm:
         - stylelint
         - stylelint-config-standard
+    ide:
+      atom:
+        - name: linter-stylelint
+          url: https://github.com/AtomLinter/linter-stylelint
+      emacs:
+        - name: flycheck
+          url: https://github.com/flycheck/flycheck
+      sublime:
+        - name: SublimeLinter-stylelint
+          url: https://github.com/SublimeLinter/SublimeLinter-stylelint
+        - name: SublimeLinter-contrib-stylelint_d
+          url: https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d
+      vim:
+        - name: ale
+          url: https://github.com/dense-analysis/ale
+      vscode:
+        - name: vscode-stylelint
+          url: https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
   # SCSS Lint
   - linter_name: scss-lint
     name: CSS_SCSS_LINT
@@ -41,3 +59,13 @@ linters:
     install:
       gem:
         - scss_lint
+    ide:
+      atom:
+        - name: linter-scss-lint
+          url: https://atom.io/packages/linter-scss-lint
+      idea:
+        - name: scss-lint-plugin
+          url: https://github.com/idok/scss-lint-plugin
+      vscode:
+        - name: scss-lint
+          url: https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint

@@ -54,6 +54,23 @@ linters:
       dockerfile:
         - |
           RUN phive install phpcs -g --trust-gpg-keys 31C7E470E2138192
+    ide:
+      atom:
+        - name: linter-phpcs
+          url: https://atom.io/packages/linter-phpcs
+        - name: atom-phpcs
+          url: https://github.com/bpearson/atom-phpcs
+      idea:
+        - name: phpcs
+          url: https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html
+      sublime:
+        - name: sublime-phpcs
+          url: https://github.com/benmatselby/sublime-phpcs
+        - name: SublimeLinter-phpcs
+          url: https://github.com/SublimeLinter/SublimeLinter-phpcs
+      vscode:
+        - name: vscode-phpcs
+          url: https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs
   # PHP Stan
   - linter_name: phpstan
     name: PHP_PHPSTAN
@@ -73,6 +90,13 @@ linters:
       dockerfile:
         - |
           RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+    ide:
+      idea:
+        - name: PHPStan / Psalm / Generics
+          url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+      vscode:
+        - name: vscode-phpstan
+          url: https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan
   # PSALM
   - linter_name: psalm
     name: PHP_PSALM
@@ -89,3 +113,10 @@ linters:
       dockerfile:
         - |
           RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+    ide:
+      idea:
+        - name: PHPStan / Psalm / Generics
+          url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+      vscode:
+        - name: Psalm VsCode Plugin
+          url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin

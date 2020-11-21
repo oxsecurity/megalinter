@@ -26,6 +26,14 @@
 | RUST_CLIPPY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RUST_CLIPPY_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
+## IDE Integration
+
+Use clippy in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) |
+
 ## Behind the scenes
 
 ### How are identified applicable files

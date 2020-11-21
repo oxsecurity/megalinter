@@ -313,6 +313,7 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/
 
+
 # hadolint installation
 COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
 
@@ -339,6 +340,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 
+
 # kubeval installation
 COPY --from=kubeval /kubeval /usr/bin/
 
@@ -360,6 +362,7 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
     && luarocks install luacheck
 
+
 # perlcritic installation
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 
@@ -376,6 +379,7 @@ RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 
 # psalm installation
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+
 
 # powershell installation
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
