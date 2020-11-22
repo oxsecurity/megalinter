@@ -19,6 +19,7 @@ class Megalinter:
 
     # Constructor: Load global config, linters & compute file extensions
     def __init__(self, params=None):
+        config.get_config()  # Initialize runtime config
         if params is None:
             params = {}
         self.workspace = self.get_workspace()
@@ -415,10 +416,14 @@ class Megalinter:
     def check_results(self):
         if self.status == "success":
             logging.info("Successfully linted all files without errors")
+            config.delete()
         else:
             logging.error("Error(s) have been found during linting")
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":
+                    config.delete()
                     sys.exit(0)
                 else:
+                    config.delete()
                     sys.exit(self.return_code)
+            config.delete()

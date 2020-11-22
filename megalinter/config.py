@@ -7,10 +7,12 @@ import yaml
 from megalinter import utils
 
 
+ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
+
+
 def get_config():
-    runtime_config = os.environ.get("_MEGALINTER_CONFIG_RUNTIME", "{}")
+    runtime_config = os.environ.get(ENV_RUNTIME_KEY, "{}")
     if runtime_config != "{}":
-        logging.info(f"STORED_CONFIG: {runtime_config}")
         return json.loads(runtime_config)
     env = os.environ.copy()
     config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
@@ -21,18 +23,18 @@ def get_config():
             config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
             runtime_config = {**config_data, **env}
             logging.info(
-                f"Merged environment variables into config found in {config_file}"
+                f"Merged environment variables into config found in {config_file}, to build runtime config"
             )
     else:
         logging.info(
-            f"No {config_file} config file found: use only environment variables"
+            f"No {config_file} config file found: use only environment variables as runtime config"
         )
     set_config(runtime_config)
     return runtime_config
 
 
 def set_config(config):
-    os.environ["_MEGALINTER_CONFIG_RUNTIME"] = json.dumps(config)
+    os.environ[ENV_RUNTIME_KEY] = json.dumps(config)
 
 
 def get(config_var=None, default=None):
@@ -64,7 +66,11 @@ def copy():
     return get_config().copy()
 
 
-def delete(key):
+def delete(key=None):
+    if key is None:
+        del os.environ[ENV_RUNTIME_KEY]
+        logging.info("Cleared Mega-Linter runtime config")
+        return
     config = get_config()
     del config[key]
     set_config(config)
