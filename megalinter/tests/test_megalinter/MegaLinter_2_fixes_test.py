@@ -45,6 +45,7 @@ class MegalinterFixesTest(unittest.TestCase):
         time.sleep(5)
         # Check fixable files has been updated
         fixable_files = [
+            "bash_for_fixes_1.sh",
             "csharp_for_fixes_1.cs",
             "env_for_fixes_1.env",
             "groovy_for_fixes_1.groovy",

@@ -68,10 +68,14 @@ linters:
     name: BASH_SHFMT
     cli_lint_extra_args:
       - "-d"
+    cli_lint_fix_arg_name: "-w"
+    cli_lint_fix_remove_args:
+      - "-d"
     help_command_return_code: 2
     test_folder: shell_shfmt
     examples:
       - "shfmt -d myfile.sh"
+      - "shfmt -w myfile.sh" # Fix
     install:
       dockerfile:
         - ENV GO111MODULE=on
