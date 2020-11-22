@@ -4,7 +4,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
 
 [SUCCESS] .automation/test/html/html_good_01.html
     
-       Config loaded: .github/linters/.htmlhintrc
+       Config loaded: /action/lib/.automation/.htmlhintrc
     
-    Scanned 1 files, no errors found (18 ms).
+    Scanned 1 files, no errors found (19 ms).
 
