@@ -21,3 +21,4 @@
 | ------ | ----------------- |
 | [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) |
 | [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) |
+| [rstfmt](rst_rstfmt.md) | [RST](rst_rstfmt.md) |

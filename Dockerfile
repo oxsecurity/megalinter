@@ -160,6 +160,7 @@ RUN pip3 install --no-cache-dir \
           isort \
           restructuredtext_lint \
           rstcheck \
+          rstfmt \
           snakemake \
           snakefmt \
           yamllint

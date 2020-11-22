@@ -13,8 +13,6 @@
 - Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RST_RST_LINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
-
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | RST_RST_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -36,10 +34,6 @@
 
 ```shell
 rst-lint myfile.rst
-```
-
-```shell
-rst-lint --format myfile.rst
 ```
 
 
