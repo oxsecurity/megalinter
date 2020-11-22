@@ -2,7 +2,6 @@
 
 import glob
 import importlib
-import logging
 import os
 import re
 
@@ -173,16 +172,10 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
             reporter = reporter_class(reporter_init_params)
             scope_reporters += [reporter]
     # Keep only active reporters
-    skipped_reporters = []
     for reporter in scope_reporters:
         if reporter.is_active is False:
-            skipped_reporters += [reporter.name]
             continue
         reporters += [reporter]
-    # Display skipped reporters in log
-    if len(skipped_reporters) > 0:
-        skipped_reporters.sort()
-        logging.debug("Skipped reporters:  " + ", ".join(skipped_reporters))
     # Sort reporters by name
     reporters.sort(key=lambda x: x.name)
     return reporters
