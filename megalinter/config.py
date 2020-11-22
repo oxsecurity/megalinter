@@ -23,10 +23,12 @@ def init_config(workspace):
         config_file = workspace + os.path.sep + config_file_name
     else:
         config_file = workspace + os.path.sep + ".mega-linter.yml"
-        for candidate in [".mega-linter.yml",
-                          ".megalinter.yml",
-                          ".mega-linter.yaml",
-                          ".megalinter.yaml"]:
+        for candidate in [
+            ".mega-linter.yml",
+            ".megalinter.yml",
+            ".mega-linter.yaml",
+            ".megalinter.yaml",
+        ]:
             if os.path.isfile(workspace + os.path.sep + candidate):
                 config_file = workspace + os.path.sep + candidate
                 break
