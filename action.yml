@@ -3,7 +3,7 @@ author: "Nicolas Vuillamy"
 description: "Combine all available linters to automatically validate your sources without configuration !"
 runs:
   using: "docker"
-  image: "docker://nvuillam/mega-linter:latest"
+  image: "docker://nvuillam/mega-linter:alpha"
 branding:
   icon: "check"
   color: "green"
