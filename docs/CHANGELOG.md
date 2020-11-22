@@ -9,6 +9,8 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Linters
   - Add Gherkin (Cucumber language) & gherkin-lint
+  - Add RST linter & formatter : [rst-lint](https://github.com/twolfson/restructuredtext-lint)
+  - Add RST linter : [rstcheck](https://github.com/myint/rstcheck)
   - Activate formatting for BASH_SHFMT
   - Activate formatting for SNAKEMAKE_SNAKEFMT
 
