@@ -4,19 +4,20 @@ import logging
 import os
 
 import yaml
-from megalinter import utils
 
 
 ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
 
 
-def get_config():
-    runtime_config = os.environ.get(ENV_RUNTIME_KEY, "{}")
-    if runtime_config != "{}":
-        return json.loads(runtime_config)
+def init_config(workspace):
+    if os.environ.get(ENV_RUNTIME_KEY, "") != "":
+        return
     env = os.environ.copy()
+    if workspace is None:
+        set_config(env)
+        return
     config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
-    config_file = utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
+    config_file = workspace + os.path.sep + config_file_name
     # if .megalinter.yml is found, merge its values with environment variables (with priority to env values)
     if os.path.isfile(config_file):
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
@@ -30,7 +31,14 @@ def get_config():
             f"No {config_file} config file found: use only environment variables as runtime config"
         )
     set_config(runtime_config)
-    return runtime_config
+
+
+def get_config():
+    runtime_config_str = os.environ.get(ENV_RUNTIME_KEY, "")
+    if runtime_config_str != "":
+        return json.loads(runtime_config_str)
+    else:
+        return os.environ.copy()
 
 
 def set_config(config):
@@ -72,5 +80,6 @@ def delete(key=None):
         logging.info("Cleared Mega-Linter runtime config")
         return
     config = get_config()
-    del config[key]
+    if key in config:
+        del config[key]
     set_config(config)

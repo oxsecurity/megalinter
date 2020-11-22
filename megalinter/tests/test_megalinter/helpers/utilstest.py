@@ -28,6 +28,7 @@ REPO_HOME = (
 
 # Define env variables before any test case
 def linter_test_setup(params=None):
+    config.init_config(None)
     if params is None:
         params = {}
     # Root to lint

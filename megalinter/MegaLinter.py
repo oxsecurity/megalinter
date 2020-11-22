@@ -19,10 +19,10 @@ class Megalinter:
 
     # Constructor: Load global config, linters & compute file extensions
     def __init__(self, params=None):
-        config.get_config()  # Initialize runtime config
         if params is None:
             params = {}
         self.workspace = self.get_workspace()
+        config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"
@@ -408,7 +408,7 @@ class Megalinter:
         logging.info(" - https://nvuillam.github.io/mega-linter")
         logging.info(utils.format_hyphens(""))
         # Display env variables for debug mode
-        for name, value in sorted(os.environ.items()):
+        for name, value in sorted(config.get_config().items()):
             logging.debug("" + name + "=" + value)
         logging.debug(utils.format_hyphens(""))
         logging.info("")
