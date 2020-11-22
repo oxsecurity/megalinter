@@ -2,15 +2,15 @@
 import logging
 import os
 
-import pickle
+import json
 import yaml
 from megalinter import utils
 
 
 def get_config():
-    runtime_config_bin = os.environ("_MEGALINTER_CONFIG", None)
-    if runtime_config_bin is not None:
-        return pickle.load(runtime_config_bin)
+    runtime_config = os.environ.get("_MEGALINTER_CONFIG_RUNTIME", "{}")
+    if runtime_config != "{}":
+        return json.load(runtime_config)
     env = os.environ.copy()
     config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
     config_file = utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
@@ -22,8 +22,12 @@ def get_config():
             logging.info(f"Merged environment variables into config found in {config_file}")
     else:
         logging.info(f"No {config_file} config file found: use only environment variables")
-    os.environ("_MEGALINTER_CONFIG", pickle.dumps(runtime_config))
+    set_config(runtime_config)
     return runtime_config
+
+
+def set_config(config):
+    os.environ["_MEGALINTER_CONFIG_RUNTIME"] = json.dumps(config)
 
 
 def get(config_var=None, default=None):
@@ -42,7 +46,9 @@ def get_list(config_var, default=None):
 
 
 def set_value(config_var, val):
-    config.runtime_config[config_var] = val
+    config = get_config()
+    config[config_var] = val
+    set_config(config)
 
 
 def exists(config_var):
@@ -54,4 +60,6 @@ def copy():
 
 
 def delete(key):
-    del config.runtime_config[key]
+    config = get_config()
+    del config[key]
+    set_config(config)
