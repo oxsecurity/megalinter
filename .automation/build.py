@@ -217,8 +217,8 @@ def generate_documentation():
         + f"[**{len(linters_by_type['format'])} formats**](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) "
         + ", [**copy-pastes**](#other) and [**spell**](#other) in your "
-        + "repository sources, generate **reports in several formats**, "
-        + "and can even [**apply auto-fixes**](#apply-fixes) "
+        + "repository sources, generate [**reports in several formats**](#reports), "
+        + "and can even [**apply formatting and auto-fixes**](#apply-fixes) "
         + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
         + "IDE/toolbox are used by their developers !"
     )

@@ -17,8 +17,6 @@
 - Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `SCALA_SCALAFIX` in [APPLY_FIXES variable](../index.md#apply-fixes)
-
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SCALA_SCALAFIX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
