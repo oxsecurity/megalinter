@@ -16,34 +16,29 @@ class RLinter(Linter):
         # lintr requires .lintr in folder: copy it there if necessary
         dir_name = os.path.dirname(file)
         if not os.path.isfile(dir_name + os.path.sep + self.config_file_name):
-            copyfile(self.config_file, dir_name +
-                     os.path.sep + self.config_file_name)
+            copyfile(self.config_file, dir_name + os.path.sep + self.config_file_name)
         # Build command in R format
-        r_commands = [f"errors <- lintr::lint('{file}');",
-                      "print(errors);",
-                      "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)"]
+        r_commands = [
+            f"errors <- lintr::lint('{file}');",
+            "print(errors);",
+            "quit(save = 'no', status = if (length(errors) > 0) 1 else 0)",
+        ]
         # Build shell command
-        cmd = ["R",
-               "--slave",
-               "-e", "".join(r_commands)]
+        cmd = ["R", "--slave", "-e", "".join(r_commands)]
         return cmd
 
     # Build the CLI command to request lintr version
     def build_version_command(self):
         # Build command in R format
-        r_commands = ["packageVersion(\"lintr\");"]
+        r_commands = ['packageVersion("lintr");']
         # Build shell command
-        cmd = ["R",
-               "--slave",
-               "-e", "".join(r_commands)]
+        cmd = ["R", "--slave", "-e", "".join(r_commands)]
         return cmd
 
     # Build the CLI command to request lintr help
     def build_help_command(self):
         # Build command in R format
-        r_commands = ["help(\"lintr\");"]
+        r_commands = ['help("lintr");']
         # Build shell command
-        cmd = ["R",
-               "--slave",
-               "-e", "".join(r_commands)]
+        cmd = ["R", "--slave", "-e", "".join(r_commands)]
         return cmd

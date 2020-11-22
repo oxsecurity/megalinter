@@ -6,7 +6,7 @@ https://testanything.org/
 import logging
 import os
 
-from megalinter import Reporter, utils
+from megalinter import Reporter, config, utils
 
 
 class TapReporter(Reporter):
@@ -20,13 +20,13 @@ class TapReporter(Reporter):
 
     def manage_activation(self):
         # Super-Linter legacy variables
-        output_format = os.environ.get("OUTPUT_FORMAT", "")
+        output_format = config.get("OUTPUT_FORMAT", "")
         if output_format.startswith("tap"):
             self.is_active = True
-            if os.environ.get("OUTPUT_DETAIL", "") == "detailed":
+            if config.get("OUTPUT_DETAIL", "") == "detailed":
                 self.report_type = "detailed"
         # Mega-Linter vars (false by default)
-        elif os.environ.get("TEXT_REPORTER", "false") == "true":
+        elif config.get("TEXT_REPORTER", "false") == "true":
             self.is_active = True
         else:
             self.is_active = False
@@ -52,7 +52,7 @@ class TapReporter(Reporter):
             return
         tap_report_lines = ["TAP version 13", f"1..{str(len(self.master.files))}"]
         tap_report_lines += self.report_items
-        tap_report_sub_folder = os.environ.get("TAP_REPORTER_SUB_FOLDER", "tap")
+        tap_report_sub_folder = config.get("TAP_REPORTER_SUB_FOLDER", "tap")
         tap_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{tap_report_sub_folder}{os.path.sep}"

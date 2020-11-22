@@ -7,7 +7,7 @@ import logging
 import os
 import shutil
 
-from megalinter import Reporter, utils
+from megalinter import Reporter, config, utils
 
 
 class UpdatedSourcesReporter(Reporter):
@@ -20,7 +20,7 @@ class UpdatedSourcesReporter(Reporter):
         super().__init__(params)
 
     def manage_activation(self):
-        if os.environ.get("UPDATED_SOURCES_REPORTER", "true") != "true":
+        if config.get("UPDATED_SOURCES_REPORTER", "true") != "true":
             self.is_active = False
 
     def produce_report(self):
@@ -28,7 +28,7 @@ class UpdatedSourcesReporter(Reporter):
         # Copy updated files in report folder
         updated_files = utils.list_updated_files(self.master.github_workspace)
         logging.debug("Updated files :\n" + "\n -".join(updated_files))
-        updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
+        updated_dir = config.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
         for updated_file in updated_files:
             updated_file_clean = utils.normalize_log_string(updated_file)

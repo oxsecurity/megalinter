@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 from git import Repo
-from megalinter import Megalinter, utils
+from megalinter import Megalinter, config, utils
 
 REPO_HOME = (
     "/tmp/lint"
@@ -28,6 +28,7 @@ REPO_HOME = (
 
 # Define env variables before any test case
 def linter_test_setup(params=None):
+    config.init_config(None)
     if params is None:
         params = {}
     # Root to lint
@@ -37,10 +38,10 @@ def linter_test_setup(params=None):
         else f"{os.path.sep}.automation{os.path.sep}test"
     )
     # Ignore report folder
-    os.environ["FILTER_REGEX_EXCLUDE"] = "\\/(report)\\/"
+    config.set_value("FILTER_REGEX_EXCLUDE", "\\/(report)\\/")
     # TAP Output deactivated by default
-    os.environ["OUTPUT_FORMAT"] = "text"
-    os.environ["OUTPUT_DETAIL"] = "detailed"
+    config.set_value("OUTPUT_FORMAT", "text")
+    config.set_value("OUTPUT_DETAIL", "detailed")
     # Root path of default rules
     root_dir = (
         "/tmp/lint"
@@ -50,43 +51,46 @@ def linter_test_setup(params=None):
         )
     )
 
-    os.environ["VALIDATE_ALL_CODEBASE"] = "true"
+    config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
-    os.environ["DEFAULT_WORKSPACE"] = (
-        os.environ["DEFAULT_WORKSPACE"] + sub_lint_root
-        if "DEFAULT_WORKSPACE" in os.environ
-        and os.path.isdir(os.environ["DEFAULT_WORKSPACE"] + sub_lint_root)
-        else root_dir + sub_lint_root
+    config.set_value(
+        "DEFAULT_WORKSPACE",
+        (
+            config.get("DEFAULT_WORKSPACE") + sub_lint_root
+            if config.exists("DEFAULT_WORKSPACE")
+            and os.path.isdir(config.get("DEFAULT_WORKSPACE") + sub_lint_root)
+            else root_dir + sub_lint_root
+        ),
     )
-    assert os.path.isdir(os.environ["DEFAULT_WORKSPACE"]), (
+    assert os.path.isdir(config.get("DEFAULT_WORKSPACE")), (
         "DEFAULT_WORKSPACE "
-        + os.environ["DEFAULT_WORKSPACE"]
+        + config.get("DEFAULT_WORKSPACE")
         + " is not a valid folder"
     )
 
 
 def print_output(output):
-    if "OUTPUT_DETAILS" in os.environ and os.environ["OUTPUT_DETAILS"] == "detailed":
+    if config.exists("OUTPUT_DETAILS") and config.get("OUTPUT_DETAILS") == "detailed":
         for line in output.splitlines():
             print(line)
 
 
 def call_mega_linter(env_vars):
-    prev_environ = os.environ.copy()
+    prev_environ = config.copy()
     usage_stdout = io.StringIO()
     with contextlib.redirect_stdout(usage_stdout):
         # Set env variables
         for env_var_key, env_var_value in env_vars.items():
-            os.environ[env_var_key] = env_var_value
+            config.set_value(env_var_key, env_var_value)
         # Call linter
         mega_linter = Megalinter()
         mega_linter.run()
         # Set back env variable previous values
         for env_var_key, env_var_value in env_vars.items():
             if env_var_key in prev_environ:
-                os.environ[env_var_key] = prev_environ[env_var_key]
+                config.set_value(env_var_key, prev_environ[env_var_key])
             else:
-                del os.environ[env_var_key]
+                config.delete(env_var_key)
     output = usage_stdout.getvalue().strip()
     print_output(output)
     return mega_linter, output
@@ -94,7 +98,7 @@ def call_mega_linter(env_vars):
 
 def test_linter_success(linter, test_self):
     test_folder = linter.test_folder
-    workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
     tmp_report_folder = tempfile.gettempdir()
@@ -143,7 +147,7 @@ def test_linter_success(linter, test_self):
 
 def test_linter_failure(linter, test_self):
     test_folder = linter.test_folder
-    workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
@@ -287,7 +291,7 @@ def test_get_linter_help(linter, test_self):
 
 def test_linter_report_tap(linter, test_self):
     test_folder = linter.test_folder
-    workspace = os.environ["DEFAULT_WORKSPACE"] + os.path.sep + test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     expected_file_name = ""
     # Identify expected report if defined

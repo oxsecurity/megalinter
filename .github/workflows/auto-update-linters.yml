@@ -54,7 +54,7 @@ jobs:
       #####################################
       - name: Collect latest versions and help
         shell: bash
-        run: docker run -e UPGRADE_LINTERS_VERSION=true -e DEFAULT_BRANCH=master -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
         timeout-minutes: 30
 
       # Upload Mega-Linter artifacts

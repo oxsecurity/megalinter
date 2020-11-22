@@ -31,5 +31,5 @@ class LinterTestRoot:
         utilstest.test_get_linter_help(self.get_linter_instance(), self)
 
     def test_report_tap(self):
-        utilstest.linter_test_setup({'report_type': 'tap'})
+        utilstest.linter_test_setup({"report_type": "tap"})
         utilstest.test_linter_report_tap(self.get_linter_instance(), self)

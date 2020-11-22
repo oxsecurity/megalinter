@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
+from .alpaca import alpaca
 from .Linter import Linter
 from .MegaLinter import Megalinter
 from .Reporter import Reporter
-from .alpaca import alpaca
 
-__all__ = [
-    'Megalinter',
-    'Linter',
-    'Reporter',
-    'utils',
-    'alpaca'
-]
+__all__ = ["Megalinter", "Linter", "Reporter", "config", "utils", "alpaca"]

@@ -353,68 +353,66 @@ _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [Git
 
 ## Configuration
 
+Mega-Linter configuration variables can be defined with **environment variables** or in a **.megalinter.yml** file at the root of the repository.
+You can see an example config file in this repo: [**.megalinter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.megalinter.yml)
+
 ### Activation and deactivation
 
-The Mega-Linter allows you to pass the following `ENV` variables to be able to trigger different functionality.
-
-_Note:_ All the `ENABLE`, `ENABLE_LINTERS`, `DISABLE`, `DISABLE_LINTERS` variables behave in a very specific way:
+Mega-Linter have all linters enabled by default, but allows to enable only some, or disable only some
 
 - If `ENABLE` is not set, all descriptors are activated by default. If set, all linters of listed descriptors will be activated by default
 - If `ENABLE_LINTERS` is set, only listed linters will be processed
 - If `DISABLE` is set, the linters in the listed descriptors will be skipped
 - If `DISABLE_LINTERS` is set, the listed linters will be skipped
 
-This means that if you run the linter "out of the box", all linters will be checked.
-But if you wish to select or exclude specific linters, we give you full control to choose which linters are run, and won't run anything unexpected.
-
 Examples:
 
 - Run all javascript and groovy linters except STANDARD javascript linter
 
 ```config
-ENABLE = JAVASCRIPT,GROOVY
-DISABLE_LINTERS = JAVSCRIPT_STANDARD
+ENABLE: JAVASCRIPT,GROOVY
+DISABLE_LINTERS: JAVSCRIPT_STANDARD
 ```
 
 - Run all linters except PHP linters (PHP_BUILTIN, PHP_PCPCS, PHP_STAN, PHP_PSALM)
 
 ```config
-DISABLE = PHP
+DISABLE: PHP
 ```
 
 - Run all linters except PHP_STAN and PHP_PSALM linters
 
 ```config
-DISABLE_LINTERS = PHP_STAN,PHP_PSALM
+DISABLE_LINTERS: PHP_STAN,PHP_PSALM
 ```
 
 ### Apply fixes
 
-Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 env variables defined at top level
+Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
 
 - **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
-Note: You can use [**Updated sources reporter**](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
+Notes:
 
-If you use **apply fixes**, add the following lines in your `.gitignore file`
+- You can use [**Updated sources reporter**](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
+- If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
+- If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
 
 ```shell
-*.log
 report/
 ```
 
-You may see github permission errors, or workflows not run on the new commit. To solve these issues:
-
-- [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
-- [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
+- You may see **github permission errors**, or workflows not run on the new commit. To solve these issues:
+  - [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
+  - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
 ### Shared variables
 
 | **ENV VAR**                       | **Default Value**     | **Notes**                                                                                                                                                                        |
 | --------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **DEFAULT_BRANCH**                | `master`              | The name of the repository default branch.                                                                                                                                       |
+| **DEFAULT_BRANCH**                | `master`              | The name of the repository default branch. Warning: In new github repositories, master branch is named `main`, so you need to override this value with `main`                    |
 | **DEFAULT_WORKSPACE**             | `/tmp/lint`           | The location containing files to lint if you are running locally.                                                                                                                |
 | **DISABLE_ERRORS**                | `false`               | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                  |
 | **FILTER_REGEX_EXCLUDE**          | `none`                | Regular expression defining which files will be excluded from linting  (ex: `.*src/test.*`)                                                                                      |
@@ -428,6 +426,7 @@ You may see github permission errors, or workflows not run on the new commit. To
 ### Filter linted files
 
 If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
+You can apply filters to a single linter by defining variable `<LINTER_KEY>_FILTER_REGEX_INCLUDE` and `<LINTER_KEY>_FILTER_REGEX_EXCLUDE`
 
 Examples:
 
@@ -444,18 +443,20 @@ See linters specific variables in their [Mega-Linter documentation](#languages)
 You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets. This allows for greater flexibility for each individual code base. The Template rules all try to follow the standards we believe should be enabled at the basic level.
 
 - Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
-  - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES)
+  - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES), or to linter defaults
 
 ## Reporters
 
 Mega-Linter can generate various reports that you can activate / deactivate and customize
 
-- [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
-- [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
-- [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
-- [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md)
-- [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md)
-- [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md)
+| Reporter |  Description | Default |
+| -------- |  ----------- | ------- |
+| [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md) |  One log file by linter + suggestions for fixes that can not be automated | Active |
+| [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs | Active if GitHub Action |
+| [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md) | Zip containing all formatted and auto-fixed sources so you can extract them in your repository | Active |
+| [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md) | One GitHub status by linter on the PR, with links to detailed logs | Active if GitHub Action |
+| [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md) | One log file by linter following [Test Anything Protocol](https://testanything.org/) format | Active |
+| [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md) | Execution logs visible in console | Active |
 
 ## Docker Hub
 

@@ -5,7 +5,7 @@ Text reporter
 import logging
 import os
 
-from megalinter import Reporter, utils
+from megalinter import Reporter, config, utils
 
 
 class TextReporter(Reporter):
@@ -20,13 +20,13 @@ class TextReporter(Reporter):
 
     def manage_activation(self):
         # Super-Linter legacy variables
-        output_format = os.environ.get("OUTPUT_FORMAT", "")
+        output_format = config.get("OUTPUT_FORMAT", "")
         if output_format.startswith("text"):
             self.is_active = True
-            if os.environ.get("OUTPUT_DETAIL", "") == "detailed":
+            if config.get("OUTPUT_DETAIL", "") == "detailed":
                 self.report_type = "detailed"
         # Mega-Linter vars (true by default)
-        elif os.environ.get("TEXT_REPORTER", "true") != "true":
+        elif config.get("TEXT_REPORTER", "true") != "true":
             self.is_active = False
         else:
             self.is_active = True
@@ -64,9 +64,7 @@ class TextReporter(Reporter):
         ]
         text_report_lines += self.report_items
         text_report_lines += self.master.complete_text_reporter_report(self)
-        text_report_sub_folder = os.environ.get(
-            "TEXT_REPORTER_SUB_FOLDER", "linters_logs"
-        )
+        text_report_sub_folder = config.get("TEXT_REPORTER_SUB_FOLDER", "linters_logs")
         text_file_name = (
             f"{self.report_folder}{os.path.sep}"
             f"{text_report_sub_folder}{os.path.sep}"

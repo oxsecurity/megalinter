@@ -35,12 +35,9 @@ jobs:
         env:
           # All available variables are described in documentation
           # https://nvuillam.github.io/mega-linter/#shared-variables
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
+          # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .megalinter.yml AT THE ROOT OF YOUR REPOSITORY
+          VALIDATE_ALL_CODEBASE: true #  ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|lib/)'
-          MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
-          DISABLE: CLOUDFORMATION,TEKTON
-          DISABLE_LINTERS: BASH_SHFMT,DOCKERFILE_HADOLINT
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
