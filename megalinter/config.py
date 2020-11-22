@@ -10,14 +10,14 @@ ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
 
 def init_config(workspace):
     if os.environ.get(ENV_RUNTIME_KEY, "") != "":
-        logging.info("Runtime config already initialized")
+        logging.info("Init config: Runtime config already initialized")
         return
     env = os.environ.copy()
     if workspace is None:
         set_config(env)
-        logging.info("No workspace")
+        logging.info("Init config: No workspace")
         return
-    config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
+    config_file_name = os.environ.get("MEGALINTER_CONFIG", ".mega-linter.yml")
     config_file = workspace + os.path.sep + config_file_name
     # if .megalinter.yml is found, merge its values with environment variables (with priority to env values)
     if os.path.isfile(config_file):
@@ -25,12 +25,12 @@ def init_config(workspace):
             config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
             runtime_config = {**config_data, **env}
             logging.info(
-                f"Merged environment variables into config found in {config_file}, to build runtime config"
+                f"Init config: Merged environment variables into config found in {config_file}, to build runtime config"
             )
     else:
         runtime_config = env
         logging.info(
-            f"No {config_file} config file found: use only environment variables as runtime config"
+            f"Init config: No {config_file} config file found: use only environment variables as runtime config"
         )
     set_config(runtime_config)
 

@@ -22,6 +22,7 @@ class Megalinter:
         if params is None:
             params = {}
         self.workspace = self.get_workspace()
+        print("WORKSPACE: "+ self.workspace)
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.report_folder = config.get(
@@ -303,7 +304,7 @@ class Megalinter:
                 for dir1 in dirnames:
                     if dir1 in excluded_directories:
                         exclude = True
-                        logging.debug(f"Excluded directory ${dir1}")
+                        logging.debug(f"Excluded directory {dir1}")
                 if exclude is False:
                     all_files += [
                         os.path.join(dirpath, file) for file in sorted(filenames)

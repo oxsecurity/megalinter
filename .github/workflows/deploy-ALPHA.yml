@@ -1,0 +1,72 @@
+---
+#########################
+#########################
+## Deploy Docker Image ##
+#########################
+#########################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to master #
+#######################################
+on:
+  push:
+    branches:
+      - "alpha"
+
+###############
+# Set the Job #
+###############
+jobs:
+  build:
+    # Name the Job
+    name: Deploy Docker Image - ALPHA
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+    # Only run this on the main repo
+    if: github.repository == 'nvuillam/mega-linter'
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.3
+        with:
+          fetch-depth: 0
+
+      #####################
+      # Run Deploy script #
+      #####################
+      - name: Deploy latest image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter
+          IMAGE_VERSION: alpha
+          DOCKERFILE_PATH: Dockerfile
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      #############################
+      # Run Deploy script for GPR #
+      #############################
+      - name: Deploy Latest image to GitHub Container Registry
+        env:
+          # Set the Env Vars
+          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
+          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter
+          IMAGE_VERSION: alpha
+          DOCKERFILE_PATH: Dockerfile
+          REGISTRY: GCR
+        shell: bash
+        run: .automation/upload-docker.sh
