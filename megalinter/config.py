@@ -5,7 +5,6 @@ import os
 
 import yaml
 
-
 ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
 
 
