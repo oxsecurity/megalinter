@@ -1,0 +1,31 @@
+descriptor_id: RST
+descriptor_type: format
+file_extensions:
+  - ".rst"
+linters:
+  # restructuredtext-lint
+  - linter_name: rst-lint
+    linter_url: https://github.com/twolfson/restructuredtext-lint
+    cli_lint_fix_arg_name: "--format"
+    examples:
+      - "rst-lint myfile.rst"
+      - "rst-lint --format myfile.rst" # Fix
+    install:
+      pip:
+        - restructuredtext_lint
+  # rstcheck
+  - linter_name: rstcheck
+    linter_url: https://github.com/myint/rstcheck
+    config_file_name: ".rstcheck.cfg"
+    linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
+    linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
+    examples:
+      - "rstcheck myfile.rst"
+      - "rstcheck -c .rstcheck.cfg myfile.rst"
+    install:
+      pip:
+        - rstcheck
+    ide:
+      vscode:
+        - name: vscode-restructuredtext
+          url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext

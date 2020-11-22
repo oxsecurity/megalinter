@@ -53,6 +53,7 @@ class MegalinterFixesTest(unittest.TestCase):
             "kotlin_for_fixes_1.kt",
             "markdown_for_fixes_1.md",
             "python_for_fixes_1.py",
+            "rst_for_fixes_1.rst",
             "ruby_for_fixes_1.rb",
             # "scala_for_fixes_1.scala",
             "snakemake_for_fixes_1.smk",
