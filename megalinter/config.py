@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+import json
 import logging
 import os
 
-import json
 import yaml
 from megalinter import utils
 
@@ -19,9 +19,13 @@ def get_config():
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
             config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
             runtime_config = {**config_data, **env}
-            logging.info(f"Merged environment variables into config found in {config_file}")
+            logging.info(
+                f"Merged environment variables into config found in {config_file}"
+            )
     else:
-        logging.info(f"No {config_file} config file found: use only environment variables")
+        logging.info(
+            f"No {config_file} config file found: use only environment variables"
+        )
     set_config(runtime_config)
     return runtime_config
 
