@@ -10,10 +10,12 @@ ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
 
 def init_config(workspace):
     if os.environ.get(ENV_RUNTIME_KEY, "") != "":
+        logging.info("Runtime config already initialized")
         return
     env = os.environ.copy()
     if workspace is None:
         set_config(env)
+        logging.info("No workspace")
         return
     config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
     config_file = workspace + os.path.sep + config_file_name
@@ -26,6 +28,7 @@ def init_config(workspace):
                 f"Merged environment variables into config found in {config_file}, to build runtime config"
             )
     else:
+        runtime_config = env
         logging.info(
             f"No {config_file} config file found: use only environment variables as runtime config"
         )
