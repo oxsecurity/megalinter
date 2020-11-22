@@ -58,7 +58,7 @@ class MegalinterFixesTest(unittest.TestCase):
             "snakemake_for_fixes_1.smk",
             "vbdotnet_for_fixes_1.vb",
         ]
-        # updated_dir = os.environ.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
+        # updated_dir = config.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
         # updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}{updated_dir}"
         for fixable_file in fixable_files:
             # Check linters applied updates

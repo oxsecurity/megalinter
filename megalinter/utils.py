@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# Center the string and complete blanks with hyphens (-)
 import glob
 import importlib
 import logging
@@ -206,12 +205,6 @@ def file_contains(file_name, regex_or_str_list):
                 if regex_or_str in content:
                     return True
     return False
-
-
-def get_dict_string_list(dict_obj, key, default):
-    if key in dict_obj:
-        return dict_obj[key].split(",")
-    return default
 
 
 def decode_utf8(stdout):

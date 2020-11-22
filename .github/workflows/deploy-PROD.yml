@@ -79,5 +79,5 @@ jobs:
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e DEFAULT_BRANCH=master -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:latest
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:latest
         timeout-minutes: 30

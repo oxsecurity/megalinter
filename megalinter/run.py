@@ -10,4 +10,4 @@ import megalinter
 megalinter.alpaca()
 
 # Run Mega-Linter
-megalinter.Megalinter({'cli': True}).run()
+megalinter.Megalinter({"cli": True}).run()

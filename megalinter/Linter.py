@@ -171,7 +171,7 @@ class Linter:
 
             # Manage sub-directory filter if defined
             if self.files_sub_directory is not None:
-                self.files_sub_directory = os.environ.get(
+                self.files_sub_directory = megalinter.config.get(
                     f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory
                 )
                 if not os.path.isdir(
@@ -215,39 +215,43 @@ class Linter:
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
         elif (
-            "VALIDATE_" + self.name in os.environ
-            and os.environ["VALIDATE_" + self.name] == "false"
+            megalinter.config.exists("VALIDATE_" + self.name)
+            and megalinter.config.get("VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
         elif (
-            "VALIDATE_" + self.descriptor_id in os.environ
-            and os.environ["VALIDATE_" + self.descriptor_id] == "false"
+            megalinter.config.exists("VALIDATE_" + self.descriptor_id)
+            and megalinter.config.get("VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
         elif (
-            "VALIDATE_" + self.name in os.environ
-            and os.environ["VALIDATE_" + self.name] == "true"
+            megalinter.config.exists("VALIDATE_" + self.name)
+            and megalinter.config.get("VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
         elif (
-            "VALIDATE_" + self.descriptor_id in os.environ
-            and os.environ["VALIDATE_" + self.descriptor_id] == "true"
+            megalinter.config.exists("VALIDATE_" + self.descriptor_id)
+            and megalinter.config.get("VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
 
     # Manage configuration variables
     def load_config_vars(self):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
-        if self.name + "_FILE_NAME" in os.environ:
-            self.config_file_name = os.environ[self.name + "_FILE_NAME"]
-        elif self.descriptor_id + "_FILE_NAME" in os.environ:
-            self.config_file_name = os.environ[self.descriptor_id + "_FILE_NAME"]
+        if megalinter.config.exists(self.name + "_FILE_NAME"):
+            self.config_file_name = megalinter.config.get(self.name + "_FILE_NAME")
+        elif megalinter.config.exists(self.descriptor_id + "_FILE_NAME"):
+            self.config_file_name = megalinter.config.get(
+                self.descriptor_id + "_FILE_NAME"
+            )
 
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
-        if self.name + "_RULES_PATH" in os.environ:
-            self.linter_rules_path = os.environ[self.name + "_RULES_PATH"]
-        elif self.descriptor_id + "_RULES_PATH" in os.environ:
-            self.linter_rules_path = os.environ[self.descriptor_id + "_RULES_PATH"]
+        if megalinter.config.exists(self.name + "_RULES_PATH"):
+            self.linter_rules_path = megalinter.config.get(self.name + "_RULES_PATH")
+        elif megalinter.config.exists(self.descriptor_id + "_RULES_PATH"):
+            self.linter_rules_path = megalinter.config.get(
+                self.descriptor_id + "_RULES_PATH"
+            )
 
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
@@ -276,32 +280,39 @@ class Linter:
                 )
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
-        if self.name + "_FILTER_REGEX_INCLUDE" in os.environ:
-            self.filter_regex_include = os.environ[self.name + "_FILTER_REGEX_INCLUDE"]
-        elif self.descriptor_id + "_FILTER_REGEX_INCLUDE" in os.environ:
-            self.filter_regex_include = os.environ[
+        if megalinter.config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
+            self.filter_regex_include = megalinter.config.get(
+                self.name + "_FILTER_REGEX_INCLUDE"
+            )
+        elif megalinter.config.exists(self.descriptor_id + "_FILTER_REGEX_INCLUDE"):
+            self.filter_regex_include = megalinter.config.get(
                 self.descriptor_id + "_FILTER_REGEX_INCLUDE"
-            ]
+            )
 
         # User arguments from config
-        if os.environ.get(self.name + "_ARGUMENTS", "") != "":
+        if megalinter.config.get(self.name + "_ARGUMENTS", "") != "":
             self.cli_lint_user_args = shlex.split(
-                os.environ.get(self.name + "_ARGUMENTS")
+                megalinter.config.get(self.name + "_ARGUMENTS")
             )
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
-        if os.environ.get(self.name + "_DISABLE_ERRORS", "false") == "true":
+        if megalinter.config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
-        elif os.environ.get(self.descriptor_id + "_DISABLE_ERRORS", "false") == "true":
+        elif (
+            megalinter.config.get(self.descriptor_id + "_DISABLE_ERRORS", "false")
+            == "true"
+        ):
             self.disable_errors = True
 
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
-        if self.name + "_FILTER_REGEX_EXCLUDE" in os.environ:
-            self.filter_regex_exclude = os.environ[self.name + "_FILTER_REGEX_EXCLUDE"]
-        elif self.descriptor_id + "_FILTER_REGEX_EXCLUDE" in os.environ:
-            self.filter_regex_exclude = os.environ[
+        if megalinter.config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude = megalinter.config.get(
+                self.name + "_FILTER_REGEX_EXCLUDE"
+            )
+        elif megalinter.config.exists(self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude = megalinter.config.get(
                 self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
-            ]
+            )
 
     # Processes the linter
     def run(self):

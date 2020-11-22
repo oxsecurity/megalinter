@@ -12,7 +12,7 @@ import sys
 
 import git
 import terminaltables
-from megalinter import utils
+from megalinter import config, utils
 
 
 class Megalinter:
@@ -22,8 +22,9 @@ class Megalinter:
         if params is None:
             params = {}
         self.workspace = self.get_workspace()
-        self.github_workspace = os.environ.get("GITHUB_WORKSPACE", self.workspace)
-        self.report_folder = os.environ.get(
+        config.init_config(self.workspace)  # Initialize runtime config
+        self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
+        self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"
         )
         self.initialize_logger()
@@ -48,16 +49,12 @@ class Megalinter:
         self.default_linter_activation = True
 
         # Get enable / disable vars
-        self.enable_descriptors = utils.get_dict_string_list(os.environ, "ENABLE", [])
-        self.enable_linters = utils.get_dict_string_list(
-            os.environ, "ENABLE_LINTERS", []
-        )
-        self.disable_descriptors = utils.get_dict_string_list(os.environ, "DISABLE", [])
-        self.disable_linters = utils.get_dict_string_list(
-            os.environ, "DISABLE_LINTERS", []
-        )
+        self.enable_descriptors = config.get_list("ENABLE", [])
+        self.enable_linters = config.get_list("ENABLE_LINTERS", [])
+        self.disable_descriptors = config.get_list("DISABLE", [])
+        self.disable_linters = config.get_list("DISABLE_LINTERS", [])
         self.manage_default_linter_activation()
-        self.apply_fixes = os.environ.get("APPLY_FIXES", "none")
+        self.apply_fixes = config.get("APPLY_FIXES", "none")
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -115,8 +112,8 @@ class Megalinter:
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self):
-        default_workspace = os.environ.get("DEFAULT_WORKSPACE", "")
-        github_workspace = os.environ.get("GITHUB_WORKSPACE", "")
+        default_workspace = config.get("DEFAULT_WORKSPACE", "")
+        github_workspace = config.get("GITHUB_WORKSPACE", "")
         # Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint
         if (
             default_workspace == ""
@@ -175,21 +172,21 @@ class Megalinter:
     # Manage configuration variables
     def load_config_vars(self):
         # Linter rules root path
-        if "LINTER_RULES_PATH" in os.environ:
+        if config.exists("LINTER_RULES_PATH"):
             self.linter_rules_path = (
-                self.github_workspace + os.path.sep + os.environ["LINTER_RULES_PATH"]
+                self.github_workspace + os.path.sep + config.get("LINTER_RULES_PATH")
             )
         # Filtering regex (inclusion)
-        if "FILTER_REGEX_INCLUDE" in os.environ:
-            self.filter_regex_include = os.environ["FILTER_REGEX_INCLUDE"]
+        if config.exists("FILTER_REGEX_INCLUDE"):
+            self.filter_regex_include = config.get("FILTER_REGEX_INCLUDE")
         # Filtering regex (exclusion)
-        if "FILTER_REGEX_EXCLUDE" in os.environ:
-            self.filter_regex_exclude = os.environ["FILTER_REGEX_EXCLUDE"]
+        if config.exists("FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude = config.get("FILTER_REGEX_EXCLUDE")
 
         # Disable all fields validation if VALIDATE_ALL_CODEBASE is 'false'
         if (
-            "VALIDATE_ALL_CODEBASE" in os.environ
-            and os.environ["VALIDATE_ALL_CODEBASE"] == "false"
+            config.exists("VALIDATE_ALL_CODEBASE")
+            and config.get("VALIDATE_ALL_CODEBASE") == "false"
         ):
             self.validate_all_code_base = False
 
@@ -199,9 +196,9 @@ class Megalinter:
         if len(self.enable_descriptors) > 0 or len(self.enable_linters) > 0:
             self.default_linter_activation = False
         # V3 legacy variables
-        for env_var in os.environ:
+        for env_var in config.get():
             if env_var.startswith("VALIDATE_") and env_var != "VALIDATE_ALL_CODEBASE":
-                if os.environ[env_var] == "true":
+                if config.get(env_var) == "true":
                     self.default_linter_activation = False
 
     # Load and initialize all linters
@@ -265,8 +262,8 @@ class Megalinter:
                 + "] using git diff, then filter with:"
             )
             repo = git.Repo(os.path.realpath(self.github_workspace))
-            default_branch = os.environ.get("DEFAULT_BRANCH", "master")
-            current_branch = os.environ.get("GITHUB_SHA", "")
+            default_branch = config.get("DEFAULT_BRANCH", "master")
+            current_branch = config.get("GITHUB_SHA", "")
             if current_branch == "":
                 current_branch = repo.active_branch.commit.hexsha
             try:
@@ -361,7 +358,7 @@ class Megalinter:
                 linter.is_active = False
 
     def initialize_logger(self):
-        logging_level_key = os.environ.get("LOG_LEVEL", "INFO").upper()
+        logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
             "INFO": logging.INFO,
             "DEBUG": logging.DEBUG,
@@ -377,9 +374,7 @@ class Megalinter:
             else logging.INFO
         )
         log_file = (
-            self.report_folder
-            + os.path.sep
-            + os.environ.get("LOG_FILE", "mega-linter.log")
+            self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
         )
         if not os.path.isdir(os.path.dirname(log_file)):
             os.makedirs(os.path.dirname(log_file))
@@ -400,31 +395,35 @@ class Megalinter:
         logging.info(utils.format_hyphens("GitHub Actions Multi Language Linter"))
         logging.info(utils.format_hyphens(""))
         logging.info(
-            " - Image Creation Date: " + os.environ.get("BUILD_DATE", "No docker image")
+            " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
         )
         logging.info(
-            " - Image Revision: " + os.environ.get("BUILD_REVISION", "No docker image")
+            " - Image Revision: " + config.get("BUILD_REVISION", "No docker image")
         )
         logging.info(
-            " - Image Version: " + os.environ.get("BUILD_VERSION", "No docker image")
+            " - Image Version: " + config.get("BUILD_VERSION", "No docker image")
         )
         logging.info(utils.format_hyphens(""))
         logging.info("The Mega-Linter documentation can be found at:")
         logging.info(" - https://nvuillam.github.io/mega-linter")
         logging.info(utils.format_hyphens(""))
-        # Display env variables for debug mode
-        for name, value in sorted(os.environ.items()):
-            logging.debug("" + name + "=" + value)
+        # Display config variables for debug mode
+        for name, value in sorted(config.get_config().items()):
+            logging.debug("" + name + "=" + str(value))
         logging.debug(utils.format_hyphens(""))
         logging.info("")
 
     def check_results(self):
         if self.status == "success":
             logging.info("Successfully linted all files without errors")
+            config.delete()
         else:
             logging.error("Error(s) have been found during linting")
             if self.cli is True:
-                if os.environ.get("DISABLE_ERRORS", "false") == "true":
+                if config.get("DISABLE_ERRORS", "false") == "true":
+                    config.delete()
                     sys.exit(0)
                 else:
+                    config.delete()
                     sys.exit(self.return_code)
+            config.delete()
