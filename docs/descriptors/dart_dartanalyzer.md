@@ -7,19 +7,16 @@
   </a>
 </div>
 
-## Linter
+## dartanalyzer documentation
 
-- Web Site: [**https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli**](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
-
-## Configuration
-
-### dartanalyzer configuration
-
-- [Configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
+- Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
+- See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
   - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
-- [Disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
+- See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
 
-### Mega-linter configuration
+[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk)
+
+## Configuration in Mega-Linter
 
 - Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -32,6 +29,15 @@
 | DART_DARTANALYZER_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
 | DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DART_DARTANALYZER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use dartanalyzer in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
 
 ## Behind the scenes
 
@@ -97,6 +103,7 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && chmod +x dart-sdk/bin/dart* \
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/
+
 ```
 
 

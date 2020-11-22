@@ -7,20 +7,17 @@
   </a>
 </div>
 
-## Linter
+## golangci-lint documentation
 
-- Web Site: [**https://github.com/golangci/golangci-lint**](https://github.com/golangci/golangci-lint#readme)
-- Version: **1.32.2**
-
-## Configuration
-
-### golangci-lint configuration
-
-- [Configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
+- Version in Mega-Linter: **1.32.2**
+- Visit [Official Web Site](https://github.com/golangci/golangci-lint#readme)
+- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
   - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
-- [Disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
+- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
 
-### Mega-linter configuration
+[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint)
+
+## Configuration in Mega-Linter
 
 - Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +30,20 @@
 | GO_GOLANGCI_LINT_FILE_NAME | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.golangci.yml` |
 | GO_GOLANGCI_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GO_GOLANGCI_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use golangci-lint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [go-plus](https://atom.io/packages/go-plus) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-go](https://github.com/fatih/vim-go) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) |
 
 ## Behind the scenes
 

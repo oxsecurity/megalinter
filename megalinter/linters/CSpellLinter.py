@@ -5,9 +5,10 @@ https://github.com/nvuillam/npm-groovy-lint
 """
 import json
 import logging
+import os
 import re
 
-from megalinter import Linter
+from megalinter import Linter, utils
 
 
 class CSpellLinter(Linter):
@@ -47,5 +48,36 @@ Of course, please correct real typos before :)
 """
         logging.debug(
             f"Generated additional TextReporter log for CSpellLinter:\n{additional_report}"
+        )
+
+        # Generate updated .cspell.json for manual update
+        cspell_config_file = (
+            reporter_self.master.github_workspace
+            + os.path.sep
+            + reporter_self.master.config_file_name
+        )
+        if os.path.isfile(cspell_config_file):
+            with open(cspell_config_file, "r", encoding="utf-8") as json_file:
+                data = json.load(json_file)
+            prev_words = data.get("words", [])
+            new_words = sorted(set(whitelisted_words_clean + prev_words))
+            data["words"] = new_words
+        else:
+            data = cspell_example
+        proposed_cspell_config_file = (
+            reporter_self.report_folder
+            + os.path.sep
+            + reporter_self.master.config_file_name
+        )
+        with open(proposed_cspell_config_file, "w", encoding="utf-8") as outfile:
+            json.dump(data, outfile, indent=4, sort_keys=True)
+        proposed_cspell_config_file = utils.normalize_log_string(
+            proposed_cspell_config_file
+        )
+        additional_report += "\n".join(
+            [
+                "",
+                f"You can also copy-paste {proposed_cspell_config_file} at the root of your repository",
+            ]
         )
         return additional_report.splitlines()

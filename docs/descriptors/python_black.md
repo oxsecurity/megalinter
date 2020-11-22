@@ -7,20 +7,16 @@
   </a>
 </div>
 
-## Linter
+## black documentation
 
-- Web Site: [**https://github.com/psf/black**](https://github.com/psf/black#readme)
-- Version: **20.8**
-
-## Configuration
-
-### black configuration
-
-- [Configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
+- Version in Mega-Linter: **20.8**
+- Visit [Official Web Site](https://github.com/psf/black#readme)
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
   - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
-- black has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black)
+
+## Configuration in Mega-Linter
 
 - Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -35,6 +31,20 @@
 | PYTHON_BLACK_FILE_NAME | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-black` |
 | PYTHON_BLACK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_BLACK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use black in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [python-black](https://atom.io/packages/python-black) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [blacken](https://github.com/pythonic-emacs/blacken) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [reformatter.el](https://github.com/purcell/reformatter.el) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [elpy](https://github.com/jorgenschaefer/elpy) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [sublack](https://github.com/jgirardet/sublack) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) |
 
 ## Behind the scenes
 

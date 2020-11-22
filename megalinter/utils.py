@@ -20,12 +20,14 @@ REPO_HOME_DEFAULT = (
 
 def list_excluded_directories():
     excluded_dirs = [
-        "node_modules",
+        "__pycache__",
         ".git",
-        "report",
+        ".pytest_cache",
         ".rbenv",
         ".venv",
         ".terragrunt-cache",
+        "node_modules",
+        "report",
     ]
     return excluded_dirs
 

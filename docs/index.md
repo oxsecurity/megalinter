@@ -27,6 +27,24 @@
 
 <!-- table-of-contents-end -->
 
+## Why Mega-Linter
+
+Projects need to contain clean code, in order to **avoid technical debt**, who makes **evolutive maintenance harder and time consuming**.
+
+By using **code formatters and code linters**, you ensure that your code base is **easier to read** and **respects best practices**, from the kick-off to each step of the project lifecycle
+
+Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process
+
+By using **Mega-Linter**, you ensure that:
+
+- At **each pull request** it will **automatically analyze all updated code in all languages**
+- **Reading error logs**, **developers learn best practices** of the language they are using
+- **Mega-Linter documentation** provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
+- Mega-Linter is **ready our of the box** after a **quick setup**
+- **Formatting and fixes** can be automatically **applied on the git branch**
+- This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
+- Mega-Linter can run on **any CI tool** and be **run locally**: **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+
 ## Quick Start
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
@@ -152,7 +170,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 **NOTES:**
 
 - If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **GitHub Mega-Linter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
-- You can also use it [outside of GitHub Actions](#run-mega-linter-outside-github-actions) (CircleCI, Azure Pipelines, Jenkins, or even locally with a docker run)
+- You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run)
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
 
@@ -348,7 +366,7 @@ Mega-linter is able to apply fixes provided by linters. To use this capability, 
 - **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
 - **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
 
-If you do not want fixes to be automatically applied, but access them in a zipped file, you can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md)
+Note: You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
 
 If you use **apply fixes**, add the following lines in your `.gitignore file`
 

@@ -7,20 +7,17 @@
   </a>
 </div>
 
-## Linter
+## pylint documentation
 
-- Web Site: [**https://www.pylint.org**](https://www.pylint.org)
-- Version: **2.6.0**
-
-## Configuration
-
-### pylint configuration
-
-- [Configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc)
+- Version in Mega-Linter: **2.6.0**
+- Visit [Official Web Site](https://www.pylint.org)
+- See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc)
   - If custom .python-lint is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint) will be used
-- [Disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html)
+- See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html)
 
-### Mega-linter configuration
+[![pylint - GitHub](https://gh-card.dev/repos/PyCQA/pylint.svg?fullname=)](https://github.com/PyCQA/pylint)
+
+## Configuration in Mega-Linter
 
 - Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +30,18 @@
 | PYTHON_PYLINT_FILE_NAME | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-lint` |
 | PYTHON_PYLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use pylint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [PyLint](https://pydev.org/manual_adv_pylint.html) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PyCharm (Native Support)](https://www.jetbrains.com/pycharm/) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [pylint.vim](https://www.vim.org/scripts/script.php?script_id=891) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio | [Native Support](https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_pylint) |
 
 ## Behind the scenes
 

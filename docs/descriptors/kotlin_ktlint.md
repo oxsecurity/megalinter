@@ -7,19 +7,14 @@
   </a>
 </div>
 
-## Linter
+## ktlint documentation
 
-- Web Site: [**https://ktlint.github.io**](https://ktlint.github.io)
-- Version: **0.39.0**
+- Version in Mega-Linter: **0.39.0**
+- Visit [Official Web Site](https://ktlint.github.io)
 
-## Configuration
+[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint)
 
-### ktlint configuration
-
-- ktlint has no known capability to configure custom rules
-- ktlint has no known capability to inline-disable rules
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -32,6 +27,15 @@
 | KOTLIN_KTLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
 | KOTLIN_KTLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use ktlint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-kotlin](https://github.com/whirm/flycheck-kotlin) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
 
 ## Behind the scenes
 
@@ -137,6 +141,7 @@ Commands:
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
+
 ```
 
 

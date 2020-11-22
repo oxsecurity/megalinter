@@ -7,20 +7,16 @@
   </a>
 </div>
 
-## Linter
+## spectral documentation
 
-- Web Site: [**https://github.com/stoplightio/spectral**](https://github.com/stoplightio/spectral#readme)
-- Version: **5.6.0**
-
-## Configuration
-
-### spectral configuration
-
-- [Configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
+- Version in Mega-Linter: **5.6.0**
+- Visit [Official Web Site](https://github.com/stoplightio/spectral#readme)
+- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
   - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
-- spectral has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral)
+
+## Configuration in Mega-Linter
 
 - Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +29,15 @@
 | OPENAPI_SPECTRAL_FILE_NAME | spectral configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.openapirc.yml` |
 | OPENAPI_SPECTRAL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | OPENAPI_SPECTRAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use spectral in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | stoplight | [Native integration](https://stoplight.io/studio) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-spectral](https://github.com/stoplightio/vscode-spectral) |
 
 ## Behind the scenes
 

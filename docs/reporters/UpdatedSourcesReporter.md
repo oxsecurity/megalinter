@@ -1,6 +1,7 @@
 # Updated Sources Reporter
 
-Posts a pack of files containing only the sources fixed by linters
+Posts a **pack** of files containing **only the source files fixed by linters**
+
 This folder can be unpacked to currently repository to apply automated fixes on the repository
 
 ## Usage

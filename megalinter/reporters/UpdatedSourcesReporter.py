@@ -32,7 +32,10 @@ class UpdatedSourcesReporter(Reporter):
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
         for updated_file in updated_files:
             updated_file_clean = utils.normalize_log_string(updated_file)
-            if updated_file_clean in ["linter-helps.json", "linter-versions.json"]:
+            if os.path.basename(updated_file_clean) in [
+                "linter-helps.json",
+                "linter-versions.json",
+            ]:
                 continue
             source_file = utils.REPO_HOME_DEFAULT + os.path.sep + updated_file
             if not os.path.isfile(source_file):

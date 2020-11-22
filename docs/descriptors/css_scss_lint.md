@@ -7,19 +7,16 @@
   </a>
 </div>
 
-## Linter
+## scss-lint documentation
 
-- Web Site: [**https://github.com/sds/scss-lint**](https://github.com/sds/scss-lint#readme)
-- Version: **0.59.0**
+- Version in Mega-Linter: **0.59.0**
+- Visit [Official Web Site](https://github.com/sds/scss-lint#readme)
+- See [How to configure scss-lint rules](https://github.com/sds/scss-lint#configuration)
+- See [How to disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code)
 
-## Configuration
+[![scss-lint - GitHub](https://gh-card.dev/repos/sds/scss-lint.svg?fullname=)](https://github.com/sds/scss-lint)
 
-### scss-lint configuration
-
-- [Configure scss-lint rules](https://github.com/sds/scss-lint#configuration)
-- [Disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code)
-
-### Mega-linter configuration
+## Configuration in Mega-Linter
 
 - Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -32,6 +29,16 @@
 | CSS_SCSS_LINT_FILE_NAME | scss-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scss-lint.yml` |
 | CSS_SCSS_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_SCSS_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use scss-lint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-scss-lint](https://atom.io/packages/linter-scss-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [scss-lint-plugin](https://github.com/idok/scss-lint-plugin) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [scss-lint](https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint) |
 
 ## Behind the scenes
 

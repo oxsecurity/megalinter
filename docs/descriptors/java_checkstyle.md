@@ -7,20 +7,17 @@
   </a>
 </div>
 
-## Linter
+## checkstyle documentation
 
-- Web Site: [**https://checkstyle.sourceforge.io**](https://checkstyle.sourceforge.io)
-- Version: **8.37**
-
-## Configuration
-
-### checkstyle configuration
-
-- [Configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
+- Version in Mega-Linter: **8.37**
+- Visit [Official Web Site](https://checkstyle.sourceforge.io)
+- See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
   - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
-- [Disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
+- See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
 
-### Mega-linter configuration
+[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle)
+
+## Configuration in Mega-Linter
 
 - Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +30,16 @@
 | JAVA_CHECKSTYLE_FILE_NAME | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
 | JAVA_CHECKSTYLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVA_CHECKSTYLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use checkstyle in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://github.com/jshiell/checkstyle-idea) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) |
 
 ## Behind the scenes
 

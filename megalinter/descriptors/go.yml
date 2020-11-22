@@ -22,7 +22,7 @@ linters:
     config_file_name: .golangci.yml
     cli_lint_extra_args:
       - "run"
-    cli_version_arg_name: 'version'
+    cli_version_arg_name: "version"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
     examples:
       - "golangci-lint run myfile.go"
@@ -31,3 +31,24 @@ linters:
       dockerfile:
         - FROM golangci/golangci-lint:latest as golangci-lint
         - COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/
+    ide:
+      atom:
+        - name: go-plus
+          url: https://atom.io/packages/go-plus
+      emacs:
+        - name: flycheck-golandci-lint
+          url: https://github.com/weijiangan/flycheck-golangci-lint
+        - name: SpaceMacs
+          url: https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites
+      goland:
+        - name: goland
+          url: https://www.jetbrains.com/help/go/settings-tools-file-watchers.html
+      sublime:
+        - name: SublimeLinter-contrib-golang-cilint
+          url: https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint
+      vim:
+        - name: vim-go
+          url: https://github.com/fatih/vim-go
+      vscode:
+        - name: vscode.Go
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go

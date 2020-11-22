@@ -7,20 +7,17 @@
   </a>
 </div>
 
-## Linter
+## psalm documentation
 
-- Web Site: [**https://psalm.dev**](https://psalm.dev)
-- Version: **4.2.1**
-
-## Configuration
-
-### psalm configuration
-
-- [Configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
+- Version in Mega-Linter: **4.2.1**
+- Visit [Official Web Site](https://psalm.dev)
+- See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
   - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml) will be used
-- [Disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
+- See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
 
-### Mega-linter configuration
+[![psalm - GitHub](https://gh-card.dev/repos/vimeo/psalm.svg?fullname=)](https://github.com/vimeo/psalm)
+
+## Configuration in Mega-Linter
 
 - Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +30,15 @@
 | PHP_PSALM_FILE_NAME | psalm configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `psalm.xml` |
 | PHP_PSALM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PSALM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use psalm in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) |
 
 ## Behind the scenes
 
@@ -227,6 +233,7 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 
 # Linter install
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+
 ```
 
 

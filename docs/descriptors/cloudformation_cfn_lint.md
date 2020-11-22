@@ -7,20 +7,15 @@
   </a>
 </div>
 
-## Linter
+## cfn-lint documentation
 
-- Web Site: [**https://github.com/martysweet/cfn-lint**](https://github.com/martysweet/cfn-lint#readme)
-- Version: **0.41.0**
-
-## Configuration
-
-### cfn-lint configuration
-
-- cfn-lint has no known capability to configure custom rules
+- Version in Mega-Linter: **0.41.0**
+- Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme)
   - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
-- cfn-lint has no known capability to inline-disable rules
 
-### Mega-linter configuration
+[![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint)
+
+## Configuration in Mega-Linter
 
 - Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +28,16 @@
 | CLOUDFORMATION_CFN_LINT_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
 | CLOUDFORMATION_CFN_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) |
 
 ## Behind the scenes
 

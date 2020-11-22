@@ -7,20 +7,17 @@
   </a>
 </div>
 
-## Linter
+## jscpd documentation
 
-- Web Site: [**https://github.com/kucherenko/jscpd/tree/master/packages/jscpd**](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
-- Version: **3.3.21**
-
-## Configuration
-
-### jscpd configuration
-
-- [Configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file)
+- Version in Mega-Linter: **3.3.21**
+- Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
+- See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file)
   - If custom .jscpd.json is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json) will be used
-- [Disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks)
+- See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks)
 
-### Mega-linter configuration
+[![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd)
+
+## Configuration in Mega-Linter
 
 - Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -33,6 +30,14 @@
 | COPYPASTE_JSCPD_FILE_NAME | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
 | COPYPASTE_JSCPD_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COPYPASTE_JSCPD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use jscpd in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-jscpd](https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd) |
 
 ## Behind the scenes
 

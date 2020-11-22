@@ -17,9 +17,9 @@ linters:
     linter_rules_inline_disable_url: https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
-      - '--failon'
-      - 'info'
-    cli_lint_fix_arg_name: '--fix'
+      - "--failon"
+      - "info"
+    cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:
       - "npm-groovy-lint --path . --files myfile.groovy"
@@ -28,3 +28,7 @@ linters:
     install:
       npm:
         - npm-groovy-lint
+    ide:
+      vscode:
+        - name: VsCode Groovy Lint
+          url: https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint

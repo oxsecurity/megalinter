@@ -11,8 +11,8 @@ linters:
     cli_config_arg_name: "--config_path"
     cli_lint_extra_args:
       - "lint"
-    cli_lint_fix_arg_name: '--fix'
-    cli_version_arg_name: 'version'
+    cli_lint_fix_arg_name: "--fix"
+    cli_version_arg_name: "version"
     help_command_return_code: 2
     examples:
       - "protolint lint myfile.proto"
@@ -22,3 +22,10 @@ linters:
       dockerfile:
         - FROM yoheimuta/protolint:latest as protolint
         - COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+    ide:
+      idea:
+        - name: Protocol Buffer Linter
+          url: https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter
+      vscode:
+        - name: VsCode Protolint
+          url: https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint

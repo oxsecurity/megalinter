@@ -7,20 +7,17 @@
   </a>
 </div>
 
-## Linter
+## stylelint documentation
 
-- Web Site: [**https://stylelint.io**](https://stylelint.io)
-- Version: **13.8.0**
-
-## Configuration
-
-### stylelint configuration
-
-- [Configure stylelint rules](https://stylelint.io/user-guide/configure)
+- Version in Mega-Linter: **13.8.0**
+- Visit [Official Web Site](https://stylelint.io)
+- See [How to configure stylelint rules](https://stylelint.io/user-guide/configure)
   - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
-- [Disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
+- See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
 
-### Mega-linter configuration
+[![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint)
+
+## Configuration in Mega-Linter
 
 - Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
@@ -35,6 +32,19 @@
 | CSS_STYLELINT_FILE_NAME | stylelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.stylelintrc.json` |
 | CSS_STYLELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_STYLELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use stylelint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-stylelint](https://github.com/AtomLinter/linter-stylelint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/flycheck/flycheck) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-stylelint](https://github.com/SublimeLinter/SublimeLinter-stylelint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-stylelint_d](https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/dense-analysis/ale) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) |
 
 ## Behind the scenes
 
