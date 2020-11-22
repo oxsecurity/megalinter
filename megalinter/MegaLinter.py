@@ -407,9 +407,9 @@ class Megalinter:
         logging.info("The Mega-Linter documentation can be found at:")
         logging.info(" - https://nvuillam.github.io/mega-linter")
         logging.info(utils.format_hyphens(""))
-        # Display env variables for debug mode
+        # Display config variables for debug mode
         for name, value in sorted(config.get_config().items()):
-            logging.debug("" + name + "=" + value)
+            logging.debug("" + name + "=" + str(value))
         logging.debug(utils.format_hyphens(""))
         logging.info("")
 
