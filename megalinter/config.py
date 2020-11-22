@@ -2,30 +2,28 @@
 import logging
 import os
 
-# Initialize runtime config
+import pickle
 import yaml
 from megalinter import utils
 
 
-class config:
-    runtime_config = {}
-
-
 def get_config():
-    if not config.runtime_config:
-        return config.runtime_config
-    config.runtime_config = os.environ.copy()
+    runtime_config_bin = os.environ("_MEGALINTER_CONFIG", None)
+    if runtime_config_bin is not None:
+        return pickle.load(runtime_config_bin)
+    env = os.environ.copy()
     config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
     config_file = utils.REPO_HOME_DEFAULT + os.path.sep + config_file_name
     # if .megalinter.yml is found, merge its values with environment variables (with priority to env values)
     if os.path.isfile(config_file):
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
             config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
-            config.runtime_config = {**config_data, **config.runtime_config}
+            runtime_config = {**config_data, **env}
             logging.info(f"Merged environment variables into config found in {config_file}")
     else:
         logging.info(f"No {config_file} config file found: use only environment variables")
-    return config.runtime_config
+    os.environ("_MEGALINTER_CONFIG", pickle.dumps(runtime_config))
+    return runtime_config
 
 
 def get(config_var=None, default=None):
