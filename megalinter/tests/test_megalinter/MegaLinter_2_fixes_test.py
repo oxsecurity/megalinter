@@ -54,7 +54,7 @@ class MegalinterFixesTest(unittest.TestCase):
             "markdown_for_fixes_1.md",
             "python_for_fixes_1.py",
             "ruby_for_fixes_1.rb",
-            "scala_for_fixes_1.scala",
+            # "scala_for_fixes_1.scala",
             "snakemake_for_fixes_1.smk",
             "vbdotnet_for_fixes_1.vb",
         ]
