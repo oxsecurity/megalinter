@@ -6,10 +6,8 @@ linters:
   # restructuredtext-lint
   - linter_name: rst-lint
     linter_url: https://github.com/twolfson/restructuredtext-lint
-    cli_lint_fix_arg_name: "--format"
     examples:
       - "rst-lint myfile.rst"
-      - "rst-lint --format myfile.rst" # Fix
     install:
       pip:
         - restructuredtext_lint
@@ -29,3 +27,13 @@ linters:
       vscode:
         - name: vscode-restructuredtext
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
+  # rstfmt
+  - linter_name: rstfmt
+    linter_url: https://github.com/dzhu/rstfmt
+    cli_lint_fix_arg_name: '-i'
+    examples:
+      - "rstfmt myfile.rst"
+      - "rstfmt -i myfile.rst" # Format
+    install:
+      pip:
+        - rstfmt
