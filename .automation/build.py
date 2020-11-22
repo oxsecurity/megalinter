@@ -797,6 +797,12 @@ def generate_index_md():
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
     )
+    # Copy CHANGELOG.md into /docs/CHANGELOG.md
+    target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
+    copyfile(
+        f"{REPO_HOME}{os.path.sep}CHANGELOG.md",
+        target_file_changelog,
+    )
     # Replace hardcoded links into relative links
     with open(target_file, "r+", encoding="utf-8") as f:
         content = f.read()

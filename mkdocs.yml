@@ -225,6 +225,7 @@ nav:
           - "cspell": "descriptors/spell_cspell.md"
 # other-end
     - "Reporters":
+          - "index": "./#reporters"
           - "Text files": "reporters/TextReporter.md"
           - "Pull Request comments": "reporters/GitHubCommentReporter.md"
           - "Updated sources": "reporters/UpdatedSourcesReporter.md"
@@ -232,3 +233,4 @@ nav:
           - "TAP files": "reporters/TapReporter.md"
           - "Console": "reporters/ConsoleReporter.md"
     - "Mega-Linter vs Super-Linter": "./#mega-linter-vs-super-linter"
+    - "Changelog": "CHANGELOG.md"
