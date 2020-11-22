@@ -8,11 +8,11 @@ from megalinter import utils
 
 
 class config:
-    runtime_config = None
+    runtime_config = {}
 
 
 def get_config():
-    if config.runtime_config is not None:
+    if not config.runtime_config:
         return config.runtime_config
     config.runtime_config = os.environ.copy()
     config_file_name = os.environ.get("MEGALINTER_CONFIG", ".megalinter.yml")
@@ -30,8 +30,8 @@ def get_config():
 
 def get(config_var=None, default=None):
     if config_var is None:
-        return config.runtime_config
-    return config.runtime_config.get(config_var, default)
+        return get_config()
+    return get_config().get(config_var, default)
 
 
 def get_list(config_var, default=None):
@@ -48,11 +48,11 @@ def set_value(config_var, val):
 
 
 def exists(config_var):
-    return config_var in config.runtime_config
+    return config_var in get_config()
 
 
 def copy():
-    return config.runtime_config.copy()
+    return get_config().copy()
 
 
 def delete(key):
