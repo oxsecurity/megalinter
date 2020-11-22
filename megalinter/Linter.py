@@ -128,12 +128,18 @@ class Linter:
         self.manage_activation(params)
 
         if self.is_active is True:
-            self.apply_fixes = (
-                True
-                if params.get("apply_fixes", "none") == "all"
-                or self.name in params.get("apply_fixes", "").split(",")
-                else False
-            )
+            # Manage apply fixes flag on linter
+            param_apply_fixes = params.get("apply_fixes", "none")
+            if param_apply_fixes == "all" or param_apply_fixes is True:
+                self.apply_fixes = True
+            elif param_apply_fixes != "none" and isinstance(param_apply_fixes, str) \
+                    and self.name in param_apply_fixes.split(','):
+                self.apply_fixes = True
+            elif param_apply_fixes != "none" and isinstance(param_apply_fixes, list) \
+                    and (self.name in param_apply_fixes or param_apply_fixes[0] == "all"):
+                self.apply_fixes = True
+            else:
+                self.apply_fixes = False
 
             # Config items
             self.linter_rules_path = (
