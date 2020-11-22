@@ -54,7 +54,7 @@ class Megalinter:
         self.disable_descriptors = config.get_list("DISABLE", [])
         self.disable_linters = config.get_list("DISABLE_LINTERS", [])
         self.manage_default_linter_activation()
-        self.apply_fixes = config.get("APPLY_FIXES", "none")
+        self.apply_fixes = config.get_list("APPLY_FIXES", "none")
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -303,7 +303,7 @@ class Megalinter:
                 for dir1 in dirnames:
                     if dir1 in excluded_directories:
                         exclude = True
-                        logging.debug(f"Excluded directory ${dir1}")
+                        logging.debug(f"Excluded directory {dir1}")
                 if exclude is False:
                     all_files += [
                         os.path.join(dirpath, file) for file in sorted(filenames)
