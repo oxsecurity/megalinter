@@ -30,7 +30,8 @@ linters:
   # rstfmt
   - linter_name: rstfmt
     linter_url: https://github.com/dzhu/rstfmt
-    cli_lint_fix_arg_name: '-i'
+    cli_lint_fix_arg_name: "-i"
+    linter_version_cache: "0.0.0" # --version not implemented on rstfmt
     examples:
       - "rstfmt myfile.rst"
       - "rstfmt -i myfile.rst" # Format
