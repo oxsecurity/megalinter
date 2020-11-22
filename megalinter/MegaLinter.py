@@ -22,7 +22,6 @@ class Megalinter:
         if params is None:
             params = {}
         self.workspace = self.get_workspace()
-        print("WORKSPACE: "+ self.workspace)
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.report_folder = config.get(

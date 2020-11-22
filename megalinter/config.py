@@ -17,9 +17,20 @@ def init_config(workspace):
         set_config(env)
         logging.info("Init config: No workspace")
         return
-    config_file_name = os.environ.get("MEGALINTER_CONFIG", ".mega-linter.yml")
-    config_file = workspace + os.path.sep + config_file_name
-    # if .megalinter.yml is found, merge its values with environment variables (with priority to env values)
+    # Search for config file
+    if "MEGALINTER_CONFIG" in os.environ:
+        config_file_name = os.environ.get("MEGALINTER_CONFIG")
+        config_file = workspace + os.path.sep + config_file_name
+    else:
+        config_file = workspace + os.path.sep + ".mega-linter.yml"
+        for candidate in [".mega-linter.yml",
+                          ".megalinter.yml",
+                          ".mega-linter.yaml",
+                          ".megalinter.yaml"]:
+            if os.path.isfile(workspace + os.path.sep + candidate):
+                config_file = workspace + os.path.sep + candidate
+                break
+    # if config file is found, merge its values with environment variables (with priority to env values)
     if os.path.isfile(config_file):
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
             config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
