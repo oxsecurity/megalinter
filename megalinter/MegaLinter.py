@@ -304,7 +304,7 @@ class Megalinter:
                 for dir1 in dirnames:
                     if dir1 in excluded_directories:
                         exclude = True
-                        logging.debug(f"Excluded directory ${dir1}")
+                        logging.debug(f"Excluded directory {dir1}")
                 if exclude is False:
                     all_files += [
                         os.path.join(dirpath, file) for file in sorted(filenames)
