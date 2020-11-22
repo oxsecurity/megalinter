@@ -412,7 +412,7 @@ report/
 
 | **ENV VAR**                       | **Default Value**     | **Notes**                                                                                                                                                                        |
 | --------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **DEFAULT_BRANCH**                | `master`              | The name of the repository default branch.                                                                                                                                       |
+| **DEFAULT_BRANCH**                | `master`              | The name of the repository default branch. Warning: In new github repositories, master branch is named `main`, so you need to override this value with `main`                    |
 | **DEFAULT_WORKSPACE**             | `/tmp/lint`           | The location containing files to lint if you are running locally.                                                                                                                |
 | **DISABLE_ERRORS**                | `false`               | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                  |
 | **FILTER_REGEX_EXCLUDE**          | `none`                | Regular expression defining which files will be excluded from linting  (ex: `.*src/test.*`)                                                                                      |
