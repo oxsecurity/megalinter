@@ -39,7 +39,11 @@
 ### Example calls
 
 ```shell
-scalafix myfile.scala
+scalafix --check myfile.scala
+```
+
+```shell
+scalafix --check --config .scalafix.conf myfile.scala
 ```
 
 ```shell

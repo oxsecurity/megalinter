@@ -14,7 +14,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-**Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate **reports in several formats**, and can even [**apply auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+**Mega-Linter** analyzes [**37 languages**](#languages), [**12 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate [**reports in several formats**](#reports), and can even [**apply formatting and auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -74,7 +74,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | --- | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> | [**BASH**](descriptors/bash.md#readme) | [bash-exec](descriptors/bash_bash_exec.md#readme)| [BASH_EXEC](descriptors/bash_bash_exec.md#readme)|  |
 | <!-- --> |  | [shellcheck](descriptors/bash_shellcheck.md#readme)| [BASH_SHELLCHECK](descriptors/bash_shellcheck.md#readme)|  |
-| <!-- --> |  | [shfmt](descriptors/bash_shfmt.md#readme)| [BASH_SHFMT](descriptors/bash_shfmt.md#readme)|  |
+| <!-- --> |  | [shfmt](descriptors/bash_shfmt.md#readme)| [BASH_SHFMT](descriptors/bash_shfmt.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/c.ico" alt="" height="32px" class="megalinter-icon"></a> | [**C**](descriptors/c.md#readme) | [cpplint](descriptors/c_cpplint.md#readme)| [C_CPPLINT](descriptors/c_cpplint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/clojure.ico" alt="" height="32px" class="megalinter-icon"></a> | [**CLOJURE**](descriptors/clojure.md#readme) | [clj-kondo](descriptors/clojure_clj_kondo.md#readme)| [CLOJURE_CLJ_KONDO](descriptors/clojure_clj_kondo.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/coffee.ico" alt="" height="32px" class="megalinter-icon"></a> | [**COFFEE**](descriptors/coffee.md#readme) | [coffeelint](descriptors/coffee_coffeelint.md#readme)| [COFFEE_COFFEELINT](descriptors/coffee_coffeelint.md#readme)|  |
@@ -142,7 +142,7 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/openapi.ico" alt="" height="32px" class="megalinter-icon"></a> | [**OPENAPI**](descriptors/openapi.md#readme) | [spectral](descriptors/openapi_spectral.md#readme)| [OPENAPI_SPECTRAL](descriptors/openapi_spectral.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/puppet.ico" alt="" height="32px" class="megalinter-icon"></a> | [**PUPPET**](descriptors/puppet.md#readme) | [puppet-lint](descriptors/puppet_puppet_lint.md#readme)| [PUPPET_PUPPET_LINT](descriptors/puppet_puppet_lint.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/snakemake.ico" alt="" height="32px" class="megalinter-icon"></a> | [**SNAKEMAKE**](descriptors/snakemake.md#readme) | [snakemake](descriptors/snakemake_snakemake.md#readme)| [SNAKEMAKE_LINT](descriptors/snakemake_snakemake.md#readme)|  |
-| <!-- --> |  | [snakefmt](descriptors/snakemake_snakefmt.md#readme)| [SNAKEMAKE_SNAKEFMT](descriptors/snakemake_snakefmt.md#readme)|  |
+| <!-- --> |  | [snakefmt](descriptors/snakemake_snakefmt.md#readme)| [SNAKEMAKE_SNAKEFMT](descriptors/snakemake_snakefmt.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/tekton.ico" alt="" height="32px" class="megalinter-icon"></a> | [**TEKTON**](descriptors/tekton.md#readme) | [tekton-lint](descriptors/tekton_tekton_lint.md#readme)| [TEKTON_TEKTON_LINT](descriptors/tekton_tekton_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [**TERRAFORM**](descriptors/terraform.md#readme) | [tflint](descriptors/terraform_tflint.md#readme)| [TERRAFORM_TFLINT](descriptors/terraform_tflint.md#readme)|  |
 | <!-- --> |  | [terrascan](descriptors/terraform_terrascan.md#readme)| [TERRAFORM_TERRASCAN](descriptors/terraform_terrascan.md#readme)|  |

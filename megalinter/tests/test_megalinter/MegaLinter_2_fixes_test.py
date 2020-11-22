@@ -45,6 +45,7 @@ class MegalinterFixesTest(unittest.TestCase):
         time.sleep(5)
         # Check fixable files has been updated
         fixable_files = [
+            "bash_for_fixes_1.sh",
             "csharp_for_fixes_1.cs",
             "env_for_fixes_1.env",
             "groovy_for_fixes_1.groovy",
@@ -53,6 +54,8 @@ class MegalinterFixesTest(unittest.TestCase):
             "markdown_for_fixes_1.md",
             "python_for_fixes_1.py",
             "ruby_for_fixes_1.rb",
+            # "scala_for_fixes_1.scala",
+            "snakemake_for_fixes_1.smk",
             "vbdotnet_for_fixes_1.vb",
         ]
         # updated_dir = config.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")

@@ -19,9 +19,13 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
+      # cli_lint_fix_arg_name: '--megalinter-fix-flag' # Mega-Linter workaround
+      # cli_lint_fix_remove_args:
+      # - "--check"
     examples:
-      - "scalafix myfile.scala"
-      - "scalafix --config .scalafix.conf myfile.scala"
+      - "scalafix --check myfile.scala"
+      - "scalafix --check --config .scalafix.conf myfile.scala"
+      - "scalafix --config .scalafix.conf myfile.scala" # Fix
     install:
       dockerfile:
         - RUN ./coursier install scalafix --quiet --install-dir /usr/bin

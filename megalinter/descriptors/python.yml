@@ -46,7 +46,7 @@ linters:
     cli_lint_extra_args:
       - "--diff"
       - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"

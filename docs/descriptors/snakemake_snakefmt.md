@@ -16,6 +16,8 @@
 - Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `SNAKEMAKE_SNAKEFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SNAKEMAKE_SNAKEFMT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -46,6 +48,10 @@ snakefmt --check --compact-diff Snakefile
 
 ```shell
 snakefmt --check --compact-diff --config .snakefmt.toml Snakefile
+```
+
+```shell
+snakefmt --config .snakefmt.toml Snakefile
 ```
 
 

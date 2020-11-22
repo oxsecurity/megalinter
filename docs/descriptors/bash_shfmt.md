@@ -14,6 +14,8 @@
 - Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
 - Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | BASH_SHFMT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
@@ -52,6 +54,10 @@ Use shfmt in your favorite IDE to catch errors before Mega-Linter !
 
 ```shell
 shfmt -d myfile.sh
+```
+
+```shell
+shfmt -w myfile.sh
 ```
 
 

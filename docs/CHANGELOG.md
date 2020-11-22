@@ -7,8 +7,10 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Core
   - Allow configuration to be defined in a `.mega-linter.yml` file
 
-- New Linters
+- Linters
   - Add Gherkin (Cucumber language) & gherkin-lint
+  - Activate formatting for BASH_SHFMT
+  - Activate formatting for SNAKEMAKE_SNAKEFMT
 
 - Logs
   - Store log files as artifacts during test cases
