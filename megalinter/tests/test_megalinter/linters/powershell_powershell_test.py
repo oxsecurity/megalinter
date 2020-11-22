@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class powershell_powershell_test(TestCase, LinterTestRoot):
-    descriptor_id = 'POWERSHELL'
-    linter_name = 'powershell'
+    descriptor_id = "POWERSHELL"
+    linter_name = "powershell"

@@ -3,34 +3,52 @@
 
 <div align="center">
   <a href="https://psalm.dev" target="blank" title="Visit linter Web Site">
-    <img src="https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1" alt="psalm" height="150px">
+    <img src="https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1" alt="psalm" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## psalm documentation
+
+- Version in Mega-Linter: **4.2.1**
+- Visit [Official Web Site](https://psalm.dev)
+- See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
+  - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml) will be used
+- See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
+
+[![psalm - GitHub](https://gh-card.dev/repos/vimeo/psalm.svg?fullname=)](https://github.com/vimeo/psalm)
+
+## Configuration in Mega-Linter
+
+- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PHP_PSALM_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PHP_PSALM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PHP_PSALM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PHP_PSALM_FILE_NAME | psalm configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `psalm.xml` |
+| PHP_PSALM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| PHP_PSALM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use psalm in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.php`
 
-## Configuration
-
-### psalm configuration
-
-- [Configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
-  - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml) will be used
-- [Disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PHP_PSALM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PHP_PSALM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PHP_PSALM_FILE_NAME | Rules file name | `psalm.xml` |
-| PHP_PSALM_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| PHP_PSALM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -43,6 +61,160 @@ psalm --config=psalm.xml myfile.php
 ```
 
 
+### Help content
+
+```shell
+Usage:
+    psalm [options] [file...]
+
+Basic configuration:
+    -c, --config=psalm.xml
+        Path to a psalm.xml configuration file. Run psalm --init to create one.
+
+    --use-ini-defaults
+        Use PHP-provided ini defaults for memory and error display
+
+    --memory-limit=LIMIT
+        Use a specific memory limit. Cannot be combined with --use-ini-defaults
+
+    --disable-extension=[extension]
+        Used to disable certain extensions while Psalm is running.
+
+    --threads=INT
+        If greater than one, Psalm will run analysis on multiple threads, speeding things up.
+
+    --no-diff
+        Turns off Psalm’s diff mode, checks all files regardless of whether they've changed
+
+Surfacing issues:
+    --show-info[=BOOLEAN]
+        Show non-exception parser findings (defaults to false).
+
+    --show-snippet[=true]
+        Show code snippets with errors. Options are 'true' or 'false'
+
+    --find-dead-code[=auto]
+    --find-unused-code[=auto]
+        Look for unused code. Options are 'auto' or 'always'. If no value is specified, default is 'auto'
+
+    --find-unused-psalm-suppress
+        Finds all @psalm-suppress annotations that aren’t used
+
+    --find-references-to=[class|method|property]
+        Searches the codebase for references to the given fully-qualified class or method,
+        where method is in the format class::methodName
+
+    --no-suggestions
+        Hide suggestions
+
+    --taint-analysis
+        Run Psalm in taint analysis mode – see https://psalm.dev/docs/security_analysis for more info
+
+Issue baselines:
+    --set-baseline=PATH
+        Save all current error level issues to a file, to mark them as info in subsequent runs
+
+        Add --include-php-versions to also include a list of PHP extension versions
+
+    --use-baseline=PATH
+        Allows you to use a baseline other than the default baseline provided in your config
+
+    --ignore-baseline
+        Ignore the error baseline
+
+    --update-baseline
+        Update the baseline by removing fixed issues. This will not add new issues to the baseline
+
+        Add --include-php-versions to also include a list of PHP extension versions
+
+Plugins:
+    --plugin=PATH
+        Executes a plugin, an alternative to using the Psalm config
+
+Output:
+    -m, --monochrome
+        Enable monochrome output
+
+    --output-format=console
+        Changes the output format.
+        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube, github,
+                           phpstorm
+
+    --no-progress
+        Disable the progress indicator
+
+    --long-progress
+        Use a progress indicator suitable for Continuous Integration logs
+
+    --stats
+        Shows a breakdown of Psalm's ability to infer types in the codebase
+
+Reports:
+    --report=PATH
+        The path where to output report file. The output format is based on the file extension.
+        (Currently supported formats: ".json", ".xml", ".txt", ".emacs", ".pylint", ".console",
+        ".sarif", "checkstyle.xml", "sonarqube.json", "summary.json", "junit.xml")
+
+    --report-show-info[=BOOLEAN]
+        Whether the report should include non-errors in its output (defaults to true)
+
+Caching:
+    --clear-cache
+        Clears all cache files that Psalm uses for this specific project
+
+    --clear-global-cache
+        Clears all cache files that Psalm uses for all projects
+
+    --no-cache
+        Runs Psalm without using cache
+
+    --no-reflection-cache
+        Runs Psalm without using cached representations of unchanged classes and files.
+        Useful if you want the afterClassLikeVisit plugin hook to run every time you visit a file.
+
+    --no-file-cache
+        Runs Psalm without using caching every single file for later diffing.
+        This reduces the space Psalm uses on disk and file I/O.
+
+Miscellaneous:
+    -h, --help
+        Display this help message
+
+    -v, --version
+        Display the Psalm version
+
+    -i, --init [source_dir=src] [level=3]
+        Create a psalm config file in the current directory that points to [source_dir]
+        at the required level, from 1, most strict, to 8, most permissive.
+
+    --debug
+        Debug information
+
+    --debug-by-line
+        Debug information on a line-by-line level
+
+    --debug-emitted-issues
+        Print a php backtrace to stderr when emitting issues.
+
+    -r, --root
+        If running Psalm globally you'll need to specify a project root. Defaults to cwd
+
+    --generate-json-map=PATH
+        Generate a map of node references and types in JSON format, saved to the given path.
+
+    --generate-stubs=PATH
+        Generate stubs for the project and dump the file in the given path
+
+    --shepherd[=host]
+        Send data to Shepherd, Psalm's GitHub integration tool.
+
+    --alter
+        Run Psalter
+
+    --language-server
+        Run Psalm Language Server
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -50,7 +222,10 @@ psalm --config=psalm.xml myfile.php
 # Parent descriptor install
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && gpg --keyserver pool.sks-keyservers.net --recv-keys 0x9D8A98B29B2D5D79 \
+    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
+    && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
@@ -58,9 +233,155 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 
 # Linter install
 RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+
 ```
 
 
-### Linter web site
-- [https://psalm.dev](https://psalm.dev)
+### Example success log
 
+```shell
+Results of psalm linter (version 4.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/php/php_good_1.php
+    Scanning files...
+    Analyzing files...
+    
+    ░
+    ------------------------------
+    No errors found!
+    ------------------------------
+    
+    Checks took 0.22 seconds and used 38.143MB of memory
+    Psalm was unable to infer types in the codebase
+
+[SUCCESS] .automation/test/php/php_good_2.php
+    Scanning files...
+    Analyzing files...
+    
+    ░
+    ------------------------------
+    No errors found!
+    ------------------------------
+    
+    Checks took 0.25 seconds and used 35.475MB of memory
+    Psalm was unable to infer types in the codebase
+
+```
+
+### Example error log
+
+```shell
+Results of psalm linter (version 4.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
+-----------------------------------------------
+
+[ERROR] .automation/test/php/php_bad_1.php
+    Scanning files...
+    Analyzing files...
+    
+    E
+    
+    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:2 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
+    2[97;41mpe98y[0m r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:2 - Const pe98y is not defined (see https://psalm.dev/020)
+    2[97;41mpe98y[0m r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:8 - Const r is not defined (see https://psalm.dev/020)
+    2pe98y [97;41mr[0m-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:10 - Const n0u823n is not defined (see https://psalm.dev/020)
+    2pe98y r-[97;41mn0u823n[0m=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:17 - Syntax error, unexpected '=' on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n[97;41m=[0mr  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:18 - Const r is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=[97;41mr[0m  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:21 - Invalid numeric literal on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  [97;41m092[0mu3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:24 - Const u3 is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092[97;41mu3[0m- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:28 - Const r08u2q098ry is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- [97;41mr08u2q098ry[0m 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:40 - Syntax error, unexpected T_LNUMBER on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry [97;41m09[0mnq2yr09n2yr9 y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:42 - Const nq2yr09n2yr9 is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09[97;41mnq2yr09n2yr9[0m y2n-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:55 - Const y2n is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 [97;41my2n[0m-93yr  298yr3  29
+    
+    
+    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:61 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93[97;41myr[0m  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:61 - Const yr is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93[97;41myr[0m  298yr3  29
+    
+    
+    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:68 - Const yr3 is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298[97;41myr3[0m  29
+    
+    
+    ------------------------------
+    [0;31m15 errors[0m found
+    ------------------------------
+    
+    Checks took 0.22 seconds and used 38.325MB of memory
+    Psalm was unable to infer types in the codebase
+
+[ERROR] .automation/test/php/php_bad_2.php
+    Scanning files...
+    Analyzing files...
+    
+    E
+    
+    [0;31mERROR[0m: InvalidReturnType - ../../...automation/test/php/php_bad_2.php:4:12 - The declared return type 'array<array-key, string>' for takesAnInt is incorrect, got 'array{int, string(hello)}' (see https://psalm.dev/011)
+     * @return [97;41marray<string>[0m
+    
+    
+    [0;31mERROR[0m: InvalidReturnStatement - ../../...automation/test/php/php_bad_2.php:7:12 - The inferred type 'array{int, string(hello)}' does not match the declared return type 'array<array-key, string>' for takesAnInt (see https://psalm.dev/128)
+        return [97;41m[$i, "hello"][0m;
+    
+    
+    [0;31mERROR[0m: InvalidScalarArgument - ../../...automation/test/php/php_bad_2.php:11:12 - Argument 1 of takesAnInt expects int, string(some text) provided (see https://psalm.dev/012)
+    takesAnInt([97;41m$data[0][0m);
+    
+    
+    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_2.php:15:1 - Syntax error, unexpected '}' on line 15 (see https://psalm.dev/173)
+    [97;41m}[0m elseif ($condition) {}
+    
+    
+    ------------------------------
+    [0;31m4 errors[0m found
+    ------------------------------
+    Psalm can automatically fix 1 of these issues.
+    Run Psalm again with 
+    [30;48;5;195m--alter --issues=InvalidReturnType --dry-run[0m
+    to see what it can fix.
+    ------------------------------
+    
+    Checks took 0.23 seconds and used 34.656MB of memory
+    Psalm was unable to infer types in the codebase
+
+```

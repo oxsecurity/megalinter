@@ -3,34 +3,57 @@
 
 <div align="center">
   <a href="https://github.com/golangci/golangci-lint#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4" alt="golangci-lint" height="150px">
+    <img src="https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4" alt="golangci-lint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## golangci-lint documentation
+
+- Version in Mega-Linter: **1.32.2**
+- Visit [Official Web Site](https://github.com/golangci/golangci-lint#readme)
+- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
+  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
+- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
+
+[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint)
+
+## Configuration in Mega-Linter
+
+- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| GO_GOLANGCI_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| GO_GOLANGCI_LINT_FILE_NAME | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.golangci.yml` |
+| GO_GOLANGCI_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| GO_GOLANGCI_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use golangci-lint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [go-plus](https://atom.io/packages/go-plus) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-go](https://github.com/fatih/vim-go) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.go`
 
-## Configuration
-
-### golangci-lint configuration
-
-- [Configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
-  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
-- [Disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| GO_FILE_NAME | Rules file name | `.golangci.yml` |
-| GO_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| GO_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -42,6 +65,37 @@ golangci-lint run myfile.go
 golangci-lint run -c .golangci.yml myfile.go
 ```
 
+
+### Help content
+
+```shell
+Smart, fast linters runner. Run it in cloud for every GitHub pull request on https://golangci.com
+
+Usage:
+  golangci-lint [flags]
+  golangci-lint [command]
+
+Available Commands:
+  cache       Cache control and information
+  completion  Output completion script
+  config      Config
+  help        Help
+  linters     List current linters configuration
+  run         Run this tool in cloud on every github pull request in https://golangci.com for free (public repos)
+  version     Version
+
+Flags:
+      --color string              Use color when printing; can be 'always', 'auto', or 'never' (default "auto")
+  -j, --concurrency int           Concurrency (default NumCPU) (default 2)
+      --cpu-profile-path string   Path to CPU profile output file
+  -h, --help                      help for golangci-lint
+      --mem-profile-path string   Path to memory profile output file
+      --trace-path string         Path to trace output file
+  -v, --verbose                   verbose output
+      --version                   Print version
+
+Use "golangci-lint [command] --help" for more information about a command.
+```
 
 ### Installation on mega-linter Docker image
 
@@ -59,6 +113,29 @@ COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/
 ```
 
 
-### Linter web site
-- [https://github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint#readme)
+### Example success log
 
+```shell
+Results of golangci-lint linter (version 1.32.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/golang/golang_good_01.go
+    
+
+```
+
+### Example error log
+
+```shell
+Results of golangci-lint linter (version 1.32.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/golang/golang_bad_01.go
+    level=error msg="[linters context] typechecking error: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if'"
+    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1021: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
+    level=warning msg="[runner] Can't run linter unused: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
+    level=error msg="Running error: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
+
+```

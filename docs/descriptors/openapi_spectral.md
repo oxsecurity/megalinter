@@ -3,11 +3,45 @@
 
 <div align="center">
   <a href="https://github.com/stoplightio/spectral#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png" alt="spectral" height="150px">
+    <img src="https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png" alt="spectral" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## spectral documentation
+
+- Version in Mega-Linter: **5.6.0**
+- Visit [Official Web Site](https://github.com/stoplightio/spectral#readme)
+- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
+  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
+
+[![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral)
+
+## Configuration in Mega-Linter
+
+- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| OPENAPI_SPECTRAL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| OPENAPI_SPECTRAL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| OPENAPI_SPECTRAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| OPENAPI_SPECTRAL_FILE_NAME | spectral configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.openapirc.yml` |
+| OPENAPI_SPECTRAL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| OPENAPI_SPECTRAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use spectral in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | stoplight | [Native integration](https://stoplight.io/studio) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-spectral](https://github.com/stoplightio/vscode-spectral) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.yml`
@@ -20,25 +54,8 @@
   - `openapi:`
   - `swagger:`
 
-## Configuration
-
-### spectral configuration
-
-- [Configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
-  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
-- spectral has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| OPENAPI_FILE_NAME | Rules file name | `.openapirc.yml` |
-| OPENAPI_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| OPENAPI_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -51,11 +68,84 @@ spectral lint -r .openapirc.yml myfile.yml
 ```
 
 
+### Help content
+
+```shell
+spectral lint [documents..]
+
+lint JSON/YAML documents from files or URLs
+
+Positionals:
+  documents  Location of JSON/YAML documents. Can be either a file, a glob or fetchable resource(s) on the web.  [array] [default: []]
+
+Options:
+  --version                    Show version number  [boolean]
+  --help                       Show help  [boolean]
+  --encoding, -e               text encoding to use  [string] [default: "utf8"]
+  --format, -f                 formatter to use for outputting results  [string] [default: "stylish"]
+  --output, -o                 output to a file instead of stdout  [string]
+  --resolver                   path to custom json-ref-resolver instance  [string]
+  --ruleset, -r                path/URL to a ruleset file  [string]
+  --skip-rule, -s              ignore certain rules if they are causing trouble  [string]
+  --fail-severity, -F          results of this level or above will trigger a failure exit code  [string] [choices: "error", "warn", "info", "hint"] [default: "error"]
+  --display-only-failures, -D  only output results equal to or greater than --fail-severity  [boolean] [default: false]
+  --ignore-unknown-format      do not warn about unmatched formats  [boolean] [default: false]
+  --show-unmatched-globs       show unmatched glob patterns  [boolean] [default: false]
+  --verbose, -v                increase verbosity  [boolean]
+  --quiet, -q                  no logging - output only  [boolean]
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [@stoplight/spectral](https://www.npmjs.com/package/@stoplight/spectral)
+  - [@stoplight/spectral@5.6.0](https://www.npmjs.com/package/@stoplight/spectral)
 
-### Linter web site
-- [https://github.com/stoplightio/spectral](https://github.com/stoplightio/spectral#readme)
+### Example success log
 
+```shell
+Results of spectral linter (version 5.6.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_spectral/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/openapi/openapi_good_1.yml
+    OpenAPI 3.x detected
+    No results with a severity of 'error' or higher found!
+
+[SUCCESS] .automation/test/openapi/openapi_good_2.json
+    OpenAPI 3.x detected
+    No results with a severity of 'error' or higher found!
+
+```
+
+### Example error log
+
+```shell
+Results of spectral linter (version 5.6.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_spectral/
+-----------------------------------------------
+
+[ERROR] .automation/test/openapi/openapi_bad_1.yml
+    OpenAPI 3.x detected
+    
+    .automation/test/openapi/openapi_bad_1.yml
+     1:1  warning  info-contact      Info object should contain `contact` object.
+     1:1  warning  info-description  OpenAPI object info `description` must be present and non-empty string.
+     1:1  warning  oas3-api-servers  OpenAPI `servers` must be present and non-empty array.
+     1:1    error  oas3-schema       Object should have required property `info`.
+     1:1  warning  openapi-tags      OpenAPI object should have non-empty `tags` array.
+    
+    ✖ 5 problems (1 error, 4 warnings, 0 infos, 0 hints)
+
+[ERROR] .automation/test/openapi/openapi_bad_2.json
+    OpenAPI 3.x detected
+    
+    .automation/test/openapi/openapi_bad_2.json
+     1:1  warning  info-contact      Info object should contain `contact` object.
+     1:1  warning  info-description  OpenAPI object info `description` must be present and non-empty string.
+     1:1  warning  oas3-api-servers  OpenAPI `servers` must be present and non-empty array.
+     1:1    error  oas3-schema       Object should have required property `info`.
+     1:1  warning  openapi-tags      OpenAPI object should have non-empty `tags` array.
+    
+    ✖ 5 problems (1 error, 4 warnings, 0 infos, 0 hints)
+
+```

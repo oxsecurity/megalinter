@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class python_flake8_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PYTHON'
-    linter_name = 'flake8'
+    descriptor_id = "PYTHON"
+    linter_name = "flake8"

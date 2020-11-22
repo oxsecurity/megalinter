@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class raku_raku_test(TestCase, LinterTestRoot):
-    descriptor_id = 'RAKU'
-    linter_name = 'raku'
+    descriptor_id = "RAKU"
+    linter_name = "raku"

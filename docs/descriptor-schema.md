@@ -1,4 +1,5 @@
 <!-- markdownlint-disable -->
+<!-- markdown-link-check-disable -->
 # Mega-Linter descriptor
 
 _Descriptor definition for mega-linter_

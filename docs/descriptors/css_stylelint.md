@@ -3,36 +3,60 @@
 
 <div align="center">
   <a href="https://stylelint.io" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png" alt="stylelint" height="150px">
+    <img src="https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png" alt="stylelint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## stylelint documentation
+
+- Version in Mega-Linter: **13.8.0**
+- Visit [Official Web Site](https://stylelint.io)
+- See [How to configure stylelint rules](https://stylelint.io/user-guide/configure)
+  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
+- See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
+
+[![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint)
+
+## Configuration in Mega-Linter
+
+- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CSS_STYLELINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CSS_STYLELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CSS_STYLELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CSS_STYLELINT_FILE_NAME | stylelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.stylelintrc.json` |
+| CSS_STYLELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| CSS_STYLELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use stylelint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-stylelint](https://github.com/AtomLinter/linter-stylelint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/flycheck/flycheck) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-stylelint](https://github.com/SublimeLinter/SublimeLinter-stylelint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-stylelint_d](https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/dense-analysis/ale) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.css`
   - `.scss`
   - `.saas`
 
-## Configuration
-
-### stylelint configuration
-
-- [Configure stylelint rules](https://stylelint.io/user-guide/configure)
-  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
-- [Disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CSS_STYLELINT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CSS_STYLELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| CSS_STYLELINT_FILE_NAME | Rules file name | `.stylelintrc.json` |
-| CSS_STYLELINT_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| CSS_STYLELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -44,6 +68,159 @@ stylelint myfile.css
 stylelint --config .stylelintrc.json myfile.css
 ```
 
+```shell
+stylelint --fix --config .stylelintrc.json myfile.css
+```
+
+
+### Help content
+
+```shell
+
+  A mighty, modern CSS linter.
+
+  Usage: stylelint [input] [options]
+
+  Input: Files(s), glob(s), or nothing to use stdin.
+
+    If an input argument is wrapped in quotation marks, it will be passed to
+    globby for cross-platform glob support. node_modules are always ignored.
+    You can also pass no input and use stdin, instead.
+
+  Options:
+
+    --config
+
+      Path to a specific configuration file (JSON, YAML, or CommonJS), or the
+      name of a module in node_modules that points to one. If no --config
+      argument is provided, stylelint will search for configuration files in
+      the following places, in this order:
+        - a stylelint property in package.json
+        - a .stylelintrc file (with or without filename extension:
+          .json, .yaml, .yml, and .js are available)
+        - a stylelint.config.js file exporting a JS object
+      The search will begin in the working directory and move up the directory
+      tree until a configuration file is found.
+
+    --config-basedir
+
+      An absolute path to the directory that relative paths defining "extends"
+      and "plugins" are *relative to*. Only necessary if these values are
+      relative paths.
+
+    --print-config
+
+      Print the configuration for the given path.
+
+    --ignore-path, -i
+
+      Path to a file containing patterns that describe files to ignore. The
+      path can be absolute or relative to process.cwd(). By default, stylelint
+      looks for .stylelintignore in process.cwd().
+
+    --ignore-pattern, --ip
+
+      Pattern of files to ignore (in addition to those in .stylelintignore)
+
+    --syntax, -s
+
+      Specify a syntax. Options: "css", "css-in-js", "html", "less",
+      "markdown", "sass", "scss", "sugarss". If you do not specify a syntax,
+      syntaxes will be automatically inferred by the file extensions
+      and file content.
+
+    --fix
+
+      Automatically fix violations of certain rules.
+
+    --custom-syntax
+
+      Module name or path to a JS file exporting a PostCSS-compatible syntax.
+
+    --stdin
+
+      Accept stdin input even if it is empty.
+
+    --stdin-filename
+
+      A filename to assign stdin input.
+
+    --ignore-disables, --id
+
+      Ignore styleline-disable comments.
+
+    --disable-default-ignores, --di
+
+      Allow linting of node_modules.
+
+    --cache                       [default: false]
+
+      Store the info about processed files in order to only operate on the
+      changed ones the next time you run stylelint. By default, the cache
+      is stored in "./.stylelintcache". To adjust this, use --cache-location.
+
+    --cache-location              [default: '.stylelintcache']
+
+      Path to a file or directory to be used for the cache location.
+      Default is "./.stylelintcache". If a directory is specified, a cache
+      file will be created inside the specified folder, with a name derived
+      from a hash of the current working directory.
+
+      If the directory for the cache does not exist, make sure you add a trailing "/"
+      on *nix systems or "\" on Windows. Otherwise the path will be assumed to be a file.
+
+    --formatter, -f               [default: "string"]
+
+      The output formatter: "compact", "json", "string", "unix" or "verbose".
+
+    --custom-formatter
+
+      Path to a JS file exporting a custom formatting function.
+
+    --quiet, -q
+
+      Only register violations for rules with an "error"-level severity (ignore
+      "warning"-level).
+
+    --color
+    --no-color
+
+      Force enabling/disabling of color.
+
+    --report-needless-disables, --rd
+
+      Also report errors for stylelint-disable comments that are not blocking a lint warning.
+      The process will exit with code 2 if needless disables are found.
+
+    --report-invalid-scope-disables, --risd
+
+      Report stylelint-disable comments that used for rules that don't exist within the configuration object.
+      The process will exit with code 2 if invalid scope disables are found.
+
+    --report-descriptionless-disables, --rdd
+
+      Report stylelint-disable comments without a description.
+      The process will exit with code 2 if descriptionless disables are found.
+
+    --max-warnings, --mw
+
+      Number of warnings above which the process will exit with code 2.
+      Useful when setting "defaultSeverity" to "warning" and expecting the
+      process to fail on warnings (e.g. CI build).
+
+    --output-file, -o
+
+      Path of file to write report.
+
+    --version, -v
+
+      Show the currently installed version of stylelint.
+
+    --allow-empty-input, --aei
+
+      When glob pattern matches no files, the process will exit without throwing an error.
+
+```
 
 ### Installation on mega-linter Docker image
 
@@ -51,6 +228,37 @@ stylelint --config .stylelintrc.json myfile.css
   - [stylelint](https://www.npmjs.com/package/stylelint)
   - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
 
-### Linter web site
-- [https://stylelint.io](https://stylelint.io)
+### Example success log
 
+```shell
+Results of stylelint linter (version 13.8.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/css/css_good_01.css
+    
+
+```
+
+### Example error log
+
+```shell
+Results of stylelint linter (version 13.8.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/
+-----------------------------------------------
+
+[ERROR] .automation/test/css/css_bad_01.css
+    
+    .automation/test/css/css_bad_01.css
+     2:1   ✖  Expected empty line before comment   comment-empty-line-before
+     3:1   ✖  Expected empty line before comment   comment-empty-line-before
+     5:5   ✖  Expected indentation of 2 spaces     indentation              
+     5:33  ✖  Expected "#FFFFFF" to be "#ffffff"   color-hex-case           
+     5:33  ✖  Expected "#FFFFFF" to be "#FFF"      color-hex-length         
+     6:5   ✖  Expected indentation of 2 spaces     indentation              
+     7:5   ✖  Expected indentation of 2 spaces     indentation              
+     8:5   ✖  Expected indentation of 2 spaces     indentation              
+     8:12  ✖  Expected "#AAAAAA" to be "#aaaaaa"   color-hex-case           
+     8:12  ✖  Expected "#AAAAAA" to be "#AAA"      color-hex-length
+
+```

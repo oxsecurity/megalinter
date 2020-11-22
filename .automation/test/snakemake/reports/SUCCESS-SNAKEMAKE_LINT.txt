@@ -1,0 +1,7 @@
+Results of snakemake linter (version 5.29.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/snakemake/snakemake_good_1.smk
+    Congratulations, your workflow is in a good condition!
+

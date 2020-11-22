@@ -1,0 +1,8 @@
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_standard/
+-----------------------------------------------
+
+[ERROR] .automation/test/javascript/javascript_bad_1.js
+    standard: Use JavaScript Standard Style (https://standardjs.com)
+      .automation/test/javascript/javascript_bad_1.js:4:40: Parsing error: Unterminated regular expression
+

@@ -3,30 +3,40 @@
 
 <div align="center">
   <a href="https://github.com/dotenv-linter/dotenv-linter#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/logo.svg" alt="dotenv-linter" height="150px">
+    <img src="https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/logo.svg" alt="dotenv-linter" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## dotenv-linter documentation
+
+- Version in Mega-Linter: **2.2.1**
+- Visit [Official Web Site](https://github.com/dotenv-linter/dotenv-linter#readme)
+
+[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter)
+
+## Configuration in Mega-Linter
+
+- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ENV_DOTENV_LINTER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| ENV_DOTENV_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| ENV_DOTENV_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| ENV_DOTENV_LINTER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.env`
 
-## Configuration
-
-### dotenv-linter configuration
-
-- dotenv-linter has no known capability to configure custom rules
-- dotenv-linter has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -34,6 +44,37 @@
 dotenv-linter myfile.env
 ```
 
+```shell
+dotenv-linter --fix myfile.env
+```
+
+
+### Help content
+
+```shell
+dotenv-linter 2.2.1
+Mikhail Grachev <work@mgrachev.com>
+Lightning-fast linter for .env files
+
+USAGE:
+    dotenv-linter [FLAGS] [OPTIONS] <input>...
+
+FLAGS:
+    -f, --fix            Automatically fixes warnings
+    -h, --help           Prints help information
+        --no-backup      Prevents .env files from being backed up when modified by -f/--fix
+    -q, --quiet          Doesn't display additional information
+    -r, --recursive      Recursively search and check .env files
+        --show-checks    Shows list of available checks
+    -v, --version        Prints version information
+
+OPTIONS:
+    -e, --exclude <FILE_NAME>...    Excludes files from check
+    -s, --skip <CHECK_NAME>...      Skips checks
+
+ARGS:
+    <input>...    files or paths [default: /]
+```
 
 ### Installation on mega-linter Docker image
 
@@ -44,6 +85,34 @@ COPY --from=dotenv-linter /dotenv-linter /usr/bin/
 ```
 
 
-### Linter web site
-- [https://github.com/dotenv-linter/dotenv-linter](https://github.com/dotenv-linter/dotenv-linter#readme)
+### Example success log
 
+```shell
+Results of dotenv-linter linter (version 2.2.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/env/env_good_1.env
+    
+
+```
+
+### Example error log
+
+```shell
+Results of dotenv-linter linter (version 2.2.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/
+-----------------------------------------------
+
+[ERROR] .automation/test/env/env_bad_1.env
+    .automation/test/env/env_bad_1.env:1 LeadingCharacter: Invalid leading character detected
+    .automation/test/env/env_bad_1.env:2 KeyWithoutValue: The MY_ENV key should be with a value or have an equal sign
+    .automation/test/env/env_bad_1.env:3 IncorrectDelimiter: The DB-NAME key has incorrect delimiter
+    .automation/test/env/env_bad_1.env:3 UnorderedKey: The DB-NAME key should go before the LOGGER_LEVEL key
+    .automation/test/env/env_bad_1.env:4 LowercaseKey: The DEbUG_hTTP key should be in uppercase
+    .automation/test/env/env_bad_1.env:4 UnorderedKey: The DEbUG_hTTP key should go before the LOGGER_LEVEL key
+    .automation/test/env/env_bad_1.env:5 UnorderedKey: The DB_NAME key should go before the DEbUG_hTTP key
+    
+    Found 7 problems
+
+```

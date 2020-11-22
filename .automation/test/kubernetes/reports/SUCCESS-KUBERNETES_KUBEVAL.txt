@@ -1,0 +1,7 @@
+Results of kubeval linter (version dev)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml
+    PASS - .automation/test/kubernetes/kubernetes/kubeval_good_1.yaml contains a valid Deployment (nginx-deployment)
+

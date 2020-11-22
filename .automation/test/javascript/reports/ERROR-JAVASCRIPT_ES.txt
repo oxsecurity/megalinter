@@ -1,0 +1,11 @@
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/javascript/javascript_bad_1.js
+    
+    .automation/test/javascript/javascript_bad_1.js
+      4:40  error  Parsing error: Unterminated regular expression
+    
+    ✖ 1 problem (1 error, 0 warnings)
+

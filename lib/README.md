@@ -1,4 +1,4 @@
-# Mega-Linter Library
+# Super-Linter Library
 
 ## Main script
 
@@ -9,7 +9,7 @@ The file `linter.sh` is the main script that is called for the process and loads
 The additional files in the folder are functions to help streamline the main build process and allow for easier maintenance.
 
 - `possum.sh`
-  - Official mascot of the **Mega-Linter**
+  - Official mascot of the **Super-Linter**
 - `buildFileList.sh`
   - Functions to help find files that were modified, or need to be scanned
 - `validation.sh`

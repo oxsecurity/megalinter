@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class php_phpstan_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PHP'
-    linter_name = 'phpstan'
+    descriptor_id = "PHP"
+    linter_name = "phpstan"

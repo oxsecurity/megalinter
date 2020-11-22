@@ -16,10 +16,19 @@ linters:
     linter_rules_configuration_url: https://github.com/nvuillam/npm-groovy-lint#configuration
     linter_rules_inline_disable_url: https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source
     config_file_name: .groovylintrc.json
+    cli_lint_extra_args:
+      - "--failon"
+      - "info"
+    cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:
-      - "npm-groovy-lint --failon warning --path . --files myfile.groovy"
-      - "npm-groovy-lint --failon warning --path . --files myfile.groovy -c .groovylintrc.json"
+      - "npm-groovy-lint --path . --files myfile.groovy"
+      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json"
+      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
     install:
       npm:
         - npm-groovy-lint
+    ide:
+      vscode:
+        - name: VsCode Groovy Lint
+          url: https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint

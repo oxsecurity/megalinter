@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class r_lintr_test(TestCase, LinterTestRoot):
-    descriptor_id = 'R'
-    linter_name = 'lintr'
+    descriptor_id = "R"
+    linter_name = "lintr"

@@ -1,0 +1,7 @@
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/tsx/tsx_good_1.tsx
+    Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+

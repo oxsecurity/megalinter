@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class typescript_standard_test(TestCase, LinterTestRoot):
-    descriptor_id = 'TYPESCRIPT'
-    linter_name = 'standard'
+    descriptor_id = "TYPESCRIPT"
+    linter_name = "standard"

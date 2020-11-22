@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class editorconfig_editorconfig_checker_test(TestCase, LinterTestRoot):
-    descriptor_id = 'EDITORCONFIG'
-    linter_name = 'editorconfig-checker'
+    descriptor_id = "EDITORCONFIG"
+    linter_name = "editorconfig-checker"

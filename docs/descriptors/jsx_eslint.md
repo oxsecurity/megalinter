@@ -3,34 +3,63 @@
 
 <div align="center">
   <a href="https://eslint.org" target="blank" title="Visit linter Web Site">
-    <img src="https://miro.medium.com/max/875/1*jFyfsakE2WBv5sFjBQUsuw.png" alt="eslint" height="150px">
+    <img src="https://i.imgur.com/CFdruO8.jpg" alt="eslint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+eslint requires a custom configuration file applicable to your project.
+You can create it by typing `npx eslint --init` in the root of your repository
+
+## eslint documentation
+
+- Version in Mega-Linter: **7.14.0**
+- Visit [Official Web Site](https://eslint.org)
+- See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring)
+- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
+
+[![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint)
+
+## Configuration in Mega-Linter
+
+- Enable eslint by adding `JSX_ESLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable eslint by adding `JSX_ESLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `JSX_ESLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JSX_ESLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| JSX_ESLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| JSX_ESLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JSX_ESLINT_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.json` |
+| JSX_ESLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| JSX_ESLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use eslint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-eslint](https://atom.io/packages/linter-eslint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [ESLint Plugin](https://plugins.jetbrains.com/plugin/7494-eslint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.jsx`
 
-## Configuration
-
-### eslint configuration
-
-- [Configure eslint rules](https://eslint.org/docs/user-guide/configuring)
-  - If custom .eslintrc.yml is not found, [.eslintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc.yml) will be used
-- [Disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| JSX_FILE_NAME | Rules file name | `.eslintrc.yml` |
-| JSX_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| JSX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -39,15 +68,106 @@ eslint myfile.jsx
 ```
 
 ```shell
-eslint -c .eslintrc.yml  --no-eslintrc --no-ignore myfile.jsx
+eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx
 ```
 
+```shell
+eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx
+```
+
+
+### Help content
+
+```shell
+eslint [options] file.js [file.js] [dir]
+
+Basic configuration:
+  --no-eslintrc                   Disable use of configuration from .eslintrc.*
+  -c, --config path::String       Use this configuration, overriding .eslintrc.* config options if present
+  --env [String]                  Specify environments
+  --ext [String]                  Specify JavaScript file extensions
+  --global [String]               Define global variables
+  --parser String                 Specify the parser to be used
+  --parser-options Object         Specify parser options
+  --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
+
+Specifying rules and plugins:
+  --rulesdir [path::String]       Use additional rules from this directory
+  --plugin [String]               Specify plugins
+  --rule Object                   Specify rules
+
+Fixing problems:
+  --fix                           Automatically fix problems
+  --fix-dry-run                   Automatically fix problems without saving the changes to the file system
+  --fix-type Array                Specify the types of fixes to apply (problem, suggestion, layout)
+
+Ignoring files:
+  --ignore-path path::String      Specify path of ignore file
+  --no-ignore                     Disable use of ignore files and patterns
+  --ignore-pattern [String]       Pattern of files to ignore (in addition to those in .eslintignore)
+
+Using stdin:
+  --stdin                         Lint code provided on <STDIN> - default: false
+  --stdin-filename String         Specify filename to process STDIN as
+
+Handling warnings:
+  --quiet                         Report errors only - default: false
+  --max-warnings Int              Number of warnings to trigger nonzero exit code - default: -1
+
+Output:
+  -o, --output-file path::String  Specify file to write report to
+  -f, --format String             Use a specific output format - default: stylish
+  --color, --no-color             Force enabling/disabling of color
+
+Inline configuration comments:
+  --no-inline-config              Prevent comments from changing config or rules
+  --report-unused-disable-directives  Adds reported errors for unused eslint-disable directives
+
+Caching:
+  --cache                         Only check changed files - default: false
+  --cache-file path::String       Path to the cache file. Deprecated: use --cache-location - default: .eslintcache
+  --cache-location path::String   Path to the cache file or directory
+
+Miscellaneous:
+  --init                          Run config initialization wizard - default: false
+  --env-info                      Output execution environment information - default: false
+  --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
+  --debug                         Output debugging information
+  -h, --help                      Show help
+  -v, --version                   Output the version number
+  --print-config path::String     Print the configuration for the given file
+```
 
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
   - [eslint](https://www.npmjs.com/package/eslint)
+  - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 
-### Linter web site
-- [https://eslint.org](https://eslint.org)
+### Example success log
 
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_eslint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/jsx/jsx_good_1.jsx
+    Warning: React version not specified in eslint-plugin-react settings. See https://github.com/yannickcr/eslint-plugin-react#configuration .
+
+```
+
+### Example error log
+
+```shell
+Results of eslint linter (version 7.13.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_eslint/
+-----------------------------------------------
+
+[ERROR] .automation/test/jsx/jsx_bad_1.jsx
+    
+    .automation/test/jsx/jsx_bad_1.jsx
+      8:1  error  Parsing error: Unexpected token const
+    
+    ✖ 1 problem (1 error, 0 warnings)
+
+```

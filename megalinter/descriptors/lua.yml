@@ -28,3 +28,22 @@ linters:
               && make -b install \
               && cd .. && rm -r luarocks-3.3.1-super-linter/ \
               && luarocks install luacheck
+    ide:
+      atom:
+        - name: linter-luacheck
+          url: https://atom.io/packages/linter-luacheck
+      brackets:
+        - name: brackets-luacheck
+          url: https://github.com/Malcolm3141/brackets-luacheck
+      emacs:
+        - name: flycheck
+          url: http://www.flycheck.org/en/latest/languages.html#lua
+      sublime:
+        - name: SublimeLinter-luacheck
+          url: https://packagecontrol.io/packages/SublimeLinter-luacheck
+      vim:
+        - name: Syntastic
+          url: https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck
+      vscode:
+        - name: vscode-luacheck
+          url: https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck

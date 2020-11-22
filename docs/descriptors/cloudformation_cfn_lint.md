@@ -3,11 +3,45 @@
 
 <div align="center">
   <a href="https://github.com/martysweet/cfn-lint#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png" alt="cfn-lint" height="150px">
+    <img src="https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png" alt="cfn-lint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## cfn-lint documentation
+
+- Version in Mega-Linter: **0.41.0**
+- Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme)
+  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
+
+[![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint)
+
+## Configuration in Mega-Linter
+
+- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CLOUDFORMATION_CFN_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CLOUDFORMATION_CFN_LINT_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
+| CLOUDFORMATION_CFN_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.yml`
@@ -18,25 +52,8 @@
   - `AWSTemplateFormatVersion`
   - `(AWS|Alexa|Custom)::`
 
-## Configuration
-
-### cfn-lint configuration
-
-- cfn-lint has no known capability to configure custom rules
-  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
-- cfn-lint has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| CLOUDFORMATION_FILE_NAME | Rules file name | `.cfnlintrc.yml` |
-| CLOUDFORMATION_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| CLOUDFORMATION_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -49,6 +66,66 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 ```
 
 
+### Help content
+
+```shell
+usage:
+Basic: cfn-lint test.yaml
+Ignore a rule: cfn-lint -i E3012 -- test.yaml
+Configure a rule: cfn-lint -x E3012:strict=false -t test.yaml
+Lint all yaml files in a folder: cfn-lint dir/**/*.yaml
+
+CloudFormation Linter
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Standard:
+  TEMPLATE              The CloudFormation template to be linted
+  -t TEMPLATE [TEMPLATE ...], --template TEMPLATE [TEMPLATE ...]
+                        The CloudFormation template to be linted
+  -b, --ignore-bad-template
+                        Ignore failures with Bad template
+  --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
+                        Ignore templates
+  -f {quiet,parseable,json,junit}, --format {quiet,parseable,json,junit}
+                        Output Format
+  -l, --list-rules      list all the rules
+  -r REGIONS [REGIONS ...], --regions REGIONS [REGIONS ...]
+                        list the regions to validate against.
+  -i IGNORE_CHECKS [IGNORE_CHECKS ...], --ignore-checks IGNORE_CHECKS [IGNORE_CHECKS ...]
+                        only check rules whose id do not match these values
+  -c INCLUDE_CHECKS [INCLUDE_CHECKS ...], --include-checks INCLUDE_CHECKS [INCLUDE_CHECKS ...]
+                        include rules whose id match these values
+  -m MANDATORY_CHECKS [MANDATORY_CHECKS ...], --mandatory-checks MANDATORY_CHECKS [MANDATORY_CHECKS ...]
+                        always check rules whose id match these values,
+                        regardless of template exclusions
+  -e, --include-experimental
+                        Include experimental rules
+  -x CONFIGURE_RULES [CONFIGURE_RULES ...], --configure-rule CONFIGURE_RULES [CONFIGURE_RULES ...]
+                        Provide configuration for a rule. Format
+                        RuleId:key=value. Example: E3012:strict=false
+  --config-file CONFIG_FILE
+                        Specify the cfnlintrc file to use
+  -v, --version         Version of cfn-lint
+  --output-file OUTPUT_FILE
+                        Writes the output to the specified file, ideal for
+                        producing reports
+
+Advanced / Debugging:
+  -D, --debug           Enable debug logging
+  -I, --info            Enable information logging
+  -a APPEND_RULES [APPEND_RULES ...], --append-rules APPEND_RULES [APPEND_RULES ...]
+                        specify one or more rules directories using one or
+                        more --append-rules arguments.
+  -o OVERRIDE_SPEC, --override-spec OVERRIDE_SPEC
+                        A CloudFormation Spec override file that allows
+                        customization
+  -g, --build-graph     Creates a file in the same directory as the template
+                        that models the template's resources in DOT format
+  -u, --update-specs    Update the CloudFormation Specs
+```
+
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
@@ -56,6 +133,48 @@ cfn-lint --config-file .cfnlintrc.yml myfile.yml
 - PIP packages (Python):
   - [cfn-lint](https://pypi.org/project/cfn-lint)
 
-### Linter web site
-- [https://github.com/martysweet/cfn-lint](https://github.com/martysweet/cfn-lint#readme)
+### Example success log
 
+```shell
+Results of cfn-lint linter (version 0.41.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_2.yaml
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_3.json
+    
+
+[SUCCESS] .automation/test/cloudformation/cloudformation_good_4.yaml
+    
+
+```
+
+### Example error log
+
+```shell
+Results of cfn-lint linter (version 0.41.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_1.json
+    E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
+    .automation/test/cloudformation/cloudformation_bad_1.json:6:10
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_2.yaml
+    E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
+    .automation/test/cloudformation/cloudformation_bad_2.yaml:5:5
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_3.json
+    E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
+    .automation/test/cloudformation/cloudformation_bad_3.json:11:13
+
+[ERROR] .automation/test/cloudformation/cloudformation_bad_4.yaml
+    E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
+    .automation/test/cloudformation/cloudformation_bad_4.yaml:9:7
+
+```

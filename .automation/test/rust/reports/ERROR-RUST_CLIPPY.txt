@@ -1,0 +1,23 @@
+Results of clippy linter (version 0.0.212)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_clippy/
+-----------------------------------------------
+
+[ERROR] .automation/test/rust/bad
+        Checking megalinter v1.0.0 (.automation/test/rust/bad)
+    error: mismatched closing delimiter: `}`
+      --> rust_bad_1.rs:14:1
+       |
+    9  | fn main() {
+       |           - closing delimiter possibly meant for this
+    ...
+    13 |     println!("Hello World!"
+       |             - unclosed delimiter
+    14 | }
+       | ^ mismatched closing delimiter
+    
+    error: aborting due to previous error
+    
+    error: could not compile `megalinter`
+    
+    To learn more, run the command again with --verbose.
+

@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class protobuf_protolint_test(TestCase, LinterTestRoot):
-    descriptor_id = 'PROTOBUF'
-    linter_name = 'protolint'
+    descriptor_id = "PROTOBUF"
+    linter_name = "protolint"

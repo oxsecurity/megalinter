@@ -20,7 +20,7 @@ fi
 #########################
 # Export to run locally #
 #########################
-export RUN_LOCAL=true
+export TEST_CASE_RUN=true
 
 # shellcheck source=/dev/null
-source "${PWD}"/lib/linter.sh
+source "${PWD}"/entrypoint.sh

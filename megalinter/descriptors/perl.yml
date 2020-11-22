@@ -4,6 +4,10 @@ file_extensions:
   - ".pl"
   - ".pm"
   - ".t"
+  - ""
+file_contains:
+  - "#!/usr/bin/env perl"
+  - "#!/usr/bin/perl"
 install:
   apk:
     - perl
@@ -12,12 +16,14 @@ linters:
   # PERL CRITIC
   - linter_name: perlcritic
     linter_url: https://metacpan.org/pod/Perl::Critic
+    linter_repo: https://github.com/Perl-Critic/Perl-Critic
     linter_banner_image_url: https://chrisdolan.net/madmongers/images/perl-critic-logo.gif
     linter_rules_configuration_url: https://metacpan.org/pod/Perl::Critic#CONFIGURATION
     linter_rules_inline_disable_url: https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES
+    cli_help_arg_name: "--help"
+    help_command_return_code: 2
     examples:
       - "perlcritic myfile.pl"
     install:
       dockerfile:
         - RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
-

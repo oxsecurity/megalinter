@@ -1,0 +1,10 @@
+Results of rubocop linter (version 0.82.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rubocop/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/ruby/ruby_good_1.rb
+    Inspecting 1 file
+    .
+    
+    1 file inspected, no offenses detected
+

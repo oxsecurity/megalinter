@@ -18,6 +18,7 @@ linters:
   - linter_name: cpplint
     name: CPP_CPPLINT
     linter_url: https://github.com/cpplint/cpplint
+    cli_help_arg_name: "--help"
     examples:
       - "cpplint myfile.cpp"
     install:

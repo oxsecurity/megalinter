@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class snakemake_snakemake_test(TestCase, LinterTestRoot):
-    descriptor_id = 'SNAKEMAKE'
-    linter_name = 'snakemake'
+    descriptor_id = "SNAKEMAKE"
+    linter_name = "snakemake"

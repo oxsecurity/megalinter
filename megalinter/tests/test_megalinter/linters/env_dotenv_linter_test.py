@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class env_dotenv_linter_test(TestCase, LinterTestRoot):
-    descriptor_id = 'ENV'
-    linter_name = 'dotenv-linter'
+    descriptor_id = "ENV"
+    linter_name = "dotenv-linter"

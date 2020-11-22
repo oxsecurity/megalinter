@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class openapi_spectral_test(TestCase, LinterTestRoot):
-    descriptor_id = 'OPENAPI'
-    linter_name = 'spectral'
+    descriptor_id = "OPENAPI"
+    linter_name = "spectral"

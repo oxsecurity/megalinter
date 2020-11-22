@@ -1,0 +1,10 @@
+Results of graphql-schema-linter linter (version 1.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_graphql_schema_linter/
+-----------------------------------------------
+
+[ERROR] .automation/test/graphql/graphql_bad_1.graphql
+    .automation/test/graphql/graphql_bad_1.graphql
+    8:11 Unknown type "Book". invalid-graphql-schema
+    
+    ✖ 1 error detected
+

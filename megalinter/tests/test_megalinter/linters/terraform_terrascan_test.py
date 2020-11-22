@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class terraform_terrascan_test(TestCase, LinterTestRoot):
-    descriptor_id = 'TERRAFORM'
-    linter_name = 'terrascan'
+    descriptor_id = "TERRAFORM"
+    linter_name = "terrascan"

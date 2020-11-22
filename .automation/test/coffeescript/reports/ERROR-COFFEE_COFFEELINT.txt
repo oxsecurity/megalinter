@@ -1,0 +1,12 @@
+Results of coffeelint linter (version 4.1.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_coffeelint/
+-----------------------------------------------
+
+[ERROR] .automation/test/coffeescript/coffeescript_bad_1.coffee
+      ✗ .automation/test/coffeescript/coffeescript_bad_1.coffee
+         ✗ #39: [stdin]:39:29: error: unmatched )
+    module.exports = (robot) -> )
+                                ^. (coffeescript_error)
+    
+    ✗ Lint! » 1 error and 0 warnings in 1 file
+

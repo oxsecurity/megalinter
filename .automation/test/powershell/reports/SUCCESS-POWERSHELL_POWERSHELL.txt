@@ -1,0 +1,13 @@
+Results of powershell linter (version 7.1.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershell_powershell/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/powershell/powershell_good_1.ps1
+    
+
+[SUCCESS] .automation/test/powershell/powershell_good_1.psd1
+    
+
+[SUCCESS] .automation/test/powershell/powershell_good_1.psm1
+    
+

@@ -1,0 +1,24 @@
+{
+  "threshold": 0,
+  "reporters": ["html","markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv'/**",
+    "**/report/**",
+    "**/*cache*/**",
+    "**/.automation/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/docs/**",
+    "**/lib/**",
+    "**/sample_project_fixes/**",
+    "**/*.yml",
+    "**/report/**",
+    "**/megalinter/descriptors/jsonschema.json",
+    "**/megalinter/linters/RakuLinter.py",
+    "**/megalinter/tests/test_megalinter/MegaLinter_1_test.py",
+    "**/megalinter/tests/test_megalinter/MegaLinter_2_fixes_test.py"
+  ]
+}

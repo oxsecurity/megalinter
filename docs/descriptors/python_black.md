@@ -3,34 +3,58 @@
 
 <div align="center">
   <a href="https://github.com/psf/black#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png" alt="black" height="150px">
+    <img src="https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png" alt="black" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## black documentation
+
+- Version in Mega-Linter: **20.8**
+- Visit [Official Web Site](https://github.com/psf/black#readme)
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
+  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
+
+[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black)
+
+## Configuration in Mega-Linter
+
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PYTHON_BLACK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_BLACK_FILE_NAME | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-black` |
+| PYTHON_BLACK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| PYTHON_BLACK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use black in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [python-black](https://atom.io/packages/python-black) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [blacken](https://github.com/pythonic-emacs/blacken) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [reformatter.el](https://github.com/purcell/reformatter.el) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [elpy](https://github.com/jorgenschaefer/elpy) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [sublack](https://github.com/jgirardet/sublack) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.py`
 
-## Configuration
-
-### black configuration
-
-- [Configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
-  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
-- black has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| PYTHON_BLACK_FILE_NAME | Rules file name | `.python-black` |
-| PYTHON_BLACK_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| PYTHON_BLACK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -42,12 +66,113 @@ black --diff --check myfile.py
 black --config .python-black --diff --check myfile.py
 ```
 
+```shell
+black --config .python-black myfile.py
+```
+
+
+### Help content
+
+```shell
+Usage: black [OPTIONS] [SRC]...
+
+  The uncompromising code formatter.
+
+Options:
+  -c, --code TEXT                 Format the code passed in as a string.
+  -l, --line-length INTEGER       How many characters per line to allow.
+                                  [default: 88]
+
+  -t, --target-version [py27|py33|py34|py35|py36|py37|py38]
+                                  Python versions that should be supported by
+                                  Black's output. [default: per-file auto-
+                                  detection]
+
+  --pyi                           Format all input files like typing stubs
+                                  regardless of file extension (useful when
+                                  piping source on standard input).
+
+  -S, --skip-string-normalization
+                                  Don't normalize string quotes or prefixes.
+  --check                         Don't write the files back, just return the
+                                  status.  Return code 0 means nothing would
+                                  change.  Return code 1 means some files
+                                  would be reformatted. Return code 123 means
+                                  there was an internal error.
+
+  --diff                          Don't write the files back, just output a
+                                  diff for each file on stdout.
+
+  --color / --no-color            Show colored diff. Only applies when
+                                  `--diff` is given.
+
+  --fast / --safe                 If --fast given, skip temporary sanity
+                                  checks. [default: --safe]
+
+  --include TEXT                  A regular expression that matches files and
+                                  directories that should be included on
+                                  recursive searches.  An empty value means
+                                  all files are included regardless of the
+                                  name.  Use forward slashes for directories
+                                  on all platforms (Windows, too).  Exclusions
+                                  are calculated first, inclusions later.
+                                  [default: \.pyi?$]
+
+  --exclude TEXT                  A regular expression that matches files and
+                                  directories that should be excluded on
+                                  recursive searches.  An empty value means no
+                                  paths are excluded. Use forward slashes for
+                                  directories on all platforms (Windows, too).
+                                  Exclusions are calculated first, inclusions
+                                  later.  [default: /(\.direnv|\.eggs|\.git|\.
+                                  hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_bu
+                                  ild|buck-out|build|dist)/]
+
+  --force-exclude TEXT            Like --exclude, but files and directories
+                                  matching this regex will be excluded even
+                                  when they are passed explicitly as arguments
+
+  -q, --quiet                     Don't emit non-error messages to stderr.
+                                  Errors are still emitted; silence those with
+                                  2>/dev/null.
+
+  -v, --verbose                   Also emit messages to stderr about files
+                                  that were not changed or were ignored due to
+                                  --exclude=.
+
+  --version                       Show the version and exit.
+  --config FILE                   Read configuration from FILE path.
+  -h, --help                      Show this message and exit.
+```
 
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
   - [black](https://pypi.org/project/black)
 
-### Linter web site
-- [https://github.com/psf/black](https://github.com/psf/black#readme)
+### Example success log
 
+```shell
+Results of black linter (version 20.8)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/python/python_good_1.py
+    All done! ✨ 🍰 ✨
+    1 file would be left unchanged.
+
+```
+
+### Example error log
+
+```shell
+Results of black linter (version 20.8)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+-----------------------------------------------
+
+[ERROR] .automation/test/python/python_bad_1.py
+    error: cannot format .automation/test/python/python_bad_1.py: Cannot parse: 15:23: if github_token is None
+    Oh no! 💥 💔 💥
+    1 file would fail to reformat.
+
+```

@@ -3,37 +3,72 @@
 
 <div align="center">
   <a href="https://github.com/accurics/terrascan#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png" alt="terrascan" height="150px">
+    <img src="https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png" alt="terrascan" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## terrascan documentation
+
+- Version in Mega-Linter: **1.2.0**
+- Visit [Official Web Site](https://github.com/accurics/terrascan#readme)
+- See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
+
+[![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan)
+
+## Configuration in Mega-Linter
+
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| TERRAFORM_TERRASCAN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| TERRAFORM_TERRASCAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.tf`
 
-## Configuration
-
-### terrascan configuration
-
-- [Configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
-- terrascan has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
 ```shell
-terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f myfile.tf
+terrascan scan -i terraform -t all -f myfile.tf
 ```
 
+
+### Help content
+
+```shell
+Terrascan
+
+Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
+For more information, please visit https://docs.accurics.com
+
+Usage:
+  terrascan [command]
+
+Available Commands:
+  init        Initialize Terrascan
+  scan        Detect compliance and security violations across Infrastructure as Code.
+  server      Run Terrascan as an API server
+  version     Terrascan version
+
+Flags:
+  -c, --config-path string   config file path
+  -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
+  -x, --log-type string      log output type (console, json) (default "console")
+  -o, --output string        output type (json, yaml, xml) (default "yaml")
+
+Use "terrascan [command] --help" for more information about a command.
+```
 
 ### Installation on mega-linter Docker image
 
@@ -45,6 +80,47 @@ RUN terrascan init
 ```
 
 
-### Linter web site
-- [https://github.com/accurics/terrascan](https://github.com/accurics/terrascan#readme)
+### Example success log
 
+```shell
+Results of terrascan linter (version 1.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/terraform_terrascan/good/terraform_good_1.tf
+    results:
+        violations: []
+        count:
+            low: 0
+            medium: 0
+            high: 0
+            total: 0
+
+```
+
+### Example error log
+
+```shell
+Results of terrascan linter (version 1.2.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+-----------------------------------------------
+
+[ERROR] .automation/test/terraform_terrascan/bad/terraform_bad_1.tf
+    results:
+        violations:
+            - rule_name: instanceWithNoVpc
+              description: Instance should be configured in vpc. AWS VPCs provides the controls to facilitate a formal process for approving and testing all network connections and changes to the firewall and router configurations.
+              rule_id: AWS.Instance.NetworkSecurity.Medium.0506
+              severity: MEDIUM
+              category: Network Security
+              resource_name: instanceWithNoVpc
+              resource_type: aws_instance
+              file: terraform_bad_1.tf
+              line: 1
+        count:
+            low: 0
+            medium: 1
+            high: 0
+            total: 1
+
+```

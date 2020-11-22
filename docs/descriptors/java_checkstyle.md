@@ -3,34 +3,53 @@
 
 <div align="center">
   <a href="https://checkstyle.sourceforge.io" target="blank" title="Visit linter Web Site">
-    <img src="https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png" alt="checkstyle" height="150px">
+    <img src="https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png" alt="checkstyle" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## checkstyle documentation
+
+- Version in Mega-Linter: **8.37**
+- Visit [Official Web Site](https://checkstyle.sourceforge.io)
+- See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
+  - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
+- See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
+
+[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle)
+
+## Configuration in Mega-Linter
+
+- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JAVA_CHECKSTYLE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JAVA_CHECKSTYLE_FILE_NAME | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
+| JAVA_CHECKSTYLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| JAVA_CHECKSTYLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use checkstyle in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://github.com/jshiell/checkstyle-idea) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.java`
 
-## Configuration
-
-### checkstyle configuration
-
-- [Configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
-  - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
-- [Disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| JAVA_FILE_NAME | Rules file name | `sun_checks.xml` |
-| JAVA_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| JAVA_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -42,6 +61,63 @@ java -jar /usr/bin/checkstyle myfile.java
 java -jar /usr/bin/checkstyle -c sun_checks.xml myfile.java
 ```
 
+
+### Help content
+
+```shell
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32    use a 32-bit data model if available
+    -d64    use a 64-bit data model if available
+    -server    to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+```
 
 ### Installation on mega-linter Docker image
 
@@ -57,6 +133,35 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 ```
 
 
-### Linter web site
-- [https://checkstyle.sourceforge.io](https://checkstyle.sourceforge.io)
+### Example success log
 
+```shell
+Results of checkstyle linter (version 8.37)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/java/java_good_1.java
+    Starting audit...
+    Audit done.
+
+```
+
+### Example error log
+
+```shell
+Results of checkstyle linter (version 8.37)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
+-----------------------------------------------
+
+[ERROR] .automation/test/java/java_bad_1.java
+    Starting audit...
+    [ERROR] .automation/test/java/java_bad_1.java:1:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
+    [ERROR] .automation/test/java/java_bad_1.java:1:7: Name 'java_bad_1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. [TypeName]
+    [ERROR] .automation/test/java/java_bad_1.java:2:1: '{' at column 1 should be on the previous line. [LeftCurly]
+    [ERROR] .automation/test/java/java_bad_1.java:4:29: Parameter args should be final. [FinalParameters]
+    [ERROR] .automation/test/java/java_bad_1.java:4:40: Array brackets at illegal position. [ArrayTypeStyle]
+    [ERROR] .automation/test/java/java_bad_1.java:5:5: '{' at column 5 should be on the previous line. [LeftCurly]
+    Audit done.
+    Checkstyle ends with 6 errors.
+
+```

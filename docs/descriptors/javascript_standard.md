@@ -3,30 +3,55 @@
 
 <div align="center">
   <a href="https://github.com/standard/standard#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="standard" height="150px">
+    <img src="https://github.com/standard/standard/raw/master/sticker.png" alt="standard" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## standard documentation
+
+- Version in Mega-Linter: **15.0.1**
+- Visit [Official Web Site](https://github.com/standard/standard#readme)
+
+[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard)
+
+## Configuration in Mega-Linter
+
+- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](../index.md#apply-fixes)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| JAVASCRIPT_STANDARD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JAVASCRIPT_STANDARD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use standard in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-js-standard](https://atom.io/packages/linter-js-standard) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [standard-formatter](https://atom.io/packages/standard-formatter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-standard](https://github.com/ishamf/brackets-standard/) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [StandardFormat](https://packagecontrol.io/packages/StandardFormat) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.js`
 
-## Configuration
-
-### standard configuration
-
-- standard has no known capability to configure custom rules
-- standard has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -34,12 +59,68 @@
 standard myfile.js
 ```
 
+```shell
+standard --fix myfile.js
+```
+
+
+### Help content
+
+```shell
+standard - Use JavaScript Standard Style (https://standardjs.com)
+
+Usage:
+    standard <flags> [FILES...]
+
+    If FILES is omitted, all JavaScript source files (*.js, *.jsx, *.mjs, *.cjs)
+    in the current working directory are checked, recursively.
+
+    Certain paths (node_modules/, coverage/, vendor/, *.min.js, bundle.js, and
+    files/folders that begin with '.' like .git/) are automatically ignored.
+
+    Paths in a project's root .gitignore file are also automatically ignored.
+
+Flags:
+        --fix       Automatically fix problems
+    -v, --verbose   Show rule names for errors (to ignore specific rules)
+        --version   Show current version
+    -h, --help      Show usage information
+
+Flags (advanced):
+        --stdin     Read file text from stdin
+        --global    Declare global variable
+        --plugin    Use custom eslint plugin
+        --env       Use custom eslint environment
+        --parser    Use custom js parser (e.g. babel-eslint)
+
+```
 
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [standard](https://www.npmjs.com/package/standard)
+  - [standard@15.0.1](https://www.npmjs.com/package/standard)
 
-### Linter web site
-- [https://github.com/standard/standard](https://github.com/standard/standard#readme)
+### Example success log
 
+```shell
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_standard/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/javascript/javascript_good_1.js
+    
+
+```
+
+### Example error log
+
+```shell
+Results of standard linter (version 15.0.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_standard/
+-----------------------------------------------
+
+[ERROR] .automation/test/javascript/javascript_bad_1.js
+    standard: Use JavaScript Standard Style (https://standardjs.com)
+      .automation/test/javascript/javascript_bad_1.js:4:40: Parsing error: Unterminated regular expression
+
+```

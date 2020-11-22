@@ -25,15 +25,15 @@ linters:
     linter_banner_image_url: https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png
     cli_lint_extra_args:
       - "scan"
-      - "-p"
-      - "/root/.terrascan/pkg/policies/opa/rego/"
+      - "-i"
+      - "terraform"
       - "-t"
-      - "aws"
+      - "all"
       - "-f"
-    cli_version_arg_name: 'version'
+    cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
-      - "terrascan scan -p /root/.terrascan/pkg/policies/opa/rego/ -t aws -f myfile.tf"
+      - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
         - FROM accurics/terrascan:latest as terrascan
@@ -41,11 +41,13 @@ linters:
         - RUN terrascan init
   # TERRAGRUNT
   - linter_name: terragrunt
+    name: TERRAFORM_TERRAGRUNT
     file_extensions:
       - ".hcl"
     files_names_not_ends_with:
       - ".tflint.hcl"
     linter_url: https://terragrunt.gruntwork.io
+    linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
     linter_image_url: https://github.com/gruntwork-io/terragrunt/blob/master/docs/assets/img/favicon/ms-icon-310x310.png
     config_file_name: terragrunt.hcl

@@ -1,0 +1,9 @@
+Results of lintr linter (version 2.0.1.9000)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/r/r_good_1.r
+    Warning message:
+    In readLines(filename) :
+      incomplete final line found on '.automation/test/r/r_good_1.r'
+

@@ -3,34 +3,51 @@
 
 <div align="center">
   <a href="https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png" alt="dartanalyzer" height="150px">
+    <img src="https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png" alt="dartanalyzer" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## dartanalyzer documentation
+
+- Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
+- See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
+  - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
+- See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
+
+[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk)
+
+## Configuration in Mega-Linter
+
+- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| DART_DARTANALYZER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| DART_DARTANALYZER_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
+| DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| DART_DARTANALYZER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use dartanalyzer in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.dart`
 
-## Configuration
-
-### dartanalyzer configuration
-
-- [Configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
-  - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
-- [Disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| DART_FILE_NAME | Rules file name | `analysis_options.yml` |
-| DART_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| DART_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -42,6 +59,36 @@ dartanalyzer --fatal-infos --fatal-warnings myfile.dart
 dartanalyzer --fatal-infos --fatal-warnings --options analysis_options.yml myfile.dart
 ```
 
+
+### Help content
+
+```shell
+Usage: dartanalyzer [options...] <directory or list of files>
+
+    --dart-sdk                    The path to the Dart SDK.
+    --options                     Path to an analysis options file.
+    --package-root                The path to a package root directory (deprecated). This option cannot be used with --packages.
+    --[no-]declaration-casts      Disable declaration casts in strong mode (https://goo.gl/cTLz40)
+                                  This option is now ignored and will be removed in a future release.
+    --[no-]implicit-casts         Disable implicit casts in strong mode (https://goo.gl/cTLz40).
+    --no-implicit-dynamic         Disable implicit dynamic (https://goo.gl/m0UgXD).
+    --packages                    The path to the package resolution configuration file, which supplies a mapping of package names
+                                  to paths. This option cannot be used with --package-root.
+    --[no-]lints                  Show lint results.
+    --format                      Specifies the format in which errors are displayed; the only currently allowed value is 'machine'.
+    --version                     Print the analyzer version.
+    --enable-experiment           Enable one or more experimental features. If multiple features are being added, they should be comma separated.
+    --no-hints                    Do not show hint results.
+    --fatal-infos                 Treat infos as fatal.
+    --fatal-warnings              Treat non-type warnings as fatal.
+-h, --help                        Display this help message. Add --verbose to show hidden options.
+-v, --verbose                     Verbose output.
+    --default-language-version    The default language version when it is not specified via other ways (internal, tests only).
+
+Run "dartanalyzer -h -v" for verbose help output, including less commonly used options.
+For more information, see https://www.dartlang.org/tools/analyzer.
+
+```
 
 ### Installation on mega-linter Docker image
 
@@ -56,9 +103,33 @@ RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/r
     && chmod +x dart-sdk/bin/dart* \
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/
+
 ```
 
 
-### Linter web site
-- [https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
+### Example success log
 
+```shell
+Results of dartanalyzer linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/dart/dart_good_1.dart
+    Analyzing .automation/test/dart/dart_good_1.dart...
+    No issues found!
+
+```
+
+### Example error log
+
+```shell
+Results of dartanalyzer linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+-----------------------------------------------
+
+[ERROR] .automation/test/dart/dart_bad_1.dart
+    Analyzing .automation/test/dart/dart_bad_1.dart...
+      lint • Use `;` instead of `{}` for empty constructor bodies. • .automation/test/dart/dart_bad_1.dart:4:25 • empty_constructor_bodies
+    1 lint found.
+
+```

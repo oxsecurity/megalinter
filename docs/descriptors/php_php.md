@@ -3,30 +3,38 @@
 
 <div align="center">
   <a href="https://www.php.net" target="blank" title="Visit linter Web Site">
-    <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="php" height="150px">
+    <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="php" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## php documentation
+
+- Version in Mega-Linter: **7.3.24**
+- Visit [Official Web Site](https://www.php.net)
+
+[![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src)
+
+## Configuration in Mega-Linter
+
+- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PHP_BUILTIN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PHP_BUILTIN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.php`
 
-## Configuration
-
-### php configuration
-
-- php has no known capability to configure custom rules
-- php has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -35,6 +43,53 @@ php -l myfile.js
 ```
 
 
+### Help content
+
+```shell
+Usage: php [options] [-f] <file> [--] [args...]
+   php [options] -r <code> [--] [args...]
+   php [options] [-B <begin_code>] -R <code> [-E <end_code>] [--] [args...]
+   php [options] [-B <begin_code>] -F <file> [-E <end_code>] [--] [args...]
+   php [options] -S <addr>:<port> [-t docroot] [router]
+   php [options] -- [args...]
+   php [options] -a
+
+  -a               Run as interactive shell
+  -c <path>|<file> Look for php.ini file in this directory
+  -n               No configuration (ini) files will be used
+  -d foo[=bar]     Define INI entry foo with value 'bar'
+  -e               Generate extended information for debugger/profiler
+  -f <file>        Parse and execute <file>.
+  -h               This help
+  -i               PHP information
+  -l               Syntax check only (lint)
+  -m               Show compiled in modules
+  -r <code>        Run PHP <code> without using script tags <?..?>
+  -B <begin_code>  Run PHP <begin_code> before processing input lines
+  -R <code>        Run PHP <code> for every input line
+  -F <file>        Parse and execute <file> for every input line
+  -E <end_code>    Run PHP <end_code> after processing all input lines
+  -H               Hide any passed arguments from external tools.
+  -S <addr>:<port> Run with built-in web server.
+  -t <docroot>     Specify document root <docroot> for built-in web server.
+  -s               Output HTML syntax highlighted source.
+  -v               Version number
+  -w               Output source with stripped comments and whitespace.
+  -z <file>        Load Zend extension <file>.
+
+  args...          Arguments passed to script. Use -- args when first argument
+                   starts with - or script is read from stdin
+
+  --ini            Show configuration file names
+
+  --rf <name>      Show information about function <name>.
+  --rc <name>      Show information about class <name>.
+  --re <name>      Show information about extension <name>.
+  --rz <name>      Show information about Zend extension <name>.
+  --ri <name>      Show configuration for extension <name>.
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -42,7 +97,10 @@ php -l myfile.js
 # Parent descriptor install
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && gpg --keyserver pool.sks-keyservers.net --recv-keys 0x9D8A98B29B2D5D79 \
+    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
+    && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
@@ -53,6 +111,34 @@ RUN echo "No additional install for PHP built-in linter"
 ```
 
 
-### Linter web site
-- [https://www.php.net](https://www.php.net)
+### Example success log
 
+```shell
+Results of php linter (version 7.3.24)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/php/php_good_1.php
+    No syntax errors detected in .automation/test/php/php_good_1.php
+
+[SUCCESS] .automation/test/php/php_good_2.php
+    No syntax errors detected in .automation/test/php/php_good_2.php
+
+```
+
+### Example error log
+
+```shell
+Results of php linter (version 7.3.24)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
+-----------------------------------------------
+
+[ERROR] .automation/test/php/php_bad_1.php
+    PHP Parse error:  syntax error, unexpected 'pe98y' (T_STRING) in .automation/test/php/php_bad_1.php on line 3
+    Errors parsing .automation/test/php/php_bad_1.php
+
+[ERROR] .automation/test/php/php_bad_2.php
+    PHP Parse error:  syntax error, unexpected '}' in .automation/test/php/php_bad_2.php on line 15
+    Errors parsing .automation/test/php/php_bad_2.php
+
+```

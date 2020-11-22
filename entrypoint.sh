@@ -3,10 +3,22 @@
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
+if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
+  echo "UPGRADING LINTER VERSION"
+  # Run only get_linter_version test methods
+  pytest -v --durations=0 -k _get_linter_version megalinter/
+  # Run only get_linter_help test methods
+  pytest -v --durations=0 -k _get_linter_help megalinter/
+  cd /tmp/lint || exit 1
+  chmod +x build.sh
+  bash build.sh
+  exit $?
+fi
+
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
   echo "RUNNING TEST CASES"
-  pytest -v --durations=0 --cov=megalinter --cov-report=xml megalinter/
+  pytest -v --timeout=60 --durations=0 --cov=megalinter --cov-report=xml megalinter/
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
   # Manage return code
@@ -21,9 +33,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 
 else
   # Normal run
-  LOG_LEVEL="${LOG_LEVEL:-INFO}"        # Default log level (VERBOSE, DEBUG, TRACE)
+  LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
   if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
-        printenv
+    printenv
   fi
   python -m megalinter.run
 fi

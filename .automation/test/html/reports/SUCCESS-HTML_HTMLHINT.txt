@@ -1,0 +1,10 @@
+Results of htmlhint linter (version 0.14.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htmlhint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/html/html_good_01.html
+    
+       Config loaded: .github/linters/.htmlhintrc
+    
+    Scanned 1 files, no errors found (18 ms).
+

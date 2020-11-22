@@ -3,32 +3,47 @@
 
 <div align="center">
   <a href="https://metacpan.org/pod/Perl::Critic" target="blank" title="Visit linter Web Site">
-    <img src="https://chrisdolan.net/madmongers/images/perl-critic-logo.gif" alt="perlcritic" height="150px">
+    <img src="https://chrisdolan.net/madmongers/images/perl-critic-logo.gif" alt="perlcritic" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## perlcritic documentation
+
+- Version in Mega-Linter: **1.138**
+- Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic)
+- See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION)
+- See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES)
+
+[![Perl-Critic - GitHub](https://gh-card.dev/repos/Perl-Critic/Perl-Critic.svg?fullname=)](https://github.com/Perl-Critic/Perl-Critic)
+
+## Configuration in Mega-Linter
+
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| PERL_PERLCRITIC_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| PERL_PERLCRITIC_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| PERL_PERLCRITIC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PERL_PERLCRITIC_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.pl`
   - `.pm`
   - `.t`
+  - ``
 
-## Configuration
+- Detected file content:
+  - `#!/usr/bin/env perl`
+  - `#!/usr/bin/perl`
 
-### perlcritic configuration
-
-- [Configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION)
-- [Disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -36,6 +51,36 @@
 perlcritic myfile.pl
 ```
 
+
+### Help content
+
+```shell
+Usage:
+      perlcritic [-12345 | --brutal | --cruel | --harsh | --stern | --gentle]
+                 [--severity number | name] [{-p | --profile} file | --noprofile]
+                 [--top [ number ]] [--theme expression] [--include pattern]
+                 [--exclude pattern] [{-s | --single-policy} pattern]
+                 [--only | --noonly] [--profile-strictness {warn|fatal|quiet}]
+                 [--force | --noforce] [--statistics] [--statistics-only]
+                 [--count | -C] [--verbose {number | format}] [--allow-unsafe]
+                 [--color | --nocolor] [--pager pager] [--quiet]
+                 [--color-severity-highest color_specification]
+                 [--color-severity-high color_specification]
+                 [--color-severity-medium color_specification]
+                 [--color-severity-low color_specification]
+                 [--color-severity-lowest color_specification]
+                 [--files-with-violations | -l]
+                 [--files-without-violations | -L]
+                 [--program-extensions file_name_extension]
+                 {FILE | DIRECTORY | STDIN}
+
+      perlcritic --profile-proto
+
+      perlcritic { --list | --list-enabled | --list-themes | --doc pattern [...] }
+
+      perlcritic { --help | --options | --man | --version }
+
+```
 
 ### Installation on mega-linter Docker image
 
@@ -45,6 +90,29 @@ RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wge
 ```
 
 
-### Linter web site
-- [https://metacpan.org/pod/Perl::Critic](https://metacpan.org/pod/Perl::Critic)
+### Example success log
 
+```shell
+Results of perlcritic linter (version 1.138)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_perlcritic/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/perl/perl_good_1.pl
+    .automation/test/perl/perl_good_1.pl source OK
+
+[SUCCESS] .automation/test/perl/perl_good_2
+    .automation/test/perl/perl_good_2 source OK
+
+```
+
+### Example error log
+
+```shell
+Results of perlcritic linter (version 1.138)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_perlcritic/
+-----------------------------------------------
+
+[ERROR] .automation/test/perl/perl_bad_1.pl
+    Code before strictures are enabled at line 14, column 1.  See page 429 of PBP.  (Severity: 5)
+
+```

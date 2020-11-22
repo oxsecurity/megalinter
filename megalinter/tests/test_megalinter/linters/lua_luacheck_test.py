@@ -10,5 +10,5 @@ from megalinter.tests.test_megalinter.LinterTestRoot import LinterTestRoot
 
 
 class lua_luacheck_test(TestCase, LinterTestRoot):
-    descriptor_id = 'LUA'
-    linter_name = 'luacheck'
+    descriptor_id = "LUA"
+    linter_name = "luacheck"

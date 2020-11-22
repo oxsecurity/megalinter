@@ -3,34 +3,42 @@
 
 <div align="center">
   <a href="https://github.com/editorconfig-checker/editorconfig-checker#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png" alt="editorconfig-checker" height="150px">
+    <img src="https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png" alt="editorconfig-checker" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## editorconfig-checker documentation
+
+- Visit [Official Web Site](https://github.com/editorconfig-checker/editorconfig-checker#readme)
+- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
+- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
+
+[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker)
+
+## Configuration in Mega-Linter
+
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAME | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - Activated only if file is found: `.editorconfig`
 - File extensions:
   - `*`
 
-## Configuration
-
-### editorconfig-checker configuration
-
-- [Configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
-- [Disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| EDITORCONFIG_FILE_NAME | Rules file name | `.ecrc` |
-| EDITORCONFIG_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| EDITORCONFIG_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -38,6 +46,46 @@
 editorconfig-checker myfile.js
 ```
 
+
+### Help content
+
+```shell
+USAGE:
+  -config string
+      config
+  -debug
+      print debugging information
+  -disable-end-of-line
+      disables the trailing whitespace check
+  -disable-indent-size
+      disables only the indent-size check
+  -disable-indentation
+      disables the indentation check
+  -disable-insert-final-newline
+      disables the final newline check
+  -disable-max-line-length
+      disables only the max-line-length check
+  -disable-trim-trailing-whitespace
+      disables the trailing whitespace check
+  -dry-run
+      show which files would be checked
+  -exclude string
+      a regex which files should be excluded from checking - needs to be a valid regular expression
+  -h  print the help
+  -help
+      print the help
+  -ignore-defaults
+      ignore default excludes
+  -init
+      creates an initial configuration
+  -no-color
+      dont print colors
+  -v  print debugging information
+  -verbose
+      print debugging information
+  -version
+      print the version number
+```
 
 ### Installation on mega-linter Docker image
 
@@ -48,6 +96,31 @@ COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 ```
 
 
-### Linter web site
-- [https://github.com/editorconfig-checker/editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#readme)
+### Example success log
 
+```shell
+Results of editorconfig-checker linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorconfig_editorconfig_checker/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/editorconfig-checker/editorconfig-checker_good_1.ext
+    
+
+```
+
+### Example error log
+
+```shell
+Results of editorconfig-checker linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorconfig_editorconfig_checker/
+-----------------------------------------------
+
+[ERROR] .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext
+    [33;1m.automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:[33;0m
+    [31;1m	1: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
+    [31;1m	2: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
+    [31;1m	3: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
+    [31;1m
+    3 errors found[33;0m
+
+```

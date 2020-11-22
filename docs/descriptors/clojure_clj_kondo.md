@@ -3,11 +3,47 @@
 
 <div align="center">
   <a href="https://github.com/borkdude/clj-kondo#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png" alt="clj-kondo" height="150px">
+    <img src="https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png" alt="clj-kondo" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-## Linted files
+## clj-kondo documentation
+
+- Version in Mega-Linter: **2020.09.09**
+- Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme)
+- See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration)
+  - If custom .clj-kondo/config.edn is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn) will be used
+
+[![clj-kondo - GitHub](https://gh-card.dev/repos/borkdude/clj-kondo.svg?fullname=)](https://github.com/borkdude/clj-kondo)
+
+## Configuration in Mega-Linter
+
+- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| CLOJURE_CLJ_KONDO_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
+| CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CLOJURE_CLJ_KONDO_FILE_NAME | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clj-kondo/config.edn` |
+| CLOJURE_CLJ_KONDO_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| CLOJURE_CLJ_KONDO_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+
+## IDE Integration
+
+Use clj-kondo in your favorite IDE to catch errors before Mega-Linter !
+
+| <!-- --> | IDE | Extension Name |
+| :--: | ----------------- | -------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-kondo](https://atom.io/packages/linter-kondo) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint) |
+
+## Behind the scenes
+
+### How are identified applicable files
 
 - File extensions:
   - `.clj`
@@ -15,25 +51,8 @@
   - `.cljc`
   - `.edn`
 
-## Configuration
-
-### clj-kondo configuration
-
-- [Configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration)
-  - If custom .clj-kondo/config.edn is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn) will be used
-- clj-kondo has no known capability to inline-disable rules
-
-### Mega-linter configuration
-
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
-| CLOJURE_FILE_NAME | Rules file name | `.clj-kondo/config.edn` |
-| CLOJURE_RULES_PATH | Path where to find rules | Workspace folder, then mega-linter default rules |
-| CLOJURE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-
-## Behind the scenes
+<!-- markdownlint-disable -->
+<!-- /* cSpell:disable */ -->
 
 ### Example calls
 
@@ -46,6 +65,40 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ```
 
 
+### Help content
+
+```shell
+clj-kondo v2020.09.09
+
+
+Options:
+
+  --lint <file>: a file can either be a normal file, directory or classpath. In the
+    case of a directory or classpath, only .clj, .cljs and .cljc will be
+    processed. Use - as filename for reading from stdin.
+
+  --lang <lang>: if lang cannot be derived from the file extension this option will be
+    used. Supported values: clj, cljs, cljc.
+
+  --cache-dir: when this option is provided, the cache will be resolved to this
+    directory. If --cache is false, this option will be ignored.
+
+  --cache: if false, won't use cache. Otherwise, will try to resolve cache
+  using `--cache-dir`. If `--cache-dir` is not set, cache is resolved using the
+  nearest `.clj-kondo` directory in the current and parent directories.
+
+  --config <config>: config may be a file or an EDN expression. See
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2020.09.09/doc/configuration
+
+  --config-dir <config-dir>: use this config directory instead of auto-detected
+    .clj-kondo dir.
+
+  --run-as-pod: run clj-kondo as a babashka pod
+
+  --parallel: lint sources in parallel.
+
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
@@ -55,6 +108,48 @@ COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
 ```
 
 
-### Linter web site
-- [https://github.com/borkdude/clj-kondo](https://github.com/borkdude/clj-kondo#readme)
+### Example success log
 
+```shell
+Results of clj-kondo linter (version 2020.09.09)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_clj_kondo/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/clojure/clojure_good_1.clj
+    linting took 14ms, errors: 0, warnings: 0
+
+```
+
+### Example error log
+
+```shell
+Results of clj-kondo linter (version 2020.09.09)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_clj_kondo/
+-----------------------------------------------
+
+[ERROR] .automation/test/clojure/clojure_bad_1.clj
+    .automation/test/clojure/clojure_bad_1.clj:5:5: warning: namespace clojure.set is required but never used
+    .automation/test/clojure/clojure_bad_1.clj:8:2: error: unresolved symbol but-last
+    .automation/test/clojure/clojure_bad_1.clj:12:1: error: clojure.string/join is called with 0 args but expects 1 or 2
+    .automation/test/clojure/clojure_bad_1.clj:15:17: warning: unused binding y
+    .automation/test/clojure/clojure_bad_1.clj:17:3: warning: redundant do
+    .automation/test/clojure/clojure_bad_1.clj:19:5: warning: inline def
+    .automation/test/clojure/clojure_bad_1.clj:22:7: warning: Redundant let expression.
+    .automation/test/clojure/clojure_bad_1.clj:22:13: warning: unused binding z
+    .automation/test/clojure/clojure_bad_1.clj:24:9: error: y is called with 1 arg but expects 0
+    .automation/test/clojure/clojure_bad_1.clj:26:9: error: recur argument count mismatch (expected 2, got 0)
+    .automation/test/clojure/clojure_bad_1.clj:29:9: error: h is called with 1 arg but expects 0
+    .automation/test/clojure/clojure_bad_1.clj:30:9: error: f is called with 1 arg but expects 0
+    .automation/test/clojure/clojure_bad_1.clj:34:1: warning: redefined var #'foo/private-fn
+    .automation/test/clojure/clojure_bad_1.clj:34:8: warning: Unused private var foo/private-fn
+    .automation/test/clojure/clojure_bad_1.clj:38:6: error: Expected: number, received: keyword.
+    .automation/test/clojure/clojure_bad_1.clj:42:1: error: java.lang.Thread/sleep is called with 3 args but expects 1 or 2
+    .automation/test/clojure/clojure_bad_1.clj:48:1: error: foo/foo-fn is called with 0 args but expects 2
+    .automation/test/clojure/clojure_bad_1.clj:51:1: error: #'foo/private-fn is private
+    .automation/test/clojure/clojure_bad_1.clj:54:7: error: duplicate key :a
+    .automation/test/clojure/clojure_bad_1.clj:56:5: error: duplicate set element 1
+    .automation/test/clojure/clojure_bad_1.clj:58:7: error: missing value for key :b
+    .automation/test/clojure/clojure_bad_1.clj:64:3: warning: missing test assertion
+    linting took 14ms, errors: 13, warnings: 9
+
+```
