@@ -2,6 +2,10 @@
 
 ## [insiders] (master)
 
+Nothing yet :)
+
+## [4.9.0] 2020-11-23
+
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
 - Core
@@ -26,7 +30,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Generate GitHub card on linter doc when available
   - Store link preview info during build
 
-## [4.8.0]
+## [4.8.0] 2020-11-17
 
 - New reporter: [Updated sources](https://nvuillam.github.io/mega-linter/reporters/UpdatedSourcesReporter/)
 

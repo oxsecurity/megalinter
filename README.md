@@ -489,7 +489,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ### More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
 
 ### More reporters
 
@@ -503,7 +503,7 @@ Mega-Linter can [**automatically apply fixes performed by linters**](#apply-fixe
 
 This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
 
-### New features & improvements
+### Features & improvements
 
 - **Enhanced Configuration**
   - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
