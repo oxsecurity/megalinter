@@ -3,7 +3,8 @@ descriptor_type: other
 lint_all_files: true
 linters:
   # JSCPD
-  - linter_name: jscpd
+  - class: JsCpdLinter
+    linter_name: jscpd
     linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
     linter_repo: https://github.com/kucherenko/jscpd
     linter_banner_image_url: https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true
