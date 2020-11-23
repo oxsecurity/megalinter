@@ -43,6 +43,22 @@ rstfmt -i myfile.rst
 ```
 
 
+### Help content
+
+```shell
+usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [files ...]
+
+positional arguments:
+  files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --verbose
+  -w WIDTH, --width WIDTH
+  --check
+  --test
+```
+
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
