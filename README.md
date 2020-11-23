@@ -61,7 +61,7 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
 
 Projects need to contain clean code, in order to **avoid technical debt**, who makes **evolutive maintenance harder and time consuming**.
 
-By using **code formatters and code linters**, you ensure that your code base is **easier to read** and **respects best practices**, from the kick-off to each step of the project lifecycle
+By using [**code formatters and code linters**](#supported-linters), you ensure that your code base is **easier to read** and **respects best practices**, from the kick-off to each step of the project lifecycle
 
 Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process
 
@@ -69,11 +69,11 @@ By using **Mega-Linter**, you ensure that:
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
 - **Reading error logs**, **developers learn best practices** of the language they are using
-- **Mega-Linter documentation** provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
-- Mega-Linter is **ready our of the box** after a **quick setup**
-- **Formatting and fixes** can be automatically **applied on the git branch**
+- [**Mega-Linter documentation**](https://nvuillam.github.io/mega-linter/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
+- Mega-Linter is **ready our of the box** after a [**quick setup**](#quick-start)
+- **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- Mega-Linter can run on **any CI tool** and be **run locally**: **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- Mega-Linter can run on [**any CI tool**](#installation) and be **run locally**: **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 ## Quick Start
 
