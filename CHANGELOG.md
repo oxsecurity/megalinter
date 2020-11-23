@@ -14,6 +14,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Add RST formatter : [rstfmt](https://github.com/dzhu/rstfmt)
   - Activate formatting for BASH_SHFMT
   - Activate formatting for SNAKEMAKE_SNAKEFMT
+  - JsCpd: remove copy-paste HTML folder when no abuse copy-paste has been found
 
 - Logs
   - Store log files as artifacts during test cases
