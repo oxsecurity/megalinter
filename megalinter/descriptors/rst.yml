@@ -32,6 +32,7 @@ linters:
     linter_url: https://github.com/dzhu/rstfmt
     cli_lint_fix_arg_name: "-i"
     linter_version_cache: "0.0.0" # --version not implemented on rstfmt
+    test_folder: rst_rstfmt
     examples:
       - "rstfmt myfile.rst"
       - "rstfmt -i myfile.rst" # Format
