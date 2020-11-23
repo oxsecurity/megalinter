@@ -323,8 +323,8 @@ _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [Git
 
 ## Configuration
 
-Mega-Linter configuration variables can be defined with **environment variables** or in a **.megalinter.yml** file at the root of the repository.
-You can see an example config file in this repo: [**.megalinter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.megalinter.yml)
+Mega-Linter configuration variables can be defined with **environment variables** or in a **.mega-linter.yml** file at the root of the repository.
+You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
 
 ### Activation and deactivation
 
