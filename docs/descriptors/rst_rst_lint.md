@@ -4,6 +4,7 @@
 
 ## rst-lint documentation
 
+- Version in Mega-Linter: **1.3.1**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme)
 
 [![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint)
@@ -36,6 +37,32 @@
 rst-lint myfile.rst
 ```
 
+
+### Help content
+
+```shell
+usage: rst-lint [-h] [--version] [--format {text,json}] [--encoding ENCODING]
+                [--level {debug,info,warning,error,severe}]
+                [--rst-prolog RST_PROLOG]
+                path [path ...]
+
+Lint reStructuredText files. Returns 0 if all files pass linting, 1 for an
+internal error, and 2 if linting failed.
+
+positional arguments:
+  path                  File/folder to lint
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {text,json}  Format of the output (default: "text")
+  --encoding ENCODING   Encoding of the input file (e.g. "utf-8")
+  --level {debug,info,warning,error,severe}
+                        Minimum error level to report (default: "warning")
+  --rst-prolog RST_PROLOG
+                        reStructuredText content to prepend to all files
+                        (useful for substitutions)
+```
 
 ### Installation on mega-linter Docker image
 

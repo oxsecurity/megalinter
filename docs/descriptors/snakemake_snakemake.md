@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **5.29.0**
+- Version in Mega-Linter: **5.30.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/)
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake)

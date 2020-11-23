@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.56**
+- Version in Mega-Linter: **0.12.57**
 - Visit [Official Web Site](https://github.com/phpstan/phpstan#readme)
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format)
   - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon) will be used

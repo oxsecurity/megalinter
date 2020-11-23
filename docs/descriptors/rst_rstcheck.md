@@ -4,6 +4,7 @@
 
 ## rstcheck documentation
 
+- Version in Mega-Linter: **3.3.1**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme)
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file)
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors)
@@ -52,6 +53,38 @@ rstcheck myfile.rst
 rstcheck -c .rstcheck.cfg myfile.rst
 ```
 
+
+### Help content
+
+```shell
+usage: rstcheck [-h] [-r] [--report level] [--ignore-language language]
+                [--ignore-messages messages] [--ignore-directives directives]
+                [--ignore-substitutions substitutions] [--ignore-roles roles]
+                [--debug] [--version]
+                files [files ...]
+
+Checks code blocks in reStructuredText. Sphinx is enabled.
+
+positional arguments:
+  files                 files to check
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -r, --recursive       run recursively over directories
+  --report level        report system messages at or higher than level; info,
+                        warning, error, severe, none (default: info)
+  --ignore-language language, --ignore language
+                        comma-separated list of languages to ignore
+  --ignore-messages messages
+                        python regex that match the messages to ignore
+  --ignore-directives directives
+                        comma-separated list of directives to ignore
+  --ignore-substitutions substitutions
+                        comma-separated list of substitutions to ignore
+  --ignore-roles roles  comma-separated list of roles to ignore
+  --debug               show messages helpful for debugging
+  --version             show program's version number and exit
+```
 
 ### Installation on mega-linter Docker image
 
