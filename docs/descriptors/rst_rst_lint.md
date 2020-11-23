@@ -41,3 +41,27 @@ rst-lint myfile.rst
 
 - PIP packages (Python):
   - [restructuredtext_lint](https://pypi.org/project/restructuredtext_lint)
+
+### Example success log
+
+```shell
+Results of rst-lint linter (version 1.3.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rst/rst_good_1.rst
+    
+
+```
+
+### Example error log
+
+```shell
+Results of rst-lint linter (version 1.3.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
+-----------------------------------------------
+
+[ERROR] .automation/test/rst/rst_bad_1.rst
+    WARNING .automation/test/rst/rst_bad_1.rst:2 Title underline too short.
+
+```

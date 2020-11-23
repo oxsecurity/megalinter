@@ -57,3 +57,27 @@ rstcheck -c .rstcheck.cfg myfile.rst
 
 - PIP packages (Python):
   - [rstcheck](https://pypi.org/project/rstcheck)
+
+### Example success log
+
+```shell
+Results of rstcheck linter (version 3.3.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstcheck/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rst/rst_good_1.rst
+    
+
+```
+
+### Example error log
+
+```shell
+Results of rstcheck linter (version 3.3.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstcheck/
+-----------------------------------------------
+
+[ERROR] .automation/test/rst/rst_bad_1.rst
+    .automation/test/rst/rst_bad_1.rst:2: (WARNING/2) Title underline too short.
+
+```
