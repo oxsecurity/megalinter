@@ -2,11 +2,11 @@
 
 ## [insiders] (master)
 
-Nothing yet :)
+Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
+
+- Nothing yet :)
 
 ## [4.9.0] 2020-11-23
-
-Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
 - Core
   - Allow configuration to be defined in a `.mega-linter.yml` file
