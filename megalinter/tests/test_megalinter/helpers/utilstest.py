@@ -151,6 +151,10 @@ def test_linter_failure(linter, test_self):
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+    if os.path.isfile(workspace + os.path.sep + "no_test_failure"):
+        raise unittest.SkipTest(
+            f"Skip failure test for {linter}: no_test_failure found in test folder"
+        )
     linter_name = linter.linter_name
     tmp_report_folder = tempfile.gettempdir()
     env_vars = {

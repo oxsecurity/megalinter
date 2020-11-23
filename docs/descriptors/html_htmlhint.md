@@ -106,9 +106,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
 
 [SUCCESS] .automation/test/html/html_good_01.html
     
-       Config loaded: .github/linters/.htmlhintrc
+       Config loaded: /action/lib/.automation/.htmlhintrc
     
-    Scanned 1 files, no errors found (18 ms).
+    Scanned 1 files, no errors found (19 ms).
 
 ```
 
@@ -121,7 +121,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
 
 [ERROR] .automation/test/html/html_bad_01.html
     
-       Config loaded: .github/linters/.htmlhintrc
+       Config loaded: /action/lib/.automation/.htmlhintrc
     
        .automation/test/html/html_bad_01.html
     [37m      L8 |[90m  <div bad='' bad=''></div>[39m
@@ -309,6 +309,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
     [37m      L97 |[90m</bad>[39m
     [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
     
-    Scanned 1 files, found 92 errors in 1 files (23 ms)
+    Scanned 1 files, found 92 errors in 1 files (27 ms)
 
 ```

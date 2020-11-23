@@ -160,7 +160,7 @@ Miscellaneous:
 ### Example success log
 
 ```shell
-Results of eslint linter (version 7.13.0)
+Results of eslint linter (version 7.14.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
 -----------------------------------------------
 
@@ -172,7 +172,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
 ### Example error log
 
 ```shell
-Results of eslint linter (version 7.13.0)
+Results of eslint linter (version 7.14.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
 -----------------------------------------------
 

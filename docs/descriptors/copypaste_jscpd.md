@@ -117,21 +117,21 @@ Options:
 ### Example success log
 
 ```shell
-Results of jscpd linter (version 3.3.19)
+Results of jscpd linter (version 3.3.21)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/copypaste/good
     HTML report saved to report/copy-paste/html/
     Markdown report saved to report/copy-paste/jscpd-report.md
-    Detection time:: 28.123ms
+    Detection time:: 24.847ms
 
 ```
 
 ### Example error log
 
 ```shell
-Results of jscpd linter (version 3.3.19)
+Results of jscpd linter (version 3.3.21)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
@@ -145,8 +145,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
     ERROR: jscpd found too many duplicates (50%) over threshold (0%)
     Error: ERROR: jscpd found too many duplicates (50%) over threshold (0%)
         at ThresholdReporter.report (/node_modules/@jscpd/finder/dist/reporters/threshold.js:12:19)
-        at /node_modules/@jscpd/finder/dist/in-files-detector.js:80:26
+        at /node_modules/@jscpd/finder/dist/in-files-detector.js:82:26
         at Array.forEach (<anonymous>)
-        at /node_modules/@jscpd/finder/dist/in-files-detector.js:79:28
+        at /node_modules/@jscpd/finder/dist/in-files-detector.js:81:28
 
 ```

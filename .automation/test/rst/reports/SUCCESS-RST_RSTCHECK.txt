@@ -1,0 +1,7 @@
+Results of rstcheck linter (version 3.3.1)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstcheck/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rst/rst_good_1.rst
+    
+

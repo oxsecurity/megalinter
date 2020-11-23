@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter analyzes 37 languages, 12 formats, 16 tooling formats , copy-pastes and spell in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+site_description: Mega-Linter analyzes 37 languages, 15 formats, 16 tooling formats , copy-pastes and spell in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 google_analytics: ["G-3DM50255LC", "nvuillam.github.io/mega-linter"]
@@ -165,6 +165,11 @@ nav:
       - "PROTOBUF":
           - "index": "descriptors/protobuf.md"
           - "protolint": "descriptors/protobuf_protolint.md"
+      - "RST":
+          - "index": "descriptors/rst.md"
+          - "rst-lint": "descriptors/rst_rst_lint.md"
+          - "rstcheck": "descriptors/rst_rstcheck.md"
+          - "rstfmt": "descriptors/rst_rstfmt.md"
       - "XML":
           - "index": "descriptors/xml.md"
           - "xmllint": "descriptors/xml_xmllint.md"

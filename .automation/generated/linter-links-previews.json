@@ -219,6 +219,21 @@
         "image": null,
         "title": "Raku Programming Language"
     },
+    "rst-lint": {
+        "description": "reStructuredText linter. Contribute to twolfson/restructuredtext-lint development by creating an account on GitHub.",
+        "image": "https://avatars2.githubusercontent.com/u/902488?s=400&v=4",
+        "title": "twolfson/restructuredtext-lint"
+    },
+    "rstcheck": {
+        "description": "Checks syntax of reStructuredText and code blocks nested within it - myint/rstcheck",
+        "image": "https://avatars1.githubusercontent.com/u/1235108?s=400&v=4",
+        "title": "myint/rstcheck"
+    },
+    "rstfmt": {
+        "description": "A formatter for reStructuredText. Contribute to dzhu/rstfmt development by creating an account on GitHub.",
+        "image": "https://avatars1.githubusercontent.com/u/596106?s=400&v=4",
+        "title": "dzhu/rstfmt"
+    },
     "rubocop": {
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide. - rubocop-hq/rubocop",
         "image": "https://avatars1.githubusercontent.com/u/39672756?s=400&v=4",

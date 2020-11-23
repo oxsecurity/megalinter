@@ -9,8 +9,12 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Linters
   - Add Gherkin (Cucumber language) & gherkin-lint
+  - Add RST linter : [rst-lint](https://github.com/twolfson/restructuredtext-lint)
+  - Add RST linter : [rstcheck](https://github.com/myint/rstcheck)
+  - Add RST formatter : [rstfmt](https://github.com/dzhu/rstfmt)
   - Activate formatting for BASH_SHFMT
   - Activate formatting for SNAKEMAKE_SNAKEFMT
+  - JsCpd: remove copy-paste HTML folder when no abuse copy-paste has been found
 
 - Logs
   - Store log files as artifacts during test cases
