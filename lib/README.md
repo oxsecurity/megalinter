@@ -1,5 +1,7 @@
 # Super-Linter Library
 
+**Files in this folder are not used by Mega-Linter, but kept to remain up to date with the base of the hard-fork**
+
 ## Main script
 
 The file `linter.sh` is the main script that is called for the process and loads all other scripts as functions.
