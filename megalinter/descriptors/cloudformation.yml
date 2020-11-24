@@ -11,6 +11,7 @@ linters:
   # AWS CloudFormation Lint
   - linter_name: cfn-lint
     linter_url: https://github.com/martysweet/cfn-lint
+    linter_rules_url: https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do
     linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png
     config_file_name: .cfnlintrc.yml
     cli_config_arg_name: "--config-file"

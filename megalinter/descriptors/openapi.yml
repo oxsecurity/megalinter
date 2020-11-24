@@ -12,7 +12,9 @@ file_contains:
 linters:
   # Spectral
   - linter_name: spectral
-    linter_url: https://github.com/stoplightio/spectral
+    linter_url: https://meta.stoplight.io/docs/spectral/README.md
+    repo_url: https://github.com/stoplightio/spectral
+    linter_rules_url: https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md
     linter_banner_image_url: https://github.com/stoplightio/spectral/raw/develop/docs/img/spectral-banner.png
     linter_rules_configuration_url: https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md
     config_file_name: .openapirc.yml

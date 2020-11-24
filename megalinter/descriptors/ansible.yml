@@ -12,8 +12,11 @@ file_extensions:
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
-    linter_url: https://github.com/ansible/ansible-lint
-    linter_rules_configuration_url: https://github.com/ansible/ansible-lint#configuration-file
+    linter_url: https://ansible-lint.readthedocs.io/en/latest/
+    linter_repo: https://github.com/ansible/ansible-lint
+    linter_rules_url: https://ansible-lint.readthedocs.io/en/latest/default_rules.html
+    linter_rules_configuration_url: https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file
+    linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules
     config_file_name: .ansible-lint.yml
     cli_config_extra_args:
       - "-v"

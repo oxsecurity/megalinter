@@ -29,6 +29,7 @@ linters:
   - linter_name: shellcheck
     name: BASH_SHELLCHECK
     linter_url: https://github.com/koalaman/shellcheck
+    linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
     cli_lint_extra_args:
       - "--color=auto"

@@ -15,6 +15,7 @@ linters:
       You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://eslint.org
     linter_repo: https://github.com/eslint/eslint
+    linter_rules_url: https://eslint.org/docs/rules/
     linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
@@ -69,7 +70,9 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
   - linter_name: standard
-    linter_url: https://github.com/standard/standard
+    linter_url: https://standardjs.com/
+    linter_repo: https://github.com/standard/standard
+    linter_rules_url: https://standardjs.com/rules.html
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
     cli_lint_fix_arg_name: "--fix"

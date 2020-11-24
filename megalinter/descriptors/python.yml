@@ -8,6 +8,7 @@ linters:
     name: PYTHON_PYLINT
     linter_url: https://www.pylint.org
     linter_repo: https://github.com/PyCQA/pylint
+    linter_rules_url: http://pylint-messages.wikidot.com/all-codes
     linter_banner_image_url: https://www.pylint.org/pylint.svg
     linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
     linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
@@ -38,7 +39,8 @@ linters:
   # BLACK
   - linter_name: black
     name: PYTHON_BLACK
-    linter_url: https://github.com/psf/black
+    linter_url: https://black.readthedocs.io/en/stable/
+    linter_repo: https://github.com/psf/black
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
     linter_rules_configuration_url: https://black.readthedocs.io/en/stable/compatible_configs.html
     config_file_name: .python-black
@@ -83,6 +85,7 @@ linters:
     name: PYTHON_FLAKE8
     linter_url: https://flake8.pycqa.org
     linter_repo: https://github.com/PyCQA/flake8
+    linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors
     config_file_name: .flake8
