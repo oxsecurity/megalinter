@@ -10,6 +10,7 @@ linters:
   # CLIPPY
   - linter_name: clippy
     linter_url: https://github.com/rust-lang/rust-clippy
+    linter_rules_url: https://rust-lang.github.io/rust-clippy/stable/index.html
     linter_rules_configuration_url: https://github.com/rust-lang/rust-clippy#configuration
     linter_rules_inline_disable_url: https://github.com/rust-lang/rust-clippy#allowingdenying-lints
     config_file_name: .clippy.toml

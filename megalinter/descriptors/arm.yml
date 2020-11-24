@@ -38,3 +38,7 @@ linters:
               && rm "${ARM_TTK_NAME}" \
               && ln -sTf "${ARM_TTK_PSD1}" /usr/bin/arm-ttk \
               && chmod a+x /usr/bin/arm-ttk
+    ide:
+      vscode:
+        - name: ARMTTKExtension
+          url: https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension

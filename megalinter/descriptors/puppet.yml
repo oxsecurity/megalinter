@@ -5,9 +5,11 @@ file_extensions:
 linters:
   # PuppetLint
   - linter_name: puppet-lint
-    linter_url: https://github.com/rodjek/puppet-lint
+    linter_url: http://puppet-lint.com/
+    linter_repo: https://github.com/rodjek/puppet-lint
+    linter_rules_url: http://puppet-lint.com/checks/
     linter_rules_configuration_url: https://github.com/rodjek/puppet-lint#configuration-file
-    linter_rules_inline_disable_url: https://github.com/rodjek/puppet-lint#disable-checks-within-puppet-code
+    linter_rules_inline_disable_url: http://puppet-lint.com/controlcomments/
     config_file_name: .puppet-lint.rc
     cli_config_arg_name: ""
     cli_lint_fix_arg_name: "--fix"

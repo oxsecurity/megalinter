@@ -75,7 +75,8 @@ linters:
   # PHP Stan
   - linter_name: phpstan
     name: PHP_PHPSTAN
-    linter_url: https://github.com/phpstan/phpstan
+    linter_url: https://phpstan.org/
+    linter_repo: https://github.com/phpstan/phpstan
     linter_image_url: https://i.imgur.com/MOt7taM.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
@@ -105,6 +106,7 @@ linters:
     name: PHP_PSALM
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
+    linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
     linter_banner_image_url: https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1
     linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression

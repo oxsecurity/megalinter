@@ -8,6 +8,7 @@
 - Visit [Official Web Site](https://github.com/jimhester/lintr#readme)
 - See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration)
   - If custom .lintr is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr) will be used
+- See [Index of problems detected by lintr](https://github.com/jimhester/lintr#available-linters)
 
 [![lintr - GitHub](https://gh-card.dev/repos/jimhester/lintr.svg?fullname=)](https://github.com/jimhester/lintr)
 

@@ -10,6 +10,7 @@
     "version": 0.1,
     "words": [
         "ADDITONAL",
+        "ARMTTK",
         "Additonal",
         "Aftertabs",
         "Alexa",
@@ -754,6 +755,7 @@
         "rcfile",
         "rdiv",
         "rdoc",
+        "reStructuredText",
         "readline",
         "realitiy",
         "reenable",
@@ -767,7 +769,6 @@
         "replicatedhq",
         "repos",
         "repositoryformatversion",
-        "reStructuredText",
         "returnrules",
         "rexec",
         "risd",

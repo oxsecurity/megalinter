@@ -14,6 +14,7 @@
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure)
   - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
 - See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
+- See [Index of problems detected by stylelint](https://stylelint.io/user-guide/rules/list)
 
 [![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint)
 

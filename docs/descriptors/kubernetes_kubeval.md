@@ -5,7 +5,7 @@
 ## kubeval documentation
 
 - Version in Mega-Linter: **dev**
-- Visit [Official Web Site](https://github.com/instrumenta/kubeval#readme)
+- Visit [Official Web Site](https://www.kubeval.com/)
 
 [![kubeval - GitHub](https://gh-card.dev/repos/instrumenta/kubeval.svg?fullname=)](https://github.com/instrumenta/kubeval)
 

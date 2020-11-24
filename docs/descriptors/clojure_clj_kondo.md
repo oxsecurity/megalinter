@@ -13,6 +13,7 @@
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme)
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration)
   - If custom .clj-kondo/config.edn is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn) will be used
+- See [Index of problems detected by clj-kondo](https://github.com/borkdude/clj-kondo#features)
 
 [![clj-kondo - GitHub](https://gh-card.dev/repos/borkdude/clj-kondo.svg?fullname=)](https://github.com/borkdude/clj-kondo)
 

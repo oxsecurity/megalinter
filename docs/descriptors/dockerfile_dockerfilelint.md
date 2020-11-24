@@ -8,6 +8,7 @@
 - Visit [Official Web Site](https://github.com/replicatedhq/dockerfilelint#readme)
 - See [How to configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring)
   - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc) will be used
+- See [Index of problems detected by dockerfilelint](https://github.com/replicatedhq/dockerfilelint#checks-performed)
 
 [![dockerfilelint - GitHub](https://gh-card.dev/repos/replicatedhq/dockerfilelint.svg?fullname=)](https://github.com/replicatedhq/dockerfilelint)
 
