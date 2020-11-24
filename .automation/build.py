@@ -448,10 +448,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"- See [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
             ]
         # Rules configuration URL
-        if (
-            hasattr(linter, "linter_rules_url")
-            and linter.linter_rules_url is not None
-        ):
+        if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
             linter_doc_md += [
                 f"- See [Index of problems detected by {linter.linter_name}]({linter.linter_rules_url})"
             ]
