@@ -8,6 +8,7 @@
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme)
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules)
   - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml) will be used
+- See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules)
 
 [![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint)
 

@@ -5,9 +5,10 @@
 ## puppet-lint documentation
 
 - Version in Mega-Linter: **2.4.2**
-- Visit [Official Web Site](https://github.com/rodjek/puppet-lint#readme)
+- Visit [Official Web Site](http://puppet-lint.com/)
 - See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file)
-- See [How to disable puppet-lint rules in files](https://github.com/rodjek/puppet-lint#disable-checks-within-puppet-code)
+- See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/)
+- See [Index of problems detected by puppet-lint](http://puppet-lint.com/checks/)
 
 [![puppet-lint - GitHub](https://gh-card.dev/repos/rodjek/puppet-lint.svg?fullname=)](https://github.com/rodjek/puppet-lint)
 

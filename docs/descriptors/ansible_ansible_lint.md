@@ -5,9 +5,11 @@
 ## ansible-lint documentation
 
 - Version in Mega-Linter: **4.2.0**
-- Visit [Official Web Site](https://github.com/ansible/ansible-lint#readme)
-- See [How to configure ansible-lint rules](https://github.com/ansible/ansible-lint#configuration-file)
+- Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/)
+- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file)
   - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml) will be used
+- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules)
+- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html)
 
 [![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint)
 

@@ -8,6 +8,7 @@
 - Visit [Official Web Site](https://github.com/cjoudrey/graphql-schema-linter#readme)
 - See [How to configure graphql-schema-linter rules](https://github.com/cjoudrey/graphql-schema-linter#configuration-file)
 - See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides)
+- See [Index of problems detected by graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter#built-in-rules)
 
 [![graphql-schema-linter - GitHub](https://gh-card.dev/repos/cjoudrey/graphql-schema-linter.svg?fullname=)](https://github.com/cjoudrey/graphql-schema-linter)
 

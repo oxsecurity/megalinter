@@ -6,6 +6,7 @@
 
 - Version in Mega-Linter: **20910**
 - Visit [Official Web Site](http://xmlsoft.org/xmllint.html)
+- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics)
 
 ## Configuration in Mega-Linter
 

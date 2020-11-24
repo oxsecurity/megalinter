@@ -8,6 +8,7 @@
 - Visit [Official Web Site](https://github.com/joereynolds/sql-lint#readme)
 - See [How to configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html)
   - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json) will be used
+- See [Index of problems detected by sql-lint](https://github.com/joereynolds/sql-lint#checks)
 
 [![sql-lint - GitHub](https://gh-card.dev/repos/joereynolds/sql-lint.svg?fullname=)](https://github.com/joereynolds/sql-lint)
 

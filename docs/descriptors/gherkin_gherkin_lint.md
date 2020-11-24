@@ -7,6 +7,7 @@
 - Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme)
 - See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration)
   - If custom .gherkin-lintrc is not found, [.gherkin-lintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.gherkin-lintrc) will be used
+- See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules)
 
 [![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint)
 

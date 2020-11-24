@@ -9,6 +9,7 @@
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html)
   - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf) will be used
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html)
+- See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
 
 [![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix)
 

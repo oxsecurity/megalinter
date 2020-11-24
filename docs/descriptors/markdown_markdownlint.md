@@ -9,6 +9,7 @@
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration)
   - If custom .markdown-lint.json is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json) will be used
 - See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration)
+- See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases)
 
 [![markdownlint - GitHub](https://gh-card.dev/repos/DavidAnson/markdownlint.svg?fullname=)](https://github.com/DavidAnson/markdownlint)
 

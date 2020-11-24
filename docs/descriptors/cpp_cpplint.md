@@ -6,6 +6,7 @@
 
 - Version in Mega-Linter: **1.5.4**
 - Visit [Official Web Site](https://github.com/cpplint/cpplint#readme)
+- See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html)
 
 [![cpplint - GitHub](https://gh-card.dev/repos/cpplint/cpplint.svg?fullname=)](https://github.com/cpplint/cpplint)
 

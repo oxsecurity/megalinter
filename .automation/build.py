@@ -428,14 +428,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_rules_configuration_url is not None
         ):
             linter_doc_md += [
-                f"  - [How to configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
+                f"- See [How to configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
             ]
         # Default rules
         if linter.config_file_name is not None:
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [
-                    f"    - If custom {linter.config_file_name} is not found, "
+                    f"  - If custom {linter.config_file_name} is not found, "
                     f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name})"
                     " will be used"
                 ]
@@ -445,7 +445,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_rules_inline_disable_url is not None
         ):
             linter_doc_md += [
-                f"  - [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
+                f"- See [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
             ]
         # Rules configuration URL
         if (
@@ -453,7 +453,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             and linter.linter_rules_url is not None
         ):
             linter_doc_md += [
-                f"  - [Index of problems detected by {linter.linter_name}]({linter.linter_rules_url})"
+                f"- See [Index of problems detected by {linter.linter_name}]({linter.linter_rules_url})"
             ]
         linter_doc_md += [""]
         # Github repo svg preview
