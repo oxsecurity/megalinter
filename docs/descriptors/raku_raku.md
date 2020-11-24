@@ -4,7 +4,7 @@
 
 ## raku documentation
 
-- Version in Mega-Linter: **2020.10**
+- Version in Mega-Linter: **2020.11**
 - Visit [Official Web Site](https://raku.org/)
 
 [![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo)

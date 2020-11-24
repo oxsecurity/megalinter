@@ -4,7 +4,7 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Nothing yet :)
+- Add link to linters rules index in documentation
 
 ## [4.9.0] 2020-11-23
 
