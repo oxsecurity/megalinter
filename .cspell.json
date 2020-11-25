@@ -638,6 +638,7 @@
         "nocompact",
         "noconfig",
         "nodefdtd",
+        "nodockerpull",
         "noediting",
         "noenc",
         "noent",
