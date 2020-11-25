@@ -4,6 +4,7 @@ Output results in console
 """
 import logging
 
+from time import perf_counter
 from megalinter import Reporter, utils
 
 
@@ -14,9 +15,11 @@ class ConsoleLinterReporter(Reporter):
     def __init__(self, params=None):
         # Activate console output by default
         self.is_active = True
+        self.start_perf = None
         super().__init__(params)
 
     def initialize(self):
+        self.start_perf = perf_counter()
         linter_version = self.master.get_linter_version()
         # Linter header prints
         msg = [
@@ -44,17 +47,18 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(line)
                 logging.error(f"--Error detail:\n{res['stdout']}")
         # Output linter status
+        base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
+        perf = perf_counter() - self.start_perf
+        elapse = str(perf * 1000000)+"s"
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(
-                f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}] successfully"
+                f"{base_phrase} successfully - ({elapse})"
             )
         elif self.master.return_code == 0 and self.master.status != "success":
             logging.warning(
-                f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]: "
-                + "Found non blocking error(s)"
+                f"{base_phrase}: Found non blocking error(s) - ({elapse})"
             )
         elif self.master.return_code != 0 and self.master.status != "success":
             logging.error(
-                f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]: "
-                + "Found error(s)"
+                f"{base_phrase}: Found error(s) - ({elapse})"
             )
