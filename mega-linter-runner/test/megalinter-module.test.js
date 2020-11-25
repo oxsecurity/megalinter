@@ -12,7 +12,7 @@ describe('Module', function () {
             release: latest_release,
             debug: true
         }
-        const result = await new MegaLinterRunner().run(options)
+        await new MegaLinterRunner().run(options)
         assert(process.exitCode === 0, `process.exitCode is 0 (${process.exitCode} returned)`)
     })
 })
