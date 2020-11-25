@@ -12,19 +12,26 @@ class MegaLinterRunner {
             (options.release == "insiders") ? "latest" :
                 (options.release) ? options.release :
                     "v4"
+        const dockerImage = `nvuillam/mega-linter:${release}`
 
         // Pull docker image
-        const dockerImage = `nvuillam/mega-linter:${release}`
-        const spawnResPull = spawnSync(
-            "docker",
-            ["pull", dockerImage],
-            {
-                detached: false, stdio: "inherit",
-                windowsHide: true,
-                windowsVerbatimArguments: true
-            });
-        if (spawnResPull.status !== 0) {
-            throw new Error(`Unable to pull ${dockerImage}: \n${spawnResPull.stderr}`)
+        if (options.nodockerpull !== true) {
+            console.info(`Pulling docker image ${dockerImage} ... `)
+            console.info("this operation can be long during the first use of mega-linter-runner, but will be much faster later thanks to docker cache)")
+            const spawnResPull = spawnSync(
+                "docker",
+                ["pull", dockerImage],
+                {
+                    detached: false, stdio: "inherit",
+                    windowsHide: true,
+                    windowsVerbatimArguments: true
+                });
+            if (spawnResPull.status !== 0) {
+                throw new Error(`Unable to pull ${dockerImage}: \n${spawnResPull.stderr}`)
+            }
+        }
+        else {
+            console.log(`Skipped pull of ${dockerImage} (--nodockerpull used)`)
         }
 
         // Build docker run options

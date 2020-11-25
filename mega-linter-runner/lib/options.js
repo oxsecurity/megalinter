@@ -45,6 +45,11 @@ module.exports = optionator({
             description: "Apply formatters and fixes in linted sources"
         },
         {
+            option: "nodockerpull",
+            type: "Boolean",
+            description: "Do not pull docker image before running it"
+        },
+        {
             option: "debug",
             type: "Boolean",
             description: "See debug logs"
