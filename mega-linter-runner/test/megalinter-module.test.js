@@ -3,13 +3,13 @@
 const { MegaLinterRunner } = require('../lib/index')
 const assert = require('assert')
 
-const latest_release = process.env.MEGALINTER_RELEASE || "insiders"
+const latestRelease = process.env.MEGALINTER_RELEASE || 'insiders'
 
 describe('Module', function () {
     it('(Module) run on own code base', async () => {
         const options = {
             path: './..',
-            release: latest_release,
+            release: latestRelease,
             debug: true
         }
         await new MegaLinterRunner().run(options)

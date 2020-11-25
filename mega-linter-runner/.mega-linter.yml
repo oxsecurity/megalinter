@@ -2,4 +2,5 @@
 # See all available variables at https://nvuillam.github.io/mega-linter/#configuration and in linters documentation
 
 DISABLE: EDITORCONFIG
+DISABLE_LINTERS: JAVASCRIPT_STANDARD
 FILTER_REGEX_EXCLUDE: "(node_modules|report)"
