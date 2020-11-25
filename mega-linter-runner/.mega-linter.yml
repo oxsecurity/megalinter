@@ -1,6 +1,8 @@
 # Configuration file for Mega-Linter
 # See all available variables at https://nvuillam.github.io/mega-linter/#configuration and in linters documentation
 
-DISABLE: EDITORCONFIG
-DISABLE_LINTERS: JAVASCRIPT_STANDARD
-FILTER_REGEX_EXCLUDE: (\.automation/test|docs/javascripts|lib/)
+DISABLE:
+  - EDITORCONFIG
+DISABLE_LINTERS:
+  - JAVASCRIPT_STANDARD
+FILTER_REGEX_EXCLUDE: (\.automation/test|docs/javascripts|lib/|TEMPLATES)
