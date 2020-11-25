@@ -106,9 +106,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12"
-      - name: Install dependencies
+      - name: Install NPM dependencies
         if: ${{ success() }} || ${{ failure() }}
         run: cd mega-linter-runner && sudo npm ci
-      - name: Run tests
+      - name: Run mega-linter-runner tests
         if: ${{ success() }} || ${{ failure() }}
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${GITHUB_SHA} MEGALINTER_NO_DOCKER_PULL=true npm run test
