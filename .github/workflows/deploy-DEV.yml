@@ -108,7 +108,7 @@ jobs:
           node-version: "12"
       - name: Install dependencies
         if: ${{ success() }} || ${{ failure() }}
-        run: cd mega-linter-runner && npm ci
+        run: cd mega-linter-runner && sudo npm ci
       - name: Run tests
         if: ${{ success() }} || ${{ failure() }}
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${GITHUB_SHA} npm run test
