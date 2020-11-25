@@ -3,4 +3,4 @@
 
 DISABLE: EDITORCONFIG
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
-FILTER_REGEX_EXCLUDE: "(node_modules|report)"
+FILTER_REGEX_EXCLUDE: (\.automation/test|docs/javascripts|lib/)
