@@ -1,0 +1,5 @@
+# Configuration file for Mega-Linter
+# See all available variables at https://nvuillam.github.io/mega-linter/#configuration and in linters documentation
+
+DISABLE: EDITORCONFIG
+FILTER_REGEX_EXCLUDE: "(node_modules|report)"
