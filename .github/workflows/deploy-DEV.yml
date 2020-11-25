@@ -99,3 +99,13 @@ jobs:
             mega-linter.log
             linter-helps.json
             linter-versions.json
+
+      # Test mega-linter-runner with newly created image
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - name: Install dependencies
+        run: cd mega-linter-runner && npm ci
+      - name: Run tests
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${GITHUB_SHA} npm run test
