@@ -84,6 +84,7 @@ jobs:
       # Run Linter against ALL code base  #
       #####################################
       - name: Run against all code base
+        if: env.WESH == false
         shell: bash
         run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
         timeout-minutes: 10
