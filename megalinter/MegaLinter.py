@@ -55,6 +55,10 @@ class Megalinter:
         self.disable_linters = config.get_list("DISABLE_LINTERS", [])
         self.manage_default_linter_activation()
         self.apply_fixes = config.get_list("APPLY_FIXES", "none")
+        self.show_elapsed_time = (
+            config.get("SHOW_ELAPSED_TIME", "false") == "true"
+            or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
+        )
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -216,6 +220,7 @@ class Megalinter:
             "github_workspace": self.github_workspace,
             "report_folder": self.report_folder,
             "apply_fixes": self.apply_fixes,
+            "show_elapsed_time": self.show_elapsed_time,
         }
 
         # Build linters from descriptor files
@@ -298,16 +303,15 @@ class Megalinter:
             if logging.getLogger().isEnabledFor(logging.DEBUG):
                 logging.debug("Root dir content:\n" + "\n- ".join(all_files))
             excluded_directories = utils.list_excluded_directories()
-            for (dirpath, dirnames, filenames) in os.walk(self.workspace):
+            for (dirpath, _dirnames, filenames) in os.walk(self.workspace):
                 exclude = False
-                for dir1 in dirnames:
+                for dir1 in dirpath.split(os.path.sep):
                     if dir1 in excluded_directories:
                         exclude = True
-                        logging.debug(f"Excluded directory {dir1}")
-                if exclude is False:
-                    all_files += [
-                        os.path.join(dirpath, file) for file in sorted(filenames)
-                    ]
+                        break
+                if exclude is True:
+                    continue
+                all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
             all_files = sorted(set(all_files))
             logging.debug(
                 "All found files before filtering:\n" + "\n- ".join(all_files)

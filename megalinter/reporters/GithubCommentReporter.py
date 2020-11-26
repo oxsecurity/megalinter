@@ -39,6 +39,8 @@ class GithubCommentReporter(Reporter):
             sha = config.get("GITHUB_SHA")
             action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
             table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
+            if self.master.show_elapsed_time is True:
+                table_header += ["Elapsed time"]
             table_data_raw = [table_header]
             for linter in self.master.linters:
                 if linter.is_active is True:
@@ -72,15 +74,16 @@ class GithubCommentReporter(Reporter):
                             if linter.number_errors > 0
                             else linter.number_errors
                         )
-                    table_data_raw += [
-                        [
-                            first_col,
-                            linter_link,
-                            found,
-                            nb_fixed_cell,
-                            errors_cell,
-                        ]
+                    table_line = [
+                        first_col,
+                        linter_link,
+                        found,
+                        nb_fixed_cell,
+                        errors_cell,
                     ]
+                    if self.master.show_elapsed_time is True:
+                        table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
+                    table_data_raw += [table_line]
             # Build markdown table
             table_data_raw.pop(0)
             writer = MarkdownTableWriter(

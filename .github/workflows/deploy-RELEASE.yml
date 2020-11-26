@@ -41,6 +41,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      ########################################################
+      # Publish updated version of mega-linter-runner on NPM #
+      ########################################################
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: cd mega-linter-runner && npm install
+      - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       ###################################
       # Run Deploy script for Dockerhub #
       ###################################

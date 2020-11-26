@@ -47,14 +47,19 @@ class GithubStatusReporter(Reporter):
                 "content-type": "application/json",
             }
             target_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
-            data = {
-                "state": "success" if self.master.return_code == 0 else "error",
-                "target_url": target_url,
-                "description": success_msg
+            description = (
+                success_msg
                 if self.master.status == "success" and self.master.return_code == 0
                 else error_not_blocking
                 if self.master.status == "error" and self.master.return_code == 0
-                else error_msg,
+                else error_msg
+            )
+            if self.master.show_elapsed_time is True:
+                description += f" ({str(round(self.master.elapsed_time_s, 2))}s)"
+            data = {
+                "state": "success" if self.master.return_code == 0 else "error",
+                "target_url": target_url,
+                "description": description,
                 "context": f"--> Lint: {self.master.descriptor_id} with {self.master.linter_name}",
             }
             response = requests.post(url, headers=headers, json=data)

@@ -211,6 +211,12 @@ def generate_documentation():
         "<!-- linters-table-end -->",
         linters_tables_md_str,
     )
+    replace_in_file(
+        f"{REPO_HOME}/mega-linter-runner/README.md",
+        "<!-- linters-table-start -->",
+        "<!-- linters-table-end -->",
+        linters_tables_md_str,
+    )
     # Update welcome phrase
     welcome_phrase = (
         f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "
@@ -236,6 +242,7 @@ def generate_documentation():
         "# site_description-end",
         "site_description: " + md_to_text(welcome_phrase),
     )
+    finalize_doc_build()
 
 
 # Generate a MD page for a descriptor (language, format, tooling_format)
@@ -796,18 +803,12 @@ def validate_descriptors():
             )
 
 
-def generate_index_md():
+def finalize_doc_build():
     # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
     copyfile(
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
-    )
-    # Copy CHANGELOG.md into /docs/CHANGELOG.md
-    target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
-    copyfile(
-        f"{REPO_HOME}{os.path.sep}CHANGELOG.md",
-        target_file_changelog,
     )
     # Replace hardcoded links into relative links
     with open(target_file, "r+", encoding="utf-8") as f:
@@ -830,6 +831,27 @@ def generate_index_md():
         "<!-- online-doc-end -->",
         "",
     )
+    # Copy CHANGELOG.md into /docs/CHANGELOG.md
+    target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
+    copyfile(
+        f"{REPO_HOME}{os.path.sep}CHANGELOG.md",
+        target_file_changelog,
+    )
+    # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
+    target_file_readme_runner = (
+        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}mega-linter-runner.md"
+    )
+    copyfile(
+        f"{REPO_HOME}{os.path.sep}mega-linter-runner{os.path.sep}README.md",
+        target_file_readme_runner,
+    )
+    # Replace hardcoded links into relative links
+    with open(target_file_readme_runner, "r+", encoding="utf-8") as f:
+        content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(content.replace(DOCS_URL_ROOT + "/", ""))
+    logging.info(f"Copied and updated {target_file_readme_runner}")
 
 
 def generate_mkdocs_yml():
@@ -914,5 +936,4 @@ if __name__ == "__main__":
     generate_dockerfile()
     generate_linter_test_classes()
     generate_documentation()
-    generate_index_md()
     generate_mkdocs_yml()

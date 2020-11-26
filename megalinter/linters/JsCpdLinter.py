@@ -22,7 +22,10 @@ class JsCpdLinter(Linter):
                 except OSError as e:
                     return [
                         "",
-                        f"No copy-paste has been detected, but unable to remove {copy_paste_dir}: {e.strerror}"
+                        f"No copy-paste has been detected, but unable to remove {copy_paste_dir}: {e.strerror}",
                     ]
-                return ["", "copy-paste folder has been removed, as no abusive copy-paste has been detected"]
+                return [
+                    "",
+                    "copy-paste folder has been removed, as no abusive copy-paste has been detected",
+                ]
         return []
