@@ -39,9 +39,7 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
     - [GitHub Action](#github-action)
     - [Azure](#azure)
     - [GitLab](#gitlab)
-    - [Visual Studio Code](#visual-studio-code)
-    - [Local](#local)
-    - [Add Mega-Linter badge in your repository README](#add-mega-linter-badge-in-your-repository-readme)
+    - [Run locally](#run-mega-linter-locally)
   - [Configuration](#configuration)
     - [Activation and deactivation](#activation-and-deactivation)
     - [Apply fixes](#apply-fixes)
@@ -51,6 +49,7 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
     - [Template rules files](#template-rules-files)
   - [Reporters](#reporters)
   - [Docker Hub](#docker-hub)
+  - [Add Mega-Linter badge in your repository README](#add-mega-linter-badge-in-your-repository-readme)
   - [Limitations](#limitations)
   - [How to contribute](#how-to-contribute)
   - [License](#license)
@@ -323,36 +322,11 @@ megalinter:
     LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
 ```
 
-### Visual Studio Code
+### Run Mega-Linter locally
 
-You can checkout this repository using [Container Remote Development](https://code.visualstudio.com/docs/remote/containers), and debug the linter using the `Test Linter` task.
-![Example](https://user-images.githubusercontent.com/15258962/85165778-2d2ce700-b21b-11ea-803e-3f6709d8e609.gif)
+You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration.
 
-We will also support [GitHub Codespaces](https://github.com/features/codespaces/) once it becomes available
-
-### Local
-
-If you find that you need to run mega-linter locally, you can follow the documentation at [Running mega-linter locally](https://github.com/nvuillam/mega-linter/blob/master/docs/run-linter-locally.md)
-
-### Add Mega-Linter badge in your repository README
-
-You can show Mega-Linter status with a badge in your repository README
-
-[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
-
-Format:
-
-```markdown
-[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
-```
-
-Example:
-
-```markdown
-[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
-```
-
-_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
+See [mega-linter-runner installation instructions](https://nvuillam.github.io/mega-linter/mega-linter-runner/#installation)
 
 ## Configuration
 
@@ -464,6 +438,26 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 ## Docker Hub
 
 The **Docker** container that is built from this repository is located at [nvuillam/mega-linter](https://hub.docker.com/r/nvuillam/mega-linter)
+
+## Add Mega-Linter badge in your repository README
+
+You can show Mega-Linter status with a badge in your repository README
+
+[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
+
+Format:
+
+```markdown
+[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
+```
+
+Example:
+
+```markdown
+[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
+```
+
+_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
 
 ## Limitations
 

@@ -302,9 +302,7 @@ class Megalinter:
                 for dir1 in dirpath.split(os.path.sep):
                     if dir1 in excluded_directories:
                         continue
-                all_files += [
-                    os.path.join(dirpath, file) for file in sorted(filenames)
-                ]
+                all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
             all_files = sorted(set(all_files))
             logging.debug(
                 "All found files before filtering:\n" + "\n- ".join(all_files)

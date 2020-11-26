@@ -40,14 +40,10 @@ def init_config(workspace):
                 runtime_config = env
             else:
                 runtime_config = {**config_data, **env}  # .mega-linter.yml not empty
-            print(
-                f"Mega-Linter init config: {config_file} + Environment variables"
-            )
+            print(f"Mega-Linter init config: {config_file} + Environment variables")
     else:
         runtime_config = env
-        print(
-            f"Mega-Linter init config: Environment variables"
-        )
+        print("Mega-Linter init config: Environment variables")
     set_config(runtime_config)
 
 

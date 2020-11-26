@@ -15,7 +15,7 @@ REPO_HOME_DEFAULT = (
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 )
 
-ANSI_ESCAPE_REGEX = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]')
+ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 
 
 def list_excluded_directories():
@@ -231,7 +231,7 @@ def check_updated_file(file, repo_home):
 
 def normalize_log_string(str_in):
     return (
-        ANSI_ESCAPE_REGEX.sub('', str_in)  # Remove ANSI escape sequences (ANSI colors)
+        ANSI_ESCAPE_REGEX.sub("", str_in)  # Remove ANSI escape sequences (ANSI colors)
         .replace("/tmp/lint/", "")
         .replace("tmp/lint/", "")
         .replace("/github/workspace/", "")

@@ -3,8 +3,8 @@
 Output results in console
 """
 import logging
-
 from time import perf_counter
+
 from megalinter import Reporter, utils
 
 
@@ -49,16 +49,10 @@ class ConsoleLinterReporter(Reporter):
         # Output linter status
         base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
         perf = perf_counter() - self.start_perf
-        elapse = str(perf * 1000000)+"s"
+        elapse = str(perf) + "s"
         if self.master.return_code == 0 and self.master.status == "success":
-            logging.info(
-                f"{base_phrase} successfully - ({elapse})"
-            )
+            logging.info(f"{base_phrase} successfully - ({elapse})")
         elif self.master.return_code == 0 and self.master.status != "success":
-            logging.warning(
-                f"{base_phrase}: Found non blocking error(s) - ({elapse})"
-            )
+            logging.warning(f"{base_phrase}: Found non blocking error(s) - ({elapse})")
         elif self.master.return_code != 0 and self.master.status != "success":
-            logging.error(
-                f"{base_phrase}: Found error(s) - ({elapse})"
-            )
+            logging.error(f"{base_phrase}: Found error(s) - ({elapse})")
