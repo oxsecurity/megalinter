@@ -99,3 +99,16 @@ jobs:
             mega-linter.log
             linter-helps.json
             linter-versions.json
+
+      # Test mega-linter-runner with newly created image
+      - name: Setup Node
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - name: Install NPM dependencies
+        if: ${{ success() }} || ${{ failure() }}
+        run: cd mega-linter-runner && sudo npm ci && sudo npm link
+      - name: Run mega-linter-runner tests
+        if: ${{ success() }} || ${{ failure() }}
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${GITHUB_SHA} MEGALINTER_NO_DOCKER_PULL=true npm run test

@@ -15,7 +15,7 @@ def init_config(workspace):
     env = os.environ.copy()
     if workspace is None:
         set_config(env)
-        logging.info("Init config: No workspace")
+        print("Mega-Linter init config: Environment variables only (no workspace)")
         return
     # Search for config file
     if "MEGALINTER_CONFIG" in os.environ:
@@ -36,15 +36,14 @@ def init_config(workspace):
     if os.path.isfile(config_file):
         with open(config_file, "r", encoding="utf-8") as config_file_stream:
             config_data = yaml.load(config_file_stream, Loader=yaml.FullLoader)
-            runtime_config = {**config_data, **env}
-            logging.info(
-                f"Init config: Merged environment variables into config found in {config_file}, to build runtime config"
-            )
+            if config_data is None:  # .mega-linter.yml existing but empty
+                runtime_config = env
+            else:
+                runtime_config = {**config_data, **env}  # .mega-linter.yml not empty
+            print(f"Mega-Linter init config: {config_file} + Environment variables")
     else:
         runtime_config = env
-        logging.info(
-            f"Init config: No {config_file} config file found: use only environment variables as runtime config"
-        )
+        print("Mega-Linter init config: Environment variables")
     set_config(runtime_config)
 
 

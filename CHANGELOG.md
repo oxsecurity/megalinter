@@ -5,6 +5,13 @@
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
 - Add link to linters rules index in documentation
+- Remove ANSI color codes from log files
+- Add performances by linter in console log
+- New option **SHOW_ELAPSED_TIME** , allowing the number of seconds elapsed by linter in reports
+
+- NPM package **Mega-Linter runner**
+  - runs Mega-Linter locally, using .mega-linter.yml configuration (requires docker installed on your computer)
+  - test cases added in CI
 
 ## [4.9.0] 2020-11-23
 

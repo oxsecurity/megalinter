@@ -41,7 +41,11 @@ nav:
     - "Home": "index.md"
     - "Why Mega-Linter ?": "./#why-mega-linter"
     - "Quick Start": "./#quick-start"
-    - "Installation": "./#installation"
+    - "Installation":
+          - "GitHub Action": "./#github-action"
+          - "Azure": "./#azure"
+          - "GitLab": "./#gitlab"
+          - "Run Mega-Linter locally": "mega-linter-runner.md"
     - "Configuration": "./#configuration"
     - "Languages":
           # language-start
@@ -237,5 +241,6 @@ nav:
           - "GitHub Status": "reporters/GitHubStatusReporter.md"
           - "TAP files": "reporters/TapReporter.md"
           - "Console": "reporters/ConsoleReporter.md"
+    - "Mega-Linter badge": "./#add-mega-linter-badge-in-your-repository-readme"
     - "Mega-Linter vs Super-Linter": "./#mega-linter-vs-super-linter"
     - "Changelog": "CHANGELOG.md"

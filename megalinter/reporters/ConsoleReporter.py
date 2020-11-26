@@ -20,6 +20,8 @@ class ConsoleReporter(Reporter):
 
     def produce_report(self):
         table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
+        if self.master.show_elapsed_time is True:
+            table_header += ["Elapsed time"]
         table_data = [table_header]
         for linter in self.master.linters:
             if linter.is_active is True:
@@ -33,15 +35,16 @@ class ConsoleReporter(Reporter):
                 else:
                     found = str(len(linter.files))
                     errors = str(linter.number_errors)
-                table_data += [
-                    [
-                        linter.descriptor_id,
-                        linter.linter_name,
-                        found,
-                        nb_fixed_cell,
-                        errors,
-                    ]
+                table_line = [
+                    linter.descriptor_id,
+                    linter.linter_name,
+                    found,
+                    nb_fixed_cell,
+                    errors,
                 ]
+                if self.master.show_elapsed_time is True:
+                    table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
+                table_data += [table_line]
         table = terminaltables.AsciiTable(table_data)
         table.title = "----SUMMARY"
         # Output table in console
