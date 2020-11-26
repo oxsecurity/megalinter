@@ -53,8 +53,9 @@ linters:
     linter_rules_url: https://github.com/remarkjs/remark-lint/blob/main/doc/rules.md#list-of-rules
     linter_rules_configuration_url: https://github.com/remarkjs/remark-lint#configuring-remark-lint
     linter_rules_inline_disable_url: https://github.com/remarkjs/remark-message-control#markers
-    config_file_name: .remarkrc
+    config_file_name: ".remarkrc"
     cli_executable: remark
+    cli_config_arg_name: "--rc-path"
     cli_lint_fix_arg_name: "-o"
     examples:
       - "remark myfile.md"
@@ -63,6 +64,7 @@ linters:
     install:
       npm:
         - remark-cli
+        - remark-preset-lint-recommended
     ide:
       atom:
         - name: linter-remark
