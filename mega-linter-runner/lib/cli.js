@@ -9,8 +9,7 @@ class MegaLinterRunnerCli {
     async run(argv) {
         const megaLinter = new MegaLinterRunner();
         const options = optionsDefinition.parse(argv);
-        const { status } = await megaLinter.run(options);
-        process.exitCode = status;
+        await megaLinter.run(options);
     }
 }
 

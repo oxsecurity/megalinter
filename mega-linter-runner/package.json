@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "description": "Local runner for Mega-Linter",
   "main": "index.js",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "mega-linter-runner": "lib/index.js",
+    "mega-linter": "lib/index.js"
+  },
   "scripts": {
     "test": "mocha \"test/**/*.test.js\""
   },

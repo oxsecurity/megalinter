@@ -9,9 +9,9 @@ class MegaLinterRunner {
     async run(options) {
 
         // Show help ( index or for an options)
-        if (this.options.help) {
-            if (this.options._.length) {
-                this.outputString = optionsDefinition.generateHelpForOption(this.options._[0]);
+        if (options.help) {
+            if (options._.length) {
+                this.outputString = optionsDefinition.generateHelpForOption(options._[0]);
             } else {
                 this.outputString = optionsDefinition.generateHelp();
             }
@@ -20,7 +20,7 @@ class MegaLinterRunner {
         }
 
         // Show version
-        if (this.options.version) {
+        if (options.version) {
             let v = process.env.npm_package_version;
             if (!v) {
                 try {
