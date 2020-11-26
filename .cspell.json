@@ -3,6 +3,7 @@
         "**/node_modules/**",
         "**/vscode-extension/**",
         "**/.git/**",
+        "lib",
         "report",
         ".vscode"
     ],
@@ -430,6 +431,7 @@
         "filegraph",
         "filehandling",
         "filemode",
+        "fileoverview",
         "fixrules",
         "fkotlin",
         "flalign",

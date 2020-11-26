@@ -838,7 +838,9 @@ def finalize_doc_build():
         target_file_changelog,
     )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
-    target_file_readme_runner = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}mega-linter-runner.md"
+    target_file_readme_runner = (
+        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}mega-linter-runner.md"
+    )
     copyfile(
         f"{REPO_HOME}{os.path.sep}mega-linter-runner{os.path.sep}README.md",
         target_file_readme_runner,
