@@ -791,6 +791,7 @@
         "regsub",
         "reindent",
         "relaxng",
+        "remarkrc",
         "remoting",
         "replicatedhq",
         "repos",
