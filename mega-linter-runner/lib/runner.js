@@ -45,7 +45,8 @@ class MegaLinterRunner {
         // Pull docker image
         if (options.nodockerpull !== true) {
             console.info(`Pulling docker image ${dockerImage} ... `)
-            console.info("this operation can be long during the first use of mega-linter-runner, but will be much faster later thanks to docker cache)")
+            console.info("INFO: this operation can be long during the first use of mega-linter-runner")
+            console.info("Tee next runs, it will be immediate (thanks to docker cache !)")
             const spawnResPull = spawnSync(
                 "docker",
                 ["pull", dockerImage],
@@ -55,7 +56,7 @@ class MegaLinterRunner {
                     windowsVerbatimArguments: true
                 });
             if (spawnResPull.status !== 0) {
-                throw new Error(`Unable to pull ${dockerImage}: \n${spawnResPull.stderr}`)
+                throw new Error(`Unable to pull [${dockerImage}]: \n${JSON.stringify(spawnResPull, null, 2)}`)
             }
         }
         else {
