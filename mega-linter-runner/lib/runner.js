@@ -10,13 +10,14 @@ class MegaLinterRunner {
 
         // Show help ( index or for an options)
         if (options.help) {
+            let outputString;
             if (options._ && options._.length) {
-                this.outputString = optionsDefinition.generateHelpForOption(options._[0]);
+                outputString = optionsDefinition.generateHelpForOption(options._[0]);
             } else {
-                this.outputString = optionsDefinition.generateHelp();
+                outputString = optionsDefinition.generateHelp();
             }
-            console.info(this.outputString);
-            return { status: 0 };
+            console.info(outputString);
+            return { status: 0, stdout: outputString };
         }
 
         // Show version
@@ -31,8 +32,9 @@ class MegaLinterRunner {
                     v = "error";
                 }
             }
-            console.log(`mega-linter-runner version ${v}`);
-            return { status: 0 };
+            const outputString = `mega-linter-runner version ${v}`;
+            console.log(outputString);
+            return { status: 0, stdout: outputString };
         }
 
         // Build Mega-Linter docker image name with release version

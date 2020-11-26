@@ -37,12 +37,12 @@ describe('CLI', function () {
             release
         ];
         if (nodockerpull) {
-            params.push("nodockerpull")
+            params.push("--nodockerpull")
         }
         const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
         if (stderr) {
             console.error(stderr);
         }
         assert(stdout, "stdout is set");
-    })
+    }).timeout(600000)
 })

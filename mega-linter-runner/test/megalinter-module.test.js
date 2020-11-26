@@ -31,5 +31,5 @@ describe('Module', function () {
         }
         const res = await new MegaLinterRunner().run(options)
         assert(res.status === 0, `status is 0 (${res.status} returned)`)
-    })
+    }).timeout(600000)
 })
