@@ -41,14 +41,14 @@ class MegaLinterRunner {
         const release = (options.release in ["v4", "stable"]) ? "v4" :
             (options.release == "insiders") ? "latest" :
                 (options.release) ? options.release :
-                    "v4"
-        const dockerImage = `nvuillam/mega-linter:${release}`
+                    "v4";
+        const dockerImage = `nvuillam/mega-linter:${release}`;
 
         // Pull docker image
         if (options.nodockerpull !== true) {
-            console.info(`Pulling docker image ${dockerImage} ... `)
-            console.info("INFO: this operation can be long during the first use of mega-linter-runner")
-            console.info("Tee next runs, it will be immediate (thanks to docker cache !)")
+            console.info(`Pulling docker image ${dockerImage} ... `);
+            console.info("INFO: this operation can be long during the first use of mega-linter-runner");
+            console.info("Tee next runs, it will be immediate (thanks to docker cache !)");
             const spawnResPull = spawnSync(
                 "docker",
                 ["pull", dockerImage],
@@ -66,20 +66,20 @@ class MegaLinterRunner {
             }
         }
         else {
-            console.log(`Skipped pull of ${dockerImage} (--nodockerpull used)`)
+            console.log(`Skipped pull of ${dockerImage} (--nodockerpull used)`);
         }
 
         // Build docker run options
-        const lintPath = path.resolve(options.path || ".")
+        const lintPath = path.resolve(options.path || ".");
         const commandArgs = [
             "run",
             "-v", `${lintPath}:/tmp/lint`
-        ]
+        ];
         if (options.fix === true) {
-            commandArgs.push(...["-e", "APPLY_FIXES=all"])
+            commandArgs.push(...["-e", "APPLY_FIXES=all"]);
         }
         if (options.debug === true) {
-            commandArgs.push(...["-e", "LOG_LEVEL=DEBUG"])
+            commandArgs.push(...["-e", "LOG_LEVEL=DEBUG"]);
         }
         commandArgs.push(dockerImage)
 
@@ -98,7 +98,7 @@ class MegaLinterRunner {
             status: spawnRes.status,
             stdout: spawnRes.stdout,
             stderr: spawnRes.stderr
-        }
+        };
     }
 }
 

@@ -10,7 +10,7 @@ class MegaLinterRunnerCli {
         const megaLinter = new MegaLinterRunner();
         const options = optionsDefinition.parse(argv);
         const res = await megaLinter.run(options);
-        process.exitCode = res.status
+        process.exitCode = res.status;
     }
 }
 
