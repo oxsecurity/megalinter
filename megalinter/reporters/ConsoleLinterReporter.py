@@ -49,7 +49,7 @@ class ConsoleLinterReporter(Reporter):
         # Output linter status
         base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
         perf = perf_counter() - self.start_perf
-        elapse = str(perf) + "s"
+        elapse = str(round(perf, 2)) + "s"
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(f"{base_phrase} successfully - ({elapse})")
         elif self.master.return_code == 0 and self.master.status != "success":
