@@ -211,6 +211,12 @@ def generate_documentation():
         "<!-- linters-table-end -->",
         linters_tables_md_str,
     )
+    replace_in_file(
+        f"{REPO_HOME}/mega-linter-runner/README.md",
+        "<!-- linters-table-start -->",
+        "<!-- linters-table-end -->",
+        linters_tables_md_str,
+    )
     # Update welcome phrase
     welcome_phrase = (
         f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "

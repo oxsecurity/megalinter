@@ -5,7 +5,6 @@ const { MegaLinterRunner } = require("./runner");
 const optionsDefinition = require("./options");
 
 class MegaLinterRunnerCli {
-    "use strict";
 
     async run(argv) {
         const megaLinter = new MegaLinterRunner();

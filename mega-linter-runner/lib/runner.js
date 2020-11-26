@@ -1,12 +1,40 @@
 #! /usr/bin/env node
+"use strict";
+const optionsDefinition = require("./options");
 const { spawnSync } = require("child_process");
-const { assert } = require("console");
 const path = require("path")
 
 class MegaLinterRunner {
-    "use strict";
 
     async run(options) {
+
+        // Show help ( index or for an options)
+        if (this.options.help) {
+            if (this.options._.length) {
+                this.outputString = optionsDefinition.generateHelpForOption(this.options._[0]);
+            } else {
+                this.outputString = optionsDefinition.generateHelp();
+            }
+            console.info(this.outputString);
+            return;
+        }
+
+        // Show version
+        if (this.options.version) {
+            let v = process.env.npm_package_version;
+            if (!v) {
+                try {
+                    const FindPackageJson = require("find-package-json");
+                    const finder = FindPackageJson(__dirname);
+                    v = finder.next().value.version;
+                } catch {
+                    v = "error";
+                }
+            }
+            console.log(`mega-linter-runner version ${v}`);
+            return
+        }
+
         // Build Mega-Linter docker image name with release version
         const release = (options.release in ["v4", "stable"]) ? "v4" :
             (options.release == "insiders") ? "latest" :

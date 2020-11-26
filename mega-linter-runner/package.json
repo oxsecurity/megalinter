@@ -64,6 +64,7 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
+    "find-package-json": "^1.2.0",
     "optionator": "^0.9.1"
   },
   "devDependencies": {

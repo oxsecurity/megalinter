@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: "12"
       - name: Install dependencies
-        run: cd mega-linter-runner && npm ci
+        run: cd mega-linter-runner && npm ci && npm link
       - name: Run tests
         run: cd mega-linter-runner && npm run test

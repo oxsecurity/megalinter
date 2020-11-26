@@ -28,7 +28,7 @@ module.exports = optionator({
             alias: "r",
             type: "path::String",
             default: "v4",
-            description: "Directory containing the files to lint (default: current directory)",
+            description: "Mega-Linter version",
             example: ["stable", "latest", "v4.9.0"]
         },
         {
