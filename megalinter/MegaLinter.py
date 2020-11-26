@@ -299,9 +299,13 @@ class Megalinter:
                 logging.debug("Root dir content:\n" + "\n- ".join(all_files))
             excluded_directories = utils.list_excluded_directories()
             for (dirpath, _dirnames, filenames) in os.walk(self.workspace):
+                exclude = False
                 for dir1 in dirpath.split(os.path.sep):
                     if dir1 in excluded_directories:
-                        continue
+                        exclude = True
+                        break
+                if exclude is True:
+                    continue
                 all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
             all_files = sorted(set(all_files))
             logging.debug(
