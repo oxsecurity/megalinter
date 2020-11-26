@@ -18,7 +18,7 @@ describe('CLI', function () {
             console.error(stderr);
         }
         assert(stdout, "stdout is set");
-        assert(stdout.includes("mega-linter-runner version"), 'stdout should contains "mega-linter-runner version"');
+        assert(stdout.includes("-r, --release String  Mega-Linter version - default: v4"), 'stdout contains help content');
     })
     it('(CLI) Show version', async () => {
         const params = ["--version"];

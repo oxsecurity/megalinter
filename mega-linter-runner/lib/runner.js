@@ -10,13 +10,13 @@ class MegaLinterRunner {
 
         // Show help ( index or for an options)
         if (options.help) {
-            if (options._.length) {
+            if (options._ && options._.length) {
                 this.outputString = optionsDefinition.generateHelpForOption(options._[0]);
             } else {
                 this.outputString = optionsDefinition.generateHelp();
             }
             console.info(this.outputString);
-            return;
+            return { status: 0 };
         }
 
         // Show version
@@ -32,7 +32,7 @@ class MegaLinterRunner {
                 }
             }
             console.log(`mega-linter-runner version ${v}`);
-            return
+            return { status: 0 };
         }
 
         // Build Mega-Linter docker image name with release version
@@ -55,8 +55,12 @@ class MegaLinterRunner {
                     windowsHide: true,
                     windowsVerbatimArguments: true
                 });
+            // Manage case when unable to pull docker image
             if (spawnResPull.status !== 0) {
-                throw new Error(`Unable to pull [${dockerImage}]: \n${JSON.stringify(spawnResPull, null, 2)}`)
+                return {
+                    status: 2,
+                    errorMsg: `Unable to pull [${dockerImage}]: \n${JSON.stringify(spawnResPull, null, 2)}`
+                }
             }
         }
         else {
@@ -88,7 +92,11 @@ class MegaLinterRunner {
             windowsVerbatimArguments: true
         };
         const spawnRes = spawnSync("docker", commandArgs, spawnOptions);
-        process.exitCode = spawnRes.status
+        return {
+            status: spawnRes.status,
+            stdout: spawnRes.stdout,
+            stderr: spawnRes.stderr
+        }
     }
 }
 

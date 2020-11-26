@@ -26,7 +26,7 @@ module.exports = optionator({
         {
             option: "release",
             alias: "r",
-            type: "path::String",
+            type: "String",
             default: "v4",
             description: "Mega-Linter version",
             example: ["stable", "latest", "v4.9.0"]

@@ -11,15 +11,17 @@ describe('Module', function () {
         const options = {
             help: true
         }
-        await new MegaLinterRunner().run(options)
-        assert(process.exitCode === 0, `process.exitCode is 0 (${process.exitCode} returned)`)
+        const res = await new MegaLinterRunner().run(options)
+        assert(res.status === 0, `status is 0 (${res.status} returned)`)
+        assert(res.stdout.includes("-r, --release String  Mega-Linter version - default: v4"), 'stdout contains help content');
     })
     it('(Module) Show version', async () => {
         const options = {
             version: true
         }
-        await new MegaLinterRunner().run(options)
-        assert(process.exitCode === 0, `process.exitCode is 0 (${process.exitCode} returned)`)
+        const res = await new MegaLinterRunner().run(options)
+        assert(res.status === 0, `status is 0 (${res.status} returned)`)
+        assert(res.stdout.includes("mega-linter-runner version"), 'stdout should contains "mega-linter-runner version"');
     })
     it('(Module) run on own code base', async () => {
         const options = {
@@ -27,7 +29,7 @@ describe('Module', function () {
             release,
             nodockerpull
         }
-        await new MegaLinterRunner().run(options)
-        assert(process.exitCode === 0, `process.exitCode is 0 (${process.exitCode} returned)`)
+        const res = await new MegaLinterRunner().run(options)
+        assert(res.status === 0, `status is 0 (${res.status} returned)`)
     })
 })
