@@ -199,6 +199,7 @@ RUN npm install --no-cache \
                 eslint-plugin-react \
                 markdownlint-cli \
                 markdown-link-check \
+                remark-cli \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \

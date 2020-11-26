@@ -45,3 +45,33 @@ linters:
     install:
       npm:
         - markdown-link-check
+  # remark-lint
+  - linter_name: remark-lint
+    linter_url: https://remark.js.org/
+    linter_repo: https://github.com/remarkjs/remark-lint
+    linter_rules_url: https://github.com/remarkjs/remark-lint/blob/main/doc/rules.md#list-of-rules
+    linter_rules_configuration_url: https://github.com/remarkjs/remark-lint#configuring-remark-lint
+    linter_rules_inline_disable_url: https://github.com/remarkjs/remark-message-control#markers
+    config_file_name: .remarkrc
+    cli_executable: remark
+    cli_lint_fix_arg_name: "-o"
+    examples:
+      - "remark myfile.md"
+      - "remark -c .remarkrc myfile.md"
+      - "remark --fix -c .remarkrc myfile.md"
+    install:
+      npm:
+        - remark-cli
+    ide:
+      atom:
+        - name: linter-remark
+          url: https://github.com/wooorm/linter-remark
+      sublime:
+        - name: SublimeLinter-contrib-remark-lint
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+      vscode:
+        - name: vscode-remark-lint
+          url: https://github.com/drewbourne/vscode-remark-lint
