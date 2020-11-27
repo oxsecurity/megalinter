@@ -200,6 +200,7 @@ RUN npm install --no-cache \
                 markdownlint-cli \
                 markdown-link-check \
                 remark-cli \
+                remark-preset-lint-recommended \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
