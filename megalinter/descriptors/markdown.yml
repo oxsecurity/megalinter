@@ -59,8 +59,8 @@ linters:
     cli_lint_fix_arg_name: "-o"
     examples:
       - "remark myfile.md"
-      - "remark -c .remarkrc myfile.md"
-      - "remark --fix -c .remarkrc myfile.md"
+      - "remark --rc-path .remarkrc myfile.md"
+      - "remark -o --rc-path .remarkrc myfile.md"
     install:
       npm:
         - remark-cli
