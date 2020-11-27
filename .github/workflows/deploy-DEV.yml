@@ -103,7 +103,7 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: "12"
       - name: Install NPM dependencies
