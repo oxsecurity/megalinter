@@ -9,7 +9,7 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.41.0**
+- Version in Mega-Linter: **0.42.0**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme)
   - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do)
@@ -89,7 +89,7 @@ Standard:
                         Ignore failures with Bad template
   --ignore-templates IGNORE_TEMPLATES [IGNORE_TEMPLATES ...]
                         Ignore templates
-  -f {quiet,parseable,json,junit}, --format {quiet,parseable,json,junit}
+  -f {quiet,parseable,json,junit,pretty}, --format {quiet,parseable,json,junit,pretty}
                         Output Format
   -l, --list-rules      list all the rules
   -r REGIONS [REGIONS ...], --regions REGIONS [REGIONS ...]

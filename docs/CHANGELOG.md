@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.10.0] 2020-11-23
+
 - Add link to linters rules index in documentation
 - Remove ANSI color codes from log files
 - Add performances by linter in console log
