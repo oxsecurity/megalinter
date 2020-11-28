@@ -111,4 +111,4 @@ jobs:
         run: cd mega-linter-runner && sudo npm ci && sudo npm link
       - name: Run mega-linter-runner tests
         if: ${{ success() }} || ${{ failure() }}
-        run: cd mega-linter-runner && MEGALINTER_RELEASE=${GITHUB_SHA} MEGALINTER_NO_DOCKER_PULL=true npm run test
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{github.sha}} MEGALINTER_NO_DOCKER_PULL=true npm run test
