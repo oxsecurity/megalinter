@@ -2,6 +2,7 @@
 
 import glob
 import importlib
+import logging
 import os
 import re
 
@@ -215,7 +216,11 @@ def list_updated_files(repo_home):
     try:
         repo = git.Repo(repo_home)
     except git.InvalidGitRepositoryError:
-        repo = git.Repo(REPO_HOME_DEFAULT)
+        try:
+            repo = git.Repo(REPO_HOME_DEFAULT)
+        except git.InvalidGitRepositoryError:
+            logging.warning("Unable to find git repository to list updated files")
+            return []
     changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
 

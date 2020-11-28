@@ -48,7 +48,7 @@ class MegaLinterRunner {
         if (options.nodockerpull !== true) {
             console.info(`Pulling docker image ${dockerImage} ... `);
             console.info("INFO: this operation can be long during the first use of mega-linter-runner");
-            console.info("Tee next runs, it will be immediate (thanks to docker cache !)");
+            console.info("The next runs, it will be immediate (thanks to docker cache !)");
             const spawnResPull = spawnSync(
                 "docker",
                 ["pull", dockerImage],

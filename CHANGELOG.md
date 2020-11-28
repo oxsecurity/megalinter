@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Fallback to default behaviours instead of crashes when git not available
+
 ## [4.10.0] 2020-11-23
 
 - Add link to linters rules index in documentation
