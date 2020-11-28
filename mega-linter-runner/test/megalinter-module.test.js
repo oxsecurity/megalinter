@@ -27,7 +27,8 @@ describe('Module', function () {
         const options = {
             path: './..',
             release,
-            nodockerpull
+            nodockerpull,
+            env: ["ENABLE=YAML"]
         }
         const res = await new MegaLinterRunner().run(options)
         assert(res.status === 0, `status is 0 (${res.status} returned)`)

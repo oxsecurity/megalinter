@@ -81,6 +81,11 @@ class MegaLinterRunner {
         if (options.debug === true) {
             commandArgs.push(...["-e", "LOG_LEVEL=DEBUG"]);
         }
+        if (options.env) {
+            for (const envVarEqualsValue of options.env) {
+                commandArgs.push(...["-e", envVarEqualsValue])
+            }
+        }
         commandArgs.push(dockerImage)
 
         // Call docker run

@@ -34,7 +34,9 @@ describe('CLI', function () {
             "--path",
             "./..",
             "--release",
-            release
+            release,
+            "-e",
+            "ENABLE=YAML"
         ];
         if (nodockerpull) {
             params.push("--nodockerpull")
