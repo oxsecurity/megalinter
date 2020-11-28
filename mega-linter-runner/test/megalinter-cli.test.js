@@ -8,7 +8,7 @@ const exec = util.promisify(childProcess.exec);
 const release = process.env.MEGALINTER_RELEASE || 'insiders'
 const nodockerpull = (process.env.MEGALINTER_NO_DOCKER_PULL === 'true') ? true : false
 
-const MEGA_LINTER = "mega-linter "
+const MEGA_LINTER = "mega-linter-runner "
 
 describe('CLI', function () {
     it('(CLI) Show help', async () => {

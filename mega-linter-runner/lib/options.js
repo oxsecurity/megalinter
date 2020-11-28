@@ -42,10 +42,11 @@ module.exports = optionator({
         {
             option: "env",
             alias: "e",
-            type: "String",
+            type: "[String]",
             description: "Environment variable (multiple)",
-            concatRepeatedArrays: true,
-            example: ["-e ENABLE=JAVASCRIPT -e SHOW_ELAPSED_TIME=true"]
+            example: [
+                "-e 'ENABLE=JAVASCRIPT' -e 'SHOW_ELAPSED_TIME=true'",
+                "-e 'ENABLE=JAVASCRIPT,YAML' -e 'DISABLE_LINTERS=MARKDOWN_MARKDOWN_LINK_CHECK'"]
         },
         {
             option: "fix",
