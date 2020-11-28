@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.10.1] 2020-11-28
+
 - Fallback to default behaviours instead of crashes when git not available
 
 - mega-linter-runner
