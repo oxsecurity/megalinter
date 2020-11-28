@@ -50,7 +50,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 |--------------------|-----------------------------------------------------------|
 | `-p` `--path`      | Directory containing the files to lint (default: current directory)    |
 | `--fix`            | Automatically apply formatting and fixes in your files    |
-| `-r``--release`    | Allows to override Mega-Linter version used (default: v4 stable)  |
+| `-r` `--release`    | Allows to override Mega-Linter version used (default: v4 stable)  |
 | `-h` `--help`      | Show mega-linter-runner help    |
 | `-v` `--version`   | Show mega-linter-runner version    |
 
