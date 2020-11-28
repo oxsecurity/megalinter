@@ -13,6 +13,7 @@ import sys
 
 import git
 import terminaltables
+from multiprocessing_logging import install_mp_handler
 from megalinter import config, utils
 
 
@@ -133,10 +134,11 @@ class Megalinter:
                 linter_groups += [[linter]]
 
         # Execute linters in asynchronous pool to improve overall performances
-        pool = mp.Pool(mp.cpu_count())
+        install_mp_handler()
+        pool = mp.Pool(mp.cpu_count(), initializer=install_mp_handler)
         pool_results = []
         for linter_group in linter_groups:
-            result = pool.apply_async(run_linters, args=linter_group)
+            result = pool.apply_async(run_linters, args=[linter_group])
             pool_results += [result]
         pool.close()
         pool.join()
