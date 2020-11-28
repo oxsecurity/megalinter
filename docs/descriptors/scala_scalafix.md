@@ -4,7 +4,7 @@
 
 ## scalafix documentation
 
-- Version in Mega-Linter: **0.9.23**
+- Version in Mega-Linter: **0.9.24**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/)
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html)
   - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf) will be used
@@ -55,7 +55,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.9.23
+Scalafix 0.9.24
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -133,7 +133,7 @@ Semantic options:
     The scala compiler options used to compile this --classpath, for example
     -Ywarn-unused-import
 
-  --scala-version String (default: "2.13.3")
+  --scala-version String (default: "2.13.4")
     The Scala compiler version that was used to compile this project.
 
 Tab completions:

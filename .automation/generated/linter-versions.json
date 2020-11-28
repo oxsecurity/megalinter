@@ -47,7 +47,7 @@
     "rstcheck": "3.3.1",
     "rstfmt": "0.0.0",
     "rubocop": "0.82.0",
-    "scalafix": "0.9.23",
+    "scalafix": "0.9.24",
     "scss-lint": "0.59.0",
     "shellcheck": "0.7.1",
     "shfmt": "3.2.0",
