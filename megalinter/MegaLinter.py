@@ -17,6 +17,14 @@ from multiprocessing_logging import install_mp_handler
 from megalinter import config, utils
 
 
+# Function to run linters using multiprocessing pool
+def run_linters(linters):
+    for linter in linters:
+        linter.run()
+    return linters
+
+
+# Main Mega-Linter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
 
     # Constructor: Load global config, linters & compute file extensions
@@ -103,10 +111,14 @@ class Megalinter:
         logging.info("")
 
         # Process linters serial or parallel according to configuration
-        if config.get("PARALLEL", "true") == "true":
-            self.process_linters_parallel()
+        active_linters = []
+        for linter in self.linters:
+            if linter.is_active is True:
+                active_linters += [linter]
+        if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
+            self.process_linters_parallel(active_linters)
         else:
-            self.process_linters_serial()
+            self.process_linters_serial(active_linters)
 
         # Update main linter status if linter is not in success
         for linter in self.linters:
@@ -121,21 +133,20 @@ class Megalinter:
         # Manage return code
         self.check_results()
 
-    def process_linters_serial(self):
-        for linter in self.linters:
-            if linter.is_active is True:
-                linter.run()
+    # noinspection PyMethodMayBeStatic
+    def process_linters_serial(self, active_linters):
+        for linter in active_linters:
+            linter.run()
 
-    def process_linters_parallel(self):
+    def process_linters_parallel(self, active_linters):
         # Sort linters in groups
         linter_groups = []
-        for linter in self.linters:
-            if linter.is_active is True:
-                linter_groups += [[linter]]
+        for linter in active_linters:
+            linter_groups += [[linter]]
 
         # Execute linters in asynchronous pool to improve overall performances
         install_mp_handler()
-        pool = mp.Pool(mp.cpu_count(), initializer=install_mp_handler)
+        pool = mp.Pool(mp.cpu_count())
         pool_results = []
         for linter_group in linter_groups:
             result = pool.apply_async(run_linters, args=[linter_group])
@@ -477,9 +488,3 @@ class Megalinter:
                     config.delete()
                     sys.exit(self.return_code)
             config.delete()
-
-
-def run_linters(linters):
-    for linter in linters:
-        linter.run()
-    return linters
