@@ -13,7 +13,7 @@ describe('Module', function () {
         }
         const res = await new MegaLinterRunner().run(options)
         assert(res.status === 0, `status is 0 (${res.status} returned)`)
-        assert(res.stdout.includes("-r, --release String  Mega-Linter version - default: v4"), 'stdout contains help content');
+        assert(res.stdout.includes("mega-linter [options]"), 'stdout contains help content');
     })
     it('(Module) Show version', async () => {
         const options = {
@@ -27,7 +27,8 @@ describe('Module', function () {
         const options = {
             path: './..',
             release,
-            nodockerpull
+            nodockerpull,
+            env: ["ENABLE=YAML"]
         }
         const res = await new MegaLinterRunner().run(options)
         assert(res.status === 0, `status is 0 (${res.status} returned)`)

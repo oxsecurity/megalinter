@@ -40,6 +40,15 @@ module.exports = optionator({
             example: ["./path/to/my/files"]
         },
         {
+            option: "env",
+            alias: "e",
+            type: "[String]",
+            description: "Environment variable (multiple)",
+            example: [
+                "-e 'ENABLE=JAVASCRIPT' -e 'SHOW_ELAPSED_TIME=true'",
+                "-e 'ENABLE=JAVASCRIPT,YAML' -e 'DISABLE_LINTERS=MARKDOWN_MARKDOWN_LINK_CHECK'"]
+        },
+        {
             option: "fix",
             type: "Boolean",
             description: "Apply formatters and fixes in linted sources"
