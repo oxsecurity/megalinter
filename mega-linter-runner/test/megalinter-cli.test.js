@@ -18,7 +18,7 @@ describe('CLI', function () {
             console.error(stderr);
         }
         assert(stdout, "stdout is set");
-        assert(stdout.includes("-r, --release String  Mega-Linter version - default: v4"), 'stdout contains help content');
+        assert(stdout.includes("mega-linter [options]"), 'stdout contains help content');
     })
     it('(CLI) Show version', async () => {
         const params = ["--version"];
@@ -36,7 +36,7 @@ describe('CLI', function () {
             "--release",
             release,
             "-e",
-            "ENABLE=YAML"
+            "\"ENABLE=YAML\""
         ];
         if (nodockerpull) {
             params.push("--nodockerpull")

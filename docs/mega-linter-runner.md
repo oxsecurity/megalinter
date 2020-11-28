@@ -49,7 +49,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 | Option             | Description                                               |
 |--------------------|-----------------------------------------------------------|
 | `-p` `--path`      | Directory containing the files to lint (default: current directory)    |
-| `-e` `--env`      | Environment variables for Mega-Linter    |
+| `-e` `--env`      | Environment variables for Mega-Linter, following format **"NAME=VALUE"** (Warning: Quotes are mandatory)    |
 | `--fix`            | Automatically apply formatting and fixes in your files    |
 | `-r` `--release`    | Allows to override Mega-Linter version used (default: v4 stable)  |
 | `-h` `--help`      | Show mega-linter-runner help    |
@@ -68,7 +68,7 @@ mega-linter-runner -p myFolder --fix
 ```
 
 ```shell
-mega-linter-runner -r insiders -e ENABLE=MARKDOWN,YAML -e SHOW_ELAPSED_TIME=true
+mega-linter-runner -r insiders -e "ENABLE=MARKDOWN,YAML" -e "SHOW_ELAPSED_TIME=true"
 ```
 
 ## Configuration

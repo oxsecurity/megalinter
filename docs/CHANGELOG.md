@@ -6,6 +6,11 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Fallback to default behaviours instead of crashes when git not available
 
+- mega-linter-runner
+  - Allow to send env parameters to mega-linter-runner cli
+  - Add examples in documentation
+  - Publish mega-linter-runner beta version when pushing in master branch
+
 ## [4.10.0] 2020-11-23
 
 - Add link to linters rules index in documentation
