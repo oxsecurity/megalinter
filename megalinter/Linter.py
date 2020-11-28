@@ -401,6 +401,7 @@ class Linter:
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             reporter.produce_report()
+        return self
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):

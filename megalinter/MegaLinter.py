@@ -6,6 +6,7 @@ Main Mega-Linter class, encapsulating all linters process and reporting
 
 import collections
 import logging
+import multiprocessing as mp
 import os
 import re
 import sys
@@ -100,19 +101,54 @@ class Megalinter:
             logging.info(table_line)
         logging.info("")
 
-        # Run linters
+        # Process linters serial or parallel according to configuration
+        if config.get("PARALLEL", "true") == "true":
+            self.process_linters_parallel()
+        else:
+            self.process_linters_serial()
+
+        # Update main linter status if linter is not in success
         for linter in self.linters:
-            if linter.is_active is True:
-                linter.run()
-                if linter.status != "success":
-                    self.status = "error"
-                if linter.return_code != 0:
-                    self.return_code = linter.return_code
+            if linter.status != "success":
+                self.status = "error"
+            if linter.return_code != 0:
+                self.return_code = linter.return_code
+
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
         # Manage return code
         self.check_results()
+
+    def process_linters_serial(self):
+        for linter in self.linters:
+            if linter.is_active is True:
+                linter.run()
+
+    def process_linters_parallel(self):
+        # Sort linters in groups
+        linter_groups = []
+        for linter in self.linters:
+            if linter.is_active is True:
+                linter_groups += [[linter]]
+
+        # Execute linters in asynchronous pool to improve overall performances
+        pool = mp.Pool(mp.cpu_count())
+        pool_results = []
+        for linter_group in linter_groups:
+            result = pool.apply_async(run_linters, args=linter_group)
+            pool_results += [result]
+        pool.close()
+        pool.join()
+
+        # Update self.linters objects with results from async processing
+        for pool_result in pool_results:
+            updated_linters = pool_result.get()
+            for updated_linter in updated_linters:
+                for i in range(0, len(self.linters)):
+                    if self.linters[i].name == updated_linter.name:
+                        self.linters[i] = updated_linter
+                        break
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self):
@@ -439,3 +475,9 @@ class Megalinter:
                     config.delete()
                     sys.exit(self.return_code)
             config.delete()
+
+
+def run_linters(linters):
+    for linter in linters:
+        linter.run()
+    return linters
