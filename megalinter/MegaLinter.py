@@ -78,6 +78,7 @@ class Megalinter:
         self.file_names = []
         self.status = "success"
         self.return_code = 0
+        self.has_updated_sources = 0
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -123,12 +124,14 @@ class Megalinter:
         else:
             self.process_linters_serial(active_linters, linters_do_fixes)
 
-        # Update main linter status if linter is not in success
+        # Update main Mega-Linter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
                 self.status = "error"
             if linter.return_code != 0:
                 self.return_code = linter.return_code
+            if linter.number_fixed > 0:
+                self.has_updated_sources = 1
 
         # Generate reports
         for reporter in self.reporters:
@@ -494,6 +497,7 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
+        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
             logging.info("Successfully linted all files without errors")
             config.delete()
