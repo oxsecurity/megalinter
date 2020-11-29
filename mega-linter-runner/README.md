@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
 # Mega-Linter Runner
-
+<!-- readme-header-start-->
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
@@ -16,7 +16,7 @@
 See [**Mega-Linter Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
 <!-- online-doc-end -->
 
-## Mega-Linter client
+<!-- readme-header-end-->
 
 This package allows to run [Mega-Linter](https://nvuillam.github.io/mega-linter/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
@@ -36,6 +36,16 @@ npm install mega-linter-runner -g
 
 ```shell
 npm install mega-linter-runner --save-dev
+```
+
+### No installation
+
+You can run mega-linter-runner without installation by using `npx`
+
+Example:
+
+```shell
+npx mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ## Usage
@@ -76,7 +86,7 @@ mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=t
 Default configuration is ready out of the box
 
 You can define a [.mega-linter.yml](https://nvuillam.github.io/mega-linter/#configuration) configuration file at the root of your repository to customize or deactivate the included linters
-
+<!-- linters-section-start -->
 ## Linters
 
 <!-- linters-table-start -->
@@ -171,3 +181,5 @@ You can define a [.mega-linter.yml](https://nvuillam.github.io/mega-linter/#conf
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/spell.ico" alt="" height="32px" class="megalinter-icon"></a> | [**SPELL**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell.md#readme) | [cspell](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)| [SPELL_CSPELL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)|  |
 
 <!-- linters-table-end -->
+
+<!-- linters-section-end -->

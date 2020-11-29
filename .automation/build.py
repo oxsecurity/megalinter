@@ -845,6 +845,15 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}mega-linter-runner{os.path.sep}README.md",
         target_file_readme_runner,
     )
+    # Update mega-linter-runner.md for online doc
+    replace_in_file(target_file_readme_runner,
+                    "<!-- readme-header-start-->",
+                    "<!-- readme-header-end-->",
+                    "")
+    replace_in_file(target_file_readme_runner,
+                    "<!-- linters-section-start -->",
+                    "<!-- linters-section-end -->",
+                    "")
     # Replace hardcoded links into relative links
     with open(target_file_readme_runner, "r+", encoding="utf-8") as f:
         content = f.read()
