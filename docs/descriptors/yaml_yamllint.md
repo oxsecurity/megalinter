@@ -5,9 +5,10 @@
 ## yamllint documentation
 
 - Version in Mega-Linter: **1.25.0**
-- Visit [Official Web Site](https://github.com/adrienverge/yamllint#readme)
+- Visit [Official Web Site](https://yamllint.readthedocs.io/)
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration)
   - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml) will be used
+- See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html)
 
 [![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint)
 

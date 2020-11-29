@@ -149,4 +149,6 @@ Of course, please correct real typos before :)
     ]
 }
 
+
+You can also copy-paste /tmp/.cspell.json at the root of your repository
 ```

@@ -10,6 +10,7 @@ linters:
   - linter_name: checkstyle
     linter_url: https://checkstyle.sourceforge.io
     linter_repo: https://github.com/checkstyle/checkstyle
+    linter_rules_url: https://checkstyle.sourceforge.io/checks.html
     linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
     linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview
     linter_rules_inline_disable_url: https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter

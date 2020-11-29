@@ -9,6 +9,7 @@
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration)
   - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8) will be used
 - See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors)
+- See [Index of problems detected by flake8](https://flake8.pycqa.org/en/latest/user/error-codes.html)
 
 [![flake8 - GitHub](https://gh-card.dev/repos/PyCQA/flake8.svg?fullname=)](https://github.com/PyCQA/flake8)
 
@@ -106,8 +107,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E704', 'E121', 'E226', 'E126', 'W503',
-                        'E24', 'E123', 'W504'])
+                        (Default: ['E226', 'E24', 'E123', 'E121', 'E704',
+                        'E126', 'W504', 'W503'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

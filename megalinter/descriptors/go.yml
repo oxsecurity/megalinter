@@ -15,7 +15,9 @@ install:
 linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint
-    linter_url: https://github.com/golangci/golangci-lint
+    linter_url: https://golangci-lint.run/
+    linter_repo: https://github.com/golangci/golangci-lint
+    linter_rules_url: https://golangci-lint.run/usage/linters/
     linter_banner_image_url: https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4
     linter_rules_configuration_url: https://golangci-lint.run/usage/configuration/#config-file
     linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint

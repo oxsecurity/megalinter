@@ -8,6 +8,7 @@ linters:
   - linter_name: dockerfilelint
     name: DOCKERFILE_DOCKERFILELINT
     linter_url: https://github.com/replicatedhq/dockerfilelint
+    linter_rules_url: https://github.com/replicatedhq/dockerfilelint#checks-performed
     linter_rules_configuration_url: https://github.com/replicatedhq/dockerfilelint#configuring
     config_file_name: .dockerfilelintrc
     cli_config_arg_name: ""
@@ -20,6 +21,7 @@ linters:
   - linter_name: hadolint
     name: DOCKERFILE_HADOLINT
     linter_url: https://github.com/hadolint/hadolint
+    linter_rules_url: https://github.com/hadolint/hadolint#rules
     linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png
     linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores

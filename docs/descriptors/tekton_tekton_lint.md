@@ -7,6 +7,7 @@
 - Version in Mega-Linter: **0.5.2**
 - Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme)
 - See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint)
+- See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules)
 
 [![tekton-lint - GitHub](https://gh-card.dev/repos/IBM/tekton-lint.svg?fullname=)](https://github.com/IBM/tekton-lint)
 

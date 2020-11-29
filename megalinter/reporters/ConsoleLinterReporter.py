@@ -26,7 +26,7 @@ class ConsoleLinterReporter(Reporter):
         if self.master.descriptor_id != self.master.name:
             msg += [f"- Mega-Linter key: [{self.master.name}]"]
         if self.master.config_file is not None:
-            msg += [f"- Rules config: [{self.master.config_file}"]
+            msg += [f"- Rules config: [{self.master.config_file}]"]
         else:
             msg += [f"- Rules config: identified by [{self.master.linter_name}]"]
         logging.info("\n".join(msg))
@@ -44,17 +44,11 @@ class ConsoleLinterReporter(Reporter):
                 logging.error(line)
                 logging.error(f"--Error detail:\n{res['stdout']}")
         # Output linter status
+        base_phrase = f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]"
+        elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
         if self.master.return_code == 0 and self.master.status == "success":
-            logging.info(
-                f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}] successfully"
-            )
+            logging.info(f"{base_phrase} successfully - ({elapse})")
         elif self.master.return_code == 0 and self.master.status != "success":
-            logging.warning(
-                f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]: "
-                + "Found non blocking error(s)"
-            )
+            logging.warning(f"{base_phrase}: Found non blocking error(s) - ({elapse})")
         elif self.master.return_code != 0 and self.master.status != "success":
-            logging.error(
-                f"Linted [{self.master.descriptor_id}] files with [{self.master.linter_name}]: "
-                + "Found error(s)"
-            )
+            logging.error(f"{base_phrase}: Found error(s) - ({elapse})")

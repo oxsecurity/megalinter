@@ -9,6 +9,7 @@
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure)
   - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml) will be used
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores)
+- See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules)
 
 [![hadolint - GitHub](https://gh-card.dev/repos/hadolint/hadolint.svg?fullname=)](https://github.com/hadolint/hadolint)
 

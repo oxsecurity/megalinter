@@ -16,6 +16,8 @@ REPO_HOME_DEFAULT = (
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 )
 
+ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
+
 
 def list_excluded_directories():
     excluded_dirs = [
@@ -173,16 +175,10 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
             reporter = reporter_class(reporter_init_params)
             scope_reporters += [reporter]
     # Keep only active reporters
-    skipped_reporters = []
     for reporter in scope_reporters:
         if reporter.is_active is False:
-            skipped_reporters += [reporter.name]
             continue
         reporters += [reporter]
-    # Display skipped reporters in log
-    if len(skipped_reporters) > 0:
-        skipped_reporters.sort()
-        logging.debug("Skipped reporters:  " + ", ".join(skipped_reporters))
     # Sort reporters by name
     reporters.sort(key=lambda x: x.name)
     return reporters
@@ -220,7 +216,11 @@ def list_updated_files(repo_home):
     try:
         repo = git.Repo(repo_home)
     except git.InvalidGitRepositoryError:
-        repo = git.Repo(REPO_HOME_DEFAULT)
+        try:
+            repo = git.Repo(REPO_HOME_DEFAULT)
+        except git.InvalidGitRepositoryError:
+            logging.warning("Unable to find git repository to list updated files")
+            return []
     changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
 
@@ -236,7 +236,8 @@ def check_updated_file(file, repo_home):
 
 def normalize_log_string(str_in):
     return (
-        str_in.replace("/tmp/lint/", "")
+        ANSI_ESCAPE_REGEX.sub("", str_in)  # Remove ANSI escape sequences (ANSI colors)
+        .replace("/tmp/lint/", "")
         .replace("tmp/lint/", "")
         .replace("/github/workspace/", "")
         .replace("github/workspace/", "")

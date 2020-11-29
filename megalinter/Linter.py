@@ -27,6 +27,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+from time import perf_counter
 
 import megalinter
 
@@ -128,12 +129,27 @@ class Linter:
         self.manage_activation(params)
 
         if self.is_active is True:
-            self.apply_fixes = (
-                True
-                if params.get("apply_fixes", "none") == "all"
-                or self.name in params.get("apply_fixes", "").split(",")
-                else False
-            )
+            self.show_elapsed_time = params.get("show_elapsed_time", False)
+            # Manage apply fixes flag on linter
+            param_apply_fixes = params.get("apply_fixes", "none")
+            if param_apply_fixes == "all" or (
+                isinstance(param_apply_fixes, bool) and param_apply_fixes is True
+            ):
+                self.apply_fixes = True
+            elif (
+                param_apply_fixes != "none"
+                and isinstance(param_apply_fixes, str)
+                and self.name in param_apply_fixes.split(",")
+            ):
+                self.apply_fixes = True
+            elif (
+                param_apply_fixes != "none"
+                and isinstance(param_apply_fixes, list)
+                and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
+            ):
+                self.apply_fixes = True
+            else:
+                self.apply_fixes = False
 
             # Config items
             self.linter_rules_path = (
@@ -200,6 +216,8 @@ class Linter:
             self.number_errors = 0
             self.number_fixed = 0
             self.files_lint_results = []
+            self.start_perf = None
+            self.elapsed_time_s = None
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -316,6 +334,7 @@ class Linter:
 
     # Processes the linter
     def run(self):
+        self.start_perf = perf_counter()
         # Apply actions defined on Linter class if defined
         self.before_lint_files()
 
@@ -379,8 +398,10 @@ class Linter:
         if self.return_code != 0 and self.disable_errors is True:
             self.return_code = 0
         # Generate linter reports
+        self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             reporter.produce_report()
+        return self
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):

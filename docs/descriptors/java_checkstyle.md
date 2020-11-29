@@ -14,6 +14,7 @@
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
   - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
 - See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
+- See [Index of problems detected by checkstyle](https://checkstyle.sourceforge.io/checks.html)
 
 [![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle)
 

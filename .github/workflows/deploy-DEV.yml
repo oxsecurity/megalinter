@@ -16,9 +16,10 @@
 #############################
 # Start the job on all push #
 #############################
+name: "Build & Deploy - DEV"
 on:
   push:
-    branches-ignore: [master]
+    branches-ignore: [master, alpha]
   pull_request:
     branches-ignore: []
 
@@ -26,6 +27,15 @@ on:
 # Set the Job #
 ###############
 jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  cancel_duplicates:
+    name: Cancel duplicate jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+
   build:
     # Name the Job
     name: Tests + Deploy Docker Image - DEV
@@ -99,3 +109,16 @@ jobs:
             mega-linter.log
             linter-helps.json
             linter-versions.json
+
+      # Test mega-linter-runner with newly created image
+      - name: Setup Node
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: "12"
+      - name: Install NPM dependencies
+        if: ${{ success() }} || ${{ failure() }}
+        run: cd mega-linter-runner && sudo npm ci && sudo npm link
+      - name: Run mega-linter-runner tests
+        if: ${{ success() }} || ${{ failure() }}
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{github.sha}} MEGALINTER_NO_DOCKER_PULL=true npm run test

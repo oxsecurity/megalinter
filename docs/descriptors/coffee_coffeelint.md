@@ -9,6 +9,7 @@
 - See [How to configure coffeelint rules](http://www.coffeelint.org/#options)
   - If custom .coffee-lint.json is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json) will be used
 - See [How to disable coffeelint rules in files](http://www.coffeelint.org/#options)
+- See [Index of problems detected by coffeelint](http://www.coffeelint.org/#options)
 
 [![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint)
 

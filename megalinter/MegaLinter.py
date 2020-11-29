@@ -6,6 +6,7 @@ Main Mega-Linter class, encapsulating all linters process and reporting
 
 import collections
 import logging
+import multiprocessing as mp
 import os
 import re
 import sys
@@ -13,8 +14,17 @@ import sys
 import git
 import terminaltables
 from megalinter import config, utils
+from multiprocessing_logging import install_mp_handler
 
 
+# Function to run linters using multiprocessing pool
+def run_linters(linters):
+    for linter in linters:
+        linter.run()
+    return linters
+
+
+# Main Mega-Linter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
 
     # Constructor: Load global config, linters & compute file extensions
@@ -54,7 +64,11 @@ class Megalinter:
         self.disable_descriptors = config.get_list("DISABLE", [])
         self.disable_linters = config.get_list("DISABLE_LINTERS", [])
         self.manage_default_linter_activation()
-        self.apply_fixes = config.get("APPLY_FIXES", "none")
+        self.apply_fixes = config.get_list("APPLY_FIXES", "none")
+        self.show_elapsed_time = (
+            config.get("SHOW_ELAPSED_TIME", "false") == "true"
+            or config.get("LOG_LEVEL", "DEBUG") == "DEBUG"
+        )
         # Load optional configuration
         self.load_config_vars()
         # Runtime properties
@@ -64,6 +78,7 @@ class Megalinter:
         self.file_names = []
         self.status = "success"
         self.return_code = 0
+        self.has_updated_sources = 0
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -96,19 +111,79 @@ class Megalinter:
             logging.info(table_line)
         logging.info("")
 
-        # Run linters
+        # Process linters serial or parallel according to configuration
+        active_linters = []
+        linters_do_fixes = False
         for linter in self.linters:
             if linter.is_active is True:
-                linter.run()
-                if linter.status != "success":
-                    self.status = "error"
-                if linter.return_code != 0:
-                    self.return_code = linter.return_code
+                active_linters += [linter]
+                if linter.apply_fixes is True:
+                    linters_do_fixes = True
+        if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
+            self.process_linters_parallel(active_linters, linters_do_fixes)
+        else:
+            self.process_linters_serial(active_linters, linters_do_fixes)
+
+        # Update main Mega-Linter status according to results of linters run
+        for linter in self.linters:
+            if linter.status != "success":
+                self.status = "error"
+            if linter.return_code != 0:
+                self.return_code = linter.return_code
+            if linter.number_fixed > 0:
+                self.has_updated_sources = 1
+
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
         # Manage return code
         self.check_results()
+
+    # noinspection PyMethodMayBeStatic
+    def process_linters_serial(self, active_linters, _linters_do_fixes):
+        for linter in active_linters:
+            linter.run()
+
+    def process_linters_parallel(self, active_linters, linters_do_fixes):
+        linter_groups = []
+        if linters_do_fixes is True:
+            # Group linters by descriptor, to avoid different linters to update files at the same time
+            linters_by_descriptor = {}
+            for linter in active_linters:
+                descriptor_active_linters = linters_by_descriptor.get(
+                    linter.descriptor_id, []
+                )
+                descriptor_active_linters += [linter]
+                linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
+            for _descriptor_id, linters in linters_by_descriptor.items():
+                linter_groups += [linters]
+        else:
+            # If no fixes are applied, we don't care to run same languages linters at the same time
+            for linter in active_linters:
+                linter_groups += [[linter]]
+        # Execute linters in asynchronous pool to improve overall performances
+        install_mp_handler()
+        pool = mp.Pool(mp.cpu_count())
+        pool_results = []
+        # Add linter groups to pool
+        for linter_group in linter_groups:
+            logging.debug(
+                linter_group[0].descriptor_id
+                + ": "
+                + str([o.linter_name for o in linter_group])
+            )
+            result = pool.apply_async(run_linters, args=[linter_group])
+            pool_results += [result]
+        pool.close()
+        pool.join()
+        # Update self.linters objects with results from async processing
+        for pool_result in pool_results:
+            updated_linters = pool_result.get()
+            for updated_linter in updated_linters:
+                for i in range(0, len(self.linters)):
+                    if self.linters[i].name == updated_linter.name:
+                        self.linters[i] = updated_linter
+                        break
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self):
@@ -216,6 +291,7 @@ class Megalinter:
             "github_workspace": self.github_workspace,
             "report_folder": self.report_folder,
             "apply_fixes": self.apply_fixes,
+            "show_elapsed_time": self.show_elapsed_time,
         }
 
         # Build linters from descriptor files
@@ -253,65 +329,20 @@ class Megalinter:
 
     # Collect list of files matching extensions and regex
     def collect_files(self):
-        all_files = list()
+        # Collect not filtered list of files
         if self.validate_all_code_base is False:
-            # List all updated files from git
-            logging.info(
-                "Listing updated files in ["
-                + self.github_workspace
-                + "] using git diff, then filter with:"
-            )
-            repo = git.Repo(os.path.realpath(self.github_workspace))
-            default_branch = config.get("DEFAULT_BRANCH", "master")
-            current_branch = config.get("GITHUB_SHA", "")
-            if current_branch == "":
-                current_branch = repo.active_branch.commit.hexsha
             try:
-                repo.git.pull()
-            except git.GitCommandError:
-                try:
-                    repo.git.checkout(current_branch)
-                    repo.git.pull()
-                except git.GitCommandError:
-                    logging.info(
-                        f"Warning: Unable to pull current branch {current_branch}"
-                    )
-            repo.git.checkout(default_branch)
-            diff = repo.git.diff(f"{default_branch}...{current_branch}", name_only=True)
-            repo.git.checkout(current_branch)
-            logging.info(f"Git diff :\n{diff}")
-            for diff_line in diff.splitlines():
-                if os.path.isfile(self.workspace + os.path.sep + diff_line):
-                    all_files += [self.workspace + os.path.sep + diff_line]
+                all_files = self.list_files_git_diff()
+            except git.InvalidGitRepositoryError as git_err:
+                logging.warning(
+                    "Unable to list updated files from git diff. Switch to VALIDATE_ALL_CODE_BASE=true"
+                )
+                logging.debug(f"git error: {str(git_err)}")
+                all_files = self.list_files_all()
         else:
-            # List all files under workspace root directory
-            logging.info(
-                "Listing all files in directory ["
-                + self.workspace
-                + "], then filter with:"
-            )
-            all_files += [
-                os.path.join(self.workspace, file)
-                for file in sorted(os.listdir(self.workspace))
-                if os.path.isfile(os.path.join(self.workspace, file))
-            ]
-            if logging.getLogger().isEnabledFor(logging.DEBUG):
-                logging.debug("Root dir content:\n" + "\n- ".join(all_files))
-            excluded_directories = utils.list_excluded_directories()
-            for (dirpath, dirnames, filenames) in os.walk(self.workspace):
-                exclude = False
-                for dir1 in dirnames:
-                    if dir1 in excluded_directories:
-                        exclude = True
-                        logging.debug(f"Excluded directory ${dir1}")
-                if exclude is False:
-                    all_files += [
-                        os.path.join(dirpath, file) for file in sorted(filenames)
-                    ]
-            all_files = sorted(set(all_files))
-            logging.debug(
-                "All found files before filtering:\n" + "\n- ".join(all_files)
-            )
+            all_files = self.list_files_all()
+        all_files = sorted(set(all_files))
+        logging.debug("All found files before filtering:\n" + "\n- ".join(all_files))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
             logging.info("- File extensions: " + ", ".join(self.file_extensions))
@@ -342,7 +373,6 @@ class Megalinter:
                 filtered_files += [file]
             elif "*" in self.file_extensions:
                 filtered_files += [file]
-
         logging.info(
             "Kept ["
             + str(len(filtered_files))
@@ -350,12 +380,65 @@ class Megalinter:
             + str(len(all_files))
             + "] found files"
         )
-
         # Collect matching files for each linter
         for linter in self.linters:
             linter.collect_files(filtered_files)
             if len(linter.files) == 0 and linter.lint_all_files is False:
                 linter.is_active = False
+
+    def list_files_git_diff(self):
+        # List all updated files from git
+        logging.info(
+            "Listing updated files in ["
+            + self.github_workspace
+            + "] using git diff, then filter with:"
+        )
+        repo = git.Repo(os.path.realpath(self.github_workspace))
+        default_branch = config.get("DEFAULT_BRANCH", "master")
+        current_branch = config.get("GITHUB_SHA", "")
+        if current_branch == "":
+            current_branch = repo.active_branch.commit.hexsha
+        try:
+            repo.git.pull()
+        except git.GitCommandError:
+            try:
+                repo.git.checkout(current_branch)
+                repo.git.pull()
+            except git.GitCommandError:
+                logging.info(f"Warning: Unable to pull current branch {current_branch}")
+        repo.git.checkout(default_branch)
+        diff = repo.git.diff(f"{default_branch}...{current_branch}", name_only=True)
+        repo.git.checkout(current_branch)
+        logging.info(f"Git diff :\n{diff}")
+        all_files = list()
+        for diff_line in diff.splitlines():
+            if os.path.isfile(self.workspace + os.path.sep + diff_line):
+                all_files += [self.workspace + os.path.sep + diff_line]
+        return all_files
+
+    def list_files_all(self):
+        # List all files under workspace root directory
+        logging.info(
+            "Listing all files in directory [" + self.workspace + "], then filter with:"
+        )
+        all_files = [
+            os.path.join(self.workspace, file)
+            for file in sorted(os.listdir(self.workspace))
+            if os.path.isfile(os.path.join(self.workspace, file))
+        ]
+        if logging.getLogger().isEnabledFor(logging.DEBUG):
+            logging.debug("Root dir content:\n" + "\n- ".join(all_files))
+        excluded_directories = utils.list_excluded_directories()
+        for (dirpath, _dirnames, filenames) in os.walk(self.workspace):
+            exclude = False
+            for dir1 in dirpath.split(os.path.sep):
+                if dir1 in excluded_directories:
+                    exclude = True
+                    break
+            if exclude is True:
+                continue
+            all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
+        return all_files
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
@@ -377,7 +460,7 @@ class Megalinter:
             self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
         )
         if not os.path.isdir(os.path.dirname(log_file)):
-            os.makedirs(os.path.dirname(log_file))
+            os.makedirs(os.path.dirname(log_file), exist_ok=True)
         logging.basicConfig(
             force=True,
             level=logging_level,
@@ -414,11 +497,15 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
+        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
             logging.info("Successfully linted all files without errors")
             config.delete()
         else:
             logging.error("Error(s) have been found during linting")
+            logging.warning("To disable linters or customize their checks, you can use a .mega-linter.yml file"
+                            "at the root of your repository")
+            logging.warning("More info at https://nvuillam.github.io/mega-linter/#configuration")
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":
                     config.delete()

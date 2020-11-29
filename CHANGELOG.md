@@ -4,13 +4,48 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Fix issue about mkdirs failing
+- Update default workflow to get ride of has_updates action (replace by output `has_updated_files` from mega-linter github action)
+- Avoid duplicate runs in mega-linter.yml template and internal workflows, using [skip-duplicate-actions](https://github.com/fkirc/skip-duplicate-actions)
+- Give a proper name to each internal workflow
+
+## [4.11.0] 2020-11-29
+
+- Manage parallel processing of linters to improve performances
+
+## [4.10.1] 2020-11-28
+
+- Fallback to default behaviours instead of crashes when git not available
+
+- mega-linter-runner
+  - Allow to send env parameters to mega-linter-runner cli
+  - Add examples in documentation
+  - Publish mega-linter-runner beta version when pushing in master branch
+
+## [4.10.0] 2020-11-23
+
+- Add link to linters rules index in documentation
+- Remove ANSI color codes from log files
+- Add performances by linter in console log
+- New option **SHOW_ELAPSED_TIME** , allowing the number of seconds elapsed by linter in reports
+
+- NPM package **Mega-Linter runner**
+  - runs Mega-Linter locally, using .mega-linter.yml configuration (requires docker installed on your computer)
+  - test cases added in CI
+
+## [4.9.0] 2020-11-23
+
 - Core
   - Allow configuration to be defined in a `.mega-linter.yml` file
 
 - Linters
   - Add Gherkin (Cucumber language) & gherkin-lint
+  - Add RST linter : [rst-lint](https://github.com/twolfson/restructuredtext-lint)
+  - Add RST linter : [rstcheck](https://github.com/myint/rstcheck)
+  - Add RST formatter : [rstfmt](https://github.com/dzhu/rstfmt)
   - Activate formatting for BASH_SHFMT
   - Activate formatting for SNAKEMAKE_SNAKEFMT
+  - JsCpd: remove copy-paste HTML folder when no abuse copy-paste has been found
 
 - Logs
   - Store log files as artifacts during test cases
@@ -22,7 +57,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Generate GitHub card on linter doc when available
   - Store link preview info during build
 
-## [4.8.0]
+## [4.8.0] 2020-11-17
 
 - New reporter: [Updated sources](https://nvuillam.github.io/mega-linter/reporters/UpdatedSourcesReporter/)
 

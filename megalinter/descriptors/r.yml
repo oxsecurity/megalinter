@@ -10,6 +10,7 @@ linters:
   - class: RLinter
     linter_name: lintr
     linter_url: https://github.com/jimhester/lintr
+    linter_rules_url: https://github.com/jimhester/lintr#available-linters
     linter_rules_configuration_url: https://github.com/jimhester/lintr#project-configuration
     config_file_name: .lintr
     examples:

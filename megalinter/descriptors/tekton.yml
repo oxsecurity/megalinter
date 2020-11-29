@@ -9,6 +9,7 @@ linters:
   # TEKTON-LINT
   - linter_name: tekton-lint
     linter_url: https://github.com/IBM/tekton-lint
+    linter_rules_url: https://github.com/IBM/tekton-lint#rules
     linter_rules_configuration_url: https://github.com/IBM/tekton-lint#configuring-tekton-lint
     config_file_name: .tektonlintrc.yaml
     cli_config_arg_name: ""

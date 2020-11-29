@@ -54,7 +54,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
     ide:
       atom:
         - name: linter-phpcs
@@ -75,7 +75,8 @@ linters:
   # PHP Stan
   - linter_name: phpstan
     name: PHP_PHPSTAN
-    linter_url: https://github.com/phpstan/phpstan
+    linter_url: https://phpstan.org/
+    linter_repo: https://github.com/phpstan/phpstan
     linter_image_url: https://i.imgur.com/MOt7taM.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
@@ -92,7 +93,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -105,6 +106,7 @@ linters:
     name: PHP_PSALM
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
+    linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
     linter_banner_image_url: https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1
     linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
@@ -116,7 +118,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+          RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
