@@ -59,7 +59,7 @@ jobs:
             mega-linter.log
 
       # TO DELETE
-      - run: 'echo "Updated sources flag: {{ steps.ml.outputs.has_updated_sources }}"'
+      - run: 'echo "Updated sources flag: ${{ steps.ml.outputs.has_updated_sources }}"'
 
       # Create pull request if applicable
       - name: Create Pull Request with applied fixes
