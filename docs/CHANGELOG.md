@@ -9,7 +9,6 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Avoid duplicate runs in mega-linter.yml template and internal workflows, using [skip-duplicate-actions](https://github.com/fkirc/skip-duplicate-actions)
 - Give a proper name to each internal workflow
 
-
 ## [4.11.0] 2020-11-29
 
 - Manage parallel processing of linters to improve performances

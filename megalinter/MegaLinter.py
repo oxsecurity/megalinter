@@ -503,9 +503,13 @@ class Megalinter:
             config.delete()
         else:
             logging.error("Error(s) have been found during linting")
-            logging.warning("To disable linters or customize their checks, you can use a .mega-linter.yml file"
-                            "at the root of your repository")
-            logging.warning("More info at https://nvuillam.github.io/mega-linter/#configuration")
+            logging.warning(
+                "To disable linters or customize their checks, you can use a .mega-linter.yml file"
+                "at the root of your repository"
+            )
+            logging.warning(
+                "More info at https://nvuillam.github.io/mega-linter/#configuration"
+            )
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":
                     config.delete()
