@@ -27,7 +27,6 @@ jobs:
 
   # Run Mega-Linter
   build:
-    needs: pre_job
     name: Mega-Linter
     runs-on: ubuntu-latest
     steps:
