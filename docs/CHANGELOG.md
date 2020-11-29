@@ -4,10 +4,13 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Fix issue about mkdirs failing
-- Update default workflow to get ride of has_updates action (replace by output `has_updated_files` from mega-linter github action)
-- Avoid duplicate runs in mega-linter.yml template and internal workflows, using [skip-duplicate-actions](https://github.com/fkirc/skip-duplicate-actions)
-- Give a proper name to each internal workflow
+## [4.12.0] 2020-11-29
+
+- Performances
+  - Update default workflow to get ride of has_updates action (replace by output `has_updated_files` from mega-linter github action)
+  - Avoid duplicate runs in mega-linter.yml template and internal workflows, using [skip-duplicate-actions](https://github.com/fkirc/skip-duplicate-actions)
+  - Give a proper name to each internal workflow
+  - Fix issue about mkdirs failing
 
 ## [4.11.0] 2020-11-29
 
