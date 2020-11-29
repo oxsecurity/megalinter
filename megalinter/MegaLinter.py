@@ -50,7 +50,7 @@ class Megalinter:
             )
         )
         # User-defined rules location
-        self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
+        self.linter_rules_path = self.github_workspace+os.path.sep + ".github/linters"
 
         self.validate_all_code_base = True
         self.filter_regex_include = None
