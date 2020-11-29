@@ -18,8 +18,8 @@ env: #Uncomment to activate variables below
 
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  remove_duplicates:
-    name: Remove duplicate jobs
+  cancel_duplicates:
+    name: Cancel duplicate jobs
     runs-on: ubuntu-latest
     steps:
       - uses: fkirc/skip-duplicate-actions@master

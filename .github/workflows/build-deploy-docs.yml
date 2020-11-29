@@ -5,7 +5,8 @@ on:
       - master
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  pre_job:
+  cancel_duplicates:
+    name: Cancel duplicate jobs
     runs-on: ubuntu-latest
     steps:
       - uses: fkirc/skip-duplicate-actions@master
@@ -13,7 +14,6 @@ jobs:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: pre_job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

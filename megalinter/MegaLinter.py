@@ -124,7 +124,7 @@ class Megalinter:
         else:
             self.process_linters_serial(active_linters, linters_do_fixes)
 
-        # Update main Mega-Linter status according to results of linters run looooooooooooooooooooooooooooooooooooooooooooooooooooooong
+        # Update main Mega-Linter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
                 self.status = "error"
