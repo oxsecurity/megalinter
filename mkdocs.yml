@@ -48,6 +48,7 @@ nav:
           - "Run Mega-Linter locally": "mega-linter-runner.md"
     - "Configuration": "./#configuration"
     - "Languages":
+      - "index": "./#languages"
           # language-start
       - "BASH":
           - "index": "descriptors/bash.md"
@@ -142,6 +143,7 @@ nav:
           - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
 # language-end
     - "Formats":
+      - "index": "./#formats"
           # format-start
       - "CSS":
           - "index": "descriptors/css.md"
@@ -182,6 +184,7 @@ nav:
           - "yamllint": "descriptors/yaml_yamllint.md"
 # format-end
     - "Tooling Formats":
+      - "index": "./#tooling-formats"
           # tooling_format-start
       - "ANSIBLE":
           - "index": "descriptors/ansible.md"
@@ -225,6 +228,7 @@ nav:
           - "terragrunt": "descriptors/terraform_terragrunt.md"
 # tooling_format-end
     - "Other checks":
+      - "index": "./#other"
           # other-start
       - "COPYPASTE":
           - "index": "descriptors/copypaste.md"
