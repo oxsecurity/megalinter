@@ -374,15 +374,15 @@ RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wge
 RUN echo "No additional install for PHP built-in linter"
 
 # phpcs installation
-RUN phive install phpcs -g --no-progress --trust-gpg-keys 31C7E470E2138192
+RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 
 # phpstan installation
-RUN phive install phpstan -g --no-progress --trust-gpg-keys CF1A108D0E7AE720
+RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 
 
 # psalm installation
-RUN phive install psalm -g --no-progress --trust-gpg-keys 8A03EA3B385DBAA1
+RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 
 
 # powershell installation

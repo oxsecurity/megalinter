@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.11.0] 2020-11-29
+
 - Manage parallel processing of linters to improve performances
 
 ## [4.10.1] 2020-11-28

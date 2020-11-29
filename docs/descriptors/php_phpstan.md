@@ -107,7 +107,7 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 # Linter install
-RUN phive install phpstan -g --no-progress --trust-gpg-keys CF1A108D0E7AE720
+RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 
 ```
 
