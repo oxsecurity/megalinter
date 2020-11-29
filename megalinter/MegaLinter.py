@@ -6,15 +6,25 @@ Main Mega-Linter class, encapsulating all linters process and reporting
 
 import collections
 import logging
+import multiprocessing as mp
 import os
 import re
 import sys
 
 import git
 import terminaltables
+from multiprocessing_logging import install_mp_handler
 from megalinter import config, utils
 
 
+# Function to run linters using multiprocessing pool
+def run_linters(linters):
+    for linter in linters:
+        linter.run()
+    return linters
+
+
+# Main Mega-Linter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
 
     # Constructor: Load global config, linters & compute file extensions
@@ -100,19 +110,71 @@ class Megalinter:
             logging.info(table_line)
         logging.info("")
 
-        # Run linters
+        # Process linters serial or parallel according to configuration
+        active_linters = []
+        linters_do_fixes = False
         for linter in self.linters:
             if linter.is_active is True:
-                linter.run()
-                if linter.status != "success":
-                    self.status = "error"
-                if linter.return_code != 0:
-                    self.return_code = linter.return_code
+                active_linters += [linter]
+                if linter.apply_fixes is True:
+                    linters_do_fixes = True
+        if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
+            self.process_linters_parallel(active_linters, linters_do_fixes)
+        else:
+            self.process_linters_serial(active_linters, linters_do_fixes)
+
+        # Update main linter status if linter is not in success
+        for linter in self.linters:
+            if linter.status != "success":
+                self.status = "error"
+            if linter.return_code != 0:
+                self.return_code = linter.return_code
+
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
         # Manage return code
         self.check_results()
+
+    # noinspection PyMethodMayBeStatic
+    def process_linters_serial(self, active_linters, _linters_do_fixes):
+        for linter in active_linters:
+            linter.run()
+
+    def process_linters_parallel(self, active_linters, linters_do_fixes):
+        linter_groups = []
+        if linters_do_fixes is True:
+            # Group linters by descriptor, to avoid different linters to update files at the same time
+            linters_by_descriptor = {}
+            for linter in active_linters:
+                descriptor_active_linters = linters_by_descriptor.get(linter.descriptor_id, [])
+                descriptor_active_linters += [linter]
+                linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
+            for _descriptor_id, linters in linters_by_descriptor.items():
+                linter_groups += [linters]
+        else:
+            # If no fixes are applied, we don't care to run same languages linters at the same time
+            for linter in active_linters:
+                linter_groups += [[linter]]
+        # Execute linters in asynchronous pool to improve overall performances
+        install_mp_handler()
+        pool = mp.Pool(mp.cpu_count())
+        pool_results = []
+        # Add linter groups to pool
+        for linter_group in linter_groups:
+            logging.debug(linter_group[0].descriptor_id + ": " + str([o.linter_name for o in linter_group]))
+            result = pool.apply_async(run_linters, args=[linter_group])
+            pool_results += [result]
+        pool.close()
+        pool.join()
+        # Update self.linters objects with results from async processing
+        for pool_result in pool_results:
+            updated_linters = pool_result.get()
+            for updated_linter in updated_linters:
+                for i in range(0, len(self.linters)):
+                    if self.linters[i].name == updated_linter.name:
+                        self.linters[i] = updated_linter
+                        break
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self):

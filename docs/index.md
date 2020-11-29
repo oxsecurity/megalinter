@@ -219,6 +219,7 @@ jobs:
           # https://nvuillam.github.io/mega-linter/#configuration
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
           # ADD YOUR CUSTOM ENV VARIABLES HERE
 
@@ -369,6 +370,7 @@ report/
 | **LOG_FILE**                      | `mega-linter.log`     | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                 |
 | **LOG_LEVEL**                     | `INFO`                | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
 | **OUTPUT_FOLDER**                 | `report`              | The location where the output reporting will be generated to.                                                                                                                    |
+| **PARALLEL**                      | `true`                | Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |                                                                           |
 | **SHOW_ELAPSED_TIME**             | `false`               | Displays elapsed time in reports                                                                                                                                                 |
 | **VALIDATE_ALL_CODEBASE**         | `true`                | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation. |
 
