@@ -460,7 +460,7 @@ class Megalinter:
             self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
         )
         if not os.path.isdir(os.path.dirname(log_file)):
-            os.makedirs(os.path.dirname(log_file))
+            os.makedirs(os.path.dirname(log_file), exist_ok=True)
         logging.basicConfig(
             force=True,
             level=logging_level,
