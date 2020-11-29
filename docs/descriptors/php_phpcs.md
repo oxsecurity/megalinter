@@ -149,7 +149,7 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 # Linter install
-RUN phive install phpcs -g --trust-gpg-keys 31C7E470E2138192
+RUN phive install phpcs -g --no-progress --trust-gpg-keys 31C7E470E2138192
 
 ```
 

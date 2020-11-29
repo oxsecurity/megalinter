@@ -13,8 +13,8 @@ import sys
 
 import git
 import terminaltables
-from multiprocessing_logging import install_mp_handler
 from megalinter import config, utils
+from multiprocessing_logging import install_mp_handler
 
 
 # Function to run linters using multiprocessing pool
@@ -147,7 +147,9 @@ class Megalinter:
             # Group linters by descriptor, to avoid different linters to update files at the same time
             linters_by_descriptor = {}
             for linter in active_linters:
-                descriptor_active_linters = linters_by_descriptor.get(linter.descriptor_id, [])
+                descriptor_active_linters = linters_by_descriptor.get(
+                    linter.descriptor_id, []
+                )
                 descriptor_active_linters += [linter]
                 linters_by_descriptor[linter.descriptor_id] = descriptor_active_linters
             for _descriptor_id, linters in linters_by_descriptor.items():
@@ -162,7 +164,11 @@ class Megalinter:
         pool_results = []
         # Add linter groups to pool
         for linter_group in linter_groups:
-            logging.debug(linter_group[0].descriptor_id + ": " + str([o.linter_name for o in linter_group]))
+            logging.debug(
+                linter_group[0].descriptor_id
+                + ": "
+                + str([o.linter_name for o in linter_group])
+            )
             result = pool.apply_async(run_linters, args=[linter_group])
             pool_results += [result]
         pool.close()
