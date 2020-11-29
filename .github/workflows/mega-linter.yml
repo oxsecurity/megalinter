@@ -17,16 +17,24 @@ env: #Uncomment to activate variables below
   APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
 jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  pre_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+
+  # Run Mega-Linter job
   build:
+    needs: pre_job
     name: Mega-Linter
     runs-on: ubuntu-latest
     steps:
-      # Git Checkout
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          # Full git history is needed to get a proper list of changed files within `mega-linter`
           fetch-depth: 0
 
       # Mega-Linter
