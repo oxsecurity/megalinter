@@ -40,7 +40,7 @@ jobs:
       # Mega-Linter
       - name: Mega-Linter
         id: ml
-        uses: nvuillam/mega-linter@insiders
+        uses: nvuillam/mega-linter@alpha
         env:
           # All available variables are described in documentation
           # https://nvuillam.github.io/mega-linter/#shared-variables
