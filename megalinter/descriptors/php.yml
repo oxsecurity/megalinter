@@ -54,7 +54,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive install phpcs -g --trust-gpg-keys 31C7E470E2138192
+          RUN phive install phpcs -g --no-progress --trust-gpg-keys 31C7E470E2138192
     ide:
       atom:
         - name: linter-phpcs
@@ -93,7 +93,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+          RUN phive install phpstan -g --no-progress --trust-gpg-keys CF1A108D0E7AE720
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -118,7 +118,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+          RUN phive install psalm -g --no-progress --trust-gpg-keys 8A03EA3B385DBAA1
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
