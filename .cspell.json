@@ -606,6 +606,7 @@
         "mgood",
         "midrule",
         "mkdir",
+        "mkdirs",
         "mkdocs",
         "mksh",
         "mlinters",
