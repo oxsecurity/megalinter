@@ -13,6 +13,7 @@ jobs:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
   deploy:
+    needs: pre_job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

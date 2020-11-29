@@ -13,6 +13,7 @@
 #######################################
 # Start the job on all push to master #
 #######################################
+name: "Build & Deploy - PROD"
 on:
   push:
     branches:
@@ -31,6 +32,7 @@ jobs:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
   build:
+    needs: pre_job
     # Name the Job
     name: Deploy Docker Image - PROD
     # Set the agent to run on

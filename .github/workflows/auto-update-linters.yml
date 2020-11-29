@@ -1,4 +1,5 @@
 ---
+name: "Auto-Update Linters"
 on:
   # Run when there is an update in master
   push:

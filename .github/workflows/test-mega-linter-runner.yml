@@ -1,7 +1,6 @@
 ---
-on:
-  push:
-  pull_request:
+name: "Test mega-linter-runner"
+on: [push, pull_request]
 
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
