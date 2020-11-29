@@ -25,7 +25,7 @@ jobs:
         with:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
-  # Run Mega-Linter job
+  # Run Mega-Linter
   build:
     needs: pre_job
     name: Mega-Linter
