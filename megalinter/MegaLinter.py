@@ -78,6 +78,7 @@ class Megalinter:
         self.file_names = []
         self.status = "success"
         self.return_code = 0
+        self.has_updated_sources = 0
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -123,12 +124,14 @@ class Megalinter:
         else:
             self.process_linters_serial(active_linters, linters_do_fixes)
 
-        # Update main linter status if linter is not in success
+        # Update main Mega-Linter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
                 self.status = "error"
             if linter.return_code != 0:
                 self.return_code = linter.return_code
+            if linter.number_fixed > 0:
+                self.has_updated_sources = 1
 
         # Generate reports
         for reporter in self.reporters:
@@ -457,7 +460,7 @@ class Megalinter:
             self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
         )
         if not os.path.isdir(os.path.dirname(log_file)):
-            os.makedirs(os.path.dirname(log_file))
+            os.makedirs(os.path.dirname(log_file), exist_ok=True)
         logging.basicConfig(
             force=True,
             level=logging_level,
@@ -494,11 +497,15 @@ class Megalinter:
         logging.info("")
 
     def check_results(self):
+        print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
             logging.info("Successfully linted all files without errors")
             config.delete()
         else:
             logging.error("Error(s) have been found during linting")
+            logging.warning("To disable linters or customize their checks, you can use a .mega-linter.yml file"
+                            "at the root of your repository")
+            logging.warning("More info at https://nvuillam.github.io/mega-linter/#configuration")
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":
                     config.delete()

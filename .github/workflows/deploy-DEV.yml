@@ -16,6 +16,7 @@
 #############################
 # Start the job on all push #
 #############################
+name: "Build & Deploy - DEV"
 on:
   push:
     branches-ignore: [master, alpha]
@@ -26,6 +27,15 @@ on:
 # Set the Job #
 ###############
 jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  cancel_duplicates:
+    name: Cancel duplicate jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+
   build:
     # Name the Job
     name: Tests + Deploy Docker Image - DEV

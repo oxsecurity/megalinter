@@ -4,17 +4,13 @@
 ## StaleBot for Mega-Linter ##
 ###############################
 ###############################
+name: "Stale[bot]"
 on:
   schedule:
     # every day at 0:00 UTC
     - cron: "0 0 * * *"
   issue_comment:
     types: [created, deleted, edited]
-
-###################
-# Name of the Job #
-###################
-name: "Stale[bot]"
 
 ###############
 # Run the job #

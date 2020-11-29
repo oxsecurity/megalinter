@@ -1,4 +1,5 @@
 ---
+name: "Auto-Update Linters"
 on:
   # Run when there is an update in master
   push:
@@ -13,6 +14,15 @@ on:
 # Set the Job #
 ###############
 jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  cancel_duplicates:
+    name: Cancel duplicate jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+
   build_help_versions:
     # Name the Job
     name: Auto-Update Linters

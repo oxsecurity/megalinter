@@ -71,7 +71,7 @@ class TextReporter(Reporter):
             f"{self.master.status.upper()}-{self.master.name}.log"
         )
         if not os.path.isdir(os.path.dirname(text_file_name)):
-            os.makedirs(os.path.dirname(text_file_name))
+            os.makedirs(os.path.dirname(text_file_name), exist_ok=True)
         with open(text_file_name, "w", encoding="utf-8") as text_file:
             text_file_content = "\n".join(text_report_lines) + "\n"
             text_file.write(text_file_content)
