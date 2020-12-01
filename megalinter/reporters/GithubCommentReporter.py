@@ -160,7 +160,11 @@ class GithubCommentReporter(Reporter):
                         "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
                     )
             if posted is False:
-                logging.warning("GitHub Comment Reporter: No pull request was found, so comment has been posted")
+                logging.warning(
+                    "GitHub Comment Reporter: No pull request was found, so comment has been posted"
+                )
         # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
-            logging.warning("GitHub Comment Reporter: Not GitHub Token found, so skipped post of PR comment")
+            logging.warning(
+                "GitHub Comment Reporter: Not GitHub Token found, so skipped post of PR comment"
+            )
