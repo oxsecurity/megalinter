@@ -12,7 +12,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 1. Clone the repository (only if you have write access)
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
-4. Push and [submit a pull request][pr] (**IMPORTANT:** target **nvuillam/mega-linter** , branch **master** , not the github/super-linter repository)
+4. Push and [submit a pull request][pr]
 5. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
 ### Without write access
@@ -21,7 +21,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
-5. Push to your fork and [submit a pull request][pr] (**IMPORTANT:** target **nvuillam/mega-linter** , branch **master** , not the github/super-linter repository)
+5. Push to your fork and [submit a pull request][pr]
 6. Pat your self on the back and wait for your pull request to be reviewed and merged.
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:

@@ -245,4 +245,5 @@ nav:
           - "Console": "reporters/ConsoleReporter.md"
     - "Mega-Linter badge": "badge.md"
     - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
+    - "Contribute": "how-to-contribute.md"
     - "Changelog": "CHANGELOG.md"
