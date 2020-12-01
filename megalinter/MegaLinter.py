@@ -504,7 +504,7 @@ class Megalinter:
         else:
             logging.error("Error(s) have been found during linting")
             logging.warning(
-                "To disable linters or customize their checks, you can use a .mega-linter.yml file"
+                "To disable linters or customize their checks, you can use a .mega-linter.yml file "
                 "at the root of your repository"
             )
             logging.warning(
