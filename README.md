@@ -2,10 +2,13 @@
 
 <div align="center">
   <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square-small.png" alt="Mega-Linter" height="100px">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
   </a>
 </div>
 
+# Mega-Linter
+
+---
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
