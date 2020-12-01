@@ -13,19 +13,19 @@ You can create it by typing `npx eslint --init` in the root of your repository
 ## eslint documentation
 
 - Version in Mega-Linter: **7.14.0**
-- Visit [Official Web Site](https://eslint.org)
-- See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring)
-- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
-- See [Index of problems detected by eslint](https://eslint.org/docs/rules/)
+- Visit [Official Web Site](https://eslint.org){target=_blank}
+- See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
+- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [Index of problems detected by eslint](https://eslint.org/docs/rules/){target=_blank}
 
-[![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint)
+[![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

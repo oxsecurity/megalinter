@@ -5,17 +5,17 @@
 ## sql-lint documentation
 
 - Version in Mega-Linter: **0.0.15**
-- Visit [Official Web Site](https://github.com/joereynolds/sql-lint#readme)
-- See [How to configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html)
-  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json) will be used
-- See [Index of problems detected by sql-lint](https://github.com/joereynolds/sql-lint#checks)
+- Visit [Official Web Site](https://github.com/joereynolds/sql-lint#readme){target=_blank}
+- See [How to configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html){target=_blank}
+  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json){target=_blank} will be used
+- See [Index of problems detected by sql-lint](https://github.com/joereynolds/sql-lint#checks){target=_blank}
 
-[![sql-lint - GitHub](https://gh-card.dev/repos/joereynolds/sql-lint.svg?fullname=)](https://github.com/joereynolds/sql-lint)
+[![sql-lint - GitHub](https://gh-card.dev/repos/joereynolds/sql-lint.svg?fullname=)](https://github.com/joereynolds/sql-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable sql-lint by adding `SQL_SQL_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable sql-lint by adding `SQL_SQL_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable sql-lint by adding `SQL_SQL_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable sql-lint by adding `SQL_SQL_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

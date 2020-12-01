@@ -5,13 +5,13 @@
 ## xmllint documentation
 
 - Version in Mega-Linter: **20910**
-- Visit [Official Web Site](http://xmlsoft.org/xmllint.html)
-- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics)
+- Visit [Official Web Site](http://xmlsoft.org/xmllint.html){target=_blank}
+- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

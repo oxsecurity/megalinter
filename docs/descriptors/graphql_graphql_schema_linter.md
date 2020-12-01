@@ -5,17 +5,17 @@
 ## graphql-schema-linter documentation
 
 - Version in Mega-Linter: **1.0.1**
-- Visit [Official Web Site](https://github.com/cjoudrey/graphql-schema-linter#readme)
-- See [How to configure graphql-schema-linter rules](https://github.com/cjoudrey/graphql-schema-linter#configuration-file)
-- See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides)
-- See [Index of problems detected by graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter#built-in-rules)
+- Visit [Official Web Site](https://github.com/cjoudrey/graphql-schema-linter#readme){target=_blank}
+- See [How to configure graphql-schema-linter rules](https://github.com/cjoudrey/graphql-schema-linter#configuration-file){target=_blank}
+- See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides){target=_blank}
+- See [Index of problems detected by graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter#built-in-rules){target=_blank}
 
-[![graphql-schema-linter - GitHub](https://gh-card.dev/repos/cjoudrey/graphql-schema-linter.svg?fullname=)](https://github.com/cjoudrey/graphql-schema-linter)
+[![graphql-schema-linter - GitHub](https://gh-card.dev/repos/cjoudrey/graphql-schema-linter.svg?fullname=)](https://github.com/cjoudrey/graphql-schema-linter){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

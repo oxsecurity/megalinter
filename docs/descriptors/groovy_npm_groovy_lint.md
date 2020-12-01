@@ -5,20 +5,20 @@
 ## npm-groovy-lint documentation
 
 - Version in Mega-Linter: **8.0.2**
-- Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/)
-- See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration)
-  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json) will be used
-- See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source)
-- See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html)
+- Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
+- See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
+  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json){target=_blank} will be used
+- See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source){target=_blank}
+- See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html){target=_blank}
 
-[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint)
+[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

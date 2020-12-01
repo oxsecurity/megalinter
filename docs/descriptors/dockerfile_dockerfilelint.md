@@ -5,17 +5,17 @@
 ## dockerfilelint documentation
 
 - Version in Mega-Linter: **1.8.0**
-- Visit [Official Web Site](https://github.com/replicatedhq/dockerfilelint#readme)
-- See [How to configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring)
-  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc) will be used
-- See [Index of problems detected by dockerfilelint](https://github.com/replicatedhq/dockerfilelint#checks-performed)
+- Visit [Official Web Site](https://github.com/replicatedhq/dockerfilelint#readme){target=_blank}
+- See [How to configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring){target=_blank}
+  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc){target=_blank} will be used
+- See [Index of problems detected by dockerfilelint](https://github.com/replicatedhq/dockerfilelint#checks-performed){target=_blank}
 
-[![dockerfilelint - GitHub](https://gh-card.dev/repos/replicatedhq/dockerfilelint.svg?fullname=)](https://github.com/replicatedhq/dockerfilelint)
+[![dockerfilelint - GitHub](https://gh-card.dev/repos/replicatedhq/dockerfilelint.svg?fullname=)](https://github.com/replicatedhq/dockerfilelint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

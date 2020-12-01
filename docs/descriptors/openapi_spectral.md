@@ -10,15 +10,15 @@
 ## spectral documentation
 
 - Version in Mega-Linter: **5.6.0**
-- Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md)
-- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
-  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
-- See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
+- Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
+- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
+  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml){target=_blank} will be used
+- See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

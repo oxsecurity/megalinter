@@ -5,18 +5,18 @@
 ## snakefmt documentation
 
 - Version in Mega-Linter: **0.2.4**
-- Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme)
-- See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration)
-  - If custom .snakefmt.toml is not found, [.snakefmt.toml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.snakefmt.toml) will be used
+- Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
+- See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
+  - If custom .snakefmt.toml is not found, [.snakefmt.toml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.snakefmt.toml){target=_blank} will be used
 
-[![snakefmt - GitHub](https://gh-card.dev/repos/snakemake/snakefmt.svg?fullname=)](https://github.com/snakemake/snakefmt)
+[![snakefmt - GitHub](https://gh-card.dev/repos/snakemake/snakefmt.svg?fullname=)](https://github.com/snakemake/snakefmt){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `SNAKEMAKE_SNAKEFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `SNAKEMAKE_SNAKEFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

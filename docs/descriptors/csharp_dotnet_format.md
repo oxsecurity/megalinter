@@ -5,16 +5,16 @@
 ## dotnet-format documentation
 
 - Version in Mega-Linter: **4.1.131201**
-- Visit [Official Web Site](https://github.com/dotnet/format#readme)
+- Visit [Official Web Site](https://github.com/dotnet/format#readme){target=_blank}
 
-[![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format)
+[![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable dotnet-format by adding `CSHARP_DOTNET_FORMAT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSHARP_DOTNET_FORMAT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `CSHARP_DOTNET_FORMAT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

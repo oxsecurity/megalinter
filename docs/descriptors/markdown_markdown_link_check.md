@@ -4,17 +4,17 @@
 
 ## markdown-link-check documentation
 
-- Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme)
-- See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format)
-  - If custom .markdown-link-check.json is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json) will be used
-- See [How to disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments)
+- Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
+- See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
+  - If custom .markdown-link-check.json is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
+- See [How to disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments){target=_blank}
 
-[![markdown-link-check - GitHub](https://gh-card.dev/repos/tcort/markdown-link-check.svg?fullname=)](https://github.com/tcort/markdown-link-check)
+[![markdown-link-check - GitHub](https://gh-card.dev/repos/tcort/markdown-link-check.svg?fullname=)](https://github.com/tcort/markdown-link-check){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

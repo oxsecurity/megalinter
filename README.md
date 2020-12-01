@@ -14,7 +14,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-**Mega-Linter** analyzes [**37 languages**](#languages), [**15 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate [**reports in several formats**](#reports), and can even [**apply formatting and auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+**Mega-Linter** analyzes [**37 languages**](#languages), [**15 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generate [**reports in several formats**](#reporters), and can even [**apply formatting and auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -48,9 +48,7 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
     - [Filter linted files](#filter-linted-files)
     - [Template rules files](#template-rules-files)
   - [Reporters](#reporters)
-  - [Docker Hub](#docker-hub)
-  - [Add Mega-Linter badge in your repository README](#add-mega-linter-badge-in-your-repository-readme)
-  - [Limitations](#limitations)
+  - [Add Mega-Linter badge in your repository README](#badge)
   - [How to contribute](#how-to-contribute)
   - [License](#license)
   - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
@@ -74,6 +72,7 @@ By using **Mega-Linter**, you ensure that:
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
 - Mega-Linter can run on [**any CI tool**](#installation) and be **run locally**: **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
+<!-- quick-start-section-start -->
 ## Quick Start
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
@@ -87,15 +86,20 @@ By using **Mega-Linter**, you ensure that:
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
 - If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
+<!-- quick-start-section-end -->
 
+<!-- demo-section-start -->
 ## Demo
 
 ![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
+<!-- demo-section-end -->
 
+<!-- supported-linters-section-start -->
 ## Supported Linters
 
-Developers on **GitHub** can call the **GitHub Action** to lint their code base with the following list of linters:
+All linters are integrated in the [Mega-Linter docker image](https://hub.docker.com/r/nvuillam/mega-linter), which is frequently upgraded with their latest versions
 
+<!-- languages-section-start-->
 <!-- linters-table-start -->
 ### Languages
 
@@ -188,7 +192,9 @@ Developers on **GitHub** can call the **GitHub Action** to lint their code base 
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/spell.ico" alt="" height="32px" class="megalinter-icon"></a> | [**SPELL**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell.md#readme) | [cspell](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)| [SPELL_CSPELL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)|  |
 
 <!-- linters-table-end -->
+<!-- supported-linters-section-end -->
 
+<!-- installation-section-start -->
 ## Installation
 
 ### GitHub Action
@@ -331,7 +337,9 @@ megalinter:
 You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration.
 
 See [mega-linter-runner installation instructions](https://nvuillam.github.io/mega-linter/mega-linter-runner/#installation)
+<!-- installation-section-end -->
 
+<!-- configuration-section-start -->
 ## Configuration
 
 Mega-Linter configuration variables can be defined with **environment variables** or in a **.mega-linter.yml** file at the root of the repository.
@@ -427,7 +435,9 @@ You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets
 
 - Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
   - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES), or to linter defaults
+<!-- configuration-section-end -->
 
+<!-- reporters-section-start -->
 ## Reporters
 
 Mega-Linter can generate various reports that you can activate / deactivate and customize
@@ -440,49 +450,62 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 | [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md) | One GitHub status by linter on the PR, with links to detailed logs | Active if GitHub Action |
 | [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md) | One log file by linter following [Test Anything Protocol](https://testanything.org/) format | Active |
 | [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md) | Execution logs visible in console | Active |
+<!-- reporters-section-end -->
 
-## Docker Hub
-
-The **Docker** container that is built from this repository is located at [nvuillam/mega-linter](https://hub.docker.com/r/nvuillam/mega-linter)
-
-## Add Mega-Linter badge in your repository README
+<!-- badge-section-start -->
+## Badge
 
 You can show Mega-Linter status with a badge in your repository README
 
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 
-Format:
+### Markdown
+
+- Format
 
 ```markdown
 [![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 ```
 
-Example:
+- Example
 
 ```markdown
 [![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 ```
 
+### reStructuredText
+
+- Format
+
+```markdown
+.. |Mega-Linter yes| image:: https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master
+   :target: https://nvuillam.github.io/mega-linter
+```
+
+- Example
+
+```markdown
+.. |Mega-Linter yes| image:: https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master
+   :target: https://nvuillam.github.io/mega-linter
+```
+
 _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
+<!-- badge-section-end -->
 
-## Limitations
-
-Below are a list of the known limitations for the **Mega-Linter**:
-
-- Due to being completely packaged at run time, you will not be able to update dependencies or change versions of the enclosed linters and binaries
-- Additional details from `package.json` are not read by the **Mega-Linter** (use `<LINTER_KEY>_FILE=LINTER_DEFAULT` to use it)
-- Downloading additional codebases as dependencies from private repositories will fail due to lack of permissions
-
+<!-- how-to-contribute-section-start -->
 ## How to contribute
 
 If you would like to help contribute to this repository, please see [CONTRIBUTING](https://github.com/nvuillam/mega-linter/blob/master/.github/CONTRIBUTING.md)
+<!-- how-to-contribute-section-end -->
 
 ---
-
+<!-- license-section-start -->
 ## License
 
 - [MIT License](https://github.com/nvuillam/mega-linter/blob/master/LICENSE)
+<!-- license-section-end -->
 
+<!-- mega-linter-vs-super-linter-section-start -->
 ## Mega-Linter vs Super-Linter
 
 The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions
@@ -491,56 +514,61 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 - **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
 
+### Performances
+
+Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+
+### Automatically apply formatting and fixes
+
+Mega-Linter can [**automatically apply fixes performed by linters**](#apply-fixes), and **push them to the same branch**, or **create a Pull Request** that you can validate
+
+This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
+
+### Run locally
+
+Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/)
+
 ### More reporters
 
 - [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
 - [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
 - [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 
-### Automatically apply fixes
+### Enhanced Configuration
 
-Mega-Linter can [**automatically apply fixes performed by linters**](#apply-fixes), and **push them to the same branch**, or **create a Pull Request** that you can validate
+- Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
+- Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
+- Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`
+- **Simplify languages and linters variables**
+  - ENABLE = list of languages and formats to apply lint on codebase (default: all)
+  - ENABLE_LINTERS = list of linters to apply lint on codebase (default: all)
+  - DISABLE = list of languages and formats to skip (default: none)
+  - DISABLE_LINTERS = list of linters to skip (default: none)
+  - Variables VALIDATE_XXX are still taken in account (but should not be used in association with ENABLE and DISABLE variables)
 
-This is pretty handy, especially for linter errors related to formatting (in that case, you don't have any manual update to perform)
+### Enhanced Documentation
 
-### Features & improvements
+- [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
+- **One page per linter documentation** :
+  - **All variables** that can be used with this linter
+  - List of **file extensions, names and filters** applied by the linter
+  - Link to **Mega-Linter default linter configuration**
+  - Link to linter Web-Site
+  - Link to official page explaining **how to customize the linter rules**
+  - Link to official page explaining **how to disable rules from source comments**
+  - **Examples** of linter command line calls behind the hood
+  - **Help** command text
+  - Installation commands
+- README
+  - Separate languages, formats and tooling formats in the linters table
+  - Add logos for each descriptor
 
-- **Enhanced Configuration**
-  - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
-  - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
-  - Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`
-  - **Simplify languages and linters variables**
-    - ENABLE = list of languages and formats to apply lint on codebase (default: all)
-    - ENABLE_LINTERS = list of linters to apply lint on codebase (default: all)
-    - DISABLE = list of languages and formats to skip (default: none)
-    - DISABLE_LINTERS = list of linters to skip (default: none)
-    - Variables VALIDATE_XXX are still taken in account (but should not be used in association with ENABLE and DISABLE variables)
+### Enhanced logging and reports
 
-- **Enhanced Documentation**
-  - [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
-  - **One page per linter documentation** :
-    - **All variables** that can be used with this linter
-    - List of **file extensions, names and filters** applied by the linter
-    - Link to **Mega-Linter default linter configuration**
-    - Link to linter Web-Site
-    - Link to official page explaining **how to customize the linter rules**
-    - Link to official page explaining **how to disable rules from source comments**
-    - **Examples** of linter command line calls behind the hood
-    - **Help** command text
-    - Installation commands
-  - README
-    - Separate languages, formats and tooling formats in the linters table
-    - Add logos for each descriptor
-
-- **Enhanced logging and reports**
-  - Show linter version and applied filters for each linter processed
-  - Reports stored as artefacts on GitHub Action run
-    - General log
-    - One report file by linter
-
-- **Enhanced performances**
-  - **Optimized file listing management**: Collect all linters, then collect all files matching extensions associated with linters, then for each linter set the list of files after applying additional filters (include regex, exclude regex, linter custom filters)
-  - Have a centralized exclude list (node_modules,.rbenv, etc...) to **ignore all unwanted folders from the beginning**
+- Show linter version and applied filters for each linter processed
+- Reports stored as artefacts on GitHub Action run
+  - General log
+  - One report file by linter
 
 ### Simplify architecture and evolutive maintenance
 
@@ -552,8 +580,8 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 - [Default behaviours for all linters](https://github.com/nvuillam/mega-linter/blob/master/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
-  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://github.com/nvuillam/mega-linter/blob/master/README.md#supported-linters)
-  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See result)](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors)
+  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://nvuillam.github.io/mega-linter/supported-linters/)
+  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/)
 - **Automatic generation of Dockerfile** using YML descriptors, always using the linter latest version
   - Dockerfile commands (FROM, ARG, ENV, COPY, RUN )
   - APK packages (linux)
@@ -573,3 +601,4 @@ This is pretty handy, especially for linter errors related to formatting (in tha
   - Run test classes and code coverage with pytest during validation GitHub Action
   - Validate descriptor YML files with json schema during build
   - Automated job to upgrade linters to their latest stable version
+<!-- mega-linter-vs-super-linter-section-end -->

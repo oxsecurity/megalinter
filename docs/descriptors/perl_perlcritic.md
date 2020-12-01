@@ -10,17 +10,17 @@
 ## perlcritic documentation
 
 - Version in Mega-Linter: **1.138**
-- Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic)
-- See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION)
-- See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES)
-- See [Index of problems detected by perlcritic](https://metacpan.org/pod/Perl::Critic#THE-POLICIES)
+- Visit [Official Web Site](https://metacpan.org/pod/Perl::Critic){target=_blank}
+- See [How to configure perlcritic rules](https://metacpan.org/pod/Perl::Critic#CONFIGURATION){target=_blank}
+- See [How to disable perlcritic rules in files](https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES){target=_blank}
+- See [Index of problems detected by perlcritic](https://metacpan.org/pod/Perl::Critic#THE-POLICIES){target=_blank}
 
-[![Perl-Critic - GitHub](https://gh-card.dev/repos/Perl-Critic/Perl-Critic.svg?fullname=)](https://github.com/Perl-Critic/Perl-Critic)
+[![Perl-Critic - GitHub](https://gh-card.dev/repos/Perl-Critic/Perl-Critic.svg?fullname=)](https://github.com/Perl-Critic/Perl-Critic){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

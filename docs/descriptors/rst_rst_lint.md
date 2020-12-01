@@ -5,14 +5,14 @@
 ## rst-lint documentation
 
 - Version in Mega-Linter: **1.3.2**
-- Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme)
+- Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
 
-[![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint)
+[![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

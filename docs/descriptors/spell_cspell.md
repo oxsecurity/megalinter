@@ -8,16 +8,16 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 ## cspell documentation
 
 - Version in Mega-Linter: **4.1.3**
-- Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme)
-- See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization)
-- See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code)
+- Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
+- See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
+- See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
 
-[![cspell - GitHub](https://gh-card.dev/repos/streetsidesoftware/cspell.svg?fullname=)](https://github.com/streetsidesoftware/cspell)
+[![cspell - GitHub](https://gh-card.dev/repos/streetsidesoftware/cspell.svg?fullname=)](https://github.com/streetsidesoftware/cspell){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

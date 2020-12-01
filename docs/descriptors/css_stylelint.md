@@ -10,20 +10,20 @@
 ## stylelint documentation
 
 - Version in Mega-Linter: **13.8.0**
-- Visit [Official Web Site](https://stylelint.io)
-- See [How to configure stylelint rules](https://stylelint.io/user-guide/configure)
-  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json) will be used
-- See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code)
-- See [Index of problems detected by stylelint](https://stylelint.io/user-guide/rules/list)
+- Visit [Official Web Site](https://stylelint.io){target=_blank}
+- See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
+  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json){target=_blank} will be used
+- See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code){target=_blank}
+- See [Index of problems detected by stylelint](https://stylelint.io/user-guide/rules/list){target=_blank}
 
-[![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint)
+[![stylelint - GitHub](https://gh-card.dev/repos/stylelint/stylelint.svg?fullname=)](https://github.com/stylelint/stylelint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

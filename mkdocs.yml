@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter analyzes 37 languages, 15 formats, 16 tooling formats , copy-pastes and spell in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+site_description: Mega-Linter analyzes 37 languages, 15 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 google_analytics: ["G-3DM50255LC", "nvuillam.github.io/mega-linter"]
@@ -20,6 +20,7 @@ markdown_extensions:
           emoji_index: !!python/name:materialx.emoji.twemoji
           emoji_generator: !!python/name:materialx.emoji.to_svg
     - mdx_truly_sane_lists
+    - attr_list
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
     - javascripts/tables.js
@@ -39,16 +40,11 @@ extra:
     generator: false
 nav:
     - "Home": "index.md"
-    - "Why Mega-Linter ?": "./#why-mega-linter"
-    - "Quick Start": "./#quick-start"
-    - "Installation":
-          - "GitHub Action": "./#github-action"
-          - "Azure": "./#azure"
-          - "GitLab": "./#gitlab"
-          - "Run Mega-Linter locally": "mega-linter-runner.md"
-    - "Configuration": "./#configuration"
-    - "Languages":
-      - "index": "./#languages"
+    - "Quick Start": "quick-start.md"
+    - "Installation": "installation.md"
+    - "Configuration": "configuration.md"
+    - "Languages linters":
+      - "index": "./supported-linters#languages"
           # language-start
       - "BASH":
           - "index": "descriptors/bash.md"
@@ -142,8 +138,8 @@ nav:
           - "index": "descriptors/vbdotnet.md"
           - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
 # language-end
-    - "Formats":
-      - "index": "./#formats"
+    - "Formats linters":
+      - "index": "./supported-linters#formats"
           # format-start
       - "CSS":
           - "index": "descriptors/css.md"
@@ -183,8 +179,8 @@ nav:
           - "index": "descriptors/yaml.md"
           - "yamllint": "descriptors/yaml_yamllint.md"
 # format-end
-    - "Tooling Formats":
-      - "index": "./#tooling-formats"
+    - "Tooling Formats linters":
+      - "index": "./supported-linters#tooling-formats"
           # tooling_format-start
       - "ANSIBLE":
           - "index": "descriptors/ansible.md"
@@ -228,7 +224,7 @@ nav:
           - "terragrunt": "descriptors/terraform_terragrunt.md"
 # tooling_format-end
     - "Other checks":
-      - "index": "./#other"
+      - "index": "./supported-linters#other"
           # other-start
       - "COPYPASTE":
           - "index": "descriptors/copypaste.md"
@@ -238,13 +234,13 @@ nav:
           - "cspell": "descriptors/spell_cspell.md"
 # other-end
     - "Reporters":
-          - "index": "./#reporters"
+          - "index": "reporters.md"
           - "Text files": "reporters/TextReporter.md"
           - "Pull Request comments": "reporters/GitHubCommentReporter.md"
           - "Updated sources": "reporters/UpdatedSourcesReporter.md"
           - "GitHub Status": "reporters/GitHubStatusReporter.md"
           - "TAP files": "reporters/TapReporter.md"
           - "Console": "reporters/ConsoleReporter.md"
-    - "Mega-Linter badge": "./#add-mega-linter-badge-in-your-repository-readme"
-    - "Mega-Linter vs Super-Linter": "./#mega-linter-vs-super-linter"
+    - "Mega-Linter badge": "badge.md"
+    - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
     - "Changelog": "CHANGELOG.md"

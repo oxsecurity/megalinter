@@ -5,18 +5,18 @@
 ## luacheck documentation
 
 - Version in Mega-Linter: **0.23.0**
-- Visit [Official Web Site](https://luacheck.readthedocs.io)
-- See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html)
-  - If custom .luacheckrc is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.luacheckrc) will be used
-- See [How to disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html)
-- See [Index of problems detected by luacheck](https://luacheck.readthedocs.io/en/stable/warnings.html)
+- Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
+- See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
+  - If custom .luacheckrc is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.luacheckrc){target=_blank} will be used
+- See [How to disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html){target=_blank}
+- See [Index of problems detected by luacheck](https://luacheck.readthedocs.io/en/stable/warnings.html){target=_blank}
 
-[![luacheck - GitHub](https://gh-card.dev/repos/luarocks/luacheck.svg?fullname=)](https://github.com/luarocks/luacheck)
+[![luacheck - GitHub](https://gh-card.dev/repos/luarocks/luacheck.svg?fullname=)](https://github.com/luarocks/luacheck){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

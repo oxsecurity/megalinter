@@ -5,18 +5,18 @@
 ## hadolint documentation
 
 - Version in Mega-Linter: **1.19.0**
-- Visit [Official Web Site](https://github.com/hadolint/hadolint#readme)
-- See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure)
-  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml) will be used
-- See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores)
-- See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules)
+- Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
+- See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
+  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
+- See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
+- See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules){target=_blank}
 
-[![hadolint - GitHub](https://gh-card.dev/repos/hadolint/hadolint.svg?fullname=)](https://github.com/hadolint/hadolint)
+[![hadolint - GitHub](https://gh-card.dev/repos/hadolint/hadolint.svg?fullname=)](https://github.com/hadolint/hadolint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable hadolint by adding `DOCKERFILE_HADOLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable hadolint by adding `DOCKERFILE_HADOLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable hadolint by adding `DOCKERFILE_HADOLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable hadolint by adding `DOCKERFILE_HADOLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

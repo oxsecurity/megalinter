@@ -5,18 +5,18 @@
 ## coffeelint documentation
 
 - Version in Mega-Linter: **4.1.2**
-- Visit [Official Web Site](http://www.coffeelint.org)
-- See [How to configure coffeelint rules](http://www.coffeelint.org/#options)
-  - If custom .coffee-lint.json is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json) will be used
-- See [How to disable coffeelint rules in files](http://www.coffeelint.org/#options)
-- See [Index of problems detected by coffeelint](http://www.coffeelint.org/#options)
+- Visit [Official Web Site](http://www.coffeelint.org){target=_blank}
+- See [How to configure coffeelint rules](http://www.coffeelint.org/#options){target=_blank}
+  - If custom .coffee-lint.json is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json){target=_blank} will be used
+- See [How to disable coffeelint rules in files](http://www.coffeelint.org/#options){target=_blank}
+- See [Index of problems detected by coffeelint](http://www.coffeelint.org/#options){target=_blank}
 
-[![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint)
+[![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

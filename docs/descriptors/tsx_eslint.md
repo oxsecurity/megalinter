@@ -13,19 +13,19 @@ You can create it by typing `npx eslint --init` in the root of your repository
 ## eslint documentation
 
 - Version in Mega-Linter: **7.14.0**
-- Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme)
-- See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration)
-- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
-- See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+- Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
+- See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
+- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules){target=_blank}
 
-[![eslint-plugin-react - GitHub](https://gh-card.dev/repos/yannickcr/eslint-plugin-react.svg?fullname=)](https://github.com/yannickcr/eslint-plugin-react)
+[![eslint-plugin-react - GitHub](https://gh-card.dev/repos/yannickcr/eslint-plugin-react.svg?fullname=)](https://github.com/yannickcr/eslint-plugin-react){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

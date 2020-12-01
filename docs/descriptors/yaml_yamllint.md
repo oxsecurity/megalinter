@@ -5,17 +5,17 @@
 ## yamllint documentation
 
 - Version in Mega-Linter: **1.25.0**
-- Visit [Official Web Site](https://yamllint.readthedocs.io/)
-- See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration)
-  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml) will be used
-- See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html)
+- Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
+- See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
+  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml){target=_blank} will be used
+- See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html){target=_blank}
 
-[![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint)
+[![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable yamllint by adding `YAML_YAMLLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable yamllint by adding `YAML_YAMLLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable yamllint by adding `YAML_YAMLLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable yamllint by adding `YAML_YAMLLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

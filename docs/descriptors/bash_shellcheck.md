@@ -5,16 +5,16 @@
 ## shellcheck documentation
 
 - Version in Mega-Linter: **0.7.1**
-- Visit [Official Web Site](https://github.com/koalaman/shellcheck#readme)
-- See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore)
-- See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code)
+- Visit [Official Web Site](https://github.com/koalaman/shellcheck#readme){target=_blank}
+- See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore){target=_blank}
+- See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code){target=_blank}
 
-[![shellcheck - GitHub](https://gh-card.dev/repos/koalaman/shellcheck.svg?fullname=)](https://github.com/koalaman/shellcheck)
+[![shellcheck - GitHub](https://gh-card.dev/repos/koalaman/shellcheck.svg?fullname=)](https://github.com/koalaman/shellcheck){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

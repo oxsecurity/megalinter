@@ -4,16 +4,16 @@
 
 ## rstfmt documentation
 
-- Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme)
+- Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
 
-[![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt)
+[![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable rstfmt by adding `RST_RSTFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rstfmt by adding `RST_RSTFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rstfmt by adding `RST_RSTFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rstfmt by adding `RST_RSTFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RST_RSTFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `RST_RSTFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

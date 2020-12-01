@@ -10,17 +10,17 @@
 ## standard documentation
 
 - Version in Mega-Linter: **15.0.1**
-- Visit [Official Web Site](https://standardjs.com/)
-- See [Index of problems detected by standard](https://standardjs.com/rules.html)
+- Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
-[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard)
+[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

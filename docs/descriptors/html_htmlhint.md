@@ -5,18 +5,18 @@
 ## htmlhint documentation
 
 - Version in Mega-Linter: **0.14.2**
-- Visit [Official Web Site](https://htmlhint.com/)
-- See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration)
-  - If custom .htmlhintrc is not found, [.htmlhintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.htmlhintrc) will be used
-- See [How to disable htmlhint rules in files](https://htmlhint.com/docs/user-guide/configuration)
-- See [Index of problems detected by htmlhint](https://htmlhint.com/docs/user-guide/list-rules)
+- Visit [Official Web Site](https://htmlhint.com/){target=_blank}
+- See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
+  - If custom .htmlhintrc is not found, [.htmlhintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.htmlhintrc){target=_blank} will be used
+- See [How to disable htmlhint rules in files](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
+- See [Index of problems detected by htmlhint](https://htmlhint.com/docs/user-guide/list-rules){target=_blank}
 
-[![HTMLHint - GitHub](https://gh-card.dev/repos/htmlhint/HTMLHint.svg?fullname=)](https://github.com/htmlhint/HTMLHint)
+[![HTMLHint - GitHub](https://gh-card.dev/repos/htmlhint/HTMLHint.svg?fullname=)](https://github.com/htmlhint/HTMLHint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

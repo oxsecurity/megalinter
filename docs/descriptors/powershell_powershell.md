@@ -5,17 +5,17 @@
 ## powershell documentation
 
 - Version in Mega-Linter: **7.1.0**
-- Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme)
-- See [How to configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit)
-  - If custom .powershell-psscriptanalyzer.psd1 is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1) will be used
-- See [How to disable powershell rules in files](https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules)
+- Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
+- See [How to configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit){target=_blank}
+  - If custom .powershell-psscriptanalyzer.psd1 is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
+- See [How to disable powershell rules in files](https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules){target=_blank}
 
-[![PSScriptAnalyzer - GitHub](https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=)](https://github.com/PowerShell/PSScriptAnalyzer)
+[![PSScriptAnalyzer - GitHub](https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=)](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

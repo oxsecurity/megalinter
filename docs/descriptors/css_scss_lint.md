@@ -10,16 +10,16 @@
 ## scss-lint documentation
 
 - Version in Mega-Linter: **0.59.0**
-- Visit [Official Web Site](https://github.com/sds/scss-lint#readme)
-- See [How to configure scss-lint rules](https://github.com/sds/scss-lint#configuration)
-- See [How to disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code)
+- Visit [Official Web Site](https://github.com/sds/scss-lint#readme){target=_blank}
+- See [How to configure scss-lint rules](https://github.com/sds/scss-lint#configuration){target=_blank}
+- See [How to disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code){target=_blank}
 
-[![scss-lint - GitHub](https://gh-card.dev/repos/sds/scss-lint.svg?fullname=)](https://github.com/sds/scss-lint)
+[![scss-lint - GitHub](https://gh-card.dev/repos/sds/scss-lint.svg?fullname=)](https://github.com/sds/scss-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

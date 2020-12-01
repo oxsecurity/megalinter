@@ -10,16 +10,16 @@
 ## terrascan documentation
 
 - Version in Mega-Linter: **1.2.0**
-- Visit [Official Web Site](https://www.accurics.com/products/terrascan/)
-- See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
-- See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
+- Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
+- See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
+- See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 
-[![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan)
+[![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

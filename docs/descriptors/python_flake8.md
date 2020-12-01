@@ -5,18 +5,18 @@
 ## flake8 documentation
 
 - Version in Mega-Linter: **3.8.4**
-- Visit [Official Web Site](https://flake8.pycqa.org)
-- See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration)
-  - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8) will be used
-- See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors)
-- See [Index of problems detected by flake8](https://flake8.pycqa.org/en/latest/user/error-codes.html)
+- Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
+- See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
+  - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8){target=_blank} will be used
+- See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors){target=_blank}
+- See [Index of problems detected by flake8](https://flake8.pycqa.org/en/latest/user/error-codes.html){target=_blank}
 
-[![flake8 - GitHub](https://gh-card.dev/repos/PyCQA/flake8.svg?fullname=)](https://github.com/PyCQA/flake8)
+[![flake8 - GitHub](https://gh-card.dev/repos/PyCQA/flake8.svg?fullname=)](https://github.com/PyCQA/flake8){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

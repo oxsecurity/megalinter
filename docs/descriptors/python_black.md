@@ -10,18 +10,18 @@
 ## black documentation
 
 - Version in Mega-Linter: **20.8**
-- Visit [Official Web Site](https://black.readthedocs.io/en/stable/)
-- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
-  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
+- Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
+  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
 
-[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black)
+[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

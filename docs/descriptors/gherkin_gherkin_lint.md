@@ -4,17 +4,17 @@
 
 ## gherkin-lint documentation
 
-- Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme)
-- See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration)
-  - If custom .gherkin-lintrc is not found, [.gherkin-lintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.gherkin-lintrc) will be used
-- See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules)
+- Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme){target=_blank}
+- See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration){target=_blank}
+  - If custom .gherkin-lintrc is not found, [.gherkin-lintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
+- See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules){target=_blank}
 
-[![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint)
+[![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

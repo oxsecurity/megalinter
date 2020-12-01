@@ -5,14 +5,14 @@
 ## raku documentation
 
 - Version in Mega-Linter: **2020.11**
-- Visit [Official Web Site](https://raku.org/)
+- Visit [Official Web Site](https://raku.org/){target=_blank}
 
-[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo)
+[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

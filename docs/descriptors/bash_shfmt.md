@@ -5,16 +5,16 @@
 ## shfmt documentation
 
 - Version in Mega-Linter: **3.2.0**
-- Visit [Official Web Site](https://github.com/mvdan/sh#readme)
+- Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
-[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh)
+[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

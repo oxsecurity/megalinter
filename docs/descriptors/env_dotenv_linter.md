@@ -10,17 +10,17 @@
 ## dotenv-linter documentation
 
 - Version in Mega-Linter: **2.2.1**
-- Visit [Official Web Site](https://dotenv-linter.github.io/)
-- See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter)
+- Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
+- See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
-[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter)
+[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

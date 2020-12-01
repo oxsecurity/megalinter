@@ -10,18 +10,18 @@
 ## psalm documentation
 
 - Version in Mega-Linter: **4.2.1**
-- Visit [Official Web Site](https://psalm.dev)
-- See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/)
-  - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml) will be used
-- See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression)
-- See [Index of problems detected by psalm](https://psalm.dev/docs/running_psalm/issues/)
+- Visit [Official Web Site](https://psalm.dev){target=_blank}
+- See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
+  - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml){target=_blank} will be used
+- See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression){target=_blank}
+- See [Index of problems detected by psalm](https://psalm.dev/docs/running_psalm/issues/){target=_blank}
 
-[![psalm - GitHub](https://gh-card.dev/repos/vimeo/psalm.svg?fullname=)](https://github.com/vimeo/psalm)
+[![psalm - GitHub](https://gh-card.dev/repos/vimeo/psalm.svg?fullname=)](https://github.com/vimeo/psalm){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

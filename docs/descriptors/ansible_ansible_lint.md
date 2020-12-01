@@ -5,18 +5,18 @@
 ## ansible-lint documentation
 
 - Version in Mega-Linter: **4.2.0**
-- Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/)
-- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file)
-  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml) will be used
-- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules)
-- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html)
+- Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
+- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
+  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
+- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
+- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html){target=_blank}
 
-[![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint)
+[![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

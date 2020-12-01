@@ -5,17 +5,17 @@
 ## lintr documentation
 
 - Version in Mega-Linter: **2.0.1.9000**
-- Visit [Official Web Site](https://github.com/jimhester/lintr#readme)
-- See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration)
-  - If custom .lintr is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr) will be used
-- See [Index of problems detected by lintr](https://github.com/jimhester/lintr#available-linters)
+- Visit [Official Web Site](https://github.com/jimhester/lintr#readme){target=_blank}
+- See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration){target=_blank}
+  - If custom .lintr is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr){target=_blank} will be used
+- See [Index of problems detected by lintr](https://github.com/jimhester/lintr#available-linters){target=_blank}
 
-[![lintr - GitHub](https://gh-card.dev/repos/jimhester/lintr.svg?fullname=)](https://github.com/jimhester/lintr)
+[![lintr - GitHub](https://gh-card.dev/repos/jimhester/lintr.svg?fullname=)](https://github.com/jimhester/lintr){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

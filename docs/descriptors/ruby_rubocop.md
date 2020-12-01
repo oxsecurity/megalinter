@@ -10,20 +10,20 @@
 ## rubocop documentation
 
 - Version in Mega-Linter: **0.82.0**
-- Visit [Official Web Site](https://rubocop.org/)
-- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html)
-  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml) will be used
-- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code)
-- See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html)
+- Visit [Official Web Site](https://rubocop.org/){target=_blank}
+- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
+  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
+- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code){target=_blank}
+- See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html){target=_blank}
 
-[![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop)
+[![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

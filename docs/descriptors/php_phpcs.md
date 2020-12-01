@@ -5,17 +5,17 @@
 ## phpcs documentation
 
 - Version in Mega-Linter: **3.5.8**
-- Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme)
-- See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file)
-  - If custom phpcs.xml is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpcs.xml) will be used
-- See [How to disable phpcs rules in files](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file)
+- Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme){target=_blank}
+- See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
+  - If custom phpcs.xml is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpcs.xml){target=_blank} will be used
+- See [How to disable phpcs rules in files](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file){target=_blank}
 
-[![PHP_CodeSniffer - GitHub](https://gh-card.dev/repos/squizlabs/PHP_CodeSniffer.svg?fullname=)](https://github.com/squizlabs/PHP_CodeSniffer)
+[![PHP_CodeSniffer - GitHub](https://gh-card.dev/repos/squizlabs/PHP_CodeSniffer.svg?fullname=)](https://github.com/squizlabs/PHP_CodeSniffer){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

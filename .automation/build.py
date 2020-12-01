@@ -222,8 +222,8 @@ def generate_documentation():
         f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "
         + f"[**{len(linters_by_type['format'])} formats**](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) "
-        + ", [**copy-pastes**](#other) and [**spell**](#other) in your "
-        + "repository sources, generate [**reports in several formats**](#reports), "
+        + ", [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
+        + "repository sources, generate [**reports in several formats**](#reporters), "
         + "and can even [**apply formatting and auto-fixes**](#apply-fixes) "
         + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
         + "IDE/toolbox are used by their developers !"
@@ -427,7 +427,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"- Version in Mega-Linter: **{linter_versions[linter.linter_name]}**"
                 ]
         linter_doc_md += [
-            f"- Visit [Official Web Site]({doc_url(linter.linter_url)})",
+            f"- Visit [Official Web Site]({doc_url(linter.linter_url)}){{target=_blank}}",
         ]
         # Rules configuration URL
         if (
@@ -436,6 +436,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ):
             linter_doc_md += [
                 f"- See [How to configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
+                "{target=_blank}"
             ]
         # Default rules
         if linter.config_file_name is not None:
@@ -443,7 +444,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [
                     f"  - If custom {linter.config_file_name} is not found, "
-                    f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name})"
+                    f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name}){{target=_blank}}"
                     " will be used"
                 ]
         # Inline disable rules
@@ -453,11 +454,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ):
             linter_doc_md += [
                 f"- See [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
+                "{target=_blank}"
             ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
             linter_doc_md += [
                 f"- See [Index of problems detected by {linter.linter_name}]({linter.linter_rules_url})"
+                "{target=_blank}"
             ]
         linter_doc_md += [""]
         # Github repo svg preview
@@ -465,7 +468,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if repo is not None and repo.github is True:
             linter_doc_md += [
                 f"[![{repo.repo} - GitHub](https://gh-card.dev/repos/{repo.owner}/{repo.repo}.svg?fullname=)]"
-                f"(https://github.com/{repo.owner}/{repo.repo})",
+                f"(https://github.com/{repo.owner}/{repo.repo}){{target=_blank}}",
                 "",
             ]
         else:
@@ -473,8 +476,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"Unable to find github repository for {linter.linter_name}"
             )
         # Mega-linter variables
-        activation_url = "../index.md#activation-and-deactivation"
-        apply_fixes_url = "../index.md#apply-fixes"
+        activation_url = "/configuration/#activation-and-deactivation"
+        apply_fixes_url = "/configuration/#apply-fixes"
         linter_doc_md += [
             "## Configuration in Mega-Linter",
             "",
@@ -774,6 +777,74 @@ def replace_in_file(file_path, start, end, content):
     logging.info("Updated " + file.name)
 
 
+def move_to_file(file_path, start, end, target_file):
+    # Read in the file
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_content = file.read()
+    # Replace the target string
+    replacement_content = ""
+    replacement = f"{start}\n{replacement_content}\n{end}"
+    regex = rf"{start}([\s\S]*?){end}"
+    bracket_contents = re.findall(regex, file_content, re.DOTALL)
+    if bracket_contents:
+        bracket_content = bracket_contents[0]
+    else:
+        bracket_content = ""
+    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    # Write the file out again
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(file_content)
+    logging.info("Updated " + file.name)
+    bracket_content = (
+        bracket_content.replace("####", "#THREE#")
+        .replace("###", "#TWO#")
+        .replace("##", "#ONE#")
+        .replace("#THREE#", "###")
+        .replace("#TWO#", "##")
+        .replace("#ONE#", "#")
+    )
+
+    if not os.path.isfile(target_file):
+        mdl_disable = "<!-- markdownlint-disable MD013 -->"
+        comment = (
+            "<!-- Generated by .automation/build.py, please do not update manually -->"
+        )
+        with open(target_file, "w", encoding="utf-8") as file2:
+            file2.write(
+                f"{mdl_disable}\n{comment}\n{start}\n{bracket_content}\n{end}\n"
+            )
+    else:
+        replace_in_file(target_file, start, end, bracket_content)
+
+
+def replace_full_url_links(target_file, full_url__base, shorten_url=""):
+    with open(target_file, "r+", encoding="utf-8") as f:
+        content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(content.replace(full_url__base, shorten_url))
+
+
+def replace_anchors_by_links(file_path, moves):
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_content = file.read()
+    file_content_new = file_content
+    for move in moves:
+        file_content_new = file_content_new.replace(f"(#{move})", f"({move}.md)")
+    for pair in [
+        ["languages", "supported-linters.md#languages"],
+        ["formats", "supported-linters.md#formats"],
+        ["tooling-formats", "supported-linters.md#tooling-formats"],
+        ["other", "supported-linters.md#other"],
+        ["apply-fixes", "configuration.md#apply-fixes"],
+    ]:
+        file_content_new = file_content_new.replace(f"(#{pair[0]})", f"({pair[1]})")
+    if file_content_new != file_content:
+        with open(file_path, "w", encoding="utf-8") as file:
+            file.write(file_content_new)
+        logging.info(f"Updated links in {file_path}")
+
+
 # Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
     with open(
@@ -810,12 +881,36 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}README.md",
         target_file,
     )
+    # Split README sections into individual files
+    moves = [
+        "quick-start",
+        "demo",
+        "supported-linters",
+        # 'languages',
+        # 'format',
+        # 'tooling-formats',
+        # 'other',
+        "installation",
+        "configuration",
+        "reporters",
+        "badge",
+        "how-to-contribute",
+        "license",
+        "mega-linter-vs-super-linter",
+    ]
+    for move in moves:
+        section_page_md_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}{move}.md"
+        move_to_file(
+            target_file,
+            f"<!-- {move}-section-start -->",
+            f"<!-- {move}-section-end -->",
+            section_page_md_file,
+        )
+        replace_anchors_by_links(section_page_md_file, moves)
+        replace_full_url_links(section_page_md_file, DOCS_URL_ROOT + "/", "")
+
     # Replace hardcoded links into relative links
-    with open(target_file, "r+", encoding="utf-8") as f:
-        content = f.read()
-        f.seek(0)
-        f.truncate()
-        f.write(content.replace(DOCS_URL_ROOT + "/", ""))
+    replace_full_url_links(target_file, DOCS_URL_ROOT + "/", "")
     logging.info(f"Copied and updated {target_file}")
     # Remove TOC in target file
     replace_in_file(
@@ -831,6 +926,7 @@ def finalize_doc_build():
         "<!-- online-doc-end -->",
         "",
     )
+    replace_anchors_by_links(target_file, moves)
     # Copy CHANGELOG.md into /docs/CHANGELOG.md
     target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
     copyfile(
@@ -844,6 +940,19 @@ def finalize_doc_build():
     copyfile(
         f"{REPO_HOME}{os.path.sep}mega-linter-runner{os.path.sep}README.md",
         target_file_readme_runner,
+    )
+    # Update mega-linter-runner.md for online doc
+    replace_in_file(
+        target_file_readme_runner,
+        "<!-- readme-header-start-->",
+        "<!-- readme-header-end-->",
+        "",
+    )
+    replace_in_file(
+        target_file_readme_runner,
+        "<!-- linters-section-start -->",
+        "<!-- linters-section-end -->",
+        "",
     )
     # Replace hardcoded links into relative links
     with open(target_file_readme_runner, "r+", encoding="utf-8") as f:

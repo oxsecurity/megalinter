@@ -9,16 +9,16 @@
 
 ## editorconfig-checker documentation
 
-- Visit [Official Web Site](https://editorconfig-checker.github.io/)
-- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
-- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
+- Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
+- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
+- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
 
-[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker)
+[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
