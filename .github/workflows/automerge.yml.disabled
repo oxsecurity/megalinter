@@ -1,3 +1,5 @@
+# Disabled: not working yet
+
 name: automerge
 on:
   pull_request:
