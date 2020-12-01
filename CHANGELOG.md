@@ -8,6 +8,8 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Reorganize TOC
   - Generate individual pages from README sections and update their internal links targets
   - Open external links in a new browser tab
+- New configuration parameters
+  - Allow disabling printing alpaca image to console using PRINT_ALPACA config parameter
 
 ## [4.12.0] 2020-11-29
 
