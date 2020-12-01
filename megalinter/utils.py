@@ -8,6 +8,7 @@ import re
 
 import git
 import yaml
+from megalinter import config
 from megalinter.Linter import Linter
 
 REPO_HOME_DEFAULT = (
@@ -19,8 +20,9 @@ REPO_HOME_DEFAULT = (
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 
 
-def list_excluded_directories():
-    excluded_dirs = [
+def get_excluded_directories():
+    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", [])
+    excluded_dirs += [
         "__pycache__",
         ".git",
         ".pytest_cache",
@@ -30,7 +32,7 @@ def list_excluded_directories():
         "node_modules",
         "report",
     ]
-    return excluded_dirs
+    return set(excluded_dirs)
 
 
 # Returns directory where all .yml language descriptors are defined
