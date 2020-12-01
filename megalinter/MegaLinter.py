@@ -490,6 +490,11 @@ class Megalinter:
         logging.info("The Mega-Linter documentation can be found at:")
         logging.info(" - https://nvuillam.github.io/mega-linter")
         logging.info(utils.format_hyphens(""))
+        logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
+        logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
+        logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
+        logging.info("GITHUB_RUN_ID: " + os.environ.get("GITHUB_RUN_ID", ""))
+        logging.info("PAT: " + "set" if os.environ.get("PAT", "") != "" else "")
         # Display config variables for debug mode
         for name, value in sorted(config.get_config().items()):
             logging.debug("" + name + "=" + str(value))
