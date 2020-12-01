@@ -6,7 +6,7 @@
   </a>
 </div>
 
-# Mega-Linter
+## Mega-Linter
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
