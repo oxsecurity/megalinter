@@ -906,7 +906,7 @@ def finalize_doc_build():
             f"<!-- {move}-section-start -->",
             f"<!-- {move}-section-end -->",
             section_page_md_file,
-            move in ["supported-linters", "demo"]
+            move in ["supported-linters", "demo"],
         )
         replace_anchors_by_links(section_page_md_file, moves)
         replace_full_url_links(section_page_md_file, DOCS_URL_ROOT + "/", "")
