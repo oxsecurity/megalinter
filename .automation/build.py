@@ -777,7 +777,7 @@ def replace_in_file(file_path, start, end, content):
     logging.info("Updated " + file.name)
 
 
-def move_to_file(file_path, start, end, target_file):
+def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
@@ -790,7 +790,8 @@ def move_to_file(file_path, start, end, target_file):
         bracket_content = bracket_contents[0]
     else:
         bracket_content = ""
-    file_content = re.sub(regex, replacement, file_content, re.DOTALL)
+    if keep_in_source is False:
+        file_content = re.sub(regex, replacement, file_content, re.DOTALL)
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
@@ -905,6 +906,7 @@ def finalize_doc_build():
             f"<!-- {move}-section-start -->",
             f"<!-- {move}-section-end -->",
             section_page_md_file,
+            move in ["supported-linters", "demo"]
         )
         replace_anchors_by_links(section_page_md_file, moves)
         replace_full_url_links(section_page_md_file, DOCS_URL_ROOT + "/", "")
