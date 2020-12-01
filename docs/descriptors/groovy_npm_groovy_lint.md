@@ -15,10 +15,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

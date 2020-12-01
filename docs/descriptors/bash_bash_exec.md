@@ -9,8 +9,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable bash-exec by adding `BASH_EXEC` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable bash-exec by adding `BASH_EXEC` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable bash-exec by adding `BASH_EXEC` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable bash-exec by adding `BASH_EXEC` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

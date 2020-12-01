@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable sql-lint by adding `SQL_SQL_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable sql-lint by adding `SQL_SQL_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable sql-lint by adding `SQL_SQL_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable sql-lint by adding `SQL_SQL_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

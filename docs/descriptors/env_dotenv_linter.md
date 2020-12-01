@@ -17,10 +17,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable dotenv-linter by adding `ENV_DOTENV_LINTER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable dotenv-linter by adding `ENV_DOTENV_LINTER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `ENV_DOTENV_LINTER` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

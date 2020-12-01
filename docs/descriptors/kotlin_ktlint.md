@@ -17,10 +17,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

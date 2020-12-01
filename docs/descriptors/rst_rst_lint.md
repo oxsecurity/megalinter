@@ -11,8 +11,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

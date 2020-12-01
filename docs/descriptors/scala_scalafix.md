@@ -15,8 +15,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

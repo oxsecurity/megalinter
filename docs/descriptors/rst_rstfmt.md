@@ -10,10 +10,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rstfmt by adding `RST_RSTFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rstfmt by adding `RST_RSTFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rstfmt by adding `RST_RSTFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rstfmt by adding `RST_RSTFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RST_RSTFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `RST_RSTFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

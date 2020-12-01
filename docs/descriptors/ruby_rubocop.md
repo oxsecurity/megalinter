@@ -20,10 +20,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

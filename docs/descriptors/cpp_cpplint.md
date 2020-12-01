@@ -12,8 +12,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable cpplint by adding `CPP_CPPLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable cpplint by adding `CPP_CPPLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable cpplint by adding `CPP_CPPLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable cpplint by adding `CPP_CPPLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

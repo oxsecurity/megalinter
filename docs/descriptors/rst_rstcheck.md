@@ -13,8 +13,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

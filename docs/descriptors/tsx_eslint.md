@@ -22,10 +22,10 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## Configuration in Mega-Linter
 
-- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

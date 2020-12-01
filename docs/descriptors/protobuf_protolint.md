@@ -14,10 +14,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

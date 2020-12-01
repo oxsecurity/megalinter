@@ -13,10 +13,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `SNAKEMAKE_SNAKEFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `SNAKEMAKE_SNAKEFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

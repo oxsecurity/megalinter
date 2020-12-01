@@ -11,10 +11,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

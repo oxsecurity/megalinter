@@ -17,10 +17,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

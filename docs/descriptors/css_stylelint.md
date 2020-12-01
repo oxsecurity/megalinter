@@ -20,10 +20,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable stylelint by adding `CSS_STYLELINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable stylelint by adding `CSS_STYLELINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `CSS_STYLELINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

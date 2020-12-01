@@ -11,8 +11,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable chktex by adding `LATEX_CHKTEX` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable chktex by adding `LATEX_CHKTEX` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable chktex by adding `LATEX_CHKTEX` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable chktex by adding `LATEX_CHKTEX` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
