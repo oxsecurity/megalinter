@@ -4,6 +4,11 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Major updates in online documentation generation
+  - Reorganize TOC
+  - Generate individual pages from README sections and update their internal links targets
+  - Open external links in a new browser tab
+
 ## [4.12.0] 2020-11-29
 
 - Performances
