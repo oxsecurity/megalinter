@@ -5,9 +5,9 @@
 ## jsonlint documentation
 
 - Version in Mega-Linter: **1.6.3**
-- Visit [Official Web Site](https://github.com/zaach/jsonlint#readme)
+- Visit [Official Web Site](https://github.com/zaach/jsonlint#readme){target=_blank}
 
-[![jsonlint - GitHub](https://gh-card.dev/repos/zaach/jsonlint.svg?fullname=)](https://github.com/zaach/jsonlint)
+[![jsonlint - GitHub](https://gh-card.dev/repos/zaach/jsonlint.svg?fullname=)](https://github.com/zaach/jsonlint){target=_blank}
 
 ## Configuration in Mega-Linter
 

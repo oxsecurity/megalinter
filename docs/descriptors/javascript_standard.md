@@ -10,10 +10,10 @@
 ## standard documentation
 
 - Version in Mega-Linter: **15.0.1**
-- Visit [Official Web Site](https://standardjs.com/)
-- See [Index of problems detected by standard](https://standardjs.com/rules.html)
+- Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
-[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard)
+[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard){target=_blank}
 
 ## Configuration in Mega-Linter
 

@@ -10,10 +10,10 @@
 ## ktlint documentation
 
 - Version in Mega-Linter: **0.39.0**
-- Visit [Official Web Site](https://ktlint.github.io)
-- See [Index of problems detected by ktlint](https://ktlint.github.io/#rules)
+- Visit [Official Web Site](https://ktlint.github.io){target=_blank}
+- See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
-[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint)
+[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint){target=_blank}
 
 ## Configuration in Mega-Linter
 

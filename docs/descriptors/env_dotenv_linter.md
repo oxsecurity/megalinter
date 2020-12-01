@@ -10,10 +10,10 @@
 ## dotenv-linter documentation
 
 - Version in Mega-Linter: **2.2.1**
-- Visit [Official Web Site](https://dotenv-linter.github.io/)
-- See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter)
+- Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
+- See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
-[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter)
+[![dotenv-linter - GitHub](https://gh-card.dev/repos/dotenv-linter/dotenv-linter.svg?fullname=)](https://github.com/dotenv-linter/dotenv-linter){target=_blank}
 
 ## Configuration in Mega-Linter
 

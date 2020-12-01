@@ -10,13 +10,13 @@
 ## golangci-lint documentation
 
 - Version in Mega-Linter: **1.33.0**
-- Visit [Official Web Site](https://golangci-lint.run/)
-- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
-  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
-- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
-- See [Index of problems detected by golangci-lint](https://golangci-lint.run/usage/linters/)
+- Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
+- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
+  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml){target=_blank} will be used
+- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint){target=_blank}
+- See [Index of problems detected by golangci-lint](https://golangci-lint.run/usage/linters/){target=_blank}
 
-[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint)
+[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 

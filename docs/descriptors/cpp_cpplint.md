@@ -5,10 +5,10 @@
 ## cpplint documentation
 
 - Version in Mega-Linter: **1.5.4**
-- Visit [Official Web Site](https://github.com/cpplint/cpplint#readme)
-- See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html)
+- Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
+- See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
-[![cpplint - GitHub](https://gh-card.dev/repos/cpplint/cpplint.svg?fullname=)](https://github.com/cpplint/cpplint)
+[![cpplint - GitHub](https://gh-card.dev/repos/cpplint/cpplint.svg?fullname=)](https://github.com/cpplint/cpplint){target=_blank}
 
 ## Configuration in Mega-Linter
 

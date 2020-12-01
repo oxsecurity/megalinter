@@ -5,11 +5,11 @@
 ## rstcheck documentation
 
 - Version in Mega-Linter: **3.3.1**
-- Visit [Official Web Site](https://github.com/myint/rstcheck#readme)
-- See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file)
-- See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors)
+- Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
+- See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
+- See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
 
-[![rstcheck - GitHub](https://gh-card.dev/repos/myint/rstcheck.svg?fullname=)](https://github.com/myint/rstcheck)
+[![rstcheck - GitHub](https://gh-card.dev/repos/myint/rstcheck.svg?fullname=)](https://github.com/myint/rstcheck){target=_blank}
 
 ## Configuration in Mega-Linter
 

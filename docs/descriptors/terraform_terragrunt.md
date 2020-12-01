@@ -5,10 +5,10 @@
 ## terragrunt documentation
 
 - Version in Mega-Linter: **0.25.4**
-- Visit [Official Web Site](https://terragrunt.gruntwork.io)
-- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file)
+- Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
+- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
-[![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt)
+[![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt){target=_blank}
 
 ## Configuration in Mega-Linter
 

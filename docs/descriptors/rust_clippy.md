@@ -5,12 +5,12 @@
 ## clippy documentation
 
 - Version in Mega-Linter: **0.0.212**
-- Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme)
-- See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration)
-- See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints)
-- See [Index of problems detected by clippy](https://rust-lang.github.io/rust-clippy/stable/index.html)
+- Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
+- See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
+- See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
+- See [Index of problems detected by clippy](https://rust-lang.github.io/rust-clippy/stable/index.html){target=_blank}
 
-[![rust-clippy - GitHub](https://gh-card.dev/repos/rust-lang/rust-clippy.svg?fullname=)](https://github.com/rust-lang/rust-clippy)
+[![rust-clippy - GitHub](https://gh-card.dev/repos/rust-lang/rust-clippy.svg?fullname=)](https://github.com/rust-lang/rust-clippy){target=_blank}
 
 ## Configuration in Mega-Linter
 

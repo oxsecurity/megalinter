@@ -5,12 +5,12 @@
 ## protolint documentation
 
 - Version in Mega-Linter: **0.26.0**
-- Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme)
-- See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules)
-  - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml) will be used
-- See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules)
+- Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
+- See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
+  - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml){target=_blank} will be used
+- See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules){target=_blank}
 
-[![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint)
+[![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint){target=_blank}
 
 ## Configuration in Mega-Linter
 

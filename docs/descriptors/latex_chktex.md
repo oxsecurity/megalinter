@@ -5,9 +5,9 @@
 ## chktex documentation
 
 - Version in Mega-Linter: **1.7.6**
-- Visit [Official Web Site](https://www.nongnu.org/chktex)
-- See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc)
-  - If custom .chktexrc is not found, [.chktexrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.chktexrc) will be used
+- Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
+- See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
+  - If custom .chktexrc is not found, [.chktexrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.chktexrc){target=_blank} will be used
 
 ## Configuration in Mega-Linter
 

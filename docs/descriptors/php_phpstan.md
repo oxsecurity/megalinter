@@ -5,12 +5,12 @@
 ## phpstan documentation
 
 - Version in Mega-Linter: **0.12.57**
-- Visit [Official Web Site](https://phpstan.org/)
-- See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format)
-  - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon) will be used
-- See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs)
+- Visit [Official Web Site](https://phpstan.org/){target=_blank}
+- See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
+  - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
+- See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs){target=_blank}
 
-[![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan)
+[![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan){target=_blank}
 
 ## Configuration in Mega-Linter
 

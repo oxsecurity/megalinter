@@ -427,7 +427,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"- Version in Mega-Linter: **{linter_versions[linter.linter_name]}**"
                 ]
         linter_doc_md += [
-            f"- Visit [Official Web Site]({doc_url(linter.linter_url)})",
+            f"- Visit [Official Web Site]({doc_url(linter.linter_url)}){{target=_blank}}",
         ]
         # Rules configuration URL
         if (
@@ -436,6 +436,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ):
             linter_doc_md += [
                 f"- See [How to configure {linter.linter_name} rules]({linter.linter_rules_configuration_url})"
+                "{target=_blank}"
             ]
         # Default rules
         if linter.config_file_name is not None:
@@ -443,7 +444,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [
                     f"  - If custom {linter.config_file_name} is not found, "
-                    f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name})"
+                    f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name}){{target=_blank}}"
                     " will be used"
                 ]
         # Inline disable rules
@@ -453,11 +454,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         ):
             linter_doc_md += [
                 f"- See [How to disable {linter.linter_name} rules in files]({linter.linter_rules_inline_disable_url})"
+                "{target=_blank}"
             ]
         # Rules configuration URL
         if hasattr(linter, "linter_rules_url") and linter.linter_rules_url is not None:
             linter_doc_md += [
                 f"- See [Index of problems detected by {linter.linter_name}]({linter.linter_rules_url})"
+                "{target=_blank}"
             ]
         linter_doc_md += [""]
         # Github repo svg preview
@@ -465,7 +468,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if repo is not None and repo.github is True:
             linter_doc_md += [
                 f"[![{repo.repo} - GitHub](https://gh-card.dev/repos/{repo.owner}/{repo.repo}.svg?fullname=)]"
-                f"(https://github.com/{repo.owner}/{repo.repo})",
+                f"(https://github.com/{repo.owner}/{repo.repo}){{target=_blank}}",
                 "",
             ]
         else:

@@ -5,9 +5,9 @@
 ## shfmt documentation
 
 - Version in Mega-Linter: **3.2.0**
-- Visit [Official Web Site](https://github.com/mvdan/sh#readme)
+- Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
-[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh)
+[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
 
 ## Configuration in Mega-Linter
 

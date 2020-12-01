@@ -5,7 +5,7 @@
 ## bash-exec documentation
 
 - Version in Mega-Linter: **5.0.17**
-- Visit [Official Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html)
+- Visit [Official Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank}
 
 ## Configuration in Mega-Linter
 

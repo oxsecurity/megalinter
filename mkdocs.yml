@@ -20,10 +20,10 @@ markdown_extensions:
           emoji_index: !!python/name:materialx.emoji.twemoji
           emoji_generator: !!python/name:materialx.emoji.to_svg
     - mdx_truly_sane_lists
+    - attr_list
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
     - javascripts/tables.js
-    - javascripts/external_links.js
 extra_css:
     - stylesheets/extra.css
 extra:

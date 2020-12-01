@@ -10,9 +10,9 @@
 ## php documentation
 
 - Version in Mega-Linter: **7.3.25**
-- Visit [Official Web Site](https://www.php.net)
+- Visit [Official Web Site](https://www.php.net){target=_blank}
 
-[![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src)
+[![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src){target=_blank}
 
 ## Configuration in Mega-Linter
 

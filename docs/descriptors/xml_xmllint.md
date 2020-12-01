@@ -5,8 +5,8 @@
 ## xmllint documentation
 
 - Version in Mega-Linter: **20910**
-- Visit [Official Web Site](http://xmlsoft.org/xmllint.html)
-- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics)
+- Visit [Official Web Site](http://xmlsoft.org/xmllint.html){target=_blank}
+- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics){target=_blank}
 
 ## Configuration in Mega-Linter
 
