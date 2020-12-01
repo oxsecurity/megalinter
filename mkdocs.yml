@@ -23,6 +23,7 @@ markdown_extensions:
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
     - javascripts/tables.js
+    - javascripts/external_links.js
 extra_css:
     - stylesheets/extra.css
 extra:
@@ -232,7 +233,14 @@ nav:
           - "index": "descriptors/spell.md"
           - "cspell": "descriptors/spell_cspell.md"
 # other-end
-    - "Reporters": "reporters.md"
+    - "Reporters":
+          - "index": "reporters.md"
+          - "Text files": "reporters/TextReporter.md"
+          - "Pull Request comments": "reporters/GitHubCommentReporter.md"
+          - "Updated sources": "reporters/UpdatedSourcesReporter.md"
+          - "GitHub Status": "reporters/GitHubStatusReporter.md"
+          - "TAP files": "reporters/TapReporter.md"
+          - "Console": "reporters/ConsoleReporter.md"
     - "Mega-Linter badge": "badge.md"
     - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
     - "Changelog": "CHANGELOG.md"
