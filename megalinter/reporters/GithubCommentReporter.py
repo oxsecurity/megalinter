@@ -161,7 +161,7 @@ class GithubCommentReporter(Reporter):
                     )
             if posted is False:
                 logging.warning(
-                    "GitHub Comment Reporter: No pull request was found, so comment has been posted"
+                    "GitHub Comment Reporter: No pull request was found, so no comment has been posted"
                 )
         # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
