@@ -260,6 +260,7 @@
         "backticks",
         "backtrace",
         "basename",
+        "basenames",
         "basepath",
         "basestring",
         "bashbug",
