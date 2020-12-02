@@ -259,6 +259,7 @@
         "babashka",
         "backticks",
         "backtrace",
+        "basename",
         "basepath",
         "basestring",
         "bashbug",
