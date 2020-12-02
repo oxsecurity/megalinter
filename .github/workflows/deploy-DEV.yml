@@ -68,6 +68,7 @@ jobs:
       # Build image locally for testing #
       ###################################
       - name: Build image
+        id: docker_build
         shell: bash
         run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 30
@@ -112,13 +113,13 @@ jobs:
 
       # Test mega-linter-runner with newly created image
       - name: Setup Node
-        if: ${{ success() }} || ${{ failure() }}
+        if: ${{ steps.docker_build.outcome }} == 'success'
         uses: actions/setup-node@v2.1.2
         with:
           node-version: "12"
       - name: Install NPM dependencies
-        if: ${{ success() }} || ${{ failure() }}
+        if: ${{ steps.docker_build.outcome }} == 'success'
         run: cd mega-linter-runner && sudo npm ci && sudo npm link
       - name: Run mega-linter-runner tests
-        if: ${{ success() }} || ${{ failure() }}
+        if: ${{ steps.docker_build.outcome }} == 'success'
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${{github.sha}} MEGALINTER_NO_DOCKER_PULL=true npm run test
