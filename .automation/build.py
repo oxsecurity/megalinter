@@ -119,7 +119,7 @@ def generate_dockerfile():
     )
     # NPM packages
     npm_install_command = (
-        "RUN npm install --no-cache \\\n                "
+        "RUN npm install --no-cache --ignore-scripts \\\n                "
         + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
     )
     replace_in_file(
