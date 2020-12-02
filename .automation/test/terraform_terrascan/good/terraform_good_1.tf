@@ -1,11 +1,9 @@
-resource "aws_instance" "instanceWithVpc" {
-  ami           = "some-id"
-  instance_type = "t2.micro"
+resource "aws_s3_bucket" "noS3BucketSseRules" {
+  bucket = "mybucket"
+  acl    = "private"
 
-  vpc_security_group_ids = ["sg-12345678901234567"]
-  subnet_id = "subnet-12345678901234567"
-  http_tokens = "required"
   tags = {
-    Name = "HelloWorld"
+    Name        = "nos3BucketSseRules"
+    Environment = "Dev"
   }
 }
