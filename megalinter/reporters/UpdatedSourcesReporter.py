@@ -55,7 +55,7 @@ class UpdatedSourcesReporter(Reporter):
                 f"Updated Sources Reporter: copied {str(len(updated_files))} fixed source files"
                 f" in folder {updated_sources_dir}. ")
             logging.info(
-                f"Download it from artifacts then copy-paste it in your local repo to apply linters updates"
+                "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
             )
         else:
             logging.info(
