@@ -292,7 +292,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 # shellcheck installation
 RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
-    && cp "shellcheck-${scversion}/shellcheck" /usr/bin/ \
+    && cp "shellcheck-stable/shellcheck" /usr/bin/ \
     && shellcheck --version
 
 

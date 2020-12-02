@@ -85,7 +85,7 @@ Usage: shellcheck [OPTIONS...] FILES...
 - Dockerfile commands :
 ```dockerfile
 RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
-    && cp "shellcheck-${scversion}/shellcheck" /usr/bin/ \
+    && cp "shellcheck-stable/shellcheck" /usr/bin/ \
     && shellcheck --version
 
 ```
