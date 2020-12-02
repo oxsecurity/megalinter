@@ -75,9 +75,9 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-RUN export GO111MODULE=on \
-&& go get -u github.com/accurics/terrascan/cmd/terrascan
-
+FROM accurics/terrascan:latest as terrascan
+COPY --from=terrascan /go/bin/terrascan /usr/bin/
+RUN terrascan init
 ```
 
 

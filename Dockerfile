@@ -14,6 +14,7 @@ FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
 FROM wata727/tflint:latest as tflint
+FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 
@@ -402,9 +403,8 @@ RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
 # terrascan installation
-RUN export GO111MODULE=on \
-&& go get -u github.com/accurics/terrascan/cmd/terrascan
-
+COPY --from=terrascan /go/bin/terrascan /usr/bin/
+RUN terrascan init
 
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/

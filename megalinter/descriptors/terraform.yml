@@ -39,9 +39,9 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - |
-          RUN export GO111MODULE=on \
-          && go get -u github.com/accurics/terrascan/cmd/terrascan
+        - FROM accurics/terrascan:latest as terrascan
+        - COPY --from=terrascan /go/bin/terrascan /usr/bin/
+        - RUN terrascan init
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT
