@@ -89,12 +89,8 @@ USAGE:
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-```
-
+- NPM packages (node.js):
+  - [editorconfig-checker](https://www.npmjs.com/package/editorconfig-checker)
 
 ### Example success log
 
