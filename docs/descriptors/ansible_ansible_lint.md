@@ -86,8 +86,8 @@ Options:
 
 ### Installation on mega-linter Docker image
 
-- APK packages (Linux):
-  - [ansible-lint](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible-lint)
+- PIP packages (Python):
+  - [ansible-lint](https://pypi.org/project/ansible-lint)
 
 ### Example success log
 

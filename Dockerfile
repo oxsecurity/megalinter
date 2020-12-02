@@ -14,7 +14,6 @@ FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
 FROM wata727/tflint:latest as tflint
-FROM accurics/terrascan:411a4aa as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 
@@ -128,7 +127,6 @@ RUN apk add --update --no-cache \
                 ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
-                ansible-lint \
                 R \
                 R-dev \
                 R-doc \
@@ -147,6 +145,7 @@ RUN python /megalinter/setup.py install
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
+          ansible-lint \
           cpplint \
           cfn-lint \
           pylint \
@@ -158,6 +157,7 @@ RUN pip3 install --no-cache-dir \
           rstfmt \
           snakemake \
           snakefmt \
+          terrascan \
           yamllint
 #PIP__END
 
@@ -401,10 +401,6 @@ RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
-
-# terrascan installation
-COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/

@@ -73,13 +73,8 @@ Use "terrascan [command] --help" for more information about a command.
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-FROM accurics/terrascan:411a4aa as terrascan
-COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
-```
-
+- PIP packages (Python):
+  - [terrascan](https://pypi.org/project/terrascan)
 
 ### Example success log
 
