@@ -39,7 +39,7 @@ linters:
       - "terrascan scan -i terraform -t all -f myfile.tf"
     install:
       dockerfile:
-        - FROM accurics/terrascan:latest as terrascan
+        - FROM accurics/terrascan:411a4aa as terrascan
         - COPY --from=terrascan /go/bin/terrascan /usr/bin/
         - RUN terrascan init
   # TERRAGRUNT
