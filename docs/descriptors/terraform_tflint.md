@@ -99,8 +99,7 @@ Help Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM wata727/tflint:latest as tflint
-COPY --from=tflint /usr/local/bin/tflint /usr/bin/
+RUN wget -q -O - https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | sh -s
 ```
 
 

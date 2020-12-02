@@ -111,6 +111,10 @@ jobs:
             linter-helps.json
             linter-versions.json
 
+      - name: debug
+        if: ${{ success() }} || ${{ failure() }}
+        run: echo ${{ steps.docker_build.outcome }}
+
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success'
