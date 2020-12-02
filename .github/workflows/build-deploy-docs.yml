@@ -8,7 +8,7 @@ jobs:
   cancel_duplicates:
     name: Cancel duplicate jobs
     runs-on: ubuntu-latest
-    if: github.repository == "nvuillam/mega-linter"
+    if: github.repository == 'nvuillam/mega-linter'
     steps:
       - uses: fkirc/skip-duplicate-actions@master
         with:
@@ -16,7 +16,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.repository == "nvuillam/mega-linter"
+    if: github.repository == 'nvuillam/mega-linter'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2

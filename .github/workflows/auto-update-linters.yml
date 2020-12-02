@@ -18,7 +18,7 @@ jobs:
   cancel_duplicates:
     name: Cancel duplicate jobs
     runs-on: ubuntu-latest
-    if: github.repository == "nvuillam/mega-linter"
+    if: github.repository == 'nvuillam/mega-linter'
     steps:
       - uses: fkirc/skip-duplicate-actions@master
         with:
@@ -30,7 +30,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Prevent duplicate run from happening when a forked push is committed
-    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == "nvuillam/mega-linter"
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'nvuillam/mega-linter'
     # Set max build time for the job
     timeout-minutes: 30
     ##################

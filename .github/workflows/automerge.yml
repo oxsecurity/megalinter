@@ -22,7 +22,7 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    if: github.repository == "nvuillam/mega-linter"
+    if: github.repository == 'nvuillam/mega-linter'
     steps:
       - name: automerge
         uses: "pascalgn/automerge-action@v0.12.0"
