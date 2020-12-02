@@ -103,11 +103,9 @@ Use "golangci-lint [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV GOROOT=/usr/lib/go \
-    GOPATH=/go
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+    && golangci-lint --version
 
-ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
-RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 # Linter install
 FROM golangci/golangci-lint:latest as golangci-lint
 COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/

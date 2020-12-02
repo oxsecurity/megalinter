@@ -10,7 +10,6 @@
 #FROM__START
 FROM hadolint/hadolint:latest-alpine as dockerfile-lint
 FROM golangci/golangci-lint:latest as golangci-lint
-FROM garethr/kubeval:latest as kubeval
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
@@ -240,11 +239,9 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # GO installation
-ENV GOROOT=/usr/lib/go \
-    GOPATH=/go
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+    && golangci-lint --version
 
-ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
-RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 
 # PHP installation
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
@@ -294,10 +291,9 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 
 # shellcheck installation
-RUN scversion="stable" \
-wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${scversion?}/shellcheck-${scversion?}.linux.x86_64.tar.xz" | tar -xJv \
-cp "shellcheck-${scversion}/shellcheck" /usr/bin/ \
-shellcheck --version
+RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
+    && cp "shellcheck-${scversion}/shellcheck" /usr/bin/ \
+    && shellcheck --version
 
 
 # shfmt installation
@@ -342,7 +338,10 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 
 
 # kubeval installation
-COPY --from=kubeval /kubeval /usr/bin/
+RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+    && tar xf kubeval-linux-amd64.tar.gz \
+    && sudo cp kubeval /usr/local/bin
+
 
 # chktex installation
 COPY --from=chktex /usr/bin/chktex /usr/bin/
