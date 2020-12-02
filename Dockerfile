@@ -13,6 +13,7 @@ FROM golangci/golangci-lint:latest as golangci-lint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
+FROM wata727/tflint:latest as tflint
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 
@@ -398,7 +399,7 @@ RUN rustup component add clippy
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
 # tflint installation
-RUN wget -q -O - https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | sh -s
+COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
 # terrascan installation
 RUN export GO111MODULE=on \
