@@ -9,7 +9,6 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:latest-alpine as dockerfile-lint
-FROM golangci/golangci-lint:latest as golangci-lint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
@@ -239,9 +238,11 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # GO installation
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
-    && golangci-lint --version
+ENV GOROOT=/usr/lib/go \
+    GOPATH=/go
 
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 
 # PHP installation
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
@@ -320,7 +321,9 @@ COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # golangci-lint installation
-COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+    && golangci-lint --version
+
 
 # checkstyle installation
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \

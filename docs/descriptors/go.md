@@ -27,9 +27,11 @@
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
-    && golangci-lint --version
+ENV GOROOT=/usr/lib/go \
+    GOPATH=/go
 
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 ```
 
 - APK packages (Linux):
