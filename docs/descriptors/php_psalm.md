@@ -9,7 +9,7 @@
 
 ## psalm documentation
 
-- Version in Mega-Linter: **4.2.1**
+- Version in Mega-Linter: **4.3.0**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom psalm.xml is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -139,7 +139,7 @@ Output:
     --output-format=console
         Changes the output format.
         Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube, github,
-                           phpstorm
+                           phpstorm, codeclimate
 
     --no-progress
         Disable the progress indicator
