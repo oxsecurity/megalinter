@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.25.4**
+- Version in Mega-Linter: **0.26.7**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -91,7 +91,7 @@ GLOBAL OPTIONS:
    terragrunt-debug                             Write terragrunt-debug.tfvars to working folder to help root-cause issues.
 
 VERSION:
-   v0.25.4
+   v0.26.7
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

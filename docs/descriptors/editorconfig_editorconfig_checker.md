@@ -51,6 +51,7 @@ editorconfig-checker myfile.js
 
 ```shell
 USAGE:
+
   -config string
       config
   -debug
@@ -85,6 +86,7 @@ USAGE:
       print debugging information
   -version
       print the version number
+
 ```
 
 ### Installation on mega-linter Docker image
