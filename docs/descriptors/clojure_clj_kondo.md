@@ -102,8 +102,12 @@ Options:
 
 ### Installation on mega-linter Docker image
 
-- NPM packages (node.js):
-  - [clj-kondo](https://www.npmjs.com/package/clj-kondo)
+- Dockerfile commands :
+```dockerfile
+FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
+COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
+```
+
 
 ### Example success log
 

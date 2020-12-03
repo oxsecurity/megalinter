@@ -1,4 +1,4 @@
-resource "aws_instance" "nico" {
+resource "aws_instance" "instanceWithNoVpc" {
   ami           = "some-id"
   instance_type = "t2.micro"
 
