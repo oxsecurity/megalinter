@@ -558,6 +558,7 @@
         "levn",
         "libc",
         "libcurl",
+        "libffi",
         "libgcc",
         "libintl",
         "libname",
