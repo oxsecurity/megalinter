@@ -1,8 +1,8 @@
-resource "aws_instance" "instanceWithNoVpc" {
-  ami           = "some-id"
-  instance_type = "t2.micro"
+resource "aws_instanceee" "instanceWithNoVpc" {
+  amiwu           = "some-id"
+  instance_type = "t2.microblablabla"
 
-  tags = {
-    Name = "HelloWorld"
+  tagres = {
+    Namex = "HelloWorld"
   }
 }
