@@ -18,17 +18,15 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Fixes
   - Fix markdown comments generator when build on Windows
-  - Downgrade terrascan (latest version does not work with Mega-Linter test cases yet)
+  - Fix terrascan unit test case
 
 - Performance
-  - Change way to install linters in Dockerfile (replace FROM ... COPY) by package or sh installation (less docker build steps)
+  - Change way to install linters in Dockerfile (replace FROM ... COPY) by package or sh installation, to reduce the docker build steps from 93 to 87
     - shellcheck
     - editorconfig-checker
     - dotenv-linter
     - golangci-lint
     - kubeval
-
--Perfs
 
 ## [4.12.0] 2020-11-29
 
