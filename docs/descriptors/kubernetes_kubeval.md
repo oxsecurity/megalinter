@@ -79,8 +79,10 @@ Flags:
 
 - Dockerfile commands :
 ```dockerfile
-FROM garethr/kubeval:latest as kubeval
-COPY --from=kubeval /kubeval /usr/bin/
+RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+    && tar xf kubeval-linux-amd64.tar.gz \
+    && cp kubeval /usr/local/bin
+
 ```
 
 

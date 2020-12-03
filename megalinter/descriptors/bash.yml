@@ -39,8 +39,10 @@ linters:
       - "shellcheck --color=auto --external-sources myfile.sh"
     install:
       dockerfile:
-        - FROM koalaman/shellcheck:latest as shellcheck
-        - COPY --from=shellcheck /bin/shellcheck /usr/bin/
+        - |
+          RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
+              && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+              && shellcheck --version
     ide:
       atom:
         - name: linter-shellcheck

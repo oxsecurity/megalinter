@@ -81,8 +81,7 @@ ARGS:
 
 - Dockerfile commands :
 ```dockerfile
-FROM dotenvlinter/dotenv-linter:latest as dotenv-linter
-COPY --from=dotenv-linter /dotenv-linter /usr/bin/
+RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 ```
 
 

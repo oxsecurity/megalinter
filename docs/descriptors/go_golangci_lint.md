@@ -109,8 +109,9 @@ ENV GOROOT=/usr/lib/go \
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 # Linter install
-FROM golangci/golangci-lint:latest as golangci-lint
-COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+    && golangci-lint --version
+
 ```
 
 

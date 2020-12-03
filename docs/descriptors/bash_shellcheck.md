@@ -84,8 +84,10 @@ Usage: shellcheck [OPTIONS...] FILES...
 
 - Dockerfile commands :
 ```dockerfile
-FROM koalaman/shellcheck:latest as shellcheck
-COPY --from=shellcheck /bin/shellcheck /usr/bin/
+RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
+    && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+    && shellcheck --version
+
 ```
 
 

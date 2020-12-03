@@ -26,4 +26,3 @@ linters:
     install:
       apk:
         - ansible-lint
-

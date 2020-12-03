@@ -19,6 +19,5 @@ linters:
     examples:
       - "editorconfig-checker myfile.js"
     install:
-      dockerfile:
-        - FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
-        - COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+      npm:
+        - editorconfig-checker
