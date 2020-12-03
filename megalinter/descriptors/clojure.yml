@@ -20,8 +20,9 @@ linters:
       - "clj-kondo --lint myfile.clj"
       - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
     install:
-      npm:
-        - clj-kondo
+      dockerfile:
+        - FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
+        - COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
     ide:
       atom:
         - name: linter-kondo
