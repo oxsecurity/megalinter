@@ -93,6 +93,7 @@ RUN apk add --update --no-cache \
     jq \
     krb5-libs \
     libcurl libintl libssl1.1 libstdc++ \
+    libffi-dev \
     linux-headers \
     make \
     musl-dev \
