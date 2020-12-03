@@ -895,8 +895,7 @@ def finalize_doc_build():
     # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
     copy_md_file(
-        f"{REPO_HOME}{os.path.sep}README.md",
-        target_file,
+        f"{REPO_HOME}{os.path.sep}README.md", target_file,
     )
     # Split README sections into individual files
     moves = [
@@ -939,17 +938,13 @@ def finalize_doc_build():
     )
     # Remove link to online doc
     replace_in_file(
-        target_file,
-        "<!-- online-doc-start -->",
-        "<!-- online-doc-end -->",
-        "",
+        target_file, "<!-- online-doc-start -->", "<!-- online-doc-end -->", "",
     )
     replace_anchors_by_links(target_file, moves)
     # Copy CHANGELOG.md into /docs/CHANGELOG.md
     target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
     copy_md_file(
-        f"{REPO_HOME}{os.path.sep}CHANGELOG.md",
-        target_file_changelog,
+        f"{REPO_HOME}{os.path.sep}CHANGELOG.md", target_file_changelog,
     )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
     target_file_readme_runner = (
