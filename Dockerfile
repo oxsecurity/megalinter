@@ -14,7 +14,7 @@ FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
 FROM wata727/tflint:latest as tflint
-FROM accurics/terrascan:411a4aa as terrascan
+FROM accurics/terrascan:2d1374b as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
 

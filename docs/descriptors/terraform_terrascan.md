@@ -75,7 +75,7 @@ Use "terrascan [command] --help" for more information about a command.
 
 - Dockerfile commands :
 ```dockerfile
-FROM accurics/terrascan:411a4aa as terrascan
+FROM accurics/terrascan:2d1374b as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
 RUN terrascan init
 ```

@@ -32,6 +32,8 @@ linters:
       - "terraform"
       - "-t"
       - "all"
+      - "--log-level"
+      - "debug"
       - "-f"
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
