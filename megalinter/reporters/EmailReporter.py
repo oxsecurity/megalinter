@@ -48,7 +48,7 @@ class EmailReporter(Reporter):
             for file in files:
                 file_abs_path = os.path.join(root, file)
                 if not os.path.splitext(file_abs_path) in [".js", ".map"]:
-                    zip_file.write(file_abs_path, arcname=file)
+                    zip_file.write(file_abs_path, arcname=file_abs_path.replace(self.report_folder, ""))
         zip_file.close()
         zf.seek(0)
 
