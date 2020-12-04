@@ -55,7 +55,7 @@ class EmailReporter(Reporter):
         smtp_host = config.get("EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com")
         smtp_port = config.get("EMAIL_REPORTER_SMTP_PORT", 465)
         recipients = config.get_list("EMAIL_REPORTER_EMAIL", [])
-        sender = config.get("EMAIL_REPORTER_SENDER", "mega-linter@gmail.com")
+        sender = config.get("EMAIL_REPORTER_SENDER", "megalinter@gmail.com")
         smtp_username = config.get("EMAIL_REPORTER_SMTP_USERNAME", sender)
         smtp_password = config.get("EMAIL_REPORTER_SMTP_PASSWORD", "")
 
