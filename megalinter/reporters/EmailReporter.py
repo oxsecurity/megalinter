@@ -94,7 +94,7 @@ class EmailReporter(Reporter):
                           )
             return
         except Exception as e:
-            logging.error("EmailReporter: Unable to send e-mail: \n" + str(e) +
+            logging.error("EmailReporter: Unable to send e-mail: \n" + str(e.__class__) + " - " + str(e) +
                           "\n - smtp server: " + smtp_host + ":" + str(smtp_port) +
                           "\n - smtp username: " + smtp_username +
                           "\n - smtp password:" + ("SET" if smtp_password != "" else "NOT SET")
