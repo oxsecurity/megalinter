@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-GitHub Status reporter
-Post a GitHub status for each linter
+Output results in console
 """
 import logging
 
