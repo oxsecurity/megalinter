@@ -67,7 +67,7 @@ class EmailReporter(Reporter):
         )
         server.login(
             config.get("EMAIL_REPORTER_SMTP_USERNAME", sender),
-            config.get("EMAIL_REPORTER_SMTP_PASSWORD"),
+            config.get("EMAIL_REPORTER_SMTP_PASSWORD", ""),
         )
         server.sendmail(sender, recipients, the_msg)
         server.quit()
