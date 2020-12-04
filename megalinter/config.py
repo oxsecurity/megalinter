@@ -62,7 +62,14 @@ def set_config(config):
 def get(config_var=None, default=None):
     if config_var is None:
         return get_config()
-    return get_config().get(config_var, default)
+    val = get_config().get(config_var, default)
+    # IF boolean, convert to "true" or "false"
+    if isinstance(val, bool):
+        if val is True:
+            val = "true"
+        elif val is False:
+            val = "false"
+    return val
 
 
 def get_list(config_var, default=None):
