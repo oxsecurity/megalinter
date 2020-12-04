@@ -9,7 +9,7 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.42.0**
+- Version in Mega-Linter: **0.43.0**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
   - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
@@ -124,6 +124,9 @@ Advanced / Debugging:
                         customization
   -g, --build-graph     Creates a file in the same directory as the template
                         that models the template's resources in DOT format
+  -s REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...], --registry-schemas REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...]
+                        one or more directories of CloudFormation Registry
+                        Schemas
   -u, --update-specs    Update the CloudFormation Specs
 ```
 
