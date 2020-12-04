@@ -12,6 +12,7 @@ class Reporter:
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None):
+        self.processing_order = 0
         self.master = params["master"]
         self.report_folder = params["report_folder"]
         # Any reporter is inactive by default except if __init__ is overridden on sub class
