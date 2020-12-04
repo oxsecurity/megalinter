@@ -5,7 +5,6 @@ Send reports artifacts by email
 import logging
 import os
 import smtplib
-import sys
 import tempfile
 import zipfile
 from email import encoders
@@ -80,6 +79,7 @@ class EmailReporter(Reporter):
                 smtp_host,
                 smtp_port,
             )
+            server.ehlo()
             server.login(
                 smtp_username,
                 smtp_password,
