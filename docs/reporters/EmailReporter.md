@@ -12,6 +12,7 @@ Define related variables below allowing to send e-mails
 | ----------------- | -------------- | :--------------: |
 | EMAIL_REPORTER | Activates/deactivates reporter | true |
 | EMAIL_REPORTER_EMAIL | Comma-separated list of recipient emails, that will receive reports |  |
+| EMAIL_REPORTER_SEND_SUCCESS | Define to `true` if you want to receive reports by mail even when there is no errors or updated sources | `false` |
 | EMAIL_REPORTER_SENDER | Sender of emails | megalinter@gmail.com |
 | EMAIL_REPORTER_SMTP_HOST | SMTP server host | smtp.gmail.com |
 | EMAIL_REPORTER_SMTP_PORT | SMTP server port | 465 |

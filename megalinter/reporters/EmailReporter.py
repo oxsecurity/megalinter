@@ -5,6 +5,7 @@ Send reports artifacts by email
 import logging
 import os
 import smtplib
+import sys
 import tempfile
 import zipfile
 from email import encoders
@@ -34,6 +35,13 @@ class EmailReporter(Reporter):
             self.is_active = False
 
     def produce_report(self):
+        # Skip report if no errors has been found
+        if self.master.status == "success" and config.get("EMAIL_REPORTER_SEND_SUCCESS", "false") == "true" \
+                and self.master.has_updated_sources is False:
+            logging.info("Email Reporter: No mail sent, "
+                         "as the Mega-Linter status is success and there are no updated source")
+            return
+
         # Create temporary zip file with content of report folder
         zf = tempfile.TemporaryFile(prefix="mail", suffix=".zip")
         zip_file = zipfile.ZipFile(zf, "w")
@@ -43,9 +51,15 @@ class EmailReporter(Reporter):
         zip_file.close()
         zf.seek(0)
 
-        # Create the message
+        # get server and email config values
+        smtp_host = config.get("EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com")
+        smtp_port = config.get("EMAIL_REPORTER_SMTP_PORT", 465)
         recipients = config.get_list("EMAIL_REPORTER_EMAIL", [])
         sender = config.get("EMAIL_REPORTER_SENDER", "mega-linter@gmail.com")
+        smtp_username = config.get("EMAIL_REPORTER_SMTP_USERNAME", sender)
+        smtp_password = config.get("EMAIL_REPORTER_SMTP_PASSWORD", "")
+
+        # Create the message
         the_msg = MIMEMultipart()
         the_msg["Subject"] = "Mega-Linter report"
         the_msg["To"] = ", ".join(recipients)
@@ -61,14 +75,29 @@ class EmailReporter(Reporter):
         the_msg = the_msg.as_string()
 
         # send the message
-        server = smtplib.SMTP_SSL(
-            config.get("EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com"),
-            config.get("EMAIL_REPORTER_SMTP_PORT", 465),
-        )
-        server.login(
-            config.get("EMAIL_REPORTER_SMTP_USERNAME", sender),
-            config.get("EMAIL_REPORTER_SMTP_PASSWORD", ""),
-        )
-        server.sendmail(sender, recipients, the_msg)
-        server.quit()
+        try:
+            server = smtplib.SMTP_SSL(
+                smtp_host,
+                smtp_port,
+            )
+            server.login(
+                smtp_username,
+                smtp_password,
+            )
+            server.sendmail(sender, recipients, the_msg)
+            server.quit()
+        except smtplib.SMTPAuthenticationError as e:
+            logging.error("EmailReporter: Unable to authenticate to SMTP server: \n" + str(e) +
+                          "\n - smtp server: " + smtp_host + ":" + str(smtp_port) +
+                          "\n - smtp username: " + smtp_username +
+                          "\n - smtp password:" + ("SET" if smtp_password != "" else "NOT SET")
+                          )
+            return
+        except Exception as e:
+            logging.error("EmailReporter: Unable to send e-mail: \n" + str(e) +
+                          "\n - smtp server: " + smtp_host + ":" + str(smtp_port) +
+                          "\n - smtp username: " + smtp_username +
+                          "\n - smtp password:" + ("SET" if smtp_password != "" else "NOT SET")
+                          )
+            return
         logging.info("Email Reporter: Sent mail to " + ", ".join(recipients))
