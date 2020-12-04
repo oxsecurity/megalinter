@@ -46,7 +46,9 @@ class EmailReporter(Reporter):
         zip_file = zipfile.ZipFile(zf, "w")
         for root, dirs, files in os.walk(self.report_folder):
             for file in files:
-                zip_file.write(os.path.join(root, file))
+                file_abs_path = os.path.join(root, file)
+                if not os.path.splitext(file_abs_path) in [".js", ".map"]:
+                    zip_file.write(file_abs_path, arcname=file)
         zip_file.close()
         zf.seek(0)
 
