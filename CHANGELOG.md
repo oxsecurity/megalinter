@@ -13,7 +13,9 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Allow disabling printing alpaca image to console using PRINT_ALPACA config parameter
   - Support list of additional excluded directory basenames via EXCLUDED_DIRECTORIES configuration parameter
 
-- New Email reporter, to send mega-linter reports by mail if smtp server is configured
+- New reporters:
+  - Email reporter, to send mega-linter reports by mail if smtp server is configured
+  - File.io reporter, to access reports with a file.io hyperlink
 
 - Fixes
   - Fix markdown comments generator when build on Windows
