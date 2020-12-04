@@ -182,7 +182,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
             continue
         reporters += [reporter]
     # Sort reporters by name
-    reporters.sort(key=lambda x: x.processing_order)
+    reporters = sorted(reporters, key=lambda r: (r.processing_order, r.name))
     return reporters
 
 
