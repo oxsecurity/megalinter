@@ -40,6 +40,7 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
   - [Installation](#installation)
     - [GitHub Action](#github-action)
     - [Azure](#azure)
+    - [Jenkins](#jenkins)
     - [GitLab](#gitlab)
     - [Run locally](#run-mega-linter-locally)
   - [Configuration](#configuration)
@@ -321,7 +322,29 @@ jobs:
       displayName: 'Code Scan using  Mega-Linter'
 ```
 
+### Jenkins
+
+Add the following stage in your Jenkinsfile
+
+```groovy
+// Lint with Mega-Linter: https://nvuillam.github.io/mega-linter/
+stage('Mega-Linter') {
+    agent {
+        docker {
+            image 'nvuillam/mega-linter:latest'
+            args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            reuseNode true
+        }
+    }
+    steps {
+        sh '/entrypoint.sh'
+    }
+}
+```
+
 ### GitLab
+
+Example of configuration using GitLab CI
 
 ```yaml
 megalinter:
