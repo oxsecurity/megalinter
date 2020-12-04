@@ -244,4 +244,3 @@ def normalize_log_string(str_in):
         .replace("/github/workspace/", "")
         .replace("github/workspace/", "")
     )
-

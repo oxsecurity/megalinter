@@ -35,10 +35,15 @@ class EmailReporter(Reporter):
 
     def produce_report(self):
         # Skip report if no errors has been found
-        if self.master.status == "success" and config.get("EMAIL_REPORTER_SEND_SUCCESS", "false") == "true" \
-                and self.master.has_updated_sources is False:
-            logging.info("Email Reporter: No mail sent, "
-                         "as the Mega-Linter status is success and there are no updated source")
+        if (
+            self.master.status == "success"
+            and config.get("EMAIL_REPORTER_SEND_SUCCESS", "false") == "true"
+            and self.master.has_updated_sources is False
+        ):
+            logging.info(
+                "Email Reporter: No mail sent, "
+                "as the Mega-Linter status is success and there are no updated source"
+            )
             return
 
         # Create temporary zip file with content of report folder
@@ -48,7 +53,10 @@ class EmailReporter(Reporter):
             for file in files:
                 file_abs_path = os.path.join(root, file)
                 if not os.path.splitext(file_abs_path) in [".js", ".map"]:
-                    zip_file.write(file_abs_path, arcname=file_abs_path.replace(self.report_folder, ""))
+                    zip_file.write(
+                        file_abs_path,
+                        arcname=file_abs_path.replace(self.report_folder, ""),
+                    )
         zip_file.close()
         zf.seek(0)
 
@@ -77,29 +85,41 @@ class EmailReporter(Reporter):
 
         # send the message
         try:
-            server = smtplib.SMTP_SSL(
-                smtp_host,
-                smtp_port,
-            )
+            server = smtplib.SMTP_SSL(smtp_host, smtp_port,)
             server.ehlo()
             server.login(
-                smtp_username,
-                smtp_password,
+                smtp_username, smtp_password,
             )
             server.sendmail(sender, recipients, the_msg)
             server.quit()
         except smtplib.SMTPAuthenticationError as e:
-            logging.error("EmailReporter: Unable to authenticate to SMTP server: \n" + str(e) +
-                          "\n - smtp server: " + smtp_host + ":" + str(smtp_port) +
-                          "\n - smtp username: " + smtp_username +
-                          "\n - smtp password:" + ("SET" if smtp_password != "" else "NOT SET")
-                          )
+            logging.error(
+                "EmailReporter: Unable to authenticate to SMTP server: \n"
+                + str(e)
+                + "\n - smtp server: "
+                + smtp_host
+                + ":"
+                + str(smtp_port)
+                + "\n - smtp username: "
+                + smtp_username
+                + "\n - smtp password:"
+                + ("SET" if smtp_password != "" else "NOT SET")
+            )
             return
         except Exception as e:
-            logging.error("EmailReporter: Unable to send e-mail: \n" + str(e.__class__) + " - " + str(e) +
-                          "\n - smtp server: " + smtp_host + ":" + str(smtp_port) +
-                          "\n - smtp username: " + smtp_username +
-                          "\n - smtp password:" + ("SET" if smtp_password != "" else "NOT SET")
-                          )
+            logging.error(
+                "EmailReporter: Unable to send e-mail: \n"
+                + str(e.__class__)
+                + " - "
+                + str(e)
+                + "\n - smtp server: "
+                + smtp_host
+                + ":"
+                + str(smtp_port)
+                + "\n - smtp username: "
+                + smtp_username
+                + "\n - smtp password:"
+                + ("SET" if smtp_password != "" else "NOT SET")
+            )
             return
         logging.info("Email Reporter: Sent mail to " + ", ".join(recipients))
