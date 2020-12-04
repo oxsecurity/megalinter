@@ -475,6 +475,7 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 | [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs | Active if GitHub Action |
 | [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md) | Zip containing all formatted and auto-fixed sources so you can extract them in your repository | Active |
 | [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md) | One GitHub status by linter on the PR, with links to detailed logs | Active if GitHub Action |
+| [Email](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/EmailReporter.md) | Receive all reports on your e-mail, if you can not use artifacts | Active |
 | [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md) | One log file by linter following [Test Anything Protocol](https://testanything.org/) format | Active |
 | [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md) | Execution logs visible in console | Active |
 <!-- reporters-section-end -->
