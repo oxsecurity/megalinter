@@ -4,7 +4,7 @@ IF you don't use artifacts upload to read Mega-Linter reports, you can receive t
 
 ## Usage
 
-Define related variables below allowing to send e-mails
+Define related variables below allowing to send e-mails.
 
 To use with a gmail account, you have to previously follow [these steps](https://stackabuse.com/how-to-send-emails-with-gmail-using-python/#authenticating-with-gmail)
 
