@@ -114,6 +114,10 @@ jobs:
 
 ## Azure
 
+Use the following Azure workflow template
+
+You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+
 ```yaml
   - job: megalinter
     displayName: Mega-Linter
@@ -129,6 +133,8 @@ jobs:
 ## Jenkins
 
 Add the following stage in your Jenkinsfile
+
+You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
 // Lint with Mega-Linter: https://nvuillam.github.io/mega-linter/
@@ -150,6 +156,8 @@ stage('Mega-Linter') {
 
 Example of configuration using GitLab CI
 
+You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+
 ```yaml
 megalinter:
   stage: linting
@@ -163,7 +171,7 @@ megalinter:
 
 ## Run Mega-Linter locally
 
-You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration.
+You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
 See [mega-linter-runner installation instructions](https://nvuillam.github.io/mega-linter/mega-linter-runner/#installation)
 

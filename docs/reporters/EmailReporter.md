@@ -5,7 +5,12 @@ IF you don't use artifacts upload to read Mega-Linter reports, you can receive t
 ## Usage
 
 Define related variables below allowing to send e-mails
+
 To use with a gmail account, you have to previously follow [these steps](https://stackabuse.com/how-to-send-emails-with-gmail-using-python/#authenticating-with-gmail)
+
+Reports are sent to the defined e-mail address at the end of each Mega-Linter run
+
+![Screenshot](../assets/images/EmailReporter_1.jpg)
 
 ## Configuration
 
