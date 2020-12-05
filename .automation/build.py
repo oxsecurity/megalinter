@@ -957,8 +957,14 @@ def finalize_doc_build():
     # Update mega-linter-runner.md for online doc
     replace_in_file(
         target_file_readme_runner,
-        "<!-- readme-header-start-->",
-        "<!-- readme-header-end-->",
+        "<!-- header-logo-start -->",
+        "<!-- header-logo-end -->",
+        "",
+    )
+    replace_in_file(
+        target_file_readme_runner,
+        "<!-- readme-header-start -->",
+        "<!-- readme-header-end -->",
         "",
     )
     replace_in_file(

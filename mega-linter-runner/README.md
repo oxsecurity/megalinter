@@ -1,7 +1,15 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
+<!-- header-logo-start -->
+<div align="center">
+  <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
+  </a>
+</div>
+<!-- header-logo-end -->
+
 # Mega-Linter Runner
-<!-- readme-header-start-->
+<!-- readme-header-start -->
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
@@ -16,7 +24,7 @@
 See [**Mega-Linter Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
 <!-- online-doc-end -->
 
-<!-- readme-header-end-->
+<!-- readme-header-end -->
 
 This package allows to run [Mega-Linter](https://nvuillam.github.io/mega-linter/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 

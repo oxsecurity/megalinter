@@ -1,10 +1,12 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
+<!-- header-logo-start -->
 <div align="center">
   <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
     <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
   </a>
 </div>
+<!-- header-logo-end -->
 
 ## Mega-Linter
 
