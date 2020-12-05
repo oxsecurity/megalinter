@@ -6,8 +6,8 @@ import logging
 import os
 import tempfile
 import zipfile
-import requests
 
+import requests
 from megalinter import Reporter, config
 
 
@@ -54,9 +54,7 @@ class FileIoReporter(Reporter):
 
         # Post file on file.io API
         url = "https://file.io/?expires=1d"
-        files = {
-            'file': ('mega-linter-report.zip', zf.read())
-        }
+        files = {"file": ("mega-linter-report.zip", zf.read())}
         response = requests.post(url, files=files)
         if 200 <= response.status_code < 299:
             json_data = response.json()
