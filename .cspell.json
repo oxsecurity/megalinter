@@ -75,6 +75,7 @@
         "Emegalinter",
         "Envir",
         "Excpt",
+        "FILEIO",
         "FIRSTPARTY",
         "Fmegalinter",
         "GOLANGCI",

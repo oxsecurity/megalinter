@@ -15,6 +15,7 @@ class ConsoleReporter(Reporter):
     def __init__(self, params=None):
         # Activate console output by default
         self.is_active = True
+        self.processing_order = -9
         super().__init__(params)
 
     def produce_report(self):

@@ -307,7 +307,9 @@ class Megalinter:
             skipped_linters.sort()
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
         # Sort linters by language and linter_name
-        self.linters.sort(key=lambda x: (x.descriptor_id, x.linter_name))
+        self.linters = sorted(
+            self.linters, key=lambda l: (l.processing_order, l.descriptor_id)
+        )
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):

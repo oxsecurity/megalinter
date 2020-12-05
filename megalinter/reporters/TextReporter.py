@@ -16,6 +16,7 @@ class TextReporter(Reporter):
     def __init__(self, params=None):
         # report_type is simple by default
         self.report_type = "simple"
+        self.processing_order = -5
         super().__init__(params)
 
     def manage_activation(self):
