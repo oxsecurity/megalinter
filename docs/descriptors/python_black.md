@@ -153,7 +153,7 @@ Options:
 ### Example success log
 
 ```shell
-Results of black linter (version 20.8)
+Results of black linter (version 19.10)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
 -----------------------------------------------
 
@@ -166,7 +166,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
 ### Example error log
 
 ```shell
-Results of black linter (version 20.8)
+Results of black linter (version 19.10)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
 -----------------------------------------------
 

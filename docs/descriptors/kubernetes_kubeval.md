@@ -89,7 +89,7 @@ RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval
 ### Example success log
 
 ```shell
-Results of kubeval linter (version dev)
+Results of kubeval linter (version 0.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
 -----------------------------------------------
 
@@ -101,7 +101,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernet
 ### Example error log
 
 ```shell
-Results of kubeval linter (version dev)
+Results of kubeval linter (version 0.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
 -----------------------------------------------
 

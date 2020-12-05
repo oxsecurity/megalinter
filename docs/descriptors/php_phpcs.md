@@ -193,7 +193,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpc
     PHPCBF CAN FIX THE 7 MARKED SNIFF VIOLATIONS AUTOMATICALLY
     ----------------------------------------------------------------------
     
-    Time: 40ms; Memory: 6MB
+    Time: 49ms; Memory: 6MB
 
 [ERROR] .automation/test/php/php_bad_2.php
     
@@ -216,6 +216,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpc
     PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
     ----------------------------------------------------------------------
     
-    Time: 39ms; Memory: 6MB
+    Time: 45ms; Memory: 6MB
 
 ```

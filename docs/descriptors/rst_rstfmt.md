@@ -63,3 +63,15 @@ optional arguments:
 
 - PIP packages (Python):
   - [rstfmt](https://pypi.org/project/rstfmt)
+
+### Example success log
+
+```shell
+Results of rstfmt linter (version 0.0.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstfmt/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/rst_rstfmt/rst_good_1.rst
+    
+
+```

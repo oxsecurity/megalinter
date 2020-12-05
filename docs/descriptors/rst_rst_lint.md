@@ -72,7 +72,7 @@ optional arguments:
 ### Example success log
 
 ```shell
-Results of rst-lint linter (version 1.3.1)
+Results of rst-lint linter (version 1.3.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
 -----------------------------------------------
 
@@ -84,7 +84,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_
 ### Example error log
 
 ```shell
-Results of rst-lint linter (version 1.3.1)
+Results of rst-lint linter (version 1.3.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
 -----------------------------------------------
 

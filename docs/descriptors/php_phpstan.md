@@ -115,7 +115,7 @@ RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 ### Example success log
 
 ```shell
-Results of phpstan linter (version 0.12.56)
+Results of phpstan linter (version 0.12.58)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
 -----------------------------------------------
 
@@ -132,7 +132,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
 ### Example error log
 
 ```shell
-Results of phpstan linter (version 0.12.56)
+Results of phpstan linter (version 0.12.58)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
 -----------------------------------------------
 

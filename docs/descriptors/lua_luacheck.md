@@ -273,9 +273,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luac
 -----------------------------------------------
 
 [SUCCESS] .automation/test/lua/lua_good_1.lua
-    Checking .automation/test/lua/lua_good_1.lua [0m[32m[1mOK[0m
+    Checking .automation/test/lua/lua_good_1.lua OK
     
-    Total: [0m[0m[1m0[0m warnings / [0m[0m[1m0[0m errors in 1 file
+    Total: 0 warnings / 0 errors in 1 file
 
 ```
 
@@ -287,10 +287,10 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luac
 -----------------------------------------------
 
 [ERROR] .automation/test/lua/lua_bad_1.lua
-    Checking .automation/test/lua/lua_bad_1.lua [0m[1m1 error[0m
+    Checking .automation/test/lua/lua_bad_1.lua 1 error
     
         .automation/test/lua/lua_bad_1.lua:10:1: expected 'end' (to close 'function' on line 7) near <eof>
     
-    Total: [0m[0m[1m0[0m warnings / [0m[31m[1m1[0m error in 1 file
+    Total: 0 warnings / 1 error in 1 file
 
 ```

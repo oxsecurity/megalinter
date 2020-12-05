@@ -241,7 +241,7 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 ### Example success log
 
 ```shell
-Results of psalm linter (version 4.2.0)
+Results of psalm linter (version 4.3.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
 -----------------------------------------------
 
@@ -254,7 +254,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     No errors found!
     ------------------------------
     
-    Checks took 0.22 seconds and used 38.143MB of memory
+    Checks took 0.25 seconds and used 39.379MB of memory
     Psalm was unable to infer types in the codebase
 
 [SUCCESS] .automation/test/php/php_good_2.php
@@ -266,7 +266,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     No errors found!
     ------------------------------
     
-    Checks took 0.25 seconds and used 35.475MB of memory
+    Checks took 0.31 seconds and used 36.996MB of memory
     Psalm was unable to infer types in the codebase
 
 ```
@@ -274,7 +274,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
 ### Example error log
 
 ```shell
-Results of psalm linter (version 4.2.0)
+Results of psalm linter (version 4.3.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
 -----------------------------------------------
 
@@ -284,71 +284,71 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     
     E
     
-    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:2 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
-    2[97;41mpe98y[0m r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:2 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:2 - Const pe98y is not defined (see https://psalm.dev/020)
-    2[97;41mpe98y[0m r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:2 - Const pe98y is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:8 - Const r is not defined (see https://psalm.dev/020)
-    2pe98y [97;41mr[0m-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:8 - Const r is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:10 - Const n0u823n is not defined (see https://psalm.dev/020)
-    2pe98y r-[97;41mn0u823n[0m=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:10 - Const n0u823n is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:17 - Syntax error, unexpected '=' on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n[97;41m=[0mr  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:17 - Syntax error, unexpected '=' on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:18 - Const r is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=[97;41mr[0m  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:18 - Const r is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:21 - Invalid numeric literal on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  [97;41m092[0mu3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:21 - Invalid numeric literal on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:24 - Const u3 is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092[97;41mu3[0m- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:24 - Const u3 is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:28 - Const r08u2q098ry is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- [97;41mr08u2q098ry[0m 09nq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:28 - Const r08u2q098ry is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:40 - Syntax error, unexpected T_LNUMBER on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry [97;41m09[0mnq2yr09n2yr9 y2n-93yr  298yr3  29
+    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:40 - Syntax error, unexpected T_LNUMBER on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:42 - Const nq2yr09n2yr9 is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09[97;41mnq2yr09n2yr9[0m y2n-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:42 - Const nq2yr09n2yr9 is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:55 - Const y2n is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 [97;41my2n[0m-93yr  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:55 - Const y2n is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_1.php:3:61 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93[97;41myr[0m  298yr3  29
+    ERROR: ParseError - ../../...automation/test/php/php_bad_1.php:3:61 - Syntax error, unexpected T_STRING on line 3 (see https://psalm.dev/173)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:61 - Const yr is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93[97;41myr[0m  298yr3  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:61 - Const yr is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
-    [0;31mERROR[0m: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:68 - Const yr3 is not defined (see https://psalm.dev/020)
-    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298[97;41myr3[0m  29
+    ERROR: UndefinedConstant - ../../...automation/test/php/php_bad_1.php:3:68 - Const yr3 is not defined (see https://psalm.dev/020)
+    2pe98y r-n0u823n=r  092u3- r08u2q098ry 09nq2yr09n2yr9 y2n-93yr  298yr3  29
     
     
     ------------------------------
-    [0;31m15 errors[0m found
+    15 errors found
     ------------------------------
     
-    Checks took 0.22 seconds and used 38.325MB of memory
+    Checks took 0.30 seconds and used 39.560MB of memory
     Psalm was unable to infer types in the codebase
 
 [ERROR] .automation/test/php/php_bad_2.php
@@ -357,32 +357,32 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
     
     E
     
-    [0;31mERROR[0m: InvalidReturnType - ../../...automation/test/php/php_bad_2.php:4:12 - The declared return type 'array<array-key, string>' for takesAnInt is incorrect, got 'array{int, string(hello)}' (see https://psalm.dev/011)
-     * @return [97;41marray<string>[0m
+    ERROR: InvalidReturnType - ../../...automation/test/php/php_bad_2.php:4:12 - The declared return type 'array<array-key, string>' for takesAnInt is incorrect, got 'array{int, string(hello)}' (see https://psalm.dev/011)
+     * @return array<string>
     
     
-    [0;31mERROR[0m: InvalidReturnStatement - ../../...automation/test/php/php_bad_2.php:7:12 - The inferred type 'array{int, string(hello)}' does not match the declared return type 'array<array-key, string>' for takesAnInt (see https://psalm.dev/128)
-        return [97;41m[$i, "hello"][0m;
+    ERROR: InvalidReturnStatement - ../../...automation/test/php/php_bad_2.php:7:12 - The inferred type 'array{int, string(hello)}' does not match the declared return type 'array<array-key, string>' for takesAnInt (see https://psalm.dev/128)
+        return [$i, "hello"];
     
     
-    [0;31mERROR[0m: InvalidScalarArgument - ../../...automation/test/php/php_bad_2.php:11:12 - Argument 1 of takesAnInt expects int, string(some text) provided (see https://psalm.dev/012)
-    takesAnInt([97;41m$data[0][0m);
+    ERROR: InvalidScalarArgument - ../../...automation/test/php/php_bad_2.php:11:12 - Argument 1 of takesAnInt expects int, string(some text) provided (see https://psalm.dev/012)
+    takesAnInt($data[0]);
     
     
-    [0;31mERROR[0m: ParseError - ../../...automation/test/php/php_bad_2.php:15:1 - Syntax error, unexpected '}' on line 15 (see https://psalm.dev/173)
-    [97;41m}[0m elseif ($condition) {}
+    ERROR: ParseError - ../../...automation/test/php/php_bad_2.php:15:1 - Syntax error, unexpected '}' on line 15 (see https://psalm.dev/173)
+    } elseif ($condition) {}
     
     
     ------------------------------
-    [0;31m4 errors[0m found
+    4 errors found
     ------------------------------
     Psalm can automatically fix 1 of these issues.
     Run Psalm again with 
-    [30;48;5;195m--alter --issues=InvalidReturnType --dry-run[0m
+    --alter --issues=InvalidReturnType --dry-run
     to see what it can fix.
     ------------------------------
     
-    Checks took 0.23 seconds and used 34.656MB of memory
+    Checks took 0.32 seconds and used 36.047MB of memory
     Psalm was unable to infer types in the codebase
 
 ```

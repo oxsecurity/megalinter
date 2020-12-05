@@ -110,27 +110,27 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ### Example success log
 
 ```shell
-Results of terragrunt linter (version 0.25.4)
+Results of terragrunt linter (version 0.26.7)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
-    [terragrunt] 2020/11/20 09:20:32 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
-    [terragrunt] 2020/11/20 09:20:32 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
+    [terragrunt] 2020/12/05 12:35:50 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
+    [terragrunt] 2020/12/05 12:35:50 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
 
 ```
 
 ### Example error log
 
 ```shell
-Results of terragrunt linter (version 0.25.4)
+Results of terragrunt linter (version 0.26.7)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 09:20:31 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
-    [terragrunt] 2020/11/20 09:20:31 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 09:20:31 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 09:20:31 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
+    [terragrunt] 2020/12/05 12:35:49 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
+    [terragrunt] 2020/12/05 12:35:49 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/12/05 12:35:49 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/12/05 12:35:49 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
 
 ```

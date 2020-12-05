@@ -118,7 +118,7 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 ### Example success log
 
 ```shell
-Results of golangci-lint linter (version 1.32.2)
+Results of golangci-lint linter (version 1.33.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
 -----------------------------------------------
 
@@ -130,13 +130,13 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golan
 ### Example error log
 
 ```shell
-Results of golangci-lint linter (version 1.32.2)
+Results of golangci-lint linter (version 1.33.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/golang/golang_bad_01.go
     level=error msg="[linters context] typechecking error: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if'"
-    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1005: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
+    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1020: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
     level=warning msg="[runner] Can't run linter unused: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
     level=error msg="Running error: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
 

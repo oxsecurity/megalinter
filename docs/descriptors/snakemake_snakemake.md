@@ -886,7 +886,7 @@ ENVIRONMENT MODULES:
 ### Example success log
 
 ```shell
-Results of snakemake linter (version 5.29.0)
+Results of snakemake linter (version 5.30.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
 -----------------------------------------------
 
@@ -898,7 +898,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
 ### Example error log
 
 ```shell
-Results of snakemake linter (version 5.29.0)
+Results of snakemake linter (version 5.30.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
 -----------------------------------------------
 

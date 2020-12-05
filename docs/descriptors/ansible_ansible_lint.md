@@ -99,12 +99,12 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_
 [SUCCESS] .automation/test/ansible/ansible/ansible_good_1.yml
     Examining .automation/test/ansible/ansible/ansible_good_1.yml of type playbook
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-api-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
 
 ```

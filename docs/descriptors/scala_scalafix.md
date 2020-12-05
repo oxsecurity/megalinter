@@ -209,7 +209,7 @@ RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 ### Example success log
 
 ```shell
-Results of scalafix linter (version 0.9.23)
+Results of scalafix linter (version 0.9.24)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
 -----------------------------------------------
 
@@ -221,7 +221,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_sc
 ### Example error log
 
 ```shell
-Results of scalafix linter (version 0.9.23)
+Results of scalafix linter (version 0.9.24)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
 -----------------------------------------------
 

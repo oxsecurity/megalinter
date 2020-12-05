@@ -156,7 +156,7 @@ Miscellaneous:
 ### Example success log
 
 ```shell
-Results of eslint linter (version 7.14.0)
+Results of eslint linter (version 7.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/
 -----------------------------------------------
 
@@ -168,7 +168,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascri
 ### Example error log
 
 ```shell
-Results of eslint linter (version 7.14.0)
+Results of eslint linter (version 7.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/
 -----------------------------------------------
 

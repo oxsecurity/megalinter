@@ -190,9 +190,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_p
 -----------------------------------------------
 
 [ERROR] .automation/test/puppet/puppet_bad_1.pp
+    WARNING: class not documented on line 1
+    WARNING: line has more than 140 characters on line 7
     WARNING: double quoted string containing no variables on line 4
     WARNING: double quoted string containing no variables on line 5
-    WARNING: line has more than 140 characters on line 7
-    WARNING: class not documented on line 1
 
 ```

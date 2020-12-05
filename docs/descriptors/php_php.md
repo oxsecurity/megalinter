@@ -114,7 +114,7 @@ RUN echo "No additional install for PHP built-in linter"
 ### Example success log
 
 ```shell
-Results of php linter (version 7.3.24)
+Results of php linter (version 7.3.25)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 -----------------------------------------------
 
@@ -129,7 +129,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 ### Example error log
 
 ```shell
-Results of php linter (version 7.3.24)
+Results of php linter (version 7.3.25)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 -----------------------------------------------
 

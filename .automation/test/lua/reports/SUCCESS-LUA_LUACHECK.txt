@@ -3,7 +3,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luac
 -----------------------------------------------
 
 [SUCCESS] .automation/test/lua/lua_good_1.lua
-    Checking .automation/test/lua/lua_good_1.lua [0m[32m[1mOK[0m
+    Checking .automation/test/lua/lua_good_1.lua OK
     
-    Total: [0m[0m[1m0[0m warnings / [0m[0m[1m0[0m errors in 1 file
+    Total: 0 warnings / 0 errors in 1 file
 

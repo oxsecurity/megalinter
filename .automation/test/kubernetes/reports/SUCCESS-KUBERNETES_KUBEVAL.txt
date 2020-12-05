@@ -1,4 +1,4 @@
-Results of kubeval linter (version dev)
+Results of kubeval linter (version 0.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
 -----------------------------------------------
 

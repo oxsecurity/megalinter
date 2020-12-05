@@ -7,190 +7,190 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
        Config loaded: /action/lib/.automation/.htmlhintrc
     
        .automation/test/html/html_bad_01.html
-    [37m      L8 |[90m  <div bad='' bad=''></div>[39m
-    [37m                ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L8 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L8 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L9 |[90m  <div bad='' bad=''></div>[39m
-    [37m                ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L9 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L9 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L10 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L10 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L10 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L11 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L11 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L11 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L12 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L12 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L12 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L13 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L13 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L13 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L14 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L14 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L14 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L15 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L15 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L15 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L16 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L16 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L16 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L17 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L17 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L17 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L18 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L18 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L18 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L19 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L19 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L19 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L20 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L20 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L20 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L21 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L21 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L21 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L22 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L22 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L22 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L23 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L23 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L23 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L24 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L24 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L24 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L25 |[90m  <input type="text"></input>[39m
-    [37m                                ^ [31mTag must be paired, no start tag: [ </input> ] (tag-pair)[39m
-    [37m      L26 |[90m  <div class"foo">[39m
-    [37m             ^ [31mSpecial characters must be escaped : [ < ]. (spec-char-escape)[39m
-    [37m      L26 |[90m  <div class"foo">[39m
-    [37m                            ^ [31mSpecial characters must be escaped : [ > ]. (spec-char-escape)[39m
-    [37m      L28 |[90m          </div>[39m
-    [37m                     ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L29 |[90m        </div>[39m
-    [37m                   ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L30 |[90m      </hello>[39m
-    [37m                 ^ [31mTag must be paired, no start tag: [ </hello> ] (tag-pair)[39m
-    [37m      L31 |[90m    </test>[39m
-    [37m               ^ [31mTag must be paired, no start tag: [ </test> ] (tag-pair)[39m
-    [37m      L32 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L38 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L38 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L38 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L44 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L50 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L50 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L50 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L56 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L62 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L62 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L62 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L68 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L74 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L74 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L74 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L80 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L81 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L82 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L83 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L84 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L85 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L86 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L87 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L88 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L89 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L90 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L91 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L92 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L93 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L94 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L95 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L96 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L97 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
+          L8 |  <div bad='' bad=''></div>
+                    ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L8 |  <div bad='' bad=''></div>
+                           ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L8 |  <div bad='' bad=''></div>
+                           ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L9 |  <div bad='' bad=''></div>
+                    ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L9 |  <div bad='' bad=''></div>
+                           ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L9 |  <div bad='' bad=''></div>
+                           ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L10 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L10 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L10 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L11 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L11 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L11 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L12 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L12 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L12 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L13 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L13 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L13 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L14 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L14 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L14 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L15 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L15 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L15 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L16 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L16 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L16 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L17 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L17 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L17 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L18 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L18 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L18 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L19 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L19 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L19 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L20 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L20 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L20 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L21 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L21 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L21 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L22 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L22 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L22 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L23 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L23 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L23 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L24 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L24 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L24 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L25 |  <input type="text"></input>
+                                    ^ Tag must be paired, no start tag: [ </input> ] (tag-pair)
+          L26 |  <div class"foo">
+                 ^ Special characters must be escaped : [ < ]. (spec-char-escape)
+          L26 |  <div class"foo">
+                                ^ Special characters must be escaped : [ > ]. (spec-char-escape)
+          L28 |          </div>
+                         ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L29 |        </div>
+                       ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L30 |      </hello>
+                     ^ Tag must be paired, no start tag: [ </hello> ] (tag-pair)
+          L31 |    </test>
+                   ^ Tag must be paired, no start tag: [ </test> ] (tag-pair)
+          L32 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L38 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L38 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L38 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L44 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L50 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L50 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L50 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L56 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L62 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L62 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L62 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L68 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L74 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L74 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L74 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L80 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L81 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L82 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L83 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L84 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L85 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L86 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L87 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L88 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L89 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L90 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L91 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L92 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L93 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L94 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L95 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L96 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L97 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
     
-    Scanned 1 files, found 92 errors in 1 files (27 ms)
+    Scanned 1 files, found 92 errors in 1 files (32 ms)
 

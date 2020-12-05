@@ -117,21 +117,28 @@ Options:
 ### Example success log
 
 ```shell
-Results of jscpd linter (version 3.3.21)
+Results of jscpd linter (version 3.3.22)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/copypaste/good
+    ┌────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+    │ Format │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ go     │ 2              │ 12          │ 52           │ 0            │ 0 (0%)           │ 0 (0%)            │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ Total: │ 2              │ 12          │ 52           │ 0            │ 0 (0%)           │ 0 (0%)            │
+    └────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+    Found 0 clones.
     HTML report saved to report/copy-paste/html/
-    Markdown report saved to report/copy-paste/jscpd-report.md
-    Detection time:: 24.847ms
+    Detection time:: 42.298ms
 
 ```
 
 ### Example error log
 
 ```shell
-Results of jscpd linter (version 3.3.21)
+Results of jscpd linter (version 3.3.22)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
@@ -140,8 +147,15 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
      - copypaste_bad_1.go [1:1 - 33:2] (32 lines, 222 tokens)
        copypaste_bad_2.go [1:1 - 33:2]
     
+    ┌────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+    │ Format │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ go     │ 2              │ 64          │ 444          │ 1            │ 32 (50%)         │ 222 (50%)         │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ Total: │ 2              │ 64          │ 444          │ 1            │ 32 (50%)         │ 222 (50%)         │
+    └────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+    Found 1 clones.
     HTML report saved to report/copy-paste/html/
-    Markdown report saved to report/copy-paste/jscpd-report.md
     ERROR: jscpd found too many duplicates (50%) over threshold (0%)
     Error: ERROR: jscpd found too many duplicates (50%) over threshold (0%)
         at ThresholdReporter.report (/node_modules/@jscpd/finder/dist/reporters/threshold.js:12:19)

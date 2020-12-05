@@ -6,5 +6,5 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
     
        Config loaded: /action/lib/.automation/.htmlhintrc
     
-    Scanned 1 files, no errors found (19 ms).
+    Scanned 1 files, no errors found (22 ms).
 

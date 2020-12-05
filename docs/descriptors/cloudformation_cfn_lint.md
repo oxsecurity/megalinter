@@ -140,7 +140,7 @@ Advanced / Debugging:
 ### Example success log
 
 ```shell
-Results of cfn-lint linter (version 0.41.0)
+Results of cfn-lint linter (version 0.43.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 
@@ -161,7 +161,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudfor
 ### Example error log
 
 ```shell
-Results of cfn-lint linter (version 0.41.0)
+Results of cfn-lint linter (version 0.43.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 

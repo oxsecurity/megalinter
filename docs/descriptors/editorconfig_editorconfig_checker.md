@@ -114,11 +114,11 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorco
 -----------------------------------------------
 
 [ERROR] .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext
-    [33;1m.automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:[33;0m
-    [31;1m	1: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m	2: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m	3: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m
-    3 errors found[33;0m
+    .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:
+    	1: Wrong amount of left-padding spaces(want multiple of 4)
+    	2: Wrong amount of left-padding spaces(want multiple of 4)
+    	3: Wrong amount of left-padding spaces(want multiple of 4)
+    
+    3 errors found
 
 ```

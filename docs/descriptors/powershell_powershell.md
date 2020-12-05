@@ -424,12 +424,6 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
                                                                        throw statem
                                                                       ents in catch
                                                                        blocks.
-    PSUseDeclaredVarsMoreThanAssignment Warning      powershell 9     The variable
-    s                                                _bad_1.ps1       'VariableThat
-                                                                      IsNotUsedLate
-                                                                      r' is assigne
-                                                                      d but never u
-                                                                      sed.
     PSAvoidTrailingWhitespace           Information  powershell 11    Line has trai
                                                      _bad_1.ps1       ling whitespa
                                                                       ce
@@ -475,6 +469,12 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
                                                                       String for mo
                                                                       re informatio
                                                                       n.
+    PSUseDeclaredVarsMoreThanAssignment Warning      powershell 9     The variable
+    s                                                _bad_1.ps1       'VariableThat
+                                                                      IsNotUsedLate
+                                                                      r' is assigne
+                                                                      d but never u
+                                                                      sed.
 
 [ERROR] .automation/test/powershell/powershell_bad_1.psd1
     

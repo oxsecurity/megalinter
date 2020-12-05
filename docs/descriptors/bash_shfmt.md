@@ -113,7 +113,7 @@ RUN go get mvdan.cc/sh/v3/cmd/shfmt
 ### Example success log
 
 ```shell
-Results of shfmt linter (version 3.2.0)
+Results of shfmt linter (version 3.2.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/
 -----------------------------------------------
 
@@ -125,7 +125,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shf
 ### Example error log
 
 ```shell
-Results of shfmt linter (version 3.2.0)
+Results of shfmt linter (version 3.2.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/
 -----------------------------------------------
 

@@ -137,7 +137,7 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 ### Example success log
 
 ```shell
-Results of checkstyle linter (version 8.37)
+Results of checkstyle linter (version 8.38)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
 -----------------------------------------------
 
@@ -150,7 +150,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_che
 ### Example error log
 
 ```shell
-Results of checkstyle linter (version 8.37)
+Results of checkstyle linter (version 8.38)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
 -----------------------------------------------
 

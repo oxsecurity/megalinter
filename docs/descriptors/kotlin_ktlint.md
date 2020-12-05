@@ -156,7 +156,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 ### Example success log
 
 ```shell
-Results of ktlint linter (version 0.39.0)
+Results of ktlint linter (version 0.40.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
 -----------------------------------------------
 
@@ -168,7 +168,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_k
 ### Example error log
 
 ```shell
-Results of ktlint linter (version 0.39.0)
+Results of ktlint linter (version 0.40.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
 -----------------------------------------------
 
