@@ -26,7 +26,7 @@
     "isort": "5.6.4",
     "jscpd": "3.3.22",
     "jsonlint": "1.6.3",
-    "ktlint": "0.39.0",
+    "ktlint": "0.40.0",
     "kubeval": "0.15.0",
     "lintr": "2.0.1.9000",
     "luacheck": "0.23.0",

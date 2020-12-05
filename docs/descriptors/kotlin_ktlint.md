@@ -9,7 +9,7 @@
 
 ## ktlint documentation
 
-- Version in Mega-Linter: **0.39.0**
+- Version in Mega-Linter: **0.40.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -97,7 +97,9 @@ Flags:
                              Customize the output color
       --debug                Turn on debug output
       --disabled_rules=<disabledRules>
-                             Comma-separated list of rules to globally disable
+                             Comma-separated list of rules to globally disable. To
+                               disable standard ktlint rule-set use
+                               --disabled_rules=standard
   -F, --format               Fix any deviations from the code style
       --limit=<limit>        Maximum number of errors to show (default: show all)
       --relative             Print files relative to the working directory (e.g.
@@ -112,6 +114,7 @@ Flags:
       --editorconfig=<editorConfigPath>
                              Path to .editorconfig
       --experimental         Enabled experimental rules (ktlint-ruleset-experimental)
+      --baseline=<baseline>  Defines a baseline file to check against
   -h, --help                 Show this help message and exit.
   -V, --version              Print version information and exit.
 Commands:
@@ -133,6 +136,10 @@ Commands:
                                                             settings (global)
   applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA
                                                             project settings
+  generateEditorConfig                                    EXPERIMENTAL!!!
+                                                            Generate kotlin
+                                                            style section for '.
+                                                            editorconfig' file.
 ```
 
 ### Installation on mega-linter Docker image
