@@ -54,7 +54,9 @@ class FileIoReporter(Reporter):
 
         # Post file on file.io API
         url = "https://file.io/?expires=1d"
-        files = {'mega-linter-report.zip': zf}
+        files = {
+            'file': ('mega-linter-report.zip', zf.read())
+        }
         response = requests.post(url, files=files)
         if 200 <= response.status_code < 299:
             json_data = response.json()
