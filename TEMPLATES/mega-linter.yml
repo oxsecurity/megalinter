@@ -42,7 +42,7 @@ jobs:
         uses: nvuillam/mega-linter@v4
         env:
           # All available variables are described in documentation
-          # https://nvuillam.github.io/mega-linter/#configuration
+          # https://nvuillam.github.io/mega-linter/configuration/
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
