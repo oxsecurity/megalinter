@@ -25,5 +25,11 @@
 
 ### Installation
 
+- Dockerfile commands :
+```dockerfile
+ENV JAVA_HOME=/usr/lib/jvm/java-14-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+```
+
 - APK packages (Linux):
-  - [openjdk8-jre](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk8-jre)
+  - [openjdk14-jdk](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk14-jdk)

@@ -58,7 +58,6 @@ RUN apk add --update --no-cache \
     linux-headers \
     make \
     musl-dev \
-    openjdk11 \
     py3-setuptools \
     readline-dev
 
@@ -71,7 +70,7 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 go \
-                openjdk8-jre \
+                openjdk14-jdk \
                 npm \
                 nodejs-current \
                 perl \
@@ -202,6 +201,10 @@ ENV GOROOT=/usr/lib/go \
 
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
+
+# JAVA installation
+ENV JAVA_HOME=/usr/lib/jvm/java-14-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
