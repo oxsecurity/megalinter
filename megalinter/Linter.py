@@ -616,7 +616,8 @@ class Linter:
     def build_version_command(self):
         cmd = [self.cli_executable_version]
         cmd += self.cli_version_extra_args
-        cmd += [self.cli_version_arg_name]
+        if self.cli_version_arg_name != "":
+            cmd += [self.cli_version_arg_name]
         return cmd
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)

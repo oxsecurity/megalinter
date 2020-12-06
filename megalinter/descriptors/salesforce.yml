@@ -21,12 +21,15 @@ linters:
     cli_executable: sfdx
     cli_lint_extra_args:
       - "scanner:run"
+      - "--target"
+      - "./**/*.cls,./**/*.trigger,./**/*.js,./**/*.ts"
     cli_lint_mode: project
     cli_help_extra_args:
       - "scanner:run"
-      - "--target"
-      - "./**/*.cls,./**/*.trigger,./**/*.js,./**/*.ts"
-      - "-c"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
     examples:
       - "sfdx scanner:run"
     install:
