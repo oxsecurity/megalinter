@@ -3,8 +3,11 @@
 # <a href="https://forcedotcom.github.io/sfdx-scanner/" target="blank" title="Visit linter Web Site"><img src="https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png" alt="sfdx-scanner" height="100px" class="megalinter-logo"></a>sfdx-scanner
 
 sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+
 If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_DIRECTORY
+
 You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
 See more details in [Help](#help-content)
 
 ## sfdx-scanner documentation

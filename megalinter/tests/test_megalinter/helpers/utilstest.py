@@ -104,10 +104,7 @@ def test_linter_success(linter, test_self):
     # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
-        if os.path.isfile(workspace + os.path.sep + "test_copy_in_tmp_folder"):
-            tmp_sources_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
-            copy_tree(workspace, tmp_sources_folder)
-            workspace = tmp_sources_folder
+        workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
@@ -157,10 +154,7 @@ def test_linter_failure(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
-        if os.path.isfile(workspace + os.path.sep + "test_copy_in_tmp_folder"):
-            tmp_sources_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
-            copy_tree(workspace, tmp_sources_folder)
-            workspace = tmp_sources_folder
+        workspace = manage_copy_sources(workspace)
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     if os.path.isfile(workspace + os.path.sep + "no_test_failure"):
@@ -214,6 +208,13 @@ def test_linter_failure(linter, test_self):
     )
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
+
+def manage_copy_sources(workspace):
+    if os.path.isfile(workspace + os.path.sep + "test_copy_in_tmp_folder"):
+        tmp_sources_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+        copy_tree(workspace, tmp_sources_folder)
+        workspace = tmp_sources_folder
+    return workspace
 
 # Copy logs for documentation
 def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
