@@ -58,7 +58,7 @@ RUN apk add --update --no-cache \
     linux-headers \
     make \
     musl-dev \
-    openjdk14 \
+    openjdk11 \
     py3-setuptools \
     readline-dev
 
