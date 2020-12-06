@@ -1,0 +1,8 @@
+{
+  "commitMessage": "Bumped version to %s",
+  "tagName": "%s",
+  "scripts": {
+  	"preupdate": "npm run min",
+  	"postupdate": "git push && git push --tags && npm publish"
+  }
+}

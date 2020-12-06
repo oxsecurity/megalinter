@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>leaflet-poviders Mocha Tests</title>
+	<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+	<link rel="stylesheet" href="http://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+	<style>
+		#map {
+			width: 100%;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="mocha"></div>
+	<div id="map"></div>
+
+	<script src="../node_modules/chai/chai.js"></script>
+	<script src="../node_modules/mocha/mocha.js"></script>
+
+	<script src="http://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<script src="../leaflet-providers.js"></script>
+	<script src="../preview/shared.js"></script>
+
+	<script>
+		if (window.initMochaPhantomJS) { window.initMochaPhantomJS(); }
+		mocha.setup('bdd');
+	</script>
+
+	<script src="test.js"></script>
+
+	<script>
+		mocha.checkLeaks();
+		if (window.mochaPhantomJS) {
+			mochaPhantomJS.run();
+		} else {
+			mocha.run();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider - layer bounds check page</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="//unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	<link rel="stylesheet" href="vendor/leaflet.draw.css" />
+
+	<style>
+		html {
+			height: 100%;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			vertical-align: baseline;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+		}
+		.sidebar {
+			width: 30%;
+		}
+		#table th {
+			text-align: left;
+		}
+		#table td {
+			cursor: pointer;
+		}
+		#table tr:hover {
+			background-color: #eee;
+		}
+		#table tr.active {
+			background-color: #ffa;
+		}
+		#maps {
+			position: fixed;
+			width: 70%;
+			top: 0;
+			right: 0;
+		}
+		.map {
+			width: 100%; height: 800px;
+		}
+
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="../css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="../css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper right">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+
+	<div class="sidebar">
+		<h1>Testing provider bounds</h1>
+
+		<p>
+			This page lists the providers with bounds.
+			Click on a provider name to view a map with the layer and a rectangle
+			depicting the bounds for this layer.
+		</p>
+
+		<p>
+			Sometimes you need to zoom in because the layer doesn't provide lower zoom levels.
+		</p>
+		<table id="table">
+			<tr><th>Provider</th></tr>
+		</table>
+		<button id="dump-bounds">Update bounds</button>
+		<div id="result"></div>
+	</div>
+	<div id="maps"></div>
+
+	<script src="//unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<script src="../leaflet-providers.js"></script>
+	<script src="vendor/leaflet.draw-src.js"></script>
+
+	<script src="shared.js"></script>
+	<script src="layer-bounds.js"></script>
+</body>
+</html>

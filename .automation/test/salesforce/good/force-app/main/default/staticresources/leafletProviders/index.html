@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="http://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	<style>
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;}
+		.map { height: 100% }
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+	<div id="map" class="map"></div>
+
+	<script src="http://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<script src="leaflet-providers.js"></script>
+	<script>
+		var map = L.map('map', {
+			center: [48, -3],
+			zoom: 5,
+			zoomControl: false
+		});
+
+		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+		var baseLayers = {
+			'OpenStreetMap Default': defaultLayer,
+			'OpenStreetMap German Style': L.tileLayer.provider('OpenStreetMap.DE'),
+			'OpenStreetMap Black and White': L.tileLayer.provider('OpenStreetMap.BlackAndWhite'),
+			'OpenStreetMap H.O.T.': L.tileLayer.provider('OpenStreetMap.HOT'),
+			'Thunderforest OpenCycleMap': L.tileLayer.provider('Thunderforest.OpenCycleMap'),
+			'Thunderforest Transport': L.tileLayer.provider('Thunderforest.Transport'),
+			'Thunderforest Landscape': L.tileLayer.provider('Thunderforest.Landscape'),
+			'Hydda Full': L.tileLayer.provider('Hydda.Full'),
+			'Stamen Toner': L.tileLayer.provider('Stamen.Toner'),
+			'Stamen Terrain': L.tileLayer.provider('Stamen.Terrain'),
+			'Stamen Watercolor': L.tileLayer.provider('Stamen.Watercolor'),
+			'Esri WorldStreetMap': L.tileLayer.provider('Esri.WorldStreetMap'),
+			'Esri DeLorme': L.tileLayer.provider('Esri.DeLorme'),
+			'Esri WorldTopoMap': L.tileLayer.provider('Esri.WorldTopoMap'),
+			'Esri WorldImagery': L.tileLayer.provider('Esri.WorldImagery'),
+			'Esri WorldTerrain': L.tileLayer.provider('Esri.WorldTerrain'),
+			'Esri WorldShadedRelief': L.tileLayer.provider('Esri.WorldShadedRelief'),
+			'Esri WorldPhysical': L.tileLayer.provider('Esri.WorldPhysical'),
+			'Esri OceanBasemap': L.tileLayer.provider('Esri.OceanBasemap'),
+			'Esri NatGeoWorldMap': L.tileLayer.provider('Esri.NatGeoWorldMap'),
+			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas')
+		};
+
+		var overlayLayers = {
+			'OpenSeaMap': L.tileLayer.provider('OpenSeaMap'),
+			'OpenWeatherMap Clouds': L.tileLayer.provider('OpenWeatherMap.Clouds'),
+			'OpenWeatherMap CloudsClassic': L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
+			'OpenWeatherMap Precipitation': L.tileLayer.provider('OpenWeatherMap.Precipitation'),
+			'OpenWeatherMap PrecipitationClassic': L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
+			'OpenWeatherMap Rain': L.tileLayer.provider('OpenWeatherMap.Rain'),
+			'OpenWeatherMap RainClassic': L.tileLayer.provider('OpenWeatherMap.RainClassic'),
+			'OpenWeatherMap Pressure': L.tileLayer.provider('OpenWeatherMap.Pressure'),
+			'OpenWeatherMap PressureContour': L.tileLayer.provider('OpenWeatherMap.PressureContour'),
+			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
+			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
+			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow')
+		};
+
+		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+
+		// resize layers control to fit into view.
+		function resizeLayerControl () {
+			var layerControlHeight = document.body.clientHeight - (10 + 50);
+			var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+
+			layerControl.style.overflowY = 'auto';
+			layerControl.style.maxHeight = layerControlHeight + 'px';
+		}
+		map.on('resize', resizeLayerControl);
+		resizeLayerControl();
+	</script>
+</body>
+</html>

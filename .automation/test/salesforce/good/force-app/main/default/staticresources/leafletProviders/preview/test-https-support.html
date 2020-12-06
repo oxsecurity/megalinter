@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider - HTTPS support check page</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+	<style>
+		html {
+			height: 100%;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			vertical-align: baseline;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+		}
+		.container {
+			float: left;
+			width: 400px;
+		}
+		table th {
+			text-align: left;
+		}
+		#maps {
+			position: fixed;
+			width: 40%;
+			top: 0;
+			right: 0;
+		}
+		.map {
+			width: 100%; height: 300px;
+		}
+
+		.fail {
+			color: red;
+		}
+		.ok {
+			color: green;
+		}
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="../css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="../css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper right">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+
+	<h1>Testing provider protocols</h1>
+	<div class="container">
+		<h2>Known https support:</h2>
+		<table id="table-supported">
+			<tr><th>Provider</th><th>HTTPS</th></tr>
+		</table>
+	</div>
+
+	<div class="container">
+		<h2>Unknown https support:</h2>
+		<table id="table-unknown">
+			<tr><th>Provider</th><th>HTTPS</th></tr>
+		</table>
+	</div>
+	<div id="maps"></div>
+
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<script src="../leaflet-providers.js"></script>
+
+	<script src="shared.js"></script>
+	<script src="https-support.js"></script>
+</body>
+</html>
