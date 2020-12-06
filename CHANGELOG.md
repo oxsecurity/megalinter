@@ -4,7 +4,11 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Add Salesforce linter: sfdx-scanner
+- Linters
+  - Add Salesforce linter: sfdx-scanner
+
+- Core architecture
+  - Allow to call extra commands to build help content
 
 ## [4.13.0] 2020-12-05
 
