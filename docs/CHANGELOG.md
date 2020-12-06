@@ -5,6 +5,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Add Salesforce linter: sfdx-scanner
+
 ## [4.13.0] 2020-12-05
 
 - Major updates in online documentation generation

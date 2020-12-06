@@ -125,6 +125,7 @@ RUN pip3 install --no-cache-dir \
 #############################################################################################
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
+                sfdx-cli \
                 typescript \
                 asl-validator \
                 @coffeelint/cli \
@@ -358,6 +359,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 # clippy installation
 RUN rustup component add clippy
+
+# sfdx-scanner installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
