@@ -6,8 +6,11 @@ install:
 linters:
   # SFDX Scanner
   - linter_name: sfdx-scanner
+    name: SALESFORCE_SFDX_SCANNER
     files_sub_directory: force-app
-    linter_text: sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+    linter_text: |
+                 sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+                 If you root is not **force-app** folder, please set variable SALESFORCE_SFDX_SCANNER_DIRECTORY
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
     linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
