@@ -371,17 +371,20 @@ All parameters are case-insensitive.
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN mkdir -p /opt/microsoft/powershell \
-        && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/latest \
+ARG PWSH_VERSION='latest'
+ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
+RUN mkdir -p ${PWSH_DIRECTORY} \
+        && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
         | grep browser_download_url \
         | grep linux-alpine-x64 \
         | cut -d '"' -f 4 \
         | xargs -n 1 wget -O - \
-        | tar -xzC /opt/microsoft/powershell \
-        && ln -sf /opt/microsoft/powershell/pwsh /usr/bin/pwsh
+        | tar -xzC ${PWSH_DIRECTORY} \
+        && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 # Linter install
-RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion latest -Scope AllUsers -Force'
+ARG PSSA_VERSION='latest'
+RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 ```
 
 
