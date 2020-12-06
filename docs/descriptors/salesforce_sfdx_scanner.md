@@ -7,7 +7,7 @@ If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SC
 
 ## sfdx-scanner documentation
 
-- Version in Mega-Linter: **7.81.0**
+- Version in Mega-Linter: **2.4.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
 - See [How to disable sfdx-scanner rules in files](https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
