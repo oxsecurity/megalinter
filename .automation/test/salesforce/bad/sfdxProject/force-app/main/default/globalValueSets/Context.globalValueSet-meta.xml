@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>All</fullName>
+        <default>true</default>
+        <label>All</label>
+    </customValue>
+    <customValue>
+        <fullName>Company</fullName>
+        <default>false</default>
+        <label>Company</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributor</fullName>
+        <default>false</default>
+        <label>Distributor</label>
+    </customValue>
+    <customValue>
+        <fullName>Insured</fullName>
+        <default>false</default>
+        <label>Insured</label>
+    </customValue>
+    <masterLabel>Context</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

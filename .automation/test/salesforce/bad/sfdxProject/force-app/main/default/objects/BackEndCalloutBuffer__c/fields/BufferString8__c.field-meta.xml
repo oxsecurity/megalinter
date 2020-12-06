@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BufferString8__c</fullName>
+    <description>BufferString8</description>
+    <externalId>false</externalId>
+    <inlineHelpText>BufferString8</inlineHelpText>
+    <label>BufferString8</label>
+    <length>130000</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

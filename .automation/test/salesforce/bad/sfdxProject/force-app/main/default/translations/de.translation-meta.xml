@@ -1,0 +1,4239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label><!-- Retail Banking Console --></label>
+        <name>BankingConsoleFinancialServicesCloud</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Commercial Banking Console --></label>
+        <name>CommBankingConsoleFinancialServicesCloud</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- DXC OmniChannel --></label>
+        <name>DXCO4SFExampleApp</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- DXC OmniChannel Administration --></label>
+        <name>DXCO4SF_Admin</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Wealth Management --></label>
+        <name>FSC_Lightning</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Financial Services Cloud (Classic) --></label>
+        <name>FinancialServicesCloud</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Retail Banking --></label>
+        <name>FinancialServicesCloudRetailBanking</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Insurance Console --></label>
+        <name>InsuranceConsoleFinancialServicesCloud</name>
+    </customApplications>
+    <customLabels>
+        <label>Fehler beim Aufruf der Remote-API</label>
+        <name>API_Error</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ATECO --></label>
+        <name>ATECO</name>
+    </customLabels>
+    <customLabels>
+        <label>Über {0} Ergebnisse</label>
+        <name>AboutNbResults</name>
+    </customLabels>
+    <customLabels>
+        <label>Unfalltod</label>
+        <name>AccidentalDeath</name>
+    </customLabels>
+    <customLabels>
+        <label>Details zur Unfalltodversicherung</label>
+        <name>AccidentalDeathCoverage</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontoname</label>
+        <name>AccountName</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontonummer</label>
+        <name>AccountNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontoeinstellungen</label>
+        <name>AccountSettings</name>
+    </customLabels>
+    <customLabels>
+        <label>Buchhaltungsdatum</label>
+        <name>AccountingDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Akt</label>
+        <name>Act</name>
+    </customLabels>
+    <customLabels>
+        <label>Akt Code</label>
+        <name>ActCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Akt Datum</label>
+        <name>ActDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Akt Familie</label>
+        <name>ActFamily</name>
+    </customLabels>
+    <customLabels>
+        <label>Akt Beschriftung</label>
+        <name>ActLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktionstyp</label>
+        <name>ActionType</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktiv</label>
+        <name>Active</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktivitäten</label>
+        <name>Activities</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Aktivität wurde eingestellt.</label>
+        <name>ActivityAbandoned</name>
+    </customLabels>
+    <customLabels>
+        <label>Tatsächliches Vertragsende Datum</label>
+        <name>ActualContractEndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Tatsächliches Enddatum</label>
+        <name>ActualEndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>hinzufügen</label>
+        <name>Add</name>
+    </customLabels>
+    <customLabels>
+        <label>Begünstigten hinzufügen</label>
+        <name>AddBeneficiary</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrer hinzufügen</label>
+        <name>AddDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitarbeiter hinzufügen</label>
+        <name>AddEmployee</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuer Begünstigter im Vertrag hinzugefügt {0}</label>
+        <name>AddNewBeneficiary</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Mitversicherte auf Vertrag hinzugefügt {0}</label>
+        <name>AddNewCoInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrzeug hinzufügen</label>
+        <name>AddVehicle</name>
+    </customLabels>
+    <customLabels>
+        <label>Hinzugefügt</label>
+        <name>Added</name>
+    </customLabels>
+    <customLabels>
+        <label>Adressdaten</label>
+        <name>AdditionalAdressDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Zusätzliche Deckung</label>
+        <name>AdditionalCoverage</name>
+    </customLabels>
+    <customLabels>
+        <label>Adresse</label>
+        <name>Address</name>
+    </customLabels>
+    <customLabels>
+        <label>Adresse nicht gefunden, versuchen Sie es mit weiteren Informationen.</label>
+        <name>AddressNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label>Geben Sie die Adresse ein oder drücken Sie auf Suchen, um die Lokalisierung zu verwenden.</label>
+        <name>AddressPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Fragebogen zur Angemessenheit</label>
+        <name>AdequacyQuestionnaire</name>
+    </customLabels>
+    <customLabels>
+        <label>Anpassen</label>
+        <name>Adjust</name>
+    </customLabels>
+    <customLabels>
+        <label>Adressinformationen</label>
+        <name>AdressInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Erweiterte Suche</label>
+        <name>AdvancedSearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachmittag</label>
+        <name>Afternoon</name>
+    </customLabels>
+    <customLabels>
+        <label>Alter</label>
+        <name>Age</name>
+    </customLabels>
+    <customLabels>
+        <label>alle</label>
+        <name>All</name>
+    </customLabels>
+    <customLabels>
+        <label>Zuweisung</label>
+        <name>Allocation</name>
+    </customLabels>
+    <customLabels>
+        <label>Wertberichtigungsbetrag</label>
+        <name>AllowanceAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Ihr Änderungsantrag wurde erfolgreich erstellt.</label>
+        <name>AmendmentCreated</name>
+    </customLabels>
+    <customLabels>
+        <label>Betrag</label>
+        <name>Amount</name>
+    </customLabels>
+    <customLabels>
+        <label>Bereits gezahlter Betrag</label>
+        <name>AmountAlreadyPaid</name>
+    </customLabels>
+    <customLabels>
+        <label>Betrag und Gebühren</label>
+        <name>AmountAndFees</name>
+    </customLabels>
+    <customLabels>
+        <label>Betrag (€)</label>
+        <name>AmountEuro</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherungssumme</label>
+        <name>AmountInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>0</label>
+        <name>AmountPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Betragsauswahl</label>
+        <name>AmountSelection</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Eingabebetrag ist zu groß.</label>
+        <name>AmountTooBig</name>
+    </customLabels>
+    <customLabels>
+        <label>jährlich</label>
+        <name>Annual</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahreseinkommen</label>
+        <name>AnnualIncome</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahreskilometerleistung</label>
+        <name>AnnualMileage</name>
+    </customLabels>
+    <customLabels>
+        <label>2</label>
+        <name>AnnualMileagePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Anonym</label>
+        <name>Anonymous</name>
+    </customLabels>
+    <customLabels>
+        <label>Antwort</label>
+        <name>Answer</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} beantwortet auf den {1} Online-Fragebogen</label>
+        <name>AnsweredQuestionnaire</name>
+    </customLabels>
+    <customLabels>
+        <label>Serverfehler. Bitte wenden Sie sich an Ihren Administrator.</label>
+        <name>ApexServerError</name>
+    </customLabels>
+    <customLabels>
+        <label>Terminvereinbarung</label>
+        <name>Appointment</name>
+    </customLabels>
+    <customLabels>
+        <label>Rund um die Adresse</label>
+        <name>AroundAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Vermögenswerte</label>
+        <name>Assets</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfänger</label>
+        <name>Assignee</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfänger</label>
+        <name>Assignees</name>
+    </customLabels>
+    <customLabels>
+        <label>Herausgeber der Behörde</label>
+        <name>AuthorityIssuingTheDocument</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Behörde</label>
+        <name>AuthorityIssuingTheDocumentPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Automatische Zahlungen</label>
+        <name>AutomaticPayments</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Automobile --></label>
+        <name>Automobile</name>
+    </customLabels>
+    <customLabels>
+        <label>Verfügbarkeit</label>
+        <name>Availability</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- BIC --></label>
+        <name>BIC</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : OKOYFIHH</label>
+        <name>BICPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Quelle</label>
+        <name>BackEnd</name>
+    </customLabels>
+    <customLabels>
+        <label>Status des Backends</label>
+        <name>BackEndStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Eine Backoffice-Validierung ist erforderlich.</label>
+        <name>BackOfficeApproval</name>
+    </customLabels>
+    <customLabels>
+        <label>Backoffice-System</label>
+        <name>BackOfficeSystem</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag wartet auf Backoffice-Validierung</label>
+        <name>BackOfficeValidation</name>
+    </customLabels>
+    <customLabels>
+        <label>Saldo</label>
+        <name>Balance</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Bank --></label>
+        <name>Bank</name>
+    </customLabels>
+    <customLabels>
+        <label>Bankverbindung</label>
+        <name>BankAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Bankverbindung</label>
+        <name>BankAccountDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Bankkontobelabel</label>
+        <name>BankAccountLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Bank of America</label>
+        <name>BankSelectPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzinstitut, das das Geld ausleiht.</label>
+        <name>BankSelectTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Bankkredit</label>
+        <name>BankingLoan</name>
+    </customLabels>
+    <customLabels>
+        <label>Basis</label>
+        <name>Base</name>
+    </customLabels>
+    <customLabels>
+        <label>Basisbetrag</label>
+        <name>BasicAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Basisinformationen: Kundenprofil</label>
+        <name>BasisInformationCustomer</name>
+    </customLabels>
+    <customLabels>
+        <label>Begünstigte</label>
+        <name>Beneficiaries</name>
+    </customLabels>
+    <customLabels>
+        <label>Begünstigter</label>
+        <name>Beneficiary</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorteil</label>
+        <name>Benefit</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte geben Sie im Paket {3} einen Betrag zwischen {0} und {1} für die Leistung {2} ein.</label>
+        <name>BenefitAmountIncorrect</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte geben Sie den Betrag für die Leistung {0} in das Paket {1} ein.</label>
+        <name>BenefitAmountMissing</name>
+    </customLabels>
+    <customLabels>
+        <label>Leistungsklausel</label>
+        <name>BenefitClause</name>
+    </customLabels>
+    <customLabels>
+        <label>Leistungsinformationen</label>
+        <name>BenefitInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>DC Lebensversicherung 1 Leiter</label>
+        <name>BenefitMockLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Name des Leistungsempfängers</label>
+        <name>BenefitName</name>
+    </customLabels>
+    <customLabels>
+        <label>Leistungspaket</label>
+        <name>Benefitpackage</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorteile</label>
+        <name>Benefits</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsstellung</label>
+        <name>Billing</name>
+    </customLabels>
+    <customLabels>
+        <label>Abrechnungskonto</label>
+        <name>BillingAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsadresse</label>
+        <name>BillingAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsort</label>
+        <name>BillingCity</name>
+    </customLabels>
+    <customLabels>
+        <label>Land der Rechnungsstellung</label>
+        <name>BillingCountry</name>
+    </customLabels>
+    <customLabels>
+        <label>Abrechnungszahlungshäufigkeit</label>
+        <name>BillingPaymentFrequency</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungsart Fakturierung</label>
+        <name>BillingPaymentMode</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsanschrift</label>
+        <name>BillingPostalAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Postleitzahl der Rechnungsstellung</label>
+        <name>BillingPostalCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsstellung</label>
+        <name>BillingRef</name>
+    </customLabels>
+    <customLabels>
+        <label>Rehnungsanschrift</label>
+        <name>BillingStreet</name>
+    </customLabels>
+    <customLabels>
+        <label>Gehe zu {0} Detailansicht</label>
+        <name>BindPersonRole</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburtsland</label>
+        <name>BirthCountry</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburtsdatum</label>
+        <name>BirthDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburtsort</label>
+        <name>BirthPlace</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburts-Postleitzahl</label>
+        <name>BirthPostalCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburtspräfektur</label>
+        <name>BirthPrefecture</name>
+    </customLabels>
+    <customLabels>
+        <label>Geburtsland</label>
+        <name>BirthProvince</name>
+    </customLabels>
+    <customLabels>
+        <label>Hallo {0}, bitte unterschreiben Sie Ihren Änderungsantrag.</label>
+        <name>BodyMailManageCoverages</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Bonus --></label>
+        <name>Bonus</name>
+    </customLabels>
+    <customLabels>
+        <label>Geboren am</label>
+        <name>BornOn</name>
+    </customLabels>
+    <customLabels>
+        <label>Fremdkapitalbetrag</label>
+        <name>BorrowedAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Herkunft Bankkreditbetrag</label>
+        <name>BorrowedAmountTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Kreditnehmer</label>
+        <name>Borrower</name>
+    </customLabels>
+    <customLabels>
+        <label>Niederlassung</label>
+        <name>Branch</name>
+    </customLabels>
+    <customLabels>
+        <label>Branchencode</label>
+        <name>BranchCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 123</label>
+        <name>BranchCodePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Bari Sede</label>
+        <name>BranchPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Marke</label>
+        <name>Brand</name>
+    </customLabels>
+    <customLabels>
+        <label>Aufschlüsselung</label>
+        <name>Breakdown</name>
+    </customLabels>
+    <customLabels>
+        <label>Makler</label>
+        <name>Broker</name>
+    </customLabels>
+    <customLabels>
+        <label>DXC OmniChannel für Salesforce</label>
+        <name>BrowserTabLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Zu investierender Bruttobetrag</label>
+        <name>BrutAmountToInvest</name>
+    </customLabels>
+    <customLabels>
+        <label>Gebäudeversicherung</label>
+        <name>BuildingInsurance</name>
+    </customLabels>
+    <customLabels>
+        <label>Unternehmen</label>
+        <name>Business</name>
+    </customLabels>
+    <customLabels>
+        <label>Geschäftsfeld</label>
+        <name>BusinessUnit</name>
+    </customLabels>
+    <customLabels>
+        <label>Unternehmen</label>
+        <name>Businesses</name>
+    </customLabels>
+    <customLabels>
+        <label>CPAM-Nummer</label>
+        <name>CPAMNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>beispiel : 01 131 0406</label>
+        <name>CPAMNumberPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : 123</label>
+        <name>CVVPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Es ist eine 3-4-stellige Nummer, die Sie auf der Rückseite Ihrer Karte finden. (vorne bei AmericanExpress)</label>
+        <name>CVVTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>berechnen</label>
+        <name>Calculate</name>
+    </customLabels>
+    <customLabels>
+        <label>Tarif berechnen</label>
+        <name>CalculateTariff</name>
+    </customLabels>
+    <customLabels>
+        <label>Der berechnete Schlüssel ist {0}.</label>
+        <name>CalculatedKeyIs</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechenregel</label>
+        <name>CalculationRule</name>
+    </customLabels>
+    <customLabels>
+        <label>Abbrechen</label>
+        <name>Cancel</name>
+    </customLabels>
+    <customLabels>
+        <label>Kapital</label>
+        <name>Capital</name>
+    </customLabels>
+    <customLabels>
+        <label>KFZ-Versicherung</label>
+        <name>CarInsurrance</name>
+    </customLabels>
+    <customLabels>
+        <label>Auto mit diesem Nummernschild nichtt gefunden.</label>
+        <name>CarNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label>Das Fall ist abgeschlossen, daher ist er nicht mehr zugänglich.</label>
+        <name>CaseClosedNoAccess</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Fall {0} wurde storniert.</label>
+        <name>CaseHasBeenCancelled</name>
+    </customLabels>
+    <customLabels>
+        <label>Fallname</label>
+        <name>CaseName</name>
+    </customLabels>
+    <customLabels>
+        <label>Fallnummer</label>
+        <name>CaseNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Fall</label>
+        <name>Case_m</name>
+    </customLabels>
+    <customLabels>
+        <label>Fälle</label>
+        <name>Cases</name>
+    </customLabels>
+    <customLabels>
+        <label>Merkmale</label>
+        <name>Characteristics</name>
+    </customLabels>
+    <customLabels>
+        <label>Überprüfung</label>
+        <name>Check</name>
+    </customLabels>
+    <customLabels>
+        <label>Kind</label>
+        <name>Child</name>
+    </customLabels>
+    <customLabels>
+        <label>Kinder</label>
+        <name>Children</name>
+    </customLabels>
+    <customLabels>
+        <label>Anzahl der Kinder</label>
+        <name>ChildrenNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie die Anzahl der Kinder im Haushalt aus.</label>
+        <name>ChildrenNumberTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Startseite</label>
+        <name>Chome</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : １丁目</label>
+        <name>ChomePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Nächsten Schritt auswählen</label>
+        <name>ChooseNextStep</name>
+    </customLabels>
+    <customLabels>
+        <label>Welches(e) Fahrzeug(e) verwendet dieser Fahrer?</label>
+        <name>ChoseVehicle</name>
+    </customLabels>
+    <customLabels>
+        <label>Stadt</label>
+        <name>City</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Anchorage</label>
+        <name>CityPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Gültigkeitsdatum des Anspruchs</label>
+        <name>ClaimEndEffectiveDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Name des Fallordners</label>
+        <name>ClaimFolderName</name>
+    </customLabels>
+    <customLabels>
+        <label>Schadensfallinformationen</label>
+        <name>ClaimInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Status des Schadens</label>
+        <name>ClaimStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Schadensart</label>
+        <name>ClaimType</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Ehepartner des Versicherten, nicht getrennt lebend
+- Ansonsten, zu gleichen Teilen, der versicherten Kinder, geboren oder ungeboren, lebendig oder vertreten.
+- Ansonsten die Erben des Versicherten.</label>
+        <name>ClauseText</name>
+    </customLabels>
+    <customLabels>
+        <label>Standardklausel im Todesfall</label>
+        <name>ClauseTextLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Kunde</label>
+        <name>Client</name>
+    </customLabels>
+    <customLabels>
+        <label>Kunden ID</label>
+        <name>ClientID</name>
+    </customLabels>
+    <customLabels>
+        <label>Name des Kunden</label>
+        <name>ClientName</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundennummer</label>
+        <name>ClientNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : PRSN14587</label>
+        <name>ClientNumberPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : SMITH</label>
+        <name>ClientPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundensuche</label>
+        <name>ClientSearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundentyp</label>
+        <name>ClientType</name>
+    </customLabels>
+    <customLabels>
+        <label>Kunden</label>
+        <name>Clients</name>
+    </customLabels>
+    <customLabels>
+        <label>Schließen</label>
+        <name>Close</name>
+    </customLabels>
+    <customLabels>
+        <label>Geschlossen</label>
+        <name>Closed</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitversichert</label>
+        <name>CoInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitversicherter Typ</label>
+        <name>CoInsuredType</name>
+    </customLabels>
+    <customLabels>
+        <label>Co-Mitgliedschaften</label>
+        <name>CoMemberships</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Code --></label>
+        <name>Code</name>
+    </customLabels>
+    <customLabels>
+        <label>Tarifvertrag</label>
+        <name>CollectiveAgreement</name>
+    </customLabels>
+    <customLabels>
+        <label>Ein Berater wird sich später mit dem Kunden in Verbindung setzen.</label>
+        <name>CommercialAdviserContactCustomer</name>
+    </customLabels>
+    <customLabels>
+        <label>Provision</label>
+        <name>Commission</name>
+    </customLabels>
+    <customLabels>
+        <label>Provisionen</label>
+        <name>CommissionSearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Provisionen</label>
+        <name>Commissions</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesellschaften</label>
+        <name>Companies</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesellschaft</label>
+        <name>Company</name>
+    </customLabels>
+    <customLabels>
+        <label>Unternehmensinformationen</label>
+        <name>CompanyInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Firmenname</label>
+        <name>CompanyName</name>
+    </customLabels>
+    <customLabels>
+        <label>Firmensuche</label>
+        <name>CompanySearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Vollständig</label>
+        <name>Complete</name>
+    </customLabels>
+    <customLabels>
+        <label>Zusammensetzung des Vermögens</label>
+        <name>CompositionOfAsset</name>
+    </customLabels>
+    <customLabels>
+        <label>Bestätigen</label>
+        <name>Confirm</name>
+    </customLabels>
+    <customLabels>
+        <label>Sind Sie sicher, dass Sie die Seite verlassen wollen?</label>
+        <name>ConfirmLeave</name>
+    </customLabels>
+    <customLabels>
+        <label>Herzlichen Glückwunsch</label>
+        <name>Congratulations</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontakt</label>
+        <name>Contact</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte kontaktieren Sie den Administrator, um Ihre Benutzerdaten zu verwalten.</label>
+        <name>ContactAdministratorToManageUser</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefonischer Kontakt</label>
+        <name>ContactByPhone</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundendienst anrufen</label>
+        <name>ContactCustomerService</name>
+    </customLabels>
+    <customLabels>
+        <label>Kontaktrollen</label>
+        <name>ContactRoles</name>
+    </customLabels>
+    <customLabels>
+        <label>Fortsetzen der Vertragserstellung</label>
+        <name>ContinueCreateContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag</label>
+        <name>Contract</name>
+    </customLabels>
+    <customLabels>
+        <label>Das Vertragsabonnement wurde aufgelöst.</label>
+        <name>ContractAbandoned</name>
+    </customLabels>
+    <customLabels>
+        <label>Barwert des Vertrages</label>
+        <name>ContractAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsdetail</label>
+        <name>ContractDetail</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsdauer</label>
+        <name>ContractDuration</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsende Datum</label>
+        <name>ContractEndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsinhaber</label>
+        <name>ContractHolder</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsinformationen</label>
+        <name>ContractInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsmanager</label>
+        <name>ContractManager</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsnummer</label>
+        <name>ContractNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Vertragsnummer ist {0}.</label>
+        <name>ContractNumberIs</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : RIDP0123456</label>
+        <name>ContractNumberPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsinhaber</label>
+        <name>ContractOwner</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsrollen</label>
+        <name>ContractRoles</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragssuche</label>
+        <name>ContractSearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsunterzeichnung</label>
+        <name>ContractSigning</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragsbeginn Datum</label>
+        <name>ContractStartDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragslaufzeit (Monat)</label>
+        <name>ContractTermMonth</name>
+    </customLabels>
+    <customLabels>
+        <label>Verträge</label>
+        <name>Contracts</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag / Kunden</label>
+        <name>ContractsClients</name>
+    </customLabels>
+    <customLabels>
+        <label>Konventionsart</label>
+        <name>ConventionType</name>
+    </customLabels>
+    <customLabels>
+        <label>Postanschrift</label>
+        <name>CorrespondanceAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Korrespondent</label>
+        <name>Correspondant</name>
+    </customLabels>
+    <customLabels>
+        <label>Kosten</label>
+        <name>Cost</name>
+    </customLabels>
+    <customLabels>
+        <label>Land</label>
+        <name>Country</name>
+    </customLabels>
+    <customLabels>
+        <label>Paar</label>
+        <name>Couple</name>
+    </customLabels>
+    <customLabels>
+        <label>Deckung</label>
+        <name>Coverage</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingangsdeckungsbetrag</label>
+        <name>CoverageAmountSelection</name>
+    </customLabels>
+    <customLabels>
+        <label>Enddatum</label>
+        <name>CoverageEndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Deckungszeitraum</label>
+        <name>CoveragePeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Auswahl der Deckung</label>
+        <name>CoverageSelection</name>
+    </customLabels>
+    <customLabels>
+        <label>Deckungsbeginndatum</label>
+        <name>CoverageStartDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Deckungen</label>
+        <name>Coverages</name>
+    </customLabels>
+    <customLabels>
+        <label>Abgedeckte Ereignisart</label>
+        <name>CoveredEventType</name>
+    </customLabels>
+    <customLabels>
+        <label>Ein Konto erstellen</label>
+        <name>CreateAnAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Mandant anlegen</label>
+        <name>CreateClient</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag anlegen</label>
+        <name>CreateContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellt von</label>
+        <name>CreatedBy</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstellungsdatum</label>
+        <name>CreationDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Kreditkarte</label>
+        <name>CreditCard</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CreditCardCVV --></label>
+        <name>CreditCardCVV</name>
+    </customLabels>
+    <customLabels>
+        <label>MM</label>
+        <name>CreditCardExpiryMonthPlaceHolder</name>
+    </customLabels>
+    <customLabels>
+        <label>JJ</label>
+        <name>CreditCardExpiryYearPlaceHolder</name>
+    </customLabels>
+    <customLabels>
+        <label>Name des Eigentümers</label>
+        <name>CreditCardHolderName</name>
+    </customLabels>
+    <customLabels>
+        <label>Kartennummer</label>
+        <name>CreditCardNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Hubraum</label>
+        <name>CubicCapacity</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 125</label>
+        <name>CubicCapacityPlaceHolder</name>
+    </customLabels>
+    <customLabels>
+        <label>Währung</label>
+        <name>Currency</name>
+    </customLabels>
+    <customLabels>
+        <label>Anruf in Bearbeitung</label>
+        <name>CurrentCall</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Fälle</label>
+        <name>CurrentCases</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Angebote</label>
+        <name>CurrentQuotes</name>
+    </customLabels>
+    <customLabels>
+        <label>Kunden-ID</label>
+        <name>CustomerID</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundeninformationen</label>
+        <name>CustomerInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundenpriorität</label>
+        <name>CustomerPriority</name>
+    </customLabels>
+    <customLabels>
+        <label>Unterschriftsdatum des Kunden</label>
+        <name>CustomerSignedDate</name>
+    </customLabels>
+    <customLabels>
+        <label>DSN-Blatt</label>
+        <name>DSN</name>
+    </customLabels>
+    <customLabels>
+        <label>Die ausgefüllten Daten werden validiert.</label>
+        <name>DataAreValidated</name>
+    </customLabels>
+    <customLabels>
+        <label>Ich erlaube {0} und allen seinen Tochtergesellschaften und Partnern, meine Daten für Werbekampagnen zu erheben und zu verarbeiten.</label>
+        <name>DataConsentAdvertisingTextDefault</name>
+    </customLabels>
+    <customLabels>
+        <label>Ich akzeptiere die Allgemeinen Geschäftsbedingungen und erlaube {0} und allen seinen Tochtergesellschaften und Partnern, meine Daten zur Verwaltung meiner Versicherungspolice zu erheben und zu verarbeiten.</label>
+        <name>DataConsentContractTextDefault</name>
+    </customLabels>
+    <customLabels>
+        <label>Alle während des Vertragsverhältnisses erhobenen Daten sind für {0} bestimmt, die nach ausdrücklicher Vereinbarung berechtigt ist, ihre Verarbeitung fortzusetzen, sie an die juristischen Personen der Gruppe, zu der sie gehört, an ihre Vertragspartner und/oder Subunternehmer mit Sitz in Frankreich und im Ausland weiterzugeben (vorbehaltlich der Einhaltung der geltenden Vorschriften). Sie können auch für kommerzielle Prospektzwecke von {0} und / oder einem der Unternehmen der Gruppe, zu der sie gehören, oder an Mitunternehmer und / oder Subunternehmer verwendet werden.{0} ist verpflichtet, Informationen über Sie zur Verfügung zu stellen, insbesondere um die gesetzlichen und regulatorischen Bestimmungen sowie die geltenden internationalen Übereinkommen einzuhalten. Sie haben ein Recht auf Zugang, Portabilität, Berichtigung und Vergessen von Informationen, die Sie betreffen. Sie können auch der Verwendung Ihrer personenbezogenen Daten zu Zwecken der kommerziellen Werbung oder Automatisier.</label>
+        <name>DataConsentTextDefault</name>
+    </customLabels>
+    <customLabels>
+        <label>Datenmatrix</label>
+        <name>DataMatrix</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Daten werden nicht gespeichert.</label>
+        <name>DataNotSave</name>
+    </customLabels>
+    <customLabels>
+        <label>Datum des Inkrafttretens</label>
+        <name>DateEffect</name>
+    </customLabels>
+    <customLabels>
+        <label>An</label>
+        <name>DateTo</name>
+    </customLabels>
+    <customLabels>
+        <label>Tag</label>
+        <name>Day</name>
+    </customLabels>
+    <customLabels>
+        <label>Sehr geehrte Damen und Herren</label>
+        <name>Dear</name>
+    </customLabels>
+    <customLabels>
+        <label>Todesfallleistung</label>
+        <name>DeathBenefit</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Debit --></label>
+        <name>Debit</name>
+    </customLabels>
+    <customLabels>
+        <label>Selbstbehalt Dauer</label>
+        <name>DeductibleDuration</name>
+    </customLabels>
+    <customLabels>
+        <label>das Versicherungsunternehmen</label>
+        <name>DefaultCompanyName</name>
+    </customLabels>
+    <customLabels>
+        <label>Familienzusammensetzung definieren</label>
+        <name>DefineFamilyComposition</name>
+    </customLabels>
+    <customLabels>
+        <label>Eheliche Situation definieren</label>
+        <name>DefineMaritalSituation</name>
+    </customLabels>
+    <customLabels>
+        <label>verspätete Abschreibung (Monate)</label>
+        <name>DelayedAmortizationMonths</name>
+    </customLabels>
+    <customLabels>
+        <label>löschen</label>
+        <name>Delete</name>
+    </customLabels>
+    <customLabels>
+        <label>Lieferdatum</label>
+        <name>DeliverDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Beschreibung</label>
+        <name>Description</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Details --></label>
+        <name>Details</name>
+    </customLabels>
+    <customLabels>
+        <label>Banküberweisung</label>
+        <name>DirectCredit</name>
+    </customLabels>
+    <customLabels>
+        <label>Lastschriftverfahren</label>
+        <name>DirectDebit</name>
+    </customLabels>
+    <customLabels>
+        <label>Richtungen</label>
+        <name>Directions</name>
+    </customLabels>
+    <customLabels>
+        <label>Desinvestition (€)</label>
+        <name>DisinvestEuro</name>
+    </customLabels>
+    <customLabels>
+        <label>Mittel zum Verkaufen</label>
+        <name>DisinvestFund</name>
+    </customLabels>
+    <customLabels>
+        <label>Desinvestition (%)</label>
+        <name>DisinvestPercent</name>
+    </customLabels>
+    <customLabels>
+        <label>Bereich</label>
+        <name>Distance</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertriebspartner</label>
+        <name>Distributor</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : SMITH Ashley</label>
+        <name>DistributorPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertriebspartner suchen</label>
+        <name>DistributorSearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Dukumente</label>
+        <name>Documents</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie finden Ihr Auto nicht?</label>
+        <name>DontFindCar</name>
+    </customLabels>
+    <customLabels>
+        <label>Herunterladen</label>
+        <name>Download</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrer</label>
+        <name>Driver</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrertyp</label>
+        <name>DriverType</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrer</label>
+        <name>Drivers</name>
+    </customLabels>
+    <customLabels>
+        <label>Führerschein</label>
+        <name>DrivingLicense</name>
+    </customLabels>
+    <customLabels>
+        <label>Datum des Führerscheins</label>
+        <name>DrivingLicenseDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Führerscheintyp</label>
+        <name>DrivingLicenseType</name>
+    </customLabels>
+    <customLabels>
+        <label>Fälligkeitsdatum</label>
+        <name>DueDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungsdauer (Monate)</label>
+        <name>DurationMonths</name>
+    </customLabels>
+    <customLabels>
+        <label>Dauer des Bankkredits</label>
+        <name>DurationMonthsTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Erreichter Wert</label>
+        <name>EarnedValue</name>
+    </customLabels>
+    <customLabels>
+        <label>bearbeiten</label>
+        <name>Edit</name>
+    </customLabels>
+    <customLabels>
+        <label>TPP-Karte bearbeiten</label>
+        <name>EditTPPCard</name>
+    </customLabels>
+    <customLabels>
+        <label>Datum des Inkrafttretens</label>
+        <name>EffectiveDate</name>
+    </customLabels>
+    <customLabels>
+        <label>elektronisch</label>
+        <name>Electronic</name>
+    </customLabels>
+    <customLabels>
+        <label>Elektronische Signatur</label>
+        <name>ElectronicSigning</name>
+    </customLabels>
+    <customLabels>
+        <label>E-Mail</label>
+        <name>Email</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Ahsley.smith@mail.com</label>
+        <name>EmailPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Emissionsdatum</label>
+        <name>EmissionDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Emissionsdatum (von)</label>
+        <name>EmissionDateFrom</name>
+    </customLabels>
+    <customLabels>
+        <label>Emissionsdatum (bis)</label>
+        <name>EmissionDateTo</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitarbeiter</label>
+        <name>Employee</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Mitarbeiter {0} wurde in der Firma hinzugefügt.</label>
+        <name>EmployeeAdded</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitarbeiterkategorie</label>
+        <name>EmployeeCategory</name>
+    </customLabels>
+    <customLabels>
+        <label>Enddatum</label>
+        <name>EmployeeEndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Beginndatum</label>
+        <name>EmployeeStartDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitarbeiter</label>
+        <name>Employees</name>
+    </customLabels>
+    <customLabels>
+        <label>Anzahl der Mitarbeiter</label>
+        <name>EmployeesNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Beschäftigung</label>
+        <name>Employment</name>
+    </customLabels>
+    <customLabels>
+        <label>Stellensuche</label>
+        <name>EmploymentSearch</name>
+    </customLabels>
+    <customLabels>
+        <label>Enddatum</label>
+        <name>EndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Enddatum der abgedeckten Periode</label>
+        <name>EndDateOfCoveredPeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Endmotiv</label>
+        <name>EndMotive</name>
+    </customLabels>
+    <customLabels>
+        <label>Eintrittsdatum</label>
+        <name>EntryDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Fehler</label>
+        <name>Error</name>
+    </customLabels>
+    <customLabels>
+        <label>Das eingegebene Datum entspricht nicht den Bedingungen. Bitte ändern Sie es und versuchen Sie es erneut.</label>
+        <name>ErrorDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Eigentümer ist unter dem gesetzlichen Mindestalter und kann sich nicht anmelden.</label>
+        <name>ErrorMinimumLegalAge</name>
+    </customLabels>
+    <customLabels>
+        <label>Gründung</label>
+        <name>Establishment</name>
+    </customLabels>
+    <customLabels>
+        <label>Geschätzter Betrag</label>
+        <name>EstimatedAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragssimulation nach dem Wechsel</label>
+        <name>EstimationFund</name>
+    </customLabels>
+    <customLabels>
+        <label>Abend</label>
+        <name>Evening</name>
+    </customLabels>
+    <customLabels>
+        <label>Aufwand</label>
+        <name>Expense</name>
+    </customLabels>
+    <customLabels>
+        <label>Aufwandsbetrag</label>
+        <name>ExpenseAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Verfallsdatum</label>
+        <name>ExpiryDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Familie</label>
+        <name>Family</name>
+    </customLabels>
+    <customLabels>
+        <label>Familienstand</label>
+        <name>FamilyStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Gebührensatz auf dem Standardtarif muss zwischen {0} und {1}
+ liegen. Die Validierung der Verträge erfolgt durch das Backoffice.</label>
+        <name>FeesOutOfBoundsWarn</name>
+    </customLabels>
+    <customLabels>
+        <label>weiblich</label>
+        <name>Female</name>
+    </customLabels>
+    <customLabels>
+        <label>Filter</label>
+        <name>FilterBy</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzaktivitäten</label>
+        <name>FinancialActivities</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzaktivitäten - Kauf/Verkauf von Anlageinformationen</label>
+        <name>FinancialActivitiesBuySellInvestmentInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzaktivitäten - Geldeingangs- / Geldausgangsinformationen</label>
+        <name>FinancialActivitiesMoneyInMoneyOutInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Name der Finanztätigkeit</label>
+        <name>FinancialActivitiesName</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzaktivitäten - Technische Ablaufinformationen</label>
+        <name>FinancialActivitiesTechnicalFlowInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzholding</label>
+        <name>FinancialHolding</name>
+    </customLabels>
+    <customLabels>
+        <label>Finanzgeschäft</label>
+        <name>FinancialOperations</name>
+    </customLabels>
+    <customLabels>
+        <label>Finden Sie Ihren Kunden</label>
+        <name>FindYourClient</name>
+    </customLabels>
+    <customLabels>
+        <label>Datum der ersten Lastschrift</label>
+        <name>FirstDebit</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorname</label>
+        <name>FirstName</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Peter</label>
+        <name>FirstNamePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Datum der Erstinbetriebnahme</label>
+        <name>FirstUseDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Steuerlicher Rahmen</label>
+        <name>FiscalFramework</name>
+    </customLabels>
+    <customLabels>
+        <label>Steuernummer</label>
+        <name>FiscalNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : ASHSMT25D09F205Z</label>
+        <name>FiscalNumberPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Strömungsart</label>
+        <name>FlowType</name>
+    </customLabels>
+    <customLabels>
+        <label>Passwort vergessen?</label>
+        <name>ForgotPassword</name>
+    </customLabels>
+    <customLabels>
+        <label>Formel</label>
+        <name>Formula</name>
+    </customLabels>
+    <customLabels>
+        <label>Frankreich</label>
+        <name>France</name>
+    </customLabels>
+    <customLabels>
+        <label>Häufigkeit</label>
+        <name>Frequency</name>
+    </customLabels>
+    <customLabels>
+        <label>Freitag</label>
+        <name>Friday</name>
+    </customLabels>
+    <customLabels>
+        <label>Kraftstoffart</label>
+        <name>FuelType</name>
+    </customLabels>
+    <customLabels>
+        <label>Saldo</label>
+        <name>Fullbalance</name>
+    </customLabels>
+    <customLabels>
+        <label>Fonds</label>
+        <name>Fund</name>
+    </customLabels>
+    <customLabels>
+        <label>Trauergeld</label>
+        <name>FuneralAllowance</name>
+    </customLabels>
+    <customLabels>
+        <label>Geschlecht</label>
+        <name>Gender</name>
+    </customLabels>
+    <customLabels>
+        <label>allgemeine Informationen</label>
+        <name>GeneralInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Sorte</label>
+        <name>Grade</name>
+    </customLabels>
+    <customLabels>
+        <label>Status Sorte</label>
+        <name>GradeStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Bruttodesinvestitionsbetrag</label>
+        <name>GrossDisinvestedAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Bruttoprämie</label>
+        <name>GrossPremium</name>
+    </customLabels>
+    <customLabels>
+        <label>Garantien</label>
+        <name>Guarantees</name>
+    </customLabels>
+    <customLabels>
+        <label>auflegen</label>
+        <name>HangUp</name>
+    </customLabels>
+    <customLabels>
+        <label>er ist interessiert an</label>
+        <name>HeIsInterestedIn</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheit</label>
+        <name>Health</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsgesetze</label>
+        <name>HealthActs</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitlicher Nutzen</label>
+        <name>HealthBenefit</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsförderungslinien</label>
+        <name>HealthBenefitLines</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitliche Vorteile</label>
+        <name>HealthBenefits</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsschätzung</label>
+        <name>HealthEstimate</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsschätzung Nr.</label>
+        <name>HealthEstimateNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsschätzungen</label>
+        <name>HealthEstimates</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsinformationen</label>
+        <name>HealthInformations</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitshaftungen</label>
+        <name>HealthLiabilities</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitshaftung</label>
+        <name>HealthLiability</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitspartei</label>
+        <name>HealthParty</name>
+    </customLabels>
+    <customLabels>
+        <label>Art der Gesundheitspartei</label>
+        <name>HealthPartyType</name>
+    </customLabels>
+    <customLabels>
+        <label>Hilfe</label>
+        <name>Help</name>
+    </customLabels>
+    <customLabels>
+        <label>Details ausblenden</label>
+        <name>HideDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Einstellungsdatum</label>
+        <name>HireDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Haus</label>
+        <name>HomeInsurance</name>
+    </customLabels>
+    <customLabels>
+        <label>Hausratversicherung</label>
+        <name>HomeInsurrance</name>
+    </customLabels>
+    <customLabels>
+        <label>Horizont</label>
+        <name>Horizon</name>
+    </customLabels>
+    <customLabels>
+        <label>PS</label>
+        <name>HorsePower</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 90</label>
+        <name>HorsePowerPlaceHolder</name>
+    </customLabels>
+    <customLabels>
+        <label>Haushalt</label>
+        <name>HouseHold</name>
+    </customLabels>
+    <customLabels>
+        <label>Haushaltsinformationen</label>
+        <name>HouseholdInformation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- IBAN --></label>
+        <name>IBAN</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : FR1420041010050500013M02606</label>
+        <name>IBANPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausweis</label>
+        <name>ID</name>
+    </customLabels>
+    <customLabels>
+        <label>Identifizierer</label>
+        <name>Identifier</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausweisdokument</label>
+        <name>IdentityDocument</name>
+    </customLabels>
+    <customLabels>
+        <label>Art des Ausweisdokuments</label>
+        <name>IdentityDocumentType</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausweisnummer</label>
+        <name>IdentityNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 721-07-4426</label>
+        <name>IdentityNumberPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>In Paaren</label>
+        <name>InRelationship</name>
+    </customLabels>
+    <customLabels>
+        <label>Einkommen</label>
+        <name>Income</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingehender Anruf</label>
+        <name>IncomingCall</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Prozentsatz der Reinvestition sollte 100% betragen.</label>
+        <name>IncorrectReinvest</name>
+    </customLabels>
+    <customLabels>
+        <label>Indexierung</label>
+        <name>Indexation</name>
+    </customLabels>
+    <customLabels>
+        <label>Einzelpersonen</label>
+        <name>Individuals</name>
+    </customLabels>
+    <customLabels>
+        <label>Anfangsbetrag</label>
+        <name>InitialAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Anfangszahlung</label>
+        <name>InitialPaimentMode</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstzahlung</label>
+        <name>InitialPayment</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingabe von Abrechnungsinformationen</label>
+        <name>InputBilling</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingabe von Abrechnungsdetails</label>
+        <name>InputBillingDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingabedatum</label>
+        <name>InputDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingabeinformationen</label>
+        <name>InputInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Eingabe Nachname</label>
+        <name>InputLastName</name>
+    </customLabels>
+    <customLabels>
+        <label>Unlösliche Raten</label>
+        <name>InsolubleRates</name>
+    </customLabels>
+    <customLabels>
+        <label>Ratenzahlungsart</label>
+        <name>InstallmentType</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherungsvertrag</label>
+        <name>InsuranceContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag</label>
+        <name>InsuranceContract_m</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherungsangebot</label>
+        <name>InsuranceQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Vesicherter</label>
+        <name>Insured</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherte Kosten nach Rückerstattungen</label>
+        <name>InsuredExpenseAmountAfterRefund</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherte Kosten Anfangsbetrag</label>
+        <name>InsuredExpenseInitialAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Versichertengruppe</label>
+        <name>InsuredGroup</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherer</label>
+        <name>Insurer</name>
+    </customLabels>
+    <customLabels>
+        <label>Zinssatz</label>
+        <name>InterestRate</name>
+    </customLabels>
+    <customLabels>
+        <label>Zinssatz für Bankkredite (ohne Versicherung)</label>
+        <name>InterestRateTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Interner Vertragsmanager</label>
+        <name>InternalContractManager</name>
+    </customLabels>
+    <customLabels>
+        <label>Erfahrung</label>
+        <name>InvestExperience</name>
+    </customLabels>
+    <customLabels>
+        <label>Fonds, in die investiert werden soll</label>
+        <name>InvestFund</name>
+    </customLabels>
+    <customLabels>
+        <label>Anlageprofil</label>
+        <name>InvestProfile</name>
+    </customLabels>
+    <customLabels>
+        <label>Investierter Betrag :</label>
+        <name>InvestedAmount</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Investment --></label>
+        <name>Investment</name>
+    </customLabels>
+    <customLabels>
+        <label>Investmentkontoinformationen</label>
+        <name>InvestmentAccountInformation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- InvestmentEuro --></label>
+        <name>InvestmentEuro</name>
+    </customLabels>
+    <customLabels>
+        <label>Anlageinformationen</label>
+        <name>InvestmentInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Name der Investition</label>
+        <name>InvestmentName</name>
+    </customLabels>
+    <customLabels>
+        <label>Investitionen (%)</label>
+        <name>InvestmentPercent</name>
+    </customLabels>
+    <customLabels>
+        <label>Ist Geld Herkunft Frankreich?</label>
+        <name>IsMoneyOriginFrance</name>
+    </customLabels>
+    <customLabels>
+        <label>Sprache</label>
+        <name>Language</name>
+    </customLabels>
+    <customLabels>
+        <label>Letzte Verbindung</label>
+        <name>LastConnexion</name>
+    </customLabels>
+    <customLabels>
+        <label>Letzter Änderer</label>
+        <name>LastModifiedBy</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachname</label>
+        <name>LastName</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Schmidt</label>
+        <name>LastNamePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Letzter Zahlungstag</label>
+        <name>LastPaymentDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Zuletzt versendete Boot-Up-Datei</label>
+        <name>LastSentBootingupFile</name>
+    </customLabels>
+    <customLabels>
+        <label>Letztes Einrichtungsblatt</label>
+        <name>LastSetupSheet</name>
+    </customLabels>
+    <customLabels>
+        <label>Neueste Aktivitäten</label>
+        <name>LatestActivities</name>
+    </customLabels>
+    <customLabels>
+        <label>Breitengrad</label>
+        <name>Latitude</name>
+    </customLabels>
+    <customLabels>
+        <label>Lead Quelle</label>
+        <name>LeadSource</name>
+    </customLabels>
+    <customLabels>
+        <label>Austrittsdatum</label>
+        <name>LeavingDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Legale Erwähnung</label>
+        <name>LegalMention</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechtlicher Name</label>
+        <name>LegalName</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesetzlicher Vertreter</label>
+        <name>LegalRepresentative</name>
+    </customLabels>
+    <customLabels>
+        <label>Informationen zum gesetzlichen Vertreter</label>
+        <name>LegalRepresentativeInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechtsform</label>
+        <name>LegalStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Kreditgeberorganisation</label>
+        <name>LenderOrganisation</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitshaftung</label>
+        <name>LiabilityRequest</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitliche Haftung Nr.</label>
+        <name>LiabilityRequestNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche nach Gesundheitshaftung</label>
+        <name>LiabilityRequestSearchHeader</name>
+    </customLabels>
+    <customLabels>
+        <label>Haftungsanträge</label>
+        <name>LiabilityRequests</name>
+    </customLabels>
+    <customLabels>
+        <label>Haftungsbehandlung</label>
+        <name>LiabilityTreatment</name>
+    </customLabels>
+    <customLabels>
+        <label>Haftungsart</label>
+        <name>LiabilityType</name>
+    </customLabels>
+    <customLabels>
+        <label>Kennzeichen</label>
+        <name>LicensePlate</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Eg258ma</label>
+        <name>LicensePlatePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Lebensversicherung</label>
+        <name>LifeInsurance</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeile</label>
+        <name>Line</name>
+    </customLabels>
+    <customLabels>
+        <label>Laden...</label>
+        <name>Loading</name>
+    </customLabels>
+    <customLabels>
+        <label>Darlehen</label>
+        <name>Loan</name>
+    </customLabels>
+    <customLabels>
+        <label>Darlehensdetails</label>
+        <name>LoanDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Kreditlaufzeit</label>
+        <name>LoanDuration</name>
+    </customLabels>
+    <customLabels>
+        <label>Kreditinformationen</label>
+        <name>LoanInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Name des Darlehens</label>
+        <name>LoanName</name>
+    </customLabels>
+    <customLabels>
+        <label>Tarifart</label>
+        <name>LoanRateType</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 1234</label>
+        <name>LoanReferencePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Referenznummer des Bankkredits</label>
+        <name>LoanReferenceTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Darlehensart</label>
+        <name>LoanType</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Login --></label>
+        <name>Login</name>
+    </customLabels>
+    <customLabels>
+        <label>Malus</label>
+        <name>Logout</name>
+    </customLabels>
+    <customLabels>
+        <label>Lang- und mittelfristige Einsparungen</label>
+        <name>LongMidTermSavings</name>
+    </customLabels>
+    <customLabels>
+        <label>Längengrad</label>
+        <name>Longitude</name>
+    </customLabels>
+    <customLabels>
+        <label>Hauptkontakt</label>
+        <name>MainContact</name>
+    </customLabels>
+    <customLabels>
+        <label>Hauptinformation</label>
+        <name>MainInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Hauptversicherter</label>
+        <name>MainInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Männlich</label>
+        <name>Male</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Malus --></label>
+        <name>Malus</name>
+    </customLabels>
+    <customLabels>
+        <label>Änderung für den Vertrag N°{0}
+icht {1}</label>
+        <name>ManageCoverageAmendment</name>
+    </customLabels>
+    <customLabels>
+        <label>Verwalten von Deckungen</label>
+        <name>ManageCoverages</name>
+    </customLabels>
+    <customLabels>
+        <label>Managementprofil</label>
+        <name>ManagementProfile</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Manager --></label>
+        <name>Manager</name>
+    </customLabels>
+    <customLabels>
+        <label>Verpflichtend</label>
+        <name>Mandatory</name>
+    </customLabels>
+    <customLabels>
+        <label>Manuelle Unterschrift</label>
+        <name>ManualSigning</name>
+    </customLabels>
+    <customLabels>
+        <label>Familienstand</label>
+        <name>MaritalStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Marke</label>
+        <name>Mark</name>
+    </customLabels>
+    <customLabels>
+        <label>Marke auswählen</label>
+        <name>MarkPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Marktwert</label>
+        <name>MarketValue</name>
+    </customLabels>
+    <customLabels>
+        <label>Die maximale Dateigröße, die Sie hochladen können, beträgt {0}.</label>
+        <name>MaxFileSizeMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>Medizinisches Formular</label>
+        <name>MedicalQuestionnaire</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitgliedschaft</label>
+        <name>Membership</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitgliedschaft kündigen</label>
+        <name>MembershipRemoval</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitgliedschaften</label>
+        <name>Memberships</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachrichten</label>
+        <name>Messages</name>
+    </customLabels>
+    <customLabels>
+        <label>Kilometerstand</label>
+        <name>Mileage</name>
+    </customLabels>
+    <customLabels>
+        <label>Kilometerstand Datum</label>
+        <name>MileageDate</name>
+    </customLabels>
+    <customLabels>
+        <label>20</label>
+        <name>MileagePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Minderjährige {0} müssen versichert sein.</label>
+        <name>MinorIsNotInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Für den Versicherten ist kein Tutor definiert {0}.</label>
+        <name>MinorWithoutTutorError</name>
+    </customLabels>
+    <customLabels>
+        <label>Für das Paket {1} ist keine Deckung ausgewählt.</label>
+        <name>MissingCoverage</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Versicherte {0} hat keine Deckung, die im Paket {1} ausgewählt wurde.</label>
+        <name>MissingCoverageInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Für ein oder mehrere Autos fehlt die Formel.</label>
+        <name>MissingFormulaCar</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vertrag hat keinen Versicherten.</label>
+        <name>MissingInsuredContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Eine oder mehrere obligatorische Antworten fehlen.</label>
+        <name>MissingMandatoryAnswer</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte stellen Sie sicher, dass Sie das medizinische Formular für jede Person auf dem Vertrag ausgefüllt haben, und versuchen Sie es dann erneut.</label>
+        <name>MissingMedicalForm</name>
+    </customLabels>
+    <customLabels>
+        <label>Es wurde kein Paket ausgewählt.</label>
+        <name>MissingPackage</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Versicherte {0} hat kein Paket ausgewählt.</label>
+        <name>MissingPackageInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Kein primärer Fahrer für das Fahrzeug {0}</label>
+        <name>MissingPrimaryDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Fragebogen von {0} ist nicht ausgefüllt.</label>
+        <name>MissingQuestionnaireInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Person hat keine Rolle.</label>
+        <name>MissingRolePerson</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte stellen Sie sicher, dass Sie die Sozialversicherungsnummer und den Schlüssel für jede Person ausgefüllt haben, und versuchen Sie es dann erneut.</label>
+        <name>MissingSocialSecurityNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Es wurde kein Tarif berechnet.</label>
+        <name>MissingTariff</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte füllen Sie die Fahrzeuginformationen aus.</label>
+        <name>MissingVehicle</name>
+    </customLabels>
+    <customLabels>
+        <label>Kein Fahrzeug für den Fahrer {0}</label>
+        <name>MissingVehicleForDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Modell</label>
+        <name>Model</name>
+    </customLabels>
+    <customLabels>
+        <label>Modell auswählen</label>
+        <name>ModelPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Anpassen</label>
+        <name>Modify</name>
+    </customLabels>
+    <customLabels>
+        <label>Montag</label>
+        <name>Monday</name>
+    </customLabels>
+    <customLabels>
+        <label>Geld Herkunft</label>
+        <name>MoneyOrigin</name>
+    </customLabels>
+    <customLabels>
+        <label>Geld Herkunftsland</label>
+        <name>MoneyOriginCountry</name>
+    </customLabels>
+    <customLabels>
+        <label>Details zur Geldherkunft</label>
+        <name>MoneyOriginDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Monat</label>
+        <name>Month</name>
+    </customLabels>
+    <customLabels>
+        <label>monatlich</label>
+        <name>Monthly</name>
+    </customLabels>
+    <customLabels>
+        <label>Bruttoprämie</label>
+        <name>MonthlyPremium</name>
+    </customLabels>
+    <customLabels>
+        <label>Mehr</label>
+        <name>More</name>
+    </customLabels>
+    <customLabels>
+        <label>Herr</label>
+        <name>Mr</name>
+    </customLabels>
+    <customLabels>
+        <label>Frau</label>
+        <name>Mrs</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vertrag hat mehr als einen Besitzer.</label>
+        <name>MultipleOwnerError</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vertrag hat mehr als einen Tutor.</label>
+        <name>MultipleTutorError</name>
+    </customLabels>
+    <customLabels>
+        <label>Herausgeber der Gemeinde</label>
+        <name>MunicipalityIssuingTheDocument</name>
+    </customLabels>
+    <customLabels>
+        <label>Gegenseitiger Rückerstattungsbetrag</label>
+        <name>MutualRefundAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Mein Kunde</label>
+        <name>MyClient</name>
+    </customLabels>
+    <customLabels>
+        <label>Mein Kunde ist</label>
+        <name>MyClientIsAn</name>
+    </customLabels>
+    <customLabels>
+        <label>Meine Kunden</label>
+        <name>MyClients</name>
+    </customLabels>
+    <customLabels>
+        <label>Meine Kontakte</label>
+        <name>MyContacts</name>
+    </customLabels>
+    <customLabels>
+        <label>Mein benutzerdefiniertes Feld</label>
+        <name>MyCustomField</name>
+    </customLabels>
+    <customLabels>
+        <label>Mein eigener Wert</label>
+        <name>MyCustomValue</name>
+    </customLabels>
+    <customLabels>
+        <label>Meine Information</label>
+        <name>MyInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Mein Profil</label>
+        <name>MyProfile</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NA --></label>
+        <name>NA</name>
+    </customLabels>
+    <customLabels>
+        <label>AIA Identifizierungsmerkmal</label>
+        <name>NDGAIA</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NDGBank --></label>
+        <name>NDGBank</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : PRSN0001234</label>
+        <name>NDGBankPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : PRSN0001234</label>
+        <name>NDGCNPPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>NDG Gesellschaft</label>
+        <name>NDGCompany</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Name --></label>
+        <name>Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Herausgeberland</label>
+        <name>NationIssuingTheDocument</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} Ergebnis gefunden</label>
+        <name>NbResult</name>
+    </customLabels>
+    <customLabels>
+        <label>{0} Ergebnisse gefunden</label>
+        <name>NbResults</name>
+    </customLabels>
+    <customLabels>
+        <label>Verhandlung</label>
+        <name>Negotiation</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Zeit der beruflichen Tätigkeit</label>
+        <name>NewActivityPeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuer Vertrag</label>
+        <name>NewContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Neue Kostenvoranschlagsanfrage</label>
+        <name>NewEstimateRequest</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuer Haftungsantrag</label>
+        <name>NewLiabilityRequest</name>
+    </customLabels>
+    <customLabels>
+        <label>Neues Angebot</label>
+        <name>NewQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuer Wechsel</label>
+        <name>NewSwitch</name>
+    </customLabels>
+    <customLabels>
+        <label>Neuer Wechsel auf Vertrag {0}</label>
+        <name>NewSwitchOnContractNbr</name>
+    </customLabels>
+    <customLabels>
+        <label>Nächste</label>
+        <name>Next</name>
+    </customLabels>
+    <customLabels>
+        <label>Nächstes Fälligkeitsdatum</label>
+        <name>NextDueDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Nächster Schritt</label>
+        <name>NextStep</name>
+    </customLabels>
+    <customLabels>
+        <label>Nächste Schritte</label>
+        <name>NextSteps</name>
+    </customLabels>
+    <customLabels>
+        <label>Nein</label>
+        <name>No</name>
+    </customLabels>
+    <customLabels>
+        <label>Keine Kinder</label>
+        <name>NoChildren</name>
+    </customLabels>
+    <customLabels>
+        <label>Für diesen Vertrag muss keine Deckung geladen werden.</label>
+        <name>NoCoverageLoaded</name>
+    </customLabels>
+    <customLabels>
+        <label>Mindestens ein Fonds sollte desinvestiert werden.</label>
+        <name>NoDisinvest</name>
+    </customLabels>
+    <customLabels>
+        <label>Kein eingehender Anruf.</label>
+        <name>NoIncomingCall</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vertrag hat keinen Eigentümer.</label>
+        <name>NoOwnerError</name>
+    </customLabels>
+    <customLabels>
+        <label>Kein Paket verfügbar</label>
+        <name>NoPackageAvailable</name>
+    </customLabels>
+    <customLabels>
+        <label>Keine</label>
+        <name>None</name>
+    </customLabels>
+    <customLabels>
+        <label>Nicht für den Benutzer aktiviert</label>
+        <name>NotActivatedForUser</name>
+    </customLabels>
+    <customLabels>
+        <label>Benachrichtigung</label>
+        <name>Notification</name>
+    </customLabels>
+    <customLabels>
+        <label>Anzahl</label>
+        <name>Number</name>
+    </customLabels>
+    <customLabels>
+        <label>Anzahl der Einheiten</label>
+        <name>NumberOfUnits</name>
+    </customLabels>
+    <customLabels>
+        <label>Anzahl der Mitgliedschaften</label>
+        <name>NumberofMembeships</name>
+    </customLabels>
+    <customLabels>
+        <label>Beruf</label>
+        <name>Occupation</name>
+    </customLabels>
+    <customLabels>
+        <label>Beschäftigungsverhältnis</label>
+        <name>OccupationStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie scheinen offline zu sein.</label>
+        <name>OfflineError</name>
+    </customLabels>
+    <customLabels>
+        <label>Online-Fragebogen zur Risikoüberprüfung</label>
+        <name>OnlineQuestionnaIre</name>
+    </customLabels>
+    <customLabels>
+        <label>Digitaler Versicherungsfragebogen, der vom Versicherten ausgefüllt wurde.</label>
+        <name>OnlineQuestionnaireCompleted</name>
+    </customLabels>
+    <customLabels>
+        <label>Offen</label>
+        <name>Open</name>
+    </customLabels>
+    <customLabels>
+        <label>Unternehmen</label>
+        <name>Organization</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : MeinUnternehmen</label>
+        <name>OrganizationNamePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Unternehmenstitel</label>
+        <name>OrganizationTitle</name>
+    </customLabels>
+    <customLabels>
+        <label>Unternehmen</label>
+        <name>Organization_m</name>
+    </customLabels>
+    <customLabels>
+        <label>Andere</label>
+        <name>Other</name>
+    </customLabels>
+    <customLabels>
+        <label>Eigentümer</label>
+        <name>Owner</name>
+    </customLabels>
+    <customLabels>
+        <label>Eigentümer Basisinformation</label>
+        <name>OwnerBasisInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherter Eigentümer</label>
+        <name>OwnerInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Ist der Eigentümer der Versicherte?</label>
+        <name>OwnerIsInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Besitzer {0} darf nicht minderjährig sein.</label>
+        <name>OwnerIsMinor</name>
+    </customLabels>
+    <customLabels>
+        <label>Eigentümer</label>
+        <name>OwnerSFDC</name>
+    </customLabels>
+    <customLabels>
+        <label>Eigentümertyp</label>
+        <name>OwnerType</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PEP --></label>
+        <name>PEP</name>
+    </customLabels>
+    <customLabels>
+        <label>Paket</label>
+        <name>Package</name>
+    </customLabels>
+    <customLabels>
+        <label>Papie</label>
+        <name>Paper</name>
+    </customLabels>
+    <customLabels>
+        <label>Parameter</label>
+        <name>Parameters</name>
+    </customLabels>
+    <customLabels>
+        <label>Eltern</label>
+        <name>Parent</name>
+    </customLabels>
+    <customLabels>
+        <label>Parkadresse</label>
+        <name>ParkingAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Nutzung</label>
+        <name>ParkingUsage</name>
+    </customLabels>
+    <customLabels>
+        <label>Parteien</label>
+        <name>Parties</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Partner --></label>
+        <name>Partner</name>
+    </customLabels>
+    <customLabels>
+        <label>Passwort</label>
+        <name>Password</name>
+    </customLabels>
+    <customLabels>
+        <label>vergangene Aktivitäten</label>
+        <name>PastActivities</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Patient --></label>
+        <name>Patient</name>
+    </customLabels>
+    <customLabels>
+        <label>Begünstigtenkonto</label>
+        <name>PayeeAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungssumme</label>
+        <name>PayeeAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahler</label>
+        <name>Payer</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlerkonto</label>
+        <name>PayerAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>Betrag des Zahlungspflichtigen</label>
+        <name>PayerAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsanschrift</label>
+        <name>PaymentAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Auszahlungsdatum</label>
+        <name>PaymentDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Auszahlungstag</label>
+        <name>PaymentDay</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungshäufigkeit</label>
+        <name>PaymentFrequency</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungsinformation</label>
+        <name>PaymentInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungsart</label>
+        <name>PaymentMode</name>
+    </customLabels>
+    <customLabels>
+        <label>Rechnungsanschrift</label>
+        <name>PaymentPostalAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungsart</label>
+        <name>PaymentType</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlstelle</label>
+        <name>Paypoint</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vorschlag {0} löste eine Akzeptanzmappe aus, die von der Versicherungsgesellschaft bearbeitet wird.</label>
+        <name>PendingPropositionInBackEnd</name>
+    </customLabels>
+    <customLabels>
+        <label>%/Jahre</label>
+        <name>PercentPerYears</name>
+    </customLabels>
+    <customLabels>
+        <label>Der verbleibende Prozentsatz, der zuzuweisen ist, sollte gleich Null sein.</label>
+        <name>PercentShouldBeZero</name>
+    </customLabels>
+    <customLabels>
+        <label>Leistungsprognose</label>
+        <name>PerformanceProjection</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeitraum</label>
+        <name>Period</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Person --></label>
+        <name>Person</name>
+    </customLabels>
+    <customLabels>
+        <label>Personenkennung</label>
+        <name>PersonIdentifier</name>
+    </customLabels>
+    <customLabels>
+        <label>Personenbezogene Daten</label>
+        <name>PersonInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche Person</label>
+        <name>PersonSearch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Person_m --></label>
+        <name>Person_m</name>
+    </customLabels>
+    <customLabels>
+        <label>Personenbezogene Daten</label>
+        <name>PersonalInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Personen</label>
+        <name>Persons</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefon</label>
+        <name>Phone</name>
+    </customLabels>
+    <customLabels>
+        <label>Telefonnummer</label>
+        <name>PhoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 202-555-0120</label>
+        <name>PhonePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Enddatum</label>
+        <name>PlannedEndDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte füllen Sie die Eingabedaten aus</label>
+        <name>PleaseCompleteInputData</name>
+    </customLabels>
+    <customLabels>
+        <label>Police</label>
+        <name>Policy</name>
+    </customLabels>
+    <customLabels>
+        <label>Policennummer</label>
+        <name>PolicyNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Status der Police</label>
+        <name>PolicyStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchen Sie von dieser Position aus.</label>
+        <name>Position</name>
+    </customLabels>
+    <customLabels>
+        <label>Postanschrift</label>
+        <name>PostalAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 12 Zweite Straße</label>
+        <name>PostalAddressPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Postleitzahl</label>
+        <name>PostalCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 99501</label>
+        <name>PostalCodePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Leistung</label>
+        <name>Power</name>
+    </customLabels>
+    <customLabels>
+        <label>Präfektur</label>
+        <name>Prefecture</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Hokkaido</label>
+        <name>PrefecturePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Prämie</label>
+        <name>Premium</name>
+    </customLabels>
+    <customLabels>
+        <label>Prämiendetail</label>
+        <name>PremiumDetail</name>
+    </customLabels>
+    <customLabels>
+        <label>Prämieninformationen</label>
+        <name>PremiumInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorschau</label>
+        <name>Preview</name>
+    </customLabels>
+    <customLabels>
+        <label>vorherig</label>
+        <name>Previous</name>
+    </customLabels>
+    <customLabels>
+        <label>vorheriger Schritt</label>
+        <name>PreviousStep</name>
+    </customLabels>
+    <customLabels>
+        <label>Hauptfahrer</label>
+        <name>PrimaryDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausdruck</label>
+        <name>Print</name>
+    </customLabels>
+    <customLabels>
+        <label>privat</label>
+        <name>Private</name>
+    </customLabels>
+    <customLabels>
+        <label>Produkt</label>
+        <name>Product</name>
+    </customLabels>
+    <customLabels>
+        <label>Produktkatalog</label>
+        <name>ProductCatalog</name>
+    </customLabels>
+    <customLabels>
+        <label>Produktcode</label>
+        <name>ProductCode</name>
+    </customLabels>
+    <customLabels>
+        <label>Produktfamilie</label>
+        <name>ProductFamily</name>
+    </customLabels>
+    <customLabels>
+        <label>Produktname</label>
+        <name>ProductName</name>
+    </customLabels>
+    <customLabels>
+        <label>Produkte</label>
+        <name>Products</name>
+    </customLabels>
+    <customLabels>
+        <label>Produktfamilie</label>
+        <name>ProductsFamily</name>
+    </customLabels>
+    <customLabels>
+        <label>Beruf</label>
+        <name>Profession</name>
+    </customLabels>
+    <customLabels>
+        <label>Familienstand &amp; Berufsstand</label>
+        <name>ProfessionMatrimony</name>
+    </customLabels>
+    <customLabels>
+        <label>Professionell</label>
+        <name>Professionnal</name>
+    </customLabels>
+    <customLabels>
+        <label>Nutzerprofil</label>
+        <name>ProfilUser</name>
+    </customLabels>
+    <customLabels>
+        <label>Foto des Profils</label>
+        <name>ProfilePicture</name>
+    </customLabels>
+    <customLabels>
+        <label>Fragebogen zur Profilerstellung</label>
+        <name>ProfilingQuestionnaire</name>
+    </customLabels>
+    <customLabels>
+        <label>Vorschlag</label>
+        <name>Proposition</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebotsdetail</label>
+        <name>PropositionDetail</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vorschlag {0} wurde in den Vertrag übernommen.</label>
+        <name>PropositionHasBeenTransferred</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Angebotsnummer ist {0}.</label>
+        <name>PropositionNumberIs</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebotsstatus</label>
+        <name>PropositionStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebotsübertragung</label>
+        <name>PropositionTransfer</name>
+    </customLabels>
+    <customLabels>
+        <label>Bundesland</label>
+        <name>Province</name>
+    </customLabels>
+    <customLabels>
+        <label>Herausgeber Bundesland</label>
+        <name>ProvinceIssuingTheDocument</name>
+    </customLabels>
+    <customLabels>
+        <label>Viertel</label>
+        <name>Quarter</name>
+    </customLabels>
+    <customLabels>
+        <label>Vierteljährlich</label>
+        <name>Quarterly</name>
+    </customLabels>
+    <customLabels>
+        <label>Frage</label>
+        <name>Question</name>
+    </customLabels>
+    <customLabels>
+        <label>Rauchen Sie?</label>
+        <name>QuestionSmoke</name>
+    </customLabels>
+    <customLabels>
+        <label>Fragebogen</label>
+        <name>Questionnaire</name>
+    </customLabels>
+    <customLabels>
+        <label>Fragebogenstatus</label>
+        <name>QuestionnaireStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Fragebögen</label>
+        <name>Questionnaires</name>
+    </customLabels>
+    <customLabels>
+        <label>Offerte</label>
+        <name>Quotation</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebot</label>
+        <name>Quote</name>
+    </customLabels>
+    <customLabels>
+        <label>Das Angebot wurde aufgegeben.</label>
+        <name>QuoteAbandoned</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Angebotsnummer ist {0}.</label>
+        <name>QuoteNumberIs</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebotsinhaber</label>
+        <name>QuoteOwner</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : Angebot-0000000943</label>
+        <name>QuotePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Das Angebot wurde per E-Mail verschickt.</label>
+        <name>QuoteSentEmail</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebote</label>
+        <name>Quotes</name>
+    </customLabels>
+    <customLabels>
+        <label>Umfang</label>
+        <name>Range</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesundheitsschadenquote</label>
+        <name>RatioCPHealth</name>
+    </customLabels>
+    <customLabels>
+        <label>Risiko- und Schutzverlustquote</label>
+        <name>RatioCPRiskProtection</name>
+    </customLabels>
+    <customLabels>
+        <label>Immobilien</label>
+        <name>RealEstate</name>
+    </customLabels>
+    <customLabels>
+        <label>Grund</label>
+        <name>Reason</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Aktivitäten</label>
+        <name>RecentActivities</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Aktivität</label>
+        <name>RecentActivity</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Verträge</label>
+        <name>RecentContracts</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Kunden</label>
+        <name>RecentCustomers</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelles Angebot</label>
+        <name>RecentQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktuelle Angebote</label>
+        <name>RecentQuotes</name>
+    </customLabels>
+    <customLabels>
+        <label>Aufnahme</label>
+        <name>Record</name>
+    </customLabels>
+    <customLabels>
+        <label>Umleitung auf {0}</label>
+        <name>RedirectingTo</name>
+    </customLabels>
+    <customLabels>
+        <label>Referenz</label>
+        <name>Reference</name>
+    </customLabels>
+    <customLabels>
+        <label>Empfehlung</label>
+        <name>Referral</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattung</label>
+        <name>Refund</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungsbetrag</label>
+        <name>RefundAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungsbetrag aus dem Inland</label>
+        <name>RefundAmountFromNational</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungsgrundlage aus dem Inland</label>
+        <name>RefundBasisFromNational</name>
+    </customLabels>
+    <customLabels>
+        <label>Rückerstattung unterschiedlicher Zinsen</label>
+        <name>RefundDifferedInterests</name>
+    </customLabels>
+    <customLabels>
+        <label>Zahlungsdatum der Rückerstattung</label>
+        <name>RefundPaymentDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungssatz</label>
+        <name>RefundRate</name>
+    </customLabels>
+    <customLabels>
+        <label>Häufigkeit der Rückerstattungen</label>
+        <name>RefundsFrequency</name>
+    </customLabels>
+    <customLabels>
+        <label>Häufigkeit der Erstattungszahlungen</label>
+        <name>RefundsFrequencyTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Registrierung Begünstigter</label>
+        <name>RegisterBeneficiary</name>
+    </customLabels>
+    <customLabels>
+        <label>Registrierung Mitversicherter</label>
+        <name>RegisterCoInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Registrierungsland</label>
+        <name>RegistrationCountry</name>
+    </customLabels>
+    <customLabels>
+        <label>Registrierungsnummer</label>
+        <name>RegistrationNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : ASHSMT25D09F205Z</label>
+        <name>RegistrationNumberPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Reguläre Zahlung</label>
+        <name>RegularPayment</name>
+    </customLabels>
+    <customLabels>
+        <label>Regulärer Zahlungsbetrag</label>
+        <name>RegularPaymentAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Rückerstattung von Geldeingängen</label>
+        <name>ReimburseMoneyIns</name>
+    </customLabels>
+    <customLabels>
+        <label>Rückerstattungsbeitrag</label>
+        <name>ReimbursePreniums</name>
+    </customLabels>
+    <customLabels>
+        <label>Rückversicherer</label>
+        <name>Reinsurer</name>
+    </customLabels>
+    <customLabels>
+        <label>Zugehörig</label>
+        <name>Related</name>
+    </customLabels>
+    <customLabels>
+        <label>Beziehung</label>
+        <name>Relation</name>
+    </customLabels>
+    <customLabels>
+        <label>Beziehungen</label>
+        <name>Relations</name>
+    </customLabels>
+    <customLabels>
+        <label>Freigabedatum</label>
+        <name>ReleasingDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Verfügbarkeitsdatum des Bankkredits</label>
+        <name>ReleasingDateTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Verbleibender Saldo</label>
+        <name>RemainingBalance</name>
+    </customLabels>
+    <customLabels>
+        <label>Verbleibt im Fonds</label>
+        <name>RemainingOnFund</name>
+    </customLabels>
+    <customLabels>
+        <label>Zu investierender Saldo</label>
+        <name>RemainingToInvest</name>
+    </customLabels>
+    <customLabels>
+        <label>entfernen</label>
+        <name>Remove</name>
+    </customLabels>
+    <customLabels>
+        <label>Entfernt</label>
+        <name>Removed</name>
+    </customLabels>
+    <customLabels>
+        <label>Gewinn</label>
+        <name>Rendement</name>
+    </customLabels>
+    <customLabels>
+        <label>Wiederholung</label>
+        <name>Repartition</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertreter</label>
+        <name>Representative</name>
+    </customLabels>
+    <customLabels>
+        <label>Antragsdatum</label>
+        <name>RequestDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Antragsnummer</label>
+        <name>RequestNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>reserve</label>
+        <name>Reserve</name>
+    </customLabels>
+    <customLabels>
+        <label>Wohnanschrift</label>
+        <name>ResidentialAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>ergebnisse</label>
+        <name>Results</name>
+    </customLabels>
+    <customLabels>
+        <label>Wiederaufnahme</label>
+        <name>Resume</name>
+    </customLabels>
+    <customLabels>
+        <label>Rückgabe</label>
+        <name>Return</name>
+    </customLabels>
+    <customLabels>
+        <label>Risiko</label>
+        <name>Risk</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Kunde akzeptiert, der Anlageberatung zu folgen.</label>
+        <name>RiskAccepted</name>
+    </customLabels>
+    <customLabels>
+        <label>Risiko &amp; Schutz</label>
+        <name>RiskAndProtection</name>
+    </customLabels>
+    <customLabels>
+        <label>Risikoinformation</label>
+        <name>RiskInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Risikoname</label>
+        <name>RiskName</name>
+    </customLabels>
+    <customLabels>
+        <label>Risiko &amp; Schutz</label>
+        <name>RiskProtection</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Kunde weigert sich, der Anlageberatung zu folgen.</label>
+        <name>RiskUnaccepted</name>
+    </customLabels>
+    <customLabels>
+        <label>Risiken</label>
+        <name>Risks</name>
+    </customLabels>
+    <customLabels>
+        <label>Straße</label>
+        <name>Road</name>
+    </customLabels>
+    <customLabels>
+        <label>Rolle</label>
+        <name>Role</name>
+    </customLabels>
+    <customLabels>
+        <label>Rollen</label>
+        <name>Roles</name>
+    </customLabels>
+    <customLabels>
+        <label>SAE SAE</label>
+        <name>SAE</name>
+    </customLabels>
+    <customLabels>
+        <label>SLA SLA</label>
+        <name>SLA</name>
+    </customLabels>
+    <customLabels>
+        <label>SLA Ablaufdatum</label>
+        <name>SLAExpirationDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Samstag</label>
+        <name>Saturday</name>
+    </customLabels>
+    <customLabels>
+        <label>Speichern</label>
+        <name>Save</name>
+    </customLabels>
+    <customLabels>
+        <label>Speichern</label>
+        <name>SaveQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Speichern und senden Sie das Angebot per E-Mail.</label>
+        <name>SaveSendQuoteEmail</name>
+    </customLabels>
+    <customLabels>
+        <label>Speichern, Angebot per E-Mail versenden und Termin vereinbaren</label>
+        <name>SaveSendQuoteEmailMakeAppointment</name>
+    </customLabels>
+    <customLabels>
+        <label>Wenn der Betrag über {0} liegt, wird der Vertrag im Backoffice validiert.</label>
+        <name>SavingMax</name>
+    </customLabels>
+    <customLabels>
+        <label>Einsparungen/Renten</label>
+        <name>SavingPensions</name>
+    </customLabels>
+    <customLabels>
+        <label>Einsparungen</label>
+        <name>Savings</name>
+    </customLabels>
+    <customLabels>
+        <label>Chance zur Outperformance in {0} Jahren</label>
+        <name>SavingsChanceBeatObjective</name>
+    </customLabels>
+    <customLabels>
+        <label>FACTA &amp; CRS</label>
+        <name>SavingsPersonOrigin</name>
+    </customLabels>
+    <customLabels>
+        <label>Sind Sie Bürger oder wohnhaft in Frankreich?</label>
+        <name>SavingsPersonOriginFrance</name>
+    </customLabels>
+    <customLabels>
+        <label>Sind Sie Bürger oder Einwohner der Vereinigten Staaten?</label>
+        <name>SavingsPersonOriginUSA</name>
+    </customLabels>
+    <customLabels>
+        <label>Erwarteter Gewinn in {0} Jahren</label>
+        <name>SavingsProfitability</name>
+    </customLabels>
+    <customLabels>
+        <label>Verlustwahrscheinlichkeit in {0} Jahren</label>
+        <name>SavingsRiskToLose</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeitpläne</label>
+        <name>Schedules</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche</label>
+        <name>Search</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchen Sie ihr Fahrzeug</label>
+        <name>SearchCar</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : 3.0 CRD V6 Limited</label>
+        <name>SearchCarPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Suchbegriff</label>
+        <name>SearchCase</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche nach Kunde/Vertrag</label>
+        <name>SearchClientContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertragssuche</label>
+        <name>SearchContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Geben Sie mindestens 6 Zeichen ein, um einen Vertrag zu suchen.</label>
+        <name>SearchContractNumberTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Kundensuche</label>
+        <name>SearchCustomer</name>
+    </customLabels>
+    <customLabels>
+        <label>Arbeitsverhältnis</label>
+        <name>SearchEmployment</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche Hersteller</label>
+        <name>SearchMake</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : Jeep</label>
+        <name>SearchMakePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche Mitgliedschaft</label>
+        <name>SearchMembership</name>
+    </customLabels>
+    <customLabels>
+        <label>Modellauswahl</label>
+        <name>SearchModel</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : Grand Cherokee</label>
+        <name>SearchModelPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Mehr suchen</label>
+        <name>SearchMore</name>
+    </customLabels>
+    <customLabels>
+        <label>Suche in der Nähe</label>
+        <name>SearchNearby</name>
+    </customLabels>
+    <customLabels>
+        <label>Personensuche</label>
+        <name>SearchPerson</name>
+    </customLabels>
+    <customLabels>
+        <label>TPP Karten</label>
+        <name>SearchTPPCard</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrzeug suchen nach :</label>
+        <name>SearchVehicleBy</name>
+    </customLabels>
+    <customLabels>
+        <label>Version suchen</label>
+        <name>SearchVersion</name>
+    </customLabels>
+    <customLabels>
+        <label>z.B. : 3.0 CRD V6 Trailhawk</label>
+        <name>SearchVersionPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Zweitfahrer</label>
+        <name>SecondaryDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Mehr anzeigen</label>
+        <name>SeeMore</name>
+    </customLabels>
+    <customLabels>
+        <label>Siehe Geschichte</label>
+        <name>SeeStory</name>
+    </customLabels>
+    <customLabels>
+        <label>auswählen</label>
+        <name>Select</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen sie ihr Fahrzeug</label>
+        <name>SelectCar</name>
+    </customLabels>
+    <customLabels>
+        <label>Stadt auswählen</label>
+        <name>SelectCity</name>
+    </customLabels>
+    <customLabels>
+        <label>Deckung auswählen</label>
+        <name>SelectCoverage</name>
+    </customLabels>
+    <customLabels>
+        <label>Kraftstoffart auswählen</label>
+        <name>SelectFuelType</name>
+    </customLabels>
+    <customLabels>
+        <label>Hersteller auswählen</label>
+        <name>SelectMake</name>
+    </customLabels>
+    <customLabels>
+        <label>Modell auswählen</label>
+        <name>SelectModel</name>
+    </customLabels>
+    <customLabels>
+        <label>Paket auswählen</label>
+        <name>SelectPackage</name>
+    </customLabels>
+    <customLabels>
+        <label>Ehepartnerrente auswählen</label>
+        <name>SelectSpouseAnnuity</name>
+    </customLabels>
+    <customLabels>
+        <label>Version auswählen</label>
+        <name>SelectVersion</name>
+    </customLabels>
+    <customLabels>
+        <label>ausgewählt</label>
+        <name>Selected</name>
+    </customLabels>
+    <customLabels>
+        <label>Ausgewählte Dateigröße ist {0}</label>
+        <name>SelectedFileSizeMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Semester --></label>
+        <name>Semester</name>
+    </customLabels>
+    <customLabels>
+        <label>halbjährlich</label>
+        <name>SemiAnnual</name>
+    </customLabels>
+    <customLabels>
+        <label>senden</label>
+        <name>Send</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag mit elektronischer Unterschrift senden</label>
+        <name>SendingElectronicSignature</name>
+    </customLabels>
+    <customLabels>
+        <label>Senden Sie den digitalen Underwriting-Fragebogen.</label>
+        <name>SendingOnlineQuestionnaire</name>
+    </customLabels>
+    <customLabels>
+        <label>Begrüßungsmail an den Versicherten senden</label>
+        <name>SendingWelcomeMail</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktionär</label>
+        <name>Shareholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Informationen für Aktionäre</label>
+        <name>ShareholderInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktionäre</label>
+        <name>Shareholders</name>
+    </customLabels>
+    <customLabels>
+        <label>Anzahl der Aktionäre aus</label>
+        <name>ShareholdersNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Wählen Sie die Anzahl der Aktionäre aus</label>
+        <name>ShareholdersNumberTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label>Kurzfristige Einsparungen</label>
+        <name>ShortTermSavings</name>
+    </customLabels>
+    <customLabels>
+        <label>zeige Details</label>
+        <name>ShowDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>zeige mehr</label>
+        <name>ShowMore</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeige (0) mehr</label>
+        <name>Show_X_More</name>
+    </customLabels>
+    <customLabels>
+        <label>Unterschrift</label>
+        <name>Signature</name>
+    </customLabels>
+    <customLabels>
+        <label>ledig</label>
+        <name>Single</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SiretNumber --></label>
+        <name>SiretNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Standort</label>
+        <name>Site</name>
+    </customLabels>
+    <customLabels>
+        <label>Lageplan</label>
+        <name>SitePlan</name>
+    </customLabels>
+    <customLabels>
+        <label>inkl. MwSt. / Monat</label>
+        <name>SlashVATperMonth</name>
+    </customLabels>
+    <customLabels>
+        <label>Sozialversicherungsnummer</label>
+        <name>SocialSecurity</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 186012B989989</label>
+        <name>SocialSecurityCodePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Schlüssel</label>
+        <name>SocialSecurityKey</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SocialSecurityKeyPlaceholder --></label>
+        <name>SocialSecurityKeyPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungsbetrag der Sozialversicherung</label>
+        <name>SocialSecurityRefundAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Spanien</label>
+        <name>Spain</name>
+    </customLabels>
+    <customLabels>
+        <label>Sonderbedingungen</label>
+        <name>SpecialTerms</name>
+    </customLabels>
+    <customLabels>
+        <label>Spezialitätstyp</label>
+        <name>SpecialtyType</name>
+    </customLabels>
+    <customLabels>
+        <label>Ehepartner-Rente</label>
+        <name>SpouseAnnuity</name>
+    </customLabels>
+    <customLabels>
+        <label>Basisinformationen des Ehepartners</label>
+        <name>SpouseBasisInformation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Standard --></label>
+        <name>Standard</name>
+    </customLabels>
+    <customLabels>
+        <label>Start eines neuen Angebots</label>
+        <name>StartAnotherQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Beginndatum</label>
+        <name>StartDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Start Motiv</label>
+        <name>StartMotive</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmelden</label>
+        <name>StartSubscription</name>
+    </customLabels>
+    <customLabels>
+        <label>Startjahr</label>
+        <name>StartYear</name>
+    </customLabels>
+    <customLabels>
+        <label>Beginndatum der Deckungsperiode</label>
+        <name>StartingDateOfCoveredPeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Bundestaat / Bundesland</label>
+        <name>State</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : Alaska</label>
+        <name>StateProvincePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Status --></label>
+        <name>Status</name>
+    </customLabels>
+    <customLabels>
+        <label>Status Datum</label>
+        <name>StatusDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Status Datum (von)</label>
+        <name>StatusDateFrom</name>
+    </customLabels>
+    <customLabels>
+        <label>Status Datum (bis)</label>
+        <name>StatusDateTo</name>
+    </customLabels>
+    <customLabels>
+        <label>Statusmotiv</label>
+        <name>StatusMotive</name>
+    </customLabels>
+    <customLabels>
+        <label>Haushaltsauswahl</label>
+        <name>Step1Household</name>
+    </customLabels>
+    <customLabels>
+        <label>Ist das Unternehmen an der Börse?</label>
+        <name>StockExchange</name>
+    </customLabels>
+    <customLabels>
+        <label>Straße</label>
+        <name>Street</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel : 16 Zweite Straße</label>
+        <name>StreetPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Unterart</label>
+        <name>SubType</name>
+    </customLabels>
+    <customLabels>
+        <label>Änderungsantrag: Deckungen aktualisiert</label>
+        <name>SubjectMailManageCoverages</name>
+    </customLabels>
+    <customLabels>
+        <label>Absenden</label>
+        <name>Submit</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmelden</label>
+        <name>Subscribe</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmelder</label>
+        <name>Subscriber</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmeldende Person / versicherte Person</label>
+        <name>SubscriberInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Anmeldung</label>
+        <name>Subscription</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeichnungsland</label>
+        <name>SubscriptionCountry</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeichnungsdatum</label>
+        <name>SubscriptionDate</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie haben erfolgreich einen Vertrag angelegt.</label>
+        <name>SuccesfullyCreateContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Versicherungssumme</label>
+        <name>SumInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Zusammenfassung</label>
+        <name>Summary</name>
+    </customLabels>
+    <customLabels>
+        <label>Sonntag</label>
+        <name>Sunday</name>
+    </customLabels>
+    <customLabels>
+        <label>Sind Sie sicher, dass Sie dieses Angebot stornieren wollen?</label>
+        <name>SureCancelQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag aussetzen</label>
+        <name>SuspendContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Umstellung</label>
+        <name>Switch</name>
+    </customLabels>
+    <customLabels>
+        <label>Umstellungsgebühren</label>
+        <name>SwitchFees</name>
+    </customLabels>
+    <customLabels>
+        <label>Umstellung erfolgreich auf Vertrag Nr. {0} erfolgt</label>
+        <name>SwitchForContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Kartendruck</label>
+        <name>TPPCardPrinted</name>
+    </customLabels>
+    <customLabels>
+        <label>Den Termin wahrnehmen</label>
+        <name>TakeAppointment</name>
+    </customLabels>
+    <customLabels>
+        <label>Den Anruf entgegennehmen</label>
+        <name>TakeTheCall</name>
+    </customLabels>
+    <customLabels>
+        <label>Tarif</label>
+        <name>Tariff</name>
+    </customLabels>
+    <customLabels>
+        <label>Steuererklärung</label>
+        <name>TaxDeclaration</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Ich bin nicht in den USA geboren und zahle keine Steuern in den USA.</label>
+        <name>TaxDeclarationPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Besteuerung</label>
+        <name>Taxation</name>
+    </customLabels>
+    <customLabels>
+        <label>Steuern</label>
+        <name>Taxes</name>
+    </customLabels>
+    <customLabels>
+        <label>Danke</label>
+        <name>ThankYou</name>
+    </customLabels>
+    <customLabels>
+        <label>Thema</label>
+        <name>Theme</name>
+    </customLabels>
+    <customLabels>
+        <label>Drittanbieter</label>
+        <name>ThirdParty</name>
+    </customLabels>
+    <customLabels>
+        <label>Informationen von Dritten</label>
+        <name>ThirdPartyInformation</name>
+    </customLabels>
+    <customLabels>
+        <label>Donnerstag</label>
+        <name>Thursday</name>
+    </customLabels>
+    <customLabels>
+        <label>Titel</label>
+        <name>Title</name>
+    </customLabels>
+    <customLabels>
+        <label>Es gibt zu viele Versicherte auf dem Vertrag. Max ist {0}</label>
+        <name>TooManyInsuredContract</name>
+    </customLabels>
+    <customLabels>
+        <label>vorrangige Fahrzeugführer für das Fahrzeug {1}</label>
+        <name>TooManyPrimaryDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesamt</label>
+        <name>Total</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesamtsumme</label>
+        <name>TotalAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Gesamtprämie</label>
+        <name>TotalPremium</name>
+    </customLabels>
+    <customLabels>
+        <label>Stadt</label>
+        <name>Town</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachverfolgung von Fällen</label>
+        <name>TrackingCases</name>
+    </customLabels>
+    <customLabels>
+        <label>Übertrag</label>
+        <name>Transfer</name>
+    </customLabels>
+    <customLabels>
+        <label>Übertragung des Angebots in den Vertrag</label>
+        <name>TransferPropositionIntoContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Dienstag</label>
+        <name>Tuesday</name>
+    </customLabels>
+    <customLabels>
+        <label>Betreuer</label>
+        <name>Tutor</name>
+    </customLabels>
+    <customLabels>
+        <label>Dre Betreuer ist minderjährig.</label>
+        <name>TutorIsMinorError</name>
+    </customLabels>
+    <customLabels>
+        <label>Der Vertrag hat einen Betreuer, aber keinen Minderjährigen. Der Betreuer {0} muss entfernt werden.</label>
+        <name>TutorWithoutMinorError</name>
+    </customLabels>
+    <customLabels>
+        <label>Typ</label>
+        <name>Type</name>
+    </customLabels>
+    <customLabels>
+        <label>Typ</label>
+        <name>TypeOfHealthParty</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- URLAppointment --></label>
+        <name>URLAppointment</name>
+    </customLabels>
+    <customLabels>
+        <label>Einmalzahlung</label>
+        <name>UniquePremium</name>
+    </customLabels>
+    <customLabels>
+        <label>Unbekannt</label>
+        <name>Unknown</name>
+    </customLabels>
+    <customLabels>
+        <label>Abwählen</label>
+        <name>Unselect</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierung</label>
+        <name>Update</name>
+    </customLabels>
+    <customLabels>
+        <label>Beschäftigung aktualisieren</label>
+        <name>UpdateEmployments</name>
+    </customLabels>
+    <customLabels>
+        <label>Aktualisierte Informationen</label>
+        <name>UpdateInformations</name>
+    </customLabels>
+    <customLabels>
+        <label>Person aktualisieren</label>
+        <name>UpdatePerson</name>
+    </customLabels>
+    <customLabels>
+        <label>Angebot aktualisieren</label>
+        <name>UpdateQuote</name>
+    </customLabels>
+    <customLabels>
+        <label>Dokument hochladen</label>
+        <name>UploadingDocument</name>
+    </customLabels>
+    <customLabels>
+        <label>Verkaufsmöglichkeit</label>
+        <name>UpsellOpportunity</name>
+    </customLabels>
+    <customLabels>
+        <label>Nutzung</label>
+        <name>Usage</name>
+    </customLabels>
+    <customLabels>
+        <label>Nutzerprofil</label>
+        <name>UserProfil</name>
+    </customLabels>
+    <customLabels>
+        <label>Validieren</label>
+        <name>Validate</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrer validieren</label>
+        <name>ValidateDriver</name>
+    </customLabels>
+    <customLabels>
+        <label>Formel validieren</label>
+        <name>ValidateFormula</name>
+    </customLabels>
+    <customLabels>
+        <label>Mehrfachauswahl bestätigen</label>
+        <name>ValidateMultipleChoice</name>
+    </customLabels>
+    <customLabels>
+        <label>Validieren oder Auswahl einer anderen Deckung</label>
+        <name>ValidateSelectCoverage</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrzeug validieren</label>
+        <name>ValidateVehicle</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrzeug</label>
+        <name>Vehicle</name>
+    </customLabels>
+    <customLabels>
+        <label>Fahrzeuge</label>
+        <name>Vehicles</name>
+    </customLabels>
+    <customLabels>
+        <label>Überprüfen oder Eingeben von Daten für die Angebotsabgabe</label>
+        <name>VerifyInputData</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Version --></label>
+        <name>Version</name>
+    </customLabels>
+    <customLabels>
+        <label>Version auswählen</label>
+        <name>VersionPlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Personenansicht</label>
+        <name>View</name>
+    </customLabels>
+    <customLabels>
+        <label>Details anzeigen</label>
+        <name>ViewDetails</name>
+    </customLabels>
+    <customLabels>
+        <label>Alle Hersteller erhalten</label>
+        <name>WaitVehicleMarkFind</name>
+    </customLabels>
+    <customLabels>
+        <label>Alle Modelle erhalten</label>
+        <name>WaitVehicleModelFind</name>
+    </customLabels>
+    <customLabels>
+        <label>Alle Kraftstoffarten erhalten</label>
+        <name>WaitgetFuelType</name>
+    </customLabels>
+    <customLabels>
+        <label>Wir erhalten alle Versionen zu Ihrer Auswahl !</label>
+        <name>WaitgetVehicleByDescription</name>
+    </customLabels>
+    <customLabels>
+        <label>Wartezeit</label>
+        <name>WaitingPeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung</label>
+        <name>Warning</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung: Die Maximalbetrag ist erreicht und wurde automatisch eingestellt. Das Maximum ist {0}</label>
+        <name>WarningMaxInputNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Warnung: Der Mindestbetrag ist erreicht und wurde automatisch eingestellt. Das Minimum ist {0}</label>
+        <name>WarningMinInputNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Mittwoch</label>
+        <name>Wednesday</name>
+    </customLabels>
+    <customLabels>
+        <label>Wilkommen</label>
+        <name>Welcome</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Begrüßungsmail wurde an folgende Adresse geschickt {0}</label>
+        <name>WelcomeMailSent</name>
+    </customLabels>
+    <customLabels>
+        <label>Wer sind wir ?</label>
+        <name>WhoAreWe</name>
+    </customLabels>
+    <customLabels>
+        <label>Mit Kindern</label>
+        <name>WithChildren</name>
+    </customLabels>
+    <customLabels>
+        <label>Ohne Kinder</label>
+        <name>WithoutChildren</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeugen ID</label>
+        <name>WitnessNRIC</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: S4751010D</label>
+        <name>WitnessNRIC_Placeholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Name</label>
+        <name>WitnessName</name>
+    </customLabels>
+    <customLabels>
+        <label>Beispiel: Herr Johann Schmidt</label>
+        <name>WitnessNamePlaceholder</name>
+    </customLabels>
+    <customLabels>
+        <label>Parkplatz</label>
+        <name>WorkAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Die CPAM-Nummer scheint falsch zu sein. Bitte überprüfen Sie diese.</label>
+        <name>WrongCPAMNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Bitte ersetzen Sie die letzte Ziffer durch {0}</label>
+        <name>WrongCPAMNumberKey</name>
+    </customLabels>
+    <customLabels>
+        <label>Die Sozialversicherungsnummer scheint falsch zu sein. Bitte überprüfen Sie es und versuchen Sie es erneut.</label>
+        <name>WrongSSN</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahr</label>
+        <name>Year</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahresprämie</label>
+        <name>YearlyPreniumAmount</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahre</label>
+        <name>Years</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahre</label>
+        <name>YearsLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Ja</label>
+        <name>Yes</name>
+    </customLabels>
+    <customLabels>
+        <label>Ihre E-Mail {0}</label>
+        <name>YouEmailed</name>
+    </customLabels>
+    <customLabels>
+        <label>alle Produkte</label>
+        <name>allProducts</name>
+    </customLabels>
+    <customLabels>
+        <label>eine Person</label>
+        <name>anIndividual</name>
+    </customLabels>
+    <customLabels>
+        <label>eine Organistation</label>
+        <name>anOrganization</name>
+    </customLabels>
+    <customLabels>
+        <label>Tarifberechnung</label>
+        <name>calculatingTariff</name>
+    </customLabels>
+    <customLabels>
+        <label>Folgende Mitgliedschaften wurden gekündigt :</label>
+        <name>cancelledMemberships</name>
+    </customLabels>
+    <customLabels>
+        <label>&quot;Sie haben einen Antrag auf eine Versicherungspolice gestellt, bitte nehmen Sie sich einen Moment Zeit, um die Fragen mit Hilfe unseres Online-Fragebogens zur Risikobewertung zu beantworten, und klicken Sie dann auf die Schaltfläche &quot;&quot;Senden&quot;&quot;. Über Ihren Antrag auf Versicherung durch die Gesellschaft wird eine Entscheidung getroffen. Sie erhalten entweder eine Deckungszusage, oder Sie werden aufgefordert, Ihre Deckung zu ändern, oder Sie erhalten keine Deckungszusage.&quot;</label>
+        <name>email_underwriting_1</name>
+    </customLabels>
+    <customLabels>
+        <label>hi</label>
+        <name>email_welcome_insured_1</name>
+    </customLabels>
+    <customLabels>
+        <label>Willkommen bei DXC OmniChannel for Salesforce !</label>
+        <name>email_welcome_insured_2</name>
+    </customLabels>
+    <customLabels>
+        <label>Sie können Ihr Konto jetzt über unsere Anwendung, auf dem Desktop, Tablett oder Smartphone verwalten. :)</label>
+        <name>email_welcome_insured_3</name>
+    </customLabels>
+    <customLabels>
+        <label>Um zu beginnen, gehen Sie auf die folgende Seite :</label>
+        <name>email_welcome_insured_4</name>
+    </customLabels>
+    <customLabels>
+        <label>Benutzername :</label>
+        <name>email_welcome_insured_5</name>
+    </customLabels>
+    <customLabels>
+        <label>für</label>
+        <name>for</name>
+    </customLabels>
+    <customLabels>
+        <label>/Jahr</label>
+        <name>frequencyLabel_Annual</name>
+    </customLabels>
+    <customLabels>
+        <label>/14Tage</label>
+        <name>frequencyLabel_Biweekly</name>
+    </customLabels>
+    <customLabels>
+        <label>/Monat</label>
+        <name>frequencyLabel_Monthly</name>
+    </customLabels>
+    <customLabels>
+        <label>/Vierteljährlich</label>
+        <name>frequencyLabel_Quarterly</name>
+    </customLabels>
+    <customLabels>
+        <label>/6Monate</label>
+        <name>frequencyLabel_Semi_annual</name>
+    </customLabels>
+    <customLabels>
+        <label>/Woche</label>
+        <name>frequencyLabel_Weekly</name>
+    </customLabels>
+    <customLabels>
+        <label>Individuell</label>
+        <name>individual</name>
+    </customLabels>
+    <customLabels>
+        <label>Laden von Deckungen</label>
+        <name>loadingCoverages</name>
+    </customLabels>
+    <customLabels>
+        <label>Mitgliedschaft bei {0}</label>
+        <name>membershipOf</name>
+    </customLabels>
+    <customLabels>
+        <label>Morgen</label>
+        <name>morning</name>
+    </customLabels>
+    <customLabels>
+        <label>Meine Position</label>
+        <name>myPosition</name>
+    </customLabels>
+    <customLabels>
+        <label>Nachrichten</label>
+        <name>news</name>
+    </customLabels>
+    <customLabels>
+        <label>Keine</label>
+        <name>noItemToDisplay</name>
+    </customLabels>
+    <customLabels>
+        <label>{Aufzeichnung:{0}} Abschluss einer neuen {Aufzeichnung:{1}} Angebot : {Aufzeichnung:{2}}</label>
+        <name>notifNewQuoteByInsured</name>
+    </customLabels>
+    <customLabels>
+        <label>Keine weiteren Kredite</label>
+        <name>outOfCredits</name>
+    </customLabels>
+    <customLabels>
+        <label>Kündigung des Arbeitsverhältnisses</label>
+        <name>terminateEmployment</name>
+    </customLabels>
+    <customLabels>
+        <label>Trimester</label>
+        <name>trimester</name>
+    </customLabels>
+    <customLabels>
+        <label>Unbekanntes Nummernschild</label>
+        <name>unknownLicensePlate</name>
+    </customLabels>
+    <customLabels>
+        <label>Vertrag anlegen</label>
+        <name>waitCreateContract</name>
+    </customLabels>
+    <customLabels>
+        <label>Laden der Anwendung</label>
+        <name>waitInitWebApp</name>
+    </customLabels>
+    <customLabels>
+        <label>Öffnungsvorgang</label>
+        <name>waitLaunchCaseManager</name>
+    </customLabels>
+    <customLabels>
+        <label>Öffnung</label>
+        <name>waitLaunchDisplayView</name>
+    </customLabels>
+    <customLabels>
+        <label>Verarbeitung...</label>
+        <name>waitProcessing</name>
+    </customLabels>
+    <customLabels>
+        <label>Übertragung von Vorschlägen</label>
+        <name>waitPropositionTransfer</name>
+    </customLabels>
+    <customLabels>
+        <label>Erstattungsberechnung</label>
+        <name>waitReimbursmentCalculation</name>
+    </customLabels>
+    <customLabels>
+        <label>Versand der elektronischen Signatur</label>
+        <name>waitSendElectronicSignature</name>
+    </customLabels>
+    <customLabels>
+        <label>Synchronisation</label>
+        <name>waitSynchroBusinessObject</name>
+    </customLabels>
+    <customLabels>
+        <label>Ihr Änderungsantrag bedarf einer manuellen Annahme. Ein Sachbearbeiter wird sich in Kürze mit Ihnen in Verbindung setzen.</label>
+        <name>warningAmendmentValidation</name>
+    </customLabels>
+    <customLabels>
+        <label>Jahre</label>
+        <name>yo</name>
+    </customLabels>
+    <customLabels>
+        <label>KFZ-Versicherung</label>
+        <name>zeAuto</name>
+    </customLabels>
+    <customLabels>
+        <label>Krankenversicherung</label>
+        <name>zeHealth</name>
+    </customLabels>
+    <customLabels>
+        <label>Hausratversicherung</label>
+        <name>zeHouse</name>
+    </customLabels>
+    <customLabels>
+        <label>Hypothekenversicherung</label>
+        <name>zeMortgage</name>
+    </customLabels>
+    <customLabels>
+        <label>Multi-Risk-Versicherung</label>
+        <name>zeMultirisk</name>
+    </customLabels>
+    <customLabels>
+        <label>Risiko- und Schutzversicherung</label>
+        <name>zeRiskAndProtection</name>
+    </customLabels>
+    <customLabels>
+        <label>Sparversicherung</label>
+        <name>zeSavings</name>
+    </customLabels>
+    <customTabs>
+        <label>App-Konfiguration</label>
+        <name>AppConfiguration</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Back-Ends --></label>
+        <name>Backend_Name</name>
+    </customTabs>
+    <customTabs>
+        <label>Geschäftsprozesse</label>
+        <name>CaseSearchTab</name>
+    </customTabs>
+    <customTabs>
+        <label>Aktuelle Fälle</label>
+        <name>Cases</name>
+    </customTabs>
+    <customTabs>
+        <label>Admin-Startseite</label>
+        <name>DXCO4SF_Admin_home</name>
+    </customTabs>
+    <customTabs>
+        <label>Data Dictionary Zuordnungen</label>
+        <name>DataDictionaryMappings</name>
+    </customTabs>
+    <customTabs>
+        <label>Vertriebspartner</label>
+        <name>Distributors</name>
+    </customTabs>
+    <customTabs>
+        <label>Funktionsbaustein</label>
+        <name>Function_Component</name>
+    </customTabs>
+    <customTabs>
+        <label>Einzelpersonen</label>
+        <name>Individuals</name>
+    </customTabs>
+    <customTabs>
+        <label>Versicherungsverträge</label>
+        <name>InsuranceContracts_Tab</name>
+    </customTabs>
+    <customTabs>
+        <label>Versicherungsangebote</label>
+        <name>Insurance_Quotes</name>
+    </customTabs>
+    <customTabs>
+        <label>Menü Konfiguration</label>
+        <name>Menu_Configuration</name>
+    </customTabs>
+    <customTabs>
+        <label>Benachrichtigungen</label>
+        <name>Notifications</name>
+    </customTabs>
+    <customTabs>
+        <label>Unternehmen</label>
+        <name>Organizations</name>
+    </customTabs>
+    <customTabs>
+        <label>Unternehmen</label>
+        <name>OrganizationsTab</name>
+    </customTabs>
+    <customTabs>
+        <label>Personen</label>
+        <name>PersonsTab</name>
+    </customTabs>
+    <customTabs>
+        <label>Produkte</label>
+        <name>Products</name>
+    </customTabs>
+    <customTabs>
+        <label>Produkte</label>
+        <name>InsuranceProduct__c</name>
+    </customTabs>
+    <customTabs>
+        <label>Datensatztyp</label>
+        <name>Record_Type</name>
+    </customTabs>
+    <customTabs>
+        <label>Suchkomponente</label>
+        <name>Search_Component</name>
+    </customTabs>
+    <customTabs>
+        <label>Skripte exportieren</label>
+        <name>TabExportScripts</name>
+    </customTabs>
+    <customTabs>
+        <label>Skripte installieren</label>
+        <name>TabInstallScripts</name>
+    </customTabs>
+    <customTabs>
+        <label>Ansicht Komponente</label>
+        <name>View_Component</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Clients --></label>
+        <name>WMClients</name>
+    </customTabs>
+</Translations>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Health</masterLabel>
+        <translation>Santé</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Multirisk</masterLabel>
+        <translation>Multirisque</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Risk and protection</masterLabel>
+        <translation>Prévoyance</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Savings</masterLabel>
+        <translation>Epargne</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

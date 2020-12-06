@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Auto</fullName>
+        <default>false</default>
+        <label>Auto</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Health</fullName>
+        <default>false</default>
+        <label>Health</label>
+    </standardValue>
+    <standardValue>
+        <fullName>House</fullName>
+        <default>false</default>
+        <label>House</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Mortgage</fullName>
+        <default>false</default>
+        <label>Mortgage</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Multirisk</fullName>
+        <default>false</default>
+        <label>Multirisk</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Risk &amp; Protection</fullName>
+        <default>false</default>
+        <label>Risk &amp; Protection</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Savings</fullName>
+        <default>false</default>
+        <label>Savings</label>
+    </standardValue>
+</StandardValueSet>

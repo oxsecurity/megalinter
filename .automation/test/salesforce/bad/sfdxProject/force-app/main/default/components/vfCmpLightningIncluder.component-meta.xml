@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>46.0</apiVersion>
+  <label>vfCmpLightningIncluder</label>
+  <packageVersions>
+    <majorNumber>1</majorNumber>
+    <minorNumber>14</minorNumber>
+    <namespace>sf_chttr_apps</namespace>
+  </packageVersions>
+  <packageVersions>
+    <majorNumber>1</majorNumber>
+    <minorNumber>7</minorNumber>
+    <namespace>sf_com_apps</namespace>
+  </packageVersions>
+</ApexComponent>

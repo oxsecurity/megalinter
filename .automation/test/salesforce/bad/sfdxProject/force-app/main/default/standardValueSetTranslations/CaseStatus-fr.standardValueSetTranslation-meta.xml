@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+      <masterLabel>Closed</masterLabel>
+      <translation>Fermé</translation>
+    </valueTranslation>
+    <valueTranslation>
+      <masterLabel>New</masterLabel>
+      <translation>Nouveau</translation>
+    </valueTranslation>
+    <valueTranslation>
+      <masterLabel>Working</masterLabel>
+      <translation>En cours</translation>
+    </valueTranslation>
+</StandardValueSet>

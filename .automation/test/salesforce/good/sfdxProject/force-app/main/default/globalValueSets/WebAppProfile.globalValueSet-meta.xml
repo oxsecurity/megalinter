@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Health</fullName>
+        <default>false</default>
+        <label>Health</label>
+    </customValue>
+    <customValue>
+        <fullName>Risk and protection</fullName>
+        <default>false</default>
+        <label>Risk and protection</label>
+    </customValue>
+    <customValue>
+        <fullName>Savings</fullName>
+        <default>false</default>
+        <label>Savings</label>
+    </customValue>
+    <customValue>
+        <fullName>Multirisk</fullName>
+        <default>false</default>
+        <label>Multirisk</label>
+    </customValue>
+    <masterLabel>WebAppProfile</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CalloutType__c</fullName>
+    <description>Name of the callout</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Name of the callout</inlineHelpText>
+    <label>Callout Type</label>
+    <length>50</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

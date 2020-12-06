@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BufferString__c</fullName>
+    <description>Buffer stored as JSON format</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Buffer stored as JSON format</inlineHelpText>
+    <label>BufferString</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

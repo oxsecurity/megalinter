@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>API_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>API_Error</shortDescription>
+        <value>Error while calling remote API</value>
+    </labels>
+    <labels>
+        <fullName>ATECO</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ATECO</shortDescription>
+        <value>ATECO</value>
+    </labels>
+    <labels>
+        <fullName>AboutNbResults</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AboutNbResults</shortDescription>
+        <value>About {0} results</value>
+    </labels>
+    <labels>
+        <fullName>zeSavings</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>zeSavings</shortDescription>
+        <value>Savings Insurance</value>
+    </labels>
+</CustomLabels>

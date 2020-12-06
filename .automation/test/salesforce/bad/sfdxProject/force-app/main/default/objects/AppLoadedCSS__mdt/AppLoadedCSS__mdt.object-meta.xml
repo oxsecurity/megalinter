@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows to select which additional CSS are loaded by the WebApp  (tech: ltngRequireWebApp component)</description>
+    <label>Loaded CSS</label>
+    <pluralLabel>Loaded CSS</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

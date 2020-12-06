@@ -1,0 +1,68 @@
+<!--  ISV PACKAGED  -->
+<apex:component access="global">
+    <apex:attribute name="initContextParams" description="The type of record we are viewing."  type="Object" access="global" />
+    
+    <!-- NV: removed old copy of SLDS static resource, use the one provided by salesforce with apex:slds tag -->
+    <!-- <apex:stylesheet value="{!URLFOR($Resource.slds, '/assets/styles/salesforce-lightning-design-system.min.css')}"/> -->
+    <apex:includeLightning />
+    
+    <html style="height: 100% !important;">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" id="viewPortCloudIRMvfCmpLightningIncluder"/>
+			<apex:slds />
+        </head>
+        <body>
+            <div id="LoadingvfDIV" style="position:absolute; width:100%; height:100%;">
+                <div role="status" class="slds-spinner slds-spinner_large">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+                <!--<img src="{!URLFOR($Resource.splash_screen_image)}" style="margin: auto auto; max-width:500px ; display: block;"/> -->
+                  <!--<div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                  </div> -->
+            </div>  
+            
+            <div class="slds-m-around--xx-small">
+                <div id="lightningvfDIV4CRM" style="min-height: 100vh !important;height: 100vh;display:none;"/>
+            </div> 
+            
+            <script>
+            var alias = '{!$User.Alias}';
+            var pathArray = window.location.pathname.split('/');
+            if (  alias == "guest" || alias == null )
+            {
+                // Redirect to login page if user not logged
+                window.location.href= "/"+pathArray[1]+"/login"; 
+            }
+            else
+            {
+                //ccVfAppIncluder.getLightningAppContainerConfig(function(result){
+                var LightningAppContainer = 'c:AppWebApp4vf';
+                $Lightning.use(LightningAppContainer, function() {
+                    var initContextParm = {!initContextParams} ;
+                    $Lightning.createComponent("c:CmpWebApp", // Component name
+                                               {   // Component parameters
+                                                   'slds' : true ,
+                                                   'isIncludedByVFPage' : true,
+                                                   'navbarVisible' : false,
+                                                   'initContextParams': initContextParm                                 
+                                               },
+                                               "lightningvfDIV4CRM",
+                                               function(cmp) {
+                                                   var loadingDivElt = document.getElementById("LoadingvfDIV");
+                                                   loadingDivElt.style.display = 'none' ;
+                                                   var ltngDivElt = document.getElementById("lightningvfDIV4CRM");
+                                                   ltngDivElt.style.display = 'block' ;
+                                                   console.log('AppWebApp VF Page includer initialized'); 
+                                               });
+                    //  }); 
+                });
+            }
+            </script> 
+        </body>
+    </html>
+</apex:component>

@@ -1,0 +1,4 @@
+<apex:page controller="ccvfScriptExportData" sidebar="false" action="{!fetch}" contentType="application/json/#{!fileName}.json" cache="false"
+           showHeader="false" applyHtmlTag="false" applyBodyTag="false">
+	<apex:outputText value="{!fileDataOut}" escape="false"/>
+</apex:page>

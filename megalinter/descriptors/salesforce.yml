@@ -1,0 +1,39 @@
+descriptor_id: SALESFORCE
+descriptor_type: language
+install:
+  npm:
+    - sfdx-cli
+linters:
+  # SFDX Scanner
+  - linter_name: sfdx-scanner
+    files_sub_directory: force-app
+    linter_text: sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+    linter_url: https://forcedotcom.github.io/sfdx-scanner/
+    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
+    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
+    linter_rules_configuration_url: https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html
+    linter_rules_inline_disable_url: https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html
+    cli_executable: sfdx
+    cli_lint_extra_args:
+      - "scanner:run"
+    cli_lint_mode: project
+    cli_help_arg_name: "scanner:run --help"
+    examples:
+      - "sfdx scanner:run"
+    install:
+      dockerfile:
+        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+    ide:
+      eclipse:
+        - name: pmd-eclipse-plugin
+          url: https://github.com/pmd/pmd-eclipse-plugin
+      emacs:
+        - name: pmd-emacs
+          url: https://github.com/pmd/pmd-emacs/
+      idea:
+        - name: PMD IntelliJ
+          url: https://github.com/amitdev/PMD-Intellij
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode

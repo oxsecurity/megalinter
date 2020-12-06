@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>All</masterLabel>
+        <translation>Tout</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Company</masterLabel>
+        <translation>Entreprise</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Distributor</masterLabel>
+        <translation>Distributeur</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Insured</masterLabel>
+        <translation>Assuré</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>
