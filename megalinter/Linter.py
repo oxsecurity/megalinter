@@ -96,7 +96,6 @@ class Linter:
         # If linter --version does not return 0 when it is in success, override. ex: 1
         self.version_command_return_code = 0
 
-
         self.report_folder = ""
         self.reporters = []
 
@@ -549,7 +548,7 @@ class Linter:
     def get_linter_help(self):
         help_command = self.build_help_command()
         return_code = 666
-        output = ''
+        output = ""
         for command in [help_command] + self.cli_help_extra_commands:
             try:
                 if isinstance(command, str):

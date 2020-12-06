@@ -216,6 +216,7 @@ def manage_copy_sources(workspace):
         workspace = tmp_sources_folder
     return workspace
 
+
 # Copy logs for documentation
 def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     updated_sources_dir = (
