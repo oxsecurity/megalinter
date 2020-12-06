@@ -1,5 +1,6 @@
 descriptor_id: SALESFORCE
 descriptor_type: language
+lint_all_files: true
 install:
   npm:
     - sfdx-cli
