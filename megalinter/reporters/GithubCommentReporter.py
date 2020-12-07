@@ -163,7 +163,9 @@ class GithubCommentReporter(Reporter):
                         "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
                     )
                 except Exception as e:
-                    logging.warning(f"[GitHub Comment Reporter] Error while posting comment: \n{str(e)}")
+                    logging.warning(
+                        f"[GitHub Comment Reporter] Error while posting comment: \n{str(e)}"
+                    )
         # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
             logging.info(
