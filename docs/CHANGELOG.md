@@ -5,6 +5,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.14.0] 2020-12-05
+
 - Linters
   - Add Salesforce linter: sfdx-scanner
 
