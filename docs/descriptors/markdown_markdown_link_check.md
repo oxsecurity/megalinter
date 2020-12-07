@@ -57,6 +57,10 @@ Options:
                          header configuration
   -q, --quiet            displays errors only
   -v, --verbose          displays detailed error information
+  -a, --alive <code>     comma separated list of HTTP codes to be considered as
+                         alive
+  -r, --retry            retry after the duration indicated in 'retry-after'
+                         header when HTTP code is 429
   -h, --help             display help for command
 ```
 
