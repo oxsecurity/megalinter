@@ -6,6 +6,7 @@ import logging
 import os
 import tempfile
 import zipfile
+from json.decoder import JSONDecodeError
 
 import requests
 from megalinter import Reporter, config
@@ -33,7 +34,7 @@ class FileIoReporter(Reporter):
             and self.master.has_updated_sources is False
         ):
             logging.info(
-                "File.io Reporter: No file sent, "
+                "[File.io Reporter] No file sent, "
                 "as the Mega-Linter status is success and there are no updated source"
             )
             return
@@ -53,16 +54,29 @@ class FileIoReporter(Reporter):
         zf.seek(0)
 
         # Post file on file.io API
-        url = "https://file.io/?expires=1d"
-        files = {"file": ("mega-linter-report.zip", zf.read())}
-        response = requests.post(url, files=files)
-        if 200 <= response.status_code < 299:
-            json_data = response.json()
-            file_io_url = json_data["link"]
-            logging.info(f"File.io Reporter: Reports are available at {file_io_url}")
-        else:
-            json_data = response.json()
+        try:
+            url = "https://file.io/?expires=1d"
+            files = {"file": ("mega-linter-report.zip", zf.read())}
+            response = requests.post(url, files=files)
+            if 200 <= response.status_code < 299:
+                json_data = response.json()
+                file_io_url = json_data["link"]
+                logging.info(
+                    f"[File.io Reporter] Reports are available at {file_io_url}"
+                )
+            else:
+                json_data = response.json()
+                logging.error(
+                    f"[File.io Reporter] Error posting report on file.io: {response.status_code} \n {json_data}"
+                )
+                logging.error(
+                    f"[File.io Reporter] GitHub API response: {response.text}"
+                )
+        except JSONDecodeError as e:
             logging.error(
-                f"Error posting report on file.io: {response.status_code} \n {json_data}"
+                f"[File.io Reporter] Fatal error posting report on file.io: {str(e.msg)}"
             )
-            logging.error(f"GitHub API response: {response.text}")
+        except Exception as e:
+            logging.error(
+                f"[File.io Reporter] Fatal error posting report on file.io: {str(e)}"
+            )

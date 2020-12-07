@@ -63,4 +63,6 @@ class TapReporter(Reporter):
         with open(tap_file_name, "w", encoding="utf-8") as tap_file:
             tap_file_content = "\n".join(tap_report_lines) + "\n"
             tap_file.write(tap_file_content)
-            logging.debug(f"Generated {self.name} report: {tap_file_name}")
+            logging.info(
+                f"[Tap Reporter] Generated {self.name} report: {tap_file_name}"
+            )

@@ -69,10 +69,10 @@ class GithubStatusReporter(Reporter):
                 )
             else:
                 logging.error(
-                    f"Error posting Github Status for {self.master.descriptor_id}"
-                    f"with {self.master.linter_name}: {response.status_code}"
+                    f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
+                    f"with {self.master.linter_name}: {response.status_code}\n"
+                    f"GitHub API response: {response.text}"
                 )
-                logging.error(f"GitHub API response: {response.text}")
         else:
             logging.debug(
                 f"Skipped post of Github Status for {self.master.descriptor_id} with {self.master.linter_name}"

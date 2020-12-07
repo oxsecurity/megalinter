@@ -145,12 +145,12 @@ class GithubCommentReporter(Reporter):
                         pr.create_issue_comment(p_r_msg)
                     logging.debug(f"Posted Github comment: {p_r_msg}")
                     logging.info(
-                        f"Posted summary as comment on {github_repo} #PR{pr.number}"
+                        f"[GitHub Comment Reporter] Posted summary as comment on {github_repo} #PR{pr.number}"
                     )
                     posted = True
                 except github.GithubException as e:
                     logging.warning(
-                        f"Unable to post pull request comment: {str(e)}.\n"
+                        f"[GitHub Comment Reporter] Unable to post pull request comment: {str(e)}.\n"
                         "To enable this function, please :\n"
                         "1. Create a Personal Access Token (https://docs.github.com/en/free-pro-team@"
                         "latest/github/authenticating-to-github/creating-a-personal-access-token)\n"
@@ -161,10 +161,10 @@ class GithubCommentReporter(Reporter):
                     )
             if posted is False:
                 logging.warning(
-                    "GitHub Comment Reporter: No pull request was found, so no comment has been posted"
+                    "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
                 )
         # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
             logging.warning(
-                "GitHub Comment Reporter: Not GitHub Token found, so skipped post of PR comment"
+                "[GitHub Comment Reporter] No GitHub Token found, so skipped post of PR comment"
             )

@@ -41,7 +41,7 @@ class EmailReporter(Reporter):
             and self.master.has_updated_sources is False
         ):
             logging.info(
-                "Email Reporter: No mail sent, "
+                "[Email Reporter] No mail sent, "
                 "as the Mega-Linter status is success and there are no updated source"
             )
             return
@@ -94,7 +94,7 @@ class EmailReporter(Reporter):
             server.quit()
         except smtplib.SMTPAuthenticationError as e:
             logging.error(
-                "EmailReporter: Unable to authenticate to SMTP server: \n"
+                "[Email Reporter] Unable to authenticate to SMTP server: \n"
                 + str(e)
                 + "\n - smtp server: "
                 + smtp_host
@@ -108,7 +108,7 @@ class EmailReporter(Reporter):
             return
         except Exception as e:
             logging.error(
-                "EmailReporter: Unable to send e-mail: \n"
+                "[Email Reporter] Unable to send e-mail: \n"
                 + str(e.__class__)
                 + " - "
                 + str(e)
@@ -122,4 +122,4 @@ class EmailReporter(Reporter):
                 + ("SET" if smtp_password != "" else "NOT SET")
             )
             return
-        logging.info("Email Reporter: Sent mail to " + ", ".join(recipients))
+        logging.info("[Email Reporter] Sent mail to " + ", ".join(recipients))

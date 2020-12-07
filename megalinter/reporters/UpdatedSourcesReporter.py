@@ -47,18 +47,16 @@ class UpdatedSourcesReporter(Reporter):
                 logging.debug(f"Copied {source_file} to {target_file}")
             except FileNotFoundError as copy_err:
                 logging.warning(
-                    f"Unable to copy {source_file} to {target_file} ({str(copy_err)})"
+                    f"[Updated Sources Reporter] Unable to copy {source_file} to {target_file} ({str(copy_err)})"
                 )
         # Log
         if len(updated_files) > 0:
             logging.info(
-                f"Updated Sources Reporter: copied {str(len(updated_files))} fixed source files"
-                f" in folder {updated_sources_dir}. "
-            )
-            logging.info(
+                f"[Updated Sources Reporter] copied {str(len(updated_files))} fixed source files"
+                f" in folder {updated_sources_dir}.\n"
                 "Download it from artifacts then copy-paste it in your local repo to apply linters updates"
             )
         else:
             logging.info(
-                "Updated Sources Reporter: No source file has been formatted or fixed"
+                "[Updated Sources Reporter] No source file has been formatted or fixed"
             )
