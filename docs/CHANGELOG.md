@@ -5,6 +5,11 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.14.2] 2020-12-07
+
+- Quick fix Github Comment Reporter
+- Reorder linters for reports
+
 ## [4.14.1] 2020-12-07
 
 - Fixes
