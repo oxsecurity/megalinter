@@ -25,6 +25,7 @@
 See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
 <!-- online-doc-end -->
 
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->

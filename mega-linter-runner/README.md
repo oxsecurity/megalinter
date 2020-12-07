@@ -28,6 +28,8 @@ See [**Mega-Linter Online Documentation Web Site**](https://nvuillam.github.io/m
 
 This package allows to run [Mega-Linter](https://nvuillam.github.io/mega-linter/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+
 ## Installation
 
 ### Pre-requisites
