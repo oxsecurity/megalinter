@@ -61,13 +61,17 @@ class FileIoReporter(Reporter):
             if 200 <= response.status_code < 299:
                 json_data = response.json()
                 file_io_url = json_data["link"]
-                logging.info(f"[File.io Reporter] Reports are available at {file_io_url}")
+                logging.info(
+                    f"[File.io Reporter] Reports are available at {file_io_url}"
+                )
             else:
                 json_data = response.json()
                 logging.error(
                     f"[File.io Reporter] Error posting report on file.io: {response.status_code} \n {json_data}"
                 )
-                logging.error(f"[File.io Reporter] GitHub API response: {response.text}")
+                logging.error(
+                    f"[File.io Reporter] GitHub API response: {response.text}"
+                )
         except JSONDecodeError as e:
             logging.error(
                 f"[File.io Reporter] Fatal error posting report on file.io: {str(e.msg)}"
@@ -76,4 +80,3 @@ class FileIoReporter(Reporter):
             logging.error(
                 f"[File.io Reporter] Fatal error posting report on file.io: {str(e)}"
             )
-
