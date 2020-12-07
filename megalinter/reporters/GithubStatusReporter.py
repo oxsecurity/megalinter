@@ -9,7 +9,7 @@ import requests
 from megalinter import Reporter, config
 
 
-class GithubStatusReporter(Reporter):
+class GitHubStatusReporter(Reporter):
     name = "GITHUB_STATUS"
     scope = "linter"
 
@@ -69,7 +69,7 @@ class GithubStatusReporter(Reporter):
                 )
             else:
                 logging.error(
-                    f"[GitHubStatusReporter] Error posting Status for {self.master.descriptor_id}"
+                    f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
                     f"with {self.master.linter_name}: {response.status_code}\n"
                     f"GitHub API response: {response.text}"
                 )
