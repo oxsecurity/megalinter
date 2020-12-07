@@ -134,9 +134,7 @@ class Megalinter:
                 self.has_updated_sources = 1
 
         # Sort linters before reports production
-        self.linters = sorted(
-            self.linters, key=lambda l: (l.descriptor_id, l.name)
-        )
+        self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
 
         # Generate reports
         for reporter in self.reporters:
