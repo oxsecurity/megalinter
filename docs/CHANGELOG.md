@@ -5,6 +5,11 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.14.1] 2020-12-07
+
+- Fixes
+  - Fix python error when File.io does not respond, + harmonize reporter logs
+
 ## [4.14.0] 2020-12-07
 
 - Linters
