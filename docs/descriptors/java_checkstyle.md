@@ -124,6 +124,10 @@ See http://www.oracle.com/technetwork/java/javase/documentation/index.html for m
 
 - Dockerfile commands :
 ```dockerfile
+# Parent descriptor install
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+# Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
  | grep browser_download_url \
  | grep ".jar" \

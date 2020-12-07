@@ -7,6 +7,8 @@ import os
 import shutil
 import tempfile
 import unittest
+import uuid
+from distutils.dir_util import copy_tree
 
 from git import Repo
 from megalinter import Megalinter, config, utils
@@ -99,9 +101,11 @@ def call_mega_linter(env_vars):
 def test_linter_success(linter, test_self):
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
-    tmp_report_folder = tempfile.gettempdir()
+        workspace = manage_copy_sources(workspace)
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
     env_vars = {
@@ -150,13 +154,14 @@ def test_linter_failure(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
+        workspace = manage_copy_sources(workspace)
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     if os.path.isfile(workspace + os.path.sep + "no_test_failure"):
         raise unittest.SkipTest(
             f"Skip failure test for {linter}: no_test_failure found in test folder"
         )
     linter_name = linter.linter_name
-    tmp_report_folder = tempfile.gettempdir()
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
@@ -202,6 +207,14 @@ def test_linter_failure(linter, test_self):
         f"Unable to find text report {text_report_file}",
     )
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+
+
+def manage_copy_sources(workspace):
+    if os.path.isfile(workspace + os.path.sep + "test_copy_in_tmp_folder"):
+        tmp_sources_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+        copy_tree(workspace, tmp_sources_folder)
+        workspace = tmp_sources_folder
+    return workspace
 
 
 # Copy logs for documentation

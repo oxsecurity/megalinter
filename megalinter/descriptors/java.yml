@@ -4,7 +4,10 @@ file_extensions:
   - ".java"
 install:
   apk:
-    - openjdk8-jre
+    - openjdk8
+  dockerfile:
+    - ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+    - ENV PATH="$JAVA_HOME/bin:${PATH}"
 linters:
   # Java Checkstyle
   - linter_name: checkstyle

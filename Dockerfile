@@ -70,7 +70,7 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 go \
-                openjdk8-jre \
+                openjdk8 \
                 npm \
                 nodejs-current \
                 perl \
@@ -125,6 +125,7 @@ RUN pip3 install --no-cache-dir \
 #############################################################################################
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
+                sfdx-cli \
                 typescript \
                 asl-validator \
                 @coffeelint/cli \
@@ -200,6 +201,10 @@ ENV GOROOT=/usr/lib/go \
 
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
+
+# JAVA installation
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
 RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
@@ -358,6 +363,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 # clippy installation
 RUN rustup component add clippy
+
+# sfdx-scanner installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
