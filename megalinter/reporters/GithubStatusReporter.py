@@ -9,7 +9,7 @@ import requests
 from megalinter import Reporter, config
 
 
-class GitHubStatusReporter(Reporter):
+class GithubStatusReporter(Reporter):
     name = "GITHUB_STATUS"
     scope = "linter"
 
