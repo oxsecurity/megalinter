@@ -133,6 +133,9 @@ class Megalinter:
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
 
+        # Sort linters before reports production
+        self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
+
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()

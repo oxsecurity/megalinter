@@ -121,7 +121,11 @@ class GithubCommentReporter(Reporter):
             repo = g.get_repo(github_repo)
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
-            posted = False
+            if pr_list.totalCount == 0:
+                logging.info(
+                    "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
+                )
+                return
             for pr in pr_list:
                 # Ignore if PR is already merged
                 if pr.is_merged():
@@ -147,7 +151,6 @@ class GithubCommentReporter(Reporter):
                     logging.info(
                         f"[GitHub Comment Reporter] Posted summary as comment on {github_repo} #PR{pr.number}"
                     )
-                    posted = True
                 except github.GithubException as e:
                     logging.warning(
                         f"[GitHub Comment Reporter] Unable to post pull request comment: {str(e)}.\n"
@@ -159,12 +162,12 @@ class GithubCommentReporter(Reporter):
                         "creating-encrypted-secrets-for-a-repository)"
                         "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
                     )
-            if posted is False:
-                logging.warning(
-                    "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
-                )
+                except Exception as e:
+                    logging.warning(
+                        f"[GitHub Comment Reporter] Error while posting comment: \n{str(e)}"
+                    )
         # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
-            logging.warning(
+            logging.info(
                 "[GitHub Comment Reporter] No GitHub Token found, so skipped post of PR comment"
             )
