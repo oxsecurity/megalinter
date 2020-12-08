@@ -576,6 +576,8 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 - [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
 - [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
 - [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
+- [Email](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/EmailReporter.md)
+- [File.io](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/FileIoReporter.md)
 
 ### Enhanced Configuration
 
