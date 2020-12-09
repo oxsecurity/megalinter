@@ -29,6 +29,8 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
+- [Email](reporters/EmailReporter.md)
+- [File.io](reporters/FileIoReporter.md)
 
 ## Enhanced Configuration
 
