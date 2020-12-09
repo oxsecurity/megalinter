@@ -5,6 +5,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Fix error message from Email Reporter when SMTP password is not set
+
 ## [4.14.2] 2020-12-07
 
 - Quick fix Github Comment Reporter
