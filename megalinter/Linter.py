@@ -8,8 +8,8 @@ The following list of items can/must be overridden on custom linter local class:
 - field linter_url (required) ex: "https://eslint.org/"
 - field test_folder (optional) ex: "docker". If not set, language.lowercase() value is used
 - field config_file_name (optional) ex: ".eslintrc.yml". If not set, no default config file will be searched
-- field file_extensions (optional) ex: [".js"]. At least file_extension of file_names must be set
-- field file_names (optional) ex: ["Dockerfile"]. At least file_extension of file_names must be set
+- field file_extensions (optional) ex: [".js"]. At least file_extension or file_names must be set
+- field file_names (optional) ex: ["Dockerfile"]. At least file_extension or file_names must be set
 - method build_lint_command (optional) : Return CLI command to lint a file with the related linter
                                          Default: linter_name + (if config_file(-c + config_file)) + config_file
 - method build_version_command (optional): Returns CLI command to get the related linter version.
@@ -51,9 +51,7 @@ class Linter:
         )
         self.test_folder = None  # Override only if different from language.lowercase()
 
-        self.file_extensions = (
-            []
-        )  # Array of strings defining file extensions. Ex: ['.js','.cjs']
+        self.file_extensions = []  # Array of strings defining file extensions. Ex: ['.js','.cjs']
         self.file_names = []  # Array of file names. Ex: ['Dockerfile']
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
@@ -70,18 +68,12 @@ class Linter:
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = "-c"
-        self.cli_config_extra_args = (
-            []
-        )  # Extra arguments to send to cli when a config file is used
+        self.cli_config_extra_args = []  # Extra arguments to send to cli when a config file is used
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
-        self.cli_lint_fix_remove_args = (
-            []
-        )  # Arguments to remove in case fix argument is sent
-        self.cli_lint_user_args = (
-            []
-        )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
+        self.cli_lint_fix_remove_args = []  # Arguments to remove in case fix argument is sent
+        self.cli_lint_user_args = []  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
         # Default arg name for configurations to use in linter version call
@@ -102,6 +94,7 @@ class Linter:
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
+
         # Initialize parameters
         if params is None:
             params = {
@@ -130,6 +123,9 @@ class Linter:
         self.manage_activation(params)
 
         if self.is_active is True:
+            self.file_extensions += megalinter.config.get_list(self.name + "_ADDITIONAL_FILE_EXTENSIONS", [])
+            self.file_names += megalinter.config.get_list(self.name + "_ADDITIONAL_FILE_NAMES_REGEX", [])
+
             self.show_elapsed_time = params.get("show_elapsed_time", False)
             # Manage apply fixes flag on linter
             param_apply_fixes = params.get("apply_fixes", "none")
@@ -414,36 +410,55 @@ class Linter:
     # Collect all files that will be analyzed by the current linter
     def collect_files(self, all_files):
         # Filter all files to keep only the ones matching with the current linter
+
+        file_extensions = set(self.file_extensions)
+        file_names_regex = f'^{"$|^".join(self.file_names)}$'
+        file_names_regex_object = re.compile(file_names_regex)
+        filtered_files = []
+
         for file in all_files:
+            base_file_name = os.path.basename(file)
+            filename, file_extension = os.path.splitext(base_file_name)
+
             if (
                 self.filter_regex_include is not None
                 and re.search(self.filter_regex_include, file) is None
             ):
                 continue
-            elif (
+
+            if (
                 self.filter_regex_exclude is not None
                 and re.search(self.filter_regex_exclude, file) is not None
             ):
                 continue
-            elif (
+
+            if (
                 self.files_sub_directory is not None
                 and self.files_sub_directory not in file
             ):
                 continue
-            elif (
-                self.lint_all_other_linters_files is False
-                and not megalinter.utils.check_file_extension_or_name(
-                    file, self.file_extensions, self.file_names
-                )
-            ):
+
+            if self.lint_all_other_linters_files is False:
+                if file_extension in file_extensions:
+                    pass
+                elif file_names_regex_object.match(filename):
+                    pass
+                elif "*" in file_extensions:
+                    pass
+                else:
+                    continue
+
+            if file.endswith(tuple(self.files_names_not_ends_with)):
                 continue
-            elif file.endswith(tuple(self.files_names_not_ends_with)):
-                continue
-            elif len(self.file_contains) > 0 and not megalinter.utils.file_contains(
+
+            if len(self.file_contains) > 0 and not megalinter.utils.file_contains(
                 file, self.file_contains
             ):
                 continue
-            self.files += [file]
+
+            filtered_files += [file]
+
+        self.files = filtered_files
 
     # lint a single file or whole project
     def process_linter(self, file=None):

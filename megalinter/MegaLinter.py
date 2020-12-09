@@ -4,7 +4,6 @@ Main Mega-Linter class, encapsulating all linters process and reporting
 
 """
 
-import collections
 import logging
 import multiprocessing as mp
 import os
@@ -323,14 +322,15 @@ class Megalinter:
 
     # Define all file extensions to browse
     def compute_file_extensions(self):
+        file_extensions = []
+        file_names = []
         for linter in self.linters:
-            self.file_extensions += linter.file_extensions
-            self.file_names += linter.file_names
+            file_extensions += list(linter.file_extensions)
+            file_names += list(linter.file_names)
+
         # Remove duplicates
-        self.file_extensions = list(
-            collections.OrderedDict.fromkeys(self.file_extensions)
-        )
-        self.file_names = list(collections.OrderedDict.fromkeys(self.file_names))
+        self.file_extensions = list(dict.fromkeys(file_extensions))
+        self.file_names = list(dict.fromkeys(file_names))
 
     # Collect list of files matching extensions and regex
     def collect_files(self):
@@ -357,27 +357,36 @@ class Megalinter:
             logging.info("- Including regex: " + self.filter_regex_include)
         if self.filter_regex_exclude is not None:
             logging.info("- Excluding regex: " + self.filter_regex_exclude)
+
+        file_extensions = set(self.file_extensions)
+        file_names_regex = f'^{"$|^".join(self.file_names)}$'
+        file_names_regex_object = re.compile(file_names_regex)
+
         filtered_files = []
         for file in all_files:
             base_file_name = os.path.basename(file)
             filename, file_extension = os.path.splitext(base_file_name)
             norm_file = file.replace(os.sep, "/")
+
             if (
                 self.filter_regex_include is not None
                 and re.search(self.filter_regex_include, norm_file) is None
             ):
                 continue
+
             if (
                 self.filter_regex_exclude is not None
                 and re.search(self.filter_regex_exclude, norm_file) is not None
             ):
                 continue
-            elif file_extension in self.file_extensions:
+
+            if file_extension in file_extensions:
                 filtered_files += [file]
-            elif filename in self.file_names:
+            elif file_names_regex_object.match(filename):
                 filtered_files += [file]
-            elif "*" in self.file_extensions:
+            elif "*" in file_extensions:
                 filtered_files += [file]
+
         logging.info(
             "Kept ["
             + str(len(filtered_files))
