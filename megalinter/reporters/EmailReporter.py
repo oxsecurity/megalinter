@@ -46,6 +46,21 @@ class EmailReporter(Reporter):
             )
             return
 
+        # get server and email config values
+        smtp_host = config.get("EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com")
+        smtp_port = config.get("EMAIL_REPORTER_SMTP_PORT", 465)
+        recipients = config.get_list("EMAIL_REPORTER_EMAIL", [])
+        sender = config.get("EMAIL_REPORTER_SENDER", "megalinter@gmail.com")
+        smtp_username = config.get("EMAIL_REPORTER_SMTP_USERNAME", sender)
+        smtp_password = config.get("EMAIL_REPORTER_SMTP_PASSWORD", "")
+
+        # Skip report if SMTP password is not set
+        if smtp_password == "":
+            logging.warning(
+                "[Email Reporter] No mail sent, as EMAIL_REPORTER_SMTP_PASSWORD configuration variable is missing"
+            )
+            return
+
         # Create temporary zip file with content of report folder
         zf = tempfile.TemporaryFile(prefix="mail", suffix=".zip")
         zip_file = zipfile.ZipFile(zf, "w")
@@ -59,14 +74,6 @@ class EmailReporter(Reporter):
                     )
         zip_file.close()
         zf.seek(0)
-
-        # get server and email config values
-        smtp_host = config.get("EMAIL_REPORTER_SMTP_HOST", "smtp.gmail.com")
-        smtp_port = config.get("EMAIL_REPORTER_SMTP_PORT", 465)
-        recipients = config.get_list("EMAIL_REPORTER_EMAIL", [])
-        sender = config.get("EMAIL_REPORTER_SENDER", "megalinter@gmail.com")
-        smtp_username = config.get("EMAIL_REPORTER_SMTP_USERNAME", sender)
-        smtp_password = config.get("EMAIL_REPORTER_SMTP_PASSWORD", "")
 
         # Create the message
         the_msg = MIMEMultipart()
