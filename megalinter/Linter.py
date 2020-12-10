@@ -15,7 +15,7 @@ The following list of items can/must be overridden on custom linter local class:
 - method build_version_command (optional): Returns CLI command to get the related linter version.
                                            Default: linter_name --version
 - method build_extract_version_regex (optional): Returns RegEx to extract version from version command output
-                                                 Default: r"\\d+(\\.\\d+)+"
+                                                 Default: "\\d+(\\.\\d+)+"
 
 """
 import errno

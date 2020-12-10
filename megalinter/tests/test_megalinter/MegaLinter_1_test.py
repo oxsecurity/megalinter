@@ -156,8 +156,8 @@ class MegalinterTest(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "JAVASCRIPT_LINTER_RULES_PATH": ".",
                 "JAVASCRIPT_FILE_NAME": ".eslintrc-custom.yml",
-                "JAVASCRIPT_FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
-                "JAVASCRIPT_FILTER_REGEX_EXCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
+                "JAVASCRIPT_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
+                "JAVASCRIPT_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
             }
         )
         self.assertTrue(
@@ -170,8 +170,8 @@ class MegalinterTest(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
-                "FILTER_REGEX_EXCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
+                "FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
+                "FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
             }
         )
         self.assertTrue(
@@ -185,8 +185,8 @@ class MegalinterTest(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "JAVASCRIPT_ES_LINTER_RULES_PATH": ".",
                 "JAVASCRIPT_ES_FILE_NAME": ".eslintrc-custom.yml",
-                "JAVASCRIPT_FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
-                "JAVASCRIPT_FILTER_REGEX_EXCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
+                "JAVASCRIPT_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
+                "JAVASCRIPT_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
                 "MULTI_STATUS": "false",
             }
         )
@@ -199,8 +199,8 @@ class MegalinterTest(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "JAVASCRIPT_ES_FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
-                "JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
+                "JAVASCRIPT_ES_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
+                "JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
                 "JAVASCRIPT_ES_ARGUMENTS": "--debug --env-info",
                 "MULTI_STATUS": "false",
                 "LOG_LEVEL": "DEBUG",

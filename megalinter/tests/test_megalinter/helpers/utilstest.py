@@ -40,7 +40,7 @@ def linter_test_setup(params=None):
         else f"{os.path.sep}.automation{os.path.sep}test"
     )
     # Ignore report folder
-    config.set_value("FILTER_REGEX_EXCLUDE", "\\/(report)\\/")
+    config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")
     # TAP Output deactivated by default
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
@@ -110,7 +110,7 @@ def test_linter_success(linter, test_self):
     linter_name = linter.linter_name
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
-        "FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
+        "FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
         "TEXT_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
@@ -164,7 +164,7 @@ def test_linter_failure(linter, test_self):
     linter_name = linter.linter_name
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
-        "FILTER_REGEX_INCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
+        "FILTER_REGEX_INCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
         "OUTPUT_FORMAT": "text",
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
