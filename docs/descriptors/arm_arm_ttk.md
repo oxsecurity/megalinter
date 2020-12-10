@@ -40,7 +40,7 @@ Use arm-ttk in your favorite IDE to catch errors before Mega-Linter !
   - `.json`
 
 - Detected file content:
-  - `schema.management.azure.com`
+  - `schema\.management\.azure\.com`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

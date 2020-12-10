@@ -129,11 +129,11 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
- | grep browser_download_url \
- | grep ".jar" \
- | cut -d '"' -f 4) \
-&& curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
---output /usr/bin/checkstyle
+        | grep browser_download_url \
+        | grep ".jar" \
+        | cut -d '"' -f 4) \
+    && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
+        --output /usr/bin/checkstyle
 
 ```
 
