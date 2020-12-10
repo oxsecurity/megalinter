@@ -21,8 +21,7 @@ ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 
 
 def get_excluded_directories():
-    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", [])
-    excluded_dirs += [
+    default_excluded_dirs = [
         "__pycache__",
         ".git",
         ".pytest_cache",
@@ -32,6 +31,8 @@ def get_excluded_directories():
         "node_modules",
         "report",
     ]
+    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
+    excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     return set(excluded_dirs)
 
 

@@ -7,6 +7,12 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Fix error message from Email Reporter when SMTP password is not set
 - Fix automerge action yml (skip is secrets.PAT is not set)
 
+- Changed configuration parameters
+  - Change config setting logic: EXCLUDED_DIRECTORIES is now replacing original directory list instead of extending it
+
+- New configuration parameters
+  - Add config setting: ADDITIONAL_EXCLUDED_DIRECTORIES extends EXCLUDED_DIRECTORIES directory list
+
 ## [4.14.2] 2020-12-07
 
 - Quick fix Github Comment Reporter
