@@ -347,7 +347,7 @@ class Megalinter:
         else:
             all_files = self.list_files_all()
         all_files = sorted(set(all_files))
-        logging.debug("All found files before filtering:\n" + "\n- ".join(all_files))
+        logging.debug("All found files before filtering:\n- %s", "\n- ".join(all_files))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
             logging.info("- File extensions: " + ", ".join(self.file_extensions))
@@ -385,6 +385,11 @@ class Megalinter:
             + str(len(all_files))
             + "] found files"
         )
+        logging.debug(
+            "Kept files before applying linter filters:\n- %s",
+            "\n- ".join(filtered_files),
+        )
+
         # Collect matching files for each linter
         for linter in self.linters:
             linter.collect_files(filtered_files)

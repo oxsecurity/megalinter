@@ -187,23 +187,18 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-# Can receive a list of strings, regexes, or even mixed :).
-# Regexes must start with '(' to be identified are regex
-def file_contains(file_name, regex_or_str_list):
-    with open(file_name, "r", encoding="utf-8") as f:
-        try:
-            content = f.read()
-        except UnicodeDecodeError:
-            return False
-        for regex_or_str in regex_or_str_list:
-            if regex_or_str[0] == "(":
-                regex = re.compile(regex_or_str)
-                if regex.search(content, re.MULTILINE) is not None:
-                    return True
-            else:
-                if regex_or_str in content:
-                    return True
-    return False
+def file_contains(file_name, regex_list):
+    if not regex_list:
+        return True
+
+    combined_regex = "|".join(regex_list)
+    combined_regex_object = re.compile(combined_regex, flags=re.MULTILINE)
+
+    with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
+        content = f.read()
+
+    found_pattern = combined_regex_object.search(content) is not None
+    return found_pattern
 
 
 def decode_utf8(stdout):
