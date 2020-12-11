@@ -70,11 +70,11 @@
         "type": "string"
       }
     },
-    "file_contains": {
-      "$id": "#/properties/file_contains",
+    "file_contains_regex": {
+      "$id": "#/properties/file_contains_regex",
       "type": "array",
       "title": "File content filters",
-      "description": "List of strings or regular expressions to filter the files according to their content",
+      "description": "List of regular expressions to filter the files according to their content",
       "default": [],
       "examples": [
         [

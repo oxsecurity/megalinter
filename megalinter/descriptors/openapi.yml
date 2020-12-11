@@ -4,11 +4,11 @@ file_extensions:
   - ".yml"
   - ".yaml"
   - ".json"
-file_contains:
+file_contains_regex:
   - '"openapi":'
   - '"swagger":'
-  - "openapi:"
-  - "swagger:"
+  - 'openapi:'
+  - 'swagger:'
 linters:
   # Spectral
   - linter_name: spectral

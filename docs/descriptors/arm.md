@@ -9,7 +9,7 @@
   - `.json`
 
 - Detected file content:
-  - `schema.management.azure.com`
+  - `schema\.management\.azure\.com`
 
 ## Configuration in Mega-Linter
 

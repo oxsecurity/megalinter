@@ -21,8 +21,7 @@ ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 
 
 def get_excluded_directories():
-    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", [])
-    excluded_dirs += [
+    default_excluded_dirs = [
         "__pycache__",
         ".git",
         ".pytest_cache",
@@ -32,6 +31,8 @@ def get_excluded_directories():
         "node_modules",
         "report",
     ]
+    excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
+    excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
     return set(excluded_dirs)
 
 
@@ -186,23 +187,18 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-# Can receive a list of strings, regexes, or even mixed :).
-# Regexes must start with '(' to be identified are regex
-def file_contains(file_name, regex_or_str_list):
-    with open(file_name, "r", encoding="utf-8") as f:
-        try:
-            content = f.read()
-        except UnicodeDecodeError:
-            return False
-        for regex_or_str in regex_or_str_list:
-            if regex_or_str[0] == "(":
-                regex = re.compile(regex_or_str)
-                if regex.search(content, re.MULTILINE) is not None:
-                    return True
-            else:
-                if regex_or_str in content:
-                    return True
-    return False
+def file_contains(file_name, regex_list):
+    if not regex_list:
+        return True
+
+    combined_regex = "|".join(regex_list)
+    combined_regex_object = re.compile(combined_regex, flags=re.MULTILINE)
+
+    with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
+        content = f.read()
+
+    found_pattern = combined_regex_object.search(content) is not None
+    return found_pattern
 
 
 def decode_utf8(stdout):

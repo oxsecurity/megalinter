@@ -15,7 +15,7 @@ The following list of items can/must be overridden on custom linter local class:
 - method build_version_command (optional): Returns CLI command to get the related linter version.
                                            Default: linter_name --version
 - method build_extract_version_regex (optional): Returns RegEx to extract version from version command output
-                                                 Default: r"\\d+(\\.\\d+)+"
+                                                 Default: "\\d+(\\.\\d+)+"
 
 """
 import errno
@@ -58,7 +58,7 @@ class Linter:
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
         self.files_sub_directory = None
-        self.file_contains = []
+        self.file_contains_regex = []
         self.files_names_not_ends_with = []
         self.active_only_if_file_found = None
         self.lint_all_files = False
@@ -411,8 +411,57 @@ class Linter:
             "linter", reporter_init_params
         )
 
+    def log_file_filters(self):
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "filter_regex_include",
+            self.filter_regex_include,
+        )
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "filter_regex_exclude",
+            self.filter_regex_exclude,
+        )
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "files_sub_directory",
+            self.files_sub_directory,
+        )
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "lint_all_other_linters_files",
+            self.lint_all_other_linters_files,
+        )
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "file_extensions",
+            self.file_extensions,
+        )
+        logging.debug(
+            "%s linter filter: %s: %s", self.name, "file_names", self.file_names
+        )
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "files_names_not_ends_with",
+            self.files_names_not_ends_with,
+        )
+        logging.debug(
+            "%s linter filter: %s: %s",
+            self.name,
+            "file_contains_regex",
+            self.file_contains_regex,
+        )
+
     # Collect all files that will be analyzed by the current linter
     def collect_files(self, all_files):
+        self.log_file_filters()
+
         # Filter all files to keep only the ones matching with the current linter
         for file in all_files:
             if (
@@ -439,11 +488,19 @@ class Linter:
                 continue
             elif file.endswith(tuple(self.files_names_not_ends_with)):
                 continue
-            elif len(self.file_contains) > 0 and not megalinter.utils.file_contains(
-                file, self.file_contains
+            elif len(
+                self.file_contains_regex
+            ) > 0 and not megalinter.utils.file_contains(
+                file, self.file_contains_regex
             ):
                 continue
             self.files += [file]
+
+        logging.debug(
+            "%s linter files after applying linter filters:\n- %s",
+            self.name,
+            "\n- ".join(self.files),
+        )
 
     # lint a single file or whole project
     def process_linter(self, file=None):
@@ -505,7 +562,7 @@ class Linter:
         reg = self.version_extract_regex
         if type(reg) == str:
             reg = re.compile(reg)
-        m = re.search(reg, version_output)
+        m = reg.search(version_output)
         if m:
             self.linter_version_cache = ".".join(m.group().split())
         else:

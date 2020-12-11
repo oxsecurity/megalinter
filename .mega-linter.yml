@@ -7,6 +7,7 @@ APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment 
 DISABLE:
   - CLOUDFORMATION
   # - COPYPASTE # Uncomment to disable checks of abusive copy-pastes
+  - EDITORCONFIG
   # - SPELL # Uncomment to disable checks of spelling mistakes
   - TEKTON
 DISABLE_LINTERS:

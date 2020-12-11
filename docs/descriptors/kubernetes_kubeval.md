@@ -33,7 +33,7 @@
 
 - Detected file content:
   - `apiVersion:`
-  - `kustomize.config.k8s.io`
+  - `kustomize\.config\.k8s\.io`
   - `tekton`
 
 <!-- markdownlint-disable -->
