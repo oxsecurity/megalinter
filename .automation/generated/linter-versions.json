@@ -61,7 +61,7 @@
     "tekton-lint": "0.5.2",
     "terragrunt": "0.26.7",
     "terrascan": "1.2.0",
-    "tflint": "0.21.0",
+    "tflint": "0.22.0",
     "xmllint": "20910",
     "yamllint": "1.25.0"
 }
