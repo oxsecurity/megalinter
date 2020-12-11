@@ -125,9 +125,9 @@ def test_linter_success(linter, test_self):
     )
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
+        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS"
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
@@ -181,12 +181,12 @@ def test_linter_failure(linter, test_self):
     )
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
+        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - ERROR"
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - ERROR"
             )
             test_self.assertNotRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS"
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")

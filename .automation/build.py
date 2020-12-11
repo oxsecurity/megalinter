@@ -270,9 +270,9 @@ def generate_descriptor_documentation(descriptor):
         for file_extension in descriptor.get("file_extensions"):
             descriptor_md += [f"  - `{file_extension}`"]
         descriptor_md += [""]
-    if len(descriptor.get("file_names", [])) > 0:
+    if len(descriptor.get("file_names_regex", [])) > 0:
         descriptor_md += ["- File names:"]
-        for file_name in descriptor.get("file_names"):
+        for file_name in descriptor.get("file_names_regex"):
             descriptor_md += [f"  - `{file_name}`"]
         descriptor_md += [""]
     if len(descriptor.get("file_contains_regex", [])) > 0:
@@ -562,9 +562,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             for file_extension in linter.file_extensions:
                 linter_doc_md += [f"  - `{file_extension}`"]
             linter_doc_md += [""]
-        if len(linter.file_names) > 0:
+        if len(linter.file_names_regex) > 0:
             linter_doc_md += ["- File names:"]
-            for file_name in linter.file_names:
+            for file_name in linter.file_names_regex:
                 linter_doc_md += [f"  - `{file_name}`"]
             linter_doc_md += [""]
         if len(linter.file_contains_regex) > 0:
