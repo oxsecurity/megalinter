@@ -2,8 +2,8 @@ descriptor_id: SNAKEMAKE
 descriptor_type: tooling_format
 file_extensions:
   - ".smk"
-file_names:
-  - "Snakefile"
+file_names_regex:
+  - 'Snakefile'
 linters:
   # Internal snakemake linter
   - linter_name: snakemake

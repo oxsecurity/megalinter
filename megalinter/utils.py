@@ -140,12 +140,12 @@ def build_linter(language, linter_name):
     return linters[0]
 
 
-def check_file_extension_or_name(file, file_extensions, file_names):
+def check_file_extension_or_name(file, file_extensions, file_names_regex):
     base_file_name = os.path.basename(file)
     filename, file_extension = os.path.splitext(base_file_name)
     if len(file_extensions) > 0 and file_extension in file_extensions:
         return True
-    elif len(file_names) > 0 and filename in file_names:
+    elif len(file_names_regex) > 0 and filename in file_names_regex:
         return True
     elif len(file_extensions) == 1 and file_extensions[0] == "*":
         return True

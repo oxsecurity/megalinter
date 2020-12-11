@@ -75,7 +75,7 @@ class Megalinter:
         self.reporters = []
         self.linters = []
         self.file_extensions = []
-        self.file_names = []
+        self.file_names_regex = []
         self.status = "success"
         self.return_code = 0
         self.has_updated_sources = 0
@@ -95,7 +95,7 @@ class Megalinter:
         table_data = [["Descriptor", "Linter", "Criteria", "Matching files"]]
         for linter in self.linters:
             if len(linter.files) > 0:
-                all_criteria = linter.file_extensions + linter.file_names
+                all_criteria = linter.file_extensions + linter.file_names_regex
                 table_data += [
                     [
                         linter.descriptor_id,
@@ -325,12 +325,12 @@ class Megalinter:
     def compute_file_extensions(self):
         for linter in self.linters:
             self.file_extensions += linter.file_extensions
-            self.file_names += linter.file_names
+            self.file_names_regex += linter.file_names_regex
         # Remove duplicates
         self.file_extensions = list(
             collections.OrderedDict.fromkeys(self.file_extensions)
         )
-        self.file_names = list(collections.OrderedDict.fromkeys(self.file_names))
+        self.file_names_regex = list(collections.OrderedDict.fromkeys(self.file_names_regex))
 
     # Collect list of files matching extensions and regex
     def collect_files(self):
@@ -351,8 +351,8 @@ class Megalinter:
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
             logging.info("- File extensions: " + ", ".join(self.file_extensions))
-        if len(self.file_names) > 0:
-            logging.info("- File names: " + ", ".join(self.file_names))
+        if len(self.file_names_regex) > 0:
+            logging.info("- File names: " + ", ".join(self.file_names_regex))
         if self.filter_regex_include is not None:
             logging.info("- Including regex: " + self.filter_regex_include)
         if self.filter_regex_exclude is not None:
@@ -374,7 +374,7 @@ class Megalinter:
                 continue
             elif file_extension in self.file_extensions:
                 filtered_files += [file]
-            elif filename in self.file_names:
+            elif filename in self.file_names_regex:
                 filtered_files += [file]
             elif "*" in self.file_extensions:
                 filtered_files += [file]

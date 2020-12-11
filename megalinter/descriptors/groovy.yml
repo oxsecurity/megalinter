@@ -5,8 +5,8 @@ file_extensions:
   - ".gvy"
   - ".gradle"
   - ".nf"
-file_names:
-  - Jenkinsfile
+file_names_regex:
+  - 'Jenkinsfile'
 linters:
   # npm-groovy-lint
   - class: GroovyNpmGroovyLintLinter

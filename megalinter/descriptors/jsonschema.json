@@ -54,8 +54,8 @@
         "type": "string"
       }
     },
-    "file_names": {
-      "$id": "#/properties/file_names",
+    "file_names_regex": {
+      "$id": "#/properties/file_names_regex",
       "type": "array",
       "title": "List of file names catch by the descriptor",
       "description": "File name filter. Can be overridden at linter level",

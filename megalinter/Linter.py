@@ -8,8 +8,8 @@ The following list of items can/must be overridden on custom linter local class:
 - field linter_url (required) ex: "https://eslint.org/"
 - field test_folder (optional) ex: "docker". If not set, language.lowercase() value is used
 - field config_file_name (optional) ex: ".eslintrc.yml". If not set, no default config file will be searched
-- field file_extensions (optional) ex: [".js"]. At least file_extension of file_names must be set
-- field file_names (optional) ex: ["Dockerfile"]. At least file_extension of file_names must be set
+- field file_extensions (optional) ex: [".js"]. At least file_extension or file_names_regex must be set
+- field file_names_regex (optional) ex: ["Dockerfile"]. At least file_extension or file_names_regex must be set
 - method build_lint_command (optional) : Return CLI command to lint a file with the related linter
                                          Default: linter_name + (if config_file(-c + config_file)) + config_file
 - method build_version_command (optional): Returns CLI command to get the related linter version.
@@ -54,7 +54,7 @@ class Linter:
         self.file_extensions = (
             []
         )  # Array of strings defining file extensions. Ex: ['.js','.cjs']
-        self.file_names = []  # Array of file names. Ex: ['Dockerfile']
+        self.file_names_regex = []  # Array of file names. Ex: ['Dockerfile']
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
         self.files_sub_directory = None
@@ -443,7 +443,7 @@ class Linter:
             self.file_extensions,
         )
         logging.debug(
-            "%s linter filter: %s: %s", self.name, "file_names", self.file_names
+            "%s linter filter: %s: %s", self.name, "file_names_regex", self.file_names_regex
         )
         logging.debug(
             "%s linter filter: %s: %s",
@@ -482,7 +482,7 @@ class Linter:
             elif (
                 self.lint_all_other_linters_files is False
                 and not megalinter.utils.check_file_extension_or_name(
-                    file, self.file_extensions, self.file_names
+                    file, self.file_extensions, self.file_names_regex
                 )
             ):
                 continue

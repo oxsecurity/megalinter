@@ -37,7 +37,7 @@ _Descriptor definition for mega-linter_
 	 - Default: ``
 		 - **_Items_**
 		 - Type: `string`
-- <b id="#http://github.com/nvuillam/megalinter.json/properties/file_names">file_names</b>
+- <b id="#http://github.com/nvuillam/megalinter.json/properties/file_names_regex">file_names_regex</b>
 	 - List of file names catch by the descriptor
 	 - _File name filter. Can be overridden at linter level_
 	 - Type: `array`
@@ -48,9 +48,9 @@ _Descriptor definition for mega-linter_
 		 - **_Items_**
 		 - Type: `string`
 
-- <b id="#http://github.com/nvuillam/megalinter.json/properties/file_contains">file_contains</b>
+- <b id="#http://github.com/nvuillam/megalinter.json/properties/file_contains_regex">file_contains_regex</b>
 	 - File content filters
-	 - _List of strings or regular expressions to filter the files according to their content_
+	 - _List of regular expressions to filter the files according to their content_
 	 - Type: `array`
 	 - Example values: 
 		 1. `AWSTemplateFormatVersion`
