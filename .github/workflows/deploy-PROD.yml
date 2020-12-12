@@ -18,6 +18,9 @@ on:
   push:
     branches:
       - "master"
+    paths:
+      - "megalinter/**"
+      - "megalinter_runner/**"
 
 ###############
 # Set the Job #

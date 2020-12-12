@@ -20,8 +20,14 @@ name: "Build & Deploy - DEV"
 on:
   push:
     branches-ignore: [master, alpha]
+    paths:
+      - "megalinter/**"
+      - "megalinter_runner/**"
   pull_request:
     branches-ignore: []
+    paths:
+      - "megalinter/**"
+      - "megalinter_runner/**"
 
 ###############
 # Set the Job #

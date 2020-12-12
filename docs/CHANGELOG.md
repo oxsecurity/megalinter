@@ -16,6 +16,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - CI
   - Auto update linters and documentation: Create update PR only if linter versions has been updated
+  - Build and deploy docker images only when it is relevant (not in case of just documentation update for example)
 
 ## [4.14.2] 2020-12-07
 
