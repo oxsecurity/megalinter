@@ -8,7 +8,7 @@ site_description: Mega-Linter analyzes 38 languages, 15 formats, 16 tooling form
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 google_analytics:
-  - "G-3DM50255LC"
+  - "UA-182872942-1"
   - "auto"
 theme:
   name: material
