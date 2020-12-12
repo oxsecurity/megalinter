@@ -1051,6 +1051,19 @@ def collect_linter_previews():
             json.dump(data, outfile, indent=4, sort_keys=True)
 
 
+def manage_output_variables():
+    if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":
+        updated_files = megalinter.utils.list_updated_files("..")
+        updated_versions = 0
+        for updated_file in updated_files:
+            updated_file_clean = megalinter.utils.normalize_log_string(updated_file)
+            if os.path.basename(updated_file_clean) == "linter-versions.json":
+                updated_versions = 1
+                break
+        if updated_versions == 1:
+            print("::set-output name=has_updated_versions::1")
+
+
 if __name__ == "__main__":
     logging.basicConfig(
         force=True,
@@ -1065,3 +1078,4 @@ if __name__ == "__main__":
     generate_linter_test_classes()
     generate_documentation()
     generate_mkdocs_yml()
+    manage_output_variables()
