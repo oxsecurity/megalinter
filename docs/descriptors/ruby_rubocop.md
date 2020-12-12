@@ -30,6 +30,8 @@
 | RUBY_RUBOCOP_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | RUBY_RUBOCOP_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| RUBY_RUBOCOP_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".rb"]` |
+| RUBY_RUBOCOP_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | RUBY_RUBOCOP_FILE_NAME | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ruby-lint.yml` |
 | RUBY_RUBOCOP_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RUBY_RUBOCOP_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
