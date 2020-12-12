@@ -58,6 +58,7 @@ Use eslint in your favorite IDE to catch errors before Mega-Linter !
 
 - File extensions:
   - `.js`
+  - `.vue`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -151,6 +152,7 @@ Miscellaneous:
   - [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)
   - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
   - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
+  - [eslint-plugin-vue](https://www.npmjs.com/package/eslint-plugin-vue)
   - [babel-eslint](https://www.npmjs.com/package/babel-eslint)
 
 ### Example success log
