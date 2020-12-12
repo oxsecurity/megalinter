@@ -14,9 +14,9 @@ on:
 # Set the Job #
 ###############
 jobs:
-  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  cancel_duplicates:
-    name: Cancel duplicate jobs
+  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  skip_checks:
+    name: Skip checks
     runs-on: ubuntu-latest
     if: github.repository == 'nvuillam/mega-linter'
     steps:
@@ -64,6 +64,7 @@ jobs:
       # Run Linter against Test code base #
       #####################################
       - name: Collect latest versions and help
+        id: compute_versions
         shell: bash
         run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
         timeout-minutes: 30
@@ -75,20 +76,12 @@ jobs:
         with:
           name: Mega-Linter reports
           path: |
-            docs/descriptors
+            docs
             report
-            mega-linter.log
-            linter-helps.json
-            linter-versions.json
-
-      # This step will evaluate the repo status and report the change
-      - name: Check if there are changes
-        id: changes
-        uses: UnicornGlobal/has-changes-action@v1.0.11
 
       # Create pull request if there are updates
       - name: Create Pull Request
-        if: steps.changes.outputs.changed == 1
+        if: steps.compute_versions.outputs.has_updated_versions == 1
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PAT }}

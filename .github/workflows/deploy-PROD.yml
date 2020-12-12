@@ -18,14 +18,17 @@ on:
   push:
     branches:
       - "master"
+    paths:
+      - "megalinter/**"
+      - "megalinter_runner/**"
 
 ###############
 # Set the Job #
 ###############
 jobs:
-  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  cancel_duplicates:
-    name: Cancel duplicate jobs
+  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  skip_checks:
+    name: Skip checks
     runs-on: ubuntu-latest
     steps:
       - uses: fkirc/skip-duplicate-actions@master

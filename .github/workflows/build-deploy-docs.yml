@@ -3,10 +3,17 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "**/build.py"
+      - "docs/**"
+      - "**.yml"
+      - "**.md"
+      - "**.json"
+
 jobs:
-  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  cancel_duplicates:
-    name: Cancel duplicate jobs
+  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  skip_checks:
+    name: Skip checks
     runs-on: ubuntu-latest
     if: github.repository == 'nvuillam/mega-linter'
     steps:

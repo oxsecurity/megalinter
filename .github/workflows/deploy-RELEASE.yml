@@ -18,6 +18,9 @@ on:
   release:
     # Want to run the automation when a release is created
     types: ["created"]
+    paths:
+      - "megalinter/**"
+      - "megalinter_runner/**"
 
 ###############
 # Set the Job #
