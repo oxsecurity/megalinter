@@ -21,11 +21,13 @@ on:
   push:
     branches-ignore: [master, alpha]
     paths:
+      - "**/build.py"
       - "megalinter/**"
       - "megalinter_runner/**"
   pull_request:
     branches-ignore: []
     paths:
+      - "**/build.py"
       - "megalinter/**"
       - "megalinter_runner/**"
 
