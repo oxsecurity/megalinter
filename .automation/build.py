@@ -9,6 +9,7 @@ import os
 import re
 import sys
 from shutil import copyfile
+from typing import Any
 
 import jsonschema
 import markdown
@@ -321,6 +322,15 @@ def generate_descriptor_documentation(descriptor):
     logging.info("Updated " + file.name)
 
 
+def dump_as_json(value: Any, empty_value: str) -> str:
+    if not value:
+        return empty_value
+    # Covert any value to string with JSON
+    # Do not indent since markdown table supports single line only
+    result = json.dumps(value, indent=None, sort_keys=True)
+    return f"`{result}`"
+
+
 # Build a MD table for a type of linter (language, format, tooling_format), and a MD file for each linter
 def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
@@ -508,7 +518,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"Ex: `\\/(src\\|lib)\\/` | Include every file |",
             f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
             f"Ex: `\\/(test\\|examples)\\/` | Exclude no file |",
+            f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
+            f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
+            f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
+            f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
+            f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
+            f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
+            f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
         ]
+
         if linter.config_file_name is not None:
             linter_doc_md += [
                 f"| {linter.name}_FILE_NAME | {linter.linter_name} configuration file name</br>"
