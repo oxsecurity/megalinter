@@ -443,7 +443,10 @@ class Linter:
             self.file_extensions,
         )
         logging.debug(
-            "%s linter filter: %s: %s", self.name, "file_names_regex", self.file_names_regex
+            "%s linter filter: %s: %s",
+            self.name,
+            "file_names_regex",
+            self.file_names_regex,
         )
         logging.debug(
             "%s linter filter: %s: %s",

@@ -330,7 +330,9 @@ class Megalinter:
         self.file_extensions = list(
             collections.OrderedDict.fromkeys(self.file_extensions)
         )
-        self.file_names_regex = list(collections.OrderedDict.fromkeys(self.file_names_regex))
+        self.file_names_regex = list(
+            collections.OrderedDict.fromkeys(self.file_names_regex)
+        )
 
     # Collect list of files matching extensions and regex
     def collect_files(self):
