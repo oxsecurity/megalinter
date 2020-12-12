@@ -67,7 +67,7 @@ _Descriptor definition for mega-linter_
 		 1. `ansible`
 		 2. `kubernetes`
 
- - <b id="#http://github.com/nvuillam/megalinter.json/properties/files_names_not_ends_with">files_names_not_ends_with</b>
+ - <b id="#http://github.com/nvuillam/megalinter.json/properties/file_names_not_ends_with">file_names_not_ends_with</b>
 	 - Filter on end of file name
 	 - _List of strings to filter the files according to their end of file name_
 	 - Type: `array`

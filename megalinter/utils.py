@@ -4,6 +4,7 @@ import importlib
 import logging
 import os
 import re
+from typing import Optional, Pattern, Sequence
 
 import git
 from megalinter import config
@@ -33,16 +34,66 @@ def get_excluded_directories():
     return set(excluded_dirs)
 
 
-def check_file_extension_or_name(file, file_extensions, file_names_regex):
-    base_file_name = os.path.basename(file)
-    filename, file_extension = os.path.splitext(base_file_name)
-    if len(file_extensions) > 0 and file_extension in file_extensions:
-        return True
-    elif len(file_names_regex) > 0 and filename in file_names_regex:
-        return True
-    elif len(file_extensions) == 1 and file_extensions[0] == "*":
-        return True
-    return False
+def filter_files(
+    all_files: Sequence[str],
+    filter_regex_include: Optional[str],
+    filter_regex_exclude: Optional[str],
+    file_names_regex: Sequence[str],
+    file_extensions: Sequence[str],
+    file_names_not_ends_with: Optional[Sequence[str]] = None,
+    file_contains_regex: Optional[Sequence[str]] = None,
+    files_sub_directory: Optional[str] = None,
+    lint_all_other_linters_files: bool = False,
+) -> Sequence[str]:
+    file_extensions = set(file_extensions)
+    filter_regex_include_object = (
+        re.compile(filter_regex_include) if filter_regex_include else None
+    )
+    filter_regex_exclude_object = (
+        re.compile(filter_regex_exclude) if filter_regex_exclude else None
+    )
+    file_names_regex_object = re.compile("|".join(file_names_regex))
+    filtered_files = []
+    file_contains_regex_object = (
+        re.compile("|".join(file_contains_regex), flags=re.MULTILINE)
+        if file_contains_regex
+        else None
+    )
+
+    # Filter all files to keep only the ones matching with the current linter
+
+    for file in all_files:
+        base_file_name = os.path.basename(file)
+        filename, file_extension = os.path.splitext(base_file_name)
+
+        if filter_regex_include_object and not filter_regex_include_object.search(file):
+            continue
+
+        if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
+            continue
+
+        if files_sub_directory and files_sub_directory not in file:
+            continue
+
+        if not lint_all_other_linters_files:
+            if file_extension in file_extensions:
+                pass
+            elif "*" in file_extensions:
+                pass
+            elif file_names_regex_object.fullmatch(filename):
+                pass
+            else:
+                continue
+
+        if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
+            continue
+
+        if file_contains_regex and not file_contains(file, file_contains_regex_object):
+            continue
+
+        filtered_files.append(file)
+
+    return filtered_files
 
 
 # Center the string and complete blanks with hyphens (-)
@@ -80,17 +131,14 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-def file_contains(file_name, regex_list):
-    if not regex_list:
+def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
+    if not regex_object:
         return True
-
-    combined_regex = "|".join(regex_list)
-    combined_regex_object = re.compile(combined_regex, flags=re.MULTILINE)
 
     with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
 
-    found_pattern = combined_regex_object.search(content) is not None
+    found_pattern = regex_object.search(content) is not None
     return found_pattern
 
 

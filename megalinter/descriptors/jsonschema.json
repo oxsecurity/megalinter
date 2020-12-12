@@ -98,8 +98,8 @@
         ]
       ]
     },
-    "files_names_not_ends_with": {
-      "$id": "#/properties/files_names_not_ends_with",
+    "file_names_not_ends_with": {
+      "$id": "#/properties/file_names_not_ends_with",
       "type": "array",
       "title": "Filter on end of file name",
       "description": "List of strings to filter the files according to their end of file name",

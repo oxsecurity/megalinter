@@ -184,7 +184,9 @@ def list_descriptors_for_build():
     for descriptor_file in descriptor_files:
         descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
         descriptors += [descriptor]
-        descriptor_linters = megalinter.linter_factory.build_descriptor_linters(descriptor_file)
+        descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
+            descriptor_file
+        )
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
     return descriptors, linters_by_type
 
