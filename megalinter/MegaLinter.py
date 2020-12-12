@@ -13,7 +13,8 @@ import sys
 
 import git
 import terminaltables
-from megalinter import config, utils
+
+from megalinter import config, linter_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 
@@ -298,7 +299,7 @@ class Megalinter:
         }
 
         # Build linters from descriptor files
-        all_linters = utils.list_all_linters(linter_init_params)
+        all_linters = linter_factory.list_all_linters(linter_init_params)
         skipped_linters = []
         for linter in all_linters:
             if linter.is_active is False:

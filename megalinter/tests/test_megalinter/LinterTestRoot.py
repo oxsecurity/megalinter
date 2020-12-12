@@ -2,8 +2,7 @@
 """
 Unit tests for Linter class (and sub-classes)
 """
-
-from megalinter import utils
+from megalinter import linter_factory
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -12,7 +11,7 @@ class LinterTestRoot:
     linter_name = None
 
     def get_linter_instance(self):
-        return utils.build_linter(self.descriptor_id, self.linter_name)
+        return linter_factory.build_linter(self.descriptor_id, self.linter_name)
 
     def test_success(self):
         utilstest.linter_test_setup()
