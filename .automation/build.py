@@ -33,7 +33,7 @@ VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 FLAVORS_DIR = REPO_HOME + "/flavors"
-GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/flavors.json"
+GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},

@@ -10,12 +10,12 @@ def get_all_flavors():
     if ALL_FLAVORS_CACHE is not None:
         return ALL_FLAVORS_CACHE
     # Compiled version (copied from DockerFile)
-    if os.path.isfile("/megalinter-descriptors/flavors.json"):
-        flavors_file = "/megalinter-descriptors/flavors.json"
+    if os.path.isfile("/megalinter-descriptors/all_flavors.json"):
+        flavors_file = "/megalinter-descriptors/all_flavors.json"
     # Dev / Test version
     else:
         flavors_file = os.path.realpath(
-            os.path.dirname(os.path.abspath(__file__)) + "/flavors.json"
+            os.path.dirname(os.path.abspath(__file__)) + "/descriptors/all_flavors.json"
         )
         assert os.path.isfile(
             flavors_file
