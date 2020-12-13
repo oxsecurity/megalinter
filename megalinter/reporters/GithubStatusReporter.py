@@ -66,7 +66,8 @@ class GithubStatusReporter(Reporter):
                 response = requests.post(url, headers=headers, json=data)
                 if 200 <= response.status_code < 299:
                     logging.debug(
-                        f"Successfully posted Github Status for {self.master.descriptor_id} with {self.master.linter_name}"
+                        f"Successfully posted Github Status for {self.master.descriptor_id} "
+                        f"with {self.master.linter_name}"
                     )
                 else:
                     logging.warning(
