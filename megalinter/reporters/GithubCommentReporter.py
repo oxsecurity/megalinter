@@ -119,6 +119,7 @@ class GithubCommentReporter(Reporter):
                                  f" ({suggestion['linters_number']} linters)"
                     p_r_msg += (
                         flavor_msg
+                        + f"More info at {self.gh_url}/flavors/"
                         + os.linesep
                     )
             logging.debug("\n" + p_r_msg)

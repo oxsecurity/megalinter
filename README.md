@@ -54,6 +54,7 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
     - [Filter linted files](#filter-linted-files)
     - [Template rules files](#template-rules-files)
   - [Reporters](#reporters)
+  - [Flavors](#flavors)
   - [Add Mega-Linter badge in your repository README](#badge)
   - [How to contribute](#how-to-contribute)
   - [License](#license)
@@ -496,6 +497,15 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 | [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md) | One log file by linter following [Test Anything Protocol](https://testanything.org/) format | Active |
 | [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md) | Execution logs visible in console | Active |
 <!-- reporters-section-end -->
+
+<!-- flavors-section-start -->
+## Flavors
+
+To improve run performances, we generate **Flavored Mega-Linter images** containing only the list of linters related to a project type
+
+- When using default Mega-Linter, if a Mega-Linter Flavor would cover all your project requirements, a message is added in the logs
+- If your project uses a Mega-Linter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
+<!-- flavors-section-end -->
 
 <!-- badge-section-start -->
 ## Badge

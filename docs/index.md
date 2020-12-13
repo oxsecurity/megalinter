@@ -174,6 +174,10 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 <!-- reporters-section-end -->
 
+<!-- flavors-section-start -->
+
+<!-- flavors-section-end -->
+
 <!-- badge-section-start -->
 
 <!-- badge-section-end -->

@@ -997,6 +997,7 @@ def finalize_doc_build():
         "installation",
         "configuration",
         "reporters",
+        "flavors",
         "badge",
         "how-to-contribute",
         "license",

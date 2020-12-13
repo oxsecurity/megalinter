@@ -11,6 +11,7 @@ from megalinter import Reporter
 class ConsoleReporter(Reporter):
     name = "CONSOLE"
     scope = "mega-linter"
+    gh_url = "https://nvuillam.github.io/mega-linter"
 
     def __init__(self, params=None):
         # Activate console output by default
@@ -58,4 +59,5 @@ class ConsoleReporter(Reporter):
             for suggestion in self.master.flavor_suggestions:
                 flavor_msg = f"- nvuillam/mega-linter-{suggestion['flavor']} ({suggestion['linters_number']} linters)"
                 logging.warning(flavor_msg)
+            logging.warning(f"More info at {self.gh_url}/flavors/")
             logging.info("")
