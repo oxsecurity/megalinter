@@ -1,6 +1,6 @@
 descriptor_id: JSX
 descriptor_type: language
-descriptor_flavours:
+descriptor_flavors:
   - javascript
 file_extensions:
   - ".jsx"

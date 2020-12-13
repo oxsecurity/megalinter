@@ -1,6 +1,6 @@
 descriptor_id: SALESFORCE
 descriptor_type: language
-descriptor_flavours:
+descriptor_flavors:
   - salesforce
 lint_all_files: true
 install:

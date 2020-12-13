@@ -3,34 +3,34 @@ import logging
 import os
 
 
-ALL_FLAVOURS_CACHE = None
+ALL_FLAVORS_CACHE = None
 
 
-def get_all_flavours():
-    global ALL_FLAVOURS_CACHE
-    if ALL_FLAVOURS_CACHE is not None:
-        return ALL_FLAVOURS_CACHE
+def get_all_flavors():
+    global ALL_FLAVORS_CACHE
+    if ALL_FLAVORS_CACHE is not None:
+        return ALL_FLAVORS_CACHE
     # Compiled version (copied from DockerFile)
-    if os.path.isfile("/megalinter-descriptors/flavours.json"):
-        flavours_file = "/megalinter-descriptors/flavours.json"
+    if os.path.isfile("/megalinter-descriptors/flavors.json"):
+        flavors_file = "/megalinter-descriptors/flavors.json"
     # Dev / Test version
     else:
-        flavours_file = os.path.realpath(
-            os.path.dirname(os.path.abspath(__file__)) + "/flavours.json"
+        flavors_file = os.path.realpath(
+            os.path.dirname(os.path.abspath(__file__)) + "/flavors.json"
         )
         assert os.path.isfile(
-            flavours_file
-        ), f"Descriptor dir {flavours_file} not found !"
-    # Parse flavours file json , set cache and return result
-    with open(flavours_file, "r", encoding="utf-8") as json_file:
-        all_flavours = json.load(json_file)
+            flavors_file
+        ), f"Descriptor dir {flavors_file} not found !"
+    # Parse flavors file json , set cache and return result
+    with open(flavors_file, "r", encoding="utf-8") as json_file:
+        all_flavors = json.load(json_file)
 
-    ALL_FLAVOURS_CACHE = all_flavours
-    return all_flavours
+    ALL_FLAVORS_CACHE = all_flavors
+    return all_flavors
 
 
-def list_megalinter_flavours():
-    flavours = {
+def list_megalinter_flavors():
+    flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
         "dart": {"label": "Mega-Linter optimized for DART based projects"},
         "go": {"label": "Mega-Linter optimized for GO based projects"},
@@ -43,30 +43,30 @@ def list_megalinter_flavours():
         "rust": {"label": "Mega-Linter optimized for RUST based projects"},
         "scala": {"label": "Mega-Linter optimized for SCALA based projects"},
     }
-    return flavours
+    return flavors
 
 
-def get_image_flavour():
-    return os.environ.get("MEGALINTER_FLAVOUR", "all")
+def get_image_flavor():
+    return os.environ.get("MEGALINTER_FLAVOR", "all")
 
 
-# Compare linters active for the current repo, and linters available in the current Mega-Linter image flavour
-def check_active_linters_match_flavour(active_linters):
-    flavour = get_image_flavour()
-    if flavour == "all":
-        logging.debug("Mega-Linter flavour is \"all\", no need to check match with linters")
+# Compare linters active for the current repo, and linters available in the current Mega-Linter image flavor
+def check_active_linters_match_flavor(active_linters):
+    flavor = get_image_flavor()
+    if flavor == "all":
+        logging.debug("Mega-Linter flavor is \"all\", no need to check match with linters")
         return True
-    all_flavours = get_all_flavours()
-    flavour_linters = all_flavours[flavour]["linters"]
+    all_flavors = get_all_flavors()
+    flavor_linters = all_flavors[flavor]["linters"]
     missing_linters = []
     for active_linter in active_linters:
-        if active_linter not in flavour_linters:
+        if active_linter not in flavor_linters:
             missing_linters += [active_linter.name]
     if len(missing_linters) > 0:
         missing_linters_str = ",".join(missing_linters)
-        logging.error(f"Mega-Linter flavour [{flavour}] does not contain linters {missing_linters_str}.\n"
+        logging.error(f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
                       "To solve this problem, please either: \n"
-                      "- use default flavour nvuillam/mega-linter\n"
+                      "- use default flavor nvuillam/mega-linter\n"
                       "- add missing linters in DISABLE variable in your .mega-linter.yml config file "
                       "located in your root directory")
         return False

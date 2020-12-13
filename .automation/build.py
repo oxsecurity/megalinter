@@ -32,8 +32,8 @@ REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
-FLAVOURS_DIR = REPO_HOME + "/flavours"
-GLOBAL_FLAVOURS_FILE = REPO_HOME + "/megalinter/flavours.json"
+FLAVORS_DIR = REPO_HOME + "/flavors"
+GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/flavors.json"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
@@ -50,65 +50,65 @@ IDE_LIST = {
 }
 
 
-# Generate one Dockerfile by Mega-Linter flavour
+# Generate one Dockerfile by Mega-Linter flavor
 def generate_all_dockerfiles():
-    flavours = megalinter.flavour_factory.list_megalinter_flavours()
+    flavors = megalinter.flavor_factory.list_megalinter_flavors()
 
-    for flavour, flavour_info in flavours.items():
-        generate_dockerfile(flavour, flavour_info)
+    for flavor, flavor_info in flavors.items():
+        generate_dockerfile(flavor, flavor_info)
 
 
 # Automatically generate Dockerfile parts
-def generate_dockerfile(flavour, flavour_info):
+def generate_dockerfile(flavor, flavor_info):
     descriptor_and_linters = []
-    flavour_descriptors = []
-    flavour_linters = []
+    flavor_descriptors = []
+    flavor_linters = []
     # Get install instructions at descriptor level
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
-            if match_flavour(descriptor, flavour) is True and "install" in descriptor:
+            if match_flavor(descriptor, flavor) is True and "install" in descriptor:
                 descriptor_and_linters += [descriptor]
-                flavour_descriptors += [descriptor["descriptor_id"]]
+                flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
-        if match_flavour(vars(linter), flavour) is True and hasattr(linter, "install"):
+        if match_flavor(vars(linter), flavor) is True and hasattr(linter, "install"):
             descriptor_and_linters += [vars(linter)]
-            flavour_linters += [linter.name]
+            flavor_linters += [linter.name]
     # Initialize Dockerfile
-    if flavour == "all":
+    if flavor == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
     else:
-        # Flavoured dockerfile
-        dockerfile = f"{FLAVOURS_DIR}/{flavour}/Dockerfile"
+        # Flavored dockerfile
+        dockerfile = f"{FLAVORS_DIR}/{flavor}/Dockerfile"
         if not os.path.isdir(os.path.dirname(dockerfile)):
             os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
         copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
-        flavour_label = flavour_info["label"]
-        comment = f"# MEGA-LINTER FLAVOUR [{flavour}]: {flavour_label}"
+        flavor_label = flavor_info["label"]
+        comment = f"# MEGA-LINTER FLAVOR [{flavor}]: {flavor_label}"
         with open(dockerfile, "r+", encoding="utf-8") as f:
             content = f.read()
             f.seek(0)
             f.truncate()
             f.write(f"{comment}\n{content}")
-        # Flavour json
-        flavour_file = f"{FLAVOURS_DIR}/{flavour}/flavour.json"
-        flavour_data = {}
-        if os.path.isfile(flavour_file):
-            with open(flavour_file, "r", encoding="utf-8") as json_file:
-                flavour_data = json.load(json_file)
-        flavour_data["descriptors"] = flavour_descriptors
-        flavour_data["linters"] = flavour_linters
-        with open(flavour_file, "w", encoding="utf-8") as outfile:
-            json.dump(flavour_data, outfile, indent=4, sort_keys=True)
-        # Write in global flavours files
-        with open(GLOBAL_FLAVOURS_FILE, "r", encoding="utf-8") as json_file:
-            global_flavours = json.load(json_file)
-            global_flavours[flavour] = flavour_data
-        with open(GLOBAL_FLAVOURS_FILE, "w", encoding="utf-8") as outfile:
-            json.dump(global_flavours, outfile, indent=4, sort_keys=True)
+        # Flavor json
+        flavor_file = f"{FLAVORS_DIR}/{flavor}/flavor.json"
+        flavor_data = {}
+        if os.path.isfile(flavor_file):
+            with open(flavor_file, "r", encoding="utf-8") as json_file:
+                flavor_data = json.load(json_file)
+        flavor_data["descriptors"] = flavor_descriptors
+        flavor_data["linters"] = flavor_linters
+        with open(flavor_file, "w", encoding="utf-8") as outfile:
+            json.dump(flavor_data, outfile, indent=4, sort_keys=True)
+        # Write in global flavors files
+        with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
+            global_flavors = json.load(json_file)
+            global_flavors[flavor] = flavor_data
+        with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(global_flavors, outfile, indent=4, sort_keys=True)
 
     # Gather all dockerfile commands
     docker_from = []
@@ -198,17 +198,17 @@ def generate_dockerfile(flavour, flavour_info):
     replace_in_file(
         dockerfile, "#GEM__START", "#GEM__END", gem_install_command
     )
-    flavour_env = f"ENV MEGALINTER_FLAVOUR={flavour}"
+    flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
     replace_in_file(
-        dockerfile, "#FLAVOUR__START", "#FLAVOUR__END", flavour_env
+        dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env
     )
 
 
-def match_flavour(item, flavour):
-    if flavour == "all":
+def match_flavor(item, flavor):
+    if flavor == "all":
         return True
-    elif "descriptor_flavours" in item:
-        if flavour in item["descriptor_flavours"] or "all_flavours" in item["descriptor_flavours"]:
+    elif "descriptor_flavors" in item:
+        if flavor in item["descriptor_flavors"] or "all_flavors" in item["descriptor_flavors"]:
             return True
     return False
 

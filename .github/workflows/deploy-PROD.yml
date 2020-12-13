@@ -20,7 +20,7 @@ on:
       - "master"
     paths:
       - "Dockerfile"
-      - "flavours/**"
+      - "flavors/**"
       - "megalinter/**"
       - "megalinter_runner/**"
       - "**/linter-versions.json"

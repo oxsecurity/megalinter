@@ -1,6 +1,6 @@
 descriptor_id: ARM
 descriptor_type: tooling_format
-descriptor_flavours:
+descriptor_flavors:
   - microsoft
 file_extensions:
   - ".json"

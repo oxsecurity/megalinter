@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOUR [javascript]: Mega-Linter optimized for JAVASCRIPT based projects
+# MEGA-LINTER FLAVOR [ruby]: Mega-Linter optimized for RUBY based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##
@@ -60,8 +60,10 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                npm \
-                nodejs-current \
+                ruby \
+                ruby-dev \
+                ruby-bundler \
+                ruby-rdoc \
                 ansible-lint \
                 libc-dev \
                 libxml2-dev \
@@ -86,8 +88,6 @@ RUN pip3 install --no-cache-dir \
 #############################################################################################
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                typescript \
-                @coffeelint/cli \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
@@ -96,30 +96,13 @@ RUN npm install --no-cache --ignore-scripts \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
-                eslint \
-                eslint-config-airbnb \
-                eslint-config-prettier \
-                eslint-config-standard \
-                eslint-plugin-import \
-                eslint-plugin-jest \
-                eslint-plugin-node \
-                eslint-plugin-prettier \
-                eslint-plugin-promise \
-                eslint-plugin-vue \
-                babel-eslint \
-                standard@15.0.1 \
                 jsonlint \
-                eslint-plugin-react \
                 markdownlint-cli \
                 markdown-link-check \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
-                tekton-lint \
-                prettier \
-                prettyjson \
-                @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser
+                tekton-lint
 #NPM__END
 
 # Add node packages to path #
@@ -134,7 +117,12 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          scss_lint
+          scss_lint \
+          rubocop:0.82.0 \
+          rubocop-github:0.16.0 \
+          rubocop-performance:1.7.1 \
+          rubocop-rails:2.5 \
+          rubocop-rspec:1.41.0
 #GEM__END
 
 #############################################################################################
@@ -214,9 +202,9 @@ ENV BUILD_DATE=$BUILD_DATE
 ENV BUILD_REVISION=$BUILD_REVISION
 ENV BUILD_VERSION=$BUILD_VERSION
 
-#FLAVOUR__START
-ENV MEGALINTER_FLAVOUR=javascript
-#FLAVOUR__END
+#FLAVOR__START
+ENV MEGALINTER_FLAVOR=ruby
+#FLAVOR__END
 
 #########################################
 # Label the instance and set maintainer #

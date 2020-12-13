@@ -1,7 +1,7 @@
 ---
 #########################
 #########################
-## Deploy Docker Image ##
+## Deploy Docker Image Flavors ##
 #########################
 #########################
 
@@ -13,30 +13,40 @@
 #######################################
 # Start the job on all push to master #
 #######################################
-name: "Build & Deploy - RELEASE - Flavours"
+name: "Build & Deploy - PROD Flavors"
 on:
-  release:
-    # Want to run the automation when a release is created
-    types: ["created"]
+  push:
+    branches:
+      - "master"
+      - "FlavoredMegaLinters"
     paths:
       - "Dockerfile"
       - "megalinter/**"
-      - "flavours/**"
+      - "flavors/**"
       - "**/linter-versions.json"
 
 ###############
 # Set the Job #
 ###############
 jobs:
+  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  skip_checks:
+    name: Skip checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+
   build:
     # Name the Job
-    name: Deploy Docker Image - RELEASE - Flavours
+    name: Deploy Docker Image - PROD - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
-        flavour:
+        flavor:
           [
             "dart",
             "go",
@@ -49,6 +59,7 @@ jobs:
             "rust",
             "scala",
           ]
+    # Only run this on the main repo
     if: github.repository == 'nvuillam/mega-linter'
     ##################
     # Load all steps #
@@ -62,17 +73,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      ###################################
-      # Run Deploy script for Dockerhub #
-      ###################################
-      - name: Deploy Release image to Dockerhub
+      #####################
+      # Run Deploy script #
+      #####################
+      - name: Deploy latest image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavour }}
-          IMAGE_VERSION: ${{ github.event.release.tag_name }}
-          DOCKERFILE_PATH: flavours/${{ matrix.flavour }}/Dockerfile
+          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavor }}
+          IMAGE_VERSION: latest
+          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh
