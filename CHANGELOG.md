@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.15.0] 2020-12-13
+
 - Add Vue.js linting (eslint-plugin-vue added in dependencies)
 
 - Configuration parameters changes:
