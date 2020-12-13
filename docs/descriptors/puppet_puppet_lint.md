@@ -24,6 +24,8 @@
 | PUPPET_PUPPET_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PUPPET_PUPPET_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".pp"]` |
+| PUPPET_PUPPET_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PUPPET_PUPPET_LINT_FILE_NAME | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.puppet-lint.rc` |
 | PUPPET_PUPPET_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PUPPET_PUPPET_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

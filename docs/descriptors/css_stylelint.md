@@ -30,6 +30,8 @@
 | CSS_STYLELINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | CSS_STYLELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | CSS_STYLELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CSS_STYLELINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".css", ".scss", ".saas"]` |
+| CSS_STYLELINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | CSS_STYLELINT_FILE_NAME | stylelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.stylelintrc.json` |
 | CSS_STYLELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_STYLELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

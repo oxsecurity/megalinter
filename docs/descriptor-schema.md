@@ -29,28 +29,29 @@ _Descriptor definition for mega-linter_
 		 3. _"tooling_format"_
 
  - <b id="#http://github.com/nvuillam/megalinter.json/properties/file_extensions">file_extensions</b>
-	 - List of file extensions catch by the descriptor
-	 - _File extension filters. Can be overridden at linter level_
+	 - Allowed file extensions
+	 - _File extension filters. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files. Can be overridden at linter level_
 	 - Type: `array`
 	 - Example values: 
 		 1. `.py`
+		 2. ``
 	 - Default: ``
 		 - **_Items_**
 		 - Type: `string`
 - <b id="#http://github.com/nvuillam/megalinter.json/properties/file_names_regex">file_names_regex</b>
-	 - List of file names catch by the descriptor
-	 - _File name filter. Can be overridden at linter level_
+	 - File name regex filters
+	 - _Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level_
 	 - Type: `array`
 	 - Example values: 
-		 1. `Dockerfile`
+		 1. `Dockerfile(-.+)?`
 		 2. `Jenkinsfile`
 	 - Default: ``
 		 - **_Items_**
 		 - Type: `string`
 
 - <b id="#http://github.com/nvuillam/megalinter.json/properties/file_contains_regex">file_contains_regex</b>
-	 - File content filters
-	 - _List of regular expressions to filter the files according to their content_
+	 - File content regex filters
+	 - _Regular expression list for filtering files by their content_
 	 - Type: `array`
 	 - Example values: 
 		 1. `AWSTemplateFormatVersion`
@@ -67,7 +68,7 @@ _Descriptor definition for mega-linter_
 		 1. `ansible`
 		 2. `kubernetes`
 
- - <b id="#http://github.com/nvuillam/megalinter.json/properties/files_names_not_ends_with">files_names_not_ends_with</b>
+ - <b id="#http://github.com/nvuillam/megalinter.json/properties/file_names_not_ends_with">file_names_not_ends_with</b>
 	 - Filter on end of file name
 	 - _List of strings to filter the files according to their end of file name_
 	 - Type: `array`

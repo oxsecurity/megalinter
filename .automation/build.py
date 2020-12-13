@@ -9,6 +9,7 @@ import os
 import re
 import sys
 from shutil import copyfile
+from typing import Any
 
 import jsonschema
 import markdown
@@ -51,14 +52,14 @@ IDE_LIST = {
 def generate_dockerfile():
     descriptor_and_linters = []
     # Get install instructions at descriptor level
-    descriptor_files = megalinter.utils.list_descriptor_files()
+    descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
             if "install" in descriptor:
                 descriptor_and_linters += [descriptor]
     # Get install instructions at linter level
-    linters = megalinter.utils.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
         if hasattr(linter, "install"):
             descriptor_and_linters += [vars(linter)]
@@ -147,8 +148,8 @@ def generate_dockerfile():
 # Automatically generate a test class for each linter class
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
-    linters = megalinter.utils.list_all_linters()
-    megalinter.utils.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters()
+    megalinter.linter_factory.list_all_linters()
     for linter in linters:
         lang_lower = linter.descriptor_id.lower()
         linter_name_lower = linter.linter_name.lower().replace("-", "_")
@@ -178,13 +179,15 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
 
 
 def list_descriptors_for_build():
-    descriptor_files = megalinter.utils.list_descriptor_files()
+    descriptor_files = megalinter.linter_factory.list_descriptor_files()
     linters_by_type = {"language": [], "format": [], "tooling_format": [], "other": []}
     descriptors = []
     for descriptor_file in descriptor_files:
-        descriptor = megalinter.utils.build_descriptor_info(descriptor_file)
+        descriptor = megalinter.linter_factory.build_descriptor_info(descriptor_file)
         descriptors += [descriptor]
-        descriptor_linters = megalinter.utils.build_descriptor_linters(descriptor_file)
+        descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
+            descriptor_file
+        )
         linters_by_type[descriptor_linters[0].descriptor_type] += descriptor_linters
     return descriptors, linters_by_type
 
@@ -317,6 +320,15 @@ def generate_descriptor_documentation(descriptor):
     file.write("\n".join(descriptor_md) + "\n")
     file.close()
     logging.info("Updated " + file.name)
+
+
+def dump_as_json(value: Any, empty_value: str) -> str:
+    if not value:
+        return empty_value
+    # Covert any value to string with JSON
+    # Do not indent since markdown table supports single line only
+    result = json.dumps(value, indent=None, sort_keys=True)
+    return f"`{result}`"
 
 
 # Build a MD table for a type of linter (language, format, tooling_format), and a MD file for each linter
@@ -506,7 +518,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"Ex: `\\/(src\\|lib)\\/` | Include every file |",
             f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
             f"Ex: `\\/(test\\|examples)\\/` | Exclude no file |",
+            f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
+            f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
+            f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
+            f"| {linter.name}_FILE_NAMES_REGEX | File name regex filters. Regular expression list for"
+            f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
+            f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
+            f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
         ]
+
         if linter.config_file_name is not None:
             linter_doc_md += [
                 f"| {linter.name}_FILE_NAME | {linter.linter_name} configuration file name</br>"
@@ -868,7 +888,7 @@ def validate_descriptors():
         f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r", encoding="utf-8"
     ) as schema_file:
         descriptor_schema = schema_file.read()
-        descriptor_files = megalinter.utils.list_descriptor_files()
+        descriptor_files = megalinter.linter_factory.list_descriptor_files()
         errors = 0
         for descriptor_file in descriptor_files:
             with open(descriptor_file, "r", encoding="utf-8") as descriptor_file1:
@@ -1021,7 +1041,7 @@ def process_type_mkdocs_yml(linters_by_type, type1):
 
 # Collect linters info from linter url, later used to build link preview card within linter documentation
 def collect_linter_previews():
-    linters = megalinter.utils.list_all_linters()
+    linters = megalinter.linter_factory.list_all_linters()
     # Read file
     with open(LINKS_PREVIEW_FILE, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)

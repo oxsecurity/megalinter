@@ -1,7 +1,7 @@
 descriptor_id: ANSIBLE
 descriptor_type: tooling_format
 files_sub_directory: ansible
-files_names_not_ends_with:
+file_names_not_ends_with:
   - "vault.yml"
   - "vault.yaml"
   - "galaxy.yml"

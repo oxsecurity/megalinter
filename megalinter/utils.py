@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 
-import glob
 import importlib
 import logging
 import os
 import re
+from typing import Optional, Pattern, Sequence
 
 import git
-import yaml
 from megalinter import config
-from megalinter.Linter import Linter
 
 REPO_HOME_DEFAULT = (
     "/tmp/lint"
@@ -36,120 +34,66 @@ def get_excluded_directories():
     return set(excluded_dirs)
 
 
-# Returns directory where all .yml language descriptors are defined
-def get_descriptor_dir():
-    # Compiled version (copied from DockerFile)
-    if os.path.isdir("/megalinter-descriptors"):
-        return "/megalinter-descriptors"
-    # Dev / Test version
-    else:
-        descriptor_dir = os.path.realpath(
-            os.path.dirname(os.path.abspath(__file__)) + "/descriptors"
-        )
-        assert os.path.isdir(
-            descriptor_dir
-        ), f"Descriptor dir {descriptor_dir} not found !"
-        return descriptor_dir
+def filter_files(
+    all_files: Sequence[str],
+    filter_regex_include: Optional[str],
+    filter_regex_exclude: Optional[str],
+    file_names_regex: Sequence[str],
+    file_extensions: Sequence[str],
+    file_names_not_ends_with: Optional[Sequence[str]] = None,
+    file_contains_regex: Optional[Sequence[str]] = None,
+    files_sub_directory: Optional[str] = None,
+    lint_all_other_linters_files: bool = False,
+) -> Sequence[str]:
+    file_extensions = set(file_extensions)
+    filter_regex_include_object = (
+        re.compile(filter_regex_include) if filter_regex_include else None
+    )
+    filter_regex_exclude_object = (
+        re.compile(filter_regex_exclude) if filter_regex_exclude else None
+    )
+    file_names_regex_object = re.compile("|".join(file_names_regex))
+    filtered_files = []
+    file_contains_regex_object = (
+        re.compile("|".join(file_contains_regex), flags=re.MULTILINE)
+        if file_contains_regex
+        else None
+    )
 
+    # Filter all files to keep only the ones matching with the current linter
 
-# List all defined linters
-def list_all_linters(linters_init_params=None):
-    descriptor_files = list_descriptor_files()
-    linters = []
-    for descriptor_file in descriptor_files:
-        descriptor_linters = build_descriptor_linters(
-            descriptor_file, linters_init_params
-        )
-        linters += descriptor_linters
-    return linters
+    for file in all_files:
+        base_file_name = os.path.basename(file)
+        filename, file_extension = os.path.splitext(base_file_name)
 
+        if filter_regex_include_object and not filter_regex_include_object.search(file):
+            continue
 
-# List all descriptor files (one by language)
-def list_descriptor_files():
-    descriptors_dir = get_descriptor_dir()
-    linters_glob_pattern = descriptors_dir + "/*.yml"
-    descriptor_files = []
-    for descriptor_file in sorted(glob.glob(linters_glob_pattern)):
-        descriptor_files += [descriptor_file]
-    return descriptor_files
+        if filter_regex_exclude_object and filter_regex_exclude_object.search(file):
+            continue
 
+        if files_sub_directory and files_sub_directory not in file:
+            continue
 
-# Extract descriptor info from descriptor file
-def build_descriptor_info(file):
-    with open(file, "r", encoding="utf-8") as f:
-        language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
-    return language_descriptor
-
-
-# Build linter instances from a descriptor file name, and initialize them
-def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
-    if linter_names is None:
-        linter_names = []
-    linters = []
-    # Dynamic generation from yaml
-    with open(file, "r", encoding="utf-8") as f:
-        language_descriptor = yaml.load(f, Loader=yaml.FullLoader)
-
-        # Build common attributes
-        common_attributes = {}
-        for attr_key, attr_value in language_descriptor.items():
-            if attr_key not in ["linters", "install"]:
-                common_attributes[attr_key] = attr_value
-            elif attr_key == "install":
-                common_attributes["descriptor_install"] = attr_value
-
-        # Browse linters defined for language
-        for linter_descriptor in language_descriptor.get("linters"):
-            if (
-                len(linter_names) > 0
-                and linter_descriptor["linter_name"] not in linter_names
-            ):
+        if not lint_all_other_linters_files:
+            if file_extension in file_extensions:
+                pass
+            elif "*" in file_extensions:
+                pass
+            elif file_names_regex_object.fullmatch(filename):
+                pass
+            else:
                 continue
 
-            # Use custom class if defined in file
-            linter_class = Linter
-            if linter_descriptor.get("class"):
-                linter_class_file_name = os.path.splitext(
-                    os.path.basename(linter_descriptor.get("class"))
-                )[0]
-                linter_module = importlib.import_module(
-                    ".linters." + linter_class_file_name, package=__package__
-                )
-                linter_class = getattr(linter_module, linter_class_file_name)
+        if file_names_not_ends_with and file.endswith(tuple(file_names_not_ends_with)):
+            continue
 
-            # Create a Linter class instance by linter
-            instance_attributes = {**common_attributes, **linter_descriptor}
-            linter_instance = linter_class(linter_init_params, instance_attributes)
-            linters += [linter_instance]
+        if file_contains_regex and not file_contains(file, file_contains_regex_object):
+            continue
 
-    return linters
+        filtered_files.append(file)
 
-
-# Build a single linter instance from language and linter name
-def build_linter(language, linter_name):
-    language_descriptor_file = (
-        get_descriptor_dir() + os.path.sep + language.lower() + ".yml"
-    )
-    assert os.path.isfile(
-        language_descriptor_file
-    ), f"Unable to find {language_descriptor_file}"
-    linters = build_descriptor_linters(language_descriptor_file, None, [linter_name])
-    assert (
-        len(linters) == 1
-    ), f"Unable to find linter {linter_name} in {language_descriptor_file}"
-    return linters[0]
-
-
-def check_file_extension_or_name(file, file_extensions, file_names_regex):
-    base_file_name = os.path.basename(file)
-    filename, file_extension = os.path.splitext(base_file_name)
-    if len(file_extensions) > 0 and file_extension in file_extensions:
-        return True
-    elif len(file_names_regex) > 0 and filename in file_names_regex:
-        return True
-    elif len(file_extensions) == 1 and file_extensions[0] == "*":
-        return True
-    return False
+    return filtered_files
 
 
 # Center the string and complete blanks with hyphens (-)
@@ -187,17 +131,14 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-def file_contains(file_name, regex_list):
-    if not regex_list:
+def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
+    if not regex_object:
         return True
-
-    combined_regex = "|".join(regex_list)
-    combined_regex_object = re.compile(combined_regex, flags=re.MULTILINE)
 
     with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
 
-    found_pattern = combined_regex_object.search(content) is not None
+    found_pattern = regex_object.search(content) is not None
     return found_pattern
 
 

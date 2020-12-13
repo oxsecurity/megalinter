@@ -395,20 +395,20 @@ Examples:
 
 - Run all javascript and groovy linters except STANDARD javascript linter
 
-```config
+```yaml
 ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVSCRIPT_STANDARD
 ```
 
 - Run all linters except PHP linters (PHP_BUILTIN, PHP_PCPCS, PHP_STAN, PHP_PSALM)
 
-```config
+```yaml
 DISABLE: PHP
 ```
 
 - Run all linters except PHP_STAN and PHP_PSALM linters
 
-```config
+```yaml
 DISABLE_LINTERS: PHP_STAN,PHP_PSALM
 ```
 
