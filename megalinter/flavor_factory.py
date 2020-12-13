@@ -73,7 +73,7 @@ def check_active_linters_match_flavor(active_linters):
 
 
 # Compare active linters with available flavors to make suggestions to improve CI performances
-def get_megalinter_flavor_suggestion(active_linters):
+def get_megalinter_flavor_suggestions(active_linters):
     flavor = get_image_flavor()
     if flavor != "all":
         return None

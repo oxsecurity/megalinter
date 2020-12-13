@@ -52,3 +52,10 @@ class ConsoleReporter(Reporter):
         for table_line in table.table.splitlines():
             logging.info(table_line)
         logging.info("")
+        if self.master.flavor_suggestions is not None:
+            logging.warning("You could have same capabilities but better runtime performances"
+                            " if you use a Mega-Linter flavor:")
+            for suggestion in self.master.flavor_suggestions:
+                flavor_msg = f"- nvuillam/mega-linter-{suggestion['flavor']} ({suggestion['linters_number']} linters)"
+                logging.warning(flavor_msg)
+            logging.info("")
