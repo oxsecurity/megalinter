@@ -77,6 +77,7 @@ class Megalinter:
         self.status = "success"
         self.return_code = 0
         self.has_updated_sources = 0
+        self.flavor_suggestion = None
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -138,6 +139,10 @@ class Megalinter:
 
         # Sort linters before reports production
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
+
+        # Check if a Mega-Linter flavor can be used for this repo (except if FLAVOR_SUGGESTION: false is defined )
+        if config.get("FLAVOR_SUGGESTION","true") == "true":
+            self.flavor_suggestion = linter_factory.get_megalinter_flavor_suggestion(active_linters)
 
         # Generate reports
         for reporter in self.reporters:

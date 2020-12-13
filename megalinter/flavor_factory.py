@@ -2,7 +2,6 @@ import json
 import logging
 import os
 
-
 ALL_FLAVORS_CACHE = None
 
 
@@ -71,3 +70,26 @@ def check_active_linters_match_flavor(active_linters):
                       "located in your root directory")
         return False
     return True
+
+
+# Compare active linters with available flavors to make suggestions to improve CI performances
+def get_megalinter_flavor_suggestion(active_linters):
+    flavor = get_image_flavor()
+    if flavor != "all":
+        return None
+    all_flavors = get_all_flavors()
+    matching_flavors = []
+    for flavor_id, flavor_info in all_flavors.items():
+        match = True
+        for active_linter in active_linters:
+            if active_linter.name not in flavor_info["linters"]:
+                match = False
+                break
+        if match is True:
+            matching_flavor = {"flavor": flavor_id,
+                               "flavor_info": flavor_info,
+                               "linters_number": len(flavor_info["linters"])}
+            matching_flavors += [matching_flavor]
+    if len(matching_flavors) > 0:
+        return matching_flavors
+    return None
