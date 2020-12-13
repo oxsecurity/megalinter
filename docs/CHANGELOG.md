@@ -15,6 +15,9 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Output reporter problems as warnings
   - Do not make Mega-Linter fail in case GitHubStatusReporter fails
 
+- Doc
+  - Rename "index" pages into more meaningful labels
+
 ## [4.15.0] 2020-12-13
 
 - Add Vue.js linting (eslint-plugin-vue added in dependencies)

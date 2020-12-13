@@ -1078,7 +1078,7 @@ def process_type_mkdocs_yml(linters_by_type, type1):
             descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
             mkdocs_yml += [
                 f'      - "{descriptor_label}":',
-                f'          - "index": "descriptors/{lang_lower}.md"',
+                f'          - "All {descriptor_label} linters": "descriptors/{lang_lower}.md"',
             ]
 
         prev_lang = lang_lower
