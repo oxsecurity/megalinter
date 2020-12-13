@@ -1149,7 +1149,7 @@ if __name__ == "__main__":
     )
     # noinspection PyTypeChecker
     collect_linter_previews()
-    # validate_descriptors()
+    validate_descriptors()
     generate_all_dockerfiles()
     generate_linter_test_classes()
     generate_documentation()

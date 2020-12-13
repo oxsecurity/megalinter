@@ -19,8 +19,11 @@ on:
     branches:
       - "master"
       - "FlavoredMegaLinters"
-    # paths:
-    #   - "megalinter/**"
+    paths:
+      - "Dockerfile"
+      - "megalinter/**"
+      - "flavours/**"
+      - "**/linter-versions.json"
 
 ###############
 # Set the Job #
