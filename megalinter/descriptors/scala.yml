@@ -1,5 +1,7 @@
 descriptor_id: SCALA
 descriptor_type: language
+descriptor_flavours:
+  - scala
 file_extensions:
   - ".scala"
 install:

@@ -1,5 +1,7 @@
 descriptor_id: KOTLIN
 descriptor_type: language
+descriptor_flavours:
+  - all_flavours # As TeamCity uses Kotlin, any project can contain KOTLIN for its CI
 file_extensions:
   - ".kt"
   - ".kts"

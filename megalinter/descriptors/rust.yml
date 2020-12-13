@@ -1,5 +1,7 @@
 descriptor_id: RUST
 descriptor_type: language
+descriptor_flavours:
+  - rust
 file_extensions:
   - ".rs"
 install:

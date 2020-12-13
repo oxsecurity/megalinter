@@ -1,5 +1,7 @@
 descriptor_id: RUBY
 descriptor_type: language
+descriptor_flavours:
+  - ruby
 file_extensions:
   - ".rb"
 install:

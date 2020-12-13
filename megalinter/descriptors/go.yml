@@ -1,5 +1,7 @@
 descriptor_id: GO
 descriptor_type: language
+descriptor_flavours:
+  - go
 file_extensions:
   - ".go"
 test_folder: golang
