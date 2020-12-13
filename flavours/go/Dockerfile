@@ -206,6 +206,10 @@ ENV BUILD_DATE=$BUILD_DATE
 ENV BUILD_REVISION=$BUILD_REVISION
 ENV BUILD_VERSION=$BUILD_VERSION
 
+#FLAVOUR__START
+ENV MEGALINTER_FLAVOUR=go
+#FLAVOUR__END
+
 #########################################
 # Label the instance and set maintainer #
 #########################################

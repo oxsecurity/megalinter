@@ -198,6 +198,10 @@ def generate_dockerfile(flavour, flavour_info):
     replace_in_file(
         dockerfile, "#GEM__START", "#GEM__END", gem_install_command
     )
+    flavour_env = f"ENV MEGALINTER_FLAVOUR={flavour}"
+    replace_in_file(
+        dockerfile, "#FLAVOUR__START", "#FLAVOUR__END", flavour_env
+    )
 
 
 def match_flavour(item, flavour):
