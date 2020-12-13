@@ -13,7 +13,7 @@
 #######################################
 # Start the job on all push to master #
 #######################################
-name: "Build & Deploy - RELEASE"
+name: "Build & Deploy - RELEASE - Flavours"
 on:
   release:
     # Want to run the automation when a release is created
@@ -30,10 +30,25 @@ on:
 jobs:
   build:
     # Name the Job
-    name: Deploy Docker Image - RELEASE
+    name: Deploy Docker Image - RELEASE - Flavours
     # Set the agent to run on
-    runs-on: ubuntu-latest
-    # Only run on main repo
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        flavour:
+          [
+            "dart",
+            "go",
+            "java",
+            "javascript",
+            "microsoft",
+            "php",
+            "python",
+            "ruby",
+            "rust",
+            "scala",
+          ]
     if: github.repository == 'nvuillam/mega-linter'
     ##################
     # Load all steps #
@@ -47,18 +62,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      ########################################################
-      # Publish updated version of mega-linter-runner on NPM #
-      ########################################################
-      - uses: actions/setup-node@v2.1.3
-        with:
-          node-version: "12.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: cd mega-linter-runner && npm install
-      - run: cd mega-linter-runner && npm publish || echo "mega-linter-runner not published"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       ###################################
       # Run Deploy script for Dockerhub #
       ###################################
@@ -67,24 +70,9 @@ jobs:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter
+          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavour }}
           IMAGE_VERSION: ${{ github.event.release.tag_name }}
-          DOCKERFILE_PATH: Dockerfile
+          DOCKERFILE_PATH: flavours/${{ matrix.flavour }}/Dockerfile
           REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
-
-      ###################################################
-      # Run Deploy script for GitHub Container Registry #
-      ###################################################
-      - name: Deploy Release image to GitHub Container Registry
-        env:
-          # Set the Env Vars
-          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
-          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter
-          IMAGE_VERSION: ${{ github.event.release.tag_name }}
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: GCR
         shell: bash
         run: .automation/upload-docker.sh
