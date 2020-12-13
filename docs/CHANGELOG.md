@@ -5,11 +5,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Add Vue.js linting (eslint-plugin-vue added in dependencies)
+## [4.15.0] 2020-12-13
 
-- Fix error message from Email Reporter when SMTP password is not set
-- Fix automerge action yml (skip is secrets.PAT is not set)
-- Improve caching of compiled regular expressions
+- Add Vue.js linting (eslint-plugin-vue added in dependencies)
 
 - Configuration parameters changes:
   - Change config setting logic: `EXCLUDED_DIRECTORIES` is now replacing original directory list instead of extending it
@@ -21,6 +19,11 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Rename `files_names_not_ends_with` to `file_names_not_ends_with`
   - Rename `files_names` to `files_names_regex` and change behavior to expect regular expressions in the list.
     They are applied using full match (i.e. the whole text should match the regular expression)
+
+- Fix error message from Email Reporter when SMTP password is not set
+- Fix automerge action yml (skip if secrets.PAT is not set)
+- Improve caching of compiled regular expressions
+- Override mkdocs theme to make analytics work
 
 - CI
   - Auto update linters and documentation: Create update PR only if linter versions has been updated
