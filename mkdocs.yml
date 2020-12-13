@@ -7,11 +7,9 @@ site_author: Nicolas Vuillamy
 site_description: Mega-Linter analyzes 38 languages, 15 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
-google_analytics:
-  - "UA-182872942-1"
-  - "auto"
 theme:
   name: material
+  custom_dir: docs/overrides
   features:
     - navigation.instant
     - navigation.expand
@@ -28,6 +26,7 @@ markdown_extensions:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
+  - javascripts/gtag.js
 extra_css:
   - stylesheets/extra.css
 extra:
