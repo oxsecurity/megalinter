@@ -32,7 +32,8 @@ REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
-FLAVOURS_DIR = REPO_HOME+ "/flavours"
+FLAVOURS_DIR = REPO_HOME + "/flavours"
+GLOBAL_FLAVOURS_FILE = REPO_HOME + "/megalinter/flavours.json"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
@@ -102,6 +103,13 @@ def generate_dockerfile(flavour, flavour_info):
         flavour_data["linters"] = flavour_linters
         with open(flavour_file, "w", encoding="utf-8") as outfile:
             json.dump(flavour_data, outfile, indent=4, sort_keys=True)
+        # Write in global flavours files
+        with open(GLOBAL_FLAVOURS_FILE, "r", encoding="utf-8") as json_file:
+            global_flavours = json.load(json_file)
+            global_flavours[flavour] = flavour_data
+        with open(GLOBAL_FLAVOURS_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(global_flavours, outfile, indent=4, sort_keys=True)
+
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
