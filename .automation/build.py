@@ -52,7 +52,7 @@ IDE_LIST = {
 
 # Generate one Dockerfile by Mega-Linter flavour
 def generate_all_dockerfiles():
-    flavours = megalinter.linter_factory.list_megalinter_flavours()
+    flavours = megalinter.flavour_factory.list_megalinter_flavours()
 
     for flavour, flavour_info in flavours.items():
         generate_dockerfile(flavour, flavour_info)

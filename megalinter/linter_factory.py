@@ -6,23 +6,6 @@ import yaml
 from megalinter import Linter
 
 
-def list_megalinter_flavours():
-    flavours = {
-        "all": {"label": "Mega-Linter for any type of project"},
-        "dart": {"label": "Mega-Linter optimized for DART based projects"},
-        "go": {"label": "Mega-Linter optimized for GO based projects"},
-        "java": {"label": "Mega-Linter optimized for JAVA based projects"},
-        "javascript": {"label": "Mega-Linter optimized for JAVASCRIPT based projects"},
-        "microsoft": {"label": "Mega-Linter optimized for MICROSOFT based projects"},
-        "php": {"label": "Mega-Linter optimized for PHP based projects"},
-        "python": {"label": "Mega-Linter optimized for PYTHON based projects"},
-        "ruby": {"label": "Mega-Linter optimized for RUBY based projects"},
-        "rust": {"label": "Mega-Linter optimized for RUST based projects"},
-        "scala": {"label": "Mega-Linter optimized for SCALA based projects"},
-    }
-    return flavours
-
-
 # Returns directory where all .yml language descriptors are defined
 def get_descriptor_dir():
     # Compiled version (copied from DockerFile)

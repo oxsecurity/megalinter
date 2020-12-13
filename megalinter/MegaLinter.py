@@ -11,7 +11,7 @@ import sys
 
 import git
 import terminaltables
-from megalinter import config, linter_factory, utils
+from megalinter import config, flavour_factory, linter_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 
@@ -117,6 +117,11 @@ class Megalinter:
                 active_linters += [linter]
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
+
+        # Exit if not all active linters are covered by current Mega-linter image flavour
+        if flavour_factory.check_active_linters_match_flavour(active_linters) is False:
+            return
+
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
