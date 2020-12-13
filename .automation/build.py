@@ -60,6 +60,8 @@ def generate_all_dockerfiles():
 # Automatically generate Dockerfile parts
 def generate_dockerfile(flavour, flavour_info):
     descriptor_and_linters = []
+    flavour_descriptors = []
+    flavour_linters = []
     # Get install instructions at descriptor level
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     for descriptor_file in descriptor_files:
@@ -67,15 +69,18 @@ def generate_dockerfile(flavour, flavour_info):
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
             if match_flavour(descriptor, flavour) is True and "install" in descriptor:
                 descriptor_and_linters += [descriptor]
+                flavour_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
         if match_flavour(vars(linter), flavour) is True and hasattr(linter, "install"):
             descriptor_and_linters += [vars(linter)]
+            flavour_linters += [linter.name]
     # Initialize Dockerfile
     if flavour == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
     else:
+        # Flavoured dockerfile
         dockerfile = f"{FLAVOURS_DIR}/{flavour}/Dockerfile"
         if not os.path.isdir(os.path.dirname(dockerfile)):
             os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
@@ -87,6 +92,16 @@ def generate_dockerfile(flavour, flavour_info):
             f.seek(0)
             f.truncate()
             f.write(f"{comment}\n{content}")
+        # Flavour json
+        flavour_file = f"{FLAVOURS_DIR}/{flavour}/flavour.json"
+        flavour_data = {}
+        if os.path.isfile(flavour_file):
+            with open(flavour_file, "r", encoding="utf-8") as json_file:
+                flavour_data = json.load(json_file)
+        flavour_data["descriptors"] = flavour_descriptors
+        flavour_data["linters"] = flavour_linters
+        with open(flavour_file, "w", encoding="utf-8") as outfile:
+            json.dump(flavour_data, outfile, indent=4, sort_keys=True)
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []

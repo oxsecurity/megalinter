@@ -46,15 +46,15 @@ jobs:
         flavour:
           [
             "dart",
-        #    "go",
-        #    "java",
-        #    "javascript",
-        #    "microsoft",
-        #    "php",
-        #    "python",
-        #    "ruby",
-        #    "rust",
-        #    "scala",
+            "go",
+            "java",
+            "javascript",
+            "microsoft",
+            "php",
+            "python",
+            "ruby",
+            "rust",
+            "scala",
           ]
     # Only run this on the main repo
     if: github.repository == 'nvuillam/mega-linter'
@@ -82,20 +82,5 @@ jobs:
           IMAGE_VERSION: latest
           DOCKERFILE_PATH: flavours/${{ matrix.flavour }}/Dockerfile
           REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
-
-      #############################
-      # Run Deploy script for GPR #
-      #############################
-      - name: Deploy Latest image to GitHub Container Registry
-        env:
-          # Set the Env Vars
-          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
-          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter
-          IMAGE_VERSION: latest
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: GCR
         shell: bash
         run: .automation/upload-docker.sh

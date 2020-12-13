@@ -1,7 +1,5 @@
 descriptor_id: PUPPET
 descriptor_type: tooling_format
-descriptor_flavours:
-  - all_flavours # Applicable to CI in any language project
 file_extensions:
   - ".pp"
 linters:
