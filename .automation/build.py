@@ -32,6 +32,7 @@ REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
+FLAVOURS_DIR = REPO_HOME+ "/flavours"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
@@ -75,7 +76,9 @@ def generate_dockerfile(flavour, flavour_info):
     if flavour == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
     else:
-        dockerfile = f"{REPO_HOME}/.automation/generated/dockerfiles/Dockerfile_{flavour}"
+        dockerfile = f"{FLAVOURS_DIR}/{flavour}/Dockerfile"
+        if not os.path.isdir(os.path.dirname(dockerfile)):
+            os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
         copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
         flavour_label = flavour_info["label"]
         comment = f"# MEGA-LINTER FLAVOUR [{flavour}]: {flavour_label}"
