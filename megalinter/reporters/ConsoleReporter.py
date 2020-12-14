@@ -63,22 +63,15 @@ class ConsoleReporter(Reporter):
                 if build_version == "latest"
                 else build_version
             )
-            docker_version = (
-                "latest" if action_version == "insiders" else action_version
-            )
             logging.warning(
                 "You could have same capabilities but better runtime performances"
                 " if you use a Mega-Linter flavor:"
             )
             for suggestion in self.master.flavor_suggestions:
                 action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
-                image_name = (
-                    f"nvuillam/mega-linter-{suggestion['flavor']}:{docker_version}"
-                )
                 flavor_msg = (
-                    f"- [{suggestion['flavor']}] {action_path} |"
-                    f" {image_name} ({suggestion['linters_number']} linters)"
+                    f"- [{suggestion['flavor']}] {action_path} ({suggestion['linters_number']} linters) "
+                    f"{self.gh_url}/flavors/{suggestion['flavor']}/"
                 )
                 logging.warning(flavor_msg)
-            logging.warning(f"More info at {self.gh_url}/flavors/")
             logging.info("")
