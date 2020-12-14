@@ -83,8 +83,8 @@ By using **Mega-Linter**, you ensure that:
 ## Quick Start
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
-- If you do not want to **apply formatters and auto-fixers** in a new commit/PR, comment [**APPLY_FIXES** block variables](#apply-fixes)
-- If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
+  - If you do not want to **apply formatters and auto-fixers** in a new commit/PR, comment [**APPLY_FIXES** block variables](#apply-fixes)
+  - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
 - Watch !
 
