@@ -14,6 +14,7 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 <!-- flavors-table-start -->
 | <!-- --> | Flavor | Description | Embedded linters |
 | :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | <!-- --> | Default Mega-Linter Flavor | 71 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | dart | Mega-Linter optimized for DART based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | dotnet | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | go | Mega-Linter optimized for GO based projects | 29 |
