@@ -118,7 +118,8 @@ class GithubCommentReporter(Reporter):
                 for suggestion in self.master.flavor_suggestions:
                     build_version = os.environ.get("BUILD_VERSION", "v4")
                     action_version = (
-                        "v4" if "v4" in build_version
+                        "v4"
+                        if "v4" in build_version
                         else "insiders"
                         if build_version == "latest"
                         else build_version

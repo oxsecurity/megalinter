@@ -57,12 +57,15 @@ class ConsoleReporter(Reporter):
         if self.master.flavor_suggestions is not None:
             build_version = os.environ.get("BUILD_VERSION", "v4")
             action_version = (
-                "v4" if "v4" in build_version
+                "v4"
+                if "v4" in build_version
                 else "insiders"
                 if build_version == "latest"
                 else build_version
             )
-            docker_version = "latest" if action_version == "insiders" else action_version
+            docker_version = (
+                "latest" if action_version == "insiders" else action_version
+            )
             logging.warning(
                 "You could have same capabilities but better runtime performances"
                 " if you use a Mega-Linter flavor:"
