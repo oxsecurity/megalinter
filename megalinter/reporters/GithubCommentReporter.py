@@ -112,8 +112,8 @@ class GithubCommentReporter(Reporter):
                 )
             if self.master.flavor_suggestions is not None:
                 p_r_msg += (
-                    os.linesep +
-                    "You could have the same capabilities but better runtime performances"
+                    os.linesep
+                    + "You could have the same capabilities but better runtime performances"
                     " if you use a Mega-Linter flavor:" + os.linesep
                 )
                 for suggestion in self.master.flavor_suggestions:
