@@ -32,6 +32,13 @@ module.exports = optionator({
             example: ["stable", "latest", "v4.9.0"]
         },
         {
+            option: "flavor",
+            type: "String",
+            default: "all",
+            description: "Mega-Linter flavor",
+            example: ["dotnet", "javascript", "java", "php", "python"]
+        },
+        {
             option: "path",
             alias: "p",
             type: "path::String",

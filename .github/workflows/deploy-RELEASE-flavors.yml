@@ -1,0 +1,78 @@
+---
+#########################
+#########################
+## Deploy Docker Image ##
+#########################
+#########################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to master #
+#######################################
+name: "Build & Deploy - RELEASE - Flavors"
+on:
+  release:
+    # Want to run the automation when a release is created
+    types: ["created"]
+    paths:
+      - "Dockerfile"
+      - "megalinter/**"
+      - "flavors/**"
+      - "**/linter-versions.json"
+
+###############
+# Set the Job #
+###############
+jobs:
+  build:
+    # Name the Job
+    name: Deploy Docker Image - RELEASE - Flavors
+    # Set the agent to run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        flavor:
+          [
+            "dart",
+            "go",
+            "java",
+            "javascript",
+            "microsoft",
+            "php",
+            "python",
+            "ruby",
+            "rust",
+            "scala",
+          ]
+    if: github.repository == 'nvuillam/mega-linter'
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.3
+        with:
+          fetch-depth: 0
+
+      ###################################
+      # Run Deploy script for Dockerhub #
+      ###################################
+      - name: Deploy Release image to Dockerhub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavor }}
+          IMAGE_VERSION: ${{ github.event.release.tag_name }}
+          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh

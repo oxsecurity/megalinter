@@ -47,200 +47,200 @@ nav:
   - "Installation": "installation.md"
   - "Configuration": "configuration.md"
   - "Languages linters":
-      - "index": "./supported-linters#languages"
+      - "All language linters": "./supported-linters#languages"
       # language-start
       - "BASH":
-          - "index": "descriptors/bash.md"
+          - "All BASH linters": "descriptors/bash.md"
           - "bash-exec": "descriptors/bash_bash_exec.md"
           - "shellcheck": "descriptors/bash_shellcheck.md"
           - "shfmt": "descriptors/bash_shfmt.md"
       - "C":
-          - "index": "descriptors/c.md"
+          - "All C linters": "descriptors/c.md"
           - "cpplint": "descriptors/c_cpplint.md"
       - "CLOJURE":
-          - "index": "descriptors/clojure.md"
+          - "All CLOJURE linters": "descriptors/clojure.md"
           - "clj-kondo": "descriptors/clojure_clj_kondo.md"
       - "COFFEE":
-          - "index": "descriptors/coffee.md"
+          - "All COFFEE linters": "descriptors/coffee.md"
           - "coffeelint": "descriptors/coffee_coffeelint.md"
       - "C++ (CPP)":
-          - "index": "descriptors/cpp.md"
+          - "All C++ (CPP) linters": "descriptors/cpp.md"
           - "cpplint": "descriptors/cpp_cpplint.md"
       - "C# (CSHARP)":
-          - "index": "descriptors/csharp.md"
+          - "All C# (CSHARP) linters": "descriptors/csharp.md"
           - "dotnet-format": "descriptors/csharp_dotnet_format.md"
       - "DART":
-          - "index": "descriptors/dart.md"
+          - "All DART linters": "descriptors/dart.md"
           - "dartanalyzer": "descriptors/dart_dartanalyzer.md"
       - "GO":
-          - "index": "descriptors/go.md"
+          - "All GO linters": "descriptors/go.md"
           - "golangci-lint": "descriptors/go_golangci_lint.md"
       - "GROOVY":
-          - "index": "descriptors/groovy.md"
+          - "All GROOVY linters": "descriptors/groovy.md"
           - "npm-groovy-lint": "descriptors/groovy_npm_groovy_lint.md"
       - "JAVA":
-          - "index": "descriptors/java.md"
+          - "All JAVA linters": "descriptors/java.md"
           - "checkstyle": "descriptors/java_checkstyle.md"
       - "JAVASCRIPT":
-          - "index": "descriptors/javascript.md"
+          - "All JAVASCRIPT linters": "descriptors/javascript.md"
           - "eslint": "descriptors/javascript_eslint.md"
           - "standard": "descriptors/javascript_standard.md"
       - "JSX":
-          - "index": "descriptors/jsx.md"
+          - "All JSX linters": "descriptors/jsx.md"
           - "eslint": "descriptors/jsx_eslint.md"
       - "KOTLIN":
-          - "index": "descriptors/kotlin.md"
+          - "All KOTLIN linters": "descriptors/kotlin.md"
           - "ktlint": "descriptors/kotlin_ktlint.md"
       - "LUA":
-          - "index": "descriptors/lua.md"
+          - "All LUA linters": "descriptors/lua.md"
           - "luacheck": "descriptors/lua_luacheck.md"
       - "PERL":
-          - "index": "descriptors/perl.md"
+          - "All PERL linters": "descriptors/perl.md"
           - "perlcritic": "descriptors/perl_perlcritic.md"
       - "PHP":
-          - "index": "descriptors/php.md"
+          - "All PHP linters": "descriptors/php.md"
           - "php": "descriptors/php_php.md"
           - "phpcs": "descriptors/php_phpcs.md"
           - "phpstan": "descriptors/php_phpstan.md"
           - "psalm": "descriptors/php_psalm.md"
       - "POWERSHELL":
-          - "index": "descriptors/powershell.md"
+          - "All POWERSHELL linters": "descriptors/powershell.md"
           - "powershell": "descriptors/powershell_powershell.md"
       - "PYTHON":
-          - "index": "descriptors/python.md"
+          - "All PYTHON linters": "descriptors/python.md"
           - "pylint": "descriptors/python_pylint.md"
           - "black": "descriptors/python_black.md"
           - "flake8": "descriptors/python_flake8.md"
           - "isort": "descriptors/python_isort.md"
       - "R":
-          - "index": "descriptors/r.md"
+          - "All R linters": "descriptors/r.md"
           - "lintr": "descriptors/r_lintr.md"
       - "RAKU":
-          - "index": "descriptors/raku.md"
+          - "All RAKU linters": "descriptors/raku.md"
           - "raku": "descriptors/raku_raku.md"
       - "RUBY":
-          - "index": "descriptors/ruby.md"
+          - "All RUBY linters": "descriptors/ruby.md"
           - "rubocop": "descriptors/ruby_rubocop.md"
       - "RUST":
-          - "index": "descriptors/rust.md"
+          - "All RUST linters": "descriptors/rust.md"
           - "clippy": "descriptors/rust_clippy.md"
       - "SALESFORCE":
-          - "index": "descriptors/salesforce.md"
+          - "All SALESFORCE linters": "descriptors/salesforce.md"
           - "sfdx-scanner": "descriptors/salesforce_sfdx_scanner.md"
       - "SCALA":
-          - "index": "descriptors/scala.md"
+          - "All SCALA linters": "descriptors/scala.md"
           - "scalafix": "descriptors/scala_scalafix.md"
       - "SQL":
-          - "index": "descriptors/sql.md"
+          - "All SQL linters": "descriptors/sql.md"
           - "sql-lint": "descriptors/sql_sql_lint.md"
       - "TSX":
-          - "index": "descriptors/tsx.md"
+          - "All TSX linters": "descriptors/tsx.md"
           - "eslint": "descriptors/tsx_eslint.md"
       - "TYPESCRIPT":
-          - "index": "descriptors/typescript.md"
+          - "All TYPESCRIPT linters": "descriptors/typescript.md"
           - "eslint": "descriptors/typescript_eslint.md"
           - "standard": "descriptors/typescript_standard.md"
       - "Visual Basic .NET (VBDOTNET)":
-          - "index": "descriptors/vbdotnet.md"
+          - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
           - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
 # language-end
   - "Formats linters":
-      - "index": "./supported-linters#formats"
+      - "All formats linters": "./supported-linters#formats"
       # format-start
       - "CSS":
-          - "index": "descriptors/css.md"
+          - "All CSS linters": "descriptors/css.md"
           - "stylelint": "descriptors/css_stylelint.md"
           - "scss-lint": "descriptors/css_scss_lint.md"
       - "ENV":
-          - "index": "descriptors/env.md"
+          - "All ENV linters": "descriptors/env.md"
           - "dotenv-linter": "descriptors/env_dotenv_linter.md"
       - "GRAPHQL":
-          - "index": "descriptors/graphql.md"
+          - "All GRAPHQL linters": "descriptors/graphql.md"
           - "graphql-schema-linter": "descriptors/graphql_graphql_schema_linter.md"
       - "HTML":
-          - "index": "descriptors/html.md"
+          - "All HTML linters": "descriptors/html.md"
           - "htmlhint": "descriptors/html_htmlhint.md"
       - "JSON":
-          - "index": "descriptors/json.md"
+          - "All JSON linters": "descriptors/json.md"
           - "jsonlint": "descriptors/json_jsonlint.md"
       - "LATEX":
-          - "index": "descriptors/latex.md"
+          - "All LATEX linters": "descriptors/latex.md"
           - "chktex": "descriptors/latex_chktex.md"
       - "MARKDOWN":
-          - "index": "descriptors/markdown.md"
+          - "All MARKDOWN linters": "descriptors/markdown.md"
           - "markdownlint": "descriptors/markdown_markdownlint.md"
           - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
       - "PROTOBUF":
-          - "index": "descriptors/protobuf.md"
+          - "All PROTOBUF linters": "descriptors/protobuf.md"
           - "protolint": "descriptors/protobuf_protolint.md"
       - "RST":
-          - "index": "descriptors/rst.md"
+          - "All RST linters": "descriptors/rst.md"
           - "rst-lint": "descriptors/rst_rst_lint.md"
           - "rstcheck": "descriptors/rst_rstcheck.md"
           - "rstfmt": "descriptors/rst_rstfmt.md"
       - "XML":
-          - "index": "descriptors/xml.md"
+          - "All XML linters": "descriptors/xml.md"
           - "xmllint": "descriptors/xml_xmllint.md"
       - "YAML":
-          - "index": "descriptors/yaml.md"
+          - "All YAML linters": "descriptors/yaml.md"
           - "yamllint": "descriptors/yaml_yamllint.md"
 # format-end
   - "Tooling Formats linters":
-      - "index": "./supported-linters#tooling-formats"
+      - "All tooling formats linters": "./supported-linters#tooling-formats"
       # tooling_format-start
       - "ANSIBLE":
-          - "index": "descriptors/ansible.md"
+          - "All ANSIBLE linters": "descriptors/ansible.md"
           - "ansible-lint": "descriptors/ansible_ansible_lint.md"
       - "ARM":
-          - "index": "descriptors/arm.md"
+          - "All ARM linters": "descriptors/arm.md"
           - "arm-ttk": "descriptors/arm_arm_ttk.md"
       - "CLOUDFORMATION":
-          - "index": "descriptors/cloudformation.md"
+          - "All CLOUDFORMATION linters": "descriptors/cloudformation.md"
           - "cfn-lint": "descriptors/cloudformation_cfn_lint.md"
       - "DOCKERFILE":
-          - "index": "descriptors/dockerfile.md"
+          - "All DOCKERFILE linters": "descriptors/dockerfile.md"
           - "dockerfilelint": "descriptors/dockerfile_dockerfilelint.md"
           - "hadolint": "descriptors/dockerfile_hadolint.md"
       - "EDITORCONFIG":
-          - "index": "descriptors/editorconfig.md"
+          - "All EDITORCONFIG linters": "descriptors/editorconfig.md"
           - "editorconfig-checker": "descriptors/editorconfig_editorconfig_checker.md"
       - "GHERKIN":
-          - "index": "descriptors/gherkin.md"
+          - "All GHERKIN linters": "descriptors/gherkin.md"
           - "gherkin-lint": "descriptors/gherkin_gherkin_lint.md"
       - "KUBERNETES":
-          - "index": "descriptors/kubernetes.md"
+          - "All KUBERNETES linters": "descriptors/kubernetes.md"
           - "kubeval": "descriptors/kubernetes_kubeval.md"
       - "OPENAPI":
-          - "index": "descriptors/openapi.md"
+          - "All OPENAPI linters": "descriptors/openapi.md"
           - "spectral": "descriptors/openapi_spectral.md"
       - "PUPPET":
-          - "index": "descriptors/puppet.md"
+          - "All PUPPET linters": "descriptors/puppet.md"
           - "puppet-lint": "descriptors/puppet_puppet_lint.md"
       - "SNAKEMAKE":
-          - "index": "descriptors/snakemake.md"
+          - "All SNAKEMAKE linters": "descriptors/snakemake.md"
           - "snakemake": "descriptors/snakemake_snakemake.md"
           - "snakefmt": "descriptors/snakemake_snakefmt.md"
       - "TEKTON":
-          - "index": "descriptors/tekton.md"
+          - "All TEKTON linters": "descriptors/tekton.md"
           - "tekton-lint": "descriptors/tekton_tekton_lint.md"
       - "TERRAFORM":
-          - "index": "descriptors/terraform.md"
+          - "All TERRAFORM linters": "descriptors/terraform.md"
           - "tflint": "descriptors/terraform_tflint.md"
           - "terrascan": "descriptors/terraform_terrascan.md"
           - "terragrunt": "descriptors/terraform_terragrunt.md"
 # tooling_format-end
   - "Other checks":
-      - "index": "./supported-linters#other"
+      - "All other linters": "./supported-linters#other"
       # other-start
       - "COPYPASTE":
-          - "index": "descriptors/copypaste.md"
+          - "All COPYPASTE linters": "descriptors/copypaste.md"
           - "jscpd": "descriptors/copypaste_jscpd.md"
       - "SPELL":
-          - "index": "descriptors/spell.md"
+          - "All SPELL linters": "descriptors/spell.md"
           - "cspell": "descriptors/spell_cspell.md"
 # other-end
   - "Reporters":
-      - "index": "reporters.md"
+      - "All reporters": "reporters.md"
       - "Text files": "reporters/TextReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
       - "E-mail": "reporters/EmailReporter.md"
@@ -249,6 +249,7 @@ nav:
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "TAP files": "reporters/TapReporter.md"
       - "Console": "reporters/ConsoleReporter.md"
+  - "Flavors": "flavors.md"
   - "Mega-Linter badge": "badge.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute": "how-to-contribute.md"

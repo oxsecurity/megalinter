@@ -1,5 +1,7 @@
 descriptor_id: COPYPASTE
 descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 lint_all_files: true
 linters:
   # JSCPD

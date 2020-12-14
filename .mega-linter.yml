@@ -9,12 +9,12 @@ DISABLE:
   # - COPYPASTE # Uncomment to disable checks of abusive copy-pastes
   - EDITORCONFIG
   # - SPELL # Uncomment to disable checks of spelling mistakes
+  - JAVASCRIPT
   - TEKTON
 DISABLE_LINTERS:
   - BASH_SHFMT
   - DOCKERFILE_HADOLINT
-  - JAVASCRIPT_STANDARD
-FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|docs/overrides|TEMPLATES)'
+FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|docs/overrides|flavors|clj-kondo|TEMPLATES)'
 BASH_FILTER_REGEX_EXCLUDE: (lib)
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SHOW_ELAPSED_TIME: true

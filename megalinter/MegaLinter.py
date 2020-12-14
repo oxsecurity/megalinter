@@ -11,7 +11,7 @@ import sys
 
 import git
 import terminaltables
-from megalinter import config, linter_factory, utils
+from megalinter import config, flavor_factory, linter_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 
@@ -77,6 +77,7 @@ class Megalinter:
         self.status = "success"
         self.return_code = 0
         self.has_updated_sources = 0
+        self.flavor_suggestions = None
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -117,6 +118,11 @@ class Megalinter:
                 active_linters += [linter]
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
+
+        # Exit if not all active linters are covered by current Mega-linter image flavor
+        if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
+            return
+
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
@@ -133,6 +139,12 @@ class Megalinter:
 
         # Sort linters before reports production
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
+
+        # Check if a Mega-Linter flavor can be used for this repo (except if FLAVOR_SUGGESTIONS: false is defined )
+        if config.get("FLAVOR_SUGGESTIONS", "true") == "true":
+            self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
+                active_linters
+            )
 
         # Generate reports
         for reporter in self.reporters:

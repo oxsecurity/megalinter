@@ -1,5 +1,7 @@
 descriptor_id: BASH
 descriptor_type: language
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 file_extensions:
   - ".sh"
   - ".bash"

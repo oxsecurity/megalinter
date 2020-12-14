@@ -5,6 +5,20 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Flavored Mega-Linters
+  - Generate lightweight docker images to improve Mega-Linter performances on some language based projects
+  - During Mega-Linter run, suggest user to use a flavor and write it in reporters
+  - Update descriptor YML files to define flavours
+  - Update build.py to create one Dockerfile by Mega-Linter flavour & flavors documentation
+  - New GHA workflows to build all flavoured Mega-Linters when pushing in master
+
+- Fixes
+  - Output reporter problems as warnings
+  - Do not make Mega-Linter fail in case GitHubStatusReporter fails
+
+- Doc
+  - Rename "index" pages into more meaningful labels
+
 ## [4.15.0] 2020-12-13
 
 - Add Vue.js linting (eslint-plugin-vue added in dependencies)

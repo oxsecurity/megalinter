@@ -1,5 +1,7 @@
 descriptor_id: ANSIBLE
 descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 files_sub_directory: ansible
 file_names_not_ends_with:
   - "vault.yml"

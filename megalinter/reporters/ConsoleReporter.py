@@ -3,6 +3,7 @@
 Output results in console
 """
 import logging
+import os
 
 import terminaltables
 from megalinter import Reporter
@@ -11,6 +12,7 @@ from megalinter import Reporter
 class ConsoleReporter(Reporter):
     name = "CONSOLE"
     scope = "mega-linter"
+    gh_url = "https://nvuillam.github.io/mega-linter"
 
     def __init__(self, params=None):
         # Activate console output by default
@@ -52,3 +54,19 @@ class ConsoleReporter(Reporter):
         for table_line in table.table.splitlines():
             logging.info(table_line)
         logging.info("")
+        if self.master.flavor_suggestions is not None:
+            build_version = os.environ.get("BUILD_VERSION", "v4")
+            current_version = "v4" if "v4" in build_version else build_version
+            logging.warning(
+                "You could have same capabilities but better runtime performances"
+                " if you use a Mega-Linter flavor:"
+            )
+            for suggestion in self.master.flavor_suggestions:
+                action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{current_version}"
+                image_name = (
+                    f"nvuillam/mega-linter-{suggestion['flavor']}:{current_version}"
+                )
+                flavor_msg = f"- {action_path} | {image_name} ({suggestion['linters_number']} linters)"
+                logging.warning(flavor_msg)
+            logging.warning(f"More info at {self.gh_url}/flavors/")
+            logging.info("")

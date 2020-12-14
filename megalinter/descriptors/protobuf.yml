@@ -1,5 +1,7 @@
 descriptor_id: PROTOBUF
 descriptor_type: format
+descriptor_flavors:
+  - all_flavors # Any project can contain Protocol buffer
 file_extensions:
   - ".proto"
 linters:

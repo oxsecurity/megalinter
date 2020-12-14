@@ -1,5 +1,7 @@
 descriptor_id: JAVA
 descriptor_type: language
+descriptor_flavors:
+  - java
 file_extensions:
   - ".java"
 install:

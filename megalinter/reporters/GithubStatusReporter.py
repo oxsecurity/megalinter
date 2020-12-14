@@ -62,16 +62,28 @@ class GithubStatusReporter(Reporter):
                 "description": description,
                 "context": f"--> Lint: {self.master.descriptor_id} with {self.master.linter_name}",
             }
-            response = requests.post(url, headers=headers, json=data)
-            if 200 <= response.status_code < 299:
-                logging.debug(
-                    f"Successfully posted Github Status for {self.master.descriptor_id} with {self.master.linter_name}"
-                )
-            else:
-                logging.error(
+            try:
+                response = requests.post(url, headers=headers, json=data)
+                if 200 <= response.status_code < 299:
+                    logging.debug(
+                        f"Successfully posted Github Status for {self.master.descriptor_id} "
+                        f"with {self.master.linter_name}"
+                    )
+                else:
+                    logging.warning(
+                        f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
+                        f"with {self.master.linter_name}: {response.status_code}\n"
+                        f"GitHub API response: {response.text}"
+                    )
+            except ConnectionError as e:
+                logging.warning(
                     f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
-                    f"with {self.master.linter_name}: {response.status_code}\n"
-                    f"GitHub API response: {response.text}"
+                    f"with {self.master.linter_name}: Connection error {str(e)}"
+                )
+            except Exception as e:
+                logging.warning(
+                    f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
+                    f"with {self.master.linter_name}: Error {str(e)}"
                 )
         else:
             logging.debug(

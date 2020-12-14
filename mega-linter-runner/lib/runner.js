@@ -37,12 +37,15 @@ class MegaLinterRunner {
             return { status: 0, stdout: outputString };
         }
 
-        // Build Mega-Linter docker image name with release version
+        // Build Mega-Linter docker image name with flavor and release version
         const release = (options.release in ["v4", "stable"]) ? "v4" :
             (options.release == "insiders") ? "latest" :
                 (options.release) ? options.release :
                     "v4";
-        const dockerImage = `nvuillam/mega-linter:${release}`;
+        const dockerImageName = (options.flavor === 'all' || options.flavor == null) ?
+            'nvuillam/mega-linter' :
+            `nvuillam/mega-linter-${options.flavor}`
+        const dockerImage = `${dockerImageName}:${release}`;
 
         // Pull docker image
         if (options.nodockerpull !== true) {

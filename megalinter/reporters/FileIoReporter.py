@@ -66,17 +66,17 @@ class FileIoReporter(Reporter):
                 )
             else:
                 json_data = response.json()
-                logging.error(
+                logging.warning(
                     f"[File.io Reporter] Error posting report on file.io: {response.status_code} \n {json_data}"
                 )
-                logging.error(
+                logging.warning(
                     f"[File.io Reporter] GitHub API response: {response.text}"
                 )
         except JSONDecodeError as e:
-            logging.error(
+            logging.warning(
                 f"[File.io Reporter] Fatal error posting report on file.io: {str(e.msg)}"
             )
         except Exception as e:
-            logging.error(
+            logging.warning(
                 f"[File.io Reporter] Fatal error posting report on file.io: {str(e)}"
             )

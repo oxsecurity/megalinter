@@ -1,5 +1,7 @@
 descriptor_id: PHP
 descriptor_type: language
+descriptor_flavors:
+  - php
 file_extensions:
   - ".php"
 install:

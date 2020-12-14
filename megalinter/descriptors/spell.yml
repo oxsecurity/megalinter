@@ -1,5 +1,7 @@
 descriptor_id: SPELL
 descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 lint_all_other_linters_files: true
 linters:
   # CSPELL
