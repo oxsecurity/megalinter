@@ -7,9 +7,9 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Flavored Mega-Linters
   - Generate lightweight docker images to improve Mega-Linter performances on some language based projects
   - During Mega-Linter run, suggest user to use a flavor and write it in reporters
-  - Update build.py to create one Dockerfile by Mega-Linter flavour
-  - Update descriptor YML files to set related flavours
-  - New GHA to build all flavoured Mega-Linters when pushing in master
+  - Update descriptor YML files to define flavours
+  - Update build.py to create one Dockerfile by Mega-Linter flavour & flavors documentation
+  - New GHA workflows to build all flavoured Mega-Linters when pushing in master
 
 - Fixes
   - Output reporter problems as warnings
