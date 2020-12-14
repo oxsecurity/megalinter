@@ -421,19 +421,21 @@ def generate_descriptor_documentation(descriptor):
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
     flavor_github_action = f"nvuillam/mega-linter/flavors/{flavor_id}@v4"
     flavor_docker_image = f"nvuillam/mega-linter-{flavor_id}:v4"
-    flavor_doc_md = [f"# {flavor_id} Mega-Linter Flavor",
-                     "",
-                     "## Description",
-                     "",
-                     flavor['label'],
-                     "",
-                     "## Usage",
-                     "",
-                     f"- With GitHub Action: **{flavor_github_action}**",
-                     f"- With Docker image: **{flavor_docker_image}**",
-                     "",
-                     "## Embedded linters",
-                     ""]
+    flavor_doc_md = [
+        f"# {flavor_id} Mega-Linter Flavor",
+        "",
+        "## Description",
+        "",
+        flavor["label"],
+        "",
+        "## Usage",
+        "",
+        f"- With GitHub Action: **{flavor_github_action}**",
+        f"- With Docker image: **{flavor_docker_image}**",
+        "",
+        "## Embedded linters",
+        "",
+    ]
     filtered_table_md = []
     for line in linters_tables_md:
         if "<!-- linter-icon -->" in line:
@@ -465,10 +467,15 @@ def dump_as_json(value: Any, empty_value: str) -> str:
 
 # Build a MD table for a type of linter (language, format, tooling_format), and a MD file for each linter
 def process_type(linters_by_type, type1, type_label, linters_tables_md):
-    col_header = "Language" if type1 == "language" \
-        else "Format" if type1 == "format" \
-        else "Tooling format" if type1 == "tooling_format" \
+    col_header = (
+        "Language"
+        if type1 == "language"
+        else "Format"
+        if type1 == "format"
+        else "Tooling format"
+        if type1 == "tooling_format"
         else "Code quality checker"
+    )
     linters_tables_md += [
         f"### {type_label}",
         "",
@@ -811,8 +818,10 @@ def build_flavors_md_table():
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    md_line_all = f"| {icon_html} | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | " \
-                  f"Default Mega-Linter Flavor | {str(linters_number)} |"
+    md_line_all = (
+        f"| {icon_html} | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | "
+        f"Default Mega-Linter Flavor | {str(linters_number)} |"
+    )
     md_table += [md_line_all]
     all_flavors = megalinter.flavor_factory.get_all_flavors()
     for flavor_id, flavor in all_flavors.items():
@@ -820,10 +829,8 @@ def build_flavors_md_table():
             f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico", "", "", flavor_id, 32,
         )
         linters_number = len(flavor["linters"])
-        flavor_link = DOCS_URL_FLAVORS_ROOT +"/"+flavor_id
-        md_line = (
-            f"| {icon_html} | [{flavor_id}]({flavor_link}) | {flavor['label']} | {str(linters_number)} |"
-        )
+        flavor_link = DOCS_URL_FLAVORS_ROOT + "/" + flavor_id
+        md_line = f"| {icon_html} | [{flavor_id}]({flavor_link}) | {flavor['label']} | {str(linters_number)} |"
         md_table += [md_line]
     return md_table
 
