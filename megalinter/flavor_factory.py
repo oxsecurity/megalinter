@@ -53,7 +53,9 @@ def get_image_flavor():
 def check_active_linters_match_flavor(active_linters):
     flavor = get_image_flavor()
     if flavor == "all":
-        logging.debug("Mega-Linter flavor is \"all\", no need to check match with linters")
+        logging.debug(
+            'Mega-Linter flavor is "all", no need to check match with linters'
+        )
         return True
     all_flavors = get_all_flavors()
     flavor_linters = all_flavors[flavor]["linters"]
@@ -63,11 +65,13 @@ def check_active_linters_match_flavor(active_linters):
             missing_linters += [active_linter.name]
     if len(missing_linters) > 0:
         missing_linters_str = ",".join(missing_linters)
-        logging.error(f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
-                      "To solve this problem, please either: \n"
-                      "- use default flavor nvuillam/mega-linter\n"
-                      "- add missing linters in DISABLE variable in your .mega-linter.yml config file "
-                      "located in your root directory")
+        logging.error(
+            f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
+            "To solve this problem, please either: \n"
+            "- use default flavor nvuillam/mega-linter\n"
+            "- add missing linters in DISABLE variable in your .mega-linter.yml config file "
+            "located in your root directory"
+        )
         return False
     return True
 
@@ -86,9 +90,11 @@ def get_megalinter_flavor_suggestions(active_linters):
                 match = False
                 break
         if match is True:
-            matching_flavor = {"flavor": flavor_id,
-                               "flavor_info": flavor_info,
-                               "linters_number": len(flavor_info["linters"])}
+            matching_flavor = {
+                "flavor": flavor_id,
+                "flavor_info": flavor_info,
+                "linters_number": len(flavor_info["linters"]),
+            }
             matching_flavors += [matching_flavor]
     if len(matching_flavors) > 0:
         return matching_flavors

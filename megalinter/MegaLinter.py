@@ -141,8 +141,10 @@ class Megalinter:
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
 
         # Check if a Mega-Linter flavor can be used for this repo (except if FLAVOR_SUGGESTIONS: false is defined )
-        if config.get("FLAVOR_SUGGESTIONS","true") == "true":
-            self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(active_linters)
+        if config.get("FLAVOR_SUGGESTIONS", "true") == "true":
+            self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
+                active_linters
+            )
 
         # Generate reports
         for reporter in self.reporters:

@@ -57,11 +57,15 @@ class ConsoleReporter(Reporter):
         if self.master.flavor_suggestions is not None:
             build_version = os.environ.get("BUILD_VERSION", "v4")
             current_version = "v4" if "v4" in build_version else build_version
-            logging.warning("You could have same capabilities but better runtime performances"
-                            " if you use a Mega-Linter flavor:")
+            logging.warning(
+                "You could have same capabilities but better runtime performances"
+                " if you use a Mega-Linter flavor:"
+            )
             for suggestion in self.master.flavor_suggestions:
                 action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{current_version}"
-                image_name = f"nvuillam/mega-linter-{suggestion['flavor']}:{current_version}"
+                image_name = (
+                    f"nvuillam/mega-linter-{suggestion['flavor']}:{current_version}"
+                )
                 flavor_msg = f"- {action_path} | {image_name} ({suggestion['linters_number']} linters)"
                 logging.warning(flavor_msg)
             logging.warning(f"More info at {self.gh_url}/flavors/")
