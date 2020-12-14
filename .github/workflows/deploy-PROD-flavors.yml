@@ -49,15 +49,16 @@ jobs:
         flavor:
           [
             "dart",
+            "dotnet",
             "go",
             "java",
             "javascript",
-            "microsoft",
             "php",
             "python",
             "ruby",
             "rust",
             "scala",
+            "terraform",
           ]
     # Only run this on the main repo
     if: github.repository == 'nvuillam/mega-linter'
