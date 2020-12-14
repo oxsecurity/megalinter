@@ -42,7 +42,7 @@ class MegaLinterRunner {
             (options.release == "insiders") ? "latest" :
                 (options.release) ? options.release :
                     "v4";
-        const dockerImageName = (options.flavor === 'all') ?
+        const dockerImageName = (options.flavor === 'all' || options.flavor == null) ?
             'nvuillam/mega-linter' :
             `nvuillam/mega-linter-${options.flavor}`
         const dockerImage = `${dockerImageName}:${release}`;
