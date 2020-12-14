@@ -117,8 +117,14 @@ class GithubCommentReporter(Reporter):
                 )
                 for suggestion in self.master.flavor_suggestions:
                     build_version = os.environ.get("BUILD_VERSION", "v4")
-                    current_version = "v4" if "v4" in build_version else build_version
-                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{current_version}"
+                    action_version = (
+                        "v4"
+                        if "v4" in build_version
+                        else "insiders"
+                        if build_version == "latest"
+                        else build_version
+                    )
+                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
                     flavor_msg = (
                         f"- **{action_path}**"
                         f" ({suggestion['linters_number']} linters)"

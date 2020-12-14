@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/puppet.yml -->
 # PUPPET
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) |

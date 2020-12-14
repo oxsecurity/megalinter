@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/html.yml -->
 # HTML
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -16,8 +22,3 @@
 | HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) |

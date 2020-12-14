@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/clojure.yml -->
 # CLOJURE
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) |
+
 ## Linted files
 
 - File extensions:
@@ -18,8 +24,3 @@
 | CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) |

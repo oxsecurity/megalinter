@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/java.yml -->
 # JAVA
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,11 +21,6 @@
 | JAVA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | JAVA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) |
 
 ## Behind the scenes
 
