@@ -829,8 +829,13 @@ def build_flavors_md_table():
             f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico", "", "", flavor_id, 32,
         )
         linters_number = len(flavor["linters"])
-        flavor_link = DOCS_URL_FLAVORS_ROOT + "/" + flavor_id
-        md_line = f"| {icon_html} | [{flavor_id}]({flavor_link}) | {flavor['label']} | {str(linters_number)} |"
+        flavor_doc_url = (
+            f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
+        )
+        md_line = (
+            f"| {icon_html} | [{flavor_id}]({doc_url(flavor_doc_url)}) |" 
+            f" {flavor['label']} | {str(linters_number)} |"
+        )
         md_table += [md_line]
     return md_table
 

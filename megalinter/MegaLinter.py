@@ -119,7 +119,7 @@ class Megalinter:
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
 
-        # Exit if not all active linters are covered by current Mega-linter image flavor
+        # Exit with error message if not all active linters are covered by current Mega-linter image flavor
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
             return
 
