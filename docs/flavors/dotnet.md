@@ -6,8 +6,9 @@ Mega-Linter optimized for C, C++, C# or VB based projects
 
 ## Usage
 
-- With GitHub Action: **nvuillam/mega-linter/flavors/dotnet@v4**
-- With Docker image: **nvuillam/mega-linter-dotnet:v4**
+- [GitHub Action](https://nvuillam.github.io/mega-linter/installation/#github-action): **nvuillam/mega-linter/flavors/dotnet@v4**
+- Docker image: **nvuillam/mega-linter-dotnet:v4**
+- [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/): `mega-linter-runner --flavor dotnet`
 
 ## Embedded linters
 

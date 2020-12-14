@@ -6,8 +6,9 @@ Mega-Linter optimized for TERRAFORM based projects
 
 ## Usage
 
-- With GitHub Action: **nvuillam/mega-linter/flavors/terraform@v4**
-- With Docker image: **nvuillam/mega-linter-terraform:v4**
+- [GitHub Action](https://nvuillam.github.io/mega-linter/installation/#github-action): **nvuillam/mega-linter/flavors/terraform@v4**
+- Docker image: **nvuillam/mega-linter-terraform:v4**
+- [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/): `mega-linter-runner --flavor terraform`
 
 ## Embedded linters
 

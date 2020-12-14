@@ -6,8 +6,9 @@ Mega-Linter optimized for JAVA based projects
 
 ## Usage
 
-- With GitHub Action: **nvuillam/mega-linter/flavors/java@v4**
-- With Docker image: **nvuillam/mega-linter-java:v4**
+- [GitHub Action](https://nvuillam.github.io/mega-linter/installation/#github-action): **nvuillam/mega-linter/flavors/java@v4**
+- Docker image: **nvuillam/mega-linter-java:v4**
+- [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/): `mega-linter-runner --flavor java`
 
 ## Embedded linters
 

@@ -6,8 +6,9 @@ Mega-Linter optimized for RUBY based projects
 
 ## Usage
 
-- With GitHub Action: **nvuillam/mega-linter/flavors/ruby@v4**
-- With Docker image: **nvuillam/mega-linter-ruby:v4**
+- [GitHub Action](https://nvuillam.github.io/mega-linter/installation/#github-action): **nvuillam/mega-linter/flavors/ruby@v4**
+- Docker image: **nvuillam/mega-linter-ruby:v4**
+- [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/): `mega-linter-runner --flavor ruby`
 
 ## Embedded linters
 

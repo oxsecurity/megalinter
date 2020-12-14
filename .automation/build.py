@@ -21,6 +21,7 @@ from webpreview import web_preview
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
+MKDOCS_URL_ROOT = "https://nvuillam.github.io/mega-linter"
 URL_RAW_ROOT = "https://github.com/nvuillam/mega-linter/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"
 DOCS_URL_ROOT = URL_ROOT + "/docs"
@@ -430,8 +431,9 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         "",
         "## Usage",
         "",
-        f"- With GitHub Action: **{flavor_github_action}**",
-        f"- With Docker image: **{flavor_docker_image}**",
+        f"- [GitHub Action]({MKDOCS_URL_ROOT}/installation/#github-action): **{flavor_github_action}**",
+        f"- Docker image: **{flavor_docker_image}**",
+        f"- [mega-linter-runner]({MKDOCS_URL_ROOT}/mega-linter-runner/): `mega-linter-runner --flavor {flavor_id}`",
         "",
         "## Embedded linters",
         "",
