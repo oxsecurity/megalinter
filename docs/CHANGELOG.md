@@ -18,6 +18,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Doc
   - Rename "index" pages into more meaningful labels
+  - Formatting
 
 ## [4.15.0] 2020-12-13
 
