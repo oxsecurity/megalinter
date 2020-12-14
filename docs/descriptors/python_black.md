@@ -9,25 +9,27 @@
 
 ## black documentation
 
-- Version in Mega-Linter: **20.8**
-- Visit [Official Web Site](https://black.readthedocs.io/en/stable/)
-- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html)
-  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black) will be used
+- Version in Mega-Linter: **19.10**
+- Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
+  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
 
-[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black)
+[![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_BLACK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | PYTHON_BLACK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | PYTHON_BLACK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_BLACK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_BLACK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_BLACK_FILE_NAME | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-black` |
 | PYTHON_BLACK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_BLACK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -88,6 +90,13 @@ Options:
                                   Black's output. [default: per-file auto-
                                   detection]
 
+  --py36                          Allow using Python 3.6-only syntax on all
+                                  input files.  This will put trailing commas
+                                  in function signatures and calls also after
+                                  *args and **kwargs. Deprecated; use
+                                  --target-version instead. [default: per-file
+                                  auto-detection]
+
   --pyi                           Format all input files like typing stubs
                                   regardless of file extension (useful when
                                   piping source on standard input).
@@ -97,14 +106,11 @@ Options:
   --check                         Don't write the files back, just return the
                                   status.  Return code 0 means nothing would
                                   change.  Return code 1 means some files
-                                  would be reformatted. Return code 123 means
+                                  would be reformatted.  Return code 123 means
                                   there was an internal error.
 
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
-
-  --color / --no-color            Show colored diff. Only applies when
-                                  `--diff` is given.
 
   --fast / --safe                 If --fast given, skip temporary sanity
                                   checks. [default: --safe]
@@ -124,13 +130,9 @@ Options:
                                   paths are excluded. Use forward slashes for
                                   directories on all platforms (Windows, too).
                                   Exclusions are calculated first, inclusions
-                                  later.  [default: /(\.direnv|\.eggs|\.git|\.
-                                  hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_bu
-                                  ild|buck-out|build|dist)/]
-
-  --force-exclude TEXT            Like --exclude, but files and directories
-                                  matching this regex will be excluded even
-                                  when they are passed explicitly as arguments
+                                  later.  [default: /(\.eggs|\.git|\.hg|\.mypy
+                                  _cache|\.nox|\.tox|\.venv|\.svn|_build|buck-
+                                  out|build|dist)/]
 
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
@@ -141,7 +143,7 @@ Options:
                                   --exclude=.
 
   --version                       Show the version and exit.
-  --config FILE                   Read configuration from FILE path.
+  --config FILE                   Read configuration from PATH.
   -h, --help                      Show this message and exit.
 ```
 
@@ -153,7 +155,7 @@ Options:
 ### Example success log
 
 ```shell
-Results of black linter (version 20.8)
+Results of black linter (version 19.10)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
 -----------------------------------------------
 
@@ -166,7 +168,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
 ### Example error log
 
 ```shell
-Results of black linter (version 20.8)
+Results of black linter (version 19.10)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
 -----------------------------------------------
 

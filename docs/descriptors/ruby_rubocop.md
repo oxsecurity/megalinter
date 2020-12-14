@@ -10,26 +10,28 @@
 ## rubocop documentation
 
 - Version in Mega-Linter: **0.82.0**
-- Visit [Official Web Site](https://rubocop.org/)
-- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html)
-  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml) will be used
-- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code)
-- See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html)
+- Visit [Official Web Site](https://rubocop.org/){target=_blank}
+- See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
+  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
+- See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code){target=_blank}
+- See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html){target=_blank}
 
-[![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop)
+[![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | RUBY_RUBOCOP_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | RUBY_RUBOCOP_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | RUBY_RUBOCOP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| RUBY_RUBOCOP_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".rb"]` |
+| RUBY_RUBOCOP_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | RUBY_RUBOCOP_FILE_NAME | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ruby-lint.yml` |
 | RUBY_RUBOCOP_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RUBY_RUBOCOP_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

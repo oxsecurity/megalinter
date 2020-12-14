@@ -1,14 +1,16 @@
 descriptor_id: OPENAPI
 descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Any project can contain OpenAPI / swagger specification
 file_extensions:
   - ".yml"
   - ".yaml"
   - ".json"
-file_contains:
+file_contains_regex:
   - '"openapi":'
   - '"swagger":'
-  - "openapi:"
-  - "swagger:"
+  - 'openapi:'
+  - 'swagger:'
 linters:
   # Spectral
   - linter_name: spectral

@@ -4,21 +4,23 @@
 
 ## kubeval documentation
 
-- Version in Mega-Linter: **dev**
-- Visit [Official Web Site](https://www.kubeval.com/)
+- Version in Mega-Linter: **0.15.0**
+- Visit [Official Web Site](https://www.kubeval.com/){target=_blank}
 
-[![kubeval - GitHub](https://gh-card.dev/repos/instrumenta/kubeval.svg?fullname=)](https://github.com/instrumenta/kubeval)
+[![kubeval - GitHub](https://gh-card.dev/repos/instrumenta/kubeval.svg?fullname=)](https://github.com/instrumenta/kubeval){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable kubeval by adding `KUBERNETES_KUBEVAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable kubeval by adding `KUBERNETES_KUBEVAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable kubeval by adding `KUBERNETES_KUBEVAL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable kubeval by adding `KUBERNETES_KUBEVAL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | KUBERNETES_KUBEVAL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | KUBERNETES_KUBEVAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| KUBERNETES_KUBEVAL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml", ".json"]` |
+| KUBERNETES_KUBEVAL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | KUBERNETES_KUBEVAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 | KUBERNETES_DIRECTORY | Directory containing KUBERNETES files | `kubernetes` |
 
@@ -33,7 +35,7 @@
 
 - Detected file content:
   - `apiVersion:`
-  - `kustomize.config.k8s.io`
+  - `kustomize\.config\.k8s\.io`
   - `tekton`
 
 <!-- markdownlint-disable -->
@@ -79,15 +81,17 @@ Flags:
 
 - Dockerfile commands :
 ```dockerfile
-FROM garethr/kubeval:latest as kubeval
-COPY --from=kubeval /kubeval /usr/bin/
+RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+    && tar xf kubeval-linux-amd64.tar.gz \
+    && cp kubeval /usr/local/bin
+
 ```
 
 
 ### Example success log
 
 ```shell
-Results of kubeval linter (version dev)
+Results of kubeval linter (version 0.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
 -----------------------------------------------
 
@@ -99,7 +103,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernet
 ### Example error log
 
 ```shell
-Results of kubeval linter (version dev)
+Results of kubeval linter (version 0.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
 -----------------------------------------------
 

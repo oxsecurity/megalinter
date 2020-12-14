@@ -9,24 +9,26 @@
 
 ## ktlint documentation
 
-- Version in Mega-Linter: **0.39.0**
-- Visit [Official Web Site](https://ktlint.github.io)
-- See [Index of problems detected by ktlint](https://ktlint.github.io/#rules)
+- Version in Mega-Linter: **0.40.0**
+- Visit [Official Web Site](https://ktlint.github.io){target=_blank}
+- See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
-[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint)
+[![ktlint - GitHub](https://gh-card.dev/repos/pinterest/ktlint.svg?fullname=)](https://github.com/pinterest/ktlint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable ktlint by adding `KOTLIN_KTLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable ktlint by adding `KOTLIN_KTLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | KOTLIN_KTLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | KOTLIN_KTLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| KOTLIN_KTLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".kt", ".kts"]` |
+| KOTLIN_KTLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | KOTLIN_KTLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration
@@ -97,7 +99,9 @@ Flags:
                              Customize the output color
       --debug                Turn on debug output
       --disabled_rules=<disabledRules>
-                             Comma-separated list of rules to globally disable
+                             Comma-separated list of rules to globally disable. To
+                               disable standard ktlint rule-set use
+                               --disabled_rules=standard
   -F, --format               Fix any deviations from the code style
       --limit=<limit>        Maximum number of errors to show (default: show all)
       --relative             Print files relative to the working directory (e.g.
@@ -112,6 +116,7 @@ Flags:
       --editorconfig=<editorConfigPath>
                              Path to .editorconfig
       --experimental         Enabled experimental rules (ktlint-ruleset-experimental)
+      --baseline=<baseline>  Defines a baseline file to check against
   -h, --help                 Show this help message and exit.
   -V, --version              Print version information and exit.
 Commands:
@@ -133,6 +138,10 @@ Commands:
                                                             settings (global)
   applyToIDEAProject, --apply-to-idea-project             Update Intellij IDEA
                                                             project settings
+  generateEditorConfig                                    EXPERIMENTAL!!!
+                                                            Generate kotlin
+                                                            style section for '.
+                                                            editorconfig' file.
 ```
 
 ### Installation on mega-linter Docker image
@@ -149,7 +158,7 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 ### Example success log
 
 ```shell
-Results of ktlint linter (version 0.39.0)
+Results of ktlint linter (version 0.40.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
 -----------------------------------------------
 
@@ -161,7 +170,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_k
 ### Example error log
 
 ```shell
-Results of ktlint linter (version 0.39.0)
+Results of ktlint linter (version 0.40.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
 -----------------------------------------------
 

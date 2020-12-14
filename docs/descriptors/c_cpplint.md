@@ -5,21 +5,23 @@
 ## cpplint documentation
 
 - Version in Mega-Linter: **1.5.4**
-- Visit [Official Web Site](https://github.com/cpplint/cpplint#readme)
-- See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html)
+- Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
+- See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
-[![cpplint - GitHub](https://gh-card.dev/repos/cpplint/cpplint.svg?fullname=)](https://github.com/cpplint/cpplint)
+[![cpplint - GitHub](https://gh-card.dev/repos/cpplint/cpplint.svg?fullname=)](https://github.com/cpplint/cpplint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | C_CPPLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | C_CPPLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | C_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| C_CPPLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".c", ".h"]` |
+| C_CPPLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | C_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
@@ -72,7 +74,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['c', 'hpp', 'cpp', 'cxx', 'cuh', 'c++', 'hxx', 'hh', 'cu', 'cc', 'h', 'h++'].
+  Default linted extensions are ['h++', 'cuh', 'h', 'cu', 'cpp', 'cc', 'cxx', 'c', 'hh', 'c++', 'hxx', 'hpp'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -188,7 +190,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=c,hpp,cpp,cxx,cuh,c++,hxx,hh,cu,cc,h,h++
+        --extensions=h++,cuh,h,cu,cpp,cc,cxx,c,hh,c++,hxx,hpp
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -202,10 +204,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'hpp', 'cuh', 'hxx', 'hh', 'h', 'h++'} will be assumed to be headers)
+     (by default, only files with extensions {'h++', 'cuh', 'h', 'hh', 'hxx', 'hpp'} will be assumed to be headers)
 
       Examples:
-        --headers=hpp,cuh,hxx,hh,h,h++
+        --headers=h++,cuh,h,hh,hxx,hpp
         --headers=hpp,hxx
         --headers=hpp
 

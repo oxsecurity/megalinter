@@ -9,24 +9,26 @@
 
 ## jscpd documentation
 
-- Version in Mega-Linter: **3.3.21**
-- Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme)
-- See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file)
-  - If custom .jscpd.json is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json) will be used
-- See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks)
+- Version in Mega-Linter: **3.3.22**
+- Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
+- See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
+  - If custom .jscpd.json is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json){target=_blank} will be used
+- See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks){target=_blank}
 
-[![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd)
+[![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | COPYPASTE_JSCPD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| COPYPASTE_JSCPD_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| COPYPASTE_JSCPD_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | COPYPASTE_JSCPD_FILE_NAME | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.jscpd.json` |
 | COPYPASTE_JSCPD_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COPYPASTE_JSCPD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -117,21 +119,28 @@ Options:
 ### Example success log
 
 ```shell
-Results of jscpd linter (version 3.3.21)
+Results of jscpd linter (version 3.3.22)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/copypaste/good
+    ┌────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+    │ Format │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ go     │ 2              │ 12          │ 52           │ 0            │ 0 (0%)           │ 0 (0%)            │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ Total: │ 2              │ 12          │ 52           │ 0            │ 0 (0%)           │ 0 (0%)            │
+    └────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+    Found 0 clones.
     HTML report saved to report/copy-paste/html/
-    Markdown report saved to report/copy-paste/jscpd-report.md
-    Detection time:: 24.847ms
+    Detection time:: 42.298ms
 
 ```
 
 ### Example error log
 
 ```shell
-Results of jscpd linter (version 3.3.21)
+Results of jscpd linter (version 3.3.22)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
@@ -140,8 +149,15 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypast
      - copypaste_bad_1.go [1:1 - 33:2] (32 lines, 222 tokens)
        copypaste_bad_2.go [1:1 - 33:2]
     
+    ┌────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+    │ Format │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ go     │ 2              │ 64          │ 444          │ 1            │ 32 (50%)         │ 222 (50%)         │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ Total: │ 2              │ 64          │ 444          │ 1            │ 32 (50%)         │ 222 (50%)         │
+    └────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+    Found 1 clones.
     HTML report saved to report/copy-paste/html/
-    Markdown report saved to report/copy-paste/jscpd-report.md
     ERROR: jscpd found too many duplicates (50%) over threshold (0%)
     Error: ERROR: jscpd found too many duplicates (50%) over threshold (0%)
         at ThresholdReporter.report (/node_modules/@jscpd/finder/dist/reporters/threshold.js:12:19)

@@ -1,4 +1,4 @@
-Results of scalafix linter (version 0.9.23)
+Results of scalafix linter (version 0.9.24)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
 -----------------------------------------------
 

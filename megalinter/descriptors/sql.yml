@@ -1,5 +1,7 @@
 descriptor_id: SQL
 descriptor_type: language
+descriptor_flavors:
+  - all_flavors # SQL can be found in any project type
 file_extensions:
   - ".sql"
 linters:

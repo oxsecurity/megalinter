@@ -1,7 +1,9 @@
 descriptor_id: DOCKERFILE
 descriptor_type: tooling_format
-file_names:
-  - "Dockerfile"
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_names_regex:
+  - 'Dockerfile'
 test_folder: docker
 linters:
   # dockerfilelint

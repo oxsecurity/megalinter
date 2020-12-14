@@ -1,5 +1,7 @@
 descriptor_id: TSX
 descriptor_type: language
+descriptor_flavors:
+  - javascript
 file_extensions:
   - ".tsx"
 linters:

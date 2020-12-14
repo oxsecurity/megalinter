@@ -5,23 +5,25 @@
 ## yamllint documentation
 
 - Version in Mega-Linter: **1.25.0**
-- Visit [Official Web Site](https://yamllint.readthedocs.io/)
-- See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration)
-  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml) will be used
-- See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html)
+- Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
+- See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
+  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml){target=_blank} will be used
+- See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html){target=_blank}
 
-[![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint)
+[![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable yamllint by adding `YAML_YAMLLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable yamllint by adding `YAML_YAMLLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable yamllint by adding `YAML_YAMLLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable yamllint by adding `YAML_YAMLLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | YAML_YAMLLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | YAML_YAMLLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | YAML_YAMLLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| YAML_YAMLLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml"]` |
+| YAML_YAMLLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | YAML_YAMLLINT_FILE_NAME | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.yaml-lint.yml` |
 | YAML_YAMLLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | YAML_YAMLLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

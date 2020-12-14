@@ -10,7 +10,7 @@ ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
 
 def init_config(workspace):
     if os.environ.get(ENV_RUNTIME_KEY, "") != "":
-        logging.info("Init config: Runtime config already initialized")
+        logging.debug("Init config: Runtime config already initialized")
         return
     env = os.environ.copy()
     if workspace is None:
@@ -62,7 +62,14 @@ def set_config(config):
 def get(config_var=None, default=None):
     if config_var is None:
         return get_config()
-    return get_config().get(config_var, default)
+    val = get_config().get(config_var, default)
+    # IF boolean, convert to "true" or "false"
+    if isinstance(val, bool):
+        if val is True:
+            val = "true"
+        elif val is False:
+            val = "false"
+    return val
 
 
 def get_list(config_var, default=None):
@@ -91,7 +98,7 @@ def copy():
 def delete(key=None):
     if key is None:
         del os.environ[ENV_RUNTIME_KEY]
-        logging.info("Cleared Mega-Linter runtime config")
+        logging.debug("Cleared Mega-Linter runtime config")
         return
     config = get_config()
     if key in config:

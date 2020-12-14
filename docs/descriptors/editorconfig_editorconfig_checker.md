@@ -9,22 +9,24 @@
 
 ## editorconfig-checker documentation
 
-- Visit [Official Web Site](https://editorconfig-checker.github.io/)
-- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
-- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
+- Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
+- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
+- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
 
-[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker)
+[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `["*"]` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAME | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -51,6 +53,7 @@ editorconfig-checker myfile.js
 
 ```shell
 USAGE:
+
   -config string
       config
   -debug
@@ -85,16 +88,13 @@ USAGE:
       print debugging information
   -version
       print the version number
+
 ```
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-```
-
+- NPM packages (node.js):
+  - [editorconfig-checker](https://www.npmjs.com/package/editorconfig-checker)
 
 ### Example success log
 
@@ -116,11 +116,11 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorco
 -----------------------------------------------
 
 [ERROR] .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext
-    [33;1m.automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:[33;0m
-    [31;1m	1: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m	2: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m	3: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m
-    3 errors found[33;0m
+    .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:
+    	1: Wrong amount of left-padding spaces(want multiple of 4)
+    	2: Wrong amount of left-padding spaces(want multiple of 4)
+    	3: Wrong amount of left-padding spaces(want multiple of 4)
+    
+    3 errors found
 
 ```

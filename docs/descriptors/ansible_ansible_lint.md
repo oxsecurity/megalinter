@@ -5,24 +5,26 @@
 ## ansible-lint documentation
 
 - Version in Mega-Linter: **4.2.0**
-- Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/)
-- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file)
-  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml) will be used
-- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules)
-- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html)
+- Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
+- See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
+  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
+- See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
+- See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html){target=_blank}
 
-[![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint)
+[![ansible-lint - GitHub](https://gh-card.dev/repos/ansible/ansible-lint.svg?fullname=)](https://github.com/ansible/ansible-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | ANSIBLE_ANSIBLE_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml"]` |
+| ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | ANSIBLE_ANSIBLE_LINT_FILE_NAME | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ansible-lint.yml` |
 | ANSIBLE_ANSIBLE_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -99,12 +101,12 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_
 [SUCCESS] .automation/test/ansible/ansible/ansible_good_1.yml
     Examining .automation/test/ansible/ansible/ansible_good_1.yml of type playbook
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-api-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
+    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
     Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
 
 ```

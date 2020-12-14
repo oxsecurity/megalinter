@@ -5,26 +5,28 @@
 ## markdownlint documentation
 
 - Version in Mega-Linter: **0.25.0**
-- Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme)
-- See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration)
-  - If custom .markdown-lint.json is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json) will be used
-- See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration)
-- See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases)
+- Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
+- See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
+  - If custom .markdown-lint.json is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json){target=_blank} will be used
+- See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration){target=_blank}
+- See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
 
-[![markdownlint - GitHub](https://gh-card.dev/repos/DavidAnson/markdownlint.svg?fullname=)](https://github.com/DavidAnson/markdownlint)
+[![markdownlint - GitHub](https://gh-card.dev/repos/DavidAnson/markdownlint.svg?fullname=)](https://github.com/DavidAnson/markdownlint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | MARKDOWN_MARKDOWNLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".md"]` |
+| MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | MARKDOWN_MARKDOWNLINT_FILE_NAME | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.markdown-lint.json` |
 | MARKDOWN_MARKDOWNLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

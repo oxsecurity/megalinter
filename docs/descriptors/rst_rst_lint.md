@@ -5,20 +5,22 @@
 ## rst-lint documentation
 
 - Version in Mega-Linter: **1.3.2**
-- Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme)
+- Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
 
-[![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint)
+[![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | RST_RST_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | RST_RST_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | RST_RST_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| RST_RST_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".rst"]` |
+| RST_RST_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | RST_RST_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes
@@ -72,7 +74,7 @@ optional arguments:
 ### Example success log
 
 ```shell
-Results of rst-lint linter (version 1.3.1)
+Results of rst-lint linter (version 1.3.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
 -----------------------------------------------
 
@@ -84,7 +86,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_
 ### Example error log
 
 ```shell
-Results of rst-lint linter (version 1.3.1)
+Results of rst-lint linter (version 1.3.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
 -----------------------------------------------
 

@@ -10,21 +10,23 @@
 ## spectral documentation
 
 - Version in Mega-Linter: **5.6.0**
-- Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md)
-- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md)
-  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml) will be used
-- See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
+- Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
+- See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
+  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml){target=_blank} will be used
+- See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable spectral by adding `OPENAPI_SPECTRAL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | OPENAPI_SPECTRAL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | OPENAPI_SPECTRAL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | OPENAPI_SPECTRAL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| OPENAPI_SPECTRAL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml", ".json"]` |
+| OPENAPI_SPECTRAL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | OPENAPI_SPECTRAL_FILE_NAME | spectral configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.openapirc.yml` |
 | OPENAPI_SPECTRAL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | OPENAPI_SPECTRAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

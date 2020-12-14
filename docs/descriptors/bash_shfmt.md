@@ -4,23 +4,25 @@
 
 ## shfmt documentation
 
-- Version in Mega-Linter: **3.2.0**
-- Visit [Official Web Site](https://github.com/mvdan/sh#readme)
+- Version in Mega-Linter: **3.2.1**
+- Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
-[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh)
+[![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable shfmt by adding `BASH_SHFMT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable shfmt by adding `BASH_SHFMT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `BASH_SHFMT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | BASH_SHFMT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | BASH_SHFMT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | BASH_SHFMT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| BASH_SHFMT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".sh", ".bash", ".dash", ".ksh"]` |
+| BASH_SHFMT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | BASH_SHFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration
@@ -113,7 +115,7 @@ RUN go get mvdan.cc/sh/v3/cmd/shfmt
 ### Example success log
 
 ```shell
-Results of shfmt linter (version 3.2.0)
+Results of shfmt linter (version 3.2.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/
 -----------------------------------------------
 
@@ -125,7 +127,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shf
 ### Example error log
 
 ```shell
-Results of shfmt linter (version 3.2.0)
+Results of shfmt linter (version 3.2.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/
 -----------------------------------------------
 

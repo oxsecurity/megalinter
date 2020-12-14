@@ -249,6 +249,11 @@
         "image": "https://avatars3.githubusercontent.com/u/677877?s=400&v=4",
         "title": "sds/scss-lint"
     },
+    "sfdx-scanner": {
+        "description": "",
+        "image": null,
+        "title": "Salesforce CLI Scanner Plug-In"
+    },
     "shellcheck": {
         "description": "ShellCheck, a static analysis tool for shell scripts - koalaman/shellcheck",
         "image": "https://avatars2.githubusercontent.com/u/2818758?s=400&v=4",

@@ -1,0 +1,37 @@
+{
+    "descriptors": [
+        "JAVA"
+    ],
+    "label": "Mega-Linter optimized for JAVA based projects",
+    "linters": [
+        "ANSIBLE_ANSIBLE_LINT",
+        "BASH_EXEC",
+        "BASH_SHELLCHECK",
+        "BASH_SHFMT",
+        "COPYPASTE_JSCPD",
+        "CSS_STYLELINT",
+        "CSS_SCSS_LINT",
+        "DOCKERFILE_DOCKERFILELINT",
+        "DOCKERFILE_HADOLINT",
+        "EDITORCONFIG_EDITORCONFIG_CHECKER",
+        "ENV_DOTENV_LINTER",
+        "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
+        "GROOVY_NPM_GROOVY_LINT",
+        "HTML_HTMLHINT",
+        "JAVA_CHECKSTYLE",
+        "JSON_JSONLINT",
+        "KOTLIN_KTLINT",
+        "KUBERNETES_KUBEVAL",
+        "MARKDOWN_MARKDOWNLINT",
+        "MARKDOWN_MARKDOWN_LINK_CHECK",
+        "OPENAPI_SPECTRAL",
+        "PROTOBUF_PROTOLINT",
+        "SNAKEMAKE_LINT",
+        "SNAKEMAKE_SNAKEFMT",
+        "SPELL_CSPELL",
+        "SQL_SQL_LINT",
+        "TEKTON_TEKTON_LINT",
+        "XML_XMLLINT",
+        "YAML_YAMLLINT"
+    ]
+}

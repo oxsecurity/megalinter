@@ -16,6 +16,7 @@ class TextReporter(Reporter):
     def __init__(self, params=None):
         # report_type is simple by default
         self.report_type = "simple"
+        self.processing_order = -5
         super().__init__(params)
 
     def manage_activation(self):
@@ -75,4 +76,6 @@ class TextReporter(Reporter):
         with open(text_file_name, "w", encoding="utf-8") as text_file:
             text_file_content = "\n".join(text_report_lines) + "\n"
             text_file.write(text_file_content)
-            logging.debug(f"Generated {self.name} report: {text_file_name}")
+            logging.info(
+                f"[Text Reporter] Generated {self.name} report: {text_file_name}"
+            )

@@ -1,9 +1,11 @@
 descriptor_id: SNAKEMAKE
 descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 file_extensions:
   - ".smk"
-file_names:
-  - "Snakefile"
+file_names_regex:
+  - 'Snakefile'
 linters:
   # Internal snakemake linter
   - linter_name: snakemake

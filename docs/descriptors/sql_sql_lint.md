@@ -5,23 +5,25 @@
 ## sql-lint documentation
 
 - Version in Mega-Linter: **0.0.15**
-- Visit [Official Web Site](https://github.com/joereynolds/sql-lint#readme)
-- See [How to configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html)
-  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json) will be used
-- See [Index of problems detected by sql-lint](https://github.com/joereynolds/sql-lint#checks)
+- Visit [Official Web Site](https://github.com/joereynolds/sql-lint#readme){target=_blank}
+- See [How to configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html){target=_blank}
+  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json){target=_blank} will be used
+- See [Index of problems detected by sql-lint](https://github.com/joereynolds/sql-lint#checks){target=_blank}
 
-[![sql-lint - GitHub](https://gh-card.dev/repos/joereynolds/sql-lint.svg?fullname=)](https://github.com/joereynolds/sql-lint)
+[![sql-lint - GitHub](https://gh-card.dev/repos/joereynolds/sql-lint.svg?fullname=)](https://github.com/joereynolds/sql-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable sql-lint by adding `SQL_SQL_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable sql-lint by adding `SQL_SQL_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable sql-lint by adding `SQL_SQL_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable sql-lint by adding `SQL_SQL_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SQL_SQL_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | SQL_SQL_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | SQL_SQL_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SQL_SQL_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".sql"]` |
+| SQL_SQL_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | SQL_SQL_LINT_FILE_NAME | sql-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.sql-config.json` |
 | SQL_SQL_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SQL_SQL_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

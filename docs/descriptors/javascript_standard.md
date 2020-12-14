@@ -10,23 +10,25 @@
 ## standard documentation
 
 - Version in Mega-Linter: **15.0.1**
-- Visit [Official Web Site](https://standardjs.com/)
-- See [Index of problems detected by standard](https://standardjs.com/rules.html)
+- Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
-[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard)
+[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable standard by adding `JAVASCRIPT_STANDARD` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable standard by adding `JAVASCRIPT_STANDARD` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `JAVASCRIPT_STANDARD` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | JAVASCRIPT_STANDARD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JAVASCRIPT_STANDARD_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".js"]` |
+| JAVASCRIPT_STANDARD_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | JAVASCRIPT_STANDARD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration

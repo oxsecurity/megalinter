@@ -1,9 +1,16 @@
-Results of jscpd linter (version 3.3.21)
+Results of jscpd linter (version 3.3.22)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/copypaste/good
+    ┌────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+    │ Format │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ go     │ 2              │ 12          │ 52           │ 0            │ 0 (0%)           │ 0 (0%)            │
+    ├────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+    │ Total: │ 2              │ 12          │ 52           │ 0            │ 0 (0%)           │ 0 (0%)            │
+    └────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+    Found 0 clones.
     HTML report saved to report/copy-paste/html/
-    Markdown report saved to report/copy-paste/jscpd-report.md
-    Detection time:: 24.847ms
+    Detection time:: 42.298ms
 

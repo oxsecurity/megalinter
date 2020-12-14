@@ -10,22 +10,24 @@
 ## scss-lint documentation
 
 - Version in Mega-Linter: **0.59.0**
-- Visit [Official Web Site](https://github.com/sds/scss-lint#readme)
-- See [How to configure scss-lint rules](https://github.com/sds/scss-lint#configuration)
-- See [How to disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code)
+- Visit [Official Web Site](https://github.com/sds/scss-lint#readme){target=_blank}
+- See [How to configure scss-lint rules](https://github.com/sds/scss-lint#configuration){target=_blank}
+- See [How to disable scss-lint rules in files](https://stylelint.io/user-guide/ignore-code){target=_blank}
 
-[![scss-lint - GitHub](https://gh-card.dev/repos/sds/scss-lint.svg?fullname=)](https://github.com/sds/scss-lint)
+[![scss-lint - GitHub](https://gh-card.dev/repos/sds/scss-lint.svg?fullname=)](https://github.com/sds/scss-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable scss-lint by adding `CSS_SCSS_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable scss-lint by adding `CSS_SCSS_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | CSS_SCSS_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | CSS_SCSS_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | CSS_SCSS_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CSS_SCSS_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".scss", ".saas"]` |
+| CSS_SCSS_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | CSS_SCSS_LINT_FILE_NAME | scss-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scss-lint.yml` |
 | CSS_SCSS_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CSS_SCSS_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

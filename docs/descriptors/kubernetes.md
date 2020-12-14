@@ -12,7 +12,7 @@
 
 - Detected file content:
   - `apiVersion:`
-  - `kustomize.config.k8s.io`
+  - `kustomize\.config\.k8s\.io`
   - `tekton`
 
 ## Configuration in Mega-Linter

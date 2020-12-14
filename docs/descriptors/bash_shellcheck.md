@@ -5,22 +5,24 @@
 ## shellcheck documentation
 
 - Version in Mega-Linter: **0.7.1**
-- Visit [Official Web Site](https://github.com/koalaman/shellcheck#readme)
-- See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore)
-- See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code)
+- Visit [Official Web Site](https://github.com/koalaman/shellcheck#readme){target=_blank}
+- See [How to disable shellcheck rules in files](https://github.com/koalaman/shellcheck/wiki/Ignore){target=_blank}
+- See [Index of problems detected by shellcheck](https://github.com/koalaman/shellcheck#gallery-of-bad-code){target=_blank}
 
-[![shellcheck - GitHub](https://gh-card.dev/repos/koalaman/shellcheck.svg?fullname=)](https://github.com/koalaman/shellcheck)
+[![shellcheck - GitHub](https://gh-card.dev/repos/koalaman/shellcheck.svg?fullname=)](https://github.com/koalaman/shellcheck){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | BASH_SHELLCHECK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | BASH_SHELLCHECK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | BASH_SHELLCHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| BASH_SHELLCHECK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".sh", ".bash", ".dash", ".ksh"]` |
+| BASH_SHELLCHECK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | BASH_SHELLCHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration
@@ -84,8 +86,10 @@ Usage: shellcheck [OPTIONS...] FILES...
 
 - Dockerfile commands :
 ```dockerfile
-FROM koalaman/shellcheck:latest as shellcheck
-COPY --from=shellcheck /bin/shellcheck /usr/bin/
+RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
+    && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+    && shellcheck --version
+
 ```
 
 

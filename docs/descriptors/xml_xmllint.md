@@ -5,19 +5,21 @@
 ## xmllint documentation
 
 - Version in Mega-Linter: **20910**
-- Visit [Official Web Site](http://xmlsoft.org/xmllint.html)
-- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics)
+- Visit [Official Web Site](http://xmlsoft.org/xmllint.html){target=_blank}
+- See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | XML_XMLLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | XML_XMLLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | XML_XMLLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| XML_XMLLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".xml"]` |
+| XML_XMLLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | XML_XMLLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes

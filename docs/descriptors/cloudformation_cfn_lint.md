@@ -9,23 +9,25 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.42.0**
-- Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme)
-  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml) will be used
-- See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do)
+- Version in Mega-Linter: **0.43.0**
+- Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
+  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
+- See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
 
-[![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint)
+[![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | CLOUDFORMATION_CFN_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | CLOUDFORMATION_CFN_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml", ".json"]` |
+| CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | CLOUDFORMATION_CFN_LINT_FILE_NAME | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cfnlintrc.yml` |
 | CLOUDFORMATION_CFN_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -124,6 +126,9 @@ Advanced / Debugging:
                         customization
   -g, --build-graph     Creates a file in the same directory as the template
                         that models the template's resources in DOT format
+  -s REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...], --registry-schemas REGISTRY_SCHEMAS [REGISTRY_SCHEMAS ...]
+                        one or more directories of CloudFormation Registry
+                        Schemas
   -u, --update-specs    Update the CloudFormation Specs
 ```
 
@@ -137,7 +142,7 @@ Advanced / Debugging:
 ### Example success log
 
 ```shell
-Results of cfn-lint linter (version 0.41.0)
+Results of cfn-lint linter (version 0.43.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 
@@ -158,7 +163,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudfor
 ### Example error log
 
 ```shell
-Results of cfn-lint linter (version 0.41.0)
+Results of cfn-lint linter (version 0.43.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 

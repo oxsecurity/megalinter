@@ -1,9 +1,11 @@
 descriptor_id: ARM
 descriptor_type: tooling_format
+descriptor_flavors:
+  - dotnet
 file_extensions:
   - ".json"
-file_contains:
-  - "schema.management.azure.com"
+file_contains_regex:
+  - 'schema\.management\.azure\.com'
 linters:
   # ARM TTK
   - class: ArmLinter

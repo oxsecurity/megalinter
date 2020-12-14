@@ -4,22 +4,24 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.25.4**
-- Visit [Official Web Site](https://terragrunt.gruntwork.io)
-- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file)
+- Version in Mega-Linter: **0.26.7**
+- Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
+- See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
-[![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt)
+[![terragrunt - GitHub](https://gh-card.dev/repos/gruntwork-io/terragrunt.svg?fullname=)](https://github.com/gruntwork-io/terragrunt){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | TERRAFORM_TERRAGRUNT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | TERRAFORM_TERRAGRUNT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".hcl"]` |
+| TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | TERRAFORM_TERRAGRUNT_FILE_NAME | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `terragrunt.hcl` |
 | TERRAFORM_TERRAGRUNT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TERRAFORM_TERRAGRUNT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -91,7 +93,7 @@ GLOBAL OPTIONS:
    terragrunt-debug                             Write terragrunt-debug.tfvars to working folder to help root-cause issues.
 
 VERSION:
-   v0.25.4
+   v0.26.7
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
@@ -110,27 +112,27 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 ### Example success log
 
 ```shell
-Results of terragrunt linter (version 0.25.4)
+Results of terragrunt linter (version 0.26.7)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
-    [terragrunt] 2020/11/20 09:20:32 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
-    [terragrunt] 2020/11/20 09:20:32 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
+    [terragrunt] 2020/12/05 12:35:50 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_good_1.hcl.
+    [terragrunt] 2020/12/05 12:35:50 Formatting .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
 
 ```
 
 ### Example error log
 
 ```shell
-Results of terragrunt linter (version 0.25.4)
+Results of terragrunt linter (version 0.26.7)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 09:20:31 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
-    [terragrunt] 2020/11/20 09:20:31 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 09:20:31 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
-    [terragrunt] 2020/11/20 09:20:31 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
+    [terragrunt] 2020/12/05 12:35:49 Formatting terragrunt.hcl file at: .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl.
+    [terragrunt] 2020/12/05 12:35:49 Formatting .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/12/05 12:35:49 Invalid file format .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl
+    [terragrunt] 2020/12/05 12:35:49 Unable to determine underlying exit code, so Terragrunt will exit with error code 1
 
 ```

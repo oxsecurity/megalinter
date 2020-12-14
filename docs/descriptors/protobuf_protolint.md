@@ -5,25 +5,27 @@
 ## protolint documentation
 
 - Version in Mega-Linter: **0.26.0**
-- Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme)
-- See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules)
-  - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml) will be used
-- See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules)
+- Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
+- See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
+  - If custom .protolintrc.yml is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml){target=_blank} will be used
+- See [Index of problems detected by protolint](https://github.com/yoheimuta/protolint#rules){target=_blank}
 
-[![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint)
+[![protolint - GitHub](https://gh-card.dev/repos/yoheimuta/protolint.svg?fullname=)](https://github.com/yoheimuta/protolint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable protolint by adding `PROTOBUF_PROTOLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable protolint by adding `PROTOBUF_PROTOLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `PROTOBUF_PROTOLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PROTOBUF_PROTOLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | PROTOBUF_PROTOLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PROTOBUF_PROTOLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".proto"]` |
+| PROTOBUF_PROTOLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PROTOBUF_PROTOLINT_FILE_NAME | protolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.protolintrc.yml` |
 | PROTOBUF_PROTOLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PROTOBUF_PROTOLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

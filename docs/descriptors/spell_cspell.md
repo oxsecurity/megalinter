@@ -8,22 +8,24 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 ## cspell documentation
 
 - Version in Mega-Linter: **4.1.3**
-- Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme)
-- See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization)
-- See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code)
+- Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
+- See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
+- See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
 
-[![cspell - GitHub](https://gh-card.dev/repos/streetsidesoftware/cspell.svg?fullname=)](https://github.com/streetsidesoftware/cspell)
+[![cspell - GitHub](https://gh-card.dev/repos/streetsidesoftware/cspell.svg?fullname=)](https://github.com/streetsidesoftware/cspell){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SPELL_CSPELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | SPELL_CSPELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | SPELL_CSPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SPELL_CSPELL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| SPELL_CSPELL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | SPELL_CSPELL_FILE_NAME | cspell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cspell.json` |
 | SPELL_CSPELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SPELL_CSPELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

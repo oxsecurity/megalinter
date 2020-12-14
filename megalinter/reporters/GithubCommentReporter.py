@@ -110,6 +110,22 @@ class GithubCommentReporter(Reporter):
                     + "all sources, not only the diff_"
                     + os.linesep
                 )
+            if self.master.flavor_suggestions is not None:
+                p_r_msg += (
+                    "You could have the same capabilities but better runtime performances"
+                    " if you use a Mega-Linter flavor:" + os.linesep
+                )
+                for suggestion in self.master.flavor_suggestions:
+                    build_version = os.environ.get("BUILD_VERSION", "v4")
+                    current_version = "v4" if "v4" in build_version else build_version
+                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{current_version}"
+                    flavor_msg = (
+                        f"- **{action_path}**"
+                        f" ({suggestion['linters_number']} linters)"
+                    )
+                    p_r_msg += (
+                        flavor_msg + f"More info at {self.gh_url}/flavors/" + os.linesep
+                    )
             logging.debug("\n" + p_r_msg)
             # Post comment on pull request if found
             github_auth = (
@@ -121,6 +137,11 @@ class GithubCommentReporter(Reporter):
             repo = g.get_repo(github_repo)
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
+            if pr_list.totalCount == 0:
+                logging.info(
+                    "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
+                )
+                return
             for pr in pr_list:
                 # Ignore if PR is already merged
                 if pr.is_merged():
@@ -144,11 +165,11 @@ class GithubCommentReporter(Reporter):
                         pr.create_issue_comment(p_r_msg)
                     logging.debug(f"Posted Github comment: {p_r_msg}")
                     logging.info(
-                        f"Posted summary as comment on {github_repo} #PR{pr.number}"
+                        f"[GitHub Comment Reporter] Posted summary as comment on {github_repo} #PR{pr.number}"
                     )
                 except github.GithubException as e:
                     logging.warning(
-                        f"Unable to post pull request comment: {str(e)}.\n"
+                        f"[GitHub Comment Reporter] Unable to post pull request comment: {str(e)}.\n"
                         "To enable this function, please :\n"
                         "1. Create a Personal Access Token (https://docs.github.com/en/free-pro-team@"
                         "latest/github/authenticating-to-github/creating-a-personal-access-token)\n"
@@ -157,6 +178,12 @@ class GithubCommentReporter(Reporter):
                         "creating-encrypted-secrets-for-a-repository)"
                         "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
                     )
-        # Not in github contest, or env var POST_GITHUB_COMMENT = false
+                except Exception as e:
+                    logging.warning(
+                        f"[GitHub Comment Reporter] Error while posting comment: \n{str(e)}"
+                    )
+        # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
-            logging.debug("Skipped post of pull request comment")
+            logging.info(
+                "[GitHub Comment Reporter] No GitHub Token found, so skipped post of PR comment"
+            )

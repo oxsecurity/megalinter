@@ -5,20 +5,22 @@
 ## jsonlint documentation
 
 - Version in Mega-Linter: **1.6.3**
-- Visit [Official Web Site](https://github.com/zaach/jsonlint#readme)
+- Visit [Official Web Site](https://github.com/zaach/jsonlint#readme){target=_blank}
 
-[![jsonlint - GitHub](https://gh-card.dev/repos/zaach/jsonlint.svg?fullname=)](https://github.com/zaach/jsonlint)
+[![jsonlint - GitHub](https://gh-card.dev/repos/zaach/jsonlint.svg?fullname=)](https://github.com/zaach/jsonlint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | JSON_JSONLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | JSON_JSONLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | JSON_JSONLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JSON_JSONLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".json"]` |
+| JSON_JSONLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | JSON_JSONLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## Behind the scenes

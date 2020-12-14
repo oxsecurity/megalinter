@@ -5,25 +5,27 @@
 ## puppet-lint documentation
 
 - Version in Mega-Linter: **2.4.2**
-- Visit [Official Web Site](http://puppet-lint.com/)
-- See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file)
-- See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/)
-- See [Index of problems detected by puppet-lint](http://puppet-lint.com/checks/)
+- Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
+- See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file){target=_blank}
+- See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
+- See [Index of problems detected by puppet-lint](http://puppet-lint.com/checks/){target=_blank}
 
-[![puppet-lint - GitHub](https://gh-card.dev/repos/rodjek/puppet-lint.svg?fullname=)](https://github.com/rodjek/puppet-lint)
+[![puppet-lint - GitHub](https://gh-card.dev/repos/rodjek/puppet-lint.svg?fullname=)](https://github.com/rodjek/puppet-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PUPPET_PUPPET_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PUPPET_PUPPET_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".pp"]` |
+| PUPPET_PUPPET_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PUPPET_PUPPET_LINT_FILE_NAME | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.puppet-lint.rc` |
 | PUPPET_PUPPET_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PUPPET_PUPPET_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -99,70 +101,70 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
     Checks:
         --only-checks CHECKS         A comma separated list of checks that should be run
         --ignore-paths PATHS         A comma separated list of patterns to ignore
+        --no-documentation-check     Skip the documentation check.
+        --no-variable_contains_dash-check
+                                     Skip the variable_contains_dash check.
+        --no-variable_is_lowercase-check
+                                     Skip the variable_is_lowercase check.
+        --no-star_comments-check     Skip the star_comments check.
+        --no-slash_comments-check    Skip the slash_comments check.
         --no-unquoted_resource_title-check
                                      Skip the unquoted_resource_title check.
         --no-ensure_not_symlink_target-check
                                      Skip the ensure_not_symlink_target check.
-        --no-ensure_first_param-check
-                                     Skip the ensure_first_param check.
         --no-duplicate_params-check  Skip the duplicate_params check.
         --no-unquoted_file_mode-check
                                      Skip the unquoted_file_mode check.
         --no-file_mode-check         Skip the file_mode check.
-        --no-puppet_url_without_modules-check
-                                     Skip the puppet_url_without_modules check.
-        --no-quoted_booleans-check   Skip the quoted_booleans check.
-        --quoted_booleans-check      Enable the quoted_booleans check.
-        --no-double_quoted_strings-check
-                                     Skip the double_quoted_strings check.
-        --no-single_quote_string_with_variables-check
-                                     Skip the single_quote_string_with_variables check.
-        --no-variables_not_enclosed-check
-                                     Skip the variables_not_enclosed check.
-        --no-only_variable_string-check
-                                     Skip the only_variable_string check.
-        --no-trailing_whitespace-check
-                                     Skip the trailing_whitespace check.
-        --no-140chars-check          Skip the 140chars check.
-        --no-arrow_alignment-check   Skip the arrow_alignment check.
-        --no-2sp_soft_tabs-check     Skip the 2sp_soft_tabs check.
-        --no-80chars-check           Skip the 80chars check.
-        --80chars-check              Enable the 80chars check.
-        --no-hard_tabs-check         Skip the hard_tabs check.
-        --no-case_without_default-check
-                                     Skip the case_without_default check.
+        --no-ensure_first_param-check
+                                     Skip the ensure_first_param check.
+        --no-unquoted_node_name-check
+                                     Skip the unquoted_node_name check.
         --no-selector_inside_resource-check
                                      Skip the selector_inside_resource check.
-        --no-star_comments-check     Skip the star_comments check.
-        --no-slash_comments-check    Skip the slash_comments check.
-        --no-code_on_top_scope-check Skip the code_on_top_scope check.
-        --code_on_top_scope-check    Enable the code_on_top_scope check.
-        --no-names_containing_dash-check
-                                     Skip the names_containing_dash check.
-        --no-variable_scope-check    Skip the variable_scope check.
-        --no-right_to_left_relationship-check
-                                     Skip the right_to_left_relationship check.
-        --no-arrow_on_right_operand_line-check
-                                     Skip the arrow_on_right_operand_line check.
-        --no-inherits_across_namespaces-check
-                                     Skip the inherits_across_namespaces check.
+        --no-case_without_default-check
+                                     Skip the case_without_default check.
         --no-class_inherits_from_params_class-check
                                      Skip the class_inherits_from_params_class check.
         --class_inherits_from_params_class-check
                                      Enable the class_inherits_from_params_class check.
-        --no-parameter_order-check   Skip the parameter_order check.
         --no-nested_classes_or_defines-check
                                      Skip the nested_classes_or_defines check.
+        --no-right_to_left_relationship-check
+                                     Skip the right_to_left_relationship check.
+        --no-inherits_across_namespaces-check
+                                     Skip the inherits_across_namespaces check.
+        --no-parameter_order-check   Skip the parameter_order check.
+        --no-arrow_on_right_operand_line-check
+                                     Skip the arrow_on_right_operand_line check.
+        --no-names_containing_dash-check
+                                     Skip the names_containing_dash check.
         --no-autoloader_layout-check Skip the autoloader_layout check.
+        --no-code_on_top_scope-check Skip the code_on_top_scope check.
+        --code_on_top_scope-check    Enable the code_on_top_scope check.
         --no-names_containing_uppercase-check
                                      Skip the names_containing_uppercase check.
-        --no-unquoted_node_name-check
-                                     Skip the unquoted_node_name check.
-        --no-variable_is_lowercase-check
-                                     Skip the variable_is_lowercase check.
-        --no-variable_contains_dash-check
-                                     Skip the variable_contains_dash check.
-        --no-documentation-check     Skip the documentation check.
+        --no-variable_scope-check    Skip the variable_scope check.
+        --no-trailing_whitespace-check
+                                     Skip the trailing_whitespace check.
+        --no-arrow_alignment-check   Skip the arrow_alignment check.
+        --no-2sp_soft_tabs-check     Skip the 2sp_soft_tabs check.
+        --no-140chars-check          Skip the 140chars check.
+        --no-80chars-check           Skip the 80chars check.
+        --80chars-check              Enable the 80chars check.
+        --no-hard_tabs-check         Skip the hard_tabs check.
+        --no-variables_not_enclosed-check
+                                     Skip the variables_not_enclosed check.
+        --no-puppet_url_without_modules-check
+                                     Skip the puppet_url_without_modules check.
+        --no-only_variable_string-check
+                                     Skip the only_variable_string check.
+        --no-single_quote_string_with_variables-check
+                                     Skip the single_quote_string_with_variables check.
+        --no-quoted_booleans-check   Skip the quoted_booleans check.
+        --quoted_booleans-check      Enable the quoted_booleans check.
+        --no-double_quoted_strings-check
+                                     Skip the double_quoted_strings check.
 ```
 
 ### Installation on mega-linter Docker image
@@ -190,9 +192,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_p
 -----------------------------------------------
 
 [ERROR] .automation/test/puppet/puppet_bad_1.pp
+    WARNING: class not documented on line 1
+    WARNING: line has more than 140 characters on line 7
     WARNING: double quoted string containing no variables on line 4
     WARNING: double quoted string containing no variables on line 5
-    WARNING: line has more than 140 characters on line 7
-    WARNING: class not documented on line 1
 
 ```

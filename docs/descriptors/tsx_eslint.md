@@ -12,26 +12,28 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in Mega-Linter: **7.14.0**
-- Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme)
-- See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration)
-- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
-- See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+- Version in Mega-Linter: **7.15.0**
+- Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
+- See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
+- See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
+- See [Index of problems detected by eslint](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules){target=_blank}
 
-[![eslint-plugin-react - GitHub](https://gh-card.dev/repos/yannickcr/eslint-plugin-react.svg?fullname=)](https://github.com/yannickcr/eslint-plugin-react)
+[![eslint-plugin-react - GitHub](https://gh-card.dev/repos/yannickcr/eslint-plugin-react.svg?fullname=)](https://github.com/yannickcr/eslint-plugin-react){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable eslint by adding `TSX_ESLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TSX_ESLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `TSX_ESLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | TSX_ESLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | TSX_ESLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | TSX_ESLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| TSX_ESLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tsx"]` |
+| TSX_ESLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | TSX_ESLINT_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.json` |
 | TSX_ESLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TSX_ESLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -157,7 +159,7 @@ Miscellaneous:
 ### Example success log
 
 ```shell
-Results of eslint linter (version 7.14.0)
+Results of eslint linter (version 7.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
 -----------------------------------------------
 
@@ -169,7 +171,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_esli
 ### Example error log
 
 ```shell
-Results of eslint linter (version 7.14.0)
+Results of eslint linter (version 7.15.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
 -----------------------------------------------
 

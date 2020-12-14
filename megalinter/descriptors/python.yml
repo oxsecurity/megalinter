@@ -1,7 +1,10 @@
 descriptor_id: PYTHON
 descriptor_type: language
+descriptor_flavors:
+  - python
 file_extensions:
   - ".py"
+processing_order: -9
 linters:
   # PYLINT
   - linter_name: pylint

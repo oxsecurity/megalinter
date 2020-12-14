@@ -5,23 +5,25 @@
 ## dockerfilelint documentation
 
 - Version in Mega-Linter: **1.8.0**
-- Visit [Official Web Site](https://github.com/replicatedhq/dockerfilelint#readme)
-- See [How to configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring)
-  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc) will be used
-- See [Index of problems detected by dockerfilelint](https://github.com/replicatedhq/dockerfilelint#checks-performed)
+- Visit [Official Web Site](https://github.com/replicatedhq/dockerfilelint#readme){target=_blank}
+- See [How to configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring){target=_blank}
+  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc){target=_blank} will be used
+- See [Index of problems detected by dockerfilelint](https://github.com/replicatedhq/dockerfilelint#checks-performed){target=_blank}
 
-[![dockerfilelint - GitHub](https://gh-card.dev/repos/replicatedhq/dockerfilelint.svg?fullname=)](https://github.com/replicatedhq/dockerfilelint)
+[![dockerfilelint - GitHub](https://gh-card.dev/repos/replicatedhq/dockerfilelint.svg?fullname=)](https://github.com/replicatedhq/dockerfilelint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable dockerfilelint by adding `DOCKERFILE_DOCKERFILELINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | DOCKERFILE_DOCKERFILELINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Dockerfile"]` |
 | DOCKERFILE_DOCKERFILELINT_FILE_NAME | dockerfilelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.dockerfilelintrc` |
 | DOCKERFILE_DOCKERFILELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

@@ -1,6 +1,8 @@
 descriptor_id: CPP
 descriptor_label: "C++"
 descriptor_type: language
+descriptor_flavors:
+  - dotnet
 file_extensions:
   - '.cpp'
   - '.h'

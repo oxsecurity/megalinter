@@ -10,25 +10,27 @@
 ## isort documentation
 
 - Version in Mega-Linter: **5.6.4**
-- Visit [Official Web Site](https://pycqa.github.io/isort/)
-- See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/)
-  - If custom .isort.cfg is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg) will be used
-- See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/)
+- Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
+- See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
+  - If custom .isort.cfg is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
+- See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/){target=_blank}
 
-[![isort - GitHub](https://gh-card.dev/repos/PyCQA/isort.svg?fullname=)](https://github.com/PyCQA/isort)
+[![isort - GitHub](https://gh-card.dev/repos/PyCQA/isort.svg?fullname=)](https://github.com/PyCQA/isort){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_ISORT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | PYTHON_ISORT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | PYTHON_ISORT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_ISORT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_ISORT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_ISORT_FILE_NAME | isort configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.isort.cfg` |
 | PYTHON_ISORT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_ISORT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -390,8 +392,8 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_i
 
 [ERROR] .automation/test/python/python_bad_1.py
     ERROR: .automation/test/python/python_bad_1.py Imports are incorrectly sorted and/or formatted.
-    --- .automation/test/python/python_bad_1.py:before	2020-11-20 08:56:09.345060
-    +++ .automation/test/python/python_bad_1.py:after	2020-11-20 09:19:34.379229
+    --- .automation/test/python/python_bad_1.py:before	2020-12-05 12:08:47.707389
+    +++ .automation/test/python/python_bad_1.py:after	2020-12-05 12:34:28.504872
     @@ -1,11 +1,11 @@
      import json
     +import sys

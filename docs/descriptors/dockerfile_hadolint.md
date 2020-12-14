@@ -5,24 +5,26 @@
 ## hadolint documentation
 
 - Version in Mega-Linter: **1.19.0**
-- Visit [Official Web Site](https://github.com/hadolint/hadolint#readme)
-- See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure)
-  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml) will be used
-- See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores)
-- See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules)
+- Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
+- See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
+  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
+- See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
+- See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules){target=_blank}
 
-[![hadolint - GitHub](https://gh-card.dev/repos/hadolint/hadolint.svg?fullname=)](https://github.com/hadolint/hadolint)
+[![hadolint - GitHub](https://gh-card.dev/repos/hadolint/hadolint.svg?fullname=)](https://github.com/hadolint/hadolint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable hadolint by adding `DOCKERFILE_HADOLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable hadolint by adding `DOCKERFILE_HADOLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable hadolint by adding `DOCKERFILE_HADOLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable hadolint by adding `DOCKERFILE_HADOLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | DOCKERFILE_HADOLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| DOCKERFILE_HADOLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| DOCKERFILE_HADOLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Dockerfile"]` |
 | DOCKERFILE_HADOLINT_FILE_NAME | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.hadolint.yml` |
 | DOCKERFILE_HADOLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

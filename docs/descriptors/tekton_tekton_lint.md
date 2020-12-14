@@ -5,22 +5,24 @@
 ## tekton-lint documentation
 
 - Version in Mega-Linter: **0.5.2**
-- Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme)
-- See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint)
-- See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules)
+- Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme){target=_blank}
+- See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint){target=_blank}
+- See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules){target=_blank}
 
-[![tekton-lint - GitHub](https://gh-card.dev/repos/IBM/tekton-lint.svg?fullname=)](https://github.com/IBM/tekton-lint)
+[![tekton-lint - GitHub](https://gh-card.dev/repos/IBM/tekton-lint.svg?fullname=)](https://github.com/IBM/tekton-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable tekton-lint by adding `TEKTON_TEKTON_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable tekton-lint by adding `TEKTON_TEKTON_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable tekton-lint by adding `TEKTON_TEKTON_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable tekton-lint by adding `TEKTON_TEKTON_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | TEKTON_TEKTON_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | TEKTON_TEKTON_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | TEKTON_TEKTON_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| TEKTON_TEKTON_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml"]` |
+| TEKTON_TEKTON_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | TEKTON_TEKTON_LINT_FILE_NAME | tekton-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.tektonlintrc.yaml` |
 | TEKTON_TEKTON_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | TEKTON_TEKTON_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

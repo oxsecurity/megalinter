@@ -5,26 +5,28 @@
 ## npm-groovy-lint documentation
 
 - Version in Mega-Linter: **8.0.2**
-- Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/)
-- See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration)
-  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json) will be used
-- See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source)
-- See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html)
+- Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
+- See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
+  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json){target=_blank} will be used
+- See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source){target=_blank}
+- See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html){target=_blank}
 
-[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint)
+[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GROOVY_NPM_GROOVY_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".groovy", ".gvy", ".gradle", ".nf"]` |
+| GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Jenkinsfile"]` |
 | GROOVY_NPM_GROOVY_LINT_FILE_NAME | npm-groovy-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.groovylintrc.json` |
 | GROOVY_NPM_GROOVY_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -116,15 +118,15 @@ Note: command-line arguments have priority on config file properties - default: 
 ### Example success log
 
 ```shell
-Results of npm-groovy-lint linter (version 8.0.1)
+Results of npm-groovy-lint linter (version 8.0.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/groovy/groovy_good_01.groovy
-    [4m.automation/test/groovy/groovy_good_01.groovy[24m
+    .automation/test/groovy/groovy_good_01.groovy
     
     
-    npm-groovy-lint results in [1m1[22m linted files:
+    npm-groovy-lint results in 1 linted files:
     ┌─────────┬───────────┬─────────────┐
     │ (index) │ Severity  │ Total found │
     ├─────────┼───────────┼─────────────┤
@@ -138,17 +140,17 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_n
 ### Example error log
 
 ```shell
-Results of npm-groovy-lint linter (version 8.0.1)
+Results of npm-groovy-lint linter (version 8.0.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/groovy/groovy_bad_01.groovy
-    [4m.automation/test/groovy/groovy_bad_01.groovy[24m
-      4     [31merror  [39m  Unexpected input: '$' @ line 4, column 16.  NglParseError           
-      2     [90minfo   [39m  Line ends with whitespace characters  TrailingWhitespace      
+    .automation/test/groovy/groovy_bad_01.groovy
+      4     error    Unexpected input: '$' @ line 4, column 16.  NglParseError           
+      2     info     Line ends with whitespace characters  TrailingWhitespace      
     
     
-    npm-groovy-lint results in [1m1[22m linted files:
+    npm-groovy-lint results in 1 linted files:
     ┌─────────┬───────────┬─────────────┐
     │ (index) │ Severity  │ Total found │
     ├─────────┼───────────┼─────────────┤

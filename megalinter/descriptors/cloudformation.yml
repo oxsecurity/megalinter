@@ -4,9 +4,9 @@ file_extensions:
   - ".yml"
   - ".yaml"
   - ".json"
-file_contains:
-  - "AWSTemplateFormatVersion"
-  - "(AWS|Alexa|Custom)::"
+file_contains_regex:
+  - 'AWSTemplateFormatVersion'
+  - '(AWS|Alexa|Custom)::'
 linters:
   # AWS CloudFormation Lint
   - linter_name: cfn-lint

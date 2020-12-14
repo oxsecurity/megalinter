@@ -10,24 +10,26 @@
 ## pylint documentation
 
 - Version in Mega-Linter: **2.6.0**
-- Visit [Official Web Site](https://www.pylint.org)
-- See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc)
-  - If custom .python-lint is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint) will be used
-- See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html)
-- See [Index of problems detected by pylint](http://pylint-messages.wikidot.com/all-codes)
+- Visit [Official Web Site](https://www.pylint.org){target=_blank}
+- See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
+  - If custom .python-lint is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
+- See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html){target=_blank}
+- See [Index of problems detected by pylint](http://pylint-messages.wikidot.com/all-codes){target=_blank}
 
-[![pylint - GitHub](https://gh-card.dev/repos/PyCQA/pylint.svg?fullname=)](https://github.com/PyCQA/pylint)
+[![pylint - GitHub](https://gh-card.dev/repos/PyCQA/pylint.svg?fullname=)](https://github.com/PyCQA/pylint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_PYLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_PYLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_PYLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_PYLINT_FILE_NAME | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-lint` |
 | PYTHON_PYLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |

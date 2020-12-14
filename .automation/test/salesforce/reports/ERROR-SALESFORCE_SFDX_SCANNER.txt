@@ -1,0 +1,29 @@
+Results of sfdx-scanner linter (version 2.4.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
+-----------------------------------------------
+
+[ERROR] /tmp/a62282d7-5f53-42be-9816-03d1c2da8715
+    LOCATION                                                   DESCRIPTION                                            CATEGORY        U R L
+    ─────────────────────────────────────────────────────────  ─────────────────────────────────────────────────────  ──────────────  ─────────────────────────────────────────────────────────────────────────────────────────────
+    force-app/main/default/classes/SoqlInLoop.cls:1              Apex classes should declare a sharing model if DML   Security        https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_security.html#apexsharingviolations
+                                                                 or SOQL/SOSL is used
+    force-app/main/default/classes/SoqlInLoop.cls:1              Missing ApexDoc comment                              Documentation   https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_documentation.html#apexdoc
+    force-app/main/default/classes/SoqlInLoop.cls:2              Missing ApexDoc comment                              Documentation   https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_documentation.html#apexdoc
+    force-app/main/default/classes/SoqlInLoop.cls:4              Avoid Soql queries inside loops                      Performance     https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_performance.html#avoidsoqlinloops
+    force-app/main/default/classes/SoqlInLoop.cls:4              Avoid operations in loops that may hit governor      Performance     https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_performance.html#operationwithlimitsinloop
+                                                                 limits
+    force-app/main/default/classes/SoqlInLoop.cls:4              Validate CRUD permission before SOQL/DML operation   Security        https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_security.html#apexcrudviolation
+    force-app/main/default/classes/SoqlInLoop.cls:4              Variable 'accounts' defined but not used             Best Practices  https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_bestpractices.html#unusedlocalvariable
+    force-app/main/default/triggers/trgUser.trigger:1            Avoid logic in triggers                              Best Practices  https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_bestpractices.html#avoidlogicintrigger
+    force-app/main/default/triggers/trgUser.trigger:4            The static field name 'BaseURI' doesn't match        Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#fieldnamingconventions
+                                                                 '[a-z][a-zA-Z0-9]*'
+    force-app/main/default/triggers/trgUser.trigger:4            Variables should start with a lowercase character,   Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#variablenamingconventions
+                                                                 'BaseURI' starts with uppercase character.
+    force-app/main/default/triggers/trgUser.trigger:7            The local variable name 'URI' doesn't match          Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#localvariablenamingconventions
+                                                                 '[a-z][a-zA-Z0-9]*'
+    force-app/main/default/triggers/trgUser.trigger:7            Variables should start with a lowercase character,   Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#variablenamingconventions
+                                                                 'URI' starts with uppercase character.
+    force-app/main/default/aura/auraIf/auraIfController.js:49    'event' is defined but never used.                   Variables       https://eslint.org/docs/rules/no-unused-vars
+    force-app/main/default/aura/auraIf/auraIfController.js:49    'helper' is defined but never used.                  Variables       https://eslint.org/docs/rules/no-unused-vars
+    ERROR running scanner:run:  Detected rule violations of severity 1 or lower. Please see the logs above.
+

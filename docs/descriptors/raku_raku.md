@@ -5,20 +5,22 @@
 ## raku documentation
 
 - Version in Mega-Linter: **2020.11**
-- Visit [Official Web Site](https://raku.org/)
+- Visit [Official Web Site](https://raku.org/){target=_blank}
 
-[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo)
+[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | RAKU_RAKU_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | RAKU_RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | RAKU_RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| RAKU_RAKU_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".raku", ".rakumod", ".rakutest", ".pm6", ".pl6", ".p6"]` |
+| RAKU_RAKU_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | RAKU_RAKU_FILE_NAME | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `META6.json` |
 | RAKU_RAKU_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | RAKU_RAKU_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -147,7 +149,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 ### Example success log
 
 ```shell
-Results of raku linter (version 2020.10)
+Results of raku linter (version 2020.11)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
 -----------------------------------------------
 
@@ -159,14 +161,14 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_rak
 ### Example error log
 
 ```shell
-Results of raku linter (version 2020.10)
+Results of raku linter (version 2020.11)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
 -----------------------------------------------
 
 [ERROR] .automation/test/raku/raku_bad_1.raku
-    [31m===[0mSORRY![31m===[0m Error while compiling .automation/test/raku/raku_bad_1.raku
+    ===SORRY!=== Error while compiling .automation/test/raku/raku_bad_1.raku
     Variable '$foo' is not declared.  Did you mean '@foo'?
     at .automation/test/raku/raku_bad_1.raku:4
-    ------> [32m<BOL>[33m⏏[31m$foo[1] = 42[0m
+    ------> <BOL>⏏$foo[1] = 42
 
 ```

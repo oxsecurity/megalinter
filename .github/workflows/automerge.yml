@@ -20,10 +20,12 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
+    if: github.repository == 'nvuillam/mega-linter'
     steps:
       - name: automerge
-        uses: "pascalgn/automerge-action@v0.12.0"
         env:
           GITHUB_TOKEN: "${{ secrets.PAT }}"
           MERGE_COMMIT_MESSAGE: "pull-request-description"
           MERGE_FORKS: "false"
+        if: env.GITHUB_TOKEN != null
+        uses: "pascalgn/automerge-action@v0.12.0"

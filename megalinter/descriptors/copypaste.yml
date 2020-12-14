@@ -1,5 +1,7 @@
 descriptor_id: COPYPASTE
 descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 lint_all_files: true
 linters:
   # JSCPD
@@ -13,6 +15,8 @@ linters:
     config_file_name: .jscpd.json
     cli_lint_mode: project
     cli_lint_extra_args:
+      - "--reporters"
+      - "console,html"
       - "--output"
       - "./report/copy-paste/"
     cli_lint_extra_args_after:

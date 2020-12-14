@@ -5,24 +5,26 @@
 ## luacheck documentation
 
 - Version in Mega-Linter: **0.23.0**
-- Visit [Official Web Site](https://luacheck.readthedocs.io)
-- See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html)
-  - If custom .luacheckrc is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.luacheckrc) will be used
-- See [How to disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html)
-- See [Index of problems detected by luacheck](https://luacheck.readthedocs.io/en/stable/warnings.html)
+- Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
+- See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
+  - If custom .luacheckrc is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.luacheckrc){target=_blank} will be used
+- See [How to disable luacheck rules in files](https://luacheck.readthedocs.io/en/stable/inline.html){target=_blank}
+- See [Index of problems detected by luacheck](https://luacheck.readthedocs.io/en/stable/warnings.html){target=_blank}
 
-[![luacheck - GitHub](https://gh-card.dev/repos/luarocks/luacheck.svg?fullname=)](https://github.com/luarocks/luacheck)
+[![luacheck - GitHub](https://gh-card.dev/repos/luarocks/luacheck.svg?fullname=)](https://github.com/luarocks/luacheck){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable luacheck by adding `LUA_LUACHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable luacheck by adding `LUA_LUACHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | LUA_LUACHECK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | LUA_LUACHECK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | LUA_LUACHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| LUA_LUACHECK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".lua"]` |
+| LUA_LUACHECK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | LUA_LUACHECK_FILE_NAME | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
 | LUA_LUACHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | LUA_LUACHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -273,9 +275,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luac
 -----------------------------------------------
 
 [SUCCESS] .automation/test/lua/lua_good_1.lua
-    Checking .automation/test/lua/lua_good_1.lua [0m[32m[1mOK[0m
+    Checking .automation/test/lua/lua_good_1.lua OK
     
-    Total: [0m[0m[1m0[0m warnings / [0m[0m[1m0[0m errors in 1 file
+    Total: 0 warnings / 0 errors in 1 file
 
 ```
 
@@ -287,10 +289,10 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luac
 -----------------------------------------------
 
 [ERROR] .automation/test/lua/lua_bad_1.lua
-    Checking .automation/test/lua/lua_bad_1.lua [0m[1m1 error[0m
+    Checking .automation/test/lua/lua_bad_1.lua 1 error
     
         .automation/test/lua/lua_bad_1.lua:10:1: expected 'end' (to close 'function' on line 7) near <eof>
     
-    Total: [0m[0m[1m0[0m warnings / [0m[31m[1m1[0m error in 1 file
+    Total: 0 warnings / 1 error in 1 file
 
 ```

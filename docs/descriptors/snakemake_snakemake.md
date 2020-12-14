@@ -10,20 +10,22 @@
 ## snakemake documentation
 
 - Version in Mega-Linter: **5.30.1**
-- Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/)
+- Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
-[![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake)
+[![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SNAKEMAKE_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".smk"]` |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]` |
 | SNAKEMAKE_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration
@@ -886,7 +888,7 @@ ENVIRONMENT MODULES:
 ### Example success log
 
 ```shell
-Results of snakemake linter (version 5.29.0)
+Results of snakemake linter (version 5.30.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
 -----------------------------------------------
 
@@ -898,7 +900,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemak
 ### Example error log
 
 ```shell
-Results of snakemake linter (version 5.29.0)
+Results of snakemake linter (version 5.30.1)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/
 -----------------------------------------------
 

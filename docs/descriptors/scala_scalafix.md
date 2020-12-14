@@ -5,24 +5,26 @@
 ## scalafix documentation
 
 - Version in Mega-Linter: **0.9.24**
-- Visit [Official Web Site](https://scalacenter.github.io/scalafix/)
-- See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html)
-  - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf) will be used
-- See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html)
-- See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
+- Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
+- See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
+  - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf){target=_blank} will be used
+- See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html){target=_blank}
+- See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html){target=_blank}
 
-[![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix)
+[![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SCALA_SCALAFIX_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | SCALA_SCALAFIX_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SCALA_SCALAFIX_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".scala"]` |
+| SCALA_SCALAFIX_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | SCALA_SCALAFIX_FILE_NAME | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scalafix.conf` |
 | SCALA_SCALAFIX_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | SCALA_SCALAFIX_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -209,7 +211,7 @@ RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 ### Example success log
 
 ```shell
-Results of scalafix linter (version 0.9.23)
+Results of scalafix linter (version 0.9.24)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
 -----------------------------------------------
 
@@ -221,7 +223,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_sc
 ### Example error log
 
 ```shell
-Results of scalafix linter (version 0.9.23)
+Results of scalafix linter (version 0.9.24)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
 -----------------------------------------------
 

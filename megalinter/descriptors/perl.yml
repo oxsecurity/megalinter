@@ -5,9 +5,9 @@ file_extensions:
   - ".pm"
   - ".t"
   - ""
-file_contains:
-  - "#!/usr/bin/env perl"
-  - "#!/usr/bin/perl"
+file_contains_regex:
+  - '#!/usr/bin/env perl'
+  - '#!/usr/bin/perl'
 install:
   apk:
     - perl

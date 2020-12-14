@@ -4,23 +4,25 @@
 
 ## markdown-link-check documentation
 
-- Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme)
-- See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format)
-  - If custom .markdown-link-check.json is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json) will be used
-- See [How to disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments)
+- Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
+- See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
+  - If custom .markdown-link-check.json is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
+- See [How to disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments){target=_blank}
 
-[![markdown-link-check - GitHub](https://gh-card.dev/repos/tcort/markdown-link-check.svg?fullname=)](https://github.com/tcort/markdown-link-check)
+[![markdown-link-check - GitHub](https://gh-card.dev/repos/tcort/markdown-link-check.svg?fullname=)](https://github.com/tcort/markdown-link-check){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Disable markdown-link-check by adding `MARKDOWN_MARKDOWN_LINK_CHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
 | MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".md"]` |
+| MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAME | markdown-link-check configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.markdown-link-check.json` |
 | MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -57,6 +59,10 @@ Options:
                          header configuration
   -q, --quiet            displays errors only
   -v, --verbose          displays detailed error information
+  -a, --alive <code>     comma separated list of HTTP codes to be considered as
+                         alive
+  -r, --retry            retry after the duration indicated in 'retry-after'
+                         header when HTTP code is 429
   -h, --help             display help for command
 ```
 
