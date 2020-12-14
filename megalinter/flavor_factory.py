@@ -61,7 +61,7 @@ def check_active_linters_match_flavor(active_linters):
     flavor_linters = all_flavors[flavor]["linters"]
     missing_linters = []
     for active_linter in active_linters:
-        if active_linter not in flavor_linters:
+        if active_linter.name not in flavor_linters:
             missing_linters += [active_linter.name]
     if len(missing_linters) > 0:
         missing_linters_str = ",".join(missing_linters)
