@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/json.yml -->
 # JSON
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) |

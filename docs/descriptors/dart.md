@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/dart.yml -->
 # DART
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [dartanalyzer](dart_dartanalyzer.md) | [DART](dart_dartanalyzer.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | DART_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [dartanalyzer](dart_dartanalyzer.md) | [DART](dart_dartanalyzer.md) |

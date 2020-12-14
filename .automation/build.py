@@ -359,8 +359,27 @@ def generate_descriptor_documentation(descriptor):
         f"# {descriptor.get('descriptor_label', descriptor.get('descriptor_id'))}",
         "",
     ]
+    # List of linters
+    lang_lower = descriptor.get("descriptor_id").lower()
+    descriptor_md += [
+        "## Linters",
+        "",
+        "| Linter | Configuration key |",
+        "| ------ | ----------------- |",
+    ]
+    for linter in descriptor.get("linters", []):
+        linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
+        linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
+        descriptor_md += [
+            f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
+            f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
+        ]
+
     # Criteria used by the descriptor to identify files to lint
-    descriptor_md += ["## Linted files", ""]
+    descriptor_md += [
+        "",
+        "## Linted files", ""
+    ]
     if descriptor.get("active_only_if_file_found", None) is not None:
         descriptor_md += [
             f"- Activated only if file is found: `{descriptor.get('active_only_if_file_found')}`"
@@ -392,21 +411,6 @@ def generate_descriptor_documentation(descriptor):
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |",
         "",
     ]
-    # List of linters
-    lang_lower = descriptor.get("descriptor_id").lower()
-    descriptor_md += [
-        "## Linters",
-        "",
-        "| Linter | Configuration key |",
-        "| ------ | ----------------- |",
-    ]
-    for linter in descriptor.get("linters", []):
-        linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
-        linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
-        descriptor_md += [
-            f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
-            f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
-        ]
     # Add install info
     if descriptor.get("install", None) is not None:
         descriptor_md += ["", "## Behind the scenes"]

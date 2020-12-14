@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/xml.yml -->
 # XML
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | XML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |

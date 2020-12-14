@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/graphql.yml -->
 # GRAPHQL
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) |

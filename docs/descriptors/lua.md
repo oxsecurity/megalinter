@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/lua.yml -->
 # LUA
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | LUA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | LUA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [luacheck](lua_luacheck.md) | [LUA](lua_luacheck.md) |

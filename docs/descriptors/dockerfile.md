@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/dockerfile.yml -->
 # DOCKERFILE
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [dockerfilelint](dockerfile_dockerfilelint.md) | [DOCKERFILE_DOCKERFILELINT](dockerfile_dockerfilelint.md) |
+| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) |
+
 ## Linted files
 
 - File names:
@@ -15,9 +22,3 @@
 | DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [dockerfilelint](dockerfile_dockerfilelint.md) | [DOCKERFILE_DOCKERFILELINT](dockerfile_dockerfilelint.md) |
-| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) |

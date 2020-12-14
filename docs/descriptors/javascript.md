@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/javascript.yml -->
 # JAVASCRIPT
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [eslint](javascript_eslint.md) | [JAVASCRIPT_ES](javascript_eslint.md) |
+| [standard](javascript_standard.md) | [JAVASCRIPT_STANDARD](javascript_standard.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,12 +22,6 @@
 | JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [eslint](javascript_eslint.md) | [JAVASCRIPT_ES](javascript_eslint.md) |
-| [standard](javascript_standard.md) | [JAVASCRIPT_STANDARD](javascript_standard.md) |
 
 ## Behind the scenes
 

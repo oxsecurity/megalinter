@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/yaml.yml -->
 # YAML
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -16,8 +22,3 @@
 | YAML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |

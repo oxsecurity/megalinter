@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/cloudformation.yml -->
 # CLOUDFORMATION
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -21,8 +27,3 @@
 | CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) |
