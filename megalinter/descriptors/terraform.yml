@@ -1,5 +1,7 @@
 descriptor_id: TERRAFORM
 descriptor_type: tooling_format
+descriptor_flavors:
+  - terraform
 file_extensions:
   - ".tf"
 linters:

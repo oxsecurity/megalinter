@@ -522,6 +522,7 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | ruby | Mega-Linter optimized for RUBY based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | rust | Mega-Linter optimized for RUST based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | scala | Mega-Linter optimized for SCALA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | terraform | Mega-Linter optimized for TERRAFORM based projects | 31 |
 <!-- flavors-table-end -->
 
 <!-- flavors-section-end -->
