@@ -15,10 +15,10 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 | <!-- --> | Flavor | Description | Embedded linters |
 | :------: | ------ | ----------- | ---------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | dart | Mega-Linter optimized for DART based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | dotnet | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | go | Mega-Linter optimized for GO based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | java | Mega-Linter optimized for JAVA based projects | 29 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | javascript | Mega-Linter optimized for JAVASCRIPT/TYPESCRIPT based projects | 35 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/microsoft.ico" alt="" height="32px" class="megalinter-icon"></a> | microsoft | Mega-Linter optimized for MICROSOFT based projects | 34 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | javascript | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | php | Mega-Linter optimized for PHP based projects | 32 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | python | Mega-Linter optimized for PYTHON based projects | 35 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | ruby | Mega-Linter optimized for RUBY based projects | 29 |

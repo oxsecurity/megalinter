@@ -49,7 +49,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/tsx.ico" alt="" height="32px" class="megalinter-icon"></a> | [**TSX**](descriptors/tsx.md#readme) | [eslint](descriptors/tsx_eslint.md#readme)| [TSX_ESLINT](descriptors/tsx_eslint.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/typescript.ico" alt="" height="32px" class="megalinter-icon"></a> | [**TYPESCRIPT**](descriptors/typescript.md#readme) | [eslint](descriptors/typescript_eslint.md#readme)| [TYPESCRIPT_ES](descriptors/typescript_eslint.md#readme)| :heavy_check_mark: |
 | <!-- --> |  | [standard](descriptors/typescript_standard.md#readme)| [TYPESCRIPT_STANDARD](descriptors/typescript_standard.md#readme)| :heavy_check_mark: |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | [**Visual Basic .NET** (VBDOTNET)](descriptors/vbdotnet.md#readme) | [dotnet-format](descriptors/vbdotnet_dotnet_format.md#readme)| [VBDOTNET_DOTNET_FORMAT](descriptors/vbdotnet_dotnet_format.md#readme)| :heavy_check_mark: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vbdotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [**Visual Basic .NET** (VBDOTNET)](descriptors/vbdotnet.md#readme) | [dotnet-format](descriptors/vbdotnet_dotnet_format.md#readme)| [VBDOTNET_DOTNET_FORMAT](descriptors/vbdotnet_dotnet_format.md#readme)| :heavy_check_mark: |
 
 ## Formats
 

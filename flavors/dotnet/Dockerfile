@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [microsoft]: Mega-Linter optimized for MICROSOFT based projects
+# MEGA-LINTER FLAVOR [dotnet]: Mega-Linter optimized for C, C++, C# or VB based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##
@@ -239,7 +239,7 @@ ENV BUILD_REVISION=$BUILD_REVISION
 ENV BUILD_VERSION=$BUILD_VERSION
 
 #FLAVOR__START
-ENV MEGALINTER_FLAVOR=microsoft
+ENV MEGALINTER_FLAVOR=dotnet
 #FLAVOR__END
 
 #########################################

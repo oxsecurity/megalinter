@@ -1,7 +1,7 @@
 descriptor_id: C
 descriptor_type: language
 descriptor_flavors:
-  - microsoft
+  - dotnet
 file_extensions:
   - '.c'
   - '.h'

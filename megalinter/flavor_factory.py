@@ -32,10 +32,10 @@ def list_megalinter_flavors():
     flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
         "dart": {"label": "Mega-Linter optimized for DART based projects"},
+        "dotnet": {"label": "Mega-Linter optimized for C, C++, C# or VB based projects"},
         "go": {"label": "Mega-Linter optimized for GO based projects"},
         "java": {"label": "Mega-Linter optimized for JAVA based projects"},
-        "javascript": {"label": "Mega-Linter optimized for JAVASCRIPT/TYPESCRIPT based projects"},
-        "microsoft": {"label": "Mega-Linter optimized for MICROSOFT based projects"},
+        "javascript": {"label": "Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects"},
         "php": {"label": "Mega-Linter optimized for PHP based projects"},
         "python": {"label": "Mega-Linter optimized for PYTHON based projects"},
         "ruby": {"label": "Mega-Linter optimized for RUBY based projects"},

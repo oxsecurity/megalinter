@@ -34,6 +34,49 @@
             "YAML_YAMLLINT"
         ]
     },
+    "dotnet": {
+        "descriptors": [
+            "CSHARP",
+            "POWERSHELL"
+        ],
+        "label": "Mega-Linter optimized for C, C++, C# or VB based projects",
+        "linters": [
+            "ANSIBLE_ANSIBLE_LINT",
+            "ARM_ARM_TTK",
+            "BASH_EXEC",
+            "BASH_SHELLCHECK",
+            "BASH_SHFMT",
+            "C_CPPLINT",
+            "COPYPASTE_JSCPD",
+            "CPP_CPPLINT",
+            "CSHARP_DOTNET_FORMAT",
+            "CSS_STYLELINT",
+            "CSS_SCSS_LINT",
+            "DOCKERFILE_DOCKERFILELINT",
+            "DOCKERFILE_HADOLINT",
+            "EDITORCONFIG_EDITORCONFIG_CHECKER",
+            "ENV_DOTENV_LINTER",
+            "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
+            "GROOVY_NPM_GROOVY_LINT",
+            "HTML_HTMLHINT",
+            "JSON_JSONLINT",
+            "KOTLIN_KTLINT",
+            "KUBERNETES_KUBEVAL",
+            "MARKDOWN_MARKDOWNLINT",
+            "MARKDOWN_MARKDOWN_LINK_CHECK",
+            "OPENAPI_SPECTRAL",
+            "POWERSHELL_POWERSHELL",
+            "PROTOBUF_PROTOLINT",
+            "SNAKEMAKE_LINT",
+            "SNAKEMAKE_SNAKEFMT",
+            "SPELL_CSPELL",
+            "SQL_SQL_LINT",
+            "TEKTON_TEKTON_LINT",
+            "VBDOTNET_DOTNET_FORMAT",
+            "XML_XMLLINT",
+            "YAML_YAMLLINT"
+        ]
+    },
     "go": {
         "descriptors": [
             "GO"
@@ -113,7 +156,7 @@
             "JAVASCRIPT",
             "TYPESCRIPT"
         ],
-        "label": "Mega-Linter optimized for JAVASCRIPT/TYPESCRIPT based projects",
+        "label": "Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -148,49 +191,6 @@
             "TSX_ESLINT",
             "TYPESCRIPT_ES",
             "TYPESCRIPT_STANDARD",
-            "XML_XMLLINT",
-            "YAML_YAMLLINT"
-        ]
-    },
-    "microsoft": {
-        "descriptors": [
-            "CSHARP",
-            "POWERSHELL"
-        ],
-        "label": "Mega-Linter optimized for MICROSOFT based projects",
-        "linters": [
-            "ANSIBLE_ANSIBLE_LINT",
-            "ARM_ARM_TTK",
-            "BASH_EXEC",
-            "BASH_SHELLCHECK",
-            "BASH_SHFMT",
-            "C_CPPLINT",
-            "COPYPASTE_JSCPD",
-            "CPP_CPPLINT",
-            "CSHARP_DOTNET_FORMAT",
-            "CSS_STYLELINT",
-            "CSS_SCSS_LINT",
-            "DOCKERFILE_DOCKERFILELINT",
-            "DOCKERFILE_HADOLINT",
-            "EDITORCONFIG_EDITORCONFIG_CHECKER",
-            "ENV_DOTENV_LINTER",
-            "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
-            "GROOVY_NPM_GROOVY_LINT",
-            "HTML_HTMLHINT",
-            "JSON_JSONLINT",
-            "KOTLIN_KTLINT",
-            "KUBERNETES_KUBEVAL",
-            "MARKDOWN_MARKDOWNLINT",
-            "MARKDOWN_MARKDOWN_LINK_CHECK",
-            "OPENAPI_SPECTRAL",
-            "POWERSHELL_POWERSHELL",
-            "PROTOBUF_PROTOLINT",
-            "SNAKEMAKE_LINT",
-            "SNAKEMAKE_SNAKEFMT",
-            "SPELL_CSPELL",
-            "SQL_SQL_LINT",
-            "TEKTON_TEKTON_LINT",
-            "VBDOTNET_DOTNET_FORMAT",
             "XML_XMLLINT",
             "YAML_YAMLLINT"
         ]

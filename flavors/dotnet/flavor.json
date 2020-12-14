@@ -3,7 +3,7 @@
         "CSHARP",
         "POWERSHELL"
     ],
-    "label": "Mega-Linter optimized for MICROSOFT based projects",
+    "label": "Mega-Linter optimized for C, C++, C# or VB based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",

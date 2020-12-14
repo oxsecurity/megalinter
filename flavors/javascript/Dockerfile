@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [javascript]: Mega-Linter optimized for JAVASCRIPT/TYPESCRIPT based projects
+# MEGA-LINTER FLAVOR [javascript]: Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

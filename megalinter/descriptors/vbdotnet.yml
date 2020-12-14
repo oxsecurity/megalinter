@@ -2,7 +2,7 @@ descriptor_id: VBDOTNET
 descriptor_label: "Visual Basic .NET"
 descriptor_type: language
 descriptor_flavors:
-  - microsoft
+  - dotnet
 file_extensions:
   - ".vb"
 linters:
