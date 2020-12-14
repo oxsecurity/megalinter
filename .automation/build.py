@@ -376,10 +376,7 @@ def generate_descriptor_documentation(descriptor):
         ]
 
     # Criteria used by the descriptor to identify files to lint
-    descriptor_md += [
-        "",
-        "## Linted files", ""
-    ]
+    descriptor_md += ["", "## Linted files", ""]
     if descriptor.get("active_only_if_file_found", None) is not None:
         descriptor_md += [
             f"- Activated only if file is found: `{descriptor.get('active_only_if_file_found')}`"
@@ -452,7 +449,9 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
                     break
             if match is False:
                 continue
-        line = line.replace(DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors").replace(".md#readme", "/")
+        line = line.replace(
+            DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors"
+        ).replace(".md#readme", "/")
         filtered_table_md += [line]
     flavor_doc_md += filtered_table_md
     # Write MD file
@@ -721,12 +720,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
         # Mega-linter flavours
-        linter_doc_md += ["",
-                          "## Mega-Linter Flavours",
-                          "",
-                          "This linter is available in the following flavours",
-                          ""]
-        linter_doc_md += build_flavors_md_table(filter_linter_name=linter.name, replace_link=True)
+        linter_doc_md += [
+            "",
+            "## Mega-Linter Flavours",
+            "",
+            "This linter is available in the following flavours",
+            "",
+        ]
+        linter_doc_md += build_flavors_md_table(
+            filter_linter_name=linter.name, replace_link=True
+        )
 
         # Behind the scenes section
         linter_doc_md += ["", "## Behind the scenes", ""]
@@ -844,17 +847,20 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
             f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico", "", "", flavor_id, 32,
         )
         linters_number = len(flavor["linters"])
-        if filter_linter_name is not None and filter_linter_name not in flavor['linters']:
+        if (
+            filter_linter_name is not None
+            and filter_linter_name not in flavor["linters"]
+        ):
             continue
-        flavor_doc_url = (
-            f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
-        )
+        flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         md_line = (
-            f"| {icon_html} | [{flavor_id}]({doc_url(flavor_doc_url)}) |" 
+            f"| {icon_html} | [{flavor_id}]({doc_url(flavor_doc_url)}) |"
             f" {flavor['label']} | {str(linters_number)} |"
         )
         if replace_link is True:
-            md_line = md_line.replace(DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors").replace(".md#readme", "/")
+            md_line = md_line.replace(
+                DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors"
+            ).replace(".md#readme", "/")
         md_table += [md_line]
     return md_table
 
