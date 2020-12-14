@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/snakemake.yml -->
 # SNAKEMAKE
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md) |
+| [snakefmt](snakemake_snakefmt.md) | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) |
+
 ## Linted files
 
 - File extensions:
@@ -18,9 +25,3 @@
 | SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md) |
-| [snakefmt](snakemake_snakefmt.md) | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) |

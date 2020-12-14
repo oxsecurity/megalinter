@@ -1,5 +1,7 @@
 descriptor_id: JAVASCRIPT
 descriptor_type: language
+descriptor_flavors:
+  - javascript
 file_extensions:
   - ".js"
 install:

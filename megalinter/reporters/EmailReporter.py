@@ -100,7 +100,7 @@ class EmailReporter(Reporter):
             server.sendmail(sender, recipients, the_msg)
             server.quit()
         except smtplib.SMTPAuthenticationError as e:
-            logging.error(
+            logging.warning(
                 "[Email Reporter] Unable to authenticate to SMTP server: \n"
                 + str(e)
                 + "\n - smtp server: "
@@ -114,7 +114,7 @@ class EmailReporter(Reporter):
             )
             return
         except Exception as e:
-            logging.error(
+            logging.warning(
                 "[Email Reporter] Unable to send e-mail: \n"
                 + str(e.__class__)
                 + " - "

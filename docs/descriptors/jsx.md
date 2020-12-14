@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/jsx.yml -->
 # JSX
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) |

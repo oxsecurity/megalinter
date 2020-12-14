@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/css.yml -->
 # CSS
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) |
+| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -17,9 +24,3 @@
 | CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) |
-| [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) |

@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/raku.yml -->
 # RAKU
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [raku](raku_raku.md) | [RAKU](raku_raku.md) |
+
 ## Linted files
 
 - File extensions:
@@ -20,8 +26,3 @@
 | RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [raku](raku_raku.md) | [RAKU](raku_raku.md) |

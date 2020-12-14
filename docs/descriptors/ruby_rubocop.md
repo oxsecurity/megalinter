@@ -52,6 +52,15 @@ Use rubocop in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Ruby Extension](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) |
 
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Mega-Linter optimized for RUBY based projects | 29 |
+
 ## Behind the scenes
 
 ### How are identified applicable files

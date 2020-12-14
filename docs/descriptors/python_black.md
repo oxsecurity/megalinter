@@ -48,6 +48,15 @@ Use black in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [sublack](https://github.com/jgirardet/sublack) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) |
 
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
+
 ## Behind the scenes
 
 ### How are identified applicable files

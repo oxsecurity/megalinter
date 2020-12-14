@@ -42,6 +42,14 @@ Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) |
 
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+
 ## Behind the scenes
 
 ### How are identified applicable files

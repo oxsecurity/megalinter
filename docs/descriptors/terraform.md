@@ -3,6 +3,14 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/terraform.yml -->
 # TERRAFORM
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [tflint](terraform_tflint.md) | [TERRAFORM_TFLINT](terraform_tflint.md) |
+| [terrascan](terraform_terrascan.md) | [TERRAFORM_TERRASCAN](terraform_terrascan.md) |
+| [terragrunt](terraform_terragrunt.md) | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,10 +23,3 @@
 | TERRAFORM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | TERRAFORM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [tflint](terraform_tflint.md) | [TERRAFORM_TFLINT](terraform_tflint.md) |
-| [terrascan](terraform_terrascan.md) | [TERRAFORM_TERRASCAN](terraform_terrascan.md) |
-| [terragrunt](terraform_terragrunt.md) | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md) |

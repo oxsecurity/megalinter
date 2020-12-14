@@ -48,6 +48,15 @@ Use golangci-lint in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-go](https://github.com/fatih/vim-go) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) |
 
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Mega-Linter optimized for GO based projects | 29 |
+
 ## Behind the scenes
 
 ### How are identified applicable files

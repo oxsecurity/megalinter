@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/spell.yml -->
 # SPELL
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [cspell](spell_cspell.md) | [SPELL_CSPELL](spell_cspell.md) |
+
 ## Linted files
 
 ## Configuration in Mega-Linter
@@ -12,8 +18,3 @@
 | SPELL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | SPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [cspell](spell_cspell.md) | [SPELL_CSPELL](spell_cspell.md) |

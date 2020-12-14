@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/go.yml -->
 # GO
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,11 +21,6 @@
 | GO_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
 
 ## Behind the scenes
 

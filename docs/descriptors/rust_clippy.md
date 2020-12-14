@@ -36,6 +36,15 @@ Use clippy in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) |
 
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Mega-Linter optimized for RUST based projects | 29 |
+
 ## Behind the scenes
 
 ### How are identified applicable files

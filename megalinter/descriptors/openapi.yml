@@ -1,5 +1,7 @@
 descriptor_id: OPENAPI
 descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Any project can contain OpenAPI / swagger specification
 file_extensions:
   - ".yml"
   - ".yaml"

@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/perl.yml -->
 # PERL
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) |
+
 ## Linted files
 
 - File extensions:
@@ -22,11 +28,6 @@
 | PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) |
 
 ## Behind the scenes
 
