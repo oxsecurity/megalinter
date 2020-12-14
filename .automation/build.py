@@ -424,10 +424,14 @@ def dump_as_json(value: Any, empty_value: str) -> str:
 
 # Build a MD table for a type of linter (language, format, tooling_format), and a MD file for each linter
 def process_type(linters_by_type, type1, type_label, linters_tables_md):
+    col_header = "Language" if type1 == "language" \
+        else "Format" if type1 == "format" \
+        else "Tooling format" if type1 == "tooling_format" \
+        else "Code quality checker"
     linters_tables_md += [
         f"### {type_label}",
         "",
-        "| <!-- --> | Language / Format | Linter | Configuration key | Fix |",
+        f"| <!-- --> | {col_header} | Linter | Configuration key | Fix |",
         "| :---: | ----------------- | -------------- | ------------ | ------- |",
     ]
     descriptor_linters = linters_by_type[type1]
