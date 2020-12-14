@@ -88,6 +88,7 @@ def generate_flavor(flavor, flavor_info):
                 flavor_info = json.load(json_file)
         flavor_info["descriptors"] = flavor_descriptors
         flavor_info["linters"] = flavor_linters
+        os.makedirs(os.path.dirname(flavor_file), exist_ok=True)
         with open(flavor_file, "w", encoding="utf-8") as outfile:
             json.dump(flavor_info, outfile, indent=4, sort_keys=True)
         # Write in global flavors files

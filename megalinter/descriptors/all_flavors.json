@@ -1,6 +1,7 @@
 {
     "dart": {
         "descriptors": [],
+        "label": "Mega-Linter optimized for DART based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -37,6 +38,7 @@
         "descriptors": [
             "GO"
         ],
+        "label": "Mega-Linter optimized for GO based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -73,6 +75,7 @@
         "descriptors": [
             "JAVA"
         ],
+        "label": "Mega-Linter optimized for JAVA based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -110,6 +113,7 @@
             "JAVASCRIPT",
             "TYPESCRIPT"
         ],
+        "label": "Mega-Linter optimized for JAVASCRIPT/TYPESCRIPT based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -153,6 +157,7 @@
             "CSHARP",
             "POWERSHELL"
         ],
+        "label": "Mega-Linter optimized for MICROSOFT based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "ARM_ARM_TTK",
@@ -194,6 +199,7 @@
         "descriptors": [
             "PHP"
         ],
+        "label": "Mega-Linter optimized for PHP based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -231,6 +237,7 @@
     },
     "python": {
         "descriptors": [],
+        "label": "Mega-Linter optimized for PYTHON based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -273,6 +280,7 @@
         "descriptors": [
             "RUBY"
         ],
+        "label": "Mega-Linter optimized for RUBY based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -309,6 +317,7 @@
         "descriptors": [
             "RUST"
         ],
+        "label": "Mega-Linter optimized for RUST based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -345,6 +354,7 @@
         "descriptors": [
             "SCALA"
         ],
+        "label": "Mega-Linter optimized for SCALA based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",

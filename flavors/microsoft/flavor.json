@@ -3,6 +3,7 @@
         "CSHARP",
         "POWERSHELL"
     ],
+    "label": "Mega-Linter optimized for MICROSOFT based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",

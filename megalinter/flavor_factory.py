@@ -34,7 +34,7 @@ def list_megalinter_flavors():
         "dart": {"label": "Mega-Linter optimized for DART based projects"},
         "go": {"label": "Mega-Linter optimized for GO based projects"},
         "java": {"label": "Mega-Linter optimized for JAVA based projects"},
-        "javascript": {"label": "Mega-Linter optimized for JAVASCRIPT based projects"},
+        "javascript": {"label": "Mega-Linter optimized for JAVASCRIPT/TYPESCRIPT based projects"},
         "microsoft": {"label": "Mega-Linter optimized for MICROSOFT based projects"},
         "php": {"label": "Mega-Linter optimized for PHP based projects"},
         "python": {"label": "Mega-Linter optimized for PYTHON based projects"},
