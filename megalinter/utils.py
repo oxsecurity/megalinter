@@ -22,6 +22,7 @@ def get_excluded_directories():
     default_excluded_dirs = [
         "__pycache__",
         ".git",
+        ".jekyll-cache",
         ".pytest_cache",
         ".rbenv",
         ".venv",
