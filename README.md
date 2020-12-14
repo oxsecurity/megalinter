@@ -501,6 +501,8 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 <!-- flavors-section-start -->
 ## Flavors
 
+_This capability is in **Beta version**_
+
 To improve run performances, we generate **Flavored Mega-Linter images** containing only the list of linters related to a project type
 
 - When using default Mega-Linter, if a Mega-Linter Flavor would cover all your project requirements, a message is added in the logs
