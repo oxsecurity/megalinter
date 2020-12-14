@@ -46,7 +46,7 @@ This linter is available in the following flavours
 | <!-- --> | Flavor | Description | Embedded linters |
 | :------: | ------ | ----------- | ---------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/python.md#readme) | Mega-Linter optimized for PYTHON based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
 
 ## Behind the scenes
 

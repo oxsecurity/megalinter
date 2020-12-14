@@ -726,7 +726,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                           "",
                           "This linter is available in the following flavours",
                           ""]
-        linter_doc_md += build_flavors_md_table(linter.name)
+        linter_doc_md += build_flavors_md_table(filter_linter_name=linter.name, replace_link=True)
 
         # Behind the scenes section
         linter_doc_md += ["", "## Behind the scenes", ""]
@@ -814,7 +814,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     return linters_tables_md
 
 
-def build_flavors_md_table(filter_linter_name=None):
+def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     md_table = [
         "| <!-- --> | Flavor | Description | Embedded linters |",
         "| :------: | ------ | ----------- | ---------------- |",
@@ -853,6 +853,8 @@ def build_flavors_md_table(filter_linter_name=None):
             f"| {icon_html} | [{flavor_id}]({doc_url(flavor_doc_url)}) |" 
             f" {flavor['label']} | {str(linters_number)} |"
         )
+        if replace_link is True:
+            md_line = md_line.replace(DOCS_URL_FLAVORS_ROOT, MKDOCS_URL_ROOT + "/flavors").replace(".md#readme", "/")
         md_table += [md_line]
     return md_table
 
