@@ -507,6 +507,11 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 
 - When using default Mega-Linter, if a Mega-Linter Flavor would cover all your project requirements, a message is added in the logs
 - If your project uses a Mega-Linter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
+
+<!-- flavors-table-start -->
+
+<!-- flavors-table-end -->
+
 <!-- flavors-section-end -->
 
 <!-- badge-section-start -->

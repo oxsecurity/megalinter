@@ -81,34 +81,33 @@ def generate_flavor(flavor, flavor_info):
     if flavor == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
     else:
+        # Flavor json
+        flavor_file = f"{FLAVORS_DIR}/{flavor}/flavor.json"
+        if os.path.isfile(flavor_file):
+            with open(flavor_file, "r", encoding="utf-8") as json_file:
+                flavor_info = json.load(json_file)
+        flavor_info["descriptors"] = flavor_descriptors
+        flavor_info["linters"] = flavor_linters
+        with open(flavor_file, "w", encoding="utf-8") as outfile:
+            json.dump(flavor_info, outfile, indent=4, sort_keys=True)
+        # Write in global flavors files
+        with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
+            global_flavors = json.load(json_file)
+            global_flavors[flavor] = flavor_info
+        with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(global_flavors, outfile, indent=4, sort_keys=True)
         # Flavored dockerfile
         dockerfile = f"{FLAVORS_DIR}/{flavor}/Dockerfile"
         if not os.path.isdir(os.path.dirname(dockerfile)):
             os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
         copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
-        flavor_label = flavor_info["label"]
+        flavor_label = flavor_info['label']
         comment = f"# MEGA-LINTER FLAVOR [{flavor}]: {flavor_label}"
         with open(dockerfile, "r+", encoding="utf-8") as f:
             content = f.read()
             f.seek(0)
             f.truncate()
             f.write(f"{comment}\n{content}")
-        # Flavor json
-        flavor_file = f"{FLAVORS_DIR}/{flavor}/flavor.json"
-        flavor_data = {}
-        if os.path.isfile(flavor_file):
-            with open(flavor_file, "r", encoding="utf-8") as json_file:
-                flavor_data = json.load(json_file)
-        flavor_data["descriptors"] = flavor_descriptors
-        flavor_data["linters"] = flavor_linters
-        with open(flavor_file, "w", encoding="utf-8") as outfile:
-            json.dump(flavor_data, outfile, indent=4, sort_keys=True)
-        # Write in global flavors files
-        with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
-            global_flavors = json.load(json_file)
-            global_flavors[flavor] = flavor_data
-        with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
-            json.dump(global_flavors, outfile, indent=4, sort_keys=True)
         # Generate action.yml
         image_release = "latest"
         flavor_x = f"[{flavor} flavor]"
@@ -319,6 +318,17 @@ def generate_documentation():
         "# site_description-end",
         "site_description: " + md_to_text(welcome_phrase),
     )
+    # Build & Update flavors table
+    flavors_table_md = build_flavors_md_table()
+    flavors_table_md_str = "\n".join(flavors_table_md)
+    logging.info("Generated Flavors table for README:\n" + flavors_table_md_str)
+    replace_in_file(
+        f"{REPO_HOME}/README.md",
+        "<!-- flavors-table-start -->",
+        "<!-- flavors-table-end -->",
+        flavors_table_md_str,
+    )
+    # Automate generation of /docs items generated from README sections
     finalize_doc_build()
 
 
@@ -411,7 +421,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         f"### {type_label}",
         "",
         "| <!-- --> | Language / Format | Linter | Configuration key | Fix |",
-        "| --- | ----------------- | -------------- | ------------ | ------- |",
+        "| :---: | ----------------- | -------------- | ------------ | ------- |",
     ]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
@@ -727,6 +737,26 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         logging.info("Updated " + file.name)
     linters_tables_md += [""]
     return linters_tables_md
+
+
+def build_flavors_md_table():
+    md_table = [
+        "| <!-- --> | Flavor | Description | Embedded linters |",
+        "| :------: | ------ | ----------- | ---------------- |",
+    ]
+    all_flavors = megalinter.flavor_factory.get_all_flavors()
+    for flavor_id, flavor in all_flavors.items():
+        icon_html = icon(
+            f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico",
+            "",
+            "",
+            flavor_id,
+            32,
+        )
+        linters_number = len(flavor['linters'])
+        md_line = f"| {icon_html} | {flavor_id} | {flavor['label']} | {str(linters_number)} |"
+        md_table += [md_line]
+    return md_table
 
 
 def get_linter_base_info(linter):
