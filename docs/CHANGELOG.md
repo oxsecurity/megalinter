@@ -5,6 +5,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.16.0] 2020-12-14
+
 - Flavored Mega-Linters
   - Generate lightweight docker images to improve Mega-Linter performances on some language based projects
   - During Mega-Linter run, suggest user to use a flavor and write it in reporters
