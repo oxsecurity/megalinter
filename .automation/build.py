@@ -448,6 +448,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
                     break
             if match is False:
                 continue
+        line = line.replace(DOCS_URL_DESCRIPTORS_ROOT, MKDOCS_URL_ROOT + "/descriptors").replace(".md#readme", "/")
         filtered_table_md += [line]
     flavor_doc_md += filtered_table_md
     # Write MD file
