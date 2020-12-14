@@ -83,7 +83,7 @@ By using **Mega-Linter**, you ensure that:
 ## Quick Start
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
-- If you want to **apply formatters and auto-fixers** in a new commit/PR, uncomment [**APPLY_FIXES** variables](#apply-fixes)
+- If you do not want to **apply formatters and auto-fixers** in a new commit/PR, comment [**APPLY_FIXES** block variables](#apply-fixes)
 - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
 - Watch !
@@ -236,11 +236,11 @@ on:
   pull_request:
     branches: [master]
 
-# env: #Uncomment to activate variables below
-# Apply linter fixes configuration
-# APPLY_FIXES: all # Uncomment to apply fixes provided by linters. You can also specify the list of fixing linters
-# APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request (default), push, all)
-# APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
+env: # Comment env block if you do not want to apply fixes
+  # Apply linter fixes configuration
+  APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
+  APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
+  APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
@@ -266,6 +266,8 @@ jobs:
       # Mega-Linter
       - name: Mega-Linter
         id: ml
+        # You can override Mega-Linter flavor used to have faster performances
+        # More info at https://nvuillam.github.io/mega-linter/flavors/
         uses: nvuillam/mega-linter@v4
         env:
           # All available variables are described in documentation
