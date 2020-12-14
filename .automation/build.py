@@ -25,6 +25,7 @@ URL_RAW_ROOT = "https://github.com/nvuillam/mega-linter/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"
 DOCS_URL_ROOT = URL_ROOT + "/docs"
 DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
+DOCS_URL_FLAVORS_ROOT = DOCS_URL_ROOT + "/flavors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 REPO_ICONS = REPO_HOME + "/docs/assets/icons"
@@ -335,6 +336,10 @@ def generate_documentation():
         "<!-- flavors-table-end -->",
         flavors_table_md_str,
     )
+    # Generate flavors individual documentations
+    flavors = megalinter.flavor_factory.get_all_flavors()
+    for flavor, flavor_info in flavors.items():
+        generate_flavor_documentation(flavor, flavor_info, linters_tables_md)
     # Automate generation of /docs items generated from README sections
     finalize_doc_build()
 
@@ -413,6 +418,42 @@ def generate_descriptor_documentation(descriptor):
     logging.info("Updated " + file.name)
 
 
+def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
+    flavor_github_action = f"nvuillam/mega-linter/flavors/{flavor_id}@v4"
+    flavor_docker_image = f"nvuillam/mega-linter-{flavor_id}:v4"
+    flavor_doc_md = [f"# {flavor_id} Mega-Linter Flavor",
+                     "",
+                     "## Description",
+                     "",
+                     flavor['label'],
+                     "",
+                     "## Usage",
+                     "",
+                     f"- With GitHub Action: **{flavor_github_action}**",
+                     f"- With Docker image: **{flavor_docker_image}**",
+                     "",
+                     "## Embedded linters",
+                     ""]
+    filtered_table_md = []
+    for line in linters_tables_md:
+        if "<!-- linter-icon -->" in line:
+            match = False
+            for linter_name in flavor["linters"]:
+                if f"[{linter_name}]" in line:
+                    match = True
+                    break
+            if match is False:
+                continue
+        filtered_table_md += [line]
+    flavor_doc_md += filtered_table_md
+    # Write MD file
+    flavor_doc_file = f"{REPO_HOME}/docs/flavors/{flavor_id}.md"
+    file = open(flavor_doc_file, "w", encoding="utf-8")
+    file.write("\n".join(flavor_doc_md) + "\n")
+    file.close()
+    logging.info("Updated " + flavor_doc_file)
+
+
 def dump_as_json(value: Any, empty_value: str) -> str:
     if not value:
         return empty_value
@@ -472,7 +513,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         )
         linters_tables_md += [
-            f"| {icon_html} | {descriptor_id_cell} | [{linter.linter_name}]({doc_url(linter_doc_url)})"
+            f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
+            f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
             f"| [{linter.name}]({doc_url(linter_doc_url)})"
             f"| {fix_col} |"
         ]
@@ -769,7 +811,8 @@ def build_flavors_md_table():
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    md_line_all = f"| {icon_html} | <!-- --> | Default Mega-Linter Flavor | {str(linters_number)} |"
+    md_line_all = f"| {icon_html} | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | " \
+                  f"Default Mega-Linter Flavor | {str(linters_number)} |"
     md_table += [md_line_all]
     all_flavors = megalinter.flavor_factory.get_all_flavors()
     for flavor_id, flavor in all_flavors.items():
@@ -777,8 +820,9 @@ def build_flavors_md_table():
             f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico", "", "", flavor_id, 32,
         )
         linters_number = len(flavor["linters"])
+        flavor_link = DOCS_URL_FLAVORS_ROOT +"/"+flavor_id
         md_line = (
-            f"| {icon_html} | {flavor_id} | {flavor['label']} | {str(linters_number)} |"
+            f"| {icon_html} | [{flavor_id}]({flavor_link}) | {flavor['label']} | {str(linters_number)} |"
         )
         md_table += [md_line]
     return md_table
