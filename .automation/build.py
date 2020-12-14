@@ -720,6 +720,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     linter_doc_md += [
                         f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
                     ]
+        # Mega-linter flavours
+        linter_doc_md += ["",
+                          "## Mega-Linter Flavours",
+                          "",
+                          "This linter is available in the following flavours",
+                          ""]
+        linter_doc_md += build_flavors_md_table(linter.name)
+
         # Behind the scenes section
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
@@ -806,7 +814,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     return linters_tables_md
 
 
-def build_flavors_md_table():
+def build_flavors_md_table(filter_linter_name=None):
     md_table = [
         "| <!-- --> | Flavor | Description | Embedded linters |",
         "| :------: | ------ | ----------- | ---------------- |",
@@ -836,6 +844,8 @@ def build_flavors_md_table():
             f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico", "", "", flavor_id, 32,
         )
         linters_number = len(flavor["linters"])
+        if filter_linter_name is not None and filter_linter_name not in flavor['linters']:
+            continue
         flavor_doc_url = (
             f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         )
