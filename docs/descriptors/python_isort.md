@@ -112,7 +112,7 @@ usage: isort [-h] [--src SRC_PATHS] [-a ADD_IMPORTS] [--append] [--ac] [--af]
              [--ext SUPPORTED_EXTENSIONS]
              [--blocked-extension BLOCKED_EXTENSIONS] [--dedup-headings]
              [--only-sections] [--only-modified]
-             [files ...]
+             [files [files ...]]
 
 Sort Python import definitions alphabetically within logical sections. Run
 with no arguments to see a quick start guide, otherwise, one or more
@@ -319,7 +319,7 @@ optional arguments:
                         Python 3 version could be the target, and use a union
                         of all stdlib modules across versions. If auto is
                         specified, the version of the interpreter used to run
-                        isort (currently: 39) will be used.
+                        isort (currently: 38) will be used.
   --profile PROFILE     Base profile type to use for configuration. Profiles
                         include: black, django, pycharm, google, open_stack,
                         plone, attrs, hug. As well as any shared profiles.
