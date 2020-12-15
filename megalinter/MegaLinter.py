@@ -261,9 +261,13 @@ class Megalinter:
     def load_config_vars(self):
         # Linter rules root path
         if config.exists("LINTER_RULES_PATH"):
-            self.linter_rules_path = (
-                self.github_workspace + os.path.sep + config.get("LINTER_RULES_PATH")
-            )
+            linter_rules_path_val = config.get("LINTER_RULES_PATH")
+            if linter_rules_path_val.startswith("http"):
+                self.linter_rules_path = linter_rules_path_val
+            else:
+                self.linter_rules_path = (
+                    self.github_workspace + os.path.sep + linter_rules_path_val
+                )
         # Filtering regex (inclusion)
         if config.exists("FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get("FILTER_REGEX_INCLUDE")

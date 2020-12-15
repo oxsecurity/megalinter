@@ -27,6 +27,8 @@ import shlex
 import shutil
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from time import perf_counter
 
 from megalinter import config, utils
@@ -175,6 +177,8 @@ class Linter:
                 params["github_workspace"] if "github_workspace" in params else "."
             )
             self.config_file = None
+            self.config_file_label = None
+            self.config_file_error = None
             self.filter_regex_include = None
             self.filter_regex_exclude = None
             self.post_linter_status = (
@@ -228,6 +232,7 @@ class Linter:
             self.files_lint_results = []
             self.start_perf = None
             self.elapsed_time_s = None
+            self.remote_config_file_to_delete = None
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -279,13 +284,34 @@ class Linter:
 
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
-        # 1: repo + config_file_name
-        # 2: linter_rules_path + config_file_name
-        # 3: mega-linter default rules path + config_file_name
+        # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
+        # 2: repo + config_file_name
+        # 3: linter_rules_path + config_file_name
+        # 4: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
             and self.config_file_name != "LINTER_DEFAULT"
         ):
+            if self.linter_rules_path.startswith("http"):
+                remote_config_file = (
+                    self.linter_rules_path + "/" + self.config_file_name
+                )
+                local_config_file = self.workspace + os.path.sep + self.config_file_name
+                existing_before = os.path.isfile(local_config_file)
+                try:
+                    with urllib.request.urlopen(remote_config_file) as response, open(
+                        local_config_file, "wb"
+                    ) as out_file:
+                        shutil.copyfileobj(response, out_file)
+                        self.config_file_label = remote_config_file
+                        if existing_before is False:
+                            self.remote_config_file_to_delete = local_config_file
+                except urllib.error.HTTPError as e:
+                    self.config_file_error = (
+                        f"Unable to fetch {remote_config_file}\n{str(e)}"
+                    )
+
+            # in repo root (already here or fetched by code above)
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
@@ -302,6 +328,11 @@ class Linter:
                 self.config_file = (
                     self.default_rules_location + os.path.sep + self.config_file_name
                 )
+            # Set config file label if not set by remote rule
+            if self.config_file is not None and self.config_file_label is None:
+                self.config_file_label = self.config_file.replace(
+                    "/tmp/lint", ""
+                ).replace("/action/lib/.automation/", "")
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
         if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
@@ -392,6 +423,9 @@ class Linter:
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
         if self.return_code != 0 and self.disable_errors is True:
             self.return_code = 0
+        # Delete locally copied remote config file if necessary
+        if self.remote_config_file_to_delete is not None:
+            os.remove(self.remote_config_file_to_delete)
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
@@ -583,6 +617,7 @@ class Linter:
         help_command = self.build_help_command()
         return_code = 666
         output = ""
+        command = ""
         for command in [help_command] + self.cli_help_extra_commands:
             try:
                 if isinstance(command, str):
@@ -606,7 +641,7 @@ class Linter:
 
         if return_code != self.help_command_return_code or output.strip() == "":
             logging.warning("Unable to get help for linter [" + self.linter_name + "]")
-            logging.warning(" ".join(command) + " returned output: " + output)
+            logging.warning(str(command) + " returned output: " + output)
             return "ERROR"
         else:
             return output
