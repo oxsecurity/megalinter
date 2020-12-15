@@ -36,6 +36,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+        # flavors-start
         flavor:
           [
             "dart",
@@ -50,6 +51,7 @@ jobs:
             "scala",
             "terraform",
           ]
+# flavors-end
     if: github.repository == 'nvuillam/mega-linter'
     ##################
     # Load all steps #

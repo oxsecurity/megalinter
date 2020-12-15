@@ -254,6 +254,17 @@ nav:
   - "Flavors":
       - "All flavors": "flavors.md"
 # flavors-start
+      - "dart": "flavors/dart.md"
+      - "dotnet": "flavors/dotnet.md"
+      - "go": "flavors/go.md"
+      - "java": "flavors/java.md"
+      - "javascript": "flavors/javascript.md"
+      - "php": "flavors/php.md"
+      - "python": "flavors/python.md"
+      - "ruby": "flavors/ruby.md"
+      - "rust": "flavors/rust.md"
+      - "scala": "flavors/scala.md"
+      - "terraform": "flavors/terraform.md"
 # flavors-end
   - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
