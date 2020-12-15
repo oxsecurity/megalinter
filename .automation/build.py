@@ -62,6 +62,7 @@ def generate_all_flavors():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
 
+
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
 def generate_flavor(flavor, flavor_info):
     descriptor_and_linters = []
@@ -901,6 +902,7 @@ def update_mkdocs_and_workflow_yml_with_flavors():
         f"# flavors-end",
         "\n".join(gha_workflow_yml),
     )
+
 
 def get_linter_base_info(linter):
     lang_lower = linter.descriptor_id.lower()

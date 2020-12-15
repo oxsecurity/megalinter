@@ -6,7 +6,9 @@
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
 - Add `.jekyll-cache` in the list of ignored folders by default
-- Arrange display of Flavor suggestions (text and order)
+- Arrange display of Flavor suggestions (text and order) in reporter logs
+- Dynamically generate (build.py) the list of flavors in github actions workflows
+- Reorganize online documentation menus
 
 ## [4.16.0] 2020-12-14
 
