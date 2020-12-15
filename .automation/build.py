@@ -60,6 +60,7 @@ def generate_all_flavors():
 
     for flavor, flavor_info in flavors.items():
         generate_flavor(flavor, flavor_info)
+    update_mkdocs_and_workflow_yml_with_flavors()
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
@@ -865,6 +866,35 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     return md_table
 
 
+def update_mkdocs_and_workflow_yml_with_flavors():
+    mkdocs_yml = []
+    gha_workflow_yml = ["        flavor:", "          ["]
+    for flavor_id, _flavor_info in megalinter.flavor_factory.get_all_flavors().items():
+        mkdocs_yml += [f'      - "{flavor_id}": "flavors/{flavor_id}.md"']
+        gha_workflow_yml += [f'            "{flavor_id}",']
+    gha_workflow_yml += ["          ]"]
+    # Update mkdocs.yml file
+    replace_in_file(
+        f"{REPO_HOME}/mkdocs.yml",
+        "# flavors-start",
+        "# flavors-end",
+        "\n".join(mkdocs_yml),
+    )
+    # Update Github actions workflow files
+    replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-PROD-flavors.yml",
+        "# flavors-start",
+        "# flavors-end",
+        "\n".join(gha_workflow_yml),
+    )
+    replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-RELEASE-flavors.yml",
+        "# flavors-start",
+        "# flavors-end",
+        "\n".join(gha_workflow_yml),
+    )
+
+
 def get_linter_base_info(linter):
     lang_lower = linter.descriptor_id.lower()
     linter_name_lower = linter.linter_name.lower().replace("-", "_")
@@ -1232,14 +1262,14 @@ def process_type_mkdocs_yml(linters_by_type, type1):
         if prev_lang != lang_lower:
             descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
             mkdocs_yml += [
-                f'      - "{descriptor_label}":',
-                f'          - "All {descriptor_label} linters": "descriptors/{lang_lower}.md"',
+                f'          - "{descriptor_label}":',
+                f'              - "All {descriptor_label} linters": "descriptors/{lang_lower}.md"',
             ]
 
         prev_lang = lang_lower
         # Linters menus
         mkdocs_yml += [
-            f'          - "{linter.linter_name}": "descriptors/{lang_lower}_{linter_name_lower}.md"'
+            f'              - "{linter.linter_name}": "descriptors/{lang_lower}_{linter_name_lower}.md"'
         ]
     # Update mkdocs.yml file
     replace_in_file(

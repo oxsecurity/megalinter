@@ -46,198 +46,200 @@ nav:
   - "Quick Start": "quick-start.md"
   - "Installation": "installation.md"
   - "Configuration": "configuration.md"
-  - "Languages linters":
-      - "All language linters": "./supported-linters#languages"
-      # language-start
-      - "BASH":
-          - "All BASH linters": "descriptors/bash.md"
-          - "bash-exec": "descriptors/bash_bash_exec.md"
-          - "shellcheck": "descriptors/bash_shellcheck.md"
-          - "shfmt": "descriptors/bash_shfmt.md"
-      - "C":
-          - "All C linters": "descriptors/c.md"
-          - "cpplint": "descriptors/c_cpplint.md"
-      - "CLOJURE":
-          - "All CLOJURE linters": "descriptors/clojure.md"
-          - "clj-kondo": "descriptors/clojure_clj_kondo.md"
-      - "COFFEE":
-          - "All COFFEE linters": "descriptors/coffee.md"
-          - "coffeelint": "descriptors/coffee_coffeelint.md"
-      - "C++ (CPP)":
-          - "All C++ (CPP) linters": "descriptors/cpp.md"
-          - "cpplint": "descriptors/cpp_cpplint.md"
-      - "C# (CSHARP)":
-          - "All C# (CSHARP) linters": "descriptors/csharp.md"
-          - "dotnet-format": "descriptors/csharp_dotnet_format.md"
-      - "DART":
-          - "All DART linters": "descriptors/dart.md"
-          - "dartanalyzer": "descriptors/dart_dartanalyzer.md"
-      - "GO":
-          - "All GO linters": "descriptors/go.md"
-          - "golangci-lint": "descriptors/go_golangci_lint.md"
-      - "GROOVY":
-          - "All GROOVY linters": "descriptors/groovy.md"
-          - "npm-groovy-lint": "descriptors/groovy_npm_groovy_lint.md"
-      - "JAVA":
-          - "All JAVA linters": "descriptors/java.md"
-          - "checkstyle": "descriptors/java_checkstyle.md"
-      - "JAVASCRIPT":
-          - "All JAVASCRIPT linters": "descriptors/javascript.md"
-          - "eslint": "descriptors/javascript_eslint.md"
-          - "standard": "descriptors/javascript_standard.md"
-      - "JSX":
-          - "All JSX linters": "descriptors/jsx.md"
-          - "eslint": "descriptors/jsx_eslint.md"
-      - "KOTLIN":
-          - "All KOTLIN linters": "descriptors/kotlin.md"
-          - "ktlint": "descriptors/kotlin_ktlint.md"
-      - "LUA":
-          - "All LUA linters": "descriptors/lua.md"
-          - "luacheck": "descriptors/lua_luacheck.md"
-      - "PERL":
-          - "All PERL linters": "descriptors/perl.md"
-          - "perlcritic": "descriptors/perl_perlcritic.md"
-      - "PHP":
-          - "All PHP linters": "descriptors/php.md"
-          - "php": "descriptors/php_php.md"
-          - "phpcs": "descriptors/php_phpcs.md"
-          - "phpstan": "descriptors/php_phpstan.md"
-          - "psalm": "descriptors/php_psalm.md"
-      - "POWERSHELL":
-          - "All POWERSHELL linters": "descriptors/powershell.md"
-          - "powershell": "descriptors/powershell_powershell.md"
-      - "PYTHON":
-          - "All PYTHON linters": "descriptors/python.md"
-          - "pylint": "descriptors/python_pylint.md"
-          - "black": "descriptors/python_black.md"
-          - "flake8": "descriptors/python_flake8.md"
-          - "isort": "descriptors/python_isort.md"
-      - "R":
-          - "All R linters": "descriptors/r.md"
-          - "lintr": "descriptors/r_lintr.md"
-      - "RAKU":
-          - "All RAKU linters": "descriptors/raku.md"
-          - "raku": "descriptors/raku_raku.md"
-      - "RUBY":
-          - "All RUBY linters": "descriptors/ruby.md"
-          - "rubocop": "descriptors/ruby_rubocop.md"
-      - "RUST":
-          - "All RUST linters": "descriptors/rust.md"
-          - "clippy": "descriptors/rust_clippy.md"
-      - "SALESFORCE":
-          - "All SALESFORCE linters": "descriptors/salesforce.md"
-          - "sfdx-scanner": "descriptors/salesforce_sfdx_scanner.md"
-      - "SCALA":
-          - "All SCALA linters": "descriptors/scala.md"
-          - "scalafix": "descriptors/scala_scalafix.md"
-      - "SQL":
-          - "All SQL linters": "descriptors/sql.md"
-          - "sql-lint": "descriptors/sql_sql_lint.md"
-      - "TSX":
-          - "All TSX linters": "descriptors/tsx.md"
-          - "eslint": "descriptors/tsx_eslint.md"
-      - "TYPESCRIPT":
-          - "All TYPESCRIPT linters": "descriptors/typescript.md"
-          - "eslint": "descriptors/typescript_eslint.md"
-          - "standard": "descriptors/typescript_standard.md"
-      - "Visual Basic .NET (VBDOTNET)":
-          - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
-          - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
+  - "Linters":
+      - "All supported linters": "supported-linters.md"
+      - "Languages linters":
+          - "All language linters": "./supported-linters#languages"
+          # language-start
+          - "BASH":
+              - "All BASH linters": "descriptors/bash.md"
+              - "bash-exec": "descriptors/bash_bash_exec.md"
+              - "shellcheck": "descriptors/bash_shellcheck.md"
+              - "shfmt": "descriptors/bash_shfmt.md"
+          - "C":
+              - "All C linters": "descriptors/c.md"
+              - "cpplint": "descriptors/c_cpplint.md"
+          - "CLOJURE":
+              - "All CLOJURE linters": "descriptors/clojure.md"
+              - "clj-kondo": "descriptors/clojure_clj_kondo.md"
+          - "COFFEE":
+              - "All COFFEE linters": "descriptors/coffee.md"
+              - "coffeelint": "descriptors/coffee_coffeelint.md"
+          - "C++ (CPP)":
+              - "All C++ (CPP) linters": "descriptors/cpp.md"
+              - "cpplint": "descriptors/cpp_cpplint.md"
+          - "C# (CSHARP)":
+              - "All C# (CSHARP) linters": "descriptors/csharp.md"
+              - "dotnet-format": "descriptors/csharp_dotnet_format.md"
+          - "DART":
+              - "All DART linters": "descriptors/dart.md"
+              - "dartanalyzer": "descriptors/dart_dartanalyzer.md"
+          - "GO":
+              - "All GO linters": "descriptors/go.md"
+              - "golangci-lint": "descriptors/go_golangci_lint.md"
+          - "GROOVY":
+              - "All GROOVY linters": "descriptors/groovy.md"
+              - "npm-groovy-lint": "descriptors/groovy_npm_groovy_lint.md"
+          - "JAVA":
+              - "All JAVA linters": "descriptors/java.md"
+              - "checkstyle": "descriptors/java_checkstyle.md"
+          - "JAVASCRIPT":
+              - "All JAVASCRIPT linters": "descriptors/javascript.md"
+              - "eslint": "descriptors/javascript_eslint.md"
+              - "standard": "descriptors/javascript_standard.md"
+          - "JSX":
+              - "All JSX linters": "descriptors/jsx.md"
+              - "eslint": "descriptors/jsx_eslint.md"
+          - "KOTLIN":
+              - "All KOTLIN linters": "descriptors/kotlin.md"
+              - "ktlint": "descriptors/kotlin_ktlint.md"
+          - "LUA":
+              - "All LUA linters": "descriptors/lua.md"
+              - "luacheck": "descriptors/lua_luacheck.md"
+          - "PERL":
+              - "All PERL linters": "descriptors/perl.md"
+              - "perlcritic": "descriptors/perl_perlcritic.md"
+          - "PHP":
+              - "All PHP linters": "descriptors/php.md"
+              - "php": "descriptors/php_php.md"
+              - "phpcs": "descriptors/php_phpcs.md"
+              - "phpstan": "descriptors/php_phpstan.md"
+              - "psalm": "descriptors/php_psalm.md"
+          - "POWERSHELL":
+              - "All POWERSHELL linters": "descriptors/powershell.md"
+              - "powershell": "descriptors/powershell_powershell.md"
+          - "PYTHON":
+              - "All PYTHON linters": "descriptors/python.md"
+              - "pylint": "descriptors/python_pylint.md"
+              - "black": "descriptors/python_black.md"
+              - "flake8": "descriptors/python_flake8.md"
+              - "isort": "descriptors/python_isort.md"
+          - "R":
+              - "All R linters": "descriptors/r.md"
+              - "lintr": "descriptors/r_lintr.md"
+          - "RAKU":
+              - "All RAKU linters": "descriptors/raku.md"
+              - "raku": "descriptors/raku_raku.md"
+          - "RUBY":
+              - "All RUBY linters": "descriptors/ruby.md"
+              - "rubocop": "descriptors/ruby_rubocop.md"
+          - "RUST":
+              - "All RUST linters": "descriptors/rust.md"
+              - "clippy": "descriptors/rust_clippy.md"
+          - "SALESFORCE":
+              - "All SALESFORCE linters": "descriptors/salesforce.md"
+              - "sfdx-scanner": "descriptors/salesforce_sfdx_scanner.md"
+          - "SCALA":
+              - "All SCALA linters": "descriptors/scala.md"
+              - "scalafix": "descriptors/scala_scalafix.md"
+          - "SQL":
+              - "All SQL linters": "descriptors/sql.md"
+              - "sql-lint": "descriptors/sql_sql_lint.md"
+          - "TSX":
+              - "All TSX linters": "descriptors/tsx.md"
+              - "eslint": "descriptors/tsx_eslint.md"
+          - "TYPESCRIPT":
+              - "All TYPESCRIPT linters": "descriptors/typescript.md"
+              - "eslint": "descriptors/typescript_eslint.md"
+              - "standard": "descriptors/typescript_standard.md"
+          - "Visual Basic .NET (VBDOTNET)":
+              - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
+              - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
 # language-end
-  - "Formats linters":
-      - "All formats linters": "./supported-linters#formats"
-      # format-start
-      - "CSS":
-          - "All CSS linters": "descriptors/css.md"
-          - "stylelint": "descriptors/css_stylelint.md"
-          - "scss-lint": "descriptors/css_scss_lint.md"
-      - "ENV":
-          - "All ENV linters": "descriptors/env.md"
-          - "dotenv-linter": "descriptors/env_dotenv_linter.md"
-      - "GRAPHQL":
-          - "All GRAPHQL linters": "descriptors/graphql.md"
-          - "graphql-schema-linter": "descriptors/graphql_graphql_schema_linter.md"
-      - "HTML":
-          - "All HTML linters": "descriptors/html.md"
-          - "htmlhint": "descriptors/html_htmlhint.md"
-      - "JSON":
-          - "All JSON linters": "descriptors/json.md"
-          - "jsonlint": "descriptors/json_jsonlint.md"
-      - "LATEX":
-          - "All LATEX linters": "descriptors/latex.md"
-          - "chktex": "descriptors/latex_chktex.md"
-      - "MARKDOWN":
-          - "All MARKDOWN linters": "descriptors/markdown.md"
-          - "markdownlint": "descriptors/markdown_markdownlint.md"
-          - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
-      - "PROTOBUF":
-          - "All PROTOBUF linters": "descriptors/protobuf.md"
-          - "protolint": "descriptors/protobuf_protolint.md"
-      - "RST":
-          - "All RST linters": "descriptors/rst.md"
-          - "rst-lint": "descriptors/rst_rst_lint.md"
-          - "rstcheck": "descriptors/rst_rstcheck.md"
-          - "rstfmt": "descriptors/rst_rstfmt.md"
-      - "XML":
-          - "All XML linters": "descriptors/xml.md"
-          - "xmllint": "descriptors/xml_xmllint.md"
-      - "YAML":
-          - "All YAML linters": "descriptors/yaml.md"
-          - "yamllint": "descriptors/yaml_yamllint.md"
+      - "Formats linters":
+          - "All formats linters": "./supported-linters#formats"
+          # format-start
+          - "CSS":
+              - "All CSS linters": "descriptors/css.md"
+              - "stylelint": "descriptors/css_stylelint.md"
+              - "scss-lint": "descriptors/css_scss_lint.md"
+          - "ENV":
+              - "All ENV linters": "descriptors/env.md"
+              - "dotenv-linter": "descriptors/env_dotenv_linter.md"
+          - "GRAPHQL":
+              - "All GRAPHQL linters": "descriptors/graphql.md"
+              - "graphql-schema-linter": "descriptors/graphql_graphql_schema_linter.md"
+          - "HTML":
+              - "All HTML linters": "descriptors/html.md"
+              - "htmlhint": "descriptors/html_htmlhint.md"
+          - "JSON":
+              - "All JSON linters": "descriptors/json.md"
+              - "jsonlint": "descriptors/json_jsonlint.md"
+          - "LATEX":
+              - "All LATEX linters": "descriptors/latex.md"
+              - "chktex": "descriptors/latex_chktex.md"
+          - "MARKDOWN":
+              - "All MARKDOWN linters": "descriptors/markdown.md"
+              - "markdownlint": "descriptors/markdown_markdownlint.md"
+              - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
+          - "PROTOBUF":
+              - "All PROTOBUF linters": "descriptors/protobuf.md"
+              - "protolint": "descriptors/protobuf_protolint.md"
+          - "RST":
+              - "All RST linters": "descriptors/rst.md"
+              - "rst-lint": "descriptors/rst_rst_lint.md"
+              - "rstcheck": "descriptors/rst_rstcheck.md"
+              - "rstfmt": "descriptors/rst_rstfmt.md"
+          - "XML":
+              - "All XML linters": "descriptors/xml.md"
+              - "xmllint": "descriptors/xml_xmllint.md"
+          - "YAML":
+              - "All YAML linters": "descriptors/yaml.md"
+              - "yamllint": "descriptors/yaml_yamllint.md"
 # format-end
-  - "Tooling Formats linters":
-      - "All tooling formats linters": "./supported-linters#tooling-formats"
-      # tooling_format-start
-      - "ANSIBLE":
-          - "All ANSIBLE linters": "descriptors/ansible.md"
-          - "ansible-lint": "descriptors/ansible_ansible_lint.md"
-      - "ARM":
-          - "All ARM linters": "descriptors/arm.md"
-          - "arm-ttk": "descriptors/arm_arm_ttk.md"
-      - "CLOUDFORMATION":
-          - "All CLOUDFORMATION linters": "descriptors/cloudformation.md"
-          - "cfn-lint": "descriptors/cloudformation_cfn_lint.md"
-      - "DOCKERFILE":
-          - "All DOCKERFILE linters": "descriptors/dockerfile.md"
-          - "dockerfilelint": "descriptors/dockerfile_dockerfilelint.md"
-          - "hadolint": "descriptors/dockerfile_hadolint.md"
-      - "EDITORCONFIG":
-          - "All EDITORCONFIG linters": "descriptors/editorconfig.md"
-          - "editorconfig-checker": "descriptors/editorconfig_editorconfig_checker.md"
-      - "GHERKIN":
-          - "All GHERKIN linters": "descriptors/gherkin.md"
-          - "gherkin-lint": "descriptors/gherkin_gherkin_lint.md"
-      - "KUBERNETES":
-          - "All KUBERNETES linters": "descriptors/kubernetes.md"
-          - "kubeval": "descriptors/kubernetes_kubeval.md"
-      - "OPENAPI":
-          - "All OPENAPI linters": "descriptors/openapi.md"
-          - "spectral": "descriptors/openapi_spectral.md"
-      - "PUPPET":
-          - "All PUPPET linters": "descriptors/puppet.md"
-          - "puppet-lint": "descriptors/puppet_puppet_lint.md"
-      - "SNAKEMAKE":
-          - "All SNAKEMAKE linters": "descriptors/snakemake.md"
-          - "snakemake": "descriptors/snakemake_snakemake.md"
-          - "snakefmt": "descriptors/snakemake_snakefmt.md"
-      - "TEKTON":
-          - "All TEKTON linters": "descriptors/tekton.md"
-          - "tekton-lint": "descriptors/tekton_tekton_lint.md"
-      - "TERRAFORM":
-          - "All TERRAFORM linters": "descriptors/terraform.md"
-          - "tflint": "descriptors/terraform_tflint.md"
-          - "terrascan": "descriptors/terraform_terrascan.md"
-          - "terragrunt": "descriptors/terraform_terragrunt.md"
+      - "Tooling Formats linters":
+          - "All tooling formats linters": "./supported-linters#tooling-formats"
+          # tooling_format-start
+          - "ANSIBLE":
+              - "All ANSIBLE linters": "descriptors/ansible.md"
+              - "ansible-lint": "descriptors/ansible_ansible_lint.md"
+          - "ARM":
+              - "All ARM linters": "descriptors/arm.md"
+              - "arm-ttk": "descriptors/arm_arm_ttk.md"
+          - "CLOUDFORMATION":
+              - "All CLOUDFORMATION linters": "descriptors/cloudformation.md"
+              - "cfn-lint": "descriptors/cloudformation_cfn_lint.md"
+          - "DOCKERFILE":
+              - "All DOCKERFILE linters": "descriptors/dockerfile.md"
+              - "dockerfilelint": "descriptors/dockerfile_dockerfilelint.md"
+              - "hadolint": "descriptors/dockerfile_hadolint.md"
+          - "EDITORCONFIG":
+              - "All EDITORCONFIG linters": "descriptors/editorconfig.md"
+              - "editorconfig-checker": "descriptors/editorconfig_editorconfig_checker.md"
+          - "GHERKIN":
+              - "All GHERKIN linters": "descriptors/gherkin.md"
+              - "gherkin-lint": "descriptors/gherkin_gherkin_lint.md"
+          - "KUBERNETES":
+              - "All KUBERNETES linters": "descriptors/kubernetes.md"
+              - "kubeval": "descriptors/kubernetes_kubeval.md"
+          - "OPENAPI":
+              - "All OPENAPI linters": "descriptors/openapi.md"
+              - "spectral": "descriptors/openapi_spectral.md"
+          - "PUPPET":
+              - "All PUPPET linters": "descriptors/puppet.md"
+              - "puppet-lint": "descriptors/puppet_puppet_lint.md"
+          - "SNAKEMAKE":
+              - "All SNAKEMAKE linters": "descriptors/snakemake.md"
+              - "snakemake": "descriptors/snakemake_snakemake.md"
+              - "snakefmt": "descriptors/snakemake_snakefmt.md"
+          - "TEKTON":
+              - "All TEKTON linters": "descriptors/tekton.md"
+              - "tekton-lint": "descriptors/tekton_tekton_lint.md"
+          - "TERRAFORM":
+              - "All TERRAFORM linters": "descriptors/terraform.md"
+              - "tflint": "descriptors/terraform_tflint.md"
+              - "terrascan": "descriptors/terraform_terrascan.md"
+              - "terragrunt": "descriptors/terraform_terragrunt.md"
 # tooling_format-end
-  - "Other checks":
-      - "All other linters": "./supported-linters#other"
-      # other-start
-      - "COPYPASTE":
-          - "All COPYPASTE linters": "descriptors/copypaste.md"
-          - "jscpd": "descriptors/copypaste_jscpd.md"
-      - "SPELL":
-          - "All SPELL linters": "descriptors/spell.md"
-          - "cspell": "descriptors/spell_cspell.md"
+      - "Other checks":
+          - "All other linters": "./supported-linters#other"
+          # other-start
+          - "COPYPASTE":
+              - "All COPYPASTE linters": "descriptors/copypaste.md"
+              - "jscpd": "descriptors/copypaste_jscpd.md"
+          - "SPELL":
+              - "All SPELL linters": "descriptors/spell.md"
+              - "cspell": "descriptors/spell_cspell.md"
 # other-end
   - "Reporters":
       - "All reporters": "reporters.md"
@@ -249,7 +251,21 @@ nav:
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "TAP files": "reporters/TapReporter.md"
       - "Console": "reporters/ConsoleReporter.md"
-  - "Flavors": "flavors.md"
+  - "Flavors":
+      - "All flavors": "flavors.md"
+# flavors-start
+      - "dart": "flavors/dart.md"
+      - "dotnet": "flavors/dotnet.md"
+      - "go": "flavors/go.md"
+      - "java": "flavors/java.md"
+      - "javascript": "flavors/javascript.md"
+      - "php": "flavors/php.md"
+      - "python": "flavors/python.md"
+      - "ruby": "flavors/ruby.md"
+      - "rust": "flavors/rust.md"
+      - "scala": "flavors/scala.md"
+      - "terraform": "flavors/terraform.md"
+# flavors-end
   - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"

@@ -46,6 +46,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+        # flavors-start
         flavor:
           [
             "dart",
@@ -60,6 +61,7 @@ jobs:
             "scala",
             "terraform",
           ]
+# flavors-end
     # Only run this on the main repo
     if: github.repository == 'nvuillam/mega-linter'
     ##################
