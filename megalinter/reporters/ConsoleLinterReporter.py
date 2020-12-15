@@ -26,9 +26,11 @@ class ConsoleLinterReporter(Reporter):
         if self.master.descriptor_id != self.master.name:
             msg += [f"- Mega-Linter key: [{self.master.name}]"]
         if self.master.config_file is not None:
-            msg += [f"- Rules config: [{self.master.config_file}]"]
+            msg += [f"- Rules config: [{self.master.config_file_label}]"]
         else:
             msg += [f"- Rules config: identified by [{self.master.linter_name}]"]
+        if self.master.config_file_error is not None:
+            logging.error(self.master.config_file_error)
         logging.info("\n".join(msg))
 
     def produce_report(self):
