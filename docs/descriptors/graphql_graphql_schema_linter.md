@@ -20,8 +20,8 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".graphql"]` |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAME | graphql-schema-linter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.graphql-schema-linterrc` |
