@@ -145,7 +145,7 @@ nav:
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
               - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
-    # language-end
+# language-end
       - "Formats linters":
           - "All formats linters": "./supported-linters#formats"
           # format-start
@@ -186,7 +186,7 @@ nav:
           - "YAML":
               - "All YAML linters": "descriptors/yaml.md"
               - "yamllint": "descriptors/yaml_yamllint.md"
-    # format-end
+# format-end
       - "Tooling Formats linters":
           - "All tooling formats linters": "./supported-linters#tooling-formats"
           # tooling_format-start
@@ -230,7 +230,7 @@ nav:
               - "tflint": "descriptors/terraform_tflint.md"
               - "terrascan": "descriptors/terraform_terrascan.md"
               - "terragrunt": "descriptors/terraform_terragrunt.md"
-    # tooling_format-end
+# tooling_format-end
       - "Other checks":
           - "All other linters": "./supported-linters#other"
           # other-start
@@ -240,7 +240,7 @@ nav:
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
               - "cspell": "descriptors/spell_cspell.md"
-    # other-end
+# other-end
   - "Reporters":
       - "All reporters": "reporters.md"
       - "Text files": "reporters/TextReporter.md"
