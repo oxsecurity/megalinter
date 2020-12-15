@@ -84,7 +84,7 @@ yamllint -c .yaml-lint.yml myfile.yaml
 usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA]
                 [-f {parsable,standard,colored,github,auto}] [-s]
                 [--no-warnings] [-v]
-                [FILE_OR_DIR ...]
+                [FILE_OR_DIR [FILE_OR_DIR ...]]
 
 A linter for YAML files. yamllint does not only check for syntax validity, but
 for weirdnesses like key repetition and cosmetic problems such as lines

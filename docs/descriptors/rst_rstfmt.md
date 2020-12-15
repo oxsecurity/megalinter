@@ -57,7 +57,7 @@ rstfmt -i myfile.rst
 ### Help content
 
 ```shell
-usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [files ...]
+usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [files [files ...]]
 
 positional arguments:
   files
