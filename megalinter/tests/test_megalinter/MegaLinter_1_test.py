@@ -155,7 +155,7 @@ class MegalinterTest(unittest.TestCase):
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": "https://raw.githubusercontent.com/nvuillam/"
-                                     "mega-linter/master/.automation/test/sample_project",
+                "mega-linter/master/.automation/test/sample_project",
             }
         )
         self.assertTrue(
@@ -163,15 +163,18 @@ class MegalinterTest(unittest.TestCase):
         )
         self.assertIn("Linting [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
-        self.assertIn("- Rules config: [https://raw.githubusercontent.com/nvuillam/"
-                      "mega-linter/master/.automation/test/sample_project/.eslintrc.json]", output)
+        self.assertIn(
+            "- Rules config: [https://raw.githubusercontent.com/nvuillam/"
+            "mega-linter/master/.automation/test/sample_project/.eslintrc.json]",
+            output,
+        )
 
     def test_override_linter_rules_path_remote_custom_file_name(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": "https://raw.githubusercontent.com/nvuillam/"
-                                     "mega-linter/master/.automation/test/sample_project",
+                "mega-linter/master/.automation/test/sample_project",
                 "JAVASCRIPT_ES_FILE_NAME": ".eslintrc-custom.yml",
             }
         )
@@ -180,8 +183,11 @@ class MegalinterTest(unittest.TestCase):
         )
         self.assertIn("Linting [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
-        self.assertIn("- Rules config: [https://raw.githubusercontent.com/nvuillam/"
-                      "mega-linter/master/.automation/test/sample_project/.eslintrc-custom.yml]", output)
+        self.assertIn(
+            "- Rules config: [https://raw.githubusercontent.com/nvuillam/"
+            "mega-linter/master/.automation/test/sample_project/.eslintrc-custom.yml]",
+            output,
+        )
         self.assertIn(".eslintrc-custom.yml", output)
 
     def test_override_linter_rules_path_remote_error(self):
@@ -195,7 +201,10 @@ class MegalinterTest(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         self.assertIn("Linting [JAVASCRIPT] files", output)
-        self.assertIn("Unable to fetch https://raw.githubusercontent.com/nvuillam/notexisting", output)
+        self.assertIn(
+            "Unable to fetch https://raw.githubusercontent.com/nvuillam/notexisting",
+            output,
+        )
 
     def test_custom_config_on_language(self):
         mega_linter, output = utilstest.call_mega_linter(

@@ -27,8 +27,8 @@ import shlex
 import shutil
 import subprocess
 import sys
-import urllib.request
 import urllib.error
+import urllib.request
 from time import perf_counter
 
 from megalinter import config, utils
@@ -293,18 +293,23 @@ class Linter:
             and self.config_file_name != "LINTER_DEFAULT"
         ):
             if self.linter_rules_path.startswith("http"):
-                remote_config_file = self.linter_rules_path+'/'+self.config_file_name
+                remote_config_file = (
+                    self.linter_rules_path + "/" + self.config_file_name
+                )
                 local_config_file = self.workspace + os.path.sep + self.config_file_name
                 existing_before = os.path.isfile(local_config_file)
                 try:
-                    with urllib.request.urlopen(remote_config_file) as response,\
-                            open(local_config_file, 'wb') as out_file:
+                    with urllib.request.urlopen(remote_config_file) as response, open(
+                        local_config_file, "wb"
+                    ) as out_file:
                         shutil.copyfileobj(response, out_file)
                         self.config_file_label = remote_config_file
                         if existing_before is False:
                             self.remote_config_file_to_delete = local_config_file
                 except urllib.error.HTTPError as e:
-                    self.config_file_error = f"Unable to fetch {remote_config_file}\n{str(e)}"
+                    self.config_file_error = (
+                        f"Unable to fetch {remote_config_file}\n{str(e)}"
+                    )
 
             # in repo root (already here or fetched by code above)
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
@@ -325,8 +330,9 @@ class Linter:
                 )
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
-                self.config_file_label = self.config_file.replace('/tmp/lint', "")\
-                    .replace("/action/lib/.automation/", "")
+                self.config_file_label = self.config_file.replace(
+                    "/tmp/lint", ""
+                ).replace("/action/lib/.automation/", "")
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
         if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
