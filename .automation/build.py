@@ -868,38 +868,29 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
 
 def update_mkdocs_and_workflow_yml_with_flavors():
     mkdocs_yml = []
-    gha_workflow_yml = [
-        "        flavor:",
-        "          ["
-    ]
+    gha_workflow_yml = ["        flavor:", "          ["]
     for flavor_id, _flavor_info in megalinter.flavor_factory.get_all_flavors().items():
-        mkdocs_yml += [
-            f'      - "{flavor_id}": "flavors/{flavor_id}.md"'
-        ]
-        gha_workflow_yml += [
-            f'            "{flavor_id}",'
-        ]
-    gha_workflow_yml += [
-        "          ]"
-    ]
+        mkdocs_yml += [f'      - "{flavor_id}": "flavors/{flavor_id}.md"']
+        gha_workflow_yml += [f'            "{flavor_id}",']
+    gha_workflow_yml += ["          ]"]
     # Update mkdocs.yml file
     replace_in_file(
         f"{REPO_HOME}/mkdocs.yml",
-        f"# flavors-start",
-        f"# flavors-end",
+        "# flavors-start",
+        "# flavors-end",
         "\n".join(mkdocs_yml),
     )
     # Update Github actions workflow files
     replace_in_file(
         f"{REPO_HOME}/.github/workflows/deploy-PROD-flavors.yml",
-        f"# flavors-start",
-        f"# flavors-end",
+        "# flavors-start",
+        "# flavors-end",
         "\n".join(gha_workflow_yml),
     )
     replace_in_file(
         f"{REPO_HOME}/.github/workflows/deploy-RELEASE-flavors.yml",
-        f"# flavors-start",
-        f"# flavors-end",
+        "# flavors-start",
+        "# flavors-end",
         "\n".join(gha_workflow_yml),
     )
 
