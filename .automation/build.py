@@ -1232,14 +1232,14 @@ def process_type_mkdocs_yml(linters_by_type, type1):
         if prev_lang != lang_lower:
             descriptor_label = descriptor_label.replace("*", "").replace(r"\(.*\)", "")
             mkdocs_yml += [
-                f'      - "{descriptor_label}":',
-                f'          - "All {descriptor_label} linters": "descriptors/{lang_lower}.md"',
+                f'          - "{descriptor_label}":',
+                f'              - "All {descriptor_label} linters": "descriptors/{lang_lower}.md"',
             ]
 
         prev_lang = lang_lower
         # Linters menus
         mkdocs_yml += [
-            f'          - "{linter.linter_name}": "descriptors/{lang_lower}_{linter_name_lower}.md"'
+            f'              - "{linter.linter_name}": "descriptors/{lang_lower}_{linter_name_lower}.md"'
         ]
     # Update mkdocs.yml file
     replace_in_file(
