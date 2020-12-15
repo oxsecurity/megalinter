@@ -46,7 +46,7 @@ nav:
   - "Quick Start": "quick-start.md"
   - "Installation": "installation.md"
   - "Configuration": "configuration.md"
-  - "Supported linters":
+  - "Linters":
       - "All supported linters": "supported-linters.md"
       - "Languages linters":
           - "All language linters": "./supported-linters#languages"
@@ -251,7 +251,10 @@ nav:
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "TAP files": "reporters/TapReporter.md"
       - "Console": "reporters/ConsoleReporter.md"
-  - "Flavors": "flavors.md"
+  - "Flavors":
+      - "All flavors": "flavors.md"
+# flavors-start
+# flavors-end
   - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"

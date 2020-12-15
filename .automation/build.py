@@ -60,7 +60,7 @@ def generate_all_flavors():
 
     for flavor, flavor_info in flavors.items():
         generate_flavor(flavor, flavor_info)
-
+    update_mkdocs_yml_with_flavors()
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
 def generate_flavor(flavor, flavor_info):
@@ -864,6 +864,20 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         md_table += [md_line]
     return md_table
 
+
+def update_mkdocs_yml_with_flavors():
+    mkdocs_yml = []
+    for flavor_id, _flavor_info in megalinter.flavor_factory.get_all_flavors().items():
+        mkdocs_yml += [
+            f'      - "{flavor_id}": "flavors/{flavor_id}.md"'
+        ]
+    # Update mkdocs.yml file
+    replace_in_file(
+        f"{REPO_HOME}/mkdocs.yml",
+        f"# flavors-start",
+        f"# flavors-end",
+        "\n".join(mkdocs_yml),
+    )
 
 def get_linter_base_info(linter):
     lang_lower = linter.descriptor_id.lower()
