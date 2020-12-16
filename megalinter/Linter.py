@@ -295,9 +295,7 @@ class Linter:
             if self.linter_rules_path.startswith("http"):
                 if not self.linter_rules_path.endswith("/"):
                     self.linter_rules_path += "/"
-                remote_config_file = (
-                    self.linter_rules_path + self.config_file_name
-                )
+                remote_config_file = self.linter_rules_path + self.config_file_name
                 local_config_file = self.workspace + os.path.sep + self.config_file_name
                 existing_before = os.path.isfile(local_config_file)
                 try:
