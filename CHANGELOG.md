@@ -4,7 +4,7 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-<<<<<<< HEAD
+<<<<<<< HEAD !!!!!
 - Add Vue.js linting (eslint-plugin-vue added in dependencies)
 
 - Fix error message from Email Reporter when SMTP password is not set
