@@ -30,7 +30,7 @@ class ConsoleLinterReporter(Reporter):
         else:
             msg += [f"- Rules config: identified by [{self.master.linter_name}]"]
         if self.master.config_file_error is not None:
-            logging.error(self.master.config_file_error)
+            logging.warning(self.master.config_file_error)
         logging.info("\n".join(msg))
 
     def produce_report(self):
