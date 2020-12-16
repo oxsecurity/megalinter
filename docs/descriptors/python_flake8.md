@@ -21,8 +21,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_FLAKE8_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_FLAKE8_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| PYTHON_FLAKE8_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_FLAKE8_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_FLAKE8_FILE_NAME | flake8 configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.flake8` |
 | PYTHON_FLAKE8_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_FLAKE8_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -36,6 +38,15 @@ Use flake8 in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-flake8](https://atom.io/packages/linter-flake8) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [flake8-support](https://plugins.jetbrains.com/plugin/11563-flake8-support) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_flake8) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
 
 ## Behind the scenes
 
@@ -107,8 +118,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E121', 'E226', 'E24', 'E123', 'W503',
-                        'E126', 'W504', 'E704'])
+                        (Default: ['E123', 'E704', 'E226', 'W504', 'E126',
+                        'E24', 'E121', 'W503'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

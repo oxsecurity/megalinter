@@ -12,7 +12,8 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ## Performances
 
-Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+- [Mega-Linter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
+- Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
 
 ## Automatically apply formatting and fixes
 

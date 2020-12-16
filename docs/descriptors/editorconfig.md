@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/editorconfig.yml -->
 # EDITORCONFIG
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) |
+
 ## Linted files
 
 - Activated only if file is found: `.editorconfig`
@@ -16,8 +22,3 @@
 | EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) |

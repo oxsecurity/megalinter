@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in Mega-Linter: **8.0.2**
+- Version in Mega-Linter: **8.1.0**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -23,8 +23,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GROOVY_NPM_GROOVY_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".groovy", ".gvy", ".gradle", ".nf"]` |
+| GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Jenkinsfile"]` |
 | GROOVY_NPM_GROOVY_LINT_FILE_NAME | npm-groovy-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.groovylintrc.json` |
 | GROOVY_NPM_GROOVY_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -36,6 +38,25 @@ Use npm-groovy-lint in your favorite IDE to catch errors before Mega-Linter !
 | <!-- --> | IDE | Extension Name |
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Groovy Lint](https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Mega-Linter optimized for DART based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Mega-Linter optimized for GO based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Mega-Linter optimized for JAVA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 32 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Mega-Linter optimized for RUBY based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Mega-Linter optimized for RUST based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/) | Mega-Linter optimized for SCALA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Mega-Linter optimized for TERRAFORM based projects | 31 |
 
 ## Behind the scenes
 

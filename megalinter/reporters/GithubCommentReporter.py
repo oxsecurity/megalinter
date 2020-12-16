@@ -110,6 +110,26 @@ class GithubCommentReporter(Reporter):
                     + "all sources, not only the diff_"
                     + os.linesep
                 )
+            if self.master.flavor_suggestions is not None:
+                p_r_msg += (
+                    os.linesep
+                    + "You could have the same capabilities but better runtime performances"
+                    " if you use a Mega-Linter flavor:" + os.linesep
+                )
+                for suggestion in self.master.flavor_suggestions:
+                    build_version = os.environ.get("BUILD_VERSION", "v4")
+                    action_version = (
+                        "v4"
+                        if "v4" in build_version or len(build_version) > 20
+                        else "insiders"
+                        if build_version == "latest"
+                        else build_version
+                    )
+                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                    p_r_msg += (
+                        f"- [**{action_path}**]({self.gh_url}/flavors/{suggestion['flavor']}/)"
+                        f" ({suggestion['linters_number']} linters)"
+                    )
             logging.debug("\n" + p_r_msg)
             # Post comment on pull request if found
             github_auth = (

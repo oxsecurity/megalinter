@@ -26,8 +26,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PHP_PSALM_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PHP_PSALM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PHP_PSALM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PHP_PSALM_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| PHP_PSALM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| PHP_PSALM_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".php"]` |
+| PHP_PSALM_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PHP_PSALM_FILE_NAME | psalm configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `psalm.xml` |
 | PHP_PSALM_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PHP_PSALM_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -40,6 +42,15 @@ Use psalm in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 32 |
 
 ## Behind the scenes
 

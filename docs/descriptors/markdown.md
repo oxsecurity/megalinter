@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/markdown.yml -->
 # MARKDOWN
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [markdownlint](markdown_markdownlint.md) | [MARKDOWN](markdown_markdownlint.md) |
+| [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,9 +22,3 @@
 | MARKDOWN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | MARKDOWN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [markdownlint](markdown_markdownlint.md) | [MARKDOWN](markdown_markdownlint.md) |
-| [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) |

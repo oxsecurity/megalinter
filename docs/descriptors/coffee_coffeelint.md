@@ -21,8 +21,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | COFFEE_COFFEELINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| COFFEE_COFFEELINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".coffee"]` |
+| COFFEE_COFFEELINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | COFFEE_COFFEELINT_FILE_NAME | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.coffee-lint.json` |
 | COFFEE_COFFEELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COFFEE_COFFEELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -35,6 +37,15 @@ Use coffeelint in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-coffeelint](https://atom.io/packages/linter-coffeelint) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
 
 ## Behind the scenes
 

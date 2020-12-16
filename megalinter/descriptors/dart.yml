@@ -1,5 +1,7 @@
 descriptor_id: DART
 descriptor_type: language
+descriptor_flavors:
+  - dart
 file_extensions:
   - ".dart"
 linters:

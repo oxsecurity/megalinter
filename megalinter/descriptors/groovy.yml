@@ -1,5 +1,7 @@
 descriptor_id: GROOVY
 descriptor_type: language
+descriptor_flavors:
+  - all_flavors # Jenkinsfile are written in groovy so can be found in any language project
 file_extensions:
   - ".groovy"
   - ".gvy"

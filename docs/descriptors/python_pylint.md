@@ -26,8 +26,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_PYLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_PYLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| PYTHON_PYLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_PYLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_PYLINT_FILE_NAME | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.python-lint` |
 | PYTHON_PYLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_PYLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -43,6 +45,15 @@ Use pylint in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [pylint.vim](https://www.vim.org/scripts/script.php?script_id=891) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | visual_studio | [Native Support](https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_pylint) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
 
 ## Behind the scenes
 

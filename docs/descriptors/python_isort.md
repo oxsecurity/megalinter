@@ -27,8 +27,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PYTHON_ISORT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PYTHON_ISORT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PYTHON_ISORT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| PYTHON_ISORT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| PYTHON_ISORT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| PYTHON_ISORT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".py"]` |
+| PYTHON_ISORT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_ISORT_FILE_NAME | isort configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.isort.cfg` |
 | PYTHON_ISORT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | PYTHON_ISORT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -46,6 +48,15 @@ Use isort in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-isort](https://github.com/fisadev/vim-isort#installation) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Python Extension](https://github.com/Microsoft/vscode-python) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
 
 ## Behind the scenes
 
@@ -101,7 +112,7 @@ usage: isort [-h] [--src SRC_PATHS] [-a ADD_IMPORTS] [--append] [--ac] [--af]
              [--ext SUPPORTED_EXTENSIONS]
              [--blocked-extension BLOCKED_EXTENSIONS] [--dedup-headings]
              [--only-sections] [--only-modified]
-             [files ...]
+             [files [files ...]]
 
 Sort Python import definitions alphabetically within logical sections. Run
 with no arguments to see a quick start guide, otherwise, one or more
@@ -308,7 +319,7 @@ optional arguments:
                         Python 3 version could be the target, and use a union
                         of all stdlib modules across versions. If auto is
                         specified, the version of the interpreter used to run
-                        isort (currently: 39) will be used.
+                        isort (currently: 38) will be used.
   --profile PROFILE     Base profile type to use for configuration. Profiles
                         include: black, django, pycharm, google, open_stack,
                         plone, attrs, hug. As well as any shared profiles.

@@ -1,5 +1,7 @@
 descriptor_id: TERRAFORM
 descriptor_type: tooling_format
+descriptor_flavors:
+  - terraform
 file_extensions:
   - ".tf"
 linters:
@@ -47,7 +49,7 @@ linters:
     name: TERRAFORM_TERRAGRUNT
     file_extensions:
       - ".hcl"
-    files_names_not_ends_with:
+    file_names_not_ends_with:
       - ".tflint.hcl"
     linter_url: https://terragrunt.gruntwork.io
     linter_repo: https://github.com/gruntwork-io/terragrunt

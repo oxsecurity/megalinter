@@ -1,5 +1,7 @@
 descriptor_id: KUBERNETES
 descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
 files_sub_directory: kubernetes
 file_extensions:
   - ".yml"

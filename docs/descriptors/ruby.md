@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/ruby.yml -->
 # RUBY
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [rubocop](ruby_rubocop.md) | [RUBY](ruby_rubocop.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,11 +21,6 @@
 | RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [rubocop](ruby_rubocop.md) | [RUBY](ruby_rubocop.md) |
 
 ## Behind the scenes
 

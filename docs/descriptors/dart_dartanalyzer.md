@@ -24,8 +24,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | DART_DARTANALYZER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| DART_DARTANALYZER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".dart"]` |
+| DART_DARTANALYZER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | DART_DARTANALYZER_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
 | DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | DART_DARTANALYZER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -38,6 +40,15 @@ Use dartanalyzer in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Mega-Linter optimized for DART based projects | 29 |
 
 ## Behind the scenes
 

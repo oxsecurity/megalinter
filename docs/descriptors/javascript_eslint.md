@@ -30,8 +30,10 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | JAVASCRIPT_ES_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JAVASCRIPT_ES_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| JAVASCRIPT_ES_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".js", ".vue"]` |
+| JAVASCRIPT_ES_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | JAVASCRIPT_ES_FILE_NAME | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.json` |
 | JAVASCRIPT_ES_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVASCRIPT_ES_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -51,6 +53,15 @@ Use eslint in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
 
 ## Behind the scenes
 

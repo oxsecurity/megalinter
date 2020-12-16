@@ -1,5 +1,7 @@
 descriptor_id: POWERSHELL
 descriptor_type: language
+descriptor_flavors:
+  - dotnet
 file_extensions:
   - ".ps1"
   - ".psm1"

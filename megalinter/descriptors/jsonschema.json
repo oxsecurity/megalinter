@@ -42,12 +42,13 @@
     "file_extensions": {
       "$id": "#/properties/file_extensions",
       "type": "array",
-      "title": "List of file extensions catch by the descriptor",
-      "description": "File extension filters. Can be overridden at linter level",
+      "title": "Allowed file extensions",
+      "description": "File extension filters. Empty list excludes all files. Can be overridden at linter level",
       "default": [],
       "examples": [
         [
-          ".py"
+          ".py",
+          ""
         ]
       ],
       "items": {
@@ -57,12 +58,12 @@
     "file_names_regex": {
       "$id": "#/properties/file_names_regex",
       "type": "array",
-      "title": "List of file names catch by the descriptor",
-      "description": "File name filter. Can be overridden at linter level",
+      "title": "File name regex filters",
+      "description": "Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level",
       "default": [],
       "examples": [
         [
-          "Dockerfile",
+          "Dockerfile(-.+)?",
           "Jenkinsfile"
         ]
       ],
@@ -73,8 +74,8 @@
     "file_contains_regex": {
       "$id": "#/properties/file_contains_regex",
       "type": "array",
-      "title": "File content filters",
-      "description": "List of regular expressions to filter the files according to their content",
+      "title": "File content regex filters",
+      "description": "Regular expression list for filtering files by their content",
       "default": [],
       "examples": [
         [
@@ -98,8 +99,8 @@
         ]
       ]
     },
-    "files_names_not_ends_with": {
-      "$id": "#/properties/files_names_not_ends_with",
+    "file_names_not_ends_with": {
+      "$id": "#/properties/file_names_not_ends_with",
       "type": "array",
       "title": "Filter on end of file name",
       "description": "List of strings to filter the files according to their end of file name",

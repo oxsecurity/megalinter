@@ -1,5 +1,7 @@
 descriptor_id: COFFEE
 descriptor_type: language
+descriptor_flavors:
+  - javascript
 file_extensions:
   - ".coffee"
 test_folder: coffeescript

@@ -4,16 +4,54 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+<<<<<<< HEAD
 - Add Vue.js linting (eslint-plugin-vue added in dependencies)
 
 - Fix error message from Email Reporter when SMTP password is not set
 - Fix automerge action yml (skip is secrets.PAT is not set)
+=======
+- Allow to use remote linters configuration files with LINTER_RULES_PATH
+- Add `.jekyll-cache` in the list of ignored folders by default
+- Arrange display of Flavor suggestions (text and order) in reporter logs
+- Dynamically generate (build.py) the list of flavors in github actions workflows
+- Reorganize online documentation menus
+>>>>>>> master
 
-- Changed configuration parameters
-  - Change config setting logic: EXCLUDED_DIRECTORIES is now replacing original directory list instead of extending it
+## [4.16.0] 2020-12-14
 
-- New configuration parameters
-  - Add config setting: ADDITIONAL_EXCLUDED_DIRECTORIES extends EXCLUDED_DIRECTORIES directory list
+- Flavored Mega-Linters
+  - Generate lightweight docker images to improve Mega-Linter performances on some language based projects
+  - During Mega-Linter run, suggest user to use a flavor and write it in reporters
+  - Update descriptor YML files to define flavours
+  - Update build.py to create one Dockerfile by Mega-Linter flavour & flavors documentation
+  - New GHA workflows to build all flavoured Mega-Linters when pushing in master
+
+- Fixes
+  - Output reporter problems as warnings
+  - Do not make Mega-Linter fail in case GitHubStatusReporter fails
+
+- Doc
+  - Rename "index" pages into more meaningful labels
+
+## [4.15.0] 2020-12-13
+
+- Add Vue.js linting (eslint-plugin-vue added in dependencies)
+
+- Configuration parameters changes:
+  - Change config setting logic: `EXCLUDED_DIRECTORIES` is now replacing original directory list instead of extending it
+  - Add config setting: `ADDITIONAL_EXCLUDED_DIRECTORIES` extends `EXCLUDED_DIRECTORIES` directory list
+  - Add config setting: `&lt;LINTER_KEY&gt;_FILE_EXTENSIONS` to override corresponding value from linter descriptor file
+  - Add config setting: `&lt;LINTER_KEY&gt;_FILE_NAMES_REGEX` to override corresponding value from linter descriptor file
+
+- Descriptor yaml schema changes:
+  - Rename `files_names_not_ends_with` to `file_names_not_ends_with`
+  - Rename `files_names` to `files_names_regex` and change behavior to expect regular expressions in the list.
+    They are applied using full match (i.e. the whole text should match the regular expression)
+
+- Fix error message from Email Reporter when SMTP password is not set
+- Fix automerge action yml (skip if secrets.PAT is not set)
+- Improve caching of compiled regular expressions
+- Override mkdocs theme to make analytics work
 
 - CI
   - Auto update linters and documentation: Create update PR only if linter versions has been updated

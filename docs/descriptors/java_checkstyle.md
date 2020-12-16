@@ -26,8 +26,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | JAVA_CHECKSTYLE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| JAVA_CHECKSTYLE_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".java"]` |
+| JAVA_CHECKSTYLE_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | JAVA_CHECKSTYLE_FILE_NAME | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
 | JAVA_CHECKSTYLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JAVA_CHECKSTYLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -41,6 +43,15 @@ Use checkstyle in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://github.com/jshiell/checkstyle-idea) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Mega-Linter optimized for JAVA based projects | 29 |
 
 ## Behind the scenes
 

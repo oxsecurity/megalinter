@@ -22,8 +22,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SNAKEMAKE_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".smk"]` |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]` |
 | SNAKEMAKE_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration
@@ -34,6 +36,25 @@ Use snakemake in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [SnakeCharm](https://plugins.jetbrains.com/plugin/11947-snakecharm) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode SnakeMake](https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Mega-Linter optimized for DART based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Mega-Linter optimized for GO based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Mega-Linter optimized for JAVA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 32 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Mega-Linter optimized for RUBY based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Mega-Linter optimized for RUST based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/) | Mega-Linter optimized for SCALA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Mega-Linter optimized for TERRAFORM based projects | 31 |
 
 ## Behind the scenes
 
@@ -58,18 +79,20 @@ snakemake --lint -s Snakefile
 ### Help content
 
 ```shell
-usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
-                 [--snakefile FILE] [--cores [N]] [--local-cores N]
-                 [--resources [NAME=INT ...]]
+usage: snakemake [-h] [--dry-run] [--profile PROFILE]
+                 [--cache [RULE [RULE ...]]] [--snakefile FILE] [--cores [N]]
+                 [--local-cores N] [--resources [NAME=INT [NAME=INT ...]]]
                  [--set-threads RULE=THREADS [RULE=THREADS ...]]
                  [--set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]]
-                 [--default-resources [NAME=INT ...]]
+                 [--default-resources [NAME=INT [NAME=INT ...]]]
                  [--preemption-default PREEMPTION_DEFAULT]
                  [--preemptible-rules PREEMPTIBLE_RULES [PREEMPTIBLE_RULES ...]]
-                 [--config [KEY=VALUE ...]] [--configfile FILE [FILE ...]]
+                 [--config [KEY=VALUE [KEY=VALUE ...]]]
+                 [--configfile FILE [FILE ...]]
                  [--envvars VARNAME [VARNAME ...]] [--directory DIR] [--touch]
                  [--keep-going] [--force] [--forceall]
-                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
+                 [--forcerun [TARGET [TARGET ...]]]
+                 [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
@@ -94,8 +117,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--print-compilation] [--verbose] [--force-use-threads]
                  [--allow-ambiguity] [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
-                 [--wait-for-files [FILE ...]] [--notemp] [--keep-remote]
-                 [--keep-target-files]
+                 [--wait-for-files [FILE [FILE ...]]] [--notemp]
+                 [--keep-remote] [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
@@ -126,7 +149,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-singularity] [--singularity-prefix DIR]
                  [--singularity-args ARGS] [--use-envmodules]
-                 [target ...]
+                 [target [target ...]]
 
 Snakemake is a Python based language and execution environment for GNU Make-
 like workflows.
@@ -152,7 +175,8 @@ EXECUTION:
                         example, '--cluster qsub' becomes 'cluster: qsub' in
                         the YAML file. Profiles can be obtained from
                         https://github.com/snakemake-profiles. (default: None)
-  --cache [RULE ...]    Store output files of given rules in a central cache
+  --cache [RULE [RULE ...]]
+                        Store output files of given rules in a central cache
                         given by the environment variable
                         $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
                         files of the given rules from this cache if they have
@@ -179,7 +203,7 @@ EXECUTION:
                         the host). The cores are used to execute local rules.
                         This option is ignored when not in cluster mode.
                         (default: 2)
-  --resources [NAME=INT ...], --res [NAME=INT ...]
+  --resources [NAME=INT [NAME=INT ...]], --res [NAME=INT [NAME=INT ...]]
                         Define additional resources that shall constrain the
                         scheduling analogously to threads (see above). A
                         resource is defined as a name and an integer value.
@@ -203,7 +227,7 @@ EXECUTION:
                         positive integer, and NAME has to be the name of the
                         scattergather process defined via a scattergather
                         directive in the workflow. (default: None)
-  --default-resources [NAME=INT ...], --default-res [NAME=INT ...]
+  --default-resources [NAME=INT [NAME=INT ...]], --default-res [NAME=INT [NAME=INT ...]]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
                         integers, python expressions over inputsize are
@@ -240,7 +264,7 @@ EXECUTION:
                         instead. Example: snakemake --preemption-default 10
                         --preemptible-rules map_reads=3 call_variants=0
                         (default: None)
-  --config [KEY=VALUE ...], -C [KEY=VALUE ...]
+  --config [KEY=VALUE [KEY=VALUE ...]], -C [KEY=VALUE [KEY=VALUE ...]]
                         Set or overwrite values in the workflow config object.
                         The workflow config object is accessible as variable
                         config inside the workflow. Default values can be set
@@ -279,7 +303,7 @@ EXECUTION:
   --forceall, -F        Force the execution of the selected (or the first)
                         rule and all rules it is dependent on regardless of
                         already created output. (default: False)
-  --forcerun [TARGET ...], -R [TARGET ...]
+  --forcerun [TARGET [TARGET ...]], -R [TARGET [TARGET ...]]
                         Force the re-execution or creation of the given rules
                         or files. Use this option if you changed a rule and
                         want to have all its output in your workflow updated.
@@ -568,7 +592,7 @@ BEHAVIOR:
                         present after the job finished. This helps if your
                         filesystem suffers from latency (default 5). (default:
                         5)
-  --wait-for-files [FILE ...]
+  --wait-for-files [FILE [FILE ...]]
                         Wait --latency-wait seconds for these files to be
                         present before executing the workflow. This option is
                         used internally to handle filesystem latency in

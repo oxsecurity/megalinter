@@ -20,8 +20,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | POWERSHELL_POWERSHELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| POWERSHELL_POWERSHELL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".ps1", ".psm1", ".psd1", ".ps1xml", ".pssc", ".psrc", ".cdxml"]` |
+| POWERSHELL_POWERSHELL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | POWERSHELL_POWERSHELL_FILE_NAME | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.powershell-psscriptanalyzer.psd1` |
 | POWERSHELL_POWERSHELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | POWERSHELL_POWERSHELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -33,6 +35,15 @@ Use powershell in your favorite IDE to catch errors before Mega-Linter !
 | <!-- --> | IDE | Extension Name |
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
 
 ## Behind the scenes
 

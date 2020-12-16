@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/arm.yml -->
 # ARM
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) |
+
 ## Linted files
 
 - File extensions:
@@ -18,8 +24,3 @@
 | ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) |

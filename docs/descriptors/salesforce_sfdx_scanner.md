@@ -28,8 +28,10 @@ See more details in [Help](#help-content)
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | SALESFORCE_SFDX_SCANNER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
+| SALESFORCE_SFDX_SCANNER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 | SALESFORCE_DIRECTORY | Directory containing SALESFORCE files | `force-app` |
 
@@ -43,6 +45,14 @@ Use sfdx-scanner in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [pmd-emacs](https://github.com/pmd/pmd-emacs/) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://github.com/amitdev/PMD-Intellij) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
 
 ## Behind the scenes
 

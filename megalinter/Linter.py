@@ -9,7 +9,7 @@ The following list of items can/must be overridden on custom linter local class:
 - field test_folder (optional) ex: "docker". If not set, language.lowercase() value is used
 - field config_file_name (optional) ex: ".eslintrc.yml". If not set, no default config file will be searched
 - field file_extensions (optional) ex: [".js"]. At least file_extension or file_names_regex must be set
-- field file_names_regex (optional) ex: ["Dockerfile"]. At least file_extension or file_names_regex must be set
+- field file_names_regex (optional) ex: ["Dockerfile(-.+)?"]. At least file_extension or file_names_regex must be set
 - method build_lint_command (optional) : Return CLI command to lint a file with the related linter
                                          Default: linter_name + (if config_file(-c + config_file)) + config_file
 - method build_version_command (optional): Returns CLI command to get the related linter version.
@@ -27,9 +27,11 @@ import shlex
 import shutil
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from time import perf_counter
 
-import megalinter
+from megalinter import config, utils
 
 
 class Linter:
@@ -51,15 +53,15 @@ class Linter:
         )
         self.test_folder = None  # Override only if different from language.lowercase()
 
-        self.file_extensions = (
-            []
-        )  # Array of strings defining file extensions. Ex: ['.js','.cjs']
-        self.file_names_regex = []  # Array of file names. Ex: ['Dockerfile']
+        # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
+        self.file_extensions = []
+        # Array of file name regular expressions. Ex: [Dockerfile(-.+)?]
+        self.file_names_regex = []
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
         self.files_sub_directory = None
         self.file_contains_regex = []
-        self.files_names_not_ends_with = []
+        self.file_names_not_ends_with = []
         self.active_only_if_file_found = None
         self.lint_all_files = False
         self.lint_all_other_linters_files = False
@@ -102,6 +104,7 @@ class Linter:
         # Initialize with configuration data
         for key, value in linter_config.items():
             self.__setattr__(key, value)
+
         # Initialize parameters
         if params is None:
             params = {
@@ -126,6 +129,14 @@ class Linter:
             self.cli_executable_help = self.cli_executable_version
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
+
+        # Apply linter customization via config settings:
+        self.file_extensions = config.get_list(
+            self.name + "_FILE_EXTENSIONS", self.file_extensions
+        )
+        self.file_names_regex = config.get_list(
+            self.name + "_FILE_NAMES_REGEX", self.file_names_regex
+        )
 
         self.manage_activation(params)
 
@@ -166,6 +177,8 @@ class Linter:
                 params["github_workspace"] if "github_workspace" in params else "."
             )
             self.config_file = None
+            self.config_file_label = None
+            self.config_file_error = None
             self.filter_regex_include = None
             self.filter_regex_exclude = None
             self.post_linter_status = (
@@ -188,7 +201,7 @@ class Linter:
 
             # Manage sub-directory filter if defined
             if self.files_sub_directory is not None:
-                self.files_sub_directory = megalinter.config.get(
+                self.files_sub_directory = config.get(
                     f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory
                 )
                 if not os.path.isdir(
@@ -219,6 +232,7 @@ class Linter:
             self.files_lint_results = []
             self.start_perf = None
             self.elapsed_time_s = None
+            self.remote_config_file_to_delete = None
 
     # Enable or disable linter
     def manage_activation(self, params):
@@ -234,53 +248,70 @@ class Linter:
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
         elif (
-            megalinter.config.exists("VALIDATE_" + self.name)
-            and megalinter.config.get("VALIDATE_" + self.name) == "false"
+            config.exists("VALIDATE_" + self.name)
+            and config.get("VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
         elif (
-            megalinter.config.exists("VALIDATE_" + self.descriptor_id)
-            and megalinter.config.get("VALIDATE_" + self.descriptor_id) == "false"
+            config.exists("VALIDATE_" + self.descriptor_id)
+            and config.get("VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
         elif (
-            megalinter.config.exists("VALIDATE_" + self.name)
-            and megalinter.config.get("VALIDATE_" + self.name) == "true"
+            config.exists("VALIDATE_" + self.name)
+            and config.get("VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
         elif (
-            megalinter.config.exists("VALIDATE_" + self.descriptor_id)
-            and megalinter.config.get("VALIDATE_" + self.descriptor_id) == "true"
+            config.exists("VALIDATE_" + self.descriptor_id)
+            and config.get("VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
 
     # Manage configuration variables
     def load_config_vars(self):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
-        if megalinter.config.exists(self.name + "_FILE_NAME"):
-            self.config_file_name = megalinter.config.get(self.name + "_FILE_NAME")
-        elif megalinter.config.exists(self.descriptor_id + "_FILE_NAME"):
-            self.config_file_name = megalinter.config.get(
-                self.descriptor_id + "_FILE_NAME"
-            )
+        if config.exists(self.name + "_FILE_NAME"):
+            self.config_file_name = config.get(self.name + "_FILE_NAME")
+        elif config.exists(self.descriptor_id + "_FILE_NAME"):
+            self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
 
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
-        if megalinter.config.exists(self.name + "_RULES_PATH"):
-            self.linter_rules_path = megalinter.config.get(self.name + "_RULES_PATH")
-        elif megalinter.config.exists(self.descriptor_id + "_RULES_PATH"):
-            self.linter_rules_path = megalinter.config.get(
-                self.descriptor_id + "_RULES_PATH"
-            )
+        if config.exists(self.name + "_RULES_PATH"):
+            self.linter_rules_path = config.get(self.name + "_RULES_PATH")
+        elif config.exists(self.descriptor_id + "_RULES_PATH"):
+            self.linter_rules_path = config.get(self.descriptor_id + "_RULES_PATH")
 
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
-        # 1: repo + config_file_name
-        # 2: linter_rules_path + config_file_name
-        # 3: mega-linter default rules path + config_file_name
+        # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
+        # 2: repo + config_file_name
+        # 3: linter_rules_path + config_file_name
+        # 4: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
             and self.config_file_name != "LINTER_DEFAULT"
         ):
+            if self.linter_rules_path.startswith("http"):
+                remote_config_file = (
+                    self.linter_rules_path + "/" + self.config_file_name
+                )
+                local_config_file = self.workspace + os.path.sep + self.config_file_name
+                existing_before = os.path.isfile(local_config_file)
+                try:
+                    with urllib.request.urlopen(remote_config_file) as response, open(
+                        local_config_file, "wb"
+                    ) as out_file:
+                        shutil.copyfileobj(response, out_file)
+                        self.config_file_label = remote_config_file
+                        if existing_before is False:
+                            self.remote_config_file_to_delete = local_config_file
+                except urllib.error.HTTPError as e:
+                    self.config_file_error = (
+                        f"Unable to fetch {remote_config_file}\n{str(e)}"
+                    )
+
+            # in repo root (already here or fetched by code above)
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
@@ -297,39 +328,35 @@ class Linter:
                 self.config_file = (
                     self.default_rules_location + os.path.sep + self.config_file_name
                 )
+            # Set config file label if not set by remote rule
+            if self.config_file is not None and self.config_file_label is None:
+                self.config_file_label = self.config_file.replace(
+                    "/tmp/lint", ""
+                ).replace("/action/lib/.automation/", "")
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
-        if megalinter.config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = megalinter.config.get(
-                self.name + "_FILTER_REGEX_INCLUDE"
-            )
-        elif megalinter.config.exists(self.descriptor_id + "_FILTER_REGEX_INCLUDE"):
-            self.filter_regex_include = megalinter.config.get(
+        if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
+            self.filter_regex_include = config.get(self.name + "_FILTER_REGEX_INCLUDE")
+        elif config.exists(self.descriptor_id + "_FILTER_REGEX_INCLUDE"):
+            self.filter_regex_include = config.get(
                 self.descriptor_id + "_FILTER_REGEX_INCLUDE"
             )
 
         # User arguments from config
-        if megalinter.config.get(self.name + "_ARGUMENTS", "") != "":
-            self.cli_lint_user_args = shlex.split(
-                megalinter.config.get(self.name + "_ARGUMENTS")
-            )
+        if config.get(self.name + "_ARGUMENTS", "") != "":
+            self.cli_lint_user_args = shlex.split(config.get(self.name + "_ARGUMENTS"))
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
-        if megalinter.config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
+        if config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
-        elif (
-            megalinter.config.get(self.descriptor_id + "_DISABLE_ERRORS", "false")
-            == "true"
-        ):
+        elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
 
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
-        if megalinter.config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = megalinter.config.get(
-                self.name + "_FILTER_REGEX_EXCLUDE"
-            )
-        elif megalinter.config.exists(self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
-            self.filter_regex_exclude = megalinter.config.get(
+        if config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude = config.get(self.name + "_FILTER_REGEX_EXCLUDE")
+        elif config.exists(self.descriptor_id + "_FILTER_REGEX_EXCLUDE"):
+            self.filter_regex_exclude = config.get(
                 self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
             )
 
@@ -357,9 +384,7 @@ class Linter:
                     self.return_code = 1
                     self.number_errors = self.number_errors + 1
                 if self.try_fix is True:
-                    fixed = megalinter.utils.check_updated_file(
-                        file, self.github_workspace
-                    )
+                    fixed = utils.check_updated_file(file, self.github_workspace)
                 else:
                     fixed = False
                 if fixed is True:
@@ -398,6 +423,9 @@ class Linter:
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
         if self.return_code != 0 and self.disable_errors is True:
             self.return_code = 0
+        # Delete locally copied remote config file if necessary
+        if self.remote_config_file_to_delete is not None:
+            os.remove(self.remote_config_file_to_delete)
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
@@ -407,7 +435,7 @@ class Linter:
     # List all reporters, then instantiate each of them
     def load_reporters(self):
         reporter_init_params = {"master": self, "report_folder": self.report_folder}
-        self.reporters = megalinter.utils.list_active_reporters_for_scope(
+        self.reporters = utils.list_active_reporters_for_scope(
             "linter", reporter_init_params
         )
 
@@ -451,8 +479,8 @@ class Linter:
         logging.debug(
             "%s linter filter: %s: %s",
             self.name,
-            "files_names_not_ends_with",
-            self.files_names_not_ends_with,
+            "file_names_not_ends_with",
+            self.file_names_not_ends_with,
         )
         logging.debug(
             "%s linter filter: %s: %s",
@@ -466,38 +494,18 @@ class Linter:
         self.log_file_filters()
 
         # Filter all files to keep only the ones matching with the current linter
-        for file in all_files:
-            if (
-                self.filter_regex_include is not None
-                and re.search(self.filter_regex_include, file) is None
-            ):
-                continue
-            elif (
-                self.filter_regex_exclude is not None
-                and re.search(self.filter_regex_exclude, file) is not None
-            ):
-                continue
-            elif (
-                self.files_sub_directory is not None
-                and self.files_sub_directory not in file
-            ):
-                continue
-            elif (
-                self.lint_all_other_linters_files is False
-                and not megalinter.utils.check_file_extension_or_name(
-                    file, self.file_extensions, self.file_names_regex
-                )
-            ):
-                continue
-            elif file.endswith(tuple(self.files_names_not_ends_with)):
-                continue
-            elif len(
-                self.file_contains_regex
-            ) > 0 and not megalinter.utils.file_contains(
-                file, self.file_contains_regex
-            ):
-                continue
-            self.files += [file]
+
+        self.files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=self.filter_regex_include,
+            filter_regex_exclude=self.filter_regex_exclude,
+            file_names_regex=self.file_names_regex,
+            file_extensions=self.file_extensions,
+            file_names_not_ends_with=self.file_names_not_ends_with,
+            file_contains_regex=self.file_contains_regex,
+            files_sub_directory=self.files_sub_directory,
+            lint_all_other_linters_files=self.lint_all_other_linters_files,
+        )
 
         logging.debug(
             "%s linter files after applying linter filters:\n- %s",
@@ -553,7 +561,7 @@ class Linter:
                 cwd=os.path.realpath(cwd),
             )
         return_code = process.returncode
-        return_stdout = megalinter.utils.decode_utf8(process.stdout)
+        return_stdout = utils.decode_utf8(process.stdout)
         # Return linter result
         return return_code, return_stdout
 
@@ -588,7 +596,7 @@ class Linter:
                 command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
             )
             return_code = process.returncode
-            output = megalinter.utils.decode_utf8(process.stdout)
+            output = utils.decode_utf8(process.stdout)
             logging.debug("Linter version result: " + str(return_code) + " " + output)
         except FileNotFoundError:
             logging.warning("Unable to call command [" + " ".join(command) + "]")
@@ -609,6 +617,7 @@ class Linter:
         help_command = self.build_help_command()
         return_code = 666
         output = ""
+        command = ""
         for command in [help_command] + self.cli_help_extra_commands:
             try:
                 if isinstance(command, str):
@@ -622,7 +631,7 @@ class Linter:
                     command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
                 )
                 return_code = process.returncode
-                output += megalinter.utils.decode_utf8(process.stdout)
+                output += utils.decode_utf8(process.stdout)
                 logging.debug("Linter help result: " + str(return_code) + " " + output)
             except FileNotFoundError:
                 logging.warning("Unable to call command [" + " ".join(command) + "]")
@@ -632,7 +641,7 @@ class Linter:
 
         if return_code != self.help_command_return_code or output.strip() == "":
             logging.warning("Unable to get help for linter [" + self.linter_name + "]")
-            logging.warning(" ".join(command) + " returned output: " + output)
+            logging.warning(str(command) + " returned output: " + output)
             return "ERROR"
         else:
             return output

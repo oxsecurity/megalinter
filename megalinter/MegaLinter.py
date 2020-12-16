@@ -4,16 +4,14 @@ Main Mega-Linter class, encapsulating all linters process and reporting
 
 """
 
-import collections
 import logging
 import multiprocessing as mp
 import os
-import re
 import sys
 
 import git
 import terminaltables
-from megalinter import config, utils
+from megalinter import config, flavor_factory, linter_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 
@@ -79,6 +77,7 @@ class Megalinter:
         self.status = "success"
         self.return_code = 0
         self.has_updated_sources = 0
+        self.flavor_suggestions = None
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -119,6 +118,11 @@ class Megalinter:
                 active_linters += [linter]
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
+
+        # Exit with error message if not all active linters are covered by current Mega-linter image flavor
+        if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
+            return
+
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
         else:
@@ -135,6 +139,12 @@ class Megalinter:
 
         # Sort linters before reports production
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
+
+        # Check if a Mega-Linter flavor can be used for this repo (except if FLAVOR_SUGGESTIONS: false is defined )
+        if config.get("FLAVOR_SUGGESTIONS", "true") == "true":
+            self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
+                active_linters
+            )
 
         # Generate reports
         for reporter in self.reporters:
@@ -251,9 +261,13 @@ class Megalinter:
     def load_config_vars(self):
         # Linter rules root path
         if config.exists("LINTER_RULES_PATH"):
-            self.linter_rules_path = (
-                self.github_workspace + os.path.sep + config.get("LINTER_RULES_PATH")
-            )
+            linter_rules_path_val = config.get("LINTER_RULES_PATH")
+            if linter_rules_path_val.startswith("http"):
+                self.linter_rules_path = linter_rules_path_val
+            else:
+                self.linter_rules_path = (
+                    self.github_workspace + os.path.sep + linter_rules_path_val
+                )
         # Filtering regex (inclusion)
         if config.exists("FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get("FILTER_REGEX_INCLUDE")
@@ -298,7 +312,7 @@ class Megalinter:
         }
 
         # Build linters from descriptor files
-        all_linters = utils.list_all_linters(linter_init_params)
+        all_linters = linter_factory.list_all_linters(linter_init_params)
         skipped_linters = []
         for linter in all_linters:
             if linter.is_active is False:
@@ -323,16 +337,15 @@ class Megalinter:
 
     # Define all file extensions to browse
     def compute_file_extensions(self):
+        file_extensions = []
+        file_names_regex = []
         for linter in self.linters:
-            self.file_extensions += linter.file_extensions
-            self.file_names_regex += linter.file_names_regex
+            file_extensions += linter.file_extensions
+            file_names_regex += linter.file_names_regex
+
         # Remove duplicates
-        self.file_extensions = list(
-            collections.OrderedDict.fromkeys(self.file_extensions)
-        )
-        self.file_names_regex = list(
-            collections.OrderedDict.fromkeys(self.file_names_regex)
-        )
+        self.file_extensions = list(dict.fromkeys(file_extensions))
+        self.file_names_regex = list(dict.fromkeys(file_names_regex))
 
     # Collect list of files matching extensions and regex
     def collect_files(self):
@@ -349,6 +362,7 @@ class Megalinter:
         else:
             all_files = self.list_files_all()
         all_files = sorted(set(all_files))
+
         logging.debug("All found files before filtering:\n- %s", "\n- ".join(all_files))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
@@ -359,27 +373,15 @@ class Megalinter:
             logging.info("- Including regex: " + self.filter_regex_include)
         if self.filter_regex_exclude is not None:
             logging.info("- Excluding regex: " + self.filter_regex_exclude)
-        filtered_files = []
-        for file in all_files:
-            base_file_name = os.path.basename(file)
-            filename, file_extension = os.path.splitext(base_file_name)
-            norm_file = file.replace(os.sep, "/")
-            if (
-                self.filter_regex_include is not None
-                and re.search(self.filter_regex_include, norm_file) is None
-            ):
-                continue
-            if (
-                self.filter_regex_exclude is not None
-                and re.search(self.filter_regex_exclude, norm_file) is not None
-            ):
-                continue
-            elif file_extension in self.file_extensions:
-                filtered_files += [file]
-            elif filename in self.file_names_regex:
-                filtered_files += [file]
-            elif "*" in self.file_extensions:
-                filtered_files += [file]
+
+        filtered_files = utils.filter_files(
+            all_files=all_files,
+            filter_regex_include=self.filter_regex_include,
+            filter_regex_exclude=self.filter_regex_exclude,
+            file_names_regex=self.file_names_regex,
+            file_extensions=self.file_extensions,
+        )
+
         logging.info(
             "Kept ["
             + str(len(filtered_files))

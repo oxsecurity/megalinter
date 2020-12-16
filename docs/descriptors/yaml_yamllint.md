@@ -20,8 +20,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | YAML_YAMLLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| YAML_YAMLLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| YAML_YAMLLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| YAML_YAMLLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| YAML_YAMLLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| YAML_YAMLLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml"]` |
+| YAML_YAMLLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | YAML_YAMLLINT_FILE_NAME | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.yaml-lint.yml` |
 | YAML_YAMLLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | YAML_YAMLLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -34,6 +36,25 @@ Use yamllint in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/krzysztof-magosa/flycheck-yamllint) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Mega-Linter optimized for DART based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Mega-Linter optimized for GO based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Mega-Linter optimized for JAVA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 32 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Mega-Linter optimized for RUBY based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Mega-Linter optimized for RUST based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/) | Mega-Linter optimized for SCALA based projects | 29 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Mega-Linter optimized for TERRAFORM based projects | 31 |
 
 ## Behind the scenes
 
@@ -63,7 +84,7 @@ yamllint -c .yaml-lint.yml myfile.yaml
 usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA]
                 [-f {parsable,standard,colored,github,auto}] [-s]
                 [--no-warnings] [-v]
-                [FILE_OR_DIR ...]
+                [FILE_OR_DIR [FILE_OR_DIR ...]]
 
 A linter for YAML files. yamllint does not only check for syntax validity, but
 for weirdnesses like key repetition and cosmetic problems such as lines

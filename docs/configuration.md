@@ -20,20 +20,20 @@ Examples:
 
 - Run all javascript and groovy linters except STANDARD javascript linter
 
-```config
+```yaml
 ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVSCRIPT_STANDARD
 ```
 
 - Run all linters except PHP linters (PHP_BUILTIN, PHP_PCPCS, PHP_STAN, PHP_PSALM)
 
-```config
+```yaml
 DISABLE: PHP
 ```
 
 - Run all linters except PHP_STAN and PHP_PSALM linters
 
-```config
+```yaml
 DISABLE_LINTERS: PHP_STAN,PHP_PSALM
 ```
 
@@ -70,8 +70,9 @@ report/
 | **EXCLUDED_DIRECTORIES**            | \[...many values...\]        | List of excluded directory basenames. They are excluded at any nested level.                                                                                                     |
 | **FILTER_REGEX_EXCLUDE**            | `none`                       | Regular expression defining which files will be excluded from linting  (ex: `.*src/test.*`)                                                                                      |
 | **FILTER_REGEX_INCLUDE**            | `all`                        | Regular expression defining which files will be processed by linters (ex: `.*src/.*`)                                                                                            |
+| **FLAVOR_SUGGESTIONS**              | `true`                       | Provides suggestions about different Mega-Linter flavors to use to improve runtime performances                                                                                  |
 | **GITHUB_WORKSPACE**                | ``                           | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` is not set                                |
-| **LINTER_RULES_PATH**               | `.github/linters`            | Directory for all linter configuration rules.                                                                                                                                    |
+| **LINTER_RULES_PATH**               | `.github/linters`            | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )         |
 | **LOG_FILE**                        | `mega-linter.log`            | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                 |
 | **LOG_LEVEL**                       | `INFO`                       | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
 | **OUTPUT_FOLDER**                   | `report`                     | The location where the output reporting will be generated to.                                                                                                                    |

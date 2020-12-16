@@ -35,11 +35,11 @@ on:
   pull_request:
     branches: [master]
 
-# env: #Uncomment to activate variables below
-# Apply linter fixes configuration
-# APPLY_FIXES: all # Uncomment to apply fixes provided by linters. You can also specify the list of fixing linters
-# APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request (default), push, all)
-# APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
+env: # Comment env block if you do not want to apply fixes
+  # Apply linter fixes configuration
+  APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
+  APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
+  APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
@@ -65,6 +65,8 @@ jobs:
       # Mega-Linter
       - name: Mega-Linter
         id: ml
+        # You can override Mega-Linter flavor used to have faster performances
+        # More info at https://nvuillam.github.io/mega-linter/flavors/
         uses: nvuillam/mega-linter@v4
         env:
           # All available variables are described in documentation

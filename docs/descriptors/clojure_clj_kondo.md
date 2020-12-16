@@ -25,8 +25,10 @@
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | CLOJURE_CLJ_KONDO_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
+| CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| CLOJURE_CLJ_KONDO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| CLOJURE_CLJ_KONDO_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".clj", ".cljs", ".cljc", ".edn"]` |
+| CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | CLOJURE_CLJ_KONDO_FILE_NAME | clj-kondo configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clj-kondo/config.edn` |
 | CLOJURE_CLJ_KONDO_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | CLOJURE_CLJ_KONDO_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
@@ -41,6 +43,14 @@ Use clj-kondo in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint) |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters |
+| :------: | ------ | ----------- | ---------------- |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
 
 ## Behind the scenes
 

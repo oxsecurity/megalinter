@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/coffee.yml -->
 # COFFEE
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) |

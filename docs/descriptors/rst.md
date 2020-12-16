@@ -3,6 +3,14 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/rst.yml -->
 # RST
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) |
+| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) |
+| [rstfmt](rst_rstfmt.md) | [RST](rst_rstfmt.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,10 +23,3 @@
 | RST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) |
-| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) |
-| [rstfmt](rst_rstfmt.md) | [RST](rst_rstfmt.md) |
