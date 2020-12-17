@@ -118,7 +118,9 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 # Linter install
-RUN composer require --dev phpstan/phpstan
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
+
 ```
 
 

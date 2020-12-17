@@ -185,7 +185,9 @@ RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 
 # phpstan installation
-RUN composer require --dev phpstan/phpstan
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
+
 
 # psalm installation
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1

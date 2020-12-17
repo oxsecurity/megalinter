@@ -349,7 +349,9 @@ RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 
 # phpstan installation
-RUN composer require --dev phpstan/phpstan
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
+
 
 # psalm installation
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
@@ -369,7 +371,8 @@ RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos
 RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
     && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
     && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && /opt/rakudo-pkg/bin/add-rakudo-to-path
+    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
+    && source /root/.profile
 
 
 # clippy installation

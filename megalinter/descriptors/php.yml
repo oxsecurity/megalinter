@@ -95,7 +95,9 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
     install:
       dockerfile:
-        - RUN composer require --dev phpstan/phpstan
+        - |
+          RUN composer global require phpstan/phpstan \
+              && composer global config bin-dir --absolute
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
