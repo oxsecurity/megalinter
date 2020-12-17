@@ -366,7 +366,11 @@ COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
 RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
 
 # raku installation
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && apk add --update --no-cache rakudo zef
+RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && /opt/rakudo-pkg/bin/add-rakudo-to-path
+
 
 # clippy installation
 RUN rustup component add clippy
