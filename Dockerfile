@@ -91,6 +91,7 @@ RUN apk add --update --no-cache \
                 php7-curl \
                 php7-dom \
                 php7-simplexml \
+                composer \
                 ruby \
                 ruby-dev \
                 ruby-bundler \
@@ -348,8 +349,7 @@ RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 
 # phpstan installation
-RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
-
+RUN composer require --dev phpstan/phpstan
 
 # psalm installation
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1

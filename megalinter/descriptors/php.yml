@@ -16,6 +16,7 @@ install:
     - php7-curl
     - php7-dom
     - php7-simplexml
+    - composer
   dockerfile:
     - |
       RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
@@ -94,8 +95,7 @@ linters:
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
     install:
       dockerfile:
-        - |
-          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+        - RUN composer require --dev phpstan/phpstan
     ide:
       idea:
         - name: PHPStan / Psalm / Generics

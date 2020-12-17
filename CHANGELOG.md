@@ -10,6 +10,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Dynamically generate (build.py) the list of flavors in github actions workflows
 - Reorganize online documentation menus
 - Fix rakudo installation
+- Fix phpstan installation
 
 ## [4.16.0] 2020-12-14
 

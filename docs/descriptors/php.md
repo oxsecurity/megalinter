@@ -55,3 +55,4 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
   - [php7-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-curl)
   - [php7-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-dom)
   - [php7-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-simplexml)
+  - [composer](https://pkgs.alpinelinux.org/packages?branch=edge&name=composer)
