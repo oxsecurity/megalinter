@@ -154,7 +154,11 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
     && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
     && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
     && /opt/rakudo-pkg/bin/add-rakudo-to-path \
-    && source /root/.profile
+    && source /root/.profile \
+    && PATH=~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH \
+    && export PATH \
+    && raku -v \
+    && /opt/rakudo-pkg/bin/install-zef-as-user
 
 ```
 
