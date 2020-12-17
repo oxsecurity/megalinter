@@ -350,9 +350,9 @@ RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 # phpstan installation
 RUN composer global require phpstan/phpstan \
-    && composer global config bin-dir --absolute \
-    && PATH=/root/.composer/vendor/bin:$PATH
+    && composer global config bin-dir --absolute
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # psalm installation
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
@@ -374,11 +374,9 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
     && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
     && /opt/rakudo-pkg/bin/add-rakudo-to-path \
     && source /root/.profile \
-    && PATH=~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH \
-    && export PATH \
-    && raku -v \
     && /opt/rakudo-pkg/bin/install-zef-as-user
 
+ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
 # clippy installation
 RUN rustup component add clippy

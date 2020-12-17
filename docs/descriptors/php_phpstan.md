@@ -119,9 +119,9 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
 
 # Linter install
 RUN composer global require phpstan/phpstan \
-    && composer global config bin-dir --absolute \
-    && PATH=/root/.composer/vendor/bin:$PATH
+    && composer global config bin-dir --absolute
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 
