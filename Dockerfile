@@ -202,6 +202,10 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
+# GIT installation
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 # GO installation
 ENV GOROOT=/usr/lib/go \
     GOPATH=/go
@@ -340,9 +344,6 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 # perlcritic installation
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic
 
-# php installation
-RUN echo "No additional install for PHP built-in linter"
-
 # phpcs installation
 RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
@@ -386,9 +387,6 @@ RUN terrascan init
 
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
-
-# dotnet-format installation
-RUN echo "dotnet-format installation is managed from csharp descriptor"
 
 #OTHER__END
 

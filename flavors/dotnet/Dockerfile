@@ -136,6 +136,10 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
+# GIT installation
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 # POWERSHELL installation
 RUN mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
@@ -197,9 +201,6 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
-
-# dotnet-format installation
-RUN echo "dotnet-format installation is managed from csharp descriptor"
 
 #OTHER__END
 

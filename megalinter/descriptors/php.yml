@@ -39,9 +39,6 @@ linters:
       - "-l"
     examples:
       - "php -l myfile.js"
-    install:
-      dockerfile:
-        - RUN echo "No additional install for PHP built-in linter"
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS

@@ -31,8 +31,7 @@ This linter is available in the following flavours
 
 | <!-- --> | Flavor | Description | Embedded linters |
 | :------: | ------ | ----------- | ---------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 72 |
 
 ## Behind the scenes
 
@@ -212,11 +211,7 @@ Options:
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-RUN echo "dotnet-format installation is managed from csharp descriptor"
-```
-
+None
 
 ### Example success log
 

@@ -1,5 +1,6 @@
 {
     "descriptors": [
+        "GIT",
         "JAVA"
     ],
     "label": "Mega-Linter optimized for JAVA based projects",

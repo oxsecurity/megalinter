@@ -1,5 +1,6 @@
 {
     "descriptors": [
+        "GIT",
         "SCALA"
     ],
     "label": "Mega-Linter optimized for SCALA based projects",

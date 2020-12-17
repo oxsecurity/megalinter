@@ -1,5 +1,6 @@
 {
     "descriptors": [
+        "GIT",
         "RUBY"
     ],
     "label": "Mega-Linter optimized for RUBY based projects",

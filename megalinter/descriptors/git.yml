@@ -1,0 +1,24 @@
+descriptor_id: GIT
+descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+install:
+  dockerfile:
+    - RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    - ENV PATH="/root/.cargo/bin:${PATH}"
+linters:
+  # CLIPPY
+  - linter_name: git_diff
+    lint_all_files: true
+    test_folder: git_diff
+    linter_url: https://git-scm.com
+    linter_repo: https://github.com/git/git
+    cli_config_arg_name: ""
+    cli_executable: git
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "diff"
+      - "--check"
+    examples:
+      - "git diff --check"
+

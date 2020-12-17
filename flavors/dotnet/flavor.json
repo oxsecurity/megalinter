@@ -1,6 +1,7 @@
 {
     "descriptors": [
         "CSHARP",
+        "GIT",
         "POWERSHELL"
     ],
     "label": "Mega-Linter optimized for C, C++, C# or VB based projects",
@@ -36,7 +37,6 @@
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "TEKTON_TEKTON_LINT",
-        "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
         "YAML_YAMLLINT"
     ]
