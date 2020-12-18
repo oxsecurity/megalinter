@@ -4,7 +4,7 @@
 
 ## markdownlint documentation
 
-- Version in Mega-Linter: **0.25.0**
+- Version in Mega-Linter: **0.26.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom .markdown-lint.json is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json){target=_blank} will be used
