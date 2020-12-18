@@ -91,6 +91,7 @@ RUN apk add --update --no-cache \
                 php7-curl \
                 php7-dom \
                 php7-simplexml \
+                composer \
                 ruby \
                 ruby-dev \
                 ruby-bundler \
@@ -348,8 +349,10 @@ RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 
 # phpstan installation
-RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # psalm installation
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
@@ -366,7 +369,14 @@ COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
 RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
 
 # raku installation
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && apk add --update --no-cache rakudo zef
+RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
+    && source /root/.profile \
+    && /opt/rakudo-pkg/bin/install-zef-as-user
+
+ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
 # clippy installation
 RUN rustup component add clippy

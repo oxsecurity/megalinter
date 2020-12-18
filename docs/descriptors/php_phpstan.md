@@ -118,8 +118,10 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 # Linter install
-RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 
