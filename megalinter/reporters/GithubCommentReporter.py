@@ -139,6 +139,12 @@ class GithubCommentReporter(Reporter):
             )
             g = github.Github(github_auth)
             repo = g.get_repo(github_repo)
+            logging.debug(f"[GitHubCommentReporter] Repo {github_repo}: {str(vars(repo))}")
+            # If repo is a fork, get parent repo to find related commit & PR
+            if repo.fork:
+                parent_repo_full_name = repo.parent.owner.name + "/" + repo.parent.name
+                logging.debug(f"[GitHubCommentReporter] Repository is a fork from {parent_repo_full_name}")
+                repo = g.get_repo(repo.parent.owner.name + "/" + repo.parent.name)
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
             if pr_list.totalCount == 0:

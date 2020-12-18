@@ -234,7 +234,7 @@ on:
   # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
   push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
   pull_request:
-    branches: [master]
+    branches: [master, main]
 
 env: # Comment env block if you do not want to apply fixes
   # Apply linter fixes configuration

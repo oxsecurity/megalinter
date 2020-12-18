@@ -46,6 +46,7 @@ class GithubStatusReporter(Reporter):
                 "authorization": f"Bearer {config.get('GITHUB_TOKEN')}",
                 "content-type": "application/json",
             }
+            logging.debug(f"[GitHubStatusReporter] Status URL: {url}")
             target_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
             description = (
                 success_msg

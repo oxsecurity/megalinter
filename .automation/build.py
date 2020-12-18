@@ -888,6 +888,12 @@ def update_mkdocs_and_workflow_yml_with_flavors():
         "\n".join(gha_workflow_yml),
     )
     replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-ALPHA-flavors.yml",
+        "# flavors-start",
+        "# flavors-end",
+        "\n".join(gha_workflow_yml),
+    )
+    replace_in_file(
         f"{REPO_HOME}/.github/workflows/deploy-RELEASE-flavors.yml",
         "# flavors-start",
         "# flavors-end",
