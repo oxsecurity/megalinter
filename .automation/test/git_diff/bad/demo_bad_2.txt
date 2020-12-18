@@ -1,0 +1,9 @@
+A text file.
+
+<<<<<<< HEAD
+Baz.
+=======
+Bar.
+>>>>>>> master
+
+git merge conflicts markers here !!

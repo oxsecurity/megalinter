@@ -1,5 +1,7 @@
 {
-    "descriptors": [],
+    "descriptors": [
+        "GIT"
+    ],
     "label": "Mega-Linter optimized for TERRAFORM based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",

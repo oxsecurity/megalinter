@@ -908,6 +908,9 @@ def get_linter_base_info(linter):
 
 def get_install_md(item):
     linter_doc_md = []
+    if "install" not in item:
+        linter_doc_md += ["None"]
+        return linter_doc_md
     if "dockerfile" in item["install"]:
         linter_doc_md += ["- Dockerfile commands :"]
         linter_doc_md += ["```dockerfile"]
@@ -998,6 +1001,8 @@ def merge_install_attr(item):
     if "descriptor_install" not in item:
         return
     for elt, elt_val in item["descriptor_install"].items():
+        if "install" not in item:
+            item["install"] = {}
         if elt in item["install"]:
             if elt == "dockerfile":
                 item["install"][elt] = (

@@ -1,5 +1,6 @@
 {
     "descriptors": [
+        "GIT",
         "GO"
     ],
     "label": "Mega-Linter optimized for GO based projects",

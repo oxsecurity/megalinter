@@ -1,5 +1,6 @@
 {
     "descriptors": [
+        "GIT",
         "PHP"
     ],
     "label": "Mega-Linter optimized for PHP based projects",
@@ -24,7 +25,6 @@
         "MARKDOWN_MARKDOWNLINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
         "OPENAPI_SPECTRAL",
-        "PHP_BUILTIN",
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",
