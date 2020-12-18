@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.62**
+- Version in Mega-Linter: **0.12.63**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
@@ -43,8 +43,8 @@ This linter is available in the following flavours
 
 | <!-- --> | Flavor | Description | Embedded linters |
 | :------: | ------ | ----------- | ---------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 32 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 72 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 31 |
 
 ## Behind the scenes
 
@@ -86,19 +86,19 @@ Options:
 Help:
   The list command lists all commands:
 
-    php /usr/local/bin/phpstan list
+    php /root/.composer/vendor/bin/phpstan list
 
   You can also display the commands for a specific namespace:
 
-    php /usr/local/bin/phpstan list test
+    php /root/.composer/vendor/bin/phpstan list test
 
   You can also output the information in other formats by using the --format option:
 
-    php /usr/local/bin/phpstan list --format=xml
+    php /root/.composer/vendor/bin/phpstan list --format=xml
 
   It's also possible to get raw list of commands (useful for embedding command runner):
 
-    php /usr/local/bin/phpstan list --raw
+    php /root/.composer/vendor/bin/phpstan list --raw
 ```
 
 ### Installation on mega-linter Docker image
@@ -118,8 +118,10 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 # Linter install
-RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 

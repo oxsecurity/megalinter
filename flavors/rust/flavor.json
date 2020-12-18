@@ -1,5 +1,6 @@
 {
     "descriptors": [
+        "GIT",
         "RUST"
     ],
     "label": "Mega-Linter optimized for RUST based projects",

@@ -5,6 +5,7 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+<<<<<<< HEAD
 - Allow to use remote linters configuration files with LINTER_RULES_PATH
 
 - Fixes
@@ -14,6 +15,20 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Arrange display of Flavor suggestions (text and order) in reporter logs
   - Dynamically generate (build.py) the list of flavors in github actions workflows
   - Reorganize online documentation menus
+=======
+- Core
+  - Allow to use remote linters configuration files with LINTER_RULES_PATH
+  - Add `.jekyll-cache` in the list of ignored folders by default
+  - Arrange display of Flavor suggestions (text and order) in reporter logs
+- Build
+  - Dynamically generate (build.py) the list of flavors in github actions workflows
+- Doc
+  - Reorganize online documentation menus
+- Linters
+  - Add new linter git_diff to check for git conflicts markers
+  - Fix rakudo installation
+  - Fix phpstan installation
+>>>>>>> master
 
 ## [4.16.0] 2020-12-14
 

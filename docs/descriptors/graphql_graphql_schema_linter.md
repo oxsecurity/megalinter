@@ -4,7 +4,7 @@
 
 ## graphql-schema-linter documentation
 
-- Version in Mega-Linter: **1.0.1**
+- Version in Mega-Linter: **2.0.1**
 - Visit [Official Web Site](https://github.com/cjoudrey/graphql-schema-linter#readme){target=_blank}
 - See [How to configure graphql-schema-linter rules](https://github.com/cjoudrey/graphql-schema-linter#configuration-file){target=_blank}
 - See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides){target=_blank}
@@ -34,13 +34,13 @@ This linter is available in the following flavours
 
 | <!-- --> | Flavor | Description | Embedded linters |
 | :------: | ------ | ----------- | ---------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 71 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 72 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Mega-Linter optimized for DART based projects | 29 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 34 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 33 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Mega-Linter optimized for GO based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Mega-Linter optimized for JAVA based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 35 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 32 |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Mega-Linter optimized for PHP based projects | 31 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Mega-Linter optimized for PYTHON based projects | 35 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Mega-Linter optimized for RUBY based projects | 29 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Mega-Linter optimized for RUST based projects | 29 |
@@ -70,18 +70,19 @@ graphql-schema-linter myfile.graphql
 Usage: graphql-schema-linter [options] [schema.graphql ...]
 
 Options:
-  -r, --rules <rules>              only the rules specified will be used to validate the schema. Example: fields-have-descriptions,types-have-descriptions
-  -i, --ignore <ignore list>       ignore errors for specific schema members, example: {'fields-have-descriptions':['Obvious','Query.obvious','Query.something.obvious']}
-  -f, --format <format>            choose the output format of the report. Possible values: json, text, compact
-  -s, --stdin                      schema definition will be read from STDIN instead of specified file.
-  -c, --config-directory <path>    path to begin searching for config files.
-  -p, --custom-rule-paths <paths>  path to additional custom rules to be loaded. Example: rules/*.js
-  --comment-descriptions           use old way of defining descriptions in GraphQL SDL
-  --old-implements-syntax          use old way of defining implemented interfaces in GraphQL SDL
-  -o, --only <rules>               This option is DEPRECATED. Use `--rules` instead.
-  -e, --except <rules>             This option is DEPRECATED. Use `--rules` instead.
-  --version                        output the version number
-  -h, --help                       output usage information
+  -r, --rules <rules>                 only the rules specified will be used to validate the schema. Example: fields-have-descriptions,types-have-descriptions
+  -o, --rules-options <rulesOptions>  configure the specified rules with the passed in configuration options. example: {"enum-values-sorted-alphabetically":{"sortOrder":"lexicographical"}}
+  -i, --ignore <ignore list>          ignore errors for specific schema members, example: {'fields-have-descriptions':['Obvious','Query.obvious','Query.something.obvious']}
+  -f, --format <format>               choose the output format of the report. Possible values: json, text, compact
+  -s, --stdin                         schema definition will be read from STDIN instead of specified file.
+  -c, --config-directory <path>       path to begin searching for config files.
+  -p, --custom-rule-paths <paths>     path to additional custom rules to be loaded. Example: rules/*.js
+  --comment-descriptions              use old way of defining descriptions in GraphQL SDL
+  --old-implements-syntax             use old way of defining implemented interfaces in GraphQL SDL
+  -o, --only <rules>                  This option is DEPRECATED. Use `--rules` instead.
+  -e, --except <rules>                This option is DEPRECATED. Use `--rules` instead.
+  --version                           output the version number
+  -h, --help                          output usage information
 ```
 
 ### Installation on mega-linter Docker image

@@ -210,8 +210,7 @@
         "required": [
           "linter_name",
           "linter_url",
-          "examples",
-          "install"
+          "examples"
         ],
         "properties": {
           "linter_name": {

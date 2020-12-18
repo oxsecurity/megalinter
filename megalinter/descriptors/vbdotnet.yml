@@ -23,6 +23,3 @@ linters:
     examples:
       - "dotnet-format --folder --check --exclude / --include myfile.vb"
       - "dotnet-format --folder --exclude / --include myfile.vb"
-    install:
-      dockerfile:
-        - RUN echo "dotnet-format installation is managed from csharp descriptor"

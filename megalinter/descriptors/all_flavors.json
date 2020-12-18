@@ -1,6 +1,8 @@
 {
     "dart": {
-        "descriptors": [],
+        "descriptors": [
+            "GIT"
+        ],
         "label": "Mega-Linter optimized for DART based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
@@ -37,6 +39,7 @@
     "dotnet": {
         "descriptors": [
             "CSHARP",
+            "GIT",
             "POWERSHELL"
         ],
         "label": "Mega-Linter optimized for C, C++, C# or VB based projects",
@@ -72,13 +75,13 @@
             "SPELL_CSPELL",
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
-            "VBDOTNET_DOTNET_FORMAT",
             "XML_XMLLINT",
             "YAML_YAMLLINT"
         ]
     },
     "go": {
         "descriptors": [
+            "GIT",
             "GO"
         ],
         "label": "Mega-Linter optimized for GO based projects",
@@ -116,6 +119,7 @@
     },
     "java": {
         "descriptors": [
+            "GIT",
             "JAVA"
         ],
         "label": "Mega-Linter optimized for JAVA based projects",
@@ -153,6 +157,7 @@
     },
     "javascript": {
         "descriptors": [
+            "GIT",
             "JAVASCRIPT",
             "TYPESCRIPT"
         ],
@@ -197,6 +202,7 @@
     },
     "php": {
         "descriptors": [
+            "GIT",
             "PHP"
         ],
         "label": "Mega-Linter optimized for PHP based projects",
@@ -221,7 +227,6 @@
             "MARKDOWN_MARKDOWNLINT",
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "OPENAPI_SPECTRAL",
-            "PHP_BUILTIN",
             "PHP_PHPCS",
             "PHP_PHPSTAN",
             "PHP_PSALM",
@@ -236,7 +241,9 @@
         ]
     },
     "python": {
-        "descriptors": [],
+        "descriptors": [
+            "GIT"
+        ],
         "label": "Mega-Linter optimized for PYTHON based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
@@ -278,6 +285,7 @@
     },
     "ruby": {
         "descriptors": [
+            "GIT",
             "RUBY"
         ],
         "label": "Mega-Linter optimized for RUBY based projects",
@@ -315,6 +323,7 @@
     },
     "rust": {
         "descriptors": [
+            "GIT",
             "RUST"
         ],
         "label": "Mega-Linter optimized for RUST based projects",
@@ -352,6 +361,7 @@
     },
     "scala": {
         "descriptors": [
+            "GIT",
             "SCALA"
         ],
         "label": "Mega-Linter optimized for SCALA based projects",
@@ -388,7 +398,9 @@
         ]
     },
     "terraform": {
-        "descriptors": [],
+        "descriptors": [
+            "GIT"
+        ],
         "label": "Mega-Linter optimized for TERRAFORM based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
