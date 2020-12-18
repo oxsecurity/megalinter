@@ -4,7 +4,7 @@
 
 ## raku documentation
 
-- Version in Mega-Linter: **2020.11**
+- Version in Mega-Linter: **2020.10**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
 
 [![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
@@ -68,7 +68,7 @@ raku -I ./lib -c myfile.raku
 ### Help content
 
 ```shell
-/usr/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
+/opt/rakudo-pkg/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
 
 With no arguments, enters a REPL (see --repl-mode option).
 With a "[programfile]" or the "-e" option, compiles the given program
@@ -150,7 +150,14 @@ The following environment variables are respected:
 
 - Dockerfile commands :
 ```dockerfile
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && apk add --update --no-cache rakudo zef
+RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
+    && source /root/.profile \
+    && /opt/rakudo-pkg/bin/install-zef-as-user
+
+ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 ```
 
 

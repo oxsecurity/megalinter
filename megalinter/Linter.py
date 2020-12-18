@@ -293,9 +293,9 @@ class Linter:
             and self.config_file_name != "LINTER_DEFAULT"
         ):
             if self.linter_rules_path.startswith("http"):
-                remote_config_file = (
-                    self.linter_rules_path + "/" + self.config_file_name
-                )
+                if not self.linter_rules_path.endswith("/"):
+                    self.linter_rules_path += "/"
+                remote_config_file = self.linter_rules_path + self.config_file_name
                 local_config_file = self.workspace + os.path.sep + self.config_file_name
                 existing_before = os.path.isfile(local_config_file)
                 try:
@@ -308,9 +308,14 @@ class Linter:
                             self.remote_config_file_to_delete = local_config_file
                 except urllib.error.HTTPError as e:
                     self.config_file_error = (
-                        f"Unable to fetch {remote_config_file}\n{str(e)}"
+                        f"Unable to fetch {remote_config_file}\n{str(e)}\n"
+                        f" fallback to repository config or Mega-Linter default config"
                     )
-
+                except Exception as e:
+                    self.config_file_error = (
+                        f"Unable to fetch {remote_config_file}\n{str(e)}\n"
+                        f" fallback to repository config or Mega-Linter default config"
+                    )
             # in repo root (already here or fetched by code above)
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
