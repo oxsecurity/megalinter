@@ -122,8 +122,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 # GIT installation
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
+RUN git config --global core.autocrlf true
 
 # JAVA installation
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk

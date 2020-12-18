@@ -121,8 +121,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 # GIT installation
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
+RUN git config --global core.autocrlf true
 
 # SCALA installation
 RUN curl -fLo coursier https://git.io/coursier-cli && \

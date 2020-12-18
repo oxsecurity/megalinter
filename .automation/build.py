@@ -1001,7 +1001,7 @@ def merge_install_attr(item):
     if "descriptor_install" not in item:
         return
     for elt, elt_val in item["descriptor_install"].items():
-        if not "install" in item:
+        if "install" not in item:
             item["install"] = {}
         if elt in item["install"]:
             if elt == "dockerfile":

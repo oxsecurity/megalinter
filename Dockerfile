@@ -204,8 +204,7 @@ RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # GIT installation
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
+RUN git config --global core.autocrlf true
 
 # GO installation
 ENV GOROOT=/usr/lib/go \
