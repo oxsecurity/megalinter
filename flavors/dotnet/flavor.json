@@ -21,6 +21,7 @@
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
+        "GIT_GIT_DIFF",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
@@ -37,6 +38,7 @@
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "TEKTON_TEKTON_LINT",
+        "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
         "YAML_YAMLLINT"
     ]

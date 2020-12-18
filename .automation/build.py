@@ -79,7 +79,7 @@ def generate_flavor(flavor, flavor_info):
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
     for linter in linters:
-        if match_flavor(vars(linter), flavor) is True and hasattr(linter, "install"):
+        if match_flavor(vars(linter), flavor) is True:
             descriptor_and_linters += [vars(linter)]
             flavor_linters += [linter.name]
     # Initialize Dockerfile
@@ -144,6 +144,8 @@ branding:
     pip_packages = []
     gem_packages = []
     for item in descriptor_and_linters:
+        if "install" not in item:
+            item["install"] = {}
         # Collect Dockerfile items
         if "dockerfile" in item["install"]:
             item_label = item.get("linter_name", item.get("descriptor_id", ""))
