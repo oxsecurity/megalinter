@@ -4,6 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+## [4.17.0] 2020-12-18
+
 - Core
   - Allow to use remote linters configuration files with LINTER_RULES_PATH
   - Add `.jekyll-cache` in the list of ignored folders by default
