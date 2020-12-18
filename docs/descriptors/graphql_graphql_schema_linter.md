@@ -4,7 +4,7 @@
 
 ## graphql-schema-linter documentation
 
-- Version in Mega-Linter: **1.0.1**
+- Version in Mega-Linter: **2.0.1**
 - Visit [Official Web Site](https://github.com/cjoudrey/graphql-schema-linter#readme){target=_blank}
 - See [How to configure graphql-schema-linter rules](https://github.com/cjoudrey/graphql-schema-linter#configuration-file){target=_blank}
 - See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides){target=_blank}
@@ -70,18 +70,19 @@ graphql-schema-linter myfile.graphql
 Usage: graphql-schema-linter [options] [schema.graphql ...]
 
 Options:
-  -r, --rules <rules>              only the rules specified will be used to validate the schema. Example: fields-have-descriptions,types-have-descriptions
-  -i, --ignore <ignore list>       ignore errors for specific schema members, example: {'fields-have-descriptions':['Obvious','Query.obvious','Query.something.obvious']}
-  -f, --format <format>            choose the output format of the report. Possible values: json, text, compact
-  -s, --stdin                      schema definition will be read from STDIN instead of specified file.
-  -c, --config-directory <path>    path to begin searching for config files.
-  -p, --custom-rule-paths <paths>  path to additional custom rules to be loaded. Example: rules/*.js
-  --comment-descriptions           use old way of defining descriptions in GraphQL SDL
-  --old-implements-syntax          use old way of defining implemented interfaces in GraphQL SDL
-  -o, --only <rules>               This option is DEPRECATED. Use `--rules` instead.
-  -e, --except <rules>             This option is DEPRECATED. Use `--rules` instead.
-  --version                        output the version number
-  -h, --help                       output usage information
+  -r, --rules <rules>                 only the rules specified will be used to validate the schema. Example: fields-have-descriptions,types-have-descriptions
+  -o, --rules-options <rulesOptions>  configure the specified rules with the passed in configuration options. example: {"enum-values-sorted-alphabetically":{"sortOrder":"lexicographical"}}
+  -i, --ignore <ignore list>          ignore errors for specific schema members, example: {'fields-have-descriptions':['Obvious','Query.obvious','Query.something.obvious']}
+  -f, --format <format>               choose the output format of the report. Possible values: json, text, compact
+  -s, --stdin                         schema definition will be read from STDIN instead of specified file.
+  -c, --config-directory <path>       path to begin searching for config files.
+  -p, --custom-rule-paths <paths>     path to additional custom rules to be loaded. Example: rules/*.js
+  --comment-descriptions              use old way of defining descriptions in GraphQL SDL
+  --old-implements-syntax             use old way of defining implemented interfaces in GraphQL SDL
+  -o, --only <rules>                  This option is DEPRECATED. Use `--rules` instead.
+  -e, --except <rules>                This option is DEPRECATED. Use `--rules` instead.
+  --version                           output the version number
+  -h, --help                          output usage information
 ```
 
 ### Installation on mega-linter Docker image

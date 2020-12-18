@@ -4,7 +4,7 @@
 
 ## raku documentation
 
-- Version in Mega-Linter: **2020.11**
+- Version in Mega-Linter: **2020.10**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
 
 [![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
@@ -68,7 +68,7 @@ raku -I ./lib -c myfile.raku
 ### Help content
 
 ```shell
-/usr/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
+/opt/rakudo-pkg/share/perl6/runtime/perl6.moarvm [switches] [--] [programfile] [arguments]
 
 With no arguments, enters a REPL (see --repl-mode option).
 With a "[programfile]" or the "-e" option, compiles the given program

@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.62**
+- Version in Mega-Linter: **0.12.63**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
@@ -86,19 +86,19 @@ Options:
 Help:
   The list command lists all commands:
 
-    php /usr/local/bin/phpstan list
+    php /root/.composer/vendor/bin/phpstan list
 
   You can also display the commands for a specific namespace:
 
-    php /usr/local/bin/phpstan list test
+    php /root/.composer/vendor/bin/phpstan list test
 
   You can also output the information in other formats by using the --format option:
 
-    php /usr/local/bin/phpstan list --format=xml
+    php /root/.composer/vendor/bin/phpstan list --format=xml
 
   It's also possible to get raw list of commands (useful for embedding command runner):
 
-    php /usr/local/bin/phpstan list --raw
+    php /root/.composer/vendor/bin/phpstan list --raw
 ```
 
 ### Installation on mega-linter Docker image
