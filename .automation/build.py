@@ -37,6 +37,8 @@ LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.j
 FLAVORS_DIR = REPO_HOME + "/flavors"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
+BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
+
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
     "brackets": {"label": "Brackets", "url": "http://brackets.io/"},
@@ -426,8 +428,14 @@ def generate_descriptor_documentation(descriptor):
 def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
     flavor_github_action = f"nvuillam/mega-linter/flavors/{flavor_id}@v4"
     flavor_docker_image = f"nvuillam/mega-linter-{flavor_id}:v4"
+    docker_image_badge = (
+        f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
+        f"nvuillam/mega-linter-{flavor_id}/v4)"
+    )
     flavor_doc_md = [
         f"# {flavor_id} Mega-Linter Flavor",
+        "",
+        docker_image_badge,
         "",
         "## Description",
         "",
@@ -822,8 +830,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
 def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     md_table = [
-        "| <!-- --> | Flavor | Description | Embedded linters |",
-        "| :------: | ------ | ----------- | ---------------- |",
+        "| <!-- --> | Flavor | Description | Embedded linters | Size |",
+        "| :------: | ------ | :---------- | :--------------: | :--: |",
     ]
     icon_html = icon(
         f"{DOCS_URL_RAW_ROOT}/assets/images/mega-linter-square.png",
@@ -839,9 +847,12 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
+    docker_image_badge = (
+        f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/nvuillam/mega-linter/v4)"
+    )
     md_line_all = (
         f"| {icon_html} | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | "
-        f"Default Mega-Linter Flavor | {str(linters_number)} |"
+        f"Default Mega-Linter Flavor | {str(linters_number)} | {docker_image_badge} |"
     )
     md_table += [md_line_all]
     all_flavors = megalinter.flavor_factory.get_all_flavors()
@@ -856,9 +867,13 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         ):
             continue
         flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
+        docker_image_badge = (
+            f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
+            f"nvuillam/mega-linter-{flavor_id}/v4)"
+        )
         md_line = (
             f"| {icon_html} | [{flavor_id}]({doc_url(flavor_doc_url)}) |"
-            f" {flavor['label']} | {str(linters_number)} |"
+            f" {flavor['label']} | {str(linters_number)} | {docker_image_badge} |"
         )
         if replace_link is True:
             md_line = md_line.replace(

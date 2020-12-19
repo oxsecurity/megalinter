@@ -1,5 +1,7 @@
 # scala Mega-Linter Flavor
 
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4)
+
 ## Description
 
 Mega-Linter optimized for SCALA based projects

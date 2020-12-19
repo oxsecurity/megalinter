@@ -1,5 +1,7 @@
 # terraform Mega-Linter Flavor
 
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4)
+
 ## Description
 
 Mega-Linter optimized for TERRAFORM based projects

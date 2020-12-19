@@ -4,6 +4,16 @@
 
 # Installation
 
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases)
+
+- GitHub Action: nvuillam/mega-linter:v4
+- Docker image: nvuillam/mega-linter@v4
+
+You can also use **insiders** version (beta release, corresponding to the content of master branch)
+
+- GitHub Action: nvuillam/mega-linter:insiders
+- Docker image: nvuillam/mega-linter@latest
+
 ## GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
@@ -127,7 +137,7 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull nvuillam/mega-linter:latest
+        docker pull nvuillam/mega-linter:v4
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
       displayName: 'Code Scan using  Mega-Linter'
 ```
@@ -143,7 +153,7 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
 stage('Mega-Linter') {
     agent {
         docker {
-            image 'nvuillam/mega-linter:latest'
+            image 'nvuillam/mega-linter:v4'
             args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
