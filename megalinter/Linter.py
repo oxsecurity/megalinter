@@ -68,6 +68,7 @@ class Linter:
 
         self.cli_lint_mode = "file"
         self.cli_executable = None
+        self.cli_executable_fix = None
         self.cli_executable_version = None
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
@@ -123,6 +124,8 @@ class Linter:
             )
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
+        if self.cli_executable_fix is None:
+            self.cli_executable_fix = self.cli_executable
         if self.cli_executable_version is None:
             self.cli_executable_version = self.cli_executable
         if self.cli_executable_help is None:
@@ -664,7 +667,11 @@ class Linter:
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined
-        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+        if self.apply_fixes is True and (
+                self.cli_lint_fix_arg_name is not None or
+                self.cli_executable_fix != self.cli_executable
+        ):
+            cmd[0] = self.cli_executable_fix
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
         # Add user-defined extra arguments if defined
