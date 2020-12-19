@@ -1,5 +1,7 @@
 # php Mega-Linter Flavor
 
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4)
+
 ## Description
 
 Mega-Linter optimized for PHP based projects

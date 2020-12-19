@@ -1,5 +1,7 @@
 # python Mega-Linter Flavor
 
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4)
+
 ## Description
 
 Mega-Linter optimized for PYTHON based projects

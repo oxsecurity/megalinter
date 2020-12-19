@@ -1,5 +1,7 @@
 # dotnet Mega-Linter Flavor
 
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4)
+
 ## Description
 
 Mega-Linter optimized for C, C++, C# or VB based projects

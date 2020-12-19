@@ -1,5 +1,7 @@
 # dart Mega-Linter Flavor
 
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4)
+
 ## Description
 
 Mega-Linter optimized for DART based projects
