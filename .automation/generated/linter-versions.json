@@ -39,7 +39,7 @@
     "phpcs": "3.5.8",
     "phpstan": "0.12.63",
     "powershell": "7.1.0",
-    "protolint": "0.26.0",
+    "protolint": "0.26.1",
     "psalm": "4.3.1",
     "puppet-lint": "2.4.2",
     "pylint": "2.6.0",
