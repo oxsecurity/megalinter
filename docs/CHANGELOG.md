@@ -5,6 +5,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Doc
+  - Add docker pulls badge in flavors documentation
+
 ## [4.17.0] 2020-12-18
 
 - Core
