@@ -857,8 +857,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/nvuillam/mega-linter/v4)"
     )
     docker_pulls_badge = (
-        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/"
-        f"nvuillam/mega-linter)"
+        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"nvuillam/mega-linter)"
     )
     md_line_all = (
         f"| {icon_html} | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | "
