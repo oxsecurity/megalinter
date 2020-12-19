@@ -847,7 +847,9 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/nvuillam/mega-linter/v4)"
+    docker_image_badge = (
+        f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/nvuillam/mega-linter/v4)"
+    )
     md_line_all = (
         f"| {icon_html} | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | "
         f"Default Mega-Linter Flavor | {str(linters_number)} | {docker_image_badge} |"
@@ -866,7 +868,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
             continue
         flavor_doc_url = f"{DOCS_URL_FLAVORS_ROOT}/{flavor_id}.md"
         docker_image_badge = (
-            f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/" 
+            f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
             f"nvuillam/mega-linter-{flavor_id}/v4)"
         )
         md_line = (
