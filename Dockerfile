@@ -342,12 +342,11 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 
 # markdown-link-check installation
-RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git /usr/markdown-table-prettify \
-    && /usr/markdown-table-prettify \
+RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
     && npm install \
     && npm run compile \
-    && echo 'alias mtp-check-md="cd /usr/markdown-table-prettify && npm run --silent check-md"' >> ~/.bashrc \
-    && echo 'alias mtp-prettify-md="cd /usr/markdown-table-prettify && npm run --silent prettify-md"' >> ~/.bashrc
+    && echo 'alias mtp-check-md="npm run --silent check-md"' >> ~/.bashrc \
+    && echo 'alias mtp-prettify-md="npm run --silent prettify-md"' >> ~/.bashrc
 
 # perlcritic installation
 RUN curl --retry 5 --retry-delay 5 -sL https://cpanmin.us/ | perl - -nq --no-wget Perl::Critic

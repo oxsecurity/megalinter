@@ -84,12 +84,11 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git /usr/markdown-table-prettify \
-    && /usr/markdown-table-prettify \
+RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
     && npm install \
     && npm run compile \
-    && echo 'alias mtp-check-md="cd /usr/markdown-table-prettify && npm run --silent check-md"' >> ~/.bashrc \
-    && echo 'alias mtp-prettify-md="cd /usr/markdown-table-prettify && npm run --silent prettify-md"' >> ~/.bashrc
+    && echo 'alias mtp-check-md="npm run --silent check-md"' >> ~/.bashrc \
+    && echo 'alias mtp-prettify-md="npm run --silent prettify-md"' >> ~/.bashrc
 ```
 
 

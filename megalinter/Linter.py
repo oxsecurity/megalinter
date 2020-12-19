@@ -668,8 +668,8 @@ class Linter:
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined
         if self.apply_fixes is True and (
-                self.cli_lint_fix_arg_name is not None or
-                self.cli_executable_fix != self.cli_executable
+            self.cli_lint_fix_arg_name is not None
+            or self.cli_executable_fix != self.cli_executable
         ):
             cmd[0] = self.cli_executable_fix
             cmd += [self.cli_lint_fix_arg_name]
