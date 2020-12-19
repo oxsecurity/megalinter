@@ -26,6 +26,7 @@
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
         "JSON_JSONLINT",
+        "JSON_V8R",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
         "MARKDOWN_MARKDOWNLINT",
@@ -40,6 +41,7 @@
         "TEKTON_TEKTON_LINT",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
-        "YAML_YAMLLINT"
+        "YAML_YAMLLINT",
+        "YAML_V8R"
     ]
 }

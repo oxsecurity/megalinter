@@ -8,6 +8,7 @@
 | Linter | Configuration key |
 | ------ | ----------------- |
 | [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) |
+| [v8r](json_v8r.md) | [JSON](json_v8r.md) |
 
 ## Linted files
 
