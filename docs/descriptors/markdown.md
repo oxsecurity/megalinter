@@ -9,7 +9,7 @@
 | ------ | ----------------- |
 | [markdownlint](markdown_markdownlint.md) | [MARKDOWN](markdown_markdownlint.md) |
 | [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) |
-| [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) |
+| [markdown-table-prettify](markdown_markdown_table_prettify.md) | [MARKDOWN](markdown_markdown_table_prettify.md) |
 
 ## Linted files
 

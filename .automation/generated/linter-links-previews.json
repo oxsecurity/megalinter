@@ -164,6 +164,11 @@
         "image": "https://avatars2.githubusercontent.com/u/216720?s=400&v=4",
         "title": "tcort/markdown-link-check"
     },
+    "markdown-table-prettify": {
+        "description": "Visual Studio Code extension to prettify markdown tables. - darkriszty/MarkdownTablePrettify-VSCodeExt",
+        "image": "https://avatars3.githubusercontent.com/u/2570279?s=400&v=4",
+        "title": "darkriszty/MarkdownTablePrettify-VSCodeExt"
+    },
     "markdownlint": {
         "description": "A Node.js style checker and lint tool for Markdown/CommonMark files. - DavidAnson/markdownlint",
         "image": "https://avatars2.githubusercontent.com/u/1828270?s=400&v=4",

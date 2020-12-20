@@ -180,12 +180,14 @@ RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval
     && cp kubeval /usr/local/bin
 
 
-# markdown-link-check installation
+# markdown-table-prettify installation
 RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
+    && cd MarkdownTablePrettify-VSCodeExt \
     && npm install \
     && npm run compile \
-    && echo 'alias mtp-check-md="npm run --silent check-md"' >> ~/.bashrc \
-    && echo 'alias mtp-prettify-md="npm run --silent prettify-md"' >> ~/.bashrc
+    && echo 'alias mtp-check-md="cd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md"' >> ~/.bashrc \
+    && echo 'alias mtp-prettify-md="cd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md"' >> ~/.bashrc
+
 
 # phpcs installation
 RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192

@@ -48,7 +48,7 @@ linters:
       npm:
         - markdown-link-check
   # Markdown table prettify Check
-  - linter_name: markdown-link-check
+  - linter_name: markdown-table-prettify
     linter_url: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt
     cli_executable: mtp-check-md
     cli_executable_fix: mtp-prettify-md
@@ -59,7 +59,12 @@ linters:
       dockerfile:
         - |
           RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
+              && cd MarkdownTablePrettify-VSCodeExt \
               && npm install \
               && npm run compile \
-              && echo 'alias mtp-check-md="npm run --silent check-md"' >> ~/.bashrc \
-              && echo 'alias mtp-prettify-md="npm run --silent prettify-md"' >> ~/.bashrc
+              && echo 'alias mtp-check-md="cd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md"' >> ~/.bashrc \
+              && echo 'alias mtp-prettify-md="cd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md"' >> ~/.bashrc
+    ide:
+      vscode:
+        - name: Markdown Table Prettify Extension
+          url: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt

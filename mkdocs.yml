@@ -172,7 +172,7 @@ nav:
               - "All MARKDOWN linters": "descriptors/markdown.md"
               - "markdownlint": "descriptors/markdown_markdownlint.md"
               - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
-              - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
+              - "markdown-table-prettify": "descriptors/markdown_markdown_table_prettify.md"
           - "PROTOBUF":
               - "All PROTOBUF linters": "descriptors/protobuf.md"
               - "protolint": "descriptors/protobuf_protolint.md"
