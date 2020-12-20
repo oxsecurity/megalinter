@@ -172,8 +172,10 @@ RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git 
     && cd MarkdownTablePrettify-VSCodeExt \
     && npm install \
     && npm run compile \
-    && echo 'alias mtp-check-md="cd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md"' >> ~/.bashrc \
-    && echo 'alias mtp-prettify-md="cd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md"' >> ~/.bashrc
+    && echo -e '#!/bin/bash\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md "$@"' > /usr/bin/check-md \
+    && chmod +x /usr/bin/check-md \
+    && echo -e '#!/bin/bash\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md "$@"' > /usr/bin/prettify-md \
+    && chmod +x /usr/bin/prettify-md
 
 
 # protolint installation
