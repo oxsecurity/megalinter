@@ -5,8 +5,14 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Core
+  - Do not suggest flavors when Mega-Linter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
+  - Fix ConsoleReporter active linters table content
+  - Check if linter is able to fix before flagging it as a fixing linter during runtime
+
 - Doc
   - Add docker pulls badge in flavors documentation
+  - Generate list of references to Mega-Linter
 
 ## [4.17.0] 2020-12-18
 

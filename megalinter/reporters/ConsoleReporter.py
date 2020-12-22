@@ -20,6 +20,35 @@ class ConsoleReporter(Reporter):
         self.processing_order = -9
         super().__init__(params)
 
+    def initialize(self):
+        # Display collection summary in log
+        table_data = [
+            ["Descriptor", "Linter", "Criteria", "Matching files", "Format/Fix"]
+        ]
+        for linter in self.master.linters:
+            if linter.is_active is True:
+                all_criteria = linter.file_extensions + linter.file_names_regex
+                if linter.cli_lint_mode == "project":
+                    files_col = "project"
+                else:
+                    files_col = str(len(linter.files))
+                fixes_col = "yes" if linter.apply_fixes is True else "no"
+                table_data += [
+                    [
+                        linter.descriptor_id,
+                        linter.linter_name,
+                        "|".join(all_criteria),
+                        files_col,
+                        fixes_col,
+                    ]
+                ]
+        table = terminaltables.AsciiTable(table_data)
+        table.title = "----MATCHING LINTERS"
+        logging.info("")
+        for table_line in table.table.splitlines():
+            logging.info(table_line)
+        logging.info("")
+
     def produce_report(self):
         table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
         if self.master.show_elapsed_time is True:
@@ -31,7 +60,7 @@ class ConsoleReporter(Reporter):
                     str(linter.number_fixed) if linter.try_fix is True else ""
                 )
                 if linter.cli_lint_mode == "project":
-                    found = "yes"
+                    found = "project"
                     errors = "yes" if linter.number_errors > 0 else "no"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
