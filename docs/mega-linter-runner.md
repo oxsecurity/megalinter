@@ -6,6 +6,10 @@
 <!-- header-logo-end -->
 
 # Mega-Linter Runner
+
+[![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 <!-- readme-header-start -->
 
 <!-- readme-header-end -->

@@ -50,6 +50,7 @@ jobs:
         flavor:
           [
             "dart",
+            "documentation",
             "dotnet",
             "go",
             "java",

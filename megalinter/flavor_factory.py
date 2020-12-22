@@ -32,6 +32,7 @@ def list_megalinter_flavors():
     flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
         "dart": {"label": "Mega-Linter optimized for DART based projects"},
+        "documentation": {"label": "Mega-Linter for documentation projects"},
         "dotnet": {
             "label": "Mega-Linter optimized for C, C++, C# or VB based projects"
         },
