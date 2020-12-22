@@ -22,7 +22,9 @@ class ConsoleReporter(Reporter):
 
     def initialize(self):
         # Display collection summary in log
-        table_data = [["Descriptor", "Linter", "Criteria", "Matching files", "Format/Fix"]]
+        table_data = [
+            ["Descriptor", "Linter", "Criteria", "Matching files", "Format/Fix"]
+        ]
         for linter in self.master.linters:
             if linter.is_active is True:
                 all_criteria = linter.file_extensions + linter.file_names_regex
@@ -37,7 +39,7 @@ class ConsoleReporter(Reporter):
                         linter.linter_name,
                         "|".join(all_criteria),
                         files_col,
-                        fixes_col
+                        fixes_col,
                     ]
                 ]
         table = terminaltables.AsciiTable(table_data)

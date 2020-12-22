@@ -126,7 +126,10 @@ class Megalinter:
         # Check if a Mega-Linter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
-        if self.validate_all_code_base is True and config.get("FLAVOR_SUGGESTIONS", "true") == "true":
+        if (
+            self.validate_all_code_base is True
+            and config.get("FLAVOR_SUGGESTIONS", "true") == "true"
+        ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 active_linters
             )
