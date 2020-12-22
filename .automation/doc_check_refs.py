@@ -7,9 +7,8 @@ import logging
 import os
 import sys
 
-import terminaltables
-
 import megalinter
+import terminaltables
 
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 
@@ -25,9 +24,13 @@ def list_references_to_megalinter():
             url = linter.linter_megalinter_ref_url
             if linter.linter_megalinter_ref_url == "no":
                 status = "Rejected"
-                url = ""
+                url = "-------------"
+            elif linter.linter_megalinter_ref_url == "never":
+                status = "Not applicable"
+                url = "-------------"
             elif "/pull/" in str(url):
                 status = "Pending"
+                url = "PR: " + url
             else:
                 status = "Published"
         table_line = [
@@ -46,7 +49,7 @@ def list_references_to_megalinter():
         logging.info(table_line)
     logging.info("")
     # Write in file
-    with open(REPO_HOME+"/docs/references.md", "w", encoding="utf-8") as outfile:
+    with open(REPO_HOME + "/docs/references.md", "w", encoding="utf-8") as outfile:
         outfile.write("<!-- markdownlint-disable -->\n\n")
         outfile.write("# References\n\n")
         for table_line in table.table.splitlines():
@@ -55,7 +58,6 @@ def list_references_to_megalinter():
                     outfile.write("| :--- | :---- | :----: | :---- |\n")
             else:
                 outfile.write("%s\n" % table_line)
-
 
 
 if __name__ == "__main__":
