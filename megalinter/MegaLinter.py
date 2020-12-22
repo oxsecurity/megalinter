@@ -10,7 +10,6 @@ import os
 import sys
 
 import git
-import terminaltables
 from megalinter import config, flavor_factory, linter_factory, utils
 from multiprocessing_logging import install_mp_handler
 
@@ -90,26 +89,6 @@ class Megalinter:
         # Collect files for each identified linter
         self.collect_files()
 
-        # Display collection summary in log
-        table_data = [["Descriptor", "Linter", "Criteria", "Matching files"]]
-        for linter in self.linters:
-            if len(linter.files) > 0:
-                all_criteria = linter.file_extensions + linter.file_names_regex
-                table_data += [
-                    [
-                        linter.descriptor_id,
-                        linter.linter_name,
-                        "|".join(all_criteria),
-                        str(len(linter.files)),
-                    ]
-                ]
-        table = terminaltables.AsciiTable(table_data)
-        table.title = "----MATCHING LINTERS"
-        logging.info("")
-        for table_line in table.table.splitlines():
-            logging.info(table_line)
-        logging.info("")
-
         # Process linters serial or parallel according to configuration
         active_linters = []
         linters_do_fixes = False
@@ -118,6 +97,10 @@ class Megalinter:
                 active_linters += [linter]
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
+
+        # Initialize reports
+        for reporter in self.reporters:
+            reporter.initialize()
 
         # Exit with error message if not all active linters are covered by current Mega-linter image flavor
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
@@ -140,8 +123,13 @@ class Megalinter:
         # Sort linters before reports production
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
 
-        # Check if a Mega-Linter flavor can be used for this repo (except if FLAVOR_SUGGESTIONS: false is defined )
-        if config.get("FLAVOR_SUGGESTIONS", "true") == "true":
+        # Check if a Mega-Linter flavor can be used for this repo, except if:
+        # - FLAVOR_SUGGESTIONS: false is defined
+        # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
+        if (
+            self.validate_all_code_base is True
+            and config.get("FLAVOR_SUGGESTIONS", "true") == "true"
+        ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 active_linters
             )
@@ -359,6 +347,7 @@ class Megalinter:
                 )
                 logging.debug(f"git error: {str(git_err)}")
                 all_files = self.list_files_all()
+                self.validate_all_code_base = True
         else:
             all_files = self.list_files_all()
         all_files = sorted(set(all_files))
