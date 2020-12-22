@@ -30,13 +30,14 @@ class ConsoleReporter(Reporter):
                     files_col = "project"
                 else:
                     files_col = str(len(linter.files))
+                fixes_col = "yes" if linter.apply_fixes is True else "no"
                 table_data += [
                     [
                         linter.descriptor_id,
                         linter.linter_name,
                         "|".join(all_criteria),
                         files_col,
-                        "yes" if linter.apply_fixes is True else "no"
+                        fixes_col
                     ]
                 ]
         table = terminaltables.AsciiTable(table_data)
@@ -57,7 +58,7 @@ class ConsoleReporter(Reporter):
                     str(linter.number_fixed) if linter.try_fix is True else ""
                 )
                 if linter.cli_lint_mode == "project":
-                    found = "yes"
+                    found = "project"
                     errors = "yes" if linter.number_errors > 0 else "no"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:

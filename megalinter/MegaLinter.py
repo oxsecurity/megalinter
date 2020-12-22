@@ -10,7 +10,6 @@ import os
 import sys
 
 import git
-import terminaltables
 from megalinter import config, flavor_factory, linter_factory, utils
 from multiprocessing_logging import install_mp_handler
 
