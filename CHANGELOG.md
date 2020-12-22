@@ -9,6 +9,10 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
   - Fix ConsoleReporter active linters table content
   - Check if linter is able to fix before flagging it as a fixing linter during runtime
 
+- Reporters
+  - Support GitHub Enterprise for GitHub Comment Reporter
+  - Support GitHub Enterprise for GitHub Status Reporter
+
 - Doc
   - Add docker pulls badge in flavors documentation
   - Generate list of references to Mega-Linter
