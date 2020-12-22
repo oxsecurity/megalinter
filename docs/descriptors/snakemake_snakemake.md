@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **5.30.2**
+- Version in Mega-Linter: **5.31.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -143,8 +143,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--google-lifesciences-regions GOOGLE_LIFESCIENCES_REGIONS [GOOGLE_LIFESCIENCES_REGIONS ...]]
                  [--google-lifesciences-location GOOGLE_LIFESCIENCES_LOCATION]
                  [--google-lifesciences-keep-cache] [--tes URL] [--use-conda]
-                 [--list-conda-envs] [--conda-prefix DIR]
-                 [--conda-cleanup-envs]
+                 [--conda-not-block-search-path-envvars] [--list-conda-envs]
+                 [--conda-prefix DIR] [--conda-cleanup-envs]
                  [--conda-cleanup-pkgs [{tarballs,cache}]]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-singularity] [--singularity-prefix DIR]
@@ -850,6 +850,10 @@ CONDA:
   --use-conda           If defined in the rule, run job in a conda
                         environment. If this flag is not set, the conda
                         directive is ignored. (default: False)
+  --conda-not-block-search-path-envvars
+                        Do not block environment variables that modify the
+                        search path (R_LIBS, PYTHONPATH, PERL5LIB, PERLLIB)
+                        when using conda environments. (default: False)
   --list-conda-envs     List all conda environments and their location on
                         disk. (default: False)
   --conda-prefix DIR    Specify a directory in which the 'conda' and 'conda-
