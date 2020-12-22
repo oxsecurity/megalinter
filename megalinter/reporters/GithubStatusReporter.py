@@ -14,6 +14,7 @@ class GithubStatusReporter(Reporter):
     scope = "linter"
 
     github_api_url = "https://api.github.com"
+    github_server_url = "https://github.com"
 
     def __init__(self, params=None):
         # Activate GitHub Status by default
@@ -35,18 +36,20 @@ class GithubStatusReporter(Reporter):
             and config.exists("GITHUB_RUN_ID")
         ):
             github_repo = config.get("GITHUB_REPOSITORY")
+            github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
+            github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
             sha = config.get("GITHUB_SHA")
             run_id = config.get("GITHUB_RUN_ID")
             success_msg = "No errors were found in the linting process"
             error_not_blocking = "Errors were detected but are considered not blocking"
             error_msg = "Errors were detected, please view logs"
-            url = f"{self.github_api_url}/repos/{github_repo}/statuses/{sha}"
+            url = f"{github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 "accept": "application/vnd.github.v3+json",
                 "authorization": f"Bearer {config.get('GITHUB_TOKEN')}",
                 "content-type": "application/json",
             }
-            target_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
+            target_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
             description = (
                 success_msg
                 if self.master.status == "success" and self.master.return_code == 0
