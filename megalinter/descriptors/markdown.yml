@@ -39,6 +39,7 @@ linters:
     linter_url: https://github.com/tcort/markdown-link-check
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
+    linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
     config_file_name: .markdown-link-check.json
     linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
     examples:

@@ -25,6 +25,7 @@ linters:
     linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
     linter_rules_configuration_url: https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html
+    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
     cli_executable: sfdx
     cli_lint_extra_args:
       - "scanner:run"

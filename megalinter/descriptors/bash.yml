@@ -33,6 +33,7 @@ linters:
     linter_url: https://github.com/koalaman/shellcheck
     linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
+    linter_megalinter_ref_url: https://github.com/koalaman/shellcheck/pull/2076
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
@@ -70,6 +71,7 @@ linters:
   # SHFMT
   - linter_name: shfmt
     linter_url: https://github.com/mvdan/sh
+    linter_megalinter_ref_url: "no"
     name: BASH_SHFMT
     cli_lint_extra_args:
       - "-d"

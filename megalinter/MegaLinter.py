@@ -483,7 +483,7 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("GitHub Actions Multi Language Linter"))
+        logging.info(utils.format_hyphens("Mega-Linter"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
