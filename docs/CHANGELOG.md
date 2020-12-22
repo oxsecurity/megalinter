@@ -5,6 +5,10 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Nothing yet, place your updates here :)
+
+## [4.18.0] 2020-12-23
+
 - Core
   - Do not suggest flavors when Mega-Linter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
   - Fix ConsoleReporter active linters table content
