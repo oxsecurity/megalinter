@@ -48,7 +48,9 @@ class GithubCommentReporter(Reporter):
             run_id = config.get("GITHUB_RUN_ID")
             sha = config.get("GITHUB_SHA")
             if run_id is not None:
-                action_run_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+                action_run_url = (
+                    f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+                )
             else:
                 action_run_url = ""
             table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
@@ -105,7 +107,9 @@ class GithubCommentReporter(Reporter):
             table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
             emoji = ":green_circle:" if self.master.return_code == 0 else ":red_circle:"
             status_with_href = (
-                log_link(f"**{self.master.status.upper()}**", action_run_url) + " " + emoji
+                log_link(f"**{self.master.status.upper()}**", action_run_url)
+                + " "
+                + emoji
             )
             p_r_msg = (
                 f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}"
@@ -119,9 +123,7 @@ class GithubCommentReporter(Reporter):
                     f"GitHub Action page]({action_run_url})" + os.linesep
                 )
             else:
-                p_r_msg += (
-                    "See errors details in Mega-Linter reports" + os.linesep
-                )
+                p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
             if self.master.validate_all_code_base is False:
                 p_r_msg += (
                     "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
@@ -209,4 +211,3 @@ class GithubCommentReporter(Reporter):
             logging.info(
                 "[GitHub Comment Reporter] No GitHub Token found, so skipped post of PR comment"
             )
-
