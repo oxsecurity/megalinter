@@ -12,7 +12,6 @@ setup(
     install_requires=[
         "gitpython",
         "jsonschema",
-        "markdown",
         "multiprocessing_logging",
         "pygithub",
         "pytablewriter",
