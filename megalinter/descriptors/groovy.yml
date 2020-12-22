@@ -19,6 +19,7 @@ linters:
     linter_image_url: https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6
     linter_rules_configuration_url: https://github.com/nvuillam/npm-groovy-lint#configuration
     linter_rules_inline_disable_url: https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source
+    linter_megalinter_ref_url: https://nvuillam.github.io/npm-groovy-lint/#mega-linter
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
       - "--failon"

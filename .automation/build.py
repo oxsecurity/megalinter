@@ -233,7 +233,6 @@ def match_flavor(item, flavor):
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
     linters = megalinter.linter_factory.list_all_linters()
-    megalinter.linter_factory.list_all_linters()
     for linter in linters:
         lang_lower = linter.descriptor_id.lower()
         linter_name_lower = linter.linter_name.lower().replace("-", "_")
@@ -502,7 +501,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Fix |",
+        f"| <!-- --> | {col_header} | Linter | Configuration key | Format/Fix |",
         "| :---: | ----------------- | -------------- | ------------ | ------- |",
     ]
     descriptor_linters = linters_by_type[type1]

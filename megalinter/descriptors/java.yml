@@ -19,6 +19,7 @@ linters:
     linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
     linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview
     linter_rules_inline_disable_url: https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter
+    linter_megalinter_ref_url: https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools
     config_file_name: sun_checks.xml
     cli_executable: java
     cli_lint_extra_args:
