@@ -12,7 +12,6 @@ theme:
   custom_dir: docs/overrides
   features:
     - navigation.instant
-    - navigation.expand
   logo: assets/images/mega-linter-square.png
   favicon: assets/images/mega-linter-square.png
   palette:
