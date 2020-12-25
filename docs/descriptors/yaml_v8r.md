@@ -70,11 +70,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-v8r myfile.yml
+v8r --ignore-errors myfile.yml
 ```
 
 ```shell
-v8r myfile.yaml
+v8r --ignore-errors myfile.yaml
 ```
 
 

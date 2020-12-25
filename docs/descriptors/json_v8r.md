@@ -69,7 +69,7 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-v8r myfile.json
+v8r --ignore-errors myfile.json
 ```
 
 
