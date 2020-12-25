@@ -12,6 +12,7 @@ linters:
     linter_repo: https://github.com/pinterest/ktlint
     linter_rules_url: https://ktlint.github.io/#rules
     linter_banner_image_url: https://miro.medium.com/max/655/1*sLboL6JnC9yUodFsdSMB-w.png
+    linter_megalinter_ref_url: https://github.com/pinterest/ktlint/pull/948
     cli_lint_fix_arg_name: "--format"
     examples:
       - "ktlint myfile.kt"

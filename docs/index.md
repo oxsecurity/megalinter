@@ -41,15 +41,15 @@ By using [**code formatters and code linters**](supported-linters.md), you ensur
 
 Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process
 
-By using **Mega-Linter**, you ensure that:
+By using **Mega-Linter**, you'll enjoy the following benefits for you and your team:
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
-- **Reading error logs**, **developers learn best practices** of the language they are using
+- Reading error logs, **developers learn best practices** of the language they are using
 - [**Mega-Linter documentation**](https://nvuillam.github.io/mega-linter/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - Mega-Linter is **ready our of the box** after a [**quick setup**](quick-start.md)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- Mega-Linter can run on [**any CI tool**](installation.md) and be **run locally**: **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- Mega-Linter can run on [**any CI tool**](installation.md) and be [**run locally**](https://nvuillam.github.io/mega-linter/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 
@@ -70,7 +70,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 <!-- linters-table-start -->
 ### Languages
 
-| <!-- --> | Language | Linter | Configuration key | Fix |
+| <!-- --> | Language | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**BASH**](descriptors/bash.md#readme) | [bash-exec](descriptors/bash_bash_exec.md#readme)| [BASH_EXEC](descriptors/bash_bash_exec.md#readme)|  |
 | <!-- --> <!-- linter-icon --> |  | [shellcheck](descriptors/bash_shellcheck.md#readme)| [BASH_SHELLCHECK](descriptors/bash_shellcheck.md#readme)|  |
@@ -113,7 +113,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Formats
 
-| <!-- --> | Format | Linter | Configuration key | Fix |
+| <!-- --> | Format | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/css.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CSS**](descriptors/css.md#readme) | [stylelint](descriptors/css_stylelint.md#readme)| [CSS_STYLELINT](descriptors/css_stylelint.md#readme)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [scss-lint](descriptors/css_scss_lint.md#readme)| [CSS_SCSS_LINT](descriptors/css_scss_lint.md#readme)|  |
@@ -135,7 +135,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Tooling formats
 
-| <!-- --> | Tooling format | Linter | Configuration key | Fix |
+| <!-- --> | Tooling format | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ansible.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ANSIBLE**](descriptors/ansible.md#readme) | [ansible-lint](descriptors/ansible_ansible_lint.md#readme)| [ANSIBLE_ANSIBLE_LINT](descriptors/ansible_ansible_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/arm.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ARM**](descriptors/arm.md#readme) | [arm-ttk](descriptors/arm_arm_ttk.md#readme)| [ARM_ARM_TTK](descriptors/arm_arm_ttk.md#readme)|  |
@@ -156,7 +156,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Other
 
-| <!-- --> | Code quality checker | Linter | Configuration key | Fix |
+| <!-- --> | Code quality checker | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**COPYPASTE**](descriptors/copypaste.md#readme) | [jscpd](descriptors/copypaste_jscpd.md#readme)| [COPYPASTE_JSCPD](descriptors/copypaste_jscpd.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/git.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GIT**](descriptors/git.md#readme) | [git_diff](descriptors/git_git_diff.md#readme)| [GIT_GIT_DIFF](descriptors/git_git_diff.md#readme)|  |

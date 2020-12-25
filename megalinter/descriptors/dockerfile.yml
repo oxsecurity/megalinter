@@ -27,6 +27,7 @@ linters:
     linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png
     linter_rules_configuration_url: https://github.com/hadolint/hadolint#configure
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
+    linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
     config_file_name: .hadolint.yml
     examples:
       - "hadolint Dockerfile"

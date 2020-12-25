@@ -19,6 +19,7 @@
     "**/*.yml",
     "**/report/**",
     "**/all_flavors.json",
+    "**/flavor.json",
     "**/flavors/**",
     "**/megalinter/descriptors/jsonschema.json",
     "**/megalinter/linters/RakuLinter.py",

@@ -69,20 +69,21 @@ By using [**code formatters and code linters**](#supported-linters), you ensure 
 
 Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process
 
-By using **Mega-Linter**, you ensure that:
+By using **Mega-Linter**, you'll enjoy the following benefits for you and your team:
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
-- **Reading error logs**, **developers learn best practices** of the language they are using
+- Reading error logs, **developers learn best practices** of the language they are using
 - [**Mega-Linter documentation**](https://nvuillam.github.io/mega-linter/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
 - Mega-Linter is **ready our of the box** after a [**quick setup**](#quick-start)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](#apply-fixes) or [**provided in reports**](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- Mega-Linter can run on [**any CI tool**](#installation) and be **run locally**: **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- Mega-Linter can run on [**any CI tool**](#installation) and be [**run locally**](https://nvuillam.github.io/mega-linter/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 ## Quick Start
 
 - Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
+  - You may set `VALIDATE_ALL_CODE_BASE` to `true`, you'll set it back to `false` after correcting (or ignoring) the found errors
   - If you do not want to **apply formatters and auto-fixers** in a new commit/PR, comment [**APPLY_FIXES** block variables](#apply-fixes)
   - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
 - Commit, push, and create a pull request
@@ -110,7 +111,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 <!-- linters-table-start -->
 ### Languages
 
-| <!-- --> | Language | Linter | Configuration key | Fix |
+| <!-- --> | Language | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**BASH**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash.md#readme) | [bash-exec](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme)| [BASH_EXEC](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme)|  |
 | <!-- --> <!-- linter-icon --> |  | [shellcheck](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)| [BASH_SHELLCHECK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)|  |
@@ -153,7 +154,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Formats
 
-| <!-- --> | Format | Linter | Configuration key | Fix |
+| <!-- --> | Format | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/css.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CSS**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css.md#readme) | [stylelint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme)| [CSS_STYLELINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [scss-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme)| [CSS_SCSS_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme)|  |
@@ -175,7 +176,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Tooling formats
 
-| <!-- --> | Tooling format | Linter | Configuration key | Fix |
+| <!-- --> | Tooling format | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ansible.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ANSIBLE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible.md#readme) | [ansible-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme)| [ANSIBLE_ANSIBLE_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/arm.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ARM**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm.md#readme) | [arm-ttk](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme)| [ARM_ARM_TTK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme)|  |
@@ -196,7 +197,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Other
 
-| <!-- --> | Code quality checker | Linter | Configuration key | Fix |
+| <!-- --> | Code quality checker | Linter | Configuration key | Format/Fix |
 | :---: | ----------------- | -------------- | ------------ | ------- |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**COPYPASTE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste.md#readme) | [jscpd](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)| [COPYPASTE_JSCPD](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/git.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GIT**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git.md#readme) | [git_diff](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git_git_diff.md#readme)| [GIT_GIT_DIFF](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git_git_diff.md#readme)|  |
@@ -208,7 +209,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 <!-- installation-section-start -->
 ## Installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases)
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
 
 - GitHub Action: nvuillam/mega-linter:v4
 - Docker image: nvuillam/mega-linter@v4
@@ -524,21 +525,24 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 - If your project uses a Mega-Linter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
 
 <!-- flavors-table-start -->
-| <!-- --> | Flavor | Description | Embedded linters | Size |
-| :------: | ------ | :---------- | :--------------: | :--: |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 74 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/dart.md#readme) | Mega-Linter optimized for DART based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/dotnet.md#readme) | Mega-Linter optimized for C, C++, C# or VB based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/go.md#readme) | Mega-Linter optimized for GO based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-go/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/java.md#readme) | Mega-Linter optimized for JAVA based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/javascript.md#readme) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 38 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/php.md#readme) | Mega-Linter optimized for PHP based projects | 35 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/python.md#readme) | Mega-Linter optimized for PYTHON based projects | 38 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/ruby.md#readme) | Mega-Linter optimized for RUBY based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ruby/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/rust.md#readme) | Mega-Linter optimized for RUST based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-rust/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/scala.md#readme) | Mega-Linter optimized for SCALA based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/terraform.md#readme) | Mega-Linter optimized for TERRAFORM based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 74 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/dart.md#readme) | Mega-Linter optimized for DART based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a> | [documentation](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/documentation.md#readme) | Mega-Linter for documentation projects | 31 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-documentation/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-documentation) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/dotnet.md#readme) | Mega-Linter optimized for C, C++, C# or VB based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/go.md#readme) | Mega-Linter optimized for GO based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-go/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-go) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/java.md#readme) | Mega-Linter optimized for JAVA based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-java) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/javascript.md#readme) | Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects | 38 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/php.md#readme) | Mega-Linter optimized for PHP based projects | 35 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/python.md#readme) | Mega-Linter optimized for PYTHON based projects | 38 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/ruby.md#readme) | Mega-Linter optimized for RUBY based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ruby/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ruby) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/rust.md#readme) | Mega-Linter optimized for RUST based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-rust) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/scala.md#readme) | Mega-Linter optimized for SCALA based projects | 32 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/terraform.md#readme) | Mega-Linter optimized for TERRAFORM based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
 <!-- flavors-table-end -->
+
+If you need a new flavor, [post an issue](https://github.com/nvuillam/mega-linter/issues) :wink:
 
 <!-- flavors-section-end -->
 

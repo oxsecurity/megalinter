@@ -4,7 +4,7 @@
 
 # Installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases)
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
 
 - GitHub Action: nvuillam/mega-linter:v4
 - Docker image: nvuillam/mega-linter@v4

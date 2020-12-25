@@ -144,7 +144,9 @@ class Linter:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
             # Manage apply fixes flag on linter
             param_apply_fixes = params.get("apply_fixes", "none")
-            if param_apply_fixes == "all" or (
+            if self.cli_lint_fix_arg_name is None:
+                self.apply_fixes = False
+            elif param_apply_fixes == "all" or (
                 isinstance(param_apply_fixes, bool) and param_apply_fixes is True
             ):
                 self.apply_fixes = True

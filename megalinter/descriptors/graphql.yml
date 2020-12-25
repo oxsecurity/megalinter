@@ -12,6 +12,7 @@ linters:
     linter_rules_url: https://github.com/cjoudrey/graphql-schema-linter#built-in-rules
     linter_rules_configuration_url: https://github.com/cjoudrey/graphql-schema-linter#configuration-file
     linter_rules_inline_disable_url: https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides
+    linter_megalinter_ref_url: https://github.com/cjoudrey/graphql-schema-linter/pull/272
     config_file_name: .graphql-schema-linterrc
     cli_config_arg_name: ''
     examples:

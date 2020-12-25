@@ -13,6 +13,7 @@ linters:
     linter_text: Git diff checks for git conflicts markers in files
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
+    linter_megalinter_ref_url: never
     cli_config_arg_name: ""
     cli_executable: git
     cli_lint_mode: project

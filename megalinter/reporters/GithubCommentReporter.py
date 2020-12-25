@@ -16,11 +16,19 @@ DOCS_URL_ROOT = URL_ROOT + "/docs"
 DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
 
 
+def log_link(label, url):
+    if url == "":
+        return label
+    else:
+        return f"[{label}]({url})"
+
+
 class GithubCommentReporter(Reporter):
     name = "GITHUB_COMMENT"
     scope = "mega-linter"
 
     github_api_url = "https://api.github.com"
+    github_server_url = "https://github.com"
     gh_url = "https://nvuillam.github.io/mega-linter"
 
     def manage_activation(self):
@@ -35,9 +43,16 @@ class GithubCommentReporter(Reporter):
         # Post comment on GitHub pull request
         if config.get("GITHUB_TOKEN", "") != "":
             github_repo = config.get("GITHUB_REPOSITORY")
+            github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
+            github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
             run_id = config.get("GITHUB_RUN_ID")
             sha = config.get("GITHUB_SHA")
-            action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
+            if run_id is not None:
+                action_run_url = (
+                    f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+                )
+            else:
+                action_run_url = ""
             table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
             if self.master.show_elapsed_time is True:
                 table_header += ["Elapsed time"]
@@ -63,14 +78,14 @@ class GithubCommentReporter(Reporter):
                         found = "yes"
                         nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                         errors_cell = (
-                            f"[**yes**]({action_run_url})"
+                            log_link("**yes**", action_run_url)
                             if linter.number_errors > 0
                             else "no"
                         )
                     else:
                         found = str(len(linter.files))
                         errors_cell = (
-                            f"[**{linter.number_errors}**]({action_run_url})"
+                            log_link(f"**{linter.number_errors}**", action_run_url)
                             if linter.number_errors > 0
                             else linter.number_errors
                         )
@@ -92,7 +107,9 @@ class GithubCommentReporter(Reporter):
             table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
             emoji = ":green_circle:" if self.master.return_code == 0 else ":red_circle:"
             status_with_href = (
-                f"[**{self.master.status.upper()}**]({action_run_url}) {emoji}"
+                log_link(f"**{self.master.status.upper()}**", action_run_url)
+                + " "
+                + emoji
             )
             p_r_msg = (
                 f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}"
@@ -100,10 +117,13 @@ class GithubCommentReporter(Reporter):
                 + os.linesep
             )
             p_r_msg += table_content + os.linesep
-            p_r_msg += (
-                f"See errors details in [**artifact Mega-Linter reports** on "
-                f"GitHub Action page]({action_run_url})" + os.linesep
-            )
+            if action_run_url != "":
+                p_r_msg += (
+                    "See errors details in [**artifact Mega-Linter reports** on "
+                    f"GitHub Action page]({action_run_url})" + os.linesep
+                )
+            else:
+                p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
             if self.master.validate_all_code_base is False:
                 p_r_msg += (
                     "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
@@ -137,7 +157,7 @@ class GithubCommentReporter(Reporter):
                 if config.get("PAT", "") != ""
                 else config.get("GITHUB_TOKEN")
             )
-            g = github.Github(github_auth)
+            g = github.Github(base_url=github_api_url, login_or_token=github_auth)
             repo = g.get_repo(github_repo)
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()

@@ -28,10 +28,10 @@
 
 This linter is available in the following flavours
 
-| <!-- --> | Flavor | Description | Embedded linters | Size |
-| :------: | ------ | :---------- | :--------------: | :--: |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 74 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) |
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 74 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
 
 ## Behind the scenes
 
@@ -83,7 +83,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['hxx', 'cc', 'cuh', 'cpp', 'cu', 'hh', 'hpp', 'h++', 'c++', 'c', 'cxx', 'h'].
+  Default linted extensions are ['hh', 'cuh', 'c', 'cu', 'cc', 'cpp', 'h', 'hpp', 'cxx', 'hxx', 'h++', 'c++'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -199,7 +199,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=hxx,cc,cuh,cpp,cu,hh,hpp,h++,c++,c,cxx,h
+        --extensions=hh,cuh,c,cu,cc,cpp,h,hpp,cxx,hxx,h++,c++
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -213,10 +213,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'hxx', 'cuh', 'hh', 'hpp', 'h++', 'h'} will be assumed to be headers)
+     (by default, only files with extensions {'hh', 'cuh', 'h', 'hpp', 'hxx', 'h++'} will be assumed to be headers)
 
       Examples:
-        --headers=hxx,cuh,hh,hpp,h++,h
+        --headers=hh,cuh,h,hpp,hxx,h++
         --headers=hpp,hxx
         --headers=hpp
 

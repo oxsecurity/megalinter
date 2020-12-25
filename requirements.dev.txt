@@ -1,6 +1,5 @@
 gitpython
 jsonschema
-markdown
 mkdocs
 multiprocessing_logging
 pygithub

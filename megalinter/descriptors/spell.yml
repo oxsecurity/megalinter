@@ -16,6 +16,7 @@ linters:
     linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization
     linter_rules_inline_disable_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code
+    linter_megalinter_ref_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
     examples:

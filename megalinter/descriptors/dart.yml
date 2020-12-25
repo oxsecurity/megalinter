@@ -12,6 +12,7 @@ linters:
     linter_banner_image_url: https://manifesto.co.uk/wp-content/uploads/2014/08/dart-logo.png
     linter_rules_configuration_url: https://dart.dev/guides/language/analysis-options#the-analysis-options-file
     linter_rules_inline_disable_url: https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file
+    linter_megalinter_ref_url: "no"
     config_file_name: analysis_options.yml
     cli_lint_extra_args:
       - "--fatal-infos"
