@@ -20,6 +20,7 @@
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
         "JSON_JSONLINT",
+        "JSON_V8R",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
         "MARKDOWN_MARKDOWNLINT",
@@ -32,6 +33,7 @@
         "SQL_SQL_LINT",
         "TEKTON_TEKTON_LINT",
         "XML_XMLLINT",
-        "YAML_YAMLLINT"
+        "YAML_YAMLLINT",
+        "YAML_V8R"
     ]
 }

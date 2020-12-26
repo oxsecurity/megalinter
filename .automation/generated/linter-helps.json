@@ -4831,6 +4831,25 @@
         "  -h, --help                                      Show this help message",
         ""
     ],
+    "v8r": [
+        "index.js <filename>",
+        "",
+        "Validate a local json/yml/yaml file against a schema",
+        "",
+        "Positionals:",
+        "  filename  Local file to validate",
+        "",
+        "Options:",
+        "      --help           Show help                                       [boolean]",
+        "      --version        Show version number                             [boolean]",
+        "  -s, --schema         (optional) URL of schema to validate file against. If not",
+        "                       supplied, we will attempt to find an appropriate schema",
+        "                       on schemastore.org using the filename            [string]",
+        "      --ignore-errors  (optional) Exit with code 0 even if an error was",
+        "                       encountered. Passing this flag means a non-zero exit code",
+        "                       is only issued if validation could be completed",
+        "                       successfully and the file was invalid           [boolean]"
+    ],
     "xmllint": [
         "Unknown option --help",
         "Usage : xmllint [options] XMLfiles ...",

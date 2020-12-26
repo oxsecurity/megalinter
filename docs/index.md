@@ -19,7 +19,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-**Mega-Linter** analyzes [**38 languages**](supported-linters.md#languages), [**15 formats**](supported-linters.md#formats), [**16 tooling formats**](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generate [**reports in several formats**](reporters.md), and can even [**apply formatting and auto-fixes**](configuration.md#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+**Mega-Linter** analyzes [**38 languages**](supported-linters.md#languages), [**17 formats**](supported-linters.md#formats), [**16 tooling formats**](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generate [**reports in several formats**](reporters.md), and can even [**apply formatting and auto-fixes**](configuration.md#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -121,6 +121,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/graphql.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GRAPHQL**](descriptors/graphql.md#readme) | [graphql-schema-linter](descriptors/graphql_graphql_schema_linter.md#readme)| [GRAPHQL_GRAPHQL_SCHEMA_LINTER](descriptors/graphql_graphql_schema_linter.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/html.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**HTML**](descriptors/html.md#readme) | [htmlhint](descriptors/html_htmlhint.md#readme)| [HTML_HTMLHINT](descriptors/html_htmlhint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/json.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**JSON**](descriptors/json.md#readme) | [jsonlint](descriptors/json_jsonlint.md#readme)| [JSON_JSONLINT](descriptors/json_jsonlint.md#readme)|  |
+| <!-- --> <!-- linter-icon --> |  | [v8r](descriptors/json_v8r.md#readme)| [JSON_V8R](descriptors/json_v8r.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/latex.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**LATEX**](descriptors/latex.md#readme) | [chktex](descriptors/latex_chktex.md#readme)| [LATEX_CHKTEX](descriptors/latex_chktex.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/markdown.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**MARKDOWN**](descriptors/markdown.md#readme) | [markdownlint](descriptors/markdown_markdownlint.md#readme)| [MARKDOWN_MARKDOWNLINT](descriptors/markdown_markdownlint.md#readme)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [markdown-link-check](descriptors/markdown_markdown_link_check.md#readme)| [MARKDOWN_MARKDOWN_LINK_CHECK](descriptors/markdown_markdown_link_check.md#readme)|  |
@@ -130,6 +131,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 | <!-- --> <!-- linter-icon --> |  | [rstfmt](descriptors/rst_rstfmt.md#readme)| [RST_RSTFMT](descriptors/rst_rstfmt.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/xml.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**XML**](descriptors/xml.md#readme) | [xmllint](descriptors/xml_xmllint.md#readme)| [XML_XMLLINT](descriptors/xml_xmllint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/yaml.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**YAML**](descriptors/yaml.md#readme) | [yamllint](descriptors/yaml_yamllint.md#readme)| [YAML_YAMLLINT](descriptors/yaml_yamllint.md#readme)|  |
+| <!-- --> <!-- linter-icon --> |  | [v8r](descriptors/yaml_v8r.md#readme)| [YAML_V8R](descriptors/yaml_v8r.md#readme)|  |
 
 ### Tooling formats
 

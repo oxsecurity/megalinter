@@ -8,6 +8,7 @@
 | Linter | Configuration key |
 | ------ | ----------------- |
 | [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |
+| [v8r](yaml_v8r.md) | [YAML](yaml_v8r.md) |
 
 ## Linted files
 

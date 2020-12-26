@@ -9,7 +9,7 @@
         ".vscode"
     ],
     "language": "en",
-    "version": 0.1,
+    "version": "0.1",
     "words": [
         "ADDITONAL",
         "ARMTTK",
@@ -857,6 +857,7 @@
         "scalac",
         "scalafix",
         "scattergather",
+        "schemastore",
         "schematron",
         "scriptsize",
         "scshape",
@@ -1009,6 +1010,7 @@
         "versionthe",
         "vfil",
         "virtualised",
+        "vison",
         "visualforce",
         "vrefwarning",
         "vsiakka",

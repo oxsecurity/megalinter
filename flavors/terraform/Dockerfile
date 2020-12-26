@@ -96,6 +96,7 @@ RUN npm install --no-cache --ignore-scripts \
                 npm-groovy-lint \
                 htmlhint \
                 jsonlint \
+                v8r \
                 markdownlint-cli \
                 markdown-link-check \
                 @stoplight/spectral@5.6.0 \

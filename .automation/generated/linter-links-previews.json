@@ -319,6 +319,11 @@
         "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
         "title": "terraform-linters/tflint"
     },
+    "v8r": {
+        "description": "\u2714\ufe0f A command-line JSON and YAML validator that's on your wavelength - chris48s/v8r",
+        "image": "https://avatars0.githubusercontent.com/u/6025893?s=400&v=4",
+        "title": "chris48s/v8r"
+    },
     "xmllint": {
         "description": "None",
         "image": null,

@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter analyzes 38 languages, 15 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+site_description: Mega-Linter analyzes 38 languages, 17 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -164,6 +164,7 @@ nav:
           - "JSON":
               - "All JSON linters": "descriptors/json.md"
               - "jsonlint": "descriptors/json_jsonlint.md"
+              - "v8r": "descriptors/json_v8r.md"
           - "LATEX":
               - "All LATEX linters": "descriptors/latex.md"
               - "chktex": "descriptors/latex_chktex.md"
@@ -185,6 +186,7 @@ nav:
           - "YAML":
               - "All YAML linters": "descriptors/yaml.md"
               - "yamllint": "descriptors/yaml_yamllint.md"
+              - "v8r": "descriptors/yaml_v8r.md"
 # format-end
       - "Tooling Formats linters":
           - "All tooling formats linters": "./supported-linters#tooling-formats"

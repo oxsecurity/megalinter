@@ -22,6 +22,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -34,7 +35,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "documentation": {
@@ -59,6 +61,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -71,7 +74,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "dotnet": {
@@ -102,6 +106,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -116,7 +121,8 @@
             "TEKTON_TEKTON_LINT",
             "VBDOTNET_DOTNET_FORMAT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "go": {
@@ -143,6 +149,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -155,7 +162,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "java": {
@@ -182,6 +190,7 @@
             "HTML_HTMLHINT",
             "JAVA_CHECKSTYLE",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -194,7 +203,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "javascript": {
@@ -224,6 +234,7 @@
             "JAVASCRIPT_ES",
             "JAVASCRIPT_STANDARD",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "JSX_ESLINT",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
@@ -240,7 +251,8 @@
             "TYPESCRIPT_ES",
             "TYPESCRIPT_STANDARD",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "php": {
@@ -266,6 +278,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -282,7 +295,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "python": {
@@ -307,6 +321,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -326,7 +341,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "ruby": {
@@ -352,6 +368,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -365,7 +382,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "rust": {
@@ -391,6 +409,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -404,7 +423,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "scala": {
@@ -430,6 +450,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -443,7 +464,8 @@
             "SQL_SQL_LINT",
             "TEKTON_TEKTON_LINT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     },
     "terraform": {
@@ -468,6 +490,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JSON_JSONLINT",
+            "JSON_V8R",
             "KOTLIN_KTLINT",
             "KUBERNETES_KUBEVAL",
             "MARKDOWN_MARKDOWNLINT",
@@ -483,7 +506,8 @@
             "TERRAFORM_TERRASCAN",
             "TERRAFORM_TERRAGRUNT",
             "XML_XMLLINT",
-            "YAML_YAMLLINT"
+            "YAML_YAMLLINT",
+            "YAML_V8R"
         ]
     }
 }
