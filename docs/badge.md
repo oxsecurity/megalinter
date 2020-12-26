@@ -6,20 +6,22 @@
 
 You can show Mega-Linter status with a badge in your repository README
 
-[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
+[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
+
+If your main branch is **main** , replace **master** by **main** in URLs
 
 ## Markdown
 
 - Format
 
 ```markdown
-[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
+[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/<OWNER>/<REPOSITORY>/actions?query=workflow%3AMega-Linter+branch%3Amaster)
 ```
 
 - Example
 
 ```markdown
-[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
+[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMega-Linter+branch%3Amaster)
 ```
 
 ## reStructuredText
@@ -28,14 +30,14 @@ You can show Mega-Linter status with a badge in your repository README
 
 ```markdown
 .. |Mega-Linter yes| image:: https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master
-   :target: https://nvuillam.github.io/mega-linter
+   :target: https://github.com/<OWNER>/<REPOSITORY>/actions?query=workflow%3AMega-Linter+branch%3Amaster
 ```
 
 - Example
 
 ```markdown
 .. |Mega-Linter yes| image:: https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master
-   :target: https://nvuillam.github.io/mega-linter
+   :target: https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMega-Linter+branch%3Amaster
 ```
 
 _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
