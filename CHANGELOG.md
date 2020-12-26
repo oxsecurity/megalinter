@@ -4,7 +4,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Nothing yet, place your updates here :)
+- Linters
+  - New linter v8r to validate json and yaml files with schemastore.org
 
 ## [4.18.0] 2020-12-23
 
