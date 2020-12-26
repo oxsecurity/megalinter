@@ -4,6 +4,14 @@
 
 # Installation
 
+## Assisted installation
+
+Just run `npx mega-linter-runner@beta --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
+
+_This function is in beta version_
+
+## Manual installation
+
 The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
 
 - GitHub Action: nvuillam/mega-linter:v4

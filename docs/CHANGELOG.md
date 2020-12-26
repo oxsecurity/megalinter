@@ -5,6 +5,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Installation
+  - Add a yeoman generator in mega-linter-runner to initialize configuration in a repository: `npx mega-linter-runner@beta --install`
+
 - Linters
   - New linter v8r to validate json and yaml files with schemastore.org
 

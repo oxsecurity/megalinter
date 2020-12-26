@@ -20,6 +20,7 @@ describe('CLI', function () {
         assert(stdout, "stdout is set");
         assert(stdout.includes("mega-linter [options]"), 'stdout contains help content');
     })
+
     it('(CLI) Show version', async () => {
         const params = ["--version"];
         const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
@@ -29,6 +30,16 @@ describe('CLI', function () {
         assert(stdout, "stdout is set");
         assert(stdout.includes("mega-linter-runner version"), 'stdout should contains "mega-linter-runner version"');
     })
+
+    it('(CLI) Run installer', async () => {
+        const params = ["--install"];
+        const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
+        if (stderr) {
+            console.error(stderr);
+        }
+        assert(stdout, "stdout is set");
+    })
+
     it('(CLI) run on own code base', async () => {
         const params = [
             "--path",
