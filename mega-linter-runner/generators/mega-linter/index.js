@@ -29,7 +29,7 @@ module.exports = class extends Generator {
           { value: "ruby", name: "Ruby" },
           { value: "rust", name: "RUST" },
           { value: "scala", name: "Scala" },
-          { value: "all", name: "Salesforce" },
+          { value: "salesforce", name: "Salesforce" },
           { value: "terraform", name: "Terraform" },
         ]
       },

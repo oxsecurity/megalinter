@@ -1,3 +1,5 @@
+// Tests done from mega-linter-runner test methods
+/*
 'use strict';
 const path = require('path');
 const assert = require('yeoman-assert');
@@ -14,3 +16,4 @@ describe('mega-linter-runner:mega-linter', () => {
     assert.file(['dummyfile.txt']);
   });
 });
+*/

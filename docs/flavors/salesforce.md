@@ -1,17 +1,17 @@
-# terraform Mega-Linter Flavor
+# salesforce Mega-Linter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4)
-![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4)
+![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce)
 
 ## Description
 
-Mega-Linter optimized for TERRAFORM based projects
+Mega-Linter optimized for Salesforce based projects
 
 ## Usage
 
-- [GitHub Action](https://nvuillam.github.io/mega-linter/installation/#github-action): **nvuillam/mega-linter/flavors/terraform@v4**
-- Docker image: **nvuillam/mega-linter-terraform:v4**
-- [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/): `mega-linter-runner --flavor terraform`
+- [GitHub Action](https://nvuillam.github.io/mega-linter/installation/#github-action): **nvuillam/mega-linter/flavors/salesforce@v4**
+- Docker image: **nvuillam/mega-linter-salesforce:v4**
+- [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/): `mega-linter-runner --flavor salesforce`
 
 ## Embedded linters
 
@@ -24,6 +24,7 @@ Mega-Linter optimized for TERRAFORM based projects
 | <!-- --> <!-- linter-icon --> |  | [shfmt](https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/)| [BASH_SHFMT](https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/groovy.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GROOVY**](https://nvuillam.github.io/mega-linter/descriptors/groovy/) | [npm-groovy-lint](https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/)| [GROOVY_NPM_GROOVY_LINT](https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/kotlin.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**KOTLIN**](https://nvuillam.github.io/mega-linter/descriptors/kotlin/) | [ktlint](https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/)| [KOTLIN_KTLINT](https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/)| :heavy_check_mark: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SALESFORCE**](https://nvuillam.github.io/mega-linter/descriptors/salesforce/) | [sfdx-scanner](https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/)| [SALESFORCE_SFDX_SCANNER](https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sql.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SQL**](https://nvuillam.github.io/mega-linter/descriptors/sql/) | [sql-lint](https://nvuillam.github.io/mega-linter/descriptors/sql_sql_lint/)| [SQL_SQL_LINT](https://nvuillam.github.io/mega-linter/descriptors/sql_sql_lint/)|  |
 
 ### Formats
@@ -57,9 +58,6 @@ Mega-Linter optimized for TERRAFORM based projects
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/snakemake.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SNAKEMAKE**](https://nvuillam.github.io/mega-linter/descriptors/snakemake/) | [snakemake](https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/)| [SNAKEMAKE_LINT](https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakemake/)|  |
 | <!-- --> <!-- linter-icon --> |  | [snakefmt](https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakefmt/)| [SNAKEMAKE_SNAKEFMT](https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakefmt/)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/tekton.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TEKTON**](https://nvuillam.github.io/mega-linter/descriptors/tekton/) | [tekton-lint](https://nvuillam.github.io/mega-linter/descriptors/tekton_tekton_lint/)| [TEKTON_TEKTON_LINT](https://nvuillam.github.io/mega-linter/descriptors/tekton_tekton_lint/)|  |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TERRAFORM**](https://nvuillam.github.io/mega-linter/descriptors/terraform/) | [tflint](https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/)| [TERRAFORM_TFLINT](https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/)|  |
-| <!-- --> <!-- linter-icon --> |  | [terrascan](https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/)| [TERRAFORM_TERRASCAN](https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/)|  |
-| <!-- --> <!-- linter-icon --> |  | [terragrunt](https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/)| [TERRAFORM_TERRAGRUNT](https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/)|  |
 
 ### Other
 

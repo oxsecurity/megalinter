@@ -45,6 +45,7 @@ def list_megalinter_flavors():
         "python": {"label": "Mega-Linter optimized for PYTHON based projects"},
         "ruby": {"label": "Mega-Linter optimized for RUBY based projects"},
         "rust": {"label": "Mega-Linter optimized for RUST based projects"},
+        "salesforce": {"label": "Mega-Linter optimized for Salesforce based projects"},
         "scala": {"label": "Mega-Linter optimized for SCALA based projects"},
         "terraform": {"label": "Mega-Linter optimized for TERRAFORM based projects"},
     }

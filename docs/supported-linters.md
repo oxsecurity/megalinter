@@ -11,7 +11,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ## Languages
 
 | <!-- --> | Language | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**BASH**](descriptors/bash.md#readme) | [bash-exec](descriptors/bash_bash_exec.md#readme)| [BASH_EXEC](descriptors/bash_bash_exec.md#readme)|  |
 | <!-- --> <!-- linter-icon --> |  | [shellcheck](descriptors/bash_shellcheck.md#readme)| [BASH_SHELLCHECK](descriptors/bash_shellcheck.md#readme)|  |
 | <!-- --> <!-- linter-icon --> |  | [shfmt](descriptors/bash_shfmt.md#readme)| [BASH_SHFMT](descriptors/bash_shfmt.md#readme)| :heavy_check_mark: |
@@ -54,7 +54,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ## Formats
 
 | <!-- --> | Format | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/css.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CSS**](descriptors/css.md#readme) | [stylelint](descriptors/css_stylelint.md#readme)| [CSS_STYLELINT](descriptors/css_stylelint.md#readme)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [scss-lint](descriptors/css_scss_lint.md#readme)| [CSS_SCSS_LINT](descriptors/css_scss_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/env.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ENV**](descriptors/env.md#readme) | [dotenv-linter](descriptors/env_dotenv_linter.md#readme)| [ENV_DOTENV_LINTER](descriptors/env_dotenv_linter.md#readme)| :heavy_check_mark: |
@@ -76,7 +76,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ## Tooling formats
 
 | <!-- --> | Tooling format | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ansible.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ANSIBLE**](descriptors/ansible.md#readme) | [ansible-lint](descriptors/ansible_ansible_lint.md#readme)| [ANSIBLE_ANSIBLE_LINT](descriptors/ansible_ansible_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/arm.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ARM**](descriptors/arm.md#readme) | [arm-ttk](descriptors/arm_arm_ttk.md#readme)| [ARM_ARM_TTK](descriptors/arm_arm_ttk.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/cloudformation.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CLOUDFORMATION**](descriptors/cloudformation.md#readme) | [cfn-lint](descriptors/cloudformation_cfn_lint.md#readme)| [CLOUDFORMATION_CFN_LINT](descriptors/cloudformation_cfn_lint.md#readme)|  |
@@ -97,7 +97,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ## Other
 
 | <!-- --> | Code quality checker | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**COPYPASTE**](descriptors/copypaste.md#readme) | [jscpd](descriptors/copypaste_jscpd.md#readme)| [COPYPASTE_JSCPD](descriptors/copypaste_jscpd.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/git.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GIT**](descriptors/git.md#readme) | [git_diff](descriptors/git_git_diff.md#readme)| [GIT_GIT_DIFF](descriptors/git_git_diff.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/spell.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SPELL**](descriptors/spell.md#readme) | [cspell](descriptors/spell_cspell.md#readme)| [SPELL_CSPELL](descriptors/spell_cspell.md#readme)|  |
