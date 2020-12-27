@@ -8,7 +8,8 @@
   "description": "Local runner for Mega-Linter",
   "main": "index.js",
   "files": [
-    "lib"
+    "lib",
+    "generators"
   ],
   "bin": {
     "mega-linter-runner": "lib/index.js",
