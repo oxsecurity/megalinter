@@ -41,6 +41,8 @@ See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
     - [Tooling formats](#tooling-formats)
     - [Other](#other)
   - [Installation](#installation)
+    - [Assisted Installation](#assisted-installation)
+    - [Manual Installation](#manual-installation)
     - [GitHub Action](#github-action)
     - [Azure](#azure)
     - [Jenkins](#jenkins)
@@ -82,10 +84,7 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 <!-- quick-start-section-start -->
 ## Quick Start
 
-- Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
-  - You may set `VALIDATE_ALL_CODE_BASE` to `true`, you'll set it back to `false` after correcting (or ignoring) the found errors
-  - If you do not want to **apply formatters and auto-fixers** in a new commit/PR, comment [**APPLY_FIXES** block variables](#apply-fixes)
-  - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
+- Run `npx mega-linter-runner@beta --install` to generate configuration files
 - Commit, push, and create a pull request
 - Watch !
 
@@ -208,6 +207,14 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 <!-- installation-section-start -->
 ## Installation
+
+### Assisted installation
+
+Just run `npx mega-linter-runner@beta --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
+
+_This function is in beta version_
+
+### Manual installation
 
 The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
 

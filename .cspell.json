@@ -4,6 +4,7 @@
         "**/vscode-extension/**",
         "**/.automation/generated/**",
         "**/.git/**",
+        "**/package-lock.json",
         "lib",
         "report",
         ".vscode"
@@ -1036,6 +1037,7 @@
         "yappi",
         "ymsosys",
         "yoheimuta",
+        "yosay",
         "ysoy",
         "ysysss",
         "zaach",

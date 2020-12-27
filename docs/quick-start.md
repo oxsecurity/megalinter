@@ -4,10 +4,7 @@
 
 # Quick Start
 
-- Save [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) in a folder `.github/workflows` of your repository
-  - You may set `VALIDATE_ALL_CODE_BASE` to `true`, you'll set it back to `false` after correcting (or ignoring) the found errors
-  - If you do not want to **apply formatters and auto-fixers** in a new commit/PR, comment [**APPLY_FIXES** block variables](configuration.md#apply-fixes)
-  - If you do not want to check copy-pastes and spell, uncomment `# DISABLE: COPYPASTE,SPELL` in `mega-linter.yml`
+- Run `npx mega-linter-runner@beta --install` to generate configuration files
 - Commit, push, and create a pull request
 - Watch !
 
