@@ -8,6 +8,8 @@
 
 Just run `npx mega-linter-runner@beta --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
 
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
 _This function is in beta version_
 
 ## Manual installation

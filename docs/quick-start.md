@@ -8,6 +8,8 @@
 - Commit, push, and create a pull request
 - Watch !
 
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
 **Notes**:
 
 - This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](mega-linter-vs-super-linter.md)
