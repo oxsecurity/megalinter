@@ -31,6 +31,8 @@ describe('CLI', function () {
         assert(stdout.includes("mega-linter-runner version"), 'stdout should contains "mega-linter-runner version"');
     })
 
+/*
+Disabled until find a way to run with default options
     it('(CLI) Run installer', async () => {
         const params = ["--install"];
         const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
@@ -39,6 +41,7 @@ describe('CLI', function () {
         }
         assert(stdout, "stdout is set");
     })
+*/
 
     it('(CLI) run on own code base', async () => {
         const params = [
