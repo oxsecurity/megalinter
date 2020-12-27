@@ -5,6 +5,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Flavors
+  - Add **salesforce** flavor for Salesforce projects (DX or Metadata)
+
 ## [4.19.0] 2020-12-27
 
 - Installation
