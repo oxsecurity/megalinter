@@ -63,6 +63,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 | `-r` <br/> `--release`    | Allows to override Mega-Linter version used  | `v4` |
 | `-h` <br/> `--help`      | Show mega-linter-runner help    | <!-- --> |
 | `-v` <br/> `--version`   | Show mega-linter-runner version   | <!-- --> |
+| `-i` <br/> `--install`   | Generate Mega-Linter configuration files   | <!-- --> |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
