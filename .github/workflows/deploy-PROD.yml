@@ -22,7 +22,7 @@ on:
       - "Dockerfile"
       - "flavors/**"
       - "megalinter/**"
-      - "megalinter_runner/**"
+      - "mega-linter-runner/**"
       - "**/linter-versions.json"
 
 ###############

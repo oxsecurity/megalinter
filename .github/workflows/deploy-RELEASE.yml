@@ -21,6 +21,7 @@ on:
     paths:
       - "Dockerfile"
       - "megalinter/**"
+      - "mega-linter-runner/**"
       - "flavors/**"
       - "**/linter-versions.json"
 
