@@ -502,7 +502,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         f"### {type_label}",
         "",
         f"| <!-- --> | {col_header} | Linter | Configuration key | Format/Fix |",
-        "| :---: | ----------------- | -------------- | ------------ | ------- |",
+        "| :---: | ----------------- | -------------- | ------------ | :-----: |",
     ]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""

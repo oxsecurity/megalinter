@@ -109,7 +109,7 @@ You can define generate a ready to use [.mega-linter.yml configuration file](htt
 ### Languages
 
 | <!-- --> | Language | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**BASH**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash.md#readme) | [bash-exec](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme)| [BASH_EXEC](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme)|  |
 | <!-- --> <!-- linter-icon --> |  | [shellcheck](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)| [BASH_SHELLCHECK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)|  |
 | <!-- --> <!-- linter-icon --> |  | [shfmt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme)| [BASH_SHFMT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme)| :heavy_check_mark: |
@@ -152,7 +152,7 @@ You can define generate a ready to use [.mega-linter.yml configuration file](htt
 ### Formats
 
 | <!-- --> | Format | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/css.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CSS**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css.md#readme) | [stylelint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme)| [CSS_STYLELINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [scss-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme)| [CSS_SCSS_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/env.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ENV**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/env.md#readme) | [dotenv-linter](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/env_dotenv_linter.md#readme)| [ENV_DOTENV_LINTER](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/env_dotenv_linter.md#readme)| :heavy_check_mark: |
@@ -174,7 +174,7 @@ You can define generate a ready to use [.mega-linter.yml configuration file](htt
 ### Tooling formats
 
 | <!-- --> | Tooling format | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ansible.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ANSIBLE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible.md#readme) | [ansible-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme)| [ANSIBLE_ANSIBLE_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/arm.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ARM**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm.md#readme) | [arm-ttk](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme)| [ARM_ARM_TTK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/cloudformation.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CLOUDFORMATION**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cloudformation.md#readme) | [cfn-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cloudformation_cfn_lint.md#readme)| [CLOUDFORMATION_CFN_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/cloudformation_cfn_lint.md#readme)|  |
@@ -195,7 +195,7 @@ You can define generate a ready to use [.mega-linter.yml configuration file](htt
 ### Other
 
 | <!-- --> | Code quality checker | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**COPYPASTE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste.md#readme) | [jscpd](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)| [COPYPASTE_JSCPD](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/git.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GIT**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git.md#readme) | [git_diff](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git_git_diff.md#readme)| [GIT_GIT_DIFF](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git_git_diff.md#readme)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/spell.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SPELL**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell.md#readme) | [cspell](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)| [SPELL_CSPELL](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/spell_cspell.md#readme)|  |

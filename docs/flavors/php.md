@@ -18,7 +18,7 @@ Mega-Linter optimized for PHP based projects
 ### Languages
 
 | <!-- --> | Language | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**BASH**](https://nvuillam.github.io/mega-linter/descriptors/bash/) | [bash-exec](https://nvuillam.github.io/mega-linter/descriptors/bash_bash_exec/)| [BASH_EXEC](https://nvuillam.github.io/mega-linter/descriptors/bash_bash_exec/)|  |
 | <!-- --> <!-- linter-icon --> |  | [shellcheck](https://nvuillam.github.io/mega-linter/descriptors/bash_shellcheck/)| [BASH_SHELLCHECK](https://nvuillam.github.io/mega-linter/descriptors/bash_shellcheck/)|  |
 | <!-- --> <!-- linter-icon --> |  | [shfmt](https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/)| [BASH_SHFMT](https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/)| :heavy_check_mark: |
@@ -33,7 +33,7 @@ Mega-Linter optimized for PHP based projects
 ### Formats
 
 | <!-- --> | Format | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/css.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**CSS**](https://nvuillam.github.io/mega-linter/descriptors/css/) | [stylelint](https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/)| [CSS_STYLELINT](https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [scss-lint](https://nvuillam.github.io/mega-linter/descriptors/css_scss_lint/)| [CSS_SCSS_LINT](https://nvuillam.github.io/mega-linter/descriptors/css_scss_lint/)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/env.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ENV**](https://nvuillam.github.io/mega-linter/descriptors/env/) | [dotenv-linter](https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/)| [ENV_DOTENV_LINTER](https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/)| :heavy_check_mark: |
@@ -51,7 +51,7 @@ Mega-Linter optimized for PHP based projects
 ### Tooling formats
 
 | <!-- --> | Tooling format | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ansible.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**ANSIBLE**](https://nvuillam.github.io/mega-linter/descriptors/ansible/) | [ansible-lint](https://nvuillam.github.io/mega-linter/descriptors/ansible_ansible_lint/)| [ANSIBLE_ANSIBLE_LINT](https://nvuillam.github.io/mega-linter/descriptors/ansible_ansible_lint/)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dockerfile.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**DOCKERFILE**](https://nvuillam.github.io/mega-linter/descriptors/dockerfile/) | [dockerfilelint](https://nvuillam.github.io/mega-linter/descriptors/dockerfile_dockerfilelint/)| [DOCKERFILE_DOCKERFILELINT](https://nvuillam.github.io/mega-linter/descriptors/dockerfile_dockerfilelint/)|  |
 | <!-- --> <!-- linter-icon --> |  | [hadolint](https://nvuillam.github.io/mega-linter/descriptors/dockerfile_hadolint/)| [DOCKERFILE_HADOLINT](https://nvuillam.github.io/mega-linter/descriptors/dockerfile_hadolint/)|  |
@@ -65,7 +65,7 @@ Mega-Linter optimized for PHP based projects
 ### Other
 
 | <!-- --> | Code quality checker | Linter | Configuration key | Format/Fix |
-| :---: | ----------------- | -------------- | ------------ | ------- |
+| :---: | ----------------- | -------------- | ------------ | :-----: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**COPYPASTE**](https://nvuillam.github.io/mega-linter/descriptors/copypaste/) | [jscpd](https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/)| [COPYPASTE_JSCPD](https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/git.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GIT**](https://nvuillam.github.io/mega-linter/descriptors/git/) | [git_diff](https://nvuillam.github.io/mega-linter/descriptors/git_git_diff/)| [GIT_GIT_DIFF](https://nvuillam.github.io/mega-linter/descriptors/git_git_diff/)|  |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/spell.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SPELL**](https://nvuillam.github.io/mega-linter/descriptors/spell/) | [cspell](https://nvuillam.github.io/mega-linter/descriptors/spell_cspell/)| [SPELL_CSPELL](https://nvuillam.github.io/mega-linter/descriptors/spell_cspell/)|  |
