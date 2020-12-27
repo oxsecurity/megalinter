@@ -84,7 +84,7 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 <!-- quick-start-section-start -->
 ## Quick Start
 
-- Run `npx mega-linter-runner@beta --install` to generate configuration files
+- Run `npx mega-linter-runner --install` to generate configuration files
 - Commit, push, and create a pull request
 - Watch !
 
@@ -212,7 +212,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 ### Assisted installation
 
-Just run `npx mega-linter-runner@beta --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
+Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
 
 ![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 

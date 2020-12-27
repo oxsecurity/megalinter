@@ -4,7 +4,7 @@
 
 # Quick Start
 
-- Run `npx mega-linter-runner@beta --install` to generate configuration files
+- Run `npx mega-linter-runner --install` to generate configuration files
 - Commit, push, and create a pull request
 - Watch !
 

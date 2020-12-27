@@ -98,9 +98,10 @@ mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=t
 
 ## Configuration
 
-Default configuration is ready out of the box
+You can define generate a ready to use [.mega-linter.yml configuration file](https://nvuillam.github.io/mega-linter/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
-You can define a [.mega-linter.yml](https://nvuillam.github.io/mega-linter/configuration/) configuration file at the root of your repository to customize or deactivate the included linters
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
 <!-- linters-section-start -->
 ## Linters
 
