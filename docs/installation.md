@@ -16,13 +16,13 @@ _This function is in beta version_
 
 The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
 
-- GitHub Action: nvuillam/mega-linter:v4
-- Docker image: nvuillam/mega-linter@v4
+- GitHub Action: nvuillam/mega-linter@v4
+- Docker image: nvuillam/mega-linter:v4
 
 You can also use **insiders** version (beta release, corresponding to the content of master branch)
 
-- GitHub Action: nvuillam/mega-linter:insiders
-- Docker image: nvuillam/mega-linter@latest
+- GitHub Action: nvuillam/mega-linter@insiders
+- Docker image: nvuillam/mega-linter:latest
 
 ## GitHub Action
 
@@ -149,7 +149,7 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
     - script: |
         docker pull nvuillam/mega-linter:v4
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
-      displayName: 'Code Scan using  Mega-Linter'
+      displayName: 'Code Scan using Mega-Linter'
 ```
 
 ## Jenkins
@@ -187,8 +187,6 @@ megalinter:
   script: [ "true" ]
   variables:
     DEFAULT_WORKSPACE: $CI_BUILDS_DIR
-    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
-    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
 ```
 
 ## Run Mega-Linter locally

@@ -59,6 +59,7 @@ jobs:
             "python",
             "ruby",
             "rust",
+            "salesforce",
             "scala",
             "terraform",
           ]
