@@ -229,7 +229,9 @@ def match_flavor(item, flavor):
     elif "descriptor_flavors" in item:
         if (
             flavor in item["descriptor_flavors"]
-            or "all_flavors" in item["descriptor_flavors"]
+               or (
+                "all_flavors" in item["descriptor_flavors"] and not flavor.endswith("_light")
+             )
         ):
             return True
     return False

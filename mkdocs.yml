@@ -258,6 +258,7 @@ nav:
   - "Flavors":
       - "All flavors": "flavors.md"
 # flavors-start
+      - "ci_light": "flavors/ci_light.md"
       - "dart": "flavors/dart.md"
       - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"

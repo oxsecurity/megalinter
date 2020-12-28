@@ -49,6 +49,7 @@ jobs:
         # flavors-start
         flavor:
           [
+            "ci_light",
             "dart",
             "documentation",
             "dotnet",

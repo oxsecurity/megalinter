@@ -6,7 +6,9 @@
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
 - Flavors
+  - Add **ci_light** flavor for only CI config files (Dockerfile,Jenkinsfile,JSON,YAML,XML)
   - Add **salesforce** flavor for Salesforce projects (DX or Metadata)
+  - If all required linters are not in the current flavor, just skip them with a warning message
 
 - Core
   - Add Json Schema for descriptors (allows validation and auto-completion from IDEs)
