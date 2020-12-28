@@ -98,7 +98,10 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 # Build a single linter instance from language and linter name
 def build_linter(language, linter_name):
     language_descriptor_file = (
-        get_descriptor_dir() + os.path.sep + language.lower() + ".megalinter-descriptor.yml"
+        get_descriptor_dir()
+        + os.path.sep
+        + language.lower()
+        + ".megalinter-descriptor.yml"
     )
     assert os.path.isfile(
         language_descriptor_file

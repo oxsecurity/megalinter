@@ -33,7 +33,7 @@ class Megalinter:
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER",
-            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report")
+            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"),
         )
         self.initialize_logger()
         self.display_header()
