@@ -1430,6 +1430,25 @@ def process_type_mkdocs_yml(linters_by_type, type1):
     )
 
 
+def generate_json_schema_enums():
+    # Update list of flavors in descriptor schema
+    flavors = megalinter.flavor_factory.list_megalinter_flavors()
+    with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+    json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(flavors.keys())
+    with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+        json.dump(json_schema, outfile, indent=2, sort_keys=True)
+    # Update list of descriptors and linters in configuration schema
+    descriptors, _linters_by_type = list_descriptors_for_build()
+    linters = megalinter.linter_factory.list_all_linters()
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [x['descriptor_id'] for x in descriptors]
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
+    with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+        json.dump(json_schema, outfile, indent=2, sort_keys=True)
+
+
 # Collect linters info from linter url, later used to build link preview card within linter documentation
 def collect_linter_previews():
     linters = megalinter.linter_factory.list_all_linters()
@@ -1484,6 +1503,7 @@ if __name__ == "__main__":
     )
     # noinspection PyTypeChecker
     collect_linter_previews()
+    generate_json_schema_enums()
     validate_descriptors()
     generate_all_flavors()
     generate_linter_test_classes()
