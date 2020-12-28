@@ -2,15 +2,15 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "http://github.com/nvuillam/megalinter.json",
   "type": "object",
-  "title": "Super-Linter descriptor",
-  "description": "Descriptor definition for super-linter",
+  "title": "Mega-Linter descriptor",
+  "description": "Descriptor definition for Mega-Linter",
   "required": [
     "descriptor_id",
     "descriptor_type",
     "linters"
   ],
   "properties": {
-    "descriptor": {
+    "descriptor_id": {
       "$id": "#/properties/descriptor_id",
       "type": "string",
       "title": "Descriptor unique identifier",
@@ -22,13 +22,25 @@
         "OPENAPI"
       ]
     },
-    "type": {
+    "descriptor_label": {
+      "$id": "#/properties/descriptor_label",
+      "type": "string",
+      "title": "Descriptor label",
+      "description": "Label for descriptor documentation, if different from Id. Ex: C++ for CPP",
+      "default": "",
+      "examples": [
+        "C++",
+        "Visual Basic .NET",
+      ]
+    },
+    "descriptor_type": {
       "$id": "#/properties/descriptor_type",
       "type": "string",
       "enum": [
         "language",
         "format",
-        "tooling_format"
+        "tooling_format",
+        "other"
       ],
       "title": "Descriptor type",
       "description": "Descriptor type: language, format or tooling format",
@@ -36,8 +48,26 @@
       "examples": [
         "language",
         "format",
-        "tooling_format"
+        "tooling_format",
+        "other"
       ]
+    },
+    "descriptor_flavors": {
+      "$id": "#/properties/descriptor_flavors",
+      "type": "array",
+      "title": "Flavors",
+      "description": "Mega-Linter flavors matching this descriptor",
+      "default": [],
+      "examples": [
+        [
+          "all_flavors",
+          "java",
+          "php"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
     },
     "file_extensions": {
       "$id": "#/properties/file_extensions",
@@ -115,6 +145,45 @@
         "type": "string"
       }
     },
+    "lint_all_files": {
+      "$id": "#/properties/lint_all_files",
+      "type": "boolean",
+      "title": "Lint all files",
+      "description": "If set to true, this descriptor linters will always lint all files, undepending their name/extensions/content",
+      "default": false
+    },
+    "lint_all_other_linters_files": {
+      "$id": "#/properties/lint_all_other_linters_files",
+      "type": "boolean",
+      "title": "Lint all other linters files",
+      "description": "If set to true, this descriptor linters will lint one by one all files collected by all other linters",
+      "default": false
+    },
+    "active_only_if_file_found": {
+      "$id": "#/properties/active_only_if_file_found",
+      "type": "string",
+      "title": "Active if file name found",
+      "description": "Name of the config file to be found, else descriptor will be deactivated",
+      "examples": [
+        [
+          ".editorconfig"
+        ]
+      ]
+    },
+    "processing_order": {
+      "$id": "#/properties/processing_order",
+      "type": "number",
+      "title": "Descriptor processing order",
+      "default": 0,
+      "description": "If descriptor linters may be slow, put a negative processing order. If it is fast, put a positive one. If you don't know, do not set",
+      "examples": [
+        [
+          -9,
+          0,
+          9
+        ]
+      ]
+    },
     "test_folder": {
       "$id": "#/properties/test_folder",
       "type": "string",
@@ -126,6 +195,99 @@
           "terraform_terrascan"
         ]
       ]
+    },
+    "install": {
+      "$id": "#/properties/install",
+      "type": "object",
+      "title": "Installation requirements",
+      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to use the descriptor linters",
+      "default": {},
+      "examples": [
+        {
+          "apk": [
+            "openjdk8"
+          ]
+        },
+        {
+          "dockerfile": [
+            "ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk",
+            "ENV PATH=\"$JAVA_HOME/bin:${PATH}\""
+          ]
+        },
+        {
+          "npm": [
+            "sfdx-cli"
+          ]
+        }
+      ],
+      "properties": {
+        "dockerfile": {
+          "$id": "#/properties/install/properties/dockerfile",
+          "type": "array",
+          "title": "List of Dockerfile instructions packages",
+          "description": "Will be automatically integrated in generated Dockerfile",
+          "examples": [
+            [
+              "ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk",
+              "ENV PATH=\"$JAVA_HOME/bin:${PATH}\""
+            ]
+          ],
+          "items": {
+            "$id": "#/properties/install/properties/dockerfile/items",
+            "type": "string"
+          }
+        },
+        "apk": {
+          "$id": "#/properties/install/properties/apk",
+          "type": "array",
+          "title": "List of APK packages (Linux)",
+          "description": "APK packages identifiers (with or without version)",
+          "examples": [
+            [
+              "openjdk8"
+            ]
+          ],
+          "items": {
+            "$id": "#/properties/install/properties/apk/items",
+            "type": "string"
+          }
+        },
+        "npm": {
+          "$id": "#/properties/install/properties/npm",
+          "type": "array",
+          "title": "List of NPM packages (Node.js)",
+          "description": "NPM packages identifiers (with or without version)",
+          "examples": [
+            [
+              "sfdx-cli"
+            ]
+          ],
+          "items": {
+            "$id": "#/properties/install/properties/npm/items",
+            "type": "string"
+          }
+        },
+        "gem": {
+          "$id": "#/properties/install/properties/gem",
+          "type": "array",
+          "title": "List of GEM packages (Ruby)",
+          "description": "GEM packages identifiers (with or without version)",
+          "items": {
+            "$id": "#/properties/install/properties/gem/items",
+            "type": "string"
+          }
+        },
+        "pip": {
+          "$id": "#/properties/install/properties/pip",
+          "type": "array",
+          "title": "List of PIP packages (Python)",
+          "description": "PIP packages identifiers (with or without version)",
+          "items": {
+            "$id": "#/properties/install/properties/pip/items",
+            "type": "string"
+          }
+        }
+      }
     },
     "linters": {
       "$id": "#/properties/linters",
@@ -416,5 +578,6 @@
         }
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
