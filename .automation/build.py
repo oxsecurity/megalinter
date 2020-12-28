@@ -1,6 +1,6 @@
 # !/usr/bin/env python3
 """
-Automatically generate source code
+Automatically generate source code ,descriptive files Dockerfiles and documentation
 """
 # pylint: disable=import-error
 import json
