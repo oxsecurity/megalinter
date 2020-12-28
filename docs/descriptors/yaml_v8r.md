@@ -82,7 +82,7 @@ v8r --ignore-errors myfile.yaml
 ### Help content
 
 ```shell
-index.js <filename>
+v8r <filename>
 
 Validate a local json/yml/yaml file against a schema
 
