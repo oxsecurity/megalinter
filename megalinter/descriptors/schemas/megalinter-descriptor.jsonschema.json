@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "http://github.com/nvuillam/megalinter.json",
+  "$id": "http://github.com/nvuillam/megalinter-descriptor.json",
   "type": "object",
   "title": "Mega-Linter descriptor",
   "description": "Descriptor definition for Mega-Linter",
@@ -407,7 +407,7 @@
           "linter_text": {
             "$id": "#/properties/linters/items/properties/linter_text",
             "type": "string",
-            "title": "Additional text for Mega-Linter online documentation",
+            "title": "Additional text for Mega-Linter online documentation"
           },
           "linter_url": {
             "$id": "#/properties/linters/items/properties/linter_url",

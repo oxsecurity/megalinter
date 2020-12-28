@@ -21,7 +21,7 @@
     "**/all_flavors.json",
     "**/flavor.json",
     "**/flavors/**",
-    "**/megalinter/descriptors/jsonschema.json",
+    "**/megalinter/descriptors/schemas/*.json",
     "**/megalinter/linters/RakuLinter.py",
     "**/megalinter/reporters/*.py",
     "**/megalinter/tests/test_megalinter/MegaLinter_1_test.py",
