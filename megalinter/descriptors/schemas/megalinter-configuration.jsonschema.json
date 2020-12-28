@@ -243,7 +243,7 @@
     "APPLY_FIXES": {
       "$id": "#/properties/APPLY_FIXES",
       "default": "none",
-      "description": "'all' to apply formattings and auto-fixes of all linters, or a list of linter keys",
+      "description": "'all' to apply formatting and auto-fixes of all linters, or a list of linter keys",
       "examples": [
         "all",
         "none",
@@ -1490,7 +1490,7 @@
     "EMAIL_REPORTER": {
       "$id": "#/properties/EMAIL_REPORTER",
       "default": true,
-      "description": "Mega-Linter can send email with reports to given adresses. Please set EMAIL_REPORTER_** variables if activated",
+      "description": "Mega-Linter can send email with reports to given addresses. Please set EMAIL_REPORTER_** variables if activated",
       "title": "Activate Email reporter",
       "type": "boolean"
     },
