@@ -709,6 +709,52 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
             f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
         ]
+        add_in_config_schema_file([
+            [f"{linter.name}_ARGUMENTS", {
+                "$id": f"#/properties/{linter.name}_ARGUMENTS",
+                "type": "array",
+                "title": f"{linter.name}: Custom arguments",
+                "description": f"{linter.name}: User custom arguments to add in linter CLI call",
+                "examples:": ["--foo", "bar"],
+                "items": {
+                    "type": "string"
+                }
+            }],
+            [f"{linter.name}_FILTER_REGEX_INCLUDE", {
+                "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
+                "type": "string",
+                "title": f"{linter.name}: Including Regex"
+            }],
+            [f"{linter.name}_FILTER_REGEX_EXCLUDE", {
+                "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
+                "type": "string",
+                "title": f"{linter.name}: Excluding Regex"
+            }],
+            [f"{linter.name}_FILE_EXTENSIONS", {
+                "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
+                "type": "array",
+                "title": f"{linter.name}: Override descriptor/linter matching files extensions",
+                "examples:": [".py", ".myext"],
+                "items": {
+                    "type": "string"
+                }
+            }],
+            [f"{linter.name}_FILE_NAMES_REGEX", {
+                "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
+                "type": "array",
+                "title": f"{linter.name}: Override descriptor/linter matching file name regex",
+                "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
+                "items": {
+                    "type": "string"
+                }
+            }],
+            [f"{linter.name}_DISABLE_ERRORS", {
+                "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
+                "type": "boolean",
+                "default": False,
+                "title": f"{linter.name}: Linter does not make Mega-Linter fail even if errors are found"
+            }],
+        ])
 
         if linter.config_file_name is not None:
             linter_doc_md += [
@@ -718,6 +764,21 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"| {linter.name}_RULES_PATH | Path where to find linter configuration file | "
                 "Workspace folder, then Mega-Linter default rules |",
             ]
+            add_in_config_schema_file([
+                [f"{linter.name}_FILE_NAME", {
+                    "$id": f"#/properties/{linter.name}_FILE_NAME",
+                    "type": "string",
+                    "title": f"{linter.name}: Custom config file name",
+                    "default": linter.config_file_name,
+                    "description": f"{linter.name}: User custom config file name if different from default",
+                }],
+                [f"{linter.name}_RULES_PATH", {
+                    "$id": f"#/properties/{linter.name}_RULES_PATH",
+                    "type": "string",
+                    "title": f"{linter.name}: Custom config file path",
+                    "description": f"{linter.name}: Path where to find linter configuration file",
+                }],
+            ])
         linter_doc_md += [
             f"| {linter.name}_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |"
         ]
@@ -726,6 +787,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
                 f"| `{linter.files_sub_directory}` |"
             ]
+            add_in_config_schema_file([
+                [f"{linter.name}_DIRECTORY", {
+                    "$id": f"#/properties/{linter.name}_DIRECTORY",
+                    "type": "string",
+                    "title": f"{linter.name}: Directory containing {linter.descriptor_id} files",
+                    "default": linter.files_sub_directory
+                }],
+            ])
         # IDE Integration
         if hasattr(linter, "ide"):
             linter_doc_md += ["", "## IDE Integration", ""]
@@ -1390,7 +1459,7 @@ def collect_linter_previews():
     # Update file
     if updated is True:
         with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
-            json.dump(data, outfile, indent=4, sort_keys=True)
+            json.dump(data, outfile, indent=2, sort_keys=True)
 
 
 def manage_output_variables():
@@ -1415,10 +1484,10 @@ if __name__ == "__main__":
     )
     # noinspection PyTypeChecker
     collect_linter_previews()
-    validate_own_megalinter_config()
     validate_descriptors()
     generate_all_flavors()
     generate_linter_test_classes()
     generate_documentation()
     generate_mkdocs_yml()
+    validate_own_megalinter_config()
     manage_output_variables()
