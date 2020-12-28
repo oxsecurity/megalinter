@@ -15,6 +15,8 @@
   - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml){target=_blank} will be used
 - See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md){target=_blank}
 
+[![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral){target=_blank}
+
 ## Configuration in Mega-Linter
 
 - Enable spectral by adding `OPENAPI_SPECTRAL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)

@@ -7,6 +7,10 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Flavors
   - Add **salesforce** flavor for Salesforce projects (DX or Metadata)
 
+- Core
+  - Add Json Schema for descriptors (allows validation and auto-completion from IDEs)
+  - Add Json Schema for .mega-linter.yml configuration files
+
 ## [4.19.0] 2020-12-27
 
 - Installation

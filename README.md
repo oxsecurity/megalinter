@@ -15,6 +15,7 @@
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://nvuillam.github.io/mega-linter/&via=nvuillam&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
@@ -476,7 +477,6 @@ report/
 | **LINTER_RULES_PATH**               | `.github/linters`            | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )         |
 | **LOG_FILE**                        | `mega-linter.log`            | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                 |
 | **LOG_LEVEL**                       | `INFO`                       | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
-| **OUTPUT_FOLDER**                   | `report`                     | The location where the output reporting will be generated to.                                                                                                                    |
 | **PARALLEL**                        | `true`                       | Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |
 | **PRINT_ALPACA**                    | `true`                       | Enable printing alpaca image to console                                                                                                                                          |
 | **REPORT_OUTPUT_FOLDER**            | `${GITHUB_WORKSPACE}/report` | Directory for generating report files                                                                                                                                            |
