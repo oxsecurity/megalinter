@@ -30,7 +30,7 @@
       "default": "",
       "examples": [
         "C++",
-        "Visual Basic .NET",
+        "Visual Basic .NET"
       ]
     },
     "descriptor_type": {
@@ -393,18 +393,46 @@
               "JAVASCRIPT_ES"
             ]
           },
+          "class": {
+            "$id": "#/properties/linters/items/properties/class",
+            "type": "string",
+            "title": "Linter custom python class name",
+            "description": "If Mega-Linter core is not enough, use a custom class inheriting from Linter class",
+            "examples": [
+              "CSpellLinter",
+              "DotnetFormatLinter",
+              "RakuLinter"
+            ]
+          },
+          "linter_text": {
+            "$id": "#/properties/linters/items/properties/linter_text",
+            "type": "string",
+            "title": "Additional text for Mega-Linter online documentation",
+          },
           "linter_url": {
             "$id": "#/properties/linters/items/properties/linter_url",
             "type": "string",
+            "format": "uri",
             "title": "Linter URL",
             "description": "URL of the linter home page",
             "examples": [
               "https://eslint.org"
             ]
           },
+          "linter_repo": {
+            "$id": "#/properties/linters/items/properties/linter_repo",
+            "type": "string",
+            "format": "uri",
+            "title": "Linter URL",
+            "description": "URL of the linter repository home page",
+            "examples": [
+              "https://github.com/eslint/eslint"
+            ]
+          },
           "linter_banner_image_url": {
             "$id": "#/properties/linters/items/properties/linter_banner_image_url",
             "type": "string",
+            "format": "uri",
             "title": "Linter banner image URL",
             "description": "URL of an image used to build header of linter Markdown documentation",
             "examples": [
@@ -414,11 +442,45 @@
           "linter_image_url": {
             "$id": "#/properties/linters/items/properties/linter_image_url",
             "type": "string",
+            "format": "uri",
             "title": "Linter image URL",
             "description": "URL of an image used in linter Markdown documentation",
             "examples": [
               "https://raku.org/camelia-logo.png"
             ]
+          },
+          "linter_rules_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_url",
+            "type": "string",
+            "format": "uri",
+            "title": "Linter rules URL",
+            "description": "URL to linter documentation listing all the rules that can be detected"
+          },
+          "linter_rules_configuration_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_configuration_url",
+            "type": "string",
+            "format": "uri",
+            "title": "Linter rules configuration URL",
+            "description": "URL to linter documentation explaining how to configure the linter"
+          },
+          "linter_rules_inline_disable_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_inline_disable_url",
+            "type": "string",
+            "format": "uri",
+            "title": "Linter rules inline disable URL",
+            "description": "URL to linter documentation explaining how to disable rules directly with comments in files"
+          },
+          "linter_megalinter_ref_url": {
+            "$id": "#/properties/linters/items/properties/linter_megalinter_ref_url",
+            "type": "string",
+            "title": "Mega-Linter reference URL",
+            "description": "URL to linter documentation referring to Mega-Linter"
+          },
+          "cli_executable": {
+            "$id": "#/properties/linters/items/properties/cli_executable",
+            "type": "string",
+            "title": "CLI executable for linting request",
+            "description": "Override if different from linter_name"
           },
           "config_file_name": {
             "$id": "#/properties/linters/items/properties/config_file_name",
@@ -430,6 +492,23 @@
               ".markdown-lint.yml",
               ".python-black"
             ]
+          },
+          "cli_lint_mode": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode",
+            "type": "string",
+            "title": "Linting mode",
+            "description": "Defines how the linter is called: file_by_file, project, list_of_files",
+            "default": "file_by_file",
+            "enum": [
+              "file_by_file",
+              "project",
+              "list_of_files"
+            ]
+          },
+          "cli_config_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_config_arg_name",
+            "type": "string",
+            "title": "CLI configuration file argument name if different from -c"
           },
           "cli_config_extra_args": {
             "$id": "#/properties/linters/items/properties/cli_config_extra_args",
@@ -446,6 +525,131 @@
             "items": {
               "type": "string"
             }
+          },
+          "cli_lint_extra_args": {
+            "$id": "#/properties/linters/items/properties/cli_lint_extra_args",
+            "type": "array",
+            "title": "CLI Lint extra arguments (before config args)",
+            "description": "When linter CLI is call for linting, send these additional arguments before config args",
+            "default": [],
+            "items": {
+              "type": "string"
+            }
+          },
+          "cli_lint_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_extra_args_after",
+            "type": "array",
+            "title": "CLI Lint extra arguments (after config args)",
+            "description": "When linter CLI is call for linting, send these additional arguments after config args",
+            "default": [],
+            "items": {
+              "type": "string"
+            }
+          },
+          "cli_lint_fix_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_lint_fix_arg_name",
+            "type": "string",
+            "title": "If the linter can format or fix, input here the related triggering argument",
+            "examples": [
+              "--fix",
+              "--format"
+            ]
+          },
+          "cli_lint_fix_remove_args": {
+            "$id": "#/properties/linters/items/properties/cli_lint_fix_remove_args",
+            "type": "array",
+            "title": "CLI Lint arguments to remove if fix is activated",
+            "description": "When linter CLI is call for fixing, remove these arguments",
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "--check"
+              ]
+            ]
+          },
+          "cli_help_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_help_arg_name",
+            "type": "string",
+            "title": "CLI Help argument name if different from -h"
+          },
+          "cli_help_extra_args": {
+            "$id": "#/properties/linters/items/properties/cli_help_extra_args",
+            "type": "array",
+            "title": "CLI help extra arguments",
+            "description": "When linter CLI is call for help, send these additional arguments",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cli_help_extra_commands": {
+            "$id": "#/properties/linters/items/properties/cli_help_extra_commands",
+            "type": "array",
+            "title": "CLI help extra commands",
+            "description": "When linter CLI is call for help, send these additional commands",
+            "items": {
+              "type": "string"
+            }
+          },
+          "help_command_return_code": {
+            "$id": "#/properties/linters/items/properties/help_command_return_code",
+            "type": "number",
+            "title": "CLI Help valid return code if different from 0"
+          },
+          "cli_executable_version": {
+            "$id": "#/properties/linters/items/properties/cli_executable_version",
+            "type": "string",
+            "title": "CLI executable for version request",
+            "description": "Override if different from cli executable used for linting"
+          },
+          "cli_version_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_version_arg_name",
+            "type": "string",
+            "title": "CLI version argument name if different from -v"
+          },
+          "cli_version_extra_args": {
+            "$id": "#/properties/linters/items/properties/cli_version_extra_args",
+            "type": "array",
+            "title": "CLI Version extra arguments",
+            "description": "When linter CLI is call for version, send these additional arguments",
+            "items": {
+              "type": "string"
+            }
+          },
+          "version_command_return_code": {
+            "$id": "#/properties/linters/items/properties/version_command_return_code",
+            "type": "number",
+            "title": "CLI version valid return code if different from 0"
+          },
+          "version_extract_regex": {
+            "$id": "#/properties/linters/items/properties/version_extract_regex",
+            "type": "string",
+            "title": "Regex to extract version",
+            "description": "If default regex to extract version from linter -v call, override it here",
+            "examples": [
+              "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
+            ]
+          },
+          "linter_version_cache": {
+            "$id": "#/properties/linters/items/properties/linter_version_cache",
+            "type": "string",
+            "title": "Hardcoded version number",
+            "description": "If the linter is unable to return a version number, hardcode it here"
+          },
+          "variables": {
+            "$id": "#/properties/linters/items/properties/variables",
+            "type": "array",
+            "title": "Custom extra variables for the linter",
+            "description": "Try to not use this property except if you really have no choice",
+            "examples": [
+              {
+                "name": "ERROR_ON_MISSING_EXEC_BIT",
+                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead",
+                "default_value": "false"
+              }
+            ]
           },
           "examples": {
             "$id": "#/properties/linters/items/properties/examples",
@@ -465,6 +669,69 @@
             "items": {
               "type": "string"
             }
+          },
+          "file_extensions": {
+            "$id": "#/properties/linters/items/file_extensions",
+            "type": "array",
+            "title": "Allowed file extensions",
+            "description": "File extension filters if different from the ones defined on parent descriptor",
+            "default": [],
+            "examples": [
+              [
+                ".py",
+                ""
+              ]
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "files_sub_directory": {
+            "$id": "#/properties/linters/items/files_sub_directory",
+            "type": "string",
+            "title": "Files sub-directory",
+            "description": "Set when a linter only lints a sub-directory",
+            "examples": [
+              [
+                "ansible",
+                "kubernetes"
+              ]
+            ]
+          },
+          "file_names_not_ends_with": {
+            "$id": "#/properties/linters/items/file_names_not_ends_with",
+            "type": "array",
+            "title": "Filter on end of file name",
+            "description": "List of strings to filter the files according to their end of file name",
+            "default": [],
+            "examples": [
+              [
+                "vault.yml",
+                "galaxy.xml"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "lint_all_files": {
+            "$id": "#/properties/linters/items/lint_all_files",
+            "type": "boolean",
+            "title": "Lint all files",
+            "description": "If set to true, this linter will always lint all files, undepending their name/extensions/content",
+            "default": false
+          },
+          "test_folder": {
+            "$id": "#/properties/linters/items/test_folder",
+            "type": "string",
+            "title": "Test folder in .automation/",
+            "description": "Test folder containing _good_ and _bad_ files, if different from parent descriptor test_folder",
+            "examples": [
+              [
+                "bash_shfmt",
+                "terraform_terrascan"
+              ]
+            ]
           },
           "install": {
             "$id": "#/properties/linters/items/properties/install",
@@ -574,8 +841,15 @@
                 }
               }
             }
+          },
+          "ide": {
+            "$id": "#/properties/linters/items/properties/ide",
+            "type": "object",
+            "title": "IDE Integration",
+            "description": "List of IDE supporting the linter"
           }
-        }
+        },
+        "additionalProperties": false
       }
     }
   },
