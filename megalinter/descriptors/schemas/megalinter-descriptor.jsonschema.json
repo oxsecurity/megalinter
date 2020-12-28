@@ -1,63 +1,46 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "http://github.com/nvuillam/megalinter-descriptor.json",
-  "type": "object",
-  "title": "Mega-Linter descriptor",
-  "description": "Descriptor definition for Mega-Linter",
-  "required": [
-    "descriptor_id",
-    "descriptor_type",
-    "linters"
-  ],
-  "properties": {
-    "descriptor_id": {
-      "$id": "#/properties/descriptor_id",
-      "type": "string",
-      "title": "Descriptor unique identifier",
-      "description": "Uppercase unique identifier for the language, tooling format or identifier",
-      "default": "",
-      "examples": [
-        "PYTHON",
-        "XML",
-        "OPENAPI"
-      ]
-    },
-    "descriptor_label": {
-      "$id": "#/properties/descriptor_label",
-      "type": "string",
-      "title": "Descriptor label",
-      "description": "Label for descriptor documentation, if different from Id. Ex: C++ for CPP",
-      "default": "",
-      "examples": [
-        "C++",
-        "Visual Basic .NET"
-      ]
-    },
-    "descriptor_type": {
-      "$id": "#/properties/descriptor_type",
-      "type": "string",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "additionalProperties": false,
+  "definitions": {
+    "enum_flavors": {
       "enum": [
-        "language",
-        "format",
-        "tooling_format",
-        "other"
+        "all_flavors",
+        "all",
+        "dart",
+        "documentation",
+        "dotnet",
+        "go",
+        "java",
+        "javascript",
+        "php",
+        "python",
+        "ruby",
+        "rust",
+        "salesforce",
+        "scala",
+        "terraform"
       ],
-      "title": "Descriptor type",
-      "description": "Descriptor type: language, format or tooling format",
-      "default": "",
+      "type": "string"
+    }
+  },
+  "description": "Descriptor definition for Mega-Linter",
+  "properties": {
+    "active_only_if_file_found": {
+      "$id": "#/properties/active_only_if_file_found",
+      "description": "Name of the config file to be found, else descriptor will be deactivated",
       "examples": [
-        "language",
-        "format",
-        "tooling_format",
-        "other"
-      ]
+        [
+          ".editorconfig"
+        ]
+      ],
+      "title": "Active if file name found",
+      "type": "string"
     },
     "descriptor_flavors": {
       "$id": "#/properties/descriptor_flavors",
-      "type": "array",
-      "title": "Flavors",
-      "description": "Mega-Linter flavors matching this descriptor",
       "default": [],
+      "description": "Mega-Linter flavors matching this descriptor",
       "examples": [
         [
           "all_flavors",
@@ -66,47 +49,57 @@
         ]
       ],
       "items": {
-        "type": "string"
-      }
+        "$ref": "#/definitions/enum_flavors"
+      },
+      "title": "Flavors",
+      "type": "array"
     },
-    "file_extensions": {
-      "$id": "#/properties/file_extensions",
-      "type": "array",
-      "title": "Allowed file extensions",
-      "description": "File extension filters. Empty list excludes all files. Can be overridden at linter level",
-      "default": [],
+    "descriptor_id": {
+      "$id": "#/properties/descriptor_id",
+      "default": "",
+      "description": "Uppercase unique identifier for the language, tooling format or identifier",
       "examples": [
-        [
-          ".py",
-          ""
-        ]
+        "PYTHON",
+        "XML",
+        "OPENAPI"
       ],
-      "items": {
-        "type": "string"
-      }
+      "title": "Descriptor unique identifier",
+      "type": "string"
     },
-    "file_names_regex": {
-      "$id": "#/properties/file_names_regex",
-      "type": "array",
-      "title": "File name regex filters",
-      "description": "Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level",
-      "default": [],
+    "descriptor_label": {
+      "$id": "#/properties/descriptor_label",
+      "default": "",
+      "description": "Label for descriptor documentation, if different from Id. Ex: C++ for CPP",
       "examples": [
-        [
-          "Dockerfile(-.+)?",
-          "Jenkinsfile"
-        ]
+        "C++",
+        "Visual Basic .NET"
       ],
-      "items": {
-        "type": "string"
-      }
+      "title": "Descriptor label",
+      "type": "string"
+    },
+    "descriptor_type": {
+      "$id": "#/properties/descriptor_type",
+      "default": "",
+      "description": "Descriptor type: language, format or tooling format",
+      "enum": [
+        "language",
+        "format",
+        "tooling_format",
+        "other"
+      ],
+      "examples": [
+        "language",
+        "format",
+        "tooling_format",
+        "other"
+      ],
+      "title": "Descriptor type",
+      "type": "string"
     },
     "file_contains_regex": {
       "$id": "#/properties/file_contains_regex",
-      "type": "array",
-      "title": "File content regex filters",
-      "description": "Regular expression list for filtering files by their content",
       "default": [],
+      "description": "Regular expression list for filtering files by their content",
       "examples": [
         [
           "AWSTemplateFormatVersion",
@@ -115,26 +108,30 @@
       ],
       "items": {
         "type": "string"
-      }
+      },
+      "title": "File content regex filters",
+      "type": "array"
     },
-    "files_sub_directory": {
-      "$id": "#/properties/files_sub_directory",
-      "type": "string",
-      "title": "Files sub-directory",
-      "description": "Set when a linter only lints a sub-directory",
+    "file_extensions": {
+      "$id": "#/properties/file_extensions",
+      "default": [],
+      "description": "File extension filters. Empty list excludes all files. Can be overridden at linter level",
       "examples": [
         [
-          "ansible",
-          "kubernetes"
+          ".py",
+          ""
         ]
-      ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed file extensions",
+      "type": "array"
     },
     "file_names_not_ends_with": {
       "$id": "#/properties/file_names_not_ends_with",
-      "type": "array",
-      "title": "Filter on end of file name",
-      "description": "List of strings to filter the files according to their end of file name",
       "default": [],
+      "description": "List of strings to filter the files according to their end of file name",
       "examples": [
         [
           "vault.yml",
@@ -143,65 +140,42 @@
       ],
       "items": {
         "type": "string"
-      }
+      },
+      "title": "Filter on end of file name",
+      "type": "array"
     },
-    "lint_all_files": {
-      "$id": "#/properties/lint_all_files",
-      "type": "boolean",
-      "title": "Lint all files",
-      "description": "If set to true, this descriptor linters will always lint all files, undepending their name/extensions/content",
-      "default": false
-    },
-    "lint_all_other_linters_files": {
-      "$id": "#/properties/lint_all_other_linters_files",
-      "type": "boolean",
-      "title": "Lint all other linters files",
-      "description": "If set to true, this descriptor linters will lint one by one all files collected by all other linters",
-      "default": false
-    },
-    "active_only_if_file_found": {
-      "$id": "#/properties/active_only_if_file_found",
-      "type": "string",
-      "title": "Active if file name found",
-      "description": "Name of the config file to be found, else descriptor will be deactivated",
+    "file_names_regex": {
+      "$id": "#/properties/file_names_regex",
+      "default": [],
+      "description": "Regular expression list for filtering files by their base names using regex full match. Empty list includes all files. Can be overridden at linter level",
       "examples": [
         [
-          ".editorconfig"
+          "Dockerfile(-.+)?",
+          "Jenkinsfile"
         ]
-      ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "File name regex filters",
+      "type": "array"
     },
-    "processing_order": {
-      "$id": "#/properties/processing_order",
-      "type": "number",
-      "title": "Descriptor processing order",
-      "default": 0,
-      "description": "If descriptor linters may be slow, put a negative processing order. If it is fast, put a positive one. If you don't know, do not set",
+    "files_sub_directory": {
+      "$id": "#/properties/files_sub_directory",
+      "description": "Set when a linter only lints a sub-directory",
       "examples": [
         [
-          -9,
-          0,
-          9
+          "ansible",
+          "kubernetes"
         ]
-      ]
-    },
-    "test_folder": {
-      "$id": "#/properties/test_folder",
-      "type": "string",
-      "title": "Test folder in .automation/",
-      "description": "Test folder containing _good_ and _bad_ files. Default: lowercase(descriptor_id)",
-      "examples": [
-        [
-          "bash_shfmt",
-          "terraform_terrascan"
-        ]
-      ]
+      ],
+      "title": "Files sub-directory",
+      "type": "string"
     },
     "install": {
       "$id": "#/properties/install",
-      "type": "object",
-      "title": "Installation requirements",
-      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to use the descriptor linters",
       "default": {},
+      "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to use the descriptor linters",
       "examples": [
         {
           "apk": [
@@ -221,10 +195,23 @@
         }
       ],
       "properties": {
+        "apk": {
+          "$id": "#/properties/install/properties/apk",
+          "description": "APK packages identifiers (with or without version)",
+          "examples": [
+            [
+              "openjdk8"
+            ]
+          ],
+          "items": {
+            "$id": "#/properties/install/properties/apk/items",
+            "type": "string"
+          },
+          "title": "List of APK packages (Linux)",
+          "type": "array"
+        },
         "dockerfile": {
           "$id": "#/properties/install/properties/dockerfile",
-          "type": "array",
-          "title": "List of Dockerfile instructions packages",
           "description": "Will be automatically integrated in generated Dockerfile",
           "examples": [
             [
@@ -235,27 +222,22 @@
           "items": {
             "$id": "#/properties/install/properties/dockerfile/items",
             "type": "string"
-          }
+          },
+          "title": "List of Dockerfile instructions packages",
+          "type": "array"
         },
-        "apk": {
-          "$id": "#/properties/install/properties/apk",
-          "type": "array",
-          "title": "List of APK packages (Linux)",
-          "description": "APK packages identifiers (with or without version)",
-          "examples": [
-            [
-              "openjdk8"
-            ]
-          ],
+        "gem": {
+          "$id": "#/properties/install/properties/gem",
+          "description": "GEM packages identifiers (with or without version)",
           "items": {
-            "$id": "#/properties/install/properties/apk/items",
+            "$id": "#/properties/install/properties/gem/items",
             "type": "string"
-          }
+          },
+          "title": "List of GEM packages (Ruby)",
+          "type": "array"
         },
         "npm": {
           "$id": "#/properties/install/properties/npm",
-          "type": "array",
-          "title": "List of NPM packages (Node.js)",
           "description": "NPM packages identifiers (with or without version)",
           "examples": [
             [
@@ -265,47 +247,49 @@
           "items": {
             "$id": "#/properties/install/properties/npm/items",
             "type": "string"
-          }
-        },
-        "gem": {
-          "$id": "#/properties/install/properties/gem",
-          "type": "array",
-          "title": "List of GEM packages (Ruby)",
-          "description": "GEM packages identifiers (with or without version)",
-          "items": {
-            "$id": "#/properties/install/properties/gem/items",
-            "type": "string"
-          }
+          },
+          "title": "List of NPM packages (Node.js)",
+          "type": "array"
         },
         "pip": {
           "$id": "#/properties/install/properties/pip",
-          "type": "array",
-          "title": "List of PIP packages (Python)",
           "description": "PIP packages identifiers (with or without version)",
           "items": {
             "$id": "#/properties/install/properties/pip/items",
             "type": "string"
-          }
+          },
+          "title": "List of PIP packages (Python)",
+          "type": "array"
         }
-      }
+      },
+      "title": "Installation requirements",
+      "type": "object"
+    },
+    "lint_all_files": {
+      "$id": "#/properties/lint_all_files",
+      "default": false,
+      "description": "If set to true, this descriptor linters will always lint all files, undepending their name/extensions/content",
+      "title": "Lint all files",
+      "type": "boolean"
+    },
+    "lint_all_other_linters_files": {
+      "$id": "#/properties/lint_all_other_linters_files",
+      "default": false,
+      "description": "If set to true, this descriptor linters will lint one by one all files collected by all other linters",
+      "title": "Lint all other linters files",
+      "type": "boolean"
     },
     "linters": {
       "$id": "#/properties/linters",
-      "type": "array",
-      "title": "List of linters ",
       "description": "List of linter definitions associated to the descriptor",
       "examples": [
         [
           {
-            "linter_name": "eslint",
-            "linter_url": "https://eslint.org",
-            "linter_banner_image_url": "https://i.imgur.com/CFdruO8.jpg",
-            "name": "JAVASCRIPT_ES",
-            "config_file_name": ".eslintrc.yml",
             "cli_config_extra_args": [
               "--no-eslintrc",
               "--no-ignore"
             ],
+            "config_file_name": ".eslintrc.yml",
             "examples": [
               "eslint myfile.js",
               "eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js"
@@ -319,13 +303,13 @@
                 "eslint-plugin-prettier",
                 "babel-eslint"
               ]
-            }
+            },
+            "linter_banner_image_url": "https://i.imgur.com/CFdruO8.jpg",
+            "linter_name": "eslint",
+            "linter_url": "https://eslint.org",
+            "name": "JAVASCRIPT_ES"
           },
           {
-            "linter_name": "standard",
-            "linter_url": "https://github.com/standard/standard",
-            "linter_banner_image_url": "https://github.com/standard/standard/raw/master/sticker.png",
-            "name": "JAVASCRIPT_STANDARD",
             "examples": [
               "standard myfile.js"
             ],
@@ -333,26 +317,25 @@
               "npm": [
                 "standard"
               ]
-            }
+            },
+            "linter_banner_image_url": "https://github.com/standard/standard/raw/master/sticker.png",
+            "linter_name": "standard",
+            "linter_url": "https://github.com/standard/standard",
+            "name": "JAVASCRIPT_STANDARD"
           }
         ]
       ],
       "items": {
         "$id": "#/properties/linters/items",
-        "type": "object",
-        "title": "Linter definition",
+        "additionalProperties": false,
         "description": "Parameters defining behaviour and installation of a linter",
         "examples": [
           {
-            "linter_name": "eslint",
-            "linter_url": "https://eslint.org",
-            "linter_banner_image_url": "https://i.imgur.com/CFdruO8.jpg",
-            "name": "JAVASCRIPT_ES",
-            "config_file_name": ".eslintrc.yml",
             "cli_config_extra_args": [
               "--no-eslintrc",
               "--no-ignore"
             ],
+            "config_file_name": ".eslintrc.yml",
             "examples": [
               "eslint myfile.js",
               "eslint -c .eslintrc.yml --no-eslintrc --no-ignore myfile.js"
@@ -366,156 +349,34 @@
                 "eslint-plugin-prettier",
                 "babel-eslint"
               ]
-            }
+            },
+            "linter_banner_image_url": "https://i.imgur.com/CFdruO8.jpg",
+            "linter_name": "eslint",
+            "linter_url": "https://eslint.org",
+            "name": "JAVASCRIPT_ES"
           }
         ],
-        "required": [
-          "linter_name",
-          "linter_url",
-          "examples"
-        ],
         "properties": {
-          "linter_name": {
-            "$id": "#/properties/linters/items/properties/linter_name",
-            "type": "string",
-            "title": "Linter name",
-            "description": "Name of the linter (same as cli command if possible)",
-            "examples": [
-              "eslint"
-            ]
-          },
-          "name": {
-            "$id": "#/properties/linters/items/properties/name",
-            "type": "string",
-            "title": "Linter configuration key",
-            "description": "When several linters in a descriptor, set a different name that will be used for configuration",
-            "examples": [
-              "JAVASCRIPT_ES"
-            ]
-          },
           "class": {
             "$id": "#/properties/linters/items/properties/class",
-            "type": "string",
-            "title": "Linter custom python class name",
             "description": "If Mega-Linter core is not enough, use a custom class inheriting from Linter class",
             "examples": [
               "CSpellLinter",
               "DotnetFormatLinter",
               "RakuLinter"
-            ]
-          },
-          "linter_text": {
-            "$id": "#/properties/linters/items/properties/linter_text",
-            "type": "string",
-            "title": "Additional text for Mega-Linter online documentation"
-          },
-          "linter_url": {
-            "$id": "#/properties/linters/items/properties/linter_url",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter URL",
-            "description": "URL of the linter home page",
-            "examples": [
-              "https://eslint.org"
-            ]
-          },
-          "linter_repo": {
-            "$id": "#/properties/linters/items/properties/linter_repo",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter URL",
-            "description": "URL of the linter repository home page",
-            "examples": [
-              "https://github.com/eslint/eslint"
-            ]
-          },
-          "linter_banner_image_url": {
-            "$id": "#/properties/linters/items/properties/linter_banner_image_url",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter banner image URL",
-            "description": "URL of an image used to build header of linter Markdown documentation",
-            "examples": [
-              "https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png"
-            ]
-          },
-          "linter_image_url": {
-            "$id": "#/properties/linters/items/properties/linter_image_url",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter image URL",
-            "description": "URL of an image used in linter Markdown documentation",
-            "examples": [
-              "https://raku.org/camelia-logo.png"
-            ]
-          },
-          "linter_rules_url": {
-            "$id": "#/properties/linters/items/properties/linter_rules_url",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter rules URL",
-            "description": "URL to linter documentation listing all the rules that can be detected"
-          },
-          "linter_rules_configuration_url": {
-            "$id": "#/properties/linters/items/properties/linter_rules_configuration_url",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter rules configuration URL",
-            "description": "URL to linter documentation explaining how to configure the linter"
-          },
-          "linter_rules_inline_disable_url": {
-            "$id": "#/properties/linters/items/properties/linter_rules_inline_disable_url",
-            "type": "string",
-            "format": "uri",
-            "title": "Linter rules inline disable URL",
-            "description": "URL to linter documentation explaining how to disable rules directly with comments in files"
-          },
-          "linter_megalinter_ref_url": {
-            "$id": "#/properties/linters/items/properties/linter_megalinter_ref_url",
-            "type": "string",
-            "title": "Mega-Linter reference URL",
-            "description": "URL to linter documentation referring to Mega-Linter"
-          },
-          "cli_executable": {
-            "$id": "#/properties/linters/items/properties/cli_executable",
-            "type": "string",
-            "title": "CLI executable for linting request",
-            "description": "Override if different from linter_name"
-          },
-          "config_file_name": {
-            "$id": "#/properties/linters/items/properties/config_file_name",
-            "type": "string",
-            "title": "Default file name for the linter configuration file",
-            "description": "An explanation about the purpose of this instance.",
-            "examples": [
-              ".eslintrc.yml",
-              ".markdown-lint.yml",
-              ".python-black"
-            ]
-          },
-          "cli_lint_mode": {
-            "$id": "#/properties/linters/items/properties/cli_lint_mode",
-            "type": "string",
-            "title": "Linting mode",
-            "description": "Defines how the linter is called: file_by_file, project, list_of_files",
-            "default": "file_by_file",
-            "enum": [
-              "file_by_file",
-              "project",
-              "list_of_files"
-            ]
+            ],
+            "title": "Linter custom python class name",
+            "type": "string"
           },
           "cli_config_arg_name": {
             "$id": "#/properties/linters/items/properties/cli_config_arg_name",
-            "type": "string",
-            "title": "CLI configuration file argument name if different from -c"
+            "title": "CLI configuration file argument name if different from -c",
+            "type": "string"
           },
           "cli_config_extra_args": {
             "$id": "#/properties/linters/items/properties/cli_config_extra_args",
-            "type": "array",
-            "title": "Additional CLI arguments when config file is used",
-            "description": "When a configuration file is used with the linter CLI, send these additional arguments",
             "default": [],
+            "description": "When a configuration file is used with the linter CLI, send these additional arguments",
             "examples": [
               [
                 "--no-eslintrc",
@@ -524,137 +385,128 @@
             ],
             "items": {
               "type": "string"
-            }
+            },
+            "title": "Additional CLI arguments when config file is used",
+            "type": "array"
           },
-          "cli_lint_extra_args": {
-            "$id": "#/properties/linters/items/properties/cli_lint_extra_args",
-            "type": "array",
-            "title": "CLI Lint extra arguments (before config args)",
-            "description": "When linter CLI is call for linting, send these additional arguments before config args",
-            "default": [],
-            "items": {
-              "type": "string"
-            }
+          "cli_executable": {
+            "$id": "#/properties/linters/items/properties/cli_executable",
+            "description": "Override if different from linter_name",
+            "title": "CLI executable for linting request",
+            "type": "string"
           },
-          "cli_lint_extra_args_after": {
-            "$id": "#/properties/linters/items/properties/cli_lint_extra_args_after",
-            "type": "array",
-            "title": "CLI Lint extra arguments (after config args)",
-            "description": "When linter CLI is call for linting, send these additional arguments after config args",
-            "default": [],
-            "items": {
-              "type": "string"
-            }
+          "cli_executable_version": {
+            "$id": "#/properties/linters/items/properties/cli_executable_version",
+            "description": "Override if different from cli executable used for linting",
+            "title": "CLI executable for version request",
+            "type": "string"
           },
-          "cli_lint_fix_arg_name": {
-            "$id": "#/properties/linters/items/properties/cli_lint_fix_arg_name",
-            "type": "string",
-            "title": "If the linter can format or fix, input here the related triggering argument",
-            "examples": [
-              "--fix",
-              "--format"
-            ]
+          "cli_help_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_help_arg_name",
+            "title": "CLI Help argument name if different from -h",
+            "type": "string"
           },
-          "cli_lint_fix_remove_args": {
-            "$id": "#/properties/linters/items/properties/cli_lint_fix_remove_args",
-            "type": "array",
-            "title": "CLI Lint arguments to remove if fix is activated",
-            "description": "When linter CLI is call for fixing, remove these arguments",
-            "default": [],
+          "cli_help_extra_args": {
+            "$id": "#/properties/linters/items/properties/cli_help_extra_args",
+            "description": "When linter CLI is call for help, send these additional arguments",
             "items": {
               "type": "string"
             },
+            "title": "CLI help extra arguments",
+            "type": "array"
+          },
+          "cli_help_extra_commands": {
+            "$id": "#/properties/linters/items/properties/cli_help_extra_commands",
+            "description": "When linter CLI is call for help, send these additional commands",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI help extra commands",
+            "type": "array"
+          },
+          "cli_lint_extra_args": {
+            "$id": "#/properties/linters/items/properties/cli_lint_extra_args",
+            "default": [],
+            "description": "When linter CLI is call for linting, send these additional arguments before config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (before config args)",
+            "type": "array"
+          },
+          "cli_lint_extra_args_after": {
+            "$id": "#/properties/linters/items/properties/cli_lint_extra_args_after",
+            "default": [],
+            "description": "When linter CLI is call for linting, send these additional arguments after config args",
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint extra arguments (after config args)",
+            "type": "array"
+          },
+          "cli_lint_fix_arg_name": {
+            "$id": "#/properties/linters/items/properties/cli_lint_fix_arg_name",
+            "examples": [
+              "--fix",
+              "--format"
+            ],
+            "title": "If the linter can format or fix, input here the related triggering argument",
+            "type": "string"
+          },
+          "cli_lint_fix_remove_args": {
+            "$id": "#/properties/linters/items/properties/cli_lint_fix_remove_args",
+            "default": [],
+            "description": "When linter CLI is call for fixing, remove these arguments",
             "examples": [
               [
                 "--check"
               ]
-            ]
-          },
-          "cli_help_arg_name": {
-            "$id": "#/properties/linters/items/properties/cli_help_arg_name",
-            "type": "string",
-            "title": "CLI Help argument name if different from -h"
-          },
-          "cli_help_extra_args": {
-            "$id": "#/properties/linters/items/properties/cli_help_extra_args",
-            "type": "array",
-            "title": "CLI help extra arguments",
-            "description": "When linter CLI is call for help, send these additional arguments",
+            ],
             "items": {
               "type": "string"
-            }
+            },
+            "title": "CLI Lint arguments to remove if fix is activated",
+            "type": "array"
           },
-          "cli_help_extra_commands": {
-            "$id": "#/properties/linters/items/properties/cli_help_extra_commands",
-            "type": "array",
-            "title": "CLI help extra commands",
-            "description": "When linter CLI is call for help, send these additional commands",
-            "items": {
-              "type": "string"
-            }
-          },
-          "help_command_return_code": {
-            "$id": "#/properties/linters/items/properties/help_command_return_code",
-            "type": "number",
-            "title": "CLI Help valid return code if different from 0"
-          },
-          "cli_executable_version": {
-            "$id": "#/properties/linters/items/properties/cli_executable_version",
-            "type": "string",
-            "title": "CLI executable for version request",
-            "description": "Override if different from cli executable used for linting"
+          "cli_lint_mode": {
+            "$id": "#/properties/linters/items/properties/cli_lint_mode",
+            "default": "file_by_file",
+            "description": "Defines how the linter is called: file_by_file, project, list_of_files",
+            "enum": [
+              "file_by_file",
+              "project",
+              "list_of_files"
+            ],
+            "title": "Linting mode",
+            "type": "string"
           },
           "cli_version_arg_name": {
             "$id": "#/properties/linters/items/properties/cli_version_arg_name",
-            "type": "string",
-            "title": "CLI version argument name if different from -v"
+            "title": "CLI version argument name if different from -v",
+            "type": "string"
           },
           "cli_version_extra_args": {
             "$id": "#/properties/linters/items/properties/cli_version_extra_args",
-            "type": "array",
-            "title": "CLI Version extra arguments",
             "description": "When linter CLI is call for version, send these additional arguments",
             "items": {
               "type": "string"
-            }
+            },
+            "title": "CLI Version extra arguments",
+            "type": "array"
           },
-          "version_command_return_code": {
-            "$id": "#/properties/linters/items/properties/version_command_return_code",
-            "type": "number",
-            "title": "CLI version valid return code if different from 0"
-          },
-          "version_extract_regex": {
-            "$id": "#/properties/linters/items/properties/version_extract_regex",
-            "type": "string",
-            "title": "Regex to extract version",
-            "description": "If default regex to extract version from linter -v call, override it here",
+          "config_file_name": {
+            "$id": "#/properties/linters/items/properties/config_file_name",
+            "description": "An explanation about the purpose of this instance.",
             "examples": [
-              "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
-            ]
-          },
-          "linter_version_cache": {
-            "$id": "#/properties/linters/items/properties/linter_version_cache",
-            "type": "string",
-            "title": "Hardcoded version number",
-            "description": "If the linter is unable to return a version number, hardcode it here"
-          },
-          "variables": {
-            "$id": "#/properties/linters/items/properties/variables",
-            "type": "array",
-            "title": "Custom extra variables for the linter",
-            "description": "Try to not use this property except if you really have no choice",
-            "examples": [
-              {
-                "name": "ERROR_ON_MISSING_EXEC_BIT",
-                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead",
-                "default_value": "false"
-              }
-            ]
+              ".eslintrc.yml",
+              ".markdown-lint.yml",
+              ".python-black"
+            ],
+            "title": "Default file name for the linter configuration file",
+            "type": "string"
           },
           "examples": {
             "$id": "#/properties/linters/items/properties/examples",
-            "type": "array",
-            "title": "Linter CLI commands examples",
             "description": "Please add an example with and without configuration file in the command. They will appear in documentation",
             "examples": [
               [
@@ -668,14 +520,14 @@
             ],
             "items": {
               "type": "string"
-            }
+            },
+            "title": "Linter CLI commands examples",
+            "type": "array"
           },
           "file_extensions": {
             "$id": "#/properties/linters/items/file_extensions",
-            "type": "array",
-            "title": "Allowed file extensions",
-            "description": "File extension filters if different from the ones defined on parent descriptor",
             "default": [],
+            "description": "File extension filters if different from the ones defined on parent descriptor",
             "examples": [
               [
                 ".py",
@@ -684,26 +536,14 @@
             ],
             "items": {
               "type": "string"
-            }
-          },
-          "files_sub_directory": {
-            "$id": "#/properties/linters/items/files_sub_directory",
-            "type": "string",
-            "title": "Files sub-directory",
-            "description": "Set when a linter only lints a sub-directory",
-            "examples": [
-              [
-                "ansible",
-                "kubernetes"
-              ]
-            ]
+            },
+            "title": "Allowed file extensions",
+            "type": "array"
           },
           "file_names_not_ends_with": {
             "$id": "#/properties/linters/items/file_names_not_ends_with",
-            "type": "array",
-            "title": "Filter on end of file name",
-            "description": "List of strings to filter the files according to their end of file name",
             "default": [],
+            "description": "List of strings to filter the files according to their end of file name",
             "examples": [
               [
                 "vault.yml",
@@ -712,33 +552,37 @@
             ],
             "items": {
               "type": "string"
-            }
+            },
+            "title": "Filter on end of file name",
+            "type": "array"
           },
-          "lint_all_files": {
-            "$id": "#/properties/linters/items/lint_all_files",
-            "type": "boolean",
-            "title": "Lint all files",
-            "description": "If set to true, this linter will always lint all files, undepending their name/extensions/content",
-            "default": false
-          },
-          "test_folder": {
-            "$id": "#/properties/linters/items/test_folder",
-            "type": "string",
-            "title": "Test folder in .automation/",
-            "description": "Test folder containing _good_ and _bad_ files, if different from parent descriptor test_folder",
+          "files_sub_directory": {
+            "$id": "#/properties/linters/items/files_sub_directory",
+            "description": "Set when a linter only lints a sub-directory",
             "examples": [
               [
-                "bash_shfmt",
-                "terraform_terrascan"
+                "ansible",
+                "kubernetes"
               ]
-            ]
+            ],
+            "title": "Files sub-directory",
+            "type": "string"
+          },
+          "help_command_return_code": {
+            "$id": "#/properties/linters/items/properties/help_command_return_code",
+            "title": "CLI Help valid return code if different from 0",
+            "type": "number"
+          },
+          "ide": {
+            "$id": "#/properties/linters/items/properties/ide",
+            "description": "List of IDE supporting the linter",
+            "title": "IDE Integration",
+            "type": "object"
           },
           "install": {
             "$id": "#/properties/linters/items/properties/install",
-            "type": "object",
-            "title": "Installation requirements",
-            "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter",
             "default": {},
+            "description": "List of apk, dockerfile instructions, npm/pip/gem packages required to install the linter",
             "examples": [
               {
                 "dockerfile": [
@@ -759,10 +603,24 @@
               }
             ],
             "properties": {
+              "apk": {
+                "$id": "#/properties/linters/items/properties/install/properties/apk",
+                "description": "APK packages identifiers (with or without version)",
+                "examples": [
+                  [
+                    "perl",
+                    "perl-dev"
+                  ]
+                ],
+                "items": {
+                  "$id": "#/properties/linters/items/properties/install/properties/apk/items",
+                  "type": "string"
+                },
+                "title": "List of APK packages (Linux)",
+                "type": "array"
+              },
               "dockerfile": {
                 "$id": "#/properties/linters/items/properties/install/properties/dockerfile",
-                "type": "array",
-                "title": "List of Dockerfile instructions packages",
                 "description": "Will be automatically integrated in generated Dockerfile",
                 "examples": [
                   [
@@ -774,44 +632,12 @@
                 "items": {
                   "$id": "#/properties/linters/items/properties/install/properties/dockerfile/items",
                   "type": "string"
-                }
-              },
-              "apk": {
-                "$id": "#/properties/linters/items/properties/install/properties/apk",
-                "type": "array",
-                "title": "List of APK packages (Linux)",
-                "description": "APK packages identifiers (with or without version)",
-                "examples": [
-                  [
-                    "perl",
-                    "perl-dev"
-                  ]
-                ],
-                "items": {
-                  "$id": "#/properties/linters/items/properties/install/properties/apk/items",
-                  "type": "string"
-                }
-              },
-              "npm": {
-                "$id": "#/properties/linters/items/properties/install/properties/npm",
-                "type": "array",
-                "title": "List of NPM packages (Node.js)",
-                "description": "NPM packages identifiers (with or without version)",
-                "examples": [
-                  [
-                    "eslint",
-                    "eslint-config-airbnb@3.2.1"
-                  ]
-                ],
-                "items": {
-                  "$id": "#/properties/linters/items/properties/install/properties/npm/items",
-                  "type": "string"
-                }
+                },
+                "title": "List of Dockerfile instructions packages",
+                "type": "array"
               },
               "gem": {
                 "$id": "#/properties/linters/items/properties/install/properties/gem",
-                "type": "array",
-                "title": "List of GEM packages (Ruby)",
                 "description": "GEM packages identifiers (with or without version)",
                 "examples": [
                   [
@@ -823,12 +649,28 @@
                 "items": {
                   "$id": "#/properties/linters/items/properties/install/properties/gem/items",
                   "type": "string"
-                }
+                },
+                "title": "List of GEM packages (Ruby)",
+                "type": "array"
+              },
+              "npm": {
+                "$id": "#/properties/linters/items/properties/install/properties/npm",
+                "description": "NPM packages identifiers (with or without version)",
+                "examples": [
+                  [
+                    "eslint",
+                    "eslint-config-airbnb@3.2.1"
+                  ]
+                ],
+                "items": {
+                  "$id": "#/properties/linters/items/properties/install/properties/npm/items",
+                  "type": "string"
+                },
+                "title": "List of NPM packages (Node.js)",
+                "type": "array"
               },
               "pip": {
                 "$id": "#/properties/linters/items/properties/install/properties/pip",
-                "type": "array",
-                "title": "List of PIP packages (Python)",
                 "description": "PIP packages identifiers (with or without version)",
                 "examples": [
                   [
@@ -838,20 +680,200 @@
                 "items": {
                   "$id": "#/properties/linters/items/properties/install/properties/pip/items",
                   "type": "string"
-                }
+                },
+                "title": "List of PIP packages (Python)",
+                "type": "array"
               }
-            }
+            },
+            "title": "Installation requirements",
+            "type": "object"
           },
-          "ide": {
-            "$id": "#/properties/linters/items/properties/ide",
-            "type": "object",
-            "title": "IDE Integration",
-            "description": "List of IDE supporting the linter"
+          "lint_all_files": {
+            "$id": "#/properties/linters/items/lint_all_files",
+            "default": false,
+            "description": "If set to true, this linter will always lint all files, undepending their name/extensions/content",
+            "title": "Lint all files",
+            "type": "boolean"
+          },
+          "linter_banner_image_url": {
+            "$id": "#/properties/linters/items/properties/linter_banner_image_url",
+            "description": "URL of an image used to build header of linter Markdown documentation",
+            "examples": [
+              "https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png"
+            ],
+            "format": "uri",
+            "title": "Linter banner image URL",
+            "type": "string"
+          },
+          "linter_image_url": {
+            "$id": "#/properties/linters/items/properties/linter_image_url",
+            "description": "URL of an image used in linter Markdown documentation",
+            "examples": [
+              "https://raku.org/camelia-logo.png"
+            ],
+            "format": "uri",
+            "title": "Linter image URL",
+            "type": "string"
+          },
+          "linter_megalinter_ref_url": {
+            "$id": "#/properties/linters/items/properties/linter_megalinter_ref_url",
+            "description": "URL to linter documentation referring to Mega-Linter",
+            "title": "Mega-Linter reference URL",
+            "type": "string"
+          },
+          "linter_name": {
+            "$id": "#/properties/linters/items/properties/linter_name",
+            "description": "Name of the linter (same as cli command if possible)",
+            "examples": [
+              "eslint"
+            ],
+            "title": "Linter name",
+            "type": "string"
+          },
+          "linter_repo": {
+            "$id": "#/properties/linters/items/properties/linter_repo",
+            "description": "URL of the linter repository home page",
+            "examples": [
+              "https://github.com/eslint/eslint"
+            ],
+            "format": "uri",
+            "title": "Linter URL",
+            "type": "string"
+          },
+          "linter_rules_configuration_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_configuration_url",
+            "description": "URL to linter documentation explaining how to configure the linter",
+            "format": "uri",
+            "title": "Linter rules configuration URL",
+            "type": "string"
+          },
+          "linter_rules_inline_disable_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_inline_disable_url",
+            "description": "URL to linter documentation explaining how to disable rules directly with comments in files",
+            "format": "uri",
+            "title": "Linter rules inline disable URL",
+            "type": "string"
+          },
+          "linter_rules_url": {
+            "$id": "#/properties/linters/items/properties/linter_rules_url",
+            "description": "URL to linter documentation listing all the rules that can be detected",
+            "format": "uri",
+            "title": "Linter rules URL",
+            "type": "string"
+          },
+          "linter_text": {
+            "$id": "#/properties/linters/items/properties/linter_text",
+            "title": "Additional text for Mega-Linter online documentation",
+            "type": "string"
+          },
+          "linter_url": {
+            "$id": "#/properties/linters/items/properties/linter_url",
+            "description": "URL of the linter home page",
+            "examples": [
+              "https://eslint.org"
+            ],
+            "format": "uri",
+            "title": "Linter URL",
+            "type": "string"
+          },
+          "linter_version_cache": {
+            "$id": "#/properties/linters/items/properties/linter_version_cache",
+            "description": "If the linter is unable to return a version number, hardcode it here",
+            "title": "Hardcoded version number",
+            "type": "string"
+          },
+          "name": {
+            "$id": "#/properties/linters/items/properties/name",
+            "description": "When several linters in a descriptor, set a different name that will be used for configuration",
+            "examples": [
+              "JAVASCRIPT_ES"
+            ],
+            "title": "Linter configuration key",
+            "type": "string"
+          },
+          "test_folder": {
+            "$id": "#/properties/linters/items/test_folder",
+            "description": "Test folder containing _good_ and _bad_ files, if different from parent descriptor test_folder",
+            "examples": [
+              [
+                "bash_shfmt",
+                "terraform_terrascan"
+              ]
+            ],
+            "title": "Test folder in .automation/",
+            "type": "string"
+          },
+          "variables": {
+            "$id": "#/properties/linters/items/properties/variables",
+            "description": "Try to not use this property except if you really have no choice",
+            "examples": [
+              {
+                "default_value": "false",
+                "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead",
+                "name": "ERROR_ON_MISSING_EXEC_BIT"
+              }
+            ],
+            "title": "Custom extra variables for the linter",
+            "type": "array"
+          },
+          "version_command_return_code": {
+            "$id": "#/properties/linters/items/properties/version_command_return_code",
+            "title": "CLI version valid return code if different from 0",
+            "type": "number"
+          },
+          "version_extract_regex": {
+            "$id": "#/properties/linters/items/properties/version_extract_regex",
+            "description": "If default regex to extract version from linter -v call, override it here",
+            "examples": [
+              "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
+            ],
+            "title": "Regex to extract version",
+            "type": "string"
           }
         },
-        "additionalProperties": false
-      }
+        "required": [
+          "linter_name",
+          "linter_url",
+          "examples"
+        ],
+        "title": "Linter definition",
+        "type": "object"
+      },
+      "title": "List of linters ",
+      "type": "array"
+    },
+    "processing_order": {
+      "$id": "#/properties/processing_order",
+      "default": 0,
+      "description": "If descriptor linters may be slow, put a negative processing order. If it is fast, put a positive one. If you don't know, do not set",
+      "examples": [
+        [
+          -9,
+          0,
+          9
+        ]
+      ],
+      "title": "Descriptor processing order",
+      "type": "number"
+    },
+    "test_folder": {
+      "$id": "#/properties/test_folder",
+      "description": "Test folder containing _good_ and _bad_ files. Default: lowercase(descriptor_id)",
+      "examples": [
+        [
+          "bash_shfmt",
+          "terraform_terrascan"
+        ]
+      ],
+      "title": "Test folder in .automation/",
+      "type": "string"
     }
   },
-  "additionalProperties": false
+  "required": [
+    "descriptor_id",
+    "descriptor_type",
+    "linters"
+  ],
+  "title": "Mega-Linter descriptor",
+  "type": "object"
 }
