@@ -40,6 +40,8 @@ GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
 BASE_SHIELD_COUNT_LINK = "https://img.shields.io/docker/pulls"
 
+DESCRIPTOR_JSON_SCHEMA = f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json"
+
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
     "brackets": {"label": "Brackets", "url": "http://brackets.io/"},
@@ -1159,7 +1161,7 @@ def replace_anchors_by_links(file_path, moves):
 # Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
     with open(
-        f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r", encoding="utf-8"
+        DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8"
     ) as schema_file:
         descriptor_schema = schema_file.read()
         descriptor_files = megalinter.linter_factory.list_descriptor_files()
