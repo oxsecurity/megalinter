@@ -1,0 +1,362 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://github.com/nvuillam/megalinter-configuration.json",
+  "type": "object",
+  "title": "Mega-Linter configuration",
+  "description": "Mega-Linter configuration file",
+  "properties": {
+    "APPLY_FIXES": {
+      "$id": "#/properties/APPLY_FIXES",
+      "type": [
+        "array",
+        "string"
+      ],
+      "title": "Apply linters formatting and auto-fixes",
+      "description": "'all' to apply formattings and auto-fixes of all linters, or a list of linter keys",
+      "default": "none",
+      "examples": [
+        "all",
+        "none",
+        [
+          "JAVASCRIPT_ES",
+          "MARKDOWN_MARKDOWNLINT"
+        ]
+      ]
+    },
+    "ADDITIONAL_EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
+      "type": "array",
+      "title": "Additional excluded directories",
+      "description": "List of additional excluded directory basenames to add to Mega-Linter default excluded directories. They are excluded at any nested level.",
+      "examples": [
+        [
+          "test"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "DEFAULT_BRANCH": {
+      "$id": "#/properties/DEFAULT_BRANCH",
+      "type": "string",
+      "title": "Default git branch",
+      "description": "The name of the repository default branch. Warning: In new github repositories, master branch is named main, so you need to override this value with main",
+      "default": "master",
+      "examples": [
+        "master",
+        "main"
+      ]
+    },
+    "DEFAULT_WORKSPACE": {
+      "$id": "#/properties/DEFAULT_WORKSPACE",
+      "type": "string",
+      "title": "Default Workspace",
+      "description": "The location containing files to lint if you are running as docker image",
+      "default": "/tmp/lint"
+    },
+    "DISABLE": {
+      "$id": "#/properties/DISABLE",
+      "type": "array",
+      "title": "Disabled descriptor keys",
+      "description": "If DISABLE is set, the linters in the listed descriptors will be skipped",
+      "examples": [
+        [
+          "BASH",
+          "HTML"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "DISABLE_LINTERS": {
+      "$id": "#/properties/DISABLE_LINTERS",
+      "type": "array",
+      "title": "Disabled linter keys",
+      "description": "If DISABLE_LINTERS is set, the listed linters will be skipped",
+      "examples": [
+        [
+          "BASH_BASH_SHFMT",
+          "JAVASCRIPT_STANDARD"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "DISABLE_ERRORS": {
+      "$id": "#/properties/DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "Disable errors",
+      "default": false,
+      "description": "Flag to have the Mega-Linter complete with exit code 0 even if errors were detected."
+    },
+    "EMAIL_REPORTER": {
+      "$id": "#/properties/EMAIL_REPORTER",
+      "type": "boolean",
+      "title": "Activate Email reporter",
+      "default": true,
+      "description": "Mega-Linter can send email with reports to given adresses. Please set EMAIL_REPORTER_** variables if activated"
+    },
+    "EMAIL_REPORTER_EMAIL": {
+      "$id": "#/properties/EMAIL_REPORTER_EMAIL",
+      "type": "string",
+      "title": "Email reporter: E-mail addresses",
+      "description": "Comma-separated list of recipient emails, that will receive reports"
+    },
+    "EMAIL_REPORTER_SEND_SUCCESS": {
+      "$id": "#/properties/EMAIL_REPORTER_SEND_SUCCESS",
+      "type": "boolean",
+      "title": "Send email reports even when success",
+      "default": false,
+      "description": "Define to true if you want to receive reports by mail even when there is no errors or updated sources"
+    },
+    "EMAIL_REPORTER_SENDER": {
+      "$id": "#/properties/EMAIL_REPORTER_SENDER",
+      "type": "string",
+      "title": "Email reporter: Sender of emails",
+      "default": "megalinter@gmail.com"
+    },
+    "EMAIL_REPORTER_SMTP_HOST": {
+      "$id": "#/properties/EMAIL_REPORTER_SMTP_HOST",
+      "type": "string",
+      "title": "Email reporter: SMTP server host",
+      "default": "smtp.gmail.com"
+    },
+    "EMAIL_REPORTER_SMTP_PORT": {
+      "$id": "#/properties/EMAIL_REPORTER_SMTP_PORT",
+      "type": "number",
+      "title": "Email reporter: SMTP server port",
+      "default": "465"
+    },
+    "EMAIL_REPORTER_SMTP_USERNAME": {
+      "$id": "#/properties/EMAIL_REPORTER_SMTP_USERNAME",
+      "type": "string",
+      "title": "Email reporter: SMTP username",
+      "default": "megalinter@gmail.com"
+    },
+    "EMAIL_REPORTER_SMTP_PASSWORD": {
+      "$id": "#/properties/EMAIL_REPORTER_SMTP_PASSWORD",
+      "type": "string",
+      "title": "Email reporter: SMTP server password. Never hardcode it in a config variable, use secrets and context variables"
+    },
+    "ENABLE": {
+      "$id": "#/properties/ENABLE",
+      "type": "array",
+      "title": "Enabled descriptor keys",
+      "description": "If ENABLE is not set, all descriptors are activated by default. If set, all linters of listed descriptors will be activated by default",
+      "examples": [
+        [
+          "BASH",
+          "HTML",
+          "JAVASCRIPT"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "ENABLE_LINTERS": {
+      "$id": "#/properties/ENABLE_LINTERS",
+      "type": "array",
+      "title": "Enabled linter keys",
+      "description": "If ENABLE_LINTERS is set, only listed linters will be processed",
+      "examples": [
+        [
+          "JAVASCRIPT_ES",
+          "PYTHON_PYLINT"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "EXCLUDED_DIRECTORIES": {
+      "$id": "#/properties/EXCLUDED_DIRECTORIES",
+      "type": "array",
+      "title": "Excluded directories",
+      "description": "List of excluded directory basenames replacing Mega-Linter default excluded directories. They are excluded at any nested level.",
+      "examples": [
+        [
+          ".github",
+          "node_modules"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "FILEIO_REPORTER": {
+      "$id": "#/properties/FILEIO_REPORTER",
+      "type": "boolean",
+      "title": "Activate File.io reporter",
+      "default": false,
+      "description": "If you don't use artifacts upload to read Mega-Linter reports, you can access them with an hyperlink to file.io. Important: Mega-Linter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)"
+    },
+    "FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/FILTER_REGEX_EXCLUDE",
+      "type": "string",
+      "title": "Excluding regex filter",
+      "description": "Regular expression defining which files will be excluded from linting",
+      "examples": [
+        "(\\.automation/test|docs/javascripts|docs/overrides|flavors|clj-kondo|TEMPLATES)",
+        "(src/test)"
+      ]
+    },
+    "FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/FILTER_REGEX_INCLUDE",
+      "type": "string",
+      "title": "Including regex filter",
+      "description": "Regular expression defining which files will be processed by linters",
+      "examples": [
+        "(src/)"
+      ]
+    },
+    "FLAVOR_SUGGESTIONS": {
+      "$id": "#/properties/FLAVOR_SUGGESTIONS",
+      "type": "boolean",
+      "title": "Flavor suggestions",
+      "default": true,
+      "description": "Provides suggestions about different Mega-Linter flavors to use to improve runtime performances"
+    },
+    "GITHUB_API_URL": {
+      "$id": "#/properties/GITHUB_API_URL",
+      "type": "string",
+      "format": "uri",
+      "title": "GitHub API base URL",
+      "description": "URL where the github API can be reached. Must be overriden if using GitHub Enterprise",
+      "default": "https://api.github.com",
+      "examples": [
+        "https://github.my-company.com/api/v3"
+      ]
+    },
+    "GITHUB_COMMENT_REPORTER": {
+      "$id": "#/properties/GITHUB_COMMENT_REPORTER",
+      "type": "boolean",
+      "title": "Activate GitHub PR Comments reporter",
+      "default": true,
+      "description": "Posts Mega-Linter results summary in the comments of the related pull request (if existing)"
+    },
+    "GITHUB_SERVER_URL": {
+      "$id": "#/properties/GITHUB_SERVER_URL",
+      "type": "string",
+      "format": "uri",
+      "title": "GitHub server base URL",
+      "description": "URL of the GitHub instance. Must be overriden if using GitHub Enterprise",
+      "default": "https://github.com",
+      "examples": [
+        "https://github.my-company.com/"
+      ]
+    },
+    "GITHUB_STATUS_REPORTER": {
+      "$id": "#/properties/GITHUB_STATUS_REPORTER",
+      "type": "boolean",
+      "title": "Activate GitHub Status reporter",
+      "default": true,
+      "description": "Posts a status on the pull request for each processed linter"
+    },
+    "GITHUB_WORKSPACE": {
+      "$id": "#/properties/GITHUB_WORKSPACE",
+      "type": "string",
+      "title": "GitHub Workspace",
+      "description": "Base directory for REPORT_OUTPUT_FOLDER, for user-defined linter rules location, for location of linted files if DEFAULT_WORKSPACE is not set",
+      "default": "/tmp/lint"
+    },
+    "LINTER_RULES_PATH": {
+      "$id": "#/properties/LINTER_RULES_PATH",
+      "type": "string",
+      "title": "Linter rules path",
+      "description": "Directory for all linter configuration rules. Can be a local folder or a remote URL. Not necessary if your linters configuration files are at the root of your repository",
+      "default": ".github/linters",
+      "examples": [
+        "myrulesfolder",
+        "https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules"
+      ]
+    },
+    "LOG_FILE": {
+      "$id": "#/properties/LOG_FILE",
+      "type": "string",
+      "title": "Log file name",
+      "description": "The file name for outputting logs. All output is sent to the log file regardless of LOG_LEVEL",
+      "default": "mega-linter.log"
+    },
+    "LOG_LEVEL": {
+      "$id": "#/properties/LOG_LEVEL",
+      "type": "string",
+      "title": "Log level",
+      "description": "How much output the script will generate to the console. One of INFO, DEBUG, WARNING or ERROR.",
+      "default": "INFO",
+      "enum": [
+        "INFO",
+        "DEBUG",
+        "WARNING",
+        "ERROR"
+      ]
+    },
+    "OUTPUT_FOLDER": {
+      "$id": "#/properties/OUTPUT_FOLDER",
+      "type": "string",
+      "title": "Output folder",
+      "description": "The location where the output reporting will be generated to",
+      "default": "report"
+    },
+    "PARALLEL": {
+      "$id": "#/properties/PARALLEL",
+      "type": "boolean",
+      "title": "Parallel processing",
+      "default": true,
+      "description": "Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files"
+    },
+    "PRINT_ALPACA": {
+      "$id": "#/properties/PRINT_ALPACA",
+      "type": "boolean",
+      "title": "Print le lama NUL (alpaca)",
+      "default": true,
+      "description": "Enable printing alpaca image to console output"
+    },
+    "SHOW_ELAPSED_TIME": {
+      "$id": "#/properties/SHOW_ELAPSED_TIME",
+      "type": "boolean",
+      "title": "Show elapsed time",
+      "default": false,
+      "description": "Displays elapsed time for each linter in reports"
+    },
+    "TAP_REPORTER": {
+      "$id": "#/properties/TAP_REPORTER",
+      "type": "boolean",
+      "title": "Activate TAP reporter",
+      "default": false,
+      "description": "General execution log mega-linter.log (same as ConsoleReporter log) + a separate log file for each processed linter"
+    },
+    "TAP_REPORTER_SUB_FOLDER": {
+      "$id": "#/properties/TAP_REPORTER_SUB_FOLDER",
+      "type": "string",
+      "title": "TAP reporter sub folder",
+      "default": "tap",
+      "description": "Sub-folder of reports folder containing TAP logs"
+    },
+    "TEXT_REPORTER": {
+      "$id": "#/properties/TEXT_REPORTER",
+      "type": "boolean",
+      "title": "Activate text reporter",
+      "default": true,
+      "description": "General execution log mega-linter.log (same as ConsoleReporter log) + a separate log file for each processed linter"
+    },
+    "TEXT_REPORTER_SUB_FOLDER": {
+      "$id": "#/properties/TEXT_REPORTER_SUB_FOLDER",
+      "type": "string",
+      "title": "Text reporter sub folder",
+      "default": "linters_logs",
+      "description": "Sub-folder of reports folder containing text logs"
+    },
+    "VALIDATE_ALL_CODEBASE": {
+      "$id": "#/properties/SHOW_ELAPSED_TIME",
+      "type": "boolean",
+      "title": "Validate all code base",
+      "default": true,
+      "description": "Will parse the entire repository and find all files to validate across all types. When set to false, only new or edited files will be parsed for validation."
+    }
+  },
+  "additionalProperties": false
+}

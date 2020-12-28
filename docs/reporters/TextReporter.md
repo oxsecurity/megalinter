@@ -31,5 +31,5 @@ If you are not using GitHub Actions, you can export `mega-linter.log` and folder
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | :--------------: |
-| TEXT_REPORTER | Activates/deactivates reporter | true |
-| TEXT_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing text logs | text |
+| TEXT_REPORTER | Activates/deactivates reporter | `true` |
+| TEXT_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing text logs | `linters_logs` |
