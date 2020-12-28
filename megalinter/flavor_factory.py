@@ -31,6 +31,9 @@ def get_all_flavors():
 def list_megalinter_flavors():
     flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
+        "ci_light": {
+            "label": "Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
+        },
         "dart": {"label": "Mega-Linter optimized for DART based projects"},
         "documentation": {"label": "Mega-Linter for documentation projects"},
         "dotnet": {
@@ -70,14 +73,17 @@ def check_active_linters_match_flavor(active_linters):
     for active_linter in active_linters:
         if active_linter.name not in flavor_linters:
             missing_linters += [active_linter.name]
+            active_linter.is_active = False
     if len(missing_linters) > 0:
         missing_linters_str = ",".join(missing_linters)
-        logging.error(
+        logging.warning(
             f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
+            "As they are not available in this docker image, they will not be processed\n"
             "To solve this problem, please either: \n"
             "- use default flavor nvuillam/mega-linter\n"
-            "- add missing linters in DISABLE variable in your .mega-linter.yml config file "
-            "located in your root directory"
+            "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
+            "located in your root directory\n"
+            "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
         )
         return False
     return True

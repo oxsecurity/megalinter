@@ -2,6 +2,7 @@ descriptor_id: DOCKERFILE
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - ci_light
 file_names_regex:
   - 'Dockerfile'
 test_folder: docker

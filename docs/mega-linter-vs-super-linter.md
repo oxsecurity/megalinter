@@ -8,7 +8,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ## More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
 
 ## Performances
 
@@ -35,6 +35,7 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 
 ## Enhanced Configuration
 
+- **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
 - Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`

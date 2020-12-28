@@ -103,9 +103,11 @@ class Megalinter:
         for reporter in self.reporters:
             reporter.initialize()
 
-        # Exit with error message if not all active linters are covered by current Mega-linter image flavor
+        # Display warning if selected flavors does not match all linters
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
-            return
+            active_linters = [
+                linter for linter in active_linters if linter.is_active is True
+            ]
 
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)

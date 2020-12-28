@@ -2,6 +2,7 @@ descriptor_id: GIT
 descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - ci_light
 install:
   dockerfile:
     - RUN git config --global core.autocrlf true

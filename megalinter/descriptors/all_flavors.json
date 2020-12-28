@@ -1,4 +1,22 @@
 {
+    "ci_light": {
+        "descriptors": [
+            "GIT"
+        ],
+        "label": "Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
+        "linters": [
+            "DOCKERFILE_DOCKERFILELINT",
+            "DOCKERFILE_HADOLINT",
+            "ENV_DOTENV_LINTER",
+            "GIT_GIT_DIFF",
+            "GROOVY_NPM_GROOVY_LINT",
+            "JSON_JSONLINT",
+            "JSON_V8R",
+            "XML_XMLLINT",
+            "YAML_YAMLLINT",
+            "YAML_V8R"
+        ]
+    },
     "dart": {
         "descriptors": [
             "GIT"
