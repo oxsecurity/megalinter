@@ -4,6 +4,10 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Nothing yet :)
+
+## [4.20.0] 2020-12-28
+
 - Flavors
   - Add **ci_light** flavor for only CI config files (Dockerfile,Jenkinsfile,JSON,YAML,XML)
   - Add **salesforce** flavor for Salesforce projects (DX or Metadata)
