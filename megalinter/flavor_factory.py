@@ -31,7 +31,9 @@ def get_all_flavors():
 def list_megalinter_flavors():
     flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
-        "ci_light": {"label": "Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"},
+        "ci_light": {
+            "label": "Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
+        },
         "dart": {"label": "Mega-Linter optimized for DART based projects"},
         "documentation": {"label": "Mega-Linter for documentation projects"},
         "dotnet": {

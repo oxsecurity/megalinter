@@ -105,7 +105,9 @@ class Megalinter:
 
         # Display warning if selected flavors does not match all linters
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
-            active_linters = [linter for linter in active_linters if linter.is_active is True]
+            active_linters = [
+                linter for linter in active_linters if linter.is_active is True
+            ]
 
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
