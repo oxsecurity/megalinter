@@ -51,6 +51,8 @@ class ConsoleLinterReporter(Reporter):
         if self.master.return_code == 0 and self.master.status == "success":
             logging.info(f"✅ {base_phrase} successfully - ({elapse})")
         elif self.master.return_code == 0 and self.master.status != "success":
-            logging.warning(f"✅ {base_phrase}: Found non blocking error(s) - ({elapse})")
+            logging.warning(
+                f"✅ {base_phrase}: Found non blocking error(s) - ({elapse})"
+            )
         elif self.master.return_code != 0 and self.master.status != "success":
             logging.error(f"❌ {base_phrase}: Found error(s) - ({elapse})")

@@ -74,18 +74,25 @@ class ConsoleReporter(Reporter):
                     found = str(len(linter.files))
                     errors = str(linter.number_errors)
                 table_line = [
-                    status + ' ' + linter.descriptor_id,
+                    status + " " + linter.descriptor_id,
                     linter.linter_name,
                     found,
                     nb_fixed_cell,
-                    errors
+                    errors,
                 ]
                 if self.master.show_elapsed_time is True:
                     table_line += [str(round(linter.elapsed_time_s, 2)) + "s"]
                 table_data += [table_line]
         table = terminaltables.AsciiTable(table_data)
         table.title = "----SUMMARY"
-        table.justify_columns = {0: 'left', 1: 'left', 2: 'right', 3: 'right', 4: 'right', 5: 'right'}
+        table.justify_columns = {
+            0: "left",
+            1: "left",
+            2: "right",
+            3: "right",
+            4: "right",
+            5: "right",
+        }
         # Output table in console
         logging.info("")
         for table_line in table.table.splitlines():
