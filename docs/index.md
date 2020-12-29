@@ -20,7 +20,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**38** languages](supported-linters.md#languages), [**17** formats](supported-linters.md#formats), [**16** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**38** languages](supported-linters.md#languages), [**17** formats](supported-linters.md#formats), [**16** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers. 
 
 Ready to use [out of the box](installation.md) as a **GitHub Action** or **any CI system**, [**highly configurable**](configuration.md) and **free for all uses**
 
