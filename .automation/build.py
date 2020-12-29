@@ -10,6 +10,7 @@ import re
 import sys
 from shutil import copyfile
 from typing import Any
+from urllib import parse as parse_urllib
 
 import jsonschema
 import markdown
@@ -17,7 +18,6 @@ import megalinter
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
-from urllib import parse as parse_urllib
 from webpreview import web_preview
 
 BRANCH = "master"
@@ -1131,12 +1131,20 @@ def md_ide(ide):
 
 
 def md_ide_install_link(ide, ide_extension):
-    if ide == 'vscode':
+    if ide == "vscode":
         item_name = None
-        if ide_extension['url'].startswith("https://marketplace.visualstudio.com/items?itemName="):
-            item_name = dict(parse_urllib.parse_qsl(parse_urllib.urlsplit(ide_extension['url']).query))["itemName"]
-        elif ide_extension['url'].startswith("https://marketplace.visualstudio.com/items/"):
-            item_name = ide_extension['url'].split("/items/", 1)[1]
+        if ide_extension["url"].startswith(
+            "https://marketplace.visualstudio.com/items?itemName="
+        ):
+            item_name = dict(
+                parse_urllib.parse_qsl(
+                    parse_urllib.urlsplit(ide_extension["url"]).query
+                )
+            )["itemName"]
+        elif ide_extension["url"].startswith(
+            "https://marketplace.visualstudio.com/items/"
+        ):
+            item_name = ide_extension["url"].split("/items/", 1)[1]
         if item_name is not None:
             install_link = f"vscode:extension/{item_name}"
             return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
