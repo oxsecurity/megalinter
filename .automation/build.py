@@ -317,14 +317,18 @@ def generate_documentation():
     )
     # Update welcome phrase
     welcome_phrase = (
-        f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "
-        + f"[**{len(linters_by_type['format'])} formats**](#formats), "
-        + f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) "
+        "Mega-Linter is an **100% Open-Source tool for CI/CD workflows** "
+        + f"that **analyzes consistency and quality** of [**{len(linters_by_type['language'])}** languages]"
+        + "(#languages), "
+        + f"[**{len(linters_by_type['format'])}** formats](#formats), "
+        + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
         + ", [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
-        + "repository sources, generate [**reports in several formats**](#reporters), "
-        + "and can even [**apply formatting and auto-fixes**](#apply-fixes) "
-        + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
-        + "IDE/toolbox are used by their developers !"
+        + "repository sources, generates [**various reports**](#reporters), "
+        + "and can even [apply **formatting** and **auto-fixes**](#apply-fixes), "
+        + "to **ensure all your projects sources are clean**, whatever "
+        + "IDE/toolbox are used by their developers. \n\n"
+        + "Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, "
+        "[**highly configurable**](#configuration) and **free for all uses**\n"
     )
     # Update README.md file
     replace_in_file(
@@ -338,7 +342,7 @@ def generate_documentation():
         f"{REPO_HOME}/mkdocs.yml",
         "# site_description-start",
         "# site_description-end",
-        "site_description: " + md_to_text(welcome_phrase),
+        "site_description: " + md_to_text(welcome_phrase.replace("\n", "")),
     )
     # Build & Update flavors table
     flavors_table_md = build_flavors_md_table()
@@ -1131,8 +1135,9 @@ def md_ide(ide):
 
 
 def md_ide_install_link(ide, ide_extension):
+    item_name = None
+    # Visual studio code plugins
     if ide == "vscode":
-        item_name = None
         if ide_extension["url"].startswith(
             "https://marketplace.visualstudio.com/items?itemName="
         ):
@@ -1148,6 +1153,15 @@ def md_ide_install_link(ide, ide_extension):
         if item_name is not None:
             install_link = f"vscode:extension/{item_name}"
             return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+    # JetBrains Idea family editors plugins
+    if ide == "idea":
+        if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):
+            item_name = ide_extension["url"].split("/")[-1].split("-")[0]
+        if item_name is not None and item_name.isnumeric():
+            iframe_content = (
+                f"https://plugins.jetbrains.com/embeddable/install/{item_name}"
+            )
+            return f'<iframe frameborder="none" width="245px" height="48px" src="{iframe_content}"></iframe>'
     return f"[Visit Web Site]({ide_extension['url']}){{target=_blank}}"
 
 

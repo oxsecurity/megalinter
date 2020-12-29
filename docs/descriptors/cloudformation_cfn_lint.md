@@ -39,7 +39,7 @@ Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
 | <!-- --> | IDE | Extension Name | Install |
 | :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint) | [Visit Web Site](https://atom.io/packages/atom-cfn-lint){target=_blank} |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) | [Visit Web Site](https://plugins.jetbrains.com/plugin/10973-cfn-lint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/10973"></iframe> |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/kddejong.vscode-cfn-lint){target=_blank} |
 
 ## Mega-Linter Flavours

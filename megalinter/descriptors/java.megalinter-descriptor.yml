@@ -46,7 +46,7 @@ linters:
           url: https://checkstyle.org/eclipse-cs/#!/
       idea:
         - name: checkstyle-idea
-          url: https://github.com/jshiell/checkstyle-idea
+          url: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
       vscode:
         - name: vscode-checkstyle
           url: https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle

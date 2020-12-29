@@ -19,11 +19,14 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-**Mega-Linter** analyzes [**38 languages**](#languages), [**17 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generate [**reports in several formats**](#reporters), and can even [**apply formatting and auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**38** languages](#languages), [**17** formats](#formats), [**16** tooling formats](#tooling-formats) , [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+
+Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, [**highly configurable**](#configuration) and **free for all uses**
+
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
-See [**Online Documentation Web Site**](https://nvuillam.github.io/mega-linter/)
+See [**Online Documentation Web Site which has much better UI than this README**](https://nvuillam.github.io/mega-linter/)
 <!-- online-doc-end -->
 
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
@@ -216,8 +219,6 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
 
 ![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
-
-_This function is in beta version_
 
 ### Manual installation
 
@@ -525,8 +526,6 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 
 <!-- flavors-section-start -->
 ## Flavors
-
-_This capability is in **Beta version**_
 
 To improve run performances, we generate **Flavored Mega-Linter images** containing only the list of linters related to a project type
 

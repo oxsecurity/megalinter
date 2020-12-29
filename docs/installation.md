@@ -10,8 +10,6 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
-_This function is in beta version_
-
 ## Manual installation
 
 The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
