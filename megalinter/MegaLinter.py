@@ -504,10 +504,10 @@ class Megalinter:
     def check_results(self):
         print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
-            logging.info("Successfully linted all files without errors")
+            logging.info("✅ Successfully linted all files without errors")
             config.delete()
         else:
-            logging.error("Error(s) have been found during linting")
+            logging.error("❌ Error(s) have been found during linting")
             logging.warning(
                 "To disable linters or customize their checks, you can use a .mega-linter.yml file "
                 "at the root of your repository"

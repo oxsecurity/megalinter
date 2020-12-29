@@ -5,6 +5,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Reports
+  - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
+
 - Documentation
   - Add Install button for VsCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available

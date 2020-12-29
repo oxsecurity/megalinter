@@ -59,6 +59,13 @@ class ConsoleReporter(Reporter):
                 nb_fixed_cell = (
                     str(linter.number_fixed) if linter.try_fix is True else ""
                 )
+                status = (
+                    "✅"
+                    if linter.status == "success" and linter.return_code == 0
+                    else ":orange_circle:"
+                    if linter.status != "success" and linter.return_code == 0
+                    else "❌"
+                )
                 if linter.cli_lint_mode == "project":
                     found = "project"
                     errors = "yes" if linter.number_errors > 0 else "no"
@@ -67,7 +74,7 @@ class ConsoleReporter(Reporter):
                     found = str(len(linter.files))
                     errors = str(linter.number_errors)
                 table_line = [
-                    linter.descriptor_id,
+                    status + " " + linter.descriptor_id,
                     linter.linter_name,
                     found,
                     nb_fixed_cell,
@@ -78,6 +85,14 @@ class ConsoleReporter(Reporter):
                 table_data += [table_line]
         table = terminaltables.AsciiTable(table_data)
         table.title = "----SUMMARY"
+        table.justify_columns = {
+            0: "left",
+            1: "left",
+            2: "right",
+            3: "right",
+            4: "right",
+            5: "right",
+        }
         # Output table in console
         logging.info("")
         for table_line in table.table.splitlines():
