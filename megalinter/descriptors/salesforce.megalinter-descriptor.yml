@@ -55,7 +55,7 @@ linters:
           url: https://github.com/pmd/pmd-emacs/
       idea:
         - name: PMD IntelliJ
-          url: https://github.com/amitdev/PMD-Intellij
+          url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode

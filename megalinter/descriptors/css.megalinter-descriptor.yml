@@ -70,7 +70,7 @@ linters:
           url: https://atom.io/packages/linter-scss-lint
       idea:
         - name: scss-lint-plugin
-          url: https://github.com/idok/scss-lint-plugin
+          url: https://plugins.jetbrains.com/plugin/7530-scss-lint
       vscode:
         - name: scss-lint
           url: https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint

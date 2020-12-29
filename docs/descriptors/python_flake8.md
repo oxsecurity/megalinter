@@ -36,7 +36,7 @@ Use flake8 in your favorite IDE to catch errors before Mega-Linter !
 | <!-- --> | IDE | Extension Name | Install |
 | :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-flake8](https://atom.io/packages/linter-flake8) | [Visit Web Site](https://atom.io/packages/linter-flake8){target=_blank} |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [flake8-support](https://plugins.jetbrains.com/plugin/11563-flake8-support) | [Visit Web Site](https://plugins.jetbrains.com/plugin/11563-flake8-support){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [flake8-support](https://plugins.jetbrains.com/plugin/11563-flake8-support) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11563"></iframe> |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_flake8) | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_flake8){target=_blank} |
 
 ## Mega-Linter Flavours

@@ -41,7 +41,7 @@ Use checkstyle in your favorite IDE to catch errors before Mega-Linter !
 | <!-- --> | IDE | Extension Name | Install |
 | :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) | [Visit Web Site](https://checkstyle.org/eclipse-cs/#!/){target=_blank} |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://github.com/jshiell/checkstyle-idea) | [Visit Web Site](https://github.com/jshiell/checkstyle-idea){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1065"></iframe> |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/shengchen.vscode-checkstyle){target=_blank} |
 
 ## Mega-Linter Flavours
