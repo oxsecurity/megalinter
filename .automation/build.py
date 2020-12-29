@@ -1390,7 +1390,6 @@ def finalize_doc_build():
     # Split README sections into individual files
     moves = [
         "quick-start",
-        "demo",
         "supported-linters",
         # 'languages',
         # 'format',

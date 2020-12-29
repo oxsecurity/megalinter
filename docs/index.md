@@ -4,7 +4,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -20,7 +20,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**38** languages](supported-linters.md#languages), [**17** formats](supported-linters.md#formats), [**16** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**38** languages](supported-linters.md#languages), [**17** formats](supported-linters.md#formats), [**16** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers. 
 
 Ready to use [out of the box](installation.md) as a **GitHub Action** or **any CI system**, [**highly configurable**](configuration.md) and **free for all uses**
 
@@ -58,12 +58,6 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 <!-- quick-start-section-start -->
 
 <!-- quick-start-section-end -->
-
-<!-- demo-section-start -->
-## Demo
-
-![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
-<!-- demo-section-end -->
 
 <!-- supported-linters-section-start -->
 ## Supported Linters
