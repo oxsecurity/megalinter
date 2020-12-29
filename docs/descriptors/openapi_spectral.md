@@ -37,10 +37,10 @@
 
 Use spectral in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | stoplight | [Native integration](https://stoplight.io/studio) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-spectral](https://github.com/stoplightio/vscode-spectral) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | stoplight | [Native integration](https://stoplight.io/studio) | [Visit Web Site](https://stoplight.io/studio){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-spectral](https://github.com/stoplightio/vscode-spectral) | [Visit Web Site](https://github.com/stoplightio/vscode-spectral){target=_blank} |
 
 ## Mega-Linter Flavours
 

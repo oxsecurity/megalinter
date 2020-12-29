@@ -32,14 +32,14 @@
 
 Use phpcs in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-phpcs](https://atom.io/packages/linter-phpcs) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-phpcs](https://github.com/bpearson/atom-phpcs) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [phpcs](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [sublime-phpcs](https://github.com/benmatselby/sublime-phpcs) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-phpcs](https://github.com/SublimeLinter/SublimeLinter-phpcs) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-phpcs](https://atom.io/packages/linter-phpcs) | [Visit Web Site](https://atom.io/packages/linter-phpcs){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-phpcs](https://github.com/bpearson/atom-phpcs) | [Visit Web Site](https://github.com/bpearson/atom-phpcs){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [phpcs](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html) | [Visit Web Site](https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [sublime-phpcs](https://github.com/benmatselby/sublime-phpcs) | [Visit Web Site](https://github.com/benmatselby/sublime-phpcs){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-phpcs](https://github.com/SublimeLinter/SublimeLinter-phpcs) | [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-phpcs){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/ikappas.phpcs){target=_blank} |
 
 ## Mega-Linter Flavours
 

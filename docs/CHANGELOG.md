@@ -5,7 +5,8 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
-- Nothing yet :)
+- Documentation
+  - Add Install button for IDE extensions when available
 
 ## [4.20.0] 2020-12-28
 

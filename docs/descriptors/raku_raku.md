@@ -29,11 +29,11 @@
 
 Use raku in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [language-perl6](https://atom.io/packages/language-perl6) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma | [Native Support](https://commaide.com/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [language-perl6](https://atom.io/packages/language-perl6) | [Visit Web Site](https://atom.io/packages/language-perl6){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma | [Native Support](https://commaide.com/) | [Visit Web Site](https://commaide.com/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
 
 ## Mega-Linter Flavours
 

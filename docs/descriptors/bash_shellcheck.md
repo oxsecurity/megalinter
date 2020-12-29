@@ -29,16 +29,16 @@
 
 Use shellcheck in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-shellcheck](https://github.com/AtomLinter/linter-shellcheck) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/flycheck/flycheck) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flymake-shellcheck](https://github.com/federicotdn/flymake-shellcheck) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-shellcheck](https://github.com/SublimeLinter/SublimeLinter-shellcheck) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [neomake](https://github.com/neomake/neomake) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [syntastic](https://github.com/scrooloose/syntastic) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-shellcheck](https://github.com/timonwong/vscode-shellcheck) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-shellcheck](https://github.com/AtomLinter/linter-shellcheck) | [Visit Web Site](https://github.com/AtomLinter/linter-shellcheck){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck](https://github.com/flycheck/flycheck) | [Visit Web Site](https://github.com/flycheck/flycheck){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flymake-shellcheck](https://github.com/federicotdn/flymake-shellcheck) | [Visit Web Site](https://github.com/federicotdn/flymake-shellcheck){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-shellcheck](https://github.com/SublimeLinter/SublimeLinter-shellcheck) | [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-shellcheck){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/w0rp/ale) | [Visit Web Site](https://github.com/w0rp/ale){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [neomake](https://github.com/neomake/neomake) | [Visit Web Site](https://github.com/neomake/neomake){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [syntastic](https://github.com/scrooloose/syntastic) | [Visit Web Site](https://github.com/scrooloose/syntastic){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-shellcheck](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/timonwong.shellcheck){target=_blank} |
 
 ## Mega-Linter Flavours
 

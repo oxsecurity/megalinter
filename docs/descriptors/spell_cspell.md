@@ -34,9 +34,9 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 Use cspell in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/streetsidesoftware.code-spell-checker){target=_blank} |
 
 ## Mega-Linter Flavours
 

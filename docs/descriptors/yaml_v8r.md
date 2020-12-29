@@ -30,12 +30,12 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 Use v8r in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [native support](https://www.eclipse.org/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://www.jetbrains.com/products/#type=ide) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vison](https://github.com/Quramy/vison) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [native support](https://code.visualstudio.com/) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [native support](https://www.eclipse.org/) | [Visit Web Site](https://www.eclipse.org/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://www.jetbrains.com/products/#type=ide) | [Visit Web Site](https://www.jetbrains.com/products/#type=ide){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vison](https://github.com/Quramy/vison) | [Visit Web Site](https://github.com/Quramy/vison){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [native support](https://code.visualstudio.com/) | [Visit Web Site](https://code.visualstudio.com/){target=_blank} |
 
 ## Mega-Linter Flavours
 

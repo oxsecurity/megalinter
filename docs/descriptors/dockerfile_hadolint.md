@@ -33,10 +33,10 @@
 
 Use hadolint in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-hadolint](https://atom.io/packages/linter-hadolint) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [hadolint](https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-hadolint](https://atom.io/packages/linter-hadolint) | [Visit Web Site](https://atom.io/packages/linter-hadolint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [hadolint](https://marketplace.visualstudio.com/items?itemName=exiasr.hadolint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/exiasr.hadolint){target=_blank} |
 
 ## Mega-Linter Flavours
 

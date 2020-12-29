@@ -29,15 +29,15 @@
 
 Use shfmt in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [format-shell](https://atom.io/packages/format-shell) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [emacs-shfmt](https://github.com/purcell/emacs-shfmt/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [shell-scripts](https://www.jetbrains.com/help/idea/shell-scripts.html) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | micro | [micro](https://micro-editor.github.io/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [Sublime-Pretty-Shell](https://github.com/aerobounce/Sublime-Pretty-Shell) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-shfmt](https://github.com/z0mbix/vim-shfmt) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [format-shell](https://atom.io/packages/format-shell) | [Visit Web Site](https://atom.io/packages/format-shell){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [emacs-shfmt](https://github.com/purcell/emacs-shfmt/) | [Visit Web Site](https://github.com/purcell/emacs-shfmt/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [shell-scripts](https://www.jetbrains.com/help/idea/shell-scripts.html) | [Visit Web Site](https://www.jetbrains.com/help/idea/shell-scripts.html){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | micro | [micro](https://micro-editor.github.io/) | [Visit Web Site](https://micro-editor.github.io/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [Sublime-Pretty-Shell](https://github.com/aerobounce/Sublime-Pretty-Shell) | [Visit Web Site](https://github.com/aerobounce/Sublime-Pretty-Shell){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-shfmt](https://github.com/z0mbix/vim-shfmt) | [Visit Web Site](https://github.com/z0mbix/vim-shfmt){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [shell-format](https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/foxundermoon.shell-format){target=_blank} |
 
 ## Mega-Linter Flavours
 
