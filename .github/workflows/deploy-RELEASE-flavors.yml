@@ -55,7 +55,7 @@ jobs:
             "terraform",
           ]
 # flavors-end
-    if: github.repository == 'nvuillam/mega-linter'
+    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
