@@ -326,7 +326,7 @@ def generate_documentation():
         + "repository sources, generates [**various reports**](#reporters), "
         + "and can even [apply **formatting** and **auto-fixes**](#apply-fixes), "
         + "to **ensure all your projects sources are clean**, whatever "
-        + "IDE/toolbox are used by their developers. \n\n"
+        + "IDE/toolbox are used by their developers.\n\n"
         + "Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, "
         "[**highly configurable**](#configuration) and **free for all uses**\n"
     )
@@ -1421,6 +1421,12 @@ def finalize_doc_build():
     replace_full_url_links(target_file, DOCS_URL_ROOT + "/", "")
     logging.info(f"Copied and updated {target_file}")
     # Remove TOC in target file
+    replace_in_file(
+        target_file,
+        "<!-- mega-linter-title-start -->",
+        "<!-- mega-linter-title-end -->",
+        "",
+    )
     replace_in_file(
         target_file,
         "<!-- table-of-contents-start -->",

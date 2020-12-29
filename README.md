@@ -7,8 +7,9 @@
   </a>
 </div>
 <!-- header-logo-end -->
-
+<!-- mega-linter-title-start -->
 ## Mega-Linter
+<!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
