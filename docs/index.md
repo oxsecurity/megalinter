@@ -4,7 +4,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -58,12 +58,6 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 <!-- quick-start-section-start -->
 
 <!-- quick-start-section-end -->
-
-<!-- demo-section-start -->
-## Demo
-
-![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
-<!-- demo-section-end -->
 
 <!-- supported-linters-section-start -->
 ## Supported Linters

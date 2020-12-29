@@ -3,7 +3,7 @@
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://nvuillam.github.io/mega-linter" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
+    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -38,7 +38,6 @@ See [**Online Documentation Web Site which has much better UI than this README**
 - [Mega-Linter](#mega-linter)
   - [Why Mega-Linter ?](#why_mega-linter)
   - [Quick start](#quick-start)
-  - [Demo](#demo)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
     - [Formats](#formats)
@@ -101,12 +100,6 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 - If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
 <!-- quick-start-section-end -->
-
-<!-- demo-section-start -->
-## Demo
-
-![Demo Gif](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/demo_with_comments.gif?raw=true)
-<!-- demo-section-end -->
 
 <!-- supported-linters-section-start -->
 ## Supported Linters
