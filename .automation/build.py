@@ -328,7 +328,7 @@ def generate_documentation():
         + "to **ensure all your projects sources are clean**, whatever "
         + "IDE/toolbox are used by their developers. \n\n"
         + "Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, "
-          "[**highly configurable**](#configuration) and **free for all uses**\n"
+        "[**highly configurable**](#configuration) and **free for all uses**\n"
     )
     # Update README.md file
     replace_in_file(
@@ -1156,9 +1156,11 @@ def md_ide_install_link(ide, ide_extension):
     # JetBrains Idea family editors plugins
     if ide == "idea":
         if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):
-            item_name = ide_extension["url"].split('/')[-1].split('-')[0]
+            item_name = ide_extension["url"].split("/")[-1].split("-")[0]
         if item_name is not None and item_name.isnumeric():
-            iframe_content = f"https://plugins.jetbrains.com/embeddable/install/{item_name}"
+            iframe_content = (
+                f"https://plugins.jetbrains.com/embeddable/install/{item_name}"
+            )
             return f'<iframe frameborder="none" width="245px" height="48px" src="{iframe_content}"></iframe>'
     return f"[Visit Web Site]({ide_extension['url']}){{target=_blank}}"
 
