@@ -63,7 +63,7 @@
     "terragrunt": "0.26.7",
     "terrascan": "1.2.0",
     "tflint": "0.22.0",
-    "v8r": "0.2.0",
+    "v8r": "0.3.0",
     "xmllint": "20910",
     "yamllint": "1.25.0"
 }
