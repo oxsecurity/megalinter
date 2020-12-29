@@ -68,7 +68,7 @@ linters:
           url: https://github.com/scrooloose/syntastic
       vscode:
         - name: vscode-shellcheck
-          url: https://github.com/timonwong/vscode-shellcheck
+          url: https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
   # SHFMT
   - linter_name: shfmt
     linter_url: https://github.com/mvdan/sh

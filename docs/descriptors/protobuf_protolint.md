@@ -34,10 +34,10 @@
 
 Use protolint in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [Protocol Buffer Linter](https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Protolint](https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [Protocol Buffer Linter](https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter) | [Visit Web Site](https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Protolint](https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/Plex.vscode-protolint){target=_blank} |
 
 ## Mega-Linter Flavours
 

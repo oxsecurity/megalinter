@@ -10,6 +10,7 @@ import re
 import sys
 from shutil import copyfile
 from typing import Any
+from urllib import parse as parse_urllib
 
 import jsonschema
 import markdown
@@ -30,6 +31,7 @@ DOCS_URL_FLAVORS_ROOT = DOCS_URL_ROOT + "/flavors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 REPO_ICONS = REPO_HOME + "/docs/assets/icons"
+REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
@@ -839,8 +841,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 "",
             ]
             linter_doc_md += [
-                "| <!-- --> | IDE | Extension Name |",
-                "| :--: | ----------------- | -------------- |",
+                "| <!-- --> | IDE | Extension Name | Install |",
+                "| :--: | ----------------- | -------------- | :------: |",
             ]
             for ide, ide_extensions in linter.ide.items():
                 for ide_extension in ide_extensions:
@@ -854,8 +856,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         ide_extension["name"],
                         32,
                     )
+                    install_link = md_ide_install_link(ide, ide_extension)
                     linter_doc_md += [
-                        f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
+                        f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) | "
+                        f"{install_link} |"
                     ]
         # Mega-linter flavours
         linter_doc_md += [
@@ -1124,6 +1128,34 @@ def md_ide(ide):
     if ide in IDE_LIST:
         return f"[{IDE_LIST[ide]['label']}]({IDE_LIST[ide]['url']})"
     return ide
+
+
+def md_ide_install_link(ide, ide_extension):
+    if ide == "vscode":
+        item_name = None
+        if ide_extension["url"].startswith(
+            "https://marketplace.visualstudio.com/items?itemName="
+        ):
+            item_name = dict(
+                parse_urllib.parse_qsl(
+                    parse_urllib.urlsplit(ide_extension["url"]).query
+                )
+            )["itemName"]
+        elif ide_extension["url"].startswith(
+            "https://marketplace.visualstudio.com/items/"
+        ):
+            item_name = ide_extension["url"].split("/items/", 1)[1]
+        if item_name is not None:
+            install_link = f"vscode:extension/{item_name}"
+            return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+    return f"[Visit Web Site]({ide_extension['url']}){{target=_blank}}"
+
+
+def md_get_install_button(key):
+    image_file = f"{REPO_IMAGES}{os.path.sep}btn_install_{key}.png"
+    if os.path.isfile(image_file):
+        return f"{DOCS_URL_RAW_ROOT}/assets/icons/btn_install_{key}.png"
+    return f"{DOCS_URL_RAW_ROOT}/assets/icons/btn_install_default.png"
 
 
 def md_to_text(md):
