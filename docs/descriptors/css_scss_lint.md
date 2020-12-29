@@ -40,7 +40,7 @@ Use scss-lint in your favorite IDE to catch errors before Mega-Linter !
 | :--: | ----------------- | -------------- | :------: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-scss-lint](https://atom.io/packages/linter-scss-lint) | [Visit Web Site](https://atom.io/packages/linter-scss-lint){target=_blank} |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [scss-lint-plugin](https://github.com/idok/scss-lint-plugin) | [Visit Web Site](https://github.com/idok/scss-lint-plugin){target=_blank} |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [scss-lint](https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/btn_install_vscode.png)](vscode:extension/adamwalzer.scss-lint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [scss-lint](https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/adamwalzer.scss-lint){target=_blank} |
 
 ## Mega-Linter Flavours
 
