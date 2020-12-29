@@ -8,6 +8,7 @@
 </div>
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
+
 ## Mega-Linter
 <!-- mega-linter-title-end -->
 
