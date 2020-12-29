@@ -59,14 +59,14 @@ class GithubCommentReporter(Reporter):
             table_data_raw = [table_header]
             for linter in self.master.linters:
                 if linter.is_active is True:
-                    emoji = (
-                        ":green_circle:"
+                    status = (
+                        "✅"
                         if linter.status == "success" and linter.return_code == 0
                         else ":orange_circle:"
                         if linter.status != "success" and linter.return_code == 0
-                        else ":red_circle:"
+                        else "❌"
                     )
-                    first_col = f"{emoji} {linter.descriptor_id}"
+                    first_col = f"{status} {linter.descriptor_id}"
                     lang_lower = linter.descriptor_id.lower()
                     linter_name_lower = linter.linter_name.lower().replace("-", "_")
                     linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
@@ -105,11 +105,11 @@ class GithubCommentReporter(Reporter):
                 headers=table_header, value_matrix=table_data_raw
             )
             table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
-            emoji = ":green_circle:" if self.master.return_code == 0 else ":red_circle:"
+            status = "✅" if self.master.return_code == 0 else "❌"
             status_with_href = (
-                log_link(f"**{self.master.status.upper()}**", action_run_url)
+                status
                 + " "
-                + emoji
+                + log_link(f"**{self.master.status.upper()}**", action_run_url)
             )
             p_r_msg = (
                 f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}"
