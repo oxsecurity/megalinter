@@ -275,6 +275,7 @@ nav:
 # flavors-end
   - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
+  - "List of linters": "all_linters.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute": "how-to-contribute.md"
   - "Changelog": "CHANGELOG.md"

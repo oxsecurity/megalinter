@@ -11,6 +11,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Documentation
   - Add Install button for VsCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available
+  - Add a new page **All linters** listing all linters and references to Mega-Linter in their documentation
 
 ## [4.20.0] 2020-12-28
 

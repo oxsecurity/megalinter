@@ -15,6 +15,7 @@ from urllib import parse as parse_urllib
 import jsonschema
 import markdown
 import megalinter
+import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
@@ -1571,6 +1572,100 @@ def collect_linter_previews():
             json.dump(data, outfile, indent=2, sort_keys=True)
 
 
+def generate_documentation_all_linters():
+    linters_raw = megalinter.linter_factory.list_all_linters()
+    linters = []
+    for linter in linters_raw:
+        duplicates = [
+            [index, dup_linter]
+            for index, dup_linter in enumerate(linters)
+            if dup_linter.linter_name == linter.linter_name
+        ]
+        if len(duplicates) == 0:
+            setattr(linter, "descriptor_id_list", [linter.descriptor_id])
+            linters += [linter]
+        else:
+            index, duplicate = duplicates[0]
+            duplicate.descriptor_id_list += [linter.descriptor_id]
+            duplicate.descriptor_id_list.sort()
+            linters[index] = duplicate
+    linters.sort(key=lambda x: x.linter_name)
+    table_header = ["Linter", "Descriptors", "Status", "URL"]
+    md_table_lines = []
+    table_data = [table_header]
+    for linter in linters:
+        status = "Not submitted"
+        md_status = ":white_circle:"
+        url = (
+            linter.linter_repo
+            if hasattr(linter, "linter_repo") and linter.linter_repo is not None
+            else linter.linter_url
+        )
+        md_url = (
+            f"[Repository]({linter.linter_repo}){{target=_blank}}"
+            if hasattr(linter, "linter_repo") and linter.linter_repo is not None
+            else f"[Web Site]({linter.linter_url}){{target=_blank}}"
+        )
+        if hasattr(
+            linter, "linter_megalinter_ref_url"
+        ) and linter.linter_megalinter_ref_url not in ["", None]:
+            url = linter.linter_megalinter_ref_url
+            md_url = f"[Mega-Linter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
+            if linter.linter_megalinter_ref_url == "no":
+                status = "❌ Refused"
+                md_status = ":no_entry:"
+            elif linter.linter_megalinter_ref_url == "never":
+                status = "Θ Not applicable"
+                md_status = ":no_entry_sign:"
+            elif "/pull/" in str(url):
+                status = "Ω Pending"
+                md_status = ":construction:"
+                md_url = f"[Pull Request]({url}){{target=_blank}}"
+                url = "PR: " + url
+            else:
+                status = "✅ Published"
+                md_status = ":heart:"
+        table_line = [
+            linter.linter_name,
+            ", ".join(linter.descriptor_id_list),
+            status,
+            url,
+        ]
+        table_data += [table_line]
+
+        linter_doc_links = []
+        for descriptor_id in linter.descriptor_id_list:
+            linter_doc_url = (
+                f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower()}.md"
+            )
+            link = f"[{descriptor_id}]({doc_url(linter_doc_url)})"
+            linter_doc_links += [link]
+        md_table_line = [
+            f"**{linter.linter_name}**",
+            "<br/> ".join(linter_doc_links),
+            md_status,
+            md_url,
+        ]
+        md_table_lines += [md_table_line]
+
+    # Display results
+    table = terminaltables.AsciiTable(table_data)
+    table.title = "----Reference to Mega-Linter in linters documentation summary"
+    # Output table in console
+    logging.info("")
+    for table_line in table.table.splitlines():
+        logging.info(table_line)
+    logging.info("")
+    # Write in file
+    with open(REPO_HOME + "/docs/all_linters.md", "w", encoding="utf-8") as outfile:
+        outfile.write("<!-- markdownlint-disable -->\n\n")
+        outfile.write("# References\n\n")
+        outfile.write("| Linter | Descriptors | Status | Reference |\n")
+        outfile.write("| :----  | :---------- | :----: | :-------: |\n")
+        for md_table_line in md_table_lines:
+            outfile.write("| %s |\n" % " | ".join(md_table_line))
+
+
 def manage_output_variables():
     if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":
         updated_files = megalinter.utils.list_updated_files("..")
@@ -1591,6 +1686,7 @@ if __name__ == "__main__":
         format="%(asctime)s [%(levelname)s] %(message)s",
         handlers=[logging.StreamHandler(sys.stdout)],
     )
+
     # noinspection PyTypeChecker
     collect_linter_previews()
     generate_json_schema_enums()
@@ -1598,6 +1694,7 @@ if __name__ == "__main__":
     generate_all_flavors()
     generate_linter_test_classes()
     generate_documentation()
+    generate_documentation_all_linters()
     generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
