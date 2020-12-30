@@ -14,9 +14,8 @@ from urllib import parse as parse_urllib
 
 import jsonschema
 import markdown
-import terminaltables
-
 import megalinter
+import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
@@ -1577,8 +1576,11 @@ def generate_documentation_all_linters():
     linters_raw = megalinter.linter_factory.list_all_linters()
     linters = []
     for linter in linters_raw:
-        duplicates = [[index, dup_linter] for index, dup_linter in enumerate(linters)
-                      if dup_linter.linter_name == linter.linter_name]
+        duplicates = [
+            [index, dup_linter]
+            for index, dup_linter in enumerate(linters)
+            if dup_linter.linter_name == linter.linter_name
+        ]
         if len(duplicates) == 0:
             setattr(linter, "descriptor_id_list", [linter.descriptor_id])
             linters += [linter]
@@ -1605,7 +1607,7 @@ def generate_documentation_all_linters():
             else f"[Web Site]({linter.linter_url}){{target=_blank}}"
         )
         if hasattr(
-                linter, "linter_megalinter_ref_url"
+            linter, "linter_megalinter_ref_url"
         ) and linter.linter_megalinter_ref_url not in ["", None]:
             url = linter.linter_megalinter_ref_url
             md_url = f"[Mega-Linter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
@@ -1633,7 +1635,9 @@ def generate_documentation_all_linters():
 
         linter_doc_links = []
         for descriptor_id in linter.descriptor_id_list:
-            linter_doc_url = f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower()}.md"
+            linter_doc_url = (
+                f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower()}.md"
+            )
             link = f"[{descriptor_id}]({doc_url(linter_doc_url)})"
             linter_doc_links += [link]
         md_table_line = [
