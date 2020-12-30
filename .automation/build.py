@@ -1636,9 +1636,7 @@ def generate_documentation_all_linters():
 
         linter_doc_links = []
         for descriptor_id in linter.descriptor_id_list:
-            linter_doc_url = (
-                f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower().replace('-', '_')}.md"
-            )
+            linter_doc_url = f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower().replace('-', '_')}.md"
             link = f"[{descriptor_id}]({doc_url(linter_doc_url)})"
             linter_doc_links += [link]
         md_table_line = [
