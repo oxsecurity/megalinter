@@ -11,10 +11,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

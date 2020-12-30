@@ -22,10 +22,10 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## Configuration in Mega-Linter
 
-- Enable eslint by adding `JSX_ESLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable eslint by adding `JSX_ESLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable eslint by adding `JSX_ESLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable eslint by adding `JSX_ESLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JSX_ESLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `JSX_ESLINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

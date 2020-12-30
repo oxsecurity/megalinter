@@ -15,10 +15,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable markdownlint by adding `MARKDOWN_MARKDOWNLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

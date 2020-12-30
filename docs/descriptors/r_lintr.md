@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -19,8 +19,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable perlcritic by adding `PERL_PERLCRITIC` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable perlcritic by adding `PERL_PERLCRITIC` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

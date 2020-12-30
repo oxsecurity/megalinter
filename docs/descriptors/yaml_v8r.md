@@ -14,8 +14,8 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## Configuration in Mega-Linter
 
-- Enable v8r by adding `YAML_V8R` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable v8r by adding `YAML_V8R` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable v8r by adding `YAML_V8R` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable v8r by adding `YAML_V8R` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

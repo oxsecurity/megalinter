@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable graphql-schema-linter by adding `GRAPHQL_GRAPHQL_SCHEMA_LINTER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

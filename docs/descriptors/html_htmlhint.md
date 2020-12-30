@@ -15,8 +15,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

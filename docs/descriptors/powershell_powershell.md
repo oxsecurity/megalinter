@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

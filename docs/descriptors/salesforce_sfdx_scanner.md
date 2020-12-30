@@ -22,8 +22,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in Mega-Linter
 
-- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
