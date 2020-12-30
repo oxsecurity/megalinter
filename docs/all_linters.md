@@ -18,7 +18,7 @@
 | **cspell** | [SPELL](descriptors/spell_cspell.md) | :heart: | [Mega-Linter reference](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank} |
 | **dartanalyzer** | [DART](descriptors/dart_dartanalyzer.md) | :no_entry: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
 | **dockerfilelint** | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
-| **dotenv-linter** | [ENV](descriptors/env_dotenv_linter.md) | :white_circle: | [Repository](https://github.com/dotenv-linter/dotenv-linter){target=_blank} |
+| **dotenv-linter** | [ENV](descriptors/env_dotenv_linter.md) | :construction: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24){target=_blank} |
 | **dotnet-format** | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
 | **editorconfig-checker** | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :white_circle: | [Repository](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank} |
 | **eslint** | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
@@ -31,11 +31,11 @@
 | **htmlhint** | [HTML](descriptors/html_htmlhint.md) | :construction: | [Pull Request](https://github.com/htmlhint/HTMLHint/pull/579/files){target=_blank} |
 | **isort** | [PYTHON](descriptors/python_isort.md) | :white_circle: | [Repository](https://github.com/PyCQA/isort){target=_blank} |
 | **jscpd** | [COPYPASTE](descriptors/copypaste_jscpd.md) | :heart: | [Mega-Linter reference](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank} |
-| **jsonlint** | [JSON](descriptors/json_jsonlint.md) | :white_circle: | [Web Site](https://github.com/zaach/jsonlint){target=_blank} |
+| **jsonlint** | [JSON](descriptors/json_jsonlint.md) | :construction: | [Pull Request](https://github.com/zaach/jsonlint/pull/127){target=_blank} |
 | **ktlint** | [KOTLIN](descriptors/kotlin_ktlint.md) | :heart: | [Mega-Linter reference](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank} |
 | **kubeval** | [KUBERNETES](descriptors/kubernetes_kubeval.md) | :white_circle: | [Repository](https://github.com/instrumenta/kubeval){target=_blank} |
 | **lintr** | [R](descriptors/r_lintr.md) | :white_circle: | [Web Site](https://github.com/jimhester/lintr){target=_blank} |
-| **luacheck** | [LUA](descriptors/lua_luacheck.md) | :white_circle: | [Repository](https://github.com/luarocks/luacheck){target=_blank} |
+| **luacheck** | [LUA](descriptors/lua_luacheck.md) | :construction: | [Pull Request](https://github.com/luarocks/luacheck/pull/13){target=_blank} |
 | **markdown-link-check** | [MARKDOWN](descriptors/markdown_markdown_link_check.md) | :heart: | [Mega-Linter reference](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank} |
 | **markdownlint** | [MARKDOWN](descriptors/markdown_markdownlint.md) | :white_circle: | [Web Site](https://github.com/DavidAnson/markdownlint){target=_blank} |
 | **npm-groovy-lint** | [GROOVY](descriptors/groovy_npm_groovy_lint.md) | :heart: | [Mega-Linter reference](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank} |

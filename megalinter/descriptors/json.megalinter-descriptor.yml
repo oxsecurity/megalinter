@@ -9,6 +9,7 @@ linters:
   # JSONLINT
   - linter_name: jsonlint
     linter_url: https://github.com/zaach/jsonlint
+    linter_megalinter_ref_url: https://github.com/zaach/jsonlint/pull/127
     version_command_return_code: 1
     examples:
       - "jsonlint myfile.json"
