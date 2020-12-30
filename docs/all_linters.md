@@ -6,7 +6,7 @@
 | :----  | :---------- | :----: | :-------: |
 | **ansible-lint** | [ANSIBLE](descriptors/ansible_ansible_lint.md) | :white_circle: | [Repository](https://github.com/ansible/ansible-lint){target=_blank} |
 | **arm-ttk** | [ARM](descriptors/arm_arm_ttk.md) | :white_circle: | [Web Site](https://github.com/Azure/arm-ttk){target=_blank} |
-| **bash-exec** | [BASH](descriptors/bash_bash_exec.md) | :no_entry_sign: | [Mega-Linter reference](never){target=_blank} |
+| **bash-exec** | [BASH](descriptors/bash_bash_exec.md) | :no_entry_sign: | [Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank} |
 | **black** | [PYTHON](descriptors/python_black.md) | :white_circle: | [Repository](https://github.com/psf/black){target=_blank} |
 | **cfn-lint** | [CLOUDFORMATION](descriptors/cloudformation_cfn_lint.md) | :white_circle: | [Web Site](https://github.com/martysweet/cfn-lint){target=_blank} |
 | **checkstyle** | [JAVA](descriptors/java_checkstyle.md) | :heart: | [Mega-Linter reference](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank} |
@@ -16,7 +16,7 @@
 | **coffeelint** | [COFFEE](descriptors/coffee_coffeelint.md) | :white_circle: | [Repository](https://github.com/clutchski/coffeelint){target=_blank} |
 | **cpplint** | [C](descriptors/c_cpplint.md)<br/> [CPP](descriptors/cpp_cpplint.md) | :white_circle: | [Web Site](https://github.com/cpplint/cpplint){target=_blank} |
 | **cspell** | [SPELL](descriptors/spell_cspell.md) | :heart: | [Mega-Linter reference](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank} |
-| **dartanalyzer** | [DART](descriptors/dart_dartanalyzer.md) | :no_entry: | [Mega-Linter reference](no){target=_blank} |
+| **dartanalyzer** | [DART](descriptors/dart_dartanalyzer.md) | :no_entry: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
 | **dockerfilelint** | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
 | **dotenv-linter** | [ENV](descriptors/env_dotenv_linter.md) | :white_circle: | [Repository](https://github.com/dotenv-linter/dotenv-linter){target=_blank} |
 | **dotnet-format** | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
@@ -24,7 +24,7 @@
 | **eslint** | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
 | **flake8** | [PYTHON](descriptors/python_flake8.md) | :white_circle: | [Repository](https://github.com/PyCQA/flake8){target=_blank} |
 | **gherkin-lint** | [GHERKIN](descriptors/gherkin_gherkin_lint.md) | :white_circle: | [Web Site](https://github.com/vsiakka/gherkin-lint){target=_blank} |
-| **git_diff** | [GIT](descriptors/git_git_diff.md) | :no_entry_sign: | [Mega-Linter reference](never){target=_blank} |
+| **git_diff** | [GIT](descriptors/git_git_diff.md) | :no_entry_sign: | [Repository](https://github.com/git/git){target=_blank} |
 | **golangci-lint** | [GO](descriptors/go_golangci_lint.md) | :white_circle: | [Repository](https://github.com/golangci/golangci-lint){target=_blank} |
 | **graphql-schema-linter** | [GRAPHQL](descriptors/graphql_graphql_schema_linter.md) | :construction: | [Pull Request](https://github.com/cjoudrey/graphql-schema-linter/pull/272){target=_blank} |
 | **hadolint** | [DOCKERFILE](descriptors/dockerfile_hadolint.md) | :heart: | [Mega-Linter reference](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank} |
@@ -57,7 +57,7 @@
 | **scss-lint** | [CSS](descriptors/css_scss_lint.md) | :white_circle: | [Web Site](https://github.com/sds/scss-lint){target=_blank} |
 | **sfdx-scanner** | [SALESFORCE](descriptors/salesforce_sfdx_scanner.md) | :construction: | [Pull Request](https://github.com/forcedotcom/sfdx-scanner/pull/307){target=_blank} |
 | **shellcheck** | [BASH](descriptors/bash_shellcheck.md) | :construction: | [Pull Request](https://github.com/koalaman/shellcheck/pull/2076){target=_blank} |
-| **shfmt** | [BASH](descriptors/bash_shfmt.md) | :no_entry: | [Mega-Linter reference](no){target=_blank} |
+| **shfmt** | [BASH](descriptors/bash_shfmt.md) | :no_entry: | [Web Site](https://github.com/mvdan/sh){target=_blank} |
 | **snakefmt** | [SNAKEMAKE](descriptors/snakemake_snakefmt.md) | :white_circle: | [Web Site](https://github.com/snakemake/snakefmt){target=_blank} |
 | **snakemake** | [SNAKEMAKE](descriptors/snakemake_snakemake.md) | :white_circle: | [Repository](https://github.com/snakemake/snakemake){target=_blank} |
 | **spectral** | [OPENAPI](descriptors/openapi_spectral.md) | :white_circle: | [Repository](https://github.com/stoplightio/spectral){target=_blank} |
@@ -70,4 +70,4 @@
 | **tflint** | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
 | **v8r** | [JSON](descriptors/json_v8r.md)<br/> [YAML](descriptors/yaml_v8r.md) | :white_circle: | [Web Site](https://github.com/chris48s/v8r){target=_blank} |
 | **xmllint** | [XML](descriptors/xml_xmllint.md) | :white_circle: | [Web Site](http://xmlsoft.org/xmllint.html){target=_blank} |
-| **yamllint** | [YAML](descriptors/yaml_yamllint.md) | :no_entry: | [Mega-Linter reference](no){target=_blank} |
+| **yamllint** | [YAML](descriptors/yaml_yamllint.md) | :no_entry: | [Repository](https://github.com/adrienverge/yamllint){target=_blank} |

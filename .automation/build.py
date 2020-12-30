@@ -1610,7 +1610,8 @@ def generate_documentation_all_linters():
             linter, "linter_megalinter_ref_url"
         ) and linter.linter_megalinter_ref_url not in ["", None]:
             url = linter.linter_megalinter_ref_url
-            md_url = f"[Mega-Linter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
+            if linter.linter_megalinter_ref_url not in ["no", "never"]:
+                md_url = f"[Mega-Linter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
             if linter.linter_megalinter_ref_url == "no":
                 status = "❌ Refused"
                 md_status = ":no_entry:"
