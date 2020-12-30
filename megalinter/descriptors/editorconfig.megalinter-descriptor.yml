@@ -14,6 +14,7 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/editorconfig-checker/editorconfig-checker/master/docs/logo.png
     linter_rules_configuration_url: https://github.com/editorconfig-checker/editorconfig-checker#configuration
     linter_rules_inline_disable_url: https://github.com/editorconfig-checker/editorconfig-checker#excluding
+    linter_megalinter_ref_url: https://github.com/editorconfig-checker/editorconfig-checker/pull/139
     config_file_name: .ecrc
     cli_config_arg_name: "-config"
     cli_version_arg_name: "-version"

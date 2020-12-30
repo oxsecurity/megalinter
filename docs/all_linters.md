@@ -9,7 +9,7 @@
 | **arm-ttk** | N/A | [ARM](descriptors/arm_arm_ttk.md) | :white_circle: | [Web Site](https://github.com/Azure/arm-ttk){target=_blank} |
 | **bash-exec** | 5.0.17 | [BASH](descriptors/bash_bash_exec.md) | <!-- --> | [Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank} |
 | **black** | 19.10 | [PYTHON](descriptors/python_black.md) | :white_circle: | [Repository](https://github.com/psf/black){target=_blank} |
-| **cfn-lint** | 0.44.1 | [CLOUDFORMATION](descriptors/cloudformation_cfn_lint.md) | :white_circle: | [Web Site](https://github.com/martysweet/cfn-lint){target=_blank} |
+| **cfn-lint** | 0.44.2 | [CLOUDFORMATION](descriptors/cloudformation_cfn_lint.md) | :white_circle: | [Web Site](https://github.com/martysweet/cfn-lint){target=_blank} |
 | **checkstyle** | 8.38 | [JAVA](descriptors/java_checkstyle.md) | :heart: | [Mega-Linter reference](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank} |
 | **chktex** | 1.7.6 | [LATEX](descriptors/latex_chktex.md) | :white_circle: | [Web Site](https://www.nongnu.org/chktex){target=_blank} |
 | **clippy** | 0.0.212 | [RUST](descriptors/rust_clippy.md) | :white_circle: | [Web Site](https://github.com/rust-lang/rust-clippy){target=_blank} |
@@ -21,7 +21,7 @@
 | **dockerfilelint** | 1.8.0 | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
 | **dotenv-linter** | 2.2.1 | [ENV](descriptors/env_dotenv_linter.md) | :hammer_and_wrench: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24){target=_blank} |
 | **dotnet-format** | 4.1.131201 | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
-| **editorconfig-checker** | N/A | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :white_circle: | [Repository](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank} |
+| **editorconfig-checker** | N/A | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :hammer_and_wrench: | [Pull Request](https://github.com/editorconfig-checker/editorconfig-checker/pull/139){target=_blank} |
 | **eslint** | 7.16.0 | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
 | **flake8** | 3.8.4 | [PYTHON](descriptors/python_flake8.md) | :white_circle: | [Repository](https://github.com/PyCQA/flake8){target=_blank} |
 | **gherkin-lint** | N/A | [GHERKIN](descriptors/gherkin_gherkin_lint.md) | :white_circle: | [Web Site](https://github.com/vsiakka/gherkin-lint){target=_blank} |
@@ -69,6 +69,6 @@
 | **terragrunt** | 0.26.7 | [TERRAFORM](descriptors/terraform_terragrunt.md) | :white_circle: | [Repository](https://github.com/gruntwork-io/terragrunt){target=_blank} |
 | **terrascan** | 1.2.0 | [TERRAFORM](descriptors/terraform_terrascan.md) | :white_circle: | [Repository](https://github.com/accurics/terrascan){target=_blank} |
 | **tflint** | 0.22.0 | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
-| **v8r** | 0.3.0 | [JSON](descriptors/json_v8r.md)<br/> [YAML](descriptors/yaml_v8r.md) | :white_circle: | [Web Site](https://github.com/chris48s/v8r){target=_blank} |
+| **v8r** | 0.4.0 | [JSON](descriptors/json_v8r.md)<br/> [YAML](descriptors/yaml_v8r.md) | :white_circle: | [Web Site](https://github.com/chris48s/v8r){target=_blank} |
 | **xmllint** | 20910 | [XML](descriptors/xml_xmllint.md) | :white_circle: | [Web Site](http://xmlsoft.org/xmllint.html){target=_blank} |
 | **yamllint** | 1.25.0 | [YAML](descriptors/yaml_yamllint.md) | :trollface: | [Repository](https://github.com/adrienverge/yamllint){target=_blank} |
