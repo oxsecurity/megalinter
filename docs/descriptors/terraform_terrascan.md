@@ -18,8 +18,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

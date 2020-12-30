@@ -20,8 +20,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

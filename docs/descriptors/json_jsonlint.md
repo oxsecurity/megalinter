@@ -11,8 +11,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

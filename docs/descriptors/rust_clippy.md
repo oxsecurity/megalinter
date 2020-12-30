@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

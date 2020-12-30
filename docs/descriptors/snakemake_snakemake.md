@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

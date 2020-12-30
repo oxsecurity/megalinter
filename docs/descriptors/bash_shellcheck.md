@@ -13,8 +13,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable shellcheck by adding `BASH_SHELLCHECK` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable shellcheck by adding `BASH_SHELLCHECK` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

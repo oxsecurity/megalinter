@@ -20,10 +20,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `RUBY_RUBOCOP` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

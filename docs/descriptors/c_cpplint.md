@@ -12,8 +12,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

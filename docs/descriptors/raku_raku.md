@@ -11,8 +11,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

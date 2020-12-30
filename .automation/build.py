@@ -687,8 +687,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"Unable to find github repository for {linter.linter_name}"
             )
         # Mega-linter variables
-        activation_url = "/configuration/#activation-and-deactivation"
-        apply_fixes_url = "/configuration/#apply-fixes"
+        activation_url = MKDOCS_URL_ROOT + "/configuration/#activation-and-deactivation"
+        apply_fixes_url = MKDOCS_URL_ROOT + "/configuration/#apply-fixes"
         linter_doc_md += [
             "## Configuration in Mega-Linter",
             "",

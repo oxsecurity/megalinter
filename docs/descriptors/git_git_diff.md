@@ -13,8 +13,8 @@ Git diff checks for git conflicts markers in files
 
 ## Configuration in Mega-Linter
 
-- Enable git_diff by adding `GIT_GIT_DIFF` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable git_diff by adding `GIT_GIT_DIFF` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable git_diff by adding `GIT_GIT_DIFF` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable git_diff by adding `GIT_GIT_DIFF` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -16,8 +16,8 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ## Configuration in Mega-Linter
 
-- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable cspell by adding `SPELL_CSPELL` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable cspell by adding `SPELL_CSPELL` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

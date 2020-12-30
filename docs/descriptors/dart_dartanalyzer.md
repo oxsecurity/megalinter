@@ -18,8 +18,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

@@ -18,10 +18,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

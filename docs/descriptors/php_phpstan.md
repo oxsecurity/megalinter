@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |

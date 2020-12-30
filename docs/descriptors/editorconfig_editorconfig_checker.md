@@ -17,8 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
