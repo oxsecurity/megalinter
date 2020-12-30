@@ -28,7 +28,7 @@ Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI 
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
-See [**Online Documentation Web Site which has much better UI than this README**](https://nvuillam.github.io/mega-linter/)
+See [**Online Documentation Web Site which has a much easier user navigation than this README**](https://nvuillam.github.io/mega-linter/)
 <!-- online-doc-end -->
 
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)

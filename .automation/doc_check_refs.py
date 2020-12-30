@@ -19,20 +19,24 @@ def list_references_to_megalinter():
     table_data = [table_header]
     for linter in linters:
         status = "Not submitted"
-        url = ""
-        if hasattr(linter, "linter_megalinter_ref_url"):
+        url = (
+            linter.linter_repo
+            if hasattr(linter, "linter_repo") and linter.linter_repo is not None
+            else linter.linter_url
+        )
+        if hasattr(
+            linter, "linter_megalinter_ref_url"
+        ) and linter.linter_megalinter_ref_url not in ["", None]:
             url = linter.linter_megalinter_ref_url
             if linter.linter_megalinter_ref_url == "no":
-                status = "Rejected"
-                url = "-------------"
+                status = "❌ Rejected"
             elif linter.linter_megalinter_ref_url == "never":
-                status = "Not applicable"
-                url = "-------------"
+                status = "Θ Not applicable"
             elif "/pull/" in str(url):
-                status = "Pending"
+                status = "Ω Pending"
                 url = "PR: " + url
             else:
-                status = "Published"
+                status = "✅ Published"
         table_line = [
             linter.descriptor_id,
             linter.linter_name,

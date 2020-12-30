@@ -13,6 +13,7 @@ linters:
     linter_repo: https://github.com/adrienverge/yamllint
     linter_rules_url: https://yamllint.readthedocs.io/en/stable/rules.html
     linter_rules_configuration_url: https://yamllint.readthedocs.io/en/stable/configuration.html#configuration
+    linter_megalinter_ref_url: https://github.com/adrienverge/yamllint/pull/349
     config_file_name: .yaml-lint.yml
     examples:
       - "yamllint myfile.yaml"
