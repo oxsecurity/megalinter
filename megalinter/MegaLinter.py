@@ -10,7 +10,7 @@ import os
 import sys
 
 import git
-from megalinter import config, flavor_factory, linter_factory, utils, plugin_factory
+from megalinter import config, flavor_factory, linter_factory, plugin_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 

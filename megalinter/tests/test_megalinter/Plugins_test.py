@@ -21,10 +21,10 @@ class PluginsTest(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-                           "plugins/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
+                "plugins/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "GITHUB_COMMENT_REPORTER": "false"
+                "GITHUB_COMMENT_REPORTER": "false",
             }
         )
         self.assertTrue(
@@ -39,10 +39,10 @@ class PluginsTest(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-                           "plugins/.automation/test/mega-linter-plugin-test/test.not.here.megalinter-descriptor.yml",
+                "plugins/.automation/test/mega-linter-plugin-test/test.not.here.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "GITHUB_COMMENT_REPORTER": "false"
+                "GITHUB_COMMENT_REPORTER": "false",
             }
         )
         self.assertIn("[Plugins] Unable to load plugin", output)
@@ -51,26 +51,32 @@ class PluginsTest(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-                           "plugins/.automation/test/some_folder_name/test.megalinter-descriptor.yml",
+                "plugins/.automation/test/some_folder_name/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "GITHUB_COMMENT_REPORTER": "false"
+                "GITHUB_COMMENT_REPORTER": "false",
             }
         )
-        self.assertIn("[Plugins] Plugin descriptor file must be hosted in"
-                      " a directory containing /mega-linter-plugin-", output)
+        self.assertIn(
+            "[Plugins] Plugin descriptor file must be hosted in"
+            " a directory containing /mega-linter-plugin-",
+            output,
+        )
 
     def test_load_plugin_file_name_error(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-                           "plugins/.automation/test/mega-linter-plugin-test/test.megalinter-wrong.yml",
+                "plugins/.automation/test/mega-linter-plugin-test/test.megalinter-wrong.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "GITHUB_COMMENT_REPORTER": "false"
+                "GITHUB_COMMENT_REPORTER": "false",
             }
         )
-        self.assertIn("[Plugins] Plugin descriptor file must end with .mega-linter-descriptor.yml", output)
+        self.assertIn(
+            "[Plugins] Plugin descriptor file must end with .mega-linter-descriptor.yml",
+            output,
+        )
 
     def test_load_plugin_format_error_2(self):
         mega_linter, output = utilstest.call_mega_linter(
@@ -78,7 +84,7 @@ class PluginsTest(unittest.TestCase):
                 "PLUGINS": "hello",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "GITHUB_COMMENT_REPORTER": "false"
+                "GITHUB_COMMENT_REPORTER": "false",
             }
         )
         self.assertIn("[Plugins] Plugin descriptors must follow the format", output)
