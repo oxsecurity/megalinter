@@ -25,7 +25,7 @@ def load_plugin(plugin):
     if plugin.startswith("https://"):
         # Check validity of plugin URL
         descriptor_file = "/megalinter-descriptors/" + plugin.rsplit("/", 1)[1]
-        if not plugin.contains("/mega-linter-plugin-"):
+        if "/mega-linter-plugin-" not in plugin:
             raise Exception(
                 "[Plugins] Plugin descriptor file must be hosted in a directory containing /mega-linter-plugin-"
             )
