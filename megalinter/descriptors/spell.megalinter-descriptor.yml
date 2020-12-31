@@ -12,7 +12,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "-w"
     cli_version_arg_name: "-v"
-    help_command_return_code: "2"
+    help_command_return_code: 2
     examples:
       - "misspell myfile.any"
     install:

@@ -614,7 +614,9 @@ class Linter:
             logging.warning(
                 "Unable to get version for linter [" + self.linter_name + "]"
             )
-            logging.warning(" ".join(command) + f" returned output: ({return_code}) " + output)
+            logging.warning(
+                " ".join(command) + f" returned output: ({str(return_code)}) " + output
+            )
             return "ERROR"
         else:
             return output
