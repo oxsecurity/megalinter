@@ -1,1 +1,1 @@
-const someWrongVariableNameBlablabla = true
+const langauge = true

@@ -4,6 +4,18 @@ descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
 lint_all_other_linters_files: true
 linters:
+  # MISSPELL
+  - linter_name: misspell
+    name: SPELL_MISSPELL
+    linter_text: misspell detects and corrects commonly misspelled english words
+    linter_url: https://github.com/client9/misspell
+    cli_lint_mode: list_of_files
+    cli_lint_fix_arg_name: "-w"
+    examples:
+      - "misspell myfile.any"
+    install:
+      dockerfile:
+        - RUN go get -u github.com/client9/misspell/cmd/misspell
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell

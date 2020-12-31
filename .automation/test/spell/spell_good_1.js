@@ -1,1 +1,1 @@
-const someGoodVariableName = true
+const language = true
