@@ -1622,7 +1622,7 @@ def generate_documentation_all_linters():
                 md_url = f"[Mega-Linter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
             if linter.linter_megalinter_ref_url == "no":
                 status = "❌ Refused"
-                md_status = ":trollface:"
+                md_status = ":no_entry_sign:"
             elif linter.linter_megalinter_ref_url == "never":
                 status = "Θ Not applicable"
                 md_status = "<!-- -->"

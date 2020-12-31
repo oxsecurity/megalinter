@@ -17,7 +17,7 @@
 | **coffeelint** | 4.1.2 | [COFFEE](descriptors/coffee_coffeelint.md) | :white_circle: | [Repository](https://github.com/clutchski/coffeelint){target=_blank} |
 | **cpplint** | 1.5.4 | [C](descriptors/c_cpplint.md)<br/> [CPP](descriptors/cpp_cpplint.md) | :white_circle: | [Web Site](https://github.com/cpplint/cpplint){target=_blank} |
 | **cspell** | 4.1.3 | [SPELL](descriptors/spell_cspell.md) | :heart: | [Mega-Linter reference](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank} |
-| **dartanalyzer** | N/A | [DART](descriptors/dart_dartanalyzer.md) | :trollface: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
+| **dartanalyzer** | N/A | [DART](descriptors/dart_dartanalyzer.md) | :no_entry_sign: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
 | **dockerfilelint** | 1.8.0 | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
 | **dotenv-linter** | 2.2.1 | [ENV](descriptors/env_dotenv_linter.md) | :hammer_and_wrench: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24){target=_blank} |
 | **dotnet-format** | 4.1.131201 | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
@@ -58,7 +58,7 @@
 | **scss-lint** | 0.59.0 | [CSS](descriptors/css_scss_lint.md) | :white_circle: | [Web Site](https://github.com/sds/scss-lint){target=_blank} |
 | **sfdx-scanner** | 2.4.0 | [SALESFORCE](descriptors/salesforce_sfdx_scanner.md) | :hammer_and_wrench: | [Pull Request](https://github.com/forcedotcom/sfdx-scanner/pull/307){target=_blank} |
 | **shellcheck** | 0.7.1 | [BASH](descriptors/bash_shellcheck.md) | :hammer_and_wrench: | [Pull Request](https://github.com/koalaman/shellcheck/pull/2076){target=_blank} |
-| **shfmt** | 3.2.1 | [BASH](descriptors/bash_shfmt.md) | :trollface: | [Web Site](https://github.com/mvdan/sh){target=_blank} |
+| **shfmt** | 3.2.1 | [BASH](descriptors/bash_shfmt.md) | :no_entry_sign: | [Web Site](https://github.com/mvdan/sh){target=_blank} |
 | **snakefmt** | 0.2.5 | [SNAKEMAKE](descriptors/snakemake_snakefmt.md) | :white_circle: | [Web Site](https://github.com/snakemake/snakefmt){target=_blank} |
 | **snakemake** | 5.31.1 | [SNAKEMAKE](descriptors/snakemake_snakemake.md) | :white_circle: | [Repository](https://github.com/snakemake/snakemake){target=_blank} |
 | **spectral** | 5.6.0 | [OPENAPI](descriptors/openapi_spectral.md) | :white_circle: | [Repository](https://github.com/stoplightio/spectral){target=_blank} |
@@ -71,4 +71,4 @@
 | **tflint** | 0.22.0 | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
 | **v8r** | 0.4.0 | [JSON](descriptors/json_v8r.md)<br/> [YAML](descriptors/yaml_v8r.md) | :white_circle: | [Web Site](https://github.com/chris48s/v8r){target=_blank} |
 | **xmllint** | 20910 | [XML](descriptors/xml_xmllint.md) | :white_circle: | [Web Site](http://xmlsoft.org/xmllint.html){target=_blank} |
-| **yamllint** | 1.25.0 | [YAML](descriptors/yaml_yamllint.md) | :trollface: | [Repository](https://github.com/adrienverge/yamllint){target=_blank} |
+| **yamllint** | 1.25.0 | [YAML](descriptors/yaml_yamllint.md) | :no_entry_sign: | [Repository](https://github.com/adrienverge/yamllint){target=_blank} |
