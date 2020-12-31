@@ -38,7 +38,7 @@ extra:
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/r/nvuillam/mega-linter
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/nvuillam
+      link: https://twitter.com/NicolasVuillamy
   generator: false
 nav:
   - "Home": "index.md"

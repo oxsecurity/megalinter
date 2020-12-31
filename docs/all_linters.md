@@ -36,7 +36,7 @@
 | **ktlint** | 0.40.0 | [KOTLIN](descriptors/kotlin_ktlint.md) | :heart: | [Mega-Linter reference](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank} |
 | **kubeval** | 0.15.0 | [KUBERNETES](descriptors/kubernetes_kubeval.md) | :white_circle: | [Repository](https://github.com/instrumenta/kubeval){target=_blank} |
 | **lintr** | 2.0.1.9000 | [R](descriptors/r_lintr.md) | :white_circle: | [Web Site](https://github.com/jimhester/lintr){target=_blank} |
-| **luacheck** | 0.23.0 | [LUA](descriptors/lua_luacheck.md) | :hammer_and_wrench: | [Pull Request](https://github.com/luarocks/luacheck/pull/13){target=_blank} |
+| **luacheck** | 0.23.0 | [LUA](descriptors/lua_luacheck.md) | :no_entry_sign: | [Repository](https://github.com/luarocks/luacheck){target=_blank} |
 | **markdown-link-check** | N/A | [MARKDOWN](descriptors/markdown_markdown_link_check.md) | :heart: | [Mega-Linter reference](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank} |
 | **markdownlint** | 0.26.0 | [MARKDOWN](descriptors/markdown_markdownlint.md) | :white_circle: | [Web Site](https://github.com/DavidAnson/markdownlint){target=_blank} |
 | **npm-groovy-lint** | 8.1.0 | [GROOVY](descriptors/groovy_npm_groovy_lint.md) | :heart: | [Mega-Linter reference](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank} |
