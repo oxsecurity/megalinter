@@ -202,6 +202,9 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
+# misspell installation
+RUN go get -u github.com/client9/misspell/cmd/misspell
+
 #OTHER__END
 
 ######################

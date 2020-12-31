@@ -39,6 +39,7 @@
 | **luacheck** | 0.23.0 | [LUA](descriptors/lua_luacheck.md) | :no_entry_sign: | [Repository](https://github.com/luarocks/luacheck){target=_blank} |
 | **markdown-link-check** | N/A | [MARKDOWN](descriptors/markdown_markdown_link_check.md) | :heart: | [Mega-Linter reference](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank} |
 | **markdownlint** | 0.26.0 | [MARKDOWN](descriptors/markdown_markdownlint.md) | :white_circle: | [Web Site](https://github.com/DavidAnson/markdownlint){target=_blank} |
+| **misspell** | N/A | [SPELL](descriptors/spell_misspell.md) | :white_circle: | [Web Site](https://github.com/client9/misspell){target=_blank} |
 | **npm-groovy-lint** | 8.1.0 | [GROOVY](descriptors/groovy_npm_groovy_lint.md) | :heart: | [Mega-Linter reference](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank} |
 | **perlcritic** | 1.138 | [PERL](descriptors/perl_perlcritic.md) | :white_circle: | [Repository](https://github.com/Perl-Critic/Perl-Critic){target=_blank} |
 | **php** | 7.3.25 | [PHP](descriptors/php_php.md) | <!-- --> | [Repository](https://github.com/php/php-src){target=_blank} |

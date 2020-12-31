@@ -168,6 +168,9 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
+# misspell installation
+RUN go get -u github.com/client9/misspell/cmd/misspell
+
 #OTHER__END
 
 ######################
