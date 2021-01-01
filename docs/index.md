@@ -184,6 +184,10 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 <!-- badge-section-end -->
 
+<!-- plugins-section-start -->
+
+<!-- plugins-section-end -->
+
 <!-- frequently-asked-questions-section-start -->
 
 <!-- frequently-asked-questions-section-end -->

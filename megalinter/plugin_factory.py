@@ -9,7 +9,8 @@ from megalinter import config, linter_factory, utils
 
 
 def list_plugins():
-    return config.get_list("PLUGINS", [])
+    plugins = config.get_list("PLUGINS", [])
+    return plugins
 
 
 # Load & install plugins from external URLs
@@ -29,9 +30,9 @@ def load_plugin(plugin):
             raise Exception(
                 "[Plugins] Plugin descriptor file must be hosted in a directory containing /mega-linter-plugin-"
             )
-        if not descriptor_file.endswith(".mega-linter-descriptor.yml"):
+        if not descriptor_file.endswith(".megalinter-descriptor.yml"):
             raise Exception(
-                "[Plugins] Plugin descriptor file must end with .mega-linter-descriptor.yml"
+                "[Plugins] Plugin descriptor file must end with .megalinter-descriptor.yml"
             )
         # Download plugin and write it in megalinter
         try:
@@ -46,7 +47,7 @@ def load_plugin(plugin):
     else:
         raise Exception(
             "[Plugins] Plugin descriptors must follow the format"
-            " https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml"
+            f" https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml (wrong value {plugin})"
         )
 
 

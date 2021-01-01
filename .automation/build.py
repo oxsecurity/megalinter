@@ -1401,6 +1401,7 @@ def finalize_doc_build():
         "reporters",
         "flavors",
         "badge",
+        "plugins",
         "frequently-asked-questions",
         "how-to-contribute",
         "license",

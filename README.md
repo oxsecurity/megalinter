@@ -63,6 +63,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
   - [Reporters](#reporters)
   - [Flavors](#flavors)
   - [Add Mega-Linter badge in your repository README](#badge)
+  - [Plugins](#plugins)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [License](#license)
@@ -439,6 +440,7 @@ You can see an example config file in this repo: [**.mega-linter.yml**](https://
 | **LOG_FILE**                        | `mega-linter.log`            | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                 |
 | **LOG_LEVEL**                       | `INFO`                       | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
 | **PARALLEL**                        | `true`                       | Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |
+| [**PLUGINS**](#plugins)             | \[\]                         | List of plugin urls to install and run during Mega-Linter run                                                                                                                                          |
 | **PRINT_ALPACA**                    | `true`                       | Enable printing alpaca image to console                                                                                                                                          |
 | **REPORT_OUTPUT_FOLDER**            | `${GITHUB_WORKSPACE}/report` | Directory for generating report files                                                                                                                                            |
 | **SHOW_ELAPSED_TIME**               | `false`                      | Displays elapsed time in reports                                                                                                                                                 |
@@ -613,6 +615,24 @@ If your main branch is **main** , replace **master** by **main** in URLs
 
 _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
 <!-- badge-section-end -->
+
+<!-- plugins-section-start -->
+## Plugins
+
+You can implement your own descriptors and load them as plugins during Mega-Linter runtime
+
+- Plugins descriptor files must be named **.megalinter-descriptor.yml**
+- Plugins must be hosted in a url containing **/mega-linter-plugin-/**
+
+Example in `.mega-linter.yml`
+
+```yaml
+PLUGINS:
+  - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/master/cookietemple.megalinter-descriptor.yml
+```
+
+<!-- plugins-section-end -->
 
 <!-- frequently-asked-questions-section-start -->
 ## Frequently Asked Questions
