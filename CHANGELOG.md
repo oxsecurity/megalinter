@@ -4,6 +4,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Linters
+  - Add misspell spell checker
+
 - Reports
   - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
 
