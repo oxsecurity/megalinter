@@ -10,7 +10,7 @@
 | **bash-exec** | 5.0.17 | [BASH](descriptors/bash_bash_exec.md) | <!-- --> | [Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank} |
 | **black** | 19.10 | [PYTHON](descriptors/python_black.md) | :white_circle: | [Repository](https://github.com/psf/black){target=_blank} |
 | **cfn-lint** | 0.44.2 | [CLOUDFORMATION](descriptors/cloudformation_cfn_lint.md) | :white_circle: | [Web Site](https://github.com/martysweet/cfn-lint){target=_blank} |
-| **checkstyle** | 8.38 | [JAVA](descriptors/java_checkstyle.md) | :heart: | [Mega-Linter reference](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank} |
+| **checkstyle** | 8.39 | [JAVA](descriptors/java_checkstyle.md) | :heart: | [Mega-Linter reference](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank} |
 | **chktex** | 1.7.6 | [LATEX](descriptors/latex_chktex.md) | :white_circle: | [Web Site](https://www.nongnu.org/chktex){target=_blank} |
 | **clippy** | 0.0.212 | [RUST](descriptors/rust_clippy.md) | :white_circle: | [Web Site](https://github.com/rust-lang/rust-clippy){target=_blank} |
 | **clj-kondo** | 2020.09.09 | [CLOJURE](descriptors/clojure_clj_kondo.md) | :heart: | [Mega-Linter reference](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank} |
@@ -30,7 +30,7 @@
 | **graphql-schema-linter** | 2.0.1 | [GRAPHQL](descriptors/graphql_graphql_schema_linter.md) | :hammer_and_wrench: | [Pull Request](https://github.com/cjoudrey/graphql-schema-linter/pull/272){target=_blank} |
 | **hadolint** | 1.19.0 | [DOCKERFILE](descriptors/dockerfile_hadolint.md) | :heart: | [Mega-Linter reference](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank} |
 | **htmlhint** | 0.14.2 | [HTML](descriptors/html_htmlhint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/htmlhint/HTMLHint/pull/579/files){target=_blank} |
-| **isort** | 5.6.4 | [PYTHON](descriptors/python_isort.md) | :white_circle: | [Repository](https://github.com/PyCQA/isort){target=_blank} |
+| **isort** | 5.7.0 | [PYTHON](descriptors/python_isort.md) | :white_circle: | [Repository](https://github.com/PyCQA/isort){target=_blank} |
 | **jscpd** | 3.3.23 | [COPYPASTE](descriptors/copypaste_jscpd.md) | :heart: | [Mega-Linter reference](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank} |
 | **jsonlint** | 1.6.3 | [JSON](descriptors/json_jsonlint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/zaach/jsonlint/pull/127){target=_blank} |
 | **ktlint** | 0.40.0 | [KOTLIN](descriptors/kotlin_ktlint.md) | :heart: | [Mega-Linter reference](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank} |
