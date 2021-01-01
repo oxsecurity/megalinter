@@ -10,6 +10,8 @@ linters:
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "-error"
     cli_lint_fix_arg_name: "-w"
     cli_version_arg_name: "-v"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"
