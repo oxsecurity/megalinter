@@ -1758,7 +1758,7 @@
     "GITHUB_API_URL": {
       "$id": "#/properties/GITHUB_API_URL",
       "default": "https://api.github.com",
-      "description": "URL where the github API can be reached. Must be overriden if using GitHub Enterprise",
+      "description": "URL where the github API can be reached. Must be overridden if using GitHub Enterprise",
       "examples": [
         "https://github.my-company.com/api/v3"
       ],
@@ -1776,7 +1776,7 @@
     "GITHUB_SERVER_URL": {
       "$id": "#/properties/GITHUB_SERVER_URL",
       "default": "https://github.com",
-      "description": "URL of the GitHub instance. Must be overriden if using GitHub Enterprise",
+      "description": "URL of the GitHub instance. Must be overridden if using GitHub Enterprise",
       "examples": [
         "https://github.my-company.com/"
       ],

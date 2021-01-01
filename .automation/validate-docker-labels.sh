@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ################################################################################
-############# Clean all code base for additonal testing @admiralawkbar #########
+############# Clean all code base for additional testing @admiralawkbar #########
 ################################################################################
 
 ###########
