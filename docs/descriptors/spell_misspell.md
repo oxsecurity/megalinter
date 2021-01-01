@@ -68,3 +68,27 @@ misspell myfile.any
 RUN go get -u github.com/client9/misspell/cmd/misspell
 ```
 
+
+### Example success log
+
+```shell
+Results of misspell linter (version dev)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_misspell/
+-----------------------------------------------
+
+✅ [SUCCESS] .automation/test/spell
+    
+
+```
+
+### Example error log
+
+```shell
+Results of misspell linter (version dev)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/spell_misspell/
+-----------------------------------------------
+
+❌ [ERROR] .automation/test/spell
+    .automation/test/spell/spell_bad_1.js:1:6: "langauge" is a misspelling of "language"
+
+```

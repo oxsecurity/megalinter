@@ -416,7 +416,7 @@ UTILITIES:
                         input files will be skipped (a warning will be
                         issued). For each rule, one test case will be created
                         in the specified test folder (.tests/unit by default).
-                        After successful execution, tests can be run with
+                        After successfull execution, tests can be run with
                         'pytest TESTPATH'. (default: None)
   --export-cwl FILE     Compile workflow to CWL and store it in given FILE.
                         (default: None)

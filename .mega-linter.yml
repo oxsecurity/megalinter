@@ -18,6 +18,7 @@ FILTER_REGEX_EXCLUDE: '(\.automation/test|docs/javascripts|docs/overrides|flavor
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors)'
 BASH_FILTER_REGEX_EXCLUDE: (lib)
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
+SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
 SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
