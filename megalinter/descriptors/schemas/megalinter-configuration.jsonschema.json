@@ -125,6 +125,7 @@
         "SCALA_SCALAFIX",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
+        "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "TEKTON_TEKTON_LINT",
@@ -1757,7 +1758,7 @@
     "GITHUB_API_URL": {
       "$id": "#/properties/GITHUB_API_URL",
       "default": "https://api.github.com",
-      "description": "URL where the github API can be reached. Must be overriden if using GitHub Enterprise",
+      "description": "URL where the github API can be reached. Must be overridden if using GitHub Enterprise",
       "examples": [
         "https://github.my-company.com/api/v3"
       ],
@@ -1775,7 +1776,7 @@
     "GITHUB_SERVER_URL": {
       "$id": "#/properties/GITHUB_SERVER_URL",
       "default": "https://github.com",
-      "description": "URL of the GitHub instance. Must be overriden if using GitHub Enterprise",
+      "description": "URL of the GitHub instance. Must be overridden if using GitHub Enterprise",
       "examples": [
         "https://github.my-company.com/"
       ],
@@ -4796,6 +4797,59 @@
     "SPELL_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SPELL_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for SPELL descriptor",
+      "type": "string"
+    },
+    "SPELL_MISSPELL_ARGUMENTS": {
+      "$id": "#/properties/SPELL_MISSPELL_ARGUMENTS",
+      "description": "SPELL_MISSPELL: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Custom arguments",
+      "type": "array"
+    },
+    "SPELL_MISSPELL_DISABLE_ERRORS": {
+      "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS",
+      "default": false,
+      "title": "SPELL_MISSPELL: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SPELL_MISSPELL_FILE_EXTENSIONS": {
+      "$id": "#/properties/SPELL_MISSPELL_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SPELL_MISSPELL_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SPELL_MISSPELL_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SPELL_MISSPELL_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_EXCLUDE",
+      "title": "SPELL_MISSPELL: Excluding Regex",
+      "type": "string"
+    },
+    "SPELL_MISSPELL_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_INCLUDE",
+      "title": "SPELL_MISSPELL: Including Regex",
       "type": "string"
     },
     "SQL_FILTER_REGEX_EXCLUDE": {

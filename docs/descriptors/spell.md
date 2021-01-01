@@ -7,6 +7,7 @@
 
 | Linter | Configuration key |
 | ------ | ----------------- |
+| [misspell](spell_misspell.md) | [SPELL_MISSPELL](spell_misspell.md) |
 | [cspell](spell_cspell.md) | [SPELL_CSPELL](spell_cspell.md) |
 
 ## Linted files

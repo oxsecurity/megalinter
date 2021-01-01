@@ -36,6 +36,7 @@
         "RST_RSTFMT",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
+        "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "TEKTON_TEKTON_LINT",

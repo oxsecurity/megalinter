@@ -5,6 +5,9 @@
 
 Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
 
+- Linters
+  - Add misspell spell checker
+
 - Core
   - Implement architecture for Mega-Linter plugins
 

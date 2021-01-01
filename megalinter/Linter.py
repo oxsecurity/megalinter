@@ -614,7 +614,9 @@ class Linter:
             logging.warning(
                 "Unable to get version for linter [" + self.linter_name + "]"
             )
-            logging.warning(" ".join(command) + " returned output: " + output)
+            logging.warning(
+                " ".join(command) + f" returned output: ({str(return_code)}) " + output
+            )
             return "ERROR"
         else:
             return output
@@ -648,7 +650,7 @@ class Linter:
 
         if return_code != self.help_command_return_code or output.strip() == "":
             logging.warning("Unable to get help for linter [" + self.linter_name + "]")
-            logging.warning(str(command) + " returned output: " + output)
+            logging.warning(f"{str(command)} returned output: ({return_code}) {output}")
             return "ERROR"
         else:
             return output

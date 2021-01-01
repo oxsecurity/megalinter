@@ -167,6 +167,9 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 # clippy installation
 RUN rustup component add clippy
 
+# misspell installation
+RUN go get -u github.com/client9/misspell/cmd/misspell
+
 #OTHER__END
 
 ######################

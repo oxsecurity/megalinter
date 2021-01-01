@@ -243,6 +243,7 @@ nav:
               - "git_diff": "descriptors/git_git_diff.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
+              - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
 # other-end
   - "Reporters":

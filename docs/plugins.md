@@ -13,8 +13,8 @@ Example in `.mega-linter.yml`
 
 ```yaml
 PLUGINS:
-  - https://raw.githubusercontent.com/nvuillam/mega-linter/plugins/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
-  - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/cookietemple.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/master/cookietemple.megalinter-descriptor.yml
 ```
 
 

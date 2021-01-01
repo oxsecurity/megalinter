@@ -163,6 +163,9 @@ RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
+# misspell installation
+RUN go get -u github.com/client9/misspell/cmd/misspell
+
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
