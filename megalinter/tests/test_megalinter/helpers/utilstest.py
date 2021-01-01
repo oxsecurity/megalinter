@@ -44,6 +44,7 @@ def linter_test_setup(params=None):
     # TAP Output deactivated by default
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
+    config.set_value("PLUGINS", "")
     # Root path of default rules
     root_dir = (
         "/tmp/lint"

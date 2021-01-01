@@ -135,7 +135,7 @@ function BuildFileList() {
   for FILE in "${RAW_FILE_ARRAY[@]}"; do
     # Extract just the file extension
     FILE_TYPE="$(GetFileExtension "$FILE")"
-    # get the baseFile for additonal logic, lowercase
+    # get the baseFile for additional logic, lowercase
     BASE_FILE=$(basename "${FILE,,}")
 
     ##############

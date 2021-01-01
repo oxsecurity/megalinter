@@ -8,6 +8,9 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 - Linters
   - Add misspell spell checker
 
+- Core
+  - Implement architecture for Mega-Linter plugins
+
 - Reports
   - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
 
