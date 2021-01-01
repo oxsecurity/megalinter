@@ -77,6 +77,8 @@ def get_list(config_var, default=None):
     if var is not None:
         if isinstance(var, list):
             return var
+        if var == "":
+            return []
         return var.split(",")
     return default
 

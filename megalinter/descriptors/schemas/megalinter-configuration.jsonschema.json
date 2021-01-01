@@ -3425,6 +3425,20 @@
       "title": "PHP_PSALM: Custom config file path",
       "type": "string"
     },
+    "PLUGINS": {
+      "$id": "#/properties/PLUGINS",
+      "description": "List of Mega-Linter plugins. URL must follow format https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml",
+      "examples": [
+        [
+          "https://raw.githubusercontent.com/cookiejar/megalinter-plugin-cookiejar/master/cookietemplate.mega-linter-descriptor.yml"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "List of plugins loaded at runtime",
+      "type": "array"
+    },
     "POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for POWERSHELL descriptor",

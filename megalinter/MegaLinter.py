@@ -10,7 +10,7 @@ import os
 import sys
 
 import git
-from megalinter import config, flavor_factory, linter_factory, utils
+from megalinter import config, flavor_factory, linter_factory, plugin_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 
@@ -78,6 +78,8 @@ class Megalinter:
         self.return_code = 0
         self.has_updated_sources = 0
         self.flavor_suggestions = None
+        # Initialize plugins
+        plugin_factory.initialize_plugins()
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()

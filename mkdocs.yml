@@ -273,6 +273,7 @@ nav:
       - "scala": "flavors/scala.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end
+  - "Plugins": "plugins.md"
   - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
   - "List of linters": "all_linters.md"
