@@ -45,6 +45,7 @@ ValidateLabel() {
   ########################
   # Get the docker label #
   ########################
+  echo "Checking label for ${ORG_REPO}:${TAG}"
   LABEL=$(docker inspect --format "{{ index .Config.Labels \"${CONTAINER_KEY}\" }}" "${ORG_REPO}:${TAG}")
 
   ###################
