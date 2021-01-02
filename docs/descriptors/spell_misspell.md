@@ -6,6 +6,7 @@ misspell detects and corrects commonly misspelled english words
 
 ## misspell documentation
 
+- Version in Mega-Linter: **0.3.4**
 - Visit [Official Web Site](https://github.com/client9/misspell#readme){target=_blank}
 
 [![misspell - GitHub](https://gh-card.dev/repos/client9/misspell.svg?fullname=)](https://github.com/client9/misspell){target=_blank}
@@ -60,6 +61,33 @@ This linter is available in the following flavours
 misspell myfile.any
 ```
 
+
+### Help content
+
+```shell
+Usage of misspell:
+  -debug
+      Debug matching, very slow
+  -error
+      Exit with 2 if misspelling found
+  -f string
+      'csv', 'sqlite3' or custom Golang template for output
+  -i string
+      ignore the following corrections, comma separated
+  -j int
+      Number of workers, 0 = number of CPUs
+  -legal
+      Show legal information and exit
+  -locale string
+      Correct spellings using locale perferances for US or UK.  Default is to use a neutral variety of English.  Setting locale to US will correct the British spelling of 'colour' to 'color'
+  -o string
+      output file or [stderr|stdout|] (default "stdout")
+  -q  Do not emit misspelling output
+  -source string
+      Source mode: auto=guess, go=golang source, text=plain or markdown-like text (default "auto")
+  -v  Show version and exit
+  -w  Overwrite file with corrections (default is just to display)
+```
 
 ### Installation on mega-linter Docker image
 
