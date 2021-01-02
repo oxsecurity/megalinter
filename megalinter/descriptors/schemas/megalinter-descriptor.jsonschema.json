@@ -425,6 +425,15 @@
             "title": "CLI help extra commands",
             "type": "array"
           },
+          "cli_lint_errors_regex": {
+            "$id": "#/properties/linters/items/properties/cli_lint_errors_regex",
+            "description": "Regex allowing to extract the number of errors from linter output logs",
+            "examples": [
+              "Issues found: (.*) in .* files"
+            ],
+            "title": "Lint errors number regex",
+            "type": "string"
+          },
           "cli_lint_extra_args": {
             "$id": "#/properties/linters/items/properties/cli_lint_extra_args",
             "default": [],
