@@ -8,10 +8,12 @@
 # Globals #
 ###########
 GITHUB_WORKSPACE="${GITHUB_WORKSPACE}" # GitHub Workspace
+TAG="${TAG}"
 GITHUB_SHA="${GITHUB_SHA}"             # Sha used to create this branch
+TAG=${TAG:-$GITHUB_SHA}
 BUILD_DATE="${BUILD_DATE}"             # Date the container was built
-BUILD_REVISION="${GITHUB_SHA}"         # GitHub Sha
-BUILD_VERSION="${GITHUB_SHA}"          # Version of the container
+BUILD_REVISION="${TAG}"         # GitHub Sha
+BUILD_VERSION="${TAG}"          # Version of the container
 ORG_REPO="nvuillam/mega-linter"        # Org/repo
 ERROR=0                                # Error count
 
@@ -43,7 +45,7 @@ ValidateLabel() {
   ########################
   # Get the docker label #
   ########################
-  LABEL=$(docker inspect --format "{{ index .Config.Labels \"${CONTAINER_KEY}\" }}" "${ORG_REPO}:${GITHUB_SHA}")
+  LABEL=$(docker inspect --format "{{ index .Config.Labels \"${CONTAINER_KEY}\" }}" "${ORG_REPO}:${TAG}")
 
   ###################
   # Check the value #
