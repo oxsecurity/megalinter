@@ -115,6 +115,8 @@ jobs:
       ########################################
       - name: Run Docker label test cases
         if: "!contains(github.event.head_commit.message, 'quick build')"
+        env:
+          GITHUB_SHA: ${{steps.image_tag.outputs.tag}}
         shell: bash
         run: .automation/validate-docker-labels.sh
 
