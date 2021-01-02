@@ -391,7 +391,7 @@ class Linter:
                 else:
                     self.status = "error"
                     self.return_code = 1
-                    self.number_errors = self.number_errors + 1
+                    self.number_errors += 1
                     file_errors_number = self.get_total_number_errors(stdout)
                     self.total_number_errors += file_errors_number
                 if self.try_fix is True:
@@ -426,7 +426,8 @@ class Linter:
             if return_code != 0:
                 self.status = "error"
                 self.return_code = 1
-                self.number_errors = self.number_errors + 1
+                self.number_errors += 1
+                self.total_number_errors += self.get_total_number_errors(stdout)
             # Update reports with file result
             for reporter in self.reporters:
                 reporter.add_report_item(
@@ -706,9 +707,9 @@ class Linter:
         reg = self.cli_lint_errors_regex
         if type(reg) == str:
             reg = re.compile(reg)
-        m = reg.search(stdout)
+        m = re.search(reg, stdout)
         if m:
-            return m.group().split()
+            return int(m.group(1))
         if self.status == "success":
             return 0
         if self.status == "error":
