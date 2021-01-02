@@ -1,1 +1,2 @@
-const language = true
+const language = true;
+console.log(language);
