@@ -1,0 +1,53 @@
+################################################
+################################################
+## Dockerfile to run Mega-Linter (Quick mode) ##
+################################################
+################################################
+
+##################
+# Get base image #
+##################
+ARG MEGALINTER_BASE_IMAGE=nvuillam/mega-linter:latest
+FROM $MEGALINTER_BASE_IMAGE
+
+################################
+# Installs python dependencies #
+################################
+COPY megalinter /megalinter
+RUN python /megalinter/setup.py install
+
+#######################################
+# Copy scripts and rules to container #
+#######################################
+COPY megalinter/descriptors /megalinter-descriptors
+COPY TEMPLATES /action/lib/.automation
+
+###########################
+# Get the build arguments #
+###########################
+ARG BUILD_DATE
+ARG BUILD_REVISION
+ARG BUILD_VERSION
+
+#################################################
+# Set ENV values used for debugging the version #
+#################################################
+ENV BUILD_DATE=$BUILD_DATE
+ENV BUILD_REVISION=$BUILD_REVISION
+ENV BUILD_VERSION=$BUILD_VERSION
+
+ENV MEGALINTER_FLAVOR=all
+
+#########################################
+# Label the instance and set maintainer #
+#########################################
+LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.revision=$BUILD_REVISION \
+      org.opencontainers.image.version=$BUILD_VERSION \
+      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.url="https://nvuillam.github.io/mega-linter" \
+      org.opencontainers.image.source="https://github.com/nvuillam/mega-linter" \
+      org.opencontainers.image.documentation="https://nvuillam.github.io/mega-linter" \
+      org.opencontainers.image.vendor="Nicolas Vuillamy" \
+      org.opencontainers.image.description="Lint your code base with GitHub Actions (DEV VERSION)"

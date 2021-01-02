@@ -65,21 +65,52 @@ jobs:
       - name: Get current date
         run: echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> ${GITHUB_ENV}
 
+      ########################
+      # Build image tag name #
+      ########################
+      - name: Build image tag name
+        id: image_tag
+        run: |
+             BRANCH_NAME="${GITHUB_REF##*/}"
+             TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
+             echo "Tag name: ${TAG}"
+             echo "::set-output name=tag::${TAG}"
+
       ###################################
       # Build image locally for testing #
       ###################################
-      - name: Build image
-        id: docker_build
+      - name: Build image (quick)
+        if: "contains(github.event.head_commit.message, 'quick build')"
+        id: docker_build_quick
         shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: |
+             function docker_tag_exists() {
+                 echo "Checking existence of https://hub.docker.com/v2/repositories/$1/tags/$2"
+                 curl --silent -f -lSL https://hub.docker.com/v2/repositories/$1/tags/$2 > /dev/null
+             }
+             MEGA_LINTER_BASE_IMAGE="nvuillam/mega-linter:latest"
+             if docker_tag_exists nvuillam/mega-linter ${{steps.image_tag.outputs.tag}}; then
+                MEGA_LINTER_BASE_IMAGE="nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}"
+                echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
+             fi
+             docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 30
 
-      ########################################
-      # Validates the metadata docker labels #
-      ########################################
-      - name: Run Docker label test cases
+      ######################
+      # Build image (full) #
+      ######################
+      - name: Build image (full) & push
+        if: "!contains(github.event.head_commit.message, 'quick build')"
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter
+          IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
+          DOCKERFILE_PATH: Dockerfile
+          REGISTRY: Docker
         shell: bash
-        run: .automation/validate-docker-labels.sh
+        run: .automation/upload-docker.sh || true
 
       #####################################
       # Run Linter against Test code base #
@@ -88,16 +119,21 @@ jobs:
         shell: bash
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
-          echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
+          TEST_KEYWORDS=""
+          if [[ "${{github.event.head_commit.message}}" == *"TEST_KEYWORDS="* ]]; then
+            TEST_KEYWORDS=$(echo "${{github.event.head_commit.message}}" | sed "s/^TEST_KEYWORDS=\(.*\)$/\1/" )
+            echo "Run only tests with keywords ${TEST_KEYWORDS}"
+          fi
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 30
 
       #####################################
       # Run Linter against ALL code base  #
       #####################################
       - name: Run against all code base
+        if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
-        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${GITHUB_SHA}
+        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 10
 
       # Upload Mega-Linter artifacts
@@ -118,13 +154,13 @@ jobs:
 
       # Test mega-linter-runner with newly created image
       - name: Setup Node
-        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }})
+        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
         uses: actions/setup-node@v2.1.3
         with:
           node-version: "12"
       - name: Install NPM dependencies
-        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }})
+        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && sudo npm ci && sudo npm link
       - name: Run mega-linter-runner tests
-        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }})
-        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{github.sha}} MEGALINTER_NO_DOCKER_PULL=true npm run test
+        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
+        run: cd mega-linter-runner && MEGALINTER_RELEASE=${{steps.image_tag.outputs.tag}} MEGALINTER_NO_DOCKER_PULL=true npm run test
