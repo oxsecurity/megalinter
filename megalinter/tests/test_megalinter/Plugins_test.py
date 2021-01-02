@@ -21,7 +21,7 @@ class PluginsTest(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-                "plugins/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
+                "master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
