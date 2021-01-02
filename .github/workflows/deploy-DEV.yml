@@ -72,7 +72,7 @@ jobs:
         id: image_tag
         run: |
              BRANCH_NAME="${GITHUB_REF##*/}"
-             TAG="${GITHUB_ACTOR}-${BRANCH_NAME}"
+             TAG="test-${GITHUB_ACTOR}-${BRANCH_NAME}"
              echo "Tag name: ${TAG}"
              echo "::set-output name=tag::${TAG}"
 
@@ -85,6 +85,7 @@ jobs:
         shell: bash
         run: |
              function docker_tag_exists() {
+                 echo "Checking existence of https://index.docker.io/v1/repositories/$1/tags/$2"
                  curl --silent -f -lSL https://index.docker.io/v1/repositories/$1/tags/$2 > /dev/null
              }
              MEGA_LINTER_BASE_IMAGE="nvuillam/mega-linter:latest"
