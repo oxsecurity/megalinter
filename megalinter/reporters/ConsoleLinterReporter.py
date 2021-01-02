@@ -37,7 +37,7 @@ class ConsoleLinterReporter(Reporter):
         # Output results file by file
         for res in self.master.files_lint_results:
             file_nm = utils.normalize_log_string(res["file"])
-            file_errors = str(res.get('errors_number', 0))
+            file_errors = str(res.get("errors_number", 0))
             line = f"[{self.master.linter_name}] {file_nm} - {res['status'].upper()} - {file_errors} error(s)"
             if res["fixed"] is True:
                 line += " - FIXED"
@@ -57,4 +57,6 @@ class ConsoleLinterReporter(Reporter):
                 f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})"
             )
         elif self.master.return_code != 0 and self.master.status != "success":
-            logging.error(f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})")
+            logging.error(
+                f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})"
+            )
