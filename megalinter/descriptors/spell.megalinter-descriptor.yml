@@ -22,7 +22,9 @@ linters:
       - "misspell myfile.any"
     install:
       dockerfile:
-        - RUN go get -u github.com/client9/misspell/cmd/misspell
+        - |
+          RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+              && sh ./install-misspell.sh
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell
@@ -38,6 +40,8 @@ linters:
     linter_megalinter_ref_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "--verbose"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"

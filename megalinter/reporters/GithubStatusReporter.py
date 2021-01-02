@@ -42,7 +42,7 @@ class GithubStatusReporter(Reporter):
             run_id = config.get("GITHUB_RUN_ID")
             success_msg = "No errors were found in the linting process"
             error_not_blocking = "Errors were detected but are considered not blocking"
-            error_msg = "Errors were detected, please view logs"
+            error_msg = f"Found {self.master.total_number_errors}, please check logs"
             url = f"{github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 "accept": "application/vnd.github.v3+json",

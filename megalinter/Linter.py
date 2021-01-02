@@ -86,6 +86,7 @@ class Linter:
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
+        self.cli_lint_errors_regex = r"Issues found: (.*) in .* files"
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -119,7 +120,7 @@ class Linter:
         self.is_active = params["default_linter_activation"]
         if self.name is None:
             self.name = (
-                self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
+                    self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
@@ -147,19 +148,19 @@ class Linter:
             if self.cli_lint_fix_arg_name is None:
                 self.apply_fixes = False
             elif param_apply_fixes == "all" or (
-                isinstance(param_apply_fixes, bool) and param_apply_fixes is True
+                    isinstance(param_apply_fixes, bool) and param_apply_fixes is True
             ):
                 self.apply_fixes = True
             elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, str)
-                and self.name in param_apply_fixes.split(",")
+                    param_apply_fixes != "none"
+                    and isinstance(param_apply_fixes, str)
+                    and self.name in param_apply_fixes.split(",")
             ):
                 self.apply_fixes = True
             elif (
-                param_apply_fixes != "none"
-                and isinstance(param_apply_fixes, list)
-                and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
+                    param_apply_fixes != "none"
+                    and isinstance(param_apply_fixes, list)
+                    and (self.name in param_apply_fixes or param_apply_fixes[0] == "all")
             ):
                 self.apply_fixes = True
             else:
@@ -207,7 +208,7 @@ class Linter:
                     f"{self.descriptor_id}_DIRECTORY", self.files_sub_directory
                 )
                 if not os.path.isdir(
-                    self.workspace + os.path.sep + self.files_sub_directory
+                        self.workspace + os.path.sep + self.files_sub_directory
                 ):
                     self.is_active = False
 
@@ -230,6 +231,7 @@ class Linter:
             self.status = "success"
             self.return_code = 0
             self.number_errors = 0
+            self.total_number_errors = 0
             self.number_fixed = 0
             self.files_lint_results = []
             self.start_perf = None
@@ -243,30 +245,30 @@ class Linter:
         elif self.name in params["disable_linters"]:
             self.is_active = False
         elif (
-            self.descriptor_id in params["disable_descriptors"]
-            or self.name in params["disable_linters"]
+                self.descriptor_id in params["disable_descriptors"]
+                or self.name in params["disable_linters"]
         ):
             self.is_active = False
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
         elif (
-            config.exists("VALIDATE_" + self.name)
-            and config.get("VALIDATE_" + self.name) == "false"
+                config.exists("VALIDATE_" + self.name)
+                and config.get("VALIDATE_" + self.name) == "false"
         ):
             self.is_active = False
         elif (
-            config.exists("VALIDATE_" + self.descriptor_id)
-            and config.get("VALIDATE_" + self.descriptor_id) == "false"
+                config.exists("VALIDATE_" + self.descriptor_id)
+                and config.get("VALIDATE_" + self.descriptor_id) == "false"
         ):
             self.is_active = False
         elif (
-            config.exists("VALIDATE_" + self.name)
-            and config.get("VALIDATE_" + self.name) == "true"
+                config.exists("VALIDATE_" + self.name)
+                and config.get("VALIDATE_" + self.name) == "true"
         ):
             self.is_active = True
         elif (
-            config.exists("VALIDATE_" + self.descriptor_id)
-            and config.get("VALIDATE_" + self.descriptor_id) == "true"
+                config.exists("VALIDATE_" + self.descriptor_id)
+                and config.get("VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
 
@@ -291,8 +293,8 @@ class Linter:
         # 3: linter_rules_path + config_file_name
         # 4: mega-linter default rules path + config_file_name
         if (
-            self.config_file_name is not None
-            and self.config_file_name != "LINTER_DEFAULT"
+                self.config_file_name is not None
+                and self.config_file_name != "LINTER_DEFAULT"
         ):
             if self.linter_rules_path.startswith("http"):
                 if not self.linter_rules_path.endswith("/"):
@@ -302,7 +304,7 @@ class Linter:
                 existing_before = os.path.isfile(local_config_file)
                 try:
                     with urllib.request.urlopen(remote_config_file) as response, open(
-                        local_config_file, "wb"
+                            local_config_file, "wb"
                     ) as out_file:
                         shutil.copyfileobj(response, out_file)
                         self.config_file_label = remote_config_file
@@ -323,17 +325,17 @@ class Linter:
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
             elif os.path.isfile(
-                self.linter_rules_path + os.path.sep + self.config_file_name
+                    self.linter_rules_path + os.path.sep + self.config_file_name
             ):
                 self.config_file = (
-                    self.linter_rules_path + os.path.sep + self.config_file_name
+                        self.linter_rules_path + os.path.sep + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
             elif os.path.isfile(
-                self.default_rules_location + os.path.sep + self.config_file_name
+                    self.default_rules_location + os.path.sep + self.config_file_name
             ):
                 self.config_file = (
-                    self.default_rules_location + os.path.sep + self.config_file_name
+                        self.default_rules_location + os.path.sep + self.config_file_name
                 )
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
@@ -383,13 +385,15 @@ class Linter:
             for file in self.files:
                 index = index + 1
                 return_code, stdout = self.process_linter(file)
+                file_errors_number = 0
                 if return_code == 0:
-                    status = "success"
+                    self.status = "success"
                 else:
-                    status = "error"
                     self.status = "error"
                     self.return_code = 1
-                    self.number_errors = self.number_errors + 1
+                    self.number_errors += 1
+                    file_errors_number = self.get_total_number_errors(stdout)
+                    self.total_number_errors += file_errors_number
                 if self.try_fix is True:
                     fixed = utils.check_updated_file(file, self.github_workspace)
                 else:
@@ -401,9 +405,10 @@ class Linter:
                     {
                         "file": file,
                         "status_code": return_code,
-                        "status": status,
+                        "status": self.status,
                         "stdout": stdout,
                         "fixed": fixed,
+                        "errors_number": file_errors_number
                     }
                 ]
                 # Update reports with file result
@@ -421,7 +426,8 @@ class Linter:
             if return_code != 0:
                 self.status = "error"
                 self.return_code = 1
-                self.number_errors = self.number_errors + 1
+                self.number_errors += 1
+                self.total_number_errors += self.get_total_number_errors(stdout)
             # Update reports with file result
             for reporter in self.reporters:
                 reporter.add_report_item(
@@ -695,6 +701,19 @@ class Linter:
                 cmd.remove(arg)
             cmd.remove("--megalinter-fix-flag")
         return cmd
+
+    # Find number of errors in linter stdout log
+    def get_total_number_errors(self, stdout):
+        reg = self.cli_lint_errors_regex
+        if type(reg) == str:
+            reg = re.compile(reg)
+        m = re.search(reg, stdout)
+        if m:
+            return int(m.group(1))
+        if self.status == "success":
+            return 0
+        if self.status == "error":
+            return 1
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):

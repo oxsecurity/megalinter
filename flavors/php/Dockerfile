@@ -199,7 +199,9 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # misspell installation
-RUN go get -u github.com/client9/misspell/cmd/misspell
+RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+    && sh ./install-misspell.sh
+
 
 #OTHER__END
 

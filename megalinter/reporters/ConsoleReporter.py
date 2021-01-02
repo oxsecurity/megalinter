@@ -66,13 +66,13 @@ class ConsoleReporter(Reporter):
                     if linter.status != "success" and linter.return_code == 0
                     else "❌"
                 )
+                errors = str(linter.total_number_errors)
                 if linter.cli_lint_mode == "project":
                     found = "project"
-                    errors = "yes" if linter.number_errors > 0 else "no"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
                     found = str(len(linter.files))
-                    errors = str(linter.number_errors)
+
                 table_line = [
                     status + " " + linter.descriptor_id,
                     linter.linter_name,

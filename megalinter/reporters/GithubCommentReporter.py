@@ -78,14 +78,14 @@ class GithubCommentReporter(Reporter):
                         found = "yes"
                         nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                         errors_cell = (
-                            log_link("**yes**", action_run_url)
+                            log_link(f"**{linter.total_number_errors}**", action_run_url)
                             if linter.number_errors > 0
                             else "no"
                         )
                     else:
                         found = str(len(linter.files))
                         errors_cell = (
-                            log_link(f"**{linter.number_errors}**", action_run_url)
+                            log_link(f"**{linter.total_number_errors}**", action_run_url)
                             if linter.number_errors > 0
                             else linter.number_errors
                         )

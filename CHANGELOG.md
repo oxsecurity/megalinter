@@ -6,6 +6,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Linters
   - Add misspell spell checker
+  - Allow to define cli_lint_errors_regex in descriptors to extract number of errors from linter output stdout
 
 - Core
   - Implement architecture for Mega-Linter plugins

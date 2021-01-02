@@ -32,7 +32,7 @@
 | **htmlhint** | 0.14.2 | [HTML](descriptors/html_htmlhint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/htmlhint/HTMLHint/pull/579/files){target=_blank} |
 | **isort** | 5.7.0 | [PYTHON](descriptors/python_isort.md) | :white_circle: | [Repository](https://github.com/PyCQA/isort){target=_blank} |
 | **jscpd** | 3.3.23 | [COPYPASTE](descriptors/copypaste_jscpd.md) | :heart: | [Mega-Linter reference](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank} |
-| **jsonlint** | 1.6.3 | [JSON](descriptors/json_jsonlint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/zaach/jsonlint/pull/127){target=_blank} |
+| **jsonlint** | 1.6.3 | [JSON](descriptors/json_jsonlint.md) | :no_entry_sign: | [Web Site](https://github.com/zaach/jsonlint){target=_blank} |
 | **ktlint** | 0.40.0 | [KOTLIN](descriptors/kotlin_ktlint.md) | :heart: | [Mega-Linter reference](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank} |
 | **kubeval** | 0.15.0 | [KUBERNETES](descriptors/kubernetes_kubeval.md) | :white_circle: | [Repository](https://github.com/instrumenta/kubeval){target=_blank} |
 | **lintr** | 2.0.1.9000 | [R](descriptors/r_lintr.md) | :white_circle: | [Web Site](https://github.com/jimhester/lintr){target=_blank} |
