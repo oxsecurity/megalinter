@@ -65,7 +65,9 @@ misspell myfile.any
 
 - Dockerfile commands :
 ```dockerfile
-RUN go get -u github.com/client9/misspell/cmd/misspell
+RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+    && sh ./install-misspell.sh
+
 ```
 
 

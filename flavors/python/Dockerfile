@@ -168,7 +168,9 @@ RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # misspell installation
-RUN go get -u github.com/client9/misspell/cmd/misspell
+RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+    && sh ./install-misspell.sh
+
 
 #OTHER__END
 

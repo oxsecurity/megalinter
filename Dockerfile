@@ -389,7 +389,9 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
 # misspell installation
-RUN go get -u github.com/client9/misspell/cmd/misspell
+RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+    && sh ./install-misspell.sh
+
 
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
