@@ -4,13 +4,11 @@
 
 # Plugins
 
-You can implement your own descriptors and load them as plugins during Mega-Linter runtime
+## Use plugins
 
-- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [Mega-Linter Json Schema](https://github.com/nvuillam/mega-linter/blob/master/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
-- Descriptor format is exactly the same than [Mega-Linter embedded ones](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors)
-- Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
+Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
 
-Example in `.mega-linter.yml`
+### Example
 
 ```yaml
 PLUGINS:
@@ -18,5 +16,16 @@ PLUGINS:
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/master/cookietemple.megalinter-descriptor.yml
 ```
 
+## Create plugins
+
+You can implement your own descriptors and load them as plugins during Mega-Linter runtime
+
+- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [Mega-Linter Json Schema](https://github.com/nvuillam/mega-linter/blob/master/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
+- Descriptor format is exactly the same than [Mega-Linter embedded ones](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors)
+- Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
+
+### Limitations
+
+- For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
 
 <!-- plugins-section-end -->

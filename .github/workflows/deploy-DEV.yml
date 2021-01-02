@@ -125,14 +125,19 @@ jobs:
         shell: bash
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
-          echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
+          TEST_KEYWORDS=""
+          if [[ "${{github.event.head_commit.message}}" == *"TEST_KEYWORDS="* ]]; then
+            TEST_KEYWORDS=$(echo "${{github.event.head_commit.message}}" | sed "s/^TEST_KEYWORDS=\(.*\)$/\1/" )
+            echo "Run only tests with keywords ${TEST_KEYWORDS}"
+          fi
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 30
 
       #####################################
       # Run Linter against ALL code base  #
       #####################################
       - name: Run against all code base
+        if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
         run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 10
