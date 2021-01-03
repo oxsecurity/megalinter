@@ -20,6 +20,7 @@ linters:
     linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    cli_lint_mode: list_of_files
     config_file_name: .eslintrc.json
     cli_config_extra_args:
       - "--no-eslintrc"
@@ -27,7 +28,7 @@ linters:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"
     cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex : "✖ ([0-9]+) problem"
+    cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
       - "eslint myfile.ts"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"

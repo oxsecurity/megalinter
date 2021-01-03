@@ -12,10 +12,10 @@ linters:
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
+    cli_lint_mode: list_of_files
     config_file_name: .markdown-lint.json
     cli_lint_fix_arg_name: "--fix"
     cli_lint_errors_count: total_lines
-    cli_lint_errors_regex: ""
     examples:
       - "markdownlint myfile.md"
       - "markdownlint -c .markdown-lint.json myfile.md"

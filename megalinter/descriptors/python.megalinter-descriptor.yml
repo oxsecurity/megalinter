@@ -15,8 +15,11 @@ linters:
     linter_banner_image_url: https://www.pylint.org/pylint.svg
     linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
     linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
+    cli_lint_mode: list_of_files
     config_file_name: .python-lint
     cli_config_arg_name: "--rcfile"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ":([0-9]+):([0-9]+):"
     examples:
       - "pylint myfile.py"
       - "pylint --rcfile .python-lint myfile.py"
@@ -91,8 +94,10 @@ linters:
     linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors
+    cli_lint_mode: list_of_files
     config_file_name: .flake8
     cli_config_arg_name: "--config"
+    cli_lint_errors_count: total_lines
     examples:
       - "flake8 myfile.py"
       - "flake8 --config .flake8 myfile.py"
@@ -118,6 +123,7 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
     linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files/
     linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments/
+    cli_lint_mode: list_of_files
     config_file_name: .isort.cfg
     cli_config_arg_name: "--settings-file"
     cli_lint_extra_args:
@@ -129,6 +135,8 @@ linters:
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "\\@\\@ (.*) \\@\\@"
     examples:
       - "isort --diff --check --profile black myfile.py"
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"

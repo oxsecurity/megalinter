@@ -8,6 +8,12 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 - Linters
   - Add misspell spell checker
   - Allow to define cli_lint_errors_regex in descriptors to extract number of errors from linter output stdout
+  - Call linters CLIs with list of files instead of once by file, to improve performances
+    - eslint
+    - markdownlint
+    - pylint
+    - flake8
+    - isort
 
 - Core
   - Implement architecture for Mega-Linter plugins

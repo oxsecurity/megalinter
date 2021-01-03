@@ -40,6 +40,8 @@ linters:
     linter_megalinter_ref_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter
     config_file_name: ".cspell.json"
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* files"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"

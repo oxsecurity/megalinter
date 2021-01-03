@@ -86,8 +86,8 @@ class Linter:
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
-        self.cli_lint_errors_count = "regex_number"
-        self.cli_lint_errors_regex = r"Issues found: ([0-9]+) in .* files"
+        self.cli_lint_errors_count = None
+        self.cli_lint_errors_regex = None
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -662,6 +662,14 @@ class Linter:
         else:
             return output
 
+    # noinspection PyMethodMayBeStatic
+    def get_regex(self, reg):
+        if reg is None:
+            raise Exception("You must define a regex !")
+        if type(reg) == str:
+            reg = re.compile(reg)
+        return reg
+
     ########################################
     # Methods that can be overridden below #
     ########################################
@@ -689,54 +697,51 @@ class Linter:
             cmd += self.cli_config_extra_args
         # Add other lint cli arguments after other arguments if defined
         cmd += self.cli_lint_extra_args_after
-        # Append file in command arguments
-        if file is not None:
-            cmd += [file]
-        # If mode is "list of files", append all files as cli arguments
-        elif self.cli_lint_mode == "list_of_files":
-            cmd += self.files
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
         if self.try_fix is True and "--megalinter-fix-flag" in cmd:
             for arg in self.cli_lint_fix_remove_args:
                 cmd.remove(arg)
             cmd.remove("--megalinter-fix-flag")
+        # Append file in command arguments
+        if file is not None:
+            cmd += [file]
+        # If mode is "list of files", append all files as cli arguments
+        elif self.cli_lint_mode == "list_of_files":
+            cmd += self.files
         return cmd
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout):
+        total_errors = 0
         # Get number with a single regex.
         if self.cli_lint_errors_count == "regex_number":
-            reg = self.cli_lint_errors_regex
-            if type(reg) == str:
-                reg = re.compile(reg)
+            reg = self.get_regex(self.cli_lint_errors_regex)
             m = re.search(reg, stdout)
             if m:
-                return int(m.group(1))
+                total_errors = int(m.group(1))
         # Count the number of occurrences of a regex corresponding to an error in linter log
-        elif self.cli_lint_errors_count == "regex_lines":
-            reg = self.cli_lint_errors_regex
-            if type(reg) == str:
-                reg = re.compile(reg)
-            matching_lines_number = len(re.findall(reg, stdout))
-            if matching_lines_number > 0:
-                return matching_lines_number
+        elif self.cli_lint_errors_count == "regex_count":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            total_errors = len(re.findall(reg, stdout))
         # Sum of all numbers found in linter logs with a regex
         elif self.cli_lint_errors_count == "regex_sum":
-            reg = self.cli_lint_errors_regex
-            if type(reg) == str:
-                reg = re.compile(reg)
+            reg = self.get_regex(self.cli_lint_errors_regex)
             matches = re.findall(reg, stdout)
-            total_errors_sum = sum(int(m) for m in matches)
-            if total_errors_sum > 0:
-                return total_errors_sum
+            total_errors = sum(int(m) for m in matches)
         # Count all lines of the linter log
         elif self.cli_lint_errors_count == "total_lines":
-            total_lines_number = sum(
+            total_errors = sum(
                 not line.isspace() and line != "" for line in stdout.splitlines()
             )
-            if total_lines_number > 0:
-                return total_lines_number
+        # Return result if found, else default value according to status
+        if total_errors > 0:
+            return total_errors
+        if self.cli_lint_errors_count is not None:
+            logging.warning(
+                f"Unable to get number of errors with {self.cli_lint_errors_count} "
+                f"and {str(self.cli_lint_errors_regex)}"
+            )
         if self.status == "success":
             return 0
         if self.status == "error":
