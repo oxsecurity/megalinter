@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.22.0**
+- Version in Mega-Linter: **0.23.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom .tflint.hcl is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -84,17 +84,6 @@ Application Options:
       --var-file=FILE                             Terraform variable file name
       --var='foo=bar'                             Set a Terraform variable
       --module                                    Inspect modules
-      --deep                                      Enable deep check mode
-      --aws-access-key=ACCESS_KEY                 AWS access key used in deep
-                                                  check mode
-      --aws-secret-key=SECRET_KEY                 AWS secret key used in deep
-                                                  check mode
-      --aws-profile=PROFILE                       AWS shared credential profile
-                                                  name used in deep check mode
-      --aws-creds-file=FILE                       AWS shared credentials file
-                                                  path used in deep checking
-      --aws-region=REGION                         AWS region used in deep check
-                                                  mode
       --force                                     Return zero exit status even
                                                   if issues found
       --no-color                                  Disable colorized output
