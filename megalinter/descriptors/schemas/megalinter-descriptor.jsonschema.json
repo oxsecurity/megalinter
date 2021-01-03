@@ -427,16 +427,16 @@
           },
           "cli_lint_errors_count": {
             "$id": "#/properties/linters/items/properties/cli_lint_errors_count",
-            "description": "Defines how to count errors from log file. regex_number, regex_lines, regex_sum, or total_lines",
+            "description": "Defines how to count errors from log file. regex_number, regex_count, regex_sum, or total_lines",
             "enum": [
               "regex_number",
-              "regex_lines",
+              "regex_count",
               "regex_sum",
               "total_lines"
             ],
             "examples": [
               "regex_number",
-              "regex_lines",
+              "regex_count",
               "regex_sum",
               "total_lines"
             ],
