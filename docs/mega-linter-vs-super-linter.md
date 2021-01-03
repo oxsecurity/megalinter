@@ -4,16 +4,16 @@
 
 # Mega-Linter vs Super-Linter
 
-The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions
-
-## More languages and formats linted
-
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
 ## Performances
 
 - [Mega-Linter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
 - Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+
+## More languages and formats linted
+
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET** ...
 
 ## Automatically apply formatting and fixes
 
@@ -25,7 +25,17 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 
 Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/)
 
-## More reporters
+## Reports
+
+### Capabilities
+
+- Accuracy: Count the total number of errors and not only the number of files in error
+- Show linter version and applied filters for each linter processed
+- Reports stored as artefacts on GitHub Action run or other remote files
+  - General log
+  - One report file by linter
+
+### Additional Reporters
 
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
@@ -63,12 +73,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
   - Separate languages, formats and tooling formats in the linters table
   - Add logos for each descriptor
 
-## Enhanced logging and reports
+## Plugins management
 
-- Show linter version and applied filters for each linter processed
-- Reports stored as artefacts on GitHub Action run
-  - General log
-  - One report file by linter
+For linters less commonly used, Mega-Linters offers a plugins architecture so anyone can publish plugins
 
 ## Simplify architecture and evolutive maintenance
 

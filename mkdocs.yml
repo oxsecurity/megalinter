@@ -278,6 +278,7 @@ nav:
   - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
   - "List of linters": "all_linters.md"
+  - "Special thanks": "special-thanks.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute": "how-to-contribute.md"
   - "Changelog": "CHANGELOG.md"
