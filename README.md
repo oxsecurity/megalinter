@@ -423,7 +423,7 @@ npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML'
 Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
 
-Configuration is assisted with auto-completion and validation in most commonly used IDEs thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on <schemastore.org>
+Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 ![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
 
@@ -669,6 +669,7 @@ Contributions to Mega-Linter are very welcome, please follow [Contributing Guide
 You can also [report problems and request new features](https://github.com/nvuillam/mega-linter/issues), or just [:star: star the repository](https://github.com/nvuillam/mega-linter/stargazers) and [share it on twitter](http://twitter.com/intent/tweet/?text=Mega-Linter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://nvuillam.github.io/mega-linter&via=nvuillam)
 <!-- how-to-contribute-section-end -->
 
+<!-- special-thanks-section-start -->
 ## Special thanks
 
 ### Contributors
@@ -705,7 +706,9 @@ Mega-Linter obviously would not exist without its linters and libraries, so many
 ### Super-Linter team
 
 Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+<!-- special-thanks-section-end -->
 
 <!-- license-section-start -->
 ## License

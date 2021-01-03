@@ -7,7 +7,7 @@
 Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
 
-Configuration is assisted with auto-completion and validation in most commonly used IDEs thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on <schemastore.org>
+Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 ![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
 
