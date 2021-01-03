@@ -23,8 +23,11 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
   - Add a new page **All linters** listing all linters and references to Mega-Linter in their documentation
   - Add json-schema documentation generation and references
 
-  CI
+- CI
   - Use `quick build` and `TEST_KEYWORDS` in commit messages, to improve contributor experience
+
+- Fixes
+  - Upgrade .tflint default config to work with new tflint version
 
 ## [4.20.0] 2020-12-28
 
