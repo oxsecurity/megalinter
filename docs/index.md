@@ -197,7 +197,44 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 
 <!-- how-to-contribute-section-end -->
 
----
+## Special thanks
+
+### Contributors
+
+<a href="https://github.com/nvuillam/mega-linter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=nvuillam/mega-linter" />
+</a>
+
+### Sites referring to Mega-Linter
+
+#### Global
+
+- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
+- [schemastore.org](https://www.schemastore.org/json/)
+
+#### Linters
+
+<!-- referring-linters-start -->
+- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools)
+- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github)
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter)
+- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter)
+- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd)
+- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration)
+- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools)
+- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter)
+- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
+<!-- referring-linters-end -->
+
+### Open-source teams
+
+Mega-Linter obviously would not exist without its linters and libraries, so many thanks to all the dedicated Open-Source teams maintaining all these awesome linters !
+
+### Super-Linter team
+
+Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+
 <!-- license-section-start -->
 
 <!-- license-section-end -->

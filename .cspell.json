@@ -560,6 +560,7 @@
         "jscpd",
         "jsonify",
         "jsonlint",
+        "jsonschema",
         "jspm",
         "jwiebalk",
         "kdocs",
