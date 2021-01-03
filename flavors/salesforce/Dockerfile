@@ -187,8 +187,6 @@ RUN python /megalinter/setup.py install
 #######################################
 # Copy scripts and rules to container #
 #######################################
-COPY lib /action/lib
-# COPY megalinter /megalinter
 COPY megalinter/descriptors /megalinter-descriptors
 COPY TEMPLATES /action/lib/.automation
 

@@ -3,7 +3,7 @@
 
 ## [insiders] (master)
 
-Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
+Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linters
   - Add misspell spell checker
@@ -11,6 +11,7 @@ Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml fi
 
 - Core
   - Implement architecture for Mega-Linter plugins
+  - Cleanup unused legacy from Super-Linter
 
 - Reports
   - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
