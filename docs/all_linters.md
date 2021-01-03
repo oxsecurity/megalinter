@@ -19,7 +19,7 @@
 | **cspell** | 4.1.3 | [SPELL](descriptors/spell_cspell.md) | :heart: | [Mega-Linter reference](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank} |
 | **dartanalyzer** | N/A | [DART](descriptors/dart_dartanalyzer.md) | :no_entry_sign: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
 | **dockerfilelint** | 1.8.0 | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
-| **dotenv-linter** | 2.2.1 | [ENV](descriptors/env_dotenv_linter.md) | :hammer_and_wrench: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24){target=_blank} |
+| **dotenv-linter** | 2.2.1 | [ENV](descriptors/env_dotenv_linter.md) | :love_letter: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24#ok){target=_blank} |
 | **dotnet-format** | 4.1.131201 | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
 | **editorconfig-checker** | N/A | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :hammer_and_wrench: | [Pull Request](https://github.com/editorconfig-checker/editorconfig-checker/pull/139){target=_blank} |
 | **eslint** | 7.17.0 | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
@@ -65,7 +65,7 @@
 | **spectral** | 5.6.0 | [OPENAPI](descriptors/openapi_spectral.md) | :white_circle: | [Repository](https://github.com/stoplightio/spectral){target=_blank} |
 | **sql-lint** | 0.0.15 | [SQL](descriptors/sql_sql_lint.md) | :white_circle: | [Web Site](https://github.com/joereynolds/sql-lint){target=_blank} |
 | **standard** | 15.0.1 | [JAVASCRIPT](descriptors/javascript_standard.md)<br/> [TYPESCRIPT](descriptors/typescript_standard.md) | :white_circle: | [Repository](https://github.com/standard/standard){target=_blank} |
-| **stylelint** | 13.8.0 | [CSS](descriptors/css_stylelint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/stylelint/stylelint/pull/5088){target=_blank} |
+| **stylelint** | 13.8.0 | [CSS](descriptors/css_stylelint.md) | :love_letter: | [Pull Request](https://github.com/stylelint/stylelint/pull/5088#ok){target=_blank} |
 | **tekton-lint** | 0.5.2 | [TEKTON](descriptors/tekton_tekton_lint.md) | :white_circle: | [Web Site](https://github.com/IBM/tekton-lint){target=_blank} |
 | **terragrunt** | 0.26.7 | [TERRAFORM](descriptors/terraform_terragrunt.md) | :white_circle: | [Repository](https://github.com/gruntwork-io/terragrunt){target=_blank} |
 | **terrascan** | 1.2.0 | [TERRAFORM](descriptors/terraform_terrascan.md) | :white_circle: | [Repository](https://github.com/accurics/terrascan){target=_blank} |

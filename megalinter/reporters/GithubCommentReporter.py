@@ -53,7 +53,7 @@ class GithubCommentReporter(Reporter):
                 )
             else:
                 action_run_url = ""
-            table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
+            table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
             if self.master.show_elapsed_time is True:
                 table_header += ["Elapsed time"]
             table_data_raw = [table_header]

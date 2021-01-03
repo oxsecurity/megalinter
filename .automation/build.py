@@ -1628,8 +1628,12 @@ def generate_documentation_all_linters():
                 status = "Θ Not applicable"
                 md_status = "<!-- -->"
             elif "/pull/" in str(url):
-                status = "Ω Pending"
-                md_status = ":hammer_and_wrench:"
+                if url.endswith("#ok"):
+                    status = "✅ Awaiting publication"
+                    md_status = ":love_letter:"
+                else:
+                    status = "Ω Pending"
+                    md_status = ":hammer_and_wrench:"
                 md_url = f"[Pull Request]({url}){{target=_blank}}"
                 url = "PR: " + url
             else:

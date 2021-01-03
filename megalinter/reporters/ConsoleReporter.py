@@ -50,7 +50,7 @@ class ConsoleReporter(Reporter):
         logging.info("")
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
+        table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
         if self.master.show_elapsed_time is True:
             table_header += ["Elapsed time"]
         table_data = [table_header]

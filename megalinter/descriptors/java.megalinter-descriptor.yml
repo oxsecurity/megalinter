@@ -25,6 +25,7 @@ linters:
     cli_lint_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"
+    cli_lint_errors_regex: "Checkstyle ends with ([0-9]+) errors"
     cli_version_extra_args:
       - "-jar"
       - "/usr/bin/checkstyle"

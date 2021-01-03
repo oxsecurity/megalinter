@@ -86,7 +86,8 @@ class Linter:
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
-        self.cli_lint_errors_regex = r"Issues found: (.*) in .* files"
+        self.cli_lint_errors_count = "regex_number"
+        self.cli_lint_errors_regex = r"Issues found: ([0-9]+) in .* files"
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -704,12 +705,38 @@ class Linter:
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout):
-        reg = self.cli_lint_errors_regex
-        if type(reg) == str:
-            reg = re.compile(reg)
-        m = re.search(reg, stdout)
-        if m:
-            return int(m.group(1))
+        # Get number with a single regex.
+        if self.cli_lint_errors_count == "regex_number":
+            reg = self.cli_lint_errors_regex
+            if type(reg) == str:
+                reg = re.compile(reg)
+            m = re.search(reg, stdout)
+            if m:
+                return int(m.group(1))
+        # Count the number of occurrences of a regex corresponding to an error in linter log
+        elif self.cli_lint_errors_count == "regex_lines":
+            reg = self.cli_lint_errors_regex
+            if type(reg) == str:
+                reg = re.compile(reg)
+            matching_lines_number = len(re.findall(reg, stdout))
+            if matching_lines_number > 0:
+                return matching_lines_number
+        # Sum of all numbers found in linter logs with a regex
+        elif self.cli_lint_errors_count == "regex_sum":
+            reg = self.cli_lint_errors_regex
+            if type(reg) == str:
+                reg = re.compile(reg)
+            matches = re.findall(reg, stdout)
+            total_errors_sum = sum(int(m) for m in matches)
+            if total_errors_sum > 0:
+                return total_errors_sum
+        # Count all lines of the linter log
+        elif self.cli_lint_errors_count == "total_lines":
+            total_lines_number = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
+            if total_lines_number > 0:
+                return total_lines_number
         if self.status == "success":
             return 0
         if self.status == "error":

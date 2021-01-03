@@ -425,6 +425,24 @@
             "title": "CLI help extra commands",
             "type": "array"
           },
+          "cli_lint_errors_count": {
+            "$id": "#/properties/linters/items/properties/cli_lint_errors_count",
+            "description": "Defines how to count errors from log file. regex_number, regex_lines, regex_sum, or total_lines",
+            "enum": [
+              "regex_number",
+              "regex_lines",
+              "regex_sum",
+              "total_lines"
+            ],
+            "examples": [
+              "regex_number",
+              "regex_lines",
+              "regex_sum",
+              "total_lines"
+            ],
+            "title": "Lint errors count mode",
+            "type": "string"
+          },
           "cli_lint_errors_regex": {
             "$id": "#/properties/linters/items/properties/cli_lint_errors_regex",
             "description": "Regex allowing to extract the number of errors from linter output logs",

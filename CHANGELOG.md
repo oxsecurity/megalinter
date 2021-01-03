@@ -10,6 +10,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 
 - Core
   - Implement architecture for Mega-Linter plugins
+  - Count number of errors in linter logs with regexes (`cli_lint_errors_count` and `cli_lint_errors_regex` in descriptor files)
   - Cleanup unused legacy from Super-Linter
 
 - Reports

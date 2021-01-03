@@ -26,6 +26,8 @@ linters:
     cli_lint_extra_args:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex : "✖ ([0-9]+) problem"
     examples:
       - "eslint myfile.ts"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
