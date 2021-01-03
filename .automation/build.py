@@ -1404,6 +1404,7 @@ def finalize_doc_build():
         "plugins",
         "frequently-asked-questions",
         "how-to-contribute",
+        "special-thanks",
         "license",
         "mega-linter-vs-super-linter",
     ]
@@ -1596,6 +1597,7 @@ def generate_documentation_all_linters():
     table_header = ["Linter", "Version", "Descriptors", "Status", "URL"]
     md_table_lines = []
     table_data = [table_header]
+    hearth_linters_md = []
     for linter in linters:
         status = "Not submitted"
         md_status = ":white_circle:"
@@ -1639,6 +1641,9 @@ def generate_documentation_all_linters():
             else:
                 status = "✅ Published"
                 md_status = ":heart:"
+                hearth_linters_md += [
+                    f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url})"
+                ]
         table_line = [
             linter.linter_name,
             linter_version,
@@ -1661,6 +1666,15 @@ def generate_documentation_all_linters():
             md_url,
         ]
         md_table_lines += [md_table_line]
+
+    # Write referring linters to README
+    hearth_linters_md_str = "\n".join(hearth_linters_md)
+    replace_in_file(
+        f"{REPO_HOME}/README.md",
+        "<!-- referring-linters-start -->",
+        "<!-- referring-linters-end -->",
+        hearth_linters_md_str,
+    )
 
     # Display results
     table = terminaltables.AsciiTable(table_data)

@@ -39,7 +39,8 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 
 - `.github/workflows/mega-linter.yml`
 
-This file should have the following code:
+<details>
+<summary>This file should have this code</summary>
 
 ```yml
 ---
@@ -131,6 +132,8 @@ jobs:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
           commit_message: "[Mega-Linter] Apply linters fixes"
 ```
+
+</details>
 
 ## Azure
 

@@ -21,6 +21,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
   - Add Install button for VsCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available
   - Add a new page **All linters** listing all linters and references to Mega-Linter in their documentation
+  - Add json-schema documentation generation and references
 
   CI
   - Use `quick build` and `TEST_KEYWORDS` in commit messages, to improve contributor experience

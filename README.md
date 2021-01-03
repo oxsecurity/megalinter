@@ -66,6 +66,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
   - [Plugins](#plugins)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
+  - [Special thanks](#special-thanks)
   - [License](#license)
   - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
 <!-- table-of-contents-end -->
@@ -247,7 +248,8 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 
 - `.github/workflows/mega-linter.yml`
 
-This file should have the following code:
+<details>
+<summary>This file should have this code</summary>
 
 ```yml
 ---
@@ -340,6 +342,8 @@ jobs:
           commit_message: "[Mega-Linter] Apply linters fixes"
 ```
 
+</details>
+
 ### Azure
 
 Use the following Azure workflow template
@@ -418,6 +422,10 @@ npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML'
 
 Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
+
+Configuration is assisted with auto-completion and validation in most commonly used IDEs thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on <schemastore.org>
+
+![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
 
 ### Common variables
 
@@ -637,7 +645,7 @@ PLUGINS:
 You can implement your own descriptors and load them as plugins during Mega-Linter runtime
 
 - Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [Mega-Linter Json Schema](https://github.com/nvuillam/mega-linter/blob/master/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
-- Descriptor format is exactly the same than [Mega-Linter embedded ones](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors)
+- Descriptor format is exactly the same than [Mega-Linter embedded ones](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors) ([see json schema documentation](https://nvuillam.github.io/mega-linter/json-schemas/descriptor.html))
 - Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
 
 #### Limitations
@@ -661,7 +669,44 @@ Contributions to Mega-Linter are very welcome, please follow [Contributing Guide
 You can also [report problems and request new features](https://github.com/nvuillam/mega-linter/issues), or just [:star: star the repository](https://github.com/nvuillam/mega-linter/stargazers) and [share it on twitter](http://twitter.com/intent/tweet/?text=Mega-Linter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://nvuillam.github.io/mega-linter&via=nvuillam)
 <!-- how-to-contribute-section-end -->
 
----
+## Special thanks
+
+### Contributors
+
+<a href="https://github.com/nvuillam/mega-linter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=nvuillam/mega-linter" />
+</a>
+
+### Sites referring to Mega-Linter
+
+#### Global
+
+- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
+- [schemastore.org](https://www.schemastore.org/json/)
+
+#### Linters
+
+<!-- referring-linters-start -->
+- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools)
+- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github)
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter)
+- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter)
+- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd)
+- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration)
+- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools)
+- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter)
+- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
+<!-- referring-linters-end -->
+
+### Open-source teams
+
+Mega-Linter obviously would not exist without its linters and libraries, so many thanks to all the dedicated Open-Source teams maintaining all these awesome linters !
+
+### Super-Linter team
+
+Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+
 <!-- license-section-start -->
 ## License
 
@@ -671,16 +716,16 @@ You can also [report problems and request new features](https://github.com/nvuil
 <!-- mega-linter-vs-super-linter-section-start -->
 ## Mega-Linter vs Super-Linter
 
-The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions
-
-### More languages and formats linted
-
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
 ### Performances
 
 - [Mega-Linter Flavors](#flavors) allow to use **smaller docker images**, so the pull time is reduced
 - Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+
+### More languages and formats linted
+
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET** ...
 
 ### Automatically apply formatting and fixes
 
@@ -692,7 +737,17 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 
 Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/)
 
-### More reporters
+### Reports
+
+#### Capabilities
+
+- Accuracy: Count the total number of errors and not only the number of files in error
+- Show linter version and applied filters for each linter processed
+- Reports stored as artefacts on GitHub Action run or other remote files
+  - General log
+  - One report file by linter
+
+#### Additional Reporters
 
 - [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
 - [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
@@ -730,12 +785,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
   - Separate languages, formats and tooling formats in the linters table
   - Add logos for each descriptor
 
-### Enhanced logging and reports
+### Plugins management
 
-- Show linter version and applied filters for each linter processed
-- Reports stored as artefacts on GitHub Action run
-  - General log
-  - One report file by linter
+For linters less commonly used, Mega-Linters offers a plugins architecture so anyone can publish plugins
 
 ### Simplify architecture and evolutive maintenance
 
