@@ -732,7 +732,9 @@ class Linter:
                 return total_errors_sum
         # Count all lines of the linter log
         elif self.cli_lint_errors_count == "total_lines":
-            total_lines_number = sum(not line.isspace() and line != "" for line in stdout.splitlines())
+            total_lines_number = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
             if total_lines_number > 0:
                 return total_lines_number
         if self.status == "success":
