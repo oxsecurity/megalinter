@@ -30,5 +30,5 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mdx_truly_sane_lists json-schema-for-humans
-      - run: cd .automation && bash build_schemas_docs.sh && cd ..
+      - run: cd .automation && bash build_schemas_doc.sh && cd ..
       - run: mkdocs gh-deploy --force
