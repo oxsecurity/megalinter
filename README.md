@@ -247,7 +247,8 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 
 - `.github/workflows/mega-linter.yml`
 
-This file should have the following code:
+<details>
+<summary>This file should have this code</summary>
 
 ```yml
 ---
@@ -340,6 +341,8 @@ jobs:
           commit_message: "[Mega-Linter] Apply linters fixes"
 ```
 
+</details>
+
 ### Azure
 
 Use the following Azure workflow template
@@ -418,6 +421,10 @@ npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML'
 
 Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
+
+Configuration is assisted with auto-completion and validation in most commonly used IDEs thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on <schemastore.org>
+
+![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
 
 ### Common variables
 
