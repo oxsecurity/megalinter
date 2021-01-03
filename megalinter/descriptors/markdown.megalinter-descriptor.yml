@@ -14,6 +14,8 @@ linters:
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
     config_file_name: .markdown-lint.json
     cli_lint_fix_arg_name: "--fix"
+    cli_lint_errors_count: total_lines
+    cli_lint_errors_regex: ""
     examples:
       - "markdownlint myfile.md"
       - "markdownlint -c .markdown-lint.json myfile.md"
@@ -41,6 +43,8 @@ linters:
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
     linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
     config_file_name: .markdown-link-check.json
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
     linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
     examples:
       - "markdown-link-check myfile.md"
