@@ -1,0 +1,7 @@
+{
+    "extends": [
+        "plugin:jsonc/recommended-with-jsonc"
+    ],
+    "rules": {
+    }
+}

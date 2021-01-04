@@ -89,6 +89,11 @@
     "image": "https://eslint.org/assets/img/favicon.512x512.png",
     "title": "ESLint - Pluggable JavaScript linter"
   },
+  "eslint-plugin-jsonc": {
+    "description": "ESLint plugin for JSON, JSONC and JSON5 files",
+    "image": null,
+    "title": "Introduction | eslint-plugin-jsonc"
+  },
   "flake8": {
     "description": "To install Flake8, open an interactive shell and run:",
     "image": null,
