@@ -274,10 +274,11 @@ nav:
       - "scala": "flavors/scala.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end
-  - "Plugins": "plugins.md"
-  - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
+  - "Badge": "badge.md"
   - "List of linters": "all_linters.md"
+  - "FAQ": "frequently-asked-questions.md"
+  - "Plugins": "plugins.md"
   - "Special thanks": "special-thanks.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute": "how-to-contribute.md"

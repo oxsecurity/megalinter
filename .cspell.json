@@ -162,6 +162,7 @@
         "PYLINT",
         "PYTEST",
         "PYTHONPATH",
+        "Parallelly",
         "Paren",
         "Phive",
         "Pluggable",
