@@ -29,14 +29,18 @@
   "properties": {
     "active_only_if_file_found": {
       "$id": "#/properties/active_only_if_file_found",
-      "description": "Name of the config file to be found, else descriptor will be deactivated",
+      "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
       "examples": [
         [
-          ".editorconfig"
+          ".editorconfig",
+          ".eslintrc.json"
         ]
       ],
-      "title": "Active if file name found",
-      "type": "string"
+      "items": {
+        "type": "string"
+      },
+      "title": "Active if one of file names found",
+      "type": "array"
     },
     "descriptor_flavors": {
       "$id": "#/properties/descriptor_flavors",
@@ -358,6 +362,21 @@
           }
         ],
         "properties": {
+          "active_only_if_file_found": {
+            "$id": "#/properties/linters/items/properties/active_only_if_file_found",
+            "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
+            "examples": [
+              [
+                ".editorconfig",
+                ".eslintrc.json"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Active if one of file names found",
+            "type": "array"
+          },
           "class": {
             "$id": "#/properties/linters/items/properties/class",
             "description": "If Mega-Linter core is not enough, use a custom class inheriting from Linter class",

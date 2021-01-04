@@ -4,7 +4,8 @@ descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
 file_extensions:
   - "*"
-active_only_if_file_found: ".editorconfig"
+active_only_if_file_found:
+  - ".editorconfig"
 test_folder: editorconfig-checker
 linters:
   # EDITORCONFIG-CHECKER

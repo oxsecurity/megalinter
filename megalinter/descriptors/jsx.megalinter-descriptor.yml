@@ -15,6 +15,11 @@ linters:
     linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://github.com/yannickcr/eslint-plugin-react#configuration
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    active_only_if_file_found:
+      - ".eslintrc.json"
+      - ".eslintrc.yml"
+      - ".eslintrc.yaml"
+      - ".eslintrc.js"
     cli_lint_mode: list_of_files
     config_file_name: .eslintrc.json
     cli_config_extra_args:

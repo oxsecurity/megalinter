@@ -397,7 +397,8 @@ def generate_descriptor_documentation(descriptor):
     descriptor_md += ["", "## Linted files", ""]
     if descriptor.get("active_only_if_file_found", None) is not None:
         descriptor_md += [
-            f"- Activated only if file is found: `{descriptor.get('active_only_if_file_found')}`"
+            f"- Activated only if at least one of these files is found:"
+            f" `{str(descriptor.get('active_only_if_file_found'))}`"
         ]
     if len(descriptor.get("file_extensions", [])) > 0:
         descriptor_md += ["- File extensions:"]
@@ -884,7 +885,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += ["### How are identified applicable files", ""]
         if linter.active_only_if_file_found is not None:
             linter_doc_md += [
-                f"- Activated only if file is found: `{linter.active_only_if_file_found}`"
+                f"- Activated only if one of these files is found:"
+                f" `{str(linter.active_only_if_file_found)}`"
             ]
         if len(linter.file_extensions) > 0:
             linter_doc_md += ["- File extensions:"]
