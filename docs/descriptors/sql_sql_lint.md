@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **0.0.15**
 - Visit [Official Web Site](https://github.com/joereynolds/sql-lint#readme){target=_blank}
 - See [How to configure sql-lint rules](https://sql-lint.readthedocs.io/en/latest/files/configuration.html){target=_blank}
-  - If custom .sql-config.json is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json){target=_blank} will be used
+  - If custom `.sql-config.json` config file is not found, [.sql-config.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.sql-config.json){target=_blank} will be used
 - See [Index of problems detected by sql-lint](https://github.com/joereynolds/sql-lint#checks){target=_blank}
 
 [![sql-lint - GitHub](https://gh-card.dev/repos/joereynolds/sql-lint.svg?fullname=)](https://github.com/joereynolds/sql-lint){target=_blank}

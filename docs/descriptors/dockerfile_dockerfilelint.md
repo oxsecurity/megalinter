@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **1.8.0**
 - Visit [Official Web Site](https://github.com/replicatedhq/dockerfilelint#readme){target=_blank}
 - See [How to configure dockerfilelint rules](https://github.com/replicatedhq/dockerfilelint#configuring){target=_blank}
-  - If custom .dockerfilelintrc is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc){target=_blank} will be used
+  - If custom `.dockerfilelintrc` config file is not found, [.dockerfilelintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.dockerfilelintrc){target=_blank} will be used
 - See [Index of problems detected by dockerfilelint](https://github.com/replicatedhq/dockerfilelint#checks-performed){target=_blank}
 
 [![dockerfilelint - GitHub](https://gh-card.dev/repos/replicatedhq/dockerfilelint.svg?fullname=)](https://github.com/replicatedhq/dockerfilelint){target=_blank}

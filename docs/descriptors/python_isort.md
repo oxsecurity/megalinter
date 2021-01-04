@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **5.7.0**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
-  - If custom .isort.cfg is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
+  - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
 - See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/){target=_blank}
 
 [![isort - GitHub](https://gh-card.dev/repos/PyCQA/isort.svg?fullname=)](https://github.com/PyCQA/isort){target=_blank}

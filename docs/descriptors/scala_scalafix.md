@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **0.9.24**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
-  - If custom .scalafix.conf is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf){target=_blank} will be used
+  - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf){target=_blank} will be used
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html){target=_blank}
 - See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html){target=_blank}
 

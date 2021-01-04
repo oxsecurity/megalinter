@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **2.6.0**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
-  - If custom .python-lint is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
+  - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
 - See [How to disable pylint rules in files](https://pylint.readthedocs.io/en/latest/user_guide/message-control.html){target=_blank}
 - See [Index of problems detected by pylint](http://pylint-messages.wikidot.com/all-codes){target=_blank}
 

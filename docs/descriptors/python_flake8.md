@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **3.8.4**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
-  - If custom .flake8 is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8){target=_blank} will be used
+  - If custom `.flake8` config file is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8){target=_blank} will be used
 - See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors){target=_blank}
 - See [Index of problems detected by flake8](https://flake8.pycqa.org/en/latest/user/error-codes.html){target=_blank}
 

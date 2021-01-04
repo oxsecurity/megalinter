@@ -6,7 +6,7 @@
 
 - Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
 - See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
-  - If custom .markdown-link-check.json is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
+  - If custom `.markdown-link-check.json` config file is not found, [.markdown-link-check.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
 - See [How to disable markdown-link-check rules in files](https://github.com/tcort/markdown-link-check#disable-comments){target=_blank}
 
 [![markdown-link-check - GitHub](https://gh-card.dev/repos/tcort/markdown-link-check.svg?fullname=)](https://github.com/tcort/markdown-link-check){target=_blank}

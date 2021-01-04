@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **0.82.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
-  - If custom .ruby-lint.yml is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
+  - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
 - See [How to disable rubocop rules in files](https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code){target=_blank}
 - See [Index of problems detected by rubocop](https://docs.rubocop.org/rubocop/cops.html){target=_blank}
 

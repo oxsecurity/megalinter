@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **5.6.0**
 - Visit [Official Web Site](https://meta.stoplight.io/docs/spectral/README.md){target=_blank}
 - See [How to configure spectral rules](https://meta.stoplight.io/docs/spectral/docs/getting-started/3-rulesets.md){target=_blank}
-  - If custom .openapirc.yml is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml){target=_blank} will be used
+  - If custom `.openapirc.yml` config file is not found, [.openapirc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.openapirc.yml){target=_blank} will be used
 - See [Index of problems detected by spectral](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md){target=_blank}
 
 [![spectral - GitHub](https://gh-card.dev/repos/stoplightio/spectral.svg?fullname=)](https://github.com/stoplightio/spectral){target=_blank}

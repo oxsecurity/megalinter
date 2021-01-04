@@ -11,7 +11,7 @@
 
 - Version in Mega-Linter: **0.44.2**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
-  - If custom .cfnlintrc.yml is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
+  - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
 
 [![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint){target=_blank}

@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **19.10**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
-  - If custom .python-black is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
+  - If custom `.python-black` config file is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
 
 [![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
 

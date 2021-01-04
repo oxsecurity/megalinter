@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **4.2.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
-  - If custom .ansible-lint.yml is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
+  - If custom `.ansible-lint.yml` config file is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
 - See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html){target=_blank}
 
