@@ -29,6 +29,7 @@
 - [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools)
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter)
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
+- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration)
 <!-- referring-linters-end -->
 
 ## Open-source teams

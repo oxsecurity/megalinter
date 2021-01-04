@@ -164,3 +164,31 @@ Miscellaneous:
 
 - NPM packages (node.js):
   - [eslint eslint-plugin-jsonc](https://www.npmjs.com/package/eslint eslint-plugin-jsonc)
+
+### Example success log
+
+```shell
+Results of eslint-plugin-jsonc linter (version 7.17.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_eslint_plugin_jsonc/
+-----------------------------------------------
+
+✅ [SUCCESS] .automation/test/jsonc
+    
+
+```
+
+### Example error log
+
+```shell
+Results of eslint-plugin-jsonc linter (version 7.17.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_eslint_plugin_jsonc/
+-----------------------------------------------
+
+❌ [ERROR] .automation/test/jsonc
+    
+    .automation/test/jsonc/json_bad_1.json
+      9:5  error  Parsing error: Unexpected token "empty_object_spaces"
+    
+    ✖ 1 problem (1 error, 0 warnings)
+
+```
