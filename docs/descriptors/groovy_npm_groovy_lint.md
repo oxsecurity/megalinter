@@ -65,14 +65,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.groovy`
-  - `.gvy`
-  - `.gradle`
-  - `.nf`
-
-- File names:
-  - `Jenkinsfile`
+- File extensions: `.groovy`, `.gvy`, `.gradle`, `.nf`
+- File names (regex): `Jenkinsfile`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

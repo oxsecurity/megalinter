@@ -54,14 +54,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.yml`
-  - `.yaml`
-  - `.json`
-
-- Detected file content:
-  - `AWSTemplateFormatVersion`
-  - `(AWS|Alexa|Custom)::`
+- File extensions: `.yml`, `.yaml`, `.json`
+- Detected file content (regex): `AWSTemplateFormatVersion`, `(AWS|Alexa|Custom)::`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

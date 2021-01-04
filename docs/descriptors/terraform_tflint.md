@@ -42,8 +42,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.tf`
+- File extensions: `.tf`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

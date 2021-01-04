@@ -65,9 +65,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.kt`
-  - `.kts`
+- File extensions: `.kt`, `.kts`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -64,11 +64,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.sh`
-  - `.bash`
-  - `.dash`
-  - `.ksh`
+- File extensions: `.sh`, `.bash`, `.dash`, `.ksh`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

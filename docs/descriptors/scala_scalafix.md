@@ -42,8 +42,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.scala`
+- File extensions: `.scala`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -67,8 +67,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.tsx`
+- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js`
+- File extensions: `.tsx`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

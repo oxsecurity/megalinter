@@ -61,8 +61,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.go`
+- File extensions: `.go`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

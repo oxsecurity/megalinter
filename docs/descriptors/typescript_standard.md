@@ -59,8 +59,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.ts`
+- File extensions: `.ts`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

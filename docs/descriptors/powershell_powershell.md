@@ -49,14 +49,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.ps1`
-  - `.psm1`
-  - `.psd1`
-  - `.ps1xml`
-  - `.pssc`
-  - `.psrc`
-  - `.cdxml`
+- File extensions: `.ps1`, `.psm1`, `.psd1`, `.ps1xml`, `.pssc`, `.psrc`, `.cdxml`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

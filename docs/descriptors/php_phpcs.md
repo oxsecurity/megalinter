@@ -54,8 +54,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.php`
+- File extensions: `.php`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

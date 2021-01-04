@@ -49,15 +49,9 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.yml`
-  - `.yaml`
-  - `.json`
-
-- Detected file content:
-  - `apiVersion:`
-  - `kustomize\.config\.k8s\.io`
-  - `tekton`
+- Activated only if sub-directory `kubernetes` is found. (directory name can be overridden with `KUBERNETES_DIRECTORY`)
+- File extensions: `.yml`, `.yaml`, `.json`
+- Detected file content (regex): `apiVersion:`, `kustomize\.config\.k8s\.io`, `tekton`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

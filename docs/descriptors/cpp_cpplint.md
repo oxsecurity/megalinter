@@ -37,18 +37,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.cpp`
-  - `.h`
-  - `.cc`
-  - `.hpp`
-  - `.cxx`
-  - `.cu`
-  - `.hxx`
-  - `.c++`
-  - `.hh`
-  - `.h++`
-  - `.cuh`
+- File extensions: `.cpp`, `.h`, `.cc`, `.hpp`, `.cxx`, `.cu`, `.hxx`, `.c++`, `.hh`, `.h++`, `.cuh`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

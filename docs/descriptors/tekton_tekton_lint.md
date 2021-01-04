@@ -52,12 +52,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.yml`
-  - `.yaml`
-
-- Detected file content:
-  - `apiVersion: tekton`
+- File extensions: `.yml`, `.yaml`
+- Detected file content (regex): `apiVersion: tekton`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

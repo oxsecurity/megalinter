@@ -39,8 +39,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.feature`
+- File extensions: `.feature`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

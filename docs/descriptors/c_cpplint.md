@@ -37,9 +37,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.c`
-  - `.h`
+- File extensions: `.c`, `.h`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

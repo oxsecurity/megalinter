@@ -56,11 +56,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.clj`
-  - `.cljs`
-  - `.cljc`
-  - `.edn`
+- File extensions: `.clj`, `.cljs`, `.cljc`, `.edn`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

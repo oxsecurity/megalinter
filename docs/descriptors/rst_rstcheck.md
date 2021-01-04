@@ -48,8 +48,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.rst`
+- File extensions: `.rst`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

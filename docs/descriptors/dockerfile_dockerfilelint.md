@@ -54,8 +54,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File names:
-  - `Dockerfile`
+- File names (regex): `Dockerfile`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -48,8 +48,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.xml`
+- File extensions: `.xml`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

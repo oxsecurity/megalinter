@@ -57,8 +57,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.env`
+- File extensions: `.env`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -59,6 +59,9 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
+- Activated only if sub-directory `force-app` is found. (directory name can be overridden with `SALESFORCE_DIRECTORY`)
+- If this linter is active, all files will always be linted
+
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 

@@ -62,11 +62,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.smk`
-
-- File names:
-  - `Snakefile`
+- File extensions: `.smk`
+- File names (regex): `Snakefile`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

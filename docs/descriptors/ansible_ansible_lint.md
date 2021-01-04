@@ -55,9 +55,9 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.yml`
-  - `.yaml`
+- Activated only if sub-directory `ansible` is found. (directory name can be overridden with `ANSIBLE_DIRECTORY`)
+- File extensions: `.yml`, `.yaml`
+- File name do not ends with: `vault.yml`, `vault.yaml`, `galaxy.yml`, `galaxy.yaml`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

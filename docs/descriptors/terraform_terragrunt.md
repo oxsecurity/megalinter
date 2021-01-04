@@ -39,8 +39,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.hcl`
+- File extensions: `.hcl`
+- File name do not ends with: `.tflint.hcl`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

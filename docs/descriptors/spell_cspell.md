@@ -63,6 +63,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
+- If this linter is active, all files linted by all other active linters will be linted
+
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 

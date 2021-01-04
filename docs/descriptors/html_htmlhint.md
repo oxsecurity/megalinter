@@ -65,9 +65,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.html`
-  - `.htm`
+- File extensions: `.html`, `.htm`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

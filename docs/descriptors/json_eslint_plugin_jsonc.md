@@ -76,8 +76,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.json`
+- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js`
+- File extensions: `.json`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

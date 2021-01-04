@@ -67,16 +67,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.yml`
-  - `.yaml`
-  - `.json`
-
-- Detected file content:
-  - `"openapi":`
-  - `"swagger":`
-  - `openapi:`
-  - `swagger:`
+- File extensions: `.yml`, `.yaml`, `.json`
+- Detected file content (regex): `"openapi":`, `"swagger":`, `openapi:`, `swagger:`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

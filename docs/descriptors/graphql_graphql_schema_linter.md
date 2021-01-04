@@ -53,8 +53,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.graphql`
+- File extensions: `.graphql`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

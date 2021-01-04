@@ -67,9 +67,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.scss`
-  - `.saas`
+- File extensions: `.scss`, `.saas`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -51,8 +51,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.coffee`
+- File extensions: `.coffee`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

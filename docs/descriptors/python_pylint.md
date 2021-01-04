@@ -59,8 +59,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.py`
+- File extensions: `.py`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

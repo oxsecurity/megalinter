@@ -63,8 +63,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.json`
+- File extensions: `.json`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

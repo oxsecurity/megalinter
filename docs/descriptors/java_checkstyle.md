@@ -57,8 +57,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.java`
+- File extensions: `.java`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

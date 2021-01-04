@@ -47,13 +47,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.raku`
-  - `.rakumod`
-  - `.rakutest`
-  - `.pm6`
-  - `.pl6`
-  - `.p6`
+- File extensions: `.raku`, `.rakumod`, `.rakutest`, `.pm6`, `.pl6`, `.p6`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

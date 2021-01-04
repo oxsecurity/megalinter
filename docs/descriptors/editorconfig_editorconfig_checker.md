@@ -56,9 +56,8 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- Activated only if file is found: `.editorconfig`
-- File extensions:
-  - `*`
+- Activated only if one of these files is found: `.editorconfig`
+- File extensions: `*`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

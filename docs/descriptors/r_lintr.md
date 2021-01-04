@@ -53,11 +53,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.r`
-  - `.R`
-  - `.Rmd`
-  - `.RMD`
+- File extensions: `.r`, `.R`, `.Rmd`, `.RMD`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
