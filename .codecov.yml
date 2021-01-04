@@ -3,3 +3,5 @@
 coverage:
   status:
     patch: off
+fixes:
+- "./megalinter/::./"
