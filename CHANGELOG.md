@@ -4,6 +4,10 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Nothing yet, please submit Pull Requests :)
+
+## [4.21.0] 2020-12-28
+
 - Linters
   - Add misspell spell checker
   - Allow to define cli_lint_errors_regex in descriptors to extract number of errors from linter output stdout
