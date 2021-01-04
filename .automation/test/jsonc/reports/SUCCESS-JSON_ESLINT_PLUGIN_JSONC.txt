@@ -1,0 +1,7 @@
+Results of eslint-plugin-jsonc linter (version 7.17.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_eslint_plugin_jsonc/
+-----------------------------------------------
+
+✅ [SUCCESS] .automation/test/jsonc
+    
+

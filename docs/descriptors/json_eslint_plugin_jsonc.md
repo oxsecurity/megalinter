@@ -7,8 +7,8 @@
   </a>
 </div>
 
-eslint-plugin-jsonc requires to have a `.eslintrc.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
-If you use this linter, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
+**eslint-plugin-jsonc** uses eslint to lint jsonc and json5 (JSON with comments). To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
+If you have json with comments in your project, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
 
 ```yaml
 DISABLE_LINTERS:
@@ -20,6 +20,7 @@ DISABLE_LINTERS:
 - Version in Mega-Linter: **7.17.0**
 - Visit [Official Web Site](https://ota-meshi.github.io/eslint-plugin-jsonc/){target=_blank}
 - See [How to configure eslint-plugin-jsonc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
+  - If custom .eslintrc-json.json is not found, [.eslintrc-json.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.eslintrc-json.json){target=_blank} will be used
 - See [How to disable eslint-plugin-jsonc rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
 - See [Index of problems detected by eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/){target=_blank}
 
@@ -39,7 +40,7 @@ DISABLE_LINTERS:
 | JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".json"]` |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| JSON_ESLINT_PLUGIN_JSONC_FILE_NAME | eslint-plugin-jsonc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc.json` |
+| JSON_ESLINT_PLUGIN_JSONC_FILE_NAME | eslint-plugin-jsonc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc-json.json` |
 | JSON_ESLINT_PLUGIN_JSONC_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
@@ -77,7 +78,6 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js`
 - File extensions: `.json`
 
 <!-- markdownlint-disable -->
@@ -90,11 +90,11 @@ eslint myfile.json
 ```
 
 ```shell
-eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.json
+eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
 ```
 
 ```shell
-eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.json
+eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json
 ```
 
 
@@ -164,3 +164,31 @@ Miscellaneous:
 
 - NPM packages (node.js):
   - [eslint eslint-plugin-jsonc](https://www.npmjs.com/package/eslint eslint-plugin-jsonc)
+
+### Example success log
+
+```shell
+Results of eslint-plugin-jsonc linter (version 7.17.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_eslint_plugin_jsonc/
+-----------------------------------------------
+
+✅ [SUCCESS] .automation/test/jsonc
+    
+
+```
+
+### Example error log
+
+```shell
+Results of eslint-plugin-jsonc linter (version 7.17.0)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/json_eslint_plugin_jsonc/
+-----------------------------------------------
+
+❌ [ERROR] .automation/test/jsonc
+    
+    .automation/test/jsonc/json_bad_1.json
+      9:5  error  Parsing error: Unexpected token "empty_object_spaces"
+    
+    ✖ 1 problem (1 error, 0 warnings)
+
+```
