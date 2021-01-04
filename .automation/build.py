@@ -882,10 +882,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Behind the scenes section
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
-        linter_doc_md += [
-            "### How are identified applicable files",
-            ""
-        ]
+        linter_doc_md += ["### How are identified applicable files", ""]
         if linter.files_sub_directory is not None:
             linter_doc_md += [
                 f"- Activated only if sub-directory `{linter.files_sub_directory}` is found."

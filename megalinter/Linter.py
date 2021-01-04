@@ -222,8 +222,7 @@ class Linter:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
                     found_files = glob.glob(
-                        f"{self.workspace}/**/{file_to_check}",
-                        recursive=True,
+                        f"{self.workspace}/**/{file_to_check}", recursive=True,
                     )
                     if len(found_files) > 0:
                         is_found = True
