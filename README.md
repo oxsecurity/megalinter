@@ -100,9 +100,9 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 
 **Notes**:
 
-- This repo is a hard-fork of GitHub Super-Linter, rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GT Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
-- If you want to use some advanced additional features like **applying fixes during CI**, please take 5 minutes to define [mega-linter.yml](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) :)
+- This repo is a hard-fork of [GitHub Super-Linter](https://github.com/github/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
+- If you are a Super-Linter user, you can transparently **switch to Mega-Linter and keep the same configuration** (just replace `github/super-linter@v3` by `nvuillam/mega-linter@v4` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you want to use Mega-Linter extra features (recommended), please take 5 minutes to use [Mega-Linter assisted installation](#installation)
 <!-- quick-start-section-end -->
 
 <!-- supported-linters-section-start -->
@@ -659,6 +659,34 @@ You can implement your own descriptors and load them as plugins during Mega-Lint
 > My repo CI already have linters and they are perfectly working, so why do I need Mega-Linter ?
 
 You can perfectly continue using your installed linters and deactivate them in .mega-linter.yml. For example, in a javascript project using eslint, you can configure Mega-Linter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters but also from other Mega-Linter linters like JSON, YAML, Markdown, Dockerfile and Bash linters
+
+> Ok but... how does it work ?
+
+Mega-Linter is based on Docker-images container either all linters, or just a selection of linters if you are using a Mega-Linter flavor for a project using a specific language / format
+
+The core architecture does the following:
+
+- **Initialization**
+  - **List all project files**:
+    - except files in ignored folders (`node_modules`, etc...)
+    - except files not matching `FILTER_REGEX_INCLUDE` (if defined by user)
+    - except files matching `FILTER_REGEX_EXCLUDE` (if defined by user)
+  - **Collect files for each activated linter**, matching their **own filtering criteria**:
+    - file extensions
+    - file names
+    - file content
+    - `<descriptor_or_linter_key>_FILTER_REGEX_INCLUDE` (if defined by user)
+    - `<descriptor_or_linter_key>_FILTER_REGEX_EXCLUDE` (if defined by user)
+- **Linting**
+  - **Parallelly**, for **each linter** with matching files:
+    - **Call the linter** on matching files (or the whole project for some linters like copy-paste detector)
+    - Call activated **linter-level reporters** (GitHub Status Reporter...)
+- **Finalization**
+  - Call activated **global level reporters** (GitHub Pull Request Comment Reporter, File.io Reporter, Email Reporter...)
+  - Manage return code:
+    - **0** if no error (or only non blocking errors if user defined `DISABLE_ERRORS` or `<descriptor_or_linter_key>_DISABLE_ERRORS`)
+    - **1** if errors
+
 <!-- frequently-asked-questions-section-end -->
 
 <!-- how-to-contribute-section-start -->
@@ -725,6 +753,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 - [Mega-Linter Flavors](#flavors) allow to use **smaller docker images**, so the pull time is reduced
 - Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+- When the linter allows it, call it **1 time with N files**, instead of calling **N times with one file**
 
 ### More languages and formats linted
 
@@ -752,8 +781,15 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 
 #### Additional Reporters
 
+- [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md)
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+
 - [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)
 - [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md)
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
 - [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)
 - [Email](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/EmailReporter.md)
 - [File.io](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/FileIoReporter.md)
@@ -761,6 +797,11 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 ### Enhanced Configuration
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
+
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
+![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
+
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
 - Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`
@@ -774,6 +815,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 ### Enhanced Documentation
 
 - [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
+
+![HTML doc home](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_home.jpg)
+
 - **One page per linter documentation** :
   - **All variables** that can be used with this linter
   - List of **file extensions, names and filters** applied by the linter
@@ -784,6 +828,13 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
   - **Examples** of linter command line calls behind the hood
   - **Help** command text
   - Installation commands
+
+![HTML doc linter](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_linter.jpg)
+
+- Installation links for related IDEs
+
+![HTML doc IDE](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_ide.jpg)
+
 - README
   - Separate languages, formats and tooling formats in the linters table
   - Add logos for each descriptor

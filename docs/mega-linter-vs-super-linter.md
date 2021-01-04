@@ -10,6 +10,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 - [Mega-Linter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
 - Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+- When the linter allows it, call it **1 time with N files**, instead of calling **N times with one file**
 
 ## More languages and formats linted
 
@@ -37,8 +38,15 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 
 ### Additional Reporters
 
+- [Console](reporters/ConsoleReporter.md)
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
 - [File.io](reporters/FileIoReporter.md)
@@ -46,6 +54,11 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 ## Enhanced Configuration
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
+
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
+![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
+
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
 - Configure **non blocking errors** for a **single language or linter**: ex: `JAVASCRIPT_DISABLE_ERRORS`
@@ -59,6 +72,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 ## Enhanced Documentation
 
 - [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
+
+![HTML doc home](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_home.jpg)
+
 - **One page per linter documentation** :
   - **All variables** that can be used with this linter
   - List of **file extensions, names and filters** applied by the linter
@@ -69,6 +85,13 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
   - **Examples** of linter command line calls behind the hood
   - **Help** command text
   - Installation commands
+
+![HTML doc linter](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_linter.jpg)
+
+- Installation links for related IDEs
+
+![HTML doc IDE](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_ide.jpg)
+
 - README
   - Separate languages, formats and tooling formats in the linters table
   - Add logos for each descriptor
