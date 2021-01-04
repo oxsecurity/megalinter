@@ -17,6 +17,7 @@
     "dotnet-format": "4.1.131201",
     "editorconfig-checker": "0.0.0",
     "eslint": "7.17.0",
+    "eslint-plugin-jsonc": "7.17.0",
     "flake8": "3.8.4",
     "gherkin-lint": "0.0.0",
     "git_diff": "2.26.2",
