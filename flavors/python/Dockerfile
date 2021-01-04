@@ -100,6 +100,7 @@ RUN npm install --no-cache --ignore-scripts \
                 npm-groovy-lint \
                 htmlhint \
                 jsonlint \
+                eslint eslint-plugin-jsonc \
                 v8r \
                 markdownlint-cli \
                 markdown-link-check \

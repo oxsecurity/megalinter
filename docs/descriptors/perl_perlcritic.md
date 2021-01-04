@@ -37,21 +37,14 @@ This linter is available in the following flavours
 
 | <!-- --> | Flavor | Description | Embedded linters | Info |
 | :------: | :----- | :---------- | :--------------: | ---: |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 75 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 76 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.pl`
-  - `.pm`
-  - `.t`
-  - ``
-
-- Detected file content:
-  - `#!/usr/bin/env perl`
-  - `#!/usr/bin/perl`
+- File extensions: `.pl`, `.pm`, `.t`, ``
+- Detected file content (regex): `#!/usr/bin/env perl`, `#!/usr/bin/perl`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

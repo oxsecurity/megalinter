@@ -10,6 +10,7 @@
         "GIT_GIT_DIFF",
         "GROOVY_NPM_GROOVY_LINT",
         "JSON_JSONLINT",
+        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "XML_XMLLINT",
         "YAML_YAMLLINT",

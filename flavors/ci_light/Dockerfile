@@ -83,6 +83,7 @@ RUN npm install --no-cache --ignore-scripts \
                 dockerfilelint \
                 npm-groovy-lint \
                 jsonlint \
+                eslint eslint-plugin-jsonc \
                 v8r
 #NPM__END
 

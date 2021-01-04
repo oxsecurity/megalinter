@@ -52,12 +52,15 @@ This linter is available in the following flavours
 
 | <!-- --> | Flavor | Description | Embedded linters | Info |
 | :------: | :----- | :---------- | :--------------: | ---: |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 75 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Mega-Linter optimized for Salesforce based projects | 33 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 76 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Mega-Linter optimized for Salesforce based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
+
+- Activated only if sub-directory `force-app` is found. (directory name can be overridden with `SALESFORCE_DIRECTORY`)
+- If this linter is active, all files will always be linted
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

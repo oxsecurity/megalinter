@@ -8,6 +8,7 @@
 | Linter | Configuration key |
 | ------ | ----------------- |
 | [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) |
+| [eslint-plugin-jsonc](json_eslint_plugin_jsonc.md) | [JSON](json_eslint_plugin_jsonc.md) |
 | [v8r](json_v8r.md) | [JSON](json_v8r.md) |
 
 ## Linted files

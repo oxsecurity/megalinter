@@ -62,7 +62,7 @@ class Linter:
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_names_not_ends_with = []
-        self.active_only_if_file_found = None
+        self.active_only_if_file_found = []
         self.lint_all_files = False
         self.lint_all_other_linters_files = False
 
@@ -212,15 +212,26 @@ class Linter:
                     self.workspace + os.path.sep + self.files_sub_directory
                 ):
                     self.is_active = False
+                    logging.debug(
+                        f"[Activation] {self.name} has been set inactive, as subdirectory has not been found:"
+                        f" {self.files_sub_directory}"
+                    )
 
             # Some linters require a file to be existing, else they are deactivated ( ex: .editorconfig )
-            if self.active_only_if_file_found is not None:
-                found_files = glob.glob(
-                    f"{self.workspace}/**/{self.active_only_if_file_found}",
-                    recursive=True,
-                )
-                if len(found_files) == 0:
+            if len(self.active_only_if_file_found) > 0:
+                is_found = False
+                for file_to_check in self.active_only_if_file_found:
+                    found_files = glob.glob(
+                        f"{self.workspace}/**/{file_to_check}", recursive=True,
+                    )
+                    if len(found_files) > 0:
+                        is_found = True
+                if is_found is False:
                     self.is_active = False
+                    logging.debug(
+                        f"[Activation] {self.name} has been set inactive, as none of these files has been found:"
+                        f" {str(self.active_only_if_file_found)}"
+                    )
 
             # Load Mega-Linter reporters
             self.load_reporters()

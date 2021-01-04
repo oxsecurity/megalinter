@@ -93,6 +93,7 @@
         "JAVASCRIPT_ES",
         "JAVASCRIPT_STANDARD",
         "JSON_JSONLINT",
+        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
@@ -2368,6 +2369,72 @@
     "JAVA_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVA_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for JAVA descriptor",
+      "type": "string"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
+      "type": "array"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
+      "default": false,
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_FILE_NAME": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAME",
+      "default": ".eslintrc.json",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
+      "type": "string"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Excluding Regex",
+      "type": "string"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Including Regex",
+      "type": "string"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_RULES_PATH",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: Path where to find linter configuration file",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file path",
       "type": "string"
     },
     "JSON_FILTER_REGEX_EXCLUDE": {

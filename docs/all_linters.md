@@ -23,6 +23,7 @@
 | **dotnet-format** | 4.1.131201 | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
 | **editorconfig-checker** | N/A | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :hammer_and_wrench: | [Pull Request](https://github.com/editorconfig-checker/editorconfig-checker/pull/139){target=_blank} |
 | **eslint** | 7.17.0 | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
+| **eslint-plugin-jsonc** | N/A | [JSON](descriptors/json_eslint_plugin_jsonc.md) | :white_circle: | [Repository](https://github.com/ota-meshi/eslint-plugin-jsonc){target=_blank} |
 | **flake8** | 3.8.4 | [PYTHON](descriptors/python_flake8.md) | :white_circle: | [Repository](https://github.com/PyCQA/flake8){target=_blank} |
 | **gherkin-lint** | N/A | [GHERKIN](descriptors/gherkin_gherkin_lint.md) | :white_circle: | [Web Site](https://github.com/vsiakka/gherkin-lint){target=_blank} |
 | **git_diff** | 2.26.2 | [GIT](descriptors/git_git_diff.md) | <!-- --> | [Repository](https://github.com/git/git){target=_blank} |

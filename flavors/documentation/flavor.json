@@ -20,6 +20,7 @@
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
         "JSON_JSONLINT",
+        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",

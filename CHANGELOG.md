@@ -4,7 +4,8 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Nothing yet, please submit Pull Requests :)
+- Linters
+  - Add JSONC (json with comments) linting with eslint-plugin-jsonc
 
 ## [4.21.0] 2020-12-28
 

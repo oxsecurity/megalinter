@@ -109,6 +109,7 @@ RUN npm install --no-cache --ignore-scripts \
                 babel-eslint \
                 standard@15.0.1 \
                 jsonlint \
+                eslint eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \
                 markdownlint-cli \

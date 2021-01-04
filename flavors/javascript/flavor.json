@@ -25,6 +25,7 @@
         "JAVASCRIPT_ES",
         "JAVASCRIPT_STANDARD",
         "JSON_JSONLINT",
+        "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "JSX_ESLINT",
         "KOTLIN_KTLINT",

@@ -395,9 +395,10 @@ def generate_descriptor_documentation(descriptor):
 
     # Criteria used by the descriptor to identify files to lint
     descriptor_md += ["", "## Linted files", ""]
-    if descriptor.get("active_only_if_file_found", None) is not None:
+    if len(descriptor.get("active_only_if_file_found", [])) > 0:
         descriptor_md += [
-            f"- Activated only if file is found: `{descriptor.get('active_only_if_file_found')}`"
+            f"- Activated only if at least one of these files is found:"
+            f" `{', '.join(descriptor.get('active_only_if_file_found'))}`"
         ]
     if len(descriptor.get("file_extensions", [])) > 0:
         descriptor_md += ["- File extensions:"]
@@ -882,26 +883,42 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
         linter_doc_md += ["### How are identified applicable files", ""]
-        if linter.active_only_if_file_found is not None:
+        if linter.files_sub_directory is not None:
             linter_doc_md += [
-                f"- Activated only if file is found: `{linter.active_only_if_file_found}`"
+                f"- Activated only if sub-directory `{linter.files_sub_directory}` is found."
+                f" (directory name can be overridden with `{linter.descriptor_id}_DIRECTORY`)"
+            ]
+        if len(linter.active_only_if_file_found) > 0:
+            linter_doc_md += [
+                f"- Activated only if one of these files is found:"
+                f" `{', '.join(linter.active_only_if_file_found)}`"
+            ]
+        if linter.lint_all_files is True:
+            linter_doc_md += [
+                "- If this linter is active, all files will always be linted"
+            ]
+        if linter.lint_all_other_linters_files is True:
+            linter_doc_md += [
+                "- If this linter is active, all files linted by all other active linters will be linted"
             ]
         if len(linter.file_extensions) > 0:
-            linter_doc_md += ["- File extensions:"]
-            for file_extension in linter.file_extensions:
-                linter_doc_md += [f"  - `{file_extension}`"]
-            linter_doc_md += [""]
+            linter_doc_md += [
+                f"- File extensions: `{'`, `'.join(linter.file_extensions)}`"
+            ]
         if len(linter.file_names_regex) > 0:
-            linter_doc_md += ["- File names:"]
-            for file_name in linter.file_names_regex:
-                linter_doc_md += [f"  - `{file_name}`"]
-            linter_doc_md += [""]
+            linter_doc_md += [
+                f"- File names (regex): `{'`, `'.join(linter.file_names_regex)}`"
+            ]
         if len(linter.file_contains_regex) > 0:
-            linter_doc_md += ["- Detected file content:"]
-            for file_contains_expr in linter.file_contains_regex:
-                linter_doc_md += [f"  - `{file_contains_expr}`"]
-            linter_doc_md += [""]
+            linter_doc_md += [
+                f"- Detected file content (regex): `{'`, `'.join(linter.file_contains_regex)}`"
+            ]
+        if len(linter.file_names_not_ends_with) > 0:
+            linter_doc_md += [
+                f"- File name do not ends with: `{'`, `'.join(linter.file_names_not_ends_with)}`"
+            ]
         linter_doc_md += [
+            "",
             "<!-- markdownlint-disable -->",
             "<!-- /* cSpell:disable */ -->",
         ]  # Do not check spelling of examples and logs
