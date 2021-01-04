@@ -21,8 +21,8 @@ linters:
     linter_url: https://ota-meshi.github.io/eslint-plugin-jsonc/
     linter_repo: https://github.com/ota-meshi/eslint-plugin-jsonc
     linter_text: |
-      eslint-plugin-jsonc requires to have a `.eslintrc.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
-      If you use this linter, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
+      **eslint-plugin-jsonc** uses eslint to lint jsonc and json5 (JSON with comments). To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
+      If you have json with comments in your project, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
 
       ```yaml
       DISABLE_LINTERS:
@@ -32,14 +32,9 @@ linters:
     linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
-    active_only_if_file_found:
-      - ".eslintrc.json"
-      - ".eslintrc.yml"
-      - ".eslintrc.yaml"
-      - ".eslintrc.js"
     cli_lint_mode: list_of_files
     cli_executable: eslint
-    config_file_name: .eslintrc.json
+    config_file_name: .eslintrc-json.json
     cli_config_extra_args:
       - "--no-eslintrc"
     cli_lint_extra_args:
@@ -49,8 +44,8 @@ linters:
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     examples:
       - "eslint myfile.json"
-      - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.json"
-      - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.json"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+      - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
     test_folder: jsonc
     install:
       npm:
