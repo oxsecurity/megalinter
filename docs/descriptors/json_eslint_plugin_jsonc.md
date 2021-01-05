@@ -7,7 +7,7 @@
   </a>
 </div>
 
-**eslint-plugin-jsonc** uses eslint to lint `json`, `jsonc` and `json5` (extended JSON with comments & more).
+**eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
 
 - To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
 - If you have `.json` files with comments in your project, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
@@ -23,43 +23,44 @@ DISABLE_LINTERS:
     <details>
     <summary>See code</summary>
 
-    ```json
-    {
-        "overrides": [
-            {
-                "files": ["*.json"],
-                "extends": [
-                    "plugin:jsonc/recommended-with-json"
-                ],
-                "parser": "jsonc-eslint-parser",
-                    "parserOptions": {
-                        "jsonSyntax": "JSON"
-                }
-            },
-            {
-                "files": ["*.jsonc"],
-                "extends": [
-                    "plugin:jsonc/recommended-with-jsonc"
-                ],
-                "parser": "jsonc-eslint-parser",
-                    "parserOptions": {
-                        "jsonSyntax": "JSONC"
-                }
-            },
-            {
-                "files": ["*.json5"],
-                "extends": [
-                    "plugin:jsonc/recommended-with-json5"
-                ],
-                "parser": "jsonc-eslint-parser",
-                    "parserOptions": {
-                        "jsonSyntax": "JSON5"
-                }
-            }
-        ]
-    }
-    ```
-
+    <pre>
+      <code>
+      {
+          "overrides": [
+              {
+                  "files": ["*.json"],
+                  "extends": [
+                      "plugin:jsonc/recommended-with-json"
+                  ],
+                  "parser": "jsonc-eslint-parser",
+                      "parserOptions": {
+                          "jsonSyntax": "JSON"
+                  }
+              },
+              {
+                  "files": ["*.jsonc"],
+                  "extends": [
+                      "plugin:jsonc/recommended-with-jsonc"
+                  ],
+                  "parser": "jsonc-eslint-parser",
+                      "parserOptions": {
+                          "jsonSyntax": "JSONC"
+                  }
+              },
+              {
+                  "files": ["*.json5"],
+                  "extends": [
+                      "plugin:jsonc/recommended-with-json5"
+                  ],
+                  "parser": "jsonc-eslint-parser",
+                      "parserOptions": {
+                          "jsonSyntax": "JSON5"
+                  }
+              }
+          ]
+      }
+      </code>
+    </pre>
     </details>
 
   - add `JSON_ESLINT_PLUGIN_JSONC_FiLE_NAME: .eslintrc.json` in your `.mega-linter.yml` config file

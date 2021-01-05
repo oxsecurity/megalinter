@@ -56,7 +56,7 @@
 | **rstcheck** | 3.3.1 | [RST](descriptors/rst_rstcheck.md) | :hammer_and_wrench: | [Pull Request](https://github.com/myint/rstcheck/pull/73){target=_blank} |
 | **rstfmt** | N/A | [RST](descriptors/rst_rstfmt.md) | :hammer_and_wrench: | [Pull Request](https://github.com/dzhu/rstfmt/pull/1){target=_blank} |
 | **rubocop** | 0.82.0 | [RUBY](descriptors/ruby_rubocop.md) | :heart: | [Mega-Linter reference](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank} |
-| **scalafix** | 0.9.24 | [SCALA](descriptors/scala_scalafix.md) | :hammer_and_wrench: | [Pull Request](https://github.com/scalacenter/scalafix/pull/1312){target=_blank} |
+| **scalafix** | 0.9.24 | [SCALA](descriptors/scala_scalafix.md) | :heart: | [Mega-Linter reference](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank} |
 | **scss-lint** | 0.59.0 | [CSS](descriptors/css_scss_lint.md) | :white_circle: | [Web Site](https://github.com/sds/scss-lint){target=_blank} |
 | **sfdx-scanner** | 2.4.0 | [SALESFORCE](descriptors/salesforce_sfdx_scanner.md) | :hammer_and_wrench: | [Pull Request](https://github.com/forcedotcom/sfdx-scanner/pull/307){target=_blank} |
 | **shellcheck** | 0.7.1 | [BASH](descriptors/bash_shellcheck.md) | :hammer_and_wrench: | [Pull Request](https://github.com/koalaman/shellcheck/pull/2076){target=_blank} |
