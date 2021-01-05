@@ -35,7 +35,8 @@ linters:
         - JSON_JSONLINT
       ```
 
-      - If you have your own local `.eslintrc.json` (or similar name) in your project, you may
+      - If you have your own local `.eslintrc.json` (or `.yaml` or `.js` equivalent) config in your project, you must
+        - add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or `.yaml` or `.js` equivalent) in your `.mega-linter.yml` config file
         - add `overrides` property in it
 
           <details>
@@ -80,8 +81,6 @@ linters:
             </code>
           </pre>
           </details>
-
-        - add `JSON_ESLINT_PLUGIN_JSONC_FiLE_NAME: .eslintrc.json` in your `.mega-linter.yml` config file
     linter_rules_url: https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
     linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring

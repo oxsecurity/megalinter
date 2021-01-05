@@ -10,7 +10,7 @@ import os
 import sys
 
 import git
-from megalinter import config, flavor_factory, linter_factory, plugin_factory, utils
+from megalinter import config, flavor_factory, linter_factory, pre_post_factory, plugin_factory, utils
 from multiprocessing_logging import install_mp_handler
 
 
@@ -80,6 +80,9 @@ class Megalinter:
         self.flavor_suggestions = None
         # Initialize plugins
         plugin_factory.initialize_plugins()
+        # Run user-defined commands
+        self.pre_commands_results = pre_post_factory.run_pre_commands(self)
+        self.post_commands_results = []
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -138,6 +141,9 @@ class Megalinter:
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 active_linters
             )
+
+        # Run user-defined commands
+        self.post_commands_results = pre_post_factory.run_post_commands(self)
 
         # Generate reports
         for reporter in self.reporters:

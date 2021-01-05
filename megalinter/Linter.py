@@ -252,6 +252,10 @@ class Linter:
 
     # Enable or disable linter
     def manage_activation(self, params):
+        # Default value is false in case ENABLE variables are used
+        if len(params["enable_descriptors"]) > 0 or len(params["enable_linters"]) > 0:
+            self.is_active = False
+        # Activate or not the linter
         if self.name in params["enable_linters"]:
             self.is_active = True
         elif self.name in params["disable_linters"]:
@@ -465,61 +469,24 @@ class Linter:
         )
 
     def log_file_filters(self):
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "filter_regex_include",
-            self.filter_regex_include,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "filter_regex_exclude",
-            self.filter_regex_exclude,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "files_sub_directory",
-            self.files_sub_directory,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "lint_all_other_linters_files",
-            self.lint_all_other_linters_files,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_extensions",
-            self.file_extensions,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_names_regex",
-            self.file_names_regex,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_names_not_ends_with",
-            self.file_names_not_ends_with,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_contains_regex",
-            self.file_contains_regex,
-        )
+        log_object = {
+            "name": self.name,
+            "filter_regex_include": self.filter_regex_include,
+            "filter_regex_exclude": self.filter_regex_exclude,
+            "files_sub_directory": self.files_sub_directory,
+            "lint_all_files": self.lint_all_files,
+            "lint_all_other_linters_files": self.lint_all_other_linters_files,
+            "file_extensions": self.file_extensions,
+            "file_names_regex": self.file_names_regex,
+            "file_names_not_ends_with": self.file_names_not_ends_with,
+            "file_contains_regex": self.file_contains_regex
+        }
+        logging.debug('[Filters] ' + str(log_object))
 
     # Collect all files that will be analyzed by the current linter
     def collect_files(self, all_files):
         self.log_file_filters()
-
         # Filter all files to keep only the ones matching with the current linter
-
         self.files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
@@ -531,7 +498,6 @@ class Linter:
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
         )
-
         logging.debug(
             "%s linter files after applying linter filters:\n- %s",
             self.name,

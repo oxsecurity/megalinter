@@ -12,6 +12,7 @@ __all__ = [
     "flavor_factory",
     "linter_factory",
     "plugin_factory",
+    "pre_post_factory",
     "utils",
     "alpaca",
 ]

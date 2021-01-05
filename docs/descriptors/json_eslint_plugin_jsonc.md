@@ -17,7 +17,8 @@ DISABLE_LINTERS:
   - JSON_JSONLINT
 ```
 
-- If you have your own local `.eslintrc.json` (or similar name) in your project, you may
+- If you have your own local `.eslintrc.json` (or `.yaml` or `.js` equivalent) config in your project, you must
+  - add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or `.yaml` or `.js` equivalent) in your `.mega-linter.yml` config file
   - add `overrides` property in it
 
     <details>
@@ -62,8 +63,6 @@ DISABLE_LINTERS:
       </code>
     </pre>
     </details>
-
-  - add `JSON_ESLINT_PLUGIN_JSONC_FiLE_NAME: .eslintrc.json` in your `.mega-linter.yml` config file
 
 ## eslint-plugin-jsonc documentation
 
