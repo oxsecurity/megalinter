@@ -30,19 +30,31 @@ DISABLE_LINTERS:
                 "files": ["*.json"],
                 "extends": [
                     "plugin:jsonc/recommended-with-json"
-                ]
+                ],
+                "parser": "jsonc-eslint-parser",
+                    "parserOptions": {
+                        "jsonSyntax": "JSON"
+                }
             },
             {
                 "files": ["*.jsonc"],
                 "extends": [
                     "plugin:jsonc/recommended-with-jsonc"
-                ]
+                ],
+                "parser": "jsonc-eslint-parser",
+                    "parserOptions": {
+                        "jsonSyntax": "JSONC"
+                }
             },
             {
                 "files": ["*.json5"],
                 "extends": [
                     "plugin:jsonc/recommended-with-json5"
-                ]
+                ],
+                "parser": "jsonc-eslint-parser",
+                    "parserOptions": {
+                        "jsonSyntax": "JSON5"
+                }
             }
         ]
     }
