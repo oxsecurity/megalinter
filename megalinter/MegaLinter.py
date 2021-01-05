@@ -215,25 +215,28 @@ class Megalinter:
             and os.path.isdir(github_workspace + "/tmp/lint")
         ):
             logging.debug(
-                "Context: Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint"
+                "[Context] Github action run without override of DEFAULT_WORKSPACE - /tmp/lint"
             )
             return github_workspace + "/tmp/lint"
         # Docker run without override of DEFAULT_WORKSPACE
         elif default_workspace != "" and os.path.isdir(
             "/tmp/lint" + os.path.sep + default_workspace
         ):
-            logging.debug("Context: Docker run without override of DEFAULT_WORKSPACE")
+            logging.debug(
+                "[Context] Docker run without override of DEFAULT_WORKSPACE"
+                f" - {default_workspace}/tmp/lint{os.path.sep + default_workspace}"
+            )
             return default_workspace + "/tmp/lint" + os.path.sep + default_workspace
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
             logging.debug(
-                "Context: Docker run with override of DEFAULT_WORKSPACE for test cases"
+                f"[Context] Docker run with override of DEFAULT_WORKSPACE for test cases - {default_workspace}"
             )
             return default_workspace
         # Docker run test classes without override of DEFAULT_WORKSPACE
         elif os.path.isdir("/tmp/lint"):
             logging.debug(
-                "Context: Docker run test classes without override of DEFAULT_WORKSPACE"
+                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - /tmp/lint"
             )
             return "/tmp/lint"
         # Github action with override of DEFAULT_WORKSPACE
@@ -242,7 +245,10 @@ class Megalinter:
             and github_workspace != ""
             and os.path.isdir(github_workspace + os.path.sep + default_workspace)
         ):
-            logging.debug("Context: Github action with override of DEFAULT_WORKSPACE")
+            logging.debug(
+                "[Context] Github action with override of DEFAULT_WORKSPACE"
+                f" - {github_workspace + os.path.sep + default_workspace}"
+            )
             return github_workspace + os.path.sep + default_workspace
         # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint
         elif (
@@ -252,13 +258,14 @@ class Megalinter:
             and os.path.isdir(github_workspace)
         ):
             logging.debug(
-                "Context: Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint"
+                "[Context] Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint"
+                f" - {github_workspace}"
             )
             return github_workspace
         # Unable to identify workspace
         else:
             raise FileNotFoundError(
-                f"Unable to find a workspace to lint \n"
+                f"[Context] Unable to find a workspace to lint \n"
                 f"DEFAULT_WORKSPACE: {default_workspace}\n"
                 f"GITHUB_WORKSPACE: {github_workspace}"
             )

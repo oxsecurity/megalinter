@@ -60,3 +60,7 @@ class ConsoleLinterReporter(Reporter):
             logging.error(
                 f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})"
             )
+        else:
+            logging.error(
+                f"❌ There is a Mega-Linter issue, please report it: {self.master.return_code} / {self.master.status}"
+            )
