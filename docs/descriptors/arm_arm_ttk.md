@@ -6,7 +6,7 @@
 
 - Visit [Official Web Site](https://github.com/Azure/arm-ttk#readme){target=_blank}
 - See [How to configure arm-ttk rules](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests){target=_blank}
-  - If custom .arm-ttk.psd1 is not found, [.arm-ttk.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.arm-ttk.psd1){target=_blank} will be used
+  - If custom `.arm-ttk.psd1` config file is not found, [.arm-ttk.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.arm-ttk.psd1){target=_blank} will be used
 
 [![arm-ttk - GitHub](https://gh-card.dev/repos/Azure/arm-ttk.svg?fullname=)](https://github.com/Azure/arm-ttk){target=_blank}
 

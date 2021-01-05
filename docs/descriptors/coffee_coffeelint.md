@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **4.1.2**
 - Visit [Official Web Site](http://www.coffeelint.org){target=_blank}
 - See [How to configure coffeelint rules](http://www.coffeelint.org/#options){target=_blank}
-  - If custom .coffee-lint.json is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json){target=_blank} will be used
+  - If custom `.coffee-lint.json` config file is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json){target=_blank} will be used
 - See [How to disable coffeelint rules in files](http://www.coffeelint.org/#options){target=_blank}
 - See [Index of problems detected by coffeelint](http://www.coffeelint.org/#options){target=_blank}
 

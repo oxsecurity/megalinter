@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **2.0.1.9000**
 - Visit [Official Web Site](https://github.com/jimhester/lintr#readme){target=_blank}
 - See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration){target=_blank}
-  - If custom .lintr is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr){target=_blank} will be used
+  - If custom `.lintr` config file is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr){target=_blank} will be used
 - See [Index of problems detected by lintr](https://github.com/jimhester/lintr#available-linters){target=_blank}
 
 [![lintr - GitHub](https://gh-card.dev/repos/jimhester/lintr.svg?fullname=)](https://github.com/jimhester/lintr){target=_blank}

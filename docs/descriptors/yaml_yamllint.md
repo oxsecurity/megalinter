@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **1.25.0**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
-  - If custom .yaml-lint.yml is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml){target=_blank} will be used
+  - If custom `.yaml-lint.yml` config file is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml){target=_blank} will be used
 - See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html){target=_blank}
 
 [![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint){target=_blank}

@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **3.3.23**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
-  - If custom .jscpd.json is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json){target=_blank} will be used
+  - If custom `.jscpd.json` config file is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json){target=_blank} will be used
 - See [How to disable jscpd rules in files](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks){target=_blank}
 
 [![jscpd - GitHub](https://gh-card.dev/repos/kucherenko/jscpd.svg?fullname=)](https://github.com/kucherenko/jscpd){target=_blank}

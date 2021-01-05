@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **3.5.8**
 - Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
-  - If custom phpcs.xml is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpcs.xml){target=_blank} will be used
+  - If custom `phpcs.xml` config file is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpcs.xml){target=_blank} will be used
 - See [How to disable phpcs rules in files](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file){target=_blank}
 
 [![PHP_CodeSniffer - GitHub](https://gh-card.dev/repos/squizlabs/PHP_CodeSniffer.svg?fullname=)](https://github.com/squizlabs/PHP_CodeSniffer){target=_blank}

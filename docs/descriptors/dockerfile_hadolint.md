@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **1.19.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
-  - If custom .hadolint.yml is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
+  - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
 - See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules){target=_blank}
 

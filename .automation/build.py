@@ -655,7 +655,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [
-                    f"  - If custom {linter.config_file_name} is not found, "
+                    f"  - If custom `{linter.config_file_name}` config file is not found, "
                     f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name}){{target=_blank}}"
                     " will be used"
                 ]

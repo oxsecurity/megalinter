@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **13.8.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
-  - If custom .stylelintrc.json is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json){target=_blank} will be used
+  - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json){target=_blank} will be used
 - See [How to disable stylelint rules in files](https://stylelint.io/user-guide/ignore-code){target=_blank}
 - See [Index of problems detected by stylelint](https://stylelint.io/user-guide/rules/list){target=_blank}
 

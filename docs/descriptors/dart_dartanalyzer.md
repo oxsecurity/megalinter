@@ -11,7 +11,7 @@
 
 - Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file){target=_blank}
-  - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml){target=_blank} will be used
+  - If custom `analysis_options.yml` config file is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml){target=_blank} will be used
 - See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file){target=_blank}
 
 [![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk){target=_blank}

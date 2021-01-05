@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **2020.09.09**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
-  - If custom .clj-kondo/config.edn is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
+  - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
 - See [Index of problems detected by clj-kondo](https://github.com/borkdude/clj-kondo#features){target=_blank}
 
 [![clj-kondo - GitHub](https://gh-card.dev/repos/borkdude/clj-kondo.svg?fullname=)](https://github.com/borkdude/clj-kondo){target=_blank}
