@@ -14,7 +14,7 @@ class PrePostTest(unittest.TestCase):
         utilstest.linter_test_setup(
             {
                 "sub_lint_root": f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}pre-post-test",
-                "required_config_file": True
+                "required_config_file": True,
             }
         )
 
