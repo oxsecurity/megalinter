@@ -1,7 +1,22 @@
 {
-    "extends": [
-        "plugin:jsonc/recommended-with-jsonc"
-    ],
-    "rules": {
-    }
+    "overrides": [
+        {
+            "files": ["*.json"],
+            "extends": [
+                "plugin:jsonc/recommended-with-json"
+            ]
+        },
+        {
+            "files": ["*.jsonc"],
+            "extends": [
+                "plugin:jsonc/recommended-with-jsonc"
+            ]
+        },
+        {
+            "files": ["*.json5"],
+            "extends": [
+                "plugin:jsonc/recommended-with-json5"
+            ]
+        }
+    ]
 }
