@@ -1,0 +1,22 @@
+{
+/*
+jsonc example
+hit Format and check the json output
+*/
+
+// forgiving syntax
+hey:  [this  needs  no  commas]
+
+// unquoted values
+give:  [it,  a,  shot]
+
+/* and lots of comments :) */
+
+// try it for yourself
+
+"this":  {
+"is":  "also",
+"just":  "a"
+},
+"json" : "formatter"64756756
+}
