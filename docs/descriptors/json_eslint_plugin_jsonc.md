@@ -9,14 +9,48 @@
 
 **eslint-plugin-jsonc** uses eslint to lint `json`, `jsonc` and `json5` (extended JSON with comments & more).
 
-To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
-
-If you have `.json` files with comments in your project, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
+- To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
+- If you have `.json` files with comments in your project, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
 
 ```yaml
 DISABLE_LINTERS:
   - JSON_JSONLINT
 ```
+
+- If you have your own local `.eslintrc.json` (or similar name) in your project, you may
+  - add `overrides` property in it
+
+    <details>
+    <summary>See code</summary>
+
+    ```json
+    {
+        "overrides": [
+            {
+                "files": ["*.json"],
+                "extends": [
+                    "plugin:jsonc/recommended-with-json"
+                ]
+            },
+            {
+                "files": ["*.jsonc"],
+                "extends": [
+                    "plugin:jsonc/recommended-with-jsonc"
+                ]
+            },
+            {
+                "files": ["*.json5"],
+                "extends": [
+                    "plugin:jsonc/recommended-with-json5"
+                ]
+            }
+        ]
+    }
+    ```
+
+    </details>
+
+  - add `JSON_ESLINT_PLUGIN_JSONC_FiLE_NAME: .eslintrc.json` in your `.mega-linter.yml` config file
 
 ## eslint-plugin-jsonc documentation
 
