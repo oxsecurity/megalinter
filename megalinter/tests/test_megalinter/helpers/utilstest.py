@@ -47,11 +47,15 @@ def linter_test_setup(params=None):
         )
     )
     workspace = None
-    config_file_path = root_dir + os.path.sep + sub_lint_root + os.path.sep + ".mega-linter.yml"
+    config_file_path = (
+        root_dir + os.path.sep + sub_lint_root + os.path.sep + ".mega-linter.yml"
+    )
     if os.path.isfile(config_file_path):
         workspace = root_dir + os.path.sep + sub_lint_root
     elif params.get("required_config_file", False) is True:
-        raise Exception(f"[test] There should be a .mega-linter.yml file in test folder {config_file_path}")
+        raise Exception(
+            f"[test] There should be a .mega-linter.yml file in test folder {config_file_path}"
+        )
     config.init_config(workspace)
     # Ignore report folder
     config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")

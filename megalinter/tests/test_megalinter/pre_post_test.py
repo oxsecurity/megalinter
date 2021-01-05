@@ -22,7 +22,7 @@ class PrePostTest(unittest.TestCase):
             {
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
-                "LOG_LEVEL": "DEBUG"
+                "LOG_LEVEL": "DEBUG",
             }
         )
         self.assertTrue(

@@ -38,14 +38,12 @@ def run_command(command_info, log_key, mega_linter):
     logging.info(f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]")
     # Run command
     process = subprocess.run(
-        command_info['command'],
+        command_info["command"],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         shell=True,
         cwd=os.path.realpath(cwd),
-        executable=shutil.which("bash")
-        if sys.platform == "win32"
-        else "/bin/bash"
+        executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
     )
     return_code = process.returncode
     return_stdout = utils.decode_utf8(process.stdout)
@@ -59,5 +57,5 @@ def run_command(command_info, log_key, mega_linter):
     return {
         "command_info": command_info,
         "status": return_code,
-        "stdout": return_stdout
+        "stdout": return_stdout,
     }

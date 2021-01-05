@@ -479,9 +479,9 @@ class Linter:
             "file_extensions": self.file_extensions,
             "file_names_regex": self.file_names_regex,
             "file_names_not_ends_with": self.file_names_not_ends_with,
-            "file_contains_regex": self.file_contains_regex
+            "file_contains_regex": self.file_contains_regex,
         }
-        logging.debug('[Filters] ' + str(log_object))
+        logging.debug("[Filters] " + str(log_object))
 
     # Collect all files that will be analyzed by the current linter
     def collect_files(self, all_files):
