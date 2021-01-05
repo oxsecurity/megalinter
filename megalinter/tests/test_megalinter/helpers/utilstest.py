@@ -48,10 +48,10 @@ def linter_test_setup(params=None):
     )
     workspace = None
     config_file_path = (
-        root_dir + os.path.sep + sub_lint_root + os.path.sep + ".mega-linter.yml"
+        root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
     )
     if os.path.isfile(config_file_path):
-        workspace = root_dir + os.path.sep + sub_lint_root
+        workspace = root_dir + sub_lint_root
     elif params.get("required_config_file", False) is True:
         raise Exception(
             f"[test] There should be a .mega-linter.yml file in test folder {config_file_path}"
