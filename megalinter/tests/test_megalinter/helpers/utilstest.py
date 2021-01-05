@@ -47,9 +47,7 @@ def linter_test_setup(params=None):
         )
     )
     workspace = None
-    config_file_path = (
-        root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
-    )
+    config_file_path = root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
     if os.path.isfile(config_file_path):
         workspace = root_dir + sub_lint_root
     elif params.get("required_config_file", False) is True:
