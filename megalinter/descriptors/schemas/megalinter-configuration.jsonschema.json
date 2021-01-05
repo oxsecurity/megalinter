@@ -3,6 +3,40 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {
+    "command_info": {
+      "description": "Command information",
+      "properties": {
+        "command": {
+          "examples": [
+            "npm run test",
+            "echo \"This is a custom command\""
+          ],
+          "title": "Bash command to run",
+          "type": "string"
+        },
+        "continue_if_failed": {
+          "Description": "If command fails, continue Mega-Linter process or not",
+          "default": true,
+          "title": "Continue if failed",
+          "type": "boolean"
+        },
+        "cwd": {
+          "enum": [
+            "root",
+            "workspace"
+          ],
+          "examples": [
+            "root",
+            "workspace"
+          ],
+          "title": "Folder where to run the command",
+          "type": "string"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
+    },
     "enum_descriptor_keys": {
       "enum": [
         "ANSIBLE",
@@ -3507,6 +3541,25 @@
       "title": "List of plugins loaded at runtime",
       "type": "array"
     },
+    "POST_COMMANDS": {
+      "$id": "#/properties/POST_COMMANDS",
+      "default": [],
+      "description": "Custom bash commands to run after linters",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post run commands",
+      "type": "array"
+    },
     "POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for POWERSHELL descriptor",
@@ -3582,6 +3635,29 @@
       "description": "POWERSHELL_POWERSHELL: Path where to find linter configuration file",
       "title": "POWERSHELL_POWERSHELL: Custom config file path",
       "type": "string"
+    },
+    "PRE_COMMANDS": {
+      "$id": "#/properties/PRE_COMMANDS",
+      "default": [],
+      "description": "Custom bash commands to run before linters",
+      "examples": [
+        [
+          {
+            "command": "npm install java-caller",
+            "continue_if_failed": false,
+            "cwd": "root"
+          },
+          {
+            "command": "echo \"pre-run command has been called\"",
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre-run commands",
+      "type": "array"
     },
     "PRINT_ALPACA": {
       "$id": "#/properties/PRINT_ALPACA",

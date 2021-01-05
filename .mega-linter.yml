@@ -24,3 +24,9 @@ EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 PLUGINS:
   - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+PRE_COMMANDS:
+  - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
+    cwd: "root"
+POST_COMMANDS:
+  - command: echo "This is Mega-Linter POST_COMMAND on own Mega-Linter ! :)"
+    cwd: "workspace"
