@@ -230,7 +230,7 @@ class Megalinter:
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
             logging.debug(
-                f"[Context] Docker run with override of DEFAULT_WORKSPACE for test cases - {default_workspace}"
+                f"[Context] Docker run test classes with override of DEFAULT_WORKSPACE - {default_workspace}"
             )
             return default_workspace
         # Docker run test classes without override of DEFAULT_WORKSPACE

@@ -5,17 +5,21 @@ import os
 import yaml
 
 CONFIG_DATA = None
+CONFIG_SOURCE = None
 
 
 def init_config(workspace):
-    global CONFIG_DATA
+    global CONFIG_DATA, CONFIG_SOURCE
     if CONFIG_DATA is not None:
-        logging.debug("[config] Runtime config already initialized")
+        logging.debug(
+            f"[config] Already initialized: {CONFIG_SOURCE}"
+        )
         return
     env = os.environ.copy()
     if workspace is None:
         set_config(env)
-        print("[config] Environment variables only (no workspace)")
+        CONFIG_SOURCE = "Environment variables only (no workspace)"
+        print(f"[config] {CONFIG_SOURCE}")
         return
     # Search for config file
     if "MEGALINTER_CONFIG" in os.environ:
@@ -40,10 +44,11 @@ def init_config(workspace):
                 runtime_config = env
             else:
                 runtime_config = {**config_data, **env}  # .mega-linter.yml not empty
-            print(f"[config] {config_file} + Environment variables")
+            CONFIG_SOURCE = f"{config_file} + Environment variables"
     else:
         runtime_config = env
-        print("[config] Environment variables only")
+        CONFIG_SOURCE = f"Environment variables only (no config file found in {workspace})"
+    print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)
 
 
@@ -99,9 +104,10 @@ def copy():
 
 
 def delete(key=None):
-    global CONFIG_DATA
+    global CONFIG_DATA, CONFIG_SOURCE
     if key is None:
         CONFIG_DATA = None
+        CONFIG_SOURCE = None
         logging.debug("Cleared Mega-Linter runtime config")
         return
     config = get_config()
