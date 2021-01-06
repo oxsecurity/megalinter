@@ -392,12 +392,12 @@ Example of configuration using GitLab CI
 You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```yaml
-megalinter:
-  stage: linting
+mega-linter:
+  stage: test
   image: nvuillam/mega-linter:v4
   script: [ "true" ]
   variables:
-    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
 ```
 
 ### Run Mega-Linter locally

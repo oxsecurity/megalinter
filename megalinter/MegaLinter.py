@@ -132,6 +132,8 @@ class Megalinter:
                 self.status = "error"
             if linter.return_code != 0:
                 self.return_code = linter.return_code
+                if self.status == "success":
+                    self.status = "warning"
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
 
@@ -527,6 +529,9 @@ class Megalinter:
         print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
             logging.info("✅ Successfully linted all files without errors")
+            config.delete()
+        elif self.status == "warning":
+            logging.warning("◬ Successfully linted all files, but with ignored errors")
             config.delete()
         else:
             logging.error("❌ Error(s) have been found during linting")

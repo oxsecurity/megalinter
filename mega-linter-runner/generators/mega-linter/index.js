@@ -197,7 +197,15 @@ module.exports = class extends Generator {
     if (this.props.ci !== "gitLabCI") {
       return;
     }
-    this.log("GitLab CI config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#gitlab")
+    this.fs.copyTpl(
+      this.templatePath('.gitlab-ci.yml'),
+      this.destinationPath('.gitlab-ci.yml'),
+      {
+        'DEFAULT_BRANCH': this.props.defaultBranch,
+        'GITHUB_ACTION_NAME': this.gitHubActionName,
+        'GITHUB_ACTION_VERSION': this.gitHubActionVersion
+      }
+    );
   }
 
   generateAzurePipelines() {
