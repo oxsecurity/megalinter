@@ -4,7 +4,9 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Nothing yet, please submit your pull requests :)
+- Enhance integration with GitLab CI
+  - Update configuration generator
+  - Update core to clean logs when in GitLab CI context
 
 ## [4.22.0] 2021-01-06
 

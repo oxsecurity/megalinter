@@ -177,9 +177,7 @@ stage('Mega-Linter') {
 
 ## GitLab
 
-Example of configuration using GitLab CI
-
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 mega-linter:
@@ -188,6 +186,11 @@ mega-linter:
   script: [ "true" ]
   variables:
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+  artifacts:
+    when: always
+    paths:
+      - report
+    expire_in: 1 week
 ```
 
 ## Run Mega-Linter locally
