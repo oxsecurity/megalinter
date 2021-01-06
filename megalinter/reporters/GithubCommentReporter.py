@@ -110,8 +110,10 @@ class GithubCommentReporter(Reporter):
             )
             table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
             status = (
-                "✅" if self.master.return_code == 0
-                else ":warning:" if self.master.status == "warning"
+                "✅"
+                if self.master.return_code == 0 and self.master.status == "success"
+                else ":warning:"
+                if self.master.status == "warning"
                 else "❌"
             )
             status_with_href = (

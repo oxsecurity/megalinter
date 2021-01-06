@@ -390,12 +390,21 @@ stage('Mega-Linter') {
 Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
+# Mega-Linter GitLab CI job configuration file
+# More info at https://nvuillam.github.io/mega-linter
+
 mega-linter:
   stage: test
-  image: nvuillam/mega-linter:v4
+  # You can override Mega-Linter flavor used to have faster performances
+  # More info at https://nvuillam.github.io/mega-linter/flavors/
+  image: nvuillam/mega-linter-python:v4
   script: [ "true" ]
   variables:
+    # All available variables are described in documentation
+    # https://nvuillam.github.io/mega-linter/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    DEFAULT_BRANCH: master
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
     paths:
