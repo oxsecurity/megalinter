@@ -13,3 +13,8 @@ mega-linter:
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     DEFAULT_BRANCH: <%= DEFAULT_BRANCH %>
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+  artifacts:
+    when: always
+    paths:
+      - report
+    expire_in: 1 week
