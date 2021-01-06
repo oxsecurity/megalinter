@@ -116,7 +116,7 @@ See variables related to a single linter behavior in [linters documentations](su
 
 Mega-Linter can run custom commands before running linters (for example, installing an plugin required by one of the linters you use)
 
-Example in `.mega-linter` config file
+Example in `.mega-linter.yml` config file
 
 ```yaml
 PRE_COMMANDS:
@@ -130,7 +130,7 @@ PRE_COMMANDS:
 
 Mega-Linter can run custom commands after running linters (for example, running additional tests)
 
-Example in `.mega-linter` config file
+Example in `.mega-linter.yml` config file
 
 ```yaml
 POST_COMMANDS:
