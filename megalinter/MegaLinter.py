@@ -388,9 +388,9 @@ class Megalinter:
         logging.debug("All found files before filtering:\n- %s", "\n- ".join(all_files))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
-            logging.info("- File extensions: " + ", ".join(self.file_extensions))
+            logging.info("- File extensions: " + ", ".join(sorted(self.file_extensions)))
         if len(self.file_names_regex) > 0:
-            logging.info("- File names: " + ", ".join(self.file_names_regex))
+            logging.info("- File names (regex): " + ", ".join(sorted(self.file_names_regex)))
         if self.filter_regex_include is not None:
             logging.info("- Including regex: " + self.filter_regex_include)
         if self.filter_regex_exclude is not None:
