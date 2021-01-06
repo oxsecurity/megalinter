@@ -7,6 +7,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 - Core
   - Allow user to configure custom scripts in `.mega-linter.yml` to run before and after linting, with variables `PRE_RUN` and `POST_RUN`
   - Fix wrong linter status bug
+  - Enhance configuration variables performances
 
 - Linters
   - Add JSONC (json with comments) linting with eslint-plugin-jsonc
