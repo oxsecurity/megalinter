@@ -5,11 +5,12 @@ import os
 
 import yaml
 
-ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
+CONFIG_DATA = None
 
 
 def init_config(workspace):
-    if os.environ.get(ENV_RUNTIME_KEY, "") != "":
+    global CONFIG_DATA
+    if CONFIG_DATA is not None:
         logging.debug("[config] Runtime config already initialized")
         return
     env = os.environ.copy()
@@ -48,15 +49,16 @@ def init_config(workspace):
 
 
 def get_config():
-    runtime_config_str = os.environ.get(ENV_RUNTIME_KEY, "")
-    if runtime_config_str != "":
-        return json.loads(runtime_config_str)
+    global CONFIG_DATA
+    if CONFIG_DATA is not None:
+        return CONFIG_DATA
     else:
         return os.environ.copy()
 
 
-def set_config(config):
-    os.environ[ENV_RUNTIME_KEY] = json.dumps(config)
+def set_config(runtime_config):
+    global CONFIG_DATA
+    CONFIG_DATA = runtime_config
 
 
 def get(config_var=None, default=None):
@@ -98,9 +100,9 @@ def copy():
 
 
 def delete(key=None):
+    global CONFIG_DATA
     if key is None:
-        if ENV_RUNTIME_KEY in os.environ:
-            del os.environ[ENV_RUNTIME_KEY]
+        CONFIG_DATA = None
         logging.debug("Cleared Mega-Linter runtime config")
         return
     config = get_config()
