@@ -399,12 +399,12 @@ class Linter:
         if self.cli_lint_mode == "file":
             index = 0
             for file in self.files:
+                file_status = "success"
                 index = index + 1
                 return_code, stdout = self.process_linter(file)
                 file_errors_number = 0
-                if return_code == 0:
-                    self.status = "success"
-                else:
+                if return_code > 0:
+                    file_status = "error"
                     self.status = "error"
                     self.return_code = 1
                     self.number_errors += 1
@@ -421,7 +421,7 @@ class Linter:
                     {
                         "file": file,
                         "status_code": return_code,
-                        "status": self.status,
+                        "status": file_status,
                         "stdout": stdout,
                         "fixed": fixed,
                         "errors_number": file_errors_number,
