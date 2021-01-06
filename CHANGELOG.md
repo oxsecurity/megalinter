@@ -4,6 +4,10 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Nothing yet, please submit your pull requests :)
+
+## [4.22.0] 2021-01-06
+
 - Core
   - Allow user to configure custom scripts in `.mega-linter.yml` to run before and after linting, with variables `PRE_RUN` and `POST_RUN`
   - Fix wrong linter status bug
@@ -13,7 +17,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 - Linters
   - Add JSONC (json with comments) linting with eslint-plugin-jsonc
 
-## [4.21.0] 2020-12-28
+## [4.21.0] 2021-01-03
 
 - Linters
   - Add misspell spell checker
