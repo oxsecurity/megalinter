@@ -11,9 +11,7 @@ CONFIG_SOURCE = None
 def init_config(workspace):
     global CONFIG_DATA, CONFIG_SOURCE
     if CONFIG_DATA is not None:
-        logging.debug(
-            f"[config] Already initialized: {CONFIG_SOURCE}"
-        )
+        logging.debug(f"[config] Already initialized: {CONFIG_SOURCE}")
         return
     env = os.environ.copy()
     if workspace is None:
@@ -47,7 +45,9 @@ def init_config(workspace):
             CONFIG_SOURCE = f"{config_file} + Environment variables"
     else:
         runtime_config = env
-        CONFIG_SOURCE = f"Environment variables only (no config file found in {workspace})"
+        CONFIG_SOURCE = (
+            f"Environment variables only (no config file found in {workspace})"
+        )
     print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)
 

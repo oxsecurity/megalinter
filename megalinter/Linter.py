@@ -301,7 +301,6 @@ class Linter:
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
 
-
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if config.exists(self.name + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.name + "_RULES_PATH")
