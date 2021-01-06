@@ -22,22 +22,20 @@ LIST_OF_REPLACEMENTS = [
     ["tmp/lint/", ""],
     # GitHub Actions
     ["/github/workspace/", ""],
-    ["github/workspace/", ""]
+    ["github/workspace/", ""],
 ]
 # GitLab CI
 CI_PROJECT_DIR = os.environ.get("CI_PROJECT_DIR", "")
 if CI_PROJECT_DIR != "":
-    LIST_OF_REPLACEMENTS += [
-        [f"/{CI_PROJECT_DIR}/", ""],
-        [f"{CI_PROJECT_DIR}/", ""]
-    ]
+    LIST_OF_REPLACEMENTS += [[f"/{CI_PROJECT_DIR}/", ""], [f"{CI_PROJECT_DIR}/", ""]]
 # Other
 DEFAULT_WORKSPACE = os.environ.get("DEFAULT_WORKSPACE", "")
 if DEFAULT_WORKSPACE != "":
     LIST_OF_REPLACEMENTS += [
         [f"/{DEFAULT_WORKSPACE}/", ""],
-        [f"{DEFAULT_WORKSPACE}/", ""]
+        [f"{DEFAULT_WORKSPACE}/", ""],
     ]
+
 
 def get_excluded_directories():
     default_excluded_dirs = [
