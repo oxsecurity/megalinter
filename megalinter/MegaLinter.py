@@ -129,11 +129,17 @@ class Megalinter:
         # Update main Mega-Linter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
-                self.status = "error"
-            if linter.return_code != 0:
+                # Not blocking linter error
+                if linter.return_code == 0:
+                    if self.status == "success":
+                        self.status = "warning"
+                # Blocking error
+                else:
+                    self.status = "error"
+            # Blocking linter error
+            if linter.return_code > 0:
                 self.return_code = linter.return_code
-                if self.status == "success":
-                    self.status = "warning"
+            # Update number fixed
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
 

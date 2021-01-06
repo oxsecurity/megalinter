@@ -4,6 +4,9 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Core
+  - Improve `warning` status in logs
+
 - Enhance integration with GitLab CI
   - Update configuration generator
   - Update core to clean logs when in GitLab CI context
