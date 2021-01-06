@@ -6,6 +6,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 
 - Core
   - Improve `warning` status in logs
+  - Remove timestamp at each log line
 
 - Enhance integration with GitLab CI
   - Update configuration generator
