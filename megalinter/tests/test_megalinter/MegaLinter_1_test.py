@@ -140,7 +140,7 @@ class MegalinterTest(unittest.TestCase):
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": ".",
-                "JAVASCRIPT_ES_FILE_NAME": ".eslintrc-custom.yml",
+                "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
             }
         )
         self.assertTrue(
@@ -175,7 +175,7 @@ class MegalinterTest(unittest.TestCase):
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "LINTER_RULES_PATH": "https://raw.githubusercontent.com/nvuillam/"
                 "mega-linter/master/.automation/test/sample_project",
-                "JAVASCRIPT_ES_FILE_NAME": ".eslintrc-custom.yml",
+                "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
             }
         )
         self.assertTrue(
@@ -211,7 +211,7 @@ class MegalinterTest(unittest.TestCase):
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "JAVASCRIPT_LINTER_RULES_PATH": ".",
-                "JAVASCRIPT_FILE_NAME": ".eslintrc-custom.yml",
+                "JAVASCRIPT_CONFIG_FILE": ".eslintrc-custom.yml",
                 "JAVASCRIPT_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
                 "JAVASCRIPT_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
             }
@@ -240,7 +240,7 @@ class MegalinterTest(unittest.TestCase):
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
                 "JAVASCRIPT_ES_LINTER_RULES_PATH": ".",
-                "JAVASCRIPT_ES_FILE_NAME": ".eslintrc-custom.yml",
+                "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
                 "JAVASCRIPT_FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
                 "JAVASCRIPT_FILTER_REGEX_EXCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
                 "MULTI_STATUS": "false",

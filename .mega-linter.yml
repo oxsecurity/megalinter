@@ -15,7 +15,7 @@ DISABLE_LINTERS:
   - BASH_SHFMT
   - DOCKERFILE_HADOLINT
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
-YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter.yml)'
+YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml)'
 BASH_FILTER_REGEX_EXCLUDE: (lib)
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
@@ -24,3 +24,9 @@ EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 PLUGINS:
   - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+PRE_COMMANDS:
+  - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
+    cwd: "root"
+POST_COMMANDS:
+  - command: echo "This is Mega-Linter POST_COMMAND on own Mega-Linter ! :)"
+    cwd: "workspace"

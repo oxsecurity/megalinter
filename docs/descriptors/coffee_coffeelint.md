@@ -25,7 +25,7 @@
 | COFFEE_COFFEELINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | COFFEE_COFFEELINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".coffee"]` |
 | COFFEE_COFFEELINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| COFFEE_COFFEELINT_FILE_NAME | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.coffee-lint.json` |
+| COFFEE_COFFEELINT_CONFIG_FILE | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.coffee-lint.json` |
 | COFFEE_COFFEELINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | COFFEE_COFFEELINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 

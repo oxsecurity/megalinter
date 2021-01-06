@@ -451,6 +451,8 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | **LOG_LEVEL**                       | `INFO`                       | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
 | **PARALLEL**                        | `true`                       | Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |
 | [**PLUGINS**](#plugins)             | \[\]                         | List of plugin urls to install and run during Mega-Linter run                                                                                                                                          |
+| [**POST_COMMANDS**](#post-commands) | \[\]                         | Custom bash commands to run after linters                                                                                                                                          |
+| [**PRE_COMMANDS**](#pre-commands)   | \[\]                         | Custom bash commands to run before linters                                                                                                                                          |
 | **PRINT_ALPACA**                    | `true`                       | Enable printing alpaca image to console                                                                                                                                          |
 | **REPORT_OUTPUT_FOLDER**            | `${GITHUB_WORKSPACE}/report` | Directory for generating report files                                                                                                                                            |
 | **SHOW_ELAPSED_TIME**               | `false`                      | Displays elapsed time in reports                                                                                                                                                 |
@@ -486,6 +488,17 @@ DISABLE: PHP
 DISABLE_LINTERS: PHP_STAN,PHP_PSALM
 ```
 
+### Filter linted files
+
+If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
+You can apply filters to a single linter by defining variable `<LINTER_KEY>_FILTER_REGEX_INCLUDE` and `<LINTER_KEY>_FILTER_REGEX_EXCLUDE`
+
+Examples:
+
+- Lint only src folder: `FILTER_REGEX_INCLUDE: (src/)`
+- Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
+- Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
+
 ### Apply fixes
 
 Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
@@ -512,27 +525,36 @@ report/
   - [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
   - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
 
-### Filter linted files
-
-If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
-You can apply filters to a single linter by defining variable `<LINTER_KEY>_FILTER_REGEX_INCLUDE` and `<LINTER_KEY>_FILTER_REGEX_EXCLUDE`
-
-Examples:
-
-- Lint only src folder: `FILTER_REGEX_INCLUDE: (src/)`
-- Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
-- Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
-
 ### Linter specific variables
 
-See linters specific variables in their [Mega-Linter documentation](#languages)
+See variables related to a single linter behavior in [linters documentations](#supported-linters)
 
-### Template rules files
+### Pre-commands
 
-You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets. This allows for greater flexibility for each individual code base. The Template rules all try to follow the standards we believe should be enabled at the basic level.
+Mega-Linter can run custom commands before running linters (for example, installing an plugin required by one of the linters you use)
 
-- Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
-  - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES), or to linter defaults
+Example in `.mega-linter` config file
+
+```yaml
+PRE_COMMANDS:
+  - command: npm install eslint-plugin-whatever
+    cwd: "root"        # Will be run at the root of Mega-Linter docker image
+  - command: echo "pre-test command has been called"
+    cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+```
+
+### Post-commands
+
+Mega-Linter can run custom commands after running linters (for example, running additional tests)
+
+Example in `.mega-linter` config file
+
+```yaml
+POST_COMMANDS:
+  - command: npm run test
+    cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+```
+
 <!-- configuration-section-end -->
 
 <!-- reporters-section-start -->

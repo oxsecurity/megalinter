@@ -3,6 +3,40 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {
+    "command_info": {
+      "description": "Command information",
+      "properties": {
+        "command": {
+          "examples": [
+            "npm run test",
+            "echo \"This is a custom command\""
+          ],
+          "title": "Bash command to run",
+          "type": "string"
+        },
+        "continue_if_failed": {
+          "Description": "If command fails, continue Mega-Linter process or not",
+          "default": true,
+          "title": "Continue if failed",
+          "type": "boolean"
+        },
+        "cwd": {
+          "enum": [
+            "root",
+            "workspace"
+          ],
+          "examples": [
+            "root",
+            "workspace"
+          ],
+          "title": "Folder where to run the command",
+          "type": "string"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
+    },
     "enum_descriptor_keys": {
       "enum": [
         "ANSIBLE",
@@ -173,6 +207,13 @@
       "title": "ANSIBLE_ANSIBLE_LINT: Custom arguments",
       "type": "array"
     },
+    "ANSIBLE_ANSIBLE_LINT_CONFIG_FILE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CONFIG_FILE",
+      "default": ".ansible-lint.yml",
+      "description": "ANSIBLE_ANSIBLE_LINT: User custom config file name if different from default",
+      "title": "ANSIBLE_ANSIBLE_LINT: Custom config file name",
+      "type": "string"
+    },
     "ANSIBLE_ANSIBLE_LINT_DIRECTORY": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_DIRECTORY",
       "default": "ansible",
@@ -272,6 +313,13 @@
       },
       "title": "ARM_ARM_TTK: Custom arguments",
       "type": "array"
+    },
+    "ARM_ARM_TTK_CONFIG_FILE": {
+      "$id": "#/properties/ARM_ARM_TTK_CONFIG_FILE",
+      "default": ".arm-ttk.psd1",
+      "description": "ARM_ARM_TTK: User custom config file name if different from default",
+      "title": "ARM_ARM_TTK: Custom config file name",
+      "type": "string"
     },
     "ARM_ARM_TTK_DISABLE_ERRORS": {
       "$id": "#/properties/ARM_ARM_TTK_DISABLE_ERRORS",
@@ -518,6 +566,13 @@
       "title": "CLOJURE_CLJ_KONDO: Custom arguments",
       "type": "array"
     },
+    "CLOJURE_CLJ_KONDO_CONFIG_FILE": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_CONFIG_FILE",
+      "default": ".clj-kondo/config.edn",
+      "description": "CLOJURE_CLJ_KONDO: User custom config file name if different from default",
+      "title": "CLOJURE_CLJ_KONDO: Custom config file name",
+      "type": "string"
+    },
     "CLOJURE_CLJ_KONDO_DISABLE_ERRORS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_DISABLE_ERRORS",
       "default": false,
@@ -594,6 +649,13 @@
       "title": "CLOUDFORMATION_CFN_LINT: Custom arguments",
       "type": "array"
     },
+    "CLOUDFORMATION_CFN_LINT_CONFIG_FILE": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_CONFIG_FILE",
+      "default": ".cfnlintrc.yml",
+      "description": "CLOUDFORMATION_CFN_LINT: User custom config file name if different from default",
+      "title": "CLOUDFORMATION_CFN_LINT: Custom config file name",
+      "type": "string"
+    },
     "CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS",
       "default": false,
@@ -669,6 +731,13 @@
       },
       "title": "COFFEE_COFFEELINT: Custom arguments",
       "type": "array"
+    },
+    "COFFEE_COFFEELINT_CONFIG_FILE": {
+      "$id": "#/properties/COFFEE_COFFEELINT_CONFIG_FILE",
+      "default": ".coffee-lint.json",
+      "description": "COFFEE_COFFEELINT: User custom config file name if different from default",
+      "title": "COFFEE_COFFEELINT: Custom config file name",
+      "type": "string"
     },
     "COFFEE_COFFEELINT_DISABLE_ERRORS": {
       "$id": "#/properties/COFFEE_COFFEELINT_DISABLE_ERRORS",
@@ -755,6 +824,13 @@
       },
       "title": "COPYPASTE_JSCPD: Custom arguments",
       "type": "array"
+    },
+    "COPYPASTE_JSCPD_CONFIG_FILE": {
+      "$id": "#/properties/COPYPASTE_JSCPD_CONFIG_FILE",
+      "default": ".jscpd.json",
+      "description": "COPYPASTE_JSCPD: User custom config file name if different from default",
+      "title": "COPYPASTE_JSCPD: Custom config file name",
+      "type": "string"
     },
     "COPYPASTE_JSCPD_DISABLE_ERRORS": {
       "$id": "#/properties/COPYPASTE_JSCPD_DISABLE_ERRORS",
@@ -958,6 +1034,13 @@
       "title": "CSS_SCSS_LINT: Custom arguments",
       "type": "array"
     },
+    "CSS_SCSS_LINT_CONFIG_FILE": {
+      "$id": "#/properties/CSS_SCSS_LINT_CONFIG_FILE",
+      "default": ".scss-lint.yml",
+      "description": "CSS_SCSS_LINT: User custom config file name if different from default",
+      "title": "CSS_SCSS_LINT: Custom config file name",
+      "type": "string"
+    },
     "CSS_SCSS_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_SCSS_LINT_DISABLE_ERRORS",
       "default": false,
@@ -1023,6 +1106,13 @@
       },
       "title": "CSS_STYLELINT: Custom arguments",
       "type": "array"
+    },
+    "CSS_STYLELINT_CONFIG_FILE": {
+      "$id": "#/properties/CSS_STYLELINT_CONFIG_FILE",
+      "default": ".stylelintrc.json",
+      "description": "CSS_STYLELINT: User custom config file name if different from default",
+      "title": "CSS_STYLELINT: Custom config file name",
+      "type": "string"
     },
     "CSS_STYLELINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_STYLELINT_DISABLE_ERRORS",
@@ -1152,6 +1242,13 @@
       },
       "title": "DART_DARTANALYZER: Custom arguments",
       "type": "array"
+    },
+    "DART_DARTANALYZER_CONFIG_FILE": {
+      "$id": "#/properties/DART_DARTANALYZER_CONFIG_FILE",
+      "default": "analysis_options.yml",
+      "description": "DART_DARTANALYZER: User custom config file name if different from default",
+      "title": "DART_DARTANALYZER: Custom config file name",
+      "type": "string"
     },
     "DART_DARTANALYZER_DISABLE_ERRORS": {
       "$id": "#/properties/DART_DARTANALYZER_DISABLE_ERRORS",
@@ -1284,6 +1381,13 @@
       "title": "DOCKERFILE_DOCKERFILELINT: Custom arguments",
       "type": "array"
     },
+    "DOCKERFILE_DOCKERFILELINT_CONFIG_FILE": {
+      "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CONFIG_FILE",
+      "default": ".dockerfilelintrc",
+      "description": "DOCKERFILE_DOCKERFILELINT: User custom config file name if different from default",
+      "title": "DOCKERFILE_DOCKERFILELINT: Custom config file name",
+      "type": "string"
+    },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS",
       "default": false,
@@ -1360,6 +1464,13 @@
       "title": "DOCKERFILE_HADOLINT: Custom arguments",
       "type": "array"
     },
+    "DOCKERFILE_HADOLINT_CONFIG_FILE": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_CONFIG_FILE",
+      "default": ".hadolint.yml",
+      "description": "DOCKERFILE_HADOLINT: User custom config file name if different from default",
+      "title": "DOCKERFILE_HADOLINT: Custom config file name",
+      "type": "string"
+    },
     "DOCKERFILE_HADOLINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_DISABLE_ERRORS",
       "default": false,
@@ -1425,6 +1536,13 @@
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom arguments",
       "type": "array"
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE",
+      "default": ".ecrc",
+      "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom config file name if different from default",
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom config file name",
+      "type": "string"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS",
@@ -1703,6 +1821,13 @@
       "title": "GHERKIN_GHERKIN_LINT: Custom arguments",
       "type": "array"
     },
+    "GHERKIN_GHERKIN_LINT_CONFIG_FILE": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_CONFIG_FILE",
+      "default": ".gherkin-lintrc",
+      "description": "GHERKIN_GHERKIN_LINT: User custom config file name if different from default",
+      "title": "GHERKIN_GHERKIN_LINT: Custom config file name",
+      "type": "string"
+    },
     "GHERKIN_GHERKIN_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_DISABLE_ERRORS",
       "default": false,
@@ -1885,6 +2010,13 @@
       "title": "GO_GOLANGCI_LINT: Custom arguments",
       "type": "array"
     },
+    "GO_GOLANGCI_LINT_CONFIG_FILE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_CONFIG_FILE",
+      "default": ".golangci.yml",
+      "description": "GO_GOLANGCI_LINT: User custom config file name if different from default",
+      "title": "GO_GOLANGCI_LINT: Custom config file name",
+      "type": "string"
+    },
     "GO_GOLANGCI_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_DISABLE_ERRORS",
       "default": false,
@@ -1960,6 +2092,13 @@
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom arguments",
       "type": "array"
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE",
+      "default": ".graphql-schema-linterrc",
+      "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: User custom config file name if different from default",
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom config file name",
+      "type": "string"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS",
@@ -2037,6 +2176,13 @@
       "title": "GROOVY_NPM_GROOVY_LINT: Custom arguments",
       "type": "array"
     },
+    "GROOVY_NPM_GROOVY_LINT_CONFIG_FILE": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CONFIG_FILE",
+      "default": ".groovylintrc.json",
+      "description": "GROOVY_NPM_GROOVY_LINT: User custom config file name if different from default",
+      "title": "GROOVY_NPM_GROOVY_LINT: Custom config file name",
+      "type": "string"
+    },
     "GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS",
       "default": false,
@@ -2113,6 +2259,13 @@
       "title": "HTML_HTMLHINT: Custom arguments",
       "type": "array"
     },
+    "HTML_HTMLHINT_CONFIG_FILE": {
+      "$id": "#/properties/HTML_HTMLHINT_CONFIG_FILE",
+      "default": ".htmlhintrc",
+      "description": "HTML_HTMLHINT: User custom config file name if different from default",
+      "title": "HTML_HTMLHINT: Custom config file name",
+      "type": "string"
+    },
     "HTML_HTMLHINT_DISABLE_ERRORS": {
       "$id": "#/properties/HTML_HTMLHINT_DISABLE_ERRORS",
       "default": false,
@@ -2178,6 +2331,13 @@
       },
       "title": "JAVASCRIPT_ES: Custom arguments",
       "type": "array"
+    },
+    "JAVASCRIPT_ES_CONFIG_FILE": {
+      "$id": "#/properties/JAVASCRIPT_ES_CONFIG_FILE",
+      "default": ".eslintrc.json",
+      "description": "JAVASCRIPT_ES: User custom config file name if different from default",
+      "title": "JAVASCRIPT_ES: Custom config file name",
+      "type": "string"
     },
     "JAVASCRIPT_ES_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_ES_DISABLE_ERRORS",
@@ -2308,6 +2468,13 @@
       "title": "JAVA_CHECKSTYLE: Custom arguments",
       "type": "array"
     },
+    "JAVA_CHECKSTYLE_CONFIG_FILE": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_CONFIG_FILE",
+      "default": "sun_checks.xml",
+      "description": "JAVA_CHECKSTYLE: User custom config file name if different from default",
+      "title": "JAVA_CHECKSTYLE: Custom config file name",
+      "type": "string"
+    },
     "JAVA_CHECKSTYLE_DISABLE_ERRORS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_DISABLE_ERRORS",
       "default": false,
@@ -2383,6 +2550,13 @@
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
       "type": "array"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
+      "default": ".eslintrc-json.json",
+      "description": "JSON_ESLINT_PLUGIN_JSONC: User custom config file name if different from default",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Custom config file name",
+      "type": "string"
     },
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
@@ -2565,6 +2739,13 @@
       },
       "title": "JSX_ESLINT: Custom arguments",
       "type": "array"
+    },
+    "JSX_ESLINT_CONFIG_FILE": {
+      "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
+      "default": ".eslintrc.json",
+      "description": "JSX_ESLINT: User custom config file name if different from default",
+      "title": "JSX_ESLINT: Custom config file name",
+      "type": "string"
     },
     "JSX_ESLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSX_ESLINT_DISABLE_ERRORS",
@@ -2774,6 +2955,13 @@
       "title": "LATEX_CHKTEX: Custom arguments",
       "type": "array"
     },
+    "LATEX_CHKTEX_CONFIG_FILE": {
+      "$id": "#/properties/LATEX_CHKTEX_CONFIG_FILE",
+      "default": ".chktexrc",
+      "description": "LATEX_CHKTEX: User custom config file name if different from default",
+      "title": "LATEX_CHKTEX: Custom config file name",
+      "type": "string"
+    },
     "LATEX_CHKTEX_DISABLE_ERRORS": {
       "$id": "#/properties/LATEX_CHKTEX_DISABLE_ERRORS",
       "default": false,
@@ -2891,6 +3079,13 @@
       "title": "LUA_LUACHECK: Custom arguments",
       "type": "array"
     },
+    "LUA_LUACHECK_CONFIG_FILE": {
+      "$id": "#/properties/LUA_LUACHECK_CONFIG_FILE",
+      "default": ".luacheckrc",
+      "description": "LUA_LUACHECK: User custom config file name if different from default",
+      "title": "LUA_LUACHECK: Custom config file name",
+      "type": "string"
+    },
     "LUA_LUACHECK_DISABLE_ERRORS": {
       "$id": "#/properties/LUA_LUACHECK_DISABLE_ERRORS",
       "default": false,
@@ -2967,6 +3162,13 @@
       "title": "MARKDOWN_MARKDOWNLINT: Custom arguments",
       "type": "array"
     },
+    "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
+      "default": ".markdown-lint.json",
+      "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
+      "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
+      "type": "string"
+    },
     "MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS",
       "default": false,
@@ -3032,6 +3234,13 @@
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom arguments",
       "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE",
+      "default": ".markdown-link-check.json",
+      "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom config file name if different from default",
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file name",
+      "type": "string"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS",
@@ -3108,6 +3317,13 @@
       },
       "title": "OPENAPI_SPECTRAL: Custom arguments",
       "type": "array"
+    },
+    "OPENAPI_SPECTRAL_CONFIG_FILE": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_CONFIG_FILE",
+      "default": ".openapirc.yml",
+      "description": "OPENAPI_SPECTRAL: User custom config file name if different from default",
+      "title": "OPENAPI_SPECTRAL: Custom config file name",
+      "type": "string"
     },
     "OPENAPI_SPECTRAL_DISABLE_ERRORS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_DISABLE_ERRORS",
@@ -3308,6 +3524,13 @@
       "title": "PHP_PHPCS: Custom arguments",
       "type": "array"
     },
+    "PHP_PHPCS_CONFIG_FILE": {
+      "$id": "#/properties/PHP_PHPCS_CONFIG_FILE",
+      "default": "phpcs.xml",
+      "description": "PHP_PHPCS: User custom config file name if different from default",
+      "title": "PHP_PHPCS: Custom config file name",
+      "type": "string"
+    },
     "PHP_PHPCS_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PHPCS_DISABLE_ERRORS",
       "default": false,
@@ -3374,6 +3597,13 @@
       "title": "PHP_PHPSTAN: Custom arguments",
       "type": "array"
     },
+    "PHP_PHPSTAN_CONFIG_FILE": {
+      "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
+      "default": "phpstan.neon",
+      "description": "PHP_PHPSTAN: User custom config file name if different from default",
+      "title": "PHP_PHPSTAN: Custom config file name",
+      "type": "string"
+    },
     "PHP_PHPSTAN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PHPSTAN_DISABLE_ERRORS",
       "default": false,
@@ -3439,6 +3669,13 @@
       },
       "title": "PHP_PSALM: Custom arguments",
       "type": "array"
+    },
+    "PHP_PSALM_CONFIG_FILE": {
+      "$id": "#/properties/PHP_PSALM_CONFIG_FILE",
+      "default": "psalm.xml",
+      "description": "PHP_PSALM: User custom config file name if different from default",
+      "title": "PHP_PSALM: Custom config file name",
+      "type": "string"
     },
     "PHP_PSALM_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PSALM_DISABLE_ERRORS",
@@ -3507,6 +3744,25 @@
       "title": "List of plugins loaded at runtime",
       "type": "array"
     },
+    "POST_COMMANDS": {
+      "$id": "#/properties/POST_COMMANDS",
+      "default": [],
+      "description": "Custom bash commands to run after linters",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Post run commands",
+      "type": "array"
+    },
     "POWERSHELL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/POWERSHELL_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for POWERSHELL descriptor",
@@ -3529,6 +3785,13 @@
       },
       "title": "POWERSHELL_POWERSHELL: Custom arguments",
       "type": "array"
+    },
+    "POWERSHELL_POWERSHELL_CONFIG_FILE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_CONFIG_FILE",
+      "default": ".powershell-psscriptanalyzer.psd1",
+      "description": "POWERSHELL_POWERSHELL: User custom config file name if different from default",
+      "title": "POWERSHELL_POWERSHELL: Custom config file name",
+      "type": "string"
     },
     "POWERSHELL_POWERSHELL_DISABLE_ERRORS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_DISABLE_ERRORS",
@@ -3583,6 +3846,29 @@
       "title": "POWERSHELL_POWERSHELL: Custom config file path",
       "type": "string"
     },
+    "PRE_COMMANDS": {
+      "$id": "#/properties/PRE_COMMANDS",
+      "default": [],
+      "description": "Custom bash commands to run before linters",
+      "examples": [
+        [
+          {
+            "command": "npm install java-caller",
+            "continue_if_failed": false,
+            "cwd": "root"
+          },
+          {
+            "command": "echo \"pre-run command has been called\"",
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "Pre-run commands",
+      "type": "array"
+    },
     "PRINT_ALPACA": {
       "$id": "#/properties/PRINT_ALPACA",
       "default": true,
@@ -3612,6 +3898,13 @@
       },
       "title": "PROTOBUF_PROTOLINT: Custom arguments",
       "type": "array"
+    },
+    "PROTOBUF_PROTOLINT_CONFIG_FILE": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_CONFIG_FILE",
+      "default": ".protolintrc.yml",
+      "description": "PROTOBUF_PROTOLINT: User custom config file name if different from default",
+      "title": "PROTOBUF_PROTOLINT: Custom config file name",
+      "type": "string"
     },
     "PROTOBUF_PROTOLINT_DISABLE_ERRORS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_DISABLE_ERRORS",
@@ -3689,6 +3982,13 @@
       "title": "PUPPET_PUPPET_LINT: Custom arguments",
       "type": "array"
     },
+    "PUPPET_PUPPET_LINT_CONFIG_FILE": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_CONFIG_FILE",
+      "default": ".puppet-lint.rc",
+      "description": "PUPPET_PUPPET_LINT: User custom config file name if different from default",
+      "title": "PUPPET_PUPPET_LINT: Custom config file name",
+      "type": "string"
+    },
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_DISABLE_ERRORS",
       "default": false,
@@ -3754,6 +4054,13 @@
       },
       "title": "PYTHON_BLACK: Custom arguments",
       "type": "array"
+    },
+    "PYTHON_BLACK_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_BLACK_CONFIG_FILE",
+      "default": ".python-black",
+      "description": "PYTHON_BLACK: User custom config file name if different from default",
+      "title": "PYTHON_BLACK: Custom config file name",
+      "type": "string"
     },
     "PYTHON_BLACK_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BLACK_DISABLE_ERRORS",
@@ -3831,6 +4138,13 @@
       "title": "PYTHON_FLAKE8: Custom arguments",
       "type": "array"
     },
+    "PYTHON_FLAKE8_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_FLAKE8_CONFIG_FILE",
+      "default": ".flake8",
+      "description": "PYTHON_FLAKE8: User custom config file name if different from default",
+      "title": "PYTHON_FLAKE8: Custom config file name",
+      "type": "string"
+    },
     "PYTHON_FLAKE8_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_FLAKE8_DISABLE_ERRORS",
       "default": false,
@@ -3897,6 +4211,13 @@
       "title": "PYTHON_ISORT: Custom arguments",
       "type": "array"
     },
+    "PYTHON_ISORT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_ISORT_CONFIG_FILE",
+      "default": ".isort.cfg",
+      "description": "PYTHON_ISORT: User custom config file name if different from default",
+      "title": "PYTHON_ISORT: Custom config file name",
+      "type": "string"
+    },
     "PYTHON_ISORT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_ISORT_DISABLE_ERRORS",
       "default": false,
@@ -3962,6 +4283,13 @@
       },
       "title": "PYTHON_PYLINT: Custom arguments",
       "type": "array"
+    },
+    "PYTHON_PYLINT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_PYLINT_CONFIG_FILE",
+      "default": ".python-lint",
+      "description": "PYTHON_PYLINT: User custom config file name if different from default",
+      "title": "PYTHON_PYLINT: Custom config file name",
+      "type": "string"
     },
     "PYTHON_PYLINT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_PYLINT_DISABLE_ERRORS",
@@ -4038,6 +4366,13 @@
       },
       "title": "RAKU_RAKU: Custom arguments",
       "type": "array"
+    },
+    "RAKU_RAKU_CONFIG_FILE": {
+      "$id": "#/properties/RAKU_RAKU_CONFIG_FILE",
+      "default": "META6.json",
+      "description": "RAKU_RAKU: User custom config file name if different from default",
+      "title": "RAKU_RAKU: Custom config file name",
+      "type": "string"
     },
     "RAKU_RAKU_DISABLE_ERRORS": {
       "$id": "#/properties/RAKU_RAKU_DISABLE_ERRORS",
@@ -4121,6 +4456,13 @@
       },
       "title": "RST_RSTCHECK: Custom arguments",
       "type": "array"
+    },
+    "RST_RSTCHECK_CONFIG_FILE": {
+      "$id": "#/properties/RST_RSTCHECK_CONFIG_FILE",
+      "default": ".rstcheck.cfg",
+      "description": "RST_RSTCHECK: User custom config file name if different from default",
+      "title": "RST_RSTCHECK: Custom config file name",
+      "type": "string"
     },
     "RST_RSTCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTCHECK_DISABLE_ERRORS",
@@ -4304,6 +4646,13 @@
       "title": "RUBY_RUBOCOP: Custom arguments",
       "type": "array"
     },
+    "RUBY_RUBOCOP_CONFIG_FILE": {
+      "$id": "#/properties/RUBY_RUBOCOP_CONFIG_FILE",
+      "default": ".ruby-lint.yml",
+      "description": "RUBY_RUBOCOP: User custom config file name if different from default",
+      "title": "RUBY_RUBOCOP: Custom config file name",
+      "type": "string"
+    },
     "RUBY_RUBOCOP_DISABLE_ERRORS": {
       "$id": "#/properties/RUBY_RUBOCOP_DISABLE_ERRORS",
       "default": false,
@@ -4369,6 +4718,13 @@
       },
       "title": "RUST_CLIPPY: Custom arguments",
       "type": "array"
+    },
+    "RUST_CLIPPY_CONFIG_FILE": {
+      "$id": "#/properties/RUST_CLIPPY_CONFIG_FILE",
+      "default": ".clippy.toml",
+      "description": "RUST_CLIPPY: User custom config file name if different from default",
+      "title": "RUST_CLIPPY: Custom config file name",
+      "type": "string"
     },
     "RUST_CLIPPY_DISABLE_ERRORS": {
       "$id": "#/properties/RUST_CLIPPY_DISABLE_ERRORS",
@@ -4455,6 +4811,13 @@
       },
       "title": "R_LINTR: Custom arguments",
       "type": "array"
+    },
+    "R_LINTR_CONFIG_FILE": {
+      "$id": "#/properties/R_LINTR_CONFIG_FILE",
+      "default": ".lintr",
+      "description": "R_LINTR: User custom config file name if different from default",
+      "title": "R_LINTR: Custom config file name",
+      "type": "string"
     },
     "R_LINTR_DISABLE_ERRORS": {
       "$id": "#/properties/R_LINTR_DISABLE_ERRORS",
@@ -4601,6 +4964,13 @@
       "title": "SCALA_SCALAFIX: Custom arguments",
       "type": "array"
     },
+    "SCALA_SCALAFIX_CONFIG_FILE": {
+      "$id": "#/properties/SCALA_SCALAFIX_CONFIG_FILE",
+      "default": ".scalafix.conf",
+      "description": "SCALA_SCALAFIX: User custom config file name if different from default",
+      "title": "SCALA_SCALAFIX: Custom config file name",
+      "type": "string"
+    },
     "SCALA_SCALAFIX_DISABLE_ERRORS": {
       "$id": "#/properties/SCALA_SCALAFIX_DISABLE_ERRORS",
       "default": false,
@@ -4737,6 +5107,13 @@
       "title": "SNAKEMAKE_SNAKEFMT: Custom arguments",
       "type": "array"
     },
+    "SNAKEMAKE_SNAKEFMT_CONFIG_FILE": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_CONFIG_FILE",
+      "default": ".snakefmt.toml",
+      "description": "SNAKEMAKE_SNAKEFMT: User custom config file name if different from default",
+      "title": "SNAKEMAKE_SNAKEFMT: Custom config file name",
+      "type": "string"
+    },
     "SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS",
       "default": false,
@@ -4802,6 +5179,13 @@
       },
       "title": "SPELL_CSPELL: Custom arguments",
       "type": "array"
+    },
+    "SPELL_CSPELL_CONFIG_FILE": {
+      "$id": "#/properties/SPELL_CSPELL_CONFIG_FILE",
+      "default": ".cspell.json",
+      "description": "SPELL_CSPELL: User custom config file name if different from default",
+      "title": "SPELL_CSPELL: Custom config file name",
+      "type": "string"
     },
     "SPELL_CSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_CSPELL_DISABLE_ERRORS",
@@ -4942,6 +5326,13 @@
       "title": "SQL_SQL_LINT: Custom arguments",
       "type": "array"
     },
+    "SQL_SQL_LINT_CONFIG_FILE": {
+      "$id": "#/properties/SQL_SQL_LINT_CONFIG_FILE",
+      "default": ".sql-config.json",
+      "description": "SQL_SQL_LINT: User custom config file name if different from default",
+      "title": "SQL_SQL_LINT: Custom config file name",
+      "type": "string"
+    },
     "SQL_SQL_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_SQL_LINT_DISABLE_ERRORS",
       "default": false,
@@ -5032,6 +5423,13 @@
       "title": "TEKTON_TEKTON_LINT: Custom arguments",
       "type": "array"
     },
+    "TEKTON_TEKTON_LINT_CONFIG_FILE": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_CONFIG_FILE",
+      "default": ".tektonlintrc.yaml",
+      "description": "TEKTON_TEKTON_LINT: User custom config file name if different from default",
+      "title": "TEKTON_TEKTON_LINT: Custom config file name",
+      "type": "string"
+    },
     "TEKTON_TEKTON_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_DISABLE_ERRORS",
       "default": false,
@@ -5107,6 +5505,13 @@
       },
       "title": "TERRAFORM_TERRAGRUNT: Custom arguments",
       "type": "array"
+    },
+    "TERRAFORM_TERRAGRUNT_CONFIG_FILE": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_CONFIG_FILE",
+      "default": "terragrunt.hcl",
+      "description": "TERRAFORM_TERRAGRUNT: User custom config file name if different from default",
+      "title": "TERRAFORM_TERRAGRUNT: Custom config file name",
+      "type": "string"
     },
     "TERRAFORM_TERRAGRUNT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_DISABLE_ERRORS",
@@ -5227,6 +5632,13 @@
       "title": "TERRAFORM_TFLINT: Custom arguments",
       "type": "array"
     },
+    "TERRAFORM_TFLINT_CONFIG_FILE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_CONFIG_FILE",
+      "default": ".tflint.hcl",
+      "description": "TERRAFORM_TFLINT: User custom config file name if different from default",
+      "title": "TERRAFORM_TFLINT: Custom config file name",
+      "type": "string"
+    },
     "TERRAFORM_TFLINT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TFLINT_DISABLE_ERRORS",
       "default": false,
@@ -5307,6 +5719,13 @@
       "title": "TSX_ESLINT: Custom arguments",
       "type": "array"
     },
+    "TSX_ESLINT_CONFIG_FILE": {
+      "$id": "#/properties/TSX_ESLINT_CONFIG_FILE",
+      "default": ".eslintrc.json",
+      "description": "TSX_ESLINT: User custom config file name if different from default",
+      "title": "TSX_ESLINT: Custom config file name",
+      "type": "string"
+    },
     "TSX_ESLINT_DISABLE_ERRORS": {
       "$id": "#/properties/TSX_ESLINT_DISABLE_ERRORS",
       "default": false,
@@ -5382,6 +5801,13 @@
       },
       "title": "TYPESCRIPT_ES: Custom arguments",
       "type": "array"
+    },
+    "TYPESCRIPT_ES_CONFIG_FILE": {
+      "$id": "#/properties/TYPESCRIPT_ES_CONFIG_FILE",
+      "default": ".eslintrc.json",
+      "description": "TYPESCRIPT_ES: User custom config file name if different from default",
+      "title": "TYPESCRIPT_ES: Custom config file name",
+      "type": "string"
     },
     "TYPESCRIPT_ES_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_ES_DISABLE_ERRORS",
@@ -5707,6 +6133,13 @@
       },
       "title": "YAML_YAMLLINT: Custom arguments",
       "type": "array"
+    },
+    "YAML_YAMLLINT_CONFIG_FILE": {
+      "$id": "#/properties/YAML_YAMLLINT_CONFIG_FILE",
+      "default": ".yaml-lint.yml",
+      "description": "YAML_YAMLLINT: User custom config file name if different from default",
+      "title": "YAML_YAMLLINT: Custom config file name",
+      "type": "string"
     },
     "YAML_YAMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_YAMLLINT_DISABLE_ERRORS",

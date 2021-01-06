@@ -1,0 +1,21 @@
+# Configuration file for Mega-Linter
+# See all available variables at https://nvuillam.github.io/mega-linter/configuration/ and in linters documentation
+
+APPLY_FIXES: all # all, none, or list of linter keys
+DEFAULT_BRANCH: master # Usually master or main
+# ENABLE
+ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
+  - MARKDOWN_MARKDOWNLINT
+DISABLE:
+  - COPYPASTE # Comment to disable checks of abusive copy-pastes
+  - SPELL # Comment to disable checks of spelling mistakes # - SPELL # Uncomment to disable checks of spelling mistakes
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: false
+PRE_COMMANDS:
+  - command: npm install java-caller -g
+    cwd: "root"
+  - command: echo "pre-test command has been called"
+    cwd: "workspace"
+POST_COMMANDS:
+  - command: npm run test
+    cwd: "workspace"

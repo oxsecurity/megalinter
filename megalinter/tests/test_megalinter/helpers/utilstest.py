@@ -30,7 +30,7 @@ REPO_HOME = (
 
 # Define env variables before any test case
 def linter_test_setup(params=None):
-    config.init_config(None)
+    config.delete()
     if params is None:
         params = {}
     # Root to lint
@@ -39,12 +39,6 @@ def linter_test_setup(params=None):
         if "sub_lint_root" in params
         else f"{os.path.sep}.automation{os.path.sep}test"
     )
-    # Ignore report folder
-    config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")
-    # TAP Output deactivated by default
-    config.set_value("OUTPUT_FORMAT", "text")
-    config.set_value("OUTPUT_DETAIL", "detailed")
-    config.set_value("PLUGINS", "")
     # Root path of default rules
     root_dir = (
         "/tmp/lint"
@@ -53,7 +47,21 @@ def linter_test_setup(params=None):
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
     )
-
+    workspace = None
+    config_file_path = root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
+    if os.path.isfile(config_file_path):
+        workspace = root_dir + sub_lint_root
+    elif params.get("required_config_file", False) is True:
+        raise Exception(
+            f"[test] There should be a .mega-linter.yml file in test folder {config_file_path}"
+        )
+    config.init_config(workspace)
+    # Ignore report folder
+    config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")
+    # TAP Output deactivated by default
+    config.set_value("OUTPUT_FORMAT", "text")
+    config.set_value("OUTPUT_DETAIL", "detailed")
+    config.set_value("PLUGINS", "")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
     config.set_value(

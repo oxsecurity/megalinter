@@ -1,0 +1,11 @@
+{
+  "name": "pre-post-test",
+  "version": "1.0.0",
+  "description": "Sample workspace for Mega-Linter tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"npm run test has been called\""
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -17,7 +17,8 @@ DISABLE_LINTERS:
   - JSON_JSONLINT
 ```
 
-- If you have your own local `.eslintrc.json` (or similar name) in your project, you may
+- If you have your own local `.eslintrc.json` (or `.yaml` or `.js` equivalent) config in your project, you must
+  - add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or `.yaml` or `.js` equivalent) in your `.mega-linter.yml` config file
   - add `overrides` property in it
 
     <details>
@@ -63,8 +64,6 @@ DISABLE_LINTERS:
     </pre>
     </details>
 
-  - add `JSON_ESLINT_PLUGIN_JSONC_FiLE_NAME: .eslintrc.json` in your `.mega-linter.yml` config file
-
 ## eslint-plugin-jsonc documentation
 
 - Version in Mega-Linter: **7.17.0**
@@ -90,7 +89,7 @@ DISABLE_LINTERS:
 | JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".json", ".json5", ".jsonc"]` |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| JSON_ESLINT_PLUGIN_JSONC_FILE_NAME | eslint-plugin-jsonc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc-json.json` |
+| JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE | eslint-plugin-jsonc configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.eslintrc-json.json` |
 | JSON_ESLINT_PLUGIN_JSONC_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
