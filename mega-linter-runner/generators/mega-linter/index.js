@@ -202,8 +202,8 @@ module.exports = class extends Generator {
       this.destinationPath('.gitlab-ci.yml'),
       {
         'DEFAULT_BRANCH': this.props.defaultBranch,
-        'GITHUB_ACTION_NAME': this.gitHubActionName,
-        'GITHUB_ACTION_VERSION': this.gitHubActionVersion
+        'DOCKER_IMAGE_NAME': this.dockerImageName,
+        'DOCKER_IMAGE_VERSION': this.dockerImageVersion
       }
     );
   }

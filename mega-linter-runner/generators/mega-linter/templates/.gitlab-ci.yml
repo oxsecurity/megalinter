@@ -5,7 +5,7 @@ mega-linter:
   stage: test
   # You can override Mega-Linter flavor used to have faster performances
   # More info at https://nvuillam.github.io/mega-linter/flavors/
-  image: <%= GITHUB_ACTION_NAME %>@<%= GITHUB_ACTION_VERSION %>
+  image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
   script: [ "true" ]
   variables:
     # All available variables are described in documentation
