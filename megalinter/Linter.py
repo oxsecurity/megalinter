@@ -291,10 +291,16 @@ class Linter:
     # Manage configuration variables
     def load_config_vars(self):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
-        if config.exists(self.name + "_FILE_NAME"):
+        # _CONFIG_FILE = _FILE_NAME (config renaming but keeping config ascending compatibility)
+        if config.exists(self.name + "_CONFIG_FILE"):
+            self.config_file_name = config.get(self.name + "_CONFIG_FILE")
+        elif config.exists(self.descriptor_id + "_CONFIG_FILE"):
+            self.config_file_name = config.get(self.descriptor_id + "_CONFIG_FILE")
+        elif config.exists(self.name + "_FILE_NAME"):
             self.config_file_name = config.get(self.name + "_FILE_NAME")
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
+
 
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if config.exists(self.name + "_RULES_PATH"):

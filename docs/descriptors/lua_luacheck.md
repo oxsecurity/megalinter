@@ -25,7 +25,7 @@
 | LUA_LUACHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | LUA_LUACHECK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".lua"]` |
 | LUA_LUACHECK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| LUA_LUACHECK_FILE_NAME | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
+| LUA_LUACHECK_CONFIG_FILE | luacheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.luacheckrc` |
 | LUA_LUACHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
 | LUA_LUACHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 

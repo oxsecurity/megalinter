@@ -789,7 +789,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
 
         if linter.config_file_name is not None:
             linter_doc_md += [
-                f"| {linter.name}_FILE_NAME | {linter.linter_name} configuration file name</br>"
+                f"| {linter.name}_CONFIG_FILE | {linter.linter_name} configuration file name</br>"
                 f"Use `LINTER_DEFAULT` to let the linter find it | "
                 f"`{linter.config_file_name}` |",
                 f"| {linter.name}_RULES_PATH | Path where to find linter configuration file | "
@@ -798,9 +798,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             add_in_config_schema_file(
                 [
                     [
-                        f"{linter.name}_FILE_NAME",
+                        f"{linter.name}_CONFIG_FILE",
                         {
-                            "$id": f"#/properties/{linter.name}_FILE_NAME",
+                            "$id": f"#/properties/{linter.name}_CONFIG_FILE",
                             "type": "string",
                             "title": f"{linter.name}: Custom config file name",
                             "default": linter.config_file_name,
