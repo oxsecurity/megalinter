@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for C, C++, C# or VB based projects
+Optimized for C, C++, C# or VB based projects
 
 ## Usage
 

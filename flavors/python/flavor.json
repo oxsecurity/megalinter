@@ -2,7 +2,7 @@
     "descriptors": [
         "GIT"
     ],
-    "label": "Mega-Linter optimized for PYTHON based projects",
+    "label": "Optimized for PYTHON based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

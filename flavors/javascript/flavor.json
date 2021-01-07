@@ -4,7 +4,7 @@
         "JAVASCRIPT",
         "TYPESCRIPT"
     ],
-    "label": "Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects",
+    "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

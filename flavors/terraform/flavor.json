@@ -2,7 +2,7 @@
     "descriptors": [
         "GIT"
     ],
-    "label": "Mega-Linter optimized for TERRAFORM based projects",
+    "label": "Optimized for TERRAFORM based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

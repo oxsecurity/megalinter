@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects
+Optimized for JAVASCRIPT or TYPESCRIPT based projects
 
 ## Usage
 

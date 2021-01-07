@@ -3,7 +3,7 @@
         "GIT",
         "PHP"
     ],
-    "label": "Mega-Linter optimized for PHP based projects",
+    "label": "Optimized for PHP based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

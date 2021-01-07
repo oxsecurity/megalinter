@@ -3,7 +3,7 @@
         "descriptors": [
             "GIT"
         ],
-        "label": "Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
+        "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
         "linters": [
             "DOCKERFILE_DOCKERFILELINT",
             "DOCKERFILE_HADOLINT",
@@ -22,7 +22,7 @@
         "descriptors": [
             "GIT"
         ],
-        "label": "Mega-Linter optimized for DART based projects",
+        "label": "Optimized for DART based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -107,7 +107,7 @@
             "GIT",
             "POWERSHELL"
         ],
-        "label": "Mega-Linter optimized for C, C++, C# or VB based projects",
+        "label": "Optimized for C, C++, C# or VB based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "ARM_ARM_TTK",
@@ -155,7 +155,7 @@
             "GIT",
             "GO"
         ],
-        "label": "Mega-Linter optimized for GO based projects",
+        "label": "Optimized for GO based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -198,7 +198,7 @@
             "GIT",
             "JAVA"
         ],
-        "label": "Mega-Linter optimized for JAVA based projects",
+        "label": "Optimized for JAVA based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -242,7 +242,7 @@
             "JAVASCRIPT",
             "TYPESCRIPT"
         ],
-        "label": "Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects",
+        "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -291,7 +291,7 @@
             "GIT",
             "PHP"
         ],
-        "label": "Mega-Linter optimized for PHP based projects",
+        "label": "Optimized for PHP based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -336,7 +336,7 @@
         "descriptors": [
             "GIT"
         ],
-        "label": "Mega-Linter optimized for PYTHON based projects",
+        "label": "Optimized for PYTHON based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -385,7 +385,7 @@
             "GIT",
             "RUBY"
         ],
-        "label": "Mega-Linter optimized for RUBY based projects",
+        "label": "Optimized for RUBY based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -428,7 +428,7 @@
             "GIT",
             "RUST"
         ],
-        "label": "Mega-Linter optimized for RUST based projects",
+        "label": "Optimized for RUST based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -471,7 +471,7 @@
             "GIT",
             "SALESFORCE"
         ],
-        "label": "Mega-Linter optimized for Salesforce based projects",
+        "label": "Optimized for Salesforce based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -514,7 +514,7 @@
             "GIT",
             "SCALA"
         ],
-        "label": "Mega-Linter optimized for SCALA based projects",
+        "label": "Optimized for SCALA based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",
@@ -556,7 +556,7 @@
         "descriptors": [
             "GIT"
         ],
-        "label": "Mega-Linter optimized for TERRAFORM based projects",
+        "label": "Optimized for TERRAFORM based projects",
         "linters": [
             "ANSIBLE_ANSIBLE_LINT",
             "BASH_EXEC",

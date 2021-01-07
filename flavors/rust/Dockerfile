@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [rust]: Mega-Linter optimized for RUST based projects
+# MEGA-LINTER FLAVOR [rust]: Optimized for RUST based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

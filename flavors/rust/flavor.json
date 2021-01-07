@@ -3,7 +3,7 @@
         "GIT",
         "RUST"
     ],
-    "label": "Mega-Linter optimized for RUST based projects",
+    "label": "Optimized for RUST based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

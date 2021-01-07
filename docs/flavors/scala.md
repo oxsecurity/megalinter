@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for SCALA based projects
+Optimized for SCALA based projects
 
 ## Usage
 

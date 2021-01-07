@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [terraform]: Mega-Linter optimized for TERRAFORM based projects
+# MEGA-LINTER FLAVOR [terraform]: Optimized for TERRAFORM based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

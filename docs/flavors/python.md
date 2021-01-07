@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for PYTHON based projects
+Optimized for PYTHON based projects
 
 ## Usage
 

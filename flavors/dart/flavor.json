@@ -2,7 +2,7 @@
     "descriptors": [
         "GIT"
     ],
-    "label": "Mega-Linter optimized for DART based projects",
+    "label": "Optimized for DART based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

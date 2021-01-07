@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [ci_light]: Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
+# MEGA-LINTER FLAVOR [ci_light]: Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for RUBY based projects
+Optimized for RUBY based projects
 
 ## Usage
 

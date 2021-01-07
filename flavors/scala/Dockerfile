@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [scala]: Mega-Linter optimized for SCALA based projects
+# MEGA-LINTER FLAVOR [scala]: Optimized for SCALA based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

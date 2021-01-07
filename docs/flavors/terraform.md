@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for TERRAFORM based projects
+Optimized for TERRAFORM based projects
 
 ## Usage
 

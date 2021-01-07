@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [dart]: Mega-Linter optimized for DART based projects
+# MEGA-LINTER FLAVOR [dart]: Optimized for DART based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

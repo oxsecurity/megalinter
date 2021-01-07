@@ -4,7 +4,7 @@
         "GIT",
         "POWERSHELL"
     ],
-    "label": "Mega-Linter optimized for C, C++, C# or VB based projects",
+    "label": "Optimized for C, C++, C# or VB based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",

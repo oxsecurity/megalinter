@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for RUST based projects
+Optimized for RUST based projects
 
 ## Usage
 

@@ -3,7 +3,7 @@
         "GIT",
         "SCALA"
     ],
-    "label": "Mega-Linter optimized for SCALA based projects",
+    "label": "Optimized for SCALA based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
