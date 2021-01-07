@@ -73,7 +73,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 
 ## Why Mega-Linter
 
-Projects need to contain clean code, in order to **avoid technical debt**, who makes **evolutive maintenance harder and time consuming**.
+Projects need to contain clean code, in order to **avoid technical debt**, that makes **evolutive maintenance harder and time consuming**.
 
 By using [**code formatters and code linters**](#supported-linters), you ensure that your code base is **easier to read** and **respects best practices**, from the kick-off to each step of the project lifecycle
 
@@ -430,6 +430,8 @@ Example
 npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
+Note: You can also use such command line from your custom CI/CD pipelines
+
 <!-- installation-section-end -->
 
 <!-- configuration-section-start -->
@@ -578,14 +580,14 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 
 | Reporter |  Description | Default |
 | -------- |  ----------- | ------- |
-| [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md) |  One log file by linter + suggestions for fixes that can not be automated | Active |
+| [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md) |  Generates **One log file by linter** + suggestions for fixes that can not be automated | Active |
 | [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs | Active if GitHub Action |
-| [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md) | Zip containing all formatted and auto-fixed sources so you can extract them in your repository | Active |
+| [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md) | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository | Active |
 | [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md) | One GitHub status by linter on the PR, with links to detailed logs | Active if GitHub Action |
-| [File.io](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/FileIoReporter.md) | Send reports on file.io so you can access them with a simple hyperlink provided at the end of console log | Inactive |
-| [Email](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/EmailReporter.md) | Receive all reports on your e-mail, if you can not use artifacts | Active |
-| [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md) | One log file by linter following [Test Anything Protocol](https://testanything.org/) format | Active |
-| [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md) | Execution logs visible in console | Active |
+| [File.io](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/FileIoReporter.md) | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive |
+| [Email](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/EmailReporter.md) | Receive **all reports on your e-mail**, if you can not use artifacts | Active |
+| [TAP files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TapReporter.md) | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format | Active |
+| [Console](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConsoleReporter.md) | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end | Active |
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->

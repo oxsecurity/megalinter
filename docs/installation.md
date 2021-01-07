@@ -220,5 +220,7 @@ Example
 npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
+Note: You can also use such command line from your custom CI/CD pipelines
+
 
 <!-- installation-section-end -->
