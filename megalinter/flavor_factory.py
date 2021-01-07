@@ -36,9 +36,7 @@ def list_megalinter_flavors():
         },
         "dart": {"label": "Optimized for DART based projects"},
         "documentation": {"label": "Mega-Linter for documentation projects"},
-        "dotnet": {
-            "label": "Optimized for C, C++, C# or VB based projects"
-        },
+        "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
         "go": {"label": "Optimized for GO based projects"},
         "java": {"label": "Optimized for JAVA based projects"},
         "javascript": {
