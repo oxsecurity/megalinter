@@ -202,6 +202,8 @@ mega-linter:
     expire_in: 1 week
 ```
 
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
 ## Run Mega-Linter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)

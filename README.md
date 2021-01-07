@@ -412,6 +412,8 @@ mega-linter:
     expire_in: 1 week
 ```
 
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
 ### Run Mega-Linter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
@@ -693,11 +695,11 @@ You can implement your own descriptors and load them as plugins during Mega-Lint
 
 > My repo CI already have linters and they are perfectly working, so why do I need Mega-Linter ?
 
-You can perfectly continue using your installed linters and deactivate them in .mega-linter.yml. For example, in a javascript project using eslint, you can configure Mega-Linter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters but also from other Mega-Linter linters like JSON, YAML, Markdown, Dockerfile and Bash linters
+You can perfectly **continue using your installed linters** and deactivate them in `.mega-linter.yml`. For example, in a javascript project using eslint, you can configure Mega-Linter with `DISABLE: JAVASCRIPT`. That way, you will benefit from both your installed linters but also from other Mega-Linter linters checking JSON, YAML, Markdown, Dockerfile, Bash, spelling mistakes, dead URLs...
 
 > Ok but... how does it work ?
 
-Mega-Linter is based on Docker-images container either all linters, or just a selection of linters if you are using a Mega-Linter flavor for a project using a specific language / format
+Mega-Linter is based on Docker images containing either all linters, or just a selection of linters if you are using a Mega-Linter flavor for a project using a specific language / format
 
 The core architecture does the following:
 
@@ -729,7 +731,11 @@ The core architecture does the following:
 
 Contributions to Mega-Linter are very welcome, please follow [Contributing Guide](https://github.com/nvuillam/mega-linter/blob/master/.github/CONTRIBUTING.md)
 
-You can also [report problems and request new features](https://github.com/nvuillam/mega-linter/issues), or just [:star: star the repository](https://github.com/nvuillam/mega-linter/stargazers) and [share it on twitter](http://twitter.com/intent/tweet/?text=Mega-Linter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://nvuillam.github.io/mega-linter&via=nvuillam)
+To help, you can also:
+
+- [report problems and request new features](https://github.com/nvuillam/mega-linter/issues)
+- [:star: star the repository](https://github.com/nvuillam/mega-linter/stargazers)
+- [share on twitter](http://twitter.com/intent/tweet/?text=Mega-Linter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://nvuillam.github.io/mega-linter&via=nvuillam)
 <!-- how-to-contribute-section-end -->
 
 <!-- special-thanks-section-start -->
