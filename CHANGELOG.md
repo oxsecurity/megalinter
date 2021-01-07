@@ -4,6 +4,10 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Nothing yet :)
+
+## [4.22.1] 2021-01-07
+
 - Core
   - Improve `warning` status in logs
   - Remove timestamp at each log line
