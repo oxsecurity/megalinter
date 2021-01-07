@@ -16,6 +16,25 @@ REPO_HOME_DEFAULT = (
 )
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
+LIST_OF_REPLACEMENTS = [
+    # Mega-Linter image
+    ["/tmp/lint/", ""],
+    ["tmp/lint/", ""],
+    # GitHub Actions
+    ["/github/workspace/", ""],
+    ["github/workspace/", ""],
+]
+# GitLab CI
+CI_PROJECT_DIR = os.environ.get("CI_PROJECT_DIR", "")
+if CI_PROJECT_DIR != "":
+    LIST_OF_REPLACEMENTS += [[f"/{CI_PROJECT_DIR}/", ""], [f"{CI_PROJECT_DIR}/", ""]]
+# Other
+DEFAULT_WORKSPACE = os.environ.get("DEFAULT_WORKSPACE", "")
+if DEFAULT_WORKSPACE != "":
+    LIST_OF_REPLACEMENTS += [
+        [f"/{DEFAULT_WORKSPACE}/", ""],
+        [f"{DEFAULT_WORKSPACE}/", ""],
+    ]
 
 
 def get_excluded_directories():
@@ -175,10 +194,7 @@ def check_updated_file(file, repo_home):
 
 
 def normalize_log_string(str_in):
-    return (
-        ANSI_ESCAPE_REGEX.sub("", str_in)  # Remove ANSI escape sequences (ANSI colors)
-        .replace("/tmp/lint/", "")
-        .replace("tmp/lint/", "")
-        .replace("/github/workspace/", "")
-        .replace("github/workspace/", "")
-    )
+    str_in = ANSI_ESCAPE_REGEX.sub("", str_in)
+    for replacement in LIST_OF_REPLACEMENTS:
+        str_in = str_in.replace(replacement[0], replacement[1])
+    return str_in

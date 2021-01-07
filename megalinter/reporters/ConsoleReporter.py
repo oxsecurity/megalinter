@@ -62,7 +62,7 @@ class ConsoleReporter(Reporter):
                 status = (
                     "✅"
                     if linter.status == "success" and linter.return_code == 0
-                    else ":orange_circle:"
+                    else "◬"
                     if linter.status != "success" and linter.return_code == 0
                     else "❌"
                 )

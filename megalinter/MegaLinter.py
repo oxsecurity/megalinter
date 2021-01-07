@@ -129,9 +129,17 @@ class Megalinter:
         # Update main Mega-Linter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
-                self.status = "error"
-            if linter.return_code != 0:
+                # Not blocking linter error
+                if linter.return_code == 0:
+                    if self.status == "success":
+                        self.status = "warning"
+                # Blocking error
+                else:
+                    self.status = "error"
+            # Blocking linter error
+            if linter.return_code > 0:
                 self.return_code = linter.return_code
+            # Update number fixed
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
 
@@ -380,9 +388,13 @@ class Megalinter:
         logging.debug("All found files before filtering:\n- %s", "\n- ".join(all_files))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
-            logging.info("- File extensions: " + ", ".join(self.file_extensions))
+            logging.info(
+                "- File extensions: " + ", ".join(sorted(self.file_extensions))
+            )
         if len(self.file_names_regex) > 0:
-            logging.info("- File names: " + ", ".join(self.file_names_regex))
+            logging.info(
+                "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
+            )
         if self.filter_regex_include is not None:
             logging.info("- Including regex: " + self.filter_regex_include)
         if self.filter_regex_exclude is not None:
@@ -486,7 +498,7 @@ class Megalinter:
         logging.basicConfig(
             force=True,
             level=logging_level,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format="%(message)s",
             handlers=[
                 logging.FileHandler(log_file, "w", "utf-8"),
                 logging.StreamHandler(sys.stdout),
@@ -527,6 +539,9 @@ class Megalinter:
         print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
             logging.info("✅ Successfully linted all files without errors")
+            config.delete()
+        elif self.status == "warning":
+            logging.warning("◬ Successfully linted all files, but with ignored errors")
             config.delete()
         else:
             logging.error("❌ Error(s) have been found during linting")

@@ -5,7 +5,13 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Nothing yet, please submit your pull requests :)
+- Core
+  - Improve `warning` status in logs
+  - Remove timestamp at each log line
+
+- Enhance integration with GitLab CI
+  - Update configuration generator
+  - Update core to clean logs when in GitLab CI context
 
 ## [4.22.0] 2021-01-06
 

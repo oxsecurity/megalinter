@@ -18,22 +18,6 @@ class MegalinterTest(unittest.TestCase):
             }
         )
 
-    def test_logging_level_info(self):
-        mega_linter, output = utilstest.call_mega_linter({"LOG_LEVEL": "INFO"})
-        self.assertTrue(
-            len(mega_linter.linters) > 0, "Linters have been created and run"
-        )
-        self.assertIn("[INFO]", output)
-        self.assertNotIn("[DEBUG]", output)
-
-    def test_logging_level_debug(self):
-        mega_linter, output = utilstest.call_mega_linter({"LOG_LEVEL": "DEBUG"})
-        self.assertTrue(
-            len(mega_linter.linters) > 0, "Linters have been created and run"
-        )
-        self.assertIn("[INFO]", output)
-        self.assertIn("[DEBUG]", output)
-
     def test_disable_language(self):
         mega_linter, output = utilstest.call_mega_linter({"DISABLE": "GROOVY"})
         self.assertTrue(

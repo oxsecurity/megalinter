@@ -177,17 +177,29 @@ stage('Mega-Linter') {
 
 ## GitLab
 
-Example of configuration using GitLab CI
-
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
-megalinter:
-  stage: linting
-  image: nvuillam/mega-linter:v4
+# Mega-Linter GitLab CI job configuration file
+# More info at https://nvuillam.github.io/mega-linter
+
+mega-linter:
+  stage: test
+  # You can override Mega-Linter flavor used to have faster performances
+  # More info at https://nvuillam.github.io/mega-linter/flavors/
+  image: nvuillam/mega-linter-python:v4
   script: [ "true" ]
   variables:
-    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
+    # All available variables are described in documentation
+    # https://nvuillam.github.io/mega-linter/configuration/
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    DEFAULT_BRANCH: master
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+  artifacts:
+    when: always
+    paths:
+      - report
+    expire_in: 1 week
 ```
 
 ## Run Mega-Linter locally
