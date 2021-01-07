@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [python]: Mega-Linter optimized for PYTHON based projects
+# MEGA-LINTER FLAVOR [python]: Optimized for PYTHON based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [salesforce]: Mega-Linter optimized for Salesforce based projects
+# MEGA-LINTER FLAVOR [salesforce]: Optimized for Salesforce based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

@@ -3,7 +3,7 @@
         "GIT",
         "GO"
     ],
-    "label": "Mega-Linter optimized for GO based projects",
+    "label": "Optimized for GO based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

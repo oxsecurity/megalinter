@@ -3,7 +3,7 @@
         "GIT",
         "RUBY"
     ],
-    "label": "Mega-Linter optimized for RUBY based projects",
+    "label": "Optimized for RUBY based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

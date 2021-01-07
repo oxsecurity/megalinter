@@ -3,7 +3,7 @@
         "GIT",
         "SALESFORCE"
     ],
-    "label": "Mega-Linter optimized for Salesforce based projects",
+    "label": "Optimized for Salesforce based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [ruby]: Mega-Linter optimized for RUBY based projects
+# MEGA-LINTER FLAVOR [ruby]: Optimized for RUBY based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

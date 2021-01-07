@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for PHP based projects
+Optimized for PHP based projects
 
 ## Usage
 

@@ -3,7 +3,7 @@
         "GIT",
         "JAVA"
     ],
-    "label": "Mega-Linter optimized for JAVA based projects",
+    "label": "Optimized for JAVA based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",

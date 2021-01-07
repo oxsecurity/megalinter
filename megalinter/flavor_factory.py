@@ -32,25 +32,23 @@ def list_megalinter_flavors():
     flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
         "ci_light": {
-            "label": "Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
+            "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
-        "dart": {"label": "Mega-Linter optimized for DART based projects"},
+        "dart": {"label": "Optimized for DART based projects"},
         "documentation": {"label": "Mega-Linter for documentation projects"},
-        "dotnet": {
-            "label": "Mega-Linter optimized for C, C++, C# or VB based projects"
-        },
-        "go": {"label": "Mega-Linter optimized for GO based projects"},
-        "java": {"label": "Mega-Linter optimized for JAVA based projects"},
+        "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
+        "go": {"label": "Optimized for GO based projects"},
+        "java": {"label": "Optimized for JAVA based projects"},
         "javascript": {
-            "label": "Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects"
+            "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects"
         },
-        "php": {"label": "Mega-Linter optimized for PHP based projects"},
-        "python": {"label": "Mega-Linter optimized for PYTHON based projects"},
-        "ruby": {"label": "Mega-Linter optimized for RUBY based projects"},
-        "rust": {"label": "Mega-Linter optimized for RUST based projects"},
-        "salesforce": {"label": "Mega-Linter optimized for Salesforce based projects"},
-        "scala": {"label": "Mega-Linter optimized for SCALA based projects"},
-        "terraform": {"label": "Mega-Linter optimized for TERRAFORM based projects"},
+        "php": {"label": "Optimized for PHP based projects"},
+        "python": {"label": "Optimized for PYTHON based projects"},
+        "ruby": {"label": "Optimized for RUBY based projects"},
+        "rust": {"label": "Optimized for RUST based projects"},
+        "salesforce": {"label": "Optimized for Salesforce based projects"},
+        "scala": {"label": "Optimized for SCALA based projects"},
+        "terraform": {"label": "Optimized for TERRAFORM based projects"},
     }
     return flavors
 

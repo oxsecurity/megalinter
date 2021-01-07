@@ -40,7 +40,7 @@ Ready to use [out of the box](installation.md) as a **GitHub Action** or **any C
 
 ## Why Mega-Linter
 
-Projects need to contain clean code, in order to **avoid technical debt**, who makes **evolutive maintenance harder and time consuming**.
+Projects need to contain clean code, in order to **avoid technical debt**, that makes **evolutive maintenance harder and time consuming**.
 
 By using [**code formatters and code linters**](supported-linters.md), you ensure that your code base is **easier to read** and **respects best practices**, from the kick-off to each step of the project lifecycle
 

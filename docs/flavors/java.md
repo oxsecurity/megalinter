@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for JAVA based projects
+Optimized for JAVA based projects
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [java]: Mega-Linter optimized for JAVA based projects
+# MEGA-LINTER FLAVOR [java]: Optimized for JAVA based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

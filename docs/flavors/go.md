@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for GO based projects
+Optimized for GO based projects
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [go]: Mega-Linter optimized for GO based projects
+# MEGA-LINTER FLAVOR [go]: Optimized for GO based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

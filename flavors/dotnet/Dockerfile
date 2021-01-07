@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [dotnet]: Mega-Linter optimized for C, C++, C# or VB based projects
+# MEGA-LINTER FLAVOR [dotnet]: Optimized for C, C++, C# or VB based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##

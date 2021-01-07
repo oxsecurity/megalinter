@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
+Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 
 ## Usage
 

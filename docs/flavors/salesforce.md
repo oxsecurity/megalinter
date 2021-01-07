@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for Salesforce based projects
+Optimized for Salesforce based projects
 
 ## Usage
 

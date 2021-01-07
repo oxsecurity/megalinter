@@ -5,7 +5,7 @@
 
 ## Description
 
-Mega-Linter optimized for DART based projects
+Optimized for DART based projects
 
 ## Usage
 

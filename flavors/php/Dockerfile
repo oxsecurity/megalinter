@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [php]: Mega-Linter optimized for PHP based projects
+# MEGA-LINTER FLAVOR [php]: Optimized for PHP based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##
