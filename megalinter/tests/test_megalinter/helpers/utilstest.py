@@ -279,9 +279,7 @@ def test_get_linter_version(linter, test_self):
             json.dump(data, outfile, indent=4, sort_keys=True)
         # Upgrade version in changelog
         if prev_version is not None:
-            changelog_file = (
-                    root_dir + os.path.sep + "/CHANGELOG.md"
-            )
+            changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
             with open(changelog_file, "r", encoding="utf-8") as md_file:
                 changelog_content = md_file.read()
             start = "- Linter versions upgrades"
@@ -298,7 +296,9 @@ def test_get_linter_version(linter, test_self):
                 f" on {datetime.today().strftime('%Y-%m-%d')}\n"
             )
             versions_block = f"{start}{versions_text}{end}"
-            changelog_content = re.sub(regex, versions_block, changelog_content, re.DOTALL)
+            changelog_content = re.sub(
+                regex, versions_block, changelog_content, re.DOTALL
+            )
             with open(changelog_file, "w", encoding="utf-8") as md_file:
                 md_file.write(changelog_content)
             logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
