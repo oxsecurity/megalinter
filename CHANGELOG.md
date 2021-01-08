@@ -4,7 +4,8 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Nothing yet :)
+- Linter versions upgrades
+<!-- linter-versions-end -->
 
 ## [4.22.1] 2021-01-07
 
