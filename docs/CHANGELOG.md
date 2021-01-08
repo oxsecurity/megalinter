@@ -6,6 +6,7 @@
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [golangci-lint](https://golangci-lint.run/) from 1.34.1 to **1.35.0** on 2021-01-08
 <!-- linter-versions-end -->
 
 ## [4.22.1] 2021-01-07
