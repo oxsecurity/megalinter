@@ -4,10 +4,12 @@ import io
 import json
 import logging
 import os
+import re
 import shutil
 import tempfile
 import unittest
 import uuid
+from datetime import datetime
 from distutils.dir_util import copy_tree
 
 from git import Repo
@@ -269,9 +271,37 @@ def test_get_linter_version(linter, test_self):
     if (
         linter.linter_name in data and data[linter.linter_name] != version
     ) or linter.linter_name not in data:
+        prev_version = None
+        if linter.linter_name in data and data[linter.linter_name] != version:
+            prev_version = data[linter.linter_name]
         data[linter.linter_name] = version
         with open(versions_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
+        # Upgrade version in changelog
+        if prev_version is not None:
+            changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
+            with open(changelog_file, "r", encoding="utf-8") as md_file:
+                changelog_content = md_file.read()
+            start = "- Linter versions upgrades"
+            end = "<!-- linter-versions-end -->"
+            regex = rf"{start}([\s\S]*?){end}"
+            existing_text_find = re.findall(regex, changelog_content, re.DOTALL)
+            if existing_text_find is None:
+                raise Exception(
+                    f"CHANGELOG.md must contain a single block scoped by '{start}' and '{end}'"
+                )
+            versions_text = existing_text_find[0]
+            versions_text += (
+                f"  - [{linter.linter_name}]({linter.linter_url}) from {prev_version} to **{version}**"
+                f" on {datetime.today().strftime('%Y-%m-%d')}\n"
+            )
+            versions_block = f"{start}{versions_text}{end}"
+            changelog_content = re.sub(
+                regex, versions_block, changelog_content, re.DOTALL
+            )
+            with open(changelog_file, "w", encoding="utf-8") as md_file:
+                md_file.write(changelog_content)
+            logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
 
 
 def test_get_linter_help(linter, test_self):
