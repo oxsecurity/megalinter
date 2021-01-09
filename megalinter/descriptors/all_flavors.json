@@ -262,6 +262,7 @@
             "HTML_HTMLHINT",
             "JAVASCRIPT_ES",
             "JAVASCRIPT_STANDARD",
+            "JAVASCRIPT_PRETTIER",
             "JSON_JSONLINT",
             "JSON_ESLINT_PLUGIN_JSONC",
             "JSON_V8R",

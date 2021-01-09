@@ -52,7 +52,8 @@ class Linter:
             "Field 'linter_url' must be overridden at custom linter class level"
         )
         self.test_folder = None  # Override only if different from language.lowercase()
-
+        self.activation_rules = []
+        self.test_variables = {}
         # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
         self.file_extensions = []
         # Array of file name regular expressions. Ex: [Dockerfile(-.+)?]
@@ -267,6 +268,8 @@ class Linter:
             self.is_active = False
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
+        elif len(self.activation_rules) > 0:
+            self.is_active = utils.check_activation_rules(self.activation_rules, self)
         elif (
             config.exists("VALIDATE_" + self.name)
             and config.get("VALIDATE_" + self.name) == "false"

@@ -110,6 +110,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-vue \
                 babel-eslint \
                 standard@15.0.1 \
+                prettier \
                 jsonlint \
                 eslint eslint-plugin-jsonc \
                 v8r \
@@ -120,7 +121,6 @@ RUN npm install --no-cache --ignore-scripts \
                 cspell@4.1.3 \
                 sql-lint \
                 tekton-lint \
-                prettier \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser

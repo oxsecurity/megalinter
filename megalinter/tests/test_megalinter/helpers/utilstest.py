@@ -130,6 +130,7 @@ def test_linter_success(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -185,6 +186,7 @@ def test_linter_failure(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     # Check linter run
     test_self.assertTrue(
@@ -377,6 +379,7 @@ def test_linter_report_tap(linter, test_self):
     }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"

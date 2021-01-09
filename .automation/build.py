@@ -1391,7 +1391,7 @@ def validate_descriptors():
                     logging.error(
                         f"{os.path.basename(descriptor_file)} is not compliant with JSON schema"
                     )
-                    logging.error(f"reason: {validation_error.message}")
+                    logging.error(f"reason: {str(validation_error)}")
                     errors = errors + 1
         if errors > 0:
             raise ValueError(
