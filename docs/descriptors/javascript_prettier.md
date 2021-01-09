@@ -25,6 +25,7 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
+| JAVASCRIPT_DEFAULT_STYLE | For prettier to be active, JAVASCRIPT_DEFAULT_STYLE must be `prettier` | `standard` |
 | JAVASCRIPT_PRETTIER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
 | JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |

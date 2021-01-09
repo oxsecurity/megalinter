@@ -25,6 +25,7 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
+| TYPESCRIPT_DEFAULT_STYLE | For prettier to be active, TYPESCRIPT_DEFAULT_STYLE must be `prettier` | `standard` |
 | TYPESCRIPT_PRETTIER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
 | TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |

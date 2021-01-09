@@ -24,6 +24,7 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
+| JAVASCRIPT_DEFAULT_STYLE | For standard to be active, JAVASCRIPT_DEFAULT_STYLE must be `standard` | `standard` |
 | JAVASCRIPT_STANDARD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
 | JAVASCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
