@@ -282,6 +282,7 @@
             "TSX_ESLINT",
             "TYPESCRIPT_ES",
             "TYPESCRIPT_STANDARD",
+            "TYPESCRIPT_PRETTIER",
             "XML_XMLLINT",
             "YAML_YAMLLINT",
             "YAML_V8R"

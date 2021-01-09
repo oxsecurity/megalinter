@@ -33,6 +33,7 @@ Optimized for JAVASCRIPT or TYPESCRIPT based projects
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/tsx.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TSX**](https://nvuillam.github.io/mega-linter/descriptors/tsx/) | [eslint](https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/)| [TSX_ESLINT](https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/typescript.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TYPESCRIPT**](https://nvuillam.github.io/mega-linter/descriptors/typescript/) | [eslint](https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/)| [TYPESCRIPT_ES](https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [standard](https://nvuillam.github.io/mega-linter/descriptors/typescript_standard/)| [TYPESCRIPT_STANDARD](https://nvuillam.github.io/mega-linter/descriptors/typescript_standard/)| :heavy_check_mark: |
+| <!-- --> <!-- linter-icon --> |  | [prettier](https://nvuillam.github.io/mega-linter/descriptors/typescript_prettier/)| [TYPESCRIPT_PRETTIER](https://nvuillam.github.io/mega-linter/descriptors/typescript_prettier/)| :heavy_check_mark: |
 
 ### Formats
 

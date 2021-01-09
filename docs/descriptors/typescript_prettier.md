@@ -18,21 +18,21 @@
 
 ## Configuration in Mega-Linter
 
-- Enable prettier by adding `JAVASCRIPT_PRETTIER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable prettier by adding `JAVASCRIPT_PRETTIER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable prettier by adding `TYPESCRIPT_PRETTIER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable prettier by adding `TYPESCRIPT_PRETTIER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `JAVASCRIPT_PRETTIER` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_PRETTIER` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
-| JAVASCRIPT_PRETTIER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
-| JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
-| JAVASCRIPT_PRETTIER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".js"]` |
-| JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| JAVASCRIPT_PRETTIER_CONFIG_FILE | prettier configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.prettierrc.json` |
-| JAVASCRIPT_PRETTIER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| JAVASCRIPT_PRETTIER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TYPESCRIPT_PRETTIER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
+| TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| TYPESCRIPT_PRETTIER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".ts"]` |
+| TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TYPESCRIPT_PRETTIER_CONFIG_FILE | prettier configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.prettierrc.json` |
+| TYPESCRIPT_PRETTIER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
+| TYPESCRIPT_PRETTIER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
 
 ## IDE Integration
 
@@ -65,7 +65,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- File extensions: `.js`
+- File extensions: `.ts`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -73,19 +73,20 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-prettier --check myfile.js
+prettier --check myfile.ts
 ```
 
 ```shell
-prettier --config .prettierrc.json --check myfile.js
+prettier --config .prettierrc.json --check myfile.ts
 ```
 
 ```shell
-prettier --config .prettierrc.json myfile.js
+prettier --config .prettierrc.json myfile.ts
 ```
 
 
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
+  - [typescript](https://www.npmjs.com/package/typescript)
   - [prettier](https://www.npmjs.com/package/prettier)

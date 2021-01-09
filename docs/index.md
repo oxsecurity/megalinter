@@ -21,7 +21,7 @@
 <!-- [![Github All Releases](https://img.shields.io/github/downloads/nvuillam/mega-linter/total.svg)](https://github.com/users/nvuillam/packages/container/package/mega-linter) -->
 
 <!-- welcome-phrase-start -->
-Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**39** languages](supported-linters.md#languages), [**18** formats](supported-linters.md#formats), [**16** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**40** languages](supported-linters.md#languages), [**18** formats](supported-linters.md#formats), [**16** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
 
 Ready to use [out of the box](installation.md) as a **GitHub Action** or **any CI system**, [**highly configurable**](configuration.md) and **free for all uses**
 
@@ -109,6 +109,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/tsx.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TSX**](descriptors/tsx.md#readme) | [eslint](descriptors/tsx_eslint.md#readme)| [TSX_ESLINT](descriptors/tsx_eslint.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/typescript.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TYPESCRIPT**](descriptors/typescript.md#readme) | [eslint](descriptors/typescript_eslint.md#readme)| [TYPESCRIPT_ES](descriptors/typescript_eslint.md#readme)| :heavy_check_mark: |
 | <!-- --> <!-- linter-icon --> |  | [standard](descriptors/typescript_standard.md#readme)| [TYPESCRIPT_STANDARD](descriptors/typescript_standard.md#readme)| :heavy_check_mark: |
+| <!-- --> <!-- linter-icon --> |  | [prettier](descriptors/typescript_prettier.md#readme)| [TYPESCRIPT_PRETTIER](descriptors/typescript_prettier.md#readme)| :heavy_check_mark: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vbdotnet.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**Visual Basic .NET** (VBDOTNET)](descriptors/vbdotnet.md#readme) | [dotnet-format](descriptors/vbdotnet_dotnet_format.md#readme)| [VBDOTNET_DOTNET_FORMAT](descriptors/vbdotnet_dotnet_format.md#readme)| :heavy_check_mark: |
 
 ### Formats

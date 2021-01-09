@@ -148,8 +148,8 @@ linters:
       JAVASCRIPT_DEFAULT_STYLE: prettier
     examples:
       - "prettier --check myfile.js"
-      - "prettier --config .prettierrc.json --check myfile.json"
-      - "prettier --config .prettierrc.json myfile.json" # format
+      - "prettier --config .prettierrc.json --check myfile.js"
+      - "prettier --config .prettierrc.json myfile.js" # format
     install:
       npm:
         - "prettier"
