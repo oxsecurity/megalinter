@@ -16,11 +16,12 @@ class ConsoleLinterReporter(Reporter):
         self.is_active = True
         super().__init__(params)
 
-    def initialize(self):
+    def produce_report(self):
         linter_version = self.master.get_linter_version()
         # Linter header prints
         msg = [
-            f"### Linting [{self.master.descriptor_id}] files",
+            "",
+            f"### Processing [{self.master.descriptor_id}] files",
             f"- Using [{self.master.linter_name} v{linter_version}] {self.master.linter_url}",
         ]
         if self.master.descriptor_id != self.master.name:
@@ -32,8 +33,6 @@ class ConsoleLinterReporter(Reporter):
         if self.master.config_file_error is not None:
             logging.warning(self.master.config_file_error)
         logging.info("\n".join(msg))
-
-    def produce_report(self):
         # Output results file by file
         for res in self.master.files_lint_results:
             file_nm = utils.normalize_log_string(res["file"])
