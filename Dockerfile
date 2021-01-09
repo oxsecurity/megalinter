@@ -139,6 +139,8 @@ RUN npm install --no-cache --ignore-scripts \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
+                stylelint-config-sass-guidelines \
+                stylelint-scss \
                 dockerfilelint \
                 editorconfig-checker \
                 gherkin-lint \
