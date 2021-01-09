@@ -6,6 +6,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.34.1 to **1.35.0** on 2021-01-08
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.2 to **0.44.3** on 2021-01-09
 <!-- linter-versions-end -->
 
 ## [4.22.1] 2021-01-07
