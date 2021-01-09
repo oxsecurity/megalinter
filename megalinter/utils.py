@@ -154,9 +154,9 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
 def check_activation_rules(activation_rules, linter):
     active = False
     for rule in activation_rules:
-        if rule['type'] == 'variable':
-            value = config.get(rule['variable'], rule['default_value'])
-            if value == rule['expected_value']:
+        if rule["type"] == "variable":
+            value = config.get(rule["variable"], rule["default_value"])
+            if value == rule["expected_value"]:
                 active = True
             else:
                 active = False
