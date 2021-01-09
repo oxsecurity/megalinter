@@ -40,7 +40,7 @@ class MegalinterTest(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         utilstest.assert_is_skipped("JAVASCRIPT_ES", output, self)
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [standard", output)
 
     def test_disable_linter_legacy(self):
@@ -51,7 +51,7 @@ class MegalinterTest(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         utilstest.assert_is_skipped("JAVASCRIPT_ES", output, self)
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [standard", output)
 
     def test_enable_only_one_linter(self):
@@ -61,7 +61,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         utilstest.assert_is_skipped("JAVASCRIPT_STANDARD", output, self)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -73,7 +73,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         utilstest.assert_is_skipped("JAVASCRIPT_STANDARD", output, self)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -83,7 +83,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn("Using [standard", output)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -95,7 +95,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn("Using [standard", output)
         utilstest.assert_is_skipped("GROOVY", output, self)
@@ -130,7 +130,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(".eslintrc-custom.yml", output)
 
@@ -145,7 +145,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
             "- Rules config: [https://raw.githubusercontent.com/nvuillam/"
@@ -165,7 +165,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
             "- Rules config: [https://raw.githubusercontent.com/nvuillam/"
@@ -184,7 +184,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn(
             "Unable to fetch https://raw.githubusercontent.com/nvuillam/notexisting",
             output,
@@ -203,7 +203,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn(".eslintrc-custom.yml", output)
 
     def test_general_include_exclude(self):
@@ -217,7 +217,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
 
     def test_custom_config_on_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
@@ -233,7 +233,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
 
     def test_user_arguments_on_linter(self):
         mega_linter, output = utilstest.call_mega_linter(
@@ -249,7 +249,7 @@ class MegalinterTest(unittest.TestCase):
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        self.assertIn("Linting [JAVASCRIPT] files", output)
+        self.assertIn("### Processing [JAVASCRIPT] files", output)
         self.assertIn("--debug --env-info", output)
 
     def test_alpaca(self):
