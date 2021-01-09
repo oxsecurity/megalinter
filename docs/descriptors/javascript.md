@@ -9,6 +9,7 @@
 | ------ | ----------------- |
 | [eslint](javascript_eslint.md) | [JAVASCRIPT_ES](javascript_eslint.md) |
 | [standard](javascript_standard.md) | [JAVASCRIPT_STANDARD](javascript_standard.md) |
+| [prettier](javascript_prettier.md) | [JAVASCRIPT](javascript_prettier.md) |
 
 ## Linted files
 

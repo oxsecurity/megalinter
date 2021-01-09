@@ -47,6 +47,7 @@
 | **phpcs** | 3.5.8 | [PHP](descriptors/php_phpcs.md) | :white_circle: | [Web Site](https://github.com/squizlabs/PHP_CodeSniffer){target=_blank} |
 | **phpstan** | 0.12.65 | [PHP](descriptors/php_phpstan.md) | :white_circle: | [Repository](https://github.com/phpstan/phpstan){target=_blank} |
 | **powershell** | 7.1.0 | [POWERSHELL](descriptors/powershell_powershell.md) | :white_circle: | [Web Site](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank} |
+| **prettier** | N/A | [JAVASCRIPT](descriptors/javascript_prettier.md)<br/> [TYPESCRIPT](descriptors/typescript_prettier.md) | :white_circle: | [Repository](https://github.com/prettier/prettier){target=_blank} |
 | **protolint** | 0.26.1 | [PROTOBUF](descriptors/protobuf_protolint.md) | :white_circle: | [Web Site](https://github.com/yoheimuta/protolint){target=_blank} |
 | **psalm** | 4.3.1 | [PHP](descriptors/php_psalm.md) | :white_circle: | [Repository](https://github.com/vimeo/psalm){target=_blank} |
 | **puppet-lint** | 2.4.2 | [PUPPET](descriptors/puppet_puppet_lint.md) | :white_circle: | [Repository](https://github.com/rodjek/puppet-lint){target=_blank} |

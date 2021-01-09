@@ -130,6 +130,7 @@ def test_linter_success(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -173,7 +174,7 @@ def test_linter_failure(linter, test_self):
             f"Skip failure test for {linter}: no_test_failure found in test folder"
         )
     linter_name = linter.linter_name
-    env_vars = {
+    env_vars_failure = {
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
         "OUTPUT_FORMAT": "text",
@@ -182,10 +183,11 @@ def test_linter_failure(linter, test_self):
         "LOG_LEVEL": "DEBUG",
     }
     linter_key = "VALIDATE_" + linter.name
-    env_vars[linter_key] = "true"
+    env_vars_failure[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
-        env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
-    mega_linter, output = call_mega_linter(env_vars)
+        env_vars_failure["VALIDATE_JAVASCRIPT_ES"] = "true"
+    env_vars_failure.update(linter.test_variables)
+    mega_linter, output = call_mega_linter(env_vars_failure)
     # Check linter run
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -377,6 +379,7 @@ def test_linter_report_tap(linter, test_self):
     }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"

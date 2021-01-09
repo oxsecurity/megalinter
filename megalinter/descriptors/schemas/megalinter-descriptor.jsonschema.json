@@ -362,6 +362,26 @@
           }
         ],
         "properties": {
+          "activation_rules": {
+            "$id": "#/properties/linters/items/properties/activation_rules",
+            "default": [],
+            "description": "List of rules to check to activate linter",
+            "examples": [
+              [
+                {
+                  "default_value": "standard",
+                  "expected_value": "prettier",
+                  "type": "variable",
+                  "variable": "JAVASCRIPT_DEFAULT_STYLE"
+                }
+              ]
+            ],
+            "items": {
+              "type": "object"
+            },
+            "title": "Activation rules",
+            "type": "array"
+          },
           "active_only_if_file_found": {
             "$id": "#/properties/linters/items/properties/active_only_if_file_found",
             "description": "Names of the config files to be found (at least one), else descriptor will be deactivated",
@@ -849,6 +869,17 @@
             ],
             "title": "Test folder in .automation/",
             "type": "string"
+          },
+          "test_variables": {
+            "$id": "#/properties/linters/items/properties/test_variables",
+            "description": "List of variables to set before running tests",
+            "examples": [
+              {
+                "JAVASCRIPT_DEFAULT_STYLE": "prettier"
+              }
+            ],
+            "title": "Test variables",
+            "type": "object"
           },
           "variables": {
             "$id": "#/properties/linters/items/properties/variables",

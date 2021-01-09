@@ -209,6 +209,11 @@
     "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",
     "title": "PowerShell/PSScriptAnalyzer"
   },
+  "prettier": {
+    "description": "Opinionated Code Formatter",
+    "image": "https://prettier.io/icon.png",
+    "title": "Prettier \u00b7 Opinionated Code Formatter"
+  },
   "protolint": {
     "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions.  - yoheimuta/protolint",
     "image": "https://avatars1.githubusercontent.com/u/1223268?s=400&v=4",

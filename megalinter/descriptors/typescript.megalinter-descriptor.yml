@@ -83,6 +83,11 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
   # STANDARD
   - linter_name: standard
+    activation_rules:
+      - type: variable
+        variable: JAVASCRIPT_DEFAULT_STYLE
+        expected_value: standard
+        default_value: standard
     linter_url: https://standardjs.com/
     linter_repo: https://github.com/standard/standard
     linter_rules_url: https://standardjs.com/rules.html
@@ -124,3 +129,63 @@ linters:
       vscode:
         - name: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
           url: vscode-standardjs
+  # PRETTIER
+  - linter_name: prettier
+    activation_rules:
+      - type: variable
+        variable: TYPESCRIPT_DEFAULT_STYLE
+        expected_value: prettier
+        default_value: standard
+    linter_url: https://prettier.io/
+    linter_repo: https://github.com/prettier/prettier
+    linter_rules_url: https://prettier.io/docs/en/options.html
+    linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
+    linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
+    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    config_file_name: ".prettierrc.json"
+    cli_config_arg_name: "--config"
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
+    test_folder: typescript_prettier
+    test_variables:
+      TYPESCRIPT_DEFAULT_STYLE: prettier
+    examples:
+      - "prettier --check myfile.ts"
+      - "prettier --config .prettierrc.json --check myfile.ts"
+      - "prettier --config .prettierrc.json myfile.ts" # format
+    install:
+      npm:
+        - "prettier"
+    ide:
+      atom:
+        - name: prettier-atom
+          url: https://github.com/prettier/prettier-atom
+        - name: atom-mprettier
+          url: https://github.com/t9md/atom-mprettier
+        - name: atom-miniprettier
+          url: https://github.com/duailibe/atom-miniprettier
+      emacs:
+        - name: prettier-emacs
+          url: https://github.com/prettier/prettier-emacs
+        - name: prettier.el
+          url: https://github.com/jscheid/prettier.el
+        - name: apheleia
+          url: https://github.com/raxod502/apheleia
+      idea:
+        - name: native support
+          url: https://prettier.io/docs/en/webstorm.html
+      sublime:
+        - name: JsPrettier
+          url: https://packagecontrol.io/packages/JsPrettier
+      vim:
+        - name: vim-prettier
+          url: https://github.com/prettier/vim-prettier
+      visual_studio:
+        - name: JavaScriptPrettier
+          url: https://github.com/madskristensen/JavaScriptPrettier
+      vscode:
+        - name: prettier-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode

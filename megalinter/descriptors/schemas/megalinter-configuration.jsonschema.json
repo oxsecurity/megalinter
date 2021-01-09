@@ -126,6 +126,7 @@
         "JAVA_CHECKSTYLE",
         "JAVASCRIPT_ES",
         "JAVASCRIPT_STANDARD",
+        "JAVASCRIPT_PRETTIER",
         "JSON_JSONLINT",
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
@@ -170,6 +171,7 @@
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
+        "TYPESCRIPT_PRETTIER",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
         "YAML_YAMLLINT",
@@ -2400,6 +2402,72 @@
     "JAVASCRIPT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/JAVASCRIPT_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for JAVASCRIPT descriptor",
+      "type": "string"
+    },
+    "JAVASCRIPT_PRETTIER_ARGUMENTS": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_ARGUMENTS",
+      "description": "JAVASCRIPT_PRETTIER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_PRETTIER: Custom arguments",
+      "type": "array"
+    },
+    "JAVASCRIPT_PRETTIER_CONFIG_FILE": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_CONFIG_FILE",
+      "default": ".prettierrc.json",
+      "description": "JAVASCRIPT_PRETTIER: User custom config file name if different from default",
+      "title": "JAVASCRIPT_PRETTIER: Custom config file name",
+      "type": "string"
+    },
+    "JAVASCRIPT_PRETTIER_DISABLE_ERRORS": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_DISABLE_ERRORS",
+      "default": false,
+      "title": "JAVASCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "JAVASCRIPT_PRETTIER_FILE_EXTENSIONS": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE",
+      "title": "JAVASCRIPT_PRETTIER: Excluding Regex",
+      "type": "string"
+    },
+    "JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
+      "title": "JAVASCRIPT_PRETTIER: Including Regex",
+      "type": "string"
+    },
+    "JAVASCRIPT_PRETTIER_RULES_PATH": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_RULES_PATH",
+      "description": "JAVASCRIPT_PRETTIER: Path where to find linter configuration file",
+      "title": "JAVASCRIPT_PRETTIER: Custom config file path",
       "type": "string"
     },
     "JAVASCRIPT_STANDARD_ARGUMENTS": {
@@ -5870,6 +5938,72 @@
     "TYPESCRIPT_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TYPESCRIPT_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for TYPESCRIPT descriptor",
+      "type": "string"
+    },
+    "TYPESCRIPT_PRETTIER_ARGUMENTS": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_ARGUMENTS",
+      "description": "TYPESCRIPT_PRETTIER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_PRETTIER: Custom arguments",
+      "type": "array"
+    },
+    "TYPESCRIPT_PRETTIER_CONFIG_FILE": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_CONFIG_FILE",
+      "default": ".prettierrc.json",
+      "description": "TYPESCRIPT_PRETTIER: User custom config file name if different from default",
+      "title": "TYPESCRIPT_PRETTIER: Custom config file name",
+      "type": "string"
+    },
+    "TYPESCRIPT_PRETTIER_DISABLE_ERRORS": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_DISABLE_ERRORS",
+      "default": false,
+      "title": "TYPESCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "TYPESCRIPT_PRETTIER_FILE_EXTENSIONS": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE",
+      "title": "TYPESCRIPT_PRETTIER: Excluding Regex",
+      "type": "string"
+    },
+    "TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
+      "title": "TYPESCRIPT_PRETTIER: Including Regex",
+      "type": "string"
+    },
+    "TYPESCRIPT_PRETTIER_RULES_PATH": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_RULES_PATH",
+      "description": "TYPESCRIPT_PRETTIER: Path where to find linter configuration file",
+      "title": "TYPESCRIPT_PRETTIER: Custom config file path",
       "type": "string"
     },
     "TYPESCRIPT_STANDARD_ARGUMENTS": {

@@ -24,6 +24,7 @@
         "HTML_HTMLHINT",
         "JAVASCRIPT_ES",
         "JAVASCRIPT_STANDARD",
+        "JAVASCRIPT_PRETTIER",
         "JSON_JSONLINT",
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
@@ -43,6 +44,7 @@
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
+        "TYPESCRIPT_PRETTIER",
         "XML_XMLLINT",
         "YAML_YAMLLINT",
         "YAML_V8R"

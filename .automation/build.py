@@ -706,10 +706,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             "| Variable | Description | Default value |",
             "| ----------------- | -------------- | -------------- |",
         ]
+        if hasattr(linter, "activation_rules"):
+            for rule in linter.activation_rules:
+                linter_doc_md += [
+                    f"| {rule['variable']} | For {linter.linter_name} to be active, {rule['variable']} must be "
+                    f"`{rule['expected_value']}` | `{rule['default_value']}` |"
+                ]
         if hasattr(linter, "variables"):
             for variable in linter.variables:
                 linter_doc_md += [
-                    f"| {variable['name']} | {variable['description']} | {variable['default_value']} |"
+                    f"| {variable['name']} | {variable['description']} | `{variable['default_value']}` |"
                 ]
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
@@ -1391,7 +1397,7 @@ def validate_descriptors():
                     logging.error(
                         f"{os.path.basename(descriptor_file)} is not compliant with JSON schema"
                     )
-                    logging.error(f"reason: {validation_error.message}")
+                    logging.error(f"reason: {str(validation_error)}")
                     errors = errors + 1
         if errors > 0:
             raise ValueError(

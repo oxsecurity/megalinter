@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 38 languages, 18 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 40 languages, 18 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -86,6 +86,7 @@ nav:
               - "All JAVASCRIPT linters": "descriptors/javascript.md"
               - "eslint": "descriptors/javascript_eslint.md"
               - "standard": "descriptors/javascript_standard.md"
+              - "prettier": "descriptors/javascript_prettier.md"
           - "JSX":
               - "All JSX linters": "descriptors/jsx.md"
               - "eslint": "descriptors/jsx_eslint.md"
@@ -141,6 +142,7 @@ nav:
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
               - "standard": "descriptors/typescript_standard.md"
+              - "prettier": "descriptors/typescript_prettier.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
               - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
