@@ -71,7 +71,7 @@
 | **tekton-lint** | 0.5.2 | [TEKTON](descriptors/tekton_tekton_lint.md) | :white_circle: | [Web Site](https://github.com/IBM/tekton-lint){target=_blank} |
 | **terragrunt** | 0.26.7 | [TERRAFORM](descriptors/terraform_terragrunt.md) | :white_circle: | [Repository](https://github.com/gruntwork-io/terragrunt){target=_blank} |
 | **terrascan** | 1.2.0 | [TERRAFORM](descriptors/terraform_terrascan.md) | :white_circle: | [Repository](https://github.com/accurics/terrascan){target=_blank} |
-| **tflint** | 0.23.0 | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
+| **tflint** | 0.23.1 | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
 | **v8r** | 0.4.0 | [JSON](descriptors/json_v8r.md)<br/> [YAML](descriptors/yaml_v8r.md) | :no_entry_sign: | [Web Site](https://github.com/chris48s/v8r){target=_blank} |
 | **xmllint** | 20910 | [XML](descriptors/xml_xmllint.md) | :white_circle: | [Web Site](http://xmlsoft.org/xmllint.html){target=_blank} |
 | **yamllint** | 1.25.0 | [YAML](descriptors/yaml_yamllint.md) | :no_entry_sign: | [Repository](https://github.com/adrienverge/yamllint){target=_blank} |
