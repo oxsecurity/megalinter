@@ -28,7 +28,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 | SPELL_CSPELL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | SPELL_CSPELL_CONFIG_FILE | cspell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.cspell.json` |
 | SPELL_CSPELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| SPELL_CSPELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| SPELL_CSPELL_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

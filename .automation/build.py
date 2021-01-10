@@ -824,8 +824,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     ],
                 ]
             )
+        default_disable_errors = 'true' if linter.is_formatter is True else 'false'
         linter_doc_md += [
-            f"| {linter.name}_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |"
+            f"| {linter.name}_DISABLE_ERRORS | Run linter but consider errors as warnings |"
+            f" `{default_disable_errors}` |"
         ]
         if linter.files_sub_directory is not None:
             linter_doc_md += [

@@ -34,7 +34,7 @@
 | TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | TYPESCRIPT_PRETTIER_CONFIG_FILE | prettier configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.prettierrc.json` |
 | TYPESCRIPT_PRETTIER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| TYPESCRIPT_PRETTIER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TYPESCRIPT_PRETTIER_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
 
 ## IDE Integration
 

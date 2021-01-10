@@ -26,7 +26,7 @@
 | SQL_SQL_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | SQL_SQL_LINT_CONFIG_FILE | sql-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.sql-config.json` |
 | SQL_SQL_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| SQL_SQL_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| SQL_SQL_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

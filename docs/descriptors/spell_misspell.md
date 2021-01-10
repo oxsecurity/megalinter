@@ -25,7 +25,7 @@ misspell detects and corrects commonly misspelled english words
 | SPELL_MISSPELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | SPELL_MISSPELL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
 | SPELL_MISSPELL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| SPELL_MISSPELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| SPELL_MISSPELL_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## Mega-Linter Flavours
 

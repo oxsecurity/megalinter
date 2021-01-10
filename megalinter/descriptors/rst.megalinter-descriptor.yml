@@ -33,6 +33,7 @@ linters:
           url: https://marketplace.visualstudio.com/items/lextudio.restructuredtext
   # rstfmt
   - linter_name: rstfmt
+    is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
     cli_lint_fix_arg_name: "-i"

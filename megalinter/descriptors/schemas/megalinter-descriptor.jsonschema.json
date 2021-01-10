@@ -755,6 +755,13 @@
             "title": "Installation requirements",
             "type": "object"
           },
+          "is_formatter": {
+            "$id": "#/properties/linters/items/properties/is_formatter",
+            "default": false,
+            "description": "If the linter is just a formatter, set to true so errors will count as warnings",
+            "title": "Is formatter",
+            "type": "boolean"
+          },
           "lint_all_files": {
             "$id": "#/properties/linters/items/lint_all_files",
             "default": false,

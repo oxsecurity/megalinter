@@ -131,6 +131,7 @@ linters:
           url: vscode-standardjs
   # PRETTIER
   - linter_name: prettier
+    is_formatter: true
     activation_rules:
       - type: variable
         variable: TYPESCRIPT_DEFAULT_STYLE

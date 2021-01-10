@@ -45,6 +45,7 @@ linters:
   # BLACK
   - linter_name: black
     name: PYTHON_BLACK
+    is_formatter: true
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
@@ -118,6 +119,7 @@ linters:
   # ISORT
   - linter_name: isort
     name: PYTHON_ISORT
+    is_formatter: true
     linter_url: https://pycqa.github.io/isort/
     linter_repo: https://github.com/PyCQA/isort
     linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png

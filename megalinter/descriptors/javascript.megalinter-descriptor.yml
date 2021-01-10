@@ -125,6 +125,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
   # PRETTIER
   - linter_name: prettier
+    is_formatter: true
     activation_rules:
       - type: variable
         variable: JAVASCRIPT_DEFAULT_STYLE

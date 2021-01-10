@@ -24,7 +24,7 @@
 | ARM_ARM_TTK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | ARM_ARM_TTK_CONFIG_FILE | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
 | ARM_ARM_TTK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| ARM_ARM_TTK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| ARM_ARM_TTK_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

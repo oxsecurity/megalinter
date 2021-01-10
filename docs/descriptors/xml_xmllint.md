@@ -20,7 +20,7 @@
 | XML_XMLLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | XML_XMLLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".xml"]` |
 | XML_XMLLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| XML_XMLLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| XML_XMLLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## Mega-Linter Flavours
 

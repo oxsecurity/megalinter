@@ -24,7 +24,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 | YAML_V8R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | YAML_V8R_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".yml", ".yaml"]` |
 | YAML_V8R_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| YAML_V8R_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| YAML_V8R_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
