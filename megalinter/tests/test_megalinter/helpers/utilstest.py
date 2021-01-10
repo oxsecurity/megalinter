@@ -4,9 +4,13 @@ import io
 import json
 import logging
 import os
+import re
 import shutil
 import tempfile
 import unittest
+import uuid
+from datetime import datetime
+from distutils.dir_util import copy_tree
 
 from git import Repo
 from megalinter import Megalinter, config, utils
@@ -28,7 +32,7 @@ REPO_HOME = (
 
 # Define env variables before any test case
 def linter_test_setup(params=None):
-    config.init_config(None)
+    config.delete()
     if params is None:
         params = {}
     # Root to lint
@@ -37,11 +41,6 @@ def linter_test_setup(params=None):
         if "sub_lint_root" in params
         else f"{os.path.sep}.automation{os.path.sep}test"
     )
-    # Ignore report folder
-    config.set_value("FILTER_REGEX_EXCLUDE", "\\/(report)\\/")
-    # TAP Output deactivated by default
-    config.set_value("OUTPUT_FORMAT", "text")
-    config.set_value("OUTPUT_DETAIL", "detailed")
     # Root path of default rules
     root_dir = (
         "/tmp/lint"
@@ -50,7 +49,21 @@ def linter_test_setup(params=None):
             os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
         )
     )
-
+    workspace = None
+    config_file_path = root_dir + sub_lint_root + os.path.sep + ".mega-linter.yml"
+    if os.path.isfile(config_file_path):
+        workspace = root_dir + sub_lint_root
+    elif params.get("required_config_file", False) is True:
+        raise Exception(
+            f"[test] There should be a .mega-linter.yml file in test folder {config_file_path}"
+        )
+    config.init_config(workspace)
+    # Ignore report folder
+    config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")
+    # TAP Output deactivated by default
+    config.set_value("OUTPUT_FORMAT", "text")
+    config.set_value("OUTPUT_DETAIL", "detailed")
+    config.set_value("PLUGINS", "")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
     config.set_value(
@@ -99,14 +112,16 @@ def call_mega_linter(env_vars):
 def test_linter_success(linter, test_self):
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    # Special cases when files must be copied in a temp directory before being linted
     if os.path.isdir(workspace + os.path.sep + "good"):
         workspace = workspace + os.path.sep + "good"
-    tmp_report_folder = tempfile.gettempdir()
+        workspace = manage_copy_sources(workspace)
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     linter_name = linter.linter_name
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
-        "FILTER_REGEX_INCLUDE": "(.*_good_.*|.*\\/good\\/.*)",
+        "FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
         "TEXT_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
@@ -115,15 +130,16 @@ def test_linter_success(linter, test_self):
     env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
         env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
+        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS"
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*good.* - SUCCESS")
@@ -150,38 +166,40 @@ def test_linter_failure(linter, test_self):
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
         workspace = workspace + os.path.sep + "bad"
+        workspace = manage_copy_sources(workspace)
+    tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     if os.path.isfile(workspace + os.path.sep + "no_test_failure"):
         raise unittest.SkipTest(
             f"Skip failure test for {linter}: no_test_failure found in test folder"
         )
     linter_name = linter.linter_name
-    tmp_report_folder = tempfile.gettempdir()
-    env_vars = {
+    env_vars_failure = {
         "DEFAULT_WORKSPACE": workspace,
-        "FILTER_REGEX_INCLUDE": "(.*_bad_.*|.*\\/bad\\/.*)",
+        "FILTER_REGEX_INCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
         "OUTPUT_FORMAT": "text",
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
     }
     linter_key = "VALIDATE_" + linter.name
-    env_vars[linter_key] = "true"
+    env_vars_failure[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
-        env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
-    mega_linter, output = call_mega_linter(env_vars)
+        env_vars_failure["VALIDATE_JAVASCRIPT_ES"] = "true"
+    env_vars_failure.update(linter.test_variables)
+    mega_linter, output = call_mega_linter(env_vars_failure)
     # Check linter run
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
     # Check console output
     if linter.cli_lint_mode == "file":
-        if len(linter.file_names) > 0 and len(linter.file_extensions) == 0:
+        if len(linter.file_names_regex) > 0 and len(linter.file_extensions) == 0:
             test_self.assertRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - ERROR"
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - ERROR"
             )
             test_self.assertNotRegex(
-                output, rf"\[{linter_name}\] .*{linter.file_names[0]}.* - SUCCESS"
+                output, rf"\[{linter_name}\] .*{linter.file_names_regex[0]}.* - SUCCESS"
             )
         else:
             test_self.assertRegex(output, rf"\[{linter_name}\] .*bad.* - ERROR")
@@ -189,7 +207,7 @@ def test_linter_failure(linter, test_self):
     else:
         test_self.assertRegex(
             output,
-            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found error",
+            rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
         )
     # Check text reporter output log
     report_file_name = f"ERROR-{linter.name}.log"
@@ -202,6 +220,14 @@ def test_linter_failure(linter, test_self):
         f"Unable to find text report {text_report_file}",
     )
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
+
+
+def manage_copy_sources(workspace):
+    if os.path.isfile(workspace + os.path.sep + "test_copy_in_tmp_folder"):
+        tmp_sources_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+        copy_tree(workspace, tmp_sources_folder)
+        workspace = tmp_sources_folder
+    return workspace
 
 
 # Copy logs for documentation
@@ -247,9 +273,37 @@ def test_get_linter_version(linter, test_self):
     if (
         linter.linter_name in data and data[linter.linter_name] != version
     ) or linter.linter_name not in data:
+        prev_version = None
+        if linter.linter_name in data and data[linter.linter_name] != version:
+            prev_version = data[linter.linter_name]
         data[linter.linter_name] = version
         with open(versions_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
+        # Upgrade version in changelog
+        if prev_version is not None:
+            changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
+            with open(changelog_file, "r", encoding="utf-8") as md_file:
+                changelog_content = md_file.read()
+            start = "- Linter versions upgrades"
+            end = "<!-- linter-versions-end -->"
+            regex = rf"{start}([\s\S]*?){end}"
+            existing_text_find = re.findall(regex, changelog_content, re.DOTALL)
+            if existing_text_find is None:
+                raise Exception(
+                    f"CHANGELOG.md must contain a single block scoped by '{start}' and '{end}'"
+                )
+            versions_text = existing_text_find[0]
+            versions_text += (
+                f"  - [{linter.linter_name}]({linter.linter_url}) from {prev_version} to **{version}**"
+                f" on {datetime.today().strftime('%Y-%m-%d')}\n"
+            )
+            versions_block = f"{start}{versions_text}{end}"
+            changelog_content = re.sub(
+                regex, versions_block, changelog_content, re.DOTALL
+            )
+            with open(changelog_file, "w", encoding="utf-8") as md_file:
+                md_file.write(changelog_content)
+            logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
 
 
 def test_get_linter_help(linter, test_self):
@@ -325,6 +379,7 @@ def test_linter_report_tap(linter, test_self):
     }
     linter_key = "VALIDATE_" + linter.name
     env_vars[linter_key] = "true"
+    env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"

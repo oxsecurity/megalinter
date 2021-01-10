@@ -1,0 +1,29 @@
+descriptor_id: CPP
+descriptor_label: "C++"
+descriptor_type: language
+descriptor_flavors:
+  - dotnet
+file_extensions:
+  - '.cpp'
+  - '.h'
+  - '.cc'
+  - '.hpp'
+  - '.cxx'
+  - '.cu'
+  - '.hxx'
+  - '.c++'
+  - '.hh'
+  - '.h++'
+  - '.cuh'
+linters:
+  # CPPLINT
+  - linter_name: cpplint
+    name: CPP_CPPLINT
+    linter_url: https://github.com/cpplint/cpplint
+    linter_rules_url: https://google.github.io/styleguide/cppguide.html
+    cli_help_arg_name: "--help"
+    examples:
+      - "cpplint myfile.cpp"
+    install:
+      pip:
+        - cpplint

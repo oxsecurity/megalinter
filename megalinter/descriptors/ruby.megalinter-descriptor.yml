@@ -1,0 +1,63 @@
+descriptor_id: RUBY
+descriptor_type: language
+descriptor_flavors:
+  - ruby
+file_extensions:
+  - ".rb"
+install:
+  apk:
+    - ruby
+    - ruby-dev
+    - ruby-bundler
+    - ruby-rdoc
+linters:
+  # RUBOCOP
+  - linter_name: rubocop
+    linter_url: https://rubocop.org/
+    linter_repo: https://github.com/rubocop-hq/rubocop
+    linter_rules_url: https://docs.rubocop.org/rubocop/cops.html
+    linter_banner_image_url: https://raw.githubusercontent.com/rubocop-hq/rubocop/master/logo/rubo-logo-horizontal.png
+    linter_rules_configuration_url: https://docs.rubocop.org/rubocop/0.92/configuration.html
+    linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code
+    linter_megalinter_ref_url: https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration
+    config_file_name: .ruby-lint.yml
+    cli_lint_extra_args:
+      - "--force-exclusion"
+    cli_lint_fix_arg_name: "--safe-auto-correct"
+    examples:
+      - "rubocop --force-exclusion myfile.rb"
+      - "rubocop --force-exclusion -c .ruby-lint.yml myfile.rb"
+      - "rubocop --force-exclusion --safe-auto-correct -c .ruby-lint.yml myfile.rb"
+    install:
+      gem:
+        - rubocop:0.82.0
+        - rubocop-github:0.16.0
+        - rubocop-performance:1.7.1
+        - rubocop-rails:2.5
+        - rubocop-rspec:1.41.0
+    ide:
+      atom:
+        - name: linter-rubocop
+          url: https://github.com/AtomLinter/linter-rubocop
+      brackets:
+        - name: brackets-rubocop
+          url: https://github.com/smockle-archive/brackets-rubocop
+      emacs:
+        - name: rubocop-emacs
+          url: https://github.com/rubocop-hq/rubocop-emacs
+        - name: flycheck
+          url: https://github.com/flycheck/flycheck
+      idea:
+        - name: RubyMine
+          url: https://www.jetbrains.com/help/idea/2017.1/rubocop.html
+      sublime:
+        - name: sublime_rubocop
+          url: https://github.com/pderichs/sublime_rubocop
+      vim:
+        - name: vim-rubocop
+          url: https://github.com/ngmy/vim-rubocop
+        - name: ale
+          url: https://github.com/w0rp/ale
+      vscode:
+        - name: VsCode Ruby Extension
+          url: https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby

@@ -1,6 +1,7 @@
 # TAP Reporter
 
 Posts a pack of TAP logs , zipped as a GitHub Action artifact
+
 - A separate TAP file for each processed linter
 
 ## Usage
@@ -23,5 +24,5 @@ If you are not using GitHub Actions, you can export `mega-linter.log` and folder
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | :--------------: |
-| TAP_REPORTER | Activates/deactivates reporter | true |
-| TAP_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing text logs | tap |
+| TAP_REPORTER | Activates/deactivates reporter | `true` |
+| TAP_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing tap logs | `tap` |

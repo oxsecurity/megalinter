@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/openapi.yml -->
 # OPENAPI
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) |
+
 ## Linted files
 
 - File extensions:
@@ -23,8 +29,3 @@
 | OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) |

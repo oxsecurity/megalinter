@@ -9,42 +9,52 @@
 
 ## dartanalyzer documentation
 
-- Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme)
-- See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file)
-  - If custom analysis_options.yml is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml) will be used
-- See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file)
+- Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme){target=_blank}
+- See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file){target=_blank}
+  - If custom `analysis_options.yml` config file is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml){target=_blank} will be used
+- See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file){target=_blank}
 
-[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk)
+[![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | DART_DARTANALYZER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| DART_DARTANALYZER_FILE_NAME | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
+| DART_DARTANALYZER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| DART_DARTANALYZER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| DART_DARTANALYZER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".dart"]` |
+| DART_DARTANALYZER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| DART_DARTANALYZER_CONFIG_FILE | dartanalyzer configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `analysis_options.yml` |
 | DART_DARTANALYZER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| DART_DARTANALYZER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| DART_DARTANALYZER_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use dartanalyzer in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://dart.dev/tools/jetbrains-plugin) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://plugins.jetbrains.com/plugin/6351-dart) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/6351"></iframe> |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/Dart-Code.dart-code){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Optimized for DART based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.dart`
+- File extensions: `.dart`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -96,10 +106,10 @@ For more information, see https://www.dartlang.org/tools/analyzer.
 ```dockerfile
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
-RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-RUN wget --tries=5 https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk
-RUN apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk
-RUN wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
+RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+    && wget --tries=5 https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
+    && apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk \
+    && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
     && chmod +x dart-sdk/bin/dart* \
     && mv dart-sdk/bin/* /usr/bin/ && mv dart-sdk/lib/* /usr/lib/ && mv dart-sdk/include/* /usr/include/ \
     && rm -r dart-sdk/

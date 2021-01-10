@@ -1,0 +1,30 @@
+descriptor_id: KUBERNETES
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+files_sub_directory: kubernetes
+file_extensions:
+  - ".yml"
+  - ".yaml"
+  - ".json"
+file_contains_regex:
+  - 'apiVersion:'
+  - 'kustomize\.config\.k8s\.io'
+  - 'tekton'
+linters:
+  # KUBEVAL
+  - linter_name: kubeval
+    name: KUBERNETES_KUBEVAL
+    linter_url: https://www.kubeval.com/
+    linter_repo: https://github.com/instrumenta/kubeval
+    cli_config_extra_args:
+      - "--strict"
+    version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"
+    examples:
+      - "kubeval -strict myfile.yml"
+    install:
+      dockerfile:
+        - |
+          RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+              && tar xf kubeval-linux-amd64.tar.gz \
+              && cp kubeval /usr/local/bin

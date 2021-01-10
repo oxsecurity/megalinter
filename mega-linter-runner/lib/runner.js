@@ -37,18 +37,29 @@ class MegaLinterRunner {
             return { status: 0, stdout: outputString };
         }
 
-        // Build Mega-Linter docker image name with release version
+        // Run configuration generator
+        if (options.install) {
+            const yeoman = require('yeoman-environment');
+            const env = yeoman.createEnv();
+            env.run(path.resolve(`${__dirname}/../generators/mega-linter`));
+            return { status: 0 }
+        }
+
+        // Build Mega-Linter docker image name with flavor and release version
         const release = (options.release in ["v4", "stable"]) ? "v4" :
             (options.release == "insiders") ? "latest" :
                 (options.release) ? options.release :
                     "v4";
-        const dockerImage = `nvuillam/mega-linter:${release}`;
+        const dockerImageName = (options.flavor === 'all' || options.flavor == null) ?
+            'nvuillam/mega-linter' :
+            `nvuillam/mega-linter-${options.flavor}`
+        const dockerImage = `${dockerImageName}:${release}`;
 
         // Pull docker image
         if (options.nodockerpull !== true) {
             console.info(`Pulling docker image ${dockerImage} ... `);
             console.info("INFO: this operation can be long during the first use of mega-linter-runner");
-            console.info("Tee next runs, it will be immediate (thanks to docker cache !)");
+            console.info("The next runs, it will be immediate (thanks to docker cache !)");
             const spawnResPull = spawnSync(
                 "docker",
                 ["pull", dockerImage],
@@ -80,6 +91,11 @@ class MegaLinterRunner {
         }
         if (options.debug === true) {
             commandArgs.push(...["-e", "LOG_LEVEL=DEBUG"]);
+        }
+        if (options.env) {
+            for (const envVarEqualsValue of options.env) {
+                commandArgs.push(...["-e", envVarEqualsValue])
+            }
         }
         commandArgs.push(dockerImage)
 

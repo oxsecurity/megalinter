@@ -9,29 +9,39 @@
 
 ## php documentation
 
-- Version in Mega-Linter: **7.3.24**
-- Visit [Official Web Site](https://www.php.net)
+- Version in Mega-Linter: **7.3.26**
+- Visit [Official Web Site](https://www.php.net){target=_blank}
 
-[![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src)
+[![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PHP_BUILTIN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| PHP_BUILTIN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| PHP_BUILTIN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| PHP_BUILTIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| PHP_BUILTIN_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".php"]` |
+| PHP_BUILTIN_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| PHP_BUILTIN_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Optimized for PHP based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.php`
+- File extensions: `.php`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -92,29 +102,11 @@ Usage: php [options] [-f] <file> [--] [args...]
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-# Parent descriptor install
-RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-    && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
-    && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
-
-# Linter install
-RUN echo "No additional install for PHP built-in linter"
-```
-
 
 ### Example success log
 
 ```shell
-Results of php linter (version 7.3.24)
+Results of php linter (version 7.3.25)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 -----------------------------------------------
 
@@ -129,7 +121,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 ### Example error log
 
 ```shell
-Results of php linter (version 7.3.24)
+Results of php linter (version 7.3.25)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 -----------------------------------------------
 

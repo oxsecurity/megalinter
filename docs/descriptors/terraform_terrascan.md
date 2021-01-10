@@ -10,30 +10,40 @@
 ## terrascan documentation
 
 - Version in Mega-Linter: **1.2.0**
-- Visit [Official Web Site](https://www.accurics.com/products/terrascan/)
-- See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
-- See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/)
+- Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
+- See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
+- See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 
-[![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan)
+[![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | TERRAFORM_TERRASCAN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| TERRAFORM_TERRASCAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| TERRAFORM_TERRASCAN_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".tf"]` |
+| TERRAFORM_TERRASCAN_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TERRAFORM_TERRASCAN_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 36 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.tf`
+- File extensions: `.tf`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -66,7 +76,7 @@ Flags:
   -c, --config-path string   config file path
   -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
   -x, --log-type string      log output type (console, json) (default "console")
-  -o, --output string        output type (json, yaml, xml) (default "yaml")
+  -o, --output string        output type (human, json, yaml, xml) (default "human")
 
 Use "terrascan [command] --help" for more information about a command.
 ```
@@ -118,10 +128,19 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
               resource_type: aws_instance
               file: terraform_bad_1.tf
               line: 1
+            - rule_name: ec2UsingIMDSv1
+              description: EC2 instances should disable IMDS or require IMDSv2
+              rule_id: AC-AWS-NS-IN-M-1172
+              severity: MEDIUM
+              category: Network Security
+              resource_name: instanceWithNoVpc
+              resource_type: aws_instance
+              file: terraform_bad_1.tf
+              line: 1
         count:
             low: 0
-            medium: 1
+            medium: 2
             high: 0
-            total: 1
+            total: 2
 
 ```

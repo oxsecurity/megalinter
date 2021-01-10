@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/latex.yml -->
 # LATEX
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [chktex](latex_chktex.md) | [LATEX](latex_chktex.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | LATEX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | LATEX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [chktex](latex_chktex.md) | [LATEX](latex_chktex.md) |

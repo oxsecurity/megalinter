@@ -16,6 +16,7 @@ class TextReporter(Reporter):
     def __init__(self, params=None):
         # report_type is simple by default
         self.report_type = "simple"
+        self.processing_order = -5
         super().__init__(params)
 
     def manage_activation(self):
@@ -32,7 +33,7 @@ class TextReporter(Reporter):
             self.is_active = True
 
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
-        status = "[SUCCESS]" if status_code == 0 else "[ERROR]"
+        status = "✅ [SUCCESS]" if status_code == 0 else "❌ [ERROR]"
         if file is not None:
             file_nm = utils.normalize_log_string(file)
             file_text_lines = [f"{status} {file_nm}"]
@@ -71,8 +72,10 @@ class TextReporter(Reporter):
             f"{self.master.status.upper()}-{self.master.name}.log"
         )
         if not os.path.isdir(os.path.dirname(text_file_name)):
-            os.makedirs(os.path.dirname(text_file_name))
+            os.makedirs(os.path.dirname(text_file_name), exist_ok=True)
         with open(text_file_name, "w", encoding="utf-8") as text_file:
             text_file_content = "\n".join(text_report_lines) + "\n"
             text_file.write(text_file_content)
-            logging.debug(f"Generated {self.name} report: {text_file_name}")
+            logging.info(
+                f"[Text Reporter] Generated {self.name} report: {text_file_name}"
+            )

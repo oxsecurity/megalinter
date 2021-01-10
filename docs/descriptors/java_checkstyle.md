@@ -9,45 +9,55 @@
 
 ## checkstyle documentation
 
-- Version in Mega-Linter: **8.37**
-- Visit [Official Web Site](https://checkstyle.sourceforge.io)
-- See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview)
-  - If custom sun_checks.xml is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml) will be used
-- See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter)
-- See [Index of problems detected by checkstyle](https://checkstyle.sourceforge.io/checks.html)
+- Version in Mega-Linter: **8.39**
+- Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
+- See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
+  - If custom `sun_checks.xml` config file is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml){target=_blank} will be used
+- See [How to disable checkstyle rules in files](https://checkstyle.sourceforge.io/config_filters.html#SuppressionCommentFilter){target=_blank}
+- See [Index of problems detected by checkstyle](https://checkstyle.sourceforge.io/checks.html){target=_blank}
 
-[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle)
+[![checkstyle - GitHub](https://gh-card.dev/repos/checkstyle/checkstyle.svg?fullname=)](https://github.com/checkstyle/checkstyle){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | JAVA_CHECKSTYLE_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| JAVA_CHECKSTYLE_FILE_NAME | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
+| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| JAVA_CHECKSTYLE_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".java"]` |
+| JAVA_CHECKSTYLE_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| JAVA_CHECKSTYLE_CONFIG_FILE | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `sun_checks.xml` |
 | JAVA_CHECKSTYLE_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| JAVA_CHECKSTYLE_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| JAVA_CHECKSTYLE_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use checkstyle in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://github.com/jshiell/checkstyle-idea) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [eclipse-cs](https://checkstyle.org/eclipse-cs/#!/) | [Visit Web Site](https://checkstyle.org/eclipse-cs/#!/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [checkstyle-idea](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1065"></iframe> |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-checkstyle](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/shengchen.vscode-checkstyle){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Optimized for JAVA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-java) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.java`
+- File extensions: `.java`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -124,12 +134,16 @@ See http://www.oracle.com/technetwork/java/javase/documentation/index.html for m
 
 - Dockerfile commands :
 ```dockerfile
+# Parent descriptor install
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+# Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
- | grep browser_download_url \
- | grep ".jar" \
- | cut -d '"' -f 4) \
-&& curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
---output /usr/bin/checkstyle
+        | grep browser_download_url \
+        | grep ".jar" \
+        | cut -d '"' -f 4) \
+    && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
+        --output /usr/bin/checkstyle
 
 ```
 
@@ -137,7 +151,7 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 ### Example success log
 
 ```shell
-Results of checkstyle linter (version 8.37)
+Results of checkstyle linter (version 8.38)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
 -----------------------------------------------
 
@@ -150,7 +164,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_che
 ### Example error log
 
 ```shell
-Results of checkstyle linter (version 8.37)
+Results of checkstyle linter (version 8.38)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
 -----------------------------------------------
 

@@ -12,10 +12,11 @@ from megalinter import Linter
 class JsCpdLinter(Linter):
 
     # Perform additional actions and provide additional details in text reporter logs
-    # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, reporter_self):
-        if reporter_self.master.return_code == 0:
-            copy_paste_dir = reporter_self.master.report_folder + "copy-paste"
+        if self.status == "success":
+            copy_paste_dir = (
+                reporter_self.master.report_folder + os.path.sep + "copy-paste"
+            )
             if os.path.isdir(copy_paste_dir):
                 try:
                     shutil.rmtree(copy_paste_dir)

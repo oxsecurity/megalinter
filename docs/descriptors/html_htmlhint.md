@@ -5,46 +5,67 @@
 ## htmlhint documentation
 
 - Version in Mega-Linter: **0.14.2**
-- Visit [Official Web Site](https://htmlhint.com/)
-- See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration)
-  - If custom .htmlhintrc is not found, [.htmlhintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.htmlhintrc) will be used
-- See [How to disable htmlhint rules in files](https://htmlhint.com/docs/user-guide/configuration)
-- See [Index of problems detected by htmlhint](https://htmlhint.com/docs/user-guide/list-rules)
+- Visit [Official Web Site](https://htmlhint.com/){target=_blank}
+- See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
+  - If custom `.htmlhintrc` config file is not found, [.htmlhintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.htmlhintrc){target=_blank} will be used
+- See [How to disable htmlhint rules in files](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
+- See [Index of problems detected by htmlhint](https://htmlhint.com/docs/user-guide/list-rules){target=_blank}
 
-[![HTMLHint - GitHub](https://gh-card.dev/repos/htmlhint/HTMLHint.svg?fullname=)](https://github.com/htmlhint/HTMLHint)
+[![HTMLHint - GitHub](https://gh-card.dev/repos/htmlhint/HTMLHint.svg?fullname=)](https://github.com/htmlhint/HTMLHint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable htmlhint by adding `HTML_HTMLHINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable htmlhint by adding `HTML_HTMLHINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | HTML_HTMLHINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| HTML_HTMLHINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| HTML_HTMLHINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| HTML_HTMLHINT_FILE_NAME | htmlhint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.htmlhintrc` |
+| HTML_HTMLHINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| HTML_HTMLHINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| HTML_HTMLHINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".html", ".htm"]` |
+| HTML_HTMLHINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| HTML_HTMLHINT_CONFIG_FILE | htmlhint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.htmlhintrc` |
 | HTML_HTMLHINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| HTML_HTMLHINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| HTML_HTMLHINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use htmlhint in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-htmlhint](https://github.com/htmlhint/atom-htmlhint) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-htmlhint](https://github.com/htmlhint/brackets-htmlhint) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-htmlhint](https://github.com/htmlhint/SublimeLinter-contrib-htmlhint) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-htmlhint](https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [atom-htmlhint](https://github.com/htmlhint/atom-htmlhint) | [Visit Web Site](https://github.com/htmlhint/atom-htmlhint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-htmlhint](https://github.com/htmlhint/brackets-htmlhint) | [Visit Web Site](https://github.com/htmlhint/brackets-htmlhint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-htmlhint](https://github.com/htmlhint/SublimeLinter-contrib-htmlhint) | [Visit Web Site](https://github.com/htmlhint/SublimeLinter-contrib-htmlhint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-htmlhint](https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/mkaufman.HTMLHint){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Optimized for DART based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a> | [documentation](https://nvuillam.github.io/mega-linter/flavors/documentation/) | Mega-Linter for documentation projects | 33 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-documentation/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-documentation) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 39 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Optimized for GO based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-go/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-go) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Optimized for JAVA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-java) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 42 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Optimized for PHP based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects | 40 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Optimized for RUBY based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ruby/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ruby) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Optimized for RUST based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-rust) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Optimized for Salesforce based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/) | Optimized for SCALA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 36 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.html`
-  - `.htm`
+- File extensions: `.html`, `.htm`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -109,7 +130,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
     
        Config loaded: /action/lib/.automation/.htmlhintrc
     
-    Scanned 1 files, no errors found (19 ms).
+    Scanned 1 files, no errors found (22 ms).
 
 ```
 
@@ -125,191 +146,191 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htm
        Config loaded: /action/lib/.automation/.htmlhintrc
     
        .automation/test/html/html_bad_01.html
-    [37m      L8 |[90m  <div bad='' bad=''></div>[39m
-    [37m                ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L8 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L8 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L9 |[90m  <div bad='' bad=''></div>[39m
-    [37m                ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L9 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L9 |[90m  <div bad='' bad=''></div>[39m
-    [37m                       ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L10 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L10 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L10 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L11 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L11 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L11 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L12 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L12 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L12 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L13 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L13 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L13 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L14 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L14 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L14 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L15 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L15 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L15 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L16 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L16 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L16 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L17 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L17 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L17 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L18 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L18 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L18 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L19 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L19 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L19 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L20 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L20 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L20 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L21 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L21 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L21 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L22 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L22 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L22 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L23 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L23 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L23 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L24 |[90m  <div bad='' bad=''></div>[39m
-    [37m                 ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L24 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mThe value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L24 |[90m  <div bad='' bad=''></div>[39m
-    [37m                        ^ [31mDuplicate of attribute name [ bad ] was found. (attr-no-duplication)[39m
-    [37m      L25 |[90m  <input type="text"></input>[39m
-    [37m                                ^ [31mTag must be paired, no start tag: [ </input> ] (tag-pair)[39m
-    [37m      L26 |[90m  <div class"foo">[39m
-    [37m             ^ [31mSpecial characters must be escaped : [ < ]. (spec-char-escape)[39m
-    [37m      L26 |[90m  <div class"foo">[39m
-    [37m                            ^ [31mSpecial characters must be escaped : [ > ]. (spec-char-escape)[39m
-    [37m      L28 |[90m          </div>[39m
-    [37m                     ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L29 |[90m        </div>[39m
-    [37m                   ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L30 |[90m      </hello>[39m
-    [37m                 ^ [31mTag must be paired, no start tag: [ </hello> ] (tag-pair)[39m
-    [37m      L31 |[90m    </test>[39m
-    [37m               ^ [31mTag must be paired, no start tag: [ </test> ] (tag-pair)[39m
-    [37m      L32 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L38 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L38 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L38 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L44 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L50 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L50 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L50 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L56 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L62 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L62 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L62 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L68 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L74 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                             ^ [31mThe value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L74 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                      ^ [31mThe value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L74 |[90m              <div class='' what='' something=''></div>[39m
-    [37m                                              ^ [31mThe value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)[39m
-    [37m      L80 |[90m  </div>[39m
-    [37m             ^ [31mTag must be paired, no start tag: [ </div> ] (tag-pair)[39m
-    [37m      L81 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L82 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L83 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L84 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L85 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L86 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L87 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L88 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L89 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L90 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L91 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L92 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L93 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L94 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L95 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L96 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
-    [37m      L97 |[90m</bad>[39m
-    [37m           ^ [31mTag must be paired, no start tag: [ </bad> ] (tag-pair)[39m
+          L8 |  <div bad='' bad=''></div>
+                    ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L8 |  <div bad='' bad=''></div>
+                           ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L8 |  <div bad='' bad=''></div>
+                           ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L9 |  <div bad='' bad=''></div>
+                    ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L9 |  <div bad='' bad=''></div>
+                           ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L9 |  <div bad='' bad=''></div>
+                           ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L10 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L10 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L10 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L11 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L11 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L11 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L12 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L12 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L12 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L13 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L13 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L13 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L14 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L14 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L14 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L15 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L15 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L15 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L16 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L16 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L16 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L17 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L17 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L17 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L18 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L18 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L18 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L19 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L19 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L19 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L20 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L20 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L20 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L21 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L21 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L21 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L22 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L22 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L22 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L23 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L23 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L23 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L24 |  <div bad='' bad=''></div>
+                     ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L24 |  <div bad='' bad=''></div>
+                            ^ The value of attribute [ bad ] must be in double quotes. (attr-value-double-quotes)
+          L24 |  <div bad='' bad=''></div>
+                            ^ Duplicate of attribute name [ bad ] was found. (attr-no-duplication)
+          L25 |  <input type="text"></input>
+                                    ^ Tag must be paired, no start tag: [ </input> ] (tag-pair)
+          L26 |  <div class"foo">
+                 ^ Special characters must be escaped : [ < ]. (spec-char-escape)
+          L26 |  <div class"foo">
+                                ^ Special characters must be escaped : [ > ]. (spec-char-escape)
+          L28 |          </div>
+                         ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L29 |        </div>
+                       ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L30 |      </hello>
+                     ^ Tag must be paired, no start tag: [ </hello> ] (tag-pair)
+          L31 |    </test>
+                   ^ Tag must be paired, no start tag: [ </test> ] (tag-pair)
+          L32 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L38 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L38 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L38 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L44 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L50 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L50 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L50 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L56 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L62 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L62 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L62 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L68 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L74 |              <div class='' what='' something=''></div>
+                                 ^ The value of attribute [ class ] must be in double quotes. (attr-value-double-quotes)
+          L74 |              <div class='' what='' something=''></div>
+                                          ^ The value of attribute [ what ] must be in double quotes. (attr-value-double-quotes)
+          L74 |              <div class='' what='' something=''></div>
+                                                  ^ The value of attribute [ something ] must be in double quotes. (attr-value-double-quotes)
+          L80 |  </div>
+                 ^ Tag must be paired, no start tag: [ </div> ] (tag-pair)
+          L81 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L82 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L83 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L84 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L85 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L86 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L87 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L88 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L89 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L90 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L91 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L92 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L93 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L94 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L95 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L96 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
+          L97 |</bad>
+               ^ Tag must be paired, no start tag: [ </bad> ] (tag-pair)
     
-    Scanned 1 files, found 92 errors in 1 files (27 ms)
+    Scanned 1 files, found 92 errors in 1 files (32 ms)
 
 ```

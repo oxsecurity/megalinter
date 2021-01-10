@@ -1,0 +1,24 @@
+descriptor_id: SQL
+descriptor_type: language
+descriptor_flavors:
+  - all_flavors # SQL can be found in any project type
+file_extensions:
+  - ".sql"
+linters:
+  # SQL-LINT
+  - linter_name: sql-lint
+    linter_url: https://github.com/joereynolds/sql-lint
+    linter_rules_url: https://github.com/joereynolds/sql-lint#checks
+    linter_rules_configuration_url: https://sql-lint.readthedocs.io/en/latest/files/configuration.html
+    config_file_name: .sql-config.json
+    cli_config_arg_name: "--config"
+    examples:
+      - "sql-lint myfile.sql"
+      - "sql-lint --config .sql-config.json myfile.sql"
+    install:
+      npm:
+        - sql-lint
+    ide:
+      vim:
+        - name: ale
+          url: https://github.com/dense-analysis/ale/

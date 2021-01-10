@@ -3,6 +3,15 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/php.yml -->
 # PHP
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [php](php_php.md) | [PHP_BUILTIN](php_php.md) |
+| [phpcs](php_phpcs.md) | [PHP_PHPCS](php_phpcs.md) |
+| [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) |
+| [psalm](php_psalm.md) | [PHP_PSALM](php_psalm.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,14 +24,6 @@
 | PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [php](php_php.md) | [PHP_BUILTIN](php_php.md) |
-| [phpcs](php_phpcs.md) | [PHP_PHPCS](php_phpcs.md) |
-| [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) |
-| [psalm](php_psalm.md) | [PHP_PSALM](php_psalm.md) |
 
 ## Behind the scenes
 
@@ -34,8 +35,8 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
+        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+        || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
@@ -54,3 +55,4 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
   - [php7-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-curl)
   - [php7-dom](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-dom)
   - [php7-simplexml](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-simplexml)
+  - [composer](https://pkgs.alpinelinux.org/packages?branch=edge&name=composer)

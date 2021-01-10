@@ -1,0 +1,22 @@
+descriptor_id: GRAPHQL
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors # Can be found in any language project
+file_extensions:
+  - ".graphql"
+linters:
+  # GraphQL Schema Linter
+  - linter_name: graphql-schema-linter
+    name: GRAPHQL_GRAPHQL_SCHEMA_LINTER
+    linter_url: https://github.com/cjoudrey/graphql-schema-linter
+    linter_rules_url: https://github.com/cjoudrey/graphql-schema-linter#built-in-rules
+    linter_rules_configuration_url: https://github.com/cjoudrey/graphql-schema-linter#configuration-file
+    linter_rules_inline_disable_url: https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides
+    linter_megalinter_ref_url: https://github.com/cjoudrey/graphql-schema-linter/pull/272
+    config_file_name: .graphql-schema-linterrc
+    cli_config_arg_name: ''
+    examples:
+      - "graphql-schema-linter myfile.graphql"
+    install:
+      npm:
+        - graphql-schema-linter

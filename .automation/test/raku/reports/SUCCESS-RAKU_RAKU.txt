@@ -1,4 +1,4 @@
-Results of raku linter (version 2020.10)
+Results of raku linter (version 2020.11)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
 -----------------------------------------------
 

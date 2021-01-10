@@ -1,0 +1,19 @@
+descriptor_id: C
+descriptor_type: language
+descriptor_flavors:
+  - dotnet
+file_extensions:
+  - '.c'
+  - '.h'
+linters:
+  # CPPLINT
+  - linter_name: cpplint
+    name: C_CPPLINT
+    linter_url: https://github.com/cpplint/cpplint
+    linter_rules_url: https://google.github.io/styleguide/cppguide.html
+    cli_help_arg_name: "--help"
+    examples:
+      - "cpplint myfile.cpp"
+    install:
+      pip:
+        - cpplint

@@ -5,41 +5,51 @@
 ## clippy documentation
 
 - Version in Mega-Linter: **0.0.212**
-- Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme)
-- See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration)
-- See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints)
-- See [Index of problems detected by clippy](https://rust-lang.github.io/rust-clippy/stable/index.html)
+- Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
+- See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
+- See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
+- See [Index of problems detected by clippy](https://rust-lang.github.io/rust-clippy/stable/index.html){target=_blank}
 
-[![rust-clippy - GitHub](https://gh-card.dev/repos/rust-lang/rust-clippy.svg?fullname=)](https://github.com/rust-lang/rust-clippy)
+[![rust-clippy - GitHub](https://gh-card.dev/repos/rust-lang/rust-clippy.svg?fullname=)](https://github.com/rust-lang/rust-clippy){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | RUST_CLIPPY_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| RUST_CLIPPY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| RUST_CLIPPY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| RUST_CLIPPY_FILE_NAME | clippy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clippy.toml` |
+| RUST_CLIPPY_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| RUST_CLIPPY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| RUST_CLIPPY_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".rs"]` |
+| RUST_CLIPPY_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| RUST_CLIPPY_CONFIG_FILE | clippy configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.clippy.toml` |
 | RUST_CLIPPY_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| RUST_CLIPPY_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| RUST_CLIPPY_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use clippy in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) | [Visit Web Site](https://github.com/rust-lang/atom-ide-rust){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Optimized for RUST based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-rust) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.rs`
+- File extensions: `.rs`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -123,7 +133,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_cli
     
     warning: 1 warning emitted
     
-        Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+        Finished dev [unoptimized + debuginfo] target(s) in 0.24s
 
 ```
 

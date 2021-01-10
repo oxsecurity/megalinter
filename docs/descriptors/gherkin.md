@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/gherkin.yml -->
 # GHERKIN
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -15,8 +21,3 @@
 | GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) |

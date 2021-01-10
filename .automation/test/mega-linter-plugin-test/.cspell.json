@@ -1,0 +1,19 @@
+{
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.automation/generated/**",
+        "**/.git/**",
+        "**/package-lock.json",
+        "lib",
+        "report",
+        ".vscode"
+    ],
+    "language": "en",
+    "version": "0.1",
+    "words": [
+        "JSONLINT",
+        "jsonlint",
+        "myfile"
+    ]
+}

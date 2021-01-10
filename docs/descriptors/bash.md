@@ -3,6 +3,14 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/bash.yml -->
 # BASH
 
+## Linters
+
+| Linter | Configuration key |
+| ------ | ----------------- |
+| [bash-exec](bash_bash_exec.md) | [BASH_EXEC](bash_bash_exec.md) |
+| [shellcheck](bash_shellcheck.md) | [BASH_SHELLCHECK](bash_shellcheck.md) |
+| [shfmt](bash_shfmt.md) | [BASH_SHFMT](bash_shfmt.md) |
+
 ## Linted files
 
 - File extensions:
@@ -18,10 +26,3 @@
 | BASH_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
 | BASH_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [bash-exec](bash_bash_exec.md) | [BASH_EXEC](bash_bash_exec.md) |
-| [shellcheck](bash_shellcheck.md) | [BASH_SHELLCHECK](bash_shellcheck.md) |
-| [shfmt](bash_shfmt.md) | [BASH_SHFMT](bash_shfmt.md) |

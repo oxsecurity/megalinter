@@ -1,0 +1,9 @@
+public class HelloWorld {
+    public static void main(String[] args) {
+<<<<<<<< HEAD
+        System.out.println("Hello Universe!!!");
+=======
+        System.out.println("Hello World!!!");
+>>>>>>>> branch 'master' of https://github.com/UTSA-CS-3443/test-repo.git
+    }
+}

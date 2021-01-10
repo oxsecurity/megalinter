@@ -1,0 +1,30 @@
+descriptor_id: ANSIBLE
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+files_sub_directory: ansible
+file_names_not_ends_with:
+  - "vault.yml"
+  - "vault.yaml"
+  - "galaxy.yml"
+  - "galaxy.yaml"
+file_extensions:
+  - ".yml"
+  - ".yaml"
+linters:
+  # ANSIBLE LINT
+  - linter_name: ansible-lint
+    linter_url: https://ansible-lint.readthedocs.io/en/latest/
+    linter_repo: https://github.com/ansible/ansible-lint
+    linter_rules_url: https://ansible-lint.readthedocs.io/en/latest/default_rules.html
+    linter_rules_configuration_url: https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file
+    linter_rules_inline_disable_url: https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules
+    config_file_name: .ansible-lint.yml
+    cli_config_extra_args:
+      - "-v"
+    examples:
+      - "ansible-lint -v myfile.yml"
+      - "ansible-lint -v -c .ansible-lint.yml myfile.yml"
+    install:
+      apk:
+        - ansible-lint

@@ -7,7 +7,7 @@
 # NOTES: This script is used to upload a Dockerfile to DockerHub
 # under the GitHub organization
 # Its based on being built from a GitHub Action, but could be easily updated
-# To be ran in a different medium.
+# To be ran in a different medium
 #
 # PRE-Requirements:
 # - Dockerfile
@@ -48,7 +48,7 @@ export LOG_TRACE LOG_DEBUG LOG_VERBOSE LOG_NOTICE LOG_WARN LOG_ERROR
 # Source Function Files #
 #########################
 # shellcheck source=/dev/null
-source "${GITHUB_WORKSPACE}/lib/log.sh" # Source the function script(s)
+source "${GITHUB_WORKSPACE}/.automation/log.sh" # Source the function script(s)
 
 ################################################################################
 ############################ FUNCTIONS BELOW ###################################
@@ -351,21 +351,21 @@ BuildImage() {
   #########################
   # Set var to be updated #
   #########################
-  ADDITONAL_URL=''
+  ADDITIONAL_URL=''
 
   ####################################
   # Set the additional container URL #
   ####################################
   if [[ ${REGISTRY} == "Docker" ]]; then
-    ADDITONAL_URL="${GCR_IMAGE_REPO}"
+    ADDITIONAL_URL="${GCR_IMAGE_REPO}"
   elif [[ ${REGISTRY} == "GCR" ]]; then
-    ADDITONAL_URL="${DOCKER_IMAGE_REPO}"
+    ADDITIONAL_URL="${DOCKER_IMAGE_REPO}"
   fi
 
   ###################
   # Build the image #
   ###################
-  docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${ADDITONAL_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
+  docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${BUILD_VERSION}" -t "${ADDITIONAL_URL}:${IMAGE_VERSION}" -f "${DOCKERFILE_PATH}" . 2>&1
 
   #######################
   # Load the error code #
@@ -377,10 +377,10 @@ BuildImage() {
   ##############################
   if [ ${ERROR_CODE} -ne 0 ]; then
     # ERROR
-    fatal "failed to [tag] Version:[${IMAGE_VERSION}] Additonal location Dockerfile!"
+    fatal "failed to [tag] Version:[${IMAGE_VERSION}] Additional location Dockerfile!"
   else
     # SUCCESS
-    info "Successfull [tag] Version:[${IMAGE_VERSION}] of additonal image!"
+    info "Successful [tag] Version:[${IMAGE_VERSION}] of additional image!"
   fi
 
   ########################################################
@@ -390,7 +390,7 @@ BuildImage() {
     ###################
     # Build the image #
     ###################
-    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
+    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
     # Load the error code #
@@ -402,10 +402,10 @@ BuildImage() {
     ##############################
     if [ ${ERROR_CODE} -ne 0 ]; then
       # ERROR
-      fatal "failed to [tag] Version:[${MAJOR_TAG}]Additonal location Dockerfile!"
+      fatal "failed to [tag] Version:[${MAJOR_TAG}]Additional location Dockerfile!"
     else
       # SUCCESS
-      info "Successfull [tag] Version:[${MAJOR_TAG}] of additonal image!"
+      info "Successful [tag] Version:[${MAJOR_TAG}] of additional image!"
     fi
   fi
 }

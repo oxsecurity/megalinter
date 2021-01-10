@@ -6,8 +6,10 @@ Run mega-linter
 
 import megalinter
 
+linter = megalinter.Megalinter({"cli": True})
+
 # Guess who's there ? :)
 megalinter.alpaca()
 
 # Run Mega-Linter
-megalinter.Megalinter({"cli": True}).run()
+linter.run()

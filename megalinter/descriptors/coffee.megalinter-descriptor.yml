@@ -1,0 +1,30 @@
+descriptor_id: COFFEE
+descriptor_type: language
+descriptor_flavors:
+  - javascript
+file_extensions:
+  - ".coffee"
+test_folder: coffeescript
+linters:
+  # Coffee Lint
+  - linter_name: coffeelint
+    linter_url: http://www.coffeelint.org
+    linter_rules_url: http://www.coffeelint.org/#options
+    linter_repo: https://github.com/clutchski/coffeelint
+    linter_rules_configuration_url: http://www.coffeelint.org/#options
+    linter_rules_inline_disable_url: http://www.coffeelint.org/#options
+    config_file_name: .coffee-lint.json
+    cli_config_arg_name: "-f"
+    examples:
+      - "coffeelint myfile.coffee"
+      - "coffeelint -f .coffee-lint.json myfile.coffee"
+    install:
+      npm:
+        - "@coffeelint/cli"
+    ide:
+      atom:
+        - name: linter-coffeelint
+          url: https://atom.io/packages/linter-coffeelint
+      idea:
+        - name: coffeelint
+          url: https://plugins.jetbrains.com/plugin/7723-coffeelint

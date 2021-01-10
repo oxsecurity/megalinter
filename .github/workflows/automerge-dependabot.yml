@@ -27,14 +27,14 @@ jobs:
   automerge:
     name: automerge dependabot
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: github.actor == 'dependabot[bot]' && github.repository == 'nvuillam/mega-linter'
     steps:
       - name: Wait for CI/CT/CD to succeed
         uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-build
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Deploy Docker Image - DEV
+          checkName: Tests + Deploy Docker Image - DEV
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Wait for CI/CT/CD to succeed pt2
@@ -42,7 +42,7 @@ jobs:
         id: wait-for-ci
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Stack linter
+          checkName: Mega-Linter
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: merge

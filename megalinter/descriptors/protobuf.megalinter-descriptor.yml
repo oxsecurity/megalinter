@@ -1,0 +1,34 @@
+descriptor_id: PROTOBUF
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors # Any project can contain Protocol buffer
+file_extensions:
+  - ".proto"
+linters:
+  # Protolint
+  - linter_name: protolint
+    linter_url: https://github.com/yoheimuta/protolint
+    linter_rules_url: https://github.com/yoheimuta/protolint#rules
+    linter_rules_configuration_url: https://github.com/yoheimuta/protolint#rules
+    config_file_name: .protolintrc.yml
+    cli_config_arg_name: "--config_path"
+    cli_lint_extra_args:
+      - "lint"
+    cli_lint_fix_arg_name: "--fix"
+    cli_version_arg_name: "version"
+    help_command_return_code: 2
+    examples:
+      - "protolint lint myfile.proto"
+      - "protolint lint --config_path .protolintrc.yml myfile.proto"
+      - "protolint lint -fix --config_path .protolintrc.yml myfile.proto"
+    install:
+      dockerfile:
+        - FROM yoheimuta/protolint:latest as protolint
+        - COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+    ide:
+      idea:
+        - name: Protocol Buffer Linter
+          url: https://plugins.jetbrains.com/plugin/12641-protocol-buffer-linter
+      vscode:
+        - name: VsCode Protolint
+          url: https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint

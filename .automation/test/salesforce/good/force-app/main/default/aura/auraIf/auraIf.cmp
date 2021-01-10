@@ -1,0 +1,31 @@
+<!-- ISV PACKAGED -->
+<aura:component access="global" description="extended aura:if"> 
+    
+    <aura:handler name="init" value="{!this}" action="{!c.evaluateCondition}" />
+    <aura:handler name="change" value="{!v.conditionObjList}" action="{!c.evaluateCondition}" access="global" description="recalculate condition result" />
+    <aura:handler name="change" value="{!v.elementList}" action="{!c.checkElementList}" access="global" description="Check if elementList contains element" />
+    
+    <aura:attribute name='element' type="String" access="global" description="Element to check if it is included in the list or not"/>
+    <aura:attribute name="elementList" type="List" access="global" description="List of elements to compare"/>
+    
+    <aura:attribute name="conditionObjList" type="Object[]" access="global" description="Condition parameters. Ex: [{whatever:true},{whatever: false}]" />
+    <aura:attribute name="conditionObjPos" type="Integer" access="global" description="Position to use in condition list" />
+    <aura:attribute name="conditionObjKey" type="String" access="global" description="Condition key. ex: 'whatever'" />
+    <aura:attribute name="conditionObjValue" type="String" access="global" description="Condition key. ex: 'whatever'" />
+    
+    <aura:attribute name="conditionMap" type="Map" access="global" description="Condition map parameters. Ex: {'whatever':'yeah'}]" />
+    <aura:attribute name="conditionMapKey" type="String[]" access="global" description="Condition map parameters. Ex: 'whatever']" />
+    <aura:attribute name="conditionMapValue" type="String" access="global" description="Condition map key. ex: 'yeah'" />
+    
+    <aura:attribute name="else" type="Aura.ComponentDefRef[]" access="global" description="Content of else condition ( facet )" />
+    
+    <aura:attribute name="conditionResult" type="String" access="global" description="INTERNAL: condition result" />
+    
+    <aura:if isTrue="{!v.conditionResult}">
+        {!v.body}
+        
+        <aura:set attribute="else">
+            {!v.else}
+        </aura:set>
+    </aura:if>
+</aura:component>

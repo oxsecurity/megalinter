@@ -16,11 +16,19 @@ DOCS_URL_ROOT = URL_ROOT + "/docs"
 DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
 
 
+def log_link(label, url):
+    if url == "":
+        return label
+    else:
+        return f"[{label}]({url})"
+
+
 class GithubCommentReporter(Reporter):
     name = "GITHUB_COMMENT"
     scope = "mega-linter"
 
     github_api_url = "https://api.github.com"
+    github_server_url = "https://github.com"
     gh_url = "https://nvuillam.github.io/mega-linter"
 
     def manage_activation(self):
@@ -35,23 +43,30 @@ class GithubCommentReporter(Reporter):
         # Post comment on GitHub pull request
         if config.get("GITHUB_TOKEN", "") != "":
             github_repo = config.get("GITHUB_REPOSITORY")
+            github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
+            github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
             run_id = config.get("GITHUB_RUN_ID")
             sha = config.get("GITHUB_SHA")
-            action_run_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
-            table_header = ["Descriptor", "Linter", "Found", "Fixed", "Errors"]
+            if run_id is not None:
+                action_run_url = (
+                    f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+                )
+            else:
+                action_run_url = ""
+            table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
             if self.master.show_elapsed_time is True:
                 table_header += ["Elapsed time"]
             table_data_raw = [table_header]
             for linter in self.master.linters:
                 if linter.is_active is True:
-                    emoji = (
-                        ":green_circle:"
+                    status = (
+                        "✅"
                         if linter.status == "success" and linter.return_code == 0
-                        else ":orange_circle:"
+                        else ":warning:"
                         if linter.status != "success" and linter.return_code == 0
-                        else ":red_circle:"
+                        else "❌"
                     )
-                    first_col = f"{emoji} {linter.descriptor_id}"
+                    first_col = f"{status} {linter.descriptor_id}"
                     lang_lower = linter.descriptor_id.lower()
                     linter_name_lower = linter.linter_name.lower().replace("-", "_")
                     linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
@@ -63,14 +78,18 @@ class GithubCommentReporter(Reporter):
                         found = "yes"
                         nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                         errors_cell = (
-                            f"[**yes**]({action_run_url})"
+                            log_link(
+                                f"**{linter.total_number_errors}**", action_run_url
+                            )
                             if linter.number_errors > 0
                             else "no"
                         )
                     else:
                         found = str(len(linter.files))
                         errors_cell = (
-                            f"[**{linter.number_errors}**]({action_run_url})"
+                            log_link(
+                                f"**{linter.total_number_errors}**", action_run_url
+                            )
                             if linter.number_errors > 0
                             else linter.number_errors
                         )
@@ -90,9 +109,17 @@ class GithubCommentReporter(Reporter):
                 headers=table_header, value_matrix=table_data_raw
             )
             table_content = str(writer) + os.linesep if len(table_data_raw) > 1 else ""
-            emoji = ":green_circle:" if self.master.return_code == 0 else ":red_circle:"
+            status = (
+                "✅"
+                if self.master.return_code == 0 and self.master.status == "success"
+                else ":warning:"
+                if self.master.status == "warning"
+                else "❌"
+            )
             status_with_href = (
-                f"[**{self.master.status.upper()}**]({action_run_url}) {emoji}"
+                status
+                + " "
+                + log_link(f"**{self.master.status.upper()}**", action_run_url)
             )
             p_r_msg = (
                 f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}"
@@ -100,16 +127,39 @@ class GithubCommentReporter(Reporter):
                 + os.linesep
             )
             p_r_msg += table_content + os.linesep
-            p_r_msg += (
-                f"See errors details in [**artifact Mega-Linter reports** on "
-                f"GitHub Action page]({action_run_url})" + os.linesep
-            )
+            if action_run_url != "":
+                p_r_msg += (
+                    "See errors details in [**artifact Mega-Linter reports** on "
+                    f"GitHub Action page]({action_run_url})" + os.linesep
+                )
+            else:
+                p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
             if self.master.validate_all_code_base is False:
                 p_r_msg += (
                     "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
                     + "all sources, not only the diff_"
                     + os.linesep
                 )
+            if self.master.flavor_suggestions is not None:
+                p_r_msg += (
+                    os.linesep
+                    + "You could have the same capabilities but better runtime performances"
+                    " if you use a Mega-Linter flavor:" + os.linesep
+                )
+                for suggestion in self.master.flavor_suggestions:
+                    build_version = os.environ.get("BUILD_VERSION", "v4")
+                    action_version = (
+                        "v4"
+                        if "v4" in build_version or len(build_version) > 20
+                        else "insiders"
+                        if build_version == "latest"
+                        else build_version
+                    )
+                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                    p_r_msg += (
+                        f"- [**{action_path}**]({self.gh_url}/flavors/{suggestion['flavor']}/)"
+                        f" ({suggestion['linters_number']} linters)"
+                    )
             logging.debug("\n" + p_r_msg)
             # Post comment on pull request if found
             github_auth = (
@@ -117,10 +167,15 @@ class GithubCommentReporter(Reporter):
                 if config.get("PAT", "") != ""
                 else config.get("GITHUB_TOKEN")
             )
-            g = github.Github(github_auth)
+            g = github.Github(base_url=github_api_url, login_or_token=github_auth)
             repo = g.get_repo(github_repo)
             commit = repo.get_commit(sha=sha)
             pr_list = commit.get_pulls()
+            if pr_list.totalCount == 0:
+                logging.info(
+                    "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
+                )
+                return
             for pr in pr_list:
                 # Ignore if PR is already merged
                 if pr.is_merged():
@@ -144,11 +199,11 @@ class GithubCommentReporter(Reporter):
                         pr.create_issue_comment(p_r_msg)
                     logging.debug(f"Posted Github comment: {p_r_msg}")
                     logging.info(
-                        f"Posted summary as comment on {github_repo} #PR{pr.number}"
+                        f"[GitHub Comment Reporter] Posted summary as comment on {github_repo} #PR{pr.number}"
                     )
                 except github.GithubException as e:
                     logging.warning(
-                        f"Unable to post pull request comment: {str(e)}.\n"
+                        f"[GitHub Comment Reporter] Unable to post pull request comment: {str(e)}.\n"
                         "To enable this function, please :\n"
                         "1. Create a Personal Access Token (https://docs.github.com/en/free-pro-team@"
                         "latest/github/authenticating-to-github/creating-a-personal-access-token)\n"
@@ -157,6 +212,12 @@ class GithubCommentReporter(Reporter):
                         "creating-encrypted-secrets-for-a-repository)"
                         "3. Define PAT={{secrets.PAT}} in your GitHub action environment variables"
                     )
-        # Not in github contest, or env var POST_GITHUB_COMMENT = false
+                except Exception as e:
+                    logging.warning(
+                        f"[GitHub Comment Reporter] Error while posting comment: \n{str(e)}"
+                    )
+        # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
-            logging.debug("Skipped post of pull request comment")
+            logging.info(
+                "[GitHub Comment Reporter] No GitHub Token found, so skipped post of PR comment"
+            )

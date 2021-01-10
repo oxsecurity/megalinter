@@ -14,6 +14,7 @@ class GithubStatusReporter(Reporter):
     scope = "linter"
 
     github_api_url = "https://api.github.com"
+    github_server_url = "https://github.com"
 
     def __init__(self, params=None):
         # Activate GitHub Status by default
@@ -35,18 +36,20 @@ class GithubStatusReporter(Reporter):
             and config.exists("GITHUB_RUN_ID")
         ):
             github_repo = config.get("GITHUB_REPOSITORY")
+            github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
+            github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
             sha = config.get("GITHUB_SHA")
             run_id = config.get("GITHUB_RUN_ID")
             success_msg = "No errors were found in the linting process"
             error_not_blocking = "Errors were detected but are considered not blocking"
-            error_msg = "Errors were detected, please view logs"
-            url = f"{self.github_api_url}/repos/{github_repo}/statuses/{sha}"
+            error_msg = f"Found {self.master.total_number_errors}, please check logs"
+            url = f"{github_api_url}/repos/{github_repo}/statuses/{sha}"
             headers = {
                 "accept": "application/vnd.github.v3+json",
                 "authorization": f"Bearer {config.get('GITHUB_TOKEN')}",
                 "content-type": "application/json",
             }
-            target_url = f"https://github.com/{github_repo}/actions/runs/{run_id}"
+            target_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
             description = (
                 success_msg
                 if self.master.status == "success" and self.master.return_code == 0
@@ -62,17 +65,29 @@ class GithubStatusReporter(Reporter):
                 "description": description,
                 "context": f"--> Lint: {self.master.descriptor_id} with {self.master.linter_name}",
             }
-            response = requests.post(url, headers=headers, json=data)
-            if 200 <= response.status_code < 299:
-                logging.debug(
-                    f"Successfully posted Github Status for {self.master.descriptor_id} with {self.master.linter_name}"
+            try:
+                response = requests.post(url, headers=headers, json=data)
+                if 200 <= response.status_code < 299:
+                    logging.debug(
+                        f"Successfully posted Github Status for {self.master.descriptor_id} "
+                        f"with {self.master.linter_name}"
+                    )
+                else:
+                    logging.warning(
+                        f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
+                        f"with {self.master.linter_name}: {response.status_code}\n"
+                        f"GitHub API response: {response.text}"
+                    )
+            except ConnectionError as e:
+                logging.warning(
+                    f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
+                    f"with {self.master.linter_name}: Connection error {str(e)}"
                 )
-            else:
-                logging.error(
-                    f"Error posting Github Status for {self.master.descriptor_id}"
-                    f"with {self.master.linter_name}: {response.status_code}"
+            except Exception as e:
+                logging.warning(
+                    f"[GitHub Status Reporter] Error posting Status for {self.master.descriptor_id}"
+                    f"with {self.master.linter_name}: Error {str(e)}"
                 )
-                logging.error(f"GitHub API response: {response.text}")
         else:
             logging.debug(
                 f"Skipped post of Github Status for {self.master.descriptor_id} with {self.master.linter_name}"

@@ -1,0 +1,35 @@
+descriptor_id: CLOUDFORMATION
+descriptor_type: tooling_format
+file_extensions:
+  - ".yml"
+  - ".yaml"
+  - ".json"
+file_contains_regex:
+  - 'AWSTemplateFormatVersion'
+  - '(AWS|Alexa|Custom)::'
+linters:
+  # AWS CloudFormation Lint
+  - linter_name: cfn-lint
+    linter_url: https://github.com/martysweet/cfn-lint
+    linter_rules_url: https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do
+    linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png
+    config_file_name: .cfnlintrc.yml
+    cli_config_arg_name: "--config-file"
+    examples:
+      - "cfn-lint myfile.yml"
+      - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
+    install:
+      pip:
+        - cfn-lint
+      npm:
+        - asl-validator
+    ide:
+      atom:
+        - name: atom-cfn-lint
+          url: https://atom.io/packages/atom-cfn-lint
+      idea:
+        - name: cfn-lint
+          url: https://plugins.jetbrains.com/plugin/10973-cfn-lint
+      vscode:
+        - name: vscode-cfn-lint
+          url: https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint

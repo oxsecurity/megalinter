@@ -1,0 +1,22 @@
+descriptor_id: TEKTON
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_extensions:
+  - ".yml"
+  - ".yaml"
+file_contains_regex:
+  - 'apiVersion: tekton'
+linters:
+  # TEKTON-LINT
+  - linter_name: tekton-lint
+    linter_url: https://github.com/IBM/tekton-lint
+    linter_rules_url: https://github.com/IBM/tekton-lint#rules
+    linter_rules_configuration_url: https://github.com/IBM/tekton-lint#configuring-tekton-lint
+    config_file_name: .tektonlintrc.yaml
+    cli_config_arg_name: ""
+    examples:
+      - "tekton-lint myfile.yml"
+    install:
+      npm:
+        - "tekton-lint"

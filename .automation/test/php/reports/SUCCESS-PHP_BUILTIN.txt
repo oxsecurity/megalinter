@@ -1,4 +1,4 @@
-Results of php linter (version 7.3.24)
+Results of php linter (version 7.3.25)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
 -----------------------------------------------
 

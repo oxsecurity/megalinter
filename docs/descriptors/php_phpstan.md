@@ -4,43 +4,53 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.57**
-- Visit [Official Web Site](https://phpstan.org/)
-- See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format)
-  - If custom phpstan.neon is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon) will be used
-- See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs)
+- Version in Mega-Linter: **0.12.65**
+- Visit [Official Web Site](https://phpstan.org/){target=_blank}
+- See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
+  - If custom `phpstan.neon` config file is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
+- See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs){target=_blank}
 
-[![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan)
+[![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | PHP_PHPSTAN_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| PHP_PHPSTAN_FILE_NAME | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpstan.neon` |
+| PHP_PHPSTAN_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| PHP_PHPSTAN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| PHP_PHPSTAN_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".php"]` |
+| PHP_PHPSTAN_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| PHP_PHPSTAN_CONFIG_FILE | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpstan.neon` |
 | PHP_PHPSTAN_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| PHP_PHPSTAN_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| PHP_PHPSTAN_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use phpstan in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-phpstan](https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe> |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-phpstan](https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/calsmurf2904.vscode-phpstan){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Optimized for PHP based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.php`
+- File extensions: `.php`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -75,19 +85,19 @@ Options:
 Help:
   The list command lists all commands:
 
-    php /usr/local/bin/phpstan list
+    php /root/.composer/vendor/bin/phpstan list
 
   You can also display the commands for a specific namespace:
 
-    php /usr/local/bin/phpstan list test
+    php /root/.composer/vendor/bin/phpstan list test
 
   You can also output the information in other formats by using the --format option:
 
-    php /usr/local/bin/phpstan list --format=xml
+    php /root/.composer/vendor/bin/phpstan list --format=xml
 
   It's also possible to get raw list of commands (useful for embedding command runner):
 
-    php /usr/local/bin/phpstan list --raw
+    php /root/.composer/vendor/bin/phpstan list --raw
 ```
 
 ### Installation on mega-linter Docker image
@@ -99,23 +109,25 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-    || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
+        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+        || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc
 
 # Linter install
-RUN phive install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
+RUN composer global require phpstan/phpstan \
+    && composer global config bin-dir --absolute
 
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 ```
 
 
 ### Example success log
 
 ```shell
-Results of phpstan linter (version 0.12.56)
+Results of phpstan linter (version 0.12.58)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
 -----------------------------------------------
 
@@ -132,7 +144,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
 ### Example error log
 
 ```shell
-Results of phpstan linter (version 0.12.56)
+Results of phpstan linter (version 0.12.58)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
 -----------------------------------------------
 

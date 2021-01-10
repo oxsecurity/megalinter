@@ -1,4 +1,4 @@
-Results of golangci-lint linter (version 1.32.2)
+Results of golangci-lint linter (version 1.33.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
 -----------------------------------------------
 

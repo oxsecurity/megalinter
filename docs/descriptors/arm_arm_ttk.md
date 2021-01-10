@@ -4,43 +4,51 @@
 
 ## arm-ttk documentation
 
-- Visit [Official Web Site](https://github.com/Azure/arm-ttk#readme)
-- See [How to configure arm-ttk rules](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests)
-  - If custom .arm-ttk.psd1 is not found, [.arm-ttk.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.arm-ttk.psd1) will be used
+- Visit [Official Web Site](https://github.com/Azure/arm-ttk#readme){target=_blank}
+- See [How to configure arm-ttk rules](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests){target=_blank}
+  - If custom `.arm-ttk.psd1` config file is not found, [.arm-ttk.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.arm-ttk.psd1){target=_blank} will be used
 
-[![arm-ttk - GitHub](https://gh-card.dev/repos/Azure/arm-ttk.svg?fullname=)](https://github.com/Azure/arm-ttk)
+[![arm-ttk - GitHub](https://gh-card.dev/repos/Azure/arm-ttk.svg?fullname=)](https://github.com/Azure/arm-ttk){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable arm-ttk by adding `ARM_ARM_TTK` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable arm-ttk by adding `ARM_ARM_TTK` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable arm-ttk by adding `ARM_ARM_TTK` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable arm-ttk by adding `ARM_ARM_TTK` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | ARM_ARM_TTK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| ARM_ARM_TTK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| ARM_ARM_TTK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| ARM_ARM_TTK_FILE_NAME | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
+| ARM_ARM_TTK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| ARM_ARM_TTK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| ARM_ARM_TTK_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".json"]` |
+| ARM_ARM_TTK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| ARM_ARM_TTK_CONFIG_FILE | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.arm-ttk.psd1` |
 | ARM_ARM_TTK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| ARM_ARM_TTK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| ARM_ARM_TTK_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use arm-ttk in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [ARMTTKExtension](https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [ARMTTKExtension](https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/Sam-Cogan.ARMTTKExtension){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 39 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.json`
-
-- Detected file content:
-  - `schema.management.azure.com`
+- File extensions: `.json`
+- Detected file content (regex): `schema\.management\.azure\.com`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

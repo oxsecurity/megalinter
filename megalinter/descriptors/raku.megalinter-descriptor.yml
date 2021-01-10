@@ -1,0 +1,43 @@
+descriptor_id: RAKU
+descriptor_type: language
+file_extensions:
+  - ".raku"
+  - ".rakumod"
+  - ".rakutest"
+  - ".pm6"
+  - ".pl6"
+  - ".p6"
+linters:
+  # Raku internal linter
+  - class: RakuLinter
+    linter_name: raku
+    linter_url: https://raku.org/
+    linter_repo: https://github.com/rakudo/rakudo
+    linter_image_url: https://raku.org/camelia-logo.png
+    config_file_name: META6.json
+    cli_lint_extra_args:
+      - "-I"
+      - "./lib"
+      - "-c"
+    examples:
+      - "raku -I ./lib -c myfile.raku"
+    install:
+      dockerfile:
+        - |
+          RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+              && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+              && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+              && /opt/rakudo-pkg/bin/add-rakudo-to-path \
+              && source /root/.profile \
+              && /opt/rakudo-pkg/bin/install-zef-as-user
+        - ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
+    ide:
+      atom:
+        - name: language-perl6
+          url: https://atom.io/packages/language-perl6
+      comma:
+        - name: Native Support
+          url: https://commaide.com/
+      vscode:
+        - name: Perl6 Language Support
+          url: https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp

@@ -1,0 +1,52 @@
+descriptor_id: LUA
+descriptor_type: language
+file_extensions:
+  - ".lua"
+linters:
+  # LUACHECK
+  - linter_name: luacheck
+    linter_url: https://luacheck.readthedocs.io
+    linter_repo: https://github.com/luarocks/luacheck
+    linter_rules_url: https://luacheck.readthedocs.io/en/stable/warnings.html
+    linter_rules_configuration_url: https://luacheck.readthedocs.io/en/stable/config.html
+    linter_rules_inline_disable_url: https://luacheck.readthedocs.io/en/stable/inline.html
+    linter_megalinter_ref_url: "no"
+    config_file_name: .luacheckrc
+    cli_config_arg_name: "--config"
+    examples:
+      - "luacheck myfile.lua"
+      - "luacheck --config .chktexrc myfile.lua"
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf - \
+              && cd lua-5.3.5 \
+              && make linux \
+              && make install \
+              && cd .. && rm -r lua-5.3.5/ \
+              && wget --tries=5 https://github.com/cvega/luarocks/archive/v3.3.1-super-linter.tar.gz -O - -q | tar -xzf - \
+              && cd luarocks-3.3.1-super-linter \
+              && ./configure --with-lua-include=/usr/local/include \
+              && make \
+              && make -b install \
+              && cd .. && rm -r luarocks-3.3.1-super-linter/ \
+              && luarocks install luacheck
+    ide:
+      atom:
+        - name: linter-luacheck
+          url: https://atom.io/packages/linter-luacheck
+      brackets:
+        - name: brackets-luacheck
+          url: https://github.com/Malcolm3141/brackets-luacheck
+      emacs:
+        - name: flycheck
+          url: http://www.flycheck.org/en/latest/languages.html#lua
+      sublime:
+        - name: SublimeLinter-luacheck
+          url: https://packagecontrol.io/packages/SublimeLinter-luacheck
+      vim:
+        - name: Syntastic
+          url: https://github.com/vim-syntastic/syntastic/wiki/Lua%3A---luacheck
+      vscode:
+        - name: vscode-luacheck
+          url: https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck

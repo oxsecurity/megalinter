@@ -8,7 +8,7 @@ const exec = util.promisify(childProcess.exec);
 const release = process.env.MEGALINTER_RELEASE || 'insiders'
 const nodockerpull = (process.env.MEGALINTER_NO_DOCKER_PULL === 'true') ? true : false
 
-const MEGA_LINTER = "mega-linter "
+const MEGA_LINTER = "mega-linter-runner "
 
 describe('CLI', function () {
     it('(CLI) Show help', async () => {
@@ -18,8 +18,9 @@ describe('CLI', function () {
             console.error(stderr);
         }
         assert(stdout, "stdout is set");
-        assert(stdout.includes("-r, --release String  Mega-Linter version - default: v4"), 'stdout contains help content');
+        assert(stdout.includes("mega-linter [options]"), 'stdout contains help content');
     })
+
     it('(CLI) Show version', async () => {
         const params = ["--version"];
         const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
@@ -29,12 +30,27 @@ describe('CLI', function () {
         assert(stdout, "stdout is set");
         assert(stdout.includes("mega-linter-runner version"), 'stdout should contains "mega-linter-runner version"');
     })
+
+/*
+Disabled until find a way to run with default options
+    it('(CLI) Run installer', async () => {
+        const params = ["--install"];
+        const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
+        if (stderr) {
+            console.error(stderr);
+        }
+        assert(stdout, "stdout is set");
+    })
+*/
+
     it('(CLI) run on own code base', async () => {
         const params = [
             "--path",
             "./..",
             "--release",
-            release
+            release,
+            "-e",
+            "\"ENABLE=YAML\""
         ];
         if (nodockerpull) {
             params.push("--nodockerpull")

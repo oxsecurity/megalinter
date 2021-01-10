@@ -4,51 +4,69 @@
 
 ## npm-groovy-lint documentation
 
-- Version in Mega-Linter: **8.0.1**
-- Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/)
-- See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration)
-  - If custom .groovylintrc.json is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json) will be used
-- See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source)
-- See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html)
+- Version in Mega-Linter: **8.1.0**
+- Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
+- See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
+  - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json){target=_blank} will be used
+- See [How to disable npm-groovy-lint rules in files](https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source){target=_blank}
+- See [Index of problems detected by npm-groovy-lint](https://codenarc.org/codenarc-rule-index.html){target=_blank}
 
-[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint)
+[![npm-groovy-lint - GitHub](https://gh-card.dev/repos/nvuillam/npm-groovy-lint.svg?fullname=)](https://github.com/nvuillam/npm-groovy-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable npm-groovy-lint by adding `GROOVY_NPM_GROOVY_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `GROOVY_NPM_GROOVY_LINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GROOVY_NPM_GROOVY_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| GROOVY_NPM_GROOVY_LINT_FILE_NAME | npm-groovy-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.groovylintrc.json` |
+| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".groovy", ".gvy", ".gradle", ".nf"]` |
+| GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Jenkinsfile"]` |
+| GROOVY_NPM_GROOVY_LINT_CONFIG_FILE | npm-groovy-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.groovylintrc.json` |
 | GROOVY_NPM_GROOVY_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use npm-groovy-lint in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Groovy Lint](https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Groovy Lint](https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/NicolasVuillamy.vscode-groovy-lint){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a> | [ci_light](https://nvuillam.github.io/mega-linter/flavors/ci_light/) | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML | 11 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ci_light/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ci_light) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Optimized for DART based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a> | [documentation](https://nvuillam.github.io/mega-linter/flavors/documentation/) | Mega-Linter for documentation projects | 33 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-documentation/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-documentation) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 39 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Optimized for GO based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-go/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-go) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Optimized for JAVA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-java) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 42 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Optimized for PHP based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects | 40 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Optimized for RUBY based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ruby/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ruby) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Optimized for RUST based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-rust) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Optimized for Salesforce based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/) | Optimized for SCALA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 36 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.groovy`
-  - `.gvy`
-  - `.gradle`
-  - `.nf`
-
-- File names:
-  - `Jenkinsfile`
+- File extensions: `.groovy`, `.gvy`, `.gradle`, `.nf`
+- File names (regex): `Jenkinsfile`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -116,15 +134,15 @@ Note: command-line arguments have priority on config file properties - default: 
 ### Example success log
 
 ```shell
-Results of npm-groovy-lint linter (version 8.0.1)
+Results of npm-groovy-lint linter (version 8.0.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/groovy/groovy_good_01.groovy
-    [4m.automation/test/groovy/groovy_good_01.groovy[24m
+    .automation/test/groovy/groovy_good_01.groovy
     
     
-    npm-groovy-lint results in [1m1[22m linted files:
+    npm-groovy-lint results in 1 linted files:
     ┌─────────┬───────────┬─────────────┐
     │ (index) │ Severity  │ Total found │
     ├─────────┼───────────┼─────────────┤
@@ -138,17 +156,17 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_n
 ### Example error log
 
 ```shell
-Results of npm-groovy-lint linter (version 8.0.1)
+Results of npm-groovy-lint linter (version 8.0.2)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/groovy/groovy_bad_01.groovy
-    [4m.automation/test/groovy/groovy_bad_01.groovy[24m
-      4     [31merror  [39m  Unexpected input: '$' @ line 4, column 16.  NglParseError           
-      2     [90minfo   [39m  Line ends with whitespace characters  TrailingWhitespace      
+    .automation/test/groovy/groovy_bad_01.groovy
+      4     error    Unexpected input: '$' @ line 4, column 16.  NglParseError           
+      2     info     Line ends with whitespace characters  TrailingWhitespace      
     
     
-    npm-groovy-lint results in [1m1[22m linted files:
+    npm-groovy-lint results in 1 linted files:
     ┌─────────┬───────────┬─────────────┐
     │ (index) │ Severity  │ Total found │
     ├─────────┼───────────┼─────────────┤

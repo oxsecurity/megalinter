@@ -1,0 +1,61 @@
+descriptor_id: SALESFORCE
+descriptor_type: language
+descriptor_flavors:
+  - salesforce
+lint_all_files: true
+install:
+  npm:
+    - sfdx-cli
+linters:
+  # SFDX Scanner
+  - linter_name: sfdx-scanner
+    name: SALESFORCE_SFDX_SCANNER
+    files_sub_directory: force-app
+    linter_text: |
+      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+
+      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_DIRECTORY
+
+      You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
+      See more details in [Help](#help-content)
+    linter_url: https://forcedotcom.github.io/sfdx-scanner/
+    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
+    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
+    linter_rules_configuration_url: https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html
+    linter_rules_inline_disable_url: https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html
+    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    cli_executable: sfdx
+    cli_lint_extra_args:
+      - "scanner:run"
+      - "--target"
+      - "./"
+      - "--violations-cause-error"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "scanner:run"
+    cli_help_extra_commands:
+      - "sfdx scanner:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    examples:
+      - "sfdx scanner:run"
+    install:
+      dockerfile:
+        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+    ide:
+      eclipse:
+        - name: pmd-eclipse-plugin
+          url: https://github.com/pmd/pmd-eclipse-plugin
+      emacs:
+        - name: pmd-emacs
+          url: https://github.com/pmd/pmd-emacs/
+      idea:
+        - name: PMD IntelliJ
+          url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode

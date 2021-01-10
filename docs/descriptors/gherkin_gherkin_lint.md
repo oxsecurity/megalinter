@@ -4,33 +4,42 @@
 
 ## gherkin-lint documentation
 
-- Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme)
-- See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration)
-  - If custom .gherkin-lintrc is not found, [.gherkin-lintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.gherkin-lintrc) will be used
-- See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules)
+- Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme){target=_blank}
+- See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration){target=_blank}
+  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
+- See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules){target=_blank}
 
-[![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint)
+[![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GHERKIN_GHERKIN_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GHERKIN_GHERKIN_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| GHERKIN_GHERKIN_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| GHERKIN_GHERKIN_LINT_FILE_NAME | gherkin-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.gherkin-lintrc` |
+| GHERKIN_GHERKIN_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| GHERKIN_GHERKIN_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".feature"]` |
+| GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| GHERKIN_GHERKIN_LINT_CONFIG_FILE | gherkin-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.gherkin-lintrc` |
 | GHERKIN_GHERKIN_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| GHERKIN_GHERKIN_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| GHERKIN_GHERKIN_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.feature`
+- File extensions: `.feature`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -87,9 +96,9 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_
 -----------------------------------------------
 
 [ERROR] .automation/test/gherkin/gherkin_bad_01.feature
-    [0;4m.automation/test/gherkin/gherkin_bad_01.feature[24m
-      [38;5;243m8 [0m    Scenario name is already used in: .automation/test/gherkin/gherkin_bad_01.feature:4    [38;5;243mno-dupe-scenario-names[0m
-      [38;5;243m11[0m    Trailing spaces are not allowed                                                                  [38;5;243mno-trailing-spaces[0m
-      [38;5;243m12[0m    Multiple empty lines are not allowed                                                             [38;5;243mno-multiple-empty-lines[0m
+    .automation/test/gherkin/gherkin_bad_01.feature
+      8     Scenario name is already used in: .automation/test/gherkin/gherkin_bad_01.feature:4    no-dupe-scenario-names
+      11    Trailing spaces are not allowed                                                                  no-trailing-spaces
+      12    Multiple empty lines are not allowed                                                             no-multiple-empty-lines
 
 ```

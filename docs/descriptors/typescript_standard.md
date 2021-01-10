@@ -10,46 +10,57 @@
 ## standard documentation
 
 - Version in Mega-Linter: **15.0.1**
-- Visit [Official Web Site](https://standardjs.com/)
-- See [Index of problems detected by standard](https://standardjs.com/rules.html)
+- Visit [Official Web Site](https://standardjs.com/){target=_blank}
+- See [Index of problems detected by standard](https://standardjs.com/rules.html){target=_blank}
 
-[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard)
+[![standard - GitHub](https://gh-card.dev/repos/standard/standard.svg?fullname=)](https://github.com/standard/standard){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable standard by adding `TYPESCRIPT_STANDARD` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable standard by adding `TYPESCRIPT_STANDARD` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](../index.md#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_STANDARD` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
+| JAVASCRIPT_DEFAULT_STYLE | For standard to be active, JAVASCRIPT_DEFAULT_STYLE must be `standard` | `standard` |
 | TYPESCRIPT_STANDARD_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| TYPESCRIPT_STANDARD_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| TYPESCRIPT_STANDARD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| TYPESCRIPT_STANDARD_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".ts"]` |
+| TYPESCRIPT_STANDARD_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| TYPESCRIPT_STANDARD_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use standard in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-js-standard](https://atom.io/packages/linter-js-standard) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [standard-formatter](https://atom.io/packages/standard-formatter) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-standard](https://github.com/ishamf/brackets-standard/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [StandardFormat](https://packagecontrol.io/packages/StandardFormat) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-js-standard](https://atom.io/packages/linter-js-standard) | [Visit Web Site](https://atom.io/packages/linter-js-standard){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [linter-js-standard-engine](https://atom.io/packages/linter-js-standard-engine) | [Visit Web Site](https://atom.io/packages/linter-js-standard-engine){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [standard-formatter](https://atom.io/packages/standard-formatter) | [Visit Web Site](https://atom.io/packages/standard-formatter){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/) | [brackets-standard](https://github.com/ishamf/brackets-standard/) | [Visit Web Site](https://github.com/ishamf/brackets-standard/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [native support](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/) | [Visit Web Site](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-standard](https://packagecontrol.io/packages/SublimeLinter-contrib-standard) | [Visit Web Site](https://packagecontrol.io/packages/SublimeLinter-contrib-standard){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [StandardFormat](https://packagecontrol.io/packages/StandardFormat) | [Visit Web Site](https://packagecontrol.io/packages/StandardFormat){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs](vscode-standardjs) | [Visit Web Site](vscode-standardjs){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 42 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.ts`
+- File extensions: `.ts`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->

@@ -1,4 +1,4 @@
-Results of checkstyle linter (version 8.37)
+Results of checkstyle linter (version 8.38)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
 -----------------------------------------------
 

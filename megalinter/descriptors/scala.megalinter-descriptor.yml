@@ -1,0 +1,40 @@
+descriptor_id: SCALA
+descriptor_type: language
+descriptor_flavors:
+  - scala
+file_extensions:
+  - ".scala"
+install:
+  dockerfile:
+    - |
+      RUN curl -fLo coursier https://git.io/coursier-cli && \
+              chmod +x coursier
+linters:
+  # SCALAFIX
+  - linter_name: scalafix
+    linter_url: https://scalacenter.github.io/scalafix/
+    linter_repo: https://github.com/scalacenter/scalafix
+    linter_text: |
+      Scalafix lints and fixes scala files
+
+      - As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
+      - scalafix arguments related to [semantic options](https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/#help-content) can not be used
+    linter_rules_url: https://scalacenter.github.io/scalafix/docs/rules/overview.html
+    linter_rules_configuration_url: https://scalacenter.github.io/scalafix/docs/users/configuration.html
+    linter_rules_inline_disable_url: https://scalacenter.github.io/scalafix/docs/users/suppression.html
+    linter_image_url: https://scalacenter.github.io/scalafix/img/scalacenter2x.png
+    linter_megalinter_ref_url: https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools
+    config_file_name: .scalafix.conf
+    cli_config_arg_name: "--config"
+    cli_lint_extra_args:
+      - "--check"
+      # cli_lint_fix_arg_name: '--megalinter-fix-flag' # Mega-Linter workaround
+      # cli_lint_fix_remove_args:
+      # - "--check"
+    examples:
+      - "scalafix --check myfile.scala"
+      - "scalafix --check --config .scalafix.conf myfile.scala"
+      - "scalafix --config .scalafix.conf myfile.scala" # Fix
+    install:
+      dockerfile:
+        - RUN ./coursier install scalafix --quiet --install-dir /usr/bin

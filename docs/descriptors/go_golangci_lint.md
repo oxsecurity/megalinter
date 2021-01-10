@@ -9,49 +9,59 @@
 
 ## golangci-lint documentation
 
-- Version in Mega-Linter: **1.33.0**
-- Visit [Official Web Site](https://golangci-lint.run/)
-- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file)
-  - If custom .golangci.yml is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml) will be used
-- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint)
-- See [Index of problems detected by golangci-lint](https://golangci-lint.run/usage/linters/)
+- Version in Mega-Linter: **1.35.0**
+- Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
+- See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
+  - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.golangci.yml){target=_blank} will be used
+- See [How to disable golangci-lint rules in files](https://golangci-lint.run/usage/false-positives/#nolint){target=_blank}
+- See [Index of problems detected by golangci-lint](https://golangci-lint.run/usage/linters/){target=_blank}
 
-[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint)
+[![golangci-lint - GitHub](https://gh-card.dev/repos/golangci/golangci-lint.svg?fullname=)](https://github.com/golangci/golangci-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable golangci-lint by adding `GO_GOLANGCI_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable golangci-lint by adding `GO_GOLANGCI_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | GO_GOLANGCI_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| GO_GOLANGCI_LINT_FILE_NAME | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.golangci.yml` |
+| GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| GO_GOLANGCI_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| GO_GOLANGCI_LINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".go"]` |
+| GO_GOLANGCI_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| GO_GOLANGCI_LINT_CONFIG_FILE | golangci-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.golangci.yml` |
 | GO_GOLANGCI_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| GO_GOLANGCI_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| GO_GOLANGCI_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 
 Use golangci-lint in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [go-plus](https://atom.io/packages/go-plus) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-go](https://github.com/fatih/vim-go) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) |
+| <!-- --> | IDE | Extension Name | Install |
+| :--: | ----------------- | -------------- | :------: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [go-plus](https://atom.io/packages/go-plus) | [Visit Web Site](https://atom.io/packages/go-plus){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [flycheck-golandci-lint](https://github.com/weijiangan/flycheck-golangci-lint) | [Visit Web Site](https://github.com/weijiangan/flycheck-golangci-lint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [SpaceMacs](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites) | [Visit Web Site](https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | goland | [goland](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html) | [Visit Web Site](https://www.jetbrains.com/help/go/settings-tools-file-watchers.html){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [SublimeLinter-contrib-golang-cilint](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint) | [Visit Web Site](https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [vim-go](https://github.com/fatih/vim-go) | [Visit Web Site](https://github.com/fatih/vim-go){target=_blank} |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode.Go](https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.Go){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Optimized for GO based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-go/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-go) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.go`
+- File extensions: `.go`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -82,7 +92,7 @@ Available Commands:
   config      Config
   help        Help
   linters     List current linters configuration
-  run         Run this tool in cloud on every github pull request in https://golangci.com for free (public repos)
+  run         Run the linters
   version     Version
 
 Flags:
@@ -109,15 +119,16 @@ ENV GOROOT=/usr/lib/go \
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 # Linter install
-FROM golangci/golangci-lint:latest as golangci-lint
-COPY --from=golangci-lint /usr/bin/golangci-lint /usr/bin/
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+    && golangci-lint --version
+
 ```
 
 
 ### Example success log
 
 ```shell
-Results of golangci-lint linter (version 1.32.2)
+Results of golangci-lint linter (version 1.33.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
 -----------------------------------------------
 
@@ -129,13 +140,13 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golan
 ### Example error log
 
 ```shell
-Results of golangci-lint linter (version 1.32.2)
+Results of golangci-lint linter (version 1.33.0)
 See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/golang/golang_bad_01.go
     level=error msg="[linters context] typechecking error: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if'"
-    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1005: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
+    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1020: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
     level=warning msg="[runner] Can't run linter unused: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
     level=error msg="Running error: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
 

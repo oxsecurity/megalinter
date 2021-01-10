@@ -14,9 +14,18 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
               resource_type: aws_instance
               file: terraform_bad_1.tf
               line: 1
+            - rule_name: ec2UsingIMDSv1
+              description: EC2 instances should disable IMDS or require IMDSv2
+              rule_id: AC-AWS-NS-IN-M-1172
+              severity: MEDIUM
+              category: Network Security
+              resource_name: instanceWithNoVpc
+              resource_type: aws_instance
+              file: terraform_bad_1.tf
+              line: 1
         count:
             low: 0
-            medium: 1
+            medium: 2
             high: 0
-            total: 1
+            total: 2
 

@@ -9,33 +9,55 @@
 
 ## editorconfig-checker documentation
 
-- Visit [Official Web Site](https://editorconfig-checker.github.io/)
-- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration)
-- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding)
+- Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
+- See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
+- See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
 
-[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker)
+[![editorconfig-checker - GitHub](https://gh-card.dev/repos/editorconfig-checker/editorconfig-checker.svg?fullname=)](https://github.com/editorconfig-checker/editorconfig-checker){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](../index.md#activation-and-deactivation)
-- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](../index.md#activation-and-deactivation)
+- Enable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable editorconfig-checker by adding `EDITORCONFIG_EDITORCONFIG_CHECKER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAME | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `["*"]` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE | editorconfig-checker configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.ecrc` |
 | EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- --> | Flavor | Description | Embedded linters | Info |
+| :------: | :----- | :---------- | :--------------: | ---: |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 78 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a> | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/) | Optimized for DART based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a> | [documentation](https://nvuillam.github.io/mega-linter/flavors/documentation/) | Mega-Linter for documentation projects | 33 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-documentation/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-documentation) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 39 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a> | [go](https://nvuillam.github.io/mega-linter/flavors/go/) | Optimized for GO based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-go/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-go) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a> | [java](https://nvuillam.github.io/mega-linter/flavors/java/) | Optimized for JAVA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-java) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a> | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 42 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a> | [php](https://nvuillam.github.io/mega-linter/flavors/php/) | Optimized for PHP based projects | 37 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects | 40 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a> | [ruby](https://nvuillam.github.io/mega-linter/flavors/ruby/) | Optimized for RUBY based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ruby/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ruby) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a> | [rust](https://nvuillam.github.io/mega-linter/flavors/rust/) | Optimized for RUST based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-rust) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a> | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Optimized for Salesforce based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a> | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/) | Optimized for SCALA based projects | 34 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 36 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- Activated only if file is found: `.editorconfig`
-- File extensions:
-  - `*`
+- Activated only if one of these files is found: `.editorconfig`
+- File extensions: `*`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -51,6 +73,7 @@ editorconfig-checker myfile.js
 
 ```shell
 USAGE:
+
   -config string
       config
   -debug
@@ -85,16 +108,13 @@ USAGE:
       print debugging information
   -version
       print the version number
+
 ```
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-FROM mstruebing/editorconfig-checker:latest as editorconfig-checker
-COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
-```
-
+- NPM packages (node.js):
+  - [editorconfig-checker](https://www.npmjs.com/package/editorconfig-checker)
 
 ### Example success log
 
@@ -116,11 +136,11 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorco
 -----------------------------------------------
 
 [ERROR] .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext
-    [33;1m.automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:[33;0m
-    [31;1m	1: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m	2: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m	3: Wrong amount of left-padding spaces(want multiple of 4)[33;0m
-    [31;1m
-    3 errors found[33;0m
+    .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext:
+    	1: Wrong amount of left-padding spaces(want multiple of 4)
+    	2: Wrong amount of left-padding spaces(want multiple of 4)
+    	3: Wrong amount of left-padding spaces(want multiple of 4)
+    
+    3 errors found
 
 ```
