@@ -1472,9 +1472,12 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}CHANGELOG.md", target_file_changelog,
     )
     # Copy CONTRIBUTING.md into /docs/contributing.md
-    target_file_contributing = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}contributing.md"
+    target_file_contributing = (
+        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}contributing.md"
+    )
     copy_md_file(
-        f"{REPO_HOME}{os.path.sep}.github{os.path.sep}CONTRIBUTING.md", target_file_contributing,
+        f"{REPO_HOME}{os.path.sep}.github{os.path.sep}CONTRIBUTING.md",
+        target_file_contributing,
     )
     # Copy LICENSE into /docs/licence.md
     target_file_license = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}license.md"
