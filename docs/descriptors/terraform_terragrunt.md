@@ -24,7 +24,7 @@
 | TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | TERRAFORM_TERRAGRUNT_CONFIG_FILE | terragrunt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `terragrunt.hcl` |
 | TERRAFORM_TERRAGRUNT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| TERRAFORM_TERRAGRUNT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## Mega-Linter Flavours
 

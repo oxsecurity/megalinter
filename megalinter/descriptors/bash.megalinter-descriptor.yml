@@ -71,6 +71,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
   # SHFMT
   - linter_name: shfmt
+    is_formatter: true
     linter_url: https://github.com/mvdan/sh
     linter_megalinter_ref_url: "no"
     name: BASH_SHFMT

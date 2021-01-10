@@ -26,7 +26,7 @@
 | YAML_YAMLLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | YAML_YAMLLINT_CONFIG_FILE | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.yaml-lint.yml` |
 | YAML_YAMLLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| YAML_YAMLLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| YAML_YAMLLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

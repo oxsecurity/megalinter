@@ -31,7 +31,7 @@
 | OPENAPI_SPECTRAL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | OPENAPI_SPECTRAL_CONFIG_FILE | spectral configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.openapirc.yml` |
 | OPENAPI_SPECTRAL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| OPENAPI_SPECTRAL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| OPENAPI_SPECTRAL_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

@@ -4,6 +4,9 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Core
+  - If the linter is a formatter, errors are not considered as blocking errors by default
+
 - Linters
   - Add **prettier** to format Javascript and Typescript. **standard** remains default
 

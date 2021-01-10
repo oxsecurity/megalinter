@@ -25,7 +25,7 @@
 | RST_RSTCHECK_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | RST_RSTCHECK_CONFIG_FILE | rstcheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.rstcheck.cfg` |
 | RST_RSTCHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| RST_RSTCHECK_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| RST_RSTCHECK_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

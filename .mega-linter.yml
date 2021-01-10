@@ -16,7 +16,8 @@ DISABLE_LINTERS:
   - DOCKERFILE_HADOLINT
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml)'
-BASH_FILTER_REGEX_EXCLUDE: (lib)
+BASH_FILTER_REGEX_EXCLUDE: "(lib)"
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
 SHOW_ELAPSED_TIME: true

@@ -26,7 +26,7 @@
 | PHP_PHPCS_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PHP_PHPCS_CONFIG_FILE | phpcs configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `phpcs.xml` |
 | PHP_PHPCS_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| PHP_PHPCS_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| PHP_PHPCS_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

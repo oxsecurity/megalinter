@@ -22,7 +22,7 @@
 | CPP_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | CPP_CPPLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".cpp", ".h", ".cc", ".hpp", ".cxx", ".cu", ".hxx", ".c++", ".hh", ".h++", ".cuh"]` |
 | CPP_CPPLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| CPP_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| CPP_CPPLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## Mega-Linter Flavours
 

@@ -33,7 +33,7 @@
 | PYTHON_ISORT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | PYTHON_ISORT_CONFIG_FILE | isort configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.isort.cfg` |
 | PYTHON_ISORT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| PYTHON_ISORT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| PYTHON_ISORT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
 
 ## IDE Integration
 

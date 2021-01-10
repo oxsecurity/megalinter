@@ -46,6 +46,7 @@ class Linter:
         )
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
+        self.is_formatter = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         # ex: https://eslint.org/
         self.linter_url = (
@@ -120,6 +121,7 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
+        self.disable_errors = True if self.is_formatter is True else False
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
@@ -239,7 +241,6 @@ class Linter:
 
             # Runtime items
             self.files = []
-            self.disable_errors = False
             self.try_fix = False
             self.status = "success"
             self.return_code = 0

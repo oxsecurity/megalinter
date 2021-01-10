@@ -27,7 +27,7 @@
 | SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]` |
 | SNAKEMAKE_SNAKEFMT_CONFIG_FILE | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.snakefmt.toml` |
 | SNAKEMAKE_SNAKEFMT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
 
 ## Mega-Linter Flavours
 

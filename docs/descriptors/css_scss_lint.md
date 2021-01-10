@@ -30,7 +30,7 @@
 | CSS_SCSS_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | CSS_SCSS_LINT_CONFIG_FILE | scss-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.scss-lint.yml` |
 | CSS_SCSS_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| CSS_SCSS_LINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| CSS_SCSS_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## IDE Integration
 

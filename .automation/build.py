@@ -824,8 +824,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     ],
                 ]
             )
+        default_disable_errors = "true" if linter.is_formatter is True else "false"
         linter_doc_md += [
-            f"| {linter.name}_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |"
+            f"| {linter.name}_DISABLE_ERRORS | Run linter but consider errors as warnings |"
+            f" `{default_disable_errors}` |"
         ]
         if linter.files_sub_directory is not None:
             linter_doc_md += [
@@ -1468,6 +1470,19 @@ def finalize_doc_build():
     target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
     copy_md_file(
         f"{REPO_HOME}{os.path.sep}CHANGELOG.md", target_file_changelog,
+    )
+    # Copy CONTRIBUTING.md into /docs/contributing.md
+    target_file_contributing = (
+        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}contributing.md"
+    )
+    copy_md_file(
+        f"{REPO_HOME}{os.path.sep}.github{os.path.sep}CONTRIBUTING.md",
+        target_file_contributing,
+    )
+    # Copy LICENSE into /docs/licence.md
+    target_file_license = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}license.md"
+    copy_md_file(
+        f"{REPO_HOME}{os.path.sep}LICENSE", target_file_license,
     )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
     target_file_readme_runner = (
