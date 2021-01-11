@@ -69,7 +69,7 @@ dotenv-linter myfile.env
 ```
 
 ```shell
-dotenv-linter --fix myfile.env
+dotenv-linter fix myfile.env
 ```
 
 
