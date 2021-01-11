@@ -62,6 +62,7 @@ linters:
     cli_lint_extra_args:
       - "--frail"
     cli_lint_fix_arg_name: "-o"
+    test_folder: markdown_remark
     test_variables:
       MARKDOWN_DEFAULT_STYLE: remark-lint
     examples:
