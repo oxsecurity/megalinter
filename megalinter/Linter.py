@@ -272,8 +272,6 @@ class Linter:
             self.is_active = False
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
-        elif len(self.activation_rules) > 0:
-            self.is_active = utils.check_activation_rules(self.activation_rules, self)
         elif (
             config.exists("VALIDATE_" + self.name)
             and config.get("VALIDATE_" + self.name) == "false"
@@ -294,6 +292,9 @@ class Linter:
             and config.get("VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
+        # check activation rules
+        if self.is_active is True and len(self.activation_rules) > 0:
+            self.is_active = utils.check_activation_rules(self.activation_rules, self)
 
     # Manage configuration variables
     def load_config_vars(self):

@@ -106,7 +106,7 @@ linters:
   - linter_name: markdown-table-prettify
     is_formatter: true
     linter_text: |
-      markdown-table-prettify detects wrongly formatted markdown tables and can autotomatically reformat them
+      markdown-table-prettify detects wrongly formatted markdown tables and can automatically reformat them
     linter_url: https://www.npmjs.com/package/markdown-table-prettify
     linter_repo: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt
     cli_lint_extra_args:
@@ -114,6 +114,7 @@ linters:
     cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--check"
+    linter_version_cache: "0.0.0"  # Not implemented yet on markdown-table-prettify
     examples:
       - "markdown-table-prettify --check myfile.md" # Check only
       - "markdown-table-prettify myfile.md" # Apply formatting
