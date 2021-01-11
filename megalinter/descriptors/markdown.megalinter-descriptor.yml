@@ -8,6 +8,11 @@ linters:
   # MarkdownLint
   - linter_name: markdownlint
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: MARKDOWN_DEFAULT_STYLE
+        expected_value: markdownlint
+        default_value: markdownlint
     linter_url: https://github.com/DavidAnson/markdownlint
     linter_rules_url: https://github.com/DavidAnson/markdownlint#rules--aliases
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
@@ -37,24 +42,14 @@ linters:
       vscode:
         - name: vscode-markdownlint
           url: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
-  # Markdown Link Check
-  - linter_name: markdown-link-check
-    linter_url: https://github.com/tcort/markdown-link-check
-    linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
-    linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
-    linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
-    config_file_name: .markdown-link-check.json
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
-    linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
-    examples:
-      - "markdown-link-check myfile.md"
-      - "markdown-link-check -c .markdown-link-check.json myfile.md"
-    install:
-      npm:
-        - markdown-link-check
   # remark-lint
   - linter_name: remark-lint
+    is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: MARKDOWN_DEFAULT_STYLE
+        expected_value: remark-lint
+        default_value: markdownlint
     linter_url: https://remark.js.org/
     linter_repo: https://github.com/remarkjs/remark-lint
     linter_image_url: https://raw.githubusercontent.com/remarkjs/remark-lint/02295bc/logo.svg?sanitize=true
@@ -65,6 +60,8 @@ linters:
     cli_executable: remark
     cli_config_arg_name: "--rc-path"
     cli_lint_fix_arg_name: "-o"
+    test_variables:
+      MARKDOWN_DEFAULT_STYLE: remark-lint
     examples:
       - "remark myfile.md"
       - "remark --rc-path .remarkrc myfile.md"
@@ -86,3 +83,19 @@ linters:
       vscode:
         - name: vscode-remark-lint
           url: https://github.com/drewbourne/vscode-remark-lint
+  # Markdown Link Check
+  - linter_name: markdown-link-check
+    linter_url: https://github.com/tcort/markdown-link-check
+    linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
+    linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
+    linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
+    config_file_name: .markdown-link-check.json
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
+    linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
+    examples:
+      - "markdown-link-check myfile.md"
+      - "markdown-link-check -c .markdown-link-check.json myfile.md"
+    install:
+      npm:
+        - markdown-link-check

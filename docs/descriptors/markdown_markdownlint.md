@@ -22,6 +22,7 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
+| MARKDOWN_DEFAULT_STYLE | For markdownlint to be active, MARKDOWN_DEFAULT_STYLE must be `markdownlint` | `markdownlint` |
 | MARKDOWN_MARKDOWNLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
 | MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |

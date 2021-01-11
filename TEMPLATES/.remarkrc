@@ -1,7 +1,5 @@
 {
-    "remarkConfig": {
-        "plugins": [
-            "preset-lint-recommended"
-        ]
-    }
+  "plugins": [
+    "remark-preset-lint-recommended"
+  ]
 }

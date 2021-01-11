@@ -21,6 +21,7 @@
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
+| MARKDOWN_DEFAULT_STYLE | For remark-lint to be active, MARKDOWN_DEFAULT_STYLE must be `remark-lint` | `markdownlint` |
 | MARKDOWN_REMARK_LINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
 | MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)` | Include every file |
 | MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
@@ -28,7 +29,7 @@
 | MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | MARKDOWN_REMARK_LINT_CONFIG_FILE | remark-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.remarkrc` |
 | MARKDOWN_REMARK_LINT_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| MARKDOWN_REMARK_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
+| MARKDOWN_REMARK_LINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `true` |
 
 ## IDE Integration
 
