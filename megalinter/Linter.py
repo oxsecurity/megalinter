@@ -46,13 +46,15 @@ class Linter:
         )
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
+        self.is_formatter = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         # ex: https://eslint.org/
         self.linter_url = (
             "Field 'linter_url' must be overridden at custom linter class level"
         )
         self.test_folder = None  # Override only if different from language.lowercase()
-
+        self.activation_rules = []
+        self.test_variables = {}
         # Array of strings defining file extensions. Ex: ['.js','.cjs', '']
         self.file_extensions = []
         # Array of file name regular expressions. Ex: [Dockerfile(-.+)?]
@@ -62,7 +64,7 @@ class Linter:
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_names_not_ends_with = []
-        self.active_only_if_file_found = None
+        self.active_only_if_file_found = []
         self.lint_all_files = False
         self.lint_all_other_linters_files = False
 
@@ -87,6 +89,8 @@ class Linter:
         )  # Arguments from config, defined in <LINTER_KEY>_ARGUMENTS variable
         # Extra arguments to send to cli everytime, just before file argument
         self.cli_lint_extra_args_after = []
+        self.cli_lint_errors_count = None
+        self.cli_lint_errors_regex = None
         # Default arg name for configurations to use in linter version call
         self.cli_version_arg_name = "--version"
         self.cli_version_extra_args = []  # Extra arguments to send to cli everytime
@@ -118,6 +122,7 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
+        self.disable_errors = True if self.is_formatter is True else False
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
@@ -147,7 +152,9 @@ class Linter:
             self.show_elapsed_time = params.get("show_elapsed_time", False)
             # Manage apply fixes flag on linter
             param_apply_fixes = params.get("apply_fixes", "none")
-            if param_apply_fixes == "all" or (
+            if self.cli_lint_fix_arg_name is None:
+                self.apply_fixes = False
+            elif param_apply_fixes == "all" or (
                 isinstance(param_apply_fixes, bool) and param_apply_fixes is True
             ):
                 self.apply_fixes = True
@@ -211,26 +218,37 @@ class Linter:
                     self.workspace + os.path.sep + self.files_sub_directory
                 ):
                     self.is_active = False
+                    logging.debug(
+                        f"[Activation] {self.name} has been set inactive, as subdirectory has not been found:"
+                        f" {self.files_sub_directory}"
+                    )
 
             # Some linters require a file to be existing, else they are deactivated ( ex: .editorconfig )
-            if self.active_only_if_file_found is not None:
-                found_files = glob.glob(
-                    f"{self.workspace}/**/{self.active_only_if_file_found}",
-                    recursive=True,
-                )
-                if len(found_files) == 0:
+            if len(self.active_only_if_file_found) > 0:
+                is_found = False
+                for file_to_check in self.active_only_if_file_found:
+                    found_files = glob.glob(
+                        f"{self.workspace}/**/{file_to_check}", recursive=True,
+                    )
+                    if len(found_files) > 0:
+                        is_found = True
+                if is_found is False:
                     self.is_active = False
+                    logging.debug(
+                        f"[Activation] {self.name} has been set inactive, as none of these files has been found:"
+                        f" {str(self.active_only_if_file_found)}"
+                    )
 
             # Load Mega-Linter reporters
             self.load_reporters()
 
             # Runtime items
             self.files = []
-            self.disable_errors = False
             self.try_fix = False
             self.status = "success"
             self.return_code = 0
             self.number_errors = 0
+            self.total_number_errors = 0
             self.number_fixed = 0
             self.files_lint_results = []
             self.start_perf = None
@@ -239,6 +257,10 @@ class Linter:
 
     # Enable or disable linter
     def manage_activation(self, params):
+        # Default value is false in case ENABLE variables are used
+        if len(params["enable_descriptors"]) > 0 or len(params["enable_linters"]) > 0:
+            self.is_active = False
+        # Activate or not the linter
         if self.name in params["enable_linters"]:
             self.is_active = True
         elif self.name in params["disable_linters"]:
@@ -250,6 +272,8 @@ class Linter:
             self.is_active = False
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
+        elif len(self.activation_rules) > 0:
+            self.is_active = utils.check_activation_rules(self.activation_rules, self)
         elif (
             config.exists("VALIDATE_" + self.name)
             and config.get("VALIDATE_" + self.name) == "false"
@@ -274,7 +298,12 @@ class Linter:
     # Manage configuration variables
     def load_config_vars(self):
         # Configuration file name: try first NAME + _FILE_NAME, then LANGUAGE + _FILE_NAME
-        if config.exists(self.name + "_FILE_NAME"):
+        # _CONFIG_FILE = _FILE_NAME (config renaming but keeping config ascending compatibility)
+        if config.exists(self.name + "_CONFIG_FILE"):
+            self.config_file_name = config.get(self.name + "_CONFIG_FILE")
+        elif config.exists(self.descriptor_id + "_CONFIG_FILE"):
+            self.config_file_name = config.get(self.descriptor_id + "_CONFIG_FILE")
+        elif config.exists(self.name + "_FILE_NAME"):
             self.config_file_name = config.get(self.name + "_FILE_NAME")
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
@@ -382,15 +411,17 @@ class Linter:
         if self.cli_lint_mode == "file":
             index = 0
             for file in self.files:
+                file_status = "success"
                 index = index + 1
                 return_code, stdout = self.process_linter(file)
-                if return_code == 0:
-                    status = "success"
-                else:
-                    status = "error"
+                file_errors_number = 0
+                if return_code > 0:
+                    file_status = "error"
                     self.status = "error"
                     self.return_code = 1
-                    self.number_errors = self.number_errors + 1
+                    self.number_errors += 1
+                    file_errors_number = self.get_total_number_errors(stdout)
+                    self.total_number_errors += file_errors_number
                 if self.try_fix is True:
                     fixed = utils.check_updated_file(file, self.github_workspace)
                 else:
@@ -402,9 +433,10 @@ class Linter:
                     {
                         "file": file,
                         "status_code": return_code,
-                        "status": status,
+                        "status": file_status,
                         "stdout": stdout,
                         "fixed": fixed,
+                        "errors_number": file_errors_number,
                     }
                 ]
                 # Update reports with file result
@@ -422,7 +454,8 @@ class Linter:
             if return_code != 0:
                 self.status = "error"
                 self.return_code = 1
-                self.number_errors = self.number_errors + 1
+                self.number_errors += 1
+                self.total_number_errors += self.get_total_number_errors(stdout)
             # Update reports with file result
             for reporter in self.reporters:
                 reporter.add_report_item(
@@ -448,61 +481,24 @@ class Linter:
         )
 
     def log_file_filters(self):
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "filter_regex_include",
-            self.filter_regex_include,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "filter_regex_exclude",
-            self.filter_regex_exclude,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "files_sub_directory",
-            self.files_sub_directory,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "lint_all_other_linters_files",
-            self.lint_all_other_linters_files,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_extensions",
-            self.file_extensions,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_names_regex",
-            self.file_names_regex,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_names_not_ends_with",
-            self.file_names_not_ends_with,
-        )
-        logging.debug(
-            "%s linter filter: %s: %s",
-            self.name,
-            "file_contains_regex",
-            self.file_contains_regex,
-        )
+        log_object = {
+            "name": self.name,
+            "filter_regex_include": self.filter_regex_include,
+            "filter_regex_exclude": self.filter_regex_exclude,
+            "files_sub_directory": self.files_sub_directory,
+            "lint_all_files": self.lint_all_files,
+            "lint_all_other_linters_files": self.lint_all_other_linters_files,
+            "file_extensions": self.file_extensions,
+            "file_names_regex": self.file_names_regex,
+            "file_names_not_ends_with": self.file_names_not_ends_with,
+            "file_contains_regex": self.file_contains_regex,
+        }
+        logging.debug("[Filters] " + str(log_object))
 
     # Collect all files that will be analyzed by the current linter
     def collect_files(self, all_files):
         self.log_file_filters()
-
         # Filter all files to keep only the ones matching with the current linter
-
         self.files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
@@ -514,7 +510,6 @@ class Linter:
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
         )
-
         logging.debug(
             "%s linter files after applying linter filters:\n- %s",
             self.name,
@@ -615,7 +610,9 @@ class Linter:
             logging.warning(
                 "Unable to get version for linter [" + self.linter_name + "]"
             )
-            logging.warning(" ".join(command) + " returned output: " + output)
+            logging.warning(
+                " ".join(command) + f" returned output: ({str(return_code)}) " + output
+            )
             return "ERROR"
         else:
             return output
@@ -649,10 +646,18 @@ class Linter:
 
         if return_code != self.help_command_return_code or output.strip() == "":
             logging.warning("Unable to get help for linter [" + self.linter_name + "]")
-            logging.warning(str(command) + " returned output: " + output)
+            logging.warning(f"{str(command)} returned output: ({return_code}) {output}")
             return "ERROR"
         else:
             return output
+
+    # noinspection PyMethodMayBeStatic
+    def get_regex(self, reg):
+        if reg is None:
+            raise Exception("You must define a regex !")
+        if type(reg) == str:
+            reg = re.compile(reg)
+        return reg
 
     ########################################
     # Methods that can be overridden below #
@@ -685,19 +690,55 @@ class Linter:
             cmd += self.cli_config_extra_args
         # Add other lint cli arguments after other arguments if defined
         cmd += self.cli_lint_extra_args_after
-        # Append file in command arguments
-        if file is not None:
-            cmd += [file]
-        # If mode is "list of files", append all files as cli arguments
-        elif self.cli_lint_mode == "list_of_files":
-            cmd += self.files
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
         if self.try_fix is True and "--megalinter-fix-flag" in cmd:
             for arg in self.cli_lint_fix_remove_args:
                 cmd.remove(arg)
             cmd.remove("--megalinter-fix-flag")
+        # Append file in command arguments
+        if file is not None:
+            cmd += [file]
+        # If mode is "list of files", append all files as cli arguments
+        elif self.cli_lint_mode == "list_of_files":
+            cmd += self.files
         return cmd
+
+    # Find number of errors in linter stdout log
+    def get_total_number_errors(self, stdout):
+        total_errors = 0
+        # Get number with a single regex.
+        if self.cli_lint_errors_count == "regex_number":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            m = re.search(reg, stdout)
+            if m:
+                total_errors = int(m.group(1))
+        # Count the number of occurrences of a regex corresponding to an error in linter log
+        elif self.cli_lint_errors_count == "regex_count":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            total_errors = len(re.findall(reg, stdout))
+        # Sum of all numbers found in linter logs with a regex
+        elif self.cli_lint_errors_count == "regex_sum":
+            reg = self.get_regex(self.cli_lint_errors_regex)
+            matches = re.findall(reg, stdout)
+            total_errors = sum(int(m) for m in matches)
+        # Count all lines of the linter log
+        elif self.cli_lint_errors_count == "total_lines":
+            total_errors = sum(
+                not line.isspace() and line != "" for line in stdout.splitlines()
+            )
+        # Return result if found, else default value according to status
+        if total_errors > 0:
+            return total_errors
+        if self.cli_lint_errors_count is not None:
+            logging.warning(
+                f"Unable to get number of errors with {self.cli_lint_errors_count} "
+                f"and {str(self.cli_lint_errors_regex)}"
+            )
+        if self.status == "success":
+            return 0
+        if self.status == "error":
+            return 1
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):

@@ -1,0 +1,26 @@
+descriptor_id: VBDOTNET
+descriptor_label: "Visual Basic .NET"
+descriptor_type: language
+descriptor_flavors:
+  - dotnet
+file_extensions:
+  - ".vb"
+linters:
+  # DOTNET FORMAT
+  - class: DotnetFormatLinter
+    linter_name: dotnet-format
+    is_formatter: true
+    linter_url: https://github.com/dotnet/format
+    linter_image_url: https://user-images.githubusercontent.com/9797472/61659851-6bbdc880-ac7d-11e9-95f7-d30c7de1a18a.png
+    cli_lint_extra_args:
+      - "--folder"
+      - "--check"
+      - "--exclude"
+      - "/"
+      - "--include"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround to allow fix
+    cli_lint_fix_remove_args:
+      - "--check"
+    examples:
+      - "dotnet-format --folder --check --exclude / --include myfile.vb"
+      - "dotnet-format --folder --exclude / --include myfile.vb"

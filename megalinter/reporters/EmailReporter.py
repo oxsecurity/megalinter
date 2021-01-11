@@ -28,7 +28,7 @@ class EmailReporter(Reporter):
         if config.get("EMAIL_REPORTER", "true") != "true":
             self.is_active = False
         elif config.get("EMAIL_REPORTER_EMAIL", "none") == "none":
-            logging.warning(
+            logging.info(
                 "To receive reports as email, please set variable EMAIL_REPORTER_EMAIL"
             )
             self.is_active = False
@@ -56,7 +56,7 @@ class EmailReporter(Reporter):
 
         # Skip report if SMTP password is not set
         if smtp_password == "":
-            logging.warning(
+            logging.info(
                 "[Email Reporter] No mail sent, as EMAIL_REPORTER_SMTP_PASSWORD configuration variable is missing"
             )
             return

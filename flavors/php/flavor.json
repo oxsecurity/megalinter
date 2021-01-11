@@ -3,7 +3,7 @@
         "GIT",
         "PHP"
     ],
-    "label": "Mega-Linter optimized for PHP based projects",
+    "label": "Optimized for PHP based projects",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
@@ -21,9 +21,12 @@
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
         "JSON_JSONLINT",
+        "JSON_ESLINT_PLUGIN_JSONC",
+        "JSON_V8R",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
         "MARKDOWN_MARKDOWNLINT",
+        "MARKDOWN_REMARK_LINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
         "MARKDOWN_MARKDOWN_TABLE_PRETTIFY",
         "OPENAPI_SPECTRAL",
@@ -34,10 +37,12 @@
         "PROTOBUF_PROTOLINT",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
+        "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "TEKTON_TEKTON_LINT",
         "XML_XMLLINT",
-        "YAML_YAMLLINT"
+        "YAML_YAMLLINT",
+        "YAML_V8R"
     ]
 }

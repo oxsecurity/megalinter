@@ -9,6 +9,7 @@
 | ------ | ----------------- |
 | [eslint](typescript_eslint.md) | [TYPESCRIPT_ES](typescript_eslint.md) |
 | [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) |
+| [prettier](typescript_prettier.md) | [TYPESCRIPT](typescript_prettier.md) |
 
 ## Linted files
 

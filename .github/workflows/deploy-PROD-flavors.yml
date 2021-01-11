@@ -32,6 +32,7 @@ jobs:
   # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
   skip_checks:
     name: Skip checks
+    if: "!contains(github.event.head_commit.message, 'skip deploy')"
     runs-on: ubuntu-latest
     steps:
       - uses: fkirc/skip-duplicate-actions@master
@@ -49,7 +50,9 @@ jobs:
         # flavors-start
         flavor:
           [
+            "ci_light",
             "dart",
+            "documentation",
             "dotnet",
             "go",
             "java",
@@ -58,12 +61,13 @@ jobs:
             "python",
             "ruby",
             "rust",
+            "salesforce",
             "scala",
             "terraform",
           ]
 # flavors-end
     # Only run this on the main repo
-    if: github.repository == 'nvuillam/mega-linter'
+    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################

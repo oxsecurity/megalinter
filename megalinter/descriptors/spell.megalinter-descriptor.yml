@@ -1,0 +1,54 @@
+descriptor_id: SPELL
+descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+lint_all_other_linters_files: true
+linters:
+  # MISSPELL
+  - linter_name: misspell
+    name: SPELL_MISSPELL
+    linter_text: misspell detects and corrects commonly misspelled english words
+    linter_url: https://github.com/client9/misspell
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "-error"
+    cli_lint_fix_arg_name: "-w"
+    cli_lint_fix_remove_args:
+      - "-error"
+    cli_version_arg_name: "-v"
+    version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"
+    help_command_return_code: 2
+    examples:
+      - "misspell myfile.any"
+    install:
+      dockerfile:
+        - |
+          RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+              && sh ./install-misspell.sh
+  # CSPELL
+  - class: CSpellLinter
+    linter_name: cspell
+    name: SPELL_CSPELL
+    linter_text: |
+      Mega-Linter generates content of a `.cspell.json` config file at the end of its TextReporter artifact
+      Copy it at the root of your repository, read it, remove real spelling errors (after have corrected them in the source), and you're good to go !
+    linter_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell
+    linter_repo: https://github.com/streetsidesoftware/cspell
+    linter_image_url: https://streetsidesoftware.gallerycdn.vsassets.io/extensions/streetsidesoftware/code-spell-checker/1.9.2/1601218033318/Microsoft.VisualStudio.Services.Icons.Default
+    linter_rules_configuration_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization
+    linter_rules_inline_disable_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code
+    linter_megalinter_ref_url: https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter
+    config_file_name: ".cspell.json"
+    cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Issues found: ([0-9]+) in .* files"
+    examples:
+      - "cspell myfile.any"
+      - "cspell -c cspell.json myfile.any"
+    install:
+      npm:
+        - "cspell@4.1.3"
+    ide:
+      vscode:
+        - name: Code Spell Checker
+          url: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker

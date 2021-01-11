@@ -139,6 +139,8 @@ RUN npm install --no-cache --ignore-scripts \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
+                stylelint-config-sass-guidelines \
+                stylelint-scss \
                 dockerfilelint \
                 editorconfig-checker \
                 gherkin-lint \
@@ -157,15 +159,19 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-vue \
                 babel-eslint \
                 standard@15.0.1 \
+                prettier \
                 jsonlint \
+                eslint eslint-plugin-jsonc \
+                v8r \
                 eslint-plugin-react \
                 markdownlint-cli \
+                remark-cli \
+                remark-preset-lint-recommended \
                 markdown-link-check \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
                 tekton-lint \
-                prettier \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser
@@ -398,6 +404,11 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
+# misspell installation
+RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+    && sh ./install-misspell.sh
+
+
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
@@ -426,8 +437,6 @@ RUN python /megalinter/setup.py install
 #######################################
 # Copy scripts and rules to container #
 #######################################
-COPY lib /action/lib
-# COPY megalinter /megalinter
 COPY megalinter/descriptors /megalinter-descriptors
 COPY TEMPLATES /action/lib/.automation
 

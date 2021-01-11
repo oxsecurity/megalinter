@@ -31,21 +31,24 @@ def get_all_flavors():
 def list_megalinter_flavors():
     flavors = {
         "all": {"label": "Mega-Linter for any type of project"},
-        "dart": {"label": "Mega-Linter optimized for DART based projects"},
-        "dotnet": {
-            "label": "Mega-Linter optimized for C, C++, C# or VB based projects"
+        "ci_light": {
+            "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
-        "go": {"label": "Mega-Linter optimized for GO based projects"},
-        "java": {"label": "Mega-Linter optimized for JAVA based projects"},
+        "dart": {"label": "Optimized for DART based projects"},
+        "documentation": {"label": "Mega-Linter for documentation projects"},
+        "dotnet": {"label": "Optimized for C, C++, C# or VB based projects"},
+        "go": {"label": "Optimized for GO based projects"},
+        "java": {"label": "Optimized for JAVA based projects"},
         "javascript": {
-            "label": "Mega-Linter optimized for JAVASCRIPT or TYPESCRIPT based projects"
+            "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects"
         },
-        "php": {"label": "Mega-Linter optimized for PHP based projects"},
-        "python": {"label": "Mega-Linter optimized for PYTHON based projects"},
-        "ruby": {"label": "Mega-Linter optimized for RUBY based projects"},
-        "rust": {"label": "Mega-Linter optimized for RUST based projects"},
-        "scala": {"label": "Mega-Linter optimized for SCALA based projects"},
-        "terraform": {"label": "Mega-Linter optimized for TERRAFORM based projects"},
+        "php": {"label": "Optimized for PHP based projects"},
+        "python": {"label": "Optimized for PYTHON based projects"},
+        "ruby": {"label": "Optimized for RUBY based projects"},
+        "rust": {"label": "Optimized for RUST based projects"},
+        "salesforce": {"label": "Optimized for Salesforce based projects"},
+        "scala": {"label": "Optimized for SCALA based projects"},
+        "terraform": {"label": "Optimized for TERRAFORM based projects"},
     }
     return flavors
 
@@ -68,14 +71,17 @@ def check_active_linters_match_flavor(active_linters):
     for active_linter in active_linters:
         if active_linter.name not in flavor_linters:
             missing_linters += [active_linter.name]
+            active_linter.is_active = False
     if len(missing_linters) > 0:
         missing_linters_str = ",".join(missing_linters)
-        logging.error(
+        logging.warning(
             f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
+            "As they are not available in this docker image, they will not be processed\n"
             "To solve this problem, please either: \n"
             "- use default flavor nvuillam/mega-linter\n"
-            "- add missing linters in DISABLE variable in your .mega-linter.yml config file "
-            "located in your root directory"
+            "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
+            "located in your root directory\n"
+            "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
         )
         return False
     return True

@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter analyzes 38 languages, 16 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generate reports in several formats, and can even apply formatting and auto-fixes with auto-generated commit or PR, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 40 languages, 19 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -12,7 +12,6 @@ theme:
   custom_dir: docs/overrides
   features:
     - navigation.instant
-    - navigation.expand
   logo: assets/images/mega-linter-square.png
   favicon: assets/images/mega-linter-square.png
   palette:
@@ -39,7 +38,7 @@ extra:
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/r/nvuillam/mega-linter
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/nvuillam
+      link: https://twitter.com/NicolasVuillamy
   generator: false
 nav:
   - "Home": "index.md"
@@ -87,6 +86,7 @@ nav:
               - "All JAVASCRIPT linters": "descriptors/javascript.md"
               - "eslint": "descriptors/javascript_eslint.md"
               - "standard": "descriptors/javascript_standard.md"
+              - "prettier": "descriptors/javascript_prettier.md"
           - "JSX":
               - "All JSX linters": "descriptors/jsx.md"
               - "eslint": "descriptors/jsx_eslint.md"
@@ -142,6 +142,7 @@ nav:
               - "All TYPESCRIPT linters": "descriptors/typescript.md"
               - "eslint": "descriptors/typescript_eslint.md"
               - "standard": "descriptors/typescript_standard.md"
+              - "prettier": "descriptors/typescript_prettier.md"
           - "Visual Basic .NET (VBDOTNET)":
               - "All Visual Basic .NET (VBDOTNET) linters": "descriptors/vbdotnet.md"
               - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
@@ -165,12 +166,15 @@ nav:
           - "JSON":
               - "All JSON linters": "descriptors/json.md"
               - "jsonlint": "descriptors/json_jsonlint.md"
+              - "eslint-plugin-jsonc": "descriptors/json_eslint_plugin_jsonc.md"
+              - "v8r": "descriptors/json_v8r.md"
           - "LATEX":
               - "All LATEX linters": "descriptors/latex.md"
               - "chktex": "descriptors/latex_chktex.md"
           - "MARKDOWN":
               - "All MARKDOWN linters": "descriptors/markdown.md"
               - "markdownlint": "descriptors/markdown_markdownlint.md"
+              - "remark-lint": "descriptors/markdown_remark_lint.md"
               - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
               - "markdown-table-prettify": "descriptors/markdown_markdown_table_prettify.md"
           - "PROTOBUF":
@@ -187,6 +191,7 @@ nav:
           - "YAML":
               - "All YAML linters": "descriptors/yaml.md"
               - "yamllint": "descriptors/yaml_yamllint.md"
+              - "v8r": "descriptors/yaml_v8r.md"
 # format-end
       - "Tooling Formats linters":
           - "All tooling formats linters": "./supported-linters#tooling-formats"
@@ -243,6 +248,7 @@ nav:
               - "git_diff": "descriptors/git_git_diff.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
+              - "misspell": "descriptors/spell_misspell.md"
               - "cspell": "descriptors/spell_cspell.md"
 # other-end
   - "Reporters":
@@ -258,7 +264,9 @@ nav:
   - "Flavors":
       - "All flavors": "flavors.md"
 # flavors-start
+      - "ci_light": "flavors/ci_light.md"
       - "dart": "flavors/dart.md"
+      - "documentation": "flavors/documentation.md"
       - "dotnet": "flavors/dotnet.md"
       - "go": "flavors/go.md"
       - "java": "flavors/java.md"
@@ -267,11 +275,17 @@ nav:
       - "python": "flavors/python.md"
       - "ruby": "flavors/ruby.md"
       - "rust": "flavors/rust.md"
+      - "salesforce": "flavors/salesforce.md"
       - "scala": "flavors/scala.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end
-  - "Badge": "badge.md"
   - "Run locally": "mega-linter-runner.md"
+  - "Badge": "badge.md"
+  - "List of linters": "all_linters.md"
+  - "FAQ": "frequently-asked-questions.md"
+  - "Plugins": "plugins.md"
+  - "Special thanks": "special-thanks.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute": "how-to-contribute.md"
+  - "License": "license.md"
   - "Changelog": "CHANGELOG.md"

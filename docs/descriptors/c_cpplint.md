@@ -12,8 +12,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable cpplint by adding `C_CPPLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable cpplint by adding `C_CPPLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
 | Variable | Description | Default value |
 | ----------------- | -------------- | -------------- |
@@ -22,7 +22,7 @@
 | C_CPPLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)` | Exclude no file |
 | C_CPPLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".c", ".h"]` |
 | C_CPPLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| C_CPPLINT_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| C_CPPLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
 
 ## Mega-Linter Flavours
 
@@ -30,16 +30,19 @@ This linter is available in the following flavours
 
 | <!-- --> | Flavor | Description | Embedded linters | Info |
 | :------: | :----- | :---------- | :--------------: | ---: |
+<<<<<<< HEAD
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 73 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Mega-Linter optimized for C, C++, C# or VB based projects | 36 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+=======
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor | 79 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a> | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 40 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+>>>>>>> master
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.c`
-  - `.h`
+- File extensions: `.c`, `.h`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -83,7 +86,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['cxx', 'cc', 'cu', 'hpp', 'h', 'h++', 'cpp', 'c++', 'cuh', 'hh', 'hxx', 'c'].
+  Default linted extensions are ['hh', 'c++', 'c', 'cxx', 'hxx', 'cuh', 'cpp', 'hpp', 'h++', 'cu', 'h', 'cc'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -199,7 +202,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=cxx,cc,cu,hpp,h,h++,cpp,c++,cuh,hh,hxx,c
+        --extensions=hh,c++,c,cxx,hxx,cuh,cpp,hpp,h++,cu,h,cc
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -213,10 +216,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'hpp', 'h++', 'h', 'cuh', 'hh', 'hxx'} will be assumed to be headers)
+     (by default, only files with extensions {'hh', 'hxx', 'cuh', 'hpp', 'h++', 'h'} will be assumed to be headers)
 
       Examples:
-        --headers=hpp,h++,h,cuh,hh,hxx
+        --headers=hh,hxx,cuh,hpp,h++,h
         --headers=hpp,hxx
         --headers=hpp
 

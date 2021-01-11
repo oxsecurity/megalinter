@@ -1,0 +1,78 @@
+descriptor_id: CSS
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors # Any project can contain CSS
+file_extensions:
+  - ".css"
+  - ".scss"
+  - ".saas"
+linters:
+  # StyleLint
+  - linter_name: stylelint
+    name: CSS_STYLELINT
+    linter_url: https://stylelint.io
+    linter_rules_url: https://stylelint.io/user-guide/rules/list
+    linter_repo: https://github.com/stylelint/stylelint
+    linter_banner_image_url: https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png
+    linter_rules_configuration_url: https://stylelint.io/user-guide/configure
+    linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
+    linter_megalinter_ref_url: https://github.com/stylelint/stylelint/pull/5088#ok
+    config_file_name: .stylelintrc.json
+    cli_config_arg_name: "--config"
+    cli_lint_fix_arg_name: "--fix"
+    examples:
+      - "stylelint myfile.css"
+      - "stylelint --config .stylelintrc.json myfile.css"
+      - "stylelint --fix --config .stylelintrc.json myfile.css"
+    install:
+      npm:
+        - stylelint
+        - stylelint-config-standard
+        - stylelint-config-sass-guidelines
+        - stylelint-scss
+    ide:
+      atom:
+        - name: linter-stylelint
+          url: https://github.com/AtomLinter/linter-stylelint
+      emacs:
+        - name: flycheck
+          url: https://github.com/flycheck/flycheck
+      sublime:
+        - name: SublimeLinter-stylelint
+          url: https://github.com/SublimeLinter/SublimeLinter-stylelint
+        - name: SublimeLinter-contrib-stylelint_d
+          url: https://github.com/jo-sm/SublimeLinter-contrib-stylelint_d
+      vim:
+        - name: ale
+          url: https://github.com/dense-analysis/ale
+      vscode:
+        - name: vscode-stylelint
+          url: https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
+  # SCSS Lint
+  - linter_name: scss-lint
+    name: CSS_SCSS_LINT
+    file_extensions:
+      - ".scss"
+      - ".saas"
+    linter_url: https://github.com/sds/scss-lint
+    linter_banner_image_url: https://raw.githubusercontent.com/sds/scss-lint/master/logo/horizontal.png
+    linter_rules_configuration_url: https://github.com/sds/scss-lint#configuration
+    linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
+    config_file_name: .scss-lint.yml
+    test_folder: scss
+    examples:
+      - "scss-lint myfile.scss"
+      - "scss-lint -config .scss-lint.yml myfile.scss"
+    install:
+      gem:
+        - scss_lint
+    ide:
+      atom:
+        - name: linter-scss-lint
+          url: https://atom.io/packages/linter-scss-lint
+      idea:
+        - name: scss-lint-plugin
+          url: https://plugins.jetbrains.com/plugin/7530-scss-lint
+      vscode:
+        - name: scss-lint
+          url: https://marketplace.visualstudio.com/items?itemName=adamwalzer.scss-lint

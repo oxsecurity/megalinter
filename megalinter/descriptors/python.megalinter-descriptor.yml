@@ -1,0 +1,169 @@
+descriptor_id: PYTHON
+descriptor_type: language
+descriptor_flavors:
+  - python
+file_extensions:
+  - ".py"
+processing_order: -9
+linters:
+  # PYLINT
+  - linter_name: pylint
+    name: PYTHON_PYLINT
+    linter_url: https://www.pylint.org
+    linter_repo: https://github.com/PyCQA/pylint
+    linter_rules_url: http://pylint-messages.wikidot.com/all-codes
+    linter_banner_image_url: https://www.pylint.org/pylint.svg
+    linter_rules_configuration_url: https://github.com/PyCQA/pylint/blob/master/pylintrc
+    linter_rules_inline_disable_url: https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
+    cli_lint_mode: list_of_files
+    config_file_name: .python-lint
+    cli_config_arg_name: "--rcfile"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ":([0-9]+):([0-9]+):"
+    examples:
+      - "pylint myfile.py"
+      - "pylint --rcfile .python-lint myfile.py"
+    install:
+      pip:
+        - pylint
+    ide:
+      eclipse:
+        - name: PyLint
+          url: https://pydev.org/manual_adv_pylint.html
+      idea:
+        - name: PyCharm (Native Support)
+          url: https://www.jetbrains.com/pycharm/
+      vim:
+        - name: pylint.vim
+          url: https://www.vim.org/scripts/script.php?script_id=891
+      visual_studio:
+        - name: Native Support
+          url: https://docs.microsoft.com/fr-fr/visualstudio/python/linting-python-code?view=vs-2019
+      vscode:
+        - name: Native Support
+          url: https://code.visualstudio.com/docs/python/linting#_pylint
+  # BLACK
+  - linter_name: black
+    name: PYTHON_BLACK
+    is_formatter: true
+    linter_url: https://black.readthedocs.io/en/stable/
+    linter_repo: https://github.com/psf/black
+    linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
+    linter_rules_configuration_url: https://black.readthedocs.io/en/stable/compatible_configs.html
+    config_file_name: .python-black
+    cli_config_arg_name: "--config"
+    cli_lint_extra_args:
+      - "--diff"
+      - "--check"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--diff"
+      - "--check"
+    examples:
+      - "black --diff --check myfile.py"
+      - "black --config .python-black --diff --check myfile.py"
+      - "black --config .python-black myfile.py" # format
+    install:
+      pip:
+        - black
+    ide:
+      atom:
+        - name: python-black
+          url: https://atom.io/packages/python-black
+      emacs:
+        - name: blacken
+          url: https://github.com/pythonic-emacs/blacken
+        - name: reformatter.el
+          url: https://github.com/purcell/reformatter.el
+        - name: elpy
+          url: https://github.com/jorgenschaefer/elpy
+      idea:
+        - name: black
+          url: https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea
+      sublime:
+        - name: sublack
+          url: https://github.com/jgirardet/sublack
+      vscode:
+        - name: VsCode Python Extension
+          url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
+
+  # FLAKE8
+  - linter_name: flake8
+    name: PYTHON_FLAKE8
+    linter_url: https://flake8.pycqa.org
+    linter_repo: https://github.com/PyCQA/flake8
+    linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
+    linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
+    linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors
+    cli_lint_mode: list_of_files
+    config_file_name: .flake8
+    cli_config_arg_name: "--config"
+    cli_lint_errors_count: total_lines
+    examples:
+      - "flake8 myfile.py"
+      - "flake8 --config .flake8 myfile.py"
+    install:
+      pip:
+        - flake8
+    ide:
+      atom:
+        - name: linter-flake8
+          url: https://atom.io/packages/linter-flake8
+      idea:
+        - name: flake8-support
+          url: https://plugins.jetbrains.com/plugin/11563-flake8-support
+      vscode:
+        - name: Native Support
+          url: https://code.visualstudio.com/docs/python/linting#_flake8
+
+  # ISORT
+  - linter_name: isort
+    name: PYTHON_ISORT
+    is_formatter: true
+    linter_url: https://pycqa.github.io/isort/
+    linter_repo: https://github.com/PyCQA/isort
+    linter_banner_image_url: https://raw.githubusercontent.com/pycqa/isort/develop/art/logo_large.png
+    linter_rules_configuration_url: https://pycqa.github.io/isort/docs/configuration/config_files/
+    linter_rules_inline_disable_url: https://pycqa.github.io/isort/docs/configuration/action_comments/
+    cli_lint_mode: list_of_files
+    config_file_name: .isort.cfg
+    cli_config_arg_name: "--settings-file"
+    cli_lint_extra_args:
+      - "--diff"
+      - "--check"
+      - "--profile"
+      - "black"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
+    cli_lint_fix_remove_args:
+      - "--diff"
+      - "--check"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "\\@\\@ (.*) \\@\\@"
+    examples:
+      - "isort --diff --check --profile black myfile.py"
+      - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"
+      - "isort --profile black --settings-file .isort.cfg myfile.py"
+    install:
+      pip:
+        - isort
+        - black
+    ide:
+      atom:
+        - name: atom-python-isort
+          url: https://github.com/bh/atom-python-isort
+        - name: atom-isort
+          url: https://atom.io/packages/atom-isort
+      emacs:
+        - name: py-isort.el
+          url: https://github.com/paetzke/py-isort.el
+      sublime:
+        - name: isort plugin
+          url: https://github.com/jcugat/sublime-text-isort-plugin#install
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+        - name: vim-isort
+          url: https://github.com/fisadev/vim-isort#installation
+      vscode:
+        - name: VsCode Python Extension
+          url: https://github.com/Microsoft/vscode-python

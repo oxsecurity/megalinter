@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ################################################################################
-############# Clean all code base for additonal testing @admiralawkbar #########
+############# Clean all code base for additional testing @admiralawkbar #########
 ################################################################################
 
 ###########
@@ -19,7 +19,7 @@ ERROR=0                                # Error count
 # Source Function Files #
 #########################
 # shellcheck source=/dev/null
-source "${GITHUB_WORKSPACE}/lib/log.sh" # Source the function script(s)
+source "${GITHUB_WORKSPACE}/.automation/log.sh" # Source the function script(s)
 
 ################################################################################
 ############################ FUNCTIONS BELOW ###################################

@@ -33,7 +33,7 @@ class TextReporter(Reporter):
             self.is_active = True
 
     def add_report_item(self, file, status_code, stdout, index, fixed=False):
-        status = "[SUCCESS]" if status_code == 0 else "[ERROR]"
+        status = "✅ [SUCCESS]" if status_code == 0 else "❌ [ERROR]"
         if file is not None:
             file_nm = utils.normalize_log_string(file)
             file_text_lines = [f"{status} {file_nm}"]

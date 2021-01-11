@@ -2,10 +2,111 @@
 
 ## [insiders] (master)
 
-Note: Can be used using nvuillam/mega-linter@insiders in your mega-linter.yml file
+Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+
+- Core
+  - If the linter is a formatter, errors are not considered as blocking errors by default
+
+- Linters
+  - Add **prettier** to format Javascript and Typescript. **standard** remains default
+  - Add **remark-lint** to check and fix Markdown files. **markdownlint** remains default
+
+- Linter versions upgrades
+  - [golangci-lint](https://golangci-lint.run/) from 1.34.1 to **1.35.0** on 2021-01-08
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.2 to **0.44.3** on 2021-01-09
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.23.0 to **0.23.1** on 2021-01-10
+  - [golangci-lint](https://golangci-lint.run/) from 1.35.0 to **1.35.1** on 2021-01-11
+<!-- linter-versions-end -->
+
+## [4.22.1] 2021-01-07
+
+- Core
+  - Improve `warning` status in logs
+  - Remove timestamp at each log line
+
+- Enhance integration with GitLab CI
+  - Update configuration generator
+  - Update core to clean logs when in GitLab CI context
+
+## [4.22.0] 2021-01-06
+
+- Core
+  - Allow user to configure custom scripts in `.mega-linter.yml` to run before and after linting, with variables `PRE_RUN` and `POST_RUN`
+  - Fix wrong linter status bug
+  - Enhance configuration variables performances
+  - Rename XXX_FILE_NAME into XXX_CONFIG_FILE
+
+- Linters
+  - Add JSONC (json with comments) linting with eslint-plugin-jsonc
+
+## [4.21.0] 2021-01-03
+
+- Linters
+  - Add misspell spell checker
+  - Allow to define cli_lint_errors_regex in descriptors to extract number of errors from linter output stdout
+  - Call linters CLIs with list of files instead of once by file, to improve performances
+    - eslint
+    - markdownlint
+    - pylint
+    - flake8
+    - isort
+
+- Core
+  - Implement architecture for Mega-Linter plugins
+  - Count number of errors in linter logs with regexes (`cli_lint_errors_count` and `cli_lint_errors_regex` in descriptor files)
+  - Cleanup unused legacy from Super-Linter
+
+- Reports
+  - Better icons for Console, GitHub Comment and Text reporters: ✅ ❌
+
+- Documentation
+  - Add Install button for VsCode IDE extensions when available
+  - Add Install button for JetBrains IDEs extensions when available
+  - Add a new page **All linters** listing all linters and references to Mega-Linter in their documentation
+  - Add json-schema documentation generation and references
+
+- CI
+  - Use `quick build` and `TEST_KEYWORDS` in commit messages, to improve contributor experience
+
+- Fixes
+  - Upgrade .tflint default config to work with new tflint version
+
+## [4.20.0] 2020-12-28
+
+- Flavors
+  - Add **ci_light** flavor for only CI config files (Dockerfile,Jenkinsfile,JSON,YAML,XML)
+  - Add **salesforce** flavor for Salesforce projects (DX or Metadata)
+  - If all required linters are not in the current flavor, just skip them with a warning message
+
+- Core
+  - Add Json Schema for descriptors (allows validation and auto-completion from IDEs)
+  - Add Json Schema for .mega-linter.yml configuration files
+
+## [4.19.0] 2020-12-27
+
+- Installation
+  - Add a yeoman generator in mega-linter-runner to initialize configuration in a repository: `npx mega-linter-runner --install`
+
+- Linters
+  - New linter v8r to validate json and yaml files with schemastore.org
+
+## [4.18.0] 2020-12-23
+
+- Core
+  - Do not suggest flavors when Mega-Linter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
+  - Fix ConsoleReporter active linters table content
+  - Check if linter is able to fix before flagging it as a fixing linter during runtime
+
+- Flavors
+  - New flavor: **documentation**
+
+- Reporters
+  - Support GitHub Enterprise for GitHub Comment Reporter
+  - Support GitHub Enterprise for GitHub Status Reporter
 
 - Doc
   - Add docker pulls badge in flavors documentation
+  - Generate list of references to Mega-Linter
 
 ## [4.17.0] 2020-12-18
 

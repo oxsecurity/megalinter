@@ -11,7 +11,7 @@
 
 ## Linted files
 
-- Activated only if file is found: `.editorconfig`
+- Activated only if at least one of these files is found: `.editorconfig`
 - File extensions:
   - `*`
 

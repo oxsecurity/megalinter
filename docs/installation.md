@@ -4,15 +4,23 @@
 
 # Installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases)
+## Assisted installation
 
-- GitHub Action: nvuillam/mega-linter:v4
-- Docker image: nvuillam/mega-linter@v4
+Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
+
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
+## Manual installation
+
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
+
+- GitHub Action: nvuillam/mega-linter@v4
+- Docker image: nvuillam/mega-linter:v4
 
 You can also use **insiders** version (beta release, corresponding to the content of master branch)
 
-- GitHub Action: nvuillam/mega-linter:insiders
-- Docker image: nvuillam/mega-linter@latest
+- GitHub Action: nvuillam/mega-linter@insiders
+- Docker image: nvuillam/mega-linter:latest
 
 ## GitHub Action
 
@@ -31,7 +39,8 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 
 - `.github/workflows/mega-linter.yml`
 
-This file should have the following code:
+<details>
+<summary>This file should have this code</summary>
 
 ```yml
 ---
@@ -124,6 +133,8 @@ jobs:
           commit_message: "[Mega-Linter] Apply linters fixes"
 ```
 
+</details>
+
 ## Azure
 
 Use the following Azure workflow template
@@ -139,7 +150,7 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
     - script: |
         docker pull nvuillam/mega-linter:v4
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
-      displayName: 'Code Scan using  Mega-Linter'
+      displayName: 'Code Scan using Mega-Linter'
 ```
 
 ## Jenkins
@@ -166,25 +177,50 @@ stage('Mega-Linter') {
 
 ## GitLab
 
-Example of configuration using GitLab CI
-
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
-megalinter:
-  stage: linting
-  image: nvuillam/mega-linter:v4
+# Mega-Linter GitLab CI job configuration file
+# More info at https://nvuillam.github.io/mega-linter
+
+mega-linter:
+  stage: test
+  # You can override Mega-Linter flavor used to have faster performances
+  # More info at https://nvuillam.github.io/mega-linter/flavors/
+  image: nvuillam/mega-linter-python:v4
   script: [ "true" ]
   variables:
-    DEFAULT_WORKSPACE: $CI_BUILDS_DIR
-    ANSIBLE_DIRECTORY: $CI_PROJECT_PATH
-    LINTER_RULES_PATH: $CI_PROJECT_PATH/.github/linters
+    # All available variables are described in documentation
+    # https://nvuillam.github.io/mega-linter/configuration/
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    DEFAULT_BRANCH: master
+    # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
+  artifacts:
+    when: always
+    paths:
+      - report
+    expire_in: 1 week
 ```
 
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
 ## Run Mega-Linter locally
+
+[![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
 You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
 See [mega-linter-runner installation instructions](https://nvuillam.github.io/mega-linter/mega-linter-runner/#installation)
+
+Example
+
+```shell
+npx mega-linter-runner --flavor salesforce -e 'ENABLE=,DOCKERFILE,MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+```
+
+Note: You can also use such command line from your custom CI/CD pipelines
+
 
 <!-- installation-section-end -->

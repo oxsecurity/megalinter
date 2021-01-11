@@ -1,0 +1,38 @@
+descriptor_id: CLOJURE
+descriptor_type: language
+file_extensions:
+  - ".clj"
+  - ".cljs"
+  - ".cljc"
+  - ".edn"
+linters:
+  # clj-kondo
+  - linter_name: clj-kondo
+    linter_url: https://github.com/borkdude/clj-kondo
+    linter_rules_url: https://github.com/borkdude/clj-kondo#features
+    linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
+    linter_rules_configuration_url: https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration
+    linter_megalinter_ref_url: https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github
+    config_file_name: .clj-kondo/config.edn
+    cli_config_arg_name: "--config"
+    cli_lint_extra_args_after:
+      - "--lint"
+    examples:
+      - "clj-kondo --lint myfile.clj"
+      - "clj-kondo --lint --config .clj-kondo/config.edn myfile.clj"
+    install:
+      dockerfile:
+        - FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
+        - COPY --from=clj-kondo /usr/local/bin/clj-kondo /usr/bin/
+    ide:
+      atom:
+        - name: linter-kondo
+          url: https://atom.io/packages/linter-kondo
+      emacs:
+        - name: flycheck-clj-kondo
+          url: https://github.com/borkdude/flycheck-clj-kondo
+      vscode:
+        - name: clj-kondo
+          url: https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo
+        - name: Clojure lint
+          url: https://github.com/marcomorain/clojure-lint

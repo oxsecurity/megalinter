@@ -1,0 +1,40 @@
+descriptor_id: GROOVY
+descriptor_type: language
+descriptor_flavors:
+  - all_flavors # Jenkinsfile are written in groovy so can be found in any language project
+  - ci_light # Jenkinsfile are written in groovy so can be found in any language project
+file_extensions:
+  - ".groovy"
+  - ".gvy"
+  - ".gradle"
+  - ".nf"
+file_names_regex:
+  - 'Jenkinsfile'
+linters:
+  # npm-groovy-lint
+  - class: GroovyNpmGroovyLintLinter
+    linter_name: npm-groovy-lint
+    linter_url: https://nvuillam.github.io/npm-groovy-lint/
+    linter_repo: https://github.com/nvuillam/npm-groovy-lint
+    linter_rules_url: https://codenarc.org/codenarc-rule-index.html
+    linter_image_url: https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6
+    linter_rules_configuration_url: https://github.com/nvuillam/npm-groovy-lint#configuration
+    linter_rules_inline_disable_url: https://github.com/nvuillam/npm-groovy-lint#disabling-rules-in-source
+    linter_megalinter_ref_url: https://nvuillam.github.io/npm-groovy-lint/#mega-linter
+    config_file_name: .groovylintrc.json
+    cli_lint_extra_args:
+      - "--failon"
+      - "info"
+    cli_lint_fix_arg_name: "--fix"
+    version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
+    examples:
+      - "npm-groovy-lint --path . --files myfile.groovy"
+      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json"
+      - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
+    install:
+      npm:
+        - npm-groovy-lint
+    ide:
+      vscode:
+        - name: VsCode Groovy Lint
+          url: https://marketplace.visualstudio.com/items?itemName=NicolasVuillamy.vscode-groovy-lint

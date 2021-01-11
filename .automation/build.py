@@ -1,6 +1,6 @@
 # !/usr/bin/env python3
 """
-Automatically generate source code
+Automatically generate source code ,descriptive files Dockerfiles and documentation
 """
 # pylint: disable=import-error
 import json
@@ -10,10 +10,12 @@ import re
 import sys
 from shutil import copyfile
 from typing import Any
+from urllib import parse as parse_urllib
 
 import jsonschema
 import markdown
 import megalinter
+import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
@@ -30,6 +32,7 @@ DOCS_URL_FLAVORS_ROOT = DOCS_URL_ROOT + "/flavors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 REPO_ICONS = REPO_HOME + "/docs/assets/icons"
+REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
@@ -39,6 +42,12 @@ GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
 BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
 BASE_SHIELD_COUNT_LINK = "https://img.shields.io/docker/pulls"
+
+DESCRIPTOR_JSON_SCHEMA = (
+    f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json"
+)
+CONFIG_JSON_SCHEMA = f"{REPO_HOME}/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json"
+OWN_MEGALINTER_CONFIG_FILE = f"{REPO_HOME}/.mega-linter.yml"
 
 IDE_LIST = {
     "atom": {"label": "Atom", "url": "https://atom.io/"},
@@ -221,9 +230,9 @@ def match_flavor(item, flavor):
     if flavor == "all":
         return True
     elif "descriptor_flavors" in item:
-        if (
-            flavor in item["descriptor_flavors"]
-            or "all_flavors" in item["descriptor_flavors"]
+        if flavor in item["descriptor_flavors"] or (
+            "all_flavors" in item["descriptor_flavors"]
+            and not flavor.endswith("_light")
         ):
             return True
     return False
@@ -233,7 +242,6 @@ def match_flavor(item, flavor):
 # This could be done dynamically at runtime, but having a physical class is easier for developers in IDEs
 def generate_linter_test_classes():
     linters = megalinter.linter_factory.list_all_linters()
-    megalinter.linter_factory.list_all_linters()
     for linter in linters:
         lang_lower = linter.descriptor_id.lower()
         linter_name_lower = linter.linter_name.lower().replace("-", "_")
@@ -310,14 +318,18 @@ def generate_documentation():
     )
     # Update welcome phrase
     welcome_phrase = (
-        f"**Mega-Linter** analyzes [**{len(linters_by_type['language'])} languages**](#languages), "
-        + f"[**{len(linters_by_type['format'])} formats**](#formats), "
-        + f"[**{len(linters_by_type['tooling_format'])} tooling formats**](#tooling-formats) "
+        "Mega-Linter is an **100% Open-Source tool for CI/CD workflows** "
+        + f"that **analyzes consistency and quality** of [**{len(linters_by_type['language'])}** languages]"
+        + "(#languages), "
+        + f"[**{len(linters_by_type['format'])}** formats](#formats), "
+        + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
         + ", [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
-        + "repository sources, generate [**reports in several formats**](#reporters), "
-        + "and can even [**apply formatting and auto-fixes**](#apply-fixes) "
-        + "with **auto-generated commit or PR**, to ensure all your projects are clean, whatever "
-        + "IDE/toolbox are used by their developers !"
+        + "repository sources, generates [**various reports**](#reporters), "
+        + "and can even [apply **formatting** and **auto-fixes**](#apply-fixes), "
+        + "to **ensure all your projects sources are clean**, whatever "
+        + "IDE/toolbox are used by their developers.\n\n"
+        + "Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, "
+        "[**highly configurable**](#configuration) and **free for all uses**\n"
     )
     # Update README.md file
     replace_in_file(
@@ -331,7 +343,7 @@ def generate_documentation():
         f"{REPO_HOME}/mkdocs.yml",
         "# site_description-start",
         "# site_description-end",
-        "site_description: " + md_to_text(welcome_phrase),
+        "site_description: " + md_to_text(welcome_phrase.replace("\n", "")),
     )
     # Build & Update flavors table
     flavors_table_md = build_flavors_md_table()
@@ -383,9 +395,10 @@ def generate_descriptor_documentation(descriptor):
 
     # Criteria used by the descriptor to identify files to lint
     descriptor_md += ["", "## Linted files", ""]
-    if descriptor.get("active_only_if_file_found", None) is not None:
+    if len(descriptor.get("active_only_if_file_found", [])) > 0:
         descriptor_md += [
-            f"- Activated only if file is found: `{descriptor.get('active_only_if_file_found')}`"
+            f"- Activated only if at least one of these files is found:"
+            f" `{', '.join(descriptor.get('active_only_if_file_found'))}`"
         ]
     if len(descriptor.get("file_extensions", [])) > 0:
         descriptor_md += ["- File extensions:"]
@@ -414,6 +427,26 @@ def generate_descriptor_documentation(descriptor):
         f"| {descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |",
         "",
     ]
+    add_in_config_schema_file(
+        [
+            [
+                f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
+                    "type": "string",
+                    "title": f"Including regex filter for {descriptor.get('descriptor_id')} descriptor",
+                },
+            ],
+            [
+                f"{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
+                {
+                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
+                    "type": "string",
+                    "title": f"Excluding regex filter for {descriptor.get('descriptor_id')} descriptor",
+                },
+            ],
+        ]
+    )
     # Add install info
     if descriptor.get("install", None) is not None:
         descriptor_md += ["", "## Behind the scenes"]
@@ -502,8 +535,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Fix |",
-        "| :---: | ----------------- | -------------- | ------------ | ------- |",
+        f"| <!-- --> | {col_header} | Linter | Configuration key | Format/Fix |",
+        "| :---: | ----------------- | -------------- | ------------ | :-----: |",
     ]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
@@ -622,7 +655,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             config_file = f"TEMPLATES{os.path.sep}{linter.config_file_name}"
             if os.path.isfile(f"{REPO_HOME}{os.path.sep}{config_file}"):
                 linter_doc_md += [
-                    f"  - If custom {linter.config_file_name} is not found, "
+                    f"  - If custom `{linter.config_file_name}` config file is not found, "
                     f"[{linter.config_file_name}]({TEMPLATES_URL_ROOT}/{linter.config_file_name}){{target=_blank}}"
                     " will be used"
                 ]
@@ -655,8 +688,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"Unable to find github repository for {linter.linter_name}"
             )
         # Mega-linter variables
-        activation_url = "/configuration/#activation-and-deactivation"
-        apply_fixes_url = "/configuration/#apply-fixes"
+        activation_url = MKDOCS_URL_ROOT + "/configuration/#activation-and-deactivation"
+        apply_fixes_url = MKDOCS_URL_ROOT + "/configuration/#apply-fixes"
         linter_doc_md += [
             "## Configuration in Mega-Linter",
             "",
@@ -673,10 +706,16 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             "| Variable | Description | Default value |",
             "| ----------------- | -------------- | -------------- |",
         ]
+        if hasattr(linter, "activation_rules"):
+            for rule in linter.activation_rules:
+                linter_doc_md += [
+                    f"| {rule['variable']} | For {linter.linter_name} to be active, {rule['variable']} must be "
+                    f"`{rule['expected_value']}` | `{rule['default_value']}` |"
+                ]
         if hasattr(linter, "variables"):
             for variable in linter.variables:
                 linter_doc_md += [
-                    f"| {variable['name']} | {variable['description']} | {variable['default_value']} |"
+                    f"| {variable['name']} | {variable['description']} | `{variable['default_value']}` |"
                 ]
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
@@ -693,23 +732,121 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
             f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
         ]
+        add_in_config_schema_file(
+            [
+                [
+                    f"{linter.name}_ARGUMENTS",
+                    {
+                        "$id": f"#/properties/{linter.name}_ARGUMENTS",
+                        "type": "array",
+                        "title": f"{linter.name}: Custom arguments",
+                        "description": f"{linter.name}: User custom arguments to add in linter CLI call",
+                        "examples:": ["--foo", "bar"],
+                        "items": {"type": "string"},
+                    },
+                ],
+                [
+                    f"{linter.name}_FILTER_REGEX_INCLUDE",
+                    {
+                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
+                        "type": "string",
+                        "title": f"{linter.name}: Including Regex",
+                    },
+                ],
+                [
+                    f"{linter.name}_FILTER_REGEX_EXCLUDE",
+                    {
+                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
+                        "type": "string",
+                        "title": f"{linter.name}: Excluding Regex",
+                    },
+                ],
+                [
+                    f"{linter.name}_FILE_EXTENSIONS",
+                    {
+                        "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
+                        "type": "array",
+                        "title": f"{linter.name}: Override descriptor/linter matching files extensions",
+                        "examples:": [".py", ".myext"],
+                        "items": {"type": "string"},
+                    },
+                ],
+                [
+                    f"{linter.name}_FILE_NAMES_REGEX",
+                    {
+                        "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
+                        "type": "array",
+                        "title": f"{linter.name}: Override descriptor/linter matching file name regex",
+                        "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
+                        "items": {"type": "string"},
+                    },
+                ],
+                [
+                    f"{linter.name}_DISABLE_ERRORS",
+                    {
+                        "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
+                        "type": "boolean",
+                        "default": False,
+                        "title": f"{linter.name}: Linter does not make Mega-Linter fail even if errors are found",
+                    },
+                ],
+            ]
+        )
 
         if linter.config_file_name is not None:
             linter_doc_md += [
-                f"| {linter.name}_FILE_NAME | {linter.linter_name} configuration file name</br>"
+                f"| {linter.name}_CONFIG_FILE | {linter.linter_name} configuration file name</br>"
                 f"Use `LINTER_DEFAULT` to let the linter find it | "
                 f"`{linter.config_file_name}` |",
                 f"| {linter.name}_RULES_PATH | Path where to find linter configuration file | "
                 "Workspace folder, then Mega-Linter default rules |",
             ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_CONFIG_FILE",
+                        {
+                            "$id": f"#/properties/{linter.name}_CONFIG_FILE",
+                            "type": "string",
+                            "title": f"{linter.name}: Custom config file name",
+                            "default": linter.config_file_name,
+                            "description": f"{linter.name}: User custom config file name if different from default",
+                        },
+                    ],
+                    [
+                        f"{linter.name}_RULES_PATH",
+                        {
+                            "$id": f"#/properties/{linter.name}_RULES_PATH",
+                            "type": "string",
+                            "title": f"{linter.name}: Custom config file path",
+                            "description": f"{linter.name}: Path where to find linter configuration file",
+                        },
+                    ],
+                ]
+            )
+        default_disable_errors = "true" if linter.is_formatter is True else "false"
         linter_doc_md += [
-            f"| {linter.name}_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |"
+            f"| {linter.name}_DISABLE_ERRORS | Run linter but consider errors as warnings |"
+            f" `{default_disable_errors}` |"
         ]
         if linter.files_sub_directory is not None:
             linter_doc_md += [
                 f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
                 f"| `{linter.files_sub_directory}` |"
             ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_DIRECTORY",
+                        {
+                            "$id": f"#/properties/{linter.name}_DIRECTORY",
+                            "type": "string",
+                            "title": f"{linter.name}: Directory containing {linter.descriptor_id} files",
+                            "default": linter.files_sub_directory,
+                        },
+                    ],
+                ]
+            )
         # IDE Integration
         if hasattr(linter, "ide"):
             linter_doc_md += ["", "## IDE Integration", ""]
@@ -718,8 +855,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 "",
             ]
             linter_doc_md += [
-                "| <!-- --> | IDE | Extension Name |",
-                "| :--: | ----------------- | -------------- |",
+                "| <!-- --> | IDE | Extension Name | Install |",
+                "| :--: | ----------------- | -------------- | :------: |",
             ]
             for ide, ide_extensions in linter.ide.items():
                 for ide_extension in ide_extensions:
@@ -733,8 +870,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         ide_extension["name"],
                         32,
                     )
+                    install_link = md_ide_install_link(ide, ide_extension)
                     linter_doc_md += [
-                        f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) |"
+                        f"| {icon_html} | {md_ide(ide)} | [{ide_extension['name']}]({ide_extension['url']}) | "
+                        f"{install_link} |"
                     ]
         # Mega-linter flavours
         linter_doc_md += [
@@ -752,26 +891,42 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += ["", "## Behind the scenes", ""]
         # Criteria used by the linter to identify files to lint
         linter_doc_md += ["### How are identified applicable files", ""]
-        if linter.active_only_if_file_found is not None:
+        if linter.files_sub_directory is not None:
             linter_doc_md += [
-                f"- Activated only if file is found: `{linter.active_only_if_file_found}`"
+                f"- Activated only if sub-directory `{linter.files_sub_directory}` is found."
+                f" (directory name can be overridden with `{linter.descriptor_id}_DIRECTORY`)"
+            ]
+        if len(linter.active_only_if_file_found) > 0:
+            linter_doc_md += [
+                f"- Activated only if one of these files is found:"
+                f" `{', '.join(linter.active_only_if_file_found)}`"
+            ]
+        if linter.lint_all_files is True:
+            linter_doc_md += [
+                "- If this linter is active, all files will always be linted"
+            ]
+        if linter.lint_all_other_linters_files is True:
+            linter_doc_md += [
+                "- If this linter is active, all files linted by all other active linters will be linted"
             ]
         if len(linter.file_extensions) > 0:
-            linter_doc_md += ["- File extensions:"]
-            for file_extension in linter.file_extensions:
-                linter_doc_md += [f"  - `{file_extension}`"]
-            linter_doc_md += [""]
+            linter_doc_md += [
+                f"- File extensions: `{'`, `'.join(linter.file_extensions)}`"
+            ]
         if len(linter.file_names_regex) > 0:
-            linter_doc_md += ["- File names:"]
-            for file_name in linter.file_names_regex:
-                linter_doc_md += [f"  - `{file_name}`"]
-            linter_doc_md += [""]
+            linter_doc_md += [
+                f"- File names (regex): `{'`, `'.join(linter.file_names_regex)}`"
+            ]
         if len(linter.file_contains_regex) > 0:
-            linter_doc_md += ["- Detected file content:"]
-            for file_contains_expr in linter.file_contains_regex:
-                linter_doc_md += [f"  - `{file_contains_expr}`"]
-            linter_doc_md += [""]
+            linter_doc_md += [
+                f"- Detected file content (regex): `{'`, `'.join(linter.file_contains_regex)}`"
+            ]
+        if len(linter.file_names_not_ends_with) > 0:
+            linter_doc_md += [
+                f"- File name do not ends with: `{'`, `'.join(linter.file_names_not_ends_with)}`"
+            ]
         linter_doc_md += [
+            "",
             "<!-- markdownlint-disable -->",
             "<!-- /* cSpell:disable */ -->",
         ]  # Do not check spelling of examples and logs
@@ -1005,6 +1160,44 @@ def md_ide(ide):
     return ide
 
 
+def md_ide_install_link(ide, ide_extension):
+    item_name = None
+    # Visual studio code plugins
+    if ide == "vscode":
+        if ide_extension["url"].startswith(
+            "https://marketplace.visualstudio.com/items?itemName="
+        ):
+            item_name = dict(
+                parse_urllib.parse_qsl(
+                    parse_urllib.urlsplit(ide_extension["url"]).query
+                )
+            )["itemName"]
+        elif ide_extension["url"].startswith(
+            "https://marketplace.visualstudio.com/items/"
+        ):
+            item_name = ide_extension["url"].split("/items/", 1)[1]
+        if item_name is not None:
+            install_link = f"vscode:extension/{item_name}"
+            return f"[![Install in VsCode]({md_get_install_button(ide)})]({install_link}){{target=_blank}}"
+    # JetBrains Idea family editors plugins
+    if ide == "idea":
+        if ide_extension["url"].startswith("https://plugins.jetbrains.com/plugin/"):
+            item_name = ide_extension["url"].split("/")[-1].split("-")[0]
+        if item_name is not None and item_name.isnumeric():
+            iframe_content = (
+                f"https://plugins.jetbrains.com/embeddable/install/{item_name}"
+            )
+            return f'<iframe frameborder="none" width="245px" height="48px" src="{iframe_content}"></iframe>'
+    return f"[Visit Web Site]({ide_extension['url']}){{target=_blank}}"
+
+
+def md_get_install_button(key):
+    image_file = f"{REPO_IMAGES}{os.path.sep}btn_install_{key}.png"
+    if os.path.isfile(image_file):
+        return f"{DOCS_URL_RAW_ROOT}/assets/images/btn_install_{key}.png"
+    return f"{DOCS_URL_RAW_ROOT}/assets/images/btn_install_default.png"
+
+
 def md_to_text(md):
     html = markdown.markdown(md)
     soup = BeautifulSoup(html, features="html.parser")
@@ -1070,6 +1263,21 @@ def replace_in_file(file_path, start, end, content):
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
     logging.info("Updated " + file.name)
+
+
+def add_in_config_schema_file(variables):
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+    json_schema_props = json_schema["properties"]
+    updated = False
+    for key, variable in variables:
+        if key not in json_schema_props:
+            json_schema_props[key] = variable
+            updated = True
+    json_schema["properties"] = json_schema_props
+    if updated is True:
+        with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+            json.dump(json_schema, outfile, indent=4, sort_keys=True)
 
 
 def copy_md_file(source_file, target_file):
@@ -1158,10 +1366,23 @@ def replace_anchors_by_links(file_path, moves):
 
 
 # Apply descriptor JSON Schema to every descriptor file
+def validate_own_megalinter_config():
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as schema_file:
+        descriptor_schema = schema_file.read()
+        with open(
+            OWN_MEGALINTER_CONFIG_FILE, "r", encoding="utf-8"
+        ) as descriptor_file1:
+            logging.info("Validating " + os.path.basename(OWN_MEGALINTER_CONFIG_FILE))
+            mega_linter_config = descriptor_file1.read()
+            jsonschema.validate(
+                instance=yaml.load(mega_linter_config, Loader=yaml.FullLoader),
+                schema=yaml.load(descriptor_schema, Loader=yaml.FullLoader),
+            )
+
+
+# Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
-    with open(
-        f"{REPO_HOME}/megalinter/descriptors/jsonschema.json", "r", encoding="utf-8"
-    ) as schema_file:
+    with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as schema_file:
         descriptor_schema = schema_file.read()
         descriptor_files = megalinter.linter_factory.list_descriptor_files()
         errors = 0
@@ -1178,7 +1399,7 @@ def validate_descriptors():
                     logging.error(
                         f"{os.path.basename(descriptor_file)} is not compliant with JSON schema"
                     )
-                    logging.error(f"reason: {validation_error.message}")
+                    logging.error(f"reason: {str(validation_error)}")
                     errors = errors + 1
         if errors > 0:
             raise ValueError(
@@ -1195,7 +1416,6 @@ def finalize_doc_build():
     # Split README sections into individual files
     moves = [
         "quick-start",
-        "demo",
         "supported-linters",
         # 'languages',
         # 'format',
@@ -1206,7 +1426,10 @@ def finalize_doc_build():
         "reporters",
         "flavors",
         "badge",
+        "plugins",
+        "frequently-asked-questions",
         "how-to-contribute",
+        "special-thanks",
         "license",
         "mega-linter-vs-super-linter",
     ]
@@ -1228,6 +1451,12 @@ def finalize_doc_build():
     # Remove TOC in target file
     replace_in_file(
         target_file,
+        "<!-- mega-linter-title-start -->",
+        "<!-- mega-linter-title-end -->",
+        "",
+    )
+    replace_in_file(
+        target_file,
         "<!-- table-of-contents-start -->",
         "<!-- table-of-contents-end -->",
         "",
@@ -1241,6 +1470,19 @@ def finalize_doc_build():
     target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
     copy_md_file(
         f"{REPO_HOME}{os.path.sep}CHANGELOG.md", target_file_changelog,
+    )
+    # Copy CONTRIBUTING.md into /docs/contributing.md
+    target_file_contributing = (
+        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}contributing.md"
+    )
+    copy_md_file(
+        f"{REPO_HOME}{os.path.sep}.github{os.path.sep}CONTRIBUTING.md",
+        target_file_contributing,
+    )
+    # Copy LICENSE into /docs/licence.md
+    target_file_license = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}license.md"
+    copy_md_file(
+        f"{REPO_HOME}{os.path.sep}LICENSE", target_file_license,
     )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
     target_file_readme_runner = (
@@ -1315,6 +1557,29 @@ def process_type_mkdocs_yml(linters_by_type, type1):
     )
 
 
+def generate_json_schema_enums():
+    # Update list of flavors in descriptor schema
+    flavors = megalinter.flavor_factory.list_megalinter_flavors()
+    with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+    json_schema["definitions"]["enum_flavors"]["enum"] = ["all_flavors"] + list(
+        flavors.keys()
+    )
+    with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+        json.dump(json_schema, outfile, indent=2, sort_keys=True)
+    # Update list of descriptors and linters in configuration schema
+    descriptors, _linters_by_type = list_descriptors_for_build()
+    linters = megalinter.linter_factory.list_all_linters()
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+    json_schema["definitions"]["enum_descriptor_keys"]["enum"] = [
+        x["descriptor_id"] for x in descriptors
+    ]
+    json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
+    with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+        json.dump(json_schema, outfile, indent=2, sort_keys=True)
+
+
 # Collect linters info from linter url, later used to build link preview card within linter documentation
 def collect_linter_previews():
     linters = megalinter.linter_factory.list_all_linters()
@@ -1344,7 +1609,131 @@ def collect_linter_previews():
     # Update file
     if updated is True:
         with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
-            json.dump(data, outfile, indent=4, sort_keys=True)
+            json.dump(data, outfile, indent=2, sort_keys=True)
+
+
+def generate_documentation_all_linters():
+    linters_raw = megalinter.linter_factory.list_all_linters()
+    linters = []
+    with open(VERSIONS_FILE, "r", encoding="utf-8") as json_file:
+        linter_versions = json.load(json_file)
+    for linter in linters_raw:
+        duplicates = [
+            [index, dup_linter]
+            for index, dup_linter in enumerate(linters)
+            if dup_linter.linter_name == linter.linter_name
+        ]
+        if len(duplicates) == 0:
+            setattr(linter, "descriptor_id_list", [linter.descriptor_id])
+            linters += [linter]
+        else:
+            index, duplicate = duplicates[0]
+            duplicate.descriptor_id_list += [linter.descriptor_id]
+            duplicate.descriptor_id_list.sort()
+            linters[index] = duplicate
+    linters.sort(key=lambda x: x.linter_name)
+    table_header = ["Linter", "Version", "Descriptors", "Status", "URL"]
+    md_table_lines = []
+    table_data = [table_header]
+    hearth_linters_md = []
+    for linter in linters:
+        status = "Not submitted"
+        md_status = ":white_circle:"
+        url = (
+            linter.linter_repo
+            if hasattr(linter, "linter_repo") and linter.linter_repo is not None
+            else linter.linter_url
+        )
+        md_url = (
+            f"[Repository]({linter.linter_repo}){{target=_blank}}"
+            if hasattr(linter, "linter_repo") and linter.linter_repo is not None
+            else f"[Web Site]({linter.linter_url}){{target=_blank}}"
+        )
+        linter_version = "N/A"
+        if (
+            linter.linter_name in linter_versions
+            and linter_versions[linter.linter_name] != "0.0.0"
+        ):
+            linter_version = linter_versions[linter.linter_name]
+        if hasattr(
+            linter, "linter_megalinter_ref_url"
+        ) and linter.linter_megalinter_ref_url not in ["", None]:
+            url = linter.linter_megalinter_ref_url
+            if linter.linter_megalinter_ref_url not in ["no", "never"]:
+                md_url = f"[Mega-Linter reference]({linter.linter_megalinter_ref_url}){{target=_blank}}"
+            if linter.linter_megalinter_ref_url == "no":
+                status = "❌ Refused"
+                md_status = ":no_entry_sign:"
+            elif linter.linter_megalinter_ref_url == "never":
+                status = "Θ Not applicable"
+                md_status = "<!-- -->"
+            elif "/pull/" in str(url):
+                if url.endswith("#ok"):
+                    status = "✅ Awaiting publication"
+                    md_status = ":love_letter:"
+                else:
+                    status = "Ω Pending"
+                    md_status = ":hammer_and_wrench:"
+                md_url = f"[Pull Request]({url}){{target=_blank}}"
+                url = "PR: " + url
+            else:
+                status = "✅ Published"
+                md_status = ":heart:"
+                hearth_linters_md += [
+                    f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url})"
+                ]
+        table_line = [
+            linter.linter_name,
+            linter_version,
+            ", ".join(linter.descriptor_id_list),
+            status,
+            url,
+        ]
+        table_data += [table_line]
+
+        linter_doc_links = []
+        for descriptor_id in linter.descriptor_id_list:
+            linter_doc_url = f"descriptors/{descriptor_id.lower()}_{linter.linter_name.lower().replace('-', '_')}.md"
+            link = f"[{descriptor_id}]({doc_url(linter_doc_url)})"
+            linter_doc_links += [link]
+        md_table_line = [
+            f"**{linter.linter_name}**",
+            linter_version,
+            "<br/> ".join(linter_doc_links),
+            md_status,
+            md_url,
+        ]
+        md_table_lines += [md_table_line]
+
+    # Write referring linters to README
+    hearth_linters_md_str = "\n".join(hearth_linters_md)
+    replace_in_file(
+        f"{REPO_HOME}/README.md",
+        "<!-- referring-linters-start -->",
+        "<!-- referring-linters-end -->",
+        hearth_linters_md_str,
+    )
+
+    # Display results
+    table = terminaltables.AsciiTable(table_data)
+    table.title = "----Reference to Mega-Linter in linters documentation summary"
+    # Output table in console
+    logging.info("")
+    for table_line in table.table.splitlines():
+        logging.info(table_line)
+    logging.info("")
+    # Write in file
+    with open(REPO_HOME + "/docs/all_linters.md", "w", encoding="utf-8") as outfile:
+        outfile.write(
+            "<!-- This file has been automatically generated by build.py"
+            " (generate_documentation_all_linters method) -->\n"
+        )
+        outfile.write("<!-- markdownlint-disable -->\n\n")
+        outfile.write("# References\n\n")
+        outfile.write("| Linter | Version | Descriptors | Reference status | URL |\n")
+        outfile.write("| :----  | :-----: | :---------  | :--------------: | :-: |\n")
+        for md_table_line in md_table_lines:
+            outfile.write("| %s |\n" % " | ".join(md_table_line))
 
 
 def manage_output_variables():
@@ -1367,11 +1756,15 @@ if __name__ == "__main__":
         format="%(asctime)s [%(levelname)s] %(message)s",
         handlers=[logging.StreamHandler(sys.stdout)],
     )
+
     # noinspection PyTypeChecker
     collect_linter_previews()
+    generate_json_schema_enums()
     validate_descriptors()
     generate_all_flavors()
     generate_linter_test_classes()
     generate_documentation()
+    generate_documentation_all_linters()
     generate_mkdocs_yml()
+    validate_own_megalinter_config()
     manage_output_variables()

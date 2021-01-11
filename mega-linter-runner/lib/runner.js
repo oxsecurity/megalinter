@@ -37,6 +37,14 @@ class MegaLinterRunner {
             return { status: 0, stdout: outputString };
         }
 
+        // Run configuration generator
+        if (options.install) {
+            const yeoman = require('yeoman-environment');
+            const env = yeoman.createEnv();
+            env.run(path.resolve(`${__dirname}/../generators/mega-linter`));
+            return { status: 0 }
+        }
+
         // Build Mega-Linter docker image name with flavor and release version
         const release = (options.release in ["v4", "stable"]) ? "v4" :
             (options.release == "insiders") ? "latest" :

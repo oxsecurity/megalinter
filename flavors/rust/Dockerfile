@@ -1,4 +1,4 @@
-# MEGA-LINTER FLAVOR [rust]: Mega-Linter optimized for RUST based projects
+# MEGA-LINTER FLAVOR [rust]: Optimized for RUST based projects
 ###########################################
 ###########################################
 ## Dockerfile to run Mega-Linter ##
@@ -87,13 +87,19 @@ RUN npm install --no-cache --ignore-scripts \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \
+                stylelint-config-sass-guidelines \
+                stylelint-scss \
                 dockerfilelint \
                 editorconfig-checker \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
                 jsonlint \
+                eslint eslint-plugin-jsonc \
+                v8r \
                 markdownlint-cli \
+                remark-cli \
+                remark-preset-lint-recommended \
                 markdown-link-check \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
@@ -177,6 +183,11 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 # clippy installation
 RUN rustup component add clippy
 
+# misspell installation
+RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
+    && sh ./install-misspell.sh
+
+
 #OTHER__END
 
 ######################
@@ -195,8 +206,6 @@ RUN python /megalinter/setup.py install
 #######################################
 # Copy scripts and rules to container #
 #######################################
-COPY lib /action/lib
-# COPY megalinter /megalinter
 COPY megalinter/descriptors /megalinter-descriptors
 COPY TEMPLATES /action/lib/.automation
 

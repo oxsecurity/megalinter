@@ -1,0 +1,138 @@
+descriptor_id: JSON
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors # Any project can contain JSON
+  - ci_light
+file_extensions:
+  - ".json"
+linters:
+  # JSONLINT
+  - linter_name: jsonlint
+    linter_url: https://github.com/zaach/jsonlint
+    linter_megalinter_ref_url: https://github.com/zaach/jsonlint/pull/127
+    version_command_return_code: 1
+    examples:
+      - "jsonlint myfile.json"
+    install:
+      npm:
+        - jsonlint
+  # ESLINT-PLUGIN-JSONC
+  - linter_name: eslint-plugin-jsonc
+    file_extensions:
+      - ".json"
+      - ".json5"
+      - ".jsonc"
+    linter_url: https://ota-meshi.github.io/eslint-plugin-jsonc/
+    linter_repo: https://github.com/ota-meshi/eslint-plugin-jsonc
+    linter_text: |
+      **eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
+
+      - To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)
+      - If you have `.json` files with comments in your project, you may disable `jsonlint` to avoid false positive errors, by adding the following content in your `.mega-linter.yml` configuration file
+
+      ```yaml
+      DISABLE_LINTERS:
+        - JSON_JSONLINT
+      ```
+
+      - If you have your own local `.eslintrc.json` (or `.yaml` or `.js` equivalent) config in your project, you must
+        - add `JSON_ESLINT_PLUGIN_JSONC_FILE_NAME: .eslintrc.json` (or `.yaml` or `.js` equivalent) in your `.mega-linter.yml` config file
+        - add `overrides` property in it
+
+          <details>
+          <summary>See code</summary>
+
+          <pre>
+            <code>
+            {
+                "overrides": [
+                    {
+                        "files": ["*.json"],
+                        "extends": [
+                            "plugin:jsonc/recommended-with-json"
+                        ],
+                        "parser": "jsonc-eslint-parser",
+                            "parserOptions": {
+                                "jsonSyntax": "JSON"
+                        }
+                    },
+                    {
+                        "files": ["*.jsonc"],
+                        "extends": [
+                            "plugin:jsonc/recommended-with-jsonc"
+                        ],
+                        "parser": "jsonc-eslint-parser",
+                            "parserOptions": {
+                                "jsonSyntax": "JSONC"
+                        }
+                    },
+                    {
+                        "files": ["*.json5"],
+                        "extends": [
+                            "plugin:jsonc/recommended-with-json5"
+                        ],
+                        "parser": "jsonc-eslint-parser",
+                            "parserOptions": {
+                                "jsonSyntax": "JSON5"
+                        }
+                    }
+                ]
+            }
+            </code>
+          </pre>
+          </details>
+    linter_rules_url: https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
+    linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
+    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
+    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    cli_lint_mode: list_of_files
+    cli_executable: eslint
+    config_file_name: .eslintrc-json.json
+    cli_config_extra_args:
+      - "--no-eslintrc"
+    cli_lint_extra_args:
+      - "--no-ignore"
+    cli_lint_fix_arg_name: "--fix"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "✖ ([0-9]+) problem"
+    examples:
+      - "eslint myfile.json"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5"
+      - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
+      - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+    install:
+      npm:
+        - eslint eslint-plugin-jsonc
+    ide:
+      vscode:
+        - name: vscode-eslint
+          url: https://github.com/ota-meshi/eslint-plugin-jsonc#visual-studio-code
+    # V8R
+  - linter_name: v8r
+    linter_url: https://github.com/chris48s/v8r
+    linter_text: v8r checks the validity of JSON/YAML files if they have a matching schema defined on [schemastore.org](https://www.schemastore.org/json/)
+    linter_rules_url: https://www.schemastore.org/json/
+    linter_megalinter_ref_url: "no"
+    cli_lint_extra_args:
+      - "--ignore-errors"
+    cli_help_arg_name: "--help"
+    test_folder: json_schema
+    examples:
+      - "v8r --ignore-errors myfile.json"
+    install:
+      npm:
+        - v8r
+    ide:
+      eclipse:
+        - name: native support
+          url: https://www.eclipse.org/
+      idea:
+        - name: native support
+          url: https://www.jetbrains.com/products/#type=ide
+      vim:
+        - name: vison
+          url: https://github.com/Quramy/vison
+      vscode:
+        - name: native support
+          url: https://code.visualstudio.com/

@@ -6,6 +6,10 @@
 <!-- header-logo-end -->
 
 # Mega-Linter Runner
+
+[![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
+[![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 <!-- readme-header-start -->
 
 <!-- readme-header-end -->
@@ -59,6 +63,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 | `-r` <br/> `--release`    | Allows to override Mega-Linter version used  | `v4` |
 | `-h` <br/> `--help`      | Show mega-linter-runner help    | <!-- --> |
 | `-v` <br/> `--version`   | Show mega-linter-runner version   | <!-- --> |
+| `-i` <br/> `--install`   | Generate Mega-Linter configuration files   | <!-- --> |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 
@@ -78,9 +83,10 @@ mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=t
 
 ## Configuration
 
-Default configuration is ready out of the box
+You can define generate a ready to use [.mega-linter.yml configuration file](https://nvuillam.github.io/mega-linter/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
-You can define a [.mega-linter.yml](https://nvuillam.github.io/mega-linter/configuration/) configuration file at the root of your repository to customize or deactivate the included linters
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
 <!-- linters-section-start -->
 
 <!-- linters-section-end -->
