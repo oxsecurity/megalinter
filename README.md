@@ -769,6 +769,7 @@ To help, you can also:
 - [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools)
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github)
 - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter)
+- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter)
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter)
 - [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter)
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd)

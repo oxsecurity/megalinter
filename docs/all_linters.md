@@ -19,7 +19,7 @@
 | **cspell** | 4.1.3 | [SPELL](descriptors/spell_cspell.md) | :heart: | [Mega-Linter reference](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank} |
 | **dartanalyzer** | N/A | [DART](descriptors/dart_dartanalyzer.md) | :no_entry_sign: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
 | **dockerfilelint** | 1.8.0 | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
-| **dotenv-linter** | 3.0.0 | [ENV](descriptors/env_dotenv_linter.md) | :love_letter: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24#ok){target=_blank} |
+| **dotenv-linter** | 3.0.0 | [ENV](descriptors/env_dotenv_linter.md) | :heart: | [Mega-Linter reference](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank} |
 | **dotnet-format** | 4.1.131201 | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
 | **editorconfig-checker** | N/A | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :heart: | [Mega-Linter reference](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank} |
 | **eslint** | 7.17.0 | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
