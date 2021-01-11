@@ -47,6 +47,7 @@
     "puppet-lint": "2.4.2",
     "pylint": "2.6.0",
     "raku": "2020.10",
+    "remark-lint": "13.0.0",
     "rst-lint": "1.3.2",
     "rstcheck": "3.3.1",
     "rstfmt": "0.0.0",

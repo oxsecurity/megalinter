@@ -59,13 +59,15 @@ linters:
     config_file_name: ".remarkrc"
     cli_executable: remark
     cli_config_arg_name: "--rc-path"
+    cli_lint_extra_args:
+      - "--frail"
     cli_lint_fix_arg_name: "-o"
     test_variables:
       MARKDOWN_DEFAULT_STYLE: remark-lint
     examples:
-      - "remark myfile.md"
-      - "remark --rc-path .remarkrc myfile.md"
-      - "remark -o --rc-path .remarkrc myfile.md"
+      - "remark --frail myfile.md"
+      - "remark --frail --rc-path .remarkrc myfile.md"
+      - "remark --frail -o --rc-path .remarkrc myfile.md"
     install:
       npm:
         - remark-cli

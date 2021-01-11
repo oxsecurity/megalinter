@@ -4,6 +4,7 @@
 
 ## remark-lint documentation
 
+- Version in Mega-Linter: **13.0.0**
 - Visit [Official Web Site](https://remark.js.org/){target=_blank}
 - See [How to configure remark-lint rules](https://github.com/remarkjs/remark-lint#configuring-remark-lint){target=_blank}
   - If custom `.remarkrc` config file is not found, [.remarkrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.remarkrc){target=_blank} will be used
@@ -75,15 +76,15 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-remark myfile.md
+remark --frail myfile.md
 ```
 
 ```shell
-remark --rc-path .remarkrc myfile.md
+remark --frail --rc-path .remarkrc myfile.md
 ```
 
 ```shell
-remark -o --rc-path .remarkrc myfile.md
+remark --frail -o --rc-path .remarkrc myfile.md
 ```
 
 
