@@ -19,7 +19,7 @@
 | **cspell** | 4.1.3 | [SPELL](descriptors/spell_cspell.md) | :heart: | [Mega-Linter reference](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank} |
 | **dartanalyzer** | N/A | [DART](descriptors/dart_dartanalyzer.md) | :no_entry_sign: | [Repository](https://github.com/dart-lang/sdk){target=_blank} |
 | **dockerfilelint** | 1.8.0 | [DOCKERFILE](descriptors/dockerfile_dockerfilelint.md) | :white_circle: | [Web Site](https://github.com/replicatedhq/dockerfilelint){target=_blank} |
-| **dotenv-linter** | 2.2.1 | [ENV](descriptors/env_dotenv_linter.md) | :love_letter: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24#ok){target=_blank} |
+| **dotenv-linter** | 3.0.0 | [ENV](descriptors/env_dotenv_linter.md) | :love_letter: | [Pull Request](https://github.com/dotenv-linter/dotenv-linter.github.io/pull/24#ok){target=_blank} |
 | **dotnet-format** | 4.1.131201 | [CSHARP](descriptors/csharp_dotnet_format.md)<br/> [VBDOTNET](descriptors/vbdotnet_dotnet_format.md) | :white_circle: | [Web Site](https://github.com/dotnet/format){target=_blank} |
 | **editorconfig-checker** | N/A | [EDITORCONFIG](descriptors/editorconfig_editorconfig_checker.md) | :heart: | [Mega-Linter reference](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank} |
 | **eslint** | 7.17.0 | [JAVASCRIPT](descriptors/javascript_eslint.md)<br/> [JSX](descriptors/jsx_eslint.md)<br/> [TSX](descriptors/tsx_eslint.md)<br/> [TYPESCRIPT](descriptors/typescript_eslint.md) | :white_circle: | [Repository](https://github.com/eslint/eslint){target=_blank} |
@@ -27,7 +27,7 @@
 | **flake8** | 3.8.4 | [PYTHON](descriptors/python_flake8.md) | :white_circle: | [Repository](https://github.com/PyCQA/flake8){target=_blank} |
 | **gherkin-lint** | N/A | [GHERKIN](descriptors/gherkin_gherkin_lint.md) | :white_circle: | [Web Site](https://github.com/vsiakka/gherkin-lint){target=_blank} |
 | **git_diff** | 2.26.2 | [GIT](descriptors/git_git_diff.md) | <!-- --> | [Repository](https://github.com/git/git){target=_blank} |
-| **golangci-lint** | 1.35.1 | [GO](descriptors/go_golangci_lint.md) | :white_circle: | [Repository](https://github.com/golangci/golangci-lint){target=_blank} |
+| **golangci-lint** | 1.35.2 | [GO](descriptors/go_golangci_lint.md) | :white_circle: | [Repository](https://github.com/golangci/golangci-lint){target=_blank} |
 | **graphql-schema-linter** | 2.0.1 | [GRAPHQL](descriptors/graphql_graphql_schema_linter.md) | :hammer_and_wrench: | [Pull Request](https://github.com/cjoudrey/graphql-schema-linter/pull/272){target=_blank} |
 | **hadolint** | 1.19.0 | [DOCKERFILE](descriptors/dockerfile_hadolint.md) | :heart: | [Mega-Linter reference](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank} |
 | **htmlhint** | 0.14.2 | [HTML](descriptors/html_htmlhint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/htmlhint/HTMLHint/pull/579/files){target=_blank} |

@@ -9,7 +9,7 @@
 
 ## dotenv-linter documentation
 
-- Version in Mega-Linter: **2.2.1**
+- Version in Mega-Linter: **3.0.0**
 - Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
 - See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
@@ -76,21 +76,19 @@ dotenv-linter --fix myfile.env
 ### Help content
 
 ```shell
-dotenv-linter 2.2.1
+dotenv-linter 3.0.0
 Mikhail Grachev <work@mgrachev.com>
 Lightning-fast linter for .env files
 
 USAGE:
-    dotenv-linter [FLAGS] [OPTIONS] <input>...
+    dotenv-linter [FLAGS] [OPTIONS] <input>... [SUBCOMMAND]
 
 FLAGS:
-    -f, --fix            Automatically fixes warnings
-    -h, --help           Prints help information
-        --no-backup      Prevents .env files from being backed up when modified by -f/--fix
-    -q, --quiet          Doesn't display additional information
-    -r, --recursive      Recursively search and check .env files
-        --show-checks    Shows list of available checks
-    -v, --version        Prints version information
+    -h, --help         Prints help information
+        --no-color     Turns off the colored output
+    -q, --quiet        Doesn't display additional information
+    -r, --recursive    Recursively searches and checks .env files
+    -v, --version      Prints version information
 
 OPTIONS:
     -e, --exclude <FILE_NAME>...    Excludes files from check
@@ -98,6 +96,11 @@ OPTIONS:
 
 ARGS:
     <input>...    files or paths [default: /]
+
+SUBCOMMANDS:
+    compare    Compares if files have the same keys [aliases: c]
+    fix        Automatically fixes warnings [aliases: f]
+    list       Shows list of available checks [aliases: l]
 ```
 
 ### Installation on mega-linter Docker image
