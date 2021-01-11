@@ -125,7 +125,7 @@ def test_linter_success(linter, test_self):
         "TEXT_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
-        "ENABLE_LINTERS": linter.name
+        "ENABLE_LINTERS": linter.name,
     }
     if linter.lint_all_other_linters_files is not False:
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
@@ -180,7 +180,7 @@ def test_linter_failure(linter, test_self):
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
-        "ENABLE_LINTERS": linter.name
+        "ENABLE_LINTERS": linter.name,
     }
     if linter.lint_all_other_linters_files is not False:
         env_vars_failure["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
@@ -374,7 +374,7 @@ def test_linter_report_tap(linter, test_self):
         "OUTPUT_FORMAT": "tap",
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
-        "ENABLE_LINTERS": linter.name
+        "ENABLE_LINTERS": linter.name,
     }
     env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
