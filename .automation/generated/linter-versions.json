@@ -21,7 +21,7 @@
     "flake8": "3.8.4",
     "gherkin-lint": "0.0.0",
     "git_diff": "2.26.2",
-    "golangci-lint": "1.35.0",
+    "golangci-lint": "1.35.1",
     "graphql-schema-linter": "2.0.1",
     "hadolint": "1.19.0",
     "htmlhint": "0.14.2",
@@ -65,7 +65,7 @@
     "tekton-lint": "0.5.2",
     "terragrunt": "0.26.7",
     "terrascan": "1.2.0",
-    "tflint": "0.23.0",
+    "tflint": "0.23.1",
     "v8r": "0.4.0",
     "xmllint": "20910",
     "yamllint": "1.25.0"

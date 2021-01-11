@@ -27,7 +27,7 @@
 | **flake8** | 3.8.4 | [PYTHON](descriptors/python_flake8.md) | :white_circle: | [Repository](https://github.com/PyCQA/flake8){target=_blank} |
 | **gherkin-lint** | N/A | [GHERKIN](descriptors/gherkin_gherkin_lint.md) | :white_circle: | [Web Site](https://github.com/vsiakka/gherkin-lint){target=_blank} |
 | **git_diff** | 2.26.2 | [GIT](descriptors/git_git_diff.md) | <!-- --> | [Repository](https://github.com/git/git){target=_blank} |
-| **golangci-lint** | 1.35.0 | [GO](descriptors/go_golangci_lint.md) | :white_circle: | [Repository](https://github.com/golangci/golangci-lint){target=_blank} |
+| **golangci-lint** | 1.35.1 | [GO](descriptors/go_golangci_lint.md) | :white_circle: | [Repository](https://github.com/golangci/golangci-lint){target=_blank} |
 | **graphql-schema-linter** | 2.0.1 | [GRAPHQL](descriptors/graphql_graphql_schema_linter.md) | :hammer_and_wrench: | [Pull Request](https://github.com/cjoudrey/graphql-schema-linter/pull/272){target=_blank} |
 | **hadolint** | 1.19.0 | [DOCKERFILE](descriptors/dockerfile_hadolint.md) | :heart: | [Mega-Linter reference](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank} |
 | **htmlhint** | 0.14.2 | [HTML](descriptors/html_htmlhint.md) | :hammer_and_wrench: | [Pull Request](https://github.com/htmlhint/HTMLHint/pull/579/files){target=_blank} |
@@ -72,7 +72,7 @@
 | **tekton-lint** | 0.5.2 | [TEKTON](descriptors/tekton_tekton_lint.md) | :white_circle: | [Web Site](https://github.com/IBM/tekton-lint){target=_blank} |
 | **terragrunt** | 0.26.7 | [TERRAFORM](descriptors/terraform_terragrunt.md) | :white_circle: | [Repository](https://github.com/gruntwork-io/terragrunt){target=_blank} |
 | **terrascan** | 1.2.0 | [TERRAFORM](descriptors/terraform_terrascan.md) | :white_circle: | [Repository](https://github.com/accurics/terrascan){target=_blank} |
-| **tflint** | 0.23.0 | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
+| **tflint** | 0.23.1 | [TERRAFORM](descriptors/terraform_tflint.md) | :white_circle: | [Web Site](https://github.com/terraform-linters/tflint){target=_blank} |
 | **v8r** | 0.4.0 | [JSON](descriptors/json_v8r.md)<br/> [YAML](descriptors/yaml_v8r.md) | :no_entry_sign: | [Web Site](https://github.com/chris48s/v8r){target=_blank} |
 | **xmllint** | 20910 | [XML](descriptors/xml_xmllint.md) | :white_circle: | [Web Site](http://xmlsoft.org/xmllint.html){target=_blank} |
 | **yamllint** | 1.25.0 | [YAML](descriptors/yaml_yamllint.md) | :no_entry_sign: | [Repository](https://github.com/adrienverge/yamllint){target=_blank} |
