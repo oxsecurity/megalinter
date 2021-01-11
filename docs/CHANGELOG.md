@@ -20,6 +20,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
   - [tflint](https://github.com/terraform-linters/tflint) from 0.23.0 to **0.23.1** on 2021-01-10
   - [dotenv-linter](https://dotenv-linter.github.io/) from 2.2.1 to **3.0.0** on 2021-01-11
     - Update Mega-Linter to call dotenv-linter v3 with `fix` and not `--fix` anymore
+  - [phpstan](https://phpstan.org/) from 0.12.65 to **0.12.66** on 2021-01-11
 <!-- linter-versions-end -->
 
 ## [4.22.1] 2021-01-07
