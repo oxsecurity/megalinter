@@ -114,6 +114,7 @@ linters:
     cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--check"
+    linter_help_cache: "Help has not been implemented yet on markdown-table-prettify"
     linter_version_cache: "0.0.0"  # Not implemented yet on markdown-table-prettify
     examples:
       - "markdown-table-prettify --check myfile.md" # Check only

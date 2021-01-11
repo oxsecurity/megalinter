@@ -38,6 +38,7 @@ class Linter:
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
         self.linter_version_cache = None
+        self.linter_help_cache = None
         self.processing_order = 0
         # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
         # Ex: JAVASCRIPT
@@ -620,6 +621,8 @@ class Linter:
 
     # Returns linter help (can be overridden in special cases, like version has special format)
     def get_linter_help(self):
+        if self.linter_help_cache is not None:
+            return self.linter_help_cache
         help_command = self.build_help_command()
         return_code = 666
         output = ""
