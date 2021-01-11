@@ -168,6 +168,7 @@ RUN npm install --no-cache --ignore-scripts \
                 remark-cli \
                 remark-preset-lint-recommended \
                 markdown-link-check \
+                markdown-table-prettify \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
@@ -345,17 +346,6 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
     && make -b install \
     && cd .. && rm -r luarocks-3.3.1-super-linter/ \
     && luarocks install luacheck
-
-
-# markdown-table-prettify installation
-RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
-    && cd MarkdownTablePrettify-VSCodeExt \
-    && npm install \
-    && npm run compile \
-    && echo -e '#!/bin/bash\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md "$@"' > /usr/bin/check-md \
-    && chmod +x /usr/bin/check-md \
-    && echo -e '#!/bin/bash\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md "$@"' > /usr/bin/prettify-md \
-    && chmod +x /usr/bin/prettify-md
 
 
 # perlcritic installation

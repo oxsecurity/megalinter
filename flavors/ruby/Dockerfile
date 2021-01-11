@@ -105,6 +105,7 @@ RUN npm install --no-cache --ignore-scripts \
                 remark-cli \
                 remark-preset-lint-recommended \
                 markdown-link-check \
+                markdown-table-prettify \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
@@ -169,17 +170,6 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 RUN wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
     && tar xf kubeval-linux-amd64.tar.gz \
     && cp kubeval /usr/local/bin
-
-
-# markdown-table-prettify installation
-RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
-    && cd MarkdownTablePrettify-VSCodeExt \
-    && npm install \
-    && npm run compile \
-    && echo -e '#!/bin/bash\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md "$@"' > /usr/bin/check-md \
-    && chmod +x /usr/bin/check-md \
-    && echo -e '#!/bin/bash\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md "$@"' > /usr/bin/prettify-md \
-    && chmod +x /usr/bin/prettify-md
 
 
 # protolint installation

@@ -138,6 +138,7 @@
         "MARKDOWN_MARKDOWNLINT",
         "MARKDOWN_REMARK_LINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
+        "MARKDOWN_MARKDOWN_TABLE_PRETTIFY",
         "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
         "PHP_BUILTIN",
@@ -3362,6 +3363,59 @@
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: Path where to find linter configuration file",
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
+      "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS",
+      "description": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Custom arguments",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS",
+      "default": false,
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_NAMES_REGEX": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_EXCLUDE",
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Excluding Regex",
+      "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_INCLUDE",
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Including Regex",
       "type": "string"
     },
     "MARKDOWN_REMARK_LINT_ARGUMENTS": {

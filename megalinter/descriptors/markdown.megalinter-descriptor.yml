@@ -104,23 +104,22 @@ linters:
         - markdown-link-check
   # Markdown table prettify Check
   - linter_name: markdown-table-prettify
-    linter_url: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt
-    cli_executable: mtp-check-md
-    cli_executable_fix: mtp-prettify-md
+    is_formatter: true
+    linter_text: |
+      markdown-table-prettify detects wrongly formatted markdown tables and can autotomatically reformat them
+    linter_url: https://www.npmjs.com/package/markdown-table-prettify
+    linter_repo: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
     examples:
-      - "mtp-check-md myfile.md"
-      - "mtp-prettify-md myfile.md"
+      - "markdown-table-prettify --check myfile.md" # Check only
+      - "markdown-table-prettify myfile.md" # Apply formatting
     install:
-      dockerfile:
-        - |
-          RUN git clone https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt.git \
-              && cd MarkdownTablePrettify-VSCodeExt \
-              && npm install \
-              && npm run compile \
-              && echo -e '#!/bin/bash\\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent check-md "$@"' > /usr/bin/check-md \
-              && chmod +x /usr/bin/check-md \
-              && echo -e '#!/bin/bash\\ncd MarkdownTablePrettify-VSCodeExt && npm run --silent prettify-md "$@"' > /usr/bin/prettify-md \
-              && chmod +x /usr/bin/prettify-md
+      npm:
+        - markdown-table-prettify
     ide:
       vscode:
         - name: Markdown Table Prettify Extension
