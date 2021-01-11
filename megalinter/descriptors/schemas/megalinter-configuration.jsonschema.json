@@ -136,6 +136,7 @@
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "MARKDOWN_MARKDOWNLINT",
+        "MARKDOWN_REMARK_LINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
         "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
@@ -3361,6 +3362,72 @@
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: Path where to find linter configuration file",
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
+      "type": "string"
+    },
+    "MARKDOWN_REMARK_LINT_ARGUMENTS": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_ARGUMENTS",
+      "description": "MARKDOWN_REMARK_LINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_REMARK_LINT: Custom arguments",
+      "type": "array"
+    },
+    "MARKDOWN_REMARK_LINT_CONFIG_FILE": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_CONFIG_FILE",
+      "default": ".remarkrc",
+      "description": "MARKDOWN_REMARK_LINT: User custom config file name if different from default",
+      "title": "MARKDOWN_REMARK_LINT: Custom config file name",
+      "type": "string"
+    },
+    "MARKDOWN_REMARK_LINT_DISABLE_ERRORS": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "MARKDOWN_REMARK_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "MARKDOWN_REMARK_LINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_EXCLUDE",
+      "title": "MARKDOWN_REMARK_LINT: Excluding Regex",
+      "type": "string"
+    },
+    "MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE",
+      "title": "MARKDOWN_REMARK_LINT: Including Regex",
+      "type": "string"
+    },
+    "MARKDOWN_REMARK_LINT_RULES_PATH": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_RULES_PATH",
+      "description": "MARKDOWN_REMARK_LINT: Path where to find linter configuration file",
+      "title": "MARKDOWN_REMARK_LINT: Custom config file path",
       "type": "string"
     },
     "OPENAPI_FILTER_REGEX_EXCLUDE": {

@@ -8,6 +8,7 @@
 | Linter | Configuration key |
 | ------ | ----------------- |
 | [markdownlint](markdown_markdownlint.md) | [MARKDOWN](markdown_markdownlint.md) |
+| [remark-lint](markdown_remark_lint.md) | [MARKDOWN](markdown_remark_lint.md) |
 | [markdown-link-check](markdown_markdown_link_check.md) | [MARKDOWN](markdown_markdown_link_check.md) |
 
 ## Linted files

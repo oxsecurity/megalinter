@@ -53,6 +53,7 @@
 | **puppet-lint** | 2.4.2 | [PUPPET](descriptors/puppet_puppet_lint.md) | :white_circle: | [Repository](https://github.com/rodjek/puppet-lint){target=_blank} |
 | **pylint** | 2.6.0 | [PYTHON](descriptors/python_pylint.md) | :white_circle: | [Repository](https://github.com/PyCQA/pylint){target=_blank} |
 | **raku** | 2020.10 | [RAKU](descriptors/raku_raku.md) | :white_circle: | [Repository](https://github.com/rakudo/rakudo){target=_blank} |
+| **remark-lint** | 13.0.0 | [MARKDOWN](descriptors/markdown_remark_lint.md) | :white_circle: | [Repository](https://github.com/remarkjs/remark-lint){target=_blank} |
 | **rst-lint** | 1.3.2 | [RST](descriptors/rst_rst_lint.md) | :heart: | [Mega-Linter reference](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank} |
 | **rstcheck** | 3.3.1 | [RST](descriptors/rst_rstcheck.md) | :hammer_and_wrench: | [Pull Request](https://github.com/myint/rstcheck/pull/73){target=_blank} |
 | **rstfmt** | N/A | [RST](descriptors/rst_rstfmt.md) | :hammer_and_wrench: | [Pull Request](https://github.com/dzhu/rstfmt/pull/1){target=_blank} |

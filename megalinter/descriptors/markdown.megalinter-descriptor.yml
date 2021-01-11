@@ -8,6 +8,11 @@ linters:
   # MarkdownLint
   - linter_name: markdownlint
     is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: MARKDOWN_DEFAULT_STYLE
+        expected_value: markdownlint
+        default_value: markdownlint
     linter_url: https://github.com/DavidAnson/markdownlint
     linter_rules_url: https://github.com/DavidAnson/markdownlint#rules--aliases
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
@@ -37,6 +42,50 @@ linters:
       vscode:
         - name: vscode-markdownlint
           url: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint
+  # remark-lint
+  - linter_name: remark-lint
+    is_formatter: true
+    activation_rules:
+      - type: variable
+        variable: MARKDOWN_DEFAULT_STYLE
+        expected_value: remark-lint
+        default_value: markdownlint
+    linter_url: https://remark.js.org/
+    linter_repo: https://github.com/remarkjs/remark-lint
+    linter_image_url: https://raw.githubusercontent.com/remarkjs/remark-lint/02295bc/logo.svg?sanitize=true
+    linter_rules_url: https://github.com/remarkjs/remark-lint/blob/main/doc/rules.md#list-of-rules
+    linter_rules_configuration_url: https://github.com/remarkjs/remark-lint#configuring-remark-lint
+    linter_rules_inline_disable_url: https://github.com/remarkjs/remark-message-control#markers
+    config_file_name: ".remarkrc"
+    cli_executable: remark
+    cli_config_arg_name: "--rc-path"
+    cli_lint_extra_args:
+      - "--frail"
+    cli_lint_fix_arg_name: "-o"
+    test_folder: markdown_remark
+    test_variables:
+      MARKDOWN_DEFAULT_STYLE: remark-lint
+    examples:
+      - "remark --frail myfile.md"
+      - "remark --frail --rc-path .remarkrc myfile.md"
+      - "remark --frail -o --rc-path .remarkrc myfile.md"
+    install:
+      npm:
+        - remark-cli
+        - remark-preset-lint-recommended
+    ide:
+      atom:
+        - name: linter-remark
+          url: https://github.com/wooorm/linter-remark
+      sublime:
+        - name: SublimeLinter-contrib-remark-lint
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-remark-lint
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+      vscode:
+        - name: vscode-remark-lint
+          url: https://github.com/drewbourne/vscode-remark-lint
   # Markdown Link Check
   - linter_name: markdown-link-check
     linter_url: https://github.com/tcort/markdown-link-check

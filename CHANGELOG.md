@@ -9,6 +9,7 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
 
 - Linters
   - Add **prettier** to format Javascript and Typescript. **standard** remains default
+  - Add **remark-lint** to check and fix Markdown files. **markdownlint** remains default
 
 - Linter versions upgrades
   - [golangci-lint](https://golangci-lint.run/) from 1.34.1 to **1.35.0** on 2021-01-08

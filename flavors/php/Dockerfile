@@ -109,6 +109,8 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint eslint-plugin-jsonc \
                 v8r \
                 markdownlint-cli \
+                remark-cli \
+                remark-preset-lint-recommended \
                 markdown-link-check \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \

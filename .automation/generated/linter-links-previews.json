@@ -239,6 +239,11 @@
     "image": null,
     "title": "Raku Programming Language"
   },
+  "remark-lint": {
+    "description": "Markdown processor powered by plugins",
+    "image": "https://raw.githubusercontent.com/remarkjs/remark/website/screenshot.png",
+    "title": "remark"
+  },
   "rst-lint": {
     "description": "reStructuredText linter. Contribute to twolfson/restructuredtext-lint development by creating an account on GitHub.",
     "image": "https://avatars2.githubusercontent.com/u/902488?s=400&v=4",
