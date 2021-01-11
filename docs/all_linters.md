@@ -45,7 +45,7 @@
 | **perlcritic** | 1.138 | [PERL](descriptors/perl_perlcritic.md) | :white_circle: | [Repository](https://github.com/Perl-Critic/Perl-Critic){target=_blank} |
 | **php** | 7.3.26 | [PHP](descriptors/php_php.md) | <!-- --> | [Repository](https://github.com/php/php-src){target=_blank} |
 | **phpcs** | 3.5.8 | [PHP](descriptors/php_phpcs.md) | :white_circle: | [Web Site](https://github.com/squizlabs/PHP_CodeSniffer){target=_blank} |
-| **phpstan** | 0.12.65 | [PHP](descriptors/php_phpstan.md) | :white_circle: | [Repository](https://github.com/phpstan/phpstan){target=_blank} |
+| **phpstan** | 0.12.66 | [PHP](descriptors/php_phpstan.md) | :white_circle: | [Repository](https://github.com/phpstan/phpstan){target=_blank} |
 | **powershell** | 7.1.0 | [POWERSHELL](descriptors/powershell_powershell.md) | :white_circle: | [Web Site](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank} |
 | **prettier** | 2.2.1 | [JAVASCRIPT](descriptors/javascript_prettier.md)<br/> [TYPESCRIPT](descriptors/typescript_prettier.md) | :white_circle: | [Repository](https://github.com/prettier/prettier){target=_blank} |
 | **protolint** | 0.26.1 | [PROTOBUF](descriptors/protobuf_protolint.md) | :white_circle: | [Web Site](https://github.com/yoheimuta/protolint){target=_blank} |
