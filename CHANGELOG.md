@@ -4,6 +4,12 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+  - None yet !
+<!-- linter-versions-end -->
+
+## [4.23.0] 2021-01-12
+
 - Core
   - If the linter is a formatter, errors are not considered as blocking errors by default
 
@@ -20,7 +26,6 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
   - [dotenv-linter](https://dotenv-linter.github.io/) from 2.2.1 to **3.0.0** on 2021-01-11
     - Update Mega-Linter to call dotenv-linter v3 with `fix` and not `--fix` anymore
   - [phpstan](https://phpstan.org/) from 0.12.65 to **0.12.66** on 2021-01-11
-<!-- linter-versions-end -->
 
 ## [4.22.1] 2021-01-07
 
