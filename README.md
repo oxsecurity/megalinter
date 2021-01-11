@@ -759,6 +759,7 @@ To help, you can also:
 
 #### Global
 
+- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter)
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
 - [schemastore.org](https://www.schemastore.org/json/)
 
