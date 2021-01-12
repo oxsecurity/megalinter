@@ -197,8 +197,9 @@ def list_updated_files(repo_home):
     return changed_files
 
 
-def check_updated_file(file, repo_home):
-    changed_files = list_updated_files(repo_home)
+def check_updated_file(file, repo_home, changed_files=None):
+    if changed_files is None:
+        changed_files = list_updated_files(repo_home)
     file_absolute = os.path.abspath(file)
     for changed_file in changed_files:
         if changed_file in file_absolute:

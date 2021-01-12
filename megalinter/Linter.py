@@ -243,6 +243,7 @@ class Linter:
             self.files = []
             self.try_fix = False
             self.status = "success"
+            self.stdout = None
             self.return_code = 0
             self.number_errors = 0
             self.total_number_errors = 0
@@ -419,45 +420,21 @@ class Linter:
                     self.number_errors += 1
                     file_errors_number = self.get_total_number_errors(stdout)
                     self.total_number_errors += file_errors_number
-                if self.try_fix is True:
-                    fixed = utils.check_updated_file(file, self.github_workspace)
-                else:
-                    fixed = False
-                if fixed is True:
-                    self.number_fixed = self.number_fixed + 1
-                # store result
-                self.files_lint_results += [
-                    {
-                        "file": file,
-                        "status_code": return_code,
-                        "status": file_status,
-                        "stdout": stdout,
-                        "fixed": fixed,
-                        "errors_number": file_errors_number,
-                    }
-                ]
-                # Update reports with file result
-                for reporter in self.reporters:
-                    reporter.add_report_item(
-                        file=file,
-                        status_code=return_code,
-                        stdout=stdout,
-                        index=index,
-                        fixed=fixed,
-                    )
+                self.update_files_lint_results(
+                    [file], return_code, file_status, stdout, file_errors_number
+                )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
+            self.stdout = stdout
             if return_code != 0:
                 self.status = "error"
                 self.return_code = 1
                 self.number_errors += 1
                 self.total_number_errors += self.get_total_number_errors(stdout)
-            # Update reports with file result
-            for reporter in self.reporters:
-                reporter.add_report_item(
-                    status_code=return_code, stdout=stdout, file=None, index=0
-                )
+            # Build result for list of files
+            if self.cli_lint_mode == "list_of_files":
+                self.update_files_lint_results(self.files, None, None, None, None)
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
         if self.return_code != 0 and self.disable_errors is True:
             self.return_code = 0
@@ -469,6 +446,31 @@ class Linter:
         for reporter in self.reporters:
             reporter.produce_report()
         return self
+
+    def update_files_lint_results(
+        self, linted_files, return_code, file_status, stdout, file_errors_number
+    ):
+        updated_files = utils.list_updated_files(self.github_workspace)
+        for file in linted_files:
+            if self.try_fix is True:
+                fixed = utils.check_updated_file(
+                    file, self.github_workspace, updated_files
+                )
+            else:
+                fixed = False
+            if fixed is True:
+                self.number_fixed = self.number_fixed + 1
+            # store result
+            self.files_lint_results += [
+                {
+                    "file": file,
+                    "status_code": return_code,
+                    "status": file_status,
+                    "stdout": stdout,
+                    "fixed": fixed,
+                    "errors_number": file_errors_number,
+                }
+            ]
 
     # List all reporters, then instantiate each of them
     def load_reporters(self):

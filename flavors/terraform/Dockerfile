@@ -214,9 +214,9 @@ ARG BUILD_VERSION
 #################################################
 # Set ENV values used for debugging the version #
 #################################################
-ENV BUILD_DATE=$BUILD_DATE
-ENV BUILD_REVISION=$BUILD_REVISION
-ENV BUILD_VERSION=$BUILD_VERSION
+ENV BUILD_DATE=$BUILD_DATE \
+    BUILD_REVISION=$BUILD_REVISION \
+    BUILD_VERSION=$BUILD_VERSION
 
 #FLAVOR__START
 ENV MEGALINTER_FLAVOR=terraform

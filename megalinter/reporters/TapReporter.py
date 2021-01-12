@@ -30,28 +30,39 @@ class TapReporter(Reporter):
             self.is_active = True
         else:
             self.is_active = False
-
-    def add_report_item(self, file, status_code, stdout, index, fixed=False):
-        if self.master.cli_lint_mode == "project":
-            return
-        if file is None:
-            return
-        file_nm = utils.normalize_log_string(file)
-        tap_status = "ok" if status_code == 0 else "not ok"
-        file_tap_lines = [f"{tap_status} {str(index)} - {file_nm}"]
-        if self.report_type == "detailed" and stdout != "" and status_code != 0:
-            std_out_tap = stdout.rstrip(f" {os.linesep}") + os.linesep
-            std_out_tap = "\\n".join(std_out_tap.splitlines())
-            std_out_tap = std_out_tap.replace(":", " ")
-            detailed_lines = ["  ---", f"  message: {std_out_tap}", "  ..."]
-            file_tap_lines += detailed_lines
-        self.report_items += file_tap_lines
+        if self.is_active is True:
+            # If TAP is active, we must lint file by file to have result file by file in TAP
+            if self.master.cli_lint_mode == "list_of_files":
+                self.master.cli_lint_mode = "file"
+            elif self.master.cli_lint_mode == "project":
+                self.is_active = False
+                logging.warning(
+                    f"Tap output is not available for {self.master.linter_name}"
+                )
 
     def produce_report(self):
         if self.master.cli_lint_mode == "project":
             return
         tap_report_lines = ["TAP version 13", f"1..{str(len(self.master.files))}"]
-        tap_report_lines += self.report_items
+        # Convert file results in TAP
+        for index, file_result in enumerate(self.master.files_lint_results):
+            file_nm = utils.normalize_log_string(file_result["file"])
+            tap_status = "ok" if file_result["status_code"] == 0 else "not ok"
+            file_tap_lines = [f"{tap_status} {str(index + 1)} - {file_nm}"]
+            if (
+                self.report_type == "detailed"
+                and file_result["stdout"] != ""
+                and file_result["status_code"] != 0
+            ):
+                std_out_tap = (
+                    file_result["stdout"].rstrip(f" {os.linesep}") + os.linesep
+                )
+                std_out_tap = "\\n".join(std_out_tap.splitlines())
+                std_out_tap = std_out_tap.replace(":", " ")
+                detailed_lines = ["  ---", f"  message: {std_out_tap}", "  ..."]
+                file_tap_lines += detailed_lines
+            tap_report_lines += file_tap_lines
+        # Write TAP file
         tap_report_sub_folder = config.get("TAP_REPORTER_SUB_FOLDER", "tap")
         tap_file_name = (
             f"{self.report_folder}{os.path.sep}"
