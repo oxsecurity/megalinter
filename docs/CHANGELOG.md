@@ -5,13 +5,18 @@
 
 Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Core
-  - Refactor part of Linter & reporters to manage correctly logs when linter cli_lint_mode is `workspace` or `list_of_files`
-  - Decrease number of Dockerfile steps
-
 - Linter versions upgrades
   - None yet !
 <!-- linter-versions-end -->
+
+## [4.23.1] 2021-01-12
+
+- Core
+  - Refactor part of Linter & reporters to manage correctly logs when linter cli_lint_mode is `project` or `list_of_files`
+    - Generate ConsoleLinter and Text reports based from Linter.files_lint_results instead of at each loop
+    - When TAP Reporter active, switch linters with cli_lint_mode == "list_of_files" to "files"
+    - Fix linter output when cli_lint_mode == "list_of_files"
+  - Decrease number of Dockerfile steps
 
 ## [4.23.0] 2021-01-12
 
