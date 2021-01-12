@@ -4,7 +4,7 @@ Output results in console
 """
 import logging
 
-from megalinter import Reporter, utils, config
+from megalinter import Reporter, config, utils
 
 
 class ConsoleLinterReporter(Reporter):

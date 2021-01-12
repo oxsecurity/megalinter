@@ -420,7 +420,9 @@ class Linter:
                     self.number_errors += 1
                     file_errors_number = self.get_total_number_errors(stdout)
                     self.total_number_errors += file_errors_number
-                self.update_files_lint_results([file], return_code, file_status, stdout, file_errors_number)
+                self.update_files_lint_results(
+                    [file], return_code, file_status, stdout, file_errors_number
+                )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -445,11 +447,15 @@ class Linter:
             reporter.produce_report()
         return self
 
-    def update_files_lint_results(self, linted_files, return_code, file_status, stdout, file_errors_number):
+    def update_files_lint_results(
+        self, linted_files, return_code, file_status, stdout, file_errors_number
+    ):
         updated_files = utils.list_updated_files(self.github_workspace)
         for file in linted_files:
             if self.try_fix is True:
-                fixed = utils.check_updated_file(file, self.github_workspace, updated_files)
+                fixed = utils.check_updated_file(
+                    file, self.github_workspace, updated_files
+                )
             else:
                 fixed = False
             if fixed is True:

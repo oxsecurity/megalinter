@@ -48,14 +48,18 @@ class TextReporter(Reporter):
         # Files lines
         if self.master.cli_lint_mode == "file":
             for file_result in self.master.files_lint_results:
-                status = "✅ [SUCCESS]" if file_result["status_code"] == 0 else "❌ [ERROR]"
+                status = (
+                    "✅ [SUCCESS]" if file_result["status_code"] == 0 else "❌ [ERROR]"
+                )
                 if file_result["file"] is not None:
                     file_nm = utils.normalize_log_string(file_result["file"])
                     file_text_lines = [f"{status} {file_nm}"]
                 if file_result["fixed"] is True:
                     file_text_lines[0] = file_text_lines[0] + " - FIXED"
                 if self.report_type == "detailed" or file_result["status_code"] != 0:
-                    std_out_text = file_result["stdout"].rstrip(f" {os.linesep}") + os.linesep
+                    std_out_text = (
+                        file_result["stdout"].rstrip(f" {os.linesep}") + os.linesep
+                    )
                     std_out_text = "\n    ".join(std_out_text.splitlines())
                     std_out_text = utils.normalize_log_string(std_out_text)
                     detailed_lines = ["    " + std_out_text, ""]

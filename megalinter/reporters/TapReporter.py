@@ -36,7 +36,9 @@ class TapReporter(Reporter):
                 self.master.cli_lint_mode = "file"
             elif self.master.cli_lint_mode == "project":
                 self.is_active = False
-                logging.warning(f"Tap output is not available for {self.master.linter_name}")
+                logging.warning(
+                    f"Tap output is not available for {self.master.linter_name}"
+                )
 
     def produce_report(self):
         if self.master.cli_lint_mode == "project":
@@ -47,8 +49,14 @@ class TapReporter(Reporter):
             file_nm = utils.normalize_log_string(file_result["file"])
             tap_status = "ok" if file_result["status_code"] == 0 else "not ok"
             file_tap_lines = [f"{tap_status} {str(index + 1)} - {file_nm}"]
-            if self.report_type == "detailed" and file_result["stdout"] != "" and file_result["status_code"] != 0:
-                std_out_tap = file_result["stdout"].rstrip(f" {os.linesep}") + os.linesep
+            if (
+                self.report_type == "detailed"
+                and file_result["stdout"] != ""
+                and file_result["status_code"] != 0
+            ):
+                std_out_tap = (
+                    file_result["stdout"].rstrip(f" {os.linesep}") + os.linesep
+                )
                 std_out_tap = "\\n".join(std_out_tap.splitlines())
                 std_out_tap = std_out_tap.replace(":", " ")
                 detailed_lines = ["  ---", f"  message: {std_out_tap}", "  ..."]
