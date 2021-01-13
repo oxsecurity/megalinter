@@ -410,6 +410,13 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 #OTHER__END
 
+#################################
+# Install reporter dependencies #
+#################################
+
+# Reviewdog installation
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s
+
 ######################
 # Set the entrypoint #
 ######################
