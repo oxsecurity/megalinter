@@ -2322,6 +2322,16 @@
       "title": "HTML_HTMLHINT: Custom config file path",
       "type": "string"
     },
+    "JAVASCRIPT_DEFAULT_STYLE": {
+      "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
+      "enum": [
+        "standard",
+        "prettier"
+      ],
+      "description": "Style of javascript formatting to apply",
+      "title": "Javascript default style",
+      "type": "string"
+    },
     "JAVASCRIPT_ES_ARGUMENTS": {
       "$id": "#/properties/JAVASCRIPT_ES_ARGUMENTS",
       "description": "JAVASCRIPT_ES: User custom arguments to add in linter CLI call",
@@ -3206,6 +3216,16 @@
       "$id": "#/properties/LUA_LUACHECK_RULES_PATH",
       "description": "LUA_LUACHECK: Path where to find linter configuration file",
       "title": "LUA_LUACHECK: Custom config file path",
+      "type": "string"
+    },
+    "MARKDOWN_DEFAULT_STYLE": {
+      "$id": "#/properties/MARKDOWN_DEFAULT_STYLE",
+      "enum": [
+        "markdownlint",
+        "remark-lint"
+      ],
+      "description": "Style of markdown formatting to apply",
+      "title": "Markdown default formatting style",
       "type": "string"
     },
     "MARKDOWN_FILTER_REGEX_EXCLUDE": {
