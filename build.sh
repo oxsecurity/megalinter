@@ -7,7 +7,7 @@ python ./.automation/build.py
 
 # Prettify markdown tables
 # shellcheck disable=SC2086
-MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*") && npx markdown-table-formatter $MD_FILES
+MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*") && npx markdown-table-formatter $MD_FILES
 
 # Build online documentation
 mkdocs build
