@@ -33,6 +33,7 @@
     "lintr": "2.0.1.9000",
     "luacheck": "0.23.0",
     "markdown-link-check": "0.0.0",
+    "markdown-table-formatter": "1.0.1",
     "markdownlint": "0.26.0",
     "misspell": "0.3.4",
     "npm-groovy-lint": "8.1.0",

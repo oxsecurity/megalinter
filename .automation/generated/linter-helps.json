@@ -1999,6 +1999,13 @@
         "                         header when HTTP code is 429",
         "  -h, --help             display help for command"
     ],
+    "markdown-table-formatter": [
+        "markdown-table-formatter [options]",
+        "",
+        "  -c, --check    Check only (exits 1 if wrongly formatted markdown tables are found)",
+        "  -h, --help     Show help",
+        "  -v, --version  Show version"
+    ],
     "markdownlint": [
         "Usage: markdownlint [options] <files|directories|globs>",
         "",
