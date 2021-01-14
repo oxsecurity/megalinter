@@ -5,7 +5,7 @@ APPLY_FIXES: <%= APPLY_FIXES %> # all, none, or list of linter keys
 DEFAULT_BRANCH: <%= DEFAULT_BRANCH %> # Usually master or main
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
-DISABLE:
+<%= DISABLE %>
   <%= COPYPASTE %>
   <%= SPELL %> # - SPELL # Uncomment to disable checks of spelling mistakes
 SHOW_ELAPSED_TIME: <%= SHOW_ELAPSED_TIME %>

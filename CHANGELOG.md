@@ -2,7 +2,35 @@
 
 ## [insiders] (master)
 
-Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+
+- Linter versions upgrades
+  - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
+<!-- linter-versions-end -->
+
+## [4.23.3] 2021-01-14
+
+- Fix `.cspell.json` file updater
+
+- Linter versions upgrades
+  - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
+
+## [4.23.2] 2021-01-14
+
+- mega-linter-runner --install:
+  - Fix `.mega-linter.yml` DISABLE property when nothing in it
+  - Add default `.cspell.json` if spelling mistakes detector is activated
+
+## [4.23.1] 2021-01-12
+
+- Core
+  - Refactor part of Linter & reporters to manage correctly logs when linter cli_lint_mode is `project` or `list_of_files`
+    - Generate ConsoleLinter and Text reports based from Linter.files_lint_results instead of at each loop
+    - When TAP Reporter active, switch linters with cli_lint_mode == "list_of_files" to "files"
+    - Fix linter output when cli_lint_mode == "list_of_files"
+  - Decrease number of Dockerfile steps
+
+## [4.23.0] 2021-01-12
 
 - Core
   - If the linter is a formatter, errors are not considered as blocking errors by default
@@ -20,7 +48,6 @@ Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action me
   - [dotenv-linter](https://dotenv-linter.github.io/) from 2.2.1 to **3.0.0** on 2021-01-11
     - Update Mega-Linter to call dotenv-linter v3 with `fix` and not `--fix` anymore
   - [phpstan](https://phpstan.org/) from 0.12.65 to **0.12.66** on 2021-01-11
-<!-- linter-versions-end -->
 
 ## [4.22.1] 2021-01-07
 

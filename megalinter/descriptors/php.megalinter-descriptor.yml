@@ -121,7 +121,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+          RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
     ide:
       idea:
         - name: PHPStan / Psalm / Generics

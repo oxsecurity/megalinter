@@ -198,7 +198,7 @@ RUN composer global require phpstan/phpstan \
 ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # psalm installation
-RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 
 # protolint installation
@@ -240,9 +240,9 @@ ARG BUILD_VERSION
 #################################################
 # Set ENV values used for debugging the version #
 #################################################
-ENV BUILD_DATE=$BUILD_DATE
-ENV BUILD_REVISION=$BUILD_REVISION
-ENV BUILD_VERSION=$BUILD_VERSION
+ENV BUILD_DATE=$BUILD_DATE \
+    BUILD_REVISION=$BUILD_REVISION \
+    BUILD_VERSION=$BUILD_VERSION
 
 #FLAVOR__START
 ENV MEGALINTER_FLAVOR=php
