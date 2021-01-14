@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                                       | Configuration key                                    |
+|--------------------------------------------------------------|------------------------------------------------------|
 | [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) |
 
 ## Linted files
@@ -17,8 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                          | Description                   | Default value |
+|-----------------------------------|-------------------------------|---------------|
+| EDITORCONFIG_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| EDITORCONFIG_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

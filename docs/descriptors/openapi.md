@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                          | Configuration key              |
+|---------------------------------|--------------------------------|
 | [spectral](openapi_spectral.md) | [OPENAPI](openapi_spectral.md) |
 
 ## Linted files
@@ -24,8 +24,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| OPENAPI_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| OPENAPI_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

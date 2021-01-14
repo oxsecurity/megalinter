@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [eslint](javascript_eslint.md) | [JAVASCRIPT_ES](javascript_eslint.md) |
+| Linter                             | Configuration key                             |
+|------------------------------------|-----------------------------------------------|
+| [eslint](javascript_eslint.md)     | [JAVASCRIPT_ES](javascript_eslint.md)         |
 | [standard](javascript_standard.md) | [JAVASCRIPT_STANDARD](javascript_standard.md) |
-| [prettier](javascript_prettier.md) | [JAVASCRIPT](javascript_prettier.md) |
+| [prettier](javascript_prettier.md) | [JAVASCRIPT](javascript_prettier.md)          |
 
 ## Linted files
 
@@ -18,10 +18,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

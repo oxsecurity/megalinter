@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                  | Configuration key         |
+|-------------------------|---------------------------|
 | [cpplint](c_cpplint.md) | [C_CPPLINT](c_cpplint.md) |
 
 ## Linted files
@@ -17,8 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| C_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable               | Description                   | Default value |
+|------------------------|-------------------------------|---------------|
+| C_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

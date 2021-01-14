@@ -32,7 +32,7 @@ If you are not using GitHub Actions, you can:
 
 ## Configuration
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | :--------------: |
-| UPDATED_SOURCES_REPORTER | Activates/deactivates reporter | true |
+| Variable                     | Description                                             | Default value   |
+|------------------------------|---------------------------------------------------------|-----------------|
+| UPDATED_SOURCES_REPORTER     | Activates/deactivates reporter                          | true            |
 | UPDATED_SOURCES_REPORTER_DIR | Sub-folder of reports folder containing updated sources | updated_sources |

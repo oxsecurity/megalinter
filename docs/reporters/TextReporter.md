@@ -43,7 +43,7 @@ Posts a pack of text logs , zipped as a GitHub Action artifact
 
 ## Configuration
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | :--------------: |
-| TEXT_REPORTER | Activates/deactivates reporter | `true` |
+| Variable                 | Description                                       | Default value  |
+|--------------------------|---------------------------------------------------|----------------|
+| TEXT_REPORTER            | Activates/deactivates reporter                    | `true`         |
 | TEXT_REPORTER_SUB_FOLDER | Sub-folder of reports folder containing text logs | `linters_logs` |
