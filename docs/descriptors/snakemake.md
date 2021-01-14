@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md) |
-| [snakefmt](snakemake_snakefmt.md) | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) |
+| Linter                              | Configuration key                           |
+|-------------------------------------|---------------------------------------------|
+| [snakemake](snakemake_snakemake.md) | [SNAKEMAKE_LINT](snakemake_snakemake.md)    |
+| [snakefmt](snakemake_snakefmt.md)   | [SNAKEMAKE_SNAKEFMT](snakemake_snakefmt.md) |
 
 ## Linted files
 
@@ -20,8 +20,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                       | Description                   | Default value |
+|--------------------------------|-------------------------------|---------------|
+| SNAKEMAKE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SNAKEMAKE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

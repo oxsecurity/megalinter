@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                 | Configuration key                      |
+|----------------------------------------|----------------------------------------|
 | [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) |
 
 ## Linted files
@@ -22,10 +22,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

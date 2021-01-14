@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                               | Configuration key            |
+|--------------------------------------|------------------------------|
 | [dartanalyzer](dart_dartanalyzer.md) | [DART](dart_dartanalyzer.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| DART_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| DART_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
