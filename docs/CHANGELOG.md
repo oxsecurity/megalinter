@@ -5,6 +5,10 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linters
+  - Add [markdown-table-formatter](https://github.com/nvuillam/markdown-table-formatter) 
+  - Fix python error when CSpell found no errors
+
 - Linter versions upgrades
   - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
 <!-- linter-versions-end -->
