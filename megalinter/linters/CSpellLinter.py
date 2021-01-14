@@ -18,7 +18,7 @@ class CSpellLinter(Linter):
     def complete_text_reporter_report(self, reporter_self):
         # Collect detected words from logs
         whitelisted_words = []
-        for log_line in reporter_self.report_items:
+        for log_line in self.stdout.split("\n"):
             words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)
             whitelisted_words += words
         if len(whitelisted_words) == 0:
