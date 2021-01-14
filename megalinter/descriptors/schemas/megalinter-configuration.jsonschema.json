@@ -2324,11 +2324,11 @@
     },
     "JAVASCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
+      "description": "Style of javascript formatting to apply",
       "enum": [
         "standard",
         "prettier"
       ],
-      "description": "Style of javascript formatting to apply",
       "title": "Javascript default style",
       "type": "string"
     },
@@ -3220,11 +3220,11 @@
     },
     "MARKDOWN_DEFAULT_STYLE": {
       "$id": "#/properties/MARKDOWN_DEFAULT_STYLE",
+      "description": "Style of markdown formatting to apply",
       "enum": [
         "markdownlint",
         "remark-lint"
       ],
-      "description": "Style of markdown formatting to apply",
       "title": "Markdown default formatting style",
       "type": "string"
     },

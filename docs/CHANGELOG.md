@@ -3,7 +3,11 @@
 
 ## [insiders] (master)
 
-Note: Can be used using `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+
+- mega-linter-runner --install:
+  - Fix `.mega-linter.yml` DISABLE property when nothing in it
+  - Add default `.cspell.json` if spelling mistakes detector is activated
 
 - Linter versions upgrades
   - None yet !

@@ -34,6 +34,7 @@ class CSpellLinter(Linter):
                 "**/vscode-extension/**",
                 "**/.git/**",
                 ".vscode",
+                "package-lock.json",
                 "report",
             ],
             "words": whitelisted_words_clean,

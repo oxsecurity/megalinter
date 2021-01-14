@@ -140,20 +140,24 @@ module.exports = class extends Generator {
     else {
       this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Set 'true' if you always want to lint all sources`
     }
+    this.disable = false
     // COPY PASTES
-    if (this.props.copyPaste === true) {
+    if (this.props.copyPaste === false) {
       this.configCopyPaste = "# - COPYPASTE # Uncomment to enable checks of abusive copy-pastes"
     }
     else {
       this.configCopyPaste = "- COPYPASTE # Comment to disable checks of abusive copy-pastes"
+      this.disable = true
     }
-    // COPY PASTES
-    if (this.props.spellingMistakes === true) {
+    // Spelling mistakes
+    if (this.props.spellingMistakes === false) {
       this.configSpell = "# - SPELL # Uncomment to enable checks of spelling mistakes"
     }
     else {
       this.configSpell = "- SPELL # Comment to disable checks of spelling mistakes"
+      this.disable = true
     }
+
   }
 
   writing() {
@@ -167,6 +171,8 @@ module.exports = class extends Generator {
     }
     // Generate .mega-linter.yml config
     this.generateMegaLinterConfig();
+    // Generate .cspell.json config
+    this.generateCSpellConfig()
   }
 
   generateGitHubAction() {
@@ -222,12 +228,24 @@ module.exports = class extends Generator {
       {
         'APPLY_FIXES': this.props.applyFixes === true ? 'all' : 'none',
         'DEFAULT_BRANCH': this.props.defaultBranch,
+        'DISABLE': (this.disable === true) ? 'DISABLE:' : '# DISABLE:',
         'COPYPASTE': this.configCopyPaste,
         'SPELL': this.configSpell,
         'SHOW_ELAPSED_TIME': (this.props.elapsedTime === true) ? 'true': 'false',
-        'FILEIO_REPORTER': (this.props.fileIoReporter === true) ? 'true': 'false'
+        'FILEIO_REPORTER': (this.props.fileIoReporter === true) ? 'true': 'false',
       }
     );
+  }
+
+  generateCSpellConfig() {
+    if (this.props.spellingMistakes !== true) {
+      return ;
+    }
+    this.fs.copyTpl(
+      this.templatePath(".cspell.json"),
+      this.destinationPath('.cspell.json'),
+      {}
+    )
   }
 
 };
