@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                             | Configuration key                 |
+|------------------------------------|-----------------------------------|
 | [protolint](protobuf_protolint.md) | [PROTOBUF](protobuf_protolint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                      | Description                   | Default value |
+|-------------------------------|-------------------------------|---------------|
+| PROTOBUF_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| PROTOBUF_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

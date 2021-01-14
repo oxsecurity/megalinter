@@ -5,12 +5,12 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [php](php_php.md) | [PHP_BUILTIN](php_php.md) |
-| [phpcs](php_phpcs.md) | [PHP_PHPCS](php_phpcs.md) |
+| Linter                    | Configuration key             |
+|---------------------------|-------------------------------|
+| [php](php_php.md)         | [PHP_BUILTIN](php_php.md)     |
+| [phpcs](php_phpcs.md)     | [PHP_PHPCS](php_phpcs.md)     |
 | [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) |
-| [psalm](php_psalm.md) | [PHP_PSALM](php_psalm.md) |
+| [psalm](php_psalm.md)     | [PHP_PSALM](php_psalm.md)     |
 
 ## Linted files
 
@@ -19,10 +19,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| PHP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| PHP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

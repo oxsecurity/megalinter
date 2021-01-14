@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                  | Configuration key    |
+|-------------------------|----------------------|
 | [eslint](tsx_eslint.md) | [TSX](tsx_eslint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

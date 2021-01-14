@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [eslint](typescript_eslint.md) | [TYPESCRIPT_ES](typescript_eslint.md) |
+| Linter                             | Configuration key                             |
+|------------------------------------|-----------------------------------------------|
+| [eslint](typescript_eslint.md)     | [TYPESCRIPT_ES](typescript_eslint.md)         |
 | [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) |
-| [prettier](typescript_prettier.md) | [TYPESCRIPT](typescript_prettier.md) |
+| [prettier](typescript_prettier.md) | [TYPESCRIPT](typescript_prettier.md)          |
 
 ## Linted files
 
@@ -18,10 +18,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

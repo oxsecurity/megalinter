@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                       | Configuration key        |
+|------------------------------|--------------------------|
 | [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |
-| [v8r](yaml_v8r.md) | [YAML](yaml_v8r.md) |
+| [v8r](yaml_v8r.md)           | [YAML](yaml_v8r.md)      |
 
 ## Linted files
 
@@ -18,8 +18,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| YAML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| YAML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

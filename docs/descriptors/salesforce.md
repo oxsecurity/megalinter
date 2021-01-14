@@ -5,18 +5,18 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                     | Configuration key                                     |
+|--------------------------------------------|-------------------------------------------------------|
 | [sfdx-scanner](salesforce_sfdx_scanner.md) | [SALESFORCE_SFDX_SCANNER](salesforce_sfdx_scanner.md) |
 
 ## Linted files
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

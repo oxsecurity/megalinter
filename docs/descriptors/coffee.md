@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                             | Configuration key              |
+|------------------------------------|--------------------------------|
 | [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| COFFEE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| COFFEE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

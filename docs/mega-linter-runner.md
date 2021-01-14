@@ -54,16 +54,16 @@ mega-linter-runner [OPTIONS]
 
 The options are only related to mega-linter-runner. For Mega-Linter options, please use a `.mega-linter.yml` [configuration file](#configuration)
 
-| Option             | Description                                               |  Default |
-|--------------------|-----------------------------------------------------------| -------- |
-| `-p` <br/> `--path`      | Directory containing the files to lint | current directory  |
-| `--flavor`        | Set this parameter to use a [Mega-Linter flavor](https://nvuillam.github.io/mega-linter/flavors/) | `all`  |
-| `-e` <br/> `--env`      | Environment variables for Mega-Linter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory    | <!-- --> |
-| `--fix`            | Automatically apply formatting and fixes in your files    | <!-- --> |
-| `-r` <br/> `--release`    | Allows to override Mega-Linter version used  | `v4` |
-| `-h` <br/> `--help`      | Show mega-linter-runner help    | <!-- --> |
-| `-v` <br/> `--version`   | Show mega-linter-runner version   | <!-- --> |
-| `-i` <br/> `--install`   | Generate Mega-Linter configuration files   | <!-- --> |
+| Option                 | Description                                                                                                         | Default           |
+|------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------|
+| `-p` <br/> `--path`    | Directory containing the files to lint                                                                              | current directory |
+| `--flavor`             | Set this parameter to use a [Mega-Linter flavor](https://nvuillam.github.io/mega-linter/flavors/)                   | `all`             |
+| `-e` <br/> `--env`     | Environment variables for Mega-Linter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
+| `--fix`                | Automatically apply formatting and fixes in your files                                                              | <!-- -->          |
+| `-r` <br/> `--release` | Allows to override Mega-Linter version used                                                                         | `v4`              |
+| `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                        | <!-- -->          |
+| `-v` <br/> `--version` | Show mega-linter-runner version                                                                                     | <!-- -->          |
+| `-i` <br/> `--install` | Generate Mega-Linter configuration files                                                                            | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 

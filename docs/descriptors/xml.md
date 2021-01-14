@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                    | Configuration key     |
+|---------------------------|-----------------------|
 | [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| XML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| XML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

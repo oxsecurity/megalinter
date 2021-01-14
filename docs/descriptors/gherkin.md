@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                  | Configuration key                  |
+|-----------------------------------------|------------------------------------|
 | [gherkin-lint](gherkin_gherkin_lint.md) | [GHERKIN](gherkin_gherkin_lint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| GHERKIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GHERKIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

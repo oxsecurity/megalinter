@@ -5,18 +5,18 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                      | Configuration key      |
+|-----------------------------|------------------------|
 | [git_diff](git_git_diff.md) | [GIT](git_git_diff.md) |
 
 ## Linted files
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GIT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GIT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| GIT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GIT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

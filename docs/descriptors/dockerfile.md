@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                         | Configuration key                                         |
+|------------------------------------------------|-----------------------------------------------------------|
 | [dockerfilelint](dockerfile_dockerfilelint.md) | [DOCKERFILE_DOCKERFILELINT](dockerfile_dockerfilelint.md) |
-| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) |
+| [hadolint](dockerfile_hadolint.md)             | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md)             |
 
 ## Linted files
 
@@ -17,8 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| DOCKERFILE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| DOCKERFILE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

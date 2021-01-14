@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                    | Configuration key     |
+|---------------------------|-----------------------|
 | [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) |
 
 ## Linted files
@@ -19,8 +19,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
