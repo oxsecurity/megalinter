@@ -46,11 +46,11 @@
 | **perlcritic** | 1.138 | [PERL](descriptors/perl_perlcritic.md) | :white_circle: | [Repository](https://github.com/Perl-Critic/Perl-Critic){target=_blank} |
 | **php** | 7.3.26 | [PHP](descriptors/php_php.md) | <!-- --> | [Repository](https://github.com/php/php-src){target=_blank} |
 | **phpcs** | 3.5.8 | [PHP](descriptors/php_phpcs.md) | :white_circle: | [Web Site](https://github.com/squizlabs/PHP_CodeSniffer){target=_blank} |
-| **phpstan** | 0.12.66 | [PHP](descriptors/php_phpstan.md) | :white_circle: | [Repository](https://github.com/phpstan/phpstan){target=_blank} |
+| **phpstan** | 0.12.67 | [PHP](descriptors/php_phpstan.md) | :white_circle: | [Repository](https://github.com/phpstan/phpstan){target=_blank} |
 | **powershell** | 7.1.0 | [POWERSHELL](descriptors/powershell_powershell.md) | :white_circle: | [Web Site](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank} |
 | **prettier** | 2.2.1 | [JAVASCRIPT](descriptors/javascript_prettier.md)<br/> [TYPESCRIPT](descriptors/typescript_prettier.md) | :white_circle: | [Repository](https://github.com/prettier/prettier){target=_blank} |
 | **protolint** | 0.26.1 | [PROTOBUF](descriptors/protobuf_protolint.md) | :white_circle: | [Web Site](https://github.com/yoheimuta/protolint){target=_blank} |
-| **psalm** | 4.3.1 | [PHP](descriptors/php_psalm.md) | :white_circle: | [Repository](https://github.com/vimeo/psalm){target=_blank} |
+| **psalm** | Psalm.4.x-dev@ | [PHP](descriptors/php_psalm.md) | :white_circle: | [Repository](https://github.com/vimeo/psalm){target=_blank} |
 | **puppet-lint** | 2.4.2 | [PUPPET](descriptors/puppet_puppet_lint.md) | :white_circle: | [Repository](https://github.com/rodjek/puppet-lint){target=_blank} |
 | **pylint** | 2.6.0 | [PYTHON](descriptors/python_pylint.md) | :white_circle: | [Repository](https://github.com/PyCQA/pylint){target=_blank} |
 | **raku** | 2020.10 | [RAKU](descriptors/raku_raku.md) | :white_circle: | [Repository](https://github.com/rakudo/rakudo){target=_blank} |
