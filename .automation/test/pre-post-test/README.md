@@ -1,3 +1,0 @@
-# SAMPLE README
-
-Yeah !

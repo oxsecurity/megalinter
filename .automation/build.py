@@ -1719,8 +1719,8 @@ def generate_documentation_all_linters():
     table.title = "----Reference to Mega-Linter in linters documentation summary"
     # Output table in console
     logging.info("")
-    for table_line in table.table.splitlines():
-        logging.info(table_line)
+    # for table_line in table.table.splitlines():
+    #    logging.info(table_line)
     logging.info("")
     # Write in file
     with open(REPO_HOME + "/docs/all_linters.md", "w", encoding="utf-8") as outfile:
