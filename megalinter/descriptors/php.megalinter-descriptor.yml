@@ -115,6 +115,7 @@ linters:
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
     cli_config_arg_name: "--config="
+    version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
     examples:
       - "psalm myfile.php"
       - "psalm --config=psalm.xml myfile.php"

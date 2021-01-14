@@ -17,6 +17,8 @@ class CSpellLinter(Linter):
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, reporter_self):
         # Collect detected words from logs
+        if self.stdout is None:
+            return []
         whitelisted_words = []
         for log_line in self.stdout.split("\n"):
             words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)

@@ -169,6 +169,16 @@
     "image": "https://avatars2.githubusercontent.com/u/216720?s=400&v=4",
     "title": "tcort/markdown-link-check"
   },
+  "markdown-table-formatter": {
+    "description": "Format markdown tables in files",
+    "image": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+    "title": "markdown-table-formatter"
+  },
+  "markdown-table-prettify": {
+    "description": "Transforms markdown tables to be more readable.",
+    "image": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+    "title": "markdown-table-prettify"
+  },
   "markdownlint": {
     "description": "A Node.js style checker and lint tool for Markdown/CommonMark files. - DavidAnson/markdownlint",
     "image": "https://avatars2.githubusercontent.com/u/1828270?s=400&v=4",

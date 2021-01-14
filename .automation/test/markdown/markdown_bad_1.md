@@ -14,6 +14,11 @@ This header does **NOT** follow the __step__ down from `level 1`.
 ls -la
 ```
 
+| this | is a wrong | table |
+| ---------------| -----------| -----------|
+| hahaha | naaaaaaah | wrong formatting !    |
+| hahaha | naaaaaaah | wrong formatting !    |
+
 # Walk away
 
 We're all done **here**.

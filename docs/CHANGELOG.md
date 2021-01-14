@@ -5,6 +5,10 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linters
+  - Add [markdown-table-formatter](https://github.com/nvuillam/markdown-table-formatter)
+  - Fix python error when CSpell found no errors
+
 - Linter versions upgrades
   - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
 <!-- linter-versions-end -->
@@ -41,8 +45,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add **remark-lint** to check and fix Markdown files. **markdownlint** remains default
 
 - Linter versions upgrades
-  - [golangci-lint](https://golangci-lint.run/) from 1.35.0 to **1.35.1** on 2021-01-11
-    - [golangci-lint](https://golangci-lint.run/) from 1.35.1 to **1.35.2** on 2021-01-11
+  - [golangci-lint](https://golangci-lint.run/) from 1.35.1 to **1.35.2** on 2021-01-11
+    - [golangci-lint](https://golangci-lint.run/) from 1.35.0 to **1.35.1** on 2021-01-11
     - [golangci-lint](https://golangci-lint.run/) from 1.34.1 to **1.35.0** on 2021-01-08
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.2 to **0.44.3** on 2021-01-09
   - [tflint](https://github.com/terraform-linters/tflint) from 0.23.0 to **0.23.1** on 2021-01-10

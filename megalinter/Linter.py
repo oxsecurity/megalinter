@@ -38,6 +38,7 @@ class Linter:
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
         self.linter_version_cache = None
+        self.linter_help_cache = None
         self.processing_order = 0
         # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
         # Ex: JAVASCRIPT
@@ -70,6 +71,7 @@ class Linter:
 
         self.cli_lint_mode = "file"
         self.cli_executable = None
+        self.cli_executable_fix = None
         self.cli_executable_version = None
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
@@ -128,6 +130,8 @@ class Linter:
             )
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
+        if self.cli_executable_fix is None:
+            self.cli_executable_fix = self.cli_executable
         if self.cli_executable_version is None:
             self.cli_executable_version = self.cli_executable
         if self.cli_executable_help is None:
@@ -270,8 +274,6 @@ class Linter:
             self.is_active = False
         elif self.descriptor_id in params["enable_descriptors"]:
             self.is_active = True
-        elif len(self.activation_rules) > 0:
-            self.is_active = utils.check_activation_rules(self.activation_rules, self)
         elif (
             config.exists("VALIDATE_" + self.name)
             and config.get("VALIDATE_" + self.name) == "false"
@@ -292,6 +294,9 @@ class Linter:
             and config.get("VALIDATE_" + self.descriptor_id) == "true"
         ):
             self.is_active = True
+        # check activation rules
+        if self.is_active is True and len(self.activation_rules) > 0:
+            self.is_active = utils.check_activation_rules(self.activation_rules, self)
 
     # Manage configuration variables
     def load_config_vars(self):
@@ -618,6 +623,8 @@ class Linter:
 
     # Returns linter help (can be overridden in special cases, like version has special format)
     def get_linter_help(self):
+        if self.linter_help_cache is not None:
+            return self.linter_help_cache
         help_command = self.build_help_command()
         return_code = 666
         output = ""
@@ -671,7 +678,11 @@ class Linter:
         # Add other lint cli arguments if defined
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined
-        if self.apply_fixes is True and self.cli_lint_fix_arg_name is not None:
+        if self.apply_fixes is True and (
+            self.cli_lint_fix_arg_name is not None
+            or self.cli_executable_fix != self.cli_executable
+        ):
+            cmd[0] = self.cli_executable_fix
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
         # Add user-defined extra arguments if defined

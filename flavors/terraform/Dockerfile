@@ -104,6 +104,7 @@ RUN npm install --no-cache --ignore-scripts \
                 remark-cli \
                 remark-preset-lint-recommended \
                 markdown-link-check \
+                markdown-table-formatter \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \

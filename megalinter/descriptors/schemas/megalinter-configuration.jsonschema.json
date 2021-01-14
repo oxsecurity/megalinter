@@ -138,6 +138,7 @@
         "MARKDOWN_MARKDOWNLINT",
         "MARKDOWN_REMARK_LINT",
         "MARKDOWN_MARKDOWN_LINK_CHECK",
+        "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
         "PHP_BUILTIN",
@@ -182,6 +183,90 @@
     }
   },
   "description": "Mega-Linter configuration file",
+  "enum_linter_keys": {
+    "enum": [
+      "ANSIBLE_ANSIBLE_LINT",
+      "ARM_ARM_TTK",
+      "BASH_EXEC",
+      "BASH_SHELLCHECK",
+      "BASH_SHFMT",
+      "C_CPPLINT",
+      "CLOJURE_CLJ_KONDO",
+      "CLOUDFORMATION_CFN_LINT",
+      "COFFEE_COFFEELINT",
+      "COPYPASTE_JSCPD",
+      "CPP_CPPLINT",
+      "CSHARP_DOTNET_FORMAT",
+      "CSS_STYLELINT",
+      "CSS_SCSS_LINT",
+      "DART_DARTANALYZER",
+      "DOCKERFILE_DOCKERFILELINT",
+      "DOCKERFILE_HADOLINT",
+      "EDITORCONFIG_EDITORCONFIG_CHECKER",
+      "ENV_DOTENV_LINTER",
+      "GHERKIN_GHERKIN_LINT",
+      "GIT_GIT_DIFF",
+      "GO_GOLANGCI_LINT",
+      "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
+      "GROOVY_NPM_GROOVY_LINT",
+      "HTML_HTMLHINT",
+      "JAVA_CHECKSTYLE",
+      "JAVASCRIPT_ES",
+      "JAVASCRIPT_STANDARD",
+      "JAVASCRIPT_PRETTIER",
+      "JSON_JSONLINT",
+      "JSON_ESLINT_PLUGIN_JSONC",
+      "JSON_V8R",
+      "JSX_ESLINT",
+      "KOTLIN_KTLINT",
+      "KUBERNETES_KUBEVAL",
+      "LATEX_CHKTEX",
+      "LUA_LUACHECK",
+      "MARKDOWN_MARKDOWNLINT",
+      "MARKDOWN_REMARK_LINT",
+      "MARKDOWN_MARKDOWN_LINK_CHECK",
+      "OPENAPI_SPECTRAL",
+      "PERL_PERLCRITIC",
+      "PHP_BUILTIN",
+      "PHP_PHPCS",
+      "PHP_PHPSTAN",
+      "PHP_PSALM",
+      "POWERSHELL_POWERSHELL",
+      "PROTOBUF_PROTOLINT",
+      "PUPPET_PUPPET_LINT",
+      "PYTHON_PYLINT",
+      "PYTHON_BLACK",
+      "PYTHON_FLAKE8",
+      "PYTHON_ISORT",
+      "R_LINTR",
+      "RAKU_RAKU",
+      "RST_RST_LINT",
+      "RST_RSTCHECK",
+      "RST_RSTFMT",
+      "RUBY_RUBOCOP",
+      "RUST_CLIPPY",
+      "SALESFORCE_SFDX_SCANNER",
+      "SCALA_SCALAFIX",
+      "SNAKEMAKE_LINT",
+      "SNAKEMAKE_SNAKEFMT",
+      "SPELL_MISSPELL",
+      "SPELL_CSPELL",
+      "SQL_SQL_LINT",
+      "TEKTON_TEKTON_LINT",
+      "TERRAFORM_TFLINT",
+      "TERRAFORM_TERRASCAN",
+      "TERRAFORM_TERRAGRUNT",
+      "TSX_ESLINT",
+      "TYPESCRIPT_ES",
+      "TYPESCRIPT_STANDARD",
+      "TYPESCRIPT_PRETTIER",
+      "VBDOTNET_DOTNET_FORMAT",
+      "XML_XMLLINT",
+      "YAML_YAMLLINT",
+      "YAML_V8R"
+    ],
+    "type": "string"
+  },
   "properties": {
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
@@ -3384,6 +3469,112 @@
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom config file path",
       "type": "string"
     },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS",
+      "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom arguments",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS",
+      "default": false,
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_EXCLUDE",
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Excluding Regex",
+      "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_INCLUDE",
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Including Regex",
+      "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS",
+      "description": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Custom arguments",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS",
+      "default": false,
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_NAMES_REGEX": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_EXCLUDE",
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Excluding Regex",
+      "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILTER_REGEX_INCLUDE",
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Including Regex",
+      "type": "string"
+    },
     "MARKDOWN_REMARK_LINT_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_ARGUMENTS",
       "description": "MARKDOWN_REMARK_LINT: User custom arguments to add in linter CLI call",
@@ -6415,7 +6606,5 @@
       "title": "YAML_YAMLLINT: Custom config file path",
       "type": "string"
     }
-  },
-  "title": "Mega-Linter configuration",
-  "type": "object"
+  }
 }

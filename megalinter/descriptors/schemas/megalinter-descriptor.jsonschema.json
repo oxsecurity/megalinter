@@ -779,6 +779,12 @@
             "title": "Linter banner image URL",
             "type": "string"
           },
+          "linter_help_cache": {
+            "$id": "#/properties/linters/items/properties/linter_help_cache",
+            "description": "If the linter is unable to return help content, hardcode it here",
+            "title": "Hardcoded help content",
+            "type": "string"
+          },
           "linter_image_url": {
             "$id": "#/properties/linters/items/properties/linter_image_url",
             "description": "URL of an image used in linter Markdown documentation",

@@ -102,3 +102,27 @@ linters:
     install:
       npm:
         - markdown-link-check
+  # Markdown table formatter
+  - linter_name: markdown-table-formatter
+    is_formatter: true
+    linter_text: |
+      markdown-table-formatter detects wrongly formatted markdown tables and can automatically reformat them
+    linter_url: https://www.npmjs.com/package/markdown-table-formatter
+    linter_repo: https://github.com/nvuillam/markdown-table-formatter
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
+    examples:
+      - "markdown-table-formatter --check myfile.md" # Check only
+      - "markdown-table-formatter myfile.md" # Apply formatting
+      - "markdown-table-formatter myfile.md myfile2.md myfile3.md" # Apply formatting
+    install:
+      npm:
+        - markdown-table-formatter
+    ide:
+      vscode:
+        - name: Markdown Table Prettify Extension
+          url: https://github.com/darkriszty/MarkdownTablePrettify-VSCodeExt

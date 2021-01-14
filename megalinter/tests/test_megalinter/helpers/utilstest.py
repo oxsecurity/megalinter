@@ -125,11 +125,10 @@ def test_linter_success(linter, test_self):
         "TEXT_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
+        "ENABLE_LINTERS": linter.name,
     }
-    linter_key = "VALIDATE_" + linter.name
-    env_vars[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
-        env_vars["VALIDATE_JAVASCRIPT_ES"] = "true"
+        env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars)
     test_self.assertTrue(
@@ -181,11 +180,10 @@ def test_linter_failure(linter, test_self):
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
+        "ENABLE_LINTERS": linter.name,
     }
-    linter_key = "VALIDATE_" + linter.name
-    env_vars_failure[linter_key] = "true"
     if linter.lint_all_other_linters_files is not False:
-        env_vars_failure["VALIDATE_JAVASCRIPT_ES"] = "true"
+        env_vars_failure["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
     env_vars_failure.update(linter.test_variables)
     mega_linter, output = call_mega_linter(env_vars_failure)
     # Check linter run
@@ -376,9 +374,8 @@ def test_linter_report_tap(linter, test_self):
         "OUTPUT_FORMAT": "tap",
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
+        "ENABLE_LINTERS": linter.name,
     }
-    linter_key = "VALIDATE_" + linter.name
-    env_vars[linter_key] = "true"
     env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
     test_self.assertTrue(
