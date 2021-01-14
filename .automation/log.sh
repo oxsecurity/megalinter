@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Super-Linter legacy
+
 declare -Agr B=(
   [B]=$(echo -e "\e[44m")
   [C]=$(echo -e "\e[46m")
