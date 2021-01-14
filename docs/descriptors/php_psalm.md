@@ -243,7 +243,7 @@ RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 # Linter install
-RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 ```
 

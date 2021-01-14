@@ -361,7 +361,7 @@ RUN composer global require phpstan/phpstan \
 ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # psalm installation
-RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1
+RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 
 # powershell installation
