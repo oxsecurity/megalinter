@@ -4,12 +4,16 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+  - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
+<!-- linter-versions-end -->
+
+## [4.23.3] 2021-01-14
+
 - Fix `.cspell.json` file updater
 
 - Linter versions upgrades
   - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 4.1.3 to **4.1.2** on 2021-01-14
-<!-- linter-versions-end -->
 
 ## [4.23.2] 2021-01-14
 
