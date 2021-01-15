@@ -13,7 +13,7 @@ describe('mega-linter-runner:mega-linter', () => {
   });
 
   it('creates files', () => {
-    assert.file(['dummyfile.txt']);
+    assert.file(['dummy_file.txt']);
   });
 });
 */
