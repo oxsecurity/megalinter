@@ -110,11 +110,34 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then(props => {
       this.props = props;
-      this.computeValues()
+      this._computeValues()
     });
   }
 
-  computeValues() {
+  writing() {
+    // Generate workflow config
+    this._generateGitHubAction();
+    this._generateJenkinsfile();
+    this._generateGitLabCi();
+    this._generateAzurePipelines();
+    if (this.props.ci === 'other') {
+      this.log("Please follow manual instructions to define CI job at https://nvuillam.github.io/mega-linter/installation/");
+      this.log("You may call `npx mega-linter-runner` to run Mega-Linter from any system (requires node.js & docker)");
+    }
+    // Generate .mega-linter.yml config
+    this._generateMegaLinterConfig();
+    // Generate .cspell.json config
+    this._generateCSpellConfig()
+    // Generate .jscpd.json config
+    this._generateJsCpdConfig()
+  }
+
+  end() {
+    this.log("You're all set !")
+    this.log("Now commit, push and create a pull request to see Mega-Linter catching errors !")
+  }
+  
+  _computeValues() {
     // Flavor
     if (this.props.flavor === 'all') {
       this.gitHubActionName = "nvuillam/mega-linter"
@@ -157,25 +180,9 @@ module.exports = class extends Generator {
       this.configSpell = "- SPELL # Comment to disable checks of spelling mistakes"
       this.disable = true
     }
-
   }
 
-  writing() {
-    // Generate workflow config
-    this.generateGitHubAction();
-    this.generateJenkinsfile();
-    this.generateGitLabCi();
-    this.generateAzurePipelines();
-    if (this.props.ci === 'other') {
-      this.log("Please follow manual instructions to define CI job at https://nvuillam.github.io/mega-linter/installation/");
-    }
-    // Generate .mega-linter.yml config
-    this.generateMegaLinterConfig();
-    // Generate .cspell.json config
-    this.generateCSpellConfig()
-  }
-
-  generateGitHubAction() {
+  _generateGitHubAction() {
     if (this.props.ci !== "gitHubActions") {
       return;
     }
@@ -192,14 +199,14 @@ module.exports = class extends Generator {
     );
   }
 
-  generateJenkinsfile() {
+  _generateJenkinsfile() {
     if (this.props.ci !== "jenkins") {
       return;
     }
     this.log("Jenkinsfile config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#jenkins")
   }
 
-  generateGitLabCi() { 
+  _generateGitLabCi() { 
     if (this.props.ci !== "gitLabCI") {
       return;
     }
@@ -214,14 +221,14 @@ module.exports = class extends Generator {
     );
   }
 
-  generateAzurePipelines() {
+  _generateAzurePipelines() {
     if (this.props.ci !== "azure") {
       return;
     }
     this.log("Azure pipelines config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#gitlab")
   }
 
-  generateMegaLinterConfig() {
+  _generateMegaLinterConfig() {
     this.fs.copyTpl(
       this.templatePath('.mega-linter.yml'),
       this.destinationPath('.mega-linter.yml'),
@@ -237,13 +244,24 @@ module.exports = class extends Generator {
     );
   }
 
-  generateCSpellConfig() {
+  _generateCSpellConfig() {
     if (this.props.spellingMistakes !== true) {
       return ;
     }
     this.fs.copyTpl(
       this.templatePath(".cspell.json"),
       this.destinationPath('.cspell.json'),
+      {}
+    )
+  }
+
+  _generateJsCpdConfig() {
+    if (this.props.copyPaste !== true) {
+      return ;
+    }
+    this.fs.copyTpl(
+      this.templatePath(".jscpd.json"),
+      this.destinationPath('.jscpd.json'),
       {}
     )
   }

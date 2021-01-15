@@ -5,6 +5,10 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- mega-linter-runner --install
+  - Create .jscpd.json file if copy-paste detection is activated
+  - Display ending message
+
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
 <!-- linter-versions-end -->
