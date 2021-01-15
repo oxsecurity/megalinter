@@ -4,7 +4,7 @@
 
 ## powershell documentation
 
-- Version in Mega-Linter: **7.1.0**
+- Version in Mega-Linter: **7.1.1**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit){target=_blank}
   - If custom `.powershell-psscriptanalyzer.psd1` config file is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
