@@ -5,7 +5,6 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
-  - None yet !
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
 <!-- linter-versions-end -->
 
@@ -16,9 +15,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Fix python error when CSpell found no errors
 
 - Linter versions upgrades
-  - None yet !
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
-<!-- linter-versions-end -->
+  - [v8r](https://github.com/chris48s/v8r) from 0.4.0 to **0.5.0** on 2021-01-14
+  - [phpstan](https://phpstan.org/) from 0.12.66 to **0.12.67** on 2021-01-14
+  - [psalm](https://psalm.dev) from 4.3.1 to **Psalm.4.x-dev@** on 2021-01-14
 
 ## [4.23.3] 2021-01-14
 
