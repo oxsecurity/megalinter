@@ -10,6 +10,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
+  - [eslint](https://eslint.org) from 7.17.0 to **7.18.0** on 2021-01-16
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 7.17.0 to **7.18.0** on 2021-01-16
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.24 to **0.9.25** on 2021-01-16
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.31.1 to **5.32.0** on 2021-01-16
 <!-- linter-versions-end -->
 
 ## [4.24.0] 2021-01-14
