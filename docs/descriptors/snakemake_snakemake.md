@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **5.31.1**
+- Version in Mega-Linter: **5.32.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -96,6 +96,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
                  [--wms-monitor [WMS_MONITOR]]
+                 [--wms-monitor-arg [NAME=VALUE [NAME=VALUE ...]]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
                  [--no-subworkflows] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
@@ -129,7 +130,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--overwrite-shellcmd OVERWRITE_SHELLCMD] [--debug]
                  [--runtime-profile FILE] [--mode {0,1,2}]
                  [--show-failed-logs] [--log-handler-script FILE]
-                 [--log-service {none,slack}]
+                 [--log-service {none,slack,wms}]
                  [--cluster CMD | --cluster-sync CMD | --drmaa [ARGS]]
                  [--cluster-config FILE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
@@ -348,8 +349,18 @@ EXECUTION:
                         resources. (default: greedy)
   --wms-monitor [WMS_MONITOR]
                         IP and port of workflow management system to monitor
-                        the execution of snakemake (e.g. http://127.0.0.1:5000
-                        (default: None)
+                        the execution of snakemake (e.g.
+                        http://127.0.0.1:5000) Note that if your service
+                        requires an authorization token, you must export
+                        WMS_MONITOR_TOKEN in the environment. (default: None)
+  --wms-monitor-arg [NAME=VALUE [NAME=VALUE ...]]
+                        If the workflow management service accepts extra
+                        arguments, provide. them in key value pairs with
+                        --wms-monitor-arg. For example, to run an existing
+                        workflow using a wms monitor, you can provide the pair
+                        id=12345 and the arguments will be provided to the
+                        endpoint to first interact with the workflow (default:
+                        None)
   --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
@@ -674,11 +685,11 @@ BEHAVIOR:
                         for every logging output (given as a dictionary
                         msg)allowing to e.g. send notifications in the form of
                         e.g. slack messages or emails. (default: None)
-  --log-service {none,slack}
+  --log-service {none,slack,wms}
                         Set a specific messaging service for logging
                         output.Snakemake will notify the service on errors and
-                        completed execution.Currently only slack is supported.
-                        (default: None)
+                        completed execution.Currently slack and workflow
+                        management system (wms) are supported. (default: None)
 
 CLUSTER:
   --cluster CMD, -c CMD
