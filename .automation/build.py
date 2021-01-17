@@ -164,8 +164,7 @@ branding:
         docker_other += [
             "RUN addgroup $USER docker \\"
             "    && service docker start"
-          #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
-
+            #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
         ]
         #  docker_other += ["RUN service docker start"]
 
