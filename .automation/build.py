@@ -162,11 +162,8 @@ branding:
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
         docker_other += [
-            "RUN service docker start"
-            #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
+            "RUN rc-update add docker boot"
         ]
-        #  docker_other += ["RUN service docker start"]
-
     for item in descriptor_and_linters:
         if "install" not in item:
             item["install"] = {}
