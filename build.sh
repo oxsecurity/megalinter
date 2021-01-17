@@ -6,6 +6,7 @@ export PYTHONPATH
 python ./.automation/build.py
 
 # Prettify markdown tables
+echo "Formatting markdown tables..."
 # shellcheck disable=SC2086
 MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*") && npx markdown-table-formatter $MD_FILES
 

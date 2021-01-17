@@ -25,15 +25,6 @@ linters:
     examples:
       - "docker run -v `pwd`:`pwd` -w `pwd` norionomura/swiftlint:latest swiftlint lint myfile.swift"
       - "docker run -v `pwd`:`pwd` -w `pwd` norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml myfile.swift"
-    install:
-      apk:
-        - docker
-      dockerfile:
-        - |
-          RUN addgroup username docker \
-              rc-update add docker boot \
-              service docker start
-
     ide:
       atom:
         - name: linter-swiftlint

@@ -5,6 +5,8 @@
 ## swiftlint documentation
 
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
+- Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
+  - arguments: `-v `pwd`:`pwd` -w `pwd``
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
@@ -18,6 +20,7 @@
 
 | Variable                             | Description                                                                                                                                                                                  | Default value                                    |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| SWIFT_SWIFTLINT_DOCKER_IMAGE_VERSION | Docker image version                                                                                                                                                                         | `latest`                                         |
 | SWIFT_SWIFTLINT_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
 | SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
 | SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
@@ -68,13 +71,4 @@ docker run -v `pwd`:`pwd` -w `pwd` norionomura/swiftlint:latest swiftlint lint -
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-RUN addgroup username docker \
-    rc-update add docker boot \
-    service docker start
-
-```
-
-- APK packages (Linux):
-  - [docker](https://pkgs.alpinelinux.org/packages?branch=edge&name=docker)
+None

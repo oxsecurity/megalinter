@@ -313,13 +313,11 @@ class Linter:
             self.config_file_name = config.get(self.name + "_FILE_NAME")
         elif config.exists(self.descriptor_id + "_FILE_NAME"):
             self.config_file_name = config.get(self.descriptor_id + "_FILE_NAME")
-
         # Linter rules path: try first NAME + _RULE_PATH, then LANGUAGE + _RULE_PATH
         if config.exists(self.name + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.name + "_RULES_PATH")
         elif config.exists(self.descriptor_id + "_RULES_PATH"):
             self.linter_rules_path = config.get(self.descriptor_id + "_RULES_PATH")
-
         # Linter config file:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
@@ -376,7 +374,6 @@ class Linter:
                 self.config_file_label = self.config_file.replace(
                     "/tmp/lint", ""
                 ).replace("/action/lib/.automation/", "")
-
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
         if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get(self.name + "_FILTER_REGEX_INCLUDE")
@@ -384,17 +381,14 @@ class Linter:
             self.filter_regex_include = config.get(
                 self.descriptor_id + "_FILTER_REGEX_INCLUDE"
             )
-
         # User arguments from config
         if config.get(self.name + "_ARGUMENTS", "") != "":
             self.cli_lint_user_args = shlex.split(config.get(self.name + "_ARGUMENTS"))
-
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
         elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
-
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
         if config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude = config.get(self.name + "_FILTER_REGEX_EXCLUDE")
@@ -402,6 +396,9 @@ class Linter:
             self.filter_regex_exclude = config.get(
                 self.descriptor_id + "_FILTER_REGEX_EXCLUDE"
             )
+        # Override default docker image version
+        if config.exists(self.name + "_DOCKER_IMAGE_VERSION"):
+            self.cli_docker_image_version = config.get(self.name + "_DOCKER_IMAGE_VERSION")
 
     # Processes the linter
     def run(self):
@@ -671,7 +668,8 @@ class Linter:
     def manage_docker_command(self, command):
         if self.cli_docker_image is None:
             return command
-        docker_command = ["docker", "run"]
+        docker_command = ["docker", "run", "--privileged"]
+        docker_command += ["-v", "/var/run/docker.sock:/var/run/docker.sock"]  # Use parent docker
         docker_command += self.cli_docker_args
         docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
         if type(command) == str:
