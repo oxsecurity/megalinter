@@ -162,9 +162,8 @@ branding:
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
         docker_other += [
-            "RUN addgroup $USER docker \\"
-            "    && service docker start"
-            #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
+            "RUN service docker start"
+          #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
         ]
         #  docker_other += ["RUN service docker start"]
 
