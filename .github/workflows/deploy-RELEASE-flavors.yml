@@ -52,6 +52,7 @@ jobs:
             "rust",
             "salesforce",
             "scala",
+            "swift",
             "terraform",
           ]
 # flavors-end

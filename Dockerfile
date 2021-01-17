@@ -100,6 +100,7 @@ RUN apk add --update --no-cache \
                 R \
                 R-dev \
                 R-doc \
+                docker \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -397,6 +398,12 @@ RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
     && sh ./install-misspell.sh
+
+
+# swiftlint installation
+RUN addgroup username docker \
+    rc-update add docker boot \
+    service docker start
 
 
 # tflint installation
