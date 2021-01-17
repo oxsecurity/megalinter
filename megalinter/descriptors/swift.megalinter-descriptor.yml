@@ -16,9 +16,9 @@ linters:
     cli_docker_image: norionomura/swiftlint
     cli_docker_args:
       - "-v"
-      - "`pwd`:`pwd`"
+      - "pwd:pwd"
       - "-w"
-      - "`pwd`"
+      - "pwd"
     config_file_name: ".swiftlint.yml"
     cli_config_arg_name: "--config"
     cli_version_arg_name: "version"

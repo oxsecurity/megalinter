@@ -160,10 +160,15 @@ branding:
     gem_packages = []
     # Manage docker
     if requires_docker is True:
-        apk_packages += ["docker"]
-        docker_other += ["RUN chmod 757 /var/run/docker.sock"]
-        #  docker_other += ["RUN bash service docker start"]
-        #  docker_other += ["RUN rc-update add docker boot"]
+        apk_packages += ["docker", "openrc"]
+        docker_other += [
+            "RUN addgroup $USER docker \\"
+            "    && service docker start"
+          #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
+
+        ]
+        #  docker_other += ["RUN service docker start"]
+
     for item in descriptor_and_linters:
         if "install" not in item:
             item["install"] = {}
