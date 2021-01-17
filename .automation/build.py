@@ -163,7 +163,7 @@ branding:
         apk_packages += ["docker", "openrc"]
         docker_other += [
             "RUN service docker start"
-          #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
+            #  "    && docker daemon --host=unix:///var/run/docker.sock --storage-driver=vfs"
         ]
         #  docker_other += ["RUN service docker start"]
 
