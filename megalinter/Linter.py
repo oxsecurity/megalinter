@@ -70,6 +70,9 @@ class Linter:
         self.lint_all_other_linters_files = False
 
         self.cli_lint_mode = "file"
+        self.cli_docker_image = None
+        self.cli_docker_image_version = "latest"
+        self.cli_docker_args = []
         self.cli_executable = None
         self.cli_executable_fix = None
         self.cli_executable_version = None
@@ -665,6 +668,18 @@ class Linter:
             reg = re.compile(reg)
         return reg
 
+    def manage_docker_command(self, command):
+        if self.cli_docker_image is None:
+            return command
+        docker_command = ["docker", "run"]
+        docker_command += self.cli_docker_args
+        docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
+        if type(command) == str:
+            command = " ".join(docker_command) + " " + command
+        else:
+            command = docker_command + command
+        return command
+
     ########################################
     # Methods that can be overridden below #
     ########################################
@@ -708,7 +723,7 @@ class Linter:
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files":
             cmd += self.files
-        return cmd
+        return self.manage_docker_command(cmd)
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout):
@@ -752,14 +767,14 @@ class Linter:
         cmd += self.cli_version_extra_args
         if self.cli_version_arg_name != "":
             cmd += [self.cli_version_arg_name]
-        return cmd
+        return self.manage_docker_command(cmd)
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_help_command(self):
         cmd = [self.cli_executable_help]
         cmd += self.cli_help_extra_args
         cmd += [self.cli_help_arg_name]
-        return cmd
+        return self.manage_docker_command(cmd)
 
     # Provide additional details in text reporter logs
     # noinspection PyMethodMayBeStatic

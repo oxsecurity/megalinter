@@ -1,0 +1,46 @@
+descriptor_id: SWIFT
+descriptor_type: language
+descriptor_flavors:
+  - swift
+file_extensions:
+  - ".swift"
+linters:
+  # Dart Analyzer
+  - linter_name: swiftlint
+    linter_url: https://github.com/realm/SwiftLint
+    linter_repo: https://github.com/realm/SwiftLint
+    linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html
+    linter_rules_configuration_url: https://github.com/realm/SwiftLint#configuration
+    linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
+    cli_lint_mode: list_of_files
+    cli_docker_image: norionomura/swiftlint
+    cli_docker_args:
+      - "-v"
+      - "`pwd`:`pwd`"
+      - "-w"
+      - "`pwd`"
+    config_file_name: ".swiftlint.yml"
+    cli_config_arg_name: "--config"
+    cli_version_arg_name: "version"
+    examples:
+      - "docker run -v `pwd`:`pwd` -w `pwd` norionomura/swiftlint:latest swiftlint lint myfile.swift"
+      - "docker run -v `pwd`:`pwd` -w `pwd` norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml myfile.swift"
+    install:
+      apk:
+        - docker
+      dockerfile:
+        - |
+          RUN addgroup username docker \
+              rc-update add docker boot \
+              service docker start
+
+    ide:
+      atom:
+        - name: linter-swiftlint
+          url: https://atom.io/packages/linter-swiftlint
+      idea:
+        - name: swiftlint
+          url: https://plugins.jetbrains.com/plugin/9175-swiftlint
+      xcode:
+        - name: Configure manually
+          url: https://github.com/realm/SwiftLint#xcode
