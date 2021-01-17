@@ -656,7 +656,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"- Docker image: [{linter.cli_docker_image}:{linter.cli_docker_image_version}]"
                 f"(https://hub.docker.com/r/{linter.cli_docker_image})"
                 "{target=_blank}",
-                f"  - arguments: `{' '.join(linter.cli_docker_args)}`"
+                f"  - arguments: `{' '.join(linter.cli_docker_args)}`",
             ]
         # Rules configuration URL
         if (
