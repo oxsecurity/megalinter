@@ -22,7 +22,6 @@ linters:
       - "/tmp/lint"
     cli_docker_image: norionomura/swiftlint
     cli_docker_args:
-      - "-w=/tmp/lint"
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint"
     config_file_name: ".swiftlint.yaml"
