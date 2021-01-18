@@ -6,7 +6,7 @@
 
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
-  - arguments: `-v {{WORKSPACE}}:/package -w /package`
+  - arguments: `-w=/tmp -v {{WORKSPACE}}:/tmp`
 - See [How to configure swiftlint rules](https://github.com/realm/SwiftLint#configuration){target=_blank}
 - See [How to disable swiftlint rules in files](https://github.com/realm/SwiftLint#disable-rules-in-code){target=_blank}
 - See [Index of problems detected by swiftlint](https://realm.github.io/SwiftLint/rule-directory.html){target=_blank}
@@ -61,11 +61,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-docker run -v /tmp/lint:/package -w /package norionomura/swiftlint:latest swiftlint lint /package
+docker run -w=/tmp -v /tmp/lint:/tmp norionomura/swiftlint:latest swiftlint lint
 ```
 
 ```shell
-docker run -v /tmp/lint:/package -w /package norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml /package
+docker run -w=/tmp -v /tmp/lint:/tmp norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml
 ```
 
 
