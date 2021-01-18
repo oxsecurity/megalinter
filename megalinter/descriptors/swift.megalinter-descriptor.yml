@@ -14,8 +14,14 @@ linters:
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
     cli_lint_mode: list_of_files
     cli_docker_image: norionomura/swiftlint
+    cli_docker_args:
+      - "-v"
+      - "$(pwd):{{WORKSPACE}}"
+      - "-w"
+      - "{{WORKSPACE}}"
     config_file_name: ".swiftlint.yml"
     cli_config_arg_name: "--config"
+    cli_help_arg_name: "help"
     cli_version_arg_name: "version"
     examples:
       - "docker run -v `pwd`:`pwd` -w `pwd` norionomura/swiftlint:latest swiftlint lint myfile.swift"
