@@ -18,6 +18,19 @@ BASH_FILTER_REGEX_EXCLUDE: "(lib)"
 MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
+DOCKERFILE_HADOLINT_ARGUMENTS:
+  - "--ignore"
+  - "DL3007"
+  - "--ignore"
+  - "DL3016"
+  - "--ignore"
+  - "DL3028"
+  - "--ignore"
+  - "SC2086"
+  - "--ignore"
+  - "SC2039"
+  - "--ignore"
+  - "SC1091"
 SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
