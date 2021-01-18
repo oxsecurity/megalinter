@@ -8,12 +8,6 @@ test_folder: golang
 install:
   apk:
     - go
-  dockerfile:
-    - |
-      ENV GOROOT=/usr/lib/go \
-          GOPATH=/go
-    - ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
-    - RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint

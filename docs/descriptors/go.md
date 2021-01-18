@@ -26,14 +26,5 @@
 
 ### Installation
 
-- Dockerfile commands :
-```dockerfile
-ENV GOROOT=/usr/lib/go \
-    GOPATH=/go
-
-ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
-RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
-```
-
 - APK packages (Linux):
   - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)
