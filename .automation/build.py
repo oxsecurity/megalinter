@@ -165,7 +165,7 @@ branding:
     if requires_docker is True:
         apk_packages += ["docker", "openrc"]
         docker_other += [
-            'RUN rc-update add docker boot && rc-service docker start || echo "skipped" && rc-service docker status'
+            'RUN rc-update add docker boot && rc-service docker start'
         ]
     for item in descriptor_and_linters:
         if "install" not in item:
