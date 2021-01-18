@@ -9,7 +9,7 @@
 #############################################################################################
 #FROM__START
 FROM borkdude/clj-kondo:2020.09.09 as clj-kondo
-FROM hadolint/hadolint:latest-alpine as dockerfile-lint
+FROM hadolint/hadolint:latest-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:latest as lintr-lib
@@ -297,7 +297,7 @@ RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sger
 
 
 # hadolint installation
-COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
+COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
