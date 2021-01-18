@@ -715,10 +715,13 @@ class Linter:
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
         if self.config_file is not None:
+            final_config_file = self.config_file
+            if self.cli_docker_image is not None:
+                final_config_file = final_config_file.replace(self.workspace, '/tmp/lint')
             if self.cli_config_arg_name.endswith("="):
-                cmd += [self.cli_config_arg_name + self.config_file]
+                cmd += [self.cli_config_arg_name + final_config_file]
             elif self.cli_config_arg_name != "":
-                cmd += [self.cli_config_arg_name, self.config_file]
+                cmd += [self.cli_config_arg_name, final_config_file]
             cmd += self.cli_config_extra_args
         # Add other lint cli arguments after other arguments if defined
         cmd += self.cli_lint_extra_args_after

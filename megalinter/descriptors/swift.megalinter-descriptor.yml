@@ -13,24 +13,24 @@ linters:
     linter_rules_configuration_url: https://github.com/realm/SwiftLint#configuration
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
     active_only_if_file_found:
-      - ".swiftlint.yml"
+      - ".swiftlint.yaml"
     cli_lint_mode: project
     cli_lint_extra_args:
       - "lint"
       - "--path"
-      - "/tmp"
+      - "/tmp/lint"
     cli_docker_image: norionomura/swiftlint
     cli_docker_args:
-      - "-w=/tmp"
+      - "-w=/tmp/lint"
       - "-v"
-      - "{{WORKSPACE}}:/tmp"
-    config_file_name: ".swiftlint.yml"
+      - "{{WORKSPACE}}:/tmp/lint"
+    config_file_name: ".swiftlint.yaml"
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"
     cli_version_arg_name: "version"
     examples:
-      - "docker run -w=/tmp -v /tmp/lint:/tmp norionomura/swiftlint:latest swiftlint lint"
-      - "docker run -w=/tmp -v /tmp/lint:/tmp norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml"
+      - "docker run -w=/tmp -v /tmp/lint:/tmp/lint norionomura/swiftlint:latest swiftlint lint --path /tmp/lint"
+      - "docker run -w=/tmp -v /tmp/lint:/tmp/lint norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --config .swiftlint.yaml"
     ide:
       atom:
         - name: linter-swiftlint
