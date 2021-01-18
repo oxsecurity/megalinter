@@ -23,7 +23,6 @@ import glob
 import logging
 import os
 import re
-import shlex
 import shutil
 import subprocess
 import sys
@@ -384,7 +383,7 @@ class Linter:
 
         # User arguments from config
         if config.get(self.name + "_ARGUMENTS", "") != "":
-            self.cli_lint_user_args = shlex.split(config.get(self.name + "_ARGUMENTS"))
+            self.cli_lint_user_args = config.get_list_args(self.name + "_ARGUMENTS")
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
