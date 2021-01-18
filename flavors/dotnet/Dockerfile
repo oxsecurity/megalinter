@@ -77,8 +77,8 @@ RUN apk add --update --no-cache \
 
 # PATH for golang
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go \
-    PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+    GOPATH=/go
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 
 #############################################################################################
