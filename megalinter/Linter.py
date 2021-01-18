@@ -670,10 +670,10 @@ class Linter:
     def manage_docker_command(self, command):
         if self.cli_docker_image is None:
             return command
-        docker_command = ["docker", "run", "--privileged"]
+        docker_command = ["docker", "run"]
         docker_command += [
             "-v",
-            "/var/run/docker.sock:/var/run/docker.sock",
+            "/var/run/docker.sock:/var/run/docker.sock:rw",
         ]  # Use parent docker
         docker_command += self.cli_docker_args
         docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
