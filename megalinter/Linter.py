@@ -676,9 +676,13 @@ class Linter:
             "-v",
             "/var/run/docker.sock:/var/run/docker.sock:rw",
         ]
+        if hasattr(self, 'workspace'):
+            workspace_value = self.workspace
+        else:
+            workspace_value = "/tmp/lint"
         docker_command += map(
-            lambda arg, workspace_value=self.workspace: arg.replace(
-                "{{WORKSPACE}}", workspace_value
+            lambda arg, w=workspace_value: arg.replace(
+                "{{WORKSPACE}}", w
             ),
             self.cli_docker_args,
         )
