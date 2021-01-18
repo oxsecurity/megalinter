@@ -77,7 +77,7 @@ hadolint Dockerfile
 ```
 
 ```shell
-hadolint -c .dockerfilelintrc Dockerfile
+hadolint --config .hadolint.yml Dockerfile
 ```
 
 
@@ -108,8 +108,8 @@ Available options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM hadolint/hadolint:latest-alpine as dockerfile-lint
-COPY --from=dockerfile-lint /bin/hadolint /usr/bin/hadolint
+FROM hadolint/hadolint:latest-alpine as hadolint
+COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 
 

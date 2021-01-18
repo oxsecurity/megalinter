@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import logging
 import os
+import shlex
 
 import yaml
 
@@ -86,6 +87,17 @@ def get_list(config_var, default=None):
         if var == "":
             return []
         return var.split(",")
+    return default
+
+
+def get_list_args(config_var, default=None):
+    var = get(config_var, None)
+    if var is not None:
+        if isinstance(var, list):
+            return var
+        if var == "":
+            return []
+        return shlex.split(var)
     return default
 
 
