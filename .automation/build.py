@@ -142,6 +142,9 @@ outputs:
 runs:
   using: "docker"
   image: "docker://nvuillam/mega-linter-{flavor}:{image_release}"
+  args:
+    - "-v"
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"

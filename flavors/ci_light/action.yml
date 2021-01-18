@@ -8,6 +8,9 @@ outputs:
 runs:
   using: "docker"
   image: "docker://nvuillam/mega-linter-ci_light:v4"
+  args:
+    - "-v"
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"
