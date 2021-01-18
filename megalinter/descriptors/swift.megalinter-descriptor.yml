@@ -15,6 +15,7 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - "lint"
+      - "/package"
     cli_docker_image: norionomura/swiftlint
     cli_docker_args:
       - "-v"
