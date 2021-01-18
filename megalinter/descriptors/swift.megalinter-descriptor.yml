@@ -12,7 +12,7 @@ linters:
     linter_rules_url: https://realm.github.io/SwiftLint/rule-directory.html
     linter_rules_configuration_url: https://github.com/realm/SwiftLint#configuration
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
-    cli_lint_mode: list_of_files
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "lint"
     cli_docker_image: norionomura/swiftlint
