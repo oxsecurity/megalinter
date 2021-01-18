@@ -8,6 +8,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Create .jscpd.json file if copy-paste detection is activated
   - Display ending message
 
+- Fixes
+  - [#266](https://github.com/nvuillam/mega-linter/issues/266): shfmt error in python flavor, and reactivate BASH_SHFMT and DOCKERFILE_HADOLINT for own sources linting)
+
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
   - [eslint](https://eslint.org) from 7.17.0 to **7.18.0** on 2021-01-16
