@@ -677,7 +677,9 @@ class Linter:
             "/var/run/docker.sock:/var/run/docker.sock:rw",
         ]
         docker_command += map(
-            lambda arg, workspace_value=self.workspace: arg.replace("{{WORKSPACE}}", workspace_value),
+            lambda arg, workspace_value=self.workspace: arg.replace(
+                "{{WORKSPACE}}", workspace_value
+            ),
             self.cli_docker_args,
         )
         docker_command += [f"{self.cli_docker_image}:{self.cli_docker_image_version}"]
