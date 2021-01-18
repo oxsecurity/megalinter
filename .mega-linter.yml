@@ -24,6 +24,8 @@ DOCKERFILE_HADOLINT_ARGUMENTS:
   - "--ignore"
   - "DL3016"
   - "--ignore"
+  - "DL3018"
+  - "--ignore"
   - "DL3028"
   - "--ignore"
   - "SC2086"
@@ -31,6 +33,7 @@ DOCKERFILE_HADOLINT_ARGUMENTS:
   - "SC2039"
   - "--ignore"
   - "SC1091"
+DOCKERFILE_HADOLINT_DISABLE_ERRORS: true
 SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
