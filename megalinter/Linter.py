@@ -717,7 +717,9 @@ class Linter:
         if self.config_file is not None:
             final_config_file = self.config_file
             if self.cli_docker_image is not None:
-                final_config_file = final_config_file.replace(self.workspace, '/tmp/lint')
+                final_config_file = final_config_file.replace(
+                    self.workspace, "/tmp/lint"
+                )
             if self.cli_config_arg_name.endswith("="):
                 cmd += [self.cli_config_arg_name + final_config_file]
             elif self.cli_config_arg_name != "":
