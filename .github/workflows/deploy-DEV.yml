@@ -133,7 +133,7 @@ jobs:
       - name: Run against all code base
         if: "!contains(github.event.head_commit.message, 'quick build')"
         shell: bash
-        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
+        run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 10
 
       # Upload Mega-Linter artifacts

@@ -84,6 +84,7 @@ class MegaLinterRunner {
         const lintPath = path.resolve(options.path || ".");
         const commandArgs = [
             "run",
+            "-v", "/var/run/docker.sock:/var/run/docker.sock:rw",
             "-v", `${lintPath}:/tmp/lint`
         ];
         if (options.fix === true) {

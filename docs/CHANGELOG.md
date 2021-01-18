@@ -5,6 +5,13 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Core architecture
+  - Add docker-in-docker management (reuse running docker instance)
+  
+- Linters
+  - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
+  - New Mega-Linter flavor **swift**
+
 - mega-linter-runner --install
   - Create .jscpd.json file if copy-paste detection is activated
   - Display ending message
