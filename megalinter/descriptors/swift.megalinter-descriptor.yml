@@ -26,7 +26,7 @@ linters:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint"
     config_file_name: ".swiftlint.yaml"
-    cli_config_arg_name: "--config"
+    cli_config_arg_name: ""
     cli_help_arg_name: "help"
     cli_version_arg_name: "version"
     examples:
