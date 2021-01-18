@@ -61,11 +61,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-docker run -v /tmp/lint:/package -w /package norionomura/swiftlint:latest swiftlint lint myfile.swift
+docker run -v /tmp/lint:/package -w /package norionomura/swiftlint:latest swiftlint lint /package
 ```
 
 ```shell
-docker run -v /tmp/lint:/package -w /package norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml myfile.swift
+docker run -v /tmp/lint:/package -w /package norionomura/swiftlint:latest swiftlint lint --config .swiftlint.yml /package
 ```
 
 
