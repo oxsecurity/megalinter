@@ -14,6 +14,7 @@ linters:
     linter_rules_inline_disable_url: https://github.com/realm/SwiftLint#disable-rules-in-code
     active_only_if_file_found:
       - ".swiftlint.yaml"
+      - ".swiftlint.yml"
     cli_lint_mode: project
     cli_lint_extra_args:
       - "lint"

@@ -53,7 +53,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.swiftlint.yaml`
+- Activated only if one of these files is found: `.swiftlint.yaml, .swiftlint.yml`
 - File extensions: `.swift`
 
 <!-- markdownlint-disable -->
