@@ -738,7 +738,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_ARGUMENTS",
                     {
                         "$id": f"#/properties/{linter.name}_ARGUMENTS",
-                        "type": "array",
+                        "type": ["array", "string"],
                         "title": f"{linter.name}: Custom arguments",
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
                         "examples:": ["--foo", "bar"],
@@ -1271,8 +1271,9 @@ def add_in_config_schema_file(variables):
     json_schema_props = json_schema["properties"]
     updated = False
     for key, variable in variables:
-        if key not in json_schema_props:
-            json_schema_props[key] = variable
+        prev_val = json_schema_props[key]
+        json_schema_props[key] = variable
+        if prev_val != variable:
             updated = True
     json_schema["properties"] = json_schema_props
     if updated is True:
