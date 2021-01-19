@@ -4,6 +4,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.24.1] 2021-01-19
+
 - mega-linter-runner --install
   - Create .jscpd.json file if copy-paste detection is activated
   - Display ending message
@@ -19,7 +24,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.31.1 to **5.32.0** on 2021-01-16
   - [protolint](https://github.com/yoheimuta/protolint) from 0.26.1 to **0.27.0** on 2021-01-18
   - [phpstan](https://phpstan.org/) from 0.12.67 to **0.12.68** on 2021-01-19
-<!-- linter-versions-end -->
 
 ## [4.24.0] 2021-01-14
 

@@ -84,7 +84,7 @@ class MegaLinterRunner {
         const lintPath = path.resolve(options.path || ".");
         const commandArgs = [
             "run",
-            "-v", `${lintPath}:/tmp/lint`
+            "-v", `${lintPath}:/tmp/lint:rw`
         ];
         if (options.fix === true) {
             commandArgs.push(...["-e", "APPLY_FIXES=all"]);
