@@ -11,6 +11,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
   - New Mega-Linter flavor **swift**
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.24.1] 2021-01-19
+
 - mega-linter-runner --install
   - Create .jscpd.json file if copy-paste detection is activated
   - Display ending message
@@ -25,7 +30,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.24 to **0.9.25** on 2021-01-16
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.31.1 to **5.32.0** on 2021-01-16
   - [protolint](https://github.com/yoheimuta/protolint) from 0.26.1 to **0.27.0** on 2021-01-18
-<!-- linter-versions-end -->
+  - [phpstan](https://phpstan.org/) from 0.12.67 to **0.12.68** on 2021-01-19
 
 ## [4.24.0] 2021-01-14
 
