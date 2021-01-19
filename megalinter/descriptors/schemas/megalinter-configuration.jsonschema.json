@@ -2489,6 +2489,10 @@
         "standard",
         "prettier"
       ],
+      "examples": [
+        "standard",
+        "prettier"
+      ],
       "title": "Javascript default style",
       "type": "string"
     },
@@ -6352,6 +6356,20 @@
     "TSX_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TSX_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for TSX descriptor",
+      "type": "string"
+    },
+    "TYPESCRIPT_DEFAULT_STYLE": {
+      "$id": "#/properties/TYPESCRIPT_DEFAULT_STYLE",
+      "description": "Style of typescript formatting to apply",
+      "enum": [
+        "standard",
+        "prettier"
+      ],
+      "examples": [
+        "standard",
+        "prettier"
+      ],
+      "title": "Typescript default style",
       "type": "string"
     },
     "TYPESCRIPT_ES_ARGUMENTS": {
