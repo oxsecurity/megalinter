@@ -14,7 +14,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ## More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET** ...
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
 
 ## Automatically apply formatting and fixes
 
