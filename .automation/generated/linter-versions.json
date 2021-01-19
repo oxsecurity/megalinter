@@ -41,7 +41,7 @@
     "php": "7.3.26",
     "phpcs": "3.5.8",
     "phpstan": "0.12.68",
-    "powershell": "7.1.1",
+    "powershell": "7.0.4",
     "prettier": "2.2.1",
     "protolint": "0.27.0",
     "psalm": "Psalm.4.x-dev@",
