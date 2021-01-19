@@ -6,7 +6,7 @@ markdown-table-formatter detects wrongly formatted markdown tables and can autom
 
 ## markdown-table-formatter documentation
 
-- Version in Mega-Linter: **1.0.1**
+- Version in Mega-Linter: **1.0.4**
 - Visit [Official Web Site](https://www.npmjs.com/package/markdown-table-formatter){target=_blank}
 
 [![markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}

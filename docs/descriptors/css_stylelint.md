@@ -9,7 +9,7 @@
 
 ## stylelint documentation
 
-- Version in Mega-Linter: **13.8.0**
+- Version in Mega-Linter: **13.9.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -192,7 +192,7 @@ stylelint --fix --config .stylelintrc.json myfile.css
 
     --formatter, -f               [default: "string"]
 
-      The output formatter: "compact", "json", "string", "unix" or "verbose".
+      The output formatter: "compact", "json", "string", "tap", "unix" or "verbose".
 
     --custom-formatter
 

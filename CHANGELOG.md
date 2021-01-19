@@ -8,6 +8,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [#269](https://github.com/nvuillam/mega-linter/issues/269) eslint: .eslintrc.yml is considered as found whereas it's not located in workspace root
 
 - Linter versions upgrades
+  - [stylelint](https://stylelint.io) from 13.8.0 to **13.9.0** on 2021-01-19
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.0.1 to **1.0.4** on 2021-01-19
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.2.0 to **1.3.0** on 2021-01-19
 <!-- linter-versions-end -->
 
 ## [4.24.1] 2021-01-19
