@@ -19,7 +19,6 @@ The following list of items can/must be overridden on custom linter local class:
 
 """
 import errno
-import glob
 import logging
 import os
 import re
@@ -227,14 +226,12 @@ class Linter:
             if len(self.active_only_if_file_found) > 0:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
-                    found_files = glob.glob(
-                        f"{self.workspace}/**/{file_to_check}", recursive=True,
-                    )
-                    if len(found_files) > 0:
+                    if os.path.isfile(f"{self.workspace}/{file_to_check}"):
                         is_found = True
+                        break
                 if is_found is False:
                     self.is_active = False
-                    logging.debug(
+                    logging.info(
                         f"[Activation] {self.name} has been set inactive, as none of these files has been found:"
                         f" {str(self.active_only_if_file_found)}"
                     )
