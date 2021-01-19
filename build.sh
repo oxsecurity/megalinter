@@ -14,6 +14,5 @@ mkdocs build
 
 # Prettify `search_index.json` after `mkdocs`
 # `mkdocs` removed its own prettify few years ago: https://github.com/mkdocs/mkdocs/pull/1128
-python -m json.tool ./site/search/search_index.json > ./site/search/search_index_new.json
+python -m json.tool ./site/search/search_index.json >./site/search/search_index_new.json
 mv -f -- ./site/search/search_index_new.json ./site/search/search_index.json
-

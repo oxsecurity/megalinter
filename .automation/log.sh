@@ -31,7 +31,7 @@ export NC
 # Log Functions
 LOG_TEMP=$(mktemp) || echo "Failed to create temporary log file."
 export LOG_TEMP
-echo "super-linter Log" > "${LOG_TEMP}"
+echo "super-linter Log" >"${LOG_TEMP}"
 log() {
   local TOTERM=${1:-}
   local MESSAGE=${2:-}
@@ -39,7 +39,7 @@ log() {
     if [[ -n ${TOTERM} ]]; then
       tee -a "${LOG_TEMP}" >&2
     else
-      cat >> "${LOG_TEMP}" 2>&1
+      cat >>"${LOG_TEMP}" 2>&1
     fi
   )
 }
