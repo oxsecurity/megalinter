@@ -5,6 +5,9 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linters
+  - Add SQL linter [sqlfluff](https://github.com/sqlfluff/sqlfluff)
+
 - Fixes
   - [#269](https://github.com/nvuillam/mega-linter/issues/269) eslint: .eslintrc.yml is considered as found whereas it's not located in workspace root
 
