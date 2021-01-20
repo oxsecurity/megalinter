@@ -62,6 +62,7 @@
     "snakemake": "5.32.0",
     "spectral": "5.6.0",
     "sql-lint": "0.0.15",
+    "sqlfluff": "0.3.6",
     "standard": "15.0.1",
     "stylelint": "13.9.0",
     "tekton-lint": "0.5.2",

@@ -4737,6 +4737,23 @@
         "  --config <string>      The path to the configuration file",
         "  -h, --help             display help for command"
     ],
+    "sqlfluff": [
+        "Usage: sqlfluff [OPTIONS] COMMAND [ARGS]...",
+        "",
+        "  Sqlfluff is a modular sql linter for humans.",
+        "",
+        "Options:",
+        "  --version  Show the version and exit.",
+        "  --help     Show this message and exit.",
+        "",
+        "Commands:",
+        "  dialects  Show the current dialects available.",
+        "  fix       Fix SQL files.",
+        "  lint      Lint SQL files via passing a list of files or using stdin.",
+        "  parse     Parse SQL files and just spit out the result.",
+        "  rules     Show the current rules in use.",
+        "  version   Show the version of sqlfluff."
+    ],
     "standard": [
         "standard - Use JavaScript Standard Style (https://standardjs.com)",
         "",

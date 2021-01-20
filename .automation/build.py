@@ -1271,7 +1271,7 @@ def add_in_config_schema_file(variables):
     json_schema_props = json_schema["properties"]
     updated = False
     for key, variable in variables:
-        prev_val = json_schema_props[key]
+        prev_val = json_schema_props.get(key, "")
         json_schema_props[key] = variable
         if prev_val != variable:
             updated = True
