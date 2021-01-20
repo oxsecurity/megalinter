@@ -80,6 +80,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 RUN pip3 install --no-cache-dir \
           snakemake \
           snakefmt \
+          sqlfluff \
           yamllint
 #PIP__END
 

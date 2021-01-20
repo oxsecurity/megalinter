@@ -37,6 +37,7 @@
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
+        "SQL_SQLFLUFF",
         "TEKTON_TEKTON_LINT",
         "XML_XMLLINT",
         "YAML_YAMLLINT",

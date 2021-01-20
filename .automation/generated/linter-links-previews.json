@@ -319,6 +319,11 @@
     "image": "https://avatars3.githubusercontent.com/u/9536682?s=400&v=4",
     "title": "joereynolds/sql-lint"
   },
+  "sqlfluff": {
+    "description": "\u00f0\u009f\u0093\u009c The SQL Linter for humans",
+    "image": null,
+    "title": "sqlfluff"
+  },
   "standard": {
     "description": "\ud83c\udf1f JavaScript Style Guide, with linter & automatic code fixer - standard/standard",
     "image": "https://avatars3.githubusercontent.com/u/29208316?s=400&v=4",
