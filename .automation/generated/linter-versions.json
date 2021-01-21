@@ -55,7 +55,7 @@
     "rubocop": "0.82.0",
     "scalafix": "0.9.25",
     "scss-lint": "0.59.0",
-    "sfdx-scanner": "2.4.0",
+    "sfdx-scanner": "2.5.1",
     "shellcheck": "0.7.1",
     "shfmt": "3.2.1",
     "snakefmt": "0.2.5",
