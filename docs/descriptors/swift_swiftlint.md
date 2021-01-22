@@ -18,6 +18,8 @@
 - Enable swiftlint by adding `SWIFT_SWIFTLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable swiftlint by adding `SWIFT_SWIFTLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `SWIFT_SWIFTLINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+
 | Variable                             | Description                                                                                                                                                                                  | Default value                                    |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 | SWIFT_SWIFTLINT_DOCKER_IMAGE_VERSION | Docker image version                                                                                                                                                                         | `latest`                                         |

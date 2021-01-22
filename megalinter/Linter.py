@@ -726,10 +726,11 @@ class Linter:
         cmd += self.cli_lint_extra_args_after
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
-        if self.try_fix is True and "--megalinter-fix-flag" in cmd:
+        if self.try_fix is True:
             for arg in self.cli_lint_fix_remove_args:
                 cmd.remove(arg)
-            cmd.remove("--megalinter-fix-flag")
+            if "--megalinter-fix-flag" in cmd:
+                cmd.remove("--megalinter-fix-flag")
         # Append file in command arguments
         if file is not None:
             cmd += [file]

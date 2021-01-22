@@ -17,8 +17,12 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - "lint"
+    cli_lint_extra_args_after:
       - "--path"
       - "/tmp/lint"
+    cli_lint_fix_arg_name: "autocorrect"
+    cli_lint_fix_remove_args:
+      - "lint"
     cli_docker_image: norionomura/swiftlint
     cli_docker_args:
       - "-v"
