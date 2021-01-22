@@ -4,7 +4,7 @@
 
 ## snakefmt documentation
 
-- Version in Mega-Linter: **0.2.5**
+- Version in Mega-Linter: **0.2.6**
 - Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file is not found, [.snakefmt.toml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.snakefmt.toml){target=_blank} will be used
@@ -124,7 +124,7 @@ Options:
 
   -h, --help             Show this message and exit.
   -V, --version          Show the version and exit.
-  -v, --verbose          Turns on debug-level logging.
+  -v, --verbose          Turns on debug-level logger.
 ```
 
 ### Installation on mega-linter Docker image
