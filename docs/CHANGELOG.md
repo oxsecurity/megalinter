@@ -5,6 +5,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.25.0] 2021-01-22
+
 - Linters
   - Add SQL linter [sqlfluff](https://github.com/sqlfluff/sqlfluff)
 
