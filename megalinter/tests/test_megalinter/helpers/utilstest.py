@@ -130,7 +130,7 @@ def test_linter_success(linter, test_self):
     linter_name = linter.linter_name
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
-        "FILTER_REGEX_INCLUDE": r"(.*_good_.*|.*\/good\/.*)",
+        "FILTER_REGEX_INCLUDE": r"(good)",
         "TEXT_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
@@ -184,7 +184,7 @@ def test_linter_failure(linter, test_self):
     linter_name = linter.linter_name
     env_vars_failure = {
         "DEFAULT_WORKSPACE": workspace,
-        "FILTER_REGEX_INCLUDE": r"(.*_bad_.*|.*\/bad\/.*)",
+        "FILTER_REGEX_INCLUDE": r"(bad)",
         "OUTPUT_FORMAT": "text",
         "OUTPUT_DETAIL": "detailed",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
