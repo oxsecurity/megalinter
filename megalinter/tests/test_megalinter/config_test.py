@@ -12,7 +12,7 @@ from megalinter import config
 class config_test(unittest.TestCase):
     test_folder = (
         "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-        "feature/remote_config/.automation/test/mega-linter-config-test/"
+        "master/.automation/test/mega-linter-config-test/"
     )
 
     def setUp(self):

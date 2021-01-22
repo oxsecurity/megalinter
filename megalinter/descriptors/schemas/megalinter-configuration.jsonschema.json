@@ -1911,6 +1911,22 @@
       "title": "Excluded directories",
       "type": "array"
     },
+    "EXTENDS": {
+      "$id": "#/properties/EXTENDS",
+      "description": "Base mega-linter.yml config file(s) to extend local configuration from. Can be a single URL or a list of .mega-linter.yml config files URLs",
+      "examples:": [
+        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
+        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Mega-Linter config files to extend from",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
     "FILEIO_REPORTER": {
       "$id": "#/properties/FILEIO_REPORTER",
       "default": false,
