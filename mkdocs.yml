@@ -135,9 +135,7 @@ nav:
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
               - "sql-lint": "descriptors/sql_sql_lint.md"
-          - "SWIFT":
-              - "All SWIFT linters": "descriptors/swift.md"
-              - "swiftlint": "descriptors/swift_swiftlint.md"
+              - "sqlfluff": "descriptors/sql_sqlfluff.md"
           - "TSX":
               - "All TSX linters": "descriptors/tsx.md"
               - "eslint": "descriptors/tsx_eslint.md"

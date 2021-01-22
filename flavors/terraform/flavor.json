@@ -35,6 +35,7 @@
         "SPELL_MISSPELL",
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
+        "SQL_SQLFLUFF",
         "TEKTON_TEKTON_LINT",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TERRASCAN",

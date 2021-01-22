@@ -2,20 +2,22 @@
 import logging
 import os
 import shlex
+import tempfile
 
+import requests
 import yaml
 
 CONFIG_DATA = None
 CONFIG_SOURCE = None
 
 
-def init_config(workspace):
+def init_config(workspace=None):
     global CONFIG_DATA, CONFIG_SOURCE
     if CONFIG_DATA is not None:
         logging.debug(f"[config] Already initialized: {CONFIG_SOURCE}")
         return
     env = os.environ.copy()
-    if workspace is None:
+    if workspace is None and "MEGALINTER_CONFIG" not in os.environ:
         set_config(env)
         CONFIG_SOURCE = "Environment variables only (no workspace)"
         print(f"[config] {CONFIG_SOURCE}")
@@ -23,8 +25,24 @@ def init_config(workspace):
     # Search for config file
     if "MEGALINTER_CONFIG" in os.environ:
         config_file_name = os.environ.get("MEGALINTER_CONFIG")
-        config_file = workspace + os.path.sep + config_file_name
+        if config_file_name.startswith("https://"):
+            # Remote configuration file
+            config_file = (
+                tempfile.gettempdir()
+                + os.path.sep
+                + config_file_name.rsplit("/", 1)[-1]
+            )
+            r = requests.get(config_file_name, allow_redirects=True)
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve config file {config_file_name}"
+            with open(config_file, "wb") as f:
+                f.write(r.content)
+        else:
+            # Local configuration file with name forced by user
+            config_file = workspace + os.path.sep + config_file_name
     else:
+        # Local configuration file found with default name
         config_file = workspace + os.path.sep + ".mega-linter.yml"
         for candidate in [
             ".mega-linter.yml",
@@ -49,6 +67,20 @@ def init_config(workspace):
         CONFIG_SOURCE = (
             f"Environment variables only (no config file found in {workspace})"
         )
+    # manage EXTENDS in configuration
+    if "EXTENDS" in runtime_config:
+        extends = runtime_config["EXTENDS"]
+        if isinstance(extends, str):
+            extends = extends.split(",")
+        for extends_item in extends:
+            r = requests.get(extends_item, allow_redirects=True)
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve EXTENDS config file {config_file_name}"
+            extends_config_data = yaml.load(r.content, Loader=yaml.FullLoader)
+            runtime_config.update(extends_config_data)
+            CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"
+    # Print & set config in cache
     print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)
 

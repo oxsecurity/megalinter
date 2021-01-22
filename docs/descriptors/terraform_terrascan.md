@@ -9,7 +9,7 @@
 
 ## terrascan documentation
 
-- Version in Mega-Linter: **1.2.0**
+- Version in Mega-Linter: **1.3.0**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -37,7 +37,11 @@ This linter is available in the following flavours
 | <!-- -->                                                                                                                                                  | Flavor                                                                 | Description                            | Embedded linters | Info                                                                                                                                                                                       |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             | 81               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                     |
+<<<<<<< HEAD
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 38               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+=======
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+>>>>>>> master
 
 ## Behind the scenes
 

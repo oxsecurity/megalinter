@@ -32,6 +32,15 @@ REPO_HOME = (
 
 # Define env variables before any test case
 def linter_test_setup(params=None):
+    for key in [
+        "MEGALINTER_CONFIG",
+        "EXTENDS",
+        "FILTER_REGEX_INCLUDE",
+        "FILTER_REGEX_EXCLUDE",
+        "SHOW_ELAPSED_TIME",
+    ]:
+        if key in os.environ:
+            del os.environ[key]
     config.delete()
     if params is None:
         params = {}

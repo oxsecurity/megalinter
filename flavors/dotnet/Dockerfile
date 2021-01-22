@@ -89,6 +89,7 @@ RUN pip3 install --no-cache-dir \
           cpplint \
           snakemake \
           snakefmt \
+          sqlfluff \
           yamllint
 #PIP__END
 

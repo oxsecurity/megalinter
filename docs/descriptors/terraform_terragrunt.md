@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.26.7**
+- Version in Mega-Linter: **0.27.1**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -33,7 +33,11 @@ This linter is available in the following flavours
 | <!-- -->                                                                                                                                                  | Flavor                                                                 | Description                            | Embedded linters | Info                                                                                                                                                                                       |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             | 81               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                     |
+<<<<<<< HEAD
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 38               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+=======
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+>>>>>>> master
 
 ## Behind the scenes
 
@@ -102,7 +106,7 @@ GLOBAL OPTIONS:
    terragrunt-debug                             Write terragrunt-debug.tfvars to working folder to help root-cause issues.
 
 VERSION:
-   v0.26.7
+   v0.27.1
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

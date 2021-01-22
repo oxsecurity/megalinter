@@ -22,3 +22,23 @@ linters:
       vim:
         - name: ale
           url: https://github.com/dense-analysis/ale/
+  # SQLFLUFF
+  - linter_name: sqlfluff
+    linter_url: https://www.sqlfluff.com/
+    linter_repo: https://github.com/sqlfluff/sqlfluff
+    linter_banner_image_url: https://raw.githubusercontent.com/sqlfluff/sqlfluff/master/images/sqlfluff-wide.png
+    linter_image_url: https://docs.sqlfluff.com/en/stable/_static/images/sqlfluff-lrg.png
+    linter_rules_url: https://docs.sqlfluff.com/en/stable/rules.html
+    linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration.html
+    config_file_name: setup.cfg
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - lint
+    cli_config_arg_name: ""
+    cli_help_arg_name: "--help"
+    cli_version_arg_name: "--version"
+    examples:
+      - "sqlfluff myfile.sql"
+    install:
+      pip:
+        - sqlfluff

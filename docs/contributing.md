@@ -43,6 +43,17 @@ Each linter must:
 - Be defined in a descriptor file. Few properties are required ([see json schema documentation](https://nvuillam.github.io/mega-linter/json-schemas/descriptor.html)), but please think to input doc URLs and `ide` section for documentation
 - Have two test files in `.automation/test`: one for success and one for failure
 
+Then run `bash build.py` and it will generate all the rest !
+
+- Documentation (markdown)
+- Dockerfile (main and flavors)
+- Test classes
+- Configuration JSON schema
+- Online documentation menus
+  
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
+  
+
 ### CI/CT/CD
 
 The **Mega-Linter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
