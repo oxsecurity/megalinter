@@ -1,0 +1,2 @@
+FILTER_REGEX_INCLUDE: "(custom)"
+SHOW_ELAPSED_TIME: true

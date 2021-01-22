@@ -9,7 +9,7 @@ import unittest
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
-class PluginsTest(unittest.TestCase):
+class plugins_test(unittest.TestCase):
     def setUp(self):
         utilstest.linter_test_setup(
             {
