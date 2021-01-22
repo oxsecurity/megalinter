@@ -26,7 +26,7 @@
 | SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
 | SWIFT_SWIFTLINT_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".swift"]`                                     |
 | SWIFT_SWIFTLINT_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| SWIFT_SWIFTLINT_CONFIG_FILE          | swiftlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `.swiftlint.yaml`                                |
+| SWIFT_SWIFTLINT_CONFIG_FILE          | swiftlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                         | `.swiftlint.yml`                                 |
 | SWIFT_SWIFTLINT_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
 | SWIFT_SWIFTLINT_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
 
@@ -53,7 +53,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.swiftlint.yaml, .swiftlint.yml`
+- Activated only if one of these files is found: `.swiftlint.yml`
 - File extensions: `.swift`
 
 <!-- markdownlint-disable -->
@@ -63,10 +63,6 @@ This linter is available in the following flavours
 
 ```shell
 docker run -w=/tmp -v /tmp/lint:/tmp/lint norionomura/swiftlint:latest swiftlint lint --path /tmp/lint
-```
-
-```shell
-docker run -w=/tmp -v /tmp/lint:/tmp/lint norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --config .swiftlint.yaml
 ```
 
 

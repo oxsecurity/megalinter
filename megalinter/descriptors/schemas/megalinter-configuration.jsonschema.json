@@ -6056,7 +6056,7 @@
     },
     "SWIFT_SWIFTLINT_CONFIG_FILE": {
       "$id": "#/properties/SWIFT_SWIFTLINT_CONFIG_FILE",
-      "default": ".swiftlint.yaml",
+      "default": ".swiftlint.yml",
       "description": "SWIFT_SWIFTLINT: User custom config file name if different from default",
       "title": "SWIFT_SWIFTLINT: Custom config file name",
       "type": "string"
