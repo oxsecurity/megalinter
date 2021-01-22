@@ -27,9 +27,15 @@ def init_config(workspace=None):
         config_file_name = os.environ.get("MEGALINTER_CONFIG")
         if config_file_name.startswith("https://"):
             # Remote configuration file
-            config_file = tempfile.gettempdir() + os.path.sep + config_file_name.rsplit('/', 1)[-1]
+            config_file = (
+                tempfile.gettempdir()
+                + os.path.sep
+                + config_file_name.rsplit("/", 1)[-1]
+            )
             r = requests.get(config_file_name, allow_redirects=True)
-            assert r.status_code == 200, f"Unable to retrieve config file {config_file_name}"
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve config file {config_file_name}"
             with open(config_file, "wb") as f:
                 f.write(r.content)
         else:
@@ -63,12 +69,14 @@ def init_config(workspace=None):
         )
     # manage EXTENDS in configuration
     if "EXTENDS" in runtime_config:
-        extends = runtime_config['EXTENDS']
+        extends = runtime_config["EXTENDS"]
         if isinstance(extends, str):
             extends = extends.split(",")
         for extends_item in extends:
             r = requests.get(extends_item, allow_redirects=True)
-            assert r.status_code == 200, f"Unable to retrieve EXTENDS config file {config_file_name}"
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve EXTENDS config file {config_file_name}"
             extends_config_data = yaml.load(r.content, Loader=yaml.FullLoader)
             runtime_config.update(extends_config_data)
             CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"

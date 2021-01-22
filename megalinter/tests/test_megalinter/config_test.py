@@ -16,8 +16,13 @@ class config_test(unittest.TestCase):
     )
 
     def setUp(self):
-        for key in ["MEGALINTER_CONFIG", "EXTENDS", "FILTER_REGEX_INCLUDE", "FILTER_REGEX_EXCLUDE",
-                    "SHOW_ELAPSED_TIME"]:
+        for key in [
+            "MEGALINTER_CONFIG",
+            "EXTENDS",
+            "FILTER_REGEX_INCLUDE",
+            "FILTER_REGEX_EXCLUDE",
+            "SHOW_ELAPSED_TIME",
+        ]:
             if key in os.environ:
                 del os.environ[key]
 
@@ -28,7 +33,7 @@ class config_test(unittest.TestCase):
         remote_config = self.test_folder + "custom.mega-linter.yml"
         os.environ["MEGALINTER_CONFIG"] = remote_config
         config.init_config()
-        self.assertEqual("(custom)",config.get("FILTER_REGEX_INCLUDE"))
+        self.assertEqual("(custom)", config.get("FILTER_REGEX_INCLUDE"))
 
     def test_remote_config_error(self):
         remote_config = self.test_folder + "custom.mega-linter-not-existing.yml"
