@@ -6,16 +6,13 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Core architecture
-<<<<<<< HEAD
+  - Manage remote `mega-linter.yml` configuration files
+  - New property **EXTENDS**, allowing to inherit from remote `mega-linter.yml` configuration files
   - Add docker-in-docker management (reuse running docker instance)
   
 - Linters
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
   - New Mega-Linter flavor **swift**
-=======
-  - Manage remote `mega-linter.yml` configuration files
-  - New property **EXTENDS**, allowing to inherit from remote `mega-linter.yml` configuration files
->>>>>>> master
 
 - Linter versions upgrades
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.2.5 to **0.2.6** on 2021-01-22
