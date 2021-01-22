@@ -58,7 +58,7 @@
     "sfdx-scanner": "2.5.1",
     "shellcheck": "0.7.1",
     "shfmt": "3.2.1",
-    "snakefmt": "0.2.5",
+    "snakefmt": "0.2.6",
     "snakemake": "5.32.0",
     "spectral": "5.6.0",
     "sql-lint": "0.0.15",
