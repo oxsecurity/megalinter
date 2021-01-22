@@ -674,9 +674,9 @@ class Linter:
             "/var/run/docker.sock:/var/run/docker.sock:rw",
         ]
         if hasattr(self, "workspace"):
-            workspace_value = self.workspace
+            workspace_value = os.path.abspath(self.workspace)
         else:
-            workspace_value = "/tmp/lint"
+            workspace_value = os.path.abspath("/tmp/lint")
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
