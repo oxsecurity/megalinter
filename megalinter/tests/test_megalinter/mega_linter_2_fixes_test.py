@@ -10,7 +10,7 @@ import unittest
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
-class MegalinterFixesTest(unittest.TestCase):
+class mega_linter_2_fixes(unittest.TestCase):
     def setUp(self):
         utilstest.linter_test_setup(
             {
