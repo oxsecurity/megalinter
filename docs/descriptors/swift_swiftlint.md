@@ -4,6 +4,7 @@
 
 ## swiftlint documentation
 
+- Version in Mega-Linter: **0.42.0**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint`
@@ -48,7 +49,7 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                  | Flavor                                                           | Description                        | Embedded linters | Info                                                                                                                                                                               |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|------------------------------------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor         | 82               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)             |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor         | 83               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)             |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>               | [swift](https://nvuillam.github.io/mega-linter/flavors/swift/)   | Optimized for SWIFT based projects | 37               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-swift/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-swift) |
 
 ## Behind the scenes
@@ -67,6 +68,21 @@ This linter is available in the following flavours
 docker run -w=/tmp -v /tmp/lint:/tmp/lint norionomura/swiftlint:latest swiftlint lint --path /tmp/lint
 ```
 
+
+### Help content
+
+```shell
+Available commands:
+
+   analyze         [Experimental] Run analysis rules
+   autocorrect     Automatically correct warnings and errors
+   docs            Open SwiftLint Docs on web browser
+   generate-docs   Generates markdown documentation for all rules
+   help            Display general or command-specific help
+   lint            Print lint warnings and errors (default command)
+   rules           Display the list of rules and their identifiers
+   version         Display the current version of SwiftLint
+```
 
 ### Installation on mega-linter Docker image
 
