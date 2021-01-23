@@ -76,6 +76,7 @@ nav:
           - "GO":
               - "All GO linters": "descriptors/go.md"
               - "golangci-lint": "descriptors/go_golangci_lint.md"
+              - "revive": "descriptors/go_revive.md"
           - "GROOVY":
               - "All GROOVY linters": "descriptors/groovy.md"
               - "npm-groovy-lint": "descriptors/groovy_npm_groovy_lint.md"

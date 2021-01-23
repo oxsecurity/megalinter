@@ -51,3 +51,31 @@ linters:
       vscode:
         - name: vscode.Go
           url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go
+  # REVIVE
+  - linter_name: revive
+    linter_url: https://revive.run/
+    linter_repo: https://github.com/mgechev/revive
+    linter_rules_url: https://revive.run/r
+    linter_image_url: https://github.com/mgechev/revive/raw/master/assets/logo.png
+    linter_rules_configuration_url: https://revive.run/docs#custom-configuration
+    config_file_name: revive.toml
+    cli_config_arg_name: "-config"
+    cli_help_arg_name: "-help"
+    help_command_return_code: 2
+    linter_version_cache: "0.0.0"
+    examples:
+      - "revive myfile.go"
+      - "revive -config myfile.go"
+    install:
+      dockerfile:
+        - RUN go get -u github.com/mgechev/revive
+    ide:
+      atom:
+        - name: linter-revive
+          url: https://github.com/morphy2k/linter-revive
+      vim:
+        - name: ale
+          url: https://github.com/dense-analysis/ale
+      vscode:
+        - name: vscode.Go
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go

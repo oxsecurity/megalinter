@@ -8,6 +8,7 @@
 | Linter                               | Configuration key         |
 |--------------------------------------|---------------------------|
 | [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
+| [revive](go_revive.md)               | [GO](go_revive.md)        |
 
 ## Linted files
 

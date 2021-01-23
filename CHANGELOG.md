@@ -13,6 +13,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
   - New Mega-Linter flavor **swift**
 
+- Linters
+  - Add [revive](https://github.com/mgechev/revive) GO linter
+
 - Linter versions upgrades
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.2.5 to **0.2.6** on 2021-01-22
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.0 to **1.3.1** on 2021-01-22
