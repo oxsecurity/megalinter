@@ -684,9 +684,7 @@ class Linter:
         if type(command) == str:
             command = " ".join(docker_command) + " " + command
         else:
-            command = docker_command + [
-                "ls", "-A", "tmp/"
-            ]
+            command = docker_command + ["ls", "-A", "tmp/"]
         return command
 
     ########################################
