@@ -17,7 +17,7 @@ module.exports = class extends Generator {
         message: 'What is your project type ?',
         default: "all",
         choices: [
-          { value: "all", name: "Let Mega-Linter suggest me later" },
+          { value: "all", name: "Let Mega-Linter suggest me later (recommended)" },
           { value: "dart", name: "Dart" },
           { value: "documentation", name: "Documentation" },
           { value: "dotnet", name: "C, C++, C# or Visual Basic.net" },
@@ -29,6 +29,7 @@ module.exports = class extends Generator {
           { value: "ruby", name: "Ruby" },
           { value: "rust", name: "RUST" },
           { value: "scala", name: "Scala" },
+          { value: "swift", name: "Swift" },
           { value: "salesforce", name: "Salesforce" },
           { value: "terraform", name: "Terraform" },
         ]

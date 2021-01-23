@@ -59,6 +59,7 @@ Then run `bash build.py` and it will generate all the rest !
 The **Mega-Linter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
 
 - When a branch is created and code is pushed, a **GitHub** Action is triggered for building the new **Docker** container with the new codebase
+  - To test your updates during your development, you may have to create a draft Pull Request to trigger CI on the main repo
   - During development, if all you updated is python code, you can write `quick build` in the commit message body to benefit from a quicker build (about 15 minutes): only python files are copied over nvuillam/mega-linter:test-YOURUSERNAME-YOURBRANCH or nvuillam/mega-linter:latest if a previous full run has not been performed yet
   - You can [filter the performed tests](https://docs.pytest.org/en/stable/usage.html#specifying-tests-selecting-tests) by writing `TEST_KEYWORDS=my keywords` in the commit message body. Example: `TEST_KEYWORDS=kubernetes_kubeval_test`
   - The last commit before the validation of a Pull Request must be a full build with all tests (about 45 minutes)

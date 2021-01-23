@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 42 languages, 20 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 43 languages, 20 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -137,6 +137,9 @@ nav:
               - "All SQL linters": "descriptors/sql.md"
               - "sql-lint": "descriptors/sql_sql_lint.md"
               - "sqlfluff": "descriptors/sql_sqlfluff.md"
+          - "SWIFT":
+              - "All SWIFT linters": "descriptors/swift.md"
+              - "swiftlint": "descriptors/swift_swiftlint.md"
           - "TSX":
               - "All TSX linters": "descriptors/tsx.md"
               - "eslint": "descriptors/tsx_eslint.md"
@@ -279,6 +282,7 @@ nav:
       - "rust": "flavors/rust.md"
       - "salesforce": "flavors/salesforce.md"
       - "scala": "flavors/scala.md"
+      - "swift": "flavors/swift.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end
   - "Run locally": "mega-linter-runner.md"

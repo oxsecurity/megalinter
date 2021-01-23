@@ -90,10 +90,13 @@ def generate_flavor(flavor, flavor_info):
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
+    requires_docker = False
     for linter in linters:
         if match_flavor(vars(linter), flavor) is True:
             descriptor_and_linters += [vars(linter)]
             flavor_linters += [linter.name]
+            if linter.cli_docker_image is not None:
+                requires_docker = True
     # Initialize Dockerfile
     if flavor == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
@@ -139,6 +142,9 @@ outputs:
 runs:
   using: "docker"
   image: "docker://nvuillam/mega-linter-{flavor}:{image_release}"
+  args:
+    - "-v"
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"
@@ -155,6 +161,12 @@ branding:
     npm_packages = []
     pip_packages = []
     gem_packages = []
+    # Manage docker
+    if requires_docker is True:
+        apk_packages += ["docker", "openrc"]
+        docker_other += [
+            "RUN rc-update add docker boot && rc-service docker start || true"
+        ]
     for item in descriptor_and_linters:
         if "install" not in item:
             item["install"] = {}
@@ -641,6 +653,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_md += [
             f"- Visit [Official Web Site]({doc_url(linter.linter_url)}){{target=_blank}}",
         ]
+        # Docker image doc
+        if linter.cli_docker_image is not None:
+            linter_doc_md += [
+                f"- Docker image: [{linter.cli_docker_image}:{linter.cli_docker_image_version}]"
+                f"(https://hub.docker.com/r/{linter.cli_docker_image})"
+                "{target=_blank}",
+                f"  - arguments: `{' '.join(linter.cli_docker_args)}`",
+            ]
         # Rules configuration URL
         if (
             hasattr(linter, "linter_rules_configuration_url")
@@ -717,6 +737,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 linter_doc_md += [
                     f"| {variable['name']} | {variable['description']} | `{variable['default_value']}` |"
                 ]
+        if linter.cli_docker_image is not None:
+            linter_doc_md += [
+                f"| {linter.name}_DOCKER_IMAGE_VERSION | Docker image version | `{linter.cli_docker_image_version}` |"
+            ]
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
             f'Ex: `-s --foo "bar"` |  |',

@@ -339,6 +339,11 @@
     "image": null,
     "title": "A mighty, modern style linter \u00b7 stylelint"
   },
+  "swiftlint": {
+    "description": "A tool to enforce Swift style and conventions. Contribute to realm/SwiftLint development by creating an account on GitHub.",
+    "image": "https://avatars3.githubusercontent.com/u/7575099?s=400&v=4",
+    "title": "realm/SwiftLint"
+  },
   "tekton-lint": {
     "description": "Linter for Tekton definitions. Contribute to IBM/tekton-lint development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/1459110?s=400&v=4",

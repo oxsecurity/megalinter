@@ -8,6 +8,9 @@ outputs:
 runs:
   using: "docker"
   image: "docker://nvuillam/mega-linter-salesforce:v4"
+  args:
+    - "-v"
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"

@@ -86,6 +86,7 @@
         "SNAKEMAKE",
         "SPELL",
         "SQL",
+        "SWIFT",
         "TEKTON",
         "TERRAFORM",
         "TSX",
@@ -168,6 +169,7 @@
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
+        "SWIFT_SWIFTLINT",
         "TEKTON_TEKTON_LINT",
         "TERRAFORM_TFLINT",
         "TERRAFORM_TERRASCAN",
@@ -6094,6 +6096,85 @@
       "$id": "#/properties/SQL_SQL_LINT_RULES_PATH",
       "description": "SQL_SQL_LINT: Path where to find linter configuration file",
       "title": "SQL_SQL_LINT: Custom config file path",
+      "type": "string"
+    },
+    "SWIFT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SWIFT_FILTER_REGEX_EXCLUDE",
+      "title": "Excluding regex filter for SWIFT descriptor",
+      "type": "string"
+    },
+    "SWIFT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SWIFT_FILTER_REGEX_INCLUDE",
+      "title": "Including regex filter for SWIFT descriptor",
+      "type": "string"
+    },
+    "SWIFT_SWIFTLINT_ARGUMENTS": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_ARGUMENTS",
+      "description": "SWIFT_SWIFTLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SWIFT_SWIFTLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SWIFT_SWIFTLINT_CONFIG_FILE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_CONFIG_FILE",
+      "default": ".swiftlint.yml",
+      "description": "SWIFT_SWIFTLINT: User custom config file name if different from default",
+      "title": "SWIFT_SWIFTLINT: Custom config file name",
+      "type": "string"
+    },
+    "SWIFT_SWIFTLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "SWIFT_SWIFTLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SWIFT_SWIFTLINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SWIFT_SWIFTLINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SWIFT_SWIFTLINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SWIFT_SWIFTLINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE",
+      "title": "SWIFT_SWIFTLINT: Excluding Regex",
+      "type": "string"
+    },
+    "SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE",
+      "title": "SWIFT_SWIFTLINT: Including Regex",
+      "type": "string"
+    },
+    "SWIFT_SWIFTLINT_RULES_PATH": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_RULES_PATH",
+      "description": "SWIFT_SWIFTLINT: Path where to find linter configuration file",
+      "title": "SWIFT_SWIFTLINT: Custom config file path",
       "type": "string"
     },
     "TAP_REPORTER": {

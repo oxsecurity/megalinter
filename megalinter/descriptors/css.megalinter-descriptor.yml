@@ -16,7 +16,7 @@ linters:
     linter_banner_image_url: https://github.com/stylelint/stylelint/raw/master/identity/stylelint-icon-and-text-white.png
     linter_rules_configuration_url: https://stylelint.io/user-guide/configure
     linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
-    linter_megalinter_ref_url: https://github.com/stylelint/stylelint/pull/5088#ok
+    linter_megalinter_ref_url: https://stylelint.io/user-guide/integrations/other#analysis-platform-engines
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
     cli_lint_fix_arg_name: "--fix"

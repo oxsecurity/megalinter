@@ -20,6 +20,7 @@
         "rust",
         "salesforce",
         "scala",
+        "swift",
         "terraform"
       ],
       "type": "string"
@@ -428,6 +429,42 @@
             },
             "title": "Additional CLI arguments when config file is used",
             "type": "array"
+          },
+          "cli_docker_args": {
+            "$id": "#/properties/linters/items/properties/cli_docker_args",
+            "default": [],
+            "description": "Arguments for docker run before image name",
+            "examples": [
+              [
+                "-v",
+                "`pwd`:`pwd`",
+                "-w",
+                "`pwd`"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI docker run arguments",
+            "type": "array"
+          },
+          "cli_docker_image": {
+            "$id": "#/properties/linters/items/properties/cli_docker_image",
+            "examples": [
+              "norionomura/swiftlint"
+            ],
+            "title": "Name of the docker image to use for linting",
+            "type": "string"
+          },
+          "cli_docker_image_version": {
+            "$id": "#/properties/linters/items/properties/cli_docker_image_version",
+            "default": "latest",
+            "description": "Version of the docker image to use for linting",
+            "examples": [
+              "0.42.0_swift-5.3.2"
+            ],
+            "title": "Docker image version",
+            "type": "string"
           },
           "cli_executable": {
             "$id": "#/properties/linters/items/properties/cli_executable",

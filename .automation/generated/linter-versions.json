@@ -66,6 +66,7 @@
     "sqlfluff": "0.3.6",
     "standard": "15.0.1",
     "stylelint": "13.9.0",
+    "swiftlint": "0.42.0",
     "tekton-lint": "0.5.2",
     "terragrunt": "0.27.1",
     "terrascan": "1.3.1",

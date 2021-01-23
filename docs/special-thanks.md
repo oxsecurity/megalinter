@@ -34,6 +34,7 @@
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration)
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools)
+- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines)
 <!-- referring-linters-end -->
 
 ## Open-source teams

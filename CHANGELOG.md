@@ -7,9 +7,13 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Core architecture
   - Manage remote `mega-linter.yml` configuration files
   - New property **EXTENDS**, allowing to inherit from remote `mega-linter.yml` configuration files
-
+  - Add docker-in-docker management (reuse running docker instance)
+  - Allow to skip auto apply fixes with commit or PR if latest commit text contains `skip fix`
+  
 - Linters
   - Add [revive](https://github.com/mgechev/revive) GO linter
+  - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
+  - New Mega-Linter flavor **swift**
 
 - Linter versions upgrades
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.2.5 to **0.2.6** on 2021-01-22
