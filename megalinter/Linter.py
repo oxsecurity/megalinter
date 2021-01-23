@@ -678,8 +678,8 @@ class Linter:
         else:
             workspace_value = os.path.abspath("/tmp/lint")
         test = os.listdir(workspace_value)
-        print(test)
-        logging.info(test)
+        print("WORKSPACE CONTENT: \n" + (" ".join(test)))
+        logging.info("WORKSPACE CONTENT: \n" + (" ".join(test)))
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,

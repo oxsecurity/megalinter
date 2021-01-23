@@ -119,12 +119,13 @@ jobs:
         shell: bash
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
-          TEST_KEYWORDS=""
+          TEST_KEYWORDS_TO_USE=""
           if [[ "${{github.event.head_commit.message}}" == *"TEST_KEYWORDS="* ]]; then
-            TEST_KEYWORDS=$(echo "${{github.event.head_commit.message}}" | sed "s/^TEST_KEYWORDS=\(.*\)$/\1/" )
-            echo "Run only tests with keywords ${TEST_KEYWORDS}"
+            COMMIT_MSG="${{github.event.head_commit.message}}"
+            TEST_KEYWORDS_TO_USE=${COMMIT_MSG#*TEST_KEYWORDS=}
+            echo "Run only tests with keywords ${TEST_KEYWORDS_TO_USE}"
           fi
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=tap -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 30
 
       #####################################
