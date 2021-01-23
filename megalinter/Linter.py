@@ -671,7 +671,9 @@ class Linter:
         if hasattr(self, "workspace"):
             volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
             if volume_root != "":
-                workspace_value = volume_root + "/" + self.workspace.replace("/tmp/lint", "")
+                workspace_value = (
+                    volume_root + "/" + self.workspace.replace("/tmp/lint", "")
+                )
             else:
                 workspace_value = self.workspace
         else:
