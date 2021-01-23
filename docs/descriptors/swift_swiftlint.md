@@ -65,7 +65,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-docker run -w=/tmp -v /tmp/lint:/tmp/lint norionomura/swiftlint:latest swiftlint lint --path /tmp/lint
+docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict
+```
+
+```shell
+docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint --strict
 ```
 
 

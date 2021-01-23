@@ -20,6 +20,7 @@ linters:
     cli_lint_extra_args_after:
       - "--path"
       - "/tmp/lint"
+      - "--strict"
     cli_lint_fix_arg_name: "autocorrect"
     cli_lint_fix_remove_args:
       - "lint"
@@ -34,8 +35,8 @@ linters:
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) violations"
     examples:
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint"
-      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint"
+      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint lint --path /tmp/lint --strict"
+      - "docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint autocorrect --path /tmp/lint --strict"
     ide:
       atom:
         - name: linter-swiftlint
