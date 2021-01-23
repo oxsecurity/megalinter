@@ -308,6 +308,9 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
     && golangci-lint --version
 
 
+# revive installation
+RUN go get -u github.com/mgechev/revive
+
 # checkstyle installation
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
         | grep browser_download_url \

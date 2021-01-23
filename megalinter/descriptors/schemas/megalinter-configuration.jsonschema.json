@@ -120,6 +120,7 @@
         "GHERKIN_GHERKIN_LINT",
         "GIT_GIT_DIFF",
         "GO_GOLANGCI_LINT",
+        "GO_REVIVE",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
@@ -2239,6 +2240,75 @@
       "$id": "#/properties/GO_GOLANGCI_LINT_RULES_PATH",
       "description": "GO_GOLANGCI_LINT: Path where to find linter configuration file",
       "title": "GO_GOLANGCI_LINT: Custom config file path",
+      "type": "string"
+    },
+    "GO_REVIVE_ARGUMENTS": {
+      "$id": "#/properties/GO_REVIVE_ARGUMENTS",
+      "description": "GO_REVIVE: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_REVIVE: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "GO_REVIVE_CONFIG_FILE": {
+      "$id": "#/properties/GO_REVIVE_CONFIG_FILE",
+      "default": "revive.toml",
+      "description": "GO_REVIVE: User custom config file name if different from default",
+      "title": "GO_REVIVE: Custom config file name",
+      "type": "string"
+    },
+    "GO_REVIVE_DISABLE_ERRORS": {
+      "$id": "#/properties/GO_REVIVE_DISABLE_ERRORS",
+      "default": false,
+      "title": "GO_REVIVE: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "GO_REVIVE_FILE_EXTENSIONS": {
+      "$id": "#/properties/GO_REVIVE_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_REVIVE: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "GO_REVIVE_FILE_NAMES_REGEX": {
+      "$id": "#/properties/GO_REVIVE_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_REVIVE: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "GO_REVIVE_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/GO_REVIVE_FILTER_REGEX_EXCLUDE",
+      "title": "GO_REVIVE: Excluding Regex",
+      "type": "string"
+    },
+    "GO_REVIVE_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/GO_REVIVE_FILTER_REGEX_INCLUDE",
+      "title": "GO_REVIVE: Including Regex",
+      "type": "string"
+    },
+    "GO_REVIVE_RULES_PATH": {
+      "$id": "#/properties/GO_REVIVE_RULES_PATH",
+      "description": "GO_REVIVE: Path where to find linter configuration file",
+      "title": "GO_REVIVE: Custom config file path",
       "type": "string"
     },
     "GRAPHQL_FILTER_REGEX_EXCLUDE": {
