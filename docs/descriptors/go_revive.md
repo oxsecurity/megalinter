@@ -65,6 +65,27 @@ revive -config myfile.go
 ```
 
 
+### Help content
+
+```shell
+
+ _ __ _____   _(_)__  _____
+| '__/ _ \ \ / / \ \ / / _ \
+| | |  __/\ V /| |\ V /  __/
+|_|  \___| \_/ |_| \_/ \___|
+
+Example:
+  revive -config c.toml -formatter friendly -exclude a.go -exclude b.go ./...
+
+Usage of revive:
+  -config string
+      path to the configuration TOML file, defaults to $HOME/revive.toml, if present (i.e. -config myconf.toml)
+  -exclude value
+      list of globs which specify files to be excluded (i.e. -exclude foo/...)
+  -formatter string
+      formatter to be used for the output (i.e. -formatter stylish)
+```
+
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
