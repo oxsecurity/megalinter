@@ -684,7 +684,9 @@ class Linter:
         if type(command) == str:
             command = " ".join(docker_command) + " " + command
         else:
-            command = docker_command + ["find . | sed 's/[^/]*\\//|   /g;s/| *\\([^| ]\\)/+--- \\1/'"]
+            command = docker_command + [
+                "ls", "-A", "tmp/"
+            ]
         return command
 
     ########################################
