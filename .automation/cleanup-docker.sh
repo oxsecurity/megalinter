@@ -27,7 +27,7 @@ DOCKERFILE_PATH="${DOCKERFILE_PATH}"   # Path to the Dockerfile to be uploaded
 # Source Function Files #
 #########################
 # shellcheck source=/dev/null
-source "${GITHUB_WORKSPACE}/lib/log.sh" # Source the function script(s)
+source "${GITHUB_WORKSPACE}/.automation/log.sh" # Source the function script(s)
 
 ################################################################################
 ############################ FUNCTIONS BELOW ###################################
@@ -170,10 +170,10 @@ RemoveImage() {
   #####################################
   TOKEN=$(
     curl -s -k \
-    -H "Content-Type: application/json" \
-    -X POST \
-    -d "{\"username\": \"${DOCKER_USERNAME}\", \"password\": \"${DOCKER_PASSWORD}\"}" \
-    "https://hub.docker.com/v2/users/login/" | jq -r .token 2>&1
+      -H "Content-Type: application/json" \
+      -X POST \
+      -d "{\"username\": \"${DOCKER_USERNAME}\", \"password\": \"${DOCKER_PASSWORD}\"}" \
+      "https://hub.docker.com/v2/users/login/" | jq -r .token 2>&1
   )
 
   #######################
@@ -198,8 +198,8 @@ RemoveImage() {
   #################################
   REMOVE_CMD=$(
     curl "https://hub.docker.com/v2/repositories/${IMAGE_REPO}/tags/${IMAGE_VERSION}/" \
-    -X DELETE \
-    -H "Authorization: JWT ${TOKEN}" 2>&1
+      -X DELETE \
+      -H "Authorization: JWT ${TOKEN}" 2>&1
   )
 
   #######################

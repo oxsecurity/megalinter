@@ -1,0 +1,81 @@
+descriptor_id: GO
+descriptor_type: language
+descriptor_flavors:
+  - go
+file_extensions:
+  - ".go"
+test_folder: golang
+install:
+  apk:
+    - go
+linters:
+  # GOLANG CI LINT
+  - linter_name: golangci-lint
+    linter_url: https://golangci-lint.run/
+    linter_repo: https://github.com/golangci/golangci-lint
+    linter_rules_url: https://golangci-lint.run/usage/linters/
+    linter_banner_image_url: https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4
+    linter_rules_configuration_url: https://golangci-lint.run/usage/configuration/#config-file
+    linter_rules_inline_disable_url: https://golangci-lint.run/usage/false-positives/#nolint
+    config_file_name: .golangci.yml
+    cli_lint_extra_args:
+      - "run"
+    cli_version_arg_name: "version"
+    version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
+    examples:
+      - "golangci-lint run myfile.go"
+      - "golangci-lint run -c .golangci.yml myfile.go"
+    install:
+      dockerfile:
+        - |
+          RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+              && golangci-lint --version
+    ide:
+      atom:
+        - name: go-plus
+          url: https://atom.io/packages/go-plus
+      emacs:
+        - name: flycheck-golandci-lint
+          url: https://github.com/weijiangan/flycheck-golangci-lint
+        - name: SpaceMacs
+          url: https://github.com/syl20bnr/spacemacs/blob/develop/layers/+lang/go/README.org#pre-requisites
+      goland:
+        - name: goland
+          url: https://www.jetbrains.com/help/go/settings-tools-file-watchers.html
+      sublime:
+        - name: SublimeLinter-contrib-golang-cilint
+          url: https://github.com/alecthomas/SublimeLinter-contrib-golang-cilint
+      vim:
+        - name: vim-go
+          url: https://github.com/fatih/vim-go
+      vscode:
+        - name: vscode.Go
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go
+  # REVIVE
+  - linter_name: revive
+    linter_url: https://revive.run/
+    linter_repo: https://github.com/mgechev/revive
+    linter_rules_url: https://revive.run/r
+    linter_image_url: https://github.com/mgechev/revive/raw/master/assets/logo.png
+    linter_rules_configuration_url: https://revive.run/docs#custom-configuration
+    config_file_name: revive.toml
+    cli_config_arg_name: "-config"
+    cli_help_arg_name: "-help"
+    help_command_return_code: 2
+    linter_version_cache: "0.0.0"
+    examples:
+      - "revive myfile.go"
+      - "revive -config myfile.go"
+    install:
+      dockerfile:
+        - RUN go get -u github.com/mgechev/revive
+    ide:
+      atom:
+        - name: linter-revive
+          url: https://github.com/morphy2k/linter-revive
+      vim:
+        - name: ale
+          url: https://github.com/dense-analysis/ale
+      vscode:
+        - name: vscode.Go
+          url: https://marketplace.visualstudio.com/items?itemName=ms-vscode.Go

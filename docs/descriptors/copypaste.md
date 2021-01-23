@@ -3,17 +3,18 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/copypaste.yml -->
 # COPYPASTE
 
+## Linters
+
+| Linter                      | Configuration key               |
+|-----------------------------|---------------------------------|
+| [jscpd](copypaste_jscpd.md) | [COPYPASTE](copypaste_jscpd.md) |
+
 ## Linted files
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                       | Description                   | Default value |
+|--------------------------------|-------------------------------|---------------|
+| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [jscpd](copypaste_jscpd.md) | [COPYPASTE](copypaste_jscpd.md) |

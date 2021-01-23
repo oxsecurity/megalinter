@@ -3,20 +3,21 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/salesforce.yml -->
 # SALESFORCE
 
+## Linters
+
+| Linter                                     | Configuration key                                     |
+|--------------------------------------------|-------------------------------------------------------|
+| [sfdx-scanner](salesforce_sfdx_scanner.md) | [SALESFORCE_SFDX_SCANNER](salesforce_sfdx_scanner.md) |
+
 ## Linted files
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| SALESFORCE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SALESFORCE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [sfdx-scanner](salesforce_sfdx_scanner.md) | [SALESFORCE_SFDX_SCANNER](salesforce_sfdx_scanner.md) |
 
 ## Behind the scenes
 

@@ -1,0 +1,35 @@
+descriptor_id: COPYPASTE
+descriptor_type: other
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+lint_all_files: true
+linters:
+  # JSCPD
+  - class: JsCpdLinter
+    linter_name: jscpd
+    linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
+    linter_repo: https://github.com/kucherenko/jscpd
+    linter_banner_image_url: https://raw.githubusercontent.com/kucherenko/jscpd/master/assets/logo.svg?sanitize=true
+    linter_rules_configuration_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file
+    linter_rules_inline_disable_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#ignored-blocks
+    linter_megalinter_ref_url: https://github.com/kucherenko/jscpd#who-uses-jscpd
+    config_file_name: .jscpd.json
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "--reporters"
+      - "console,html"
+      - "--output"
+      - "./report/copy-paste/"
+    cli_lint_extra_args_after:
+      - "."
+    cli_lint_errors_regex : "Found ([0-9]+) clones"
+    examples:
+      - "jscpd --output ./report/copy-paste/ ."
+      - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
+    install:
+      npm:
+        - jscpd
+    ide:
+      vscode:
+        - name: vscode-jscpd
+          url: https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd

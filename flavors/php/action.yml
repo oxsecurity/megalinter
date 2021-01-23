@@ -7,7 +7,10 @@ outputs:
     description: "0 if no source file has been updated, 1 if source files has been updated"
 runs:
   using: "docker"
-  image: "docker://nvuillam/mega-linter-php:latest"
+  image: "docker://nvuillam/mega-linter-php:v4"
+  args:
+    - "-v"
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
 branding:
   icon: "check"
   color: "green"

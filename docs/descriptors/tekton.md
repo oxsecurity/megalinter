@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/tekton.yml -->
 # TEKTON
 
+## Linters
+
+| Linter                               | Configuration key               |
+|--------------------------------------|---------------------------------|
+| [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -14,13 +20,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| TEKTON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TEKTON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [tekton-lint](tekton_tekton_lint.md) | [TEKTON](tekton_tekton_lint.md) |

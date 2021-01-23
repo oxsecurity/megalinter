@@ -4,7 +4,7 @@ This is just standard good markdown.
 
 ###### Second level header
 
-This header does **NOT** follow the step down from `level 1`.
+This header does **NOT** follow the __step__ down from `level 1`.
 
 - Here it *is*
   - Some more indention
@@ -13,6 +13,11 @@ This header does **NOT** follow the step down from `level 1`.
 ```
 ls -la
 ```
+
+| this   | is a wrong | table       |
+|--------|-------|--------------------|
+| hahaha | naaaaaaah       | wrong formatting ! |
+| hahaha | naaaaaaah  | wrong formatting ! |
 
 # Walk away
 

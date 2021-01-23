@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/ansible.yml -->
 # ANSIBLE
 
+## Linters
+
+| Linter                                  | Configuration key                  |
+|-----------------------------------------|------------------------------------|
+| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -11,13 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [ansible-lint](ansible_ansible_lint.md) | [ANSIBLE](ansible_ansible_lint.md) |

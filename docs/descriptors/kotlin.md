@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/kotlin.yml -->
 # KOTLIN
 
+## Linters
+
+| Linter                     | Configuration key          |
+|----------------------------|----------------------------|
+| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -11,13 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) |

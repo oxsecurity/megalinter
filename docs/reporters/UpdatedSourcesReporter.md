@@ -24,11 +24,15 @@ Paste the result in your repository
 
 ### Other CI tools
 
-If you are not using GitHub Actions, you can export folder `<WORKSPACE>/report/updated_sources`
+If you are not using GitHub Actions, you can:
+
+- use [File.io Reporter](FileIoReporter.md): Updated sources folder will be in the downloadable reports zip
+- use [Email Reporter](EmailReporter.md): Updated source folder will be in the email attachment reports zip
+- publish folder `<WORKSPACE>/report/updated_sources` as artifact with your CI tool
 
 ## Configuration
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | :--------------: |
-| UPDATED_SOURCES_REPORTER | Activates/deactivates reporter | true |
+| Variable                     | Description                                             | Default value   |
+|------------------------------|---------------------------------------------------------|-----------------|
+| UPDATED_SOURCES_REPORTER     | Activates/deactivates reporter                          | true            |
 | UPDATED_SOURCES_REPORTER_DIR | Sub-folder of reports folder containing updated sources | updated_sources |

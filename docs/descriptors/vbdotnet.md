@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/vbdotnet.yml -->
 # Visual Basic .NET
 
+## Linters
+
+| Linter                                     | Configuration key                     |
+|--------------------------------------------|---------------------------------------|
+| [dotnet-format](vbdotnet_dotnet_format.md) | [VBDOTNET](vbdotnet_dotnet_format.md) |
+
 ## Linted files
 
 - File extensions:
@@ -10,13 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                      | Description                   | Default value |
+|-------------------------------|-------------------------------|---------------|
+| VBDOTNET_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| VBDOTNET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [dotnet-format](vbdotnet_dotnet_format.md) | [VBDOTNET](vbdotnet_dotnet_format.md) |

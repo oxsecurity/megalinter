@@ -1,27 +1,48 @@
 #!/usr/bin/env python3
-import json
 import logging
 import os
+import shlex
+import tempfile
 
+import requests
 import yaml
 
-ENV_RUNTIME_KEY = "_MEGALINTER_RUNTIME_CONFIG"
+CONFIG_DATA = None
+CONFIG_SOURCE = None
 
 
-def init_config(workspace):
-    if os.environ.get(ENV_RUNTIME_KEY, "") != "":
-        logging.debug("Init config: Runtime config already initialized")
+def init_config(workspace=None):
+    global CONFIG_DATA, CONFIG_SOURCE
+    if CONFIG_DATA is not None:
+        logging.debug(f"[config] Already initialized: {CONFIG_SOURCE}")
         return
     env = os.environ.copy()
-    if workspace is None:
+    if workspace is None and "MEGALINTER_CONFIG" not in os.environ:
         set_config(env)
-        print("Mega-Linter init config: Environment variables only (no workspace)")
+        CONFIG_SOURCE = "Environment variables only (no workspace)"
+        print(f"[config] {CONFIG_SOURCE}")
         return
     # Search for config file
     if "MEGALINTER_CONFIG" in os.environ:
         config_file_name = os.environ.get("MEGALINTER_CONFIG")
-        config_file = workspace + os.path.sep + config_file_name
+        if config_file_name.startswith("https://"):
+            # Remote configuration file
+            config_file = (
+                tempfile.gettempdir()
+                + os.path.sep
+                + config_file_name.rsplit("/", 1)[-1]
+            )
+            r = requests.get(config_file_name, allow_redirects=True)
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve config file {config_file_name}"
+            with open(config_file, "wb") as f:
+                f.write(r.content)
+        else:
+            # Local configuration file with name forced by user
+            config_file = workspace + os.path.sep + config_file_name
     else:
+        # Local configuration file found with default name
         config_file = workspace + os.path.sep + ".mega-linter.yml"
         for candidate in [
             ".mega-linter.yml",
@@ -40,23 +61,41 @@ def init_config(workspace):
                 runtime_config = env
             else:
                 runtime_config = {**config_data, **env}  # .mega-linter.yml not empty
-            print(f"Mega-Linter init config: {config_file} + Environment variables")
+            CONFIG_SOURCE = f"{config_file} + Environment variables"
     else:
         runtime_config = env
-        print("Mega-Linter init config: Environment variables")
+        CONFIG_SOURCE = (
+            f"Environment variables only (no config file found in {workspace})"
+        )
+    # manage EXTENDS in configuration
+    if "EXTENDS" in runtime_config:
+        extends = runtime_config["EXTENDS"]
+        if isinstance(extends, str):
+            extends = extends.split(",")
+        for extends_item in extends:
+            r = requests.get(extends_item, allow_redirects=True)
+            assert (
+                r.status_code == 200
+            ), f"Unable to retrieve EXTENDS config file {config_file_name}"
+            extends_config_data = yaml.load(r.content, Loader=yaml.FullLoader)
+            runtime_config.update(extends_config_data)
+            CONFIG_SOURCE += f"\n[config] - extends from: {extends_item}"
+    # Print & set config in cache
+    print(f"[config] {CONFIG_SOURCE}")
     set_config(runtime_config)
 
 
 def get_config():
-    runtime_config_str = os.environ.get(ENV_RUNTIME_KEY, "")
-    if runtime_config_str != "":
-        return json.loads(runtime_config_str)
+    global CONFIG_DATA
+    if CONFIG_DATA is not None:
+        return CONFIG_DATA
     else:
         return os.environ.copy()
 
 
-def set_config(config):
-    os.environ[ENV_RUNTIME_KEY] = json.dumps(config)
+def set_config(runtime_config):
+    global CONFIG_DATA
+    CONFIG_DATA = runtime_config
 
 
 def get(config_var=None, default=None):
@@ -77,7 +116,20 @@ def get_list(config_var, default=None):
     if var is not None:
         if isinstance(var, list):
             return var
+        if var == "":
+            return []
         return var.split(",")
+    return default
+
+
+def get_list_args(config_var, default=None):
+    var = get(config_var, None)
+    if var is not None:
+        if isinstance(var, list):
+            return var
+        if var == "":
+            return []
+        return shlex.split(var)
     return default
 
 
@@ -96,8 +148,10 @@ def copy():
 
 
 def delete(key=None):
+    global CONFIG_DATA, CONFIG_SOURCE
     if key is None:
-        del os.environ[ENV_RUNTIME_KEY]
+        CONFIG_DATA = None
+        CONFIG_SOURCE = None
         logging.debug("Cleared Mega-Linter runtime config")
         return
     config = get_config()

@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/go.yml -->
 # GO
 
+## Linters
+
+| Linter                               | Configuration key         |
+|--------------------------------------|---------------------------|
+| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
+| [revive](go_revive.md)               | [GO](go_revive.md)        |
+
 ## Linted files
 
 - File extensions:
@@ -10,29 +17,15 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                | Description                   | Default value |
+|-------------------------|-------------------------------|---------------|
+| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
 
 ## Behind the scenes
 
 ### Installation
-
-- Dockerfile commands :
-```dockerfile
-ENV GOROOT=/usr/lib/go \
-    GOPATH=/go
-
-ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
-RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
-```
 
 - APK packages (Linux):
   - [go](https://pkgs.alpinelinux.org/packages?branch=edge&name=go)

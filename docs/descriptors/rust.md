@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/rust.yml -->
 # RUST
 
+## Linters
+
+| Linter                   | Configuration key      |
+|--------------------------|------------------------|
+| [clippy](rust_clippy.md) | [RUST](rust_clippy.md) |
+
 ## Linted files
 
 - File extensions:
@@ -10,16 +16,11 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| RUST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| RUST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [clippy](rust_clippy.md) | [RUST](rust_clippy.md) |
 
 ## Behind the scenes
 

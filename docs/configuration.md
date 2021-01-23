@@ -4,8 +4,47 @@
 
 # Configuration
 
-Mega-Linter configuration variables can be defined with **environment variables** or in a **.mega-linter.yml** file at the root of the repository.
+Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
 You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
+
+Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
+
+![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
+
+## Common variables
+
+| **ENV VAR**                                         | **Default Value**            | **Notes**                                                                                                                                                                                                   |
+|-----------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **ADDITIONAL_EXCLUDED_DIRECTORIES**                 | \[\]                         | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                                                     |
+| [**APPLY_FIXES**](configuration.md#apply-fixes)     | `none`                       | Activates formatting and auto-fixing [(more info)](configuration.md#apply-fixes)                                                                                                                            |
+| **DEFAULT_BRANCH**                                  | `master`                     | The name of the repository default branch. Warning: In new github repositories, master branch is named `main`, so you need to override this value with `main`                                               |
+| **DEFAULT_WORKSPACE**                               | `/tmp/lint`                  | The location containing files to lint if you are running locally.                                                                                                                                           |
+| **DISABLE_ERRORS**                                  | `false`                      | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                             |
+| [**DISABLE**](#activation-and-deactivation)         | <!-- -->                     | List of disabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                               |
+| [**DISABLE_LINTERS**](#activation-and-deactivation) | <!-- -->                     | List of disabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                   |
+| [**ENABLE**](#activation-and-deactivation)          | <!-- -->                     | List of enabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                                |
+| [**ENABLE_LINTERS**](#activation-and-deactivation)  | <!-- -->                     | List of enabled linters keys [(more info)](#activation-and-deactivation)                                                                                                                                    |
+| **EXCLUDED_DIRECTORIES**                            | \[...many values...\]        | List of excluded directory basenames. They are excluded at any nested level.                                                                                                                                |
+| **EXTENDS**                                         | <!-- -->                     | Base `mega-linter.yml` config file(s) to extend local configuration from. Can be a single URL or a list of `.mega-linter.yml` config files URLs                                                             |
+| [**FILTER_REGEX_EXCLUDE**](#filter-linted-files)    | `none`                       | Regular expression defining which files will be excluded from linting [(more info)](#filter-linted-files) .ex: `.*src/test.*`)                                                                              |
+| [**FILTER_REGEX_INCLUDE**](#filter-linted-files)    | `all`                        | Regular expression defining which files will be processed by linters [(more info)](#filter-linted-files) .ex: `.*src/.*`)                                                                                   |
+| **FLAVOR_SUGGESTIONS**                              | `true`                       | Provides suggestions about different Mega-Linter flavors to use to improve runtime performances                                                                                                             |
+| **GITHUB_WORKSPACE**                                | ``                           | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` is not set                                                           |
+| **JAVASCRIPT_DEFAULT_STYLE**                        | `standard`                   | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                              |
+| **LINTER_RULES_PATH**                               | `.github/linters`            | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )                                    |
+| **LOG_FILE**                                        | `mega-linter.log`            | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                                            |
+| **LOG_LEVEL**                                       | `INFO`                       | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                                                      |
+| **MARKDOWN_DEFAULT_STYLE**                          | `markdownlint`               | Markdown default style to check/apply. `markdownlint`,`remark-lint`                                                                                                                                         |
+| **MEGALINTER_CONFIG**                               | `.mega-linter.yml`           | Name of Mega-Linter configuration file. Can be defined remotely, in that case set this environment variable with the remote URL of `.mega-linter.yml` config file                                           |
+| **PARALLEL**                                        | `true`                       | Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |
+| [**PLUGINS**](plugins.md)                           | \[\]                         | List of plugin urls to install and run during Mega-Linter run                                                                                                                                               |
+| [**POST_COMMANDS**](#post-commands)                 | \[\]                         | Custom bash commands to run after linters                                                                                                                                                                   |
+| [**PRE_COMMANDS**](#pre-commands)                   | \[\]                         | Custom bash commands to run before linters                                                                                                                                                                  |
+| **PRINT_ALPACA**                                    | `true`                       | Enable printing alpaca image to console                                                                                                                                                                     |
+| **REPORT_OUTPUT_FOLDER**                            | `${GITHUB_WORKSPACE}/report` | Directory for generating report files                                                                                                                                                                       |
+| **SHOW_ELAPSED_TIME**                               | `false`                      | Displays elapsed time in reports                                                                                                                                                                            |
+| **TYPESCRIPT_DEFAULT_STYLE**                        | `standard`                   | Typescript default style to check/apply. `standard`,`prettier`                                                                                                                                              |
+| **VALIDATE_ALL_CODEBASE**                           | `true`                       | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation.                            |
 
 ## Activation and deactivation
 
@@ -37,51 +76,6 @@ DISABLE: PHP
 DISABLE_LINTERS: PHP_STAN,PHP_PSALM
 ```
 
-## Apply fixes
-
-Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
-
-- **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
-- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
-- **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
-
-Notes:
-
-- You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
-- If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
-- If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
-
-```shell
-report/
-```
-
-- You may see **github permission errors**, or workflows not run on the new commit. To solve these issues:
-  - [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
-  - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
-
-## Shared variables
-
-| **ENV VAR**                         | **Default Value**            | **Notes**                                                                                                                                                                        |
-| ----------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **ADDITIONAL_EXCLUDED_DIRECTORIES** | \[\]                         | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                          |
-| **DEFAULT_BRANCH**                  | `master`                     | The name of the repository default branch. Warning: In new github repositories, master branch is named `main`, so you need to override this value with `main`                    |
-| **DEFAULT_WORKSPACE**               | `/tmp/lint`                  | The location containing files to lint if you are running locally.                                                                                                                |
-| **DISABLE_ERRORS**                  | `false`                      | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                  |
-| **EXCLUDED_DIRECTORIES**            | \[...many values...\]        | List of excluded directory basenames. They are excluded at any nested level.                                                                                                     |
-| **FILTER_REGEX_EXCLUDE**            | `none`                       | Regular expression defining which files will be excluded from linting  (ex: `.*src/test.*`)                                                                                      |
-| **FILTER_REGEX_INCLUDE**            | `all`                        | Regular expression defining which files will be processed by linters (ex: `.*src/.*`)                                                                                            |
-| **FLAVOR_SUGGESTIONS**              | `true`                       | Provides suggestions about different Mega-Linter flavors to use to improve runtime performances                                                                                  |
-| **GITHUB_WORKSPACE**                | ``                           | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` is not set                                |
-| **LINTER_RULES_PATH**               | `.github/linters`            | Directory for all linter configuration rules.                                                                                                                                    |
-| **LOG_FILE**                        | `mega-linter.log`            | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                 |
-| **LOG_LEVEL**                       | `INFO`                       | How much output the script will generate to the console. One of `INFO`, `DEBUG`, `WARNING` or `ERROR`.                                                                           |
-| **OUTPUT_FOLDER**                   | `report`                     | The location where the output reporting will be generated to.                                                                                                                    |
-| **PARALLEL**                        | `true`                       | Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files |
-| **PRINT_ALPACA**                    | `true`                       | Enable printing alpaca image to console                                                                                                                                          |
-| **REPORT_OUTPUT_FOLDER**            | `${GITHUB_WORKSPACE}/report` | Directory for generating report files                                                                                                                                            |
-| **SHOW_ELAPSED_TIME**               | `false`                      | Displays elapsed time in reports                                                                                                                                                 |
-| **VALIDATE_ALL_CODEBASE**           | `true`                       | Will parse the entire repository and find all files to validate across all types. **NOTE:** When set to `false`, only **new** or **edited** files will be parsed for validation. |
-
 ## Filter linted files
 
 If you need to lint only a folder or exclude some files from linting, you can use optional environment parameters `FILTER_REGEX_INCLUDE` and `FILTER_REGEX_EXCLUDE`
@@ -93,15 +87,61 @@ Examples:
 - Do not lint files inside test and example folders: `FILTER_REGEX_EXCLUDE: (test/|examples/)`
 - Do not lint javascript files inside test folder: `FILTER_REGEX_EXCLUDE: (test/.*\.js)`
 
+## Apply fixes
+
+Mega-linter is able to apply fixes provided by linters. To use this capability, you need 3 **env variables** defined at top level
+
+- **APPLY_FIXES**: `all` to apply fixes of all linters, or a list of linter keys (ex: `JAVASCRIPT_ES`,`MARKDOWN_MARKDOWNLINT`)
+
+Only for GitHub Action Workflow file if you use it:
+
+- **APPLY_FIXES_EVENT**: `all`, `push`, `pull_request`, `none` _(use none in case of use of [Updated sources reporter](reporters/UpdatedSourcesReporter.md))_
+- **APPLY_FIXES_MODE**: `commit` to create a new commit and push it on the same branch, or `pull_request` to create a new PR targeting the branch.
+
+Notes:
+
+- You can use [**Updated sources reporter**](reporters/UpdatedSourcesReporter.md) if you do not want fixes to be automatically applied on git branch, but **download them in a zipped file** and manually **extract them in your project**
+- If used, **APPLY_FIXES_EVENT** and **APPLY_FIXES_MODE** can not be defined in `.mega-linter.yml`config file, they must be set as environment variables
+
+- If you use **APPLY_FIXES**, add the following line in your `.gitignore file`
+
+```shell
+report/
+```
+
+- You may see **github permission errors**, or workflows not run on the new commit. To solve these issues:
+  - [Create Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token), then copy the PAT value
+  - [Define secret variable](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) named **PAT** on your repository, and paste the PAT value
+
 ## Linter specific variables
 
-See linters specific variables in their [Mega-Linter documentation](supported-linters.md#languages)
+See variables related to a single linter behavior in [linters documentations](supported-linters.md)
 
-## Template rules files
+## Pre-commands
 
-You can use the **Mega-Linter** _with_ or _without_ your own personal rules sets. This allows for greater flexibility for each individual code base. The Template rules all try to follow the standards we believe should be enabled at the basic level.
+Mega-Linter can run custom commands before running linters (for example, installing an plugin required by one of the linters you use)
 
-- Copy **any** or **all** template rules files from `TEMPLATES/` into your repository in the location: `.github/linters/` of your repository
-  - If your repository does not have rules files, they will fall back to defaults in [this repository's `TEMPLATE` folder](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES), or to linter defaults
+Example in `.mega-linter.yml` config file
+
+```yaml
+PRE_COMMANDS:
+  - command: npm install eslint-plugin-whatever
+    cwd: "root"        # Will be run at the root of Mega-Linter docker image
+  - command: echo "pre-test command has been called"
+    cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+```
+
+## Post-commands
+
+Mega-Linter can run custom commands after running linters (for example, running additional tests)
+
+Example in `.mega-linter.yml` config file
+
+```yaml
+POST_COMMANDS:
+  - command: npm run test
+    cwd: "workspace"   # Will be run at the root of the workspace (usually your repository root)
+```
+
 
 <!-- configuration-section-end -->

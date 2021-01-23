@@ -17,8 +17,10 @@ class CSpellLinter(Linter):
     # noinspection PyMethodMayBeStatic
     def complete_text_reporter_report(self, reporter_self):
         # Collect detected words from logs
+        if self.stdout is None:
+            return []
         whitelisted_words = []
-        for log_line in reporter_self.report_items:
+        for log_line in self.stdout.split("\n"):
             words = re.findall(r"(?<=Unknown word )\((.*)\)", log_line, re.MULTILINE)
             whitelisted_words += words
         if len(whitelisted_words) == 0:
@@ -27,13 +29,14 @@ class CSpellLinter(Linter):
         whitelisted_words_clean = sorted(set(whitelisted_words))
         # Generate possible .cspell.json file
         cspell_example = {
-            "version": 0.1,
+            "version": "0.1",
             "language": "en",
             "ignorePaths": [
                 "**/node_modules/**",
                 "**/vscode-extension/**",
                 "**/.git/**",
                 ".vscode",
+                "package-lock.json",
                 "report",
             ],
             "words": whitelisted_words_clean,

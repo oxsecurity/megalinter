@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/tsx.yml -->
 # TSX
 
+## Linters
+
+| Linter                  | Configuration key    |
+|-------------------------|----------------------|
+| [eslint](tsx_eslint.md) | [TSX](tsx_eslint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -10,13 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| TSX_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [eslint](tsx_eslint.md) | [TSX](tsx_eslint.md) |

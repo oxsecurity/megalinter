@@ -1,0 +1,52 @@
+descriptor_id: SNAKEMAKE
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_extensions:
+  - ".smk"
+file_names_regex:
+  - 'Snakefile'
+linters:
+  # Internal snakemake linter
+  - linter_name: snakemake
+    name: SNAKEMAKE_LINT
+    linter_url: https://snakemake.readthedocs.io/en/stable/
+    linter_repo: https://github.com/snakemake/snakemake
+    linter_banner_image_url: https://github.com/snakemake/snakemake/raw/6fcdc8a22db5522e232638bff16da9b50996eb45/images/biglogo.png
+    cli_lint_extra_args:
+      - "--lint"
+      - "-s"
+    examples:
+      - "snakemake --lint -s Snakefile"
+    install:
+      pip:
+        - snakemake
+    ide:
+      idea:
+        - name: SnakeCharm
+          url: https://plugins.jetbrains.com/plugin/11947-snakecharm
+      vscode:
+        - name: VsCode SnakeMake
+          url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
+  # Snake Fmt
+  - linter_name: snakefmt
+    is_formatter: true
+    name: SNAKEMAKE_SNAKEFMT
+    linter_url: https://github.com/snakemake/snakefmt
+    linter_rules_configuration_url: https://github.com/snakemake/snakefmt#configuration
+    config_file_name: .snakefmt.toml
+    cli_lint_extra_args:
+      - "--check"
+      - "--compact-diff"
+    cli_config_arg_name: "--config"
+    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Mega-Linter workaround
+    cli_lint_fix_remove_args:
+      - "--check"
+      - "--compact-diff"
+    examples:
+      - "snakefmt --check --compact-diff Snakefile"
+      - "snakefmt --check --compact-diff --config .snakefmt.toml Snakefile"
+      - "snakefmt --config .snakefmt.toml Snakefile" # Fix
+    install:
+      pip:
+        - snakefmt

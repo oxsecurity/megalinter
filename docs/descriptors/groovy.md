@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/groovy.yml -->
 # GROOVY
 
+## Linters
+
+| Linter                                       | Configuration key                   |
+|----------------------------------------------|-------------------------------------|
+| [npm-groovy-lint](groovy_npm_groovy_lint.md) | [GROOVY](groovy_npm_groovy_lint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -16,13 +22,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| GROOVY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GROOVY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [npm-groovy-lint](groovy_npm_groovy_lint.md) | [GROOVY](groovy_npm_groovy_lint.md) |

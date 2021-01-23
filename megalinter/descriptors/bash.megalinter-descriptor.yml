@@ -1,0 +1,113 @@
+descriptor_id: BASH
+descriptor_type: language
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_extensions:
+  - ".sh"
+  - ".bash"
+  - ".dash"
+  - ".ksh"
+test_folder: shell
+linters:
+  # Bash Built in Linter
+  - class: BashBashExecLinter
+    linter_name: bash-exec
+    linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
+    linter_megalinter_ref_url: never
+    name: BASH_EXEC
+    cli_executable_version: bash
+    cli_help_arg_name: "--help"
+    examples:
+      - "bash-exec myfile.sh"
+    install:
+      dockerfile:
+        - |
+          RUN printf '#!/bin/bash \\n\\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
+              && chmod +x /usr/bin/bash-exec
+    variables:
+      - name: ERROR_ON_MISSING_EXEC_BIT
+        description: If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an arror instead
+        default_value: "false"
+  # Shellcheck
+  - linter_name: shellcheck
+    name: BASH_SHELLCHECK
+    linter_url: https://github.com/koalaman/shellcheck
+    linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
+    linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
+    linter_megalinter_ref_url: https://github.com/koalaman/shellcheck/pull/2076
+    cli_lint_extra_args:
+      - "--color=auto"
+      - "--external-sources"
+    cli_help_arg_name: "--help"
+    examples:
+      - "shellcheck --color=auto --external-sources myfile.sh"
+    install:
+      dockerfile:
+        - |
+          RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
+              && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+              && shellcheck --version
+    ide:
+      atom:
+        - name: linter-shellcheck
+          url: https://github.com/AtomLinter/linter-shellcheck
+      emacs:
+        - name: flycheck
+          url: https://github.com/flycheck/flycheck
+        - name: flymake-shellcheck
+          url: https://github.com/federicotdn/flymake-shellcheck
+      sublime:
+        - name: SublimeLinter-shellcheck
+          url: https://github.com/SublimeLinter/SublimeLinter-shellcheck
+      vim:
+        - name: ale
+          url: https://github.com/w0rp/ale
+        - name: neomake
+          url: https://github.com/neomake/neomake
+        - name: syntastic
+          url: https://github.com/scrooloose/syntastic
+      vscode:
+        - name: vscode-shellcheck
+          url: https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
+  # SHFMT
+  - linter_name: shfmt
+    is_formatter: true
+    linter_url: https://github.com/mvdan/sh
+    linter_megalinter_ref_url: "no"
+    name: BASH_SHFMT
+    cli_lint_extra_args:
+      - "-d"
+    cli_lint_fix_arg_name: "-w"
+    cli_lint_fix_remove_args:
+      - "-d"
+    help_command_return_code: 2
+    test_folder: shell_shfmt
+    examples:
+      - "shfmt -d myfile.sh"
+      - "shfmt -w myfile.sh" # Fix
+    install:
+      dockerfile:
+        - ENV GO111MODULE=on
+        - RUN go get mvdan.cc/sh/v3/cmd/shfmt
+    ide:
+      atom:
+        - name: format-shell
+          url: https://atom.io/packages/format-shell
+      emacs:
+        - name: emacs-shfmt
+          url: https://github.com/purcell/emacs-shfmt/
+      idea:
+        - name: shell-scripts
+          url: https://www.jetbrains.com/help/idea/shell-scripts.html
+      micro:
+        - name: micro
+          url: https://micro-editor.github.io/
+      sublime:
+        - name: Sublime-Pretty-Shell
+          url: https://github.com/aerobounce/Sublime-Pretty-Shell
+      vim:
+        - name: vim-shfmt
+          url: https://github.com/z0mbix/vim-shfmt
+      vscode:
+        - name: shell-format
+          url: https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format

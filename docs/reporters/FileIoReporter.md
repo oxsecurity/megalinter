@@ -1,6 +1,6 @@
 # File.io Reporter
 
-IF you don't use artifacts upload to read Mega-Linter reports, you can access them with an hyperlink to file.io
+If you don't use artifacts upload to read Mega-Linter reports, you can access them with an hyperlink to file.io
 
 **important**: Mega-Linter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)
 
@@ -24,6 +24,6 @@ Activate the reporter (`FILEIO_REPORTER: true`) to see link to reports zip on fi
 
 ## Configuration
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | :--------------: |
-| FILEIO_REPORTER | Activates/deactivates reporter | false |
+| Variable        | Description                    | Default value |
+|-----------------|--------------------------------|---------------|
+| FILEIO_REPORTER | Activates/deactivates reporter | false         |

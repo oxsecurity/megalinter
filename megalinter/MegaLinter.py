@@ -10,8 +10,14 @@ import os
 import sys
 
 import git
-import terminaltables
-from megalinter import config, flavor_factory, linter_factory, utils
+from megalinter import (
+    config,
+    flavor_factory,
+    linter_factory,
+    plugin_factory,
+    pre_post_factory,
+    utils,
+)
 from multiprocessing_logging import install_mp_handler
 
 
@@ -33,7 +39,8 @@ class Megalinter:
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.report_folder = config.get(
-            "REPORT_OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"
+            "REPORT_OUTPUT_FOLDER",
+            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"),
         )
         self.initialize_logger()
         self.display_header()
@@ -78,6 +85,11 @@ class Megalinter:
         self.return_code = 0
         self.has_updated_sources = 0
         self.flavor_suggestions = None
+        # Initialize plugins
+        plugin_factory.initialize_plugins()
+        # Run user-defined commands
+        self.pre_commands_results = pre_post_factory.run_pre_commands(self)
+        self.post_commands_results = []
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
@@ -90,26 +102,6 @@ class Megalinter:
         # Collect files for each identified linter
         self.collect_files()
 
-        # Display collection summary in log
-        table_data = [["Descriptor", "Linter", "Criteria", "Matching files"]]
-        for linter in self.linters:
-            if len(linter.files) > 0:
-                all_criteria = linter.file_extensions + linter.file_names_regex
-                table_data += [
-                    [
-                        linter.descriptor_id,
-                        linter.linter_name,
-                        "|".join(all_criteria),
-                        str(len(linter.files)),
-                    ]
-                ]
-        table = terminaltables.AsciiTable(table_data)
-        table.title = "----MATCHING LINTERS"
-        logging.info("")
-        for table_line in table.table.splitlines():
-            logging.info(table_line)
-        logging.info("")
-
         # Process linters serial or parallel according to configuration
         active_linters = []
         linters_do_fixes = False
@@ -119,9 +111,15 @@ class Megalinter:
                 if linter.apply_fixes is True:
                     linters_do_fixes = True
 
-        # Exit with error message if not all active linters are covered by current Mega-linter image flavor
+        # Initialize reports
+        for reporter in self.reporters:
+            reporter.initialize()
+
+        # Display warning if selected flavors does not match all linters
         if flavor_factory.check_active_linters_match_flavor(active_linters) is False:
-            return
+            active_linters = [
+                linter for linter in active_linters if linter.is_active is True
+            ]
 
         if config.get("PARALLEL", "true") == "true" and len(active_linters) > 1:
             self.process_linters_parallel(active_linters, linters_do_fixes)
@@ -131,20 +129,36 @@ class Megalinter:
         # Update main Mega-Linter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
-                self.status = "error"
-            if linter.return_code != 0:
+                # Not blocking linter error
+                if linter.return_code == 0:
+                    if self.status == "success":
+                        self.status = "warning"
+                # Blocking error
+                else:
+                    self.status = "error"
+            # Blocking linter error
+            if linter.return_code > 0:
                 self.return_code = linter.return_code
+            # Update number fixed
             if linter.number_fixed > 0:
                 self.has_updated_sources = 1
 
         # Sort linters before reports production
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
 
-        # Check if a Mega-Linter flavor can be used for this repo (except if FLAVOR_SUGGESTIONS: false is defined )
-        if config.get("FLAVOR_SUGGESTIONS", "true") == "true":
+        # Check if a Mega-Linter flavor can be used for this repo, except if:
+        # - FLAVOR_SUGGESTIONS: false is defined
+        # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
+        if (
+            self.validate_all_code_base is True
+            and config.get("FLAVOR_SUGGESTIONS", "true") == "true"
+        ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 active_linters
             )
+
+        # Run user-defined commands
+        self.post_commands_results = pre_post_factory.run_post_commands(self)
 
         # Generate reports
         for reporter in self.reporters:
@@ -209,25 +223,28 @@ class Megalinter:
             and os.path.isdir(github_workspace + "/tmp/lint")
         ):
             logging.debug(
-                "Context: Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint"
+                "[Context] Github action run without override of DEFAULT_WORKSPACE - /tmp/lint"
             )
             return github_workspace + "/tmp/lint"
         # Docker run without override of DEFAULT_WORKSPACE
         elif default_workspace != "" and os.path.isdir(
             "/tmp/lint" + os.path.sep + default_workspace
         ):
-            logging.debug("Context: Docker run without override of DEFAULT_WORKSPACE")
+            logging.debug(
+                "[Context] Docker run without override of DEFAULT_WORKSPACE"
+                f" - {default_workspace}/tmp/lint{os.path.sep + default_workspace}"
+            )
             return default_workspace + "/tmp/lint" + os.path.sep + default_workspace
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
             logging.debug(
-                "Context: Docker run with override of DEFAULT_WORKSPACE for test cases"
+                f"[Context] Docker run test classes with override of DEFAULT_WORKSPACE - {default_workspace}"
             )
             return default_workspace
         # Docker run test classes without override of DEFAULT_WORKSPACE
         elif os.path.isdir("/tmp/lint"):
             logging.debug(
-                "Context: Docker run test classes without override of DEFAULT_WORKSPACE"
+                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - /tmp/lint"
             )
             return "/tmp/lint"
         # Github action with override of DEFAULT_WORKSPACE
@@ -236,7 +253,10 @@ class Megalinter:
             and github_workspace != ""
             and os.path.isdir(github_workspace + os.path.sep + default_workspace)
         ):
-            logging.debug("Context: Github action with override of DEFAULT_WORKSPACE")
+            logging.debug(
+                "[Context] Github action with override of DEFAULT_WORKSPACE"
+                f" - {github_workspace + os.path.sep + default_workspace}"
+            )
             return github_workspace + os.path.sep + default_workspace
         # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint
         elif (
@@ -246,13 +266,14 @@ class Megalinter:
             and os.path.isdir(github_workspace)
         ):
             logging.debug(
-                "Context: Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint"
+                "[Context] Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint"
+                f" - {github_workspace}"
             )
             return github_workspace
         # Unable to identify workspace
         else:
             raise FileNotFoundError(
-                f"Unable to find a workspace to lint \n"
+                f"[Context] Unable to find a workspace to lint \n"
                 f"DEFAULT_WORKSPACE: {default_workspace}\n"
                 f"GITHUB_WORKSPACE: {github_workspace}"
             )
@@ -261,9 +282,13 @@ class Megalinter:
     def load_config_vars(self):
         # Linter rules root path
         if config.exists("LINTER_RULES_PATH"):
-            self.linter_rules_path = (
-                self.github_workspace + os.path.sep + config.get("LINTER_RULES_PATH")
-            )
+            linter_rules_path_val = config.get("LINTER_RULES_PATH")
+            if linter_rules_path_val.startswith("http"):
+                self.linter_rules_path = linter_rules_path_val
+            else:
+                self.linter_rules_path = (
+                    self.github_workspace + os.path.sep + linter_rules_path_val
+                )
         # Filtering regex (inclusion)
         if config.exists("FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get("FILTER_REGEX_INCLUDE")
@@ -355,6 +380,7 @@ class Megalinter:
                 )
                 logging.debug(f"git error: {str(git_err)}")
                 all_files = self.list_files_all()
+                self.validate_all_code_base = True
         else:
             all_files = self.list_files_all()
         all_files = sorted(set(all_files))
@@ -362,9 +388,13 @@ class Megalinter:
         logging.debug("All found files before filtering:\n- %s", "\n- ".join(all_files))
         # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
         if len(self.file_extensions) > 0:
-            logging.info("- File extensions: " + ", ".join(self.file_extensions))
+            logging.info(
+                "- File extensions: " + ", ".join(sorted(self.file_extensions))
+            )
         if len(self.file_names_regex) > 0:
-            logging.info("- File names: " + ", ".join(self.file_names_regex))
+            logging.info(
+                "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
+            )
         if self.filter_regex_include is not None:
             logging.info("- Including regex: " + self.filter_regex_include)
         if self.filter_regex_exclude is not None:
@@ -468,7 +498,7 @@ class Megalinter:
         logging.basicConfig(
             force=True,
             level=logging_level,
-            format="%(asctime)s [%(levelname)s] %(message)s",
+            format="%(message)s",
             handlers=[
                 logging.FileHandler(log_file, "w", "utf-8"),
                 logging.StreamHandler(sys.stdout),
@@ -479,7 +509,7 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("GitHub Actions Multi Language Linter"))
+        logging.info(utils.format_hyphens("Mega-Linter"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
@@ -508,10 +538,13 @@ class Megalinter:
     def check_results(self):
         print(f"::set-output name=has_updated_sources::{str(self.has_updated_sources)}")
         if self.status == "success":
-            logging.info("Successfully linted all files without errors")
+            logging.info("✅ Successfully linted all files without errors")
+            config.delete()
+        elif self.status == "warning":
+            logging.warning("◬ Successfully linted all files, but with ignored errors")
             config.delete()
         else:
-            logging.error("Error(s) have been found during linting")
+            logging.error("❌ Error(s) have been found during linting")
             logging.warning(
                 "To disable linters or customize their checks, you can use a .mega-linter.yml file "
                 "at the root of your repository"

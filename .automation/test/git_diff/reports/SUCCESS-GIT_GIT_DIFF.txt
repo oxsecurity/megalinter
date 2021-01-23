@@ -1,0 +1,7 @@
+Results of git_diff linter (version 2.26.2)
+See documentation on https://nvuillam.github.io/mega-linter/descriptors/git_git_diff/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/git_diff/good
+    
+

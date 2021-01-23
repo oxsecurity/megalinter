@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/scala.yml -->
 # SCALA
 
+## Linters
+
+| Linter                        | Configuration key          |
+|-------------------------------|----------------------------|
+| [scalafix](scala_scalafix.md) | [SCALA](scala_scalafix.md) |
+
 ## Linted files
 
 - File extensions:
@@ -10,16 +16,11 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                   | Description                   | Default value |
+|----------------------------|-------------------------------|---------------|
+| SCALA_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SCALA_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [scalafix](scala_scalafix.md) | [SCALA](scala_scalafix.md) |
 
 ## Behind the scenes
 

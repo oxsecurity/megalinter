@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/kubernetes.yml -->
 # KUBERNETES
 
+## Linters
+
+| Linter                           | Configuration key                           |
+|----------------------------------|---------------------------------------------|
+| [kubeval](kubernetes_kubeval.md) | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md) |
+
 ## Linted files
 
 - File extensions:
@@ -17,13 +23,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [kubeval](kubernetes_kubeval.md) | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md) |

@@ -3,6 +3,14 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/typescript.yml -->
 # TYPESCRIPT
 
+## Linters
+
+| Linter                             | Configuration key                             |
+|------------------------------------|-----------------------------------------------|
+| [eslint](typescript_eslint.md)     | [TYPESCRIPT_ES](typescript_eslint.md)         |
+| [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) |
+| [prettier](typescript_prettier.md) | [TYPESCRIPT](typescript_prettier.md)          |
+
 ## Linted files
 
 - File extensions:
@@ -10,17 +18,11 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| TYPESCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| TYPESCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [eslint](typescript_eslint.md) | [TYPESCRIPT_ES](typescript_eslint.md) |
-| [standard](typescript_standard.md) | [TYPESCRIPT_STANDARD](typescript_standard.md) |
 
 ## Behind the scenes
 

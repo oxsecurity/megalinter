@@ -4,15 +4,17 @@
 
 # Mega-Linter vs Super-Linter
 
-The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions
-
-## More languages and formats linted
-
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Visual Basic .NET**
+The hard-fork of Super-Linter to be rewritten in Python is not just a language switch: use of python flexibility and libraries allowed to define lots of additional functions described below
 
 ## Performances
 
-Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+- [Mega-Linter Flavors](flavors.md) allow to use **smaller docker images**, so the pull time is reduced
+- Thanks to python multiprocessing capabilities, **linters are run in parallel**, which is way faster than Super-Linter bash script who runs all linters in sequence
+- When the linter allows it, call it **1 time with N files**, instead of calling **N times with one file**
+
+## More languages and formats linted
+
+- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
 
 ## Automatically apply formatting and fixes
 
@@ -24,15 +26,38 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 
 Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/)
 
-## More reporters
+## Reports
+
+### Capabilities
+
+- Accuracy: Count the total number of errors and not only the number of files in error
+- Show linter version and applied filters for each linter processed
+- Reports stored as artefacts on GitHub Action run or other remote files
+  - General log
+  - One report file by linter
+
+### Additional Reporters
+
+- [Console](reporters/ConsoleReporter.md)
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
 - [File.io](reporters/FileIoReporter.md)
 
 ## Enhanced Configuration
+
+- **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
+
+![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
+![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
 
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
@@ -47,6 +72,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 ## Enhanced Documentation
 
 - [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
+
+![HTML doc home](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_home.jpg)
+
 - **One page per linter documentation** :
   - **All variables** that can be used with this linter
   - List of **file extensions, names and filters** applied by the linter
@@ -57,16 +85,20 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
   - **Examples** of linter command line calls behind the hood
   - **Help** command text
   - Installation commands
+
+![HTML doc linter](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_linter.jpg)
+
+- Installation links for related IDEs
+
+![HTML doc IDE](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_ide.jpg)
+
 - README
   - Separate languages, formats and tooling formats in the linters table
   - Add logos for each descriptor
 
-## Enhanced logging and reports
+## Plugins management
 
-- Show linter version and applied filters for each linter processed
-- Reports stored as artefacts on GitHub Action run
-  - General log
-  - One report file by linter
+For linters less commonly used, Mega-Linters offers a plugins architecture so anyone can publish plugins
 
 ## Simplify architecture and evolutive maintenance
 

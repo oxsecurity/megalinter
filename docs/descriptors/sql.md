@@ -3,6 +3,13 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/sql.yml -->
 # SQL
 
+## Linters
+
+| Linter                      | Configuration key      |
+|-----------------------------|------------------------|
+| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) |
+| [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) |
+
 ## Linted files
 
 - File extensions:
@@ -10,13 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) |

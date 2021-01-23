@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/powershell.yml -->
 # POWERSHELL
 
+## Linters
+
+| Linter                                 | Configuration key                      |
+|----------------------------------------|----------------------------------------|
+| [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) |
+
 ## Linted files
 
 - File extensions:
@@ -16,16 +22,11 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [powershell](powershell_powershell.md) | [POWERSHELL](powershell_powershell.md) |
 
 ## Behind the scenes
 

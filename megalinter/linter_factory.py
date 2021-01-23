@@ -37,7 +37,7 @@ def list_all_linters(linters_init_params=None):
 # List all descriptor files (one by language)
 def list_descriptor_files():
     descriptors_dir = get_descriptor_dir()
-    linters_glob_pattern = descriptors_dir + "/*.yml"
+    linters_glob_pattern = descriptors_dir + "/*.megalinter-descriptor.yml"
     descriptor_files = []
     for descriptor_file in sorted(glob.glob(linters_glob_pattern)):
         descriptor_files += [descriptor_file]
@@ -69,7 +69,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
                 common_attributes["descriptor_install"] = attr_value
 
         # Browse linters defined for language
-        for linter_descriptor in language_descriptor.get("linters"):
+        for linter_descriptor in language_descriptor.get("linters", []):
             if (
                 len(linter_names) > 0
                 and linter_descriptor["linter_name"] not in linter_names
@@ -98,7 +98,10 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
 # Build a single linter instance from language and linter name
 def build_linter(language, linter_name):
     language_descriptor_file = (
-        get_descriptor_dir() + os.path.sep + language.lower() + ".yml"
+        get_descriptor_dir()
+        + os.path.sep
+        + language.lower()
+        + ".megalinter-descriptor.yml"
     )
     assert os.path.isfile(
         language_descriptor_file

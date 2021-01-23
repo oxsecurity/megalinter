@@ -6,15 +6,15 @@
 
 Mega-Linter can generate various reports that you can activate / deactivate and customize
 
-| Reporter |  Description | Default |
-| -------- |  ----------- | ------- |
-| [Text files](reporters/TextReporter.md) |  One log file by linter + suggestions for fixes that can not be automated | Active |
-| [Pull Request comments](reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs | Active if GitHub Action |
-| [Updated sources](reporters/UpdatedSourcesReporter.md) | Zip containing all formatted and auto-fixed sources so you can extract them in your repository | Active |
-| [GitHub Status](reporters/GitHubStatusReporter.md) | One GitHub status by linter on the PR, with links to detailed logs | Active if GitHub Action |
-| [File.io](reporters/FileIoReporter.md) | Send reports on file.io so you can access them with a simple hyperlink provided at the end of console log | Inactive |
-| [Email](reporters/EmailReporter.md) | Receive all reports on your e-mail, if you can not use artifacts | Active |
-| [TAP files](reporters/TapReporter.md) | One log file by linter following [Test Anything Protocol](https://testanything.org/) format | Active |
-| [Console](reporters/ConsoleReporter.md) | Execution logs visible in console | Active |
+| Reporter                                                    | Description                                                                                                   | Default                 |
+|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
+| [Text files](reporters/TextReporter.md)                     | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
+| [Pull Request comments](reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if GitHub Action |
+| [Updated sources](reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
+| [GitHub Status](reporters/GitHubStatusReporter.md)          | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
+| [File.io](reporters/FileIoReporter.md)                      | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
+| [Email](reporters/EmailReporter.md)                         | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
+| [TAP files](reporters/TapReporter.md)                       | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
+| [Console](reporters/ConsoleReporter.md)                     | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
 
 <!-- reporters-section-end -->

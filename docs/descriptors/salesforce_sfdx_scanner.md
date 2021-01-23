@@ -12,7 +12,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner documentation
 
-- Version in Mega-Linter: **2.4.0**
+- Version in Mega-Linter: **2.5.1**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
 - See [How to disable sfdx-scanner rules in files](https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
@@ -22,33 +22,45 @@ See more details in [Help](#help-content)
 
 ## Configuration in Mega-Linter
 
-- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SALESFORCE_SFDX_SCANNER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
-| SALESFORCE_SFDX_SCANNER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
-| SALESFORCE_DIRECTORY | Directory containing SALESFORCE files | `force-app` |
+| Variable                                     | Description                                                                                                                                                                                  | Default value      |
+|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| SALESFORCE_SFDX_SCANNER_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
+| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
+| SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file |
+| SALESFORCE_SFDX_SCANNER_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
+| SALESFORCE_DIRECTORY                         | Directory containing SALESFORCE files                                                                                                                                                        | `force-app`        |
 
 ## IDE Integration
 
 Use sfdx-scanner in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/) | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a> | [Emacs](https://www.gnu.org/software/emacs/) | [pmd-emacs](https://github.com/pmd/pmd-emacs/) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://github.com/amitdev/PMD-Intellij) |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) |
+| <!-- -->                                                                                                                                      | IDE                                                      | Extension Name                                                                                                  | Install                                                                                                                                                                              |
+|-----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin)                                                 | [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank}                                                                                                           |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [pmd-emacs](https://github.com/pmd/pmd-emacs/)                                                                  | [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank}                                                                                                                   |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>    | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin)                                             | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe>                                                         |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- -->                                                                                                                                                  | Flavor                                                                   | Description                             | Embedded linters | Info                                                                                                                                                                                         |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|-----------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor              | 83               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                       |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Optimized for Salesforce based projects | 37               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
+
+- Activated only if sub-directory `force-app` is found. (directory name can be overridden with `SALESFORCE_DIRECTORY`)
+- If this linter is active, all files will always be linted
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -66,9 +78,10 @@ sfdx scanner:run
 evaluate a selection of rules against a codebase
 
 USAGE
-  $ sfdx scanner:run [-c <array>] [-r <array>] [-e <array>] [-t <array> | ] [-f
-  csv|html|json|junit|table|xml] [-o <string>] [--tsconfig <string>] [--env
-  <string>] [-v | --json] [--verbose] [--loglevel
+  $ sfdx scanner:run -t <array> [-c <array>] [-r <array>] [-e <array>] [-f
+  csv|html|json|junit|table|xml] [-o <string>] [--tsconfig <string>]
+  [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-v |
+  --json] [--verbose] [--loglevel
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
@@ -88,7 +101,7 @@ OPTIONS
       [deprecated] ruleset(s) of rules to run
 
   -t, --target=target
-      location of source code
+      (required) location of source code
 
   -v, --violations-cause-error
       throws an error when violations are detected
@@ -96,12 +109,18 @@ OPTIONS
   --env=env
       JSON-formatted string, overrides ESLint's default environment variables
 
+  --eslintconfig=eslintconfig
+      location of eslintrc config to customize eslint engine
+
   --json
       format output as json
 
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
   L)
       [default: warn] logging level for this command invocation
+
+  --pmdconfig=pmdconfig
+      location of PMD rule reference XML file to customize rule selection
 
   --tsconfig=tsconfig
       location of tsconfig.json file
@@ -114,11 +133,16 @@ EXAMPLE
     E.g., $ sfdx scanner:run --format xml --target "somefile.js"
       Evaluates all rules against somefile.js.
 
-    Specifying multiple categories or rulesets is treated as a logical OR.
+    Specifying multiple categories is treated as a logical OR.
       E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category
-  "Design,Best Practices" --ruleset "Braces"
-        Evaluates all rules in the Design and Best Practices categories, and all rules
-  in the Braces ruleset.
+  "Design,Best Practices"
+        Evaluates all rules in the Design or Best Practices categories.
+
+    Categories can be excluded by specifying the negation operator, the values
+  must be enclosed in single quotes.
+      E.g., $ sfdx scanner:run --format xml --target "somefile.js" --category
+  '!Design,!Best Practices'
+        Evaluates all rules except those in the Design or Best Practices categories.
 
     Wrap globs in quotes.
       Unix example:    $ sfdx scanner:run --target './**/*.js,!./**/IgnoreMe.js' ...
@@ -149,6 +173,16 @@ EXAMPLE
   regardless of its current 'disabled' attribute.
       E.g., $ sfdx scanner:run --target "somefile.js" --engine "eslint-lwc,pmd"
         Evaluates rules against somefile.js, using eslint-lwc and pmd engines.
+
+    To use PMD with your own rule reference file, use --pmdconfig. Note that rule
+  filters are not applied.
+      E.g, $ sfdx scanner:run --target "src" --pmdconfig "pmd_rule_ref.xml"
+
+    To use Eslint with your own .eslintrc.json file, use --eslintconfig. Make sure
+  that the directory you run the command from has all the NPM dependencies
+  installed.
+      E.g., $ sfdx scanner:run --target "src" --eslintconfig
+  "/home/my/setup/.eslintrc.json"
 
 
  ›   Error: EEXIT: 0
@@ -272,27 +306,21 @@ use-isnan                                          javascript   Possible Errors 
 valid-typeof                                       javascript   Possible Errors   Possible Errors                                   eslint
 constructor-super                                  typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 for-direction                                      typescript   Possible Errors   Possible Errors                                   eslint-typescript
-getter-return                                      typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-async-promise-executor                          typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-case-declarations                               typescript   Best Practices    Best Practices                                    eslint-typescript
 no-class-assign                                    typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 no-compare-neg-zero                                typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-cond-assign                                     typescript   Possible Errors   Possible Errors                                   eslint-typescript
-no-const-assign                                    typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 no-constant-condition                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-control-regex                                   typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-debugger                                        typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-delete-var                                      typescript   Variables         Variables                                         eslint-typescript
-no-dupe-args                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
-no-dupe-class-members                              typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
-no-dupe-keys                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-duplicate-case                                  typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-empty                                           typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-empty-character-class                           typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-empty-pattern                                   typescript   Best Practices    Best Practices                                    eslint-typescript
 no-ex-assign                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-extra-boolean-cast                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
-no-extra-semi                                      typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-fallthrough                                     typescript   Best Practices    Best Practices                                    eslint-typescript
 no-func-assign                                     typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-global-assign                                   typescript   Best Practices    Best Practices                                    eslint-typescript
@@ -301,38 +329,31 @@ no-invalid-regexp                                  typescript   Possible Errors 
 no-irregular-whitespace                            typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-misleading-character-class                      typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-mixed-spaces-and-tabs                           typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
-no-new-symbol                                      typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 no-obj-calls                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-octal                                           typescript   Best Practices    Best Practices                                    eslint-typescript
 no-prototype-builtins                              typescript   Possible Errors   Possible Errors                                   eslint-typescript
-no-redeclare                                       typescript   Best Practices    Best Practices                                    eslint-typescript
 no-regex-spaces                                    typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-self-assign                                     typescript   Best Practices    Best Practices                                    eslint-typescript
 no-shadow-restricted-names                         typescript   Variables         Variables                                         eslint-typescript
 no-sparse-arrays                                   typescript   Possible Errors   Possible Errors                                   eslint-typescript
-no-this-before-super                               typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
-no-undef                                           typescript   Variables         Variables                                         eslint-typescript
 no-unexpected-multiline                            typescript   Possible Errors   Possible Errors                                   eslint-typescript
-no-unreachable                                     typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-unsafe-finally                                  typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-unsafe-negation                                 typescript   Possible Errors   Possible Errors                                   eslint-typescript
 no-unused-labels                                   typescript   Best Practices    Best Practices                                    eslint-typescript
-no-unused-vars                                     typescript   Variables         Variables                                         eslint-typescript
 no-useless-catch                                   typescript   Best Practices    Best Practices                                    eslint-typescript
 no-useless-escape                                  typescript   Best Practices    Best Practices                                    eslint-typescript
+no-var                                             typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 no-with                                            typescript   Best Practices    Best Practices                                    eslint-typescript
+prefer-const                                       typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+prefer-rest-params                                 typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
+prefer-spread                                      typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 require-yield                                      typescript   ECMAScript 6      ECMAScript 6                                      eslint-typescript
 use-isnan                                          typescript   Possible Errors   Possible Errors                                   eslint-typescript
-valid-typeof                                       typescript   Possible Errors   Possible Errors                                   eslint-typescript
 @typescript-eslint/adjacent-overload-signatures    typescript   Best Practices    Best Practices                                    eslint-typescript
 @typescript-eslint/await-thenable                  typescript   Best Practices    Best Practices                                    eslint-typescript
-@typescript-eslint/ban-ts-ignore                   typescript   Best Practices    Best Practices                                    eslint-typescript
 @typescript-eslint/ban-types                       typescript   Best Practices    Best Practices                                    eslint-typescript
-@typescript-eslint/camelcase                       typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
-@typescript-eslint/class-name-casing               typescript   Best Practices    Best Practices                                    eslint-typescript
 @typescript-eslint/consistent-type-assertions      typescript   Best Practices    Best Practices                                    eslint-typescript
 @typescript-eslint/explicit-function-return-type   typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
-@typescript-eslint/interface-name-prefix           typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
 @typescript-eslint/member-delimiter-style          typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
 @typescript-eslint/no-array-constructor            typescript   Stylistic Issues  Stylistic Issues                                  eslint-typescript
 @typescript-eslint/no-empty-function               typescript   Best Practices    Best Practices                                    eslint-typescript

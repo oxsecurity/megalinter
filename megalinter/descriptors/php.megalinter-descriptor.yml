@@ -1,0 +1,132 @@
+descriptor_id: PHP
+descriptor_type: language
+descriptor_flavors:
+  - php
+file_extensions:
+  - ".php"
+install:
+  apk:
+    - php7
+    - php7-phar
+    - php7-json
+    - php7-mbstring
+    - php-xmlwriter
+    - php7-tokenizer
+    - php7-ctype
+    - php7-curl
+    - php7-dom
+    - php7-simplexml
+    - composer
+  dockerfile:
+    - |
+      RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
+          && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
+          && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
+          && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+              || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+              || gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" ) \
+          && gpg --verify phive.phar.asc phive.phar \
+          && chmod +x phive.phar \
+          && mv phive.phar /usr/local/bin/phive \
+          && rm phive.phar.asc
+linters:
+  # PHP Built in Linter
+  - linter_name: php
+    linter_url: https://www.php.net
+    linter_repo: https://github.com/php/php-src
+    linter_banner_image_url: https://www.php.net/images/logos/new-php-logo.svg
+    linter_megalinter_ref_url: never
+    name: PHP_BUILTIN
+    cli_lint_extra_args:
+      - "-l"
+    examples:
+      - "php -l myfile.js"
+  # PHPCS
+  - linter_name: phpcs
+    name: PHP_PHPCS
+    linter_url: https://github.com/squizlabs/PHP_CodeSniffer
+    linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
+    linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+    config_file_name: phpcs.xml
+    cli_config_arg_name: "--standard="
+    examples:
+      - "phpcs myfile.php"
+      - "phpcs --standard=phpcs.xml myfile.php"
+    install:
+      dockerfile:
+        - |
+          RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
+    ide:
+      atom:
+        - name: linter-phpcs
+          url: https://atom.io/packages/linter-phpcs
+        - name: atom-phpcs
+          url: https://github.com/bpearson/atom-phpcs
+      idea:
+        - name: phpcs
+          url: https://www.jetbrains.com/help/phpstorm/2019.1/using-php-code-sniffer.html
+      sublime:
+        - name: sublime-phpcs
+          url: https://github.com/benmatselby/sublime-phpcs
+        - name: SublimeLinter-phpcs
+          url: https://github.com/SublimeLinter/SublimeLinter-phpcs
+      vscode:
+        - name: vscode-phpcs
+          url: https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs
+  # PHP Stan
+  - linter_name: phpstan
+    name: PHP_PHPSTAN
+    linter_url: https://phpstan.org/
+    linter_repo: https://github.com/phpstan/phpstan
+    linter_image_url: https://i.imgur.com/MOt7taM.png
+    linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
+    linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
+    config_file_name: phpstan.neon
+    cli_lint_extra_args:
+      - "analyse"
+      - "--no-progress"
+      - "--no-ansi"
+      - "--memory-limit"
+      - "1G"
+    examples:
+      - "phpstan analyse --no-progress --no-ansi myfile.php"
+      - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
+    install:
+      dockerfile:
+        - |
+          RUN composer global require phpstan/phpstan \
+              && composer global config bin-dir --absolute
+        - ENV PATH="/root/.composer/vendor/bin:$PATH"
+    ide:
+      idea:
+        - name: PHPStan / Psalm / Generics
+          url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+      vscode:
+        - name: vscode-phpstan
+          url: https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan
+  # PSALM
+  - linter_name: psalm
+    name: PHP_PSALM
+    linter_url: https://psalm.dev
+    linter_repo: https://github.com/vimeo/psalm
+    linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
+    linter_banner_image_url: https://i1.wp.com/phpmagazine.net/wp-content/uploads/2018/12/PsalmLogo.png?w=653&ssl=1
+    linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
+    linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
+    config_file_name: psalm.xml
+    cli_config_arg_name: "--config="
+    version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
+    examples:
+      - "psalm myfile.php"
+      - "psalm --config=psalm.xml myfile.php"
+    install:
+      dockerfile:
+        - |
+          RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
+    ide:
+      idea:
+        - name: PHPStan / Psalm / Generics
+          url: https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics
+      vscode:
+        - name: Psalm VsCode Plugin
+          url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin

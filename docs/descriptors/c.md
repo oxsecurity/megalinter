@@ -3,6 +3,12 @@
 <!-- Instead, update descriptor file at https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors/c.yml -->
 # C
 
+## Linters
+
+| Linter                  | Configuration key         |
+|-------------------------|---------------------------|
+| [cpplint](c_cpplint.md) | [C_CPPLINT](c_cpplint.md) |
+
 ## Linted files
 
 - File extensions:
@@ -11,13 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| C_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable               | Description                   | Default value |
+|------------------------|-------------------------------|---------------|
+| C_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| C_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-## Linters
-
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [cpplint](c_cpplint.md) | [C_CPPLINT](c_cpplint.md) |

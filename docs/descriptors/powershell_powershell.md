@@ -4,50 +4,52 @@
 
 ## powershell documentation
 
-- Version in Mega-Linter: **7.1.0**
+- Version in Mega-Linter: **7.0.4**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit){target=_blank}
-  - If custom .powershell-psscriptanalyzer.psd1 is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
+  - If custom `.powershell-psscriptanalyzer.psd1` config file is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
 - See [How to disable powershell rules in files](https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules){target=_blank}
 
 [![PSScriptAnalyzer - GitHub](https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=)](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](/configuration/#activation-and-deactivation)
-- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](/configuration/#activation-and-deactivation)
+- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| POWERSHELL_POWERSHELL_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `\/(src\|lib)\/` | Include every file |
-| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `\/(test\|examples)\/` | Exclude no file |
-| POWERSHELL_POWERSHELL_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".ps1", ".psm1", ".psd1", ".ps1xml", ".pssc", ".psrc", ".cdxml"]` |
-| POWERSHELL_POWERSHELL_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| POWERSHELL_POWERSHELL_FILE_NAME | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.powershell-psscriptanalyzer.psd1` |
-| POWERSHELL_POWERSHELL_RULES_PATH | Path where to find linter configuration file | Workspace folder, then Mega-Linter default rules |
-| POWERSHELL_POWERSHELL_DISABLE_ERRORS | Run linter but disable crash if errors found | `false` |
+| Variable                                   | Description                                                                                                                                                                                  | Default value                                                       |
+|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| POWERSHELL_POWERSHELL_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                                     |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                                                  |
+| POWERSHELL_POWERSHELL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                                     |
+| POWERSHELL_POWERSHELL_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".ps1", ".psm1", ".psd1", ".ps1xml", ".pssc", ".psrc", ".cdxml"]` |
+| POWERSHELL_POWERSHELL_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                                                  |
+| POWERSHELL_POWERSHELL_CONFIG_FILE          | powershell configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                        | `.powershell-psscriptanalyzer.psd1`                                 |
+| POWERSHELL_POWERSHELL_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules                    |
+| POWERSHELL_POWERSHELL_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                                             |
 
 ## IDE Integration
 
 Use powershell in your favorite IDE to catch errors before Mega-Linter !
 
-| <!-- --> | IDE | Extension Name |
-| :--: | ----------------- | -------------- |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) |
+| <!-- -->                                                                                                                                     | IDE                                                  | Extension Name                                                                                          | Install                                                                                                                                                                    |
+|----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.PowerShell){target=_blank} |
+
+## Mega-Linter Flavours
+
+This linter is available in the following flavours
+
+| <!-- -->                                                                                                                                                  | Flavor                                                           | Description                                   | Embedded linters | Info                                                                                                                                                                                 |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    | 83               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)               |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>              | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 42               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- File extensions:
-  - `.ps1`
-  - `.psm1`
-  - `.psd1`
-  - `.ps1xml`
-  - `.pssc`
-  - `.psrc`
-  - `.cdxml`
+- File extensions: `.ps1`, `.psm1`, `.psd1`, `.ps1xml`, `.pssc`, `.psrc`, `.cdxml`
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
@@ -74,8 +76,8 @@ Usage: pwsh[.exe] [-Login] [[-File] <filePath> [args]]
                   [-EncodedCommand <Base64EncodedCommand>]
                   [-ExecutionPolicy <ExecutionPolicy>] [-InputFormat {Text | XML}]
                   [-Interactive] [-MTA] [-NoExit] [-NoLogo] [-NonInteractive] [-NoProfile]
-                  [-OutputFormat {Text | XML}] [-SettingsFile <filePath>] [-SSHServerMode] [-STA]
-                  [-Version] [-WindowStyle <style>] [-WorkingDirectory <directoryPath>]
+                  [-OutputFormat {Text | XML}] [-SettingsFile <filePath>] [-STA] [-Version]
+                  [-WindowStyle <style>] [-WorkingDirectory <directoryPath>]
 
        pwsh[.exe] -h | -Help | -? | /?
 
@@ -101,11 +103,10 @@ All parameters are case-insensitive.
     omitted. For example, the following command uses the All parameter of the
     Get-Script.ps1 script file: "-File .\Get-Script.ps1 -All"
 
-    In rare cases, you might need to provide a BOOLEAN value for a switch
-    parameter. To provide a BOOLEAN value for a switch parameter in the value
-    of the FILE parameter, Use the parameter normally followed immediately by a
-    colon and the boolean value, such as the following:
-    "-File .\Get-Script.ps1 -All:$False".
+    In rare cases, you might need to provide a Boolean value for a switch
+    parameter. To provide a Boolean value for a switch parameter in the value
+    of the File parameter, enclose the parameter name and value in curly
+    braces, such as the following: "-File .\Get-Script.ps1 {-All:$False}."
 
     Parameters passed to the script are passed as literal strings, after
     interpretation by the current shell. For example, if you are in cmd.exe and
@@ -116,21 +117,7 @@ All parameters are case-insensitive.
     cmd.exe results in the script receiving the literal string "$env:windir"
     because it has no special meaning to the current cmd.exe shell. The
     "$env:windir" style of environment variable reference can be used inside a
-    Command parameter, since there it is interpreted as PowerShell code.
-
-    Similarly, if you want to execute the same command from a Batch script,
-    you would use "%~dp0" instead of ".\" or "$PSScriptRoot" to represent the current
-    execution directory: "pwsh -File %~dp0test.ps1 -TestParam %windir%". If you
-    instead used ".  est.ps1", PowerShell would throw an error because it cannot
-    find the literal path ".  est.ps1".
-
-    When the script file invoked terminates with an exit command, the process
-    exit code is set to the numeric argument used with the exit command. With
-    normal termination, the exit code is always 0.
-
-    Similar to -Command, when a script-terminating error occurs, the exit code
-    is set to 1. However, unlike with -Command, when the execution is
-    interrupted with Ctrl-C the exit code is 0.
+    Command parameter, since there it will be interpreted as PowerShell code.
 
 -Command | -c
 
@@ -148,7 +135,8 @@ All parameters are case-insensitive.
     or parsed by the PowerShell host as a literal script block enclosed in
     curly braces "{}", before being passed to pwsh.
 
-        pwsh -Command {Get-WinEvent -LogName security}
+
+    pwsh -Command {Get-WinEvent -LogName security}
 
     In cmd.exe, there is no such thing as a script block (or ScriptBlock type),
     so the value passed to Command will always be a string. You can write a
@@ -156,7 +144,7 @@ All parameters are case-insensitive.
     behave exactly as though you typed it at a typical PowerShell prompt,
     printing the contents of the script block back out to you.
 
-    A string passed to Command is still executed as PowerShell script, so the
+    A string passed to Command will still be executed as PowerShell, so the
     script block curly braces are often not required in the first place when
     running from cmd.exe. To execute an inline script block defined inside a
     string, the call operator "&" can be used:
@@ -167,39 +155,29 @@ All parameters are case-insensitive.
     pwsh, because all arguments following it are interpreted as part of the
     command to execute.
 
-    When called from within an existing PowerShell session, the results are
-    returned to the parent shell as deserialized XML objects, not live objects.
-    For other shells, the results are returned as strings.
+    The results are returned to the parent shell as deserialized XML objects,
+    not live objects.
 
     If the value of Command is "-", the command text is read from standard
     input. You must redirect standard input when using the Command parameter
     with standard input. For example:
 
-        @'
-        "in"
 
-        "hi" |
-        % { "$_ there" }
+    @'
+    "in"
 
-        "out"
-        '@ | powershell -NoProfile -Command -
+    "hi" |
+      % { "$_ there" }
+
+    "out"
+    '@ | powershell -NoProfile -Command -
 
     This example produces the following output:
 
-        in
-        hi there
-        out
-
-    The process exit code is determined by status of the last (executed)
-    command within the script block. The exit code is 0 when $? is $true or 1
-    when $? is $false. If the last command is an external program or a
-    PowerShell script that explicitly sets an exit code other than 0 or 1, that
-    exit code is converted to 1 for process exit code. To preserve the specific
-    exit code, add exit $LASTEXITCODE to your command string or script block.
-
-    Similarly, the value 1 is returned when a script-terminating
-    (runspace-terminating) error, such as a throw or -ErrorAction Stop, occurs
-    or when execution is interrupted with Ctrl-C.
+    """Output
+    in
+    hi there
+    out
 
 -ConfigurationName | -config
 
@@ -217,39 +195,36 @@ All parameters are case-insensitive.
     predictable mechanism for connecting to other PowerShell instances.
     Typically used with the CustomPipeName parameter on "Enter-PSHostProcess".
 
-    This parameter was introduced in PowerShell 6.2.
-
     For example:
 
-        # PowerShell instance 1
-        pwsh -CustomPipeName mydebugpipe
-        # PowerShell instance 2
-        Enter-PSHostProcess -CustomPipeName mydebugpipe
+
+    # PowerShell instance 1
+    pwsh -CustomPipeName mydebugpipe
+    # PowerShell instance 2
+    Enter-PSHostProcess -CustomPipeName mydebugpipe
 
 -EncodedCommand | -e | -ec
 
-    Accepts a Base64-encoded string version of a command. Use this parameter to
-    submit commands to PowerShell that require complex, nested quoting. The
-    Base64 representation must be a UTF-16 encoded string.
+    Accepts a base64-encoded string version of a command. Use this parameter to
+    submit commands to PowerShell that require complex quotation marks or curly
+    braces. The string must be formatted using UTF-16 character encoding.
 
     For example:
 
-        $command = 'dir "c:\program files" '
-        $bytes = [System.Text.Encoding]::Unicode.GetBytes($command)
-        $encodedCommand = [Convert]::ToBase64String($bytes)
-        pwsh -encodedcommand $encodedCommand
+
+    $command = 'dir "c:\program files" '
+    $bytes = [System.Text.Encoding]::Unicode.GetBytes($command)
+    $encodedCommand = [Convert]::ToBase64String($bytes)
+    pwsh -encodedcommand $encodedCommand
 
 -ExecutionPolicy | -ex | -ep
 
     Sets the default execution policy for the current session and saves it in
-    the $env:PSExecutionPolicyPreference environment variable. This parameter
-    does not change the persistently configured execution policies.
+    the "$env:PSExecutionPolicyPreference" environment variable. This parameter
+    does not change the PowerShell execution policy that is set in the
+    registry.
 
-    This parameter only applies to Windows computers. The
-    $env:PSExecutionPolicyPreference environment variable does not exist on
-    non-Windows platforms.
-
--InputFormat | -inp | -if
+-InputFormat | -in | -if
 
     Describes the format of data sent to PowerShell. Valid values are "Text"
     (text strings) or "XML" (serialized CLIXML format).
@@ -261,37 +236,16 @@ All parameters are case-insensitive.
 
 -Login | -l
 
-    On Linux and macOS, starts PowerShell as a login shell, using /bin/sh to
-    execute login profiles such as /etc/profile and ~/.profile. On Windows,
-    this switch does nothing.
+    On Linux and macOS, starts PowerShell as a login shell,
+    using /bin/sh to execute login profiles such as /etc/profile and ~/.profile.
+    On Windows, this switch does nothing.
 
-    [!IMPORTANT] This parameter must come first to start PowerShell as a login
-    shell. The parameter is ignored if passed in any other position.
-
-    To set up pwsh as the login shell on UNIX-like operating systems:
-
-    - Verify that the full absolute path to pwsh is listed under /etc/shells
-
-      - This path is usually something like /usr/bin/pwsh on Linux or
-        /usr/local/bin/pwsh on macOS
-      - With some installation methods, this entry will be added
-        automatically at installation time
-      - If pwsh is not present in /etc/shells, use an editor to append the
-        path to pwsh on the last line. This requires elevated privileges to
-        edit.
-
-    - Use the chsh utility to set your current user's shell to pwsh:
-
-        chsh -s /usr/bin/pwsh
-
-    [!WARNING] Setting pwsh as the login shell is currently not supported on
-    Windows Subsystem for Linux (WSL), and attempting to set pwsh as the
-    login shell there may lead to being unable to start WSL interactively.
+    Note that "-Login" is only supported as the first parameter to pwsh.
 
 -MTA
 
-    Start PowerShell using a multi-threaded apartment. This switch is only
-    available on Windows.
+    Start the shell using a multi-threaded apartment.
+    Only available on Windows.
 
 -NoExit | -noe
 
@@ -301,17 +255,15 @@ All parameters are case-insensitive.
 
 -NoLogo | -nol
 
-    Hides the copyright banner at startup of interactive sessions.
+Hides the copyright banner at startup.
 
 -NonInteractive | -noni
 
-    Does not present an interactive prompt to the user. Any attempts to use
-    interactive features, like Read-Host or confirmation prompts, result in
-    statement-terminating errors.
+    Does not present an interactive prompt to the user.
 
 -NoProfile | -nop
 
-    Does not load the PowerShell profiles.
+    Does not load the PowerShell profile.
 
 -OutputFormat | -o | -of
 
@@ -319,10 +271,6 @@ All parameters are case-insensitive.
     (text strings) or "XML" (serialized CLIXML format).
 
     Example: "pwsh -o XML -c Get-Date"
-
-    When called withing a PowerShell session, you get deserialized objects as
-    output rather plain strings. When called from other shells, the output is
-    string data formatted as CLIXML text.
 
 -SettingsFile | -settings
 
@@ -335,15 +283,10 @@ All parameters are case-insensitive.
 
     Example: "pwsh -SettingsFile c:\myproject\powershell.config.json"
 
--SSHServerMode | -sshs
-
-    Used in sshd_config for running PowerShell as an SSH subsystem. It is not
-    intended or supported for any other use.
-
 -STA
 
-    Start PowerShell using a single-threaded apartment. This is the default.
-    This switch is only available on Windows.
+    Start the shell using a single-threaded apartment.  This is the default.
+    Only available on Windows.
 
 -Version | -v
 
@@ -356,15 +299,17 @@ All parameters are case-insensitive.
 
 -WorkingDirectory | -wd
 
-    Sets the initial working directory by executing at startup. Any valid
-    PowerShell file path is supported.
+    Sets the initial working directory by executing
+    "Set-Location -LiteralPath <path>" at startup. Any valid PowerShell file
+    path is supported.
 
-    To start PowerShell in your home directory, use: pwsh -WorkingDirectory ~
+    To start PowerShell in your home directory, use: "pwsh -WorkingDirectory ~"
 
 -Help, -?, /?
 
     Displays help for pwsh. If you are typing a pwsh command in PowerShell,
     prepend the command parameters with a hyphen (-), not a forward slash (/).
+    You can use either a hyphen or forward slash in Cmd.exe.
 
 ```
 

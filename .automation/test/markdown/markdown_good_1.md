@@ -14,6 +14,11 @@ This header follows the step down from `level 1`.
 ls -la
 ```
 
+| this | is a good | table    |
+|------|-----------|----------|
+| haha | yesssssss | good !   |
+| haha | yesssssss | gooood ! |
+
 ### Walk away
 
 We're all done **here**.
