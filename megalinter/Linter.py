@@ -668,11 +668,6 @@ class Linter:
         if self.cli_docker_image is None:
             return command
         docker_command = ["docker", "run"]
-        # Reuse current docker engine
-        docker_command += [
-            "-v",
-            "/var/run/docker.sock:/var/run/docker.sock:rw",
-        ]
         if hasattr(self, "workspace"):
             workspace_value = os.path.abspath(self.workspace)
         else:
@@ -680,13 +675,6 @@ class Linter:
         logging.debug(
             "workspace content in docker volume: "
             + (" ".join(os.listdir(workspace_value)))
-        )
-        logging.debug(
-            f"cwd content ({os.getcwd()}): " + (" ".join(os.listdir(os.getcwd())))
-        )
-        logging.debug(
-            f"cwd content2 ({os.getcwd() + workspace_value}): "
-            + (" ".join(os.listdir(os.getcwd() + workspace_value)))
         )
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
@@ -696,7 +684,7 @@ class Linter:
         if type(command) == str:
             command = " ".join(docker_command) + " " + command
         else:
-            command = docker_command + command
+            command = docker_command + ["find . | sed 's/[^/]*\\//|   /g;s/| *\\([^| ]\\)/+--- \\1/'"]
         return command
 
     ########################################
