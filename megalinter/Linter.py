@@ -669,13 +669,13 @@ class Linter:
             return command
         docker_command = ["docker", "run"]
         if hasattr(self, "workspace"):
-            workspace_value = os.path.abspath(self.workspace)
+            volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
+            if volume_root != "":
+                workspace_value = volume_root + "/" + self.workspace.replace("/tmp/lint", "")
+            else:
+                workspace_value = self.workspace
         else:
-            workspace_value = os.path.abspath("/tmp/lint")
-        logging.debug(
-            "workspace content in docker volume: "
-            + (" ".join(os.listdir(workspace_value)))
-        )
+            workspace_value = "/tmp/lint"
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
@@ -684,7 +684,7 @@ class Linter:
         if type(command) == str:
             command = " ".join(docker_command) + " " + command
         else:
-            command = docker_command + ["ls", "-A", "tmp/"]
+            command = docker_command + ["ls", "-A", "/tmp/lint"]
         return command
 
     ########################################
