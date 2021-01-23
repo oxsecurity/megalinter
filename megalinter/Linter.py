@@ -682,8 +682,7 @@ class Linter:
             + (" ".join(os.listdir(workspace_value)))
         )
         logging.debug(
-            f"cwd content ({os.getcwd()}): "
-            + (" ".join(os.listdir(os.getcwd())))
+            f"cwd content ({os.getcwd()}): " + (" ".join(os.listdir(os.getcwd())))
         )
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
