@@ -151,7 +151,7 @@ class GithubCommentReporter(Reporter):
                     )
                     body = (
                         "Mega-Linter would run faster on my project if I had a flavor containing the following "
-                        f"list of linters: \n\n - Add languages/linters list here\n\n"
+                        "list of linters: \n\n - Add languages/linters list here\n\n"
                         "Would it be possible to create one ? Thanks :relaxed:"
                     )
                     new_flavor_url = (
