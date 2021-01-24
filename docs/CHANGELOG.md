@@ -10,6 +10,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - New property **EXTENDS**, allowing to inherit from remote `mega-linter.yml` configuration files
   - Add docker-in-docker management (reuse running docker instance)
   - Allow to skip auto apply fixes with commit or PR if latest commit text contains `skip fix`
+  - Provide new issue link to create a new flavor to improve performances
   
 - Linters
   - Add [revive](https://github.com/mgechev/revive) GO linter

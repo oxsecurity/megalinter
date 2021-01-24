@@ -5,6 +5,7 @@ Post a GitHub status for each linter
 """
 import logging
 import os
+import urllib
 
 import github
 from megalinter import Reporter, config
@@ -30,6 +31,7 @@ class GithubCommentReporter(Reporter):
     github_api_url = "https://api.github.com"
     github_server_url = "https://github.com"
     gh_url = "https://nvuillam.github.io/mega-linter"
+    issues_root = "https://github.com/nvuillam/mega-linter/issues"
 
     def manage_activation(self):
         if config.get("GITHUB_COMMENT_REPORTER", "true") != "true":
@@ -141,25 +143,49 @@ class GithubCommentReporter(Reporter):
                     + os.linesep
                 )
             if self.master.flavor_suggestions is not None:
-                p_r_msg += (
-                    os.linesep
-                    + "You could have the same capabilities but better runtime performances"
-                    " if you use a Mega-Linter flavor:" + os.linesep
-                )
-                for suggestion in self.master.flavor_suggestions:
-                    build_version = os.environ.get("BUILD_VERSION", "v4")
-                    action_version = (
-                        "v4"
-                        if "v4" in build_version or len(build_version) > 20
-                        else "insiders"
-                        if build_version == "latest"
-                        else build_version
-                    )
-                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                if self.master.flavor_suggestions[0] == "new":
                     p_r_msg += (
-                        f"- [**{action_path}**]({self.gh_url}/flavors/{suggestion['flavor']}/)"
-                        f" ({suggestion['linters_number']} linters)"
+                        os.linesep
+                        + "You could have same capabilities but better runtime performances"
+                        " if you request a new Mega-Linter flavor containing "
+                        f"{','.join(self.master.flavor_suggestions[1])}"
                     )
+                    linters_list_formatted = "\n- ".join(
+                        self.master.flavor_suggestions[1]
+                    )
+                    body = (
+                        "Mega-Linter would run faster on my project if I had a flavor containing the following "
+                        f"list of linters:\n- {linters_list_formatted}\n"
+                        "Would it be possible to create one ? Thanks :relaxed:"
+                    )
+                    new_flavor_url = (
+                        f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
+                        f"&title={urllib.parse.quote(':hamster: Request new Mega-Linter flavor')}"
+                        f"&body={urllib.parse.quote(body)}"
+                    )
+                    p_r_msg += (
+                        f"- [**Click here to request new flavor**]({new_flavor_url}"
+                    )
+                else:
+                    p_r_msg += (
+                        os.linesep
+                        + "You could have the same capabilities but better runtime performances"
+                        " if you use a Mega-Linter flavor:" + os.linesep
+                    )
+                    for suggestion in self.master.flavor_suggestions:
+                        build_version = os.environ.get("BUILD_VERSION", "v4")
+                        action_version = (
+                            "v4"
+                            if "v4" in build_version or len(build_version) > 20
+                            else "insiders"
+                            if build_version == "latest"
+                            else build_version
+                        )
+                        action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                        p_r_msg += (
+                            f"- [**{action_path}**]({self.gh_url}/flavors/{suggestion['flavor']}/)"
+                            f" ({suggestion['linters_number']} linters)"
+                        )
             logging.debug("\n" + p_r_msg)
             # Post comment on pull request if found
             github_auth = (
