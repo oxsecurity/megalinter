@@ -255,3 +255,12 @@ class mega_linter_1_test(unittest.TestCase):
     def test_alpaca(self):
         res = megalinter.alpaca()
         self.assertTrue(res is True)
+
+    def test_new_flavor_suggestion(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {"MULTI_STATUS": "false", "LOG_LEVEL": "DEBUG"}
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertEqual("new", mega_linter.flavor_suggestions[0])
