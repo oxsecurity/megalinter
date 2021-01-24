@@ -5,6 +5,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.26.0] 2021-01-24
+
 - Core architecture
   - Manage remote `mega-linter.yml` configuration files
   - New property **EXTENDS**, allowing to inherit from remote `mega-linter.yml` configuration files
@@ -22,7 +27,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.2.5 to **0.2.6** on 2021-01-22
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.0 to **1.3.1** on 2021-01-22
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 6.14.10 to **0.9.0** on 2021-01-24
-<!-- linter-versions-end -->
 
 ## [4.25.0] 2021-01-22
 
