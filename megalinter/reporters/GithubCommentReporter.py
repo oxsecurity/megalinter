@@ -159,9 +159,7 @@ class GithubCommentReporter(Reporter):
                         f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
                         f"&body={urllib.parse.quote(body)}"
                     )
-                    p_r_msg += (
-                        f"- [**Click here to request the new flavor**]({new_flavor_url})"
-                    )
+                    p_r_msg += f"- [**Click here to request the new flavor**]({new_flavor_url})"
                 else:
                     p_r_msg += (
                         os.linesep

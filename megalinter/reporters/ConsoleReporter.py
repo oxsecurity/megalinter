@@ -106,7 +106,7 @@ class ConsoleReporter(Reporter):
                     "[flavors] You could have same capabilities but better runtime performances"
                     " if you request a new Mega-Linter flavor."
                 )
-                linters_list_formatted = ', '.join(self.master.flavor_suggestions[1])
+                linters_list_formatted = ", ".join(self.master.flavor_suggestions[1])
                 body = (
                     "Mega-Linter would run faster on my project if I had a flavor containing the following "
                     f"list of linters:\n\n{linters_list_formatted}\n\n"
