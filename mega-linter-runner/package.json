@@ -62,6 +62,7 @@
     "cloudformation",
     "css",
     "env",
+    "dotenv",
     "graphql",
     "latex",
     "protocol",
@@ -71,7 +72,9 @@
     "cucumber",
     "terraform",
     "snakemake",
-    "ansible"
+    "ansible",
+    "jsonschema",
+    "swift"
   ],
   "author": "Nicolas Vuillamy",
   "license": "MIT",
