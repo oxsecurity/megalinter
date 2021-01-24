@@ -147,24 +147,20 @@ class GithubCommentReporter(Reporter):
                     p_r_msg += (
                         os.linesep
                         + "You could have same capabilities but better runtime performances"
-                        " if you request a new Mega-Linter flavor containing "
-                        f"{','.join(self.master.flavor_suggestions[1])}"
-                    )
-                    linters_list_formatted = "\n- ".join(
-                        self.master.flavor_suggestions[1]
+                        " if you request a new Mega-Linter flavor.\n"
                     )
                     body = (
                         "Mega-Linter would run faster on my project if I had a flavor containing the following "
-                        f"list of linters:\n- {linters_list_formatted}\n"
+                        f"list of linters: \n\n - Add languages/linters list here\n\n"
                         "Would it be possible to create one ? Thanks :relaxed:"
                     )
                     new_flavor_url = (
                         f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
-                        f"&title={urllib.parse.quote(':hamster: Request new Mega-Linter flavor')}"
+                        f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
                         f"&body={urllib.parse.quote(body)}"
                     )
                     p_r_msg += (
-                        f"- [**Click here to request new flavor**]({new_flavor_url}"
+                        f"- [**Click here to request the new flavor**]({new_flavor_url})"
                     )
                 else:
                     p_r_msg += (

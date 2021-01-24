@@ -113,4 +113,6 @@ def get_megalinter_flavor_suggestions(active_linters):
         return sorted(
             matching_flavors, key=lambda i: (i["linters_number"], i["flavor"])
         )
-    return ["new", map(lambda linter: linter.name, active_linters)]
+    # Propose user to request a new flavor for the list of linters
+    active_linter_names = map(lambda linter: linter.name, active_linters)
+    return ["new", active_linter_names]

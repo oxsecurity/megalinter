@@ -103,23 +103,22 @@ class ConsoleReporter(Reporter):
         if self.master.flavor_suggestions is not None:
             if self.master.flavor_suggestions[0] == "new":
                 logging.warning(
-                    "You could have same capabilities but better runtime performances"
-                    " if you request a new Mega-Linter flavor containing "
-                    f"{','.join(self.master.flavor_suggestions[1])}"
+                    "[flavors] You could have same capabilities but better runtime performances"
+                    " if you request a new Mega-Linter flavor."
                 )
-                linters_list_formatted = "\n- ".join(self.master.flavor_suggestions[1])
+                linters_list_formatted = ', '.join(self.master.flavor_suggestions[1])
                 body = (
                     "Mega-Linter would run faster on my project if I had a flavor containing the following "
-                    f"list of linters:\n- {linters_list_formatted}\n"
+                    f"list of linters:\n\n{linters_list_formatted}\n\n"
                     "Would it be possible to create one ? Thanks :relaxed:"
                 )
                 new_flavor_url = (
                     f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
-                    f"&title={urllib.parse.quote(':hamster: Request new Mega-Linter flavor')}"
+                    f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
                     f"&body={urllib.parse.quote(body)}"
                 )
                 logging.warning(
-                    f"Click on the following link to do that: {new_flavor_url}"
+                    f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
                 )
             else:
                 build_version = os.environ.get("BUILD_VERSION", "v4")
