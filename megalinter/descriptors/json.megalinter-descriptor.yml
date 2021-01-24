@@ -95,6 +95,8 @@ linters:
     cli_lint_fix_arg_name: "--fix"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
+    cli_executable_version: "npm"
+    cli_version_extra_args: ["list", "eslint-plugin-jsonc"]
     examples:
       - "eslint myfile.json"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
