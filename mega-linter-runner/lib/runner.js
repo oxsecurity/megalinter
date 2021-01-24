@@ -28,7 +28,7 @@ class MegaLinterRunner {
                     const FindPackageJson = require("find-package-json");
                     const finder = FindPackageJson(__dirname);
                     v = finder.next().value.version;
-                } catch {
+                } catch (e) {
                     v = "error";
                 }
             }
