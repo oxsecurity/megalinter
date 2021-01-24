@@ -15,6 +15,7 @@ linters:
     linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
     linter_megalinter_ref_url: never
     name: BASH_EXEC
+    cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
     examples:

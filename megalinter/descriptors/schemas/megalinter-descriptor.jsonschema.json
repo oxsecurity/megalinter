@@ -472,6 +472,12 @@
             "title": "CLI executable for linting request",
             "type": "string"
           },
+          "cli_executable_help": {
+            "$id": "#/properties/linters/items/properties/cli_executable_help",
+            "description": "Override if different from cli executable used for linting",
+            "title": "CLI executable for help request",
+            "type": "string"
+          },
           "cli_executable_version": {
             "$id": "#/properties/linters/items/properties/cli_executable_version",
             "description": "Override if different from cli executable used for linting",

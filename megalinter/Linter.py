@@ -136,7 +136,7 @@ class Linter:
         if self.cli_executable_version is None:
             self.cli_executable_version = self.cli_executable
         if self.cli_executable_help is None:
-            self.cli_executable_help = self.cli_executable_version
+            self.cli_executable_help = self.cli_executable
         if self.test_folder is None:
             self.test_folder = self.descriptor_id.lower()
 
