@@ -9,8 +9,6 @@ DISABLE:
   # - COPYPASTE # Uncomment to disable checks of abusive copy-pastes
   - EDITORCONFIG
   # - SPELL # Uncomment to disable checks of spelling mistakes
-  - JAVASCRIPT
-  - TEKTON
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml)'
