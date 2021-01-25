@@ -19,6 +19,7 @@ on:
     branches:
       - "master"
     paths:
+      - ".github/workflows/**"
       - "Dockerfile"
       - "flavors/**"
       - "megalinter/**"
