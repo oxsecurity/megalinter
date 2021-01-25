@@ -7,6 +7,17 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 
 [Pull Requests][pulls] are used for adding new playbooks, roles, and documents to the repository, or editing the existing ones.
 
+### Pre-requisites
+
+- You need **python** to be installed on your computer ([download here](https://www.python.org/downloads/))
+
+- Run the following commands at the root of the repository to install required dev dependencies
+
+```shell
+python3 -m pip install -U pip
+python3 -m pip install -r requirements.dev.txt
+```
+
 ### With write access
 
 1. Clone the repository (only if you have write access)

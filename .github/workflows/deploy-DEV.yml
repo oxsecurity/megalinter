@@ -96,11 +96,21 @@ jobs:
              docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 30
 
-      ######################
-      # Build image (full) #
-      ######################
+      #######################################
+      # Build image (full for forked repos) #
+      #######################################
+      - name: Build image (full from forks)
+        if: "github.repository != 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'quick build')"
+        id: docker_build
+        shell: bash
+        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        timeout-minutes: 30
+
+      ####################################
+      # Build image (full for main repo) #
+      ####################################
       - name: Build image (full) & push
-        if: "!contains(github.event.head_commit.message, 'quick build')"
+        if: "github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'quick build')"
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
