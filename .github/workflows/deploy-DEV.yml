@@ -100,7 +100,13 @@ jobs:
       # Build image (full for forked repos) #
       #######################################
       - name: Build image (full from forks)
-        if: "github.repository != 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'quick build')"
+        if: |
+          (
+          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) ||
+          (github.event_name == 'push' && github.repository != 'nvuillam/mega-linter')
+          )
+          &&
+          !contains(github.event.head_commit.message, 'quick build')
         id: docker_build
         shell: bash
         run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
@@ -109,8 +115,14 @@ jobs:
       ####################################
       # Build image (full for main repo) #
       ####################################
-      - name: Build image (full) & push
-        if: "github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'quick build')"
+      - name: Build image (full from main repo) & push
+        if: |
+          (
+          (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) ||
+          (github.event_name == 'push' && github.repository == 'nvuillam/mega-linter')
+          )
+          &&
+          !contains(github.event.head_commit.message, 'quick build')
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
