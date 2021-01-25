@@ -5,6 +5,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Fixes
+  - Prevent `unexpected token` error using mega-linter-runner on old versions of node
   - [#293](https://github.com/nvuillam/mega-linter/issues/293) Fix CI for PR from forked repositories
   - [#295](https://github.com/nvuillam/mega-linter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
 
