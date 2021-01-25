@@ -5,6 +5,9 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Fixes
+  - [#293](https://github.com/nvuillam/mega-linter/issues/293) Fix CI for PR from forked repositories
+
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.68 to **0.12.69** on 2021-01-24
 <!-- linter-versions-end -->
