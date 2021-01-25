@@ -60,8 +60,15 @@ Of course, please correct real typos before :)
             + reporter_self.master.config_file_name
         )
         if os.path.isfile(cspell_config_file):
-            with open(cspell_config_file, "r", encoding="utf-8") as json_file:
-                data = json.load(json_file)
+            try:
+                with open(cspell_config_file, "r", encoding="utf-8") as json_file:
+                    data = json.load(json_file)
+            except ValueError:
+                logging.error(
+                    f"[cspell] ERROR: Unable to parse {cspell_config_file} JSON data"
+                    "please fix it manually before running Mega-Linter again"
+                )
+                return []
             prev_words = data.get("words", [])
             new_words = sorted(set(whitelisted_words_clean + prev_words))
             data["words"] = new_words
