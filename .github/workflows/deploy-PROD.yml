@@ -67,7 +67,7 @@ jobs:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
       - run: cd mega-linter-runner && npm install
-      - run: cd mega-linter-runner && BETAID=$(date '+%Y%m%d_%H%M') && npm version prerelease --preid="beta_$BETAID"
+      - run: cd mega-linter-runner && BETAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="beta$BETAID"
         shell: bash
       - run: cd mega-linter-runner && npm publish --tag beta || echo "mega-linter-runner beta not published"
         env:
