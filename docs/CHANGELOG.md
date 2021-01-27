@@ -13,6 +13,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.68 to **0.12.69** on 2021-01-24
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.4 to **0.44.5** on 2021-01-25
+  - [golangci-lint](https://golangci-lint.run/) from 1.35.2 to **1.36.0** on 2021-01-27
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.27.0 to **0.28.0** on 2021-01-27
 <!-- linter-versions-end -->
 
 ## [4.26.0] 2021-01-24
