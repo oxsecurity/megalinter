@@ -30,8 +30,12 @@ linters:
     cli_lint_extra_args:
       - "scanner:run"
       - "--target"
-      - "./"
+      - '"./**/*"'
       - "--violations-cause-error"
+      - "--outfile"
+      - "sfdx-scanner-report.csv"
+      - "--format"
+      - "csv"
     cli_lint_mode: project
     cli_help_extra_args:
       - "scanner:run"

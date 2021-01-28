@@ -523,9 +523,9 @@ class Linter:
     def process_linter(self, file=None):
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
-        logging.debug("Linter command: " + str(command))
+        logging.debug(f"[{self.linter_name}] command: {str(command)}")
         return_code, return_output = self.execute_lint_command(command)
-        logging.debug("Linter result: " + str(return_code) + " " + return_output)
+        logging.debug(f"[{self.linter_name}] result: {str(return_code)} {return_output}")
         return return_code, return_output
 
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
@@ -536,6 +536,8 @@ class Linter:
             if self.cli_lint_mode in ["file", "list_of_files"]
             else self.workspace
         )
+        cwd = os.path.abspath(cwd)
+        logging.debug(f"[{self.linter_name}] CWD: {cwd}")
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(
@@ -543,7 +545,7 @@ class Linter:
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 shell=True,
-                cwd=os.path.realpath(cwd),
+                cwd=cwd,
                 executable=shutil.which("bash")
                 if sys.platform == "win32"
                 else "/bin/bash",
@@ -564,7 +566,7 @@ class Linter:
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                cwd=os.path.realpath(cwd),
+                cwd=cwd,
             )
         return_code = process.returncode
         return_stdout = utils.decode_utf8(process.stdout)
