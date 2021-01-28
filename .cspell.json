@@ -344,6 +344,7 @@
         "clippy",
         "cliui",
         "cljc",
+        "cljkondo",
         "closein",
         "cloudapp",
         "cluster'for",
