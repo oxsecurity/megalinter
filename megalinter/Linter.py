@@ -537,7 +537,7 @@ class Linter:
             else self.workspace
         )
         if type(command) == str:
-            # Call linter with a sub-process
+            # Call linter with a sub-process !
             process = subprocess.run(
                 command,
                 stdout=subprocess.PIPE,
