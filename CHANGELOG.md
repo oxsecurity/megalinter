@@ -16,6 +16,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [protolint](https://github.com/yoheimuta/protolint) from 0.27.0 to **0.28.0** on 2021-01-27
   - [hadolint](https://github.com/hadolint/hadolint) from 1.19.0 to **1.20.0** on 2021-01-28
   - [phpstan](https://phpstan.org/) from 0.12.69 to **0.12.70** on 2021-01-28
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2020.09.09 to **2021.01.20** on 2021-01-28
 <!-- linter-versions-end -->
 
 ## [4.26.0] 2021-01-24

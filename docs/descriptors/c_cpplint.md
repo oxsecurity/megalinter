@@ -81,7 +81,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['cc', 'c', 'cpp', 'cuh', 'cu', 'hpp', 'hxx', 'h++', 'c++', 'hh', 'cxx', 'h'].
+  Default linted extensions are ['cc', 'cxx', 'c++', 'h++', 'cuh', 'hxx', 'h', 'cpp', 'hh', 'hpp', 'cu', 'c'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -197,7 +197,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=cc,c,cpp,cuh,cu,hpp,hxx,h++,c++,hh,cxx,h
+        --extensions=cc,cxx,c++,h++,cuh,hxx,h,cpp,hh,hpp,cu,c
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -211,10 +211,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'cuh', 'hpp', 'hxx', 'h++', 'hh', 'h'} will be assumed to be headers)
+     (by default, only files with extensions {'h++', 'hxx', 'h', 'cuh', 'hh', 'hpp'} will be assumed to be headers)
 
       Examples:
-        --headers=cuh,hpp,hxx,h++,hh,h
+        --headers=h++,hxx,h,cuh,hh,hpp
         --headers=hpp,hxx
         --headers=hpp
 
