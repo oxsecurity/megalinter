@@ -525,7 +525,9 @@ class Linter:
         command = self.build_lint_command(file)
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         return_code, return_output = self.execute_lint_command(command)
-        logging.debug(f"[{self.linter_name}] result: {str(return_code)} {return_output}")
+        logging.debug(
+            f"[{self.linter_name}] result: {str(return_code)} {return_output}"
+        )
         return return_code, return_output
 
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
@@ -563,10 +565,7 @@ class Linter:
 
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             process = subprocess.run(
-                command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                cwd=cwd,
+                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd,
             )
         return_code = process.returncode
         return_stdout = utils.decode_utf8(process.stdout)
