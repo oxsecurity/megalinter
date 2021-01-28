@@ -9,7 +9,7 @@
 
 ## clj-kondo documentation
 
-- Version in Mega-Linter: **2020.09.09**
+- Version in Mega-Linter: **2021.01.20**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -75,7 +75,7 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2020.09.09
+clj-kondo v2021.01.20
 
 
 Options:
@@ -87,6 +87,9 @@ Options:
   --lang <lang>: if lang cannot be derived from the file extension this option will be
     used. Supported values: clj, cljs, cljc.
 
+  --filename <file>: in case stdin is used for linting, use this to set the
+    reported filename.
+
   --cache-dir: when this option is provided, the cache will be resolved to this
     directory. If --cache is false, this option will be ignored.
 
@@ -95,7 +98,7 @@ Options:
   nearest `.clj-kondo` directory in the current and parent directories.
 
   --config <config>: config may be a file or an EDN expression. See
-    https://cljdoc.org/d/clj-kondo/clj-kondo/2020.09.09/doc/configuration
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2021.01.20/doc/configuration
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.
@@ -103,6 +106,8 @@ Options:
   --run-as-pod: run clj-kondo as a babashka pod
 
   --parallel: lint sources in parallel.
+
+  --no-warnings: don't report warnings. Useful for when populating cache.
 
 ```
 
