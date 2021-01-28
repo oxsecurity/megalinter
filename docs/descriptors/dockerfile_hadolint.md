@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **1.19.0**
+- Version in Mega-Linter: **1.20.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
