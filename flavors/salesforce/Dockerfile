@@ -60,6 +60,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                openjdk8 \
                 ansible-lint \
                 libc-dev \
                 libxml2-dev \
@@ -139,6 +140,10 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #OTHER__START
 # GIT installation
 RUN git config --global core.autocrlf true
+
+# SALESFORCE installation
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \

@@ -257,6 +257,10 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
+# SALESFORCE installation
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
+
 # SCALA installation
 RUN curl -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier

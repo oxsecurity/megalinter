@@ -8,6 +8,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Prevent `unexpected token` error using mega-linter-runner on old versions of node
   - [#293](https://github.com/nvuillam/mega-linter/issues/293) Fix CI for PR from forked repositories
   - [#295](https://github.com/nvuillam/mega-linter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
+  - [#311](https://github.com/nvuillam/mega-linter/issues/295) Add java in salesforce flavor descriptor because it is used by Apex PMD
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.68 to **0.12.69** on 2021-01-24
