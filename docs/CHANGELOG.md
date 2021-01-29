@@ -5,6 +5,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.26.1] 2021-01-29
+
 - Fixes
   - Prevent `unexpected token` error using mega-linter-runner on old versions of node
   - [#293](https://github.com/nvuillam/mega-linter/issues/293) Fix CI for PR from forked repositories
@@ -19,7 +24,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [hadolint](https://github.com/hadolint/hadolint) from 1.19.0 to **1.20.0** on 2021-01-28
   - [phpstan](https://phpstan.org/) from 0.12.69 to **0.12.70** on 2021-01-28
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2020.09.09 to **2021.01.20** on 2021-01-28
-<!-- linter-versions-end -->
 
 ## [4.26.0] 2021-01-24
 
