@@ -58,7 +58,7 @@
     "scss-lint": "0.59.0",
     "sfdx-scanner": "2.5.1",
     "shellcheck": "0.7.1",
-    "shfmt": "3.2.1",
+    "shfmt": "3.2.2",
     "snakefmt": "0.2.6",
     "snakemake": "5.32.0",
     "spectral": "5.6.0",
@@ -73,5 +73,5 @@
     "tflint": "0.23.1",
     "v8r": "0.5.0",
     "xmllint": "20910",
-    "yamllint": "1.25.0"
+    "yamllint": "1.26.0"
 }
