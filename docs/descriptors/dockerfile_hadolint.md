@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **1.20.0**
+- Version in Mega-Linter: **1.21.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -96,7 +96,8 @@ Available options:
   -v,--version             Show version
   -c,--config FILENAME     Path to the configuration file
   -f,--format ARG          The output format for the results [tty | json |
-                           checkstyle | codeclimate | codacy] (default: tty)
+                           checkstyle | codeclimate | gitlab_codeclimate |
+                           codacy] (default: tty)
   --ignore RULECODE        A rule to ignore. If present, the ignore list in the
                            config file is ignored
   --trusted-registry REGISTRY (e.g. docker.io)

@@ -8,6 +8,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
   - [shfmt](https://github.com/mvdan/sh) from 3.2.1 to **3.2.2** on 2021-01-30
   - [yamllint](https://yamllint.readthedocs.io/) from 1.25.0 to **1.26.0** on 2021-01-30
+  - [hadolint](https://github.com/hadolint/hadolint) from 1.20.0 to **1.21.0** on 2021-02-02
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.39 to **8.40** on 2021-02-02
+  - [eslint](https://eslint.org) from 7.18.0 to **7.19.0** on 2021-02-02
+  - [phpstan](https://phpstan.org/) from 0.12.70 to **0.12.71** on 2021-02-02
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.23.1 to **0.24.1** on 2021-02-02
 <!-- linter-versions-end -->
 
 ## [4.26.1] 2021-01-29
