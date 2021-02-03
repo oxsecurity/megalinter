@@ -3,7 +3,7 @@
     "arm-ttk": "0.0.0",
     "bash-exec": "5.0.17",
     "black": "19.10",
-    "cfn-lint": "0.44.5",
+    "cfn-lint": "0.44.6",
     "checkstyle": "8.40",
     "chktex": "1.7.6",
     "clippy": "0.0.212",
