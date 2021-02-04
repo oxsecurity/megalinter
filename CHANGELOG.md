@@ -13,6 +13,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [phpstan](https://phpstan.org/) from 0.12.70 to **0.12.71** on 2021-02-02
   - [tflint](https://github.com/terraform-linters/tflint) from 0.23.1 to **0.24.1** on 2021-02-02
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.5 to **0.44.6** on 2021-02-03
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.1 to **1.3.2** on 2021-02-04
 <!-- linter-versions-end -->
 
 ## [4.26.1] 2021-01-29
