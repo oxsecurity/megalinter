@@ -49,6 +49,7 @@
         "TYPESCRIPT_STANDARD",
         "TYPESCRIPT_PRETTIER",
         "XML_XMLLINT",
+        "YAML_PRETTIER",
         "YAML_YAMLLINT",
         "YAML_V8R"
     ]

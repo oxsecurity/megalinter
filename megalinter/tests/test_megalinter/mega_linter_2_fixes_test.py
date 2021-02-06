@@ -59,6 +59,7 @@ class mega_linter_2_fixes(unittest.TestCase):
             # "scala_for_fixes_1.scala",
             "snakemake_for_fixes_1.smk",
             "vbdotnet_for_fixes_1.vb",
+            "yaml_for_fixes_1.yml",
         ]
         # updated_dir = config.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
         # updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}{updated_dir}"

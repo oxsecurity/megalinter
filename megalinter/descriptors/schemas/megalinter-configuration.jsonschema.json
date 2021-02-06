@@ -180,6 +180,7 @@
         "TYPESCRIPT_PRETTIER",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
+        "YAML_PRETTIER",
         "YAML_YAMLLINT",
         "YAML_V8R"
       ],
@@ -6967,6 +6968,75 @@
     "YAML_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/YAML_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for YAML descriptor",
+      "type": "string"
+    },
+    "YAML_PRETTIER_ARGUMENTS": {
+      "$id": "#/properties/YAML_PRETTIER_ARGUMENTS",
+      "description": "YAML_PRETTIER: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_PRETTIER: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "YAML_PRETTIER_CONFIG_FILE": {
+      "$id": "#/properties/YAML_PRETTIER_CONFIG_FILE",
+      "default": ".prettierrc.json",
+      "description": "YAML_PRETTIER: User custom config file name if different from default",
+      "title": "YAML_PRETTIER: Custom config file name",
+      "type": "string"
+    },
+    "YAML_PRETTIER_DISABLE_ERRORS": {
+      "$id": "#/properties/YAML_PRETTIER_DISABLE_ERRORS",
+      "default": false,
+      "title": "YAML_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "YAML_PRETTIER_FILE_EXTENSIONS": {
+      "$id": "#/properties/YAML_PRETTIER_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_PRETTIER: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "YAML_PRETTIER_FILE_NAMES_REGEX": {
+      "$id": "#/properties/YAML_PRETTIER_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_PRETTIER: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "YAML_PRETTIER_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/YAML_PRETTIER_FILTER_REGEX_EXCLUDE",
+      "title": "YAML_PRETTIER: Excluding Regex",
+      "type": "string"
+    },
+    "YAML_PRETTIER_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/YAML_PRETTIER_FILTER_REGEX_INCLUDE",
+      "title": "YAML_PRETTIER: Including Regex",
+      "type": "string"
+    },
+    "YAML_PRETTIER_RULES_PATH": {
+      "$id": "#/properties/YAML_PRETTIER_RULES_PATH",
+      "description": "YAML_PRETTIER: Path where to find linter configuration file",
+      "title": "YAML_PRETTIER: Custom config file path",
       "type": "string"
     },
     "YAML_V8R_ARGUMENTS": {

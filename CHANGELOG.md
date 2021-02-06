@@ -4,6 +4,8 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Format YAML with prettier
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
