@@ -4,7 +4,7 @@
 
 ## ansible-lint documentation
 
-- Version in Mega-Linter: **4.2.0**
+- Version in Mega-Linter: **5.0.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
   - If custom `.ansible-lint.yml` config file is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
@@ -77,41 +77,59 @@ ansible-lint -v -c .ansible-lint.yml myfile.yml
 ### Help content
 
 ```shell
-Usage: ansible-lint [options] [playbook.yml [playbook2 ...]]
+usage: ansible-lint [-h] [-L] [-f {rich,plain,rst,codeclimate}] [-q] [-p]
+                    [--parseable-severity] [--progressive] [-r RULESDIR] [-R]
+                    [--show-relpath] [-t TAGS] [-T] [-v] [-x SKIP_LIST]
+                    [-w WARN_LIST] [--nocolor] [--force-color]
+                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
+                    [--version]
+                    [lintables [lintables ...]]
 
-Options:
-  --version             show program's version number and exit
+positional arguments:
+  lintables             One or more files or paths. When missing it will
+                        enable auto-detection mode.
+
+optional arguments:
   -h, --help            show this help message and exit
   -L                    list all the rules
+  -f {rich,plain,rst,codeclimate}
+                        Format used rules output, (default: rich)
   -q                    quieter, although not silent output
   -p                    parseable output in the format of pep8
   --parseable-severity  parseable output including severity of rule
-  -r RULESDIR           specify one or more rules directories using one or
-                        more -r arguments. Any -r flags override the default
-                        rules in /usr/lib/python3.8/site-
-                        packages/ansiblelint/rules, unless -R is also used.
-  -R                    Use default rules in /usr/lib/python3.8/site-
-                        packages/ansiblelint/rules in addition to any extra
-                        rules directories specified with -r. There is no need
-                        to specify this if no -r flags are used
+  --progressive         Return success if it detects a reduction in number of
+                        violations compared with previous git commit. This
+                        feature works only in git repositories.
+  -r RULESDIR           Specify custom rule directories. Add -R to keep using
+                        embedded rules from /usr/local/lib/python3.8/site-
+                        packages/ansiblelint/rules
+  -R                    Keep default rules when using -r
+  --show-relpath        Display path relative to CWD
   -t TAGS               only check rules whose id/tags match these values
   -T                    list all the tags
   -v                    Increase verbosity level
   -x SKIP_LIST          only check rules whose id/tags do not match these
                         values
-  --nocolor             disable colored output
-  --force-color         Try force colored output (relying on ansible's code)
-  --exclude=EXCLUDE_PATHS
+  -w WARN_LIST          only warn about these rules, unless overridden in
+                        config file defaults to 'experimental'
+  --nocolor             disable colored output, same as NO_COLOR=1
+  --force-color         Force colored output, same as FORCE_COLOR=1
+  --exclude EXCLUDE_PATHS
                         path to directories or files to skip. This option is
                         repeatable.
-  -c C                  Specify configuration file to use.  Defaults to
+  -c CONFIG_FILE        Specify configuration file to use. Defaults to
                         ".ansible-lint"
+  --offline             Disable installation of requirements.yml
+  --version
 ```
 
 ### Installation on mega-linter Docker image
 
-- APK packages (Linux):
-  - [ansible-lint](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible-lint)
+- Dockerfile commands :
+```dockerfile
+RUN pip install --no-cache-dir git+https://github.com/ansible-community/ansible-lint.git "ansible>=2.9,<2.10"
+```
+
 
 ### Example success log
 

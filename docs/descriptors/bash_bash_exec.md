@@ -4,7 +4,7 @@
 
 ## bash-exec documentation
 
-- Version in Mega-Linter: **5.0.17**
+- Version in Mega-Linter: **5.1.0**
 - Visit [Official Web Site](https://tiswww.case.edu/php/chet/bash/bashtop.html){target=_blank}
 
 ## Configuration in Mega-Linter
@@ -63,7 +63,7 @@ bash-exec myfile.sh
 ### Help content
 
 ```shell
-GNU bash, version 5.0.17(1)-release-(x86_64-alpine-linux-musl)
+GNU bash, version 5.1.0(1)-release-(x86_64-alpine-linux-musl)
 Usage:  bash [GNU long option] [option] ...
   bash [GNU long option] [option] script-file ...
 GNU long options:
