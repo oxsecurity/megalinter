@@ -27,7 +27,7 @@ quiet: true
 ################
 # Tags to skip #
 ################
-skip_list:
+skip_list: 
   - '602' # Allow compare to empty string
   - '106' # Role name
   - '204' # Allow string length greater than 160 chars
