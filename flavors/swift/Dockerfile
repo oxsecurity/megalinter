@@ -62,6 +62,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 docker \
                 openrc \
+                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -141,9 +142,6 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 RUN rc-update add docker boot && rc-service docker start || true
 # GIT installation
 RUN git config --global core.autocrlf true
-
-# ansible-lint installation
-RUN pip install --no-cache-dir git+https://github.com/ansible-community/ansible-lint.git "ansible>=2.9,<2.10"
 
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \

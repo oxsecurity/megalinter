@@ -5,7 +5,13 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Format YAML with prettier
+- Linters
+  - Format YAML with prettier
+
+- Fixes
+  - Fix ansible-lint test cases for new version
+  - Update --help expected return code for shfmt ash formatter and revive go linter
+  - Add --write to update files fixed by eslint
 
 - Linter versions upgrades
 <!-- linter-versions-end -->
