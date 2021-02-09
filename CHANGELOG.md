@@ -7,6 +7,17 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Format YAML with prettier
 
 - Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 4.2.0 to **5.0.0** on 2021-02-09
+  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.0.17 to **5.1.0** on 2021-02-09
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.6 to **0.44.7** on 2021-02-09
+  - [hadolint](https://github.com/hadolint/hadolint) from 1.21.0 to **1.22.1** on 2021-02-09
+  - [git_diff](https://git-scm.com) from 2.26.2 to **2.30.1** on 2021-02-09
+  - [php](https://www.php.net) from 7.3.26 to **7.4.15** on 2021-02-09
+  - [phpstan](https://phpstan.org/) from 0.12.71 to **0.12.74** on 2021-02-09
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.28.0 to **0.28.2** on 2021-02-09
+  - [lintr](https://github.com/jimhester/lintr) from 2.0.1.9000 to **0.0.0** on 2021-02-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.32.0 to **5.32.1** on 2021-02-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.27.1 to **0.28.2** on 2021-02-09
 <!-- linter-versions-end -->
 
 ## [4.26.2] 2021-01-29

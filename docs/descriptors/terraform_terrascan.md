@@ -67,7 +67,7 @@ Usage:
   terrascan [command]
 
 Available Commands:
-  init        Initialize Terrascan
+  init        Initializes Terrascan and clones policies from the Terrascan GitHub repository.
   scan        Detect compliance and security violations across Infrastructure as Code.
   server      Run Terrascan as an API server
   version     Terrascan version
