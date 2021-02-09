@@ -9,7 +9,7 @@ file_extensions:
   - ".gradle"
   - ".nf"
 file_names_regex:
-  - 'Jenkinsfile'
+  - "Jenkinsfile"
 linters:
   # npm-groovy-lint
   - class: GroovyNpmGroovyLintLinter

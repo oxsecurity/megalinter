@@ -6,7 +6,7 @@ mega-linter:
   # You can override Mega-Linter flavor used to have faster performances
   # More info at https://nvuillam.github.io/mega-linter/flavors/
   image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
-  script: [ "true" ]
+  script: ["true"]
   variables:
     # All available variables are described in documentation
     # https://nvuillam.github.io/mega-linter/configuration/

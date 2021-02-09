@@ -141,7 +141,7 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
-    cli_lint_fix_arg_name: '--write' # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--write" # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--check"
     test_folder: javascript_prettier

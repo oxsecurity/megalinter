@@ -9,9 +9,9 @@ const runningAsScript = !module.parent;
 
 // Run asynchronously to use the returned status for process.exit
 if (runningAsScript) {
-    (async () => {
-        await new MegaLinterRunnerCli().run(process.argv);
-    })();
+  (async () => {
+    await new MegaLinterRunnerCli().run(process.argv);
+  })();
 }
 
 module.exports = { MegaLinterRunner, MegaLinterRunnerCli };
