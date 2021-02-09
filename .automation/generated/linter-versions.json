@@ -1,5 +1,5 @@
 {
-    "ansible-lint": "5.0.0",
+    "ansible-lint": "0.0.0",
     "arm-ttk": "0.0.0",
     "bash-exec": "5.1.0",
     "black": "19.10",
