@@ -7,6 +7,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linters
   - Format YAML with prettier
+  
+- Core
+  - Lint docker image using [Dockle](https://github.com/goodwithtech/dockle
 
 - Fixes
   - Fix ansible-lint test cases for new version

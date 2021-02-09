@@ -113,3 +113,4 @@ jobs:
           echo "CI_ENV=${CI_ENV}"
           docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:latest
         timeout-minutes: 30
+
