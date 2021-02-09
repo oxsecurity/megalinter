@@ -39,6 +39,7 @@
         "SWIFT_SWIFTLINT",
         "TEKTON_TEKTON_LINT",
         "XML_XMLLINT",
+        "YAML_PRETTIER",
         "YAML_YAMLLINT",
         "YAML_V8R"
     ]

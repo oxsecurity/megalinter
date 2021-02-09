@@ -98,7 +98,6 @@ RUN apk add --update --no-cache \
                 ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
-                ansible-lint \
                 R \
                 R-dev \
                 R-doc \
@@ -265,6 +264,9 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN curl -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
+
+# ansible-lint installation
+RUN pip install --no-cache-dir git+https://github.com/ansible-community/ansible-lint.git "ansible>=2.9,<2.10"
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"

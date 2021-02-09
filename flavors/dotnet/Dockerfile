@@ -68,7 +68,6 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
-                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -123,7 +122,8 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
-                tekton-lint
+                tekton-lint \
+                prettier
 #NPM__END
 
 # Add node packages to path #
@@ -165,6 +165,9 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
         | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
+
+# ansible-lint installation
+RUN pip install --no-cache-dir git+https://github.com/ansible-community/ansible-lint.git "ansible>=2.9,<2.10"
 
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"

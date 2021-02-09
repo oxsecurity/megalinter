@@ -7,6 +7,7 @@
 
 | Linter                       | Configuration key        |
 |------------------------------|--------------------------|
+| [prettier](yaml_prettier.md) | [YAML](yaml_prettier.md) |
 | [yamllint](yaml_yamllint.md) | [YAML](yaml_yamllint.md) |
 | [v8r](yaml_v8r.md)           | [YAML](yaml_v8r.md)      |
 

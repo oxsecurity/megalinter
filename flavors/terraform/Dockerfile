@@ -63,7 +63,6 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -117,7 +116,8 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
-                tekton-lint
+                tekton-lint \
+                prettier
 #NPM__END
 
 # Add node packages to path #
@@ -141,6 +141,9 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #OTHER__START
 # GIT installation
 RUN git config --global core.autocrlf true
+
+# ansible-lint installation
+RUN pip install --no-cache-dir git+https://github.com/ansible-community/ansible-lint.git "ansible>=2.9,<2.10"
 
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \

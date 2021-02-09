@@ -10,9 +10,9 @@
 ############
 env:
   browser: true
-  es6: true
+  "es6" : true
   jest: true
 
 Here: there
 
-something: "For Nothing"
+something : "For Nothing"

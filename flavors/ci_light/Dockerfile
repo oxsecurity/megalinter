@@ -92,7 +92,8 @@ RUN npm install --no-cache --ignore-scripts \
                 npm-groovy-lint \
                 jsonlint \
                 eslint eslint-plugin-jsonc \
-                v8r
+                v8r \
+                prettier
 #NPM__END
 
 # Add node packages to path #
