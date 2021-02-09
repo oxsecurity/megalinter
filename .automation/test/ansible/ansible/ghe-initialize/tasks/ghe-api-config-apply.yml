@@ -1,19 +1,10 @@
 ---
 - block:
-  # ##################################
-  # # Run config to take in settings #
-  # ##################################
-  # - name: Run ghe-config-apply for Settings to Take Effect
-  #   shell: "nohup ghe-config-apply </dev/null >/dev/null 2>&1 &"
-  #   async: 45
-  #   poll: 0
-  #   args:
-  #     executable: "/bin/bash"
 
   ##################################
   # Run config to take in settings #
   ##################################
-  - name: Run Configure for Settings to Take Effect
+  - name: RunConfigure
     uri:
       url: "https://{{ ansible_host }}:8443/setup/api/configure"
       method: POST
@@ -27,7 +18,7 @@
   #################################################################
   # Wait for 'ghe-config-apply' to be completed before continuing #
   #################################################################
-  - name: Ensure ghe-config-apply is completed
+  - name: EnsureCompleted
     # https://docs.ansible.com/ansible/uri_module.html
     # yamllint disable-line
     # https://developer.github.com/enterprise/v3/enterprise-admin/management_console/#check-configuration-status
@@ -49,7 +40,7 @@
   #####################################
   # Need to remove the license file and settings
   # files that were copied to the ghe server
-  - name: Remove temp Files from GHE
+  - name: RemoveTempFiles
     become: true
     file:
       path: "{{ item }}"

@@ -3,7 +3,7 @@
   ###############################
   # Wait for admin port to open #
   ###############################
-  - name: Wait for Admin port to come up (Port 8443)
+  - name: WaitforAdmin
     # yamllint disable-line
     ## Documentation: http://docs.ansible.com/ansible/latest/modules/wait_for_module.html
     ## Helpful Google: ansible wait_for
@@ -18,7 +18,7 @@
   #################################
   # Wait for successful open port #
   #################################
-  - name: Wait for http status 200
+  - name: Wait200
     changed_when: false
     uri:
       url: "https://{{ ansible_host }}:8443"
@@ -34,7 +34,7 @@
   #######################################################
   # Copy of the file will allow for Ansible Vault to decrypt the file
   # and place it on the new remote machine
-  - name: Copy License File to GHE
+  - name: CopyLicense
     become: true
     copy:
       src: "{{ role_path }}/files/ghe-license.ghl"
@@ -48,7 +48,7 @@
   #######################################################
   # Copy of the file will allow for Ansible Vault to decrypt the file
   # and place it on the new remote machine
-  - name: Copy settings.json File to GHE
+  - name: CopyJsonSettingsGHE
     become: true
     template:
       src: "settings.json.j2"
@@ -60,7 +60,7 @@
   ########################################################
   # Set up Admin password, License, and Initial Settings #
   ########################################################
-  - name: Setup License, Admin Password, and Initial Settings
+  - name: SetupLicense
     command: curl --fail -Lk \
       -X POST "https://{{ ansible_host }}:8443/setup/api/start" \
       -F license=@/tmp/ghe-license.ghl \
@@ -74,7 +74,7 @@
   ###################################
   # Set the GHE Admin Password fact #
   ###################################
-  - name: Set the GitHub Admin password fact
+  - name: SetPassword
     set_fact:
       github_admin_password: "{{ github_admin_password }}"
 

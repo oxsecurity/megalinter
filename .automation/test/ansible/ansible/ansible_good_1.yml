@@ -34,9 +34,9 @@
 - hosts: github_primary
   tasks:
     - block:
-        - name: GHE-Config-Apply
+        - name: GHE_Config_Apply
           include_role:
-            name: ghe-initialize
+            name: ghe_initialize
             tasks_from: ghe-config-apply.yml
       tags:
         - github

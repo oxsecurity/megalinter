@@ -9,7 +9,8 @@
     # Need to run the tasks to stand up the GHE instance #
     ######################################################
     # Configure the base system
-    - include_tasks: ghe-initial-configuration.yml
+    - name: rhaaaa
+      include_tasks: ghe-initial-configuration.yml
 
   ######################
   # Set the tags block #
@@ -32,7 +33,8 @@
     # Need to run the tasks to config LDAP on the GHE instance #
     ############################################################
     # Configure the base system
-    - include_tasks: ghe-ldap-configuration.yml
+    - name: rhaaaa2
+      include_tasks: ghe-ldap-configuration.yml
 
   ######################
   # Set the tags block #
@@ -53,7 +55,8 @@
     # Need to run the tasks to stand up the GHE instance #
     ######################################################
     # Configure the base system
-    - include_tasks: ghe-api-config-apply.yml
+    - name: rhaaaa6
+      include_tasks: ghe-api-config-apply.yml
 
   ######################
   # Set the tags block #
