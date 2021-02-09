@@ -18,7 +18,7 @@ linters:
       - "--exclude"
       - "/"
       - "--include"
-    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround to allow fix
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround to allow fix
     cli_lint_fix_remove_args:
       - "--check"
     examples:

@@ -3,8 +3,8 @@ descriptor_type: language
 descriptor_flavors:
   - dotnet
 file_extensions:
-  - '.c'
-  - '.h'
+  - ".c"
+  - ".h"
 linters:
   # CPPLINT
   - linter_name: cpplint

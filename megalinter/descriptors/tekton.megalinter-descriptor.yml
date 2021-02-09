@@ -6,7 +6,7 @@ file_extensions:
   - ".yml"
   - ".yaml"
 file_contains_regex:
-  - 'apiVersion: tekton'
+  - "apiVersion: tekton"
 linters:
   # TEKTON-LINT
   - linter_name: tekton-lint

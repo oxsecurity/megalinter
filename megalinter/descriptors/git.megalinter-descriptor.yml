@@ -24,4 +24,3 @@ linters:
     cli_help_arg_name: "--help"
     examples:
       - "git diff --check"
-
