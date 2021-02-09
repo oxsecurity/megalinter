@@ -4,7 +4,6 @@
 
 ## lintr documentation
 
-- Version in Mega-Linter: **2.0.1.9000**
 - Visit [Official Web Site](https://github.com/jimhester/lintr#readme){target=_blank}
 - See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration){target=_blank}
   - If custom `.lintr` config file is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr){target=_blank} will be used
@@ -68,6 +67,9 @@ R --slave -e "errors <- lintr::lint('myfile.r'); print(errors); quit(save = 'no'
 ### Help content
 
 ```shell
+Warning message:
+In options(stringsAsFactors = TRUE) :
+  'options(stringsAsFactors = TRUE)' is deprecated and will be disabled
 No documentation for ‘lintr’ in specified packages and libraries:
 you could try ‘??lintr’
 ```

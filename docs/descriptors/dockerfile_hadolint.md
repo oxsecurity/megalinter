@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **1.21.0**
+- Version in Mega-Linter: **1.22.1**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -86,14 +86,16 @@ hadolint --config .hadolint.yml Dockerfile
 ```shell
 hadolint - Dockerfile Linter written in Haskell
 
-Usage: hadolint [-v|--version] [-c|--config FILENAME] [-f|--format ARG]
-                [DOCKERFILE...] [--ignore RULECODE]
+Usage: hadolint [-v|--version] [--no-fail] [-c|--config FILENAME]
+                [-f|--format ARG] [DOCKERFILE...] [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
   Lint Dockerfile for errors and best practices
 
 Available options:
   -h,--help                Show this help text
   -v,--version             Show version
+  --no-fail                Don't exit with a failure status code when any rule
+                           is violated
   -c,--config FILENAME     Path to the configuration file
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
