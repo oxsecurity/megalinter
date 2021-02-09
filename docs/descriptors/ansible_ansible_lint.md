@@ -4,7 +4,6 @@
 
 ## ansible-lint documentation
 
-- Version in Mega-Linter: **5.0.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
   - If custom `.ansible-lint.yml` config file is not found, [.ansible-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
@@ -77,23 +76,21 @@ ansible-lint -v -c .ansible-lint.yml myfile.yml
 ### Help content
 
 ```shell
-usage: ansible-lint [-h] [-L] [-f {rich,plain,rst,codeclimate}] [-q] [-p]
+usage: ansible-lint [-h] [-L] [-f {rich,plain,rst}] [-q] [-p]
                     [--parseable-severity] [--progressive] [-r RULESDIR] [-R]
                     [--show-relpath] [-t TAGS] [-T] [-v] [-x SKIP_LIST]
                     [-w WARN_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
-                    [--version]
-                    [lintables [lintables ...]]
+                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--version]
+                    [playbook [playbook ...]]
 
 positional arguments:
-  lintables             One or more files or paths. When missing it will
+  playbook              One or more files or paths. When missing it will
                         enable auto-detection mode.
 
 optional arguments:
   -h, --help            show this help message and exit
   -L                    list all the rules
-  -f {rich,plain,rst,codeclimate}
-                        Format used rules output, (default: rich)
+  -f {rich,plain,rst}   Format used rules output, (default: rich)
   -q                    quieter, although not silent output
   -p                    parseable output in the format of pep8
   --parseable-severity  parseable output including severity of rule
@@ -101,7 +98,7 @@ optional arguments:
                         violations compared with previous git commit. This
                         feature works only in git repositories.
   -r RULESDIR           Specify custom rule directories. Add -R to keep using
-                        embedded rules from /usr/local/lib/python3.8/site-
+                        embedded rules from /usr/lib/python3.8/site-
                         packages/ansiblelint/rules
   -R                    Keep default rules when using -r
   --show-relpath        Display path relative to CWD
@@ -112,15 +109,14 @@ optional arguments:
                         values
   -w WARN_LIST          only warn about these rules, unless overridden in
                         config file defaults to 'experimental'
-  --nocolor             disable colored output, same as NO_COLOR=1
-  --force-color         Force colored output, same as FORCE_COLOR=1
+  --nocolor             disable colored output
+  --force-color         Try force colored output (relying on ansible's code)
   --exclude EXCLUDE_PATHS
                         path to directories or files to skip. This option is
                         repeatable.
   -c CONFIG_FILE        Specify configuration file to use. Defaults to
                         ".ansible-lint"
-  --offline             Disable installation of requirements.yml
-  --version
+  --version             show program's version number and exit
 ```
 
 ### Installation on mega-linter Docker image
