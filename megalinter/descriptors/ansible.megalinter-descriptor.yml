@@ -26,5 +26,5 @@ linters:
       - "ansible-lint -v myfile.yml"
       - "ansible-lint -v -c .ansible-lint.yml myfile.yml"
     install:
-      dockerfile:
-        - RUN pip install --no-cache-dir git+https://github.com/ansible-community/ansible-lint.git "ansible>=2.9,<2.10"
+      apk:
+        - ansible-lint
