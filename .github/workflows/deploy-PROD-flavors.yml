@@ -24,6 +24,7 @@ on:
       - "megalinter/**"
       - "flavors/**"
       - "**/linter-versions.json"
+      - "TEMPLATES/**"
 
 ###############
 # Set the Job #
