@@ -111,12 +111,14 @@ def generate_flavor(flavor, flavor_info):
         os.makedirs(os.path.dirname(flavor_file), exist_ok=True)
         with open(flavor_file, "w", encoding="utf-8") as outfile:
             json.dump(flavor_info, outfile, indent=4, sort_keys=True)
+            outfile.write("\n")
         # Write in global flavors files
         with open(GLOBAL_FLAVORS_FILE, "r", encoding="utf-8") as json_file:
             global_flavors = json.load(json_file)
             global_flavors[flavor] = flavor_info
         with open(GLOBAL_FLAVORS_FILE, "w", encoding="utf-8") as outfile:
             json.dump(global_flavors, outfile, indent=4, sort_keys=True)
+            outfile.write("\n")
         # Flavored dockerfile
         dockerfile = f"{FLAVORS_DIR}/{flavor}/Dockerfile"
         if not os.path.isdir(os.path.dirname(dockerfile)):
@@ -1303,6 +1305,7 @@ def add_in_config_schema_file(variables):
     if updated is True:
         with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
             json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            outfile.write("\n")
 
 
 def copy_md_file(source_file, target_file):
@@ -1592,6 +1595,7 @@ def generate_json_schema_enums():
     )
     with open(DESCRIPTOR_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
+        outfile.write("\n")
     # Update list of descriptors and linters in configuration schema
     descriptors, _linters_by_type = list_descriptors_for_build()
     linters = megalinter.linter_factory.list_all_linters()
@@ -1603,6 +1607,7 @@ def generate_json_schema_enums():
     json_schema["definitions"]["enum_linter_keys"]["enum"] = [x.name for x in linters]
     with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
         json.dump(json_schema, outfile, indent=2, sort_keys=True)
+        outfile.write("\n")
 
 
 # Collect linters info from linter url, later used to build link preview card within linter documentation
