@@ -171,11 +171,12 @@ jobs:
         id: dockle
         run: |
           VERSION=$(
-           curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | \
-           grep '"tag_name":' | \
-           sed -E 's/.*"v([^"]+)".*/\1/' \
-          ) && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-            goodwithtech/dockle:v${VERSION} nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
+          curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | \
+          grep '"tag_name":' | \
+          sed -E 's/.*"v([^"]+)".*/\1/' \
+          ) && curl -L -o dockle.deb https://github.com/goodwithtech/dockle/releases/download/v${VERSION}/dockle_${VERSION}_Linux-64bit.deb \
+          && sudo dpkg -i dockle.deb && rm dockle.deb \
+          && dockle nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
