@@ -6822,7 +6822,7 @@
     },
     "UPDATED_SOURCES_REPORTER": {
       "$id": "#/properties/UPDATED_SOURCES_REPORTER",
-      "title": "Activates/Deactivated updated sources reporter",
+      "title": "Activates/Deactivates updated sources reporter",
       "type": "boolean"
     },
     "UPDATED_SOURCES_REPORTER_DIR": {
