@@ -176,7 +176,8 @@ jobs:
           sed -E 's/.*"v([^"]+)".*/\1/' \
           ) && curl -L -o dockle.deb https://github.com/goodwithtech/dockle/releases/download/v${VERSION}/dockle_${VERSION}_Linux-64bit.deb \
           && sudo dpkg -i dockle.deb && rm dockle.deb \
-          && dockle nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
+          && docker save nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} -o /tmp/mega-linter.tar
+          && dockle --input /tmp/mega-linter.tar
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
