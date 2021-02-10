@@ -46,6 +46,7 @@
         "TEKTON_TEKTON_LINT",
         "VBDOTNET_DOTNET_FORMAT",
         "XML_XMLLINT",
+        "YAML_PRETTIER",
         "YAML_YAMLLINT",
         "YAML_V8R"
     ]

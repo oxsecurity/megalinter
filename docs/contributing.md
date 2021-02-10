@@ -19,23 +19,27 @@ python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
 ```
 
+_(if you have a permission denied issue on Windows, please check [this solution](https://stackoverflow.com/a/57168165/7113625))_
+
 ### With write access
 
 1. Clone the repository (only if you have write access)
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
-4. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
-5. Push and [submit a pull request][pr]
-6. Pat yourself on the back and wait for your pull request to be reviewed and merged.
+4. Update **CHANGELOG.md** (the root one, not the one in /docs)
+5. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
+6. Push and [submit a pull request][pr]
+7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
 ### Without write access
 
 1. [Fork][fork] and clone the repository
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
-4. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
-5. Push to your fork and [submit a pull request][pr]
-6. Pat your self on the back and wait for your pull request to be reviewed and merged.
+4. Update **CHANGELOG.md** (the root one, not the one in /docs)
+5. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
+6. Push to your fork and [submit a pull request][pr]
+7. Pat your self on the back and wait for your pull request to be reviewed and merged.
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 

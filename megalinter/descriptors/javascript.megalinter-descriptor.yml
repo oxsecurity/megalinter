@@ -141,7 +141,7 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
-    cli_lint_fix_arg_name: '--megalinter-fix-flag' # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--write" # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--check"
     test_folder: javascript_prettier
@@ -150,7 +150,7 @@ linters:
     examples:
       - "prettier --check myfile.js"
       - "prettier --config .prettierrc.json --check myfile.js"
-      - "prettier --config .prettierrc.json myfile.js" # format
+      - "prettier --config .prettierrc.json --write myfile.js" # format
     install:
       npm:
         - "prettier"

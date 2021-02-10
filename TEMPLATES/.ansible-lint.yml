@@ -27,8 +27,9 @@ quiet: true
 ################
 # Tags to skip #
 ################
-skip_list:
+skip_list: 
   - '602' # Allow compare to empty string
+  - '106' # Role name
   - '204' # Allow string length greater than 160 chars
   - '301' # False positives for running command shells
   - '303' # Allow git commands for push, add, etc...

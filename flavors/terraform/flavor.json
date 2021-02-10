@@ -41,6 +41,7 @@
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
         "XML_XMLLINT",
+        "YAML_PRETTIER",
         "YAML_YAMLLINT",
         "YAML_V8R"
     ]

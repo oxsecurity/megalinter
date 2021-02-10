@@ -3,7 +3,7 @@
   ########################################
   # Copy the script to the local machine #
   ########################################
-  - name: Copy the script to the GHE instance
+  - name: CopyScript
     become: true
     template:
       force: 'yes'
@@ -16,7 +16,7 @@
   ##################################
   # Run config to take in settings #
   ##################################
-  - name: Run ghe-config-apply for Settings to Take Effect
+  - name: RunConfigSettings
     shell: "nohup ./tmp/ghe-config-apply.sh </dev/null >/dev/null 2>&1 &"
     async: 300
     poll: 0

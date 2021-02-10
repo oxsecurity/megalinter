@@ -13,6 +13,7 @@
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "XML_XMLLINT",
+        "YAML_PRETTIER",
         "YAML_YAMLLINT",
         "YAML_V8R"
     ]

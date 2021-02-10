@@ -8,9 +8,9 @@ file_extensions:
   - ".yaml"
   - ".json"
 file_contains_regex:
-  - 'apiVersion:'
+  - "apiVersion:"
   - 'kustomize\.config\.k8s\.io'
-  - 'tekton'
+  - "tekton"
 linters:
   # KUBEVAL
   - linter_name: kubeval

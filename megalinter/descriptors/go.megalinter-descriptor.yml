@@ -61,7 +61,7 @@ linters:
     config_file_name: revive.toml
     cli_config_arg_name: "-config"
     cli_help_arg_name: "-help"
-    help_command_return_code: 2
+    help_command_return_code: 0
     linter_version_cache: "0.0.0"
     examples:
       - "revive myfile.go"
