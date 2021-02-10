@@ -3,7 +3,11 @@ set -eu
 
 PYTHONPATH=.
 export PYTHONPATH
-python ./.automation/build.py
+if type python3 >/dev/null 2>/dev/null; then
+  python3 ./.automation/build.py
+else
+  python ./.automation/build.py
+fi
 
 # Prettify markdown tables
 echo "Formatting markdown tables..."
