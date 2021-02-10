@@ -1775,12 +1775,19 @@ def manage_output_variables():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        force=True,
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[logging.StreamHandler(sys.stdout)],
-    )
+    try:
+        logging.basicConfig(
+            force=True,
+            level=logging.INFO,
+            format="%(asctime)s [%(levelname)s] %(message)s",
+            handlers=[logging.StreamHandler(sys.stdout)],
+        )
+    except ValueError:
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s [%(levelname)s] %(message)s",
+            handlers=[logging.StreamHandler(sys.stdout)],
+        )
 
     # noinspection PyTypeChecker
     collect_linter_previews()
