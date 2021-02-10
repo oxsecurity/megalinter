@@ -414,6 +414,7 @@
         "dotenv",
         "dotenvlinter",
         "dotfill",
+        "dpkg",
         "drmaa",
         "dropdtd",
         "dryrun",
