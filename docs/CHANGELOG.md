@@ -13,6 +13,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Update --help expected return code for shfmt ash formatter and revive go linter
   - Add --write to update files fixed by eslint
   - Pimp Mega-Linter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/nvuillam/mega-linter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
+  - Increase max line length to 500 in yaml-lint default configiguration
 
 - Linter versions upgrades
   - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 4.2.0 to **5.0.0** on 2021-02-09

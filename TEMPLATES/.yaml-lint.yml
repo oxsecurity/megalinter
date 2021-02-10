@@ -11,4 +11,5 @@ rules:
   new-lines:
     level: warning
     type: unix
-
+  line-length:
+    max: 500
