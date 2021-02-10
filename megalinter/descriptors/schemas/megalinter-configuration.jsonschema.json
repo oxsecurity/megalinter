@@ -6821,6 +6821,16 @@
       "title": "TYPESCRIPT_STANDARD: Including Regex",
       "type": "string"
     },
+    "UPDATED_SOURCES_REPORTER": {
+      "$id": "#/properties/UPDATED_SOURCES_REPORTER",
+      "title": "Activates/Deactivates updated sources reporter",
+      "type": "boolean"
+    },
+    "UPDATED_SOURCES_REPORTER_DIR": {
+      "$id": "#/properties/UPDATED_SOURCES_REPORTER_DIR",
+      "title": "Sub-folder of reports folder containing updated sources",
+      "type": "string"
+    },
     "VALIDATE_ALL_CODEBASE": {
       "$id": "#/properties/SHOW_ELAPSED_TIME",
       "default": true,
