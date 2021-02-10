@@ -20,10 +20,13 @@ on:
       - "master"
       - "FlavoredMegaLinters"
     paths:
+      - ".github/workflows/**"
       - "Dockerfile"
-      - "megalinter/**"
       - "flavors/**"
+      - "megalinter/**"
+      - "mega-linter-runner/**"
       - "**/linter-versions.json"
+      - "TEMPLATES/**"
 
 ###############
 # Set the Job #
