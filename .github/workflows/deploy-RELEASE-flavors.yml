@@ -94,4 +94,7 @@ jobs:
           grep '"tag_name":' | \
           sed -E 's/.*"v([^"]+)".*/\1/' \
           ) && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            goodwithtech/dockle:v${VERSION} nvuillam/mega-linter-${{ matrix.flavor }}:${{ github.event.release.tag_name }} || \
+            docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
             goodwithtech/dockle:v${VERSION} nvuillam/mega-linter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}
+
