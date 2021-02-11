@@ -163,22 +163,6 @@ jobs:
         run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 10
 
-      #####################################
-      # Check Mega-Linter image security  #
-      #####################################
-      - name: Check Mega-Linter image security with Dockle
-        if: "!contains(github.event.head_commit.message, 'quick build')"
-        id: dockle
-        run: |
-          VERSION=$(
-          curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | \
-          grep '"tag_name":' | \
-          sed -E 's/.*"v([^"]+)".*/\1/' \
-          ) && curl -L -o dockle.deb https://github.com/goodwithtech/dockle/releases/download/v${VERSION}/dockle_${VERSION}_Linux-64bit.deb \
-          && sudo dpkg -i dockle.deb && rm dockle.deb \
-          && docker save nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} -o /tmp/mega-linter.tar
-          && dockle --input /tmp/mega-linter.tar
-
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
