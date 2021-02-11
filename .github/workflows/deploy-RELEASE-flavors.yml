@@ -83,3 +83,15 @@ jobs:
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh
+
+      ##############################################
+      # Check Docker image consistency with Dockle #
+      ##############################################
+      - name: Check image security with Dockle
+        run: |
+          VERSION=$(
+          curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | \
+          grep '"tag_name":' | \
+          sed -E 's/.*"v([^"]+)".*/\1/' \
+          ) && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            goodwithtech/dockle:v${VERSION} nvuillam/mega-linter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}

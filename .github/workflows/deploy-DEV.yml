@@ -135,7 +135,7 @@ jobs:
         run: .automation/upload-docker.sh || true
 
       #####################################
-      # Run Linter against Test code base #
+      # Run Linter test cases #
       #####################################
       - name: Run Test Cases
         shell: bash
