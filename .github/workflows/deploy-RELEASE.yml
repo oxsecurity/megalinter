@@ -94,6 +94,7 @@ jobs:
       # Check Docker image consistency with Dockle #
       ##############################################
       - name: Check image security with Dockle
+        continue-on-error: true
         run: |
           VERSION=$(
           curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | \
