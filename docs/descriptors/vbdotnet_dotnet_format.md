@@ -4,7 +4,7 @@
 
 ## dotnet-format documentation
 
-- Version in Mega-Linter: **4.1.131201**
+- Version in Mega-Linter: **5.0.211103**
 - Visit [Official Web Site](https://github.com/dotnet/format#readme){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
@@ -58,154 +58,26 @@ dotnet-format --folder --exclude / --include myfile.vb
 
 ```shell
 dotnet-format:
-
   dotnet-format
 
 Usage:
-
-  dotnet-format
-  [options]
-  [<project>]
+  dotnet-format [options] [<workspace>]
 
 Arguments:
-  <project>
-               The
-               solution
-               or
-               project
-               file
-               to
-               operate
-               on.
-               If
-               a
-               file
-               is
-               not
-               specified,
-               the
-               command
-               will
-               search
-               the
-               current
-               directory
-               for
-               one.
+  <workspace>    A path to a solution file, a project file, or a folder containing a solution or project file. If a path is not specified then the current directory is used.
 
 Options:
-  -f, --folder <folder>
-                                  Whether
-                                  to
-                                  treat
-                                  the
-                                  `<project>`
-                                  path
-                                  as
-                                  a
-                                  folder
-                                  of
-                                  files.
-                                  [default:
-                                  ]
-  --files, --include <include>
-                                  A
-                                  list
-                                  of
-                                  relative
-                                  file
-                                  or
-                                  folder
-                                  paths
-                                  to
-                                  include
-                                  in
-                                  formatting.
-                                  All
-                                  files
-                                  are
-                                  formatted
-                                  if
-                                  empty.
-                                  [default:
-                                  System.String[]]
-  --exclude <exclude>
-                                  A
-                                  list
-                                  of
-                                  relative
-                                  file
-                                  or
-                                  folder
-                                  paths
-                                  to
-                                  exclude
-                                  from
-                                  formatting.
-                                  [default:
-                                  System.String[]]
-  --check, --dry-run
-                                  Formats
-                                  files
-                                  without
-                                  saving
-                                  changes
-                                  to
-                                  disk.
-                                  Terminates
-                                  with
-                                  a
-                                  non-zero
-                                  exit
-                                  code
-                                  if
-                                  any
-                                  files
-                                  were
-                                  formatted.
-  --report <report>
-                                  Accepts
-                                  a
-                                  file
-                                  path,
-                                  which
-                                  if
-                                  provided,
-                                  will
-                                  produce
-                                  a
-                                  json
-                                  report
-                                  in
-                                  the
-                                  given
-                                  directory.
-                                  [default:
-                                  ]
-  -v, --verbosity <verbosity>
-                                  Set
-                                  the
-                                  verbosity
-                                  level.
-                                  Allowed
-                                  values
-                                  are
-                                  q[uiet],
-                                  m[inimal],
-                                  n[ormal],
-                                  d[etailed],
-                                  and
-                                  diag[nostic]
-  --version
-                                  Show
-                                  version
-                                  information
-  -?, -h, --help
-                                  Show
-                                  help
-                                  and
-                                  usage
-                                  information
+  -f, --folder                                                               Whether to treat the `<workspace>` argument as a simple folder of files.
+  -w, --fix-whitespace                                                       Run whitespace formatting. Run by default when not applying fixes.
+  -s, --fix-style <error|info|warn>                                          Run code style analyzers and apply fixes.
+  -a, --fix-analyzers <error|info|warn>                                      Run 3rd party analyzers and apply fixes.
+  --include <include>                                                        A list of relative file or folder paths to include in formatting. All files are formatted if empty. [default: System.String[]]
+  --exclude <exclude>                                                        A list of relative file or folder paths to exclude from formatting. [default: System.String[]]
+  --check                                                                    Formats files without saving changes to disk. Terminates with a non-zero exit code if any files were formatted.
+  --report <report-path>                                                     Accepts a file path, which if provided, will produce a json report in the given directory. [default: ]
+  -v, --verbosity <d|detailed|diag|diagnostic|m|minimal|n|normal|q|quiet>    Set the verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]
+  --version                                                                  Show version information
+  -?, -h, --help                                                             Show help and usage information
 
 ```
 
