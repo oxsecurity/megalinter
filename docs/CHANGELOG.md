@@ -31,6 +31,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.32.0 to **5.32.1** on 2021-02-09
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.27.1 to **0.28.2** on 2021-02-09
   - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.0.0 to **0.0.0** on 2021-02-09
+  - [dotnet-format](https://github.com/dotnet/format) from 4.1.131201 to **5.0.211103** on 2021-02-12
+  - [stylelint](https://stylelint.io) from 13.9.0 to **13.10.0** on 2021-02-12
+  - [phpstan](https://phpstan.org/) from 0.12.74 to **0.12.75** on 2021-02-12
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.0.4 to **7.1.2** on 2021-02-12
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.32.1 to **5.32.2** on 2021-02-12
 <!-- linter-versions-end -->
 
 ## [4.26.2] 2021-01-29
