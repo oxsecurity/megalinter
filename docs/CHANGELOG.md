@@ -36,6 +36,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [phpstan](https://phpstan.org/) from 0.12.74 to **0.12.75** on 2021-02-12
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.0.4 to **7.1.2** on 2021-02-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.32.1 to **5.32.2** on 2021-02-12
+  - [coffeelint](http://www.coffeelint.org) from 4.1.2 to **4.1.3** on 2021-02-14
+  - [eslint](https://eslint.org) from 7.19.0 to **7.20.0** on 2021-02-14
+  - [phpstan](https://phpstan.org/) from 0.12.75 to **0.12.76** on 2021-02-14
 <!-- linter-versions-end -->
 
 ## [4.26.2] 2021-01-29
