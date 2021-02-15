@@ -92,10 +92,14 @@ class EmailReporter(Reporter):
 
         # send the message
         try:
-            server = smtplib.SMTP_SSL(smtp_host, smtp_port,)
+            server = smtplib.SMTP_SSL(
+                smtp_host,
+                smtp_port,
+            )
             server.ehlo()
             server.login(
-                smtp_username, smtp_password,
+                smtp_username,
+                smtp_password,
             )
             server.sendmail(sender, recipients, the_msg)
             server.quit()
