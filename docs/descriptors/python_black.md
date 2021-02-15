@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in Mega-Linter: **19.10**
+- Version in Mega-Linter: **20.8**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
   - If custom `.python-black` config file is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
@@ -98,13 +98,6 @@ Options:
                                   Black's output. [default: per-file auto-
                                   detection]
 
-  --py36                          Allow using Python 3.6-only syntax on all
-                                  input files.  This will put trailing commas
-                                  in function signatures and calls also after
-                                  *args and **kwargs. Deprecated; use
-                                  --target-version instead. [default: per-file
-                                  auto-detection]
-
   --pyi                           Format all input files like typing stubs
                                   regardless of file extension (useful when
                                   piping source on standard input).
@@ -114,11 +107,14 @@ Options:
   --check                         Don't write the files back, just return the
                                   status.  Return code 0 means nothing would
                                   change.  Return code 1 means some files
-                                  would be reformatted.  Return code 123 means
+                                  would be reformatted. Return code 123 means
                                   there was an internal error.
 
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
+
+  --color / --no-color            Show colored diff. Only applies when
+                                  `--diff` is given.
 
   --fast / --safe                 If --fast given, skip temporary sanity
                                   checks. [default: --safe]
@@ -138,9 +134,13 @@ Options:
                                   paths are excluded. Use forward slashes for
                                   directories on all platforms (Windows, too).
                                   Exclusions are calculated first, inclusions
-                                  later.  [default: /(\.eggs|\.git|\.hg|\.mypy
-                                  _cache|\.nox|\.tox|\.venv|\.svn|_build|buck-
-                                  out|build|dist)/]
+                                  later.  [default: /(\.direnv|\.eggs|\.git|\.
+                                  hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_bu
+                                  ild|buck-out|build|dist)/]
+
+  --force-exclude TEXT            Like --exclude, but files and directories
+                                  matching this regex will be excluded even
+                                  when they are passed explicitly as arguments
 
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
@@ -151,7 +151,7 @@ Options:
                                   --exclude=.
 
   --version                       Show the version and exit.
-  --config FILE                   Read configuration from PATH.
+  --config FILE                   Read configuration from FILE path.
   -h, --help                      Show this message and exit.
 ```
 
