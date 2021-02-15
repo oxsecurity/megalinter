@@ -201,7 +201,10 @@ branding:
     replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))
     replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(docker_arg))
     replace_in_file(
-        dockerfile, "#OTHER__START", "#OTHER__END", "\n".join(docker_other),
+        dockerfile,
+        "#OTHER__START",
+        "#OTHER__END",
+        "\n".join(docker_other),
     )
     # apk packages
     apk_install_command = ""
@@ -1048,7 +1051,11 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     all_flavors = megalinter.flavor_factory.get_all_flavors()
     for flavor_id, flavor in all_flavors.items():
         icon_html = icon(
-            f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico", "", "", flavor_id, 32,
+            f"{DOCS_URL_RAW_ROOT}/assets/icons/{flavor_id}.ico",
+            "",
+            "",
+            flavor_id,
+            32,
         )
         linters_number = len(flavor["linters"])
         if (
@@ -1439,7 +1446,8 @@ def finalize_doc_build():
     # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
     copy_md_file(
-        f"{REPO_HOME}{os.path.sep}README.md", target_file,
+        f"{REPO_HOME}{os.path.sep}README.md",
+        target_file,
     )
     # Split README sections into individual files
     moves = [
@@ -1491,13 +1499,17 @@ def finalize_doc_build():
     )
     # Remove link to online doc
     replace_in_file(
-        target_file, "<!-- online-doc-start -->", "<!-- online-doc-end -->", "",
+        target_file,
+        "<!-- online-doc-start -->",
+        "<!-- online-doc-end -->",
+        "",
     )
     replace_anchors_by_links(target_file, moves)
     # Copy CHANGELOG.md into /docs/CHANGELOG.md
     target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
     copy_md_file(
-        f"{REPO_HOME}{os.path.sep}CHANGELOG.md", target_file_changelog,
+        f"{REPO_HOME}{os.path.sep}CHANGELOG.md",
+        target_file_changelog,
     )
     # Copy CONTRIBUTING.md into /docs/contributing.md
     target_file_contributing = (
@@ -1510,7 +1522,8 @@ def finalize_doc_build():
     # Copy LICENSE into /docs/licence.md
     target_file_license = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}license.md"
     copy_md_file(
-        f"{REPO_HOME}{os.path.sep}LICENSE", target_file_license,
+        f"{REPO_HOME}{os.path.sep}LICENSE",
+        target_file_license,
     )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
     target_file_readme_runner = (

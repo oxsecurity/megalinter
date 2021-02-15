@@ -565,7 +565,10 @@ class Linter:
 
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             process = subprocess.run(
-                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd,
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=cwd,
             )
         return_code = process.returncode
         return_stdout = utils.decode_utf8(process.stdout)
