@@ -39,6 +39,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [coffeelint](http://www.coffeelint.org) from 4.1.2 to **4.1.3** on 2021-02-14
   - [eslint](https://eslint.org) from 7.19.0 to **7.20.0** on 2021-02-14
   - [phpstan](https://phpstan.org/) from 0.12.75 to **0.12.76** on 2021-02-14
+  - [black](https://black.readthedocs.io/en/stable/) from 19.10 to **20.8** on 2021-02-15
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.2.6 to **0.3.0** on 2021-02-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.3.6 to **0.4.0** on 2021-02-15
 <!-- linter-versions-end -->
 
 ## [4.26.2] 2021-01-29
