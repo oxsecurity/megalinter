@@ -5,6 +5,12 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+  - [pylint](https://www.pylint.org) from 2.6.0 to **2.6.2** on 2021-02-16
+<!-- linter-versions-end -->
+
+## [4.27.0] 2021-02-16
+
 - Linters
   - Format YAML with prettier
   
@@ -44,7 +50,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sqlfluff](https://www.sqlfluff.com/) from 0.3.6 to **0.4.0** on 2021-02-15
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.7 to **0.45.0** on 2021-02-16
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.3.0 to **0.3.1** on 2021-02-16
-<!-- linter-versions-end -->
 
 ## [4.26.2] 2021-01-29
 

@@ -46,7 +46,7 @@
     "protolint": "0.28.2",
     "psalm": "Psalm.4.x-dev@",
     "puppet-lint": "2.4.2",
-    "pylint": "2.6.0",
+    "pylint": "2.6.2",
     "raku": "2020.10",
     "remark-lint": "13.0.0",
     "revive": "0.0.0",
