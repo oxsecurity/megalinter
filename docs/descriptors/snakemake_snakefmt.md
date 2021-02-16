@@ -4,7 +4,7 @@
 
 ## snakefmt documentation
 
-- Version in Mega-Linter: **0.3.0**
+- Version in Mega-Linter: **0.3.1**
 - Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file is not found, [.snakefmt.toml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.snakefmt.toml){target=_blank} will be used
