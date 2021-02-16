@@ -5,6 +5,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [pylint](https://www.pylint.org) from 2.6.0 to **2.6.2** on 2021-02-16
 <!-- linter-versions-end -->
 
 ## [4.27.0] 2021-02-16
