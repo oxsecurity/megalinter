@@ -86,7 +86,7 @@ hadolint --config .hadolint.yml Dockerfile
 ```shell
 hadolint - Dockerfile Linter written in Haskell
 
-Usage: hadolint [-v|--version] [--no-fail] [-c|--config FILENAME]
+Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
                 [-f|--format ARG] [DOCKERFILE...] [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
   Lint Dockerfile for errors and best practices
@@ -96,6 +96,7 @@ Available options:
   -v,--version             Show version
   --no-fail                Don't exit with a failure status code when any rule
                            is violated
+  --no-color               Don't colorize output
   -c,--config FILENAME     Path to the configuration file
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
