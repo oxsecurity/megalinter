@@ -12,6 +12,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sfdx-scanner](https://forcedotcom.github.io/sfdx-scanner/) from 2.5.1 to **2.6.0** on 2021-02-19
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.2 to **0.28.6** on 2021-02-19
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.2 to **1.3.3** on 2021-02-19
+  - [stylelint](https://stylelint.io) from 13.10.0 to **13.11.0** on 2021-02-21
+  - [golangci-lint](https://golangci-lint.run/) from 1.37.0 to **1.37.1** on 2021-02-21
+  - [phpstan](https://phpstan.org/) from 0.12.77 to **0.12.78** on 2021-02-21
 <!-- linter-versions-end -->
 
 ## [4.27.0] 2021-02-16
