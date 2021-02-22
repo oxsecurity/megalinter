@@ -4,6 +4,21 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+  - [pylint](https://www.pylint.org) from 2.6.0 to **2.6.2** on 2021-02-16
+  - [golangci-lint](https://golangci-lint.run/) from 1.36.0 to **1.37.0** on 2021-02-19
+  - [phpstan](https://phpstan.org/) from 0.12.76 to **0.12.77** on 2021-02-19
+  - [sfdx-scanner](https://forcedotcom.github.io/sfdx-scanner/) from 2.5.1 to **2.6.0** on 2021-02-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.2 to **0.28.6** on 2021-02-19
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.2 to **1.3.3** on 2021-02-19
+  - [stylelint](https://stylelint.io) from 13.10.0 to **13.11.0** on 2021-02-21
+  - [golangci-lint](https://golangci-lint.run/) from 1.37.0 to **1.37.1** on 2021-02-21
+  - [phpstan](https://phpstan.org/) from 0.12.77 to **0.12.78** on 2021-02-21
+  - [pylint](https://www.pylint.org) from 2.6.2 to **2.7.0** on 2021-02-22
+<!-- linter-versions-end -->
+
+## [4.27.0] 2021-02-16
+
 - Linters
   - Format YAML with prettier
   
@@ -41,7 +56,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [black](https://black.readthedocs.io/en/stable/) from 19.10 to **20.8** on 2021-02-15
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.2.6 to **0.3.0** on 2021-02-15
   - [sqlfluff](https://www.sqlfluff.com/) from 0.3.6 to **0.4.0** on 2021-02-15
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.7 to **0.45.0** on 2021-02-16
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.3.0 to **0.3.1** on 2021-02-16
 
 ## [4.26.2] 2021-01-29
 

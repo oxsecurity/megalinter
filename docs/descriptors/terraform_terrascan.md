@@ -9,7 +9,7 @@
 
 ## terrascan documentation
 
-- Version in Mega-Linter: **1.3.2**
+- Version in Mega-Linter: **1.3.3**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -76,7 +76,7 @@ Flags:
   -c, --config-path string   config file path
   -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
   -x, --log-type string      log output type (console, json) (default "console")
-  -o, --output string        output type (human, json, yaml, xml) (default "human")
+  -o, --output string        output type (human, json, yaml, xml, junit-xml) (default "human")
 
 Use "terrascan [command] --help" for more information about a command.
 ```

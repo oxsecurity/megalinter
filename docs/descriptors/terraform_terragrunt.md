@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.28.2**
+- Version in Mega-Linter: **0.28.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -96,9 +96,10 @@ GLOBAL OPTIONS:
    terragrunt-hclfmt-file                       The path to a single terragrunt.hcl file that the hclfmt command should run on.
    terragrunt-override-attr                     A key=value attribute to override in a provider block as part of the aws-provider-patch command. May be specified multiple times.
    terragrunt-debug                             Write terragrunt-debug.tfvars to working folder to help root-cause issues.
+   terragrunt-log-level                         Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn (default), info, debug, trace.
 
 VERSION:
-   v0.28.2
+   v0.28.6
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

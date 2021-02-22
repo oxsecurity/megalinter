@@ -67,9 +67,6 @@ R --slave -e "errors <- lintr::lint('myfile.r'); print(errors); quit(save = 'no'
 ### Help content
 
 ```shell
-Warning message:
-In options(stringsAsFactors = TRUE) :
-  'options(stringsAsFactors = TRUE)' is deprecated and will be disabled
 No documentation for ‘lintr’ in specified packages and libraries:
 you could try ‘??lintr’
 ```
