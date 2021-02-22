@@ -14,6 +14,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [stylelint](https://stylelint.io) from 13.10.0 to **13.11.0** on 2021-02-21
   - [golangci-lint](https://golangci-lint.run/) from 1.37.0 to **1.37.1** on 2021-02-21
   - [phpstan](https://phpstan.org/) from 0.12.77 to **0.12.78** on 2021-02-21
+  - [pylint](https://www.pylint.org) from 2.6.2 to **2.7.0** on 2021-02-22
 <!-- linter-versions-end -->
 
 ## [4.27.0] 2021-02-16
