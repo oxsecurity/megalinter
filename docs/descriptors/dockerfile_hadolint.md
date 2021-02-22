@@ -87,7 +87,9 @@ hadolint --config .hadolint.yml Dockerfile
 hadolint - Dockerfile Linter written in Haskell
 
 Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
-                [-f|--format ARG] [DOCKERFILE...] [--ignore RULECODE]
+                [-f|--format ARG] [DOCKERFILE...] [--error RULECODE]
+                [--warning RULECODE] [--info RULECODE] [--style RULECODE]
+                [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
   Lint Dockerfile for errors and best practices
 
@@ -101,6 +103,10 @@ Available options:
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
                            codacy] (default: tty)
+  --error RULECODE         Make the rule `RULECODE` have the level `error`
+  --warning RULECODE       Make the rule `RULECODE` have the level `warning`
+  --info RULECODE          Make the rule `RULECODE` have the level `info`
+  --style RULECODE         Make the rule `RULECODE` have the level `style`
   --ignore RULECODE        A rule to ignore. If present, the ignore list in the
                            config file is ignored
   --trusted-registry REGISTRY (e.g. docker.io)
