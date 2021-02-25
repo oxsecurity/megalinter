@@ -322,6 +322,12 @@
       "title": "ANSIBLE_ANSIBLE_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "ANSIBLE_ANSIBLE_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -426,6 +432,12 @@
       "title": "ARM_ARM_TTK: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "ARM_ARM_TTK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/ARM_ARM_TTK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "ARM_ARM_TTK: Maximum number of errors allowed",
+      "type": "number"
+    },
     "ARM_ARM_TTK_FILE_EXTENSIONS": {
       "$id": "#/properties/ARM_ARM_TTK_FILE_EXTENSIONS",
       "examples:": [
@@ -505,6 +517,12 @@
       "title": "BASH_EXEC: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "BASH_EXEC: Maximum number of errors allowed",
+      "type": "number"
+    },
     "BASH_EXEC_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_EXEC_FILE_EXTENSIONS",
       "examples:": [
@@ -571,6 +589,12 @@
       "title": "BASH_SHELLCHECK: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "BASH_SHELLCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/BASH_SHELLCHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "BASH_SHELLCHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
     "BASH_SHELLCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHELLCHECK_FILE_EXTENSIONS",
       "examples:": [
@@ -626,6 +650,12 @@
       "default": false,
       "title": "BASH_SHFMT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "BASH_SHFMT: Maximum number of errors allowed",
+      "type": "number"
     },
     "BASH_SHFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHFMT_FILE_EXTENSIONS",
@@ -689,6 +719,12 @@
       "default": false,
       "title": "CLOJURE_CLJ_KONDO: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "CLOJURE_CLJ_KONDO_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CLOJURE_CLJ_KONDO: Maximum number of errors allowed",
+      "type": "number"
     },
     "CLOJURE_CLJ_KONDO_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_EXTENSIONS",
@@ -776,6 +812,12 @@
       "title": "CLOUDFORMATION_CFN_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CLOUDFORMATION_CFN_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -861,6 +903,12 @@
       "default": false,
       "title": "COFFEE_COFFEELINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "COFFEE_COFFEELINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "COFFEE_COFFEELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILE_EXTENSIONS",
@@ -958,6 +1006,12 @@
       "title": "COPYPASTE_JSCPD: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "COPYPASTE_JSCPD: Maximum number of errors allowed",
+      "type": "number"
+    },
     "COPYPASTE_JSCPD_FILE_EXTENSIONS": {
       "$id": "#/properties/COPYPASTE_JSCPD_FILE_EXTENSIONS",
       "examples:": [
@@ -1027,6 +1081,12 @@
       "title": "CPP_CPPLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "CPP_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CPP_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CPP_CPPLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "CPP_CPPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CPP_CPPLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -1092,6 +1152,12 @@
       "default": false,
       "title": "CSHARP_DOTNET_FORMAT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CSHARP_DOTNET_FORMAT: Maximum number of errors allowed",
+      "type": "number"
     },
     "CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS",
@@ -1176,6 +1242,12 @@
       "title": "CSS_SCSS_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "CSS_SCSS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CSS_SCSS_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CSS_SCSS_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "CSS_SCSS_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSS_SCSS_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -1252,6 +1324,12 @@
       "title": "CSS_STYLELINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "CSS_STYLELINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CSS_STYLELINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CSS_STYLELINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "CSS_STYLELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSS_STYLELINT_FILE_EXTENSIONS",
       "examples:": [
@@ -1320,6 +1398,12 @@
       "default": false,
       "title": "C_CPPLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "C_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/C_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "C_CPPLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "C_CPPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/C_CPPLINT_FILE_EXTENSIONS",
@@ -1393,6 +1477,12 @@
       "default": false,
       "title": "DART_DARTANALYZER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "DART_DARTANALYZER: Maximum number of errors allowed",
+      "type": "number"
     },
     "DART_DARTANALYZER_FILE_EXTENSIONS": {
       "$id": "#/properties/DART_DARTANALYZER_FILE_EXTENSIONS",
@@ -1535,6 +1625,12 @@
       "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "DOCKERFILE_DOCKERFILELINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS",
       "examples:": [
@@ -1621,6 +1717,12 @@
       "title": "DOCKERFILE_HADOLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "DOCKERFILE_HADOLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "DOCKERFILE_HADOLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -1696,6 +1798,12 @@
       "default": false,
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Maximum number of errors allowed",
+      "type": "number"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS",
@@ -1856,6 +1964,12 @@
       "title": "ENV_DOTENV_LINTER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "ENV_DOTENV_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "ENV_DOTENV_LINTER: Maximum number of errors allowed",
+      "type": "number"
+    },
     "ENV_DOTENV_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILE_EXTENSIONS",
       "examples:": [
@@ -2003,6 +2117,12 @@
       "title": "GHERKIN_GHERKIN_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "GHERKIN_GHERKIN_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "GHERKIN_GHERKIN_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -2125,6 +2245,12 @@
       "title": "GIT_GIT_DIFF: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "GIT_GIT_DIFF: Maximum number of errors allowed",
+      "type": "number"
+    },
     "GIT_GIT_DIFF_FILE_EXTENSIONS": {
       "$id": "#/properties/GIT_GIT_DIFF_FILE_EXTENSIONS",
       "examples:": [
@@ -2197,6 +2323,12 @@
       "default": false,
       "title": "GO_GOLANGCI_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "GO_GOLANGCI_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "GO_GOLANGCI_LINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "GO_GOLANGCI_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_FILE_EXTENSIONS",
@@ -2273,6 +2405,12 @@
       "default": false,
       "title": "GO_REVIVE: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "GO_REVIVE: Maximum number of errors allowed",
+      "type": "number"
     },
     "GO_REVIVE_FILE_EXTENSIONS": {
       "$id": "#/properties/GO_REVIVE_FILE_EXTENSIONS",
@@ -2352,6 +2490,12 @@
       "default": false,
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Maximum number of errors allowed",
+      "type": "number"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS",
@@ -2439,6 +2583,12 @@
       "title": "GROOVY_NPM_GROOVY_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "GROOVY_NPM_GROOVY_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -2524,6 +2674,12 @@
       "default": false,
       "title": "HTML_HTMLHINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "HTML_HTMLHINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/HTML_HTMLHINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "HTML_HTMLHINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "HTML_HTMLHINT_FILE_EXTENSIONS": {
       "$id": "#/properties/HTML_HTMLHINT_FILE_EXTENSIONS",
@@ -2615,6 +2771,12 @@
       "title": "JAVASCRIPT_ES: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JAVASCRIPT_ES: Maximum number of errors allowed",
+      "type": "number"
+    },
     "JAVASCRIPT_ES_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_ES_FILE_EXTENSIONS",
       "examples:": [
@@ -2701,6 +2863,12 @@
       "title": "JAVASCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "JAVASCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JAVASCRIPT_PRETTIER: Maximum number of errors allowed",
+      "type": "number"
+    },
     "JAVASCRIPT_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_EXTENSIONS",
       "examples:": [
@@ -2762,6 +2930,12 @@
       "default": false,
       "title": "JAVASCRIPT_STANDARD: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "JAVASCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JAVASCRIPT_STANDARD: Maximum number of errors allowed",
+      "type": "number"
     },
     "JAVASCRIPT_STANDARD_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILE_EXTENSIONS",
@@ -2825,6 +2999,12 @@
       "default": false,
       "title": "JAVA_CHECKSTYLE: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "JAVA_CHECKSTYLE_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JAVA_CHECKSTYLE: Maximum number of errors allowed",
+      "type": "number"
     },
     "JAVA_CHECKSTYLE_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILE_EXTENSIONS",
@@ -2912,6 +3092,12 @@
       "title": "JSON_ESLINT_PLUGIN_JSONC: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Maximum number of errors allowed",
+      "type": "number"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS",
       "examples:": [
@@ -2991,6 +3177,12 @@
       "title": "JSON_JSONLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JSON_JSONLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "JSON_JSONLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_JSONLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -3046,6 +3238,12 @@
       "default": false,
       "title": "JSON_V8R: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "JSON_V8R_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSON_V8R_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JSON_V8R: Maximum number of errors allowed",
+      "type": "number"
     },
     "JSON_V8R_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_V8R_FILE_EXTENSIONS",
@@ -3109,6 +3307,12 @@
       "default": false,
       "title": "JSX_ESLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "JSX_ESLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "JSX_ESLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSX_ESLINT_FILE_EXTENSIONS",
@@ -3199,6 +3403,12 @@
       "title": "KOTLIN_KTLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KOTLIN_KTLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "KOTLIN_KTLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/KOTLIN_KTLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -3271,6 +3481,12 @@
       "title": "KUBERNETES_KUBEVAL: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KUBERNETES_KUBEVAL: Maximum number of errors allowed",
+      "type": "number"
+    },
     "KUBERNETES_KUBEVAL_FILE_EXTENSIONS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILE_EXTENSIONS",
       "examples:": [
@@ -3333,6 +3549,12 @@
       "default": false,
       "title": "LATEX_CHKTEX: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "LATEX_CHKTEX: Maximum number of errors allowed",
+      "type": "number"
     },
     "LATEX_CHKTEX_FILE_EXTENSIONS": {
       "$id": "#/properties/LATEX_CHKTEX_FILE_EXTENSIONS",
@@ -3461,6 +3683,12 @@
       "title": "LUA_LUACHECK: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "LUA_LUACHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/LUA_LUACHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "LUA_LUACHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
     "LUA_LUACHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/LUA_LUACHECK_FILE_EXTENSIONS",
       "examples:": [
@@ -3557,6 +3785,12 @@
       "title": "MARKDOWN_MARKDOWNLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "MARKDOWN_MARKDOWNLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -3633,6 +3867,12 @@
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS",
       "examples:": [
@@ -3701,6 +3941,12 @@
       "default": false,
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Maximum number of errors allowed",
+      "type": "number"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS",
@@ -3818,6 +4064,12 @@
       "title": "MARKDOWN_REMARK_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "MARKDOWN_REMARK_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "MARKDOWN_REMARK_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -3896,6 +4148,12 @@
       "default": false,
       "title": "OPENAPI_SPECTRAL: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "OPENAPI_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "OPENAPI_SPECTRAL: Maximum number of errors allowed",
+      "type": "number"
     },
     "OPENAPI_SPECTRAL_FILE_EXTENSIONS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_FILE_EXTENSIONS",
@@ -3983,6 +4241,12 @@
       "title": "PERL_PERLCRITIC: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PERL_PERLCRITIC: Maximum number of errors allowed",
+      "type": "number"
+    },
     "PERL_PERLCRITIC_FILE_EXTENSIONS": {
       "$id": "#/properties/PERL_PERLCRITIC_FILE_EXTENSIONS",
       "examples:": [
@@ -4038,6 +4302,12 @@
       "default": false,
       "title": "PHP_BUILTIN: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_BUILTIN: Maximum number of errors allowed",
+      "type": "number"
     },
     "PHP_BUILTIN_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_BUILTIN_FILE_EXTENSIONS",
@@ -4111,6 +4381,12 @@
       "default": false,
       "title": "PHP_PHPCS: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_PHPCS: Maximum number of errors allowed",
+      "type": "number"
     },
     "PHP_PHPCS_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPCS_FILE_EXTENSIONS",
@@ -4188,6 +4464,12 @@
       "title": "PHP_PHPSTAN: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_PHPSTAN: Maximum number of errors allowed",
+      "type": "number"
+    },
     "PHP_PHPSTAN_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPSTAN_FILE_EXTENSIONS",
       "examples:": [
@@ -4263,6 +4545,12 @@
       "default": false,
       "title": "PHP_PSALM: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_PSALM: Maximum number of errors allowed",
+      "type": "number"
     },
     "PHP_PSALM_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PSALM_FILE_EXTENSIONS",
@@ -4383,6 +4671,12 @@
       "title": "POWERSHELL_POWERSHELL: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "POWERSHELL_POWERSHELL_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "POWERSHELL_POWERSHELL: Maximum number of errors allowed",
+      "type": "number"
+    },
     "POWERSHELL_POWERSHELL_FILE_EXTENSIONS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_EXTENSIONS",
       "examples:": [
@@ -4499,6 +4793,12 @@
       "title": "PROTOBUF_PROTOLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PROTOBUF_PROTOLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "PROTOBUF_PROTOLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -4585,6 +4885,12 @@
       "title": "PUPPET_PUPPET_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PUPPET_PUPPET_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "PUPPET_PUPPET_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -4660,6 +4966,12 @@
       "default": false,
       "title": "PYTHON_BLACK: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_BLACK: Maximum number of errors allowed",
+      "type": "number"
     },
     "PYTHON_BLACK_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_BLACK_FILE_EXTENSIONS",
@@ -4747,6 +5059,12 @@
       "title": "PYTHON_FLAKE8: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "PYTHON_FLAKE8_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_FLAKE8_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_FLAKE8: Maximum number of errors allowed",
+      "type": "number"
+    },
     "PYTHON_FLAKE8_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_FLAKE8_FILE_EXTENSIONS",
       "examples:": [
@@ -4823,6 +5141,12 @@
       "title": "PYTHON_ISORT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "PYTHON_ISORT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_ISORT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_ISORT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "PYTHON_ISORT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_ISORT_FILE_EXTENSIONS",
       "examples:": [
@@ -4898,6 +5222,12 @@
       "default": false,
       "title": "PYTHON_PYLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_PYLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "PYTHON_PYLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_PYLINT_FILE_EXTENSIONS",
@@ -4984,6 +5314,12 @@
       "default": false,
       "title": "RAKU_RAKU: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "RAKU_RAKU: Maximum number of errors allowed",
+      "type": "number"
     },
     "RAKU_RAKU_FILE_EXTENSIONS": {
       "$id": "#/properties/RAKU_RAKU_FILE_EXTENSIONS",
@@ -5078,6 +5414,12 @@
       "title": "RST_RSTCHECK: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "RST_RSTCHECK: Maximum number of errors allowed",
+      "type": "number"
+    },
     "RST_RSTCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RSTCHECK_FILE_EXTENSIONS",
       "examples:": [
@@ -5147,6 +5489,12 @@
       "title": "RST_RSTFMT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "RST_RSTFMT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "RST_RSTFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RSTFMT_FILE_EXTENSIONS",
       "examples:": [
@@ -5202,6 +5550,12 @@
       "default": false,
       "title": "RST_RST_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "RST_RST_LINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "RST_RST_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RST_LINT_FILE_EXTENSIONS",
@@ -5275,6 +5629,12 @@
       "default": false,
       "title": "RUBY_RUBOCOP: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "RUBY_RUBOCOP: Maximum number of errors allowed",
+      "type": "number"
     },
     "RUBY_RUBOCOP_FILE_EXTENSIONS": {
       "$id": "#/properties/RUBY_RUBOCOP_FILE_EXTENSIONS",
@@ -5351,6 +5711,12 @@
       "default": false,
       "title": "RUST_CLIPPY: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "RUST_CLIPPY_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/RUST_CLIPPY_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "RUST_CLIPPY: Maximum number of errors allowed",
+      "type": "number"
     },
     "RUST_CLIPPY_FILE_EXTENSIONS": {
       "$id": "#/properties/RUST_CLIPPY_FILE_EXTENSIONS",
@@ -5448,6 +5814,12 @@
       "title": "R_LINTR: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "R_LINTR_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/R_LINTR_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "R_LINTR: Maximum number of errors allowed",
+      "type": "number"
+    },
     "R_LINTR_FILE_EXTENSIONS": {
       "$id": "#/properties/R_LINTR_FILE_EXTENSIONS",
       "examples:": [
@@ -5533,6 +5905,12 @@
       "title": "SALESFORCE_SFDX_SCANNER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_SFDX_SCANNER: Maximum number of errors allowed",
+      "type": "number"
+    },
     "SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS",
       "examples:": [
@@ -5605,6 +5983,12 @@
       "default": false,
       "title": "SCALA_SCALAFIX: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SCALA_SCALAFIX: Maximum number of errors allowed",
+      "type": "number"
     },
     "SCALA_SCALAFIX_FILE_EXTENSIONS": {
       "$id": "#/properties/SCALA_SCALAFIX_FILE_EXTENSIONS",
@@ -5692,6 +6076,12 @@
       "title": "SNAKEMAKE_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SNAKEMAKE_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "SNAKEMAKE_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -5754,6 +6144,12 @@
       "default": false,
       "title": "SNAKEMAKE_SNAKEFMT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SNAKEMAKE_SNAKEFMT: Maximum number of errors allowed",
+      "type": "number"
     },
     "SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS",
@@ -5830,6 +6226,12 @@
       "default": false,
       "title": "SPELL_CSPELL: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SPELL_CSPELL: Maximum number of errors allowed",
+      "type": "number"
     },
     "SPELL_CSPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_CSPELL_FILE_EXTENSIONS",
@@ -5910,6 +6312,12 @@
       "title": "SPELL_MISSPELL: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SPELL_MISSPELL: Maximum number of errors allowed",
+      "type": "number"
+    },
     "SPELL_MISSPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_MISSPELL_FILE_EXTENSIONS",
       "examples:": [
@@ -5983,6 +6391,12 @@
       "title": "SQL_SQLFLUFF: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SQL_SQLFLUFF: Maximum number of errors allowed",
+      "type": "number"
+    },
     "SQL_SQLFLUFF_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_SQLFLUFF_FILE_EXTENSIONS",
       "examples:": [
@@ -6051,6 +6465,12 @@
       "default": false,
       "title": "SQL_SQL_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SQL_SQL_LINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "SQL_SQL_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_SQL_LINT_FILE_EXTENSIONS",
@@ -6137,6 +6557,12 @@
       "default": false,
       "title": "SWIFT_SWIFTLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SWIFT_SWIFTLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "SWIFT_SWIFTLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_FILE_EXTENSIONS",
@@ -6231,6 +6657,12 @@
       "title": "TEKTON_TEKTON_LINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "TEKTON_TEKTON_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TEKTON_TEKTON_LINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "TEKTON_TEKTON_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_EXTENSIONS",
       "examples:": [
@@ -6317,6 +6749,12 @@
       "title": "TERRAFORM_TERRAGRUNT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TERRAFORM_TERRAGRUNT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS",
       "examples:": [
@@ -6386,6 +6824,12 @@
       "title": "TERRAFORM_TERRASCAN: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TERRAFORM_TERRASCAN: Maximum number of errors allowed",
+      "type": "number"
+    },
     "TERRAFORM_TERRASCAN_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILE_EXTENSIONS",
       "examples:": [
@@ -6448,6 +6892,12 @@
       "default": false,
       "title": "TERRAFORM_TFLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TERRAFORM_TFLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "TERRAFORM_TFLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TFLINT_FILE_EXTENSIONS",
@@ -6538,6 +6988,12 @@
       "default": false,
       "title": "TSX_ESLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "TSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TSX_ESLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "TSX_ESLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TSX_ESLINT_FILE_EXTENSIONS",
@@ -6639,6 +7095,12 @@
       "title": "TYPESCRIPT_ES: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TYPESCRIPT_ES: Maximum number of errors allowed",
+      "type": "number"
+    },
     "TYPESCRIPT_ES_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_ES_FILE_EXTENSIONS",
       "examples:": [
@@ -6725,6 +7187,12 @@
       "title": "TYPESCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "TYPESCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TYPESCRIPT_PRETTIER: Maximum number of errors allowed",
+      "type": "number"
+    },
     "TYPESCRIPT_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_EXTENSIONS",
       "examples:": [
@@ -6786,6 +7254,12 @@
       "default": false,
       "title": "TYPESCRIPT_STANDARD: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TYPESCRIPT_STANDARD: Maximum number of errors allowed",
+      "type": "number"
     },
     "TYPESCRIPT_STANDARD_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILE_EXTENSIONS",
@@ -6859,6 +7333,12 @@
       "default": false,
       "title": "VBDOTNET_DOTNET_FORMAT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "VBDOTNET_DOTNET_FORMAT: Maximum number of errors allowed",
+      "type": "number"
     },
     "VBDOTNET_DOTNET_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILE_EXTENSIONS",
@@ -6936,6 +7416,12 @@
       "title": "XML_XMLLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "XML_XMLLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
     "XML_XMLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/XML_XMLLINT_FILE_EXTENSIONS",
       "examples:": [
@@ -7009,6 +7495,12 @@
       "title": "YAML_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
     },
+    "YAML_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/YAML_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "YAML_PRETTIER: Maximum number of errors allowed",
+      "type": "number"
+    },
     "YAML_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_PRETTIER_FILE_EXTENSIONS",
       "examples:": [
@@ -7070,6 +7562,12 @@
       "default": false,
       "title": "YAML_V8R: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "YAML_V8R_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/YAML_V8R_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "YAML_V8R: Maximum number of errors allowed",
+      "type": "number"
     },
     "YAML_V8R_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_V8R_FILE_EXTENSIONS",
@@ -7133,6 +7631,12 @@
       "default": false,
       "title": "YAML_YAMLLINT: Linter does not make Mega-Linter fail even if errors are found",
       "type": "boolean"
+    },
+    "YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "YAML_YAMLLINT: Maximum number of errors allowed",
+      "type": "number"
     },
     "YAML_YAMLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_YAMLLINT_FILE_EXTENSIONS",

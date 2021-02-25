@@ -52,6 +52,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(pmd\\.github\\.io|eslint\\.org)"
     examples:
       - "sfdx scanner:run"
     install:
