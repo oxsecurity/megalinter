@@ -703,10 +703,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Github repo svg preview
         repo = get_repo(linter)
         if repo is not None and repo.github is True:
+            # pylint: disable=no-member
             linter_doc_md += [
                 f"[![{repo.repo} - GitHub](https://gh-card.dev/repos/{repo.owner}/{repo.repo}.svg?fullname=)]"
                 f"(https://github.com/{repo.owner}/{repo.repo}){{target=_blank}}",
                 "",
+                # pylint: enable=no-member
             ]
         else:
             logging.warning(
