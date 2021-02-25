@@ -20,6 +20,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [pylint](https://www.pylint.org) from 2.6.2 to **2.7.0** on 2021-02-22
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.45.0 to **0.46.0** on 2021-02-24
   - [pylint](https://www.pylint.org) from 2.7.0 to **2.7.1** on 2021-02-24
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 0.9.0 to **1.0.0** on 2021-02-25
+  - [phpstan](https://phpstan.org/) from 0.12.78 to **0.12.79** on 2021-02-25
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.28.2 to **0.29.0** on 2021-02-25
 <!-- linter-versions-end -->
 
 ## [4.27.0] 2021-02-16
