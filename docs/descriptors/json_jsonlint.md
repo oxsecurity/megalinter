@@ -14,14 +14,15 @@
 - Enable jsonlint by adding `JSON_JSONLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable jsonlint by adding `JSON_JSONLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                           | Description                                                                                                                                                                                  | Default value      |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| JSON_JSONLINT_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| JSON_JSONLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
-| JSON_JSONLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
-| JSON_JSONLINT_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".json"]`        |
-| JSON_JSONLINT_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| JSON_JSONLINT_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
+| Variable                                  | Description                                                                                                                                                                                  | Default value      |
+|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| JSON_JSONLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| JSON_JSONLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
+| JSON_JSONLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
+| JSON_JSONLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".json"]`        |
+| JSON_JSONLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| JSON_JSONLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
+| JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
 
 ## Mega-Linter Flavours
 

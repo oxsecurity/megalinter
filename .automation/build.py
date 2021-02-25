@@ -819,6 +819,15 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "title": f"{linter.name}: Linter does not make Mega-Linter fail even if errors are found",
                     },
                 ],
+                [
+                    f"{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
+                    {
+                        "$id": f"#/properties/{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
+                        "type": "number",
+                        "default": 0,
+                        "title": f"{linter.name}: Maximum number of errors allowed",
+                    },
+                ],
             ]
         )
 
@@ -856,8 +865,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         default_disable_errors = "true" if linter.is_formatter is True else "false"
         linter_doc_md += [
             f"| {linter.name}_DISABLE_ERRORS | Run linter but consider errors as warnings |"
-            f" `{default_disable_errors}` |"
+            f" `{default_disable_errors}` |",
+            f"| {linter.name}_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed |"
+            f" `0` |",
         ]
+
         if linter.files_sub_directory is not None:
             linter_doc_md += [
                 f"| {linter.descriptor_id}_DIRECTORY | Directory containing {linter.descriptor_id} files "
