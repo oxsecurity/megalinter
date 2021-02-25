@@ -2,6 +2,7 @@
 """
 Output results in console
 """
+import chalk as c
 import logging
 import os
 import urllib
@@ -129,10 +130,10 @@ class ConsoleReporter(Reporter):
                     if build_version == "latest"
                     else build_version
                 )
-                logging.warning(
+                logging.warning(c.blue(
                     "You could have same capabilities but better runtime performances"
                     " if you use a Mega-Linter flavor:"
-                )
+                ))
                 for suggestion in self.master.flavor_suggestions:
                     action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
                     flavor_msg = (

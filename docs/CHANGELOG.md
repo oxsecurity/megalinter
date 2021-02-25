@@ -6,6 +6,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Feature: **<LINTER_NAME>_DISABLE_ERRORS_IF_LESS_THAN** : set linter status to warning if maximum allowed errors is not reached
+- Add colors in logs
 
 - Linter versions upgrades
   - [pylint](https://www.pylint.org) from 2.6.0 to **2.6.2** on 2021-02-16

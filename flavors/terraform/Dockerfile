@@ -71,8 +71,9 @@ RUN apk add --update --no-cache \
 #APK__END
 
 # PATH for golang
-ENV GOROOT=/usr/lib/go \
-    GOPATH=/go
+ENV GOROOT=/usr/lib/go
+ENV GOPATH=/go
+# hadolint ignore=DL3044
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 

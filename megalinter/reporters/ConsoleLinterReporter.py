@@ -2,6 +2,7 @@
 """
 Output results in console
 """
+import chalk as c
 import logging
 
 from megalinter import Reporter, config, utils
@@ -24,7 +25,7 @@ class ConsoleLinterReporter(Reporter):
         # Linter header prints
         msg = [
             "",
-            f"### Processing [{self.master.descriptor_id}] files",
+            c.bold(f"### Processed [{self.master.descriptor_id}] files"),
             f"- Using [{self.master.linter_name} v{linter_version}] {self.master.linter_url}",
         ]
         if self.master.descriptor_id != self.master.name:
@@ -46,11 +47,12 @@ class ConsoleLinterReporter(Reporter):
                 line = f"[{self.master.linter_name}] {file_nm}"
             if res["fixed"] is True:
                 line += " - FIXED"
+                line = c.cyan(line)
             if res["status_code"] in [0, None]:  # file ok or file from list_of_files
                 logging.info(line)
             else:
-                logging.error(line)
-                logging.error(f"--Error detail:\n{res['stdout']}")
+                logging.error(c.red(line))
+                logging.error(c.red(f"--Error detail:\n{res['stdout']}"))
         # Output stdout if not file by file
         if self.master.cli_lint_mode in ["list_of_files", "project"]:
             if self.master.status != "success":
@@ -62,14 +64,14 @@ class ConsoleLinterReporter(Reporter):
         elapse = str(round(self.master.elapsed_time_s, 2)) + "s"
         total_errors = str(self.master.total_number_errors)
         if self.master.return_code == 0 and self.master.status == "success":
-            logging.info(f"✅ {base_phrase} successfully - ({elapse})")
+            logging.info(c.green(f"✅ {base_phrase} successfully - ({elapse})"))
         elif self.master.return_code == 0 and self.master.status != "success":
             logging.warning(
-                f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})"
+                c.yellow(f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})")
             )
         elif self.master.return_code != 0 and self.master.status != "success":
             logging.error(
-                f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})"
+                c.red(f"❌ {base_phrase}: Found {total_errors} error(s) - ({elapse})")
             )
         else:
             logging.error(
