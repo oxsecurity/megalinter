@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **5.32.2**
+- Version in Mega-Linter: **6.0.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -105,9 +105,9 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
                  [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
-                 [--export-cwl FILE] [--list] [--list-target-rules] [--dag]
-                 [--rulegraph] [--filegraph] [--d3dag] [--summary]
-                 [--detailed-summary] [--archive FILE]
+                 [--containerize] [--export-cwl FILE] [--list]
+                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
+                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock] [--list-version-changes]
                  [--list-code-changes] [--list-input-changes]
@@ -428,6 +428,9 @@ UTILITIES:
                         in the specified test folder (.tests/unit by default).
                         After successfull execution, tests can be run with
                         'pytest TESTPATH'. (default: None)
+  --containerize        Print a Dockerfile that provides an execution
+                        environment for the workflow, including all conda
+                        environments. (default: False)
   --export-cwl FILE     Compile workflow to CWL and store it in given FILE.
                         (default: None)
   --list, -l            Show available rules in given Snakefile. (default:
@@ -876,7 +879,9 @@ CONDA:
                         directory. If supplied, the `--use-conda` flag must
                         also be set. The value may be given as a relative
                         path, which will be extrapolated to the invocation
-                        directory, or as an absolute path. (default: None)
+                        directory, or as an absolute path. The value can also
+                        be provided via the environment variable
+                        $SNAKEMAKE_CONDA_PREFIX. (default: None)
   --conda-cleanup-envs  Cleanup unused conda environments. (default: False)
   --conda-cleanup-pkgs [{tarballs,cache}]
                         Cleanup conda packages after creating environments. In
@@ -891,8 +896,8 @@ CONDA:
                         also be set. (default: False)
   --conda-frontend {conda,mamba}
                         Choose the conda frontend for installing environments.
-                        Caution: mamba is much faster, but still in beta test.
-                        (default: conda)
+                        Mamba is much faster and highly recommended. (default:
+                        conda)
 
 SINGULARITY:
   --use-singularity     If defined in the rule, run job within a singularity

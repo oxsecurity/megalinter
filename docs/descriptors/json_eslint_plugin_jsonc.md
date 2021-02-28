@@ -208,6 +208,7 @@ Caching:
   --cache                         Only check changed files - default: false
   --cache-file path::String       Path to the cache file. Deprecated: use --cache-location - default: .eslintcache
   --cache-location path::String   Path to the cache file or directory
+  --cache-strategy String         Strategy to use for detecting changed files in the cache - either: metadata or content - default: metadata
 
 Miscellaneous:
   --init                          Run config initialization wizard - default: false

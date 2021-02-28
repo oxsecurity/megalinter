@@ -9,7 +9,7 @@
 
 ## jscpd documentation
 
-- Version in Mega-Linter: **3.3.23**
+- Version in Mega-Linter: **3.3.24**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json){target=_blank} will be used
