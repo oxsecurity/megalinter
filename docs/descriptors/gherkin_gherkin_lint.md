@@ -62,7 +62,7 @@ gherkin-lint -c .gherkin-lintrc myfile.feature
 Usage: gherkin-lint [options] <feature-files>
 
 Options:
-  -f, --format [format]  output format. Possible values: json, stylish.
+  -f, --format [format]  output format. Possible values: json, stylish, xunit.
                          Defaults to stylish
   -i, --ignore <...>     comma seperated list of files/glob patterns that the
                          linter should ignore, overrides .gherkin-lintignore
