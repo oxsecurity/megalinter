@@ -26,6 +26,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [eslint](https://eslint.org) from 7.20.0 to **7.21.0** on 2021-02-28
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.25 to **0.9.26** on 2021-02-28
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.32.2 to **6.0.0** on 2021-02-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.40 to **8.41** on 2021-03-01
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.0.0 to **1.1.0** on 2021-03-01
+  - [phpstan](https://phpstan.org/) from 0.12.79 to **0.12.80** on 2021-03-01
+  - [pylint](https://www.pylint.org) from 2.7.1 to **2.7.2** on 2021-03-01
 <!-- linter-versions-end -->
 
 ## [4.27.0] 2021-02-16
