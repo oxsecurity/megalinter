@@ -816,6 +816,7 @@
         "pushtabs",
         "pwsh",
         "pycache",
+        "pychalk",
         "pycharm",
         "pycodestyle",
         "pyflakes",
