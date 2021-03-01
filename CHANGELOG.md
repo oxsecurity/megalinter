@@ -4,6 +4,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.28.0] 2021-03-01
+
 - Feature: **<LINTER_NAME>_DISABLE_ERRORS_IF_LESS_THAN** : set linter status to warning if maximum allowed errors is not reached
 - Add colors in logs
 
@@ -31,7 +36,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.0.0 to **1.1.0** on 2021-03-01
   - [phpstan](https://phpstan.org/) from 0.12.79 to **0.12.80** on 2021-03-01
   - [pylint](https://www.pylint.org) from 2.7.1 to **2.7.2** on 2021-03-01
-<!-- linter-versions-end -->
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.01.20 to **2021.02.13** on 2021-03-01
 
 ## [4.27.0] 2021-02-16
 

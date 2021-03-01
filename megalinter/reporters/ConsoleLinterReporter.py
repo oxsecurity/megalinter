@@ -2,9 +2,9 @@
 """
 Output results in console
 """
-import chalk as c
 import logging
 
+import chalk as c
 from megalinter import Reporter, config, utils
 
 
@@ -67,7 +67,9 @@ class ConsoleLinterReporter(Reporter):
             logging.info(c.green(f"✅ {base_phrase} successfully - ({elapse})"))
         elif self.master.return_code == 0 and self.master.status != "success":
             logging.warning(
-                c.yellow(f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})")
+                c.yellow(
+                    f"✅ {base_phrase}: Found {total_errors} non blocking error(s) - ({elapse})"
+                )
             )
         elif self.master.return_code != 0 and self.master.status != "success":
             logging.error(
