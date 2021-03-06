@@ -12,6 +12,8 @@ from megalinter import config
 REPO_HOME_DEFAULT = (
     "/tmp/lint"
     if os.path.isdir("/tmp/lint")
+    else os.environ.get("DEFAULT_WORKSPACE")
+    if os.path.isdir(os.environ.get("DEFAULT_WORKSPACE", "null"))
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
 )
 
@@ -151,7 +153,7 @@ def list_active_reporters_for_scope(scope, reporter_init_params):
     return reporters
 
 
-def check_activation_rules(activation_rules, linter):
+def check_activation_rules(activation_rules, _linter):
     active = False
     for rule in activation_rules:
         if rule["type"] == "variable":
