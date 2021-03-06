@@ -4,7 +4,7 @@
 
 ## markdownlint documentation
 
-- Version in Mega-Linter: **0.26.0**
+- Version in Mega-Linter: **0.27.1**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdown-lint.json` config file is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json){target=_blank} will be used
@@ -99,13 +99,14 @@ MarkdownLint Command Line Interface
 
 Options:
   -V, --version                               output the version number
-  -f, --fix                                   fix basic errors (does not work with STDIN)
-  -s, --stdin                                 read from STDIN (does not work with files)
-  -o, --output [outputFile]                   write issues to file (no console)
   -c, --config [configFile]                   configuration file (JSON, JSONC, JS, or YAML)
+  -d, --dot                                   include files/folders with a dot (for example `.github`)
+  -f, --fix                                   fix basic errors (does not work with STDIN)
   -i, --ignore [file|directory|glob]          file(s) to ignore/exclude (default: [])
+  -o, --output [outputFile]                   write issues to file (no console)
   -p, --ignore-path [file]                    path to file with ignore pattern(s)
   -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
+  -s, --stdin                                 read from STDIN (does not work with files)
   -h, --help                                  display help for command
 ```
 

@@ -26,5 +26,7 @@
     #     'ManagedIdentityExtension must not be used',
     #     'Outputs Must Not Contain Secrets'
     # )
-    # Skip = @()
+    Skip = @(
+        'Resources Should Not Be Ambiguous'
+    )
 }
