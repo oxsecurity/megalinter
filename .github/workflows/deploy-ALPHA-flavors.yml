@@ -1,0 +1,100 @@
+---
+#########################
+#########################
+## Deploy Docker Image Flavors ##
+#########################
+#########################
+
+#
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to master #
+#######################################
+name: "Build & Deploy - ALPHA Flavors"
+on:
+  push:
+    branches:
+      - "alpha"
+      - "FlavoredMegaLinters"
+    paths:
+      - ".github/workflows/**"
+      - "Dockerfile"
+      - "flavors/**"
+      - "megalinter/**"
+      - "mega-linter-runner/**"
+      - "**/linter-versions.json"
+      - "TEMPLATES/**"
+
+###############
+# Set the Job #
+###############
+jobs:
+  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  skip_checks:
+    name: Skip checks
+    if: "!contains(github.event.head_commit.message, 'skip deploy')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+
+  build:
+    # Name the Job
+    name: Deploy Docker Image - ALPHA - Flavors
+    # Set the agent to run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        # flavors-start
+        flavor:
+          [
+            "ci_light",
+            "dart",
+            "documentation",
+            "dotnet",
+            "go",
+            "java",
+            "javascript",
+            "php",
+            "python",
+            "ruby",
+            "rust",
+            "salesforce",
+            "scala",
+            "swift",
+            "terraform",
+          ]
+# flavors-end
+    # Only run this on the main repo
+    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.3
+        with:
+          fetch-depth: 0
+
+      #####################
+      # Run Deploy script #
+      #####################
+      - name: Deploy latest image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavor }}
+          IMAGE_VERSION: alpha
+          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh

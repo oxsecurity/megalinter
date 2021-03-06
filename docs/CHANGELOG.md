@@ -5,6 +5,9 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Fix regex to list Salesforce errors
+- Fix Updated Files Reporter when Mega-Linter is not running on GitHub Action
+
 - Linter versions upgrades
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.01.20 to **2021.02.13** on 2021-03-01
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.24 to **3.3.25** on 2021-03-06
