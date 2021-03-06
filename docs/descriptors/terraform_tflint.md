@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.24.1**
+- Version in Mega-Linter: **0.25.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -81,6 +81,8 @@ Application Options:
                                                   disabling all other defaults.
                                                   Can be specified multiple
                                                   times
+      --enable-plugin=PLUGIN_NAME                 Enable plugins from the
+                                                  command line
       --var-file=FILE                             Terraform variable file name
       --var='foo=bar'                             Set a Terraform variable
       --module                                    Inspect modules
