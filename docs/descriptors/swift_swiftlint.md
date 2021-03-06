@@ -4,7 +4,7 @@
 
 ## swiftlint documentation
 
-- Version in Mega-Linter: **0.42.0**
+- Version in Mega-Linter: **0.43.0**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
@@ -77,16 +77,24 @@ docker run -v /tmp/lint:/tmp/lint:rw norionomura/swiftlint:latest swiftlint auto
 ### Help content
 
 ```shell
-Available commands:
+OVERVIEW: A tool to enforce Swift style and conventions.
 
-   analyze         [Experimental] Run analysis rules
-   autocorrect     Automatically correct warnings and errors
-   docs            Open SwiftLint Docs on web browser
-   generate-docs   Generates markdown documentation for all rules
-   help            Display general or command-specific help
-   lint            Print lint warnings and errors (default command)
-   rules           Display the list of rules and their identifiers
-   version         Display the current version of SwiftLint
+USAGE: swiftlint <subcommand>
+
+OPTIONS:
+  --version               Show the version.
+  -h, --help              Show help information.
+
+SUBCOMMANDS:
+  analyze                 Run analysis rules
+  docs                    Open SwiftLint documentation website in the default
+                          web browser
+  generate-docs           Generates markdown documentation for all rules
+  lint (default)          Print lint warnings and errors
+  rules                   Display the list of rules and their identifiers
+  version                 Display the current version of SwiftLint
+
+  See 'swiftlint help <subcommand>' for detailed help.
 ```
 
 ### Installation on mega-linter Docker image
