@@ -23,7 +23,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2.3.3
       - name: Setup Node
-        uses: actions/setup-node@v2.1.3
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: "12"
       - name: Install dependencies
