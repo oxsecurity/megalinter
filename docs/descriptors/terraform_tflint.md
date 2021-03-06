@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.24.1**
+- Version in Mega-Linter: **0.25.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -18,16 +18,17 @@
 - Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                              | Description                                                                                                                                                                                  | Default value                                    |
-|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| TERRAFORM_TFLINT_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
-| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
-| TERRAFORM_TFLINT_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                        |
-| TERRAFORM_TFLINT_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| TERRAFORM_TFLINT_CONFIG_FILE          | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                            | `.tflint.hcl`                                    |
-| TERRAFORM_TFLINT_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| TERRAFORM_TFLINT_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| Variable                                     | Description                                                                                                                                                                                  | Default value                                    |
+|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| TERRAFORM_TFLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
+| TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
+| TERRAFORM_TFLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
+| TERRAFORM_TFLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`                                        |
+| TERRAFORM_TFLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
+| TERRAFORM_TFLINT_CONFIG_FILE                 | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                            | `.tflint.hcl`                                    |
+| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
+| TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
 
 ## Mega-Linter Flavours
 
@@ -80,6 +81,8 @@ Application Options:
                                                   disabling all other defaults.
                                                   Can be specified multiple
                                                   times
+      --enable-plugin=PLUGIN_NAME                 Enable plugins from the
+                                                  command line
       --var-file=FILE                             Terraform variable file name
       --var='foo=bar'                             Set a Terraform variable
       --module                                    Inspect modules

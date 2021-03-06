@@ -9,7 +9,7 @@
 
 ## checkstyle documentation
 
-- Version in Mega-Linter: **8.40**
+- Version in Mega-Linter: **8.41**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file is not found, [sun_checks.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -23,16 +23,17 @@
 - Enable checkstyle by adding `JAVA_CHECKSTYLE` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable checkstyle by adding `JAVA_CHECKSTYLE` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                             | Description                                                                                                                                                                                  | Default value                                    |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| JAVA_CHECKSTYLE_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
-| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
-| JAVA_CHECKSTYLE_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".java"]`                                      |
-| JAVA_CHECKSTYLE_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| JAVA_CHECKSTYLE_CONFIG_FILE          | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                        | `sun_checks.xml`                                 |
-| JAVA_CHECKSTYLE_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| JAVA_CHECKSTYLE_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| Variable                                    | Description                                                                                                                                                                                  | Default value                                    |
+|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| JAVA_CHECKSTYLE_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
+| JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
+| JAVA_CHECKSTYLE_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
+| JAVA_CHECKSTYLE_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".java"]`                                      |
+| JAVA_CHECKSTYLE_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
+| JAVA_CHECKSTYLE_CONFIG_FILE                 | checkstyle configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                        | `sun_checks.xml`                                 |
+| JAVA_CHECKSTYLE_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
+| JAVA_CHECKSTYLE_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| JAVA_CHECKSTYLE_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
 
 ## IDE Integration
 

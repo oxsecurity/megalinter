@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **1.22.1**
+- Version in Mega-Linter: **1.23.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -18,16 +18,17 @@
 - Enable hadolint by adding `DOCKERFILE_HADOLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable hadolint by adding `DOCKERFILE_HADOLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                                 | Description                                                                                                                                                                                  | Default value                                    |
-|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| DOCKERFILE_HADOLINT_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
-| DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
-| DOCKERFILE_HADOLINT_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                               |
-| DOCKERFILE_HADOLINT_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Dockerfile"]`                                 |
-| DOCKERFILE_HADOLINT_CONFIG_FILE          | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.hadolint.yml`                                  |
-| DOCKERFILE_HADOLINT_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| DOCKERFILE_HADOLINT_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| Variable                                        | Description                                                                                                                                                                                  | Default value                                    |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| DOCKERFILE_HADOLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
+| DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
+| DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
+| DOCKERFILE_HADOLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                               |
+| DOCKERFILE_HADOLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Dockerfile"]`                                 |
+| DOCKERFILE_HADOLINT_CONFIG_FILE                 | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.hadolint.yml`                                  |
+| DOCKERFILE_HADOLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
+| DOCKERFILE_HADOLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
 
 ## IDE Integration
 
@@ -86,8 +87,10 @@ hadolint --config .hadolint.yml Dockerfile
 ```shell
 hadolint - Dockerfile Linter written in Haskell
 
-Usage: hadolint [-v|--version] [--no-fail] [-c|--config FILENAME]
-                [-f|--format ARG] [DOCKERFILE...] [--ignore RULECODE]
+Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
+                [-f|--format ARG] [DOCKERFILE...] [--error RULECODE]
+                [--warning RULECODE] [--info RULECODE] [--style RULECODE]
+                [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
   Lint Dockerfile for errors and best practices
 
@@ -96,10 +99,15 @@ Available options:
   -v,--version             Show version
   --no-fail                Don't exit with a failure status code when any rule
                            is violated
+  --no-color               Don't colorize output
   -c,--config FILENAME     Path to the configuration file
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
                            codacy] (default: tty)
+  --error RULECODE         Make the rule `RULECODE` have the level `error`
+  --warning RULECODE       Make the rule `RULECODE` have the level `warning`
+  --info RULECODE          Make the rule `RULECODE` have the level `info`
+  --style RULECODE         Make the rule `RULECODE` have the level `style`
   --ignore RULECODE        A rule to ignore. If present, the ignore list in the
                            config file is ignored
   --trusted-registry REGISTRY (e.g. docker.io)

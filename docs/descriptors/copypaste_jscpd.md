@@ -9,7 +9,7 @@
 
 ## jscpd documentation
 
-- Version in Mega-Linter: **3.3.23**
+- Version in Mega-Linter: **3.3.25**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file is not found, [.jscpd.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -22,16 +22,17 @@
 - Enable jscpd by adding `COPYPASTE_JSCPD` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable jscpd by adding `COPYPASTE_JSCPD` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                             | Description                                                                                                                                                                                  | Default value                                    |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| COPYPASTE_JSCPD_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
-| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
-| COPYPASTE_JSCPD_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                               |
-| COPYPASTE_JSCPD_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| COPYPASTE_JSCPD_CONFIG_FILE          | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                             | `.jscpd.json`                                    |
-| COPYPASTE_JSCPD_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| COPYPASTE_JSCPD_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| Variable                                    | Description                                                                                                                                                                                  | Default value                                    |
+|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| COPYPASTE_JSCPD_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
+| COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
+| COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
+| COPYPASTE_JSCPD_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                               |
+| COPYPASTE_JSCPD_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
+| COPYPASTE_JSCPD_CONFIG_FILE                 | jscpd configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                             | `.jscpd.json`                                    |
+| COPYPASTE_JSCPD_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
+| COPYPASTE_JSCPD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
+| COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
 
 ## IDE Integration
 

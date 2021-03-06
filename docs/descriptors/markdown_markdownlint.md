@@ -4,7 +4,7 @@
 
 ## markdownlint documentation
 
-- Version in Mega-Linter: **0.26.0**
+- Version in Mega-Linter: **0.27.1**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdown-lint.json` config file is not found, [.markdown-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.markdown-lint.json){target=_blank} will be used
@@ -20,17 +20,18 @@
 
 - Enable **auto-fixes** by adding `MARKDOWN_MARKDOWNLINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
-| Variable                                   | Description                                                                                                                                                                                  | Default value                                    |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| MARKDOWN_DEFAULT_STYLE                     | For markdownlint to be active, MARKDOWN_DEFAULT_STYLE must be `markdownlint`                                                                                                                 | `markdownlint`                                   |
-| MARKDOWN_MARKDOWNLINT_ARGUMENTS            | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
-| MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
-| MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS      | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".md"]`                                        |
-| MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX     | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| MARKDOWN_MARKDOWNLINT_CONFIG_FILE          | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                      | `.markdown-lint.json`                            |
-| MARKDOWN_MARKDOWNLINT_RULES_PATH           | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS       | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                           |
+| Variable                                          | Description                                                                                                                                                                                  | Default value                                    |
+|---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| MARKDOWN_DEFAULT_STYLE                            | For markdownlint to be active, MARKDOWN_DEFAULT_STYLE must be `markdownlint`                                                                                                                 | `markdownlint`                                   |
+| MARKDOWN_MARKDOWNLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
+| MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
+| MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
+| MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".md"]`                                        |
+| MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
+| MARKDOWN_MARKDOWNLINT_CONFIG_FILE                 | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                      | `.markdown-lint.json`                            |
+| MARKDOWN_MARKDOWNLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
+| MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                           |
+| MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
 
 ## IDE Integration
 
@@ -98,13 +99,14 @@ MarkdownLint Command Line Interface
 
 Options:
   -V, --version                               output the version number
-  -f, --fix                                   fix basic errors (does not work with STDIN)
-  -s, --stdin                                 read from STDIN (does not work with files)
-  -o, --output [outputFile]                   write issues to file (no console)
   -c, --config [configFile]                   configuration file (JSON, JSONC, JS, or YAML)
+  -d, --dot                                   include files/folders with a dot (for example `.github`)
+  -f, --fix                                   fix basic errors (does not work with STDIN)
   -i, --ignore [file|directory|glob]          file(s) to ignore/exclude (default: [])
+  -o, --output [outputFile]                   write issues to file (no console)
   -p, --ignore-path [file]                    path to file with ignore pattern(s)
   -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
+  -s, --stdin                                 read from STDIN (does not work with files)
   -h, --help                                  display help for command
 ```
 

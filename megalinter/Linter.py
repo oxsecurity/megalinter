@@ -124,6 +124,7 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
+        self.disable_errors_if_less_than = None
         self.disable_errors = True if self.is_formatter is True else False
         if self.name is None:
             self.name = (
@@ -382,7 +383,13 @@ class Linter:
             self.cli_lint_user_args = config.get_list_args(self.name + "_ARGUMENTS")
 
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
-        if config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
+        if config.get(self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
+            self.disable_errors_if_less_than = int(
+                self.name + "_DISABLE_ERRORS_IF_LESS_THAN"
+            )
+        if self.disable_errors_if_less_than is not None:
+            self.disable_errors = False
+        elif config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
         elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "false") == "true":
             self.disable_errors = True
@@ -440,8 +447,15 @@ class Linter:
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None)
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
-        if self.return_code != 0 and self.disable_errors is True:
-            self.return_code = 0
+        if self.return_code != 0:
+            # Disable errors: no failure, just warning
+            if self.disable_errors is True:
+                self.return_code = 0
+            elif (
+                self.disable_errors_if_less_than is not None
+                and self.total_number_errors < self.disable_errors_if_less_than
+            ):
+                self.return_code = 0
         # Delete locally copied remote config file if necessary
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
@@ -777,7 +791,7 @@ class Linter:
             )
         if self.status == "success":
             return 0
-        if self.status == "error":
+        elif self.status == "error":
             return 1
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)

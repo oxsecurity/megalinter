@@ -97,3 +97,5 @@ coverage.xml
 report/
 
 site/
+
+.sfdx/

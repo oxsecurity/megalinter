@@ -6,6 +6,7 @@ import logging
 import os
 import urllib
 
+import chalk as c
 import terminaltables
 from megalinter import Reporter
 
@@ -130,8 +131,10 @@ class ConsoleReporter(Reporter):
                     else build_version
                 )
                 logging.warning(
-                    "You could have same capabilities but better runtime performances"
-                    " if you use a Mega-Linter flavor:"
+                    c.blue(
+                        "You could have same capabilities but better runtime performances"
+                        " if you use a Mega-Linter flavor:"
+                    )
                 )
                 for suggestion in self.master.flavor_suggestions:
                     action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
