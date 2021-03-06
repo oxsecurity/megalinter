@@ -40,7 +40,7 @@ linters:
       - '"./**/*"'
       - "--violations-cause-error"
       - "--outfile"
-      - "sfdx-scanner-report.csv"
+      - "./report/sfdx-scanner-report.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -52,8 +52,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "(pmd\\.github\\.io|eslint\\.org)"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
     examples:
       - "sfdx scanner:run"
     install:
