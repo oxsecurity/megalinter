@@ -40,7 +40,7 @@ linters:
       - '"./**/*"'
       - "--violations-cause-error"
       - "--outfile"
-      - "sfdx-scanner-report.csv"
+      - "./report/sfdx-scanner-report.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
