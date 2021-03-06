@@ -13,6 +13,7 @@ setup(
         "gitpython",
         "jsonschema",
         "multiprocessing_logging",
+        "pychalk",
         "pygithub",
         "pytablewriter",
         "pytest-cov",

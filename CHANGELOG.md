@@ -5,6 +5,25 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.01.20 to **2021.02.13** on 2021-03-01
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.24 to **3.3.25** on 2021-03-06
+  - [hadolint](https://github.com/hadolint/hadolint) from 1.22.1 to **1.23.0** on 2021-03-06
+  - [golangci-lint](https://golangci-lint.run/) from 1.37.1 to **1.38.0** on 2021-03-06
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.26.0 to **0.27.1** on 2021-03-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.0.0 to **6.0.2** on 2021-03-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.4.0 to **0.4.1** on 2021-03-06
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.42.0 to **0.43.0** on 2021-03-06
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.3 to **1.4.0** on 2021-03-06
+  - [stylelint](https://stylelint.io) from 13.11.0 to **13.12.0** on 2021-03-06
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.24.1 to **0.25.0** on 2021-03-06
+<!-- linter-versions-end -->
+
+## [4.28.0] 2021-03-01
+
+- Feature: **<LINTER_NAME>_DISABLE_ERRORS_IF_LESS_THAN** : set linter status to warning if maximum allowed errors is not reached
+- Add colors in logs
+
+- Linter versions upgrades
   - [pylint](https://www.pylint.org) from 2.6.0 to **2.6.2** on 2021-02-16
   - [golangci-lint](https://golangci-lint.run/) from 1.36.0 to **1.37.0** on 2021-02-19
   - [phpstan](https://phpstan.org/) from 0.12.76 to **0.12.77** on 2021-02-19
@@ -15,7 +34,20 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [golangci-lint](https://golangci-lint.run/) from 1.37.0 to **1.37.1** on 2021-02-21
   - [phpstan](https://phpstan.org/) from 0.12.77 to **0.12.78** on 2021-02-21
   - [pylint](https://www.pylint.org) from 2.6.2 to **2.7.0** on 2021-02-22
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.45.0 to **0.46.0** on 2021-02-24
+  - [pylint](https://www.pylint.org) from 2.7.0 to **2.7.1** on 2021-02-24
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 0.9.0 to **1.0.0** on 2021-02-25
+  - [phpstan](https://phpstan.org/) from 0.12.78 to **0.12.79** on 2021-02-25
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.28.2 to **0.29.0** on 2021-02-25
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.23 to **3.3.24** on 2021-02-28
+  - [eslint](https://eslint.org) from 7.20.0 to **7.21.0** on 2021-02-28
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.25 to **0.9.26** on 2021-02-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 5.32.2 to **6.0.0** on 2021-02-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.40 to **8.41** on 2021-03-01
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.0.0 to **1.1.0** on 2021-03-01
+  - [phpstan](https://phpstan.org/) from 0.12.79 to **0.12.80** on 2021-03-01
+  - [pylint](https://www.pylint.org) from 2.7.1 to **2.7.2** on 2021-03-01
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.01.20 to **2021.02.13** on 2021-03-01
 
 ## [4.27.0] 2021-02-16
 
