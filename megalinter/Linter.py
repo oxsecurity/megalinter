@@ -554,6 +554,7 @@ class Linter:
         )
         cwd = os.path.abspath(cwd)
         logging.debug(f"[{self.linter_name}] CWD: {cwd}")
+        subprocess_env = {**os.environ, 'FORCE_COLOR': '0'}
         if type(command) == str:
             # Call linter with a sub-process
             process = subprocess.run(
@@ -562,6 +563,7 @@ class Linter:
                 stderr=subprocess.STDOUT,
                 shell=True,
                 cwd=cwd,
+                env=subprocess_env,
                 executable=shutil.which("bash")
                 if sys.platform == "win32"
                 else "/bin/bash",
@@ -582,6 +584,7 @@ class Linter:
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                env=subprocess_env,
                 cwd=cwd,
             )
         return_code = process.returncode
