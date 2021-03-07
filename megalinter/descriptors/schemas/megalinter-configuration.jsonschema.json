@@ -375,6 +375,12 @@
       "title": "ANSIBLE_ANSIBLE_LINT: Custom config file path",
       "type": "string"
     },
+    "ANSIBLE_DIRECTORY": {
+      "$id": "#/properties/ANSIBLE_DIRECTORY",
+      "default": "ansible",
+      "title": "ANSIBLE_DIRECTORY: Directory containing ANSIBLE files",
+      "type": "string"
+    },
     "ANSIBLE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ANSIBLE_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for ANSIBLE descriptor",
@@ -5865,6 +5871,12 @@
       "$id": "#/properties/R_LINTR_RULES_PATH",
       "description": "R_LINTR: Path where to find linter configuration file",
       "title": "R_LINTR: Custom config file path",
+      "type": "string"
+    },
+    "SALESFORCE_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_DIRECTORY",
+      "default": "force-app",
+      "title": "SALESFORCE_DIRECTORY: Directory containing SALESFORCE files",
       "type": "string"
     },
     "SALESFORCE_FILTER_REGEX_EXCLUDE": {
