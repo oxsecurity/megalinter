@@ -4,7 +4,7 @@
 
 ## protolint documentation
 
-- Version in Mega-Linter: **0.29.0**
+- Version in Mega-Linter: **0.30.1**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml){target=_blank} will be used
