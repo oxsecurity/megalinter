@@ -6,7 +6,7 @@ Git diff checks for git conflicts markers in files
 
 ## git_diff documentation
 
-- Version in Mega-Linter: **2.30.1**
+- Version in Mega-Linter: **2.30.2**
 - Visit [Official Web Site](https://git-scm.com){target=_blank}
 
 [![git - GitHub](https://gh-card.dev/repos/git/git.svg?fullname=)](https://github.com/git/git){target=_blank}

@@ -9,7 +9,7 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.46.0**
+- Version in Mega-Linter: **0.47.0**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
@@ -117,6 +117,7 @@ Standard:
   --output-file OUTPUT_FILE
                         Writes the output to the specified file, ideal for
                         producing reports
+  --merge-configs       Merges lists between configuration layers
 
 Advanced / Debugging:
   -D, --debug           Enable debug logging

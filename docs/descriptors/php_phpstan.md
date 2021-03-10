@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.80**
+- Version in Mega-Linter: **0.12.81**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon` config file is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
@@ -71,34 +71,36 @@ phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php
 
 ```shell
 Description:
-  Lists commands
+  Analyses source code
 
 Usage:
-  list [options] [--] [<namespace>]
+  analyse [options] [--] [<paths>...]
+  analyze
 
 Arguments:
-  namespace            The namespace name
+  paths                                        Paths with source code to run analysis on
 
 Options:
-      --raw            To output raw command list
-      --format=FORMAT  The output format (txt, xml, json, or md) [default: "txt"]
-
-Help:
-  The list command lists all commands:
-
-    php /root/.composer/vendor/bin/phpstan list
-
-  You can also display the commands for a specific namespace:
-
-    php /root/.composer/vendor/bin/phpstan list test
-
-  You can also output the information in other formats by using the --format option:
-
-    php /root/.composer/vendor/bin/phpstan list --format=xml
-
-  It's also possible to get raw list of commands (useful for embedding command runner):
-
-    php /root/.composer/vendor/bin/phpstan list --raw
+      --paths-file=PATHS-FILE                  Path to a file with a list of paths to run analysis on
+  -c, --configuration=CONFIGURATION            Path to project configuration file
+  -l, --level=LEVEL                            Level of rule options - the higher the stricter
+      --no-progress                            Do not show progress bar, only results
+      --debug                                  Show debug information - which file is analysed, do not catch internal errors
+  -a, --autoload-file=AUTOLOAD-FILE            Project's additional autoload file path
+      --error-format=ERROR-FORMAT              Format in which to print the result of the analysis
+      --generate-baseline[=GENERATE-BASELINE]  Path to a file where the baseline should be saved [default: false]
+      --memory-limit=MEMORY-LIMIT              Memory limit for analysis
+      --xdebug                                 Allow running with XDebug for debugging purposes
+      --fix                                    Launch PHPStan Pro
+      --watch                                  Launch PHPStan Pro
+      --pro                                    Launch PHPStan Pro
+  -h, --help                                   Display this help message
+  -q, --quiet                                  Do not output any message
+  -V, --version                                Display this application version
+      --ansi                                   Force ANSI output
+      --no-ansi                                Disable ANSI output
+  -n, --no-interaction                         Do not ask any interactive question
+  -v|vv|vvv, --verbose                         Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
 
 ### Installation on mega-linter Docker image

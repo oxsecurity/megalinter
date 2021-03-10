@@ -19,6 +19,13 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.3.3 to **1.4.0** on 2021-03-06
   - [stylelint](https://stylelint.io) from 13.11.0 to **13.12.0** on 2021-03-06
   - [tflint](https://github.com/terraform-linters/tflint) from 0.24.1 to **0.25.0** on 2021-03-06
+  - [shfmt](https://github.com/mvdan/sh) from 3.2.2 to **3.2.4** on 2021-03-10
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.46.0 to **0.47.0** on 2021-03-10
+  - [git_diff](https://git-scm.com) from 2.30.1 to **2.30.2** on 2021-03-10
+  - [phpstan](https://phpstan.org/) from 0.12.80 to **0.12.81** on 2021-03-10
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.29.0 to **0.30.1** on 2021-03-10
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.3.1 to **0.4.0** on 2021-03-10
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.0.2 to **6.0.3** on 2021-03-10
 <!-- linter-versions-end -->
 
 ## [4.28.0] 2021-03-01
