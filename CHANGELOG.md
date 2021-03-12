@@ -4,8 +4,14 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.29.0] 2021-03-12
+
 - Fix regex to list Salesforce errors
 - Fix Updated Files Reporter when Mega-Linter is not running on GitHub Action
+- Fix #359 - invalid literal with _DISABLE_ERRORS_IF_LESS_THAN
 
 - Linter versions upgrades
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.01.20 to **2021.02.13** on 2021-03-01
@@ -30,7 +36,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.2 to **7.1.3** on 2021-03-12
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.0.3 to **6.0.5** on 2021-03-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.6 to **0.28.9** on 2021-03-12
-<!-- linter-versions-end -->
 
 ## [4.28.0] 2021-03-01
 
