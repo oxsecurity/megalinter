@@ -5,6 +5,8 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.47.1 to **0.47.2** on 2021-03-13
+  - [eslint](https://eslint.org) from 7.21.0 to **7.22.0** on 2021-03-13
 <!-- linter-versions-end -->
 
 ## [4.29.0] 2021-03-12
