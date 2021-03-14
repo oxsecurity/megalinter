@@ -5,6 +5,10 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Fix #361 - Not respecting `*_DISABLE_ERRORS: false`
+- New variable **FORMATTERS_DISABLE_ERRORS** to force all formatters to be blocking if errors are found
+- Add *.svg in .jscpd (copy-paste detector) default ignore paths
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.47.1 to **0.47.2** on 2021-03-13
   - [eslint](https://eslint.org) from 7.21.0 to **7.22.0** on 2021-03-13
