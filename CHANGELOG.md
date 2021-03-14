@@ -7,6 +7,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.47.1 to **0.47.2** on 2021-03-13
   - [eslint](https://eslint.org) from 7.21.0 to **7.22.0** on 2021-03-13
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.1.0 to **1.2.1** on 2021-03-14
 <!-- linter-versions-end -->
 
 ## [4.29.0] 2021-03-12
