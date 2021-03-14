@@ -2084,6 +2084,13 @@
       "title": "Flavor suggestions",
       "type": "boolean"
     },
+    "FORMATTERS_DISABLE_ERRORS": {
+      "$id": "#/properties/FORMATTERS_DISABLE_ERRORS",
+      "default": true,
+      "description": "Formatter errors will be reported as errors (and not warnings) if this variable is set to false",
+      "title": "Disable errors when linter is a formatter",
+      "type": "boolean"
+    },
     "GHERKIN_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GHERKIN_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for GHERKIN descriptor",

@@ -125,7 +125,12 @@ class Linter:
 
         self.is_active = params["default_linter_activation"]
         self.disable_errors_if_less_than = None
-        self.disable_errors = True if self.is_formatter is True else False
+        self.disable_errors = (
+            True
+            if self.is_formatter is True
+            and not config.get("FORMATTERS_DISABLE_ERRORS", "true") == "false"
+            else False
+        )
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
@@ -389,9 +394,13 @@ class Linter:
             )
         if self.disable_errors_if_less_than is not None:
             self.disable_errors = False
-        elif config.get(self.name + "_DISABLE_ERRORS", "false") == "true":
+        elif config.get(self.name + "_DISABLE_ERRORS", "") == "false":
+            self.disable_errors = False
+        elif config.get(self.name + "_DISABLE_ERRORS", "") == "true":
             self.disable_errors = True
-        elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "false") == "true":
+        elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "") == "false":
+            self.disable_errors = False
+        elif config.get(self.descriptor_id + "_DISABLE_ERRORS", "") == "true":
             self.disable_errors = True
         # Exclude regex: try first NAME + _FILTER_REGEX_EXCLUDE, then LANGUAGE + _FILTER_REGEX_EXCLUDE
         if config.exists(self.name + "_FILTER_REGEX_EXCLUDE"):
