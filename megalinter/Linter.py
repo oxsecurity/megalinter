@@ -125,7 +125,12 @@ class Linter:
 
         self.is_active = params["default_linter_activation"]
         self.disable_errors_if_less_than = None
-        self.disable_errors = True if self.is_formatter is True and not config.get("FORMATTERS_DISABLE_ERRORS", "true") == "false" else False
+        self.disable_errors = (
+            True
+            if self.is_formatter is True
+            and not config.get("FORMATTERS_DISABLE_ERRORS", "true") == "false"
+            else False
+        )
         if self.name is None:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
