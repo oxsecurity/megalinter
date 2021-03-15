@@ -4,7 +4,7 @@
 
 ## flake8 documentation
 
-- Version in Mega-Linter: **3.8.4**
+- Version in Mega-Linter: **3.9.0**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8){target=_blank} will be used
@@ -118,8 +118,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E704', 'W504', 'E121', 'E226', 'E123',
-                        'E24', 'W503', 'E126'])
+                        (Default: ['E226', 'E126', 'E121', 'W503', 'E24',
+                        'W504', 'E704', 'E123'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-
@@ -135,12 +135,14 @@ optional arguments:
                         run. (Default: 79)
   --max-doc-length n    Maximum allowed doc line length for the entirety of
                         this run. (Default: None)
+  --indent-size n       Number of spaces used for indentation (Default: 4)
   --select errors       Comma-separated list of errors and warnings to enable.
                         For example, ``--select=E4,E51,W234``. (Default: ['E',
                         'F', 'W', 'C90'])
   --disable-noqa        Disable the effect of "# noqa". This will report
                         errors on lines with "# noqa" at the end.
   --show-source         Show the source generate each error or warning.
+  --no-show-source      Negate --show-source
   --statistics          Count errors and warnings.
   --enable-extensions ENABLE_EXTENSIONS
                         Enable plugins and extensions that are otherwise
@@ -170,7 +172,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.6.1, pycodestyle: 2.6.0, pyflakes: 2.2.0
+Installed plugins: mccabe: 0.6.1, pycodestyle: 2.7.0, pyflakes: 2.3.0
 ```
 
 ### Installation on mega-linter Docker image
