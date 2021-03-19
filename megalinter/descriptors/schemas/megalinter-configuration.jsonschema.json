@@ -2020,6 +2020,13 @@
       "title": "Including regex filter for ENV descriptor",
       "type": "string"
     },
+    "ERROR_ON_MISSING_EXEC_BIT": {
+      "$id": "#/properties/ERROR_ON_MISSING_EXEC_BIT",
+      "default": false,
+      "description": "If set to `false`, the `bash-exec` linter will report a warning if a shell script is not executable. If set to `true`, the `bash-exec` linter will report an error instead",
+      "title": "Disable errors for BASH-EXEC",
+      "type": "boolean"
+    },
     "EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/EXCLUDED_DIRECTORIES",
       "description": "List of excluded directory basenames replacing Mega-Linter default excluded directories. They are excluded at any nested level.",
