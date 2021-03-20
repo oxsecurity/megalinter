@@ -5,6 +5,8 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Fix #367 : Display editorconfig-checker version
+
 - Linter versions upgrades
   - [flake8](https://flake8.pycqa.org) from 3.8.4 to **3.9.0** on 2021-03-15
   - [ktlint](https://ktlint.github.io) from 0.40.0 to **0.41.0** on 2021-03-20
