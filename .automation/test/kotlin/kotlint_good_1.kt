@@ -1,6 +1,13 @@
-fun main() {
-    val n = "World"
-    val v = "Hello, $n!"
+internal abstract class A {
+    protected open val v = ""
+    internal open suspend fun f(v: Any): Any = ""
+    public lateinit var lv: String
+    abstract tailrec fun findFixPoint(x: Double = 1.0): Double
+}
 
-    println(v)
+class B : A() {
+    public override val v = ""
+    suspend override fun f(v: Any): Any = ""
+    tailrec override fun findFixPoint(x: Double): Double
+        = if (x == Math.cos(x)) x else findFixPoint(Math.cos(x))
 }
