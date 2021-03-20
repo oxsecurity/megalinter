@@ -7,6 +7,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linter versions upgrades
   - [flake8](https://flake8.pycqa.org) from 3.8.4 to **3.9.0** on 2021-03-15
+  - [ktlint](https://ktlint.github.io) from 0.40.0 to **0.41.0** on 2021-03-20
+  - [phpstan](https://phpstan.org/) from 0.12.81 to **0.12.82** on 2021-03-20
+  - [sfdx-scanner](https://forcedotcom.github.io/sfdx-scanner/) from 2.6.0 to **2.7.0** on 2021-03-20
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.43.0 to **0.43.1** on 2021-03-20
 <!-- linter-versions-end -->
 
 ## [4.30.0] 2021-03-14
