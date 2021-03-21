@@ -19,7 +19,6 @@ linters:
     config_file_name: .ecrc
     cli_config_arg_name: "-config"
     cli_version_arg_name: "-version"
-    linter_version_cache: "0.0.0" # editorconfig-checker -version should work but seems to do not
     examples:
       - "editorconfig-checker myfile.js"
     install:

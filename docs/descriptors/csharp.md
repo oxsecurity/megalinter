@@ -28,7 +28,7 @@
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget --tries=5 -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel Current -version latest
 

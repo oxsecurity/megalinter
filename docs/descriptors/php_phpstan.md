@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.81**
+- Version in Mega-Linter: **0.12.82**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon` config file is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
@@ -108,8 +108,8 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-RUN wget --tries=5 -O phive.phar https://phar.io/releases/phive.phar \
-    && wget --tries=5 -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
+RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
+    && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
         || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
