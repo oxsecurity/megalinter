@@ -25,7 +25,7 @@
     "graphql-schema-linter": "2.0.1",
     "hadolint": "1.23.0",
     "htmlhint": "0.14.2",
-    "isort": "5.7.0",
+    "isort": "5.8.0",
     "jscpd": "3.3.25",
     "jsonlint": "1.6.3",
     "ktlint": "0.41.0",
