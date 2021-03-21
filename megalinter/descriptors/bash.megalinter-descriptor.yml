@@ -35,7 +35,7 @@ linters:
     linter_url: https://github.com/koalaman/shellcheck
     linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore
-    linter_megalinter_ref_url: https://github.com/koalaman/shellcheck/pull/2076
+    linter_megalinter_ref_url: never
     cli_lint_extra_args:
       - "--color=auto"
       - "--external-sources"
