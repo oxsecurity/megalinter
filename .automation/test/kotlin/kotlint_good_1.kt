@@ -7,7 +7,6 @@ internal abstract class A {
 
 class B : A() {
     public override val v = ""
-    suspend override fun f(v: Any): Any = ""
-    tailrec override fun findFixPoint(x: Double): Double
-        = if (x == Math.cos(x)) x else findFixPoint(Math.cos(x))
+    override suspend fun f(v: Any): Any = ""
+    override tailrec fun findFixPoint(x: Double): Double = if (x == Math.cos(x)) x else findFixPoint(Math.cos(x))
 }
