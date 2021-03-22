@@ -9,7 +9,7 @@
 
 ## ktlint documentation
 
-- Version in Mega-Linter: **0.41.0**
+- Version in Mega-Linter: **0.40.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -86,43 +86,34 @@ ktlint --format myfile.kt
 ### Help content
 
 ```shell
-
-An anti-bikeshedding Kotlin linter with built-in formatter.
+An anti-bikeshedding Kotlin linter with built-in formatter
 (https://github.com/pinterest/ktlint).
 
 Usage:
   ktlint <flags> [patterns]
-  java -jar ktlint.jar <flags> [patterns]
+  java -jar ktlint <flags> [patterns]
 
 Examples:
-  # Check the style of all Kotlin files (ending with '.kt' or '.kts') inside
-the current dir (recursively).
-  #
-  # Hidden folders will be skipped.
+  # check the style of all Kotlin files inside the current dir (recursively)
+  # (hidden folders will be skipped)
   ktlint
 
-  # Check only certain locations starting from the current directory.
-  #
-  # Prepend ! to negate the pattern, KtLint uses .gitignore pattern style
-syntax.
-  # Globs are applied starting from the last one.
-  #
-  # Hidden folders will be skipped.
-  # Check all '.kt' files in 'src/' directory, but ignore files ending with
-'Test.kt':
+  # check only certain locations (prepend ! to negate the pattern,
+  # Ktlint uses .gitignore pattern style syntax)
   ktlint "src/**/*.kt" "!src/**/*Test.kt"
-  # Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
-and its subdirectories:
-  ktlint "src/**/*.kt" "!src/**/generated/**"
 
-  # Auto-correct style violations.
+  # auto-correct style violations
   ktlint -F "src/**/*.kt"
 
-  # Using custom reporter jar and overriding report location
-  ktlint --reporter=csv,artifact=/path/to/reporter/csv.jar,
-output=my-custom-report.csv
-Flags:
+  # custom reporter
+  ktlint --reporter=plain?group_by_file
+  # multiple reporters can be specified like this
+  ktlint --reporter=plain \
+    --reporter=checkstyle,output=ktlint-checkstyle-report.xml
+  # 3rd-party reporter
+  ktlint --reporter=csv,artifact=com.github.user:repo:master-SNAPSHOT
 
+Flags:
   -a, --android              Turn on Android Kotlin Style Guide compatibility
       --color                Make output colorful
       --color-name=<colorName>
@@ -139,8 +130,7 @@ Flags:
       --reporter=<reporters> A reporter to use (built-in: plain (default), plain?
                                group_by_file, json, checkstyle, html). To use a
                                third-party reporter specify a path to a JAR file on
-                               the filesystem via ',artifact=' option. To override
-                               reporter output, use ',output=' option.
+                               the filesystem.
   -R, --ruleset=<rulesets>   A path to a JAR file containing additional ruleset(s)
       --stdin                Read file from stdin
   -v, --verbose              Show error codes
