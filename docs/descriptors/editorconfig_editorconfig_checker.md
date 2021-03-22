@@ -9,6 +9,7 @@
 
 ## editorconfig-checker documentation
 
+- Version in Mega-Linter: **2.3.4**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
