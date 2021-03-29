@@ -214,3 +214,7 @@ def normalize_log_string(str_in):
     for replacement in LIST_OF_REPLACEMENTS:
         str_in = str_in.replace(replacement[0], replacement[1])
     return str_in
+
+
+def get_sources_folder():
+    return "/srv/megalinter-workspace"
