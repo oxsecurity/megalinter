@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in Mega-Linter: **0.0.212**
+- Version in Mega-Linter: **0.1.51**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -71,17 +71,18 @@ USAGE:
     cargo [+toolchain] [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -V, --version           Print version info and exit
-        --list              List installed commands
-        --explain <CODE>    Run `rustc --explain CODE`
-    -v, --verbose           Use verbose output (-vv very verbose/build.rs output)
-    -q, --quiet             No output printed to stdout
-        --color <WHEN>      Coloring: auto, always, never
-        --frozen            Require Cargo.lock and cache are up to date
-        --locked            Require Cargo.lock is up to date
-        --offline           Run without accessing the network
-    -Z <FLAG>...            Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details
-    -h, --help              Prints help information
+    -V, --version                  Print version info and exit
+        --list                     List installed commands
+        --explain <CODE>           Run `rustc --explain CODE`
+    -v, --verbose                  Use verbose output (-vv very verbose/build.rs output)
+    -q, --quiet                    No output printed to stdout
+        --color <WHEN>             Coloring: auto, always, never
+        --frozen                   Require Cargo.lock and cache are up to date
+        --locked                   Require Cargo.lock is up to date
+        --offline                  Run without accessing the network
+        --config <KEY=VALUE>...    Override a configuration value (unstable)
+    -Z <FLAG>...                   Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details
+    -h, --help                     Prints help information
 
 Some common cargo commands are (see all commands with --list):
     build, b    Compile the current package

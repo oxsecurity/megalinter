@@ -9,7 +9,7 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.47.2**
+- Version in Mega-Linter: **0.48.1**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
@@ -113,6 +113,8 @@ Standard:
                         RuleId:key=value. Example: E3012:strict=false
   --config-file CONFIG_FILE
                         Specify the cfnlintrc file to use
+  -z CUSTOM_RULES, --custom-rules CUSTOM_RULES
+                        Allows specification of a custom rule file.
   -v, --version         Version of cfn-lint
   --output-file OUTPUT_FILE
                         Writes the output to the specified file, ideal for
