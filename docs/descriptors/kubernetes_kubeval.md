@@ -4,7 +4,7 @@
 
 ## kubeval documentation
 
-- Version in Mega-Linter: **0.15.0**
+- Version in Mega-Linter: **0.16.0**
 - Visit [Official Web Site](https://www.kubeval.com/){target=_blank}
 
 [![kubeval - GitHub](https://gh-card.dev/repos/instrumenta/kubeval.svg?fullname=)](https://github.com/instrumenta/kubeval){target=_blank}
@@ -75,13 +75,15 @@ Usage:
 
 Flags:
       --additional-schema-locations strings   Comma-seperated list of secondary base URLs used to download schemas
+  -n, --default-namespace string              Namespace to assume in resources if no namespace is set in metadata:namespace (default "default")
   -d, --directories strings                   A comma-separated list of directories to recursively search for YAML documents
       --exit-on-error                         Immediately stop execution when the first error is encountered
   -f, --filename string                       filename to be displayed when testing manifests read from stdin (default "stdin")
       --force-color                           Force colored output even if stdout is not a TTY
   -h, --help                                  help for kubeval
       --ignore-missing-schemas                Skip validation for resource definitions without a schema
-  -i, --ignored-filename-patterns strings     A comma-separated list of regular expressions specifying filenames to ignore
+      --ignored-filename-patterns strings     An alias for ignored-path-patterns
+  -i, --ignored-path-patterns strings         A comma-separated list of regular expressions specifying paths to ignore
       --insecure-skip-tls-verify              If true, the server's certificate will not be checked for validity. This will make your HTTPS connections insecure
   -v, --kubernetes-version string             Version of Kubernetes to validate against (default "master")
       --openshift                             Use OpenShift schemas instead of upstream Kubernetes
