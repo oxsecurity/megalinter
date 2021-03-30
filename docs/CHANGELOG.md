@@ -5,6 +5,7 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Use Python virtual-environment in dev-dependencies shell example
 - Fix #367 : Display editorconfig-checker version
 
 - Linter versions upgrades
@@ -23,9 +24,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [golangci-lint](https://golangci-lint.run/) from 1.38.0 to **1.39.0** on 2021-03-30
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.41 to **8.41.1** on 2021-03-30
   - [eslint](https://eslint.org) from 7.22.0 to **7.23.0** on 2021-03-30
-  - [kubeval](https://www.kubeval.com/) from 0.15.0 to **0.16.0** on 2021-03-30
+  - [kubeval](https://www.kubeval.com/) from 0.15.0 to **0.16.1** on 2021-03-30
   - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.138 to **1.140** on 2021-03-30
-  - [pylint](https://www.pylint.org) from 2.7.2 to **2.7.3** on 2021-03-30
+  - [pylint](https://www.pylint.org) from 2.7.2 to **2.7.4** on 2021-03-30
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.0.212 to **0.1.51** on 2021-03-30
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.26 to **0.9.27** on 2021-03-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.9 to **0.28.16** on 2021-03-30
