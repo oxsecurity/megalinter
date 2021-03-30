@@ -15,27 +15,9 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 - Run the following commands at the root of the repository to install required dev dependencies
 
 ```shell
-python3 -m venv venv
-source venv/bin/activate
-echo "venv/" >> .git/info/exclude
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
 ```
-Second level dev dependencies are installed by running `./build.sh` which is also a test if the installation worked
-```shell
-./build.sh
-2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
-2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
-...
-Formatting markdown tables...
-Need to install the following packages:
-  markdown-table-formatter
-Ok to proceed? (y)
-...
-INFO    -  Documentation built in 9.76 seconds
-(done.)
-```
-
 
 _(if you have a permission denied issue on Windows, please check [this solution](https://stackoverflow.com/a/57168165/7113625))_
 
