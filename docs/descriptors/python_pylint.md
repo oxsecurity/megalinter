@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in Mega-Linter: **2.7.2**
+- Version in Mega-Linter: **2.7.3**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
@@ -97,12 +97,12 @@ Options:
     -v, --verbose       In verbose mode, extra non-checker-related info will
                         be displayed.
     --ignore=<file>[,<file>...]
-                        Add files or directories to the blacklist. They should
-                        be base names, not paths. [current: CVS]
+                        Files or directories to be skipped. They should be
+                        base names, not paths. [current: CVS]
     --ignore-patterns=<pattern>[,<pattern>...]
-                        Add files or directories matching the regex patterns
-                        to the blacklist. The regex matches against base
-                        names, not paths. [current: none]
+                        Files or directories matching the regex patterns are
+                        skipped. The regex matches against base names, not
+                        paths. [current: none]
     --persistent=<y_or_n>
                         Pickle collected data for later comparisons. [current:
                         yes]
@@ -122,11 +122,18 @@ Options:
                         inferring a single object. This can help the
                         performance when dealing with large functions or
                         complex, nested conditions.  [current: 100]
-    --extension-pkg-whitelist=<pkg[,pkg]>
+    --extension-pkg-allow-list=<pkg[,pkg]>
                         A comma-separated list of package or module names from
                         where C extensions may be loaded. Extensions are
                         loading into the active Python interpreter and may run
                         arbitrary code. [current: none]
+    --extension-pkg-whitelist=<pkg[,pkg]>
+                        A comma-separated list of package or module names from
+                        where C extensions may be loaded. Extensions are
+                        loading into the active Python interpreter and may run
+                        arbitrary code. (This is an alternative name to
+                        extension-pkg-allow-list for backward compatibility.)
+                        [current: none]
     --suggestion-mode=<yn>
                         When enabled, pylint would attempt to guess common
                         misconfiguration and emit user-friendly hints instead

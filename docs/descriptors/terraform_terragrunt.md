@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.28.9**
+- Version in Mega-Linter: **0.28.16**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -68,12 +68,13 @@ USAGE:
    terragrunt <COMMAND>
 
 COMMANDS:
-   run-all              Run a terraform command against a 'stack' by running the specified command in each subfolder. E.g., to run 'terragrunt apply' in each subfolder, use 'terragrunt run-all apply'.
-   terragrunt-info      Emits limited terragrunt state on stdout and exits
-   graph-dependencies   Prints the terragrunt dependency graph to stdout
-   hclfmt               Recursively find terragrunt.hcl files and rewrite them into a canonical format.
-   aws-provider-patch   Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018)
-   *                    Terragrunt forwards all other commands directly to Terraform
+   run-all               Run a terraform command against a 'stack' by running the specified command in each subfolder. E.g., to run 'terragrunt apply' in each subfolder, use 'terragrunt run-all apply'.
+   terragrunt-info       Emits limited terragrunt state on stdout and exits
+   validate-inputs       Checks if the terragrunt configured inputs align with the terraform defined variables.
+   graph-dependencies    Prints the terragrunt dependency graph to stdout
+   hclfmt                Recursively find terragrunt.hcl files and rewrite them into a canonical format.
+   aws-provider-patch    Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018)
+   *                     Terragrunt forwards all other commands directly to Terraform
 
 GLOBAL OPTIONS:
    terragrunt-config                            Path to the Terragrunt config file. Default is terragrunt.hcl.
@@ -100,7 +101,7 @@ GLOBAL OPTIONS:
    terragrunt-log-level                         Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn (default), info, debug, trace.
 
 VERSION:
-   v0.28.9
+   v0.28.16
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

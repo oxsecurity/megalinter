@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **1.23.0**
+- Version in Mega-Linter: **2.0.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -92,6 +92,8 @@ Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
                 [--warning RULECODE] [--info RULECODE] [--style RULECODE]
                 [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
+                [--require-label LABELSCHEMA (e.g. maintainer:text)]
+                [--strict-labels]
   Lint Dockerfile for errors and best practices
 
 Available options:
@@ -113,6 +115,12 @@ Available options:
   --trusted-registry REGISTRY (e.g. docker.io)
                            A docker registry to allow to appear in FROM
                            instructions
+  --require-label LABELSCHEMA (e.g. maintainer:text)
+                           The option --require-label=label:format makes
+                           Hadolint check that the label `label` conforms to
+                           format requirement `format`
+  --strict-labels          Do not permit labels other than specified in
+                           `label-schema`
 ```
 
 ### Installation on mega-linter Docker image
