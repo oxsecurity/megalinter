@@ -1533,12 +1533,6 @@ def finalize_doc_build():
         f"{REPO_HOME}{os.path.sep}.github{os.path.sep}CONTRIBUTING.md",
         target_file_contributing,
     )
-    # Copy LICENSE into /docs/licence.md
-    target_file_license = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}license.md"
-    copy_md_file(
-        f"{REPO_HOME}{os.path.sep}LICENSE",
-        target_file_license,
-    )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
     target_file_readme_runner = (
         f"{REPO_HOME}{os.path.sep}docs{os.path.sep}mega-linter-runner.md"

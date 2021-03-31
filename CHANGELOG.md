@@ -4,6 +4,7 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Keep license pre-formatted in docs
 - Use Python virtual-environment in dev-dependencies shell example
 - Fix #367 : Display editorconfig-checker version
 - Fix #379 : New configuration FAIL_IF_MISSING_LINTER_IN_FLAVOR
@@ -32,6 +33,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.9 to **0.28.16** on 2021-03-30
   - [kubeval](https://www.kubeval.com/) from 0.16.0 to **0.16.1** on 2021-03-30
   - [pylint](https://www.pylint.org) from 2.7.3 to **2.7.4** on 2021-03-30
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.3.4 to **2.3.5** on 2021-03-31
 <!-- linter-versions-end -->
 
 ## [4.30.0] 2021-03-14
