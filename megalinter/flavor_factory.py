@@ -1,6 +1,9 @@
 import json
 import logging
 import os
+import sys
+
+from megalinter import config
 
 ALL_FLAVORS_CACHE = None
 
@@ -84,6 +87,11 @@ def check_active_linters_match_flavor(active_linters):
             "located in your root directory\n"
             "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"
         )
+        if config.get("FAIL_IF_MISSING_LINTER_IN_FLAVOR", "") == "true":
+            logging.error(
+                'Missing linter and FAIL_IF_MISSING_LINTER_IN_FLAVOR has been set to "true": Stop run'
+            )
+            sys.exit(84)
         return False
     return True
 

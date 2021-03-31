@@ -2058,6 +2058,13 @@
         "string"
       ]
     },
+    "FAIL_IF_MISSING_LINTER_IN_FLAVOR": {
+      "$id": "#/properties/FAIL_IF_MISSING_LINTER_IN_FLAVOR",
+      "default": false,
+      "description": "Mega-Linter fails if a linter is missing in the selected flavor",
+      "title": "Fail if missing linter",
+      "type": "boolean"
+    },
     "FILEIO_REPORTER": {
       "$id": "#/properties/FILEIO_REPORTER",
       "default": false,
