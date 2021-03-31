@@ -4,6 +4,7 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Keep license pre-formatted in docs
 - Use Python virtual-environment in dev-dependencies shell example
 - Fix #367 : Display editorconfig-checker version
 
