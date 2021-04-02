@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.0.5**
+- Version in Mega-Linter: **6.1.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -897,7 +897,7 @@ CONDA:
   --conda-frontend {conda,mamba}
                         Choose the conda frontend for installing environments.
                         Mamba is much faster and highly recommended. (default:
-                        conda)
+                        mamba)
 
 SINGULARITY:
   --use-singularity     If defined in the rule, run job within a singularity

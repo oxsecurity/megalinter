@@ -34,6 +34,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [kubeval](https://www.kubeval.com/) from 0.16.0 to **0.16.1** on 2021-03-30
   - [pylint](https://www.pylint.org) from 2.7.3 to **2.7.4** on 2021-03-30
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.3.4 to **2.3.5** on 2021-03-31
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.0.0 to **2.1.0** on 2021-04-02
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.0.5 to **6.1.0** on 2021-04-02
 <!-- linter-versions-end -->
 
 ## [4.30.0] 2021-03-14
