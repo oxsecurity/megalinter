@@ -6,6 +6,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
 <!-- linter-versions-end -->
 
 ## [4.31.0] 2021-04-03
