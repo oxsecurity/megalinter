@@ -4,6 +4,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.31.0] 2021-04-03
+
 - Keep license pre-formatted in docs
 - Use Python virtual-environment in dev-dependencies shell example
 - Fix #367 : Display editorconfig-checker version
@@ -36,7 +41,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.3.4 to **2.3.5** on 2021-03-31
   - [hadolint](https://github.com/hadolint/hadolint) from 2.0.0 to **2.1.0** on 2021-04-02
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.0.5 to **6.1.0** on 2021-04-02
-<!-- linter-versions-end -->
 
 ## [4.30.0] 2021-03-14
 
