@@ -6,6 +6,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.0.4 to **1.1.0** on 2021-04-05
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.25.0 to **0.26.0** on 2021-04-05
 <!-- linter-versions-end -->
 
 ## [4.31.0] 2021-04-03
