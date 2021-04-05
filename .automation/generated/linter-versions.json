@@ -33,7 +33,7 @@
     "lintr": "0.0.0",
     "luacheck": "0.23.0",
     "markdown-link-check": "0.0.0",
-    "markdown-table-formatter": "1.0.4",
+    "markdown-table-formatter": "1.1.0",
     "markdownlint": "0.27.1",
     "misspell": "0.3.4",
     "npm-groovy-lint": "8.1.0",
@@ -70,7 +70,7 @@
     "tekton-lint": "0.5.2",
     "terragrunt": "0.28.16",
     "terrascan": "1.4.0",
-    "tflint": "0.25.0",
+    "tflint": "0.26.0",
     "v8r": "0.5.0",
     "xmllint": "20910",
     "yamllint": "1.26.0"

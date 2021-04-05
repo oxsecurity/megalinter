@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.25.0**
+- Version in Mega-Linter: **0.26.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -66,34 +66,38 @@ Usage:
   tflint [OPTIONS] [FILE or DIR...]
 
 Application Options:
-  -v, --version                                   Print TFLint version
-      --langserver                                Start language server
-  -f, --format=[default|json|checkstyle|junit]    Output format (default:
-                                                  default)
-  -c, --config=FILE                               Config file name (default:
-                                                  .tflint.hcl)
-      --ignore-module=SOURCE                      Ignore module sources
-      --enable-rule=RULE_NAME                     Enable rules from the command
-                                                  line
-      --disable-rule=RULE_NAME                    Disable rules from the
-                                                  command line
-      --only=RULE_NAME                            Enable only this rule,
-                                                  disabling all other defaults.
-                                                  Can be specified multiple
-                                                  times
-      --enable-plugin=PLUGIN_NAME                 Enable plugins from the
-                                                  command line
-      --var-file=FILE                             Terraform variable file name
-      --var='foo=bar'                             Set a Terraform variable
-      --module                                    Inspect modules
-      --force                                     Return zero exit status even
-                                                  if issues found
-      --no-color                                  Disable colorized output
-      --loglevel=[trace|debug|info|warn|error]    Change the loglevel (default:
-                                                  none)
+  -v, --version                                           Print TFLint version
+      --langserver                                        Start language server
+  -f, --format=[default|json|checkstyle|junit|compact]    Output format
+                                                          (default: default)
+  -c, --config=FILE                                       Config file name
+                                                          (default: .tflint.hcl)
+      --ignore-module=SOURCE                              Ignore module sources
+      --enable-rule=RULE_NAME                             Enable rules from the
+                                                          command line
+      --disable-rule=RULE_NAME                            Disable rules from
+                                                          the command line
+      --only=RULE_NAME                                    Enable only this
+                                                          rule, disabling all
+                                                          other defaults. Can
+                                                          be specified multiple
+                                                          times
+      --enable-plugin=PLUGIN_NAME                         Enable plugins from
+                                                          the command line
+      --var-file=FILE                                     Terraform variable
+                                                          file name
+      --var='foo=bar'                                     Set a Terraform
+                                                          variable
+      --module                                            Inspect modules
+      --force                                             Return zero exit
+                                                          status even if issues
+                                                          found
+      --no-color                                          Disable colorized
+                                                          output
+      --loglevel=[trace|debug|info|warn|error]            Change the loglevel
 
 Help Options:
-  -h, --help                                      Show this help message
+  -h, --help                                              Show this help message
 
 ```
 
