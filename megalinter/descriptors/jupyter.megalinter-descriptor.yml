@@ -1,0 +1,20 @@
+descriptor_id: JUPYTER
+descriptor_type: tooling_format
+descriptor_flavors:
+  - python
+file_extensions:
+  - ".ipynb"
+linters:
+  # JUPYFMT
+  - linter_name: jupyfmt
+    is_formatter: true
+    name: JUPYTER_JUPYFMT
+    linter_url: https://github.com/kpj/jupyfmt
+    cli_lint_extra_args:
+      - "--check"
+      - "--compact-diff"
+    examples:
+      - "jupyfmt --check --compact-diff Notebook.ipynb"
+    install:
+      pip:
+        - jupyfmt
