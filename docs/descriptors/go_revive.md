@@ -85,6 +85,8 @@ Usage of revive:
       list of globs which specify files to be excluded (i.e. -exclude foo/...)
   -formatter string
       formatter to be used for the output (i.e. -formatter stylish)
+  -version
+      get revive version
 ```
 
 ### Installation on mega-linter Docker image
