@@ -4,7 +4,7 @@
 
 ## yamllint documentation
 
-- Version in Mega-Linter: **1.26.0**
+- Version in Mega-Linter: **1.26.1**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
   - If custom `.yaml-lint.yml` config file is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml){target=_blank} will be used
