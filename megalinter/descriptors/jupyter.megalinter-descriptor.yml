@@ -13,6 +13,8 @@ linters:
     cli_lint_extra_args:
       - "--check"
       - "--compact-diff"
+    cli_help_arg_name: "--help"
+    cli_version_arg_name: "--version"
     examples:
       - "jupyfmt --check --compact-diff Notebook.ipynb"
     install:
