@@ -13,6 +13,8 @@
 - Enable jupyfmt by adding `JUPYTER_JUPYFMT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable jupyfmt by adding `JUPYTER_JUPYFMT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `JUPYTER_JUPYFMT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+
 | Variable                                    | Description                                                                                                                                                                                  | Default value      |
 |---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | JUPYTER_JUPYFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
