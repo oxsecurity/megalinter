@@ -4,7 +4,7 @@
 
 ## phpcs documentation
 
-- Version in Mega-Linter: **3.5.8**
+- Version in Mega-Linter: **3.6.0**
 - Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file is not found, [phpcs.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpcs.xml){target=_blank} will be used
