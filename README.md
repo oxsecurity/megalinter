@@ -808,7 +808,7 @@ Even if I disagree with their decision to remain in bash, the core team has alwa
 <!-- license-section-start -->
 ## License
 
-- [MIT License](https://github.com/nvuillam/mega-linter/blob/master/LICENSE)
+- [GNU Affero General Public License](https://github.com/nvuillam/mega-linter/blob/master/LICENSE)
 <!-- license-section-end -->
 
 <!-- mega-linter-vs-super-linter-section-start -->

@@ -4,6 +4,8 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Fix #376 : Link-title to license
+
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.0.4 to **1.1.0** on 2021-04-05
