@@ -1519,20 +1519,6 @@ def finalize_doc_build():
         "",
     )
     replace_anchors_by_links(target_file, moves)
-    # Copy CHANGELOG.md into /docs/CHANGELOG.md
-    target_file_changelog = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}CHANGELOG.md"
-    copy_md_file(
-        f"{REPO_HOME}{os.path.sep}CHANGELOG.md",
-        target_file_changelog,
-    )
-    # Copy CONTRIBUTING.md into /docs/contributing.md
-    target_file_contributing = (
-        f"{REPO_HOME}{os.path.sep}docs{os.path.sep}contributing.md"
-    )
-    copy_md_file(
-        f"{REPO_HOME}{os.path.sep}.github{os.path.sep}CONTRIBUTING.md",
-        target_file_contributing,
-    )
     # Copy mega-linter-runner/README.md into /docs/mega-linter-runner.md
     target_file_readme_runner = (
         f"{REPO_HOME}{os.path.sep}docs{os.path.sep}mega-linter-runner.md"
