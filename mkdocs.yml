@@ -51,7 +51,7 @@ nav:
   - "Linters":
       - "All supported linters": "supported-linters.md"
       - "Languages linters":
-          - "All language linters": "./supported-linters#languages"
+          - "All language linters": "./supported-linters/#languages"
           # language-start
           - "BASH":
               - "All BASH linters": "descriptors/bash.md"
@@ -156,7 +156,7 @@ nav:
               - "dotnet-format": "descriptors/vbdotnet_dotnet_format.md"
 # language-end
       - "Formats linters":
-          - "All formats linters": "./supported-linters#formats"
+          - "All formats linters": "./supported-linters/#formats"
           # format-start
           - "CSS":
               - "All CSS linters": "descriptors/css.md"
@@ -203,7 +203,7 @@ nav:
               - "v8r": "descriptors/yaml_v8r.md"
 # format-end
       - "Tooling Formats linters":
-          - "All tooling formats linters": "./supported-linters#tooling-formats"
+          - "All tooling formats linters": "./supported-linters/#tooling-formats"
           # tooling_format-start
           - "ANSIBLE":
               - "All ANSIBLE linters": "descriptors/ansible.md"
@@ -247,7 +247,7 @@ nav:
               - "terragrunt": "descriptors/terraform_terragrunt.md"
 # tooling_format-end
       - "Other checks":
-          - "All other linters": "./supported-linters#other"
+          - "All other linters": "./supported-linters/#other"
           # other-start
           - "COPYPASTE":
               - "All COPYPASTE linters": "descriptors/copypaste.md"
@@ -296,6 +296,8 @@ nav:
   - "Plugins": "plugins.md"
   - "Special thanks": "special-thanks.md"
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
-  - "Contribute": "how-to-contribute.md"
+  - "Contribute":
+    - "How-to Contribute": "how-to-contribute.md"
+    - "Contributing Guide": "contributing.md"
   - "License": "license.md"
   - "Changelog": "CHANGELOG.md"
