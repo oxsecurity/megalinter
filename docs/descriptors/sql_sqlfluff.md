@@ -9,7 +9,7 @@
 
 ## sqlfluff documentation
 
-- Version in Mega-Linter: **0.5.0**
+- Version in Mega-Linter: **0.5.1**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
 - See [Index of problems detected by sqlfluff](https://docs.sqlfluff.com/en/stable/rules.html){target=_blank}
