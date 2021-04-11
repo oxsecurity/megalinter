@@ -18,6 +18,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.5.8 to **3.6.0** on 2021-04-09
   - [eslint](https://eslint.org) from 7.23.0 to **7.24.0** on 2021-04-10
   - [sqlfluff](https://www.sqlfluff.com/) from 0.5.0 to **0.5.1** on 2021-04-10
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.30.1 to **0.31.0** on 2021-04-11
 <!-- linter-versions-end -->
 
 ## [4.31.0] 2021-04-03
