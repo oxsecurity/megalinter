@@ -776,6 +776,9 @@ To help, you can also:
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
 - [schemastore.org](https://www.schemastore.org/json/)
 
+#### Articles
+- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/)
+
 #### Linters
 
 <!-- referring-linters-start -->
