@@ -15,7 +15,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 
 ```shell
 python3 -m venv venv
-source venv/bin/activate
+. venv/bin/activate
 echo "venv/" >> .git/info/exclude
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
