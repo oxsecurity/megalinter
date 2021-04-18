@@ -238,6 +238,9 @@ class Linter:
                     if os.path.isfile(f"{self.workspace}/{file_to_check}"):
                         is_found = True
                         break
+                    if os.path.isfile(f"{self.workspace}/{self.linter_rules_path}/{file_to_check}"):
+                        is_found = True
+                        break
                 if is_found is False:
                     self.is_active = False
                     logging.info(
