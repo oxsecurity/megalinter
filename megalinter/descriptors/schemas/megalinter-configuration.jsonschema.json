@@ -7,10 +7,7 @@
       "description": "Command information",
       "properties": {
         "command": {
-          "examples": [
-            "npm run test",
-            "echo \"This is a custom command\""
-          ],
+          "examples": ["npm run test", "echo \"This is a custom command\""],
           "title": "Bash command to run",
           "type": "string"
         },
@@ -21,14 +18,8 @@
           "type": "boolean"
         },
         "cwd": {
-          "enum": [
-            "root",
-            "workspace"
-          ],
-          "examples": [
-            "root",
-            "workspace"
-          ],
+          "enum": ["root", "workspace"],
+          "examples": ["root", "workspace"],
           "title": "Folder where to run the command",
           "type": "string"
         }
@@ -277,11 +268,7 @@
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
       "description": "List of additional excluded directory basenames to add to Mega-Linter default excluded directories. They are excluded at any nested level.",
-      "examples": [
-        [
-          "test"
-        ]
-      ],
+      "examples": [["test"]],
       "items": {
         "type": "string"
       },
@@ -291,18 +278,12 @@
     "ANSIBLE_ANSIBLE_LINT_ARGUMENTS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_ARGUMENTS",
       "description": "ANSIBLE_ANSIBLE_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "ANSIBLE_ANSIBLE_LINT_CONFIG_FILE": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CONFIG_FILE",
@@ -331,10 +312,7 @@
     },
     "ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -350,10 +328,7 @@
     },
     "ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -396,35 +371,19 @@
       "$id": "#/properties/APPLY_FIXES",
       "default": "none",
       "description": "'all' to apply formatting and auto-fixes of all linters, or a list of linter keys",
-      "examples": [
-        "all",
-        "none",
-        [
-          "JAVASCRIPT_ES",
-          "MARKDOWN_MARKDOWNLINT"
-        ]
-      ],
+      "examples": ["all", "none", ["JAVASCRIPT_ES", "MARKDOWN_MARKDOWNLINT"]],
       "title": "Apply linters formatting and auto-fixes",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "ARM_ARM_TTK_ARGUMENTS": {
       "$id": "#/properties/ARM_ARM_TTK_ARGUMENTS",
       "description": "ARM_ARM_TTK: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "ARM_ARM_TTK: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "ARM_ARM_TTK_CONFIG_FILE": {
       "$id": "#/properties/ARM_ARM_TTK_CONFIG_FILE",
@@ -447,10 +406,7 @@
     },
     "ARM_ARM_TTK_FILE_EXTENSIONS": {
       "$id": "#/properties/ARM_ARM_TTK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -466,10 +422,7 @@
     },
     "ARM_ARM_TTK_FILE_NAMES_REGEX": {
       "$id": "#/properties/ARM_ARM_TTK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -505,18 +458,12 @@
     "BASH_EXEC_ARGUMENTS": {
       "$id": "#/properties/BASH_EXEC_ARGUMENTS",
       "description": "BASH_EXEC: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "BASH_EXEC: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "BASH_EXEC_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_EXEC_DISABLE_ERRORS",
@@ -532,10 +479,7 @@
     },
     "BASH_EXEC_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_EXEC_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -544,10 +488,7 @@
     },
     "BASH_EXEC_FILE_NAMES_REGEX": {
       "$id": "#/properties/BASH_EXEC_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -577,18 +518,12 @@
     "BASH_SHELLCHECK_ARGUMENTS": {
       "$id": "#/properties/BASH_SHELLCHECK_ARGUMENTS",
       "description": "BASH_SHELLCHECK: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "BASH_SHELLCHECK: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "BASH_SHELLCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHELLCHECK_DISABLE_ERRORS",
@@ -604,10 +539,7 @@
     },
     "BASH_SHELLCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHELLCHECK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -616,10 +548,7 @@
     },
     "BASH_SHELLCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/BASH_SHELLCHECK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -639,18 +568,12 @@
     "BASH_SHFMT_ARGUMENTS": {
       "$id": "#/properties/BASH_SHFMT_ARGUMENTS",
       "description": "BASH_SHFMT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "BASH_SHFMT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "BASH_SHFMT_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHFMT_DISABLE_ERRORS",
@@ -666,10 +589,7 @@
     },
     "BASH_SHFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/BASH_SHFMT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -678,10 +598,7 @@
     },
     "BASH_SHFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/BASH_SHFMT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -701,18 +618,12 @@
     "CLOJURE_CLJ_KONDO_ARGUMENTS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_ARGUMENTS",
       "description": "CLOJURE_CLJ_KONDO: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "CLOJURE_CLJ_KONDO: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "CLOJURE_CLJ_KONDO_CONFIG_FILE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_CONFIG_FILE",
@@ -735,10 +646,7 @@
     },
     "CLOJURE_CLJ_KONDO_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -754,10 +662,7 @@
     },
     "CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -793,18 +698,12 @@
     "CLOUDFORMATION_CFN_LINT_ARGUMENTS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_ARGUMENTS",
       "description": "CLOUDFORMATION_CFN_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "CLOUDFORMATION_CFN_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "CLOUDFORMATION_CFN_LINT_CONFIG_FILE": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_CONFIG_FILE",
@@ -827,10 +726,7 @@
     },
     "CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -846,10 +742,7 @@
     },
     "CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -885,18 +778,12 @@
     "COFFEE_COFFEELINT_ARGUMENTS": {
       "$id": "#/properties/COFFEE_COFFEELINT_ARGUMENTS",
       "description": "COFFEE_COFFEELINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "COFFEE_COFFEELINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "COFFEE_COFFEELINT_CONFIG_FILE": {
       "$id": "#/properties/COFFEE_COFFEELINT_CONFIG_FILE",
@@ -919,10 +806,7 @@
     },
     "COFFEE_COFFEELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -938,10 +822,7 @@
     },
     "COFFEE_COFFEELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/COFFEE_COFFEELINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -987,18 +868,12 @@
     "COPYPASTE_JSCPD_ARGUMENTS": {
       "$id": "#/properties/COPYPASTE_JSCPD_ARGUMENTS",
       "description": "COPYPASTE_JSCPD: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "COPYPASTE_JSCPD: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "COPYPASTE_JSCPD_CONFIG_FILE": {
       "$id": "#/properties/COPYPASTE_JSCPD_CONFIG_FILE",
@@ -1021,10 +896,7 @@
     },
     "COPYPASTE_JSCPD_FILE_EXTENSIONS": {
       "$id": "#/properties/COPYPASTE_JSCPD_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1040,10 +912,7 @@
     },
     "COPYPASTE_JSCPD_FILE_NAMES_REGEX": {
       "$id": "#/properties/COPYPASTE_JSCPD_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1069,18 +938,12 @@
     "CPP_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/CPP_CPPLINT_ARGUMENTS",
       "description": "CPP_CPPLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "CPP_CPPLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "CPP_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CPP_CPPLINT_DISABLE_ERRORS",
@@ -1096,10 +959,7 @@
     },
     "CPP_CPPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CPP_CPPLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1108,10 +968,7 @@
     },
     "CPP_CPPLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CPP_CPPLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1141,18 +998,12 @@
     "CSHARP_DOTNET_FORMAT_ARGUMENTS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_ARGUMENTS",
       "description": "CSHARP_DOTNET_FORMAT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "CSHARP_DOTNET_FORMAT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_DISABLE_ERRORS",
@@ -1168,10 +1019,7 @@
     },
     "CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1180,10 +1028,7 @@
     },
     "CSHARP_DOTNET_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1223,18 +1068,12 @@
     "CSS_SCSS_LINT_ARGUMENTS": {
       "$id": "#/properties/CSS_SCSS_LINT_ARGUMENTS",
       "description": "CSS_SCSS_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "CSS_SCSS_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "CSS_SCSS_LINT_CONFIG_FILE": {
       "$id": "#/properties/CSS_SCSS_LINT_CONFIG_FILE",
@@ -1257,10 +1096,7 @@
     },
     "CSS_SCSS_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSS_SCSS_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1276,10 +1112,7 @@
     },
     "CSS_SCSS_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSS_SCSS_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1305,18 +1138,12 @@
     "CSS_STYLELINT_ARGUMENTS": {
       "$id": "#/properties/CSS_STYLELINT_ARGUMENTS",
       "description": "CSS_STYLELINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "CSS_STYLELINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "CSS_STYLELINT_CONFIG_FILE": {
       "$id": "#/properties/CSS_STYLELINT_CONFIG_FILE",
@@ -1339,10 +1166,7 @@
     },
     "CSS_STYLELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/CSS_STYLELINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1358,10 +1182,7 @@
     },
     "CSS_STYLELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/CSS_STYLELINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1387,18 +1208,12 @@
     "C_CPPLINT_ARGUMENTS": {
       "$id": "#/properties/C_CPPLINT_ARGUMENTS",
       "description": "C_CPPLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "C_CPPLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "C_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/C_CPPLINT_DISABLE_ERRORS",
@@ -1414,10 +1229,7 @@
     },
     "C_CPPLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/C_CPPLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1426,10 +1238,7 @@
     },
     "C_CPPLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/C_CPPLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1459,18 +1268,12 @@
     "DART_DARTANALYZER_ARGUMENTS": {
       "$id": "#/properties/DART_DARTANALYZER_ARGUMENTS",
       "description": "DART_DARTANALYZER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "DART_DARTANALYZER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "DART_DARTANALYZER_CONFIG_FILE": {
       "$id": "#/properties/DART_DARTANALYZER_CONFIG_FILE",
@@ -1493,10 +1296,7 @@
     },
     "DART_DARTANALYZER_FILE_EXTENSIONS": {
       "$id": "#/properties/DART_DARTANALYZER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1512,10 +1312,7 @@
     },
     "DART_DARTANALYZER_FILE_NAMES_REGEX": {
       "$id": "#/properties/DART_DARTANALYZER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1552,10 +1349,7 @@
       "$id": "#/properties/DEFAULT_BRANCH",
       "default": "master",
       "description": "The name of the repository default branch. Warning: In new github repositories, master branch is named main, so you need to override this value with main",
-      "examples": [
-        "master",
-        "main"
-      ],
+      "examples": ["master", "main"],
       "title": "Default git branch",
       "type": "string"
     },
@@ -1569,12 +1363,7 @@
     "DISABLE": {
       "$id": "#/properties/DISABLE",
       "description": "If DISABLE is set, the linters in the listed descriptors will be skipped",
-      "examples": [
-        [
-          "BASH",
-          "HTML"
-        ]
-      ],
+      "examples": [["BASH", "HTML"]],
       "items": {
         "$ref": "#/definitions/enum_descriptor_keys"
       },
@@ -1591,12 +1380,7 @@
     "DISABLE_LINTERS": {
       "$id": "#/properties/DISABLE_LINTERS",
       "description": "If DISABLE_LINTERS is set, the listed linters will be skipped",
-      "examples": [
-        [
-          "BASH_BASH_SHFMT",
-          "JAVASCRIPT_STANDARD"
-        ]
-      ],
+      "examples": [["BASH_BASH_SHFMT", "JAVASCRIPT_STANDARD"]],
       "items": {
         "$ref": "#/definitions/enum_linter_keys"
       },
@@ -1606,18 +1390,12 @@
     "DOCKERFILE_DOCKERFILELINT_ARGUMENTS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_ARGUMENTS",
       "description": "DOCKERFILE_DOCKERFILELINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "DOCKERFILE_DOCKERFILELINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "DOCKERFILE_DOCKERFILELINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CONFIG_FILE",
@@ -1640,10 +1418,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1659,10 +1434,7 @@
     },
     "DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1698,18 +1470,12 @@
     "DOCKERFILE_HADOLINT_ARGUMENTS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_ARGUMENTS",
       "description": "DOCKERFILE_HADOLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "DOCKERFILE_HADOLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "DOCKERFILE_HADOLINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CONFIG_FILE",
@@ -1732,10 +1498,7 @@
     },
     "DOCKERFILE_HADOLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1751,10 +1514,7 @@
     },
     "DOCKERFILE_HADOLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1780,18 +1540,12 @@
     "EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_ARGUMENTS",
       "description": "EDITORCONFIG_EDITORCONFIG_CHECKER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE",
@@ -1814,10 +1568,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1833,10 +1584,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -1921,13 +1669,7 @@
     "ENABLE": {
       "$id": "#/properties/ENABLE",
       "description": "If ENABLE is not set, all descriptors are activated by default. If set, all linters of listed descriptors will be activated by default",
-      "examples": [
-        [
-          "BASH",
-          "HTML",
-          "JAVASCRIPT"
-        ]
-      ],
+      "examples": [["BASH", "HTML", "JAVASCRIPT"]],
       "items": {
         "$ref": "#/definitions/enum_descriptor_keys"
       },
@@ -1937,12 +1679,7 @@
     "ENABLE_LINTERS": {
       "$id": "#/properties/ENABLE_LINTERS",
       "description": "If ENABLE_LINTERS is set, only listed linters will be processed",
-      "examples": [
-        [
-          "JAVASCRIPT_ES",
-          "PYTHON_PYLINT"
-        ]
-      ],
+      "examples": [["JAVASCRIPT_ES", "PYTHON_PYLINT"]],
       "items": {
         "$ref": "#/definitions/enum_linter_keys"
       },
@@ -1952,18 +1689,12 @@
     "ENV_DOTENV_LINTER_ARGUMENTS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_ARGUMENTS",
       "description": "ENV_DOTENV_LINTER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "ENV_DOTENV_LINTER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "ENV_DOTENV_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_DISABLE_ERRORS",
@@ -1979,10 +1710,7 @@
     },
     "ENV_DOTENV_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -1991,10 +1719,7 @@
     },
     "ENV_DOTENV_LINTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/ENV_DOTENV_LINTER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2031,12 +1756,7 @@
     "EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/EXCLUDED_DIRECTORIES",
       "description": "List of excluded directory basenames replacing Mega-Linter default excluded directories. They are excluded at any nested level.",
-      "examples": [
-        [
-          ".github",
-          "node_modules"
-        ]
-      ],
+      "examples": [[".github", "node_modules"]],
       "items": {
         "type": "string"
       },
@@ -2054,10 +1774,7 @@
         "type": "string"
       },
       "title": "Mega-Linter config files to extend from",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "FAIL_IF_MISSING_LINTER_IN_FLAVOR": {
       "$id": "#/properties/FAIL_IF_MISSING_LINTER_IN_FLAVOR",
@@ -2086,9 +1803,7 @@
     "FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/FILTER_REGEX_INCLUDE",
       "description": "Regular expression defining which files will be processed by linters",
-      "examples": [
-        "(src/)"
-      ],
+      "examples": ["(src/)"],
       "title": "Including regex filter",
       "type": "string"
     },
@@ -2119,18 +1834,12 @@
     "GHERKIN_GHERKIN_LINT_ARGUMENTS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_ARGUMENTS",
       "description": "GHERKIN_GHERKIN_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "GHERKIN_GHERKIN_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "GHERKIN_GHERKIN_LINT_CONFIG_FILE": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_CONFIG_FILE",
@@ -2153,10 +1862,7 @@
     },
     "GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2172,10 +1878,7 @@
     },
     "GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2202,9 +1905,7 @@
       "$id": "#/properties/GITHUB_API_URL",
       "default": "https://api.github.com",
       "description": "URL where the github API can be reached. Must be overridden if using GitHub Enterprise",
-      "examples": [
-        "https://github.my-company.com/api/v3"
-      ],
+      "examples": ["https://github.my-company.com/api/v3"],
       "format": "uri",
       "title": "GitHub API base URL",
       "type": "string"
@@ -2220,9 +1921,7 @@
       "$id": "#/properties/GITHUB_SERVER_URL",
       "default": "https://github.com",
       "description": "URL of the GitHub instance. Must be overridden if using GitHub Enterprise",
-      "examples": [
-        "https://github.my-company.com/"
-      ],
+      "examples": ["https://github.my-company.com/"],
       "format": "uri",
       "title": "GitHub server base URL",
       "type": "string"
@@ -2254,18 +1953,12 @@
     "GIT_GIT_DIFF_ARGUMENTS": {
       "$id": "#/properties/GIT_GIT_DIFF_ARGUMENTS",
       "description": "GIT_GIT_DIFF: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "GIT_GIT_DIFF: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "GIT_GIT_DIFF_DISABLE_ERRORS": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS",
@@ -2281,10 +1974,7 @@
     },
     "GIT_GIT_DIFF_FILE_EXTENSIONS": {
       "$id": "#/properties/GIT_GIT_DIFF_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2293,10 +1983,7 @@
     },
     "GIT_GIT_DIFF_FILE_NAMES_REGEX": {
       "$id": "#/properties/GIT_GIT_DIFF_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2326,18 +2013,12 @@
     "GO_GOLANGCI_LINT_ARGUMENTS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_ARGUMENTS",
       "description": "GO_GOLANGCI_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "GO_GOLANGCI_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "GO_GOLANGCI_LINT_CONFIG_FILE": {
       "$id": "#/properties/GO_GOLANGCI_LINT_CONFIG_FILE",
@@ -2360,10 +2041,7 @@
     },
     "GO_GOLANGCI_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2379,10 +2057,7 @@
     },
     "GO_GOLANGCI_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GO_GOLANGCI_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2408,18 +2083,12 @@
     "GO_REVIVE_ARGUMENTS": {
       "$id": "#/properties/GO_REVIVE_ARGUMENTS",
       "description": "GO_REVIVE: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "GO_REVIVE: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "GO_REVIVE_CONFIG_FILE": {
       "$id": "#/properties/GO_REVIVE_CONFIG_FILE",
@@ -2442,10 +2111,7 @@
     },
     "GO_REVIVE_FILE_EXTENSIONS": {
       "$id": "#/properties/GO_REVIVE_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2454,10 +2120,7 @@
     },
     "GO_REVIVE_FILE_NAMES_REGEX": {
       "$id": "#/properties/GO_REVIVE_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2493,18 +2156,12 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_ARGUMENTS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_ARGUMENTS",
       "description": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE",
@@ -2527,10 +2184,7 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2546,10 +2200,7 @@
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2585,18 +2236,12 @@
     "GROOVY_NPM_GROOVY_LINT_ARGUMENTS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_ARGUMENTS",
       "description": "GROOVY_NPM_GROOVY_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "GROOVY_NPM_GROOVY_LINT_CONFIG_FILE": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CONFIG_FILE",
@@ -2619,10 +2264,7 @@
     },
     "GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2638,10 +2280,7 @@
     },
     "GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2677,18 +2316,12 @@
     "HTML_HTMLHINT_ARGUMENTS": {
       "$id": "#/properties/HTML_HTMLHINT_ARGUMENTS",
       "description": "HTML_HTMLHINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "HTML_HTMLHINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "HTML_HTMLHINT_CONFIG_FILE": {
       "$id": "#/properties/HTML_HTMLHINT_CONFIG_FILE",
@@ -2711,10 +2344,7 @@
     },
     "HTML_HTMLHINT_FILE_EXTENSIONS": {
       "$id": "#/properties/HTML_HTMLHINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2730,10 +2360,7 @@
     },
     "HTML_HTMLHINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/HTML_HTMLHINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2759,32 +2386,20 @@
     "JAVASCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
       "description": "Style of javascript formatting to apply",
-      "enum": [
-        "standard",
-        "prettier"
-      ],
-      "examples": [
-        "standard",
-        "prettier"
-      ],
+      "enum": ["standard", "prettier"],
+      "examples": ["standard", "prettier"],
       "title": "Javascript default style",
       "type": "string"
     },
     "JAVASCRIPT_ES_ARGUMENTS": {
       "$id": "#/properties/JAVASCRIPT_ES_ARGUMENTS",
       "description": "JAVASCRIPT_ES: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JAVASCRIPT_ES: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JAVASCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/JAVASCRIPT_ES_CONFIG_FILE",
@@ -2807,10 +2422,7 @@
     },
     "JAVASCRIPT_ES_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_ES_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2826,10 +2438,7 @@
     },
     "JAVASCRIPT_ES_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_ES_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2865,18 +2474,12 @@
     "JAVASCRIPT_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_ARGUMENTS",
       "description": "JAVASCRIPT_PRETTIER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JAVASCRIPT_PRETTIER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JAVASCRIPT_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_CONFIG_FILE",
@@ -2899,10 +2502,7 @@
     },
     "JAVASCRIPT_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2911,10 +2511,7 @@
     },
     "JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -2940,18 +2537,12 @@
     "JAVASCRIPT_STANDARD_ARGUMENTS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_ARGUMENTS",
       "description": "JAVASCRIPT_STANDARD: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JAVASCRIPT_STANDARD: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JAVASCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_DISABLE_ERRORS",
@@ -2967,10 +2558,7 @@
     },
     "JAVASCRIPT_STANDARD_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -2979,10 +2567,7 @@
     },
     "JAVASCRIPT_STANDARD_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3002,18 +2587,12 @@
     "JAVA_CHECKSTYLE_ARGUMENTS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_ARGUMENTS",
       "description": "JAVA_CHECKSTYLE: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JAVA_CHECKSTYLE: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JAVA_CHECKSTYLE_CONFIG_FILE": {
       "$id": "#/properties/JAVA_CHECKSTYLE_CONFIG_FILE",
@@ -3036,10 +2615,7 @@
     },
     "JAVA_CHECKSTYLE_FILE_EXTENSIONS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3055,10 +2631,7 @@
     },
     "JAVA_CHECKSTYLE_FILE_NAMES_REGEX": {
       "$id": "#/properties/JAVA_CHECKSTYLE_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3094,18 +2667,12 @@
     "JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS",
       "description": "JSON_ESLINT_PLUGIN_JSONC: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
@@ -3128,10 +2695,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3147,10 +2711,7 @@
     },
     "JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3186,18 +2747,12 @@
     "JSON_JSONLINT_ARGUMENTS": {
       "$id": "#/properties/JSON_JSONLINT_ARGUMENTS",
       "description": "JSON_JSONLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JSON_JSONLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JSON_JSONLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_JSONLINT_DISABLE_ERRORS",
@@ -3213,10 +2768,7 @@
     },
     "JSON_JSONLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_JSONLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3225,10 +2777,7 @@
     },
     "JSON_JSONLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_JSONLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3248,18 +2797,12 @@
     "JSON_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JSON_PRETTIER_ARGUMENTS",
       "description": "JSON_PRETTIER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JSON_PRETTIER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JSON_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/JSON_PRETTIER_CONFIG_FILE",
@@ -3282,10 +2825,7 @@
     },
     "JSON_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_PRETTIER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3294,10 +2834,7 @@
     },
     "JSON_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_PRETTIER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3323,18 +2860,12 @@
     "JSON_V8R_ARGUMENTS": {
       "$id": "#/properties/JSON_V8R_ARGUMENTS",
       "description": "JSON_V8R: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JSON_V8R: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JSON_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_V8R_DISABLE_ERRORS",
@@ -3350,10 +2881,7 @@
     },
     "JSON_V8R_FILE_EXTENSIONS": {
       "$id": "#/properties/JSON_V8R_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3362,10 +2890,7 @@
     },
     "JSON_V8R_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSON_V8R_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3385,18 +2910,12 @@
     "JSX_ESLINT_ARGUMENTS": {
       "$id": "#/properties/JSX_ESLINT_ARGUMENTS",
       "description": "JSX_ESLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "JSX_ESLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "JSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
@@ -3419,10 +2938,7 @@
     },
     "JSX_ESLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/JSX_ESLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3438,10 +2954,7 @@
     },
     "JSX_ESLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/JSX_ESLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3487,18 +3000,12 @@
     "KOTLIN_KTLINT_ARGUMENTS": {
       "$id": "#/properties/KOTLIN_KTLINT_ARGUMENTS",
       "description": "KOTLIN_KTLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "KOTLIN_KTLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "KOTLIN_KTLINT_DISABLE_ERRORS": {
       "$id": "#/properties/KOTLIN_KTLINT_DISABLE_ERRORS",
@@ -3514,10 +3021,7 @@
     },
     "KOTLIN_KTLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/KOTLIN_KTLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3526,10 +3030,7 @@
     },
     "KOTLIN_KTLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/KOTLIN_KTLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3559,18 +3060,12 @@
     "KUBERNETES_KUBEVAL_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_ARGUMENTS",
       "description": "KUBERNETES_KUBEVAL: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "KUBERNETES_KUBEVAL: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "KUBERNETES_KUBEVAL_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DIRECTORY",
@@ -3592,10 +3087,7 @@
     },
     "KUBERNETES_KUBEVAL_FILE_EXTENSIONS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3604,10 +3096,7 @@
     },
     "KUBERNETES_KUBEVAL_FILE_NAMES_REGEX": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3627,18 +3116,12 @@
     "LATEX_CHKTEX_ARGUMENTS": {
       "$id": "#/properties/LATEX_CHKTEX_ARGUMENTS",
       "description": "LATEX_CHKTEX: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "LATEX_CHKTEX: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "LATEX_CHKTEX_CONFIG_FILE": {
       "$id": "#/properties/LATEX_CHKTEX_CONFIG_FILE",
@@ -3661,10 +3144,7 @@
     },
     "LATEX_CHKTEX_FILE_EXTENSIONS": {
       "$id": "#/properties/LATEX_CHKTEX_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3680,10 +3160,7 @@
     },
     "LATEX_CHKTEX_FILE_NAMES_REGEX": {
       "$id": "#/properties/LATEX_CHKTEX_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3738,12 +3215,7 @@
       "$id": "#/properties/LOG_LEVEL",
       "default": "INFO",
       "description": "How much output the script will generate to the console. One of INFO, DEBUG, WARNING or ERROR.",
-      "enum": [
-        "INFO",
-        "DEBUG",
-        "WARNING",
-        "ERROR"
-      ],
+      "enum": ["INFO", "DEBUG", "WARNING", "ERROR"],
       "title": "Log level",
       "type": "string"
     },
@@ -3760,18 +3232,12 @@
     "LUA_LUACHECK_ARGUMENTS": {
       "$id": "#/properties/LUA_LUACHECK_ARGUMENTS",
       "description": "LUA_LUACHECK: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "LUA_LUACHECK: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "LUA_LUACHECK_CONFIG_FILE": {
       "$id": "#/properties/LUA_LUACHECK_CONFIG_FILE",
@@ -3794,10 +3260,7 @@
     },
     "LUA_LUACHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/LUA_LUACHECK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3813,10 +3276,7 @@
     },
     "LUA_LUACHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/LUA_LUACHECK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3842,10 +3302,7 @@
     "MARKDOWN_DEFAULT_STYLE": {
       "$id": "#/properties/MARKDOWN_DEFAULT_STYLE",
       "description": "Style of markdown formatting to apply",
-      "enum": [
-        "markdownlint",
-        "remark-lint"
-      ],
+      "enum": ["markdownlint", "remark-lint"],
       "title": "Markdown default formatting style",
       "type": "string"
     },
@@ -3862,18 +3319,12 @@
     "MARKDOWN_MARKDOWNLINT_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_ARGUMENTS",
       "description": "MARKDOWN_MARKDOWNLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "MARKDOWN_MARKDOWNLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
@@ -3896,10 +3347,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3915,10 +3363,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -3944,18 +3389,12 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS",
       "description": "MARKDOWN_MARKDOWN_LINK_CHECK: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE",
@@ -3978,10 +3417,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -3997,10 +3433,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4026,18 +3459,12 @@
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_ARGUMENTS",
       "description": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS",
@@ -4053,10 +3480,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4065,10 +3489,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4088,10 +3509,7 @@
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS",
       "description": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
@@ -4106,10 +3524,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4118,10 +3533,7 @@
     },
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4141,18 +3553,12 @@
     "MARKDOWN_REMARK_LINT_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_ARGUMENTS",
       "description": "MARKDOWN_REMARK_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "MARKDOWN_REMARK_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "MARKDOWN_REMARK_LINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_CONFIG_FILE",
@@ -4175,10 +3581,7 @@
     },
     "MARKDOWN_REMARK_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4187,10 +3590,7 @@
     },
     "MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4226,18 +3626,12 @@
     "OPENAPI_SPECTRAL_ARGUMENTS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_ARGUMENTS",
       "description": "OPENAPI_SPECTRAL: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "OPENAPI_SPECTRAL: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "OPENAPI_SPECTRAL_CONFIG_FILE": {
       "$id": "#/properties/OPENAPI_SPECTRAL_CONFIG_FILE",
@@ -4260,10 +3654,7 @@
     },
     "OPENAPI_SPECTRAL_FILE_EXTENSIONS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4279,10 +3670,7 @@
     },
     "OPENAPI_SPECTRAL_FILE_NAMES_REGEX": {
       "$id": "#/properties/OPENAPI_SPECTRAL_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4325,18 +3713,12 @@
     "PERL_PERLCRITIC_ARGUMENTS": {
       "$id": "#/properties/PERL_PERLCRITIC_ARGUMENTS",
       "description": "PERL_PERLCRITIC: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PERL_PERLCRITIC: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PERL_PERLCRITIC_DISABLE_ERRORS": {
       "$id": "#/properties/PERL_PERLCRITIC_DISABLE_ERRORS",
@@ -4352,10 +3734,7 @@
     },
     "PERL_PERLCRITIC_FILE_EXTENSIONS": {
       "$id": "#/properties/PERL_PERLCRITIC_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4364,10 +3743,7 @@
     },
     "PERL_PERLCRITIC_FILE_NAMES_REGEX": {
       "$id": "#/properties/PERL_PERLCRITIC_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4387,18 +3763,12 @@
     "PHP_BUILTIN_ARGUMENTS": {
       "$id": "#/properties/PHP_BUILTIN_ARGUMENTS",
       "description": "PHP_BUILTIN: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PHP_BUILTIN: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
@@ -4414,10 +3784,7 @@
     },
     "PHP_BUILTIN_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_BUILTIN_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4426,10 +3793,7 @@
     },
     "PHP_BUILTIN_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_BUILTIN_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4459,18 +3823,12 @@
     "PHP_PHPCS_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPCS_ARGUMENTS",
       "description": "PHP_PHPCS: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PHP_PHPCS: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PHP_PHPCS_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPCS_CONFIG_FILE",
@@ -4493,10 +3851,7 @@
     },
     "PHP_PHPCS_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPCS_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4512,10 +3867,7 @@
     },
     "PHP_PHPCS_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPCS_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4541,18 +3893,12 @@
     "PHP_PHPSTAN_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPSTAN_ARGUMENTS",
       "description": "PHP_PHPSTAN: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PHP_PHPSTAN: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PHP_PHPSTAN_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
@@ -4575,10 +3921,7 @@
     },
     "PHP_PHPSTAN_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PHPSTAN_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4594,10 +3937,7 @@
     },
     "PHP_PHPSTAN_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PHPSTAN_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4623,18 +3963,12 @@
     "PHP_PSALM_ARGUMENTS": {
       "$id": "#/properties/PHP_PSALM_ARGUMENTS",
       "description": "PHP_PSALM: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PHP_PSALM: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PHP_PSALM_CONFIG_FILE": {
       "$id": "#/properties/PHP_PSALM_CONFIG_FILE",
@@ -4657,10 +3991,7 @@
     },
     "PHP_PSALM_FILE_EXTENSIONS": {
       "$id": "#/properties/PHP_PSALM_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4676,10 +4007,7 @@
     },
     "PHP_PSALM_FILE_NAMES_REGEX": {
       "$id": "#/properties/PHP_PSALM_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4748,18 +4076,12 @@
     "POWERSHELL_POWERSHELL_ARGUMENTS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_ARGUMENTS",
       "description": "POWERSHELL_POWERSHELL: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "POWERSHELL_POWERSHELL: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "POWERSHELL_POWERSHELL_CONFIG_FILE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_CONFIG_FILE",
@@ -4782,10 +4104,7 @@
     },
     "POWERSHELL_POWERSHELL_FILE_EXTENSIONS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4801,10 +4120,7 @@
     },
     "POWERSHELL_POWERSHELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4870,18 +4186,12 @@
     "PROTOBUF_PROTOLINT_ARGUMENTS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_ARGUMENTS",
       "description": "PROTOBUF_PROTOLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PROTOBUF_PROTOLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PROTOBUF_PROTOLINT_CONFIG_FILE": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_CONFIG_FILE",
@@ -4904,10 +4214,7 @@
     },
     "PROTOBUF_PROTOLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -4923,10 +4230,7 @@
     },
     "PROTOBUF_PROTOLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -4962,18 +4266,12 @@
     "PUPPET_PUPPET_LINT_ARGUMENTS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_ARGUMENTS",
       "description": "PUPPET_PUPPET_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PUPPET_PUPPET_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PUPPET_PUPPET_LINT_CONFIG_FILE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_CONFIG_FILE",
@@ -4996,10 +4294,7 @@
     },
     "PUPPET_PUPPET_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5015,10 +4310,7 @@
     },
     "PUPPET_PUPPET_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5044,18 +4336,12 @@
     "PYTHON_BLACK_ARGUMENTS": {
       "$id": "#/properties/PYTHON_BLACK_ARGUMENTS",
       "description": "PYTHON_BLACK: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PYTHON_BLACK: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PYTHON_BLACK_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_BLACK_CONFIG_FILE",
@@ -5078,10 +4364,7 @@
     },
     "PYTHON_BLACK_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_BLACK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5097,10 +4380,7 @@
     },
     "PYTHON_BLACK_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_BLACK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5136,18 +4416,12 @@
     "PYTHON_FLAKE8_ARGUMENTS": {
       "$id": "#/properties/PYTHON_FLAKE8_ARGUMENTS",
       "description": "PYTHON_FLAKE8: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PYTHON_FLAKE8: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PYTHON_FLAKE8_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_FLAKE8_CONFIG_FILE",
@@ -5170,10 +4444,7 @@
     },
     "PYTHON_FLAKE8_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_FLAKE8_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5189,10 +4460,7 @@
     },
     "PYTHON_FLAKE8_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_FLAKE8_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5218,18 +4486,12 @@
     "PYTHON_ISORT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_ISORT_ARGUMENTS",
       "description": "PYTHON_ISORT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PYTHON_ISORT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PYTHON_ISORT_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_ISORT_CONFIG_FILE",
@@ -5252,10 +4514,7 @@
     },
     "PYTHON_ISORT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_ISORT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5271,10 +4530,7 @@
     },
     "PYTHON_ISORT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_ISORT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5300,18 +4556,12 @@
     "PYTHON_PYLINT_ARGUMENTS": {
       "$id": "#/properties/PYTHON_PYLINT_ARGUMENTS",
       "description": "PYTHON_PYLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "PYTHON_PYLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "PYTHON_PYLINT_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_PYLINT_CONFIG_FILE",
@@ -5334,10 +4584,7 @@
     },
     "PYTHON_PYLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/PYTHON_PYLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5353,10 +4600,7 @@
     },
     "PYTHON_PYLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/PYTHON_PYLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5392,18 +4636,12 @@
     "RAKU_RAKU_ARGUMENTS": {
       "$id": "#/properties/RAKU_RAKU_ARGUMENTS",
       "description": "RAKU_RAKU: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "RAKU_RAKU: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "RAKU_RAKU_CONFIG_FILE": {
       "$id": "#/properties/RAKU_RAKU_CONFIG_FILE",
@@ -5426,10 +4664,7 @@
     },
     "RAKU_RAKU_FILE_EXTENSIONS": {
       "$id": "#/properties/RAKU_RAKU_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5445,10 +4680,7 @@
     },
     "RAKU_RAKU_FILE_NAMES_REGEX": {
       "$id": "#/properties/RAKU_RAKU_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5491,18 +4723,12 @@
     "RST_RSTCHECK_ARGUMENTS": {
       "$id": "#/properties/RST_RSTCHECK_ARGUMENTS",
       "description": "RST_RSTCHECK: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "RST_RSTCHECK: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "RST_RSTCHECK_CONFIG_FILE": {
       "$id": "#/properties/RST_RSTCHECK_CONFIG_FILE",
@@ -5525,10 +4751,7 @@
     },
     "RST_RSTCHECK_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RSTCHECK_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5544,10 +4767,7 @@
     },
     "RST_RSTCHECK_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RSTCHECK_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5573,18 +4793,12 @@
     "RST_RSTFMT_ARGUMENTS": {
       "$id": "#/properties/RST_RSTFMT_ARGUMENTS",
       "description": "RST_RSTFMT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "RST_RSTFMT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "RST_RSTFMT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTFMT_DISABLE_ERRORS",
@@ -5600,10 +4814,7 @@
     },
     "RST_RSTFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RSTFMT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5612,10 +4823,7 @@
     },
     "RST_RSTFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RSTFMT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5635,18 +4843,12 @@
     "RST_RST_LINT_ARGUMENTS": {
       "$id": "#/properties/RST_RST_LINT_ARGUMENTS",
       "description": "RST_RST_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "RST_RST_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "RST_RST_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RST_LINT_DISABLE_ERRORS",
@@ -5662,10 +4864,7 @@
     },
     "RST_RST_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/RST_RST_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5674,10 +4873,7 @@
     },
     "RST_RST_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/RST_RST_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5707,18 +4903,12 @@
     "RUBY_RUBOCOP_ARGUMENTS": {
       "$id": "#/properties/RUBY_RUBOCOP_ARGUMENTS",
       "description": "RUBY_RUBOCOP: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "RUBY_RUBOCOP: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "RUBY_RUBOCOP_CONFIG_FILE": {
       "$id": "#/properties/RUBY_RUBOCOP_CONFIG_FILE",
@@ -5741,10 +4931,7 @@
     },
     "RUBY_RUBOCOP_FILE_EXTENSIONS": {
       "$id": "#/properties/RUBY_RUBOCOP_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5760,10 +4947,7 @@
     },
     "RUBY_RUBOCOP_FILE_NAMES_REGEX": {
       "$id": "#/properties/RUBY_RUBOCOP_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5789,18 +4973,12 @@
     "RUST_CLIPPY_ARGUMENTS": {
       "$id": "#/properties/RUST_CLIPPY_ARGUMENTS",
       "description": "RUST_CLIPPY: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "RUST_CLIPPY: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "RUST_CLIPPY_CONFIG_FILE": {
       "$id": "#/properties/RUST_CLIPPY_CONFIG_FILE",
@@ -5823,10 +5001,7 @@
     },
     "RUST_CLIPPY_FILE_EXTENSIONS": {
       "$id": "#/properties/RUST_CLIPPY_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5842,10 +5017,7 @@
     },
     "RUST_CLIPPY_FILE_NAMES_REGEX": {
       "$id": "#/properties/RUST_CLIPPY_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5891,18 +5063,12 @@
     "R_LINTR_ARGUMENTS": {
       "$id": "#/properties/R_LINTR_ARGUMENTS",
       "description": "R_LINTR: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "R_LINTR: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "R_LINTR_CONFIG_FILE": {
       "$id": "#/properties/R_LINTR_CONFIG_FILE",
@@ -5925,10 +5091,7 @@
     },
     "R_LINTR_FILE_EXTENSIONS": {
       "$id": "#/properties/R_LINTR_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -5944,10 +5107,7 @@
     },
     "R_LINTR_FILE_NAMES_REGEX": {
       "$id": "#/properties/R_LINTR_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -5989,18 +5149,12 @@
     "SALESFORCE_SFDX_SCANNER_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SALESFORCE_SFDX_SCANNER_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_DIRECTORY",
@@ -6022,10 +5176,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6034,10 +5185,7 @@
     },
     "SALESFORCE_SFDX_SCANNER_FILE_NAMES_REGEX": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6067,18 +5215,12 @@
     "SCALA_SCALAFIX_ARGUMENTS": {
       "$id": "#/properties/SCALA_SCALAFIX_ARGUMENTS",
       "description": "SCALA_SCALAFIX: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SCALA_SCALAFIX: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SCALA_SCALAFIX_CONFIG_FILE": {
       "$id": "#/properties/SCALA_SCALAFIX_CONFIG_FILE",
@@ -6101,10 +5243,7 @@
     },
     "SCALA_SCALAFIX_FILE_EXTENSIONS": {
       "$id": "#/properties/SCALA_SCALAFIX_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6120,10 +5259,7 @@
     },
     "SCALA_SCALAFIX_FILE_NAMES_REGEX": {
       "$id": "#/properties/SCALA_SCALAFIX_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6166,18 +5302,12 @@
     "SNAKEMAKE_LINT_ARGUMENTS": {
       "$id": "#/properties/SNAKEMAKE_LINT_ARGUMENTS",
       "description": "SNAKEMAKE_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SNAKEMAKE_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SNAKEMAKE_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_LINT_DISABLE_ERRORS",
@@ -6193,10 +5323,7 @@
     },
     "SNAKEMAKE_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6205,10 +5332,7 @@
     },
     "SNAKEMAKE_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SNAKEMAKE_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6228,18 +5352,12 @@
     "SNAKEMAKE_SNAKEFMT_ARGUMENTS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_ARGUMENTS",
       "description": "SNAKEMAKE_SNAKEFMT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SNAKEMAKE_SNAKEFMT_CONFIG_FILE": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_CONFIG_FILE",
@@ -6262,10 +5380,7 @@
     },
     "SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6281,10 +5396,7 @@
     },
     "SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6310,18 +5422,12 @@
     "SPELL_CSPELL_ARGUMENTS": {
       "$id": "#/properties/SPELL_CSPELL_ARGUMENTS",
       "description": "SPELL_CSPELL: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SPELL_CSPELL: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SPELL_CSPELL_CONFIG_FILE": {
       "$id": "#/properties/SPELL_CSPELL_CONFIG_FILE",
@@ -6344,10 +5450,7 @@
     },
     "SPELL_CSPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_CSPELL_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6363,10 +5466,7 @@
     },
     "SPELL_CSPELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_CSPELL_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6402,18 +5502,12 @@
     "SPELL_MISSPELL_ARGUMENTS": {
       "$id": "#/properties/SPELL_MISSPELL_ARGUMENTS",
       "description": "SPELL_MISSPELL: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SPELL_MISSPELL: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SPELL_MISSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS",
@@ -6429,10 +5523,7 @@
     },
     "SPELL_MISSPELL_FILE_EXTENSIONS": {
       "$id": "#/properties/SPELL_MISSPELL_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6441,10 +5532,7 @@
     },
     "SPELL_MISSPELL_FILE_NAMES_REGEX": {
       "$id": "#/properties/SPELL_MISSPELL_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6474,18 +5562,12 @@
     "SQL_SQLFLUFF_ARGUMENTS": {
       "$id": "#/properties/SQL_SQLFLUFF_ARGUMENTS",
       "description": "SQL_SQLFLUFF: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SQL_SQLFLUFF: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SQL_SQLFLUFF_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQLFLUFF_CONFIG_FILE",
@@ -6508,10 +5590,7 @@
     },
     "SQL_SQLFLUFF_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_SQLFLUFF_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6520,10 +5599,7 @@
     },
     "SQL_SQLFLUFF_FILE_NAMES_REGEX": {
       "$id": "#/properties/SQL_SQLFLUFF_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6549,18 +5625,12 @@
     "SQL_SQL_LINT_ARGUMENTS": {
       "$id": "#/properties/SQL_SQL_LINT_ARGUMENTS",
       "description": "SQL_SQL_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SQL_SQL_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SQL_SQL_LINT_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQL_LINT_CONFIG_FILE",
@@ -6583,10 +5653,7 @@
     },
     "SQL_SQL_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SQL_SQL_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6602,10 +5669,7 @@
     },
     "SQL_SQL_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SQL_SQL_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6641,18 +5705,12 @@
     "SWIFT_SWIFTLINT_ARGUMENTS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_ARGUMENTS",
       "description": "SWIFT_SWIFTLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "SWIFT_SWIFTLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "SWIFT_SWIFTLINT_CONFIG_FILE": {
       "$id": "#/properties/SWIFT_SWIFTLINT_CONFIG_FILE",
@@ -6675,10 +5733,7 @@
     },
     "SWIFT_SWIFTLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6687,10 +5742,7 @@
     },
     "SWIFT_SWIFTLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/SWIFT_SWIFTLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6740,18 +5792,12 @@
     "TEKTON_TEKTON_LINT_ARGUMENTS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_ARGUMENTS",
       "description": "TEKTON_TEKTON_LINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TEKTON_TEKTON_LINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TEKTON_TEKTON_LINT_CONFIG_FILE": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_CONFIG_FILE",
@@ -6774,10 +5820,7 @@
     },
     "TEKTON_TEKTON_LINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6793,10 +5836,7 @@
     },
     "TEKTON_TEKTON_LINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6832,18 +5872,12 @@
     "TERRAFORM_TERRAGRUNT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_ARGUMENTS",
       "description": "TERRAFORM_TERRAGRUNT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TERRAFORM_TERRAGRUNT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TERRAFORM_TERRAGRUNT_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_CONFIG_FILE",
@@ -6866,10 +5900,7 @@
     },
     "TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6885,10 +5916,7 @@
     },
     "TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6914,18 +5942,12 @@
     "TERRAFORM_TERRASCAN_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_ARGUMENTS",
       "description": "TERRAFORM_TERRASCAN: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TERRAFORM_TERRASCAN: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
@@ -6941,10 +5963,7 @@
     },
     "TERRAFORM_TERRASCAN_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -6953,10 +5972,7 @@
     },
     "TERRAFORM_TERRASCAN_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -6976,18 +5992,12 @@
     "TERRAFORM_TFLINT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TFLINT_ARGUMENTS",
       "description": "TERRAFORM_TFLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TERRAFORM_TFLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TERRAFORM_TFLINT_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TFLINT_CONFIG_FILE",
@@ -7010,10 +6020,7 @@
     },
     "TERRAFORM_TFLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TERRAFORM_TFLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7029,10 +6036,7 @@
     },
     "TERRAFORM_TFLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TERRAFORM_TFLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7072,18 +6076,12 @@
     "TSX_ESLINT_ARGUMENTS": {
       "$id": "#/properties/TSX_ESLINT_ARGUMENTS",
       "description": "TSX_ESLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TSX_ESLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/TSX_ESLINT_CONFIG_FILE",
@@ -7106,10 +6104,7 @@
     },
     "TSX_ESLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/TSX_ESLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7125,10 +6120,7 @@
     },
     "TSX_ESLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/TSX_ESLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7164,32 +6156,20 @@
     "TYPESCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/TYPESCRIPT_DEFAULT_STYLE",
       "description": "Style of typescript formatting to apply",
-      "enum": [
-        "standard",
-        "prettier"
-      ],
-      "examples": [
-        "standard",
-        "prettier"
-      ],
+      "enum": ["standard", "prettier"],
+      "examples": ["standard", "prettier"],
       "title": "Typescript default style",
       "type": "string"
     },
     "TYPESCRIPT_ES_ARGUMENTS": {
       "$id": "#/properties/TYPESCRIPT_ES_ARGUMENTS",
       "description": "TYPESCRIPT_ES: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TYPESCRIPT_ES: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TYPESCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/TYPESCRIPT_ES_CONFIG_FILE",
@@ -7212,10 +6192,7 @@
     },
     "TYPESCRIPT_ES_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_ES_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7231,10 +6208,7 @@
     },
     "TYPESCRIPT_ES_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_ES_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7270,18 +6244,12 @@
     "TYPESCRIPT_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_ARGUMENTS",
       "description": "TYPESCRIPT_PRETTIER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TYPESCRIPT_PRETTIER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TYPESCRIPT_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_CONFIG_FILE",
@@ -7304,10 +6272,7 @@
     },
     "TYPESCRIPT_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7316,10 +6281,7 @@
     },
     "TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7345,18 +6307,12 @@
     "TYPESCRIPT_STANDARD_ARGUMENTS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_ARGUMENTS",
       "description": "TYPESCRIPT_STANDARD: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "TYPESCRIPT_STANDARD: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_DISABLE_ERRORS",
@@ -7372,10 +6328,7 @@
     },
     "TYPESCRIPT_STANDARD_FILE_EXTENSIONS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7384,10 +6337,7 @@
     },
     "TYPESCRIPT_STANDARD_FILE_NAMES_REGEX": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7424,18 +6374,12 @@
     "VBDOTNET_DOTNET_FORMAT_ARGUMENTS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_ARGUMENTS",
       "description": "VBDOTNET_DOTNET_FORMAT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS",
@@ -7451,10 +6395,7 @@
     },
     "VBDOTNET_DOTNET_FORMAT_FILE_EXTENSIONS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7463,10 +6404,7 @@
     },
     "VBDOTNET_DOTNET_FORMAT_FILE_NAMES_REGEX": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7506,18 +6444,12 @@
     "XML_XMLLINT_ARGUMENTS": {
       "$id": "#/properties/XML_XMLLINT_ARGUMENTS",
       "description": "XML_XMLLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "XML_XMLLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "XML_XMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/XML_XMLLINT_DISABLE_ERRORS",
@@ -7533,10 +6465,7 @@
     },
     "XML_XMLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/XML_XMLLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7545,10 +6474,7 @@
     },
     "XML_XMLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/XML_XMLLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7578,18 +6504,12 @@
     "YAML_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/YAML_PRETTIER_ARGUMENTS",
       "description": "YAML_PRETTIER: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "YAML_PRETTIER: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "YAML_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/YAML_PRETTIER_CONFIG_FILE",
@@ -7612,10 +6532,7 @@
     },
     "YAML_PRETTIER_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_PRETTIER_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7624,10 +6541,7 @@
     },
     "YAML_PRETTIER_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_PRETTIER_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7653,18 +6567,12 @@
     "YAML_V8R_ARGUMENTS": {
       "$id": "#/properties/YAML_V8R_ARGUMENTS",
       "description": "YAML_V8R: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "YAML_V8R: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "YAML_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_V8R_DISABLE_ERRORS",
@@ -7680,10 +6588,7 @@
     },
     "YAML_V8R_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_V8R_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7692,10 +6597,7 @@
     },
     "YAML_V8R_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_V8R_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
@@ -7715,18 +6617,12 @@
     "YAML_YAMLLINT_ARGUMENTS": {
       "$id": "#/properties/YAML_YAMLLINT_ARGUMENTS",
       "description": "YAML_YAMLLINT: User custom arguments to add in linter CLI call",
-      "examples:": [
-        "--foo",
-        "bar"
-      ],
+      "examples:": ["--foo", "bar"],
       "items": {
         "type": "string"
       },
       "title": "YAML_YAMLLINT: Custom arguments",
-      "type": [
-        "array",
-        "string"
-      ]
+      "type": ["array", "string"]
     },
     "YAML_YAMLLINT_CONFIG_FILE": {
       "$id": "#/properties/YAML_YAMLLINT_CONFIG_FILE",
@@ -7749,10 +6645,7 @@
     },
     "YAML_YAMLLINT_FILE_EXTENSIONS": {
       "$id": "#/properties/YAML_YAMLLINT_FILE_EXTENSIONS",
-      "examples:": [
-        ".py",
-        ".myext"
-      ],
+      "examples:": [".py", ".myext"],
       "items": {
         "type": "string"
       },
@@ -7768,10 +6661,7 @@
     },
     "YAML_YAMLLINT_FILE_NAMES_REGEX": {
       "$id": "#/properties/YAML_YAMLLINT_FILE_NAMES_REGEX",
-      "examples": [
-        "Dockerfile(-.+)?",
-        "Jenkinsfile"
-      ],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
       "items": {
         "type": "string"
       },
