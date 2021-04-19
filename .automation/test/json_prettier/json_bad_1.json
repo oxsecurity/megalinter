@@ -1,0 +1,8 @@
+{
+  "array": [
+    "one_item"
+  ],
+  "object": {
+    "first-item": 0, "second-item": 1
+  }
+}

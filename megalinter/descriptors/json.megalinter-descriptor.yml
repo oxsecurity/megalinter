@@ -139,3 +139,57 @@ linters:
       vscode:
         - name: native support
           url: https://code.visualstudio.com/
+# PRETTIER
+  - linter_name: prettier
+    is_formatter: true
+    linter_url: https://prettier.io/
+    linter_repo: https://github.com/prettier/prettier
+    linter_rules_url: https://prettier.io/docs/en/options.html
+    linter_rules_configuration_url: https://prettier.io/docs/en/configuration.html
+    linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
+    linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
+    config_file_name: ".prettierrc.json"
+    cli_config_arg_name: "--config"
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--write" # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
+    test_folder: json_prettier
+    examples:
+      - "prettier --check myfile.json"
+      - "prettier --config .prettierrc.json --check myfile.json"
+      - "prettier --config .prettierrc.json --write myfile.json" # format
+    install:
+      npm:
+        - "prettier"
+    ide:
+      atom:
+        - name: prettier-atom
+          url: https://github.com/prettier/prettier-atom
+        - name: atom-mprettier
+          url: https://github.com/t9md/atom-mprettier
+        - name: atom-miniprettier
+          url: https://github.com/duailibe/atom-miniprettier
+      emacs:
+        - name: prettier-emacs
+          url: https://github.com/prettier/prettier-emacs
+        - name: prettier.el
+          url: https://github.com/jscheid/prettier.el
+        - name: apheleia
+          url: https://github.com/raxod502/apheleia
+      idea:
+        - name: native support
+          url: https://prettier.io/docs/en/webstorm.html
+      sublime:
+        - name: JsPrettier
+          url: https://packagecontrol.io/packages/JsPrettier
+      vim:
+        - name: vim-prettier
+          url: https://github.com/prettier/vim-prettier
+      visual_studio:
+        - name: JavaScriptPrettier
+          url: https://github.com/madskristensen/JavaScriptPrettier
+      vscode:
+        - name: prettier-vscode
+          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
