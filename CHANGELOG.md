@@ -25,6 +25,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.48.2 to **0.48.3** on 2021-04-17
   - [flake8](https://flake8.pycqa.org) from 3.9.0 to **3.9.1** on 2021-04-17
   - [tflint](https://github.com/terraform-linters/tflint) from 0.26.0 to **0.27.0** on 2021-04-19
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.1.0 to **2.2.0** on 2021-04-19
+  - [phpstan](https://phpstan.org/) from 0.12.83 to **0.12.84** on 2021-04-19
 <!-- linter-versions-end -->
 
 ## [4.31.0] 2021-04-03
