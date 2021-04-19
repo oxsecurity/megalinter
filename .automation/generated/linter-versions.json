@@ -57,7 +57,7 @@
     "scalafix": "0.9.27",
     "scss-lint": "0.59.0",
     "sfdx-scanner": "2.8.0",
-    "shellcheck": "0.7.1",
+    "shellcheck": "0.7.2",
     "shfmt": "3.2.4",
     "snakefmt": "0.4.0",
     "snakemake": "6.1.1",
