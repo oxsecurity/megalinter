@@ -108,6 +108,7 @@ RUN npm install --no-cache --ignore-scripts \
                 jsonlint \
                 eslint eslint-plugin-jsonc \
                 v8r \
+                prettier \
                 markdownlint-cli \
                 remark-cli \
                 remark-preset-lint-recommended \
@@ -116,8 +117,7 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
-                tekton-lint \
-                prettier
+                tekton-lint
 #NPM__END
 
 # Add node packages to path #
