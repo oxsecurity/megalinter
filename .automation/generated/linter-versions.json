@@ -60,7 +60,7 @@
     "shellcheck": "0.7.2",
     "shfmt": "3.2.4",
     "snakefmt": "0.4.0",
-    "snakemake": "6.1.1",
+    "snakemake": "6.1.2",
     "spectral": "5.6.0",
     "sql-lint": "0.0.16",
     "sqlfluff": "0.5.2",
