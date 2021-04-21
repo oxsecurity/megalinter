@@ -7,6 +7,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Split Salesforce sfdx-scanner into pmd, eslint aura and eslint lwc
 
 - Linter versions upgrades
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.1 to **6.1.2** on 2021-04-20
 <!-- linter-versions-end -->
 
 ## [4.32.0] 2021-04-20
