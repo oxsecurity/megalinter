@@ -104,7 +104,7 @@ linters:
       - "--engine"
       - "eslint"
       - "--target"
-      - '"./**/aura/*"'
+      - '**/aura/**/*.js'
       - "--violations-cause-error"
       - "--outfile"
       - "./report/sfdx-scanner-report-aura.csv"
@@ -158,7 +158,7 @@ linters:
       - "--engine"
       - "eslint-lwc"
       - "--target"
-      - '"./**/lwc/*"'
+      - '**/lwc/**/*.js'
       - "--violations-cause-error"
       - "--outfile"
       - "./report/sfdx-scanner-report-lwc.csv"
