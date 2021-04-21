@@ -7,7 +7,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
-
 ## [4.32.0] 2021-04-20
 
 - Fix #376 : Link-title to license

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>46.0</apiVersion>
+  <description>Displays a label, number and detail for it, similar to section title</description>
+</AuraDefinitionBundle>
