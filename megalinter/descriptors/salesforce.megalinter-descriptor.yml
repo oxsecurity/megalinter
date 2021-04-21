@@ -15,8 +15,8 @@ install:
     - sfdx-cli
 linters:
   # SFDX Scanner
-  - linter_name: sfdx-scanner
-    name: SALESFORCE_SFDX_SCANNER
+  - linter_name: sfdx-scanner-apex
+    name: SALESFORCE_SFDX_SCANNER_APEX
     files_sub_directory: force-app
     linter_text: |
       sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
@@ -26,6 +26,8 @@ linters:
       You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
 
       See more details in [Help](#help-content)
+
+      ** Workaround: Restricted to PMD **
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
     linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
@@ -36,11 +38,13 @@ linters:
     cli_executable: sfdx
     cli_lint_extra_args:
       - "scanner:run"
+      - "--engine"
+      - "pmd"
       - "--target"
       - '"./**/*"'
       - "--violations-cause-error"
       - "--outfile"
-      - "./report/sfdx-scanner-report.csv"
+      - "./report/sfdx-scanner-report-apex.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -69,6 +73,114 @@ linters:
       idea:
         - name: PMD IntelliJ
           url: https://plugins.jetbrains.com/plugin/1137-pmdplugin
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # SFDX Scanner Aura
+  - linter_name: sfdx-scanner-aura
+    name: SALESFORCE_SFDX_SCANNER_AURA
+    files_sub_directory: force-app
+    linter_text: |
+      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+
+      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY
+
+      You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
+      See more details in [Help](#help-content)
+
+      ** Workaround: Restricted to Aura **
+    linter_url: https://forcedotcom.github.io/sfdx-scanner/
+    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
+    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
+    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
+    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    cli_executable: sfdx
+    cli_lint_extra_args:
+      - "scanner:run"
+      - "--engine"
+      - "eslint"
+      - "--target"
+      - "**/aura/**/*.js"
+      - "--violations-cause-error"
+      - "--outfile"
+      - "./report/sfdx-scanner-report-aura.csv"
+      - "--format"
+      - "csv"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "scanner:run"
+    cli_help_extra_commands:
+      - "sfdx scanner:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
+    examples:
+      - "sfdx scanner:run"
+    install:
+      dockerfile:
+        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+    ide:
+      vscode:
+        - name: Salesforce Extension Pack
+          url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+  # SFDX Scanner LWC
+  - linter_name: sfdx-scanner-lwc
+    name: SALESFORCE_SFDX_SCANNER_LWC
+    files_sub_directory: force-app
+    linter_text: |
+      sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
+
+      If your root folder is not **force-app**, please set variable SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY
+
+      You can select categories and single rules by defining custom arguments (example: `SALESFORCE_SFDX_SCANNER_ARGUMENTS: -c "Best Practices,Security"`)
+
+      See more details in [Help](#help-content)
+
+      ** Workaround: Restricted to LWC **
+    linter_url: https://forcedotcom.github.io/sfdx-scanner/
+    linter_repo: https://github.com/forcedotcom/sfdx-scanner
+    linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
+    linter_image_url: https://forcedotcom.github.io/sfdx-scanner/assets/images/sfdx_scanner_logo.png
+    linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
+    linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
+    linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    cli_executable: sfdx
+    cli_lint_extra_args:
+      - "scanner:run"
+      - "--engine"
+      - "eslint-lwc"
+      - "--target"
+      - "**/lwc/**/*.js"
+      - "--violations-cause-error"
+      - "--outfile"
+      - "./report/sfdx-scanner-report-lwc.csv"
+      - "--format"
+      - "csv"
+    cli_lint_mode: project
+    cli_help_extra_args:
+      - "scanner:run"
+    cli_help_extra_commands:
+      - "sfdx scanner:rule:list"
+    cli_version_extra_args:
+      - "plugins"
+    cli_version_arg_name: ""
+    version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "found ([0-9]+) violation"
+    examples:
+      - "sfdx scanner:run"
+    install:
+      dockerfile:
+        - RUN sfdx plugins:install @salesforce/sfdx-scanner
+    ide:
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode

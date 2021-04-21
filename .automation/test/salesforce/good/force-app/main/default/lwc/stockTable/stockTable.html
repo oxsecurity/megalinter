@@ -1,0 +1,17 @@
+<template>
+  <lightning-datatable
+    key-field="orderNumber"
+    data={stocksToDisplay}
+    columns={cols}
+    sorted-by={sortedBy}
+    sorted-direction={sortDirection}
+    onsort={handleSortCols}
+    hide-checkbox-column
+  >
+  </lightning-datatable>
+  <br />
+  <c-stock-paginator
+    total-records={stocks.length}
+    onchangedisplay={handleChangeDisplay}
+  ></c-stock-paginator>
+</template>

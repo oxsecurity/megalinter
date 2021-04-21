@@ -162,7 +162,9 @@
         "RST_RSTFMT",
         "RUBY_RUBOCOP",
         "RUST_CLIPPY",
-        "SALESFORCE_SFDX_SCANNER",
+        "SALESFORCE_SFDX_SCANNER_APEX",
+        "SALESFORCE_SFDX_SCANNER_AURA",
+        "SALESFORCE_SFDX_SCANNER_LWC",
         "SCALA_SCALAFIX",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
@@ -5986,6 +5988,74 @@
       "title": "Including regex filter for SALESFORCE descriptor",
       "type": "string"
     },
+    "SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_ARGUMENTS",
+      "description": "SALESFORCE_SFDX_SCANNER_APEX: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DIRECTORY",
+      "default": "force-app",
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILE_EXTENSIONS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE",
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Excluding Regex",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE",
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Including Regex",
+      "type": "string"
+    },
     "SALESFORCE_SFDX_SCANNER_ARGUMENTS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_ARGUMENTS",
       "description": "SALESFORCE_SFDX_SCANNER: User custom arguments to add in linter CLI call",
@@ -6001,6 +6071,74 @@
         "array",
         "string"
       ]
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS",
+      "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY",
+      "default": "force-app",
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILE_EXTENSIONS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE",
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Excluding Regex",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE",
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Including Regex",
+      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_DIRECTORY": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_DIRECTORY",
@@ -6052,6 +6190,74 @@
     "SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE",
       "title": "SALESFORCE_SFDX_SCANNER: Including Regex",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_ARGUMENTS",
+      "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY",
+      "default": "force-app",
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Directory containing SALESFORCE files",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS",
+      "default": false,
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILE_EXTENSIONS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE",
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Excluding Regex",
+      "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE",
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Including Regex",
       "type": "string"
     },
     "SCALA_FILTER_REGEX_EXCLUDE": {

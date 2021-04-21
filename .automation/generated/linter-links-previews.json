@@ -294,6 +294,21 @@
     "image": null,
     "title": "Salesforce CLI Scanner Plug-In"
   },
+  "sfdx-scanner-apex": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
+  "sfdx-scanner-aura": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
+  "sfdx-scanner-lwc": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
   "shellcheck": {
     "description": "ShellCheck, a static analysis tool for shell scripts - koalaman/shellcheck",
     "image": "https://avatars2.githubusercontent.com/u/2818758?s=400&v=4",
