@@ -15,8 +15,8 @@ install:
     - sfdx-cli
 linters:
   # SFDX Scanner
-  - linter_name: sfdx-scanner
-    name: SALESFORCE_SFDX_SCANNER
+  - linter_name: sfdx-scanner-apex
+    name: SALESFORCE_SFDX_SCANNER_APEX
     files_sub_directory: force-app
     linter_text: |
       sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
@@ -44,7 +44,7 @@ linters:
       - '"./**/*"'
       - "--violations-cause-error"
       - "--outfile"
-      - "./report/sfdx-scanner-report.csv"
+      - "./report/sfdx-scanner-report-apex.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -79,7 +79,7 @@ linters:
 
   # SFDX Scanner Aura
   - linter_name: sfdx-scanner-aura
-    name: SALESFORCE_SFDX_SCANNER
+    name: SALESFORCE_SFDX_SCANNER_AURA
     files_sub_directory: force-app
     linter_text: |
       sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint
@@ -133,7 +133,7 @@ linters:
 
   # SFDX Scanner LWC
   - linter_name: sfdx-scanner-lwc
-    name: SALESFORCE_SFDX_SCANNER
+    name: SALESFORCE_SFDX_SCANNER_LWC
     files_sub_directory: force-app
     linter_text: |
       sfdx-scanner is a sfdx plugin scanning apex and triggers using Apex PMD, and javascript using eslint

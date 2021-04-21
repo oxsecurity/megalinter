@@ -10,7 +10,7 @@ You can select categories and single rules by defining custom arguments (example
 
 See more details in [Help](#help-content)
 
-**Workaround: Restricted to Aura**
+** Workaround: Restricted to Aura **
 
 ## sfdx-scanner-aura documentation
 
@@ -23,19 +23,19 @@ See more details in [Help](#help-content)
 
 ## Configuration in Mega-Linter
 
-- Enable sfdx-scanner-aura by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner-aura by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner-aura by adding `SALESFORCE_SFDX_SCANNER_AURA` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner-aura by adding `SALESFORCE_SFDX_SCANNER_AURA` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                                            | Description                                                                                                                                                                                  | Default value      |
-|-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| SALESFORCE_SFDX_SCANNER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
-| SALESFORCE_SFDX_SCANNER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
-| SALESFORCE_SFDX_SCANNER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file |
-| SALESFORCE_SFDX_SCANNER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
-| SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
-| SALESFORCE_DIRECTORY                                | Directory containing SALESFORCE files                                                                                                                                                        | `force-app`        |
+| Variable                                                 | Description                                                                                                                                                                                  | Default value      |
+|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| SALESFORCE_SFDX_SCANNER_AURA_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
+| SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
+| SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
+| SALESFORCE_SFDX_SCANNER_AURA_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file |
+| SALESFORCE_SFDX_SCANNER_AURA_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
+| SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
+| SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| SALESFORCE_DIRECTORY                                     | Directory containing SALESFORCE files                                                                                                                                                        | `force-app`        |
 
 ## IDE Integration
 
@@ -82,49 +82,3 @@ ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 ```
 
-
-### Example success log
-
-```shell
-Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
------------------------------------------------
-
-[SUCCESS] /tmp/098844eb-9b85-4505-b6b6-8c6bcd96050f
-    No rule violations found.
-
-```
-
-### Example error log
-
-```shell
-Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
------------------------------------------------
-
-[ERROR] /tmp/a62282d7-5f53-42be-9816-03d1c2da8715
-    LOCATION                                                   DESCRIPTION                                            CATEGORY        U R L
-    ─────────────────────────────────────────────────────────  ─────────────────────────────────────────────────────  ──────────────  ─────────────────────────────────────────────────────────────────────────────────────────────
-    force-app/main/default/classes/SoqlInLoop.cls:1              Apex classes should declare a sharing model if DML   Security        https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_security.html#apexsharingviolations
-                                                                 or SOQL/SOSL is used
-    force-app/main/default/classes/SoqlInLoop.cls:1              Missing ApexDoc comment                              Documentation   https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_documentation.html#apexdoc
-    force-app/main/default/classes/SoqlInLoop.cls:2              Missing ApexDoc comment                              Documentation   https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_documentation.html#apexdoc
-    force-app/main/default/classes/SoqlInLoop.cls:4              Avoid Soql queries inside loops                      Performance     https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_performance.html#avoidsoqlinloops
-    force-app/main/default/classes/SoqlInLoop.cls:4              Avoid operations in loops that may hit governor      Performance     https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_performance.html#operationwithlimitsinloop
-                                                                 limits
-    force-app/main/default/classes/SoqlInLoop.cls:4              Validate CRUD permission before SOQL/DML operation   Security        https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_security.html#apexcrudviolation
-    force-app/main/default/classes/SoqlInLoop.cls:4              Variable 'accounts' defined but not used             Best Practices  https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_bestpractices.html#unusedlocalvariable
-    force-app/main/default/triggers/trgUser.trigger:1            Avoid logic in triggers                              Best Practices  https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_bestpractices.html#avoidlogicintrigger
-    force-app/main/default/triggers/trgUser.trigger:4            The static field name 'BaseURI' doesn't match        Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#fieldnamingconventions
-                                                                 '[a-z][a-zA-Z0-9]*'
-    force-app/main/default/triggers/trgUser.trigger:4            Variables should start with a lowercase character,   Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#variablenamingconventions
-                                                                 'BaseURI' starts with uppercase character.
-    force-app/main/default/triggers/trgUser.trigger:7            The local variable name 'URI' doesn't match          Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#localvariablenamingconventions
-                                                                 '[a-z][a-zA-Z0-9]*'
-    force-app/main/default/triggers/trgUser.trigger:7            Variables should start with a lowercase character,   Code Style      https://pmd.github.io/pmd-6.29.0/pmd_rules_apex_codestyle.html#variablenamingconventions
-                                                                 'URI' starts with uppercase character.
-    force-app/main/default/aura/auraIf/auraIfController.js:49    'event' is defined but never used.                   Variables       https://eslint.org/docs/rules/no-unused-vars
-    force-app/main/default/aura/auraIf/auraIfController.js:49    'helper' is defined but never used.                  Variables       https://eslint.org/docs/rules/no-unused-vars
-    ERROR running scanner:run:  Detected rule violations of severity 1 or lower. Please see the logs above.
-
-```

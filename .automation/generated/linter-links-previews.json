@@ -294,6 +294,11 @@
     "image": null,
     "title": "Salesforce CLI Scanner Plug-In"
   },
+  "sfdx-scanner-apex": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
   "sfdx-scanner-aura": {
     "description": "",
     "image": null,
