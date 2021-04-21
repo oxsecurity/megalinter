@@ -186,6 +186,12 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 # sfdx-scanner installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 
+# sfdx-scanner-aura installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-lwc installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
     && sh ./install-misspell.sh

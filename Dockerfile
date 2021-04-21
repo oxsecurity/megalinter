@@ -404,6 +404,12 @@ RUN rustup component add clippy
 # sfdx-scanner installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 
+# sfdx-scanner-aura installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-lwc installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
