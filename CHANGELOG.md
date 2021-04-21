@@ -4,12 +4,15 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Split Salesforce sfdx-scanner into pmd, eslint aura and eslint lwc
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
 ## [4.32.0] 2021-04-20
 
 - Fix #376 : Link-title to license
+- Add support from prettier as JSON formatter ([#421](https://github.com/nvuillam/mega-linter/pull/421), by [Omeed Musavi](https://github.com/omusavi)
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
