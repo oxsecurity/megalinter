@@ -76,6 +76,7 @@ linters:
       vscode:
         - name: Salesforce Extension Pack
           url: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
   # SFDX Scanner Aura
   - linter_name: sfdx-scanner-aura
     name: SALESFORCE_SFDX_SCANNER
