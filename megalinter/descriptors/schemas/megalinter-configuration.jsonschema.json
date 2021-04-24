@@ -6398,6 +6398,13 @@
       "title": "Show elapsed time",
       "type": "boolean"
     },
+    "SHOW_SKIPPED_LINTERS": {
+      "$id": "#/properties/SHOW_SKIPPED_LINTERS",
+      "default": true,
+      "description": "Displays all linters that mega-linter could run but didn't",
+      "title": "Show skipped Linters",
+      "type": "boolean"
+    },
     "SNAKEMAKE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SNAKEMAKE_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for SNAKEMAKE descriptor",
