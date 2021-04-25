@@ -14,6 +14,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [pylint](https://www.pylint.org) from 2.7.4 to **2.8.0** on 2021-04-25
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.2 to **6.2.1** on 2021-04-25
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.4.0 to **1.5.0** on 2021-04-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.41.1 to **8.42** on 2021-04-25
+  - [pylint](https://www.pylint.org) from 2.8.0 to **2.8.1** on 2021-04-25
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.27.0 to **0.28.0** on 2021-04-25
 <!-- linter-versions-end -->
 
 ## [4.32.0] 2021-04-20
