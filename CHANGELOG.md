@@ -5,7 +5,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Split Salesforce sfdx-scanner into pmd, eslint aura and eslint lwc
-
+  
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.1 to **6.1.2** on 2021-04-20
   - [stylelint](https://stylelint.io) from 13.12.0 to **13.13.0** on 2021-04-25

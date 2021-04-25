@@ -6101,6 +6101,13 @@
                 "string"
             ]
         },
+        "SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE": {
+            "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_CONFIG_FILE",
+            "default": "--eslintconfig",
+            "description": "SALESFORCE_SFDX_SCANNER_AURA: User custom config file name if different from default",
+            "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file name",
+            "type": "string"
+        },
         "SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY": {
             "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DIRECTORY",
             "default": "force-app",
@@ -6151,6 +6158,12 @@
         "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE": {
             "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE",
             "title": "SALESFORCE_SFDX_SCANNER_AURA: Including Regex",
+            "type": "string"
+        },
+        "SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH": {
+            "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH",
+            "description": "SALESFORCE_SFDX_SCANNER_AURA: Path where to find linter configuration file",
+            "title": "SALESFORCE_SFDX_SCANNER_AURA: Custom config file path",
             "type": "string"
         },
         "SALESFORCE_SFDX_SCANNER_DIRECTORY": {
@@ -6221,6 +6234,13 @@
                 "string"
             ]
         },
+        "SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE": {
+            "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_CONFIG_FILE",
+            "default": "--eslintconfig",
+            "description": "SALESFORCE_SFDX_SCANNER_LWC: User custom config file name if different from default",
+            "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file name",
+            "type": "string"
+        },
         "SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY": {
             "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DIRECTORY",
             "default": "force-app",
@@ -6271,6 +6291,12 @@
         "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE": {
             "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE",
             "title": "SALESFORCE_SFDX_SCANNER_LWC: Including Regex",
+            "type": "string"
+        },
+        "SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH": {
+            "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH",
+            "description": "SALESFORCE_SFDX_SCANNER_LWC: Path where to find linter configuration file",
+            "title": "SALESFORCE_SFDX_SCANNER_LWC: Custom config file path",
             "type": "string"
         },
         "SCALA_FILTER_REGEX_EXCLUDE": {
