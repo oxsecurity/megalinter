@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in Mega-Linter: **2.7.4**
+- Version in Mega-Linter: **2.8.0**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
@@ -146,6 +146,7 @@ Options:
 
   Commands:
     --rcfile=<file>     Specify a configuration file to load.
+    --output=<file>     Specify an output file.
     --help-msg=<msg-id>
                         Display a help message for the given message id and
                         exit. The value may be a comma separated list of

@@ -27,7 +27,7 @@ linters:
 
       See more details in [Help](#help-content)
 
-      ** Workaround: Restricted to PMD **
+      **Workaround: Restricted to PMD**
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
     linter_rules_url: https://pmd.github.io/latest/pmd_rules_apex.html
@@ -35,7 +35,9 @@ linters:
     linter_rules_configuration_url: https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html
     linter_rules_inline_disable_url: https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    config_file_name: apex-pmd-ruleset.xml
     cli_executable: sfdx
+    cli_config_arg_name: "--pmdconfig"
     cli_lint_extra_args:
       - "scanner:run"
       - "--engine"
@@ -90,7 +92,7 @@ linters:
 
       See more details in [Help](#help-content)
 
-      ** Workaround: Restricted to Aura **
+      **Workaround: Restricted to Aura**
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
     linter_rules_url: https://github.com/forcedotcom/eslint-plugin-aura#rules
@@ -98,6 +100,8 @@ linters:
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    config_file_name: --eslintconfig
+    cli_config_arg_name: ".eslintrc-aura.json"
     cli_executable: sfdx
     cli_lint_extra_args:
       - "scanner:run"
@@ -106,8 +110,6 @@ linters:
       - "--target"
       - "**/aura/**/*.js"
       - "--violations-cause-error"
-      - "--outfile"
-      - "./report/sfdx-scanner-report-aura.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -144,7 +146,7 @@ linters:
 
       See more details in [Help](#help-content)
 
-      ** Workaround: Restricted to LWC **
+      **Workaround: Restricted to LWC**
     linter_url: https://forcedotcom.github.io/sfdx-scanner/
     linter_repo: https://github.com/forcedotcom/sfdx-scanner
     linter_rules_url: https://github.com/salesforce/eslint-plugin-lwc#rules
@@ -152,6 +154,8 @@ linters:
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring/rules#disabling-rules
     linter_megalinter_ref_url: https://github.com/forcedotcom/sfdx-scanner/pull/307
+    config_file_name: --eslintconfig
+    cli_config_arg_name: ".eslintrc-lwc.json"
     cli_executable: sfdx
     cli_lint_extra_args:
       - "scanner:run"
@@ -160,8 +164,6 @@ linters:
       - "--target"
       - "**/lwc/**/*.js"
       - "--violations-cause-error"
-      - "--outfile"
-      - "./report/sfdx-scanner-report-lwc.csv"
       - "--format"
       - "csv"
     cli_lint_mode: project
