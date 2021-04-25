@@ -10,7 +10,7 @@ You can select categories and single rules by defining custom arguments (example
 
 See more details in [Help](#help-content)
 
-** Workaround: Restricted to Aura **
+**Workaround: Restricted to Aura**
 
 ## sfdx-scanner-aura documentation
 
