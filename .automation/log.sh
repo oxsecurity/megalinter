@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# shellcheck disable=SC2155
 # Super-Linter legacy
 
 declare -Agr B=(

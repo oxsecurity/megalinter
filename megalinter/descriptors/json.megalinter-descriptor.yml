@@ -139,7 +139,7 @@ linters:
       vscode:
         - name: native support
           url: https://code.visualstudio.com/
-# PRETTIER
+  # PRETTIER
   - linter_name: prettier
     is_formatter: true
     linter_url: https://prettier.io/

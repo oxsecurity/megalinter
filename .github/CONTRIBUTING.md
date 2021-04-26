@@ -12,7 +12,6 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 - You need **python** to be installed on your computer ([download here](https://www.python.org/downloads/))
 
 - Run the following commands at the root of the repository to install required dev dependencies
-
 ```shell
 python3 -m venv venv
 . venv/bin/activate
@@ -20,6 +19,15 @@ echo "venv/" >> .git/info/exclude
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
 ```
+
+_If it does not work, just run the following script_
+
+```shell
+pip install -r requirements.dev.
+pip install mkdocs-material
+npm install markdown-table-formatter -g
+```
+
 Second level dev dependencies are installed by running `./build.sh` which is also a test if the installation worked
 ```shell
 ./build.sh

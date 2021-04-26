@@ -401,7 +401,13 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # clippy installation
 RUN rustup component add clippy
 
-# sfdx-scanner installation
+# sfdx-scanner-apex installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-aura installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-lwc installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation

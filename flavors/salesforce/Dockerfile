@@ -183,7 +183,13 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
-# sfdx-scanner installation
+# sfdx-scanner-apex installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-aura installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-lwc installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # misspell installation

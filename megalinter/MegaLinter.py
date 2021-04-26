@@ -10,6 +10,8 @@ import os
 import sys
 
 import git
+from multiprocessing_logging import install_mp_handler
+
 from megalinter import (
     config,
     flavor_factory,
@@ -18,7 +20,6 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
-from multiprocessing_logging import install_mp_handler
 
 
 # Function to run linters using multiprocessing pool
@@ -341,7 +342,8 @@ class Megalinter:
                 continue
             self.linters += [linter]
         # Display skipped linters in log
-        if len(skipped_linters) > 0:
+        show_skipped_linters = config.get("SHOW_SKIPPED_LINTERS", "true") == "true"
+        if len(skipped_linters) > 0 and show_skipped_linters:
             skipped_linters.sort()
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
         # Sort linters by language and linter_name

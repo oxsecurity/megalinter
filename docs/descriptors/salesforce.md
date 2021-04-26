@@ -5,9 +5,11 @@
 
 ## Linters
 
-| Linter                                     | Configuration key                                     |
-|--------------------------------------------|-------------------------------------------------------|
-| [sfdx-scanner](salesforce_sfdx_scanner.md) | [SALESFORCE_SFDX_SCANNER](salesforce_sfdx_scanner.md) |
+| Linter                                               | Configuration key                                               |
+|------------------------------------------------------|-----------------------------------------------------------------|
+| [sfdx-scanner-apex](salesforce_sfdx_scanner_apex.md) | [SALESFORCE_SFDX_SCANNER_APEX](salesforce_sfdx_scanner_apex.md) |
+| [sfdx-scanner-aura](salesforce_sfdx_scanner_aura.md) | [SALESFORCE_SFDX_SCANNER_AURA](salesforce_sfdx_scanner_aura.md) |
+| [sfdx-scanner-lwc](salesforce_sfdx_scanner_lwc.md)   | [SALESFORCE_SFDX_SCANNER_LWC](salesforce_sfdx_scanner_lwc.md)   |
 
 ## Linted files
 
