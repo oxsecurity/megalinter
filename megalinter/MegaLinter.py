@@ -10,8 +10,6 @@ import os
 import sys
 
 import git
-from multiprocessing_logging import install_mp_handler
-
 from megalinter import (
     config,
     flavor_factory,
@@ -20,6 +18,7 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
+from multiprocessing_logging import install_mp_handler
 
 
 # Function to run linters using multiprocessing pool
