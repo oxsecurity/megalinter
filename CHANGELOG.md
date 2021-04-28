@@ -18,6 +18,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [pylint](https://www.pylint.org) from 2.8.0 to **2.8.1** on 2021-04-25
   - [tflint](https://github.com/terraform-linters/tflint) from 0.27.0 to **0.28.0** on 2021-04-25
   - [pylint](https://www.pylint.org) from 2.8.1 to **2.8.2** on 2021-04-27
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.48.3 to **0.49.0** on 2021-04-28
+  - [phpstan](https://phpstan.org/) from 0.12.84 to **0.12.85** on 2021-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.21 to **0.29.0** on 2021-04-28
 <!-- linter-versions-end -->
 
 ## [4.32.0] 2021-04-20

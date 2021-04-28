@@ -57,7 +57,8 @@ rstfmt -i myfile.rst
 ### Help content
 
 ```shell
-usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [files [files ...]]
+usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [--version]
+              [files [files ...]]
 
 positional arguments:
   files
@@ -68,6 +69,7 @@ optional arguments:
   -w WIDTH, --width WIDTH
   --check
   --test
+  --version
 ```
 
 ### Installation on mega-linter Docker image
