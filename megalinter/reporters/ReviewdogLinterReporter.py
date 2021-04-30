@@ -106,8 +106,9 @@ class ReviewdogLinterReporter(Reporter):
         def convert_line(self, line):
             match = re.match(self.regex, line)
             if match:
+                column = match.group("column") if match.group("column") else 0
                 return Rdjsonl(utils.normalize_log_string(match.group("path")), match.group("message"),
-                               start=Location(line=int(match.group("line")), column=int(match.group("column"))))
+                               start=Location(line=int(match.group("line")), column=int(column)))
             for ignored_pattern in self.ignored_line_regexes:
                 if ignored_pattern.match(line):
                     return
