@@ -8,5 +8,5 @@ ignored:
   - DL3018 # We do pin version in pipfile.lock
   - DL3013 # We do pin version in pipfile.lock
   - DL3003 # Ignore workdir so we dont add layers
-  - SC2016 # ignore as its intepreted later
+  # - SC2016 # ignore as its intepreted later
   - DL3018
