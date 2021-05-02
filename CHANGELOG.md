@@ -5,6 +5,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [stylelint](https://stylelint.io) from 13.13.0 to **13.13.1** on 2021-05-02
 <!-- linter-versions-end -->
 
 ## [4.33.0] 2021-04-30
