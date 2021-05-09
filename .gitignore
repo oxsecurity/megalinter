@@ -94,7 +94,8 @@ coverage.xml
 
 .automation/test/copypaste/good/report/
 
-report/
+**/report/*
+!**/salesforce/report/*
 
 site/
 

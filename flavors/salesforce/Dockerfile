@@ -109,6 +109,7 @@ RUN npm install --no-cache --ignore-scripts \
                 jsonlint \
                 eslint eslint-plugin-jsonc \
                 v8r \
+                prettier \
                 markdownlint-cli \
                 remark-cli \
                 remark-preset-lint-recommended \
@@ -117,8 +118,7 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell@4.1.3 \
                 sql-lint \
-                tekton-lint \
-                prettier
+                tekton-lint
 #NPM__END
 
 # Add node packages to path #
@@ -183,7 +183,13 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
-# sfdx-scanner installation
+# sfdx-scanner-apex installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-aura installation
+RUN sfdx plugins:install @salesforce/sfdx-scanner
+
+# sfdx-scanner-lwc installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # misspell installation

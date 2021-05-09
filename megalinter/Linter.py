@@ -259,7 +259,7 @@ class Linter:
             self.number_fixed = 0
             self.files_lint_results = []
             self.start_perf = None
-            self.elapsed_time_s = None
+            self.elapsed_time_s = 0
             self.remote_config_file_to_delete = None
 
     # Enable or disable linter

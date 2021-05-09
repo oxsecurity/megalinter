@@ -1,0 +1,34 @@
+<aura:component extends="c:CmpRoot" access="global" description="Displays a label, number and number description like c:Section title">
+    
+    <aura:attribute name="label" type="String" access="global" description="The label on the left side" />	
+    <aura:attribute name="value" type="String" access="global" description="The number to display" />
+    <aura:attribute name="valueDetail" type="String" access="global" description="The label on the right side of the number" />
+    <aura:attribute name="isLoading" type="Boolean" default="false" access="global" description="INTERNAL: True when tariff is calculating"/>
+    
+    <!-- IRM style -->
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal_small slds-size_1-of-1">
+            <div class="irm-banner">
+                <span class="irm-banner-label">
+                    {!v.label}
+                </span>               
+        
+                <aura:if isTrue="{!v.isLoading == true}">
+                    <span class="irm-banner-spinner">
+                         <lightning:spinner alternativeText="{!$Label.c.Loading}" size="medium" variant="inverse"/>
+                    </span>
+                    <aura:set attribute="else">
+                        <span class="irm-banner-value">
+                            {!v.value}
+                            <span class="irm-banner-value_detail">
+                                {!v.valueDetail} 
+                            </span>
+                        </span>
+                    </aura:set>
+                </aura:if>
+                
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

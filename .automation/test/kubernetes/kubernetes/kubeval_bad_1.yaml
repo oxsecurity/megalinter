@@ -1,20 +1,19 @@
----
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name2: nginx-deployment
+  name: "bob"
 spec:
+  replicas: asd"
   selector:
-    matchLabels:
-      app: nginx
-  replicas: 4
-  template:
+    app: nginx
+  templates:
     metadata:
+      name: nginx
       labels:
         app: nginx
     spec:
       containers:
-        - name: nginx
-          image2: nginx:1.13.12
-          ports:
-            - containerPort: 80
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80

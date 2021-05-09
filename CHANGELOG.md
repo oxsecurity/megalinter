@@ -4,7 +4,66 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+  - [stylelint](https://stylelint.io) from 13.13.0 to **13.13.1** on 2021-05-02
+<!-- linter-versions-end -->
+
+## [4.33.0] 2021-04-30
+
+- Split Salesforce sfdx-scanner into pmd, eslint aura and eslint lwc
+
+- Linter versions upgrades
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.1 to **6.1.2** on 2021-04-20
+  - [stylelint](https://stylelint.io) from 13.12.0 to **13.13.0** on 2021-04-25
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.2.0 to **2.3.0** on 2021-04-25
+  - [eslint](https://eslint.org) from 7.24.0 to **7.25.0** on 2021-04-25
+  - [pylint](https://www.pylint.org) from 2.7.4 to **2.8.0** on 2021-04-25
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.2 to **6.2.1** on 2021-04-25
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.4.0 to **1.5.0** on 2021-04-25
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.41.1 to **8.42** on 2021-04-25
+  - [pylint](https://www.pylint.org) from 2.8.0 to **2.8.1** on 2021-04-25
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.27.0 to **0.28.0** on 2021-04-25
+  - [pylint](https://www.pylint.org) from 2.8.1 to **2.8.2** on 2021-04-27
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.48.3 to **0.49.0** on 2021-04-28
+  - [phpstan](https://phpstan.org/) from 0.12.84 to **0.12.85** on 2021-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.21 to **0.29.0** on 2021-04-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.2.1 to **6.3.0** on 2021-04-30
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.5.0 to **1.5.1** on 2021-04-30
+
+## [4.32.0] 2021-04-20
+
+- Fix #376 : Link-title to license
+- Add support from prettier as JSON formatter ([#421](https://github.com/nvuillam/mega-linter/pull/421), by [Omeed Musavi](https://github.com/omusavi)
+
+- Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.0.4 to **1.1.0** on 2021-04-05
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.25.0 to **0.26.0** on 2021-04-05
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.4.1 to **0.5.0** on 2021-04-06
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.48.1 to **0.48.2** on 2021-04-07
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.0 to **1.26.1** on 2021-04-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.0 to **6.1.1** on 2021-04-08
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.16 to **0.28.19** on 2021-04-09
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.5.8 to **3.6.0** on 2021-04-09
+  - [eslint](https://eslint.org) from 7.23.0 to **7.24.0** on 2021-04-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.5.0 to **0.5.1** on 2021-04-10
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.30.1 to **0.31.0** on 2021-04-11
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.5.1 to **0.5.2** on 2021-04-11
+  - [sfdx-scanner](https://forcedotcom.github.io/sfdx-scanner/) from 2.7.0 to **2.8.0** on 2021-04-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.19 to **0.28.21** on 2021-04-15
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.48.2 to **0.48.3** on 2021-04-17
+  - [flake8](https://flake8.pycqa.org) from 3.9.0 to **3.9.1** on 2021-04-17
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.26.0 to **0.27.0** on 2021-04-19
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.1.0 to **2.2.0** on 2021-04-19
+  - [phpstan](https://phpstan.org/) from 0.12.83 to **0.12.84** on 2021-04-19
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.7.1 to **0.7.2** on 2021-04-19
+
+## [4.31.0] 2021-04-03
+
+- Keep license pre-formatted in docs
+- Use Python virtual-environment in dev-dependencies shell example
 - Fix #367 : Display editorconfig-checker version
+- Fix #379 : New configuration FAIL_IF_MISSING_LINTER_IN_FLAVOR
 
 - Linter versions upgrades
   - [flake8](https://flake8.pycqa.org) from 3.8.4 to **3.9.0** on 2021-03-15
@@ -16,7 +75,23 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.43.0 to **0.43.1** on 2021-03-21
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 0.0.0 to **2.3.4** on 2021-03-22
   - [ktlint](https://ktlint.github.io) from 0.41.0 to **0.40.0** on 2021-03-22
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.47.2 to **0.48.1** on 2021-03-30
+  - [coffeelint](http://www.coffeelint.org) from 4.1.3 to **4.1.4** on 2021-03-30
+  - [hadolint](https://github.com/hadolint/hadolint) from 1.23.0 to **2.0.0** on 2021-03-30
+  - [golangci-lint](https://golangci-lint.run/) from 1.38.0 to **1.39.0** on 2021-03-30
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.41 to **8.41.1** on 2021-03-30
+  - [eslint](https://eslint.org) from 7.22.0 to **7.23.0** on 2021-03-30
+  - [kubeval](https://www.kubeval.com/) from 0.15.0 to **0.16.1** on 2021-03-30
+  - [perlcritic](https://metacpan.org/pod/Perl::Critic) from 1.138 to **1.140** on 2021-03-30
+  - [pylint](https://www.pylint.org) from 2.7.2 to **2.7.4** on 2021-03-30
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.0.212 to **0.1.51** on 2021-03-30
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.26 to **0.9.27** on 2021-03-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.9 to **0.28.16** on 2021-03-30
+  - [kubeval](https://www.kubeval.com/) from 0.16.0 to **0.16.1** on 2021-03-30
+  - [pylint](https://www.pylint.org) from 2.7.3 to **2.7.4** on 2021-03-30
+  - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.3.4 to **2.3.5** on 2021-03-31
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.0.0 to **2.1.0** on 2021-04-02
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.0.5 to **6.1.0** on 2021-04-02
 
 ## [4.30.0] 2021-03-14
 
