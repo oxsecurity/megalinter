@@ -121,7 +121,7 @@ def call_mega_linter(env_vars):
 def test_linter_success(linter, test_self):
     if linter.disabled is True:
         raise unittest.SkipTest(
-            f"Linter has been disabled"
+            "Linter has been disabled"
         )
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
@@ -176,7 +176,7 @@ def test_linter_success(linter, test_self):
 def test_linter_failure(linter, test_self):
     if linter.disabled is True:
         raise unittest.SkipTest(
-            f"Linter has been disabled"
+            "Linter has been disabled"
         )
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
@@ -261,7 +261,7 @@ def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
 def test_get_linter_version(linter, test_self):
     if linter.disabled is True:
         raise unittest.SkipTest(
-            f"Linter has been disabled"
+            "Linter has been disabled"
         )
     # Check linter version
     version = linter.get_linter_version()
@@ -328,7 +328,7 @@ def test_get_linter_version(linter, test_self):
 def test_get_linter_help(linter, test_self):
     if linter.disabled is True:
         raise unittest.SkipTest(
-            f"Linter has been disabled"
+            "Linter has been disabled"
         )
     # Check linter help
     help_txt = linter.get_linter_help()
@@ -373,7 +373,7 @@ def test_get_linter_help(linter, test_self):
 def test_linter_report_tap(linter, test_self):
     if linter.disabled is True:
         raise unittest.SkipTest(
-            f"Linter has been disabled"
+            "Linter has been disabled"
         )
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
