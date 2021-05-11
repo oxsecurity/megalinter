@@ -45,6 +45,7 @@ class Linter:
         )
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
+        self.disabled = False
         self.is_formatter = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         # ex: https://eslint.org/

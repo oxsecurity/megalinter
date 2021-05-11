@@ -6,6 +6,20 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linter versions upgrades
   - [stylelint](https://stylelint.io) from 13.13.0 to **13.13.1** on 2021-05-02
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.49.0 to **0.49.1** on 2021-05-11
+  - [coffeelint](http://www.coffeelint.org) from 4.1.4 to **5.0.1** on 2021-05-11
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.3.0 to **2.4.0** on 2021-05-11
+  - [golangci-lint](https://golangci-lint.run/) from 1.39.0 to **1.40.0** on 2021-05-11
+  - [eslint](https://eslint.org) from 7.25.0 to **7.26.0** on 2021-05-11
+  - [prettier](https://prettier.io/) from 2.2.1 to **2.3.0** on 2021-05-11
+  - [phpstan](https://phpstan.org/) from 0.12.85 to **0.12.86** on 2021-05-11
+  - [flake8](https://flake8.pycqa.org) from 3.9.1 to **3.9.2** on 2021-05-11
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.51 to **0.1.52** on 2021-05-11
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.16 to **0.0.17** on 2021-05-11
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.5.2 to **0.5.3** on 2021-05-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.0 to **0.29.2** on 2021-05-11
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.5.1 to **1.6.0** on 2021-05-11
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.28.0 to **0.28.1** on 2021-05-11
 <!-- linter-versions-end -->
 
 ## [4.33.0] 2021-04-30
