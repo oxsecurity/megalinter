@@ -120,9 +120,7 @@ def call_mega_linter(env_vars):
 
 def test_linter_success(linter, test_self):
     if linter.disabled is True:
-        raise unittest.SkipTest(
-            "Linter has been disabled"
-        )
+        raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     # Special cases when files must be copied in a temp directory before being linted
@@ -175,9 +173,7 @@ def test_linter_success(linter, test_self):
 
 def test_linter_failure(linter, test_self):
     if linter.disabled is True:
-        raise unittest.SkipTest(
-            "Linter has been disabled"
-        )
+        raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     if os.path.isdir(workspace + os.path.sep + "bad"):
@@ -260,9 +256,7 @@ def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
 
 def test_get_linter_version(linter, test_self):
     if linter.disabled is True:
-        raise unittest.SkipTest(
-            "Linter has been disabled"
-        )
+        raise unittest.SkipTest("Linter has been disabled")
     # Check linter version
     version = linter.get_linter_version()
     print("[" + linter.linter_name + "] version: " + version)
@@ -327,9 +321,7 @@ def test_get_linter_version(linter, test_self):
 
 def test_get_linter_help(linter, test_self):
     if linter.disabled is True:
-        raise unittest.SkipTest(
-            "Linter has been disabled"
-        )
+        raise unittest.SkipTest("Linter has been disabled")
     # Check linter help
     help_txt = linter.get_linter_help()
     print("[" + linter.linter_name + "] help: " + help_txt)
@@ -372,9 +364,7 @@ def test_get_linter_help(linter, test_self):
 
 def test_linter_report_tap(linter, test_self):
     if linter.disabled is True:
-        raise unittest.SkipTest(
-            "Linter has been disabled"
-        )
+        raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
