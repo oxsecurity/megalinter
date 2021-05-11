@@ -86,7 +86,7 @@ def filter_files(
 
     for file in all_files:
         base_file_name = os.path.basename(file)
-        filename, file_extension = os.path.splitext(base_file_name)
+        _, file_extension = os.path.splitext(base_file_name)
 
         if filter_regex_include_object and not filter_regex_include_object.search(file):
             continue
@@ -102,7 +102,7 @@ def filter_files(
                 pass
             elif "*" in file_extensions:
                 pass
-            elif file_names_regex_object.fullmatch(filename):
+            elif file_names_regex_object.fullmatch(base_file_name):
                 pass
             else:
                 continue
