@@ -4,7 +4,7 @@
 
 ## dotnet-format documentation
 
-- Version in Mega-Linter: **5.0.211103**
+- Version in Mega-Linter: **000**
 - Visit [Official Web Site](https://github.com/dotnet/format#readme){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
