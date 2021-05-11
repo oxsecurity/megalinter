@@ -102,7 +102,7 @@ def filter_files(
                 pass
             elif "*" in file_extensions:
                 pass
-            elif file_names_regex_object.fullmatch(filename):
+            elif not file_extension and file_names_regex_object.fullmatch(filename):
                 pass
             else:
                 continue
