@@ -615,6 +615,13 @@
             "title": "Default file name for the linter configuration file",
             "type": "string"
           },
+          "disabled": {
+            "$id": "#/properties/linters/items/properties/disabled",
+            "default": false,
+            "description": "Disable linter in Mega-Linter next builds",
+            "title": "Disabled",
+            "type": "boolean"
+          },
           "examples": {
             "$id": "#/properties/linters/items/properties/examples",
             "description": "Please add an example with and without configuration file in the command. They will appear in documentation",

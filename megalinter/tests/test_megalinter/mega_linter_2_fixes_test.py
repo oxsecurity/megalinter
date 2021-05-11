@@ -53,7 +53,7 @@ class mega_linter_2_fixes(unittest.TestCase):
             "kotlin_for_fixes_1.kt",
             "markdown_for_fixes_1.md",
             "python_for_fixes_1.py",
-            "rst_for_fixes_1.rst",
+            # "rst_for_fixes_1.rst",
             "ruby_for_fixes_1.rb",
             "spell_for_fixes_1.js",
             # "scala_for_fixes_1.scala",
