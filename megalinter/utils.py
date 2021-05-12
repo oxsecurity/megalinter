@@ -45,11 +45,13 @@ def get_excluded_directories():
         ".git",
         ".jekyll-cache",
         ".pytest_cache",
+        ".mypy_cache",
         ".rbenv",
         ".venv",
+        ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        "report",
+        config.get("REPORT_OUTPUT_FOLDER", "report"),
     ]
     excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
     excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
