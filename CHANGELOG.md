@@ -24,6 +24,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [tflint](https://github.com/terraform-linters/tflint) from 0.28.0 to **0.28.1** on 2021-05-11
   - [dotnet-format](https://github.com/dotnet/format) from 5.0.211103 to **000** on 2021-05-11
   - [php](https://www.php.net) from 7.4.15 to **7.4.19** on 2021-05-12
+  - [phpstan](https://phpstan.org/) from 0.12.86 to **0.12.87** on 2021-05-12
 <!-- linter-versions-end -->
 
 ## [4.33.0] 2021-04-30
