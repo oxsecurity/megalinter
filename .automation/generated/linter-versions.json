@@ -38,7 +38,7 @@
     "misspell": "0.3.4",
     "npm-groovy-lint": "8.1.0",
     "perlcritic": "1.140",
-    "php": "7.4.15",
+    "php": "7.4.19",
     "phpcs": "3.6.0",
     "phpstan": "0.12.86",
     "powershell": "7.1.3",
