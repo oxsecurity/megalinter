@@ -75,7 +75,7 @@ def process_install(install):
     if "dockerfile" in install:
         # Remove RUN and \ at the end of lines from commands
         commands += [
-            command.replace("RUN ", "").replace(" \\\n", "\n")
+            command.replace("RUN ", "").replace(" \\\n", "\n").replace(" \\"," ")
             for command in install["dockerfile"]
         ]
     # Run install commands
