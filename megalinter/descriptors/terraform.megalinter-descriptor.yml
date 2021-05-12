@@ -101,7 +101,7 @@ linters:
         - name: Terrafmt
           url: https://packagecontrol.io/packages/Terrafmt
       vscode:
-        - name: HashiCorp Terraform 
+        - name: HashiCorp Terraform
           url: https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
     test_folder: terraform_fmt
     version_extract_regex: "Terraform v(\\d+(\\.\\d+)+)"
