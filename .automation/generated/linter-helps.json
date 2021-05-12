@@ -474,7 +474,7 @@
         "  suppresses errors of all categories on that line.",
         "",
         "  The files passed in will be linted; at least one file must be provided.",
-        "  Default linted extensions are ['hh', 'cuh', 'hpp', 'cc', 'h', 'cpp', 'c++', 'cxx', 'h++', 'hxx', 'cu', 'c'].",
+        "  Default linted extensions are ['cpp', 'hxx', 'h', 'c++', 'hpp', 'hh', 'h++', 'cu', 'cuh', 'cc', 'cxx', 'c'].",
         "  Other file types will be ignored.",
         "  Change the extensions with the --extensions flag.",
         "",
