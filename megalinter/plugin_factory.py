@@ -60,7 +60,7 @@ def install_plugin(descriptor_file):
     # Install linter level items
     if "linters" in descriptor:
         for linter_description in descriptor["linters"]:
-            if "install" in descriptor:
+            if "install" in linter_description:
                 process_install(linter_description["install"])
     logging.info(
         f"[Plugins] Successful initialization of {descriptor['descriptor_id']} plugins"
@@ -75,7 +75,7 @@ def process_install(install):
     if "dockerfile" in install:
         # Remove RUN and \ at the end of lines from commands
         commands += [
-            command.replace("RUN ").replace(" \\\n", "\n")
+            command.replace("RUN ", "").replace(" \\\n", "\n")
             for command in install["dockerfile"]
         ]
     # Run install commands
