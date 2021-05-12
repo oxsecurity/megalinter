@@ -26,7 +26,7 @@ jobs:
     if: github.repository == 'nvuillam/mega-linter'
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mdx_truly_sane_lists json-schema-for-humans
