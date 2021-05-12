@@ -709,6 +709,7 @@
             "TERRAFORM_TFLINT",
             "TERRAFORM_TERRASCAN",
             "TERRAFORM_TERRAGRUNT",
+            "TERRAFORM_TERRAFORM_FMT",
             "XML_XMLLINT",
             "YAML_PRETTIER",
             "YAML_YAMLLINT",
