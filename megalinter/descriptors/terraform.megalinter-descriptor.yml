@@ -77,8 +77,9 @@ linters:
     linter_url: https://www.terraform.io/docs/cli/commands/fmt.html
     linter_repo: https://github.com/hashicorp/terraform
     linter_banner_image_url: https://www.terraform.io/assets/images/logo-hashicorp-3f10732f.svg
-    cli_executable: "terraform fmt"
+    cli_executable: terraform
     cli_lint_extra_args:
+      - "fmt"
       - "--diff"
       - "--check"
     cli_lint_fix_arg_name: "--fix"
