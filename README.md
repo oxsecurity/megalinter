@@ -39,7 +39,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
-  - [Why Mega-Linter ?](#why_mega-linter)
+  - [Why Mega-Linter ?](#why-mega-linter)
   - [Quick start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
