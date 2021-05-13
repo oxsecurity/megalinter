@@ -18,8 +18,8 @@
 | Variable                              | Description                                                                                                                                                                                  | Default value      |
 |---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | C_CPPLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| C_CPPLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
-| C_CPPLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
+| C_CPPLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
+| C_CPPLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
 | C_CPPLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".c", ".h"]`     |
 | C_CPPLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | C_CPPLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
@@ -82,7 +82,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['cpp', 'hxx', 'h', 'c++', 'hpp', 'hh', 'h++', 'cu', 'cuh', 'cc', 'cxx', 'c'].
+  Default linted extensions are ['h++', 'cc', 'hpp', 'h', 'hxx', 'cxx', 'c', 'cuh', 'cpp', 'c++', 'cu', 'hh'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -198,7 +198,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=cpp,hxx,h,c++,hpp,hh,h++,cu,cuh,cc,cxx,c
+        --extensions=h++,cc,hpp,h,hxx,cxx,c,cuh,cpp,c++,cu,hh
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -212,10 +212,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'hxx', 'h', 'hpp', 'hh', 'h++', 'cuh'} will be assumed to be headers)
+     (by default, only files with extensions {'h++', 'hpp', 'h', 'hxx', 'cuh', 'hh'} will be assumed to be headers)
 
       Examples:
-        --headers=hxx,h,hpp,hh,h++,cuh
+        --headers=h++,hpp,h,hxx,cuh,hh
         --headers=hpp,hxx
         --headers=hpp
 
