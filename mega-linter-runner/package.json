@@ -82,6 +82,7 @@
     "chalk": "^4.1.0",
     "find-package-json": "^1.2.0",
     "optionator": "^0.9.1",
+    "which": "^2.0.2",
     "yeoman-environment": "^2.10.3",
     "yeoman-generator": "^4.12.0",
     "yosay": "^2.0.2"
