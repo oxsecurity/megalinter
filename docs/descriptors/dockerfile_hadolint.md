@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **2.4.0**
+- Version in Mega-Linter: **2.4.1**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -93,7 +93,7 @@ Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
                 [--style RULECODE] [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
                 [--require-label LABELSCHEMA (e.g. maintainer:text)]
-                [--strict-labels] [-t|--failure-theshold THRESHOLD]
+                [--strict-labels] [-t|--failure-threshold THRESHOLD]
   Lint Dockerfile for errors and best practices
 
 Available options:
@@ -123,11 +123,11 @@ Available options:
                            format requirement `format`
   --strict-labels          Do not permit labels other than specified in
                            `label-schema`
-  -t,--failure-theshold THRESHOLD
+  -t,--failure-threshold THRESHOLD
                            Exit with failure code only when rules with a
-                           severity above THRESHOLD are violated. Accepted
-                           values: [error | warning | info | style | ignore |
-                           none] (default: info)
+                           severity equal to or above THRESHOLD are violated.
+                           Accepted values: [error | warning | info | style |
+                           ignore | none] (default: info)
 ```
 
 ### Installation on mega-linter Docker image

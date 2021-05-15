@@ -3,6 +3,7 @@
 const optionsDefinition = require("./options");
 const { spawnSync } = require("child_process");
 const path = require("path");
+const which = require("which");
 
 class MegaLinterRunner {
   async run(options) {
@@ -57,6 +58,15 @@ class MegaLinterRunner {
         ? "nvuillam/mega-linter"
         : `nvuillam/mega-linter-${options.flavor}`;
     const dockerImage = `${dockerImageName}:${release}`;
+
+    // Check for docker installation
+    const whichPromise = which("docker");
+    whichPromise.catch(() => {
+      console.error(`
+ERROR: Docker engine has not been found on your system.
+- to run Mega-Linter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
+- to run docker on CI, use a base image containing docker engine`);
+    });
 
     // Pull docker image
     if (options.nodockerpull !== true) {
