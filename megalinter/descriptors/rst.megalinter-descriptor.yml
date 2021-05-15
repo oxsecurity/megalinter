@@ -37,7 +37,6 @@ linters:
     is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
-    linter_version_cache: "0.0.0" # --version not implemented on rstfmt
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_remove_args: "--check"
@@ -48,3 +47,4 @@ linters:
     install:
       pip:
         - rstfmt
+    version_extract_regex: "rstfmt (\\d+(\\.\\d+)+)"
