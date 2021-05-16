@@ -40,37 +40,67 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
-  - [Why Mega-Linter ?](#why-mega-linter)
-  - [Quick start](#quick-start)
+  - [Table of Contents](#table-of-contents)
+  - [Why Mega-Linter](#why-mega-linter)
+  - [Quick Start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
     - [Formats](#formats)
     - [Tooling formats](#tooling-formats)
     - [Other](#other)
   - [Installation](#installation)
-    - [Assisted Installation](#assisted-installation)
-    - [Manual Installation](#manual-installation)
+    - [Assisted installation](#assisted-installation)
+    - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
     - [Azure](#azure)
     - [Jenkins](#jenkins)
     - [GitLab](#gitlab)
-    - [Run locally](#run-mega-linter-locally)
+    - [Concourse](#concourse)
+      - [Pipeline step](#pipeline-step)
+      - [Use it as reusable task](#use-it-as-reusable-task)
+    - [Run Mega-Linter locally](#run-mega-linter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
     - [Activation and deactivation](#activation-and-deactivation)
+    - [Filter linted files](#filter-linted-files)
     - [Apply fixes](#apply-fixes)
     - [Linter specific variables](#linter-specific-variables)
-    - [Filter linted files](#filter-linted-files)
-    - [Template rules files](#template-rules-files)
+    - [Pre-commands](#pre-commands)
+    - [Post-commands](#post-commands)
   - [Reporters](#reporters)
   - [Flavors](#flavors)
-  - [Add Mega-Linter badge in your repository README](#badge)
+  - [Badge](#badge)
+    - [Markdown](#markdown)
+    - [reStructuredText](#restructuredtext)
   - [Plugins](#plugins)
+    - [Use plugins](#use-plugins)
+      - [Example](#example)
+    - [Create plugins](#create-plugins)
+      - [Limitations](#limitations)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
+    - [Contributors](#contributors)
+    - [Sites referring to Mega-Linter](#sites-referring-to-mega-linter)
+      - [Global](#global)
+      - [Articles](#articles)
+      - [Linters](#linters)
+    - [Open-source teams](#open-source-teams)
+    - [Super-Linter team](#super-linter-team)
   - [License](#license)
   - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
+    - [Performances](#performances)
+    - [More languages and formats linted](#more-languages-and-formats-linted)
+    - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
+    - [Run locally](#run-locally)
+    - [Reports](#reports)
+      - [Capabilities](#capabilities)
+      - [Additional Reporters](#additional-reporters)
+    - [Enhanced Configuration](#enhanced-configuration)
+    - [Enhanced Documentation](#enhanced-documentation)
+    - [Plugins management](#plugins-management)
+    - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
+    - [Improve robustness & stability](#improve-robustness--stability)
 <!-- table-of-contents-end -->
 
 ## Why Mega-Linter
@@ -427,6 +457,109 @@ mega-linter:
 ```
 
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
+### Concourse
+
+#### Pipeline step
+
+Use the following `job.step` in your pipeline template
+
+Note: make sure you have `job.plan.get` step which gets `repo` containing your repository as shown in example
+
+```yaml
+---
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: nvuillam/mega-linter
+              tag: v4
+          inputs:
+            - name: repo
+          run:
+            path: bash
+            args:
+            - -cxe
+            - |
+              cd repo
+              export DEFAULT_WORKSPACE=$(pwd)
+              bash -ex /entrypoint.sh
+              ## doing this because concourse does not work as other CI systems
+          # params:
+            # PARALLEL: true
+            # DISABLE: SPELL
+            # APPLY_FIXES: all
+            # DISABLE_ERRORS: true
+            # VALIDATE_ALL_CODEBASE: true
+            # DEFAULT_BRANCH: master
+
+```
+
+OR
+
+#### Use it as reusable task
+
+Create reusable concourse task which can be used with multiple pipelines
+
+1. Create task file `task-linting.yaml`
+
+```yaml
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: nvuillam/mega-linter
+    tag: v4
+
+inputs:
+- name: repo
+
+## uncomment this if you want reports as task output
+# output:
+# - name: reports
+#   path: repo/report
+
+run:
+  path: bash
+  args:
+  - -cxe
+  - |
+    cd repo
+    export DEFAULT_WORKSPACE=$(pwd)
+    bash -ex /entrypoint.sh
+```
+
+2. Use that `task-linting.yaml` task in pipeline
+
+Note:
+
+  1. make sure `task-linting.yaml` is available in that `repo` input at root
+
+  2. task `output` is **not** shown here
+
+```yaml
+resources:
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        file: repo/task-linting.yaml
+        # params:
+        #   PARALLEL: true
+        #   DISABLE: SPELL
+        #   APPLY_FIXES: all
+        #   DISABLE_ERRORS: true
+        #   VALIDATE_ALL_CODEBASE: true
+        #   DEFAULT_BRANCH: master
+```
 
 ### Run Mega-Linter locally
 
