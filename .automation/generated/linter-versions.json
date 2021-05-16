@@ -71,7 +71,7 @@
     "stylelint": "13.13.1",
     "swiftlint": "0.43.1",
     "tekton-lint": "0.5.2",
-    "terragrunt": "0.29.2",
+    "terragrunt": "0.29.3",
     "terrascan": "1.6.0",
     "tflint": "0.28.1",
     "v8r": "0.5.0",
