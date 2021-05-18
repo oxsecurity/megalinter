@@ -204,6 +204,109 @@ mega-linter:
 
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
+## Concourse
+
+### Pipeline step
+
+Use the following `job.step` in your pipeline template
+
+Note: make sure you have `job.plan.get` step which gets `repo` containing your repository as shown in example
+
+```yaml
+---
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: nvuillam/mega-linter
+              tag: v4
+          inputs:
+            - name: repo
+          run:
+            path: bash
+            args:
+            - -cxe
+            - |
+              cd repo
+              export DEFAULT_WORKSPACE=$(pwd)
+              bash -ex /entrypoint.sh
+              # doing this because concourse does not work as other CI systems
+          # params:
+            # PARALLEL: true
+            # DISABLE: SPELL
+            # APPLY_FIXES: all
+            # DISABLE_ERRORS: true
+            # VALIDATE_ALL_CODEBASE: true
+            # DEFAULT_BRANCH: master
+
+```
+
+OR
+
+### Use it as reusable task
+
+Create reusable concourse task which can be used with multiple pipelines
+
+1. Create task file `task-linting.yaml`
+
+```yaml
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: nvuillam/mega-linter
+    tag: v4
+
+inputs:
+- name: repo
+
+# uncomment this if you want reports as task output
+# output:
+# - name: reports
+#   path: repo/report
+
+run:
+  path: bash
+  args:
+  - -cxe
+  - |
+    cd repo
+    export DEFAULT_WORKSPACE=$(pwd)
+    bash -ex /entrypoint.sh
+```
+
+2. Use that `task-linting.yaml` task in pipeline
+
+Note:
+
+  1. make sure `task-linting.yaml` is available in that `repo` input at root
+
+  2. task `output` is **not** shown here
+
+```yaml
+resources:
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        file: repo/task-linting.yaml
+        # params:
+        #   PARALLEL: true
+        #   DISABLE: SPELL
+        #   APPLY_FIXES: all
+        #   DISABLE_ERRORS: true
+        #   VALIDATE_ALL_CODEBASE: true
+        #   DEFAULT_BRANCH: master
+```
+
 ## Run Mega-Linter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)

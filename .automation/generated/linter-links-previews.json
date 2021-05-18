@@ -364,6 +364,11 @@
     "image": "https://avatars0.githubusercontent.com/u/1459110?s=400&v=4",
     "title": "IBM/tekton-lint"
   },
+  "terraform-fmt": {
+    "description": "The `terraform fmt` command is used to rewrite Terraform configuration files to a canonical format and style.",
+    "image": "https://www.terraform.io/assets/images/og-image-8b3e4f7d.png",
+    "title": "Command: fmt - Terraform by HashiCorp"
+  },
   "terragrunt": {
     "description": "Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state.",
     "image": "https://terragrunt.gruntwork.io/assets/img/terragrunt-thumbnail.png",
