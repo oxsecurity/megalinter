@@ -327,8 +327,9 @@ class Linter:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + config_file_name
-        # 3: linter_rules_path + config_file_name
-        # 4: mega-linter default rules path + config_file_name
+        # 3: workspace root + repo + config_file_name
+        # 4: linter_rules_path + config_file_name
+        # 5: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
             and self.config_file_name != "LINTER_DEFAULT"
@@ -361,6 +362,13 @@ class Linter:
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
+            elif (os.path.isfile(
+                 self.linter_rules_path + os.path.sep + self.config_file_name
+            ):
+                self.config_file = (
+                    self.linter_rules_path + os.path.sep + self.config_file_name
+                )
+            # in workspace root
             elif os.path.isfile(
                 self.workspace + os.path.sep + self.linter_rules_path + os.path.sep + self.config_file_name
             ):
