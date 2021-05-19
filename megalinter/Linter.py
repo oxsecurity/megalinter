@@ -362,8 +362,8 @@ class Linter:
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
                 self.config_file = self.workspace + os.path.sep + self.config_file_name
             # in user repo ./github/linters folder
-            elif (os.path.isfile(
-                 self.linter_rules_path + os.path.sep + self.config_file_name
+            elif os.path.isfile(
+                self.linter_rules_path + os.path.sep + self.config_file_name
             ):
                 self.config_file = (
                     self.linter_rules_path + os.path.sep + self.config_file_name
