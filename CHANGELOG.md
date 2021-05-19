@@ -10,6 +10,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
   - [shfmt](https://github.com/mvdan/sh) from 3.2.4 to **3.3.0** on 2021-05-18
   - [phpstan](https://phpstan.org/) from 0.12.87 to **0.12.88** on 2021-05-18
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.49.1 to **0.49.2** on 2021-05-19
 <!-- linter-versions-end -->
 
 ## [4.34.0] 2021-04-30
