@@ -428,6 +428,9 @@ RUN terrascan init
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
+# terraform-fmt installation
+COPY --from=terragrunt /bin/terraform /usr/bin/
+
 #OTHER__END
 
 ######################

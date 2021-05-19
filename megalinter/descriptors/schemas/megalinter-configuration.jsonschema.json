@@ -177,6 +177,7 @@
         "TERRAFORM_TFLINT",
         "TERRAFORM_TERRASCAN",
         "TERRAFORM_TERRAGRUNT",
+        "TERRAFORM_TERRAFORM_FMT",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
@@ -7079,6 +7080,68 @@
     "TERRAFORM_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/TERRAFORM_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for TERRAFORM descriptor",
+      "type": "string"
+    },
+    "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_ARGUMENTS",
+      "description": "TERRAFORM_TERRAFORM_FMT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS",
+      "default": false,
+      "title": "TERRAFORM_TERRAFORM_FMT: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TERRAFORM_TERRAFORM_FMT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE",
+      "title": "TERRAFORM_TERRAFORM_FMT: Excluding Regex",
+      "type": "string"
+    },
+    "TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE",
+      "title": "TERRAFORM_TERRAFORM_FMT: Including Regex",
       "type": "string"
     },
     "TERRAFORM_TERRAGRUNT_ARGUMENTS": {

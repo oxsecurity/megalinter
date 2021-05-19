@@ -15,10 +15,13 @@ from urllib import parse as parse_urllib
 import jsonschema
 import markdown
 import megalinter
+import requests
 import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
 BRANCH = "master"
@@ -73,6 +76,7 @@ def generate_all_flavors():
     for flavor, flavor_info in flavors.items():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
+    update_docker_pulls_counter()
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
@@ -752,9 +756,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
             f'Ex: `-s --foo "bar"` |  |',
             f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-            f"Ex: `(src|lib)` | Include every file |",
+            f"Ex: `(src\\|lib)` | Include every file |",
             f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-            f"Ex: `(test|examples)` | Exclude no file |",
+            f"Ex: `(test\\|examples)` | Exclude no file |",
             f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
             f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
             f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
@@ -1127,6 +1131,61 @@ def update_mkdocs_and_workflow_yml_with_flavors():
     )
 
 
+def update_docker_pulls_counter():
+    logging.info("Fetching docker pull counters on flavors images")
+    total_count = 0
+    for flavor_id, _flavor_info in megalinter.flavor_factory.get_all_flavors().items():
+        if flavor_id == "all":
+            docker_image_url = (
+                "https://hub.docker.com/v2/repositories/nvuillam/mega-linter"
+            )
+        else:
+            docker_image_url = f"https://hub.docker.com/v2/repositories/nvuillam/mega-linter-{flavor_id}"
+        r = requests_retry_session().get(docker_image_url)
+        resp = r.json()
+        flavor_count = resp["pull_count"] or 0
+        logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
+        total_count = total_count + flavor_count
+    total_count_human = number_human_format(total_count)
+    logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
+    replace_in_file(
+        f"{REPO_HOME}/README.md", "pulls-", "-blue", total_count_human, False
+    )
+    replace_in_file(
+        f"{REPO_HOME}/mega-linter-runner/README.md", "pulls-", "-blue", total_count_human, False
+    )
+
+
+def requests_retry_session(
+    retries=3,
+    backoff_factor=0.5,
+    status_forcelist=(500, 502, 504),
+    session=None,
+):
+    session = session or requests.Session()
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+    return session
+
+
+def number_human_format(num, round_to=1):
+    magnitude = 0
+    while abs(num) >= 1000:
+        magnitude += 1
+        num = round(num / 1000.0, round_to)
+    return "{:.{}f}{}".format(
+        round(num, round_to), round_to, ["", "k", "M", "G", "T", "P"][magnitude]
+    )
+
+
 def get_linter_base_info(linter):
     lang_lower = linter.descriptor_id.lower()
     linter_name_lower = linter.linter_name.lower().replace("-", "_")
@@ -1298,12 +1357,15 @@ def md_package_list(package_list, indent, start_url):
     return res
 
 
-def replace_in_file(file_path, start, end, content):
+def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Read in the file
     with open(file_path, "r", encoding="utf-8") as file:
         file_content = file.read()
     # Replace the target string
-    replacement = f"{start}\n{content}\n{end}"
+    if add_new_line is True:
+        replacement = f"{start}\n{content}\n{end}"
+    else:
+        replacement = f"{start}{content}{end}"
     regex = rf"{start}([\s\S]*?){end}"
     file_content = re.sub(regex, replacement, file_content, re.DOTALL)
     # Write the file out again

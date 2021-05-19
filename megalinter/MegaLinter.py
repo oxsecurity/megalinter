@@ -10,8 +10,6 @@ import os
 import sys
 
 import git
-from multiprocessing_logging import install_mp_handler
-
 from megalinter import (
     config,
     flavor_factory,
@@ -20,6 +18,7 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
+from multiprocessing_logging import install_mp_handler
 
 
 # Function to run linters using multiprocessing pool
@@ -337,7 +336,7 @@ class Megalinter:
         all_linters = linter_factory.list_all_linters(linter_init_params)
         skipped_linters = []
         for linter in all_linters:
-            if linter.is_active is False:
+            if linter.is_active is False or linter.disabled is True:
                 skipped_linters += [linter.name]
                 continue
             self.linters += [linter]

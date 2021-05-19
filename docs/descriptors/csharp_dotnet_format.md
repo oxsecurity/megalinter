@@ -4,7 +4,7 @@
 
 ## dotnet-format documentation
 
-- Version in Mega-Linter: **5.0.211103**
+- Version in Mega-Linter: **000**
 - Visit [Official Web Site](https://github.com/dotnet/format#readme){target=_blank}
 
 [![format - GitHub](https://gh-card.dev/repos/dotnet/format.svg?fullname=)](https://github.com/dotnet/format){target=_blank}
@@ -19,8 +19,8 @@
 | Variable                                         | Description                                                                                                                                                                                  | Default value      |
 |--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | CSHARP_DOTNET_FORMAT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file |
-| CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file    |
+| CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
+| CSHARP_DOTNET_FORMAT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
 | CSHARP_DOTNET_FORMAT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".cs"]`          |
 | CSHARP_DOTNET_FORMAT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | CSHARP_DOTNET_FORMAT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`             |
@@ -32,7 +32,7 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                  | Flavor                                                           | Description                                   | Embedded linters | Info                                                                                                                                                                                 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)               |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    | 88               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)               |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>              | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 44               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
 
 ## Behind the scenes
@@ -58,27 +58,30 @@ dotnet-format --folder --exclude / --include myfile.cs
 ### Help content
 
 ```shell
-dotnet-format:
+dotnet-format
   dotnet-format
 
 Usage:
   dotnet-format [options] [<workspace>]
 
 Arguments:
-  <workspace>    A path to a solution file, a project file, or a folder containing a solution or project file. If a path is not specified then the current directory is used.
+  <workspace>  A path to a solution file, a project file, or a folder containing a solution or project file. If a path is not specified then the current directory is used. [default: ]
 
 Options:
-  -f, --folder                                                               Whether to treat the `<workspace>` argument as a simple folder of files.
-  -w, --fix-whitespace                                                       Run whitespace formatting. Run by default when not applying fixes.
-  -s, --fix-style <error|info|warn>                                          Run code style analyzers and apply fixes.
-  -a, --fix-analyzers <error|info|warn>                                      Run 3rd party analyzers and apply fixes.
-  --include <include>                                                        A list of relative file or folder paths to include in formatting. All files are formatted if empty. [default: System.String[]]
-  --exclude <exclude>                                                        A list of relative file or folder paths to exclude from formatting. [default: System.String[]]
-  --check                                                                    Formats files without saving changes to disk. Terminates with a non-zero exit code if any files were formatted.
-  --report <report-path>                                                     Accepts a file path, which if provided, will produce a json report in the given directory. [default: ]
-  -v, --verbosity <d|detailed|diag|diagnostic|m|minimal|n|normal|q|quiet>    Set the verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]
-  --version                                                                  Show version information
-  -?, -h, --help                                                             Show help and usage information
+  --no-restore                                                             Doesn't execute an implicit restore before formatting.
+  -f, --folder                                                             Whether to treat the `<workspace>` argument as a simple folder of files.
+  -w, --fix-whitespace                                                     Run whitespace formatting. Run by default when not applying fixes.
+  -s, --fix-style <error|info|warn>                                        Run code style analyzers and apply fixes.
+  -a, --fix-analyzers <error|info|warn>                                    Run 3rd party analyzers and apply fixes.
+  --diagnostics <diagnostics>                                              A space separated list of diagnostic ids to use as a filter when fixing code style or 3rd party issues. [default: ]
+  --include <include>                                                      A list of relative file or folder paths to include in formatting. All files are formatted if empty. [default: ]
+  --exclude <exclude>                                                      A list of relative file or folder paths to exclude from formatting. [default: ]
+  --check                                                                  Formats files without saving changes to disk. Terminates with a non-zero exit code if any files were formatted.
+  --report <report-path>                                                   Accepts a file path, which if provided, will produce a json report in the given directory.
+  -v, --verbosity <d|detailed|diag|diagnostic|m|minimal|n|normal|q|quiet>  Set the verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]
+  --binarylog <binary-log-path>                                            Log all project or solution load information to a binary log file.
+  --version                                                                Show version information
+  -?, -h, --help                                                           Show help and usage information
 
 ```
 
