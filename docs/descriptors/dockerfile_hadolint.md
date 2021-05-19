@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **2.3.0**
+- Version in Mega-Linter: **2.4.1**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -21,8 +21,8 @@
 | Variable                                        | Description                                                                                                                                                                                  | Default value                                    |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 | DOCKERFILE_HADOLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                               |
-| DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                  |
+| DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                               |
+| DOCKERFILE_HADOLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                  |
 | DOCKERFILE_HADOLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file                               |
 | DOCKERFILE_HADOLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Dockerfile"]`                                 |
 | DOCKERFILE_HADOLINT_CONFIG_FILE                 | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.hadolint.yml`                                  |
@@ -45,7 +45,7 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                  | Flavor                                                                         | Description                                                            | Embedded linters | Info                                                                                                                                                                                               |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)               | Default Mega-Linter Flavor                                             | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                             |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)               | Default Mega-Linter Flavor                                             | 88               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                             |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>            | [ci_light](https://nvuillam.github.io/mega-linter/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML | 13               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ci_light/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ci_light)           |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>                | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/)                   | Optimized for DART based projects                                      | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart)                   |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>       | [documentation](https://nvuillam.github.io/mega-linter/flavors/documentation/) | Mega-Linter for documentation projects                                 | 38               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-documentation/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-documentation) |
@@ -60,7 +60,7 @@ This linter is available in the following flavours
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/)       | Optimized for Salesforce based projects                                | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce)       |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>               | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/)                 | Optimized for SCALA based projects                                     | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala)                 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>               | [swift](https://nvuillam.github.io/mega-linter/flavors/swift/)                 | Optimized for SWIFT based projects                                     | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-swift/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-swift)                 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform)         |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 | 42               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform)         |
 
 ## Behind the scenes
 
@@ -88,12 +88,12 @@ hadolint --config .hadolint.yml Dockerfile
 hadolint - Dockerfile Linter written in Haskell
 
 Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
-                [-f|--format ARG] [DOCKERFILE...] [--error RULECODE]
-                [--warning RULECODE] [--info RULECODE] [--style RULECODE]
-                [--ignore RULECODE]
+                [-V|--verbose] [-f|--format ARG] [DOCKERFILE...]
+                [--error RULECODE] [--warning RULECODE] [--info RULECODE]
+                [--style RULECODE] [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
                 [--require-label LABELSCHEMA (e.g. maintainer:text)]
-                [--strict-labels]
+                [--strict-labels] [-t|--failure-threshold THRESHOLD]
   Lint Dockerfile for errors and best practices
 
 Available options:
@@ -103,6 +103,8 @@ Available options:
                            is violated
   --no-color               Don't colorize output
   -c,--config FILENAME     Path to the configuration file
+  -V,--verbose             Enables verbose logging of hadolint's output to
+                           stderr
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
                            codacy] (default: tty)
@@ -121,6 +123,11 @@ Available options:
                            format requirement `format`
   --strict-labels          Do not permit labels other than specified in
                            `label-schema`
+  -t,--failure-threshold THRESHOLD
+                           Exit with failure code only when rules with a
+                           severity equal to or above THRESHOLD are violated.
+                           Accepted values: [error | warning | info | style |
+                           ignore | none] (default: info)
 ```
 
 ### Installation on mega-linter Docker image

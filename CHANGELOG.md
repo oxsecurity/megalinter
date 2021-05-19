@@ -4,9 +4,31 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- Split Salesforce sfdx-scanner into pmd, eslint aura and eslint lwc
+- Fix [#304](https://github.com/nvuillam/mega-linter/issues/304): Display error message when docker is not found when running mega-linter-runner
+- Calculate sum of docker pulls for main page counter badge
 - Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/nvuillam/mega-linter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
-  
+
+- Linter versions upgrades
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
+  - [shfmt](https://github.com/mvdan/sh) from 3.2.4 to **3.3.0** on 2021-05-18
+  - [phpstan](https://phpstan.org/) from 0.12.87 to **0.12.88** on 2021-05-18
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.49.1 to **0.49.2** on 2021-05-19
+<!-- linter-versions-end -->
+
+## [4.34.0] 2021-04-30
+
+- Fix bug in Mega-Linter plugins installation (related to [#PR403](https://github.com/nvuillam/mega-linter/pull/403))
+
+- Linter versions upgrades
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.5.3 to **0.5.5** on 2021-05-14
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.4.0 to **2.4.1** on 2021-05-15
+  - [golangci-lint](https://golangci-lint.run/) from 1.40.0 to **1.40.1** on 2021-05-15
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.5.5 to **0.5.6** on 2021-05-15
+
+## [4.33.0] 2021-04-30
+
+- Split Salesforce sfdx-scanner into pmd, eslint aura and eslint lwc
+
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.1.1 to **6.1.2** on 2021-04-20
   - [stylelint](https://stylelint.io) from 13.12.0 to **13.13.0** on 2021-04-25
@@ -18,7 +40,12 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.41.1 to **8.42** on 2021-04-25
   - [pylint](https://www.pylint.org) from 2.8.0 to **2.8.1** on 2021-04-25
   - [tflint](https://github.com/terraform-linters/tflint) from 0.27.0 to **0.28.0** on 2021-04-25
-<!-- linter-versions-end -->
+  - [pylint](https://www.pylint.org) from 2.8.1 to **2.8.2** on 2021-04-27
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.48.3 to **0.49.0** on 2021-04-28
+  - [phpstan](https://phpstan.org/) from 0.12.84 to **0.12.85** on 2021-04-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.28.21 to **0.29.0** on 2021-04-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.2.1 to **6.3.0** on 2021-04-30
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.5.0 to **1.5.1** on 2021-04-30
 
 ## [4.32.0] 2021-04-20
 

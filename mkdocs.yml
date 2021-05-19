@@ -4,7 +4,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 45 languages, 22 formats, 16 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 45 languages, 22 formats, 17 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2020 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -248,6 +248,7 @@ nav:
               - "tflint": "descriptors/terraform_tflint.md"
               - "terrascan": "descriptors/terraform_terrascan.md"
               - "terragrunt": "descriptors/terraform_terragrunt.md"
+              - "terraform-fmt": "descriptors/terraform_terraform_fmt.md"
 # tooling_format-end
       - "Other checks":
           - "All other linters": "./supported-linters/#other"

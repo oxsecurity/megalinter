@@ -13,16 +13,17 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-244.6k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
 [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
+[![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/mega-linter.svg)](https://gitHub.com/nvuillam/mega-linter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://nvuillam.github.io/mega-linter/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
 <!-- welcome-phrase-start -->
-Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**45** languages](#languages), [**22** formats](#formats), [**16** tooling formats](#tooling-formats) , [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**45** languages](#languages), [**22** formats](#formats), [**17** tooling formats](#tooling-formats) , [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
 
 Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, [**highly configurable**](#configuration) and **free for all uses**
 
@@ -39,37 +40,67 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
-  - [Why Mega-Linter ?](#why_mega-linter)
-  - [Quick start](#quick-start)
+  - [Table of Contents](#table-of-contents)
+  - [Why Mega-Linter](#why-mega-linter)
+  - [Quick Start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
     - [Formats](#formats)
     - [Tooling formats](#tooling-formats)
     - [Other](#other)
   - [Installation](#installation)
-    - [Assisted Installation](#assisted-installation)
-    - [Manual Installation](#manual-installation)
+    - [Assisted installation](#assisted-installation)
+    - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
     - [Azure](#azure)
     - [Jenkins](#jenkins)
     - [GitLab](#gitlab)
-    - [Run locally](#run-mega-linter-locally)
+    - [Concourse](#concourse)
+      - [Pipeline step](#pipeline-step)
+      - [Use it as reusable task](#use-it-as-reusable-task)
+    - [Run Mega-Linter locally](#run-mega-linter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
     - [Activation and deactivation](#activation-and-deactivation)
+    - [Filter linted files](#filter-linted-files)
     - [Apply fixes](#apply-fixes)
     - [Linter specific variables](#linter-specific-variables)
-    - [Filter linted files](#filter-linted-files)
-    - [Template rules files](#template-rules-files)
+    - [Pre-commands](#pre-commands)
+    - [Post-commands](#post-commands)
   - [Reporters](#reporters)
   - [Flavors](#flavors)
-  - [Add Mega-Linter badge in your repository README](#badge)
+  - [Badge](#badge)
+    - [Markdown](#markdown)
+    - [reStructuredText](#restructuredtext)
   - [Plugins](#plugins)
+    - [Use plugins](#use-plugins)
+      - [Example](#example)
+    - [Create plugins](#create-plugins)
+      - [Limitations](#limitations)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
+    - [Contributors](#contributors)
+    - [Sites referring to Mega-Linter](#sites-referring-to-mega-linter)
+      - [Global](#global)
+      - [Articles](#articles)
+      - [Linters](#linters)
+    - [Open-source teams](#open-source-teams)
+    - [Super-Linter team](#super-linter-team)
   - [License](#license)
   - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
+    - [Performances](#performances)
+    - [More languages and formats linted](#more-languages-and-formats-linted)
+    - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
+    - [Run locally](#run-locally)
+    - [Reports](#reports)
+      - [Capabilities](#capabilities)
+      - [Additional Reporters](#additional-reporters)
+    - [Enhanced Configuration](#enhanced-configuration)
+    - [Enhanced Documentation](#enhanced-documentation)
+    - [Plugins management](#plugins-management)
+    - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
+    - [Improve robustness & stability](#improve-robustness--stability)
 <!-- table-of-contents-end -->
 
 ## Why Mega-Linter
@@ -211,6 +242,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**TERRAFORM**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform.md#readme)           | [tflint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_tflint.md#readme)                                | [TERRAFORM_TFLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_tflint.md#readme)                                   |                    |
 | <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                                                                                     | [terrascan](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terrascan.md#readme)                          | [TERRAFORM_TERRASCAN](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terrascan.md#readme)                             |                    |
 | <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                                                                                     | [terragrunt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terragrunt.md#readme)                        | [TERRAFORM_TERRAGRUNT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terragrunt.md#readme)                           |                    |
+| <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                                                                                     | [terraform-fmt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terraform_fmt.md#readme)                  | [TERRAFORM_TERRAFORM_FMT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/terraform_terraform_fmt.md#readme)                     | :heavy_check_mark: |
 
 ### Other
 
@@ -427,6 +459,109 @@ mega-linter:
 
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
+### Concourse
+
+#### Pipeline step
+
+Use the following `job.step` in your pipeline template
+
+Note: make sure you have `job.plan.get` step which gets `repo` containing your repository as shown in example
+
+```yaml
+---
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: nvuillam/mega-linter
+              tag: v4
+          inputs:
+            - name: repo
+          run:
+            path: bash
+            args:
+            - -cxe
+            - |
+              cd repo
+              export DEFAULT_WORKSPACE=$(pwd)
+              bash -ex /entrypoint.sh
+              ## doing this because concourse does not work as other CI systems
+          # params:
+            # PARALLEL: true
+            # DISABLE: SPELL
+            # APPLY_FIXES: all
+            # DISABLE_ERRORS: true
+            # VALIDATE_ALL_CODEBASE: true
+            # DEFAULT_BRANCH: master
+
+```
+
+OR
+
+#### Use it as reusable task
+
+Create reusable concourse task which can be used with multiple pipelines
+
+1. Create task file `task-linting.yaml`
+
+```yaml
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: nvuillam/mega-linter
+    tag: v4
+
+inputs:
+- name: repo
+
+## uncomment this if you want reports as task output
+# output:
+# - name: reports
+#   path: repo/report
+
+run:
+  path: bash
+  args:
+  - -cxe
+  - |
+    cd repo
+    export DEFAULT_WORKSPACE=$(pwd)
+    bash -ex /entrypoint.sh
+```
+
+2. Use that `task-linting.yaml` task in pipeline
+
+Note:
+
+  1. make sure `task-linting.yaml` is available in that `repo` input at root
+
+  2. task `output` is **not** shown here
+
+```yaml
+resources:
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        file: repo/task-linting.yaml
+        # params:
+        #   PARALLEL: true
+        #   DISABLE: SPELL
+        #   APPLY_FIXES: all
+        #   DISABLE_ERRORS: true
+        #   VALIDATE_ALL_CODEBASE: true
+        #   DEFAULT_BRANCH: master
+```
+
 ### Run Mega-Linter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
@@ -622,7 +757,7 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 <!-- flavors-table-start -->
 | <!-- -->                                                                                                                                                  | Flavor                                                                                                    | Description                                                            | Embedded linters | Info                                                                                                                                                                                               |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)                                          | Default Mega-Linter Flavor                                             | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                             |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)                                          | Default Mega-Linter Flavor                                             | 88               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                             |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>            | [ci_light](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML | 13               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ci_light/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ci_light)           |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>                | [dart](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/dart.md#readme)                   | Optimized for DART based projects                                      | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart)                   |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>       | [documentation](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/documentation.md#readme) | Mega-Linter for documentation projects                                 | 38               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-documentation/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-documentation) |
@@ -637,7 +772,7 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/salesforce.md#readme)       | Optimized for Salesforce based projects                                | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce)       |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>               | [scala](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/scala.md#readme)                 | Optimized for SCALA based projects                                     | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala)                 |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>               | [swift](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/swift.md#readme)                 | Optimized for SWIFT based projects                                     | 39               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-swift/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-swift)                 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/terraform.md#readme)         | Optimized for TERRAFORM based projects                                 | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform)         |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/terraform.md#readme)         | Optimized for TERRAFORM based projects                                 | 42               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform)         |
 <!-- flavors-table-end -->
 
 If you need a new flavor, [post an issue](https://github.com/nvuillam/mega-linter/issues) :wink:

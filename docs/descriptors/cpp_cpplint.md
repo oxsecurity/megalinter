@@ -18,8 +18,8 @@
 | Variable                                | Description                                                                                                                                                                                  | Default value                                                                         |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | CPP_CPPLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                                                       |
-| CPP_CPPLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src|lib)`                                                                                                                                            | Include every file                                                                    |
-| CPP_CPPLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test|examples)`                                                                                                                                      | Exclude no file                                                                       |
+| CPP_CPPLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                                                                    |
+| CPP_CPPLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                                                       |
 | CPP_CPPLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".cpp", ".h", ".cc", ".hpp", ".cxx", ".cu", ".hxx", ".c++", ".hh", ".h++", ".cuh"]` |
 | CPP_CPPLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                                                                    |
 | CPP_CPPLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                                                               |
@@ -31,7 +31,7 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                  | Flavor                                                           | Description                                   | Embedded linters | Info                                                                                                                                                                                 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)               |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    | 88               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)               |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>              | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects | 44               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
 
 ## Behind the scenes
@@ -82,7 +82,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['cxx', 'c++', 'cpp', 'cuh', 'h++', 'hxx', 'c', 'h', 'cu', 'hh', 'hpp', 'cc'].
+  Default linted extensions are ['cu', 'cxx', 'hpp', 'cpp', 'c++', 'hh', 'c', 'h++', 'cc', 'hxx', 'h', 'cuh'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -198,7 +198,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=cxx,c++,cpp,cuh,h++,hxx,c,h,cu,hh,hpp,cc
+        --extensions=cu,cxx,hpp,cpp,c++,hh,c,h++,cc,hxx,h,cuh
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -212,10 +212,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'h++', 'hxx', 'cuh', 'h', 'hh', 'hpp'} will be assumed to be headers)
+     (by default, only files with extensions {'hpp', 'hh', 'h++', 'hxx', 'h', 'cuh'} will be assumed to be headers)
 
       Examples:
-        --headers=h++,hxx,cuh,h,hh,hpp
+        --headers=hpp,hh,h++,hxx,h,cuh
         --headers=hpp,hxx
         --headers=hpp
 

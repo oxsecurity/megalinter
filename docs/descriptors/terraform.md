@@ -5,11 +5,12 @@
 
 ## Linters
 
-| Linter                                | Configuration key                               |
-|---------------------------------------|-------------------------------------------------|
-| [tflint](terraform_tflint.md)         | [TERRAFORM_TFLINT](terraform_tflint.md)         |
-| [terrascan](terraform_terrascan.md)   | [TERRAFORM_TERRASCAN](terraform_terrascan.md)   |
-| [terragrunt](terraform_terragrunt.md) | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md) |
+| Linter                                      | Configuration key                                     |
+|---------------------------------------------|-------------------------------------------------------|
+| [tflint](terraform_tflint.md)               | [TERRAFORM_TFLINT](terraform_tflint.md)               |
+| [terrascan](terraform_terrascan.md)         | [TERRAFORM_TERRASCAN](terraform_terrascan.md)         |
+| [terragrunt](terraform_terragrunt.md)       | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md)       |
+| [terraform-fmt](terraform_terraform_fmt.md) | [TERRAFORM_TERRAFORM_FMT](terraform_terraform_fmt.md) |
 
 ## Linted files
 
