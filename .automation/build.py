@@ -1151,6 +1151,9 @@ def update_docker_pulls_counter():
     replace_in_file(
         f"{REPO_HOME}/README.md", "pulls-", "-blue", total_count_human, False
     )
+    replace_in_file(
+        f"{REPO_HOME}/mega-linter-runner/README.md", "pulls-", "-blue", total_count_human, False
+    )
 
 
 def requests_retry_session(
