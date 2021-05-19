@@ -328,8 +328,8 @@ class Linter:
         # 0: LINTER_DEFAULT set in user config: let the linter find it, do not reference it in cli arguments
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + config_file_name
-        # 3: workspace root + repo + config_file_name
-        # 4: linter_rules_path + config_file_name
+        # 3: linter_rules_path + config_file_name
+        # 4: workspace root + linter_rules_path + config_file_name
         # 5: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
