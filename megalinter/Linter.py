@@ -236,7 +236,10 @@ class Linter:
             if len(self.active_only_if_file_found) > 0:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
-                    if os.path.isfile(f"{self.workspace}/{file_to_check}"):
+                    if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
+                        is_found = True
+                        break
+                    if os.path.isfile(f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"):
                         is_found = True
                         break
                 if is_found is False:
@@ -326,7 +329,8 @@ class Linter:
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + config_file_name
         # 3: linter_rules_path + config_file_name
-        # 4: mega-linter default rules path + config_file_name
+        # 4: workspace root + linter_rules_path + config_file_name
+        # 5: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
             and self.config_file_name != "LINTER_DEFAULT"
@@ -364,6 +368,13 @@ class Linter:
             ):
                 self.config_file = (
                     self.linter_rules_path + os.path.sep + self.config_file_name
+                )
+            # in workspace root
+            elif os.path.isfile(
+                self.workspace + os.path.sep + self.linter_rules_path + os.path.sep + self.config_file_name
+            ):
+                self.config_file = (
+                    self.workspace + os.path.sep + self.linter_rules_path + os.path.sep + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
             elif os.path.isfile(
