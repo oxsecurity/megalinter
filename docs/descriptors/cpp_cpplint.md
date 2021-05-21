@@ -4,7 +4,7 @@
 
 ## cpplint documentation
 
-- Version in Mega-Linter: **1.5.4**
+- Version in Mega-Linter: **1.5.5**
 - Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
 - See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
@@ -82,7 +82,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
   suppresses errors of all categories on that line.
 
   The files passed in will be linted; at least one file must be provided.
-  Default linted extensions are ['cu', 'cxx', 'hpp', 'cpp', 'c++', 'hh', 'c', 'h++', 'cc', 'hxx', 'h', 'cuh'].
+  Default linted extensions are ['c', 'c++', 'cc', 'cpp', 'cu', 'cuh', 'cxx', 'h', 'h++', 'hh', 'hpp', 'hxx'].
   Other file types will be ignored.
   Change the extensions with the --extensions flag.
 
@@ -112,11 +112,11 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       error messages whose category names pass the filters will be printed.
       (Category names are printed with the message and look like
       "[whitespace/indent]".)  Filters are evaluated left to right.
-      "-FOO" and "FOO" means "do not print categories that start with FOO".
+      "-FOO" means "do not print categories that start with FOO".
       "+FOO" means "do print categories that start with FOO".
 
       Examples: --filter=-whitespace,+whitespace/braces
-                --filter=whitespace,runtime/printf,+runtime/printf_format
+                --filter=-whitespace,-runtime/printf,+runtime/printf_format
                 --filter=-,+build/include_what_you_use
 
       To see a list of all the categories used in cpplint, pass no arg:
@@ -198,7 +198,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
       The allowed file extensions that cpplint will check
 
       Examples:
-        --extensions=cu,cxx,hpp,cpp,c++,hh,c,h++,cc,hxx,h,cuh
+        --extensions=c,c++,cc,cpp,cu,cuh,cxx,h,h++,hh,hpp,hxx
 
     includeorder=default|standardcfirst
       For the build/include_order rule, the default is to blindly assume angle
@@ -212,10 +212,10 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
     headers=x,y,...
       The header extensions that cpplint will treat as .h in checks. Values are
       automatically added to --extensions list.
-     (by default, only files with extensions {'hpp', 'hh', 'h++', 'hxx', 'h', 'cuh'} will be assumed to be headers)
+     (by default, only files with extensions ['cuh', 'h', 'h++', 'hh', 'hpp', 'hxx'] will be assumed to be headers)
 
       Examples:
-        --headers=hpp,hh,h++,hxx,h,cuh
+        --headers=cuh,h,h++,hh,hpp,hxx
         --headers=hpp,hxx
         --headers=hpp
 
