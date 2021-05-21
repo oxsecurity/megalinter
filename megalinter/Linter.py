@@ -239,7 +239,9 @@ class Linter:
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
                         is_found = True
                         break
-                    if os.path.isfile(f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"):
+                    if os.path.isfile(
+                        f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
+                    ):
                         is_found = True
                         break
                 if is_found is False:
@@ -371,10 +373,18 @@ class Linter:
                 )
             # in workspace root
             elif os.path.isfile(
-                self.workspace + os.path.sep + self.linter_rules_path + os.path.sep + self.config_file_name
+                self.workspace
+                + os.path.sep
+                + self.linter_rules_path
+                + os.path.sep
+                + self.config_file_name
             ):
                 self.config_file = (
-                    self.workspace + os.path.sep + self.linter_rules_path + os.path.sep + self.config_file_name
+                    self.workspace
+                    + os.path.sep
+                    + self.linter_rules_path
+                    + os.path.sep
+                    + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
             elif os.path.isfile(

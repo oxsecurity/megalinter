@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.3.0**
+- Version in Mega-Linter: **6.4.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -100,6 +100,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--wms-monitor [WMS_MONITOR]]
                  [--wms-monitor-arg [NAME=VALUE [NAME=VALUE ...]]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
+                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--no-subworkflows] [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
@@ -119,8 +120,9 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--print-compilation] [--verbose] [--force-use-threads]
                  [--allow-ambiguity] [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
-                 [--wait-for-files [FILE [FILE ...]]] [--notemp]
-                 [--keep-remote] [--keep-target-files]
+                 [--wait-for-files [FILE [FILE ...]]]
+                 [--wait-for-files-file FILE] [--notemp] [--keep-remote]
+                 [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
@@ -366,6 +368,9 @@ EXECUTION:
   --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
+  --scheduler-solver-path SCHEDULER_SOLVER_PATH
+                        Set the PATH to search for scheduler solver binaries
+                        (internal use only). (default: None)
   --no-subworkflows, --nosw
                         Do not evaluate or execute subworkflows. (default:
                         False)
@@ -612,6 +617,12 @@ BEHAVIOR:
                         present before executing the workflow. This option is
                         used internally to handle filesystem latency in
                         cluster environments. (default: None)
+  --wait-for-files-file FILE
+                        Same behaviour as --wait-for-files, but file list is
+                        stored in file instead of being passed on the
+                        commandline. This is useful when the list of files is
+                        too long to be passed on the commandline. (default:
+                        None)
   --notemp, --nt        Ignore temp() declarations. This is useful when
                         running only a part of the workflow, since temp()
                         would lead to deletion of probably needed files by
