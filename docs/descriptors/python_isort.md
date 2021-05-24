@@ -116,7 +116,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-p KNOWN_FIRST_PARTY] [--known-local-folder KNOWN_LOCAL_FOLDER]
              [--virtual-env VIRTUAL_ENV] [--conda-env CONDA_ENV]
              [--py {all,2,27,3,35,36,37,38,39,auto}]
-             [files [files ...]]
+             [files ...]
 
 Sort Python import definitions alphabetically within logical sections. Run
 with no arguments to see a quick start guide, otherwise, one or more
@@ -423,7 +423,7 @@ section output options:
                         Python 3 version could be the target, and use a union
                         of all stdlib modules across versions. If auto is
                         specified, the version of the interpreter used to run
-                        isort (currently: 38) will be used.
+                        isort (currently: 39) will be used.
 ```
 
 ### Installation on mega-linter Docker image

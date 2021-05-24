@@ -15,7 +15,7 @@
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 <!-- readme-header-start -->
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-246.4k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-246.7k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
