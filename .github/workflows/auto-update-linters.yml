@@ -32,7 +32,7 @@ jobs:
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'nvuillam/mega-linter'
     # Set max build time for the job
-    timeout-minutes: 30
+    timeout-minutes: 60
     ##################
     # Load all steps #
     ##################
