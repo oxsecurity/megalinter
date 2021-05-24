@@ -9,7 +9,7 @@
 
 ## clj-kondo documentation
 
-- Version in Mega-Linter: **2021.02.13**
+- Version in Mega-Linter: **2021.04.23**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -76,7 +76,7 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2021.02.13
+clj-kondo v2021.04.23
 
 
 Options:
@@ -99,16 +99,19 @@ Options:
   nearest `.clj-kondo` directory in the current and parent directories.
 
   --config <config>: config may be a file or an EDN expression. See
-    https://cljdoc.org/d/clj-kondo/clj-kondo/2021.02.13/doc/configuration
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2021.04.23/doc/configuration
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.
 
-  --run-as-pod: run clj-kondo as a babashka pod
-
   --parallel: lint sources in parallel.
 
-  --no-warnings: don't report warnings. Useful for when populating cache.
+  --dependencies: don't report any findings. Useful for populating cache while linting dependencies.
+
+  --copy-configs: copy configs from dependencies while linting.
+
+  --fail-level <level>: minimum severity for exit with error code.  Supported values:
+    warning, error.  The default level if unspecified is warning.
 
 ```
 
