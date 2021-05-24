@@ -32,7 +32,7 @@ class ReviewdogReporter(Reporter):
         if output_format.startswith("reviewdog"):
             self.is_active = True
         # Mega-Linter vars (false by default)
-        elif config.get("REVIEWDOG_REPORTER", "true") != "true":
+        elif config.get("REVIEWDOG_REPORTER", "false") != "true":
             self.is_active = False
         else:
             self.is_active = True
