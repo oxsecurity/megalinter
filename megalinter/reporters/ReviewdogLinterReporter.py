@@ -56,7 +56,7 @@ class ReviewdogLinterReporter(Reporter):
     def produce_report(self):
         if not self.processor_config:
             logging.warning(
-                f"[{display_name}] Cannot generate Reviewdog report for {self.master.linter_name} as no processor is defined."
+                f"[{display_name}] Cannot generate Reviewdog report for {self.master.linter_name} no processor defined."
             )
             return
 
@@ -64,7 +64,6 @@ class ReviewdogLinterReporter(Reporter):
         # Linter has run file by file
         if self.master.cli_lint_mode == "file":
             for file_result in self.master.files_lint_results:
-                file_nm = file_result["file"]
                 report_lines += file_result["stdout"].splitlines()
         # Bulk output as linter has run all project or files in one call
         elif self.master.cli_lint_mode in ["project", "list_of_files"]:
@@ -131,7 +130,7 @@ class ReviewdogLinterReporter(Reporter):
         def suggestion(self, hunk):
             target_lines = hunk.target
             end_column = len(target_lines[-1])
-            target_lines = [l[1:] for l in target_lines]  # discard the leading + or space in the diff lines
+            target_lines = [line[1:] for line in target_lines]  # discard the leading + or space in the diff lines
             text = "".join(target_lines)
             return Suggestion(text, start=Location(hunk.source_start, 0), end=Location(hunk.source_start + hunk.source_length, end_column))
 

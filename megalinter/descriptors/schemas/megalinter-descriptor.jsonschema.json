@@ -936,7 +936,7 @@
               },
               "init_params": {
                 "$id": "#/properties/linters/items/properties/reviewdog_processor/init_params",
-                "description": "Initi parameters for initialising subclass of RdjsonlConvertor",
+                "description": "Init parameters for initializing subclass of RdjsonlConvertor",
                 "type": "object"
               }
             },
