@@ -72,7 +72,7 @@
     "swiftlint": "0.43.1",
     "tekton-lint": "0.5.2",
     "terraform-fmt": "Terraform.v0.15.4",
-    "terragrunt": "0.29.4",
+    "terragrunt": "0.29.5",
     "terrascan": "1.6.0",
     "tflint": "0.28.1",
     "v8r": "0.5.0",
