@@ -9,7 +9,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 
 ### Pre-requisites
 
-- You need **python** to be installed on your computer ([download here](https://www.python.org/downloads/))
+- You need [**Python 3**](https://www.python.org/downloads/) and [**Node.js** (14+)](https://nodejs.org/en/download/) to be installed on your computer.
 
 - Run the following commands at the root of the repository to install required dev dependencies
 ```shell
@@ -23,7 +23,7 @@ python3 -m pip install -r requirements.dev.txt
 _If it does not work, just run the following script_
 
 ```shell
-pip install -r requirements.dev.
+pip install -r requirements.dev.txt
 pip install mkdocs-material
 npm install markdown-table-formatter -g
 ```
@@ -89,9 +89,9 @@ Then run `bash build.py` and it will generate all the rest !
 - Test classes
 - Configuration JSON schema
 - Online documentation menus
-  
+
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
-  
+
 
 ### CI/CT/CD
 

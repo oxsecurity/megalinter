@@ -9,6 +9,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/nvuillam/mega-linter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
 - Upgrade clj-kondo 2021.04.23-alpine
 - Upgrade to python:3.9.5-alpine
+- Partial fix [#481](https://github.com/nvuillam/mega-linter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/nvuillam/mega-linter/pull/487) by [Vít Kučera](https://github.com/vkucera))
 
 - Linter versions upgrades
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
@@ -200,7 +201,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linters
   - Format YAML with prettier
-  
+
 - Core
   - Lint docker image using [Dockle](https://github.com/goodwithtech/dockle)
 
@@ -276,7 +277,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add docker-in-docker management (reuse running docker instance)
   - Allow to skip auto apply fixes with commit or PR if latest commit text contains `skip fix`
   - Provide new issue link to create a new flavor to improve performances
-  
+
 - Linters
   - Add [revive](https://github.com/mgechev/revive) GO linter
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
