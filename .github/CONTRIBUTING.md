@@ -9,7 +9,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 
 ### Pre-requisites
 
-- You need **python** to be installed on your computer ([download here](https://www.python.org/downloads/))
+- You need [**Python 3**](https://www.python.org/downloads/) and [**Node.js** (14+)](https://nodejs.org/en/download/) to be installed on your computer.
 
 - Run the following commands at the root of the repository to install required dev dependencies
 ```shell
