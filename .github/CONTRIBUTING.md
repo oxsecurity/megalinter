@@ -23,7 +23,7 @@ python3 -m pip install -r requirements.dev.txt
 _If it does not work, just run the following script_
 
 ```shell
-pip install -r requirements.dev.
+pip install -r requirements.dev.txt
 pip install mkdocs-material
 npm install markdown-table-formatter -g
 ```
@@ -89,9 +89,9 @@ Then run `bash build.py` and it will generate all the rest !
 - Test classes
 - Configuration JSON schema
 - Online documentation menus
-  
+
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
-  
+
 
 ### CI/CT/CD
 
