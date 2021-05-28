@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.29.5**
+- Version in Mega-Linter: **0.29.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -65,7 +65,7 @@ DESCRIPTION:
    Terraform modules, remote state, and locking. For documentation, see https://github.com/gruntwork-io/terragrunt/.
 
 USAGE:
-   terragrunt <COMMAND>
+   terragrunt <COMMAND> [GLOBAL OPTIONS]
 
 COMMANDS:
    run-all               Run a terraform command against a 'stack' by running the specified command in each subfolder. E.g., to run 'terragrunt apply' in each subfolder, use 'terragrunt run-all apply'.
@@ -102,7 +102,7 @@ GLOBAL OPTIONS:
    terragrunt-log-level                         Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn (default), info, debug, trace.
 
 VERSION:
-   v0.29.5
+   v0.29.6
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
