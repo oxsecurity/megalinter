@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.4.0**
+- Version in Mega-Linter: **6.4.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -99,7 +99,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--wms-monitor-arg [NAME=VALUE ...]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
-                 [--no-subworkflows] [--groups GROUPS [GROUPS ...]]
+                 [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
+                 [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
@@ -367,6 +368,9 @@ EXECUTION:
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
                         Set the PATH to search for scheduler solver binaries
                         (internal use only). (default: None)
+  --conda-base-path CONDA_BASE_PATH
+                        Path of conda base installation (home of conda, mamba,
+                        activate) (internal use only). (default: None)
   --no-subworkflows, --nosw
                         Do not evaluate or execute subworkflows. (default:
                         False)
