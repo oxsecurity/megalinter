@@ -15,7 +15,7 @@ echo "Formatting markdown tables..."
 MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*") && npx markdown-table-formatter $MD_FILES
 
 # Build online documentation
-mkdocs build
+python -m mkdocs build
 
 # Prettify `search_index.json` after `mkdocs`
 # `mkdocs` removed its own prettify few years ago: https://github.com/mkdocs/mkdocs/pull/1128

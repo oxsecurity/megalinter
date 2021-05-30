@@ -131,7 +131,7 @@ RUN npm install --no-cache --ignore-scripts \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral@5.6.0 \
-                cspell@4.1.3 \
+                cspell \
                 sql-lint \
                 tekton-lint \
                 prettyjson \
