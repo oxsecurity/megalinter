@@ -1135,7 +1135,7 @@ def update_docker_pulls_counter():
     logging.info("Fetching docker pull counters on flavors images")
     total_count = 0
     all_flavors_ids = list(megalinter.flavor_factory.get_all_flavors().keys())
-    all_flavors_ids.insert(0,'all')
+    all_flavors_ids.insert(0, "all")
     for flavor_id in all_flavors_ids:
         if flavor_id == "all":
             docker_image_url = (
