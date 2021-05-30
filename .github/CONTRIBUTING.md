@@ -10,6 +10,7 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 ### Pre-requisites
 
 - You need [**Python 3**](https://www.python.org/downloads/) and [**Node.js** (14+)](https://nodejs.org/en/download/) to be installed on your computer.
+  - If you have issues running Python on Windows, you can uninstall it then reinstall it using [this video tutorial](https://www.youtube.com/watch?v=uDbDIhR76H4), then copy python.exe and name it python3.exe
 
 - Run the following commands at the root of the repository to install required dev dependencies
 ```shell
@@ -29,6 +30,7 @@ npm install markdown-table-formatter -g
 ```
 
 Second level dev dependencies are installed by running `./build.sh` which is also a test if the installation worked
+
 ```shell
 ./build.sh
 2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
