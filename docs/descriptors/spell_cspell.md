@@ -132,7 +132,7 @@ Examples:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [cspell@4.1.3](https://www.npmjs.com/package/cspell)
+  - [cspell](https://www.npmjs.com/package/cspell)
 
 ### Example success log
 
