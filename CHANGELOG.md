@@ -35,6 +35,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 4.1.3 to **5.5.2** on 2021-05-30
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.42 to **8.43** on 2021-05-30
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.28 to **0.9.29** on 2021-05-30
+  - [pylint](https://www.pylint.org) from 2.8.2 to **2.8.3** on 2021-06-01
 <!-- linter-versions-end -->
 
 ## [4.34.0] 2021-04-30
