@@ -16,7 +16,7 @@
     "dotenv-linter": "3.0.0",
     "dotnet-format": "000",
     "editorconfig-checker": "2.3.5",
-    "eslint": "7.27.0",
+    "eslint": "7.28.0",
     "eslint-plugin-jsonc": "1.2.1",
     "flake8": "3.9.2",
     "gherkin-lint": "0.0.0",
