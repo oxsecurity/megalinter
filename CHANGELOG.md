@@ -39,6 +39,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.49.2 to **0.50.0** on 2021-06-04
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from Terraform.v0.15.4 to **Terraform.v0.15.5** on 2021-06-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.7 to **0.29.8** on 2021-06-04
+  - [eslint](https://eslint.org) from 7.27.0 to **7.28.0** on 2021-06-05
 <!-- linter-versions-end -->
 
 ## [4.34.0] 2021-04-30
