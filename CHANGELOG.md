@@ -40,6 +40,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from Terraform.v0.15.4 to **Terraform.v0.15.5** on 2021-06-04
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.7 to **0.29.8** on 2021-06-04
   - [eslint](https://eslint.org) from 7.27.0 to **7.28.0** on 2021-06-05
+  - [prettier](https://prettier.io/) from 2.3.0 to **2.3.1** on 2021-06-07
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.31.0 to **0.32.0** on 2021-06-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.5.2 to **5.6.0** on 2021-06-07
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.17 to **0.0.18** on 2021-06-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.28.1 to **0.29.0** on 2021-06-07
 <!-- linter-versions-end -->
 
 ## [4.34.0] 2021-04-30
