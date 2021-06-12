@@ -128,7 +128,7 @@
         "Klingenberg",
         "Ktlint",
         "Kubernetes",
-        "Kučera",
+        "Ku\u010dera",
         "LASTEXITCODE",
         "LINTR",
         "LOCALFOLDER",
@@ -243,6 +243,7 @@
         "Terrascan",
         "Thielemann",
         "Tibanna",
+        "Trivy",
         "UNSECURE",
         "VARNAME",
         "VBDOTNET",
@@ -304,6 +305,7 @@
         "bashbug",
         "bashdb",
         "bbcoffeescript",
+        "bcbad",
         "begingroup",
         "behaviour",
         "behaviours",
@@ -1099,7 +1101,6 @@
         "\u03f0linters",
         "\u04bbcoffeescript",
         "\u0636clojure",
-        "\u077bcbad",
-        "bcbad"
+        "\u077bcbad"
     ]
 }
