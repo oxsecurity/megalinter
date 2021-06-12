@@ -91,14 +91,14 @@ jobs:
         run: .automation/upload-docker.sh
 
       ##############################################
-      # Check Docker image consistency with Dockle #
+      # Check Docker image security with Trivy #
       ##############################################
-      - name: Check image security with Dockle
-        continue-on-error: true
-        run: |
-          VERSION=$(
-          curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | \
-          grep '"tag_name":' | \
-          sed -E 's/.*"v([^"]+)".*/\1/' \
-          ) && docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-            goodwithtech/dockle:v${VERSION} nvuillam/mega-linter:${{ github.event.release.tag_name }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/nvuillam/mega-linter:${{ github.event.release.tag_name }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
