@@ -191,3 +191,23 @@ jobs:
       - name: Run mega-linter-runner tests
         if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${{steps.image_tag.outputs.tag}} MEGALINTER_NO_DOCKER_PULL=true npm run test
+
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+
+      ##############################################
+      # Check Docker image security with Trivy #
+      ##############################################
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
