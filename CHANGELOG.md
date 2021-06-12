@@ -2,12 +2,12 @@
 
 ## [insiders] (master)
 
+Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
 ## [4.35.0] 2021-06-12
-
-Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Fix [#304](https://github.com/nvuillam/mega-linter/issues/304): Display error message when docker is not found when running mega-linter-runner
 - Calculate sum of docker pulls for main page counter badge
