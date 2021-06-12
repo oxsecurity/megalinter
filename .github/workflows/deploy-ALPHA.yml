@@ -19,8 +19,13 @@ on:
     branches:
       - "alpha"
     paths:
+      - ".github/workflows/**"
+      - "Dockerfile"
+      - "flavors/**"
       - "megalinter/**"
-      - "megalinter_runner/**"
+      - "mega-linter-runner/**"
+      - "**/linter-versions.json"
+      - "TEMPLATES/**"
 
 ###############
 # Set the Job #
