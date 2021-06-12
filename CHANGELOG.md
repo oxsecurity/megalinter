@@ -11,6 +11,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Upgrade to python:3.9.5-alpine
 - Partial fix [#481](https://github.com/nvuillam/mega-linter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/nvuillam/mega-linter/pull/487) by [Vít Kučera](https://github.com/vkucera))
 - Fix build.sh on windows
+- Add trivy security check of all built Mega-Linter docker images
 
 - Linter versions upgrades
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
