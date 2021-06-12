@@ -2,6 +2,11 @@
 
 ## [insiders] (master)
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.35.0] 2021-06-12
+
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Fix [#304](https://github.com/nvuillam/mega-linter/issues/304): Display error message when docker is not found when running mega-linter-runner
@@ -46,7 +51,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.5.2 to **5.6.0** on 2021-06-07
   - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.17 to **0.0.18** on 2021-06-07
   - [tflint](https://github.com/terraform-linters/tflint) from 0.28.1 to **0.29.0** on 2021-06-07
-<!-- linter-versions-end -->
 
 ## [4.34.0] 2021-04-30
 
