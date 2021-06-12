@@ -128,7 +128,7 @@
         "Klingenberg",
         "Ktlint",
         "Kubernetes",
-        "Kučera",
+        "Ku\u010dera",
         "LASTEXITCODE",
         "LINTR",
         "LOCALFOLDER",
@@ -243,6 +243,7 @@
         "Terrascan",
         "Thielemann",
         "Tibanna",
+        "Trivy",
         "UNSECURE",
         "VARNAME",
         "VBDOTNET",
@@ -279,6 +280,7 @@
         "anymatch",
         "apheleia",
         "apkadd",
+        "aquasecurity",
         "arccos",
         "arcsin",
         "arctan",
@@ -304,6 +306,7 @@
         "bashbug",
         "bashdb",
         "bbcoffeescript",
+        "bcbad",
         "begingroup",
         "behaviour",
         "behaviours",
@@ -402,6 +405,7 @@
         "delslice",
         "dependabot",
         "deps",
+        "dera",
         "descriptionless",
         "devcontainer",
         "dimen",
@@ -1068,6 +1072,7 @@
         "visualforce",
         "vrefwarning",
         "vsiakka",
+        "vuln",
         "warnon",
         "wata",
         "weirdnesses",
@@ -1099,7 +1104,6 @@
         "\u03f0linters",
         "\u04bbcoffeescript",
         "\u0636clojure",
-        "\u077bcbad",
-        "bcbad"
+        "\u077bcbad"
     ]
 }
