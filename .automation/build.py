@@ -1785,7 +1785,7 @@ def generate_documentation_all_linters():
                 status = "✅ Published"
                 md_status = ":heart:"
                 hearth_linters_md += [
-                    f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url})"
+                    f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url}){{target=_blank}}"
                 ]
         table_line = [
             linter.linter_name,
