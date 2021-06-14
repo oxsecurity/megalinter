@@ -13,6 +13,7 @@ from pytablewriter import MarkdownTableWriter
 
 DOCS_URL_DESCRIPTORS_ROOT = "https://nvuillam.github.io/mega-linter/descriptors"
 
+
 def log_link(label, url):
     if url == "":
         return label
