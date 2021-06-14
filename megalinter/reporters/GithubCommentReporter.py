@@ -11,11 +11,7 @@ import github
 from megalinter import Reporter, config
 from pytablewriter import MarkdownTableWriter
 
-BRANCH = "master"
-URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
-DOCS_URL_ROOT = URL_ROOT + "/docs"
-DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
-
+DOCS_URL_DESCRIPTORS_ROOT = "https://nvuillam.github.io/mega-linter/descriptors"
 
 def log_link(label, url):
     if url == "":
