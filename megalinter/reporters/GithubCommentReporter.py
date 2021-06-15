@@ -68,7 +68,9 @@ class GithubCommentReporter(Reporter):
                     first_col = f"{status} {linter.descriptor_id}"
                     lang_lower = linter.descriptor_id.lower()
                     linter_name_lower = linter.linter_name.lower().replace("-", "_")
-                    linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+                    linter_doc_url = (
+                        f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+                    )
                     linter_link = f"[{linter.linter_name}]({linter_doc_url})"
                     nb_fixed_cell = (
                         str(linter.number_fixed) if linter.try_fix is True else ""
