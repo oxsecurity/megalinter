@@ -14,13 +14,13 @@
 
 ### Global
 
-- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter)
-- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
-- [schemastore.org](https://www.schemastore.org/json/)
+- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
+- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
+- [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 
 ### Articles
-- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/)
-- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/)
+- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
+- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
 
 ### Linters
 
@@ -47,8 +47,8 @@ Mega-Linter obviously would not exist without its linters and libraries, so many
 
 ## Super-Linter team
 
-Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
+Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 
 <!-- special-thanks-section-end -->
