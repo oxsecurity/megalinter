@@ -12,7 +12,7 @@ requests==2.24.0
 terminaltables
 webpreview
 yq
-mkdocs-material==7.1.7
+mkdocs-material
 mdx_truly_sane_lists
 beautifulsoup4
 giturlparse
