@@ -1,6 +1,5 @@
 gitpython
 jsonschema
-mkdocs
 multiprocessing_logging
 pychalk
 pygithub
