@@ -23,7 +23,7 @@ setup(
         "terminaltables",
         "webpreview",
         "yq",
-        "mkdocs-material",
+        "mkdocs-material==7.1.7",
         "mdx_truly_sane_lists",
         "beautifulsoup4",
         "giturlparse",
