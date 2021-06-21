@@ -11,7 +11,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   pytest -v --durations=0 -k _get_linter_help megalinter/
   cd /tmp/lint || exit 1
   chmod +x build.sh
-  pip3 install --no-cache-dir importlib_metadata
+  pip3 install --no-cache-dir importlib_metadata>=4.0.0
   bash build.sh
   exit $?
 fi
