@@ -89,7 +89,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 RUN pip3 install --no-cache-dir \
           cpplint \
           snakemake \
-          snakefmt==0.4.0 \
+          snakefmt \
           sqlfluff \
           yamllint
 #PIP__END

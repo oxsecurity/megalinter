@@ -87,7 +87,7 @@ RUN pip3 install --no-cache-dir \
           rstcheck \
           rstfmt \
           snakemake \
-          snakefmt==0.4.0 \
+          snakefmt \
           sqlfluff \
           yamllint
 #PIP__END

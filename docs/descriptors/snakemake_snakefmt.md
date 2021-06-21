@@ -132,7 +132,7 @@ Options:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [snakefmt==0.4.0](https://pypi.org/project/snakefmt==0.4.0)
+  - [snakefmt](https://pypi.org/project/snakefmt)
 
 ### Example success log
 
