@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.30.7**
+- Version in Mega-Linter: **0.31.0**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -102,7 +102,7 @@ GLOBAL OPTIONS:
    terragrunt-log-level                         Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn (default), info, debug, trace.
 
 VERSION:
-   v0.30.7
+   v0.31.0
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
