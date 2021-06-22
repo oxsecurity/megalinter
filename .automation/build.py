@@ -230,8 +230,9 @@ branding:
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN pip3 install --no-cache-dir \\\n          "
-            + " \\\n          ".join(list(dict.fromkeys(pip_packages)))
+            "RUN pip3 install --no-cache-dir \\\n          '"
+            + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
+            + "'"
         )
     replace_in_file(dockerfile, "#PIP__START", "#PIP__END", pip_install_command)
     # Ruby gem packages

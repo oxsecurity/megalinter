@@ -73,6 +73,7 @@ optional arguments:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
+  - [sphinx<4.0](https://pypi.org/project/sphinx<4.0)
   - [rstfmt](https://pypi.org/project/rstfmt)
 
 ### Example success log
