@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.29.3**
+- Version in Mega-Linter: **0.30.7**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -65,14 +65,14 @@ DESCRIPTION:
    Terraform modules, remote state, and locking. For documentation, see https://github.com/gruntwork-io/terragrunt/.
 
 USAGE:
-   terragrunt <COMMAND>
+   terragrunt <COMMAND> [GLOBAL OPTIONS]
 
 COMMANDS:
    run-all               Run a terraform command against a 'stack' by running the specified command in each subfolder. E.g., to run 'terragrunt apply' in each subfolder, use 'terragrunt run-all apply'.
    terragrunt-info       Emits limited terragrunt state on stdout and exits
    validate-inputs       Checks if the terragrunt configured inputs align with the terraform defined variables.
    graph-dependencies    Prints the terragrunt dependency graph to stdout
-   hclfmt                Recursively find terragrunt.hcl files and rewrite them into a canonical format.
+   hclfmt                Recursively find hcl files and rewrite them into a canonical format.
    aws-provider-patch    Overwrite settings on nested AWS providers to work around a Terraform bug (issue #13018)
    *                     Terragrunt forwards all other commands directly to Terraform
 
@@ -87,6 +87,7 @@ GLOBAL OPTIONS:
    terragrunt-source                            Download Terraform configurations from the specified source into a temporary folder, and run Terraform in that temporary folder.
    terragrunt-source-update                     Delete the contents of the temporary folder to clear out any old, cached source code before downloading new source code into it.
    terragrunt-iam-role                          Assume the specified IAM role before executing Terraform. Can also be set via the TERRAGRUNT_IAM_ROLE environment variable.
+   terragrunt-iam-assume-role-duration          Session duration for IAM Assume Role session. Can also be set via the TERRAGRUNT_IAM_ASSUME_ROLE_DURATION environment variable.
    terragrunt-ignore-dependency-errors          *-all commands continue processing components even if a dependency fails.
    terragrunt-ignore-dependency-order           *-all commands will be run disregarding the dependencies
    terragrunt-ignore-external-dependencies      *-all commands will not attempt to include external dependencies
@@ -95,13 +96,13 @@ GLOBAL OPTIONS:
    terragrunt-exclude-dir                       Unix-style glob of directories to exclude when running *-all commands
    terragrunt-include-dir                       Unix-style glob of directories to include when running *-all commands
    terragrunt-check                             Enable check mode in the hclfmt command.
-   terragrunt-hclfmt-file                       The path to a single terragrunt.hcl file that the hclfmt command should run on.
+   terragrunt-hclfmt-file                       The path to a single hcl file that the hclfmt command should run on.
    terragrunt-override-attr                     A key=value attribute to override in a provider block as part of the aws-provider-patch command. May be specified multiple times.
    terragrunt-debug                             Write terragrunt-debug.tfvars to working folder to help root-cause issues.
    terragrunt-log-level                         Sets the logging level for Terragrunt. Supported levels: panic, fatal, error, warn (default), info, debug, trace.
 
 VERSION:
-   v0.29.3
+   v0.30.7
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>

@@ -4,13 +4,79 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.36.0] 2021-06-22
+
+- Fix Phive (php package manager) installation
+- Fix dependency error with importlib_metadata before build
+
+- Linter versions upgrades
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.04.23 to **2021.06.18** on 2021-06-22
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.50.0 to **0.51.0** on 2021-06-22
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.4.1 to **2.5.0** on 2021-06-22
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.0.0 to **3.1.0** on 2021-06-22
+  - [golangci-lint](https://golangci-lint.run/) from 1.40.1 to **1.41.1** on 2021-06-22
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 8.1.0 to **8.2.0** on 2021-06-22
+  - [htmlhint](https://htmlhint.com/) from 0.14.2 to **0.15.1** on 2021-06-22
+  - [eslint](https://eslint.org) from 7.28.0 to **7.29.0** on 2021-06-22
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.2.1 to **1.3.1** on 2021-06-22
+  - [phpstan](https://phpstan.org/) from 0.12.88 to **0.12.90** on 2021-06-22
+  - [isort](https://pycqa.github.io/isort/) from 5.8.0 to **5.9.1** on 2021-06-22
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.52 to **0.1.53** on 2021-06-22
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.0 to **0.4.1** on 2021-06-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.6.0 to **5.6.6** on 2021-06-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.5.6 to **0.6.0** on 2021-06-22
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from Terraform.v0.15.5 to **Terraform.v1.0.0** on 2021-06-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.8 to **0.30.7** on 2021-06-22
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.6.0 to **1.7.0** on 2021-06-22
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.29.0 to **0.29.1** on 2021-06-22
+
+## [4.35.0] 2021-06-12
+
 - Fix [#304](https://github.com/nvuillam/mega-linter/issues/304): Display error message when docker is not found when running mega-linter-runner
+- Calculate sum of docker pulls for main page counter badge
+- Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/nvuillam/mega-linter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
+- Upgrade clj-kondo 2021.04.23-alpine
+- Upgrade to python:3.9.5-alpine
+- Partial fix [#481](https://github.com/nvuillam/mega-linter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/nvuillam/mega-linter/pull/487) by [Vít Kučera](https://github.com/vkucera))
+- Fix build.sh on windows
+- Add trivy security check of all built Mega-Linter docker images
 
 - Linter versions upgrades
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
   - [shfmt](https://github.com/mvdan/sh) from 3.2.4 to **3.3.0** on 2021-05-18
   - [phpstan](https://phpstan.org/) from 0.12.87 to **0.12.88** on 2021-05-18
-<!-- linter-versions-end -->
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.49.1 to **0.49.2** on 2021-05-19
+  - [cpplint](https://github.com/cpplint/cpplint) from 1.5.4 to **1.5.5** on 2021-05-21
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.27 to **0.9.28** on 2021-05-21
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.3.0 to **6.4.0** on 2021-05-21
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from Terraform.v0.15.3 to **Terraform.v0.15.4** on 2021-05-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.3 to **0.29.4** on 2021-05-21
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.8.0 to **2.9.1** on 2021-05-22
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.8.0 to **2.9.1** on 2021-05-22
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.8.0 to **2.9.1** on 2021-05-22
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.25 to **3.3.26** on 2021-05-24
+  - [eslint](https://eslint.org) from 7.26.0 to **7.27.0** on 2021-05-24
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.02.13 to **2021.04.23** on 2021-05-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.4 to **0.29.5** on 2021-05-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.4.0 to **6.4.1** on 2021-05-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.5 to **0.29.6** on 2021-05-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.6 to **0.29.7** on 2021-05-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 4.1.3 to **5.5.2** on 2021-05-30
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.42 to **8.43** on 2021-05-30
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.28 to **0.9.29** on 2021-05-30
+  - [pylint](https://www.pylint.org) from 2.8.2 to **2.8.3** on 2021-06-01
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.49.2 to **0.50.0** on 2021-06-04
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from Terraform.v0.15.4 to **Terraform.v0.15.5** on 2021-06-04
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.7 to **0.29.8** on 2021-06-04
+  - [eslint](https://eslint.org) from 7.27.0 to **7.28.0** on 2021-06-05
+  - [prettier](https://prettier.io/) from 2.3.0 to **2.3.1** on 2021-06-07
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.31.0 to **0.32.0** on 2021-06-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.5.2 to **5.6.0** on 2021-06-07
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.17 to **0.0.18** on 2021-06-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.28.1 to **0.29.0** on 2021-06-07
 
 ## [4.34.0] 2021-04-30
 
@@ -183,7 +249,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linters
   - Format YAML with prettier
-  
+
 - Core
   - Lint docker image using [Dockle](https://github.com/goodwithtech/dockle)
 
@@ -259,7 +325,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add docker-in-docker management (reuse running docker instance)
   - Allow to skip auto apply fixes with commit or PR if latest commit text contains `skip fix`
   - Provide new issue link to create a new flavor to improve performances
-  
+
 - Linters
   - Add [revive](https://github.com/mgechev/revive) GO linter
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language

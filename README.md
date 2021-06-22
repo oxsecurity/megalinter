@@ -13,12 +13,14 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)](https://hub.docker.com/r/nvuillam/mega-linter)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-320.5k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
 [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
+[![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/mega-linter.svg)](https://gitHub.com/nvuillam/mega-linter/graphs/contributors/)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://nvuillam.github.io/mega-linter/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
@@ -363,7 +365,7 @@ jobs:
       # Create pull request if applicable (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
         id: cpr
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
@@ -371,17 +373,17 @@ jobs:
           title: "[Mega-Linter] Apply linters automatic fixes"
           labels: bot
       - name: Create PR output
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
       # Push new commit if applicable (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         run: sudo chown -Rc $UID .git/
       - name: Commit and push applied linter fixes
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
@@ -818,7 +820,7 @@ If your main branch is **main** , replace **master** by **main** in URLs
    :target: https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMega-Linter+branch%3Amaster
 ```
 
-_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
+_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository){target=_blank}
 <!-- badge-section-end -->
 
 <!-- plugins-section-start -->
@@ -895,7 +897,7 @@ To help, you can also:
 
 - [:star: star the repository](https://github.com/nvuillam/mega-linter/stargazers)
 - [report problems and request new features](https://github.com/nvuillam/mega-linter/issues)
-- [share on twitter](http://twitter.com/intent/tweet/?text=Mega-Linter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://nvuillam.github.io/mega-linter&via=nvuillam)
+- [share on twitter](http://twitter.com/intent/tweet/?text=Mega-Linter:%2070%20linters%20aggregator%20easy%20to%20use%20for%20all%20your%20projects&url=http://nvuillam.github.io/mega-linter&via=nvuillam){target=_blank}
 <!-- how-to-contribute-section-end -->
 
 <!-- special-thanks-section-start -->
@@ -911,30 +913,31 @@ To help, you can also:
 
 #### Global
 
-- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter)
-- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
-- [schemastore.org](https://www.schemastore.org/json/)
+- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
+- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
+- [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 
 #### Articles
-- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/)
+- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
+- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
 
 #### Linters
 
 <!-- referring-linters-start -->
-- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools)
-- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github)
-- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter)
-- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter)
-- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter)
-- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter)
-- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd)
-- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration)
-- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools)
-- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter)
-- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
-- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration)
-- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools)
-- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines)
+- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
+- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
+- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
+- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
+- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
+- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
+- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
+- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
+- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
+- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
+- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
+- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines){target=_blank}
 <!-- referring-linters-end -->
 
 ### Open-source teams
@@ -943,9 +946,9 @@ Mega-Linter obviously would not exist without its linters and libraries, so many
 
 ### Super-Linter team
 
-Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
+Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 <!-- special-thanks-section-end -->
 
 <!-- license-section-start -->

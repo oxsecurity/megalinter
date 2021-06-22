@@ -11,10 +11,7 @@ import github
 from megalinter import Reporter, config
 from pytablewriter import MarkdownTableWriter
 
-BRANCH = "master"
-URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
-DOCS_URL_ROOT = URL_ROOT + "/docs"
-DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
+DOCS_URL_DESCRIPTORS_ROOT = "https://nvuillam.github.io/mega-linter/descriptors"
 
 
 def log_link(label, url):
@@ -71,7 +68,9 @@ class GithubCommentReporter(Reporter):
                     first_col = f"{status} {linter.descriptor_id}"
                     lang_lower = linter.descriptor_id.lower()
                     linter_name_lower = linter.linter_name.lower().replace("-", "_")
-                    linter_doc_url = f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
+                    linter_doc_url = (
+                        f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+                    )
                     linter_link = f"[{linter.linter_name}]({linter_doc_url})"
                     nb_fixed_cell = (
                         str(linter.number_fixed) if linter.try_fix is True else ""

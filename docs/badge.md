@@ -40,6 +40,6 @@ If your main branch is **main** , replace **master** by **main** in URLs
    :target: https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMega-Linter+branch%3Amaster
 ```
 
-_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository)
+_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository){target=_blank}
 
 <!-- badge-section-end -->

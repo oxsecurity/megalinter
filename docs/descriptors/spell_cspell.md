@@ -7,7 +7,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ## cspell documentation
 
-- Version in Mega-Linter: **4.1.3**
+- Version in Mega-Linter: **5.6.6**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -84,55 +84,30 @@ cspell -c cspell.json myfile.any
 ### Help content
 
 ```shell
-Usage: cspell [options] [command] <files...>
+Usage: cspell [options] [command]
 
 Spelling Checker for Code
 
 Options:
   -V, --version               output the version number
-  -c, --config <cspell.json>  Configuration file to use.  By default cspell
-                              looks for cspell.json in the current directory.
   --no-color                  Turn off color.
   --color                     Force color
-  -v, --verbose               display more information about the files being
-                              checked and the configuration
-  --local <local>             Set language locals. i.e. "en,fr" for English and
-                              French, or "en-GB" for British English.
-  --legacy                    Legacy output
-  --languageId <language>     Force programming language for unknown
-                              extensions. i.e. "php" or "scala"
-  --wordsOnly                 Only output the words not found in the
-                              dictionaries.
-  -u, --unique                Only output the first instance of a word not
-                              found in the dictionaries.
-  --debug                     Output information useful for debugging
-                              cspell.json files.
-  -e, --exclude <glob>        Exclude files matching the glob pattern
-  --no-issues                 Do not show the spelling errors.
-  --no-summary                Turn off summary message in console
-  -s, --silent                Silent mode, suppress error messages
-  -r, --root <root folder>    Root directory, defaults to current directory.
   -h, --help                  display help for command
 
 Commands:
+  lint [options] [files...]   Check spelling
   trace [options] <words...>  Trace words
   check [options] <files...>  Spell check file(s) and display the result. The
                               full file is displayed in color.
-
-
-Examples:
-    cspell "*.js"                   Check all .js files in the current directory
-    cspell "**/*.js"                Check all .js files from the current directory
-    cspell "src/**/*.js"            Only check .js under src
-    cspell "**/*.txt" "**/*.js"     Check both .js and .txt files.
-    cat LICENSE | cspell stdin      Read from stdin the contents of LICENSE
-
+  link                        Link dictionaries any other settings to the
+                              cspell global config.
+  help [command]              display help for command
 ```
 
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [cspell@4.1.3](https://www.npmjs.com/package/cspell)
+  - [cspell](https://www.npmjs.com/package/cspell)
 
 ### Example success log
 

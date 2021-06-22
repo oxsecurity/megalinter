@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.3.0**
+- Version in Mega-Linter: **6.4.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -80,27 +80,27 @@ snakemake --lint -s Snakefile
 ### Help content
 
 ```shell
-usage: snakemake [-h] [--dry-run] [--profile PROFILE]
-                 [--cache [RULE [RULE ...]]] [--snakefile FILE] [--cores [N]]
-                 [--local-cores N] [--resources [NAME=INT [NAME=INT ...]]]
+usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
+                 [--snakefile FILE] [--cores [N]] [--local-cores N]
+                 [--resources [NAME=INT ...]]
                  [--set-threads RULE=THREADS [RULE=THREADS ...]]
                  [--set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]]
-                 [--default-resources [NAME=INT [NAME=INT ...]]]
+                 [--default-resources [NAME=INT ...]]
                  [--preemption-default PREEMPTION_DEFAULT]
                  [--preemptible-rules PREEMPTIBLE_RULES [PREEMPTIBLE_RULES ...]]
-                 [--config [KEY=VALUE [KEY=VALUE ...]]]
-                 [--configfile FILE [FILE ...]]
+                 [--config [KEY=VALUE ...]] [--configfile FILE [FILE ...]]
                  [--envvars VARNAME [VARNAME ...]] [--directory DIR] [--touch]
                  [--keep-going] [--force] [--forceall]
-                 [--forcerun [TARGET [TARGET ...]]]
-                 [--prioritize TARGET [TARGET ...]]
+                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
                  [--wms-monitor [WMS_MONITOR]]
-                 [--wms-monitor-arg [NAME=VALUE [NAME=VALUE ...]]]
+                 [--wms-monitor-arg [NAME=VALUE ...]]
                  [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
-                 [--no-subworkflows] [--groups GROUPS [GROUPS ...]]
+                 [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
+                 [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
+                 [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
                  [--edit-notebook TARGET] [--notebook-listen IP:PORT]
@@ -119,8 +119,8 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--print-compilation] [--verbose] [--force-use-threads]
                  [--allow-ambiguity] [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
-                 [--wait-for-files [FILE [FILE ...]]] [--notemp]
-                 [--keep-remote] [--keep-target-files]
+                 [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
+                 [--notemp] [--keep-remote] [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
@@ -151,7 +151,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--conda-create-envs-only] [--conda-frontend {conda,mamba}]
                  [--use-singularity] [--singularity-prefix DIR]
                  [--singularity-args ARGS] [--use-envmodules]
-                 [target [target ...]]
+                 [target ...]
 
 Snakemake is a Python based language and execution environment for GNU Make-
 like workflows.
@@ -177,8 +177,7 @@ EXECUTION:
                         example, '--cluster qsub' becomes 'cluster: qsub' in
                         the YAML file. Profiles can be obtained from
                         https://github.com/snakemake-profiles. (default: None)
-  --cache [RULE [RULE ...]]
-                        Store output files of given rules in a central cache
+  --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
                         $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
                         files of the given rules from this cache if they have
@@ -205,7 +204,7 @@ EXECUTION:
                         the host). The cores are used to execute local rules.
                         This option is ignored when not in cluster mode.
                         (default: 2)
-  --resources [NAME=INT [NAME=INT ...]], --res [NAME=INT [NAME=INT ...]]
+  --resources [NAME=INT ...], --res [NAME=INT ...]
                         Define additional resources that shall constrain the
                         scheduling analogously to threads (see above). A
                         resource is defined as a name and an integer value.
@@ -229,7 +228,7 @@ EXECUTION:
                         positive integer, and NAME has to be the name of the
                         scattergather process defined via a scattergather
                         directive in the workflow. (default: None)
-  --default-resources [NAME=INT [NAME=INT ...]], --default-res [NAME=INT [NAME=INT ...]]
+  --default-resources [NAME=INT ...], --default-res [NAME=INT ...]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
                         integers, python expressions over inputsize are
@@ -266,7 +265,7 @@ EXECUTION:
                         instead. Example: snakemake --preemption-default 10
                         --preemptible-rules map_reads=3 call_variants=0
                         (default: None)
-  --config [KEY=VALUE [KEY=VALUE ...]], -C [KEY=VALUE [KEY=VALUE ...]]
+  --config [KEY=VALUE ...], -C [KEY=VALUE ...]
                         Set or overwrite values in the workflow config object.
                         The workflow config object is accessible as variable
                         config inside the workflow. Default values can be set
@@ -305,7 +304,7 @@ EXECUTION:
   --forceall, -F        Force the execution of the selected (or the first)
                         rule and all rules it is dependent on regardless of
                         already created output. (default: False)
-  --forcerun [TARGET [TARGET ...]], -R [TARGET [TARGET ...]]
+  --forcerun [TARGET ...], -R [TARGET ...]
                         Force the re-execution or creation of the given rules
                         or files. Use this option if you changed a rule and
                         want to have all its output in your workflow updated.
@@ -355,7 +354,7 @@ EXECUTION:
                         http://127.0.0.1:5000) Note that if your service
                         requires an authorization token, you must export
                         WMS_MONITOR_TOKEN in the environment. (default: None)
-  --wms-monitor-arg [NAME=VALUE [NAME=VALUE ...]]
+  --wms-monitor-arg [NAME=VALUE ...]
                         If the workflow management service accepts extra
                         arguments, provide. them in key value pairs with
                         --wms-monitor-arg. For example, to run an existing
@@ -366,6 +365,12 @@ EXECUTION:
   --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
+  --scheduler-solver-path SCHEDULER_SOLVER_PATH
+                        Set the PATH to search for scheduler solver binaries
+                        (internal use only). (default: None)
+  --conda-base-path CONDA_BASE_PATH
+                        Path of conda base installation (home of conda, mamba,
+                        activate) (internal use only). (default: None)
   --no-subworkflows, --nosw
                         Do not evaluate or execute subworkflows. (default:
                         False)
@@ -607,11 +612,17 @@ BEHAVIOR:
                         present after the job finished. This helps if your
                         filesystem suffers from latency (default 5). (default:
                         5)
-  --wait-for-files [FILE [FILE ...]]
+  --wait-for-files [FILE ...]
                         Wait --latency-wait seconds for these files to be
                         present before executing the workflow. This option is
                         used internally to handle filesystem latency in
                         cluster environments. (default: None)
+  --wait-for-files-file FILE
+                        Same behaviour as --wait-for-files, but file list is
+                        stored in file instead of being passed on the
+                        commandline. This is useful when the list of files is
+                        too long to be passed on the commandline. (default:
+                        None)
   --notemp, --nt        Ignore temp() declarations. This is useful when
                         running only a part of the workflow, since temp()
                         would lead to deletion of probably needed files by
