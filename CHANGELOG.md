@@ -4,6 +4,9 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Fix Phive (php package manager) installation
+- Fix dependency error with importlib_metadata before build
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
