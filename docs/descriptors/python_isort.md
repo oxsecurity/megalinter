@@ -9,7 +9,7 @@
 
 ## isort documentation
 
-- Version in Mega-Linter: **5.8.0**
+- Version in Mega-Linter: **5.9.1**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -90,6 +90,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-d] [--overwrite-in-place] [--show-config] [--show-files] [--df]
              [-c] [--ws] [--sp SETTINGS_PATH] [--profile PROFILE]
              [--old-finders] [-j [JOBS]] [--ac] [--interactive]
+             [--format-error FORMAT_ERROR] [--format-success FORMAT_SUCCESS]
              [--filter-files] [-s SKIP] [--extend-skip EXTEND_SKIP]
              [--sg SKIP_GLOB] [--extend-skip-glob SKIP_GLOB] [--gitignore]
              [--ext SUPPORTED_EXTENSIONS]
@@ -100,10 +101,10 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [--fgw [FORCE_GRID_WRAP]] [-i INDENT] [--lai LINES_AFTER_IMPORTS]
              [--lbt LINES_BETWEEN_TYPES] [--le LINE_ENDING] [--ls] [--lss]
              [-m {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}]
-             [-n] [--nis] [--ot] [--dt] [--rr] [--reverse-sort] [--sl]
-             [--nsl SINGLE_LINE_EXCLUSIONS] [--tc] [--up] [-l LINE_LENGTH]
-             [--wl WRAP_LENGTH] [--case-sensitive]
-             [--remove-redundant-aliases] [--honor-noqa]
+             [-n] [--nis] [--ot] [--dt] [--rr] [--reverse-sort]
+             [--sort-order SORT_ORDER] [--sl] [--nsl SINGLE_LINE_EXCLUSIONS]
+             [--tc] [--up] [-l LINE_LENGTH] [--wl WRAP_LENGTH]
+             [--case-sensitive] [--remove-redundant-aliases] [--honor-noqa]
              [--treat-comment-as-code TREAT_COMMENTS_AS_CODE]
              [--treat-all-comment-as-code] [--formatter FORMATTER] [--color]
              [--ext-format EXT_FORMAT] [--star-first] [--sd DEFAULT_SECTION]
@@ -163,8 +164,8 @@ general options:
                         auto determining based on file location.
   --profile PROFILE     Base profile type to use for configuration. Profiles
                         include: black, django, pycharm, google, open_stack,
-                        plone, attrs, hug, wemake. As well as any shared
-                        profiles.
+                        plone, attrs, hug, wemake, appnexus. As well as any
+                        shared profiles.
   --old-finders, --magic-placement
                         Use the old deprecated finder logic that relies on
                         environment introspection magic.
@@ -173,6 +174,10 @@ general options:
   --ac, --atomic        Ensures the output doesn't save if the resulting file
                         contains syntax errors.
   --interactive         Tells isort to apply changes interactively.
+  --format-error FORMAT_ERROR
+                        Override the format used to print errors.
+  --format-success FORMAT_SUCCESS
+                        Override the format used to print success.
 
 target options:
   files                 One or more Python source files that need their
@@ -198,7 +203,8 @@ target options:
                         (extending --skip-glob).
   --gitignore, --skip-gitignore
                         Treat project as a git repository and ignore files
-                        listed in .gitignore
+                        listed in .gitignore. NOTE: This requires git to be
+                        installed and accesible from the same shell as isort.
   --ext SUPPORTED_EXTENSIONS, --extension SUPPORTED_EXTENSIONS, --supported-extension SUPPORTED_EXTENSIONS
                         Specifies what extensions isort can be ran against.
   --blocked-extension BLOCKED_EXTENSIONS
@@ -294,6 +300,11 @@ general output options:
   --rr, --reverse-relative
                         Reverse order of relative imports.
   --reverse-sort        Reverses the ordering of imports.
+  --sort-order SORT_ORDER
+                        Specify sorting function. Can be built in
+                        (natural[default] = force numbers to be sequential,
+                        native = Python's built-in sorted function) or an
+                        installable plugin.
   --sl, --force-single-line-imports
                         Forces all from imports to appear on their own line
   --nsl SINGLE_LINE_EXCLUSIONS, --single-line-exclusions SINGLE_LINE_EXCLUSIONS
@@ -347,10 +358,11 @@ section output options:
                         ('FUTURE', 'STDLIB', 'THIRDPARTY', 'FIRSTPARTY',
                         'LOCALFOLDER')
   --only-sections, --os
-                        Causes imports to be sorted only based on their
-                        sections like STDLIB,THIRDPARTY etc. Imports are
-                        unaltered and keep their relative positions within the
-                        different sections.
+                        Causes imports to be sorted based on their sections
+                        like STDLIB,THIRDPARTY etc. Within sections, the
+                        imports are ordered by their import style and the
+                        imports with same style maintain their relative
+                        positions.
   --ds, --no-sections   Put all imports into the same section bucket
   --fas, --force-alphabetical-sort
                         Force all imports to be sorted as a single section
