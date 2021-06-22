@@ -13,8 +13,6 @@
 - Enable rstfmt by adding `RST_RSTFMT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable rstfmt by adding `RST_RSTFMT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `RST_RSTFMT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
-
 | Variable                               | Description                                                                                                                                                                                  | Default value      |
 |----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | RST_RSTFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
@@ -46,11 +44,11 @@ This linter is available in the following flavours
 ### Example calls
 
 ```shell
-rstfmt myfile.rst
+rstfmt --check myfile.rst
 ```
 
 ```shell
-rstfmt -i myfile.rst
+rstfmt myfile.rst
 ```
 
 
@@ -75,6 +73,7 @@ optional arguments:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
+  - [sphinx<4.0](https://pypi.org/project/sphinx<4.0)
   - [rstfmt](https://pypi.org/project/rstfmt)
 
 ### Example success log

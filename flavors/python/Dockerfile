@@ -79,17 +79,18 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
-          pylint \
-          black \
-          flake8 \
-          isort \
-          restructuredtext_lint \
-          rstcheck \
-          rstfmt \
-          snakemake \
-          snakefmt \
-          sqlfluff \
-          yamllint
+          'pylint' \
+          'black' \
+          'flake8' \
+          'isort' \
+          'restructuredtext_lint' \
+          'rstcheck' \
+          'sphinx<4.0' \
+          'rstfmt' \
+          'snakemake' \
+          'snakefmt' \
+          'sqlfluff' \
+          'yamllint'
 #PIP__END
 
 ############################

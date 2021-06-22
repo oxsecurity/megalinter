@@ -77,7 +77,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
-          yamllint
+          'yamllint'
 #PIP__END
 
 ############################

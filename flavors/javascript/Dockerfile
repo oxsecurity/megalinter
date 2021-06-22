@@ -81,10 +81,10 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
-          snakemake \
-          snakefmt \
-          sqlfluff \
-          yamllint
+          'snakemake' \
+          'snakefmt' \
+          'sqlfluff' \
+          'yamllint'
 #PIP__END
 
 ############################
