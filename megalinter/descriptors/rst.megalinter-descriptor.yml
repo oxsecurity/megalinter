@@ -46,5 +46,6 @@ linters:
       - "rstfmt myfile.rst" # Format
     install:
       pip:
+        - "sphinx<4.0"
         - rstfmt
     version_extract_regex: "rstfmt (\\d+(\\.\\d+)+)"
