@@ -9,6 +9,8 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   pytest -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
   pytest -v --durations=0 -k _get_linter_help megalinter/
+  # Reinstall mkdocs-material because of broken dependency
+  pip3 install --ignore-installed mkdocs-material
   cd /tmp/lint || exit 1
   chmod +x build.sh
   bash build.sh

@@ -49,4 +49,4 @@ linters:
       - "snakefmt --config .snakefmt.toml Snakefile" # Fix
     install:
       pip:
-        - snakefmt==0.4.0
+        - snakefmt
