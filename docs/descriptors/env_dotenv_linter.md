@@ -9,7 +9,7 @@
 
 ## dotenv-linter documentation
 
-- Version in Mega-Linter: **3.0.0**
+- Version in Mega-Linter: **3.1.0**
 - Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
 - See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
@@ -78,7 +78,7 @@ dotenv-linter fix myfile.env
 ### Help content
 
 ```shell
-dotenv-linter 3.0.0
+dotenv-linter 3.1.0
 Mikhail Grachev <work@mgrachev.com>
 Lightning-fast linter for .env files
 

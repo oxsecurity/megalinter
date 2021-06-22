@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **2.4.1**
+- Version in Mega-Linter: **2.5.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -94,6 +94,7 @@ Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
                 [--require-label LABELSCHEMA (e.g. maintainer:text)]
                 [--strict-labels] [-t|--failure-threshold THRESHOLD]
+                [--file-path-in-report FILEPATHINREPORT]
   Lint Dockerfile for errors and best practices
 
 Available options:
@@ -128,6 +129,11 @@ Available options:
                            severity equal to or above THRESHOLD are violated.
                            Accepted values: [error | warning | info | style |
                            ignore | none] (default: info)
+  --file-path-in-report FILEPATHINREPORT
+                           The file path referenced in the generated report.
+                           This only applies for the 'checkstyle' format and is
+                           useful when running Hadolint with Docker to set the
+                           correct file path.
 ```
 
 ### Installation on mega-linter Docker image
