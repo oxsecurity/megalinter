@@ -60,6 +60,8 @@ linters:
     cli_lint_extra_args:
       - "hclfmt"
       - "--terragrunt-check"
+    cli_lint_fix_remove_args:
+      - "--terragrunt-check"
     cli_lint_extra_args_after:
       - "--terragrunt-hclfmt-file"
     test_folder: terraform_terragrunt
@@ -82,7 +84,6 @@ linters:
       - "fmt"
       - "--diff"
       - "--check"
-    cli_lint_fix_arg_name: "--fix"
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
@@ -105,4 +106,4 @@ linters:
         - name: HashiCorp Terraform
           url: https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
     test_folder: terraform_fmt
-    version_extract_regex: "Terraform v(\\d+(\\.\\d+)+)"
+    version_extract_regex: "(?<=Terraform v)\\d+(\\.\\d+)+"

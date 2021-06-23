@@ -48,4 +48,4 @@ linters:
       pip:
         - "sphinx<4.0"  # Necessary until https://github.com/dzhu/rstfmt/issues/12 is resolved
         - rstfmt
-    version_extract_regex: "rstfmt (\\d+(\\.\\d+)+)"
+    version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
