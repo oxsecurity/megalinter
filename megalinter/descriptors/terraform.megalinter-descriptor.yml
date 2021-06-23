@@ -84,7 +84,6 @@ linters:
       - "fmt"
       - "--diff"
       - "--check"
-    cli_lint_fix_arg_name: "--fix"
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
