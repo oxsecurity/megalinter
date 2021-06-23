@@ -60,6 +60,8 @@ linters:
     cli_lint_extra_args:
       - "hclfmt"
       - "--terragrunt-check"
+    cli_lint_fix_remove_args:
+      - "--terragrunt-check"
     cli_lint_extra_args_after:
       - "--terragrunt-hclfmt-file"
     test_folder: terraform_terragrunt
