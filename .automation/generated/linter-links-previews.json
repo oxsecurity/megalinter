@@ -24,6 +24,11 @@
     "image": "https://avatars3.githubusercontent.com/u/20517404?s=400&v=4",
     "title": "martysweet/cfn-lint"
   },
+  "checkov": {
+    "description": "Prevent cloud misconfigurations during build-time for Terraform, Cloudformation, Kubernetes, Serverless framework and other infrastructure-as-code-languages with Checkov by Bridgecrew.",
+    "image": null,
+    "title": "checkov"
+  },
   "checkstyle": {
     "description": "\n        Checkstyle is a development tool to help programmers write Java code\n        that adheres to a coding standard. It automates the process of\n        checking Java code to spare humans of this boring (but important)\n        task. This makes it ideal for projects that want to enforce a coding\n        standard.\n      ",
     "image": null,

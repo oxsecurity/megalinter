@@ -85,6 +85,7 @@ RUN pip3 install --no-cache-dir \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
+          'checkov' \
           'yamllint'
 #PIP__END
 

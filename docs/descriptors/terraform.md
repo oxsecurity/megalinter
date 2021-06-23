@@ -11,6 +11,7 @@
 | [terrascan](terraform_terrascan.md)         | [TERRAFORM_TERRASCAN](terraform_terrascan.md)         |
 | [terragrunt](terraform_terragrunt.md)       | [TERRAFORM_TERRAGRUNT](terraform_terragrunt.md)       |
 | [terraform-fmt](terraform_terraform_fmt.md) | [TERRAFORM_TERRAFORM_FMT](terraform_terraform_fmt.md) |
+| [checkov](terraform_checkov.md)             | [TERRAFORM_CHECKOV](terraform_checkov.md)             |
 
 ## Linted files
 
