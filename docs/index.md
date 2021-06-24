@@ -13,7 +13,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-320.8k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-322.3k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
@@ -168,7 +168,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->      | [**TERRAFORM**](descriptors/terraform.md#readme)           | [tflint](descriptors/terraform_tflint.md#readme)                                | [TERRAFORM_TFLINT](descriptors/terraform_tflint.md#readme)                                   |                    |
 | <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                            | [terrascan](descriptors/terraform_terrascan.md#readme)                          | [TERRAFORM_TERRASCAN](descriptors/terraform_terrascan.md#readme)                             |                    |
 | <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                            | [terragrunt](descriptors/terraform_terragrunt.md#readme)                        | [TERRAFORM_TERRAGRUNT](descriptors/terraform_terragrunt.md#readme)                           |                    |
-| <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                            | [terraform-fmt](descriptors/terraform_terraform_fmt.md#readme)                  | [TERRAFORM_TERRAFORM_FMT](descriptors/terraform_terraform_fmt.md#readme)                     | :heavy_check_mark: |
+| <!-- --> <!-- linter-icon -->                                                                                                                                             |                                                            | [terraform-fmt](descriptors/terraform_terraform_fmt.md#readme)                  | [TERRAFORM_TERRAFORM_FMT](descriptors/terraform_terraform_fmt.md#readme)                     |                    |
 
 ### Other
 

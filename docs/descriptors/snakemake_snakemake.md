@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.4.1**
+- Version in Mega-Linter: **6.5.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -81,9 +81,11 @@ snakemake --lint -s Snakefile
 
 ```shell
 usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
-                 [--snakefile FILE] [--cores [N]] [--local-cores N]
-                 [--resources [NAME=INT ...]]
+                 [--snakefile FILE] [--cores [N]] [--jobs [N]]
+                 [--local-cores N] [--resources [NAME=INT ...]]
                  [--set-threads RULE=THREADS [RULE=THREADS ...]]
+                 [--max-threads MAX_THREADS]
+                 [--set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]]
                  [--set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]]
                  [--default-resources [NAME=INT ...]]
                  [--preemption-default PREEMPTION_DEFAULT]
@@ -176,7 +178,10 @@ EXECUTION:
                         values for command line options in YAML format. For
                         example, '--cluster qsub' becomes 'cluster: qsub' in
                         the YAML file. Profiles can be obtained from
-                        https://github.com/snakemake-profiles. (default: None)
+                        https://github.com/snakemake-profiles. The profile can
+                        also be set via the environment variable
+                        $SNAKEMAKE_PROFILE. [env var: SNAKEMAKE_PROFILE]
+                        (default: None)
   --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
                         $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
@@ -195,14 +200,19 @@ EXECUTION:
                         directory, in this order. Only if you definitely want
                         a different layout, you need to use this parameter.
                         (default: None)
-  --cores [N], --jobs [N], -j [N]
-                        Use at most N CPU cores/jobs in parallel. If N is
+  --cores [N], -c [N]   Use at most N CPU cores/jobs in parallel. If N is
                         omitted or 'all', the limit is set to the number of
-                        available CPU cores. (default: None)
-  --local-cores N       In cluster mode, use at most N cores of the host
+                        available CPU cores. In case of cluster/cloud
+                        execution, this argument sets the number of total
+                        cores used over all jobs (made available to rules via
+                        workflow.cores). (default: None)
+  --jobs [N], -j [N]    Use at most N CPU cluster/cloud jobs in parallel. For
+                        local execution this is an alias for --cores.
+                        (default: None)
+  --local-cores N       In cluster/cloud mode, use at most N cores of the host
                         machine in parallel (default: number of CPU cores of
                         the host). The cores are used to execute local rules.
-                        This option is ignored when not in cluster mode.
+                        This option is ignored when not in cluster/cloud mode.
                         (default: 2)
   --resources [NAME=INT ...], --res [NAME=INT ...]
                         Define additional resources that shall constrain the
@@ -221,6 +231,22 @@ EXECUTION:
                         defined in the workflow. Thereby, THREADS has to be a
                         positive integer, and RULE has to be the name of the
                         rule. (default: None)
+  --max-threads MAX_THREADS
+                        Define a global maximum number of threads for any job.
+                        This can be helpful in a cluster/cloud setting, when
+                        you want to restrict the maximum number of requested
+                        threads without modifying the workflow definition or
+                        overwriting them invidiually with --set-threads.
+                        (default: None)
+  --set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]
+                        Overwrite resource usage of rules. This allows to
+                        fine-tune workflow resources. In particular, this is
+                        helpful to target certain cluster nodes by e.g.
+                        defining a certain partition for a rule, or overriding
+                        a temporary directory. Thereby, VALUE has to be a
+                        positive integer or a string, RULE has to be the name
+                        of the rule, and RESOURCE has to be the name of the
+                        resource. (default: None)
   --set-scatter NAME=SCATTERITEMS [NAME=SCATTERITEMS ...]
                         Overwrite number of scatter items of scattergather
                         processes. This allows to fine-tune workflow
@@ -235,9 +261,16 @@ EXECUTION:
                         allowed (e.g. '2*input.size_mb').When specifying this
                         without any arguments (--default-resources), it
                         defines 'mem_mb=max(2*input.size_mb, 1000)'
-                        'disk_mb=max(2*input.size_mb, 1000)', i.e., default
+                        'disk_mb=max(2*input.size_mb, 1000)' i.e., default
                         disk and mem usage is twice the input file size but at
-                        least 1GB. (default: None)
+                        least 1GB.In addition, the system temporary directory
+                        (as given by $TMPDIR, $TEMP, or $TMP) is used for the
+                        tmpdir resource. The tmpdir resource is automatically
+                        used by shell commands, scripts and wrappers to store
+                        temporary data (as it is mirrored into $TMPDIR, $TEMP,
+                        and $TMP for the executed subprocesses). If this
+                        argument is not specified at all, Snakemake just uses
+                        the tmpdir resource as outlined above. (default: None)
   --preemption-default PREEMPTION_DEFAULT
                         A preemptible instance can be requested when using the
                         Google Life Sciences API. If you set a --preemption-
@@ -708,8 +741,7 @@ BEHAVIOR:
                         management system (wms) are supported. (default: None)
 
 CLUSTER:
-  --cluster CMD, -c CMD
-                        Execute snakemake rules with the given submit command,
+  --cluster CMD         Execute snakemake rules with the given submit command,
                         e.g. qsub. Snakemake compiles jobs into scripts that
                         are submitted to the cluster with the given command,
                         once all input files for a particular job are present.
@@ -932,6 +964,9 @@ ENVIRONMENT MODULES:
                         singularity, which will then be only used as a
                         fallback for rules which don't define environment
                         modules. (default: False)
+
+ If an arg is specified in more than one place, then commandline values
+override environment variables which override defaults.
 ```
 
 ### Installation on mega-linter Docker image

@@ -4,6 +4,7 @@
 
 ## rstfmt documentation
 
+- Version in Mega-Linter: **0.0.9**
 - Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
 
 [![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
@@ -55,8 +56,7 @@ rstfmt myfile.rst
 ### Help content
 
 ```shell
-usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [--version]
-              [files [files ...]]
+usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [--version] [files ...]
 
 positional arguments:
   files
