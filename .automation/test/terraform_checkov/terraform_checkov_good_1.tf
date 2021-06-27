@@ -1,4 +1,4 @@
-resource "aws_secretsmanager_secret" "good" {
+resource "aws_ssm_parameter" "good" {
   name  = "foo"
   type  = "String"
   value = "bar"
