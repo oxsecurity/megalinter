@@ -9,6 +9,7 @@
 
 ## checkov documentation
 
+- Version in Mega-Linter: **2.0.226**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -62,6 +63,130 @@ This linter is available in the following flavours
 checkov --file myfile.tf
 ```
 
+
+### Help content
+
+```shell
+usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
+               [--external-checks-dir EXTERNAL_CHECKS_DIR]
+               [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
+               [-o [{cli,json,junitxml,github_failed_only}]] [--no-guide]
+               [--quiet] [--compact]
+               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}]
+               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}]
+               [-c CHECK] [--skip-check SKIP_CHECK] [-s]
+               [--bc-api-key BC_API_KEY] [--docker-image DOCKER_IMAGE]
+               [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
+               [-b BRANCH] [--skip-fixes] [--skip-suppressions]
+               [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
+               [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
+               [--evaluate-variables EVALUATE_VARIABLES] [-ca CA_CERTIFICATE]
+               [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
+               [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
+               [--show-config] [--create-baseline] [--baseline BASELINE]
+
+Infrastructure as code static analysis
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         version
+  -d DIRECTORY, --directory DIRECTORY
+                        IaC root directory (can not be used together with
+                        --file).
+  -f FILE, --file FILE  IaC file(can not be used together with --directory)
+  --skip-path SKIP_PATH
+                        Path (file or directory) to skip, using regular
+                        expression logic, relative to current working
+                        directory. Word boundaries are not implicit; i.e.,
+                        specifying "dir1" will skip any directory or
+                        subdirectory named "dir1". Ignored with -f. Can be
+                        specified multiple times.
+  --external-checks-dir EXTERNAL_CHECKS_DIR
+                        Directory for custom checks to be loaded. Can be
+                        repeated
+  --external-checks-git EXTERNAL_CHECKS_GIT
+                        Github url of external checks to be added. you can
+                        specify a subdirectory after a double-slash //. cannot
+                        be used together with --external-checks-dir
+  -l, --list            List checks
+  -o [{cli,json,junitxml,github_failed_only}], --output [{cli,json,junitxml,github_failed_only}]
+                        Report output format
+  --no-guide            do not fetch bridgecrew guide in checkov output report
+  --quiet               in case of CLI output, display only failed checks
+  --compact             in case of CLI output, do not display code blocks
+  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}
+                        filter scan to run only on a specific infrastructure
+                        code frameworks
+  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}
+                        filter scan to skip specific infrastructure code
+                        frameworks. will be included automatically for some
+                        frameworks if system dependencies are missing.
+  -c CHECK, --check CHECK
+                        filter scan to run only on a specific check
+                        identifier(allowlist), You can specify multiple checks
+                        separated by comma delimiter
+  --skip-check SKIP_CHECK
+                        filter scan to run on all check but a specific check
+                        identifier(denylist), You can specify multiple checks
+                        separated by comma delimiter
+  -s, --soft-fail       Runs checks but suppresses error code
+  --bc-api-key BC_API_KEY
+                        Bridgecrew API key [env var: BC_API_KEY]
+  --docker-image DOCKER_IMAGE
+                        Scan docker images by name or ID. Only works with
+                        --bc-api-key flag
+  --dockerfile-path DOCKERFILE_PATH
+                        Path to the Dockerfile of the scanned docker image
+  --repo-id REPO_ID     Identity string of the repository, with form
+                        <repo_owner>/<repo_name>
+  -b BRANCH, --branch BRANCH
+                        Selected branch of the persisted repository. Only has
+                        effect when using the --bc-api-key flag
+  --skip-fixes          Do not download fixed resource templates from
+                        Bridgecrew. Only has effect when using the --bc-api-
+                        key flag
+  --skip-suppressions   Do not download preconfigured suppressions from the
+                        Bridgecrew platform. Code comment suppressions will
+                        still be honored. Only has effect when using the --bc-
+                        api-key flag
+  --download-external-modules DOWNLOAD_EXTERNAL_MODULES
+                        download external terraform modules from public git
+                        repositories and terraform registry [env var:
+                        DOWNLOAD_EXTERNAL_MODULES]
+  --external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH
+                        set the path for the download external terraform
+                        modules [env var: EXTERNAL_MODULES_DIR]
+  --evaluate-variables EVALUATE_VARIABLES
+                        evaluate the values of variables and locals
+  -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
+                        custom CA (bundle) file [env var: CA_CERTIFICATE]
+  --repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT
+                        Directory containing the hcl code used to generate a
+                        given plan file. Use with -f.
+  --config-file CONFIG_FILE
+                        path to the Checkov configuration YAML file
+  --create-config CREATE_CONFIG
+                        takes the current command line args and writes them
+                        out to a config file at the given path
+  --show-config         prints all args and config settings and where they
+                        came from (eg. commandline, config file, environment
+                        variable or default)
+  --create-baseline     Alongside outputting the findings, save all results to
+                        .checkov.baseline file so future runs will not re-flag
+                        the same noise. Works only with `--directory` flag
+  --baseline BASELINE   Use a .checkov.baseline file to compare current
+                        results with a known baseline. Report will include
+                        only failed checks that are newwith respect to the
+                        provided baseline
+
+Args that start with '--' (eg. -v) can also be set in a config file
+(/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
+or specified via --config-file). The config file uses YAML syntax and must
+represent a YAML 'mapping' (for details, see
+http://learn.getgrav.org/advanced/yaml). If an arg is specified in more than
+one place, then commandline values override environment variables which
+override config file values which override defaults.
+```
 
 ### Installation on mega-linter Docker image
 
