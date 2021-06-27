@@ -107,3 +107,23 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
     test_folder: terraform_fmt
     version_extract_regex: "(?<=Terraform v)\\d+(\\.\\d+)+"
+  # CHECKOV
+  - linter_name: checkov
+    name: TERRAFORM_CHECKOV
+    linter_url: https://www.checkov.io/
+    linter_repo: https://github.com/bridgecrewio/checkov
+    linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
+    linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
+    linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
+    cli_lint_extra_args:
+      - "--file"
+    examples:
+      - "checkov --file myfile.tf"
+    install:
+      pip:
+        - checkov
+    ide:
+      vscode:
+        - name: Checkov
+          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
+    test_folder: terraform_checkov
