@@ -193,8 +193,9 @@ class GithubCommentReporter(Reporter):
             # Try to get PR from GITHUB_REF
             ref = os.environ.get("GITHUB_REF", "")
             m = re.compile('refs/pull/(\d+)/merge').match(ref)
-            pr_id = m.group(1)
-            pr = repo.get_pull(pr_id)
+            if m is not None:
+                pr_id = m.group(1)
+                pr = repo.get_pull(pr_id)
             if pr is None:
                 # If not found with GITHUB_REF, try to find PR from commit
                 commit = repo.get_commit(sha=sha)
