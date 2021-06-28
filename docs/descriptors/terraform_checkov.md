@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.230**
+- Version in Mega-Linter: **2.0.232**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -74,8 +74,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [--quiet] [--compact]
                [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}]
                [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}]
-               [-c CHECK] [--skip-check SKIP_CHECK] [-s]
-               [--bc-api-key BC_API_KEY] [--docker-image DOCKER_IMAGE]
+               [-c CHECK] [--skip-check SKIP_CHECK] [--bc-api-key BC_API_KEY]
+               [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
                [-b BRANCH] [--skip-fixes] [--skip-suppressions]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
@@ -84,6 +84,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
+               [-s | --soft-fail-on SOFT_FAIL_ON | --hard-fail-on HARD_FAIL_ON]
 
 Infrastructure as code static analysis
 
@@ -129,7 +130,6 @@ optional arguments:
                         filter scan to run on all check but a specific check
                         identifier(denylist), You can specify multiple checks
                         separated by comma delimiter
-  -s, --soft-fail       Runs checks but suppresses error code
   --bc-api-key BC_API_KEY
                         Bridgecrew API key [env var: BC_API_KEY]
   --docker-image DOCKER_IMAGE
@@ -178,6 +178,14 @@ optional arguments:
                         results with a known baseline. Report will include
                         only failed checks that are newwith respect to the
                         provided baseline
+  -s, --soft-fail       Runs checks but suppresses error code
+  --soft-fail-on SOFT_FAIL_ON
+                        Exits with a 0 exit code for specified checks. You can
+                        specify multiple checks separated by comma delimiter
+  --hard-fail-on HARD_FAIL_ON
+                        Exits with a non-zero exit code for specified checks.
+                        You can specify multiple checks separated by comma
+                        delimiter
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
