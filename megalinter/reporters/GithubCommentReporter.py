@@ -5,6 +5,7 @@ Post a GitHub status for each linter
 """
 import logging
 import os
+import re
 import urllib
 
 import github
@@ -188,13 +189,27 @@ class GithubCommentReporter(Reporter):
             )
             g = github.Github(base_url=github_api_url, login_or_token=github_auth)
             repo = g.get_repo(github_repo)
-            commit = repo.get_commit(sha=sha)
-            pr_list = commit.get_pulls()
-            if pr_list.totalCount == 0:
-                logging.info(
-                    "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
-                )
-                return
+
+            # Try to get PR from GITHUB_REF
+            pr_list = []
+            ref = os.environ.get("GITHUB_REF", "")
+            m = re.compile("refs/pull/(\\d+)/merge").match(ref)
+            if m is not None:
+                pr_id = m.group(1)
+                logging.info(f"Identified PR#{pr_id} from environment")
+                try:
+                    pr_list = [repo.get_pull(int(pr_id))]
+                except Exception as e:
+                    logging.warning(f"Could not fetch PR#{pr_id}: {e}")
+            if pr_list is None or len(pr_list) == 0:
+                # If not found with GITHUB_REF, try to find PR from commit
+                commit = repo.get_commit(sha=sha)
+                pr_list = commit.get_pulls()
+                if pr_list.totalCount == 0:
+                    logging.info(
+                        "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
+                    )
+                    return
             for pr in pr_list:
                 # Ignore if PR is already merged
                 if pr.is_merged():

@@ -6,7 +6,6 @@ on:
     branches:
       - "master"
       - "AutoUpdate"
-      - "alpha"
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
