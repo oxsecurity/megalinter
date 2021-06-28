@@ -14,6 +14,8 @@
 - Enable rstfmt by adding `RST_RSTFMT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable rstfmt by adding `RST_RSTFMT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `RST_RSTFMT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+
 | Variable                               | Description                                                                                                                                                                                  | Default value      |
 |----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | RST_RSTFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
