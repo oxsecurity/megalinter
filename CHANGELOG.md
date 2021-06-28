@@ -17,6 +17,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [prettier](https://prettier.io/) from 2.3.1 to **2.3.2** on 2021-06-27
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.43 to **8.44** on 2021-06-28
   - [checkov](https://www.checkov.io/) from 2.0.226 to **2.0.228** on 2021-06-28
+  - [checkov](https://www.checkov.io/) from 2.0.228 to **2.0.229** on 2021-06-28
 <!-- linter-versions-end -->
 
 ## [4.36.0] 2021-06-22
