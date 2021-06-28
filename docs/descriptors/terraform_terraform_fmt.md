@@ -19,6 +19,8 @@
 - Enable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable terraform-fmt by adding `TERRAFORM_TERRAFORM_FMT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
+- Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | TERRAFORM_TERRAFORM_FMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
