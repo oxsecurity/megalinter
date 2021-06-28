@@ -193,14 +193,14 @@ class GithubCommentReporter(Reporter):
             # Try to get PR from GITHUB_REF
             pr_list = []
             ref = os.environ.get("GITHUB_REF", "")
-            m = re.compile('refs/pull/(\\d+)/merge').match(ref)
+            m = re.compile("refs/pull/(\\d+)/merge").match(ref)
             if m is not None:
                 pr_id = m.group(1)
                 logging.info(f"Identified PR#{pr_id} from environment")
                 try:
-                  pr_list = [repo.get_pull(int(pr_id))]
+                    pr_list = [repo.get_pull(int(pr_id))]
                 except Exception as e:
-                  logging.warning(f"Could not fetch PR#{pr_id}: {e}")
+                    logging.warning(f"Could not fetch PR#{pr_id}: {e}")
             if pr_list is None or len(pr_list) == 0:
                 # If not found with GITHUB_REF, try to find PR from commit
                 commit = repo.get_commit(sha=sha)
