@@ -409,6 +409,7 @@
             "PYTHON_BLACK",
             "PYTHON_FLAKE8",
             "PYTHON_ISORT",
+            "PYTHON_BANDIT",
             "RST_RST_LINT",
             "RST_RSTCHECK",
             "RST_RSTFMT",
