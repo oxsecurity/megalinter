@@ -60,6 +60,7 @@ linters:
     cli_lint_extra_args:
       - "hclfmt"
       - "--terragrunt-check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--terragrunt-check"
     cli_lint_extra_args_after:
@@ -84,6 +85,7 @@ linters:
       - "fmt"
       - "--diff"
       - "--check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
