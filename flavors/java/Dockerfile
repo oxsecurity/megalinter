@@ -61,7 +61,6 @@ RUN apk add --update --no-cache \
 #APK__START
 RUN apk add --update --no-cache \
                 openjdk8 \
-                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -80,6 +79,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
+          'ansible-lint' \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
