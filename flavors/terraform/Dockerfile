@@ -54,7 +54,7 @@ RUN apk add --update --no-cache \
     musl-dev \
     openjdk8 \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \

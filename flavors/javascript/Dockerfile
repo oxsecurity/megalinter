@@ -51,7 +51,7 @@ RUN apk add --update --no-cache \
     musl-dev \
     openjdk8 \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -63,7 +63,7 @@ RUN apk add --update --no-cache \
 #APK__START
 RUN apk add --update --no-cache \
                 npm \
-                nodejs-current \
+                nodejs \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

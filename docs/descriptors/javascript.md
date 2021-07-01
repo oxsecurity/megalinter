@@ -30,4 +30,4 @@
 
 - APK packages (Linux):
   - [npm](https://pkgs.alpinelinux.org/packages?branch=edge&name=npm)
-  - [nodejs-current](https://pkgs.alpinelinux.org/packages?branch=edge&name=nodejs-current)
+  - [nodejs](https://pkgs.alpinelinux.org/packages?branch=edge&name=nodejs)

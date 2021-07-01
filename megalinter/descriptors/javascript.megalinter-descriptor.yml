@@ -7,7 +7,7 @@ file_extensions:
 install:
   apk:
     - npm
-    - nodejs-current
+    - nodejs
 linters:
   # ESLINT
   - linter_name: eslint
