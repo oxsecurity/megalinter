@@ -21,7 +21,7 @@ FROM alpine/terragrunt:latest as terragrunt
 ##################
 # Get base image #
 ##################
-FROM python:3.9.5-alpine
+FROM python:3.9.6-alpine
 
 WORKDIR /usr/app
 
