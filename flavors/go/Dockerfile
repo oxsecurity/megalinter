@@ -125,7 +125,7 @@ RUN npm install --no-cache --ignore-scripts \
 #NPM__END
 
 # Add node packages to path #
-ENV PATH="/node_modules/.bin:${PATH}"
+ENV PATH="/node_modules/.bin:/usr/app/node_modules/.bin:${PATH}"
 
 ##############################
 # Installs ruby dependencies #
@@ -168,8 +168,9 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # golangci-lint installation
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
-    && golangci-lint --version
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.41.1
+ENV PATH="/usr/app/bin/golangci-lint:${PATH}"
+RUN golangci-lint --version || true
 
 
 # revive installation

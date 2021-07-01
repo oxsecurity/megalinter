@@ -133,7 +133,7 @@ RUN npm install --no-cache --ignore-scripts \
 #NPM__END
 
 # Add node packages to path #
-ENV PATH="/node_modules/.bin:${PATH}"
+ENV PATH="/node_modules/.bin:/usr/app/node_modules/.bin:${PATH}"
 
 ##############################
 # Installs ruby dependencies #
