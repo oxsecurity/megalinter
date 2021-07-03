@@ -114,7 +114,7 @@ Use "golangci-lint [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.41.1
-ENV PATH="/usr/app/bin/golangci-lint:${PATH}"
+ENV PATH="/usr/app/bin/golangci-lint:/bin/golangci-lint:${PATH}"
 RUN golangci-lint --version || true
 
 ```

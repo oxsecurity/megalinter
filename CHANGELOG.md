@@ -5,7 +5,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Fix ansible-lint installation (use pip as apk package has been deleted)
-- Fix issue with node16 (use nodejs apk and not nodejs-current)
+- Fix issue with node16 (use nodejs apk and not nodejs-current) + WORKDIR /usr/app for npm install
 
 - Linter versions upgrades
   - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.0 to **0.0.9** on 2021-06-24
