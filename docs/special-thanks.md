@@ -10,6 +10,11 @@
   <img src="https://contrib.rocks/image?repo=nvuillam/mega-linter" />
 </a>
 
+## Users
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/worldwide.jpg?raw=true>)
+
+_MegaLinter does not collect usage stats, these stats are from Mega-Linter documentation WebSite traffic_
 ## Sites referring to Mega-Linter
 
 ### Global

@@ -13,7 +13,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-332.9k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-334.9k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
@@ -910,6 +910,11 @@ To help, you can also:
   <img src="https://contrib.rocks/image?repo=nvuillam/mega-linter" />
 </a>
 
+### Users
+
+![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/worldwide.jpg?raw=true>)
+
+_MegaLinter does not collect usage stats, these stats are from Mega-Linter documentation WebSite traffic_
 ### Sites referring to Mega-Linter
 
 #### Global
