@@ -22,10 +22,3 @@
 | ANSIBLE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | ANSIBLE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-
-## Behind the scenes
-
-### Installation
-
-- PIP packages (Python):
-  - [ansible](https://pypi.org/project/ansible)

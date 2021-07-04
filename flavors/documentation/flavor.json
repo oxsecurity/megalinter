@@ -1,6 +1,5 @@
 {
     "descriptors": [
-        "ANSIBLE",
         "GIT"
     ],
     "label": "Mega-Linter for documentation projects",

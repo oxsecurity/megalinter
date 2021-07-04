@@ -1,6 +1,5 @@
 {
     "descriptors": [
-        "ANSIBLE",
         "GIT"
     ],
     "label": "Optimized for PYTHON based projects",
