@@ -11,6 +11,9 @@ file_names_not_ends_with:
 file_extensions:
   - ".yml"
   - ".yaml"
+install:
+  pip:
+    - ansible
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
@@ -26,5 +29,5 @@ linters:
       - "ansible-lint -v myfile.yml"
       - "ansible-lint -v -c .ansible-lint.yml myfile.yml"
     install:
-      apk:
+      pip:
         - ansible-lint
