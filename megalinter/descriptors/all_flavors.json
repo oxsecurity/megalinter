@@ -22,6 +22,7 @@
     },
     "dart": {
         "descriptors": [
+            "ANSIBLE",
             "GIT"
         ],
         "label": "Optimized for DART based projects",
@@ -69,6 +70,7 @@
     },
     "documentation": {
         "descriptors": [
+            "ANSIBLE",
             "GIT"
         ],
         "label": "Mega-Linter for documentation projects",
@@ -115,6 +117,7 @@
     },
     "dotnet": {
         "descriptors": [
+            "ANSIBLE",
             "CSHARP",
             "GIT",
             "POWERSHELL"
@@ -169,6 +172,7 @@
     },
     "go": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "GO"
         ],
@@ -218,6 +222,7 @@
     },
     "java": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "JAVA"
         ],
@@ -266,6 +271,7 @@
     },
     "javascript": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "JAVASCRIPT",
             "TYPESCRIPT"
@@ -323,6 +329,7 @@
     },
     "php": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "PHP"
         ],
@@ -374,6 +381,7 @@
     },
     "python": {
         "descriptors": [
+            "ANSIBLE",
             "GIT"
         ],
         "label": "Optimized for PYTHON based projects",
@@ -427,6 +435,7 @@
     },
     "ruby": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "RUBY"
         ],
@@ -475,6 +484,7 @@
     },
     "rust": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "RUST"
         ],
@@ -523,6 +533,7 @@
     },
     "salesforce": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "SALESFORCE"
         ],
@@ -573,6 +584,7 @@
     },
     "scala": {
         "descriptors": [
+            "ANSIBLE",
             "GIT",
             "SCALA"
         ],
@@ -621,6 +633,7 @@
     },
     "swift": {
         "descriptors": [
+            "ANSIBLE",
             "GIT"
         ],
         "label": "Optimized for SWIFT based projects",
@@ -668,6 +681,7 @@
     },
     "terraform": {
         "descriptors": [
+            "ANSIBLE",
             "GIT"
         ],
         "label": "Optimized for TERRAFORM based projects",

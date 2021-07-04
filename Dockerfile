@@ -98,7 +98,6 @@ RUN apk add --update --no-cache \
                 ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
-                ansible-lint \
                 R \
                 R-dev \
                 R-doc \
@@ -120,6 +119,8 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
+          'ansible' \
+          'ansible-lint' \
           'cpplint' \
           'cfn-lint' \
           'pylint' \
