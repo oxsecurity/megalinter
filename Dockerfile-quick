@@ -10,13 +10,17 @@
 ARG MEGALINTER_BASE_IMAGE=nvuillam/mega-linter:latest
 FROM $MEGALINTER_BASE_IMAGE
 
-s################################
+# Set workdir to root
+WORKDIR /
+
+#################################
 # Installs python dependencies #
 ################################
 COPY megalinter /megalinter
 RUN python /megalinter/setup.py install \
     && python /megalinter/setup.py clean --all \
     && rm -rf /var/cache/apk/*
+
 #######################################
 # Copy scripts and rules to container #
 #######################################

@@ -6,9 +6,9 @@ export PYTHONPATH
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "UPGRADING LINTER VERSION"
   # Run only get_linter_version test methods
-  pytest -v --durations=0 -k _get_linter_version megalinter/
+  pytest -v --durations=0 -k _get_linter_version /usr/app/megalinter/
   # Run only get_linter_help test methods
-  pytest -v --durations=0 -k _get_linter_help megalinter/
+  pytest -v --durations=0 -k _get_linter_help /usr/app/megalinter/
   # Reinstall mkdocs-material because of broken dependency
   pip3 install --ignore-installed mkdocs-material
   cd /tmp/lint || exit 1
@@ -21,9 +21,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
   echo "RUNNING TEST CASES"
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v --timeout=60 --durations=0 --cov=megalinter --cov-report=xml megalinter/
+    pytest -v --timeout=60 --durations=0 --cov=megalinter --cov-report=xml /usr/app/megalinter/
   else
-    pytest -v --timeout=60 --durations=0 -k "${TEST_KEYWORDS}" megalinter/
+    pytest -v --timeout=60 --durations=0 -k "${TEST_KEYWORDS}" /usr/app/megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS
