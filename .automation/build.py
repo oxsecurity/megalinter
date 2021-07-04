@@ -24,7 +24,7 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
-UPDATE_DOC = '--doc' in sys.argv
+UPDATE_DOC = "--doc" in sys.argv
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
