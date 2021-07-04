@@ -71,10 +71,9 @@ ENV GOROOT=/usr/lib/go
 ENV GOPATH=/go
 # hadolint ignore=DL3044
 ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
-RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
-
+RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin \
 # RUST installation (required for pip cryptography lib)
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 #############################################################################################
