@@ -70,6 +70,7 @@ IDE_LIST = {
 
 DESCRIPTORS_FOR_BUILD_CACHE = None
 
+
 # Generate one Dockerfile by Mega-Linter flavor
 def generate_all_flavors():
     flavors = megalinter.flavor_factory.list_megalinter_flavors()
