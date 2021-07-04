@@ -220,9 +220,6 @@ RUN python /megalinter/setup.py install \
 COPY megalinter/descriptors /megalinter-descriptors
 COPY TEMPLATES /action/lib/.automation
 
-# Back to Workdir /usr/app
-WORKDIR /usr/app
-
 ###########################
 # Get the build arguments #
 ###########################

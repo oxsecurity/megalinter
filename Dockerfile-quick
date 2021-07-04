@@ -10,9 +10,7 @@
 ARG MEGALINTER_BASE_IMAGE=nvuillam/mega-linter:latest
 FROM $MEGALINTER_BASE_IMAGE
 
-WORKDIR /
-
-################################
+s################################
 # Installs python dependencies #
 ################################
 COPY megalinter /megalinter
