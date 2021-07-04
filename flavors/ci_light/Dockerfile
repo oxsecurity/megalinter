@@ -91,7 +91,7 @@ RUN echo 'package-lock=false' >> .npmrc \
     && npm config set package-lock false \
     && npm config set loglevel error 
 #NPM__START
-RUN npm install --no-cache --ignore-scripts \
+RUN npm install --global --no-cache --ignore-scripts \
                 dockerfilelint \
                 npm-groovy-lint \
                 jsonlint \

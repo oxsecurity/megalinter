@@ -35,6 +35,8 @@ def run_command(command_info, log_key, mega_linter):
     cwd = os.getcwd()
     if command_info.get("cwd", "root") == "workspace":
         cwd = mega_linter.workspace
+    if "npm" in command_info["command"] and '--global' not in command_info["command"] and '-g ' not in command_info["command"] and '/usr/app' not in command_info["command"] and '--prefix' not in command_info["command"]:
+        command_info["command"] = ["command"].replace("npm i ","npm i --prefix /usr/app ").replace("npm install","npm install --prefix /usr/app")
     logging.info(f"{log_key} run: [{command_info['command']}] in cwd [{cwd}]")
     # Run command
     process = subprocess.run(

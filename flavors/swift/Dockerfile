@@ -80,6 +80,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir \
+          'ansible' \
           'ansible-lint' \
           'snakemake' \
           'snakefmt' \
@@ -98,7 +99,7 @@ RUN echo 'package-lock=false' >> .npmrc \
     && npm config set package-lock false \
     && npm config set loglevel error 
 #NPM__START
-RUN npm install --no-cache --ignore-scripts \
+RUN npm install --global --no-cache --ignore-scripts \
                 jscpd \
                 stylelint \
                 stylelint-config-standard \

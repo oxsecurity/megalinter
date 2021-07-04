@@ -123,6 +123,7 @@ optional arguments:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
+  - [ansible](https://pypi.org/project/ansible)
   - [ansible-lint](https://pypi.org/project/ansible-lint)
 
 ### Example success log

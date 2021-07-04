@@ -222,7 +222,7 @@ branding:
     npm_install_command = ""
     if len(npm_packages) > 0:
         npm_install_command = (
-            "RUN npm install --no-cache --ignore-scripts \\\n                "
+            "RUN npm install --global --no-cache --ignore-scripts \\\n                "
             + " \\\n                ".join(list(dict.fromkeys(npm_packages)))
         )
     replace_in_file(dockerfile, "#NPM__START", "#NPM__END", npm_install_command)
