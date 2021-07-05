@@ -34,6 +34,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.1 to **6.5.2** on 2021-07-05
   - [checkov](https://www.checkov.io/) from 2.0.232 to **2.0.250** on 2021-07-05
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.7.0 to **1.8.0** on 2021-07-05
+  - [checkov](https://www.checkov.io/) from 2.0.250 to **2.0.251** on 2021-07-05
 <!-- linter-versions-end -->
 
 ## [4.36.0] 2021-06-22
