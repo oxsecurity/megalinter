@@ -13,7 +13,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   pip3 install --ignore-installed mkdocs-material
   cd /tmp/lint || exit 1
   chmod +x build.sh
-  bash build.sh
+  bash build.sh --doc
   exit $?
 fi
 
