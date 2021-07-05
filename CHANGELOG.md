@@ -25,6 +25,15 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.228 to **2.0.229** on 2021-06-28
   - [checkov](https://www.checkov.io/) from 2.0.229 to **2.0.230** on 2021-06-28
   - [checkov](https://www.checkov.io/) from 2.0.230 to **2.0.232** on 2021-06-28
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.51.0 to **0.52.0** on 2021-07-05
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.5.0 to **2.6.0** on 2021-07-05
+  - [eslint](https://eslint.org) from 7.29.0 to **7.30.0** on 2021-07-05
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.3.1 to **1.4.0** on 2021-07-05
+  - [phpstan](https://phpstan.org/) from 0.12.90 to **0.12.91** on 2021-07-05
+  - [pylint](https://www.pylint.org) from 2.8.3 to **2.9.3** on 2021-07-05
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.1 to **6.5.2** on 2021-07-05
+  - [checkov](https://www.checkov.io/) from 2.0.232 to **2.0.250** on 2021-07-05
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.7.0 to **1.8.0** on 2021-07-05
 <!-- linter-versions-end -->
 
 ## [4.36.0] 2021-06-22
