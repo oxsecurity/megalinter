@@ -78,7 +78,8 @@ def generate_all_flavors():
     for flavor, flavor_info in flavors.items():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
-    update_docker_pulls_counter()
+    if UPDATE_DOC is True:
+        update_docker_pulls_counter()
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
