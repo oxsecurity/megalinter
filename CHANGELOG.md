@@ -4,6 +4,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.37.0] 2021-06-22
+
 - Downgrade npm to npm@latest-6 to avoid idealTree error when using npm install
 - Use pip to install ansible & ansible-lint as alpine apk package ansible disappeared
 - Add `--doc` argument to build.sh to generate doc only when requested (manually, or from CI job Auto-Update-Linters)
@@ -35,7 +40,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.232 to **2.0.250** on 2021-07-05
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.7.0 to **1.8.0** on 2021-07-05
   - [checkov](https://www.checkov.io/) from 2.0.250 to **2.0.251** on 2021-07-05
-<!-- linter-versions-end -->
 
 ## [4.36.0] 2021-06-22
 
