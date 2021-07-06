@@ -58,7 +58,7 @@ jobs:
       - name: Build image
         shell: bash
         run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
-        timeout-minutes: 30
+        timeout-minutes: 50
 
       #####################################
       # Run Linter against Test code base #
@@ -67,7 +67,7 @@ jobs:
         id: compute_versions
         shell: bash
         run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
-        timeout-minutes: 30
+        timeout-minutes: 15
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts

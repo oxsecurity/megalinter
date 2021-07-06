@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in Mega-Linter: **2.8.3**
+- Version in Mega-Linter: **2.9.3**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
@@ -103,6 +103,10 @@ Options:
                         Files or directories matching the regex patterns are
                         skipped. The regex matches against base names, not
                         paths. [current: none]
+    --ignore-paths=<pattern>[,<pattern>...]
+                        Add files or directories matching the regex patterns
+                        to the ignore-list. The regex matches against paths.
+                        [current: none]
     --persistent=<y_or_n>
                         Pickle collected data for later comparisons. [current:
                         yes]
@@ -113,6 +117,12 @@ Options:
     --fail-under=<score>
                         Specify a score threshold to be exceeded before
                         program exits with error. [current: 10.0]
+    --fail-on=<msg ids>
+                        Return non-zero exit code if any of these
+                        messages/categories are detected, even if score is
+                        above --fail-under value. Syntax same as enable.
+                        Messages specified are enabled, while categories only
+                        check already-enabled messages. [current: none]
     -j <n-processes>, --jobs=<n-processes>
                         Use multiple processes to speed up Pylint. Specifying
                         0 will auto-detect the number of processors available

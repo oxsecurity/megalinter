@@ -24,6 +24,8 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
+UPDATE_DOC = "--doc" in sys.argv
+
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
 MKDOCS_URL_ROOT = "https://nvuillam.github.io/mega-linter"
@@ -76,7 +78,8 @@ def generate_all_flavors():
     for flavor, flavor_info in flavors.items():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
-    update_docker_pulls_counter()
+    if UPDATE_DOC is True:
+        update_docker_pulls_counter()
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
@@ -1876,8 +1879,9 @@ if __name__ == "__main__":
     validate_descriptors()
     generate_all_flavors()
     generate_linter_test_classes()
-    generate_documentation()
-    generate_documentation_all_linters()
-    generate_mkdocs_yml()
+    if UPDATE_DOC is True:
+        generate_documentation()
+        generate_documentation_all_linters()
+        generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()

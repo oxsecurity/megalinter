@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.232**
+- Version in Mega-Linter: **2.0.251**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -74,10 +74,12 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [--quiet] [--compact]
                [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}]
                [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}]
-               [-c CHECK] [--skip-check SKIP_CHECK] [--bc-api-key BC_API_KEY]
+               [-c CHECK] [--skip-check SKIP_CHECK]
+               [--run-all-external-checks] [--bc-api-key BC_API_KEY]
                [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
                [-b BRANCH] [--skip-fixes] [--skip-suppressions]
+               [--skip-policy-download]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
                [--evaluate-variables EVALUATE_VARIABLES] [-ca CA_CERTIFICATE]
@@ -130,6 +132,13 @@ optional arguments:
                         filter scan to run on all check but a specific check
                         identifier(denylist), You can specify multiple checks
                         separated by comma delimiter
+  --run-all-external-checks
+                        Run all external checks (loaded via --external-checks
+                        options) even if the checks are not present in the
+                        --check list. This allows you to always ensure that
+                        new checks present in the external source are used. If
+                        an external check is included in --skip-check, it will
+                        still be skipped.
   --bc-api-key BC_API_KEY
                         Bridgecrew API key [env var: BC_API_KEY]
   --docker-image DOCKER_IMAGE
@@ -149,6 +158,10 @@ optional arguments:
                         Bridgecrew platform. Code comment suppressions will
                         still be honored. Only has effect when using the --bc-
                         api-key flag
+  --skip-policy-download
+                        Do not download custom policies configured in the
+                        Bridgecrew platform. Only has effect when using the
+                        --bc-api-key flag
   --download-external-modules DOWNLOAD_EXTERNAL_MODULES
                         download external terraform modules from public git
                         repositories and terraform registry [env var:
