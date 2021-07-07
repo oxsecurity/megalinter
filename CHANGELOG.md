@@ -5,6 +5,9 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.2 to **6.5.3** on 2021-07-07
+  - [checkov](https://www.checkov.io/) from 2.0.251 to **2.0.253** on 2021-07-07
+  - [php](https://www.php.net) from 7.4.19 to **7.4.21** on 2021-07-07
 <!-- linter-versions-end -->
 
 ## [4.37.0] 2021-06-22
