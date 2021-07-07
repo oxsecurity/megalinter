@@ -170,6 +170,10 @@ linters:
   # BANDIT
   - linter_name: bandit
     name: PYTHON_BANDIT
+    linter_text: |
+      bandit checks for security risks
+
+      If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your .mega-linter.yml config file
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
