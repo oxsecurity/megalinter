@@ -187,8 +187,6 @@ EXAMPLE
   "/home/my/setup/.eslintrc.json"
 
 
- ›   Error: EEXIT: 0
- ›   Code: EEXIT
 NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE
 ─────────────────────────────────────────────────  ───────────  ────────────────  ────────────────────────────────────────────────  ─────────────────
 VfCsrf                                             visualforce  Security          Basic VF                                          pmd
