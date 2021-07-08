@@ -8,6 +8,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.2 to **6.5.3** on 2021-07-07
   - [checkov](https://www.checkov.io/) from 2.0.251 to **2.0.253** on 2021-07-07
   - [php](https://www.php.net) from 7.4.19 to **7.4.21** on 2021-07-07
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.18 to **0.0.19** on 2021-07-08
+  - [checkov](https://www.checkov.io/) from 2.0.253 to **2.0.257** on 2021-07-08
 <!-- linter-versions-end -->
 
 ## [4.37.0] 2021-06-22
