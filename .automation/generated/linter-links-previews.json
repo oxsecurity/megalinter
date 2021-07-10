@@ -199,6 +199,11 @@
     "image": "https://avatars0.githubusercontent.com/u/217179?s=400&v=4",
     "title": "client9/misspell"
   },
+  "mypy": {
+    "description": "Mypy is a static type checker for Python 3 and Python 2.7.",
+    "image": null,
+    "title": "Welcome to mypy documentation! \u2014 Mypy 0.910 documentation"
+  },
   "npm-groovy-lint": {
     "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files using command line - nvuillam/npm-groovy-lint",
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",

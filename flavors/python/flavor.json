@@ -36,6 +36,7 @@
         "PYTHON_FLAKE8",
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
+        "PYTHON_MYPY",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",
