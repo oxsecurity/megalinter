@@ -9,7 +9,7 @@
 
 ## isort documentation
 
-- Version in Mega-Linter: **5.9.1**
+- Version in Mega-Linter: **5.9.2**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -123,8 +123,8 @@ Sort Python import definitions alphabetically within logical sections. Run
 with no arguments to see a quick start guide, otherwise, one or more
 files/directories/stdin must be provided. Use `-` as the first argument to
 represent stdin. Use --interactive to use the pre 5.0.0 interactive behavior.
-If you've used isort 4 but are new to isort 5, see the upgrading
-guide:https://pycqa.github.io/isort/docs/upgrade_guides/5.0.0/.
+If you've used isort 4 but are new to isort 5, see the upgrading guide:
+https://pycqa.github.io/isort/docs/upgrade_guides/5.0.0.html
 
 general options:
   -h, --help            show this help message and exit
@@ -246,7 +246,7 @@ general output options:
                         imports first then straight ones.
   --fgw [FORCE_GRID_WRAP], --force-grid-wrap [FORCE_GRID_WRAP]
                         Force number of from imports (defaults to 2 when
-                        passed as CLI flag without value)to be grid wrapped
+                        passed as CLI flag without value) to be grid wrapped
                         regardless of line length. If 0 is passed in (the
                         global default) only line length is considered.
   -i INDENT, --indent INDENT
