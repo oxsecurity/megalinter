@@ -206,13 +206,18 @@ linters:
   - linter_name: mypy
     name: PYTHON_MYPY
     linter_text: |
-      Optional static typing for python
+      Optional static typing checks for python
+
+      If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your .mega-linter.yml config file
     linter_url: https://mypy.readthedocs.io/en/stable/
     linter_repo: https://github.com/python/mypy
     linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
     linter_rules_configuration_url: https://mypy.readthedocs.io/en/stable/config_file.html
     linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config
     cli_lint_mode: list_of_files
+    cli_lint_extra_args: 
+      - "--install-types" 
+      - "--non-interactive"
     cli_config_arg_name: "--config-file"
     cli_version_arg_name: "--version"
     config_file_name: ".mypy.ini"
