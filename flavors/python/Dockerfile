@@ -84,6 +84,7 @@ RUN pip3 install --no-cache-dir \
           'flake8' \
           'isort' \
           'bandit' \
+          'mypy' \
           'restructuredtext_lint' \
           'rstcheck' \
           'sphinx<4.0' \
