@@ -202,3 +202,46 @@ linters:
       vscode:
         - name: Native Support
           url: https://code.visualstudio.com/docs/python/linting#_bandit
+  # MYPY
+  - linter_name: mypy
+    name: PYTHON_MYPY
+    linter_text: |
+      Optional static typing for python
+    linter_url: https://mypy.readthedocs.io/en/stable/
+    linter_repo: https://github.com/python/mypy
+    linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
+    linter_rules_configuration_url: https://mypy.readthedocs.io/en/stable/config_file.html
+    linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config-file"
+    cli_version_arg_name: "--version"
+    config_file_name: ".mypy.ini"
+    version_extract_regex: "(?<=mypy )\\d+(\\.\\d+)+"
+    test_folder: python_mypy
+    examples:
+      - "mypy myfile.py"
+      - "mypy --config-file .mypy.yml myfile.py"
+    install:
+      pip:
+        - mypy
+    ide:
+      atom:
+        - name: linter-mypy
+          url: https://atom.io/packages/linter-mypy
+      emacs:
+        - name: Flycheck mypy
+          url: https://github.com/lbolla/emacs-flycheck-mypy
+      idea:
+        - name: mypy-official
+          url: https://plugins.jetbrains.com/plugin/13348-mypy-official-/
+      sublime:
+        - name: SublimeLinter-contrib-mypy
+          url: https://github.com/fredcallaway/SublimeLinter-contrib-mypy
+      vim:
+        - name: Ale
+          url: https://github.com/dense-analysis/ale
+        - name: Syntastic
+          url: https://github.com/vim-syntastic/syntastic
+      vscode:
+        - name: Mypy
+          url: https://marketplace.visualstudio.com/items?itemName=matangover.mypy
