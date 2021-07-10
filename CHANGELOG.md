@@ -10,6 +10,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [php](https://www.php.net) from 7.4.19 to **7.4.21** on 2021-07-07
   - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.18 to **0.0.19** on 2021-07-08
   - [checkov](https://www.checkov.io/) from 2.0.253 to **2.0.257** on 2021-07-08
+  - [isort](https://pycqa.github.io/isort/) from 5.9.1 to **5.9.2** on 2021-07-10
+  - [checkov](https://www.checkov.io/) from 2.0.257 to **2.0.259** on 2021-07-10
 <!-- linter-versions-end -->
 
 ## [4.37.0] 2021-06-22
