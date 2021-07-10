@@ -11,6 +11,7 @@
 | [black](python_black.md)   | [PYTHON_BLACK](python_black.md)   |
 | [flake8](python_flake8.md) | [PYTHON_FLAKE8](python_flake8.md) |
 | [isort](python_isort.md)   | [PYTHON_ISORT](python_isort.md)   |
+| [bandit](python_bandit.md) | [PYTHON_BANDIT](python_bandit.md) |
 
 ## Linted files
 

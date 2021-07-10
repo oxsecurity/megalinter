@@ -126,6 +126,7 @@ RUN pip3 install --no-cache-dir \
           'black' \
           'flake8' \
           'isort' \
+          'bandit' \
           'restructuredtext_lint' \
           'rstcheck' \
           'sphinx<4.0' \

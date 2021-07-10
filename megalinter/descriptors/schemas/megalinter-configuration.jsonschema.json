@@ -155,6 +155,7 @@
         "PYTHON_BLACK",
         "PYTHON_FLAKE8",
         "PYTHON_ISORT",
+        "PYTHON_BANDIT",
         "R_LINTR",
         "RAKU_RAKU",
         "RST_RST_LINT",
@@ -5043,6 +5044,68 @@
       "$id": "#/properties/PUPPET_PUPPET_LINT_RULES_PATH",
       "description": "PUPPET_PUPPET_LINT: Path where to find linter configuration file",
       "title": "PUPPET_PUPPET_LINT: Custom config file path",
+      "type": "string"
+    },
+    "PYTHON_BANDIT_ARGUMENTS": {
+      "$id": "#/properties/PYTHON_BANDIT_ARGUMENTS",
+      "description": "PYTHON_BANDIT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BANDIT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PYTHON_BANDIT_DISABLE_ERRORS": {
+      "$id": "#/properties/PYTHON_BANDIT_DISABLE_ERRORS",
+      "default": false,
+      "title": "PYTHON_BANDIT: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PYTHON_BANDIT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PYTHON_BANDIT_FILE_EXTENSIONS": {
+      "$id": "#/properties/PYTHON_BANDIT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BANDIT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PYTHON_BANDIT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PYTHON_BANDIT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BANDIT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PYTHON_BANDIT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PYTHON_BANDIT_FILTER_REGEX_EXCLUDE",
+      "title": "PYTHON_BANDIT: Excluding Regex",
+      "type": "string"
+    },
+    "PYTHON_BANDIT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PYTHON_BANDIT_FILTER_REGEX_INCLUDE",
+      "title": "PYTHON_BANDIT: Including Regex",
       "type": "string"
     },
     "PYTHON_BLACK_ARGUMENTS": {
