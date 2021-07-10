@@ -69,7 +69,7 @@ class ReviewdogReporter(Reporter):
             stdout=subprocess.PIPE,
             stdin=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            shell=True,
+            shell=False,
             env={
                 **os.environ,
                 "FORCE_COLOR": "0",

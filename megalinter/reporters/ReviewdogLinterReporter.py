@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import re
+from unidiff import PatchSet
 
 from megalinter import Reporter, config, utils
 
@@ -135,7 +136,6 @@ class ReviewdogLinterReporter(Reporter):
             return Suggestion(text, start=Location(hunk.source_start, 0), end=Location(hunk.source_start + hunk.source_length, end_column))
 
         def process_udiff(self, udiff, path, message):
-            from unidiff import PatchSet
             patches = PatchSet(udiff)
             suggestions = [self.suggestion(hunk) for patch in patches for hunk in patch]
             return [Rdjsonl(file=path, message=message,
