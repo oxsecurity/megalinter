@@ -7,6 +7,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Add [mypy](https://github.com/python/mypy) python linter
 
 - Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 0.12.91 to **0.12.92** on 2021-07-10
 <!-- linter-versions-end -->
 
 ## [4.38.0] 2021-10-07
