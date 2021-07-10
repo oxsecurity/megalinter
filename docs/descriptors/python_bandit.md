@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://bandit.readthedocs.io/en/latest/" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/PyCQA/bandit/blob/master/logo/logotype-sm.png" alt="bandit" height="150px" class="megalinter-banner">
+    <img src="https://github.com/PyCQA/bandit/raw/master/logo/logotype-sm.png" alt="bandit" height="150px" class="megalinter-banner">
   </a>
 </div>
 

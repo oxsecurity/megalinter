@@ -177,8 +177,8 @@ linters:
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
-    linter_banner_image_url: https://github.com/PyCQA/bandit/blob/master/logo/logotype-sm.png
-    linter_image_url: https://github.com/PyCQA/bandit/blob/master/logo/logomark.png
+    linter_banner_image_url: https://github.com/PyCQA/bandit/raw/master/logo/logotype-sm.png
+    linter_image_url: https://github.com/PyCQA/bandit/raw/master/logo/logomark.png
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
