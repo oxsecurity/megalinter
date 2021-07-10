@@ -27,7 +27,7 @@ from webpreview import web_preview
 UPDATE_DOC = "--doc" in sys.argv
 RELEASE = "--release" in sys.argv
 if RELEASE is True:
-    RELEASE_TAG = sys.argv[sys.argv.index('--release') + 1]
+    RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
