@@ -9,6 +9,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.91 to **0.12.92** on 2021-07-10
   - [checkov](https://www.checkov.io/) from 2.0.259 to **2.0.261** on 2021-07-11
+  - [checkov](https://www.checkov.io/) from 2.0.261 to **2.0.262** on 2021-07-11
 <!-- linter-versions-end -->
 
 ## [4.38.0] 2021-10-07
