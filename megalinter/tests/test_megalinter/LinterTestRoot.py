@@ -3,6 +3,7 @@
 Unit tests for Linter class (and sub-classes)
 """
 from typing import Optional
+
 from megalinter import linter_factory
 from megalinter.tests.test_megalinter.helpers import utilstest
 
