@@ -218,6 +218,8 @@ linters:
     cli_lint_extra_args:
       - "--install-types"
       - "--non-interactive"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "Found ([0-9]+) error"
     cli_config_arg_name: "--config-file"
     cli_version_arg_name: "--version"
     config_file_name: ".mypy.ini"

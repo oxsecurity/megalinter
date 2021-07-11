@@ -4,7 +4,7 @@ import importlib
 import logging
 import os
 import re
-from typing import Optional, Pattern, Sequence
+from typing import Any, Optional, Pattern, Sequence
 
 import git
 from megalinter import config
@@ -63,7 +63,7 @@ def filter_files(
     filter_regex_include: Optional[str],
     filter_regex_exclude: Optional[str],
     file_names_regex: Sequence[str],
-    file_extensions: Sequence[str],
+    file_extensions: Any,
     file_names_not_ends_with: Optional[Sequence[str]] = None,
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
