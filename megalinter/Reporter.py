@@ -4,11 +4,14 @@ Template class for custom reporters: any linter class in /reporters folder must 
 """
 
 
+from typing import Optional
+
+
 class Reporter:
     # Report definition
-    name = None
-    report_folder = None
-    scope = None  # Can be megalinter or linter
+    name: Optional[str] = None
+    report_folder: Optional[str] = None
+    scope: Optional[str] = None  # Can be megalinter or linter
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None):

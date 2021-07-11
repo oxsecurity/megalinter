@@ -2,13 +2,14 @@
 """
 Unit tests for Linter class (and sub-classes)
 """
+from typing import Optional
 from megalinter import linter_factory
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
 class LinterTestRoot:
-    descriptor_id = None
-    linter_name = None
+    descriptor_id: Optional[str] = None
+    linter_name: Optional[str] = None
 
     def get_linter_instance(self):
         return linter_factory.build_linter(self.descriptor_id, self.linter_name)
