@@ -182,6 +182,8 @@ linters:
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "Severity: .*   Confidence: .*"
     cli_config_arg_name: "--configfile"
     cli_version_arg_name: "--version"
     version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
