@@ -22,8 +22,8 @@ linters:
       - "./report/copy-paste/"
     cli_lint_extra_args_after:
       - "."
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Found ([0-9]+) clones"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "Found ([0-9]+) clone"
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
