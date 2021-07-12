@@ -82,6 +82,13 @@ linters:
       vscode:
         - name: vscode-eslint
           url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+    reviewdog_processor:
+      class_name: Regex
+      init_params:
+        regex: ^\s(?P<path>[^:]+):(?P<line>\d+):(?P<column>\d+):(?P<message>.+)$
+        ignored_line_regexes:
+          - ^\[[A-Z]+\] .+$
+          - ^.*\d+ problem.+$
   # STANDARD
   - linter_name: standard
     activation_rules:
@@ -123,6 +130,13 @@ linters:
       vscode:
         - name: vscode-standardjs
           url: https://marketplace.visualstudio.com/items?itemName=chenxsan.vscode-standardjs
+    reviewdog_processor:
+      class_name: Regex
+      init_params:
+        regex: ^\s(?P<path>[^:]+):(?P<line>\d+):(?P<column>\d+):(?P<message>.+)$
+        ignored_line_regexes:
+          - ^\[[A-Z]+\] .+$
+          - ^\s*standard[:].+$
   # PRETTIER
   - linter_name: prettier
     is_formatter: true
