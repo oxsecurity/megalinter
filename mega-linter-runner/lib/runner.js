@@ -44,6 +44,7 @@ class MegaLinterRunner {
       return { status: 0 };
     }
 
+
     // Build Mega-Linter docker image name with flavor and release version
     const release =
       options.release in ["v4", "stable"]
@@ -57,7 +58,7 @@ class MegaLinterRunner {
       options.flavor === "all" || options.flavor == null
         ? "nvuillam/mega-linter"
         : `nvuillam/mega-linter-${options.flavor}`;
-    const dockerImage = `${dockerImageName}:${release}`;
+    const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
     const whichPromise = which("docker");
