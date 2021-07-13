@@ -4,6 +4,11 @@
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.39.0] 2021-14-07
+
 - Add [mypy](https://github.com/python/mypy) python linter
 - mega-linter-runner: Add possibility to send the docker image to use, including from another registry than docker hub, with argument `--image`
 
@@ -14,7 +19,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.262 to **2.0.263** on 2021-07-12
   - [checkov](https://www.checkov.io/) from 2.0.263 to **2.0.266** on 2021-07-13
   - [checkov](https://www.checkov.io/) from 2.0.266 to **2.0.267** on 2021-07-13
-<!-- linter-versions-end -->
 
 ## [4.38.0] 2021-10-07
 
