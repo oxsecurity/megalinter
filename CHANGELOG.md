@@ -5,6 +5,7 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Add [mypy](https://github.com/python/mypy) python linter
+- mega-linter-runner: Add possibility to send the docker image to use, including from another registry than docker hub, with argument `--image`
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.91 to **0.12.92** on 2021-07-10
