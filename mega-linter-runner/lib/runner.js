@@ -44,7 +44,6 @@ class MegaLinterRunner {
       return { status: 0 };
     }
 
-
     // Build Mega-Linter docker image name with flavor and release version
     const release =
       options.release in ["v4", "stable"]

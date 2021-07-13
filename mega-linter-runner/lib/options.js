@@ -47,7 +47,8 @@ module.exports = optionator({
       example: [
         "ghcr.io/nvuillam/mega-linter:latest",
         "ghcr.io/nvuillam/mega-linter:v4",
-        "my-registry.com/mega-linter-python:v4"],
+        "my-registry.com/mega-linter-python:v4",
+      ],
     },
     {
       option: "path",
@@ -106,6 +107,6 @@ module.exports = optionator({
   ],
   mutuallyExclusive: [
     ["help", "version", "install"],
-    ["image", "flavor"]
+    ["image", "flavor"],
   ],
 });
