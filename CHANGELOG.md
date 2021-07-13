@@ -12,6 +12,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.261 to **2.0.262** on 2021-07-11
   - [checkov](https://www.checkov.io/) from 2.0.262 to **2.0.263** on 2021-07-12
   - [checkov](https://www.checkov.io/) from 2.0.263 to **2.0.266** on 2021-07-13
+  - [checkov](https://www.checkov.io/) from 2.0.266 to **2.0.267** on 2021-07-13
 <!-- linter-versions-end -->
 
 ## [4.38.0] 2021-10-07
