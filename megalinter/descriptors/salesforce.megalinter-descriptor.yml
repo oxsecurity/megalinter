@@ -64,7 +64,7 @@ linters:
       - "sfdx scanner:run"
     install:
       dockerfile:
-        - RUN npm set strict-ssl false && sfdx plugins:install @salesforce/sfdx-scanner && npm set strict-ssl true
+        - RUN sfdx plugins:install @salesforce/sfdx-scanner
     ide:
       eclipse:
         - name: pmd-eclipse-plugin

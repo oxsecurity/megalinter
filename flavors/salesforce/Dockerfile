@@ -187,7 +187,7 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # sfdx-scanner-apex installation
-RUN npm set strict-ssl false && sfdx plugins:install @salesforce/sfdx-scanner && npm set strict-ssl true
+RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-aura installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
