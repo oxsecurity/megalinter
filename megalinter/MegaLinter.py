@@ -406,7 +406,7 @@ class Megalinter:
 
         if self.ignore_gitignore_files is True:
             ignored_files = self.list_git_ignored_files()
-            logging.info("- Excluding .gitignored files: " + ignored_files)
+            logging.info("- Excluding .gitignored files: " + ", ".join(sorted(ignored_files)))
 
         filtered_files = utils.filter_files(
             all_files=all_files,
