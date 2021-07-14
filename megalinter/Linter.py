@@ -553,6 +553,7 @@ class Linter:
             filter_regex_exclude=self.filter_regex_exclude,
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
+            ignored_files=[],
             file_names_not_ends_with=self.file_names_not_ends_with,
             file_contains_regex=self.file_contains_regex,
             files_sub_directory=self.files_sub_directory,

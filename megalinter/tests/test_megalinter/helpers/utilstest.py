@@ -37,6 +37,7 @@ def linter_test_setup(params=None):
         "EXTENDS",
         "FILTER_REGEX_INCLUDE",
         "FILTER_REGEX_EXCLUDE",
+        "IGNORE_GITIGNORED_FILES",
         "SHOW_ELAPSED_TIME",
     ]:
         if key in os.environ:
@@ -73,6 +74,7 @@ def linter_test_setup(params=None):
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
     config.set_value("PLUGINS", "")
+    config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
     config.set_value(

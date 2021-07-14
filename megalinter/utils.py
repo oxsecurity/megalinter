@@ -4,6 +4,7 @@ import importlib
 import logging
 import os
 import re
+from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
 
 import git
@@ -64,6 +65,7 @@ def filter_files(
     filter_regex_exclude: Optional[str],
     file_names_regex: Sequence[str],
     file_extensions: Any,
+    ignored_files: Optional[Sequence[str]],
     file_names_not_ends_with: Optional[Sequence[str]] = None,
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
@@ -87,6 +89,10 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
+
+        if ignored_files and len([n for n in ignored_files if fnmatch(n, file)]) > 0:
+            continue
+
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
 
