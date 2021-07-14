@@ -409,17 +409,15 @@ class Megalinter:
         if self.ignore_gitignore_files is True:
             try:
                 ignored_files = self.list_git_ignored_files()
-                logging.info("- Excluding .gitignored files: " + ", ".join(sorted(ignored_files)))
-            except git.InvalidGitRepositoryError as git_err:
-                logging.warning(
-                    f"Unable to list git ignored files ({str(git_err)})"
+                logging.info(
+                    "- Excluding .gitignored files: " + ", ".join(sorted(ignored_files))
                 )
+            except git.InvalidGitRepositoryError as git_err:
+                logging.warning(f"Unable to list git ignored files ({str(git_err)})")
                 ignored_files = []
             except Exception as git_err:
-                logging.warning(
-                    f"Unable to list git ignored files ({str(git_err)})"
-                )
-                ignored_files = []                
+                logging.warning(f"Unable to list git ignored files ({str(git_err)})")
+                ignored_files = []
 
         # Apply all filters on file list
         filtered_files = utils.filter_files(
@@ -428,7 +426,7 @@ class Megalinter:
             filter_regex_exclude=self.filter_regex_exclude,
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
-            ignored_files=ignored_files
+            ignored_files=ignored_files,
         )
 
         logging.info(
@@ -497,13 +495,13 @@ class Megalinter:
             all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
         return all_files
 
-
     def list_git_ignored_files(self):
         repo = git.Repo(os.path.realpath(self.github_workspace))
         ignored_files = repo.git.execute("git status --ignored")
-        ignored_files = list(map(lambda x: x +"**" if x.endswith("/") else x, ignored_files))
+        ignored_files = list(
+            map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
+        )
         return ignored_files
-
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()

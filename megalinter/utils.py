@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from fnmatch import fnmatch
 import importlib
 import logging
 import os
 import re
+from fnmatch import fnmatch
 from typing import Any, Optional, Pattern, Sequence
 
 import git
