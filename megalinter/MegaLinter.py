@@ -57,6 +57,7 @@ class Megalinter:
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
+        self.ignore_gitignore_files = False
         self.validate_all_code_base = True
         self.filter_regex_include = None
         self.filter_regex_exclude = None
@@ -295,13 +296,15 @@ class Megalinter:
         # Filtering regex (exclusion)
         if config.exists("FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude = config.get("FILTER_REGEX_EXCLUDE")
-
         # Disable all fields validation if VALIDATE_ALL_CODEBASE is 'false'
         if (
             config.exists("VALIDATE_ALL_CODEBASE")
             and config.get("VALIDATE_ALL_CODEBASE") == "false"
         ):
             self.validate_all_code_base = False
+        # Manage IGNORE_GITIGNORED_FILES
+        if config.exists("IGNORE_GITIGNORED_FILES"):
+            self.ignore_gitignore_files = config.exists("IGNORE_GITIGNORED_FILES")
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -401,12 +404,17 @@ class Megalinter:
         if self.filter_regex_exclude is not None:
             logging.info("- Excluding regex: " + self.filter_regex_exclude)
 
+        if self.ignore_gitignore_files is True:
+            ignored_files = self.list_git_ignored_files()
+            logging.info("- Excluding .gitignored files: " + ignored_files)
+
         filtered_files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
             filter_regex_exclude=self.filter_regex_exclude,
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
+            ignored_files=ignored_files
         )
 
         logging.info(
@@ -474,6 +482,14 @@ class Megalinter:
             dirnames[:] = [d for d in dirnames if d not in excluded_directories]
             all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
         return all_files
+
+
+    def list_git_ignored_files(self):
+        repo = git.Repo(os.path.realpath(self.github_workspace))
+        ignored_files = repo.git.execute("git status --ignored")
+        ignored_files = list(map(lambda x: x +"**" if x.endswith("/") else x, ignored_files))
+        return ignored_files.splitlines()
+
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()

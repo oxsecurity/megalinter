@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import fnmatch
 import importlib
 import logging
 import os
@@ -62,6 +63,7 @@ def filter_files(
     all_files: Sequence[str],
     filter_regex_include: Optional[str],
     filter_regex_exclude: Optional[str],
+    ignored_files: Optional[Sequence[str]],
     file_names_regex: Sequence[str],
     file_extensions: Any,
     file_names_not_ends_with: Optional[Sequence[str]] = None,
@@ -87,6 +89,10 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
+
+        if ignored_files and [n for n in ignored_files if fnmatch(n, file)].count() > 0:
+            continue
+
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
 
