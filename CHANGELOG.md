@@ -5,6 +5,9 @@
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
 <!-- linter-versions-end -->
 
 ## [4.40.0] 2021-14-07
