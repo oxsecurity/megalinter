@@ -15,7 +15,7 @@
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 <!-- readme-header-start -->
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-348.8k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-349.1k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://nvuillam.github.io/mega-linter)
 [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
@@ -77,6 +77,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 |------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                              | current directory |
 | `--flavor`             | Set this parameter to use a [Mega-Linter flavor](https://nvuillam.github.io/mega-linter/flavors/)                   | `all`             |
+| `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                               | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for Mega-Linter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                              | <!-- -->          |
 | `-r` <br/> `--release` | Allows to override Mega-Linter version used                                                                         | `v4`              |
