@@ -7,7 +7,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
-## [4.39.0] 2021-14-07
+## [4.39.1] 2021-14-07
+
+- Fix @salesforce/sfdx-scanner install
+
+## [4.39.0] 2021-14-07 [NOT WORKING, USE 4.39.1]
 
 - Add [mypy](https://github.com/python/mypy) python linter
 - mega-linter-runner: Add possibility to send the docker image to use, including from another registry than docker hub, with argument `--image`

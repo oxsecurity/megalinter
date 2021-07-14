@@ -394,6 +394,6 @@ use-isnan                                          typescript   Possible Errors 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
-RUN sfdx plugins:install @salesforce/sfdx-scanner
+RUN npm set strict-ssl false && sfdx plugins:install @salesforce/sfdx-scanner && npm set strict-ssl true
 ```
 
