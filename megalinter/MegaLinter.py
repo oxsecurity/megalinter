@@ -404,10 +404,23 @@ class Megalinter:
         if self.filter_regex_exclude is not None:
             logging.info("- Excluding regex: " + self.filter_regex_exclude)
 
+        # List git ignored files if necessary
         if self.ignore_gitignore_files is True:
-            ignored_files = self.list_git_ignored_files()
-            logging.info("- Excluding .gitignored files: " + ", ".join(sorted(ignored_files)))
+            try:
+                ignored_files = self.list_git_ignored_files()
+                logging.info("- Excluding .gitignored files: " + ", ".join(sorted(ignored_files)))
+            except git.InvalidGitRepositoryError as git_err:
+                logging.warning(
+                    f"Unable to list git ignored files ({str(git_err)})"
+                )
+                ignored_files = []
+            except Exception as git_err:
+                logging.warning(
+                    f"Unable to list git ignored files ({str(git_err)})"
+                )
+                ignored_files = []                
 
+        # Apply all filters on file list
         filtered_files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
