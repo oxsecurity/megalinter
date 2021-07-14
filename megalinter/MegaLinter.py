@@ -405,6 +405,7 @@ class Megalinter:
             logging.info("- Excluding regex: " + self.filter_regex_exclude)
 
         # List git ignored files if necessary
+        ignored_files = []
         if self.ignore_gitignore_files is True:
             try:
                 ignored_files = self.list_git_ignored_files()
