@@ -502,7 +502,7 @@ class Megalinter:
         repo = git.Repo(os.path.realpath(self.github_workspace))
         ignored_files = repo.git.execute("git status --ignored")
         ignored_files = list(map(lambda x: x +"**" if x.endswith("/") else x, ignored_files))
-        return ignored_files.splitlines()
+        return ignored_files
 
 
     def initialize_logger(self):

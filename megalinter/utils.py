@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import fnmatch
+from fnmatch import fnmatch
 import importlib
 import logging
 import os
@@ -90,7 +90,7 @@ def filter_files(
 
     for file in all_files:
 
-        if ignored_files and [n for n in ignored_files if fnmatch(n, file)].count() > 0:
+        if ignored_files and len([n for n in ignored_files if fnmatch(n, file)]) > 0:
             continue
 
         base_file_name = os.path.basename(file)
