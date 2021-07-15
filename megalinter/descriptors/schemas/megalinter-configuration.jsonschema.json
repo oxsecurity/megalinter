@@ -2762,6 +2762,12 @@
       "title": "HTML_HTMLHINT: Custom config file path",
       "type": "string"
     },
+    "IGNORE_GITIGNORED_FILES": {
+      "$id": "#/properties/IGNORE_GITIGNORED_FILES",
+      "default": false,
+      "title": "Makes Mega-Linter skip files that are ignored by git using .gitignore",
+      "type": "boolean"
+    },
     "JAVASCRIPT_DEFAULT_STYLE": {
       "$id": "#/properties/JAVASCRIPT_DEFAULT_STYLE",
       "description": "Style of javascript formatting to apply",
