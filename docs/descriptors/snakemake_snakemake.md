@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.5.3**
+- Version in Mega-Linter: **6.6.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -122,7 +122,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--allow-ambiguity] [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
-                 [--notemp] [--keep-remote] [--keep-target-files]
+                 [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
@@ -660,6 +660,9 @@ BEHAVIOR:
                         running only a part of the workflow, since temp()
                         would lead to deletion of probably needed files by
                         other parts of the workflow. (default: False)
+  --all-temp            Mark all output files as temp files. This can be
+                        useful for CI testing, in order to save space.
+                        (default: False)
   --keep-remote         Keep local copies of remote input files. (default:
                         False)
   --keep-target-files   Do not adjust the paths of given target files relative

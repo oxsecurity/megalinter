@@ -15,6 +15,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
   - [checkov](https://www.checkov.io/) from 2.0.267 to **2.0.269** on 2021-07-14
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.3 to **6.6.0** on 2021-07-17
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.0 to **0.6.1** on 2021-07-17
+  - [checkov](https://www.checkov.io/) from 2.0.269 to **1.0.860** on 2021-07-17
 <!-- linter-versions-end -->
 
 ## [4.40.0] - 2021-14-07
