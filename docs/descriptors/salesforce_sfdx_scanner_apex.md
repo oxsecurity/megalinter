@@ -393,6 +393,7 @@ use-isnan                                          typescript   Possible Errors 
 # Parent descriptor install
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+RUN echo y|sfdx plugins:install sfdx-hardis
 # Linter install
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 ```

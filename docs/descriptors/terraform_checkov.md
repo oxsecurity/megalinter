@@ -146,4 +146,4 @@ optional arguments:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [checkov](https://pypi.org/project/checkov)
+  - [checkov>=2.0.269](https://pypi.org/project/checkov>=2.0.269)
