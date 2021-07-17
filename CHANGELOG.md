@@ -19,6 +19,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sqlfluff](https://www.sqlfluff.com/) from 0.6.0 to **0.6.1** on 2021-07-17
   - [checkov](https://www.checkov.io/) from 2.0.269 to **1.0.860** on 2021-07-17
   - [checkov](https://www.checkov.io/) from 1.0.860 to **2.0.276** on 2021-07-17
+  - [eslint](https://eslint.org) from 7.30.0 to **7.31.0** on 2021-07-17
 <!-- linter-versions-end -->
 
 ## [4.40.0] - 2021-14-07
