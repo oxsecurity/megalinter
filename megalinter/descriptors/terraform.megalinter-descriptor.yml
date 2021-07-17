@@ -124,7 +124,7 @@ linters:
       - "checkov --file myfile.tf"
     install:
       pip:
-        - checkov
+        - checkov>=2.0.269
     ide:
       vscode:
         - name: Checkov

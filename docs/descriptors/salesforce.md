@@ -29,6 +29,7 @@
 ```dockerfile
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+RUN echo y|sfdx plugins:install sfdx-hardis
 ```
 
 - APK packages (Linux):

@@ -135,7 +135,7 @@ RUN pip3 install --no-cache-dir \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
-          'checkov' \
+          'checkov>=2.0.269' \
           'yamllint'
 #PIP__END
 
@@ -269,6 +269,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
+RUN echo y|sfdx plugins:install sfdx-hardis
 
 # SCALA installation
 RUN curl -fLo coursier https://git.io/coursier-cli && \

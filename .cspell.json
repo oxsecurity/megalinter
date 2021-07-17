@@ -546,6 +546,7 @@
         "gtag",
         "hadolint",
         "hardcode",
+        "hardis",
         "hclfmt",
         "headererr",
         "headheight",
