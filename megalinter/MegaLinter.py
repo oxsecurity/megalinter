@@ -58,6 +58,7 @@ class Megalinter:
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
         self.ignore_gitignore_files = False
+        self.ignore_generated_files = False
         self.validate_all_code_base = True
         self.filter_regex_include = None
         self.filter_regex_exclude = None
@@ -305,6 +306,9 @@ class Megalinter:
         # Manage IGNORE_GITIGNORED_FILES
         if config.exists("IGNORE_GITIGNORED_FILES"):
             self.ignore_gitignore_files = config.exists("IGNORE_GITIGNORED_FILES")
+        # Manage IGNORE_GENERATED_FILES
+        if config.exists("IGNORE_GENERATED_FILES"):
+            self.ignore_generated_files = config.exists("IGNORE_GENERATED_FILES")
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -427,6 +431,7 @@ class Megalinter:
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
+            ignore_generated_files=self.ignore_generated_files,
         )
 
         logging.info(

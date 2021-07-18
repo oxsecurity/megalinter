@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - New config variable **IGNORE_GITIGNORED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files ignored by git using `.gitignore` files
+- New config variable **IGNORE_GENERATED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files containing `@generated` marker and not containing `@not-generated` marker
 
 - Linter versions upgrades
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14

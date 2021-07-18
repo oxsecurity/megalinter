@@ -66,6 +66,7 @@ def filter_files(
     file_names_regex: Sequence[str],
     file_extensions: Any,
     ignored_files: Optional[Sequence[str]],
+    ignore_generated_files: Optional[bool] = False,
     file_names_not_ends_with: Optional[Sequence[str]] = None,
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
@@ -119,6 +120,13 @@ def filter_files(
             continue
 
         if file_contains_regex and not file_contains(file, file_contains_regex_object):
+            continue
+
+        if (
+            ignore_generated_files is not None
+            and ignore_generated_files is True
+            and file_is_generated(file)
+        ):
             continue
 
         filtered_files.append(file)
@@ -177,12 +185,17 @@ def check_activation_rules(activation_rules, _linter):
 def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
     if not regex_object:
         return True
-
     with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
-
     found_pattern = regex_object.search(content) is not None
     return found_pattern
+
+
+def file_is_generated(file_name: str) -> bool:
+    with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
+        content = f.read()
+    is_generated = "@generated" in content and "@not-generated" not in content
+    return is_generated
 
 
 def decode_utf8(stdout):

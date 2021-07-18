@@ -38,6 +38,7 @@ def linter_test_setup(params=None):
         "FILTER_REGEX_INCLUDE",
         "FILTER_REGEX_EXCLUDE",
         "IGNORE_GITIGNORED_FILES",
+        "IGNORE_GENERATED_FILES",
         "SHOW_ELAPSED_TIME",
     ]:
         if key in os.environ:
