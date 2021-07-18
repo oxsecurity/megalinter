@@ -20,6 +20,7 @@ linters:
     linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
     linter_rules_configuration_url: https://eslint.org/docs/user-guide/configuring
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+    linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control
     active_only_if_file_found:
       - ".eslintrc.json"
       - ".eslintrc.yml"

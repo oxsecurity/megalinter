@@ -117,7 +117,7 @@ linters:
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
     linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
-    linter_megalinter_ref_url: never
+    linter_megalinter_ref_url: "no"
     cli_config_arg_name: "--config-file"
     cli_lint_extra_args:
       - "--file"
