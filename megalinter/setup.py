@@ -23,6 +23,7 @@ setup(
         "terminaltables",
         "webpreview",
         "yq",
+        "importlib-metadata>=3.10",
         "mkdocs-material",
         "mdx_truly_sane_lists",
         "beautifulsoup4",

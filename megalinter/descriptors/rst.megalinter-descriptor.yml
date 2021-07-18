@@ -36,12 +36,17 @@ linters:
     is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
-    cli_lint_fix_arg_name: "-i"
-    linter_version_cache: "0.0.0" # --version not implemented on rstfmt
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
     test_folder: rst_rstfmt
     examples:
-      - "rstfmt myfile.rst"
-      - "rstfmt -i myfile.rst" # Format
+      - "rstfmt --check myfile.rst"
+      - "rstfmt myfile.rst" # Format
     install:
       pip:
+        - "sphinx<4.0" # Necessary until https://github.com/dzhu/rstfmt/issues/12 is resolved
         - rstfmt
+    version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"

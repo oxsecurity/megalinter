@@ -9,13 +9,40 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 
 ### Pre-requisites
 
-- You need **python** to be installed on your computer ([download here](https://www.python.org/downloads/))
+- You need [**Python 3**](https://www.python.org/downloads/) and [**Node.js** (14+)](https://nodejs.org/en/download/) to be installed on your computer.
+  - If you have issues running Python on Windows, you can uninstall it then reinstall it using [this video tutorial](https://www.youtube.com/watch?v=uDbDIhR76H4), then copy python.exe and name it python3.exe
 
 - Run the following commands at the root of the repository to install required dev dependencies
-
 ```shell
+python3 -m venv venv
+. venv/bin/activate
+echo "venv/" >> .git/info/exclude
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
+```
+
+_If it does not work, just run the following script_
+
+```shell
+pip install -r requirements.dev.txt
+pip install mkdocs-material
+npm install markdown-table-formatter -g
+```
+
+Second level dev dependencies are installed by running `./build.sh` which is also a test if the installation worked
+
+```shell
+./build.sh
+2021-03-30 19:40:03,790 [INFO] Validating ansible.megalinter-descriptor.yml
+2021-03-30 19:40:03,879 [INFO] Validating arm.megalinter-descriptor.yml
+...
+Formatting markdown tables...
+Need to install the following packages:
+  markdown-table-formatter
+Ok to proceed? (y)
+...
+INFO    -  Documentation built in 9.76 seconds
+(done.)
 ```
 
 _(if you have a permission denied issue on Windows, please check [this solution](https://stackoverflow.com/a/57168165/7113625))_
@@ -26,7 +53,7 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Update **CHANGELOG.md** (the root one, not the one in /docs)
-5. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
+5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push and [submit a pull request][pr]
 7. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
@@ -36,7 +63,7 @@ _(if you have a permission denied issue on Windows, please check [this solution]
 2. Create a new branch: `git checkout -b my-branch-name`
 3. Make your change
 4. Update **CHANGELOG.md** (the root one, not the one in /docs)
-5. Run `bash build.sh` to regenerate dockerfile and documentation from updated sources
+5. Run `bash build.sh` to regenerate dockerfile from updated sources (run `bash build.sh --doc` if you want to also regenerate documentation)
 6. Push to your fork and [submit a pull request][pr]
 7. Pat your self on the back and wait for your pull request to be reviewed and merged.
 
@@ -64,9 +91,9 @@ Then run `bash build.py` and it will generate all the rest !
 - Test classes
 - Configuration JSON schema
 - Online documentation menus
-  
+
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
-  
+
 
 ### CI/CT/CD
 

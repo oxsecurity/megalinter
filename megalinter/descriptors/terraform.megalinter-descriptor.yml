@@ -60,6 +60,9 @@ linters:
     cli_lint_extra_args:
       - "hclfmt"
       - "--terragrunt-check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--terragrunt-check"
     cli_lint_extra_args_after:
       - "--terragrunt-hclfmt-file"
     test_folder: terraform_terragrunt
@@ -70,3 +73,61 @@ linters:
       dockerfile:
         - FROM alpine/terragrunt:latest as terragrunt
         - COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
+  # TERRAFORM_FMT
+  - linter_name: terraform-fmt
+    name: TERRAFORM_TERRAFORM_FMT
+    is_formatter: true
+    linter_url: https://www.terraform.io/docs/cli/commands/fmt.html
+    linter_repo: https://github.com/hashicorp/terraform
+    linter_banner_image_url: https://www.terraform.io/assets/images/logo-hashicorp-3f10732f.svg
+    cli_executable: terraform
+    cli_lint_extra_args:
+      - "fmt"
+      - "--diff"
+      - "--check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--diff"
+      - "--check"
+    examples:
+      - "terraform fmt myfile.tf"
+    install:
+      dockerfile:
+        - COPY --from=terragrunt /bin/terraform /usr/bin/
+    ide:
+      atom:
+        - name: terraform-fmt
+          url: https://atom.io/packages/terraform-fmt
+      idea:
+        - name: HashiCorp Terraform / HCL language support
+          url: https://plugins.jetbrains.com/plugin/7808-hashicorp-terraform--hcl-language-support
+      sublime:
+        - name: Terrafmt
+          url: https://packagecontrol.io/packages/Terrafmt
+      vscode:
+        - name: HashiCorp Terraform
+          url: https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform
+    test_folder: terraform_fmt
+    version_extract_regex: "(?<=Terraform v)\\d+(\\.\\d+)+"
+  # CHECKOV
+  - linter_name: checkov
+    name: TERRAFORM_CHECKOV
+    linter_url: https://www.checkov.io/
+    linter_repo: https://github.com/bridgecrewio/checkov
+    linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
+    linter_rules_inline_disable_url: https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html
+    linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
+    linter_megalinter_ref_url: "no"
+    cli_config_arg_name: "--config-file"
+    cli_lint_extra_args:
+      - "--file"
+    examples:
+      - "checkov --file myfile.tf"
+    install:
+      pip:
+        - checkov>=2.0.269
+    ide:
+      vscode:
+        - name: Checkov
+          url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
+    test_folder: terraform_checkov

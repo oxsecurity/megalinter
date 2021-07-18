@@ -57,6 +57,8 @@ class Megalinter:
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
+        self.ignore_gitignore_files = False
+        self.ignore_generated_files = False
         self.validate_all_code_base = True
         self.filter_regex_include = None
         self.filter_regex_exclude = None
@@ -295,13 +297,18 @@ class Megalinter:
         # Filtering regex (exclusion)
         if config.exists("FILTER_REGEX_EXCLUDE"):
             self.filter_regex_exclude = config.get("FILTER_REGEX_EXCLUDE")
-
         # Disable all fields validation if VALIDATE_ALL_CODEBASE is 'false'
         if (
             config.exists("VALIDATE_ALL_CODEBASE")
             and config.get("VALIDATE_ALL_CODEBASE") == "false"
         ):
             self.validate_all_code_base = False
+        # Manage IGNORE_GITIGNORED_FILES
+        if config.exists("IGNORE_GITIGNORED_FILES"):
+            self.ignore_gitignore_files = config.exists("IGNORE_GITIGNORED_FILES")
+        # Manage IGNORE_GENERATED_FILES
+        if config.exists("IGNORE_GENERATED_FILES"):
+            self.ignore_generated_files = config.exists("IGNORE_GENERATED_FILES")
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -336,12 +343,13 @@ class Megalinter:
         all_linters = linter_factory.list_all_linters(linter_init_params)
         skipped_linters = []
         for linter in all_linters:
-            if linter.is_active is False:
+            if linter.is_active is False or linter.disabled is True:
                 skipped_linters += [linter.name]
                 continue
             self.linters += [linter]
         # Display skipped linters in log
-        if len(skipped_linters) > 0:
+        show_skipped_linters = config.get("SHOW_SKIPPED_LINTERS", "true") == "true"
+        if len(skipped_linters) > 0 and show_skipped_linters:
             skipped_linters.sort()
             logging.info("Skipped linters: " + ", ".join(skipped_linters))
         # Sort linters by language and linter_name
@@ -400,12 +408,30 @@ class Megalinter:
         if self.filter_regex_exclude is not None:
             logging.info("- Excluding regex: " + self.filter_regex_exclude)
 
+        # List git ignored files if necessary
+        ignored_files = []
+        if self.ignore_gitignore_files is True:
+            try:
+                ignored_files = self.list_git_ignored_files()
+                logging.info(
+                    "- Excluding .gitignored files: " + ", ".join(sorted(ignored_files))
+                )
+            except git.InvalidGitRepositoryError as git_err:
+                logging.warning(f"Unable to list git ignored files ({str(git_err)})")
+                ignored_files = []
+            except Exception as git_err:
+                logging.warning(f"Unable to list git ignored files ({str(git_err)})")
+                ignored_files = []
+
+        # Apply all filters on file list
         filtered_files = utils.filter_files(
             all_files=all_files,
             filter_regex_include=self.filter_regex_include,
             filter_regex_exclude=self.filter_regex_exclude,
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
+            ignored_files=ignored_files,
+            ignore_generated_files=self.ignore_generated_files,
         )
 
         logging.info(
@@ -474,6 +500,14 @@ class Megalinter:
             all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
         return all_files
 
+    def list_git_ignored_files(self):
+        repo = git.Repo(os.path.realpath(self.github_workspace))
+        ignored_files = repo.git.execute("git status --ignored")
+        ignored_files = list(
+            map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
+        )
+        return ignored_files
+
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
@@ -526,6 +560,7 @@ class Megalinter:
         logging.info(utils.format_hyphens(""))
         logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
         logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
+        logging.info("GITHUB_REF: " + os.environ.get("GITHUB_REF", ""))
         logging.info("GITHUB_TOKEN: " + os.environ.get("GITHUB_TOKEN", ""))
         logging.info("GITHUB_RUN_ID: " + os.environ.get("GITHUB_RUN_ID", ""))
         logging.info("PAT: " + "set" if os.environ.get("PAT", "") != "" else "")

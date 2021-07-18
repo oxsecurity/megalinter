@@ -108,7 +108,7 @@ jobs:
       # Create pull request if applicable (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
         id: cpr
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
@@ -116,17 +116,17 @@ jobs:
           title: "[Mega-Linter] Apply linters automatic fixes"
           labels: bot
       - name: Create PR output
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
       # Push new commit if applicable (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         run: sudo chown -Rc $UID .git/
       - name: Commit and push applied linter fixes
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && github.event.pull_request.head.repo.full_name == github.repository && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
@@ -203,6 +203,109 @@ mega-linter:
 ```
 
 ![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+
+## Concourse
+
+### Pipeline step
+
+Use the following `job.step` in your pipeline template
+
+Note: make sure you have `job.plan.get` step which gets `repo` containing your repository as shown in example
+
+```yaml
+---
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: nvuillam/mega-linter
+              tag: v4
+          inputs:
+            - name: repo
+          run:
+            path: bash
+            args:
+            - -cxe
+            - |
+              cd repo
+              export DEFAULT_WORKSPACE=$(pwd)
+              bash -ex /entrypoint.sh
+              # doing this because concourse does not work as other CI systems
+          # params:
+            # PARALLEL: true
+            # DISABLE: SPELL
+            # APPLY_FIXES: all
+            # DISABLE_ERRORS: true
+            # VALIDATE_ALL_CODEBASE: true
+            # DEFAULT_BRANCH: master
+
+```
+
+OR
+
+### Use it as reusable task
+
+Create reusable concourse task which can be used with multiple pipelines
+
+1. Create task file `task-linting.yaml`
+
+```yaml
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: nvuillam/mega-linter
+    tag: v4
+
+inputs:
+- name: repo
+
+# uncomment this if you want reports as task output
+# output:
+# - name: reports
+#   path: repo/report
+
+run:
+  path: bash
+  args:
+  - -cxe
+  - |
+    cd repo
+    export DEFAULT_WORKSPACE=$(pwd)
+    bash -ex /entrypoint.sh
+```
+
+2. Use that `task-linting.yaml` task in pipeline
+
+Note:
+
+  1. make sure `task-linting.yaml` is available in that `repo` input at root
+
+  2. task `output` is **not** shown here
+
+```yaml
+resources:
+
+  - name: linting
+    plan:
+      - get: repo
+      - task: linting
+        file: repo/task-linting.yaml
+        # params:
+        #   PARALLEL: true
+        #   DISABLE: SPELL
+        #   APPLY_FIXES: all
+        #   DISABLE_ERRORS: true
+        #   VALIDATE_ALL_CODEBASE: true
+        #   DEFAULT_BRANCH: master
+```
 
 ## Run Mega-Linter locally
 

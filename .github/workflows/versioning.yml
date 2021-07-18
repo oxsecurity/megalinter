@@ -32,12 +32,12 @@ jobs:
       #############################
       # Check out the latest code #
       #############################
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
 
       ######################
       # Run the tag action #
       ######################
-      - uses: Actions-R-Us/actions-tagger@v2.0.1
+      - uses: Actions-R-Us/actions-tagger@v2.0.2
         with:
           publish_latest_tag: true
         env:

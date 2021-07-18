@@ -16,7 +16,7 @@ linters:
       - "lint"
     cli_lint_fix_arg_name: "--fix"
     cli_version_arg_name: "version"
-    help_command_return_code: 2
+    help_command_return_code: 0
     examples:
       - "protolint lint myfile.proto"
       - "protolint lint --config_path .protolintrc.yml myfile.proto"

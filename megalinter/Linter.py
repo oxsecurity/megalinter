@@ -45,6 +45,7 @@ class Linter:
         )
         # If you have several linters for the same language,override with a different name.Ex: JAVASCRIPT_ES
         self.name = None
+        self.disabled = False
         self.is_formatter = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
         # ex: https://eslint.org/
@@ -235,7 +236,12 @@ class Linter:
             if len(self.active_only_if_file_found) > 0:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
-                    if os.path.isfile(f"{self.workspace}/{file_to_check}"):
+                    if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
+                        is_found = True
+                        break
+                    if os.path.isfile(
+                        f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
+                    ):
                         is_found = True
                         break
                 if is_found is False:
@@ -259,7 +265,7 @@ class Linter:
             self.number_fixed = 0
             self.files_lint_results = []
             self.start_perf = None
-            self.elapsed_time_s = None
+            self.elapsed_time_s = 0
             self.remote_config_file_to_delete = None
 
     # Enable or disable linter
@@ -325,7 +331,8 @@ class Linter:
         # 1: http rules path: fetch remove file and copy it locally (then delete it after linting)
         # 2: repo + config_file_name
         # 3: linter_rules_path + config_file_name
-        # 4: mega-linter default rules path + config_file_name
+        # 4: workspace root + linter_rules_path + config_file_name
+        # 5: mega-linter default rules path + config_file_name
         if (
             self.config_file_name is not None
             and self.config_file_name != "LINTER_DEFAULT"
@@ -363,6 +370,21 @@ class Linter:
             ):
                 self.config_file = (
                     self.linter_rules_path + os.path.sep + self.config_file_name
+                )
+            # in workspace root
+            elif os.path.isfile(
+                self.workspace
+                + os.path.sep
+                + self.linter_rules_path
+                + os.path.sep
+                + self.config_file_name
+            ):
+                self.config_file = (
+                    self.workspace
+                    + os.path.sep
+                    + self.linter_rules_path
+                    + os.path.sep
+                    + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
             elif os.path.isfile(
@@ -531,6 +553,8 @@ class Linter:
             filter_regex_exclude=self.filter_regex_exclude,
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
+            ignored_files=[],
+            ignore_generated_files=False,  # This filter is applied at Mega-Linter level
             file_names_not_ends_with=self.file_names_not_ends_with,
             file_contains_regex=self.file_contains_regex,
             files_sub_directory=self.files_sub_directory,

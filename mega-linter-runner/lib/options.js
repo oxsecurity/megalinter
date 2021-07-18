@@ -33,10 +33,22 @@ module.exports = optionator({
     },
     {
       option: "flavor",
+      alias: "f",
       type: "String",
       default: "all",
       description: "Mega-Linter flavor",
       example: ["dotnet", "javascript", "java", "php", "python"],
+    },
+    {
+      option: "image",
+      alias: "d",
+      type: "String",
+      description: "Mega-Linter docker image",
+      example: [
+        "ghcr.io/nvuillam/mega-linter:latest",
+        "ghcr.io/nvuillam/mega-linter:v4",
+        "my-registry.com/mega-linter-python:v4",
+      ],
     },
     {
       option: "path",
@@ -64,6 +76,7 @@ module.exports = optionator({
     },
     {
       option: "nodockerpull",
+      alias: "n",
       type: "Boolean",
       description: "Do not pull docker image before running it",
     },
@@ -92,5 +105,8 @@ module.exports = optionator({
       description: "Generate Mega-Linter configuration in your project",
     },
   ],
-  mutuallyExclusive: [["help", "version", "install"]],
+  mutuallyExclusive: [
+    ["help", "version", "install"],
+    ["image", "flavor"],
+  ],
 });

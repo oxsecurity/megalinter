@@ -4,7 +4,8 @@ import importlib
 import logging
 import os
 import re
-from typing import Optional, Pattern, Sequence
+from fnmatch import fnmatch
+from typing import Any, Optional, Pattern, Sequence
 
 import git
 from megalinter import config
@@ -45,11 +46,13 @@ def get_excluded_directories():
         ".git",
         ".jekyll-cache",
         ".pytest_cache",
+        ".mypy_cache",
         ".rbenv",
         ".venv",
+        ".terraform",
         ".terragrunt-cache",
         "node_modules",
-        "report",
+        config.get("REPORT_OUTPUT_FOLDER", "report"),
     ]
     excluded_dirs = config.get_list("EXCLUDED_DIRECTORIES", default_excluded_dirs)
     excluded_dirs += config.get_list("ADDITIONAL_EXCLUDED_DIRECTORIES", [])
@@ -61,7 +64,9 @@ def filter_files(
     filter_regex_include: Optional[str],
     filter_regex_exclude: Optional[str],
     file_names_regex: Sequence[str],
-    file_extensions: Sequence[str],
+    file_extensions: Any,
+    ignored_files: Optional[Sequence[str]],
+    ignore_generated_files: Optional[bool] = False,
     file_names_not_ends_with: Optional[Sequence[str]] = None,
     file_contains_regex: Optional[Sequence[str]] = None,
     files_sub_directory: Optional[str] = None,
@@ -85,8 +90,12 @@ def filter_files(
     # Filter all files to keep only the ones matching with the current linter
 
     for file in all_files:
+
+        if ignored_files and len([n for n in ignored_files if fnmatch(n, file)]) > 0:
+            continue
+
         base_file_name = os.path.basename(file)
-        filename, file_extension = os.path.splitext(base_file_name)
+        _, file_extension = os.path.splitext(base_file_name)
 
         if filter_regex_include_object and not filter_regex_include_object.search(file):
             continue
@@ -102,7 +111,7 @@ def filter_files(
                 pass
             elif "*" in file_extensions:
                 pass
-            elif file_names_regex_object.fullmatch(filename):
+            elif file_names_regex_object.fullmatch(base_file_name):
                 pass
             else:
                 continue
@@ -111,6 +120,13 @@ def filter_files(
             continue
 
         if file_contains_regex and not file_contains(file, file_contains_regex_object):
+            continue
+
+        if (
+            ignore_generated_files is not None
+            and ignore_generated_files is True
+            and file_is_generated(file)
+        ):
             continue
 
         filtered_files.append(file)
@@ -169,12 +185,17 @@ def check_activation_rules(activation_rules, _linter):
 def file_contains(file_name: str, regex_object: Optional[Pattern[str]]) -> bool:
     if not regex_object:
         return True
-
     with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
-
     found_pattern = regex_object.search(content) is not None
     return found_pattern
+
+
+def file_is_generated(file_name: str) -> bool:
+    with open(file_name, "r", encoding="utf-8", errors="ignore") as f:
+        content = f.read()
+    is_generated = "@generated" in content and "@not-generated" not in content
+    return is_generated
 
 
 def decode_utf8(stdout):

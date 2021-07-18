@@ -9,6 +9,11 @@
     "image": "https://avatars0.githubusercontent.com/u/6844498?s=400&v=4",
     "title": "Azure/arm-ttk"
   },
+  "bandit": {
+    "description": "Bandit is a tool designed to find common security issues in Python code. To do\nthis, Bandit processes each file, builds an AST from it, and runs appropriate\nplugins against the AST nodes.  Once Bandit has finished scanning all the files,\nit generates a report.",
+    "image": null,
+    "title": "Welcome to Bandit\u00e2\u0080\u0099s developer documentation! \u2014 Bandit  documentation"
+  },
   "bash-exec": {
     "description": "None",
     "image": null,
@@ -23,6 +28,11 @@
     "description": "A CloudFormation JSON and YAML Validator. Contribute to martysweet/cfn-lint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/20517404?s=400&v=4",
     "title": "martysweet/cfn-lint"
+  },
+  "checkov": {
+    "description": "Prevent cloud misconfigurations during build-time for Terraform, Cloudformation, Kubernetes, Serverless framework and other infrastructure-as-code-languages with Checkov by Bridgecrew.",
+    "image": null,
+    "title": "checkov"
   },
   "checkstyle": {
     "description": "\n        Checkstyle is a development tool to help programmers write Java code\n        that adheres to a coding standard. It automates the process of\n        checking Java code to spare humans of this boring (but important)\n        task. This makes it ideal for projects that want to enforce a coding\n        standard.\n      ",
@@ -189,6 +199,11 @@
     "image": "https://avatars0.githubusercontent.com/u/217179?s=400&v=4",
     "title": "client9/misspell"
   },
+  "mypy": {
+    "description": "Mypy is a static type checker for Python 3 and Python 2.7.",
+    "image": null,
+    "title": "Welcome to mypy documentation! \u2014 Mypy 0.910 documentation"
+  },
   "npm-groovy-lint": {
     "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files using command line - nvuillam/npm-groovy-lint",
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",
@@ -294,6 +309,21 @@
     "image": null,
     "title": "Salesforce CLI Scanner Plug-In"
   },
+  "sfdx-scanner-apex": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
+  "sfdx-scanner-aura": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
+  "sfdx-scanner-lwc": {
+    "description": "",
+    "image": null,
+    "title": "Salesforce CLI Scanner Plug-In"
+  },
   "shellcheck": {
     "description": "ShellCheck, a static analysis tool for shell scripts - koalaman/shellcheck",
     "image": "https://avatars2.githubusercontent.com/u/2818758?s=400&v=4",
@@ -348,6 +378,11 @@
     "description": "Linter for Tekton definitions. Contribute to IBM/tekton-lint development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/1459110?s=400&v=4",
     "title": "IBM/tekton-lint"
+  },
+  "terraform-fmt": {
+    "description": "The `terraform fmt` command is used to rewrite Terraform configuration files to a canonical format and style.",
+    "image": "https://www.terraform.io/assets/images/og-image-8b3e4f7d.png",
+    "title": "Command: fmt - Terraform by HashiCorp"
   },
   "terragrunt": {
     "description": "Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state.",

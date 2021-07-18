@@ -14,27 +14,33 @@
 
 ### Global
 
-- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter)
-- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic)
-- [schemastore.org](https://www.schemastore.org/json/)
+- [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
+- [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
+- [schemastore.org](https://www.schemastore.org/json/){target=_blank}
+
+### Articles
+- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
+- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
 
 ### Linters
 
 <!-- referring-linters-start -->
-- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools)
-- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github)
-- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter)
-- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter)
-- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter)
-- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter)
-- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd)
-- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration)
-- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools)
-- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter)
-- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools)
-- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration)
-- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools)
-- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines)
+- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
+- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
+- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
+- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
+- [eslint](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
+- [eslint-plugin-jsonc](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
+- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
+- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
+- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
+- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
+- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
+- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
+- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
+- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines){target=_blank}
 <!-- referring-linters-end -->
 
 ## Open-source teams
@@ -43,8 +49,8 @@ Mega-Linter obviously would not exist without its linters and libraries, so many
 
 ## Super-Linter team
 
-Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791) on [GitHub Super-Linter](https://github.com/github/super-linter).
+Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
 
-Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved) :)
+Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 
 <!-- special-thanks-section-end -->

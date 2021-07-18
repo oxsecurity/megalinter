@@ -21,6 +21,7 @@ linters:
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround to allow fix
     cli_lint_fix_remove_args:
       - "--check"
+    linter_version_cache: "000"
     examples:
       - "dotnet-format --folder --check --exclude / --include myfile.vb"
       - "dotnet-format --folder --exclude / --include myfile.vb"
