@@ -431,7 +431,7 @@ class Megalinter:
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=ignored_files,
-            ignore_generated_files=self.ignore_generated_files
+            ignore_generated_files=self.ignore_generated_files,
         )
 
         logging.info(

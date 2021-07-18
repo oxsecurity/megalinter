@@ -122,7 +122,11 @@ def filter_files(
         if file_contains_regex and not file_contains(file, file_contains_regex_object):
             continue
 
-        if ignore_generated_files is not None and ignore_generated_files is True and file_is_generated(file):
+        if (
+            ignore_generated_files is not None
+            and ignore_generated_files is True
+            and file_is_generated(file)
+        ):
             continue
 
         filtered_files.append(file)
