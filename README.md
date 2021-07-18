@@ -13,7 +13,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-354.4k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-354.7k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
@@ -618,7 +618,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | **FLAVOR_SUGGESTIONS**                              | `true`                       | Provides suggestions about different Mega-Linter flavors to use to improve runtime performances                                                                                                             |
 | **FORMATTERS_DISABLE_ERRORS**                       | `true`                       | Formatter errors will be reported as errors (and not warnings) if this variable is set to `false`                                                                                                           |
 | **GITHUB_WORKSPACE**                                | ``                           | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` is not set                                                           |
-| **IGNORE_GENERATED_FILES**                          | `false`                      | If set to `true`, Mega-Linter will skip files containing `@generated` marker but without `@not-generated` marker                                                                                                                        |
+| **IGNORE_GENERATED_FILES**                          | `false`                      | If set to `true`, Mega-Linter will skip files containing `@generated` marker but without `@not-generated` marker (more info at [https://generated.at](https://generated.at/))                               |
 | **IGNORE_GITIGNORED_FILES**                         | `false`                      | If set to `true`, Mega-Linter will skip files ignored by git using `.gitignore` file                                                                                                                        |
 | **JAVASCRIPT_DEFAULT_STYLE**                        | `standard`                   | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                              |
 | **LINTER_RULES_PATH**                               | `.github/linters`            | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )                                    |
