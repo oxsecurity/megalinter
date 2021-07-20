@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.280**
+- Version in Mega-Linter: **2.0.283**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -70,8 +70,8 @@ checkov --file myfile.tf
 usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o [{cli,json,junitxml,github_failed_only}]] [--no-guide]
-               [--quiet] [--compact]
+               [-o [{cli,json,junitxml,github_failed_only}]] [--output-bc-ids]
+               [--no-guide] [--quiet] [--compact]
                [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}]
                [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}]
                [-c CHECK] [--skip-check SKIP_CHECK]
@@ -114,7 +114,13 @@ optional arguments:
   -l, --list            List checks
   -o [{cli,json,junitxml,github_failed_only}], --output [{cli,json,junitxml,github_failed_only}]
                         Report output format
-  --no-guide            do not fetch bridgecrew guide in checkov output report
+  --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
+                        Checkov IDs (CKV...), if the check exists in the
+                        platform
+  --no-guide            Do not fetch Bridgecrew platform IDs and guidelines
+                        for the checkov output report. Note: this prevents
+                        Bridgecrew platform check IDs from being used anywhere
+                        in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
   --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}
