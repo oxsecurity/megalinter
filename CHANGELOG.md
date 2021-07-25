@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.41.0] - 2021-07-25
+
 - New config variable **IGNORE_GITIGNORED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files ignored by git using `.gitignore` files
 - New config variable **IGNORE_GENERATED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files containing `@generated` marker and not containing `@not-generated` marker
 
@@ -41,22 +46,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.2 to **1.0.3** on 2021-07-25
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.8.0 to **1.8.1** on 2021-07-25
   - [xmllint](http://xmlsoft.org/xmllint.html) from 20910 to **20912** on 2021-07-25
-<!-- linter-versions-end -->
 
-## [4.40.0] - 2021-14-07
-
-- Add [mypy](https://github.com/python/mypy) python linter
-- mega-linter-runner: Add possibility to send the docker image to use, including from another registry than docker hub, with argument `--image`
-
-- Linter versions upgrades
-  - [phpstan](https://phpstan.org/) from 0.12.91 to **0.12.92** on 2021-07-10
-  - [checkov](https://www.checkov.io/) from 2.0.259 to **2.0.261** on 2021-07-11
-  - [checkov](https://www.checkov.io/) from 2.0.261 to **2.0.262** on 2021-07-11
-  - [checkov](https://www.checkov.io/) from 2.0.262 to **2.0.263** on 2021-07-12
-  - [checkov](https://www.checkov.io/) from 2.0.263 to **2.0.266** on 2021-07-13
-  - [checkov](https://www.checkov.io/) from 2.0.266 to **2.0.267** on 2021-07-13
-
-## [4.39.0] - 2021-14-07 [DELETED RELEASE BECAUSE NOT WORKING, USE 4.38.0 UNTIL 4.40.0 RELEASE]
+## [4.40.0] - 2021-07-14
 
 - Add [mypy](https://github.com/python/mypy) python linter
 - mega-linter-runner: Add possibility to send the docker image to use, including from another registry than docker hub, with argument `--image`
@@ -69,7 +60,20 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.263 to **2.0.266** on 2021-07-13
   - [checkov](https://www.checkov.io/) from 2.0.266 to **2.0.267** on 2021-07-13
 
-## [4.38.0] - 2021-10-07
+## [4.39.0] - 2021-07-14 [DELETED RELEASE BECAUSE NOT WORKING, USE 4.38.0 UNTIL 4.40.0 RELEASE]
+
+- Add [mypy](https://github.com/python/mypy) python linter
+- mega-linter-runner: Add possibility to send the docker image to use, including from another registry than docker hub, with argument `--image`
+
+- Linter versions upgrades
+  - [phpstan](https://phpstan.org/) from 0.12.91 to **0.12.92** on 2021-07-10
+  - [checkov](https://www.checkov.io/) from 2.0.259 to **2.0.261** on 2021-07-11
+  - [checkov](https://www.checkov.io/) from 2.0.261 to **2.0.262** on 2021-07-11
+  - [checkov](https://www.checkov.io/) from 2.0.262 to **2.0.263** on 2021-07-12
+  - [checkov](https://www.checkov.io/) from 2.0.263 to **2.0.266** on 2021-07-13
+  - [checkov](https://www.checkov.io/) from 2.0.266 to **2.0.267** on 2021-07-13
+
+## [4.38.0] - 2021-07-10
 
 - New python linter: [bandit](https://github.com/PyCQA/bandit), added by [Tom Pansino](https://github.com/tpansino)
 - Manage Github action versioning: Match Mega-Linter docker image version
