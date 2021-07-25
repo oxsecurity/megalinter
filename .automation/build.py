@@ -8,6 +8,7 @@ import logging
 import os
 import re
 import sys
+from datetime import datetime
 from shutil import copyfile
 from typing import Any
 from urllib import parse as parse_urllib
@@ -45,6 +46,7 @@ REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
+DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
@@ -1169,6 +1171,9 @@ def update_docker_pulls_counter():
     total_count = 0
     all_flavors_ids = list(megalinter.flavor_factory.get_all_flavors().keys())
     all_flavors_ids.insert(0, "all")
+    with open(DOCKER_STATS_FILE, "r", encoding="utf-8") as json_stats:
+        docker_stats = json.load(json_stats)
+    now_str = datetime.now().replace(microsecond=0).isoformat()
     for flavor_id in all_flavors_ids:
         if flavor_id == "all":
             docker_image_url = (
@@ -1181,8 +1186,12 @@ def update_docker_pulls_counter():
         flavor_count = resp["pull_count"] or 0
         logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
         total_count = total_count + flavor_count
+        flavor_stats = list(docker_stats.get(flavor_id, []))
+        flavor_stats.append([now_str, flavor_count ])
+        docker_stats[flavor_id] = flavor_stats
     total_count_human = number_human_format(total_count)
     logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
+    # Update total badge counters
     replace_in_file(
         f"{REPO_HOME}/README.md", "pulls-", "-blue", total_count_human, False
     )
@@ -1193,6 +1202,9 @@ def update_docker_pulls_counter():
         total_count_human,
         False,
     )
+    # Write docker stats
+    with open(DOCKER_STATS_FILE, "w", encoding="utf-8") as jsonstats:
+        json.dump(docker_stats, jsonstats, indent=4, sort_keys=True)
 
 
 def requests_retry_session(
