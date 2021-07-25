@@ -4,7 +4,7 @@
 
 ## xmllint documentation
 
-- Version in Mega-Linter: **20910**
+- Version in Mega-Linter: **20912**
 - Visit [Official Web Site](http://xmlsoft.org/xmllint.html){target=_blank}
 - See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics){target=_blank}
 
@@ -88,6 +88,7 @@ Usage : xmllint [options] XMLfiles ...
   --postvalid : do a posteriori validation, i.e after parsing
   --dtdvalid URL : do a posteriori validation against a given DTD
   --dtdvalidfpi FPI : same but name the DTD with a Public Identifier
+  --quiet : be quiet when succeeded
   --timing : print some timings
   --output file or -o file: save to a given file
   --repeat : repeat 100 times, for timing or profiling

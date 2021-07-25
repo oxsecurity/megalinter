@@ -31,6 +31,16 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [pylint](https://www.pylint.org) from 2.9.3 to **2.9.4** on 2021-07-21
   - [checkov](https://www.checkov.io/) from 2.0.283 to **2.0.287** on 2021-07-21
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.0 to **0.31.1** on 2021-07-21
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.27.1 to **0.28.1** on 2021-07-25
+  - [pylint](https://www.pylint.org) from 2.9.4 to **2.9.5** on 2021-07-25
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.1 to **2.10.0** on 2021-07-25
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.1 to **2.10.0** on 2021-07-25
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.1 to **2.10.0** on 2021-07-25
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.1 to **0.6.2** on 2021-07-25
+  - [checkov](https://www.checkov.io/) from 2.0.287 to **2.0.295** on 2021-07-25
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.2 to **1.0.3** on 2021-07-25
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.8.0 to **1.8.1** on 2021-07-25
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 20910 to **20912** on 2021-07-25
 <!-- linter-versions-end -->
 
 ## [4.40.0] - 2021-14-07
