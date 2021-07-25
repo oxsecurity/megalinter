@@ -1187,7 +1187,7 @@ def update_docker_pulls_counter():
         logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
         total_count = total_count + flavor_count
         flavor_stats = list(docker_stats.get(flavor_id, []))
-        flavor_stats.append([now_str, flavor_count ])
+        flavor_stats.append([now_str, flavor_count])
         docker_stats[flavor_id] = flavor_stats
     total_count_human = number_human_format(total_count)
     logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
