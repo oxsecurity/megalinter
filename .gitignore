@@ -96,6 +96,8 @@ coverage.xml
 
 **/report/*
 !**/salesforce/report/*
+!**/salesforce/good/report/*
+!**/salesforce/bad/report/*
 
 site/
 
