@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in Mega-Linter: **2.9.1**
+- Version in Mega-Linter: **2.10.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -82,8 +82,8 @@ evaluate a selection of rules against a codebase
 USAGE
   $ sfdx scanner:run -t <array> [-c <array>] [-r <array>] [-e <array>] [-f
   csv|html|json|junit|sarif|table|xml] [-o <string>] [--tsconfig <string>]
-  [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-v |
-  --json] [--verbose] [--loglevel
+  [--eslintconfig <string>] [--pmdconfig <string>] [--env <string>] [-s
+  <integer> |  | [-v | --json]] [--normalize-severity] [--verbose] [--loglevel
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
@@ -102,11 +102,15 @@ OPTIONS
   -r, --ruleset=ruleset
       [deprecated] ruleset(s) of rules to run
 
+  -s, --severity-threshold=severity-threshold
+      throws an error when violations of specific severity (or more severe) are
+      detected, invokes --normalize-severity
+
   -t, --target=target
       (required) location of source code
 
   -v, --violations-cause-error
-      throws an error when violations are detected
+      [deprecated] throws an error when violations are detected
 
   --env=env
       JSON-formatted string, overrides ESLint's default environment variables
@@ -120,6 +124,10 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
   L)
       [default: warn] logging level for this command invocation
+
+  --normalize-severity
+      A normalized severity 1 (high), 2 (moderate), and 3 (low) is returned in
+      addition to the engine specific severity
 
   --pmdconfig=pmdconfig
       location of PMD rule reference XML file to customize rule selection
@@ -186,6 +194,19 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "src" --eslintconfig
   "/home/my/setup/.eslintrc.json"
 
+    Use --normalize-severity to output a normalized (across all engines) severity
+  (1 [high], 2 [moderate], and 3 [low]) in addition to the engine specific
+  severity (when shown).
+      E.g., $ sfdx scanner:run --target "/some-project/" --format csv
+  --normalize-severity
+
+    Use --severity-threshold to throw a non-zero exit code when rule violations of
+  a specific severity (or greater) are found. For this example, if there are any
+  rule violations with a severity of 2 or more (which includes 1-high and
+  2-moderate), the exit code will be equal to the severity of the most severe
+  violation.
+      E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
+
 
 NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE
 ─────────────────────────────────────────────────  ───────────  ────────────────  ────────────────────────────────────────────────  ─────────────────
@@ -200,6 +221,7 @@ AvoidGlobalModifier                                apex         Best Practices  
 AvoidLogicInTrigger                                apex         Best Practices    Style,Default ruleset...,quickstart               pmd
 DebugsShouldUseLoggingLevel                        apex         Best Practices    quickstart                                        pmd
 UnusedLocalVariable                                apex         Best Practices                                                      pmd
+AvoidDebugStatements                               apex         Performance                                                         pmd
 AvoidDmlStatementsInLoops                          apex         Performance       Default ruleset...,Performance                    pmd
 AvoidSoqlInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
 AvoidSoslInLoops                                   apex         Performance       Default ruleset...,Performance                    pmd
@@ -249,6 +271,7 @@ EmptyIfStmt                                        apex         Error Prone     
 EmptyStatementBlock                                apex         Error Prone       Default ruleset...,Empty Code,quickstart          pmd
 EmptyTryOrFinallyBlock                             apex         Error Prone       Default ruleset...,Empty Code,quickstart          pmd
 EmptyWhileStmt                                     apex         Error Prone       Default ruleset...,Empty Code,quickstart          pmd
+InaccessibleAuraEnabledGetter                      apex         Error Prone                                                         pmd
 MethodWithSameNameAsEnclosingClass                 apex         Error Prone       Style,Default ruleset...,quickstart               pmd
 OverrideBothEqualsAndHashcode                      apex         Error Prone                                                         pmd
 TestMethodsMustBeInTestClasses                     apex         Error Prone                                                         pmd
