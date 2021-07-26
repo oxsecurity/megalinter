@@ -42,3 +42,29 @@ linters:
     install:
       pip:
         - sqlfluff
+  # TSQL
+  - linter_name: tsqllint
+    descriptor_flavors: 
+      - dotnet
+    linter_url: https://github.com/tsqllint/tsqllint
+    linter_repo: https://github.com/tsqllint/tsqllint
+    linter_image_url: https://tsqllint.gallerycdn.vsassets.io/extensions/tsqllint/tsqllint/1.2.0/1528922982751/Microsoft.VisualStudio.Services.Icons.Default
+    linter_rules_url: https://github.com/tsqllint/tsqllint#rule-configuration
+    linter_rules_configuration_url: https://github.com/tsqllint/tsqllint#rule-configuration
+    linter_rules_inline_disable_url: https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments
+    config_file_name: ".tsqllintrc"
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "--config"
+    cli_help_arg_name: "--help"
+    cli_version_arg_name: "--version"
+    test_folder: sql_tsql    
+    examples:
+      - "tsqllint myfile.sql"
+      - "tsqllint myfile.sql myfile2.sql"
+    install:
+      npm:
+        - tsqllint
+    ide:
+      vscode:
+        - name: TSQL Lint
+          url: https://marketplace.visualstudio.com/items?itemName=tsqllint.tsqllint

@@ -399,6 +399,11 @@
     "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
     "title": "terraform-linters/tflint"
   },
+  "tsqllint": {
+    "description": "Configurable linting for TSQL. Contribute to tsqllint/tsqllint development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/07bcefab8d31eb93bc746724c678639f64a396bb33c2f36f56b4c47d73906d60/tsqllint/tsqllint",
+    "title": "GitHub - tsqllint/tsqllint: Configurable linting for TSQL"
+  },
   "v8r": {
     "description": "\u2714\ufe0f A command-line JSON and YAML validator that's on your wavelength - chris48s/v8r",
     "image": "https://avatars0.githubusercontent.com/u/6025893?s=400&v=4",

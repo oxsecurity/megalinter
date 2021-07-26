@@ -193,6 +193,7 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell \
                 sql-lint \
+                tsqllint \
                 tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \

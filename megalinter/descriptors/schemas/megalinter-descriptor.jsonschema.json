@@ -615,6 +615,23 @@
             "title": "Default file name for the linter configuration file",
             "type": "string"
           },
+          "descriptor_flavors": {
+            "$id": "#/properties/linters/items/properties/descriptor_flavors",
+            "default": [],
+            "description": "Mega-Linter flavors matching this linter",
+            "examples": [
+              [
+                "all_flavors",
+                "java",
+                "php"
+              ]
+            ],
+            "items": {
+              "$ref": "#/definitions/enum_flavors"
+            },
+            "title": "Flavors",
+            "type": "array"
+          },
           "disabled": {
             "$id": "#/properties/linters/items/properties/disabled",
             "default": false,
