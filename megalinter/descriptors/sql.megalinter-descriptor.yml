@@ -44,7 +44,7 @@ linters:
         - sqlfluff
   # TSQL
   - linter_name: tsqllint
-    descriptor_flavors: 
+    descriptor_flavors:
       - dotnet
     linter_url: https://github.com/tsqllint/tsqllint
     linter_repo: https://github.com/tsqllint/tsqllint
@@ -57,7 +57,7 @@ linters:
     cli_config_arg_name: "--config"
     cli_help_arg_name: "--help"
     cli_version_arg_name: "--version"
-    test_folder: sql_tsql    
+    test_folder: sql_tsql
     examples:
       - "tsqllint myfile.sql"
       - "tsqllint myfile.sql myfile2.sql"
