@@ -15,6 +15,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [puppet-lint](http://puppet-lint.com/) from 2.4.2 to **2.5.0** on 2021-07-26
   - [checkov](https://www.checkov.io/) from 2.0.297 to **2.0.303** on 2021-07-26
   - [checkov](https://www.checkov.io/) from 2.0.303 to **2.0.307** on 2021-07-28
+  - [v8r](https://github.com/chris48s/v8r) from 0.5.0 to **0.6.0** on 2021-07-29
+  - [pylint](https://www.pylint.org) from 2.9.5 to **2.9.6** on 2021-07-29
+  - [checkov](https://www.checkov.io/) from 2.0.307 to **2.0.313** on 2021-07-29
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
