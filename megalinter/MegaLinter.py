@@ -502,7 +502,8 @@ class Megalinter:
 
     def list_git_ignored_files(self):
         repo = git.Repo(os.path.realpath(self.github_workspace))
-        ignored_files = repo.git.execute("git status --ignored")
+        # ignored_files = repo.git.execute(["git", "status", "--ignored"])
+        ignored_files = repo.git.execute(["git", "ls-files", "--exclude-standard", "--ignored", "--others"]).splitlines()
         ignored_files = list(
             map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
         )
