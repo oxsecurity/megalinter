@@ -18,6 +18,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [v8r](https://github.com/chris48s/v8r) from 0.5.0 to **0.6.0** on 2021-07-29
   - [pylint](https://www.pylint.org) from 2.9.5 to **2.9.6** on 2021-07-29
   - [checkov](https://www.checkov.io/) from 2.0.307 to **2.0.313** on 2021-07-29
+  - [isort](https://pycqa.github.io/isort/) from 5.9.2 to **5.9.3** on 2021-07-30
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.53 to **0.1.54** on 2021-07-30
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.1 to **0.4.2** on 2021-07-30
+  - [checkov](https://www.checkov.io/) from 2.0.313 to **2.0.317** on 2021-07-30
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25

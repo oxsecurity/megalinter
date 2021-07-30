@@ -9,7 +9,7 @@
 
 ## isort documentation
 
-- Version in Mega-Linter: **5.9.2**
+- Version in Mega-Linter: **5.9.3**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -97,7 +97,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [--blocked-extension BLOCKED_EXTENSIONS] [--dont-follow-links]
              [--filename FILENAME] [--allow-root] [-a ADD_IMPORTS] [--append]
              [--af] [--rm REMOVE_IMPORTS] [--float-to-top]
-             [--dont-float-to-top] [--ca] [--cs] [-e] [--ff FROM_FIRST]
+             [--dont-float-to-top] [--ca] [--cs] [-e] [--ff]
              [--fgw [FORCE_GRID_WRAP]] [-i INDENT] [--lai LINES_AFTER_IMPORTS]
              [--lbt LINES_BETWEEN_TYPES] [--le LINE_ENDING] [--ls] [--lss]
              [-m {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}]
@@ -241,8 +241,7 @@ general output options:
                         is imported from that namespace.
   -e, --balanced        Balances wrapping to produce the most consistent line
                         length possible
-  --ff FROM_FIRST, --from-first FROM_FIRST
-                        Switches the typical ordering preference, showing from
+  --ff, --from-first    Switches the typical ordering preference, showing from
                         imports first then straight ones.
   --fgw [FORCE_GRID_WRAP], --force-grid-wrap [FORCE_GRID_WRAP]
                         Force number of from imports (defaults to 2 when
