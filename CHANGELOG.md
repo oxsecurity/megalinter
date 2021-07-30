@@ -22,6 +22,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.53 to **0.1.54** on 2021-07-30
   - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.1 to **0.4.2** on 2021-07-30
   - [checkov](https://www.checkov.io/) from 2.0.313 to **2.0.317** on 2021-07-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.1 to **0.31.2** on 2021-07-30
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
