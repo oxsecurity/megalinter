@@ -12,7 +12,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in Mega-Linter: **7.31.0**
+- Version in Mega-Linter: **7.32.0**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -146,6 +146,7 @@ Miscellaneous:
   --init                          Run config initialization wizard - default: false
   --env-info                      Output execution environment information - default: false
   --no-error-on-unmatched-pattern  Prevent errors when pattern is unmatched
+  --exit-on-fatal-error           Exit with exit code 2 in case of fatal error - default: false
   --debug                         Output debugging information
   -h, --help                      Show help
   -v, --version                   Output the version number
