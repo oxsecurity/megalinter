@@ -205,6 +205,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
+          scan-type: image
           image-ref: "docker.io/nvuillam/mega-linter:${{steps.image_tag.outputs.tag}}"
           format: "table"
           exit-code: "1"
