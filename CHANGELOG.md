@@ -15,6 +15,19 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [puppet-lint](http://puppet-lint.com/) from 2.4.2 to **2.5.0** on 2021-07-26
   - [checkov](https://www.checkov.io/) from 2.0.297 to **2.0.303** on 2021-07-26
   - [checkov](https://www.checkov.io/) from 2.0.303 to **2.0.307** on 2021-07-28
+  - [v8r](https://github.com/chris48s/v8r) from 0.5.0 to **0.6.0** on 2021-07-29
+  - [pylint](https://www.pylint.org) from 2.9.5 to **2.9.6** on 2021-07-29
+  - [checkov](https://www.checkov.io/) from 2.0.307 to **2.0.313** on 2021-07-29
+  - [isort](https://pycqa.github.io/isort/) from 5.9.2 to **5.9.3** on 2021-07-30
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.53 to **0.1.54** on 2021-07-30
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.1 to **0.4.2** on 2021-07-30
+  - [checkov](https://www.checkov.io/) from 2.0.313 to **2.0.317** on 2021-07-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.1 to **0.31.2** on 2021-07-30
+  - [eslint](https://eslint.org) from 7.31.0 to **7.32.0** on 2021-07-31
+  - [phpstan](https://phpstan.org/) from 0.12.93 to **0.12.94** on 2021-07-31
+  - [checkov](https://www.checkov.io/) from 2.0.317 to **2.0.318** on 2021-07-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.2 to **0.31.3** on 2021-07-31
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.44 to **8.45** on 2021-08-01
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
