@@ -28,6 +28,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.317 to **2.0.318** on 2021-07-31
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.2 to **0.31.3** on 2021-07-31
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.44 to **8.45** on 2021-08-01
+  - [shfmt](https://github.com/mvdan/sh) from 3.3.0 to **3.3.1** on 2021-08-02
+  - [checkov](https://www.checkov.io/) from 2.0.318 to **2.0.323** on 2021-08-02
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
