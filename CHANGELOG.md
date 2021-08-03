@@ -30,6 +30,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.44 to **8.45** on 2021-08-01
   - [shfmt](https://github.com/mvdan/sh) from 3.3.0 to **3.3.1** on 2021-08-02
   - [checkov](https://www.checkov.io/) from 2.0.318 to **2.0.323** on 2021-08-02
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.52.0 to **0.53.0** on 2021-08-03
+  - [checkov](https://www.checkov.io/) from 2.0.323 to **2.0.327** on 2021-08-03
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
