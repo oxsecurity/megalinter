@@ -35,6 +35,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [remark-lint](https://remark.js.org/) from 13.0.0 to **14.0.1** on 2021-08-04
   - [checkov](https://www.checkov.io/) from 2.0.327 to **2.0.330** on 2021-08-04
   - [yamllint](https://yamllint.readthedocs.io/) from 1.26.1 to **1.26.2** on 2021-08-04
+  - [checkov](https://www.checkov.io/) from 2.0.330 to **2.0.334** on 2021-08-05
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
