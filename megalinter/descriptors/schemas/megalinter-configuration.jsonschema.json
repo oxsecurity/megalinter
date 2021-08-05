@@ -2762,6 +2762,12 @@
       "title": "HTML_HTMLHINT: Custom config file path",
       "type": "string"
     },
+    "IGNORE_GENERATED_FILES": {
+      "$id": "#/properties/IGNORE_GENERATED_FILES",
+      "default": false,
+      "title": "Makes Mega-Linter skip files containing @generated marker (and not containing @not-generated)",
+      "type": "boolean"
+    },
     "IGNORE_GITIGNORED_FILES": {
       "$id": "#/properties/IGNORE_GITIGNORED_FILES",
       "default": false,
