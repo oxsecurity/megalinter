@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Store docker pulls statistics history
+- add `IGNORE_GENERATED_FILES` in json schema
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.295 to **2.0.297** on 2021-07-25
