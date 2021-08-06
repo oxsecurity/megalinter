@@ -71,6 +71,9 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 ansible-lint \
+                gcompat \
+                libunwind \
+                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

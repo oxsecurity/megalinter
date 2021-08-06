@@ -104,6 +104,9 @@ RUN apk add --update --no-cache \
                 R \
                 R-dev \
                 R-doc \
+                gcompat \
+                libunwind \
+                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

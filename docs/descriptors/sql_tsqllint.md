@@ -4,7 +4,6 @@
 
 ## tsqllint documentation
 
-- Version in Mega-Linter: **1.11.0.0**
 - Visit [Official Web Site](https://github.com/tsqllint/tsqllint#readme){target=_blank}
 - See [How to configure tsqllint rules](https://github.com/tsqllint/tsqllint#rule-configuration){target=_blank}
 - See [How to disable tsqllint rules in files](https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments){target=_blank}
@@ -86,5 +85,9 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
 ### Installation on mega-linter Docker image
 
+- APK packages (Linux):
+  - [gcompat](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcompat)
+  - [libunwind](https://pkgs.alpinelinux.org/packages?branch=edge&name=libunwind)
+  - [libuuid](https://pkgs.alpinelinux.org/packages?branch=edge&name=libuuid)
 - NPM packages (node.js):
   - [tsqllint](https://www.npmjs.com/package/tsqllint)
