@@ -228,6 +228,7 @@
             "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
+            "CLOJURE_CLJ_KONDO",
             "COPYPASTE_JSCPD",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
