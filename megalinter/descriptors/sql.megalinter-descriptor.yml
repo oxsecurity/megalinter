@@ -62,6 +62,10 @@ linters:
       - "tsqllint myfile.sql"
       - "tsqllint myfile.sql myfile2.sql"
     install:
+      apk:
+        - gcompat 
+        - libunwind 
+        - libuuid
       npm:
         - tsqllint
     ide:
