@@ -9,7 +9,7 @@
 
 Optional static typing checks for python
 
-If you don't use python static typing, you should disable this linter by adding `- PYTHON_MYPY` in `DISABLE_LINTERS` variable in your .mega-linter.yml config file
+If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your .mega-linter.yml config file
 
 ## mypy documentation
 
