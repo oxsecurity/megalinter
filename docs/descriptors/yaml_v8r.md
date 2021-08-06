@@ -6,7 +6,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in Mega-Linter: **0.5.0**
+- Version in Mega-Linter: **0.6.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -99,6 +99,8 @@ Options:
   -s, --schema         Local path or URL of schema to validate file against. If
                        not supplied, we will attempt to find an appropriate
                        schema on schemastore.org using the filename     [string]
+  -c, --catalogs       Local path or URL of custom catalogs to use prior to
+                       schemastore.org                                   [array]
       --ignore-errors  Exit with code 0 even if an error was encountered.
                        Passing this flag means a non-zero exit code is only
                        issued if validation could be completed successfully and

@@ -10,11 +10,39 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
 - Store docker pulls statistics history
+- add `IGNORE_GENERATED_FILES` in json schema
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.295 to **2.0.297** on 2021-07-25
   - [puppet-lint](http://puppet-lint.com/) from 2.4.2 to **2.5.0** on 2021-07-26
   - [checkov](https://www.checkov.io/) from 2.0.297 to **2.0.303** on 2021-07-26
+  - [checkov](https://www.checkov.io/) from 2.0.303 to **2.0.307** on 2021-07-28
+  - [v8r](https://github.com/chris48s/v8r) from 0.5.0 to **0.6.0** on 2021-07-29
+  - [pylint](https://www.pylint.org) from 2.9.5 to **2.9.6** on 2021-07-29
+  - [checkov](https://www.checkov.io/) from 2.0.307 to **2.0.313** on 2021-07-29
+  - [isort](https://pycqa.github.io/isort/) from 5.9.2 to **5.9.3** on 2021-07-30
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.53 to **0.1.54** on 2021-07-30
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.1 to **0.4.2** on 2021-07-30
+  - [checkov](https://www.checkov.io/) from 2.0.313 to **2.0.317** on 2021-07-30
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.1 to **0.31.2** on 2021-07-30
+  - [eslint](https://eslint.org) from 7.31.0 to **7.32.0** on 2021-07-31
+  - [phpstan](https://phpstan.org/) from 0.12.93 to **0.12.94** on 2021-07-31
+  - [checkov](https://www.checkov.io/) from 2.0.317 to **2.0.318** on 2021-07-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.2 to **0.31.3** on 2021-07-31
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.44 to **8.45** on 2021-08-01
+  - [shfmt](https://github.com/mvdan/sh) from 3.3.0 to **3.3.1** on 2021-08-02
+  - [checkov](https://www.checkov.io/) from 2.0.318 to **2.0.323** on 2021-08-02
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.52.0 to **0.53.0** on 2021-08-03
+  - [checkov](https://www.checkov.io/) from 2.0.323 to **2.0.327** on 2021-08-03
+  - [remark-lint](https://remark.js.org/) from 13.0.0 to **14.0.1** on 2021-08-04
+  - [checkov](https://www.checkov.io/) from 2.0.327 to **2.0.330** on 2021-08-04
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.1 to **1.26.2** on 2021-08-04
+  - [checkov](https://www.checkov.io/) from 2.0.330 to **2.0.334** on 2021-08-05
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.3 to **1.0.4** on 2021-08-05
+  - [checkov](https://www.checkov.io/) from 2.0.334 to **2.0.336** on 2021-08-05
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.0 to **2.10.1005** on 2021-08-06
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.0 to **2.10.1005** on 2021-08-06
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.0 to **2.10.1005** on 2021-08-06
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25

@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in Mega-Linter: **0.1.53**
+- Version in Mega-Linter: **0.1.54**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
