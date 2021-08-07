@@ -42,6 +42,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.0 to **2.10.1005** on 2021-08-06
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.0 to **2.10.1005** on 2021-08-06
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.0 to **2.10.1005** on 2021-08-06
+  - [v8r](https://github.com/chris48s/v8r) from 0.6.0 to **0.6.1** on 2021-08-07
+  - [checkov](https://www.checkov.io/) from 2.0.336 to **2.0.337** on 2021-08-07
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.8.1 to **1.9.0** on 2021-08-07
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
