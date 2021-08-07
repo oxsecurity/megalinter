@@ -124,6 +124,9 @@ RUN npm install --no-cache --ignore-scripts \
                 tekton-lint
 #NPM__END
 
+# Fix security issues
+RUN npm audit fix
+
 # Add node packages to path #
 ENV PATH="/node_modules/.bin:${PATH}"
 
