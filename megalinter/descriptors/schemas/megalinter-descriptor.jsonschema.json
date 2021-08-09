@@ -60,6 +60,23 @@
       "title": "Flavors",
       "type": "array"
     },
+    "descriptor_flavors_exclude": {
+      "$id": "#/properties/descriptor_flavors_exclude",
+      "default": [],
+      "description": "Mega-Linter flavors that must not contain this descriptor",
+      "examples": [
+        [
+          "all_flavors",
+          "java",
+          "php"
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/enum_flavors"
+      },
+      "title": "Flavors",
+      "type": "array"
+    },
     "descriptor_id": {
       "$id": "#/properties/descriptor_id",
       "default": "",
@@ -619,6 +636,23 @@
             "$id": "#/properties/linters/items/properties/descriptor_flavors",
             "default": [],
             "description": "Mega-Linter flavors matching this linter",
+            "examples": [
+              [
+                "all_flavors",
+                "java",
+                "php"
+              ]
+            ],
+            "items": {
+              "$ref": "#/definitions/enum_flavors"
+            },
+            "title": "Flavors",
+            "type": "array"
+          },
+          "descriptor_flavors_exclude": {
+            "$id": "#/properties/linters/items/properties/descriptor_flavors_exclude",
+            "default": [],
+            "description": "Mega-Linter flavors that must not contain this descriptor",
             "examples": [
               [
                 "all_flavors",

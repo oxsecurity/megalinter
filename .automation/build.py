@@ -283,7 +283,9 @@ branding:
 
 
 def match_flavor(item, flavor):
-    if flavor == "all":
+    if "descriptor_flavors_exclude" in item and flavor in item["descriptor_flavors_exclude"]:
+        return False
+    elif flavor == "all":
         return True
     elif "descriptor_flavors" in item:
         if flavor in item["descriptor_flavors"] or (

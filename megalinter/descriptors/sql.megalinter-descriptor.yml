@@ -46,6 +46,8 @@ linters:
   - linter_name: tsqllint
     descriptor_flavors:
       - dotnet
+    descriptor_flavors_exclude:
+      - all
     linter_url: https://github.com/tsqllint/tsqllint
     linter_repo: https://github.com/tsqllint/tsqllint
     linter_image_url: https://tsqllint.gallerycdn.vsassets.io/extensions/tsqllint/tsqllint/1.2.0/1528922982751/Microsoft.VisualStudio.Services.Icons.Default
