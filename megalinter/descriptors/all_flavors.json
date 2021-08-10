@@ -312,6 +312,7 @@
             "SPELL_CSPELL",
             "SQL_SQL_LINT",
             "SQL_SQLFLUFF",
+            "SQL_TSQLLINT",
             "TEKTON_TEKTON_LINT",
             "TSX_ESLINT",
             "TYPESCRIPT_ES",

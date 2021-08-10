@@ -65,6 +65,9 @@ RUN apk add --update --no-cache \
                 npm \
                 nodejs-current \
                 ansible-lint \
+                gcompat \
+                libunwind \
+                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -138,6 +141,7 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell \
                 sql-lint \
+                tsqllint \
                 tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \

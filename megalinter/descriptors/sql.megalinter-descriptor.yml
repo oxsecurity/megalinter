@@ -46,6 +46,7 @@ linters:
   - linter_name: tsqllint
     descriptor_flavors:
       - dotnet
+      - javascript
     descriptor_flavors_exclude:
       - all
     linter_url: https://github.com/tsqllint/tsqllint
