@@ -71,6 +71,9 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 ansible-lint \
+                gcompat \
+                libunwind \
+                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -130,6 +133,7 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell \
                 sql-lint \
+                tsqllint \
                 tekton-lint
 #NPM__END
 

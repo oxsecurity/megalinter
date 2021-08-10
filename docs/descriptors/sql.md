@@ -9,6 +9,7 @@
 |-----------------------------|------------------------|
 | [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) |
 | [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) |
+| [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) |
 
 ## Linted files
 
