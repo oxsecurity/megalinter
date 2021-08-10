@@ -9,7 +9,7 @@
 
 ## clj-kondo documentation
 
-- Version in Mega-Linter: **2021.08.03**
+- Version in Mega-Linter: **2021.08.06**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -77,7 +77,7 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2021.08.03
+clj-kondo v2021.08.06
 
 
 Options:
@@ -100,7 +100,7 @@ Options:
   nearest `.clj-kondo` directory in the current and parent directories.
 
   --config <config>: config may be a file or an EDN expression. See
-    https://cljdoc.org/d/clj-kondo/clj-kondo/2021.08.03/doc/configuration
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2021.08.06/doc/configuration
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.
@@ -120,7 +120,7 @@ Options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM cljkondo/clj-kondo:2021.08.03-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2021.08.06-alpine as clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 ```
 
