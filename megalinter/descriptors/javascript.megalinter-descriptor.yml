@@ -30,7 +30,7 @@ linters:
       - ".eslintrc.yml"
       - ".eslintrc.yaml"
       - ".eslintrc.js"
-      - ".eslintrc.cjs"      
+      - ".eslintrc.cjs"
     cli_lint_mode: list_of_files
     config_file_name: .eslintrc.json
     cli_config_extra_args:

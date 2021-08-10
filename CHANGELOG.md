@@ -51,6 +51,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.45 to **8.45.1** on 2021-08-09
   - [checkov](https://www.checkov.io/) from 2.0.338 to **2.0.340** on 2021-08-09
   - [checkov](https://www.checkov.io/) from 2.0.340 to **2.0.342** on 2021-08-10
+  - [checkov](https://www.checkov.io/) from 2.0.342 to **2.0.344** on 2021-08-10
 <!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
