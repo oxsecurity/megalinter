@@ -104,6 +104,8 @@ RUN npm install --no-cache --ignore-scripts \
                 typescript \
                 @coffeelint/cli \
                 jscpd \
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
                 stylelint \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
