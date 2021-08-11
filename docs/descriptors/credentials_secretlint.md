@@ -65,7 +65,7 @@ secretlint "*/**"
 ```
 
 ```shell
-secretlint --secretlintrc .secretlintrc.json "**/*""
+secretlint --secretlintrc .secretlintrc.json "**/*"
 ```
 
 
