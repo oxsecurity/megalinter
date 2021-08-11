@@ -1216,12 +1216,12 @@ def update_docker_pulls_counter():
 def keep_one_stat_by_day(flavor_stats):
     filtered_flavor_stats = []
     prev_date = date.min
-    for [count_date_iso,count_date_number] in flavor_stats:
+    for [count_date_iso, count_date_number] in flavor_stats:
         count_date = datetime.fromisoformat(count_date_iso).date()
         if count_date == prev_date:
             filtered_flavor_stats.pop()
-        filtered_flavor_stats.append([count_date_iso,count_date_number])
-        prev_date = count_date  
+        filtered_flavor_stats.append([count_date_iso, count_date_number])
+        prev_date = count_date
     return filtered_flavor_stats
 
 
