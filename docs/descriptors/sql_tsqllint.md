@@ -86,9 +86,12 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
 ### Installation on mega-linter Docker image
 
+- Dockerfile commands :
+```dockerfile
+RUN npm install --no-cache tsqllint
+```
+
 - APK packages (Linux):
   - [gcompat](https://pkgs.alpinelinux.org/packages?branch=edge&name=gcompat)
   - [libunwind](https://pkgs.alpinelinux.org/packages?branch=edge&name=libunwind)
   - [libuuid](https://pkgs.alpinelinux.org/packages?branch=edge&name=libuuid)
-- NPM packages (node.js):
-  - [tsqllint](https://www.npmjs.com/package/tsqllint)
