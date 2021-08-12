@@ -143,7 +143,6 @@ RUN npm install --no-cache --ignore-scripts \
                 @stoplight/spectral@5.6.0 \
                 cspell \
                 sql-lint \
-                tsqllint \
                 tekton-lint \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
@@ -212,6 +211,9 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
     && sh ./install-misspell.sh
 
+
+# tsqllint installation
+RUN npm install --no-cache tsqllint
 
 #OTHER__END
 

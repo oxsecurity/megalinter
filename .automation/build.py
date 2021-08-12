@@ -8,7 +8,7 @@ import logging
 import os
 import re
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from shutil import copyfile
 from typing import Any
 from urllib import parse as parse_urllib
@@ -1193,6 +1193,7 @@ def update_docker_pulls_counter():
         total_count = total_count + flavor_count
         flavor_stats = list(docker_stats.get(flavor_id, []))
         flavor_stats.append([now_str, flavor_count])
+        flavor_stats = keep_one_stat_by_day(flavor_stats)
         docker_stats[flavor_id] = flavor_stats
     total_count_human = number_human_format(total_count)
     logging.info(f"Total docker pulls: {total_count_human} ({total_count})")
@@ -1210,6 +1211,18 @@ def update_docker_pulls_counter():
     # Write docker stats
     with open(DOCKER_STATS_FILE, "w", encoding="utf-8") as jsonstats:
         json.dump(docker_stats, jsonstats, indent=4, sort_keys=True)
+
+
+def keep_one_stat_by_day(flavor_stats):
+    filtered_flavor_stats = []
+    prev_date = date.min
+    for [count_date_iso, count_date_number] in flavor_stats:
+        count_date = datetime.fromisoformat(count_date_iso).date()
+        if count_date == prev_date:
+            filtered_flavor_stats.pop()
+        filtered_flavor_stats.append([count_date_iso, count_date_number])
+        prev_date = count_date
+    return filtered_flavor_stats
 
 
 def requests_retry_session(

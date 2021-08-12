@@ -69,8 +69,8 @@ linters:
         - gcompat
         - libunwind
         - libuuid
-      npm:
-        - tsqllint
+      dockerfile:
+        - RUN npm install --no-cache tsqllint
     ide:
       vscode:
         - name: TSQL Lint
