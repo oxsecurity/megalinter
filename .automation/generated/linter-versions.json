@@ -59,6 +59,7 @@
     "rubocop": "0.82.0",
     "scalafix": "0.9.29",
     "scss-lint": "0.59.0",
+    "secretlint": "3.3.0",
     "sfdx-scanner": "2.8.0",
     "sfdx-scanner-apex": "2.10.1005",
     "sfdx-scanner-aura": "2.10.1005",

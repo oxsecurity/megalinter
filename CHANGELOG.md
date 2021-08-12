@@ -14,6 +14,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.42.0] - 2021-08-12
 
 - Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
+- Add [secretlint](https://github.com/secretlint/secretlint) to check for credentials , secrets and passwords stored in linted repository
 - Store docker pulls statistics history
 - add `IGNORE_GENERATED_FILES` in json schema
 - allow commonjs config file for eslint - [#629](https://github.com/nvuillam/mega-linter/pull/629), by [vitalitytv](https://github.com/vitaliytv)

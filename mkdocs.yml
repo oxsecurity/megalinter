@@ -260,6 +260,9 @@ nav:
           - "COPYPASTE":
               - "All COPYPASTE linters": "descriptors/copypaste.md"
               - "jscpd": "descriptors/copypaste_jscpd.md"
+          - "CREDENTIALS":
+              - "All CREDENTIALS linters": "descriptors/credentials.md"
+              - "secretlint": "descriptors/credentials_secretlint.md"
           - "GIT":
               - "All GIT linters": "descriptors/git.md"
               - "git_diff": "descriptors/git_git_diff.md"

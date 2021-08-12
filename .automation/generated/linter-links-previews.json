@@ -304,6 +304,11 @@
     "image": "https://avatars3.githubusercontent.com/u/677877?s=400&v=4",
     "title": "sds/scss-lint"
   },
+  "secretlint": {
+    "description": "Pluggable linting tool to prevent committing credential. - GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential.",
+    "image": "https://repository-images.githubusercontent.com/239106765/29bc0580-5b2f-11ea-89e2-d985890508c1",
+    "title": "GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential."
+  },
   "sfdx-scanner": {
     "description": "",
     "image": null,
