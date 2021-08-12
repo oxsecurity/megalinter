@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Add [secretlint](https://github.com/secretlint/secretlint) to check for credentials , secrets and passwords stored in linted repository
+
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.6.1 to **6.7.0** on 2021-08-12
   - [checkov](https://www.checkov.io/) from 2.0.344 to **2.0.346** on 2021-08-12
@@ -16,7 +18,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.42.0] - 2021-08-12
 
 - Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
-- Add [secretlint](https://github.com/secretlint/secretlint) to check for credentials , secrets and passwords stored in linted repository
 - Store docker pulls statistics history
 - add `IGNORE_GENERATED_FILES` in json schema
 - allow commonjs config file for eslint - [#629](https://github.com/nvuillam/mega-linter/pull/629), by [vitalitytv](https://github.com/vitaliytv)
