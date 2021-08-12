@@ -40,6 +40,7 @@
 - [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
 - [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
 - [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
+- [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
 - [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines){target=_blank}
 <!-- referring-linters-end -->
 
