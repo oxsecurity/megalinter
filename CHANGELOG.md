@@ -11,6 +11,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.6.1 to **6.7.0** on 2021-08-12
   - [checkov](https://www.checkov.io/) from 2.0.344 to **2.0.346** on 2021-08-12
+  - [checkov](https://www.checkov.io/) from 2.0.346 to **2.0.347** on 2021-08-12
 <!-- linter-versions-end -->
 
 ## [4.42.0] - 2021-08-12
