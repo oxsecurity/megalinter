@@ -4,6 +4,7 @@
 
 ## secretlint documentation
 
+- Version in Mega-Linter: **3.3.0**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file is not found, [.secretlintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.secretlintrc.json){target=_blank} will be used
@@ -69,6 +70,44 @@ secretlint "*/**"
 secretlint --secretlintrc .secretlintrc.json "**/*"
 ```
 
+
+### Help content
+
+```shell
+
+  Secretlint CLI that scan secret/credential data.
+
+  Usage
+    $ secretlint [file|glob*]
+
+  Note
+    supported glob syntax is based on microglob
+    https://github.com/micromatch/micromatch#matching-features
+
+  Options
+    --init             setup config file. Create .secretlintrc.json file from your package.json
+    --format           [String] formatter name. Default: "stylish". Available Formatter: checkstyle, compact, jslint-xml, json, junit, pretty-error, stylish, tap, unix, table.d, table
+    --output           [path:String] output file path that is written of reported result.
+    --no-color         disable ANSI-color of output.
+    --no-terminalLink  disable terminalLink of output.
+    --maskSecrets      enable masking of secret values. replace actual secrets with "***".
+    --secretlintrc     [path:String] path to .secretlintrc config file. Default: .secretlintrc.*
+    --secretlintignore [path:String] path to .secretlintignore file. Default: .secretlintignore
+
+  Options for Developer
+    --profile          Enable performance profile.
+    --secretlintrcJSON [String] a JSON string of .secretlintrc. use JSON string instead of rc file.
+
+  Experimental Options
+    --locale            [String] locale tag for translating message. Default: en
+
+  Examples
+    $ secretlint ./README.md
+    # glob pattern should be wrapped with double quote
+    $ secretlint "**/*"
+    $ secretlint "source/**/*.ini"
+
+```
 
 ### Installation on mega-linter Docker image
 
