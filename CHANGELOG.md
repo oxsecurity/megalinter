@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.42.0] - 2021-08-12
+
 - Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
 - Store docker pulls statistics history
 - add `IGNORE_GENERATED_FILES` in json schema
@@ -52,7 +57,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.338 to **2.0.340** on 2021-08-09
   - [checkov](https://www.checkov.io/) from 2.0.340 to **2.0.342** on 2021-08-10
   - [checkov](https://www.checkov.io/) from 2.0.342 to **2.0.344** on 2021-08-10
-<!-- linter-versions-end -->
 
 ## [4.41.0] - 2021-07-25
 
