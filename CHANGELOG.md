@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Upgrade tflint descriptor to use ghcr.io/terraform-linters/tflint docker image and initialize tflint
+
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.3 to **7.1.4** on 2021-08-13
   - [checkov](https://www.checkov.io/) from 2.0.347 to **2.0.348** on 2021-08-13
