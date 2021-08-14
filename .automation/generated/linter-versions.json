@@ -78,7 +78,7 @@
     "terraform-fmt": "1.0.4",
     "terragrunt": "0.31.4",
     "terrascan": "1.9.0",
-    "tflint": "0.29.1",
+    "tflint": "0.31.0",
     "v8r": "0.6.1",
     "xmllint": "20912",
     "yamllint": "1.26.2"
