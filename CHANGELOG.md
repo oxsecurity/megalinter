@@ -12,6 +12,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.3 to **7.1.4** on 2021-08-13
   - [checkov](https://www.checkov.io/) from 2.0.347 to **2.0.348** on 2021-08-13
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.6.6 to **5.6.7** on 2021-08-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.3 to **0.31.4** on 2021-08-14
 <!-- linter-versions-end -->
 
 ## [4.43.0] - 2021-08-12
