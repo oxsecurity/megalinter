@@ -21,6 +21,7 @@
 ### Articles
 - [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
+- [Mega-Linter on R2DevOps Hub](https://r2devops.io/jobs/static_tests/mega_linter/)
 
 ### Linters
 
