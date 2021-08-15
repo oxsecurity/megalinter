@@ -300,6 +300,7 @@ nav:
       - "swift": "flavors/swift.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end
+      - "Flavors statistics": "flavors-stats.md"
   - "Run locally": "mega-linter-runner.md"
   - "Badge": "badge.md"
   - "List of linters": "all_linters.md"
