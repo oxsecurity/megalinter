@@ -89,8 +89,8 @@ def filter_files(
 
     # if each file is check against every ignored_files (it can contain all the files), it's a O(n²) filtering
     # to reduce the execution time and complexity ignored_files is split
-    ignored_patterns = list(filter(lambda x: '*' in x, ignored_files))
-    ignored_fileset = set(ignored_files)
+    ignored_patterns = list(filter(lambda x: '*' in x, ignored_files or []))
+    ignored_fileset = set(ignored_files or [])
 
     # Filter all files to keep only the ones matching with the current linter
 
