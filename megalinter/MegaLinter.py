@@ -501,12 +501,12 @@ class Megalinter:
         return all_files
 
     def list_git_ignored_files(self):
-        repo = git.Repo(os.path.realpath(self.github_workspace))
-        ignored_files = repo.git.execute("git status --ignored")
-        ignored_files = list(
-            map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
-        )
-        return ignored_files
+        workspace_path = os.path.realpath(self.github_workspace)
+        repo = git.Repo(workspace_path)
+        # List git ignored files on separate lines
+        command_output = repo.git.execute(["git", "ls-files", "-io", "--exclude-standard"])
+        # Convert to absolute paths for filtering
+        return [os.path.join(workspace_path, file) for file in command_output.split("\n")]
 
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
