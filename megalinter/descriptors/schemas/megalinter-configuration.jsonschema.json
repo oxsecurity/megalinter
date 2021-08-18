@@ -48,6 +48,7 @@
         "COFFEE",
         "COPYPASTE",
         "CPP",
+        "CREDENTIALS",
         "CSHARP",
         "CSS",
         "DART",
@@ -110,6 +111,7 @@
         "COFFEE_COFFEELINT",
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
+        "CREDENTIALS_SECRETLINT",
         "CSHARP_DOTNET_FORMAT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
@@ -174,6 +176,7 @@
         "SPELL_CSPELL",
         "SQL_SQL_LINT",
         "SQL_SQLFLUFF",
+        "SQL_TSQLLINT",
         "SWIFT_SWIFTLINT",
         "TEKTON_TEKTON_LINT",
         "TERRAFORM_TFLINT",
@@ -1058,6 +1061,91 @@
     "CPP_FILTER_REGEX_INCLUDE": {
       "$id": "#/properties/CPP_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for CPP descriptor",
+      "type": "string"
+    },
+    "CREDENTIALS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CREDENTIALS_FILTER_REGEX_EXCLUDE",
+      "title": "Excluding regex filter for CREDENTIALS descriptor",
+      "type": "string"
+    },
+    "CREDENTIALS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CREDENTIALS_FILTER_REGEX_INCLUDE",
+      "title": "Including regex filter for CREDENTIALS descriptor",
+      "type": "string"
+    },
+    "CREDENTIALS_SECRETLINT_ARGUMENTS": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_ARGUMENTS",
+      "description": "CREDENTIALS_SECRETLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CREDENTIALS_SECRETLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "CREDENTIALS_SECRETLINT_CONFIG_FILE": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_CONFIG_FILE",
+      "default": ".secretlintrc.json",
+      "description": "CREDENTIALS_SECRETLINT: User custom config file name if different from default",
+      "title": "CREDENTIALS_SECRETLINT: Custom config file name",
+      "type": "string"
+    },
+    "CREDENTIALS_SECRETLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "CREDENTIALS_SECRETLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "CREDENTIALS_SECRETLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "CREDENTIALS_SECRETLINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "CREDENTIALS_SECRETLINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "CREDENTIALS_SECRETLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_FILTER_REGEX_EXCLUDE",
+      "title": "CREDENTIALS_SECRETLINT: Excluding Regex",
+      "type": "string"
+    },
+    "CREDENTIALS_SECRETLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_FILTER_REGEX_INCLUDE",
+      "title": "CREDENTIALS_SECRETLINT: Including Regex",
+      "type": "string"
+    },
+    "CREDENTIALS_SECRETLINT_RULES_PATH": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_RULES_PATH",
+      "description": "CREDENTIALS_SECRETLINT: Path where to find linter configuration file",
+      "title": "CREDENTIALS_SECRETLINT: Custom config file path",
       "type": "string"
     },
     "CSHARP_DOTNET_FORMAT_ARGUMENTS": {
@@ -6947,6 +7035,81 @@
       "$id": "#/properties/SQL_SQL_LINT_RULES_PATH",
       "description": "SQL_SQL_LINT: Path where to find linter configuration file",
       "title": "SQL_SQL_LINT: Custom config file path",
+      "type": "string"
+    },
+    "SQL_TSQLLINT_ARGUMENTS": {
+      "$id": "#/properties/SQL_TSQLLINT_ARGUMENTS",
+      "description": "SQL_TSQLLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_TSQLLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "SQL_TSQLLINT_CONFIG_FILE": {
+      "$id": "#/properties/SQL_TSQLLINT_CONFIG_FILE",
+      "default": ".tsqllintrc",
+      "description": "SQL_TSQLLINT: User custom config file name if different from default",
+      "title": "SQL_TSQLLINT: Custom config file name",
+      "type": "string"
+    },
+    "SQL_TSQLLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/SQL_TSQLLINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "SQL_TSQLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "SQL_TSQLLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "SQL_TSQLLINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/SQL_TSQLLINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_TSQLLINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "SQL_TSQLLINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/SQL_TSQLLINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_TSQLLINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "SQL_TSQLLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_EXCLUDE",
+      "title": "SQL_TSQLLINT: Excluding Regex",
+      "type": "string"
+    },
+    "SQL_TSQLLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_INCLUDE",
+      "title": "SQL_TSQLLINT: Including Regex",
+      "type": "string"
+    },
+    "SQL_TSQLLINT_RULES_PATH": {
+      "$id": "#/properties/SQL_TSQLLINT_RULES_PATH",
+      "description": "SQL_TSQLLINT: Path where to find linter configuration file",
+      "title": "SQL_TSQLLINT: Custom config file path",
       "type": "string"
     },
     "SWIFT_FILTER_REGEX_EXCLUDE": {

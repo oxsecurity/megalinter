@@ -304,6 +304,11 @@
     "image": "https://avatars3.githubusercontent.com/u/677877?s=400&v=4",
     "title": "sds/scss-lint"
   },
+  "secretlint": {
+    "description": "Pluggable linting tool to prevent committing credential. - GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential.",
+    "image": "https://repository-images.githubusercontent.com/239106765/29bc0580-5b2f-11ea-89e2-d985890508c1",
+    "title": "GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential."
+  },
   "sfdx-scanner": {
     "description": "",
     "image": null,
@@ -398,6 +403,11 @@
     "description": "TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12) - terraform-linters/tflint",
     "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
     "title": "terraform-linters/tflint"
+  },
+  "tsqllint": {
+    "description": "Configurable linting for TSQL. Contribute to tsqllint/tsqllint development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/07bcefab8d31eb93bc746724c678639f64a396bb33c2f36f56b4c47d73906d60/tsqllint/tsqllint",
+    "title": "GitHub - tsqllint/tsqllint: Configurable linting for TSQL"
   },
   "v8r": {
     "description": "\u2714\ufe0f A command-line JSON and YAML validator that's on your wavelength - chris48s/v8r",

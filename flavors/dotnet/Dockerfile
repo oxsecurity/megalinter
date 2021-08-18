@@ -71,6 +71,9 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 ansible-lint \
+                gcompat \
+                libunwind \
+                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -109,6 +112,8 @@ RUN echo 'package-lock=false' >> .npmrc
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 jscpd \
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
                 stylelint \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
@@ -228,6 +233,9 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
     && sh ./install-misspell.sh
 
+
+# tsqllint installation
+RUN npm install --no-cache tsqllint
 
 #OTHER__END
 

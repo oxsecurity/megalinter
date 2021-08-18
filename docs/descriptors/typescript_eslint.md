@@ -61,14 +61,14 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                  | Flavor                                                                   | Description                                           | Embedded linters | Info                                                                                                                                                                                         |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|-------------------------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor                            | 91               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                       |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>          | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 47               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor                            | 93               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                       |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>          | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects | 49               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
 
 ## Behind the scenes
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js`
+- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs`
 - File extensions: `.ts`
 
 <!-- markdownlint-disable -->

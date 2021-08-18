@@ -9,6 +9,7 @@
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
         "COPYPASTE_JSCPD",
+        "CREDENTIALS_SECRETLINT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_DOCKERFILELINT",

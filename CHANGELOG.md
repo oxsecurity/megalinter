@@ -8,8 +8,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Upgrade tflint descriptor to use ghcr.io/terraform-linters/tflint docker image and initialize tflint
+- Add page for flavors stats in online documentation
+
+- Linter versions upgrades
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.3 to **7.1.4** on 2021-08-13
+  - [checkov](https://www.checkov.io/) from 2.0.347 to **2.0.348** on 2021-08-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.6.6 to **5.6.7** on 2021-08-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.3 to **0.31.4** on 2021-08-14
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.29.1 to **0.31.0** on 2021-08-14
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.6.7 to **5.7.1** on 2021-08-15
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.4.0 to **1.5.0** on 2021-08-15
+  - [checkov](https://www.checkov.io/) from 2.0.348 to **2.0.350** on 2021-08-15
+  - [coffeelint](http://www.coffeelint.org) from 5.0.1 to **5.0.2** on 2021-08-17
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.29 to **0.9.30** on 2021-08-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.7.1 to **5.7.2** on 2021-08-17
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.2 to **0.6.3** on 2021-08-17
+  - [checkov](https://www.checkov.io/) from 2.0.350 to **2.0.352** on 2021-08-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.41.1 to **1.42.0** on 2021-08-18
+  - [checkov](https://www.checkov.io/) from 2.0.352 to **2.0.361** on 2021-08-18
+<!-- linter-versions-end -->
+
+## [4.43.0] - 2021-08-12
+
+- Add [secretlint](https://github.com/secretlint/secretlint) to check for credentials , secrets and passwords stored in linted repository
+
+- Linter versions upgrades
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.6.1 to **6.7.0** on 2021-08-12
+  - [checkov](https://www.checkov.io/) from 2.0.344 to **2.0.346** on 2021-08-12
+  - [checkov](https://www.checkov.io/) from 2.0.346 to **2.0.347** on 2021-08-12
+
+## [4.42.0] - 2021-08-12
+
+- Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
 - Store docker pulls statistics history
 - add `IGNORE_GENERATED_FILES` in json schema
+- allow commonjs config file for eslint - [#629](https://github.com/nvuillam/mega-linter/pull/629), by [vitalitytv](https://github.com/vitaliytv)
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.295 to **2.0.297** on 2021-07-25
@@ -45,7 +79,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [v8r](https://github.com/chris48s/v8r) from 0.6.0 to **0.6.1** on 2021-08-07
   - [checkov](https://www.checkov.io/) from 2.0.336 to **2.0.337** on 2021-08-07
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.8.1 to **1.9.0** on 2021-08-07
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.0.337 to **2.0.338** on 2021-08-08
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.45 to **8.45.1** on 2021-08-09
+  - [checkov](https://www.checkov.io/) from 2.0.338 to **2.0.340** on 2021-08-09
+  - [checkov](https://www.checkov.io/) from 2.0.340 to **2.0.342** on 2021-08-10
+  - [checkov](https://www.checkov.io/) from 2.0.342 to **2.0.344** on 2021-08-10
 
 ## [4.41.0] - 2021-07-25
 

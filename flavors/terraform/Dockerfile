@@ -13,7 +13,7 @@
 #FROM__START
 FROM hadolint/hadolint:latest-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
-FROM wata727/tflint:latest as tflint
+FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 #FROM__END
@@ -104,6 +104,8 @@ RUN echo 'package-lock=false' >> .npmrc
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 jscpd \
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
                 stylelint \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
@@ -193,6 +195,7 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
+RUN tflint --init
 
 # terrascan installation
 COPY --from=terrascan /go/bin/terrascan /usr/bin/

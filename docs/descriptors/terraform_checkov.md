@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.337**
+- Version in Mega-Linter: **2.0.361**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -45,8 +45,8 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                  | Flavor                                                                 | Description                            | Embedded linters | Info                                                                                                                                                                                       |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             | 91               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                     |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 43               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             | 93               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                     |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>           | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects | 44               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
 
 ## Behind the scenes
 
