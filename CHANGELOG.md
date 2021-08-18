@@ -25,6 +25,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.7.1 to **5.7.2** on 2021-08-17
   - [sqlfluff](https://www.sqlfluff.com/) from 0.6.2 to **0.6.3** on 2021-08-17
   - [checkov](https://www.checkov.io/) from 2.0.350 to **2.0.352** on 2021-08-17
+  - [golangci-lint](https://golangci-lint.run/) from 1.41.1 to **1.42.0** on 2021-08-18
+  - [checkov](https://www.checkov.io/) from 2.0.352 to **2.0.361** on 2021-08-18
 <!-- linter-versions-end -->
 
 ## [4.43.0] - 2021-08-12
