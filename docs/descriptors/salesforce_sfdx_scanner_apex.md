@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-apex documentation
 
-- Version in Mega-Linter: **2.10.1005**
+- Version in Mega-Linter: **2.11.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-apex rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
   - If custom `apex-pmd-ruleset.xml` config file is not found, [apex-pmd-ruleset.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/apex-pmd-ruleset.xml){target=_blank} will be used
@@ -187,6 +187,11 @@ EXAMPLE
   regardless of its current 'disabled' attribute.
       E.g., $ sfdx scanner:run --target "somefile.js" --engine "eslint-lwc,pmd"
         Evaluates rules against somefile.js, using eslint-lwc and pmd engines.
+
+    Use --engine to invoke engines that are not enabled by default.
+      E.g, $ sfdx scanner:run --target "/some/dir" --engine cpd
+        Executes CPD engine against known file extensions in "/some/dir". CPD helps
+  detect blocks of code duplication in selected languages.
 
     To use PMD with your own rule reference file, use --pmdconfig. Note that rule
   filters are not applied.
