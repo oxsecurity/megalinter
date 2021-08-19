@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-lwc documentation
 
-- Version in Mega-Linter: **2.10.1005**
+- Version in Mega-Linter: **2.11.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-lwc rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-lwc rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -183,6 +183,11 @@ EXAMPLE
   regardless of its current 'disabled' attribute.
       E.g., $ sfdx scanner:run --target "somefile.js" --engine "eslint-lwc,pmd"
         Evaluates rules against somefile.js, using eslint-lwc and pmd engines.
+
+    Use --engine to invoke engines that are not enabled by default.
+      E.g, $ sfdx scanner:run --target "/some/dir" --engine cpd
+        Executes CPD engine against known file extensions in "/some/dir". CPD helps
+  detect blocks of code duplication in selected languages.
 
     To use PMD with your own rule reference file, use --pmdconfig. Note that rule
   filters are not applied.
