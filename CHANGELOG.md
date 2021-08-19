@@ -31,6 +31,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.1005 to **2.11.0** on 2021-08-19
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.10.1005 to **2.11.0** on 2021-08-19
   - [checkov](https://www.checkov.io/) from 2.0.361 to **2.0.363** on 2021-08-19
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.4 to **1.0.5** on 2021-08-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.4 to **0.31.5** on 2021-08-19
 <!-- linter-versions-end -->
 
 ## [4.43.0] - 2021-08-12
