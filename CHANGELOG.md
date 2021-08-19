@@ -8,8 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.44.0] - 2021-08-19
+
 - Upgrade tflint descriptor to use ghcr.io/terraform-linters/tflint docker image and initialize tflint
 - Add page for flavors stats in online documentation
+- Unable to list git ignored files when IGNORED_GITIGNORED_FILES: true ([#PR605](https://github.com/nvuillam/mega-linter/pull/605), by [David Bernard](https://github.com/davidB) with the contribution of [Tim Pansino](https://github.com/TimPansino))
 
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.3 to **7.1.4** on 2021-08-13
@@ -33,7 +39,6 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.361 to **2.0.363** on 2021-08-19
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.4 to **1.0.5** on 2021-08-19
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.4 to **0.31.5** on 2021-08-19
-<!-- linter-versions-end -->
 
 ## [4.43.0] - 2021-08-12
 
