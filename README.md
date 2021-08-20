@@ -657,16 +657,16 @@ ENABLE: JAVASCRIPT,GROOVY
 DISABLE_LINTERS: JAVASCRIPT_STANDARD
 ```
 
-- Run all linters except PHP linters (PHP_BUILTIN, PHP_PCPCS, PHP_STAN, PHP_PSALM)
+- Run all linters except PHP linters (PHP_BUILTIN, PHP_PHPCS, PHP_PHPSTAN, PHP_PSALM)
 
 ```yaml
 DISABLE: PHP
 ```
 
-- Run all linters except PHP_STAN and PHP_PSALM linters
+- Run all linters except PHP_PHPSTAN and PHP_PSALM linters
 
 ```yaml
-DISABLE_LINTERS: PHP_STAN,PHP_PSALM
+DISABLE_LINTERS: PHP_PHPSTAN,PHP_PSALM
 ```
 
 ### Filter linted files
