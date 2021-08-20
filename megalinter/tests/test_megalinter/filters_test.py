@@ -50,12 +50,19 @@ class utilsTest(unittest.TestCase):
 
     def test_filter_files_with_ignored_files(self):
         basedir = "/tmp/lint/"
-        all_files = [f"{basedir}src/foo.ext", f"{basedir}README.md", f"{basedir}target/foo.ext"]
+        all_files = [
+            f"{basedir}src/foo.ext",
+            f"{basedir}README.md",
+            f"{basedir}target/foo.ext",
+        ]
         for (ignored_files, expected) in [
             ([], all_files),
             (["hello"], all_files),
             (["target/foo.ext"], all_files),
-            ([f"{basedir}target/foo.ext"], [f"{basedir}src/foo.ext", f"{basedir}README.md"]),
+            (
+                [f"{basedir}target/foo.ext"],
+                [f"{basedir}src/foo.ext", f"{basedir}README.md"],
+            ),
             (["target/**"], all_files),
             ([f"{basedir}target/**"], [f"{basedir}src/foo.ext", f"{basedir}README.md"]),
             (["foo.ext"], all_files),
@@ -69,11 +76,18 @@ class utilsTest(unittest.TestCase):
                 ignored_files=ignored_files,
                 ignore_generated_files=False,
             )
-            self.assertListEqual(sorted(filtered_files), sorted(expected), f"check {ignored_files}")
+            self.assertListEqual(
+                sorted(filtered_files), sorted(expected), f"check {ignored_files}"
+            )
 
     def test_filter_files_with_file_extensions(self):
         basedir = "/tmp/lint/"
-        all_files = [f"{basedir}src/foo.ext", f"{basedir}README.md", f"{basedir}LICENSE", f"{basedir}target/foo.ext"]
+        all_files = [
+            f"{basedir}src/foo.ext",
+            f"{basedir}README.md",
+            f"{basedir}LICENSE",
+            f"{basedir}target/foo.ext",
+        ]
 
         for (file_extensions, expected) in [
             ([], []),
@@ -90,4 +104,6 @@ class utilsTest(unittest.TestCase):
                 ignored_files=[],
                 ignore_generated_files=False,
             )
-            self.assertListEqual(sorted(filtered_files), sorted(expected), f"check {file_extensions}")
+            self.assertListEqual(
+                sorted(filtered_files), sorted(expected), f"check {file_extensions}"
+            )
