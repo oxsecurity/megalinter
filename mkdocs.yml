@@ -307,6 +307,7 @@ nav:
   - "FAQ": "frequently-asked-questions.md"
   - "Plugins": "plugins.md"
   - "Special thanks": "special-thanks.md"
+  - "Sponsoring": 'sponsor.md'
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":
     - "How-to Contribute": "how-to-contribute.md"
