@@ -17,6 +17,7 @@ linters:
       - ".vue"
     linter_text: |
       eslint requires a custom configuration file applicable to your project.
+      
       You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://eslint.org
     linter_repo: https://github.com/eslint/eslint
