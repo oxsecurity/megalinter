@@ -173,7 +173,7 @@ linters:
     linter_text: |
       bandit checks for security risks
 
-      If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your .mega-linter.yml config file
+      If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file
     linter_url: https://bandit.readthedocs.io/en/latest/
     linter_repo: https://github.com/PyCQA/bandit
     linter_rules_url: https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing
@@ -208,7 +208,7 @@ linters:
     linter_text: |
       Optional static typing checks for python
 
-      If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your .mega-linter.yml config file
+      If you don't use python static typing, you should disable this linter by adding `- PYTHON_BANDIT` in `DISABLE_LINTERS` variable in your `.mega-linter.yml` config file
     linter_url: https://mypy.readthedocs.io/en/stable/
     linter_repo: https://github.com/python/mypy
     linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
