@@ -38,6 +38,7 @@ class Linter:
         self.linter_version_cache = None
         self.linter_help_cache = None
         self.processing_order = 0
+        self.master = None
         # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
         # Ex: JAVASCRIPT
         self.descriptor_id = (

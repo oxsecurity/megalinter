@@ -344,6 +344,7 @@ class Megalinter:
         all_linters = linter_factory.list_all_linters(linter_init_params)
         skipped_linters = []
         for linter in all_linters:
+            linter.master = self
             if linter.is_active is False or linter.disabled is True:
                 skipped_linters += [linter.name]
                 continue
