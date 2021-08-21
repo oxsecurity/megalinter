@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in Mega-Linter: **2.9.6**
+- Version in Mega-Linter: **2.10.1**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
@@ -161,10 +161,11 @@ Options:
                         Display a help message for the given message id and
                         exit. The value may be a comma separated list of
                         message ids.
-    --list-msgs         Generate pylint's messages.
+    --list-msgs         Display a list of all pylint's messages divided by
+                        whether they are emittable with the given interpreter.
     --list-msgs-enabled
-                        Display a list of what messages are enabled and
-                        disabled with the given configuration.
+                        Display a list of what messages are enabled, disabled
+                        and non-emittable with the given configuration.
     --list-groups       List pylint's message groups.
     --list-conf-levels  Generate pylint's confidence levels.
     --list-extensions   List available extensions.
