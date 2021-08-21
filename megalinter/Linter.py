@@ -455,7 +455,7 @@ class Linter:
         self.before_lint_files()
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_pre_commands(self.master,self)
+        pre_post_factory.run_linter_pre_commands(self.master, self)
 
         # Initialize linter reports
         for reporter in self.reporters:
@@ -491,7 +491,7 @@ class Linter:
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None)
-                
+
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
         if self.return_code != 0:
             # Disable errors: no failure, just warning
@@ -513,7 +513,7 @@ class Linter:
             reporter.produce_report()
 
         # Run commands defined in descriptor, or overridden by user in configuration
-        pre_post_factory.run_linter_post_commands(self.master,self)
+        pre_post_factory.run_linter_post_commands(self.master, self)
 
         return self
 

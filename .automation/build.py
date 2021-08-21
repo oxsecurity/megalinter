@@ -847,9 +847,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "type": "array",
                         "title": f"{linter.name}: Override descriptor/linter matching files extensions",
                         "examples:": [".py", ".myext"],
-                        "items": {
-                            "$ref": "#/definitions/command_info"
-                        },
+                        "items": {"$ref": "#/definitions/command_info"},
                     },
                 ],
                 [
@@ -860,16 +858,14 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "title": f"{linter.name}: Define or override a list of bash commands to run before the linter",
                         "examples": [
                             [
-                            {
-                                "command": "tflint --init",
-                                "continue_if_failed": False,
-                                "cwd": "workspace"
-                            }
+                                {
+                                    "command": "tflint --init",
+                                    "continue_if_failed": False,
+                                    "cwd": "workspace",
+                                }
                             ]
                         ],
-                        "items": {
-                            "$ref": "#/definitions/command_info"
-                        },
+                        "items": {"$ref": "#/definitions/command_info"},
                     },
                 ],
                 [
@@ -880,11 +876,11 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "title": f"{linter.name}: Define or override a list of bash commands to run after the linter",
                         "examples": [
                             [
-                            {
-                                "command": "npm run test",
-                                "continue_if_failed": False,
-                                "cwd": "workspace"
-                            }
+                                {
+                                    "command": "npm run test",
+                                    "continue_if_failed": False,
+                                    "cwd": "workspace",
+                                }
                             ]
                         ],
                         "items": {"type": "string"},
