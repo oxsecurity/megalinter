@@ -19,3 +19,9 @@ PRE_COMMANDS:
 POST_COMMANDS:
   - command: npm run test
     cwd: "workspace"
+MARKDOWN_MARKDOWNLINT_PRE_COMMANDS:
+  - command: echo 'linter pre-command has been run'
+    cwd: "root"
+MARKDOWN_MARKDOWNLINT_POST_COMMANDS:
+  - command: echo 'linter pre-command has been run'
+    cwd: "root"
