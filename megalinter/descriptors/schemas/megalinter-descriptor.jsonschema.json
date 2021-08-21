@@ -3,6 +3,40 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {
+    "command_info": {
+      "description": "Command information",
+      "properties": {
+        "command": {
+          "examples": [
+            "npm run test",
+            "echo \"This is a custom command\""
+          ],
+          "title": "Bash command to run",
+          "type": "string"
+        },
+        "continue_if_failed": {
+          "Description": "If command fails, continue Mega-Linter process or not",
+          "default": true,
+          "title": "Continue if failed",
+          "type": "boolean"
+        },
+        "cwd": {
+          "enum": [
+            "root",
+            "workspace"
+          ],
+          "examples": [
+            "root",
+            "workspace"
+          ],
+          "title": "Folder where to run the command",
+          "type": "string"
+        }
+      },
+      "required": [],
+      "title": "Command",
+      "type": "object"
+    },
     "enum_flavors": {
       "enum": [
         "all_flavors",
@@ -971,6 +1005,52 @@
             ],
             "title": "Linter configuration key",
             "type": "string"
+          },
+          "post_commands": {
+            "$id": "#/properties/linters/items/properties/post_commands",
+            "default": [],
+            "description": "Custom bash commands to run after linter",
+            "examples": [
+              [
+                {
+                  "command": "npm install java-caller",
+                  "continue_if_failed": false,
+                  "cwd": "root"
+                },
+                {
+                  "command": "echo \"linter post-run command has been called\"",
+                  "cwd": "workspace"
+                }
+              ]
+            ],
+            "items": {
+              "$ref": "#/definitions/command_info"
+            },
+            "title": "Linter Pre-run commands",
+            "type": "array"
+          },
+          "pre_commands": {
+            "$id": "#/properties/linters/items/properties/pre_commands",
+            "default": [],
+            "description": "Custom bash commands to run before linter",
+            "examples": [
+              [
+                {
+                  "command": "tflint --init",
+                  "continue_if_failed": false,
+                  "cwd": "root"
+                },
+                {
+                  "command": "echo \"linter pre-run command has been called\"",
+                  "cwd": "workspace"
+                }
+              ]
+            ],
+            "items": {
+              "$ref": "#/definitions/command_info"
+            },
+            "title": "Linter Pre-run commands",
+            "type": "array"
           },
           "test_folder": {
             "$id": "#/properties/linters/items/test_folder",

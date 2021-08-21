@@ -806,6 +806,10 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f" filtering files by their base names using regex full match. Empty list includes all files<br/>"
             f'Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` '
             f"| {dump_as_json(linter.file_names_regex, 'Include every file')} |",
+            f"| {linter.name}_PRE_COMMANDS | List of bash commands to run before the linter"
+            f"| {dump_as_json(linter.pre_commands,'None')} |",
+            f"| {linter.name}_POST_COMMANDS | List of bash commands to run after the linter"
+            f"| {dump_as_json(linter.post_commands,'None')} |",
         ]
         add_in_config_schema_file(
             [
@@ -843,6 +847,46 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "type": "array",
                         "title": f"{linter.name}: Override descriptor/linter matching files extensions",
                         "examples:": [".py", ".myext"],
+                        "items": {
+                            "$ref": "#/definitions/command_info"
+                        },
+                    },
+                ],
+                [
+                    f"{linter.name}_PRE_COMMANDS",
+                    {
+                        "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
+                        "type": "array",
+                        "title": f"{linter.name}: Define or override a list of bash commands to run before the linter",
+                        "examples": [
+                            [
+                            {
+                                "command": "tflint --init",
+                                "continue_if_failed": False,
+                                "cwd": "workspace"
+                            }
+                            ]
+                        ],
+                        "items": {
+                            "$ref": "#/definitions/command_info"
+                        },
+                    },
+                ],
+                [
+                    f"{linter.name}_POST_COMMANDS",
+                    {
+                        "$id": f"#/properties/{linter.name}_POST_COMMANDS",
+                        "type": "array",
+                        "title": f"{linter.name}: Define or override a list of bash commands to run after the linter",
+                        "examples": [
+                            [
+                            {
+                                "command": "npm run test",
+                                "continue_if_failed": False,
+                                "cwd": "workspace"
+                            }
+                            ]
+                        ],
                         "items": {"type": "string"},
                     },
                 ],

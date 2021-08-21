@@ -325,6 +325,7 @@ class Megalinter:
     def load_linters(self):
         # Linters init params
         linter_init_params = {
+            "master": self,
             "linter_rules_path": self.linter_rules_path,
             "default_rules_location": self.default_rules_location,
             "default_linter_activation": self.default_linter_activation,
