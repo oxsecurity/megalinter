@@ -11,6 +11,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linter versions upgrades
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.1.0 to **1.2.0** on 2021-08-20
   - [phpstan](https://phpstan.org/) from 0.12.94 to **0.12.95** on 2021-08-20
+  - [pylint](https://www.pylint.org) from 2.9.6 to **2.10.1** on 2021-08-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.3 to **0.6.4** on 2021-08-21
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
