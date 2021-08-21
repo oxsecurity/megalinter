@@ -13,6 +13,9 @@ linters:
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     config_file_name: .tflint.hcl
+    pre_commands:
+      - command: tflint --init
+        cwd: workspace
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
@@ -20,7 +23,6 @@ linters:
       dockerfile:
         - FROM ghcr.io/terraform-linters/tflint:latest as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
-        - RUN tflint --init
   # TERRASCAN
   - linter_name: terrascan
     name: TERRAFORM_TERRASCAN
