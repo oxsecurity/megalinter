@@ -29,7 +29,7 @@ import urllib.error
 import urllib.request
 from time import perf_counter
 
-from megalinter import config, utils
+from megalinter import config, pre_post_factory, utils
 
 
 class Linter:
@@ -38,6 +38,7 @@ class Linter:
         self.linter_version_cache = None
         self.linter_help_cache = None
         self.processing_order = 0
+        self.master = None
         # Definition fields & default values: can be overridden at custom linter class level or in YML descriptors
         # Ex: JAVASCRIPT
         self.descriptor_id = (
@@ -67,6 +68,8 @@ class Linter:
         self.active_only_if_file_found = []
         self.lint_all_files = False
         self.lint_all_other_linters_files = False
+        self.pre_commands = None
+        self.post_commands = None
 
         self.cli_lint_mode = "file"
         self.cli_docker_image = None
@@ -409,6 +412,14 @@ class Linter:
         if config.get(self.name + "_ARGUMENTS", "") != "":
             self.cli_lint_user_args = config.get_list_args(self.name + "_ARGUMENTS")
 
+        # Get PRE_COMMANDS overridden by user
+        if config.get(self.name + "_PRE_COMMANDS", "") != "":
+            self.pre_commands = config.get_list(self.name + "_PRE_COMMANDS")
+
+        # Get POST_COMMANDS overridden by user
+        if config.get(self.name + "_POST_COMMANDS", "") != "":
+            self.post_commands = config.get_list(self.name + "_POST_COMMANDS")
+
         # Disable errors for this linter NAME + _DISABLE_ERRORS, then LANGUAGE + _DISABLE_ERRORS
         if config.get(self.name + "_DISABLE_ERRORS_IF_LESS_THAN"):
             self.disable_errors_if_less_than = int(
@@ -442,6 +453,9 @@ class Linter:
         self.start_perf = perf_counter()
         # Apply actions defined on Linter class if defined
         self.before_lint_files()
+
+        # Run commands defined in descriptor, or overridden by user in configuration
+        pre_post_factory.run_linter_pre_commands(self.master, self)
 
         # Initialize linter reports
         for reporter in self.reporters:
@@ -477,6 +491,7 @@ class Linter:
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None)
+
         # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
         if self.return_code != 0:
             # Disable errors: no failure, just warning
@@ -487,13 +502,19 @@ class Linter:
                 and self.total_number_errors < self.disable_errors_if_less_than
             ):
                 self.return_code = 0
+
         # Delete locally copied remote config file if necessary
         if self.remote_config_file_to_delete is not None:
             os.remove(self.remote_config_file_to_delete)
+
         # Generate linter reports
         self.elapsed_time_s = perf_counter() - self.start_perf
         for reporter in self.reporters:
             reporter.produce_report()
+
+        # Run commands defined in descriptor, or overridden by user in configuration
+        pre_post_factory.run_linter_post_commands(self.master, self)
+
         return self
 
     def update_files_lint_results(

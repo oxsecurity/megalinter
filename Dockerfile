@@ -433,7 +433,6 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
-RUN tflint --init
 
 # terrascan installation
 COPY --from=terrascan /go/bin/terrascan /usr/bin/

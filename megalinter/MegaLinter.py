@@ -325,6 +325,7 @@ class Megalinter:
     def load_linters(self):
         # Linters init params
         linter_init_params = {
+            "master": self,
             "linter_rules_path": self.linter_rules_path,
             "default_rules_location": self.default_rules_location,
             "default_linter_activation": self.default_linter_activation,
@@ -343,6 +344,7 @@ class Megalinter:
         all_linters = linter_factory.list_all_linters(linter_init_params)
         skipped_linters = []
         for linter in all_linters:
+            linter.master = self
             if linter.is_active is False or linter.disabled is True:
                 skipped_linters += [linter.name]
                 continue

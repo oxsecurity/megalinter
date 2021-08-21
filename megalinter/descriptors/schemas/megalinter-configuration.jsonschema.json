@@ -261,7 +261,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -294,6 +294,40 @@
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE",
       "title": "ANSIBLE_ANSIBLE_LINT: Including Regex",
       "type": "string"
+    },
+    "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ANSIBLE_ANSIBLE_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ANSIBLE_ANSIBLE_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "ANSIBLE_ANSIBLE_LINT_RULES_PATH": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_RULES_PATH",
@@ -377,7 +411,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ARM_ARM_TTK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -410,6 +444,40 @@
       "$id": "#/properties/ARM_ARM_TTK_FILTER_REGEX_INCLUDE",
       "title": "ARM_ARM_TTK: Including Regex",
       "type": "string"
+    },
+    "ARM_ARM_TTK_POST_COMMANDS": {
+      "$id": "#/properties/ARM_ARM_TTK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ARM_ARM_TTK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "ARM_ARM_TTK_PRE_COMMANDS": {
+      "$id": "#/properties/ARM_ARM_TTK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ARM_ARM_TTK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "ARM_ARM_TTK_RULES_PATH": {
       "$id": "#/properties/ARM_ARM_TTK_RULES_PATH",
@@ -462,7 +530,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_EXEC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -488,6 +556,40 @@
       "$id": "#/properties/BASH_EXEC_FILTER_REGEX_INCLUDE",
       "title": "BASH_EXEC: Including Regex",
       "type": "string"
+    },
+    "BASH_EXEC_POST_COMMANDS": {
+      "$id": "#/properties/BASH_EXEC_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_EXEC: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "BASH_EXEC_PRE_COMMANDS": {
+      "$id": "#/properties/BASH_EXEC_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BASH_EXEC: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "BASH_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/BASH_FILTER_REGEX_EXCLUDE",
@@ -534,7 +636,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_SHELLCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -560,6 +662,40 @@
       "$id": "#/properties/BASH_SHELLCHECK_FILTER_REGEX_INCLUDE",
       "title": "BASH_SHELLCHECK: Including Regex",
       "type": "string"
+    },
+    "BASH_SHELLCHECK_POST_COMMANDS": {
+      "$id": "#/properties/BASH_SHELLCHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_SHELLCHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "BASH_SHELLCHECK_PRE_COMMANDS": {
+      "$id": "#/properties/BASH_SHELLCHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BASH_SHELLCHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "BASH_SHFMT_ARGUMENTS": {
       "$id": "#/properties/BASH_SHFMT_ARGUMENTS",
@@ -596,7 +732,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_SHFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -622,6 +758,40 @@
       "$id": "#/properties/BASH_SHFMT_FILTER_REGEX_INCLUDE",
       "title": "BASH_SHFMT: Including Regex",
       "type": "string"
+    },
+    "BASH_SHFMT_POST_COMMANDS": {
+      "$id": "#/properties/BASH_SHFMT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "BASH_SHFMT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "BASH_SHFMT_PRE_COMMANDS": {
+      "$id": "#/properties/BASH_SHFMT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "BASH_SHFMT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CLOJURE_CLJ_KONDO_ARGUMENTS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_ARGUMENTS",
@@ -665,7 +835,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CLOJURE_CLJ_KONDO: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -698,6 +868,40 @@
       "$id": "#/properties/CLOJURE_CLJ_KONDO_FILTER_REGEX_INCLUDE",
       "title": "CLOJURE_CLJ_KONDO: Including Regex",
       "type": "string"
+    },
+    "CLOJURE_CLJ_KONDO_POST_COMMANDS": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOJURE_CLJ_KONDO: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CLOJURE_CLJ_KONDO_PRE_COMMANDS": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CLOJURE_CLJ_KONDO: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CLOJURE_CLJ_KONDO_RULES_PATH": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_RULES_PATH",
@@ -757,7 +961,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CLOUDFORMATION_CFN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -790,6 +994,40 @@
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_FILTER_REGEX_INCLUDE",
       "title": "CLOUDFORMATION_CFN_LINT: Including Regex",
       "type": "string"
+    },
+    "CLOUDFORMATION_CFN_LINT_POST_COMMANDS": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CLOUDFORMATION_CFN_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CLOUDFORMATION_CFN_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CLOUDFORMATION_CFN_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CLOUDFORMATION_CFN_LINT_RULES_PATH": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_RULES_PATH",
@@ -849,7 +1087,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "COFFEE_COFFEELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -882,6 +1120,40 @@
       "$id": "#/properties/COFFEE_COFFEELINT_FILTER_REGEX_INCLUDE",
       "title": "COFFEE_COFFEELINT: Including Regex",
       "type": "string"
+    },
+    "COFFEE_COFFEELINT_POST_COMMANDS": {
+      "$id": "#/properties/COFFEE_COFFEELINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "COFFEE_COFFEELINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "COFFEE_COFFEELINT_PRE_COMMANDS": {
+      "$id": "#/properties/COFFEE_COFFEELINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "COFFEE_COFFEELINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "COFFEE_COFFEELINT_RULES_PATH": {
       "$id": "#/properties/COFFEE_COFFEELINT_RULES_PATH",
@@ -951,7 +1223,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "COPYPASTE_JSCPD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -984,6 +1256,40 @@
       "$id": "#/properties/COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE",
       "title": "COPYPASTE_JSCPD: Including Regex",
       "type": "string"
+    },
+    "COPYPASTE_JSCPD_POST_COMMANDS": {
+      "$id": "#/properties/COPYPASTE_JSCPD_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "COPYPASTE_JSCPD: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "COPYPASTE_JSCPD_PRE_COMMANDS": {
+      "$id": "#/properties/COPYPASTE_JSCPD_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "COPYPASTE_JSCPD: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "COPYPASTE_JSCPD_RULES_PATH": {
       "$id": "#/properties/COPYPASTE_JSCPD_RULES_PATH",
@@ -1026,7 +1332,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CPP_CPPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1052,6 +1358,40 @@
       "$id": "#/properties/CPP_CPPLINT_FILTER_REGEX_INCLUDE",
       "title": "CPP_CPPLINT: Including Regex",
       "type": "string"
+    },
+    "CPP_CPPLINT_POST_COMMANDS": {
+      "$id": "#/properties/CPP_CPPLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CPP_CPPLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CPP_CPPLINT_PRE_COMMANDS": {
+      "$id": "#/properties/CPP_CPPLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CPP_CPPLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CPP_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CPP_FILTER_REGEX_EXCLUDE",
@@ -1115,7 +1455,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1141,6 +1481,40 @@
       "$id": "#/properties/CREDENTIALS_SECRETLINT_FILTER_REGEX_INCLUDE",
       "title": "CREDENTIALS_SECRETLINT: Including Regex",
       "type": "string"
+    },
+    "CREDENTIALS_SECRETLINT_POST_COMMANDS": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CREDENTIALS_SECRETLINT_PRE_COMMANDS": {
+      "$id": "#/properties/CREDENTIALS_SECRETLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CREDENTIALS_SECRETLINT_RULES_PATH": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_RULES_PATH",
@@ -1183,7 +1557,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1209,6 +1583,40 @@
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
       "title": "CSHARP_DOTNET_FORMAT: Including Regex",
       "type": "string"
+    },
+    "CSHARP_DOTNET_FORMAT_POST_COMMANDS": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSHARP_DOTNET_FORMAT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CSHARP_DOTNET_FORMAT_PRE_COMMANDS": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSHARP_DOTNET_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CSHARP_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/CSHARP_FILTER_REGEX_EXCLUDE",
@@ -1272,7 +1680,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSS_SCSS_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1305,6 +1713,40 @@
       "$id": "#/properties/CSS_SCSS_LINT_FILTER_REGEX_INCLUDE",
       "title": "CSS_SCSS_LINT: Including Regex",
       "type": "string"
+    },
+    "CSS_SCSS_LINT_POST_COMMANDS": {
+      "$id": "#/properties/CSS_SCSS_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_SCSS_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CSS_SCSS_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/CSS_SCSS_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSS_SCSS_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CSS_SCSS_LINT_RULES_PATH": {
       "$id": "#/properties/CSS_SCSS_LINT_RULES_PATH",
@@ -1354,7 +1796,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSS_STYLELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1387,6 +1829,40 @@
       "$id": "#/properties/CSS_STYLELINT_FILTER_REGEX_INCLUDE",
       "title": "CSS_STYLELINT: Including Regex",
       "type": "string"
+    },
+    "CSS_STYLELINT_POST_COMMANDS": {
+      "$id": "#/properties/CSS_STYLELINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "CSS_STYLELINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "CSS_STYLELINT_PRE_COMMANDS": {
+      "$id": "#/properties/CSS_STYLELINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "CSS_STYLELINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "CSS_STYLELINT_RULES_PATH": {
       "$id": "#/properties/CSS_STYLELINT_RULES_PATH",
@@ -1429,7 +1905,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "C_CPPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1455,6 +1931,40 @@
       "$id": "#/properties/C_CPPLINT_FILTER_REGEX_INCLUDE",
       "title": "C_CPPLINT: Including Regex",
       "type": "string"
+    },
+    "C_CPPLINT_POST_COMMANDS": {
+      "$id": "#/properties/C_CPPLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "C_CPPLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "C_CPPLINT_PRE_COMMANDS": {
+      "$id": "#/properties/C_CPPLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "C_CPPLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "C_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/C_FILTER_REGEX_EXCLUDE",
@@ -1508,7 +2018,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DART_DARTANALYZER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1541,6 +2051,40 @@
       "$id": "#/properties/DART_DARTANALYZER_FILTER_REGEX_INCLUDE",
       "title": "DART_DARTANALYZER: Including Regex",
       "type": "string"
+    },
+    "DART_DARTANALYZER_POST_COMMANDS": {
+      "$id": "#/properties/DART_DARTANALYZER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "DART_DARTANALYZER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "DART_DARTANALYZER_PRE_COMMANDS": {
+      "$id": "#/properties/DART_DARTANALYZER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "DART_DARTANALYZER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "DART_DARTANALYZER_RULES_PATH": {
       "$id": "#/properties/DART_DARTANALYZER_RULES_PATH",
@@ -1655,7 +2199,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1688,6 +2232,40 @@
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_FILTER_REGEX_INCLUDE",
       "title": "DOCKERFILE_DOCKERFILELINT: Including Regex",
       "type": "string"
+    },
+    "DOCKERFILE_DOCKERFILELINT_POST_COMMANDS": {
+      "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "DOCKERFILE_DOCKERFILELINT_PRE_COMMANDS": {
+      "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "DOCKERFILE_DOCKERFILELINT_RULES_PATH": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_RULES_PATH",
@@ -1747,7 +2325,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DOCKERFILE_HADOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1780,6 +2358,40 @@
       "$id": "#/properties/DOCKERFILE_HADOLINT_FILTER_REGEX_INCLUDE",
       "title": "DOCKERFILE_HADOLINT: Including Regex",
       "type": "string"
+    },
+    "DOCKERFILE_HADOLINT_POST_COMMANDS": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "DOCKERFILE_HADOLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "DOCKERFILE_HADOLINT_PRE_COMMANDS": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "DOCKERFILE_HADOLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "DOCKERFILE_HADOLINT_RULES_PATH": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_RULES_PATH",
@@ -1829,7 +2441,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1862,6 +2474,40 @@
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_FILTER_REGEX_INCLUDE",
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Including Regex",
       "type": "string"
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_POST_COMMANDS": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_PRE_COMMANDS": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_RULES_PATH",
@@ -1994,7 +2640,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ENV_DOTENV_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2020,6 +2666,40 @@
       "$id": "#/properties/ENV_DOTENV_LINTER_FILTER_REGEX_INCLUDE",
       "title": "ENV_DOTENV_LINTER: Including Regex",
       "type": "string"
+    },
+    "ENV_DOTENV_LINTER_POST_COMMANDS": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ENV_DOTENV_LINTER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "ENV_DOTENV_LINTER_PRE_COMMANDS": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ENV_DOTENV_LINTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "ENV_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/ENV_FILTER_REGEX_EXCLUDE",
@@ -2168,7 +2848,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GHERKIN_GHERKIN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2201,6 +2881,40 @@
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_FILTER_REGEX_INCLUDE",
       "title": "GHERKIN_GHERKIN_LINT: Including Regex",
       "type": "string"
+    },
+    "GHERKIN_GHERKIN_LINT_POST_COMMANDS": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GHERKIN_GHERKIN_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "GHERKIN_GHERKIN_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GHERKIN_GHERKIN_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "GHERKIN_GHERKIN_LINT_RULES_PATH": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_RULES_PATH",
@@ -2296,7 +3010,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2322,6 +3036,40 @@
       "$id": "#/properties/GIT_GIT_DIFF_FILTER_REGEX_INCLUDE",
       "title": "GIT_GIT_DIFF: Including Regex",
       "type": "string"
+    },
+    "GIT_GIT_DIFF_POST_COMMANDS": {
+      "$id": "#/properties/GIT_GIT_DIFF_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "GIT_GIT_DIFF_PRE_COMMANDS": {
+      "$id": "#/properties/GIT_GIT_DIFF_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "GO_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GO_FILTER_REGEX_EXCLUDE",
@@ -2375,7 +3123,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GO_GOLANGCI_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2408,6 +3156,40 @@
       "$id": "#/properties/GO_GOLANGCI_LINT_FILTER_REGEX_INCLUDE",
       "title": "GO_GOLANGCI_LINT: Including Regex",
       "type": "string"
+    },
+    "GO_GOLANGCI_LINT_POST_COMMANDS": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_GOLANGCI_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "GO_GOLANGCI_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GO_GOLANGCI_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "GO_GOLANGCI_LINT_RULES_PATH": {
       "$id": "#/properties/GO_GOLANGCI_LINT_RULES_PATH",
@@ -2457,7 +3239,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GO_REVIVE: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2483,6 +3265,40 @@
       "$id": "#/properties/GO_REVIVE_FILTER_REGEX_INCLUDE",
       "title": "GO_REVIVE: Including Regex",
       "type": "string"
+    },
+    "GO_REVIVE_POST_COMMANDS": {
+      "$id": "#/properties/GO_REVIVE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GO_REVIVE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "GO_REVIVE_PRE_COMMANDS": {
+      "$id": "#/properties/GO_REVIVE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GO_REVIVE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "GO_REVIVE_RULES_PATH": {
       "$id": "#/properties/GO_REVIVE_RULES_PATH",
@@ -2542,7 +3358,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2575,6 +3391,40 @@
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_FILTER_REGEX_INCLUDE",
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Including Regex",
       "type": "string"
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_POST_COMMANDS": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_PRE_COMMANDS": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_RULES_PATH",
@@ -2634,7 +3484,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2667,6 +3517,40 @@
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_INCLUDE",
       "title": "GROOVY_NPM_GROOVY_LINT: Including Regex",
       "type": "string"
+    },
+    "GROOVY_NPM_GROOVY_LINT_POST_COMMANDS": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "GROOVY_NPM_GROOVY_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "GROOVY_NPM_GROOVY_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "GROOVY_NPM_GROOVY_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "GROOVY_NPM_GROOVY_LINT_RULES_PATH": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_RULES_PATH",
@@ -2726,7 +3610,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "HTML_HTMLHINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2759,6 +3643,40 @@
       "$id": "#/properties/HTML_HTMLHINT_FILTER_REGEX_INCLUDE",
       "title": "HTML_HTMLHINT: Including Regex",
       "type": "string"
+    },
+    "HTML_HTMLHINT_POST_COMMANDS": {
+      "$id": "#/properties/HTML_HTMLHINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "HTML_HTMLHINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "HTML_HTMLHINT_PRE_COMMANDS": {
+      "$id": "#/properties/HTML_HTMLHINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "HTML_HTMLHINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "HTML_HTMLHINT_RULES_PATH": {
       "$id": "#/properties/HTML_HTMLHINT_RULES_PATH",
@@ -2834,7 +3752,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2867,6 +3785,40 @@
       "$id": "#/properties/JAVASCRIPT_ES_FILTER_REGEX_INCLUDE",
       "title": "JAVASCRIPT_ES: Including Regex",
       "type": "string"
+    },
+    "JAVASCRIPT_ES_POST_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_ES_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_ES: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JAVASCRIPT_ES_PRE_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_ES_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVASCRIPT_ES: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JAVASCRIPT_ES_RULES_PATH": {
       "$id": "#/properties/JAVASCRIPT_ES_RULES_PATH",
@@ -2926,7 +3878,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2952,6 +3904,40 @@
       "$id": "#/properties/JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
       "title": "JAVASCRIPT_PRETTIER: Including Regex",
       "type": "string"
+    },
+    "JAVASCRIPT_PRETTIER_POST_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_PRETTIER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JAVASCRIPT_PRETTIER_PRE_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVASCRIPT_PRETTIER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JAVASCRIPT_PRETTIER_RULES_PATH": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_RULES_PATH",
@@ -2994,7 +3980,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_STANDARD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3020,6 +4006,40 @@
       "$id": "#/properties/JAVASCRIPT_STANDARD_FILTER_REGEX_INCLUDE",
       "title": "JAVASCRIPT_STANDARD: Including Regex",
       "type": "string"
+    },
+    "JAVASCRIPT_STANDARD_POST_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVASCRIPT_STANDARD: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JAVASCRIPT_STANDARD_PRE_COMMANDS": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVASCRIPT_STANDARD: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JAVA_CHECKSTYLE_ARGUMENTS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_ARGUMENTS",
@@ -3063,7 +4083,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVA_CHECKSTYLE: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3096,6 +4116,40 @@
       "$id": "#/properties/JAVA_CHECKSTYLE_FILTER_REGEX_INCLUDE",
       "title": "JAVA_CHECKSTYLE: Including Regex",
       "type": "string"
+    },
+    "JAVA_CHECKSTYLE_POST_COMMANDS": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JAVA_CHECKSTYLE: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JAVA_CHECKSTYLE_PRE_COMMANDS": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JAVA_CHECKSTYLE: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JAVA_CHECKSTYLE_RULES_PATH": {
       "$id": "#/properties/JAVA_CHECKSTYLE_RULES_PATH",
@@ -3155,7 +4209,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3188,6 +4242,40 @@
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE",
       "title": "JSON_ESLINT_PLUGIN_JSONC: Including Regex",
       "type": "string"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JSON_ESLINT_PLUGIN_JSONC_RULES_PATH": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_RULES_PATH",
@@ -3240,7 +4328,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_JSONLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3266,6 +4354,40 @@
       "$id": "#/properties/JSON_JSONLINT_FILTER_REGEX_INCLUDE",
       "title": "JSON_JSONLINT: Including Regex",
       "type": "string"
+    },
+    "JSON_JSONLINT_POST_COMMANDS": {
+      "$id": "#/properties/JSON_JSONLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_JSONLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JSON_JSONLINT_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_JSONLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_JSONLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JSON_PRETTIER_ARGUMENTS": {
       "$id": "#/properties/JSON_PRETTIER_ARGUMENTS",
@@ -3309,7 +4431,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3335,6 +4457,40 @@
       "$id": "#/properties/JSON_PRETTIER_FILTER_REGEX_INCLUDE",
       "title": "JSON_PRETTIER: Including Regex",
       "type": "string"
+    },
+    "JSON_PRETTIER_POST_COMMANDS": {
+      "$id": "#/properties/JSON_PRETTIER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_PRETTIER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JSON_PRETTIER_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_PRETTIER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_PRETTIER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JSON_PRETTIER_RULES_PATH": {
       "$id": "#/properties/JSON_PRETTIER_RULES_PATH",
@@ -3377,7 +4533,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_V8R: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3403,6 +4559,40 @@
       "$id": "#/properties/JSON_V8R_FILTER_REGEX_INCLUDE",
       "title": "JSON_V8R: Including Regex",
       "type": "string"
+    },
+    "JSON_V8R_POST_COMMANDS": {
+      "$id": "#/properties/JSON_V8R_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSON_V8R: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JSON_V8R_PRE_COMMANDS": {
+      "$id": "#/properties/JSON_V8R_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSON_V8R: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JSX_ESLINT_ARGUMENTS": {
       "$id": "#/properties/JSX_ESLINT_ARGUMENTS",
@@ -3446,7 +4636,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3479,6 +4669,40 @@
       "$id": "#/properties/JSX_ESLINT_FILTER_REGEX_INCLUDE",
       "title": "JSX_ESLINT: Including Regex",
       "type": "string"
+    },
+    "JSX_ESLINT_POST_COMMANDS": {
+      "$id": "#/properties/JSX_ESLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "JSX_ESLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "JSX_ESLINT_PRE_COMMANDS": {
+      "$id": "#/properties/JSX_ESLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "JSX_ESLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "JSX_ESLINT_RULES_PATH": {
       "$id": "#/properties/JSX_ESLINT_RULES_PATH",
@@ -3541,7 +4765,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "KOTLIN_KTLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3567,6 +4791,40 @@
       "$id": "#/properties/KOTLIN_KTLINT_FILTER_REGEX_INCLUDE",
       "title": "KOTLIN_KTLINT: Including Regex",
       "type": "string"
+    },
+    "KOTLIN_KTLINT_POST_COMMANDS": {
+      "$id": "#/properties/KOTLIN_KTLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KOTLIN_KTLINT_PRE_COMMANDS": {
+      "$id": "#/properties/KOTLIN_KTLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "KUBERNETES_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_FILTER_REGEX_EXCLUDE",
@@ -3619,7 +4877,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3645,6 +4903,40 @@
       "$id": "#/properties/KUBERNETES_KUBEVAL_FILTER_REGEX_INCLUDE",
       "title": "KUBERNETES_KUBEVAL: Including Regex",
       "type": "string"
+    },
+    "KUBERNETES_KUBEVAL_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBEVAL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KUBERNETES_KUBEVAL_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBEVAL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "LATEX_CHKTEX_ARGUMENTS": {
       "$id": "#/properties/LATEX_CHKTEX_ARGUMENTS",
@@ -3688,7 +4980,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "LATEX_CHKTEX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3721,6 +5013,40 @@
       "$id": "#/properties/LATEX_CHKTEX_FILTER_REGEX_INCLUDE",
       "title": "LATEX_CHKTEX: Including Regex",
       "type": "string"
+    },
+    "LATEX_CHKTEX_POST_COMMANDS": {
+      "$id": "#/properties/LATEX_CHKTEX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LATEX_CHKTEX: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "LATEX_CHKTEX_PRE_COMMANDS": {
+      "$id": "#/properties/LATEX_CHKTEX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LATEX_CHKTEX: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "LATEX_CHKTEX_RULES_PATH": {
       "$id": "#/properties/LATEX_CHKTEX_RULES_PATH",
@@ -3821,7 +5147,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "LUA_LUACHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3854,6 +5180,40 @@
       "$id": "#/properties/LUA_LUACHECK_FILTER_REGEX_INCLUDE",
       "title": "LUA_LUACHECK: Including Regex",
       "type": "string"
+    },
+    "LUA_LUACHECK_POST_COMMANDS": {
+      "$id": "#/properties/LUA_LUACHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "LUA_LUACHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "LUA_LUACHECK_PRE_COMMANDS": {
+      "$id": "#/properties/LUA_LUACHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "LUA_LUACHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "LUA_LUACHECK_RULES_PATH": {
       "$id": "#/properties/LUA_LUACHECK_RULES_PATH",
@@ -3923,7 +5283,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWNLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3956,6 +5316,40 @@
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILTER_REGEX_INCLUDE",
       "title": "MARKDOWN_MARKDOWNLINT: Including Regex",
       "type": "string"
+    },
+    "MARKDOWN_MARKDOWNLINT_POST_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWNLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWNLINT_PRE_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "MARKDOWN_MARKDOWNLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "MARKDOWN_MARKDOWNLINT_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_RULES_PATH",
@@ -4005,7 +5399,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4038,6 +5432,40 @@
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_FILTER_REGEX_INCLUDE",
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Including Regex",
       "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_POST_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_RULES_PATH",
@@ -4080,7 +5508,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4106,6 +5534,40 @@
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_FILTER_REGEX_INCLUDE",
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Including Regex",
       "type": "string"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_POST_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_PRE_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_ARGUMENTS",
@@ -4202,7 +5664,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4228,6 +5690,40 @@
       "$id": "#/properties/MARKDOWN_REMARK_LINT_FILTER_REGEX_INCLUDE",
       "title": "MARKDOWN_REMARK_LINT: Including Regex",
       "type": "string"
+    },
+    "MARKDOWN_REMARK_LINT_POST_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "MARKDOWN_REMARK_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "MARKDOWN_REMARK_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "MARKDOWN_REMARK_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "MARKDOWN_REMARK_LINT_RULES_PATH": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_RULES_PATH",
@@ -4287,7 +5783,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "OPENAPI_SPECTRAL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4320,6 +5816,40 @@
       "$id": "#/properties/OPENAPI_SPECTRAL_FILTER_REGEX_INCLUDE",
       "title": "OPENAPI_SPECTRAL: Including Regex",
       "type": "string"
+    },
+    "OPENAPI_SPECTRAL_POST_COMMANDS": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "OPENAPI_SPECTRAL: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "OPENAPI_SPECTRAL_PRE_COMMANDS": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "OPENAPI_SPECTRAL: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "OPENAPI_SPECTRAL_RULES_PATH": {
       "$id": "#/properties/OPENAPI_SPECTRAL_RULES_PATH",
@@ -4379,7 +5909,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PERL_PERLCRITIC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4405,6 +5935,40 @@
       "$id": "#/properties/PERL_PERLCRITIC_FILTER_REGEX_INCLUDE",
       "title": "PERL_PERLCRITIC: Including Regex",
       "type": "string"
+    },
+    "PERL_PERLCRITIC_POST_COMMANDS": {
+      "$id": "#/properties/PERL_PERLCRITIC_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PERL_PERLCRITIC: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PERL_PERLCRITIC_PRE_COMMANDS": {
+      "$id": "#/properties/PERL_PERLCRITIC_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PERL_PERLCRITIC: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PHP_BUILTIN_ARGUMENTS": {
       "$id": "#/properties/PHP_BUILTIN_ARGUMENTS",
@@ -4441,7 +6005,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_BUILTIN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4467,6 +6031,40 @@
       "$id": "#/properties/PHP_BUILTIN_FILTER_REGEX_INCLUDE",
       "title": "PHP_BUILTIN: Including Regex",
       "type": "string"
+    },
+    "PHP_BUILTIN_POST_COMMANDS": {
+      "$id": "#/properties/PHP_BUILTIN_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_BUILTIN_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_BUILTIN_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_BUILTIN: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PHP_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PHP_FILTER_REGEX_EXCLUDE",
@@ -4520,7 +6118,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PHPCS: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4553,6 +6151,40 @@
       "$id": "#/properties/PHP_PHPCS_FILTER_REGEX_INCLUDE",
       "title": "PHP_PHPCS: Including Regex",
       "type": "string"
+    },
+    "PHP_PHPCS_POST_COMMANDS": {
+      "$id": "#/properties/PHP_PHPCS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPCS: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_PHPCS_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PHPCS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPCS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PHP_PHPCS_RULES_PATH": {
       "$id": "#/properties/PHP_PHPCS_RULES_PATH",
@@ -4602,7 +6234,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PHPSTAN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4635,6 +6267,40 @@
       "$id": "#/properties/PHP_PHPSTAN_FILTER_REGEX_INCLUDE",
       "title": "PHP_PHPSTAN: Including Regex",
       "type": "string"
+    },
+    "PHP_PHPSTAN_POST_COMMANDS": {
+      "$id": "#/properties/PHP_PHPSTAN_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPSTAN: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_PHPSTAN_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PHPSTAN_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPSTAN: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PHP_PHPSTAN_RULES_PATH": {
       "$id": "#/properties/PHP_PHPSTAN_RULES_PATH",
@@ -4684,7 +6350,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PSALM: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4717,6 +6383,40 @@
       "$id": "#/properties/PHP_PSALM_FILTER_REGEX_INCLUDE",
       "title": "PHP_PSALM: Including Regex",
       "type": "string"
+    },
+    "PHP_PSALM_POST_COMMANDS": {
+      "$id": "#/properties/PHP_PSALM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PSALM: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_PSALM_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PSALM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PSALM: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PHP_PSALM_RULES_PATH": {
       "$id": "#/properties/PHP_PSALM_RULES_PATH",
@@ -4809,7 +6509,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "POWERSHELL_POWERSHELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4842,6 +6542,40 @@
       "$id": "#/properties/POWERSHELL_POWERSHELL_FILTER_REGEX_INCLUDE",
       "title": "POWERSHELL_POWERSHELL: Including Regex",
       "type": "string"
+    },
+    "POWERSHELL_POWERSHELL_POST_COMMANDS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "POWERSHELL_POWERSHELL: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "POWERSHELL_POWERSHELL_PRE_COMMANDS": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "POWERSHELL_POWERSHELL: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "POWERSHELL_POWERSHELL_RULES_PATH": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_RULES_PATH",
@@ -4931,7 +6665,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PROTOBUF_PROTOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4964,6 +6698,40 @@
       "$id": "#/properties/PROTOBUF_PROTOLINT_FILTER_REGEX_INCLUDE",
       "title": "PROTOBUF_PROTOLINT: Including Regex",
       "type": "string"
+    },
+    "PROTOBUF_PROTOLINT_POST_COMMANDS": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PROTOBUF_PROTOLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PROTOBUF_PROTOLINT_PRE_COMMANDS": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PROTOBUF_PROTOLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PROTOBUF_PROTOLINT_RULES_PATH": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_RULES_PATH",
@@ -5023,7 +6791,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PUPPET_PUPPET_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5056,6 +6824,40 @@
       "$id": "#/properties/PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE",
       "title": "PUPPET_PUPPET_LINT: Including Regex",
       "type": "string"
+    },
+    "PUPPET_PUPPET_LINT_POST_COMMANDS": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PUPPET_PUPPET_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PUPPET_PUPPET_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PUPPET_PUPPET_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PUPPET_PUPPET_LINT_RULES_PATH": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_RULES_PATH",
@@ -5098,7 +6900,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_BANDIT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5124,6 +6926,40 @@
       "$id": "#/properties/PYTHON_BANDIT_FILTER_REGEX_INCLUDE",
       "title": "PYTHON_BANDIT: Including Regex",
       "type": "string"
+    },
+    "PYTHON_BANDIT_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_BANDIT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BANDIT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_BANDIT_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_BANDIT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_BANDIT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PYTHON_BLACK_ARGUMENTS": {
       "$id": "#/properties/PYTHON_BLACK_ARGUMENTS",
@@ -5167,7 +7003,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_BLACK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5200,6 +7036,40 @@
       "$id": "#/properties/PYTHON_BLACK_FILTER_REGEX_INCLUDE",
       "title": "PYTHON_BLACK: Including Regex",
       "type": "string"
+    },
+    "PYTHON_BLACK_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_BLACK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_BLACK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_BLACK_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_BLACK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_BLACK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PYTHON_BLACK_RULES_PATH": {
       "$id": "#/properties/PYTHON_BLACK_RULES_PATH",
@@ -5259,7 +7129,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_FLAKE8: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5292,6 +7162,40 @@
       "$id": "#/properties/PYTHON_FLAKE8_FILTER_REGEX_INCLUDE",
       "title": "PYTHON_FLAKE8: Including Regex",
       "type": "string"
+    },
+    "PYTHON_FLAKE8_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_FLAKE8_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_FLAKE8: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_FLAKE8_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_FLAKE8_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_FLAKE8: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PYTHON_FLAKE8_RULES_PATH": {
       "$id": "#/properties/PYTHON_FLAKE8_RULES_PATH",
@@ -5341,7 +7245,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_ISORT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5374,6 +7278,40 @@
       "$id": "#/properties/PYTHON_ISORT_FILTER_REGEX_INCLUDE",
       "title": "PYTHON_ISORT: Including Regex",
       "type": "string"
+    },
+    "PYTHON_ISORT_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_ISORT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_ISORT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_ISORT_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_ISORT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_ISORT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PYTHON_ISORT_RULES_PATH": {
       "$id": "#/properties/PYTHON_ISORT_RULES_PATH",
@@ -5423,7 +7361,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_MYPY: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5449,6 +7387,40 @@
       "$id": "#/properties/PYTHON_MYPY_FILTER_REGEX_INCLUDE",
       "title": "PYTHON_MYPY: Including Regex",
       "type": "string"
+    },
+    "PYTHON_MYPY_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_MYPY_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_MYPY: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_MYPY_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_MYPY_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_MYPY: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PYTHON_MYPY_RULES_PATH": {
       "$id": "#/properties/PYTHON_MYPY_RULES_PATH",
@@ -5498,7 +7470,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_PYLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5531,6 +7503,40 @@
       "$id": "#/properties/PYTHON_PYLINT_FILTER_REGEX_INCLUDE",
       "title": "PYTHON_PYLINT: Including Regex",
       "type": "string"
+    },
+    "PYTHON_PYLINT_POST_COMMANDS": {
+      "$id": "#/properties/PYTHON_PYLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PYTHON_PYLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PYTHON_PYLINT_PRE_COMMANDS": {
+      "$id": "#/properties/PYTHON_PYLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PYTHON_PYLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "PYTHON_PYLINT_RULES_PATH": {
       "$id": "#/properties/PYTHON_PYLINT_RULES_PATH",
@@ -5590,7 +7596,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RAKU_RAKU: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5623,6 +7629,40 @@
       "$id": "#/properties/RAKU_RAKU_FILTER_REGEX_INCLUDE",
       "title": "RAKU_RAKU: Including Regex",
       "type": "string"
+    },
+    "RAKU_RAKU_POST_COMMANDS": {
+      "$id": "#/properties/RAKU_RAKU_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RAKU_RAKU: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "RAKU_RAKU_PRE_COMMANDS": {
+      "$id": "#/properties/RAKU_RAKU_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "RAKU_RAKU: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "RAKU_RAKU_RULES_PATH": {
       "$id": "#/properties/RAKU_RAKU_RULES_PATH",
@@ -5689,7 +7729,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RSTCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5722,6 +7762,40 @@
       "$id": "#/properties/RST_RSTCHECK_FILTER_REGEX_INCLUDE",
       "title": "RST_RSTCHECK: Including Regex",
       "type": "string"
+    },
+    "RST_RSTCHECK_POST_COMMANDS": {
+      "$id": "#/properties/RST_RSTCHECK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RSTCHECK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "RST_RSTCHECK_PRE_COMMANDS": {
+      "$id": "#/properties/RST_RSTCHECK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "RST_RSTCHECK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "RST_RSTCHECK_RULES_PATH": {
       "$id": "#/properties/RST_RSTCHECK_RULES_PATH",
@@ -5764,7 +7838,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RSTFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5790,6 +7864,40 @@
       "$id": "#/properties/RST_RSTFMT_FILTER_REGEX_INCLUDE",
       "title": "RST_RSTFMT: Including Regex",
       "type": "string"
+    },
+    "RST_RSTFMT_POST_COMMANDS": {
+      "$id": "#/properties/RST_RSTFMT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RSTFMT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "RST_RSTFMT_PRE_COMMANDS": {
+      "$id": "#/properties/RST_RSTFMT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "RST_RSTFMT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "RST_RST_LINT_ARGUMENTS": {
       "$id": "#/properties/RST_RST_LINT_ARGUMENTS",
@@ -5826,7 +7934,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RST_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5852,6 +7960,40 @@
       "$id": "#/properties/RST_RST_LINT_FILTER_REGEX_INCLUDE",
       "title": "RST_RST_LINT: Including Regex",
       "type": "string"
+    },
+    "RST_RST_LINT_POST_COMMANDS": {
+      "$id": "#/properties/RST_RST_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RST_RST_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "RST_RST_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/RST_RST_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "RST_RST_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "RUBY_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/RUBY_FILTER_REGEX_EXCLUDE",
@@ -5905,7 +8047,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RUBY_RUBOCOP: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5938,6 +8080,40 @@
       "$id": "#/properties/RUBY_RUBOCOP_FILTER_REGEX_INCLUDE",
       "title": "RUBY_RUBOCOP: Including Regex",
       "type": "string"
+    },
+    "RUBY_RUBOCOP_POST_COMMANDS": {
+      "$id": "#/properties/RUBY_RUBOCOP_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RUBY_RUBOCOP: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "RUBY_RUBOCOP_PRE_COMMANDS": {
+      "$id": "#/properties/RUBY_RUBOCOP_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "RUBY_RUBOCOP: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "RUBY_RUBOCOP_RULES_PATH": {
       "$id": "#/properties/RUBY_RUBOCOP_RULES_PATH",
@@ -5987,7 +8163,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RUST_CLIPPY: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6020,6 +8196,40 @@
       "$id": "#/properties/RUST_CLIPPY_FILTER_REGEX_INCLUDE",
       "title": "RUST_CLIPPY: Including Regex",
       "type": "string"
+    },
+    "RUST_CLIPPY_POST_COMMANDS": {
+      "$id": "#/properties/RUST_CLIPPY_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "RUST_CLIPPY: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "RUST_CLIPPY_PRE_COMMANDS": {
+      "$id": "#/properties/RUST_CLIPPY_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "RUST_CLIPPY: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "RUST_CLIPPY_RULES_PATH": {
       "$id": "#/properties/RUST_CLIPPY_RULES_PATH",
@@ -6089,7 +8299,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "R_LINTR: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6122,6 +8332,40 @@
       "$id": "#/properties/R_LINTR_FILTER_REGEX_INCLUDE",
       "title": "R_LINTR: Including Regex",
       "type": "string"
+    },
+    "R_LINTR_POST_COMMANDS": {
+      "$id": "#/properties/R_LINTR_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "R_LINTR: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "R_LINTR_PRE_COMMANDS": {
+      "$id": "#/properties/R_LINTR_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "R_LINTR: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "R_LINTR_RULES_PATH": {
       "$id": "#/properties/R_LINTR_RULES_PATH",
@@ -6193,7 +8437,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6219,6 +8463,40 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE",
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Including Regex",
       "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_RULES_PATH",
@@ -6290,7 +8568,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6316,6 +8594,40 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE",
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Including Regex",
       "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_RULES_PATH",
@@ -6423,7 +8735,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6449,6 +8761,40 @@
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE",
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Including Regex",
       "type": "string"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS": {
+      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_RULES_PATH",
@@ -6508,7 +8854,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SCALA_SCALAFIX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6541,6 +8887,40 @@
       "$id": "#/properties/SCALA_SCALAFIX_FILTER_REGEX_INCLUDE",
       "title": "SCALA_SCALAFIX: Including Regex",
       "type": "string"
+    },
+    "SCALA_SCALAFIX_POST_COMMANDS": {
+      "$id": "#/properties/SCALA_SCALAFIX_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SCALA_SCALAFIX: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SCALA_SCALAFIX_PRE_COMMANDS": {
+      "$id": "#/properties/SCALA_SCALAFIX_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SCALA_SCALAFIX: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SCALA_SCALAFIX_RULES_PATH": {
       "$id": "#/properties/SCALA_SCALAFIX_RULES_PATH",
@@ -6607,7 +8987,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SNAKEMAKE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6633,6 +9013,40 @@
       "$id": "#/properties/SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE",
       "title": "SNAKEMAKE_LINT: Including Regex",
       "type": "string"
+    },
+    "SNAKEMAKE_LINT_POST_COMMANDS": {
+      "$id": "#/properties/SNAKEMAKE_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SNAKEMAKE_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SNAKEMAKE_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/SNAKEMAKE_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SNAKEMAKE_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SNAKEMAKE_SNAKEFMT_ARGUMENTS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_ARGUMENTS",
@@ -6676,7 +9090,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6709,6 +9123,40 @@
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE",
       "title": "SNAKEMAKE_SNAKEFMT: Including Regex",
       "type": "string"
+    },
+    "SNAKEMAKE_SNAKEFMT_POST_COMMANDS": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SNAKEMAKE_SNAKEFMT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SNAKEMAKE_SNAKEFMT_PRE_COMMANDS": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SNAKEMAKE_SNAKEFMT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SNAKEMAKE_SNAKEFMT_RULES_PATH": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_RULES_PATH",
@@ -6758,7 +9206,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SPELL_CSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6791,6 +9239,40 @@
       "$id": "#/properties/SPELL_CSPELL_FILTER_REGEX_INCLUDE",
       "title": "SPELL_CSPELL: Including Regex",
       "type": "string"
+    },
+    "SPELL_CSPELL_POST_COMMANDS": {
+      "$id": "#/properties/SPELL_CSPELL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_CSPELL: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SPELL_CSPELL_PRE_COMMANDS": {
+      "$id": "#/properties/SPELL_CSPELL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_CSPELL: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SPELL_CSPELL_RULES_PATH": {
       "$id": "#/properties/SPELL_CSPELL_RULES_PATH",
@@ -6843,7 +9325,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6869,6 +9351,40 @@
       "$id": "#/properties/SPELL_MISSPELL_FILTER_REGEX_INCLUDE",
       "title": "SPELL_MISSPELL: Including Regex",
       "type": "string"
+    },
+    "SPELL_MISSPELL_POST_COMMANDS": {
+      "$id": "#/properties/SPELL_MISSPELL_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_MISSPELL: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SPELL_MISSPELL_PRE_COMMANDS": {
+      "$id": "#/properties/SPELL_MISSPELL_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_MISSPELL: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SQL_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/SQL_FILTER_REGEX_EXCLUDE",
@@ -6922,7 +9438,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_SQLFLUFF: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6948,6 +9464,40 @@
       "$id": "#/properties/SQL_SQLFLUFF_FILTER_REGEX_INCLUDE",
       "title": "SQL_SQLFLUFF: Including Regex",
       "type": "string"
+    },
+    "SQL_SQLFLUFF_POST_COMMANDS": {
+      "$id": "#/properties/SQL_SQLFLUFF_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_SQLFLUFF: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SQL_SQLFLUFF_PRE_COMMANDS": {
+      "$id": "#/properties/SQL_SQLFLUFF_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SQL_SQLFLUFF: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SQL_SQLFLUFF_RULES_PATH": {
       "$id": "#/properties/SQL_SQLFLUFF_RULES_PATH",
@@ -6997,7 +9547,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_SQL_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7030,6 +9580,40 @@
       "$id": "#/properties/SQL_SQL_LINT_FILTER_REGEX_INCLUDE",
       "title": "SQL_SQL_LINT: Including Regex",
       "type": "string"
+    },
+    "SQL_SQL_LINT_POST_COMMANDS": {
+      "$id": "#/properties/SQL_SQL_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_SQL_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SQL_SQL_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/SQL_SQL_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SQL_SQL_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SQL_SQL_LINT_RULES_PATH": {
       "$id": "#/properties/SQL_SQL_LINT_RULES_PATH",
@@ -7079,7 +9663,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_TSQLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7105,6 +9689,40 @@
       "$id": "#/properties/SQL_TSQLLINT_FILTER_REGEX_INCLUDE",
       "title": "SQL_TSQLLINT: Including Regex",
       "type": "string"
+    },
+    "SQL_TSQLLINT_POST_COMMANDS": {
+      "$id": "#/properties/SQL_TSQLLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SQL_TSQLLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SQL_TSQLLINT_PRE_COMMANDS": {
+      "$id": "#/properties/SQL_TSQLLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SQL_TSQLLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SQL_TSQLLINT_RULES_PATH": {
       "$id": "#/properties/SQL_TSQLLINT_RULES_PATH",
@@ -7164,7 +9782,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SWIFT_SWIFTLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7190,6 +9808,40 @@
       "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE",
       "title": "SWIFT_SWIFTLINT: Including Regex",
       "type": "string"
+    },
+    "SWIFT_SWIFTLINT_POST_COMMANDS": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SWIFT_SWIFTLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "SWIFT_SWIFTLINT_PRE_COMMANDS": {
+      "$id": "#/properties/SWIFT_SWIFTLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SWIFT_SWIFTLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "SWIFT_SWIFTLINT_RULES_PATH": {
       "$id": "#/properties/SWIFT_SWIFTLINT_RULES_PATH",
@@ -7263,7 +9915,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TEKTON_TEKTON_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7296,6 +9948,40 @@
       "$id": "#/properties/TEKTON_TEKTON_LINT_FILTER_REGEX_INCLUDE",
       "title": "TEKTON_TEKTON_LINT: Including Regex",
       "type": "string"
+    },
+    "TEKTON_TEKTON_LINT_POST_COMMANDS": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TEKTON_TEKTON_LINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TEKTON_TEKTON_LINT_PRE_COMMANDS": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TEKTON_TEKTON_LINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TEKTON_TEKTON_LINT_RULES_PATH": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_RULES_PATH",
@@ -7338,7 +10024,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7364,6 +10050,40 @@
       "$id": "#/properties/TERRAFORM_CHECKOV_FILTER_REGEX_INCLUDE",
       "title": "TERRAFORM_CHECKOV: Including Regex",
       "type": "string"
+    },
+    "TERRAFORM_CHECKOV_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_CHECKOV_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_CHECKOV_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_CHECKOV_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TERRAFORM_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/TERRAFORM_FILTER_REGEX_EXCLUDE",
@@ -7410,7 +10130,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7436,6 +10156,40 @@
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE",
       "title": "TERRAFORM_TERRAFORM_FMT: Including Regex",
       "type": "string"
+    },
+    "TERRAFORM_TERRAFORM_FMT_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_TERRAFORM_FMT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TERRAFORM_TERRAGRUNT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_ARGUMENTS",
@@ -7479,7 +10233,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAGRUNT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7512,6 +10266,40 @@
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_FILTER_REGEX_INCLUDE",
       "title": "TERRAFORM_TERRAGRUNT: Including Regex",
       "type": "string"
+    },
+    "TERRAFORM_TERRAGRUNT_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRAGRUNT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_TERRAGRUNT_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_TERRAGRUNT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TERRAFORM_TERRAGRUNT_RULES_PATH": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_RULES_PATH",
@@ -7554,7 +10342,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7580,6 +10368,40 @@
       "$id": "#/properties/TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE",
       "title": "TERRAFORM_TERRASCAN: Including Regex",
       "type": "string"
+    },
+    "TERRAFORM_TERRASCAN_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_TERRASCAN_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TERRAFORM_TFLINT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TFLINT_ARGUMENTS",
@@ -7623,7 +10445,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TFLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7656,6 +10478,40 @@
       "$id": "#/properties/TERRAFORM_TFLINT_FILTER_REGEX_INCLUDE",
       "title": "TERRAFORM_TFLINT: Including Regex",
       "type": "string"
+    },
+    "TERRAFORM_TFLINT_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TFLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_TFLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_TFLINT_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_TFLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_TFLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TERRAFORM_TFLINT_RULES_PATH": {
       "$id": "#/properties/TERRAFORM_TFLINT_RULES_PATH",
@@ -7719,7 +10575,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7752,6 +10608,40 @@
       "$id": "#/properties/TSX_ESLINT_FILTER_REGEX_INCLUDE",
       "title": "TSX_ESLINT: Including Regex",
       "type": "string"
+    },
+    "TSX_ESLINT_POST_COMMANDS": {
+      "$id": "#/properties/TSX_ESLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TSX_ESLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TSX_ESLINT_PRE_COMMANDS": {
+      "$id": "#/properties/TSX_ESLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TSX_ESLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TSX_ESLINT_RULES_PATH": {
       "$id": "#/properties/TSX_ESLINT_RULES_PATH",
@@ -7825,7 +10715,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7858,6 +10748,40 @@
       "$id": "#/properties/TYPESCRIPT_ES_FILTER_REGEX_INCLUDE",
       "title": "TYPESCRIPT_ES: Including Regex",
       "type": "string"
+    },
+    "TYPESCRIPT_ES_POST_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_ES_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_ES: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TYPESCRIPT_ES_PRE_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_ES_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TYPESCRIPT_ES: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TYPESCRIPT_ES_RULES_PATH": {
       "$id": "#/properties/TYPESCRIPT_ES_RULES_PATH",
@@ -7917,7 +10841,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7943,6 +10867,40 @@
       "$id": "#/properties/TYPESCRIPT_PRETTIER_FILTER_REGEX_INCLUDE",
       "title": "TYPESCRIPT_PRETTIER: Including Regex",
       "type": "string"
+    },
+    "TYPESCRIPT_PRETTIER_POST_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_PRETTIER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TYPESCRIPT_PRETTIER_PRE_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TYPESCRIPT_PRETTIER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TYPESCRIPT_PRETTIER_RULES_PATH": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_RULES_PATH",
@@ -7985,7 +10943,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_STANDARD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8011,6 +10969,40 @@
       "$id": "#/properties/TYPESCRIPT_STANDARD_FILTER_REGEX_INCLUDE",
       "title": "TYPESCRIPT_STANDARD: Including Regex",
       "type": "string"
+    },
+    "TYPESCRIPT_STANDARD_POST_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TYPESCRIPT_STANDARD: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TYPESCRIPT_STANDARD_PRE_COMMANDS": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TYPESCRIPT_STANDARD: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "UPDATED_SOURCES_REPORTER": {
       "$id": "#/properties/UPDATED_SOURCES_REPORTER",
@@ -8064,7 +11056,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8090,6 +11082,40 @@
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_FILTER_REGEX_INCLUDE",
       "title": "VBDOTNET_DOTNET_FORMAT: Including Regex",
       "type": "string"
+    },
+    "VBDOTNET_DOTNET_FORMAT_POST_COMMANDS": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "VBDOTNET_DOTNET_FORMAT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "VBDOTNET_DOTNET_FORMAT_PRE_COMMANDS": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "VBDOTNET_DOTNET_FORMAT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "VBDOTNET_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/VBDOTNET_FILTER_REGEX_EXCLUDE",
@@ -8146,7 +11172,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "XML_XMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8172,6 +11198,40 @@
       "$id": "#/properties/XML_XMLLINT_FILTER_REGEX_INCLUDE",
       "title": "XML_XMLLINT: Including Regex",
       "type": "string"
+    },
+    "XML_XMLLINT_POST_COMMANDS": {
+      "$id": "#/properties/XML_XMLLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "XML_XMLLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "XML_XMLLINT_PRE_COMMANDS": {
+      "$id": "#/properties/XML_XMLLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "XML_XMLLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "YAML_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/YAML_FILTER_REGEX_EXCLUDE",
@@ -8225,7 +11285,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8251,6 +11311,40 @@
       "$id": "#/properties/YAML_PRETTIER_FILTER_REGEX_INCLUDE",
       "title": "YAML_PRETTIER: Including Regex",
       "type": "string"
+    },
+    "YAML_PRETTIER_POST_COMMANDS": {
+      "$id": "#/properties/YAML_PRETTIER_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_PRETTIER: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "YAML_PRETTIER_PRE_COMMANDS": {
+      "$id": "#/properties/YAML_PRETTIER_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "YAML_PRETTIER: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "YAML_PRETTIER_RULES_PATH": {
       "$id": "#/properties/YAML_PRETTIER_RULES_PATH",
@@ -8293,7 +11387,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_V8R: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8319,6 +11413,40 @@
       "$id": "#/properties/YAML_V8R_FILTER_REGEX_INCLUDE",
       "title": "YAML_V8R: Including Regex",
       "type": "string"
+    },
+    "YAML_V8R_POST_COMMANDS": {
+      "$id": "#/properties/YAML_V8R_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_V8R: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "YAML_V8R_PRE_COMMANDS": {
+      "$id": "#/properties/YAML_V8R_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "YAML_V8R: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "YAML_YAMLLINT_ARGUMENTS": {
       "$id": "#/properties/YAML_YAMLLINT_ARGUMENTS",
@@ -8362,7 +11490,7 @@
         ".myext"
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_YAMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8395,6 +11523,40 @@
       "$id": "#/properties/YAML_YAMLLINT_FILTER_REGEX_INCLUDE",
       "title": "YAML_YAMLLINT: Including Regex",
       "type": "string"
+    },
+    "YAML_YAMLLINT_POST_COMMANDS": {
+      "$id": "#/properties/YAML_YAMLLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "YAML_YAMLLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "YAML_YAMLLINT_PRE_COMMANDS": {
+      "$id": "#/properties/YAML_YAMLLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "YAML_YAMLLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "YAML_YAMLLINT_RULES_PATH": {
       "$id": "#/properties/YAML_YAMLLINT_RULES_PATH",
