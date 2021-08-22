@@ -18,6 +18,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [pylint](https://www.pylint.org) from 2.9.6 to **2.10.1** on 2021-08-21
   - [sqlfluff](https://www.sqlfluff.com/) from 0.6.3 to **0.6.4** on 2021-08-21
   - [phpstan](https://phpstan.org/) from 0.12.95 to **0.12.96** on 2021-08-21
+  - [pylint](https://www.pylint.org) from 2.10.1 to **2.10.2** on 2021-08-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.7.2 to **5.8.0** on 2021-08-22
+  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.2 to **1.26.3** on 2021-08-22
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
