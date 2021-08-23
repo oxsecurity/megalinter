@@ -186,21 +186,21 @@ module.exports = class extends Generator {
     }
     this.disable = false;
     // COPY PASTES
-    if (this.props.copyPaste !== true) {
+    if (this.props.copyPaste === true) {
       this.configCopyPaste =
-        "# - COPYPASTE # Uncomment to enable checks of abusive copy-pastes";
+        "# - COPYPASTE # Uncomment to disable checks of abusive copy-pastes";
     } else {
       this.configCopyPaste =
-        "- COPYPASTE # Comment to disable checks of abusive copy-pastes";
+        "- COPYPASTE # Comment to enable checks of abusive copy-pastes";
       this.disable = true;
     }
     // Spelling mistakes
-    if (this.props.spellingMistakes !== true) {
+    if (this.props.spellingMistakes === true) {
       this.configSpell =
-        "# - SPELL # Uncomment to enable checks of spelling mistakes";
+        "# - SPELL # Uncomment to disable checks of spelling mistakes";
     } else {
       this.configSpell =
-        "- SPELL # Comment to disable checks of spelling mistakes";
+        "- SPELL # Comment to enable checks of spelling mistakes";
       this.disable = true;
     }
   }
