@@ -11,6 +11,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Manage pre_commands and post_commands at linter level
   - Default commands defined at linter descriptor level
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
+- Fix tflint config so no custom PRE_COMMAND is necessary
+- mega-linter-runner updates
+  - Fix mega-linter-runner --install when local folder path contain spaces
+  - Upgrade mega-linter-runner dependencies (npm audit fix)
+  - Better comments for generated .mega-linter.yml config file
 
 - Linter versions upgrades
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.1.0 to **1.2.0** on 2021-08-20
