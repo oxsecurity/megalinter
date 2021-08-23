@@ -40,7 +40,9 @@ class MegaLinterRunner {
     if (options.install) {
       const yeoman = require("yeoman-environment");
       const env = yeoman.createEnv();
-      env.run(path.resolve(`${__dirname}/../generators/mega-linter`));
+      const generatorPath = path.resolve(path.join(__dirname, '..', 'generators', 'mega-linter'));
+      console.log("Yeoman generator used: " + generatorPath);
+      env.run(generatorPath);
       return { status: 0 };
     }
 
@@ -49,10 +51,10 @@ class MegaLinterRunner {
       options.release in ["v4", "stable"]
         ? "v4"
         : options.release == "insiders"
-        ? "latest"
-        : options.release
-        ? options.release
-        : "v4";
+          ? "latest"
+          : options.release
+            ? options.release
+            : "v4";
     const dockerImageName =
       options.flavor === "all" || options.flavor == null
         ? "nvuillam/mega-linter"
