@@ -6881,6 +6881,13 @@
         "string"
       ]
     },
+    "PYTHON_BANDIT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_BANDIT_CONFIG_FILE",
+      "default": ".bandit.yml",
+      "description": "PYTHON_BANDIT: User custom config file name if different from default",
+      "title": "PYTHON_BANDIT: Custom config file name",
+      "type": "string"
+    },
     "PYTHON_BANDIT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BANDIT_DISABLE_ERRORS",
       "default": false,
@@ -6960,6 +6967,12 @@
       },
       "title": "PYTHON_BANDIT: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "PYTHON_BANDIT_RULES_PATH": {
+      "$id": "#/properties/PYTHON_BANDIT_RULES_PATH",
+      "description": "PYTHON_BANDIT: Path where to find linter configuration file",
+      "title": "PYTHON_BANDIT: Custom config file path",
+      "type": "string"
     },
     "PYTHON_BLACK_ARGUMENTS": {
       "$id": "#/properties/PYTHON_BLACK_ARGUMENTS",
