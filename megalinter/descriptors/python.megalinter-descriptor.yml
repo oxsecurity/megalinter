@@ -185,6 +185,8 @@ linters:
     cli_config_arg_name: "--configfile"
     cli_version_arg_name: "--version"
     config_file_name: ".bandit.yml"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: ">> Issue: \\["
     version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
     test_folder: python_bandit
     examples:
