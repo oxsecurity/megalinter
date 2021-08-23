@@ -184,6 +184,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--configfile"
     cli_version_arg_name: "--version"
+    config_file_name: ".bandit.yml"
     version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
     test_folder: python_bandit
     examples:
