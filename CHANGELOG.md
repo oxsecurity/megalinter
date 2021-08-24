@@ -16,6 +16,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Fix mega-linter-runner --install when local folder path contain spaces
   - Upgrade mega-linter-runner dependencies (npm audit fix)
   - Better comments for generated .mega-linter.yml config file
+  - Add custom linter to go-golangci-lint
 
 - Linter versions upgrades
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.1.0 to **1.2.0** on 2021-08-20

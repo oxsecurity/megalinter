@@ -10,7 +10,8 @@ install:
     - go
 linters:
   # GOLANG CI LINT
-  - linter_name: golangci-lint
+  - class: GolangCILinter
+    linter_name: golangci-lint
     linter_url: https://golangci-lint.run/
     linter_repo: https://github.com/golangci/golangci-lint
     linter_rules_url: https://golangci-lint.run/usage/linters/
@@ -21,6 +22,7 @@ linters:
     cli_lint_extra_args:
       - "run"
     cli_version_arg_name: "version"
+    cli_lint_mode: project
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
     examples:
       - "golangci-lint run myfile.go"
