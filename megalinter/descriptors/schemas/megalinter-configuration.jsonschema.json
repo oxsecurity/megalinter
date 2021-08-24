@@ -4826,6 +4826,11 @@
       "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "KUBERNETES_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_DIRECTORY",
+      "title": "Directory containing KUBERNETES files",
+      "type": "string"
+    },
     "KUBERNETES_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for KUBERNETES descriptor",
