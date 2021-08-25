@@ -11,6 +11,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Manage pre_commands and post_commands at linter level
   - Default commands defined at linter descriptor level
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
+- Fix tflint config so no custom PRE_COMMAND is necessary
+- mega-linter-runner updates
+  - Fix mega-linter-runner --install when local folder path contain spaces
+  - Upgrade mega-linter-runner dependencies (npm audit fix)
+  - Better comments for generated .mega-linter.yml config file
 
 - Linter versions upgrades
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.1.0 to **1.2.0** on 2021-08-20
@@ -21,6 +26,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [pylint](https://www.pylint.org) from 2.10.1 to **2.10.2** on 2021-08-22
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.7.2 to **5.8.0** on 2021-08-22
   - [yamllint](https://yamllint.readthedocs.io/) from 1.26.2 to **1.26.3** on 2021-08-22
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.5.0 to **1.6.0** on 2021-08-23
+  - [checkov](https://www.checkov.io/) from 2.0.363 to **2.0.367** on 2021-08-23
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.0 to **5.8.1** on 2021-08-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.5 to **0.31.6** on 2021-08-24
 <!-- linter-versions-end -->
 
 ## [Unreleased] - 2021-08-25

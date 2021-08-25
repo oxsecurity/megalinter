@@ -35,9 +35,9 @@ module.exports = class extends Generator {
           { value: "python", name: "Python" },
           { value: "ruby", name: "Ruby" },
           { value: "rust", name: "RUST" },
+          { value: "salesforce", name: "Salesforce" },
           { value: "scala", name: "Scala" },
           { value: "swift", name: "Swift" },
-          { value: "salesforce", name: "Salesforce" },
           { value: "terraform", name: "Terraform" },
         ],
       },
@@ -186,21 +186,21 @@ module.exports = class extends Generator {
     }
     this.disable = false;
     // COPY PASTES
-    if (this.props.copyPaste === false) {
+    if (this.props.copyPaste === true) {
       this.configCopyPaste =
-        "# - COPYPASTE # Uncomment to enable checks of abusive copy-pastes";
+        "# - COPYPASTE # Uncomment to disable checks of abusive copy-pastes";
     } else {
       this.configCopyPaste =
-        "- COPYPASTE # Comment to disable checks of abusive copy-pastes";
+        "- COPYPASTE # Comment to enable checks of abusive copy-pastes";
       this.disable = true;
     }
     // Spelling mistakes
-    if (this.props.spellingMistakes === false) {
+    if (this.props.spellingMistakes === true) {
       this.configSpell =
-        "# - SPELL # Uncomment to enable checks of spelling mistakes";
+        "# - SPELL # Uncomment to disable checks of spelling mistakes";
     } else {
       this.configSpell =
-        "- SPELL # Comment to disable checks of spelling mistakes";
+        "- SPELL # Comment to enable checks of spelling mistakes";
       this.disable = true;
     }
   }

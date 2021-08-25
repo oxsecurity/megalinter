@@ -4828,6 +4828,11 @@
       "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "KUBERNETES_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_DIRECTORY",
+      "title": "Directory containing KUBERNETES files",
+      "type": "string"
+    },
     "KUBERNETES_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/KUBERNETES_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for KUBERNETES descriptor",
@@ -6883,6 +6888,13 @@
         "string"
       ]
     },
+    "PYTHON_BANDIT_CONFIG_FILE": {
+      "$id": "#/properties/PYTHON_BANDIT_CONFIG_FILE",
+      "default": ".bandit.yml",
+      "description": "PYTHON_BANDIT: User custom config file name if different from default",
+      "title": "PYTHON_BANDIT: Custom config file name",
+      "type": "string"
+    },
     "PYTHON_BANDIT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BANDIT_DISABLE_ERRORS",
       "default": false,
@@ -6962,6 +6974,12 @@
       },
       "title": "PYTHON_BANDIT: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "PYTHON_BANDIT_RULES_PATH": {
+      "$id": "#/properties/PYTHON_BANDIT_RULES_PATH",
+      "description": "PYTHON_BANDIT: Path where to find linter configuration file",
+      "title": "PYTHON_BANDIT: Custom config file path",
+      "type": "string"
     },
     "PYTHON_BLACK_ARGUMENTS": {
       "$id": "#/properties/PYTHON_BLACK_ARGUMENTS",

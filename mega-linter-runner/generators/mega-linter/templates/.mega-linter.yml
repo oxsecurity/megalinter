@@ -7,6 +7,6 @@ DEFAULT_BRANCH: <%= DEFAULT_BRANCH %> # Usually master or main
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 <%= DISABLE %>
   <%= COPYPASTE %>
-  <%= SPELL %> # - SPELL # Uncomment to disable checks of spelling mistakes
+  <%= SPELL %>
 SHOW_ELAPSED_TIME: <%= SHOW_ELAPSED_TIME %>
 FILEIO_REPORTER: <%= FILEIO_REPORTER %>
