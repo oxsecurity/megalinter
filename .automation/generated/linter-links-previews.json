@@ -339,6 +339,11 @@
     "image": "https://avatars2.githubusercontent.com/u/3576549?s=400&v=4",
     "title": "mvdan/sh"
   },
+  "slither-linter": {
+    "description": "Blockchain Security, by @trailofbits. Crytic has 25 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/48330002?s=280&v=4",
+    "title": "Crytic"
+  },
   "snakefmt": {
     "description": "The uncompromising Snakemake code formatter. Contribute to snakemake/snakefmt development by creating an account on GitHub.",
     "image": "https://avatars2.githubusercontent.com/u/33450111?s=400&v=4",

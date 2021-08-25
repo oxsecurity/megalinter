@@ -23,6 +23,14 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [yamllint](https://yamllint.readthedocs.io/) from 1.26.2 to **1.26.3** on 2021-08-22
 <!-- linter-versions-end -->
 
+## [Unreleased] - 2021-08-25
+
+- Linters
+  - New solidity linter
+    - [slither-linter](https://github.com/crytic/slither)
+ 
+<!-- linter-versions-end -->
+
 ## [4.44.0] - 2021-08-19
 
 - Upgrade tflint descriptor to use ghcr.io/terraform-linters/tflint docker image and initialize tflint
