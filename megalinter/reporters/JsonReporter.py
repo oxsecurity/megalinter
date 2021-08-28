@@ -5,6 +5,7 @@ Output results in console
 import json
 import logging
 import os
+
 from megalinter import Reporter, config
 
 
@@ -15,7 +16,9 @@ class JsonReporter(Reporter):
     def __init__(self, params=None):
         # Deactivate JSON output by default
         self.is_active = False
-        self.processing_order = 9999 # Run at last so the output is on the last console line
+        self.processing_order = (
+            9999  # Run at last so the output is on the last console line
+        )
         super().__init__(params)
 
     def manage_activation(self):
@@ -23,9 +26,9 @@ class JsonReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        resultJson = json.dumps(self.master,sort_keys=True, indent=4)
+        resultJson = json.dumps(self.master, sort_keys=True, indent=4)
         json_file_name = f"{self.report_folder}{os.path.sep}mega-linter-report.json"
-        if config.get("JSON_REPORTER_FILE","") != "":
+        if config.get("JSON_REPORTER_FILE", "") != "":
             with open(json_file_name, "w", encoding="utf-8") as tap_file:
                 tap_file.write(resultJson)
                 logging.info(

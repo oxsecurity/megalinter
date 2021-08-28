@@ -265,15 +265,15 @@ class mega_linter_1_test(unittest.TestCase):
         )
         self.assertEqual("new", mega_linter.flavor_suggestions[0])
 
-
     def test_json_output(self):
-        mega_linter, output = utilstest.call_mega_linter(
-            {"JSON_REPORTER": "true"}
-        )
+        mega_linter, output = utilstest.call_mega_linter({"JSON_REPORTER": "true"})
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
-        expected_output_file = mega_linter.report_folder+os.path.sep+"mega-linter-report.json"
+        expected_output_file = (
+            mega_linter.report_folder + os.path.sep + "mega-linter-report.json"
+        )
         self.assertTrue(
-            os.path.isfile(expected_output_file), "Output json file "+ expected_output_file + " should exist" 
+            os.path.isfile(expected_output_file),
+            "Output json file " + expected_output_file + " should exist",
         )

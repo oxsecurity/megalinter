@@ -10,6 +10,6 @@ Activate the reporter (`JSON_REPORTER: true`) to generate JSON report file
 
 ## Configuration
 
-| Variable        | Description                    | Default value |
-|-----------------|--------------------------------|---------------|
+| Variable      | Description                    | Default value |
+|---------------|--------------------------------|---------------|
 | JSON_REPORTER | Activates/deactivates reporter | false         |
