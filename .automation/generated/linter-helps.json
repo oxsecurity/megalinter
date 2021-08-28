@@ -1035,7 +1035,7 @@
         "  dockerfilelint < Dockerfile       Lint the contents of Dockerfile via stdin"
     ],
     "dotenv-linter": [
-        "dotenv-linter 3.1.0",
+        "dotenv-linter 3.1.1",
         "Mikhail Grachev <work@mgrachev.com>",
         "Lightning-fast linter for .env files",
         "",
@@ -1296,8 +1296,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['W503', 'W504', 'E24', 'E121', 'E123',",
-        "                        'E226', 'E704', 'E126'])",
+        "                        (Default: ['E126', 'E123', 'E226', 'E121', 'E704',",
+        "                        'W503', 'E24', 'W504'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
@@ -6800,7 +6800,7 @@
         "   terragrunt-strict-validate                   Sets strict mode for the validate-inputs command. By default, strict mode is off. When this flag is passed, strict mode is turned on. When strict mode is turned off, the validate-inputs command will only return an error if required inputs are missing from all input sources (env vars, var files, etc). When strict mode is turned on, an error will be returned if required inputs are missing OR if unused variables are passed to Terragrunt.",
         "",
         "VERSION:",
-        "   v0.31.6",
+        "   v0.31.7",
         "",
         "AUTHOR(S):",
         "   Gruntwork <www.gruntwork.io>",

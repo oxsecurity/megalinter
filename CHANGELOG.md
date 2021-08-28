@@ -30,6 +30,12 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.363 to **2.0.367** on 2021-08-23
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.0 to **5.8.1** on 2021-08-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.5 to **0.31.6** on 2021-08-24
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.6.0 to **2.7.0** on 2021-08-28
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.0 to **3.1.1** on 2021-08-28
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.1 to **5.8.2** on 2021-08-28
+  - [checkov](https://www.checkov.io/) from 2.0.367 to **2.0.376** on 2021-08-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.6 to **0.31.7** on 2021-08-28
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.9.0 to **1.10.0** on 2021-08-28
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
