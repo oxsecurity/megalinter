@@ -26,6 +26,7 @@ on:
       - "mega-linter-runner/**"
       - "**/linter-versions.json"
       - "TEMPLATES/**"
+      - ".trivyignore"
 
 ###############
 # Set the Job #
