@@ -4,6 +4,7 @@ const optionsDefinition = require("./options");
 const { spawnSync } = require("child_process");
 const path = require("path");
 const which = require("which");
+const fs = require("fs-extra");
 
 class MegaLinterRunner {
   async run(options) {
@@ -53,10 +54,10 @@ class MegaLinterRunner {
       options.release in ["v4", "stable"]
         ? "v4"
         : options.release == "insiders"
-        ? "latest"
-        : options.release
-        ? options.release
-        : "v4";
+          ? "latest"
+          : options.release
+            ? options.release
+            : "v4";
     const dockerImageName =
       options.flavor === "all" || options.flavor == null
         ? "nvuillam/mega-linter"
@@ -117,6 +118,9 @@ ERROR: Docker engine has not been found on your system.
     if (options.debug === true) {
       commandArgs.push(...["-e", "LOG_LEVEL=DEBUG"]);
     }
+    if (options.json === true) {
+      commandArgs.push(...["-e", "JSON_REPORTER=true"]);
+    }
     if (options.env) {
       for (const envVarEqualsValue of options.env) {
         commandArgs.push(...["-e", envVarEqualsValue]);
@@ -135,6 +139,14 @@ ERROR: Docker engine has not been found on your system.
       windowsVerbatimArguments: true,
     };
     const spawnRes = spawnSync("docker", commandArgs, spawnOptions);
+    // Output json if requested
+    if (options.json === true) {
+      const jsonOutputFile = path.join(lintPath, process.env.REPORT_OUTPUT_FOLDER || "report", "mega-linter-report.json");
+      if (fs.existsSync(jsonOutputFile)) {
+        const jsonRaw = await fs.readFile(jsonOutputFile, "utf8");
+        console.log(JSON.stringify(JSON.parse(jsonRaw)));
+      }
+    }
     return {
       status: spawnRes.status,
       stdout: spawnRes.stdout,

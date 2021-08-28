@@ -281,6 +281,7 @@ nav:
       - "GitHub Status": "reporters/GitHubStatusReporter.md"
       - "TAP files": "reporters/TapReporter.md"
       - "Console": "reporters/ConsoleReporter.md"
+      - "JSON": "reporters/JsonReporter.md"
   - "Flavors":
       - "All flavors": "flavors.md"
       # flavors-start

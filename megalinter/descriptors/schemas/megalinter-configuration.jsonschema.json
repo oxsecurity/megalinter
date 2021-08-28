@@ -4498,6 +4498,13 @@
       "title": "JSON_PRETTIER: Custom config file path",
       "type": "string"
     },
+    "JSON_REPORTER": {
+      "$id": "#/properties/JSON_REPORTER",
+      "default": false,
+      "description": "Output a large execution log in a JSON file named mega-linter-report.json",
+      "title": "JSON reporter",
+      "type": "boolean"
+    },
     "JSON_V8R_ARGUMENTS": {
       "$id": "#/properties/JSON_V8R_ARGUMENTS",
       "description": "JSON_V8R: User custom arguments to add in linter CLI call",
