@@ -66,12 +66,15 @@ class JsonReporter(Reporter):
             result_obj.linters = filter(
                 lambda x: x.is_active is True, result_obj.linters
             )
-            result_obj.linters = list(map(
-                lambda x: self.filter_fields(x, self.linter_fields), result_obj.linters
-            ))
-            result_obj.reporters = list(map(
-                lambda x: self.filter_fields(x, []), result_obj.reporters
-            ))
+            result_obj.linters = list(
+                map(
+                    lambda x: self.filter_fields(x, self.linter_fields),
+                    result_obj.linters,
+                )
+            )
+            result_obj.reporters = list(
+                map(lambda x: self.filter_fields(x, []), result_obj.reporters)
+            )
             for reporter in result_obj.reporters:
                 setattr(reporter, "name", reporter.name)
 
