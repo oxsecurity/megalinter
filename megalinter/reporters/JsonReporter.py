@@ -62,14 +62,16 @@ class JsonReporter(Reporter):
         result_obj = copy.deepcopy(self.master)
         # Remove output data if result is simple (except if we are in debug mode)
         if self.report_type == "simple" and config.get("LOG_LEVEL", "") != "DEBUG":
-            self.max_depth = 4
             result_obj = self.filter_fields(result_obj, self.megalinter_fields)
             result_obj.linters = filter(
                 lambda x: x.is_active is True, result_obj.linters
             )
-            result_obj.linters = map(
+            result_obj.linters = list(map(
                 lambda x: self.filter_fields(x, self.linter_fields), result_obj.linters
-            )
+            ))
+            result_obj.reporters = list(map(
+                lambda x: self.filter_fields(x, []), result_obj.reporters
+            ))
             for reporter in result_obj.reporters:
                 setattr(reporter, "name", reporter.name)
 
@@ -92,7 +94,10 @@ class JsonReporter(Reporter):
             if (
                 not field.startswith("__")
                 and not callable(getattr(obj, field))
-                and (field not in fields_to_keep or getattr(obj, field, None) is None)
+                and (
+                    (len(fields_to_keep) > 0 and field not in fields_to_keep)
+                    or getattr(obj, field, None) is None
+                )
             ):
                 try:
                     delattr(obj, field)
