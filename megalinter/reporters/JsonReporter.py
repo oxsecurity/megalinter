@@ -26,7 +26,7 @@ class JsonReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        resultJson = jsonpickle.encode(self.master,unpicklable =False,max_depth=2,indent=4)
+        resultJson = jsonpickle.encode(self.master,unpicklable =False,max_depth=3,indent=4)
         json_file_name = f"{self.report_folder}{os.path.sep}"+config.get("JSON_REPORTER_FILE_NAME", "mega-linter-report.json")
         with open(json_file_name, "w", encoding="utf-8") as tap_file:
             tap_file.write(resultJson)
