@@ -71,9 +71,6 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 ansible-lint \
-                gcompat \
-                libunwind \
-                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -235,7 +232,7 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 
 # tsqllint installation
-RUN npm install --no-cache tsqllint
+RUN dotnet tool install tsqllint -g
 
 #OTHER__END
 

@@ -431,6 +431,9 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
     && sh ./install-misspell.sh
 
 
+# tsqllint installation
+RUN dotnet tool install tsqllint -g
+
 # tflint installation
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
