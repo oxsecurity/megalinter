@@ -1,6 +1,6 @@
 # JSON Reporter
 
-Generates a full execution log in JSON format witin a file named **mega-linter-report.json** , located in report folder
+Generates a full execution log in JSON format within a file named **mega-linter-report.json** , located in report folder
 
 This reporter **is deactivated by default**.
 

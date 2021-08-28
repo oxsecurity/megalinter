@@ -8,12 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
-- JSON_REPORTER to generate an output json file in report folder
+- JSON_REPORTER to generate an output json file in report folder 
 - Manage pre_commands and post_commands at linter level
   - Default commands defined at linter descriptor level
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
 - Fix tflint config so no custom PRE_COMMAND is necessary
 - mega-linter-runner updates
+  - New CLI argument `--json`, to get the full report as JSON in stdout last line
   - Fix mega-linter-runner --install when local folder path contain spaces
   - Upgrade mega-linter-runner dependencies (npm audit fix)
   - Better comments for generated .mega-linter.yml config file

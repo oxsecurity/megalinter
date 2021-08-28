@@ -23,7 +23,7 @@ class JsonReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        resultJson = json.dumps(self.master)
+        resultJson = json.dumps(self.master,sort_keys=True, indent=4)
         json_file_name = f"{self.report_folder}{os.path.sep}mega-linter-report.json"
         if config.get("JSON_REPORTER_FILE","") != "":
             with open(json_file_name, "w", encoding="utf-8") as tap_file:
