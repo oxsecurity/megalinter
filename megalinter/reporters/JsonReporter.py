@@ -75,7 +75,7 @@ class JsonReporter(Reporter):
 
         # Generate JSON from object using jsonpickle
         result_json = jsonpickle.encode(
-            result_obj, unpicklable=False, max_depth=self.max_depth, indent=4
+            result_obj, unpicklable=False,keys=True, max_depth=self.max_depth, indent=4
         )
         # Write output file
         json_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
@@ -94,5 +94,8 @@ class JsonReporter(Reporter):
                 and not callable(getattr(obj, field))
                 and (field not in fields_to_keep or getattr(obj, field, None) is None)
             ):
-                delattr(obj, field)
+                try:
+                    delattr(obj, field)
+                except:
+                    pass
         return obj
