@@ -75,7 +75,7 @@ class JsonReporter(Reporter):
 
         # Generate JSON from object using jsonpickle
         result_json = jsonpickle.encode(
-            self.master, unpicklable=False, max_depth=self.max_depth, indent=4
+            result_obj, unpicklable=False, max_depth=self.max_depth, indent=4
         )
         # Write output file
         json_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
