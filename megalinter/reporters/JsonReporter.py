@@ -62,10 +62,10 @@ class JsonReporter(Reporter):
         result_obj = copy.deepcopy(self.master)
         # Remove output data if result is simple (except if we are in debug mode)
         if self.report_type == "simple" and config.get("LOG_LEVEL", "") != "DEBUG":
-            self.max_depth = 3
+            self.max_depth = 4
             result_obj = self.filter_fields(result_obj, self.megalinter_fields)
             result_obj.linters = filter(
-                lambda x: x.is_active is False, result_obj.linters
+                lambda x: x.is_active is True, result_obj.linters
             )
             result_obj.linters = map(
                 lambda x: self.filter_fields(x, self.linter_fields), result_obj.linters
@@ -75,7 +75,7 @@ class JsonReporter(Reporter):
 
         # Generate JSON from object using jsonpickle
         result_json = jsonpickle.encode(
-            result_obj, unpicklable=False,keys=True, max_depth=self.max_depth, indent=4
+            result_obj, unpicklable=False,max_depth=self.max_depth, indent=4
         )
         # Write output file
         json_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
@@ -96,6 +96,6 @@ class JsonReporter(Reporter):
             ):
                 try:
                     delattr(obj, field)
-                except:
+                except: # noqa: E722
                     pass
         return obj
