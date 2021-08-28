@@ -50,7 +50,6 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
 - [File.io](reporters/FileIoReporter.md)
-- [JSON](reporters/JsonReporter.md)
 
 ## Enhanced Configuration
 
