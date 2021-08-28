@@ -2,7 +2,7 @@
 """
 Output results in console
 """
-import json
+import jsonpickle
 import logging
 import os
 
@@ -26,13 +26,10 @@ class JsonReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
-        resultJson = json.dumps(
-            self.master, default=lambda o: o.__dict__, sort_keys=True, indent=4
-        )
-        json_file_name = f"{self.report_folder}{os.path.sep}mega-linter-report.json"
-        if config.get("JSON_REPORTER_FILE", "") != "":
-            with open(json_file_name, "w", encoding="utf-8") as tap_file:
-                tap_file.write(resultJson)
-                logging.info(
-                    f"[JSON Reporter] Generated {self.name} report: {json_file_name}"
-                )
+        resultJson = jsonpickle.encode(self.master,unpicklable =False,max_depth=2,indent=4)
+        json_file_name = f"{self.report_folder}{os.path.sep}"+config.get("JSON_REPORTER_FILE_NAME", "mega-linter-report.json")
+        with open(json_file_name, "w", encoding="utf-8") as tap_file:
+            tap_file.write(resultJson)
+            logging.info(
+                f"[JSON Reporter] Generated {self.name} report: {json_file_name}"
+            )

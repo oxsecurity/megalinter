@@ -612,6 +612,7 @@
         "jscpd",
         "jsonify",
         "jsonlint",
+        "jsonpickle",
         "jsonschema",
         "jspm",
         "jwiebalk",
