@@ -81,6 +81,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "find-package-json": "^1.2.0",
+    "fs-extra": "^10.0.0",
     "optionator": "^0.9.1",
     "which": "^2.0.2",
     "yeoman-environment": "^3.6.0",
