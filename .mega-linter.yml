@@ -27,6 +27,7 @@ PYTHON_BANDIT_DISABLE_ERRORS: true
 SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
+JSON_REPORTER: true
 PLUGINS:
   - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
