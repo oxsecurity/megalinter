@@ -3,10 +3,10 @@
 Output results in console
 """
 import copy
-import jsonpickle
 import logging
 import os
 
+import jsonpickle
 from megalinter import Reporter, config
 
 
@@ -26,7 +26,7 @@ class JsonReporter(Reporter):
         "has_updated_sources",
         "flavor_suggestions",
         "pre_commands_results",
-        "post_commands_results"
+        "post_commands_results",
     ]
     linter_fields = [
         "descriptor_id",
@@ -41,7 +41,7 @@ class JsonReporter(Reporter):
         "total_number_errors",
         "number_fixed",
         "files_lint_results",
-        "elapsed_time_s"
+        "elapsed_time_s",
     ]
 
     def __init__(self, params=None):
@@ -61,17 +61,17 @@ class JsonReporter(Reporter):
     def produce_report(self):
         result_obj = copy.deepcopy(self.master)
         # Remove output data if result is simple (except if we are in debug mode)
-        if self.report_type == "simple" and config.get("LOG_LEVEL","") != "DEBUG":
+        if self.report_type == "simple" and config.get("LOG_LEVEL", "") != "DEBUG":
             self.max_depth = 3
-            result_obj = self.filter_fields(result_obj,self.megalinter_fields)
+            result_obj = self.filter_fields(result_obj, self.megalinter_fields)
             result_obj.linters = filter(
                 lambda x: x.is_active is False, result_obj.linters
             )
             result_obj.linters = map(
-                lambda x: self.filter_fields(x,self.linter_fields), result_obj.linters
+                lambda x: self.filter_fields(x, self.linter_fields), result_obj.linters
             )
             for reporter in result_obj.reporters:
-                setattr(reporter,"name",reporter.name) 
+                setattr(reporter, "name", reporter.name)
 
         # Generate JSON from object using jsonpickle
         result_json = jsonpickle.encode(
@@ -87,8 +87,12 @@ class JsonReporter(Reporter):
                 f"[JSON Reporter] Generated {self.name} report: {json_file_name}"
             )
 
-    def filter_fields(self,obj,fields_to_keep):
+    def filter_fields(self, obj, fields_to_keep):
         for field in dir(obj):
-            if not field.startswith('__') and not callable(getattr(obj, field)) and (field not in fields_to_keep or getattr(obj,field,None) is None):
-                delattr(obj,field)
+            if (
+                not field.startswith("__")
+                and not callable(getattr(obj, field))
+                and (field not in fields_to_keep or getattr(obj, field, None) is None)
+            ):
+                delattr(obj, field)
         return obj
