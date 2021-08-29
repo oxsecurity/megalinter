@@ -70,7 +70,7 @@ This linter is available in the following flavours
 
 sfdx-scanner-aura is called once on the whole project directory
 
-- filtering can not be done using Mega-Linter configuration variables, it must be done using sfdx-scanner-aura configuration or ignore file (if existing)
+- filtering can not be done using Mega-Linter configuration variables,it must be done using sfdx-scanner-aura configuration or ignore file (if existing)
 - `VALIDATE_ALL_CODEBASE: false` does not make sfdx-scanner-aura analyze only updated files
 
 ### Example calls
