@@ -77,7 +77,7 @@ Disabled until find a way to run with default options
       release,
       "-e",
       '"ENABLE=YAML"',
-      '--json'
+      "--json",
     ];
     if (nodockerpull) {
       params.push("--nodockerpull");

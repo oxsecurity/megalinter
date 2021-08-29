@@ -54,10 +54,10 @@ class MegaLinterRunner {
       options.release in ["v4", "stable"]
         ? "v4"
         : options.release == "insiders"
-          ? "latest"
-          : options.release
-            ? options.release
-            : "v4";
+        ? "latest"
+        : options.release
+        ? options.release
+        : "v4";
     const dockerImageName =
       options.flavor === "all" || options.flavor == null
         ? "nvuillam/mega-linter"
@@ -141,7 +141,11 @@ ERROR: Docker engine has not been found on your system.
     const spawnRes = spawnSync("docker", commandArgs, spawnOptions);
     // Output json if requested
     if (options.json === true) {
-      const jsonOutputFile = path.join(lintPath, process.env.REPORT_OUTPUT_FOLDER || "report", "mega-linter-report.json");
+      const jsonOutputFile = path.join(
+        lintPath,
+        process.env.REPORT_OUTPUT_FOLDER || "report",
+        "mega-linter-report.json"
+      );
       if (fs.existsSync(jsonOutputFile)) {
         const jsonRaw = await fs.readFile(jsonOutputFile, "utf8");
         console.log(JSON.stringify(JSON.parse(jsonRaw)));
