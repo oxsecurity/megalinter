@@ -3,6 +3,7 @@
 Output results in console
 """
 import copy
+import json
 import logging
 import os
 
@@ -82,6 +83,9 @@ class JsonReporter(Reporter):
         result_json = jsonpickle.encode(
             result_obj, unpicklable=False, max_depth=self.max_depth, indent=4
         )
+        # unserialize + serialize to sort object keys
+        result_json_obj = json.loads(result_json)
+        result_json = json.dumps(result_json_obj, sort_keys=True, indent=4)
         # Write output file
         json_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
             "JSON_REPORTER_FILE_NAME", "mega-linter-report.json"
