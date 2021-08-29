@@ -14,6 +14,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
 - Fix tflint config so no custom PRE_COMMAND is necessary
 - Use dotnet installer to setup tsqllint. tsqllint is now part of the main Mega-Linter flavor, but removed from JAVASCRIPT flavor
+- Ignore linter_FILTER_REGEX_INCLUDE/linter_FILTER_REGEX_EXCLUDE for linters running on the whole project directory
 - mega-linter-runner updates
   - New CLI argument `--json`, to get the full report as JSON in stdout last line
   - Fix mega-linter-runner --install when local folder path contain spaces
