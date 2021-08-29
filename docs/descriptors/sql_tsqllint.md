@@ -4,6 +4,7 @@
 
 ## tsqllint documentation
 
+- Version in Mega-Linter: **1.13.5.0**
 - Visit [Official Web Site](https://github.com/tsqllint/tsqllint#readme){target=_blank}
 - See [How to configure tsqllint rules](https://github.com/tsqllint/tsqllint#rule-configuration){target=_blank}
 - See [How to disable tsqllint rules in files](https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments){target=_blank}
@@ -70,6 +71,7 @@ tsqllint myfile.sql myfile2.sql
 ### Help content
 
 ```shell
+Running TSQLLint.
 
 tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
