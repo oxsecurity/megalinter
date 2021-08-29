@@ -19,8 +19,6 @@ Git diff checks for git conflicts markers in files
 | Variable                                 | Description                                                                                                                                                                                  | Default value      |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | GIT_GIT_DIFF_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| GIT_GIT_DIFF_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| GIT_GIT_DIFF_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
 | GIT_GIT_DIFF_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | Exclude every file |
 | GIT_GIT_DIFF_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
 | GIT_GIT_DIFF_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
@@ -59,6 +57,12 @@ This linter is available in the following flavours
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
+### How the linting is performed
+
+git_diff is called once on the whole project directory
+
+- filtering can not be done using Mega-Linter configuration variables,it must be done using git_diff configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` does not make git_diff analyze only updated files
 
 ### Example calls
 

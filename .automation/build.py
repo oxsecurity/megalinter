@@ -794,11 +794,45 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             ]
         linter_doc_md += [
             f"| {linter.name}_ARGUMENTS | User custom arguments to add in linter CLI call<br/>"
-            f'Ex: `-s --foo "bar"` |  |',
-            f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
-            f"Ex: `(src\\|lib)` | Include every file |",
-            f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
-            f"Ex: `(test\\|examples)` | Exclude no file |",
+            f'Ex: `-s --foo "bar"` |  |'
+        ]
+        # Files can be filtered only in cli_lint_mode is file or list_of_files
+        if linter.cli_lint_mode != "project":
+            linter_doc_md += [
+                f"| {linter.name}_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>"
+                f"Ex: `(src\\|lib)` | Include every file |",
+                f"| {linter.name}_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>"
+                f"Ex: `(test\\|examples)` | Exclude no file |",
+            ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_FILTER_REGEX_INCLUDE",
+                        {
+                            "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
+                            "type": "string",
+                            "title": f"{linter.name}: Including Regex",
+                        },
+                    ],
+                    [
+                        f"{linter.name}_FILTER_REGEX_EXCLUDE",
+                        {
+                            "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
+                            "type": "string",
+                            "title": f"{linter.name}: Excluding Regex",
+                        },
+                    ],
+                ]
+            )
+        else:
+            remove_in_config_schema_file(
+                [
+                    f"{linter.name}_FILTER_REGEX_INCLUDE",
+                    f"{linter.name}_FILTER_REGEX_EXCLUDE",
+                ]
+            )
+
+        linter_doc_md += [
             f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
             f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
             f"Ex: `[\".py\", \"\"]` | {dump_as_json(linter.file_extensions, 'Exclude every file')} |",
@@ -822,22 +856,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
                         "examples:": ["--foo", "bar"],
                         "items": {"type": "string"},
-                    },
-                ],
-                [
-                    f"{linter.name}_FILTER_REGEX_INCLUDE",
-                    {
-                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
-                        "type": "string",
-                        "title": f"{linter.name}: Including Regex",
-                    },
-                ],
-                [
-                    f"{linter.name}_FILTER_REGEX_EXCLUDE",
-                    {
-                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
-                        "type": "string",
-                        "title": f"{linter.name}: Excluding Regex",
                     },
                 ],
                 [
@@ -1057,6 +1075,26 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             "<!-- markdownlint-disable -->",
             "<!-- /* cSpell:disable */ -->",
         ]  # Do not check spelling of examples and logs
+
+        # Lint mode
+        linter_doc_md += ["### How the linting is performed", ""]
+        if linter.cli_lint_mode == "project":
+            linter_doc_md += [
+                f"{linter.linter_name} is called once on the whole project directory",
+                "",
+                "- filtering can not be done using Mega-Linter configuration variables,"
+                f"it must be done using {linter.linter_name} configuration or ignore file (if existing)",
+                f"- `VALIDATE_ALL_CODEBASE: false` does not make {linter.linter_name} analyze only updated files",
+            ]
+        elif linter.cli_lint_mode == "list_of_files":
+            linter_doc_md += [
+                f"- {linter.linter_name} is called once with the list of files as arguments"
+            ]
+        else:
+            linter_doc_md += [
+                f"- {linter.linter_name} is called one time by identified file"
+            ]
+
         linter_doc_md += ["", "### Example calls", ""]
         for example in linter.examples:
             linter_doc_md += ["```shell", example, "```", ""]
@@ -1492,6 +1530,23 @@ def add_in_config_schema_file(variables):
         prev_val = json_schema_props.get(key, "")
         json_schema_props[key] = variable
         if prev_val != variable:
+            updated = True
+    json_schema["properties"] = json_schema_props
+    if updated is True:
+        with open(CONFIG_JSON_SCHEMA, "w", encoding="utf-8") as outfile:
+            json.dump(json_schema, outfile, indent=4, sort_keys=True)
+            outfile.write("\n")
+
+
+def remove_in_config_schema_file(variables):
+    with open(CONFIG_JSON_SCHEMA, "r", encoding="utf-8") as json_file:
+        json_schema = json.load(json_file)
+    json_schema_props = json_schema["properties"]
+    updated = False
+    for variable in variables:
+        prev_val = json_schema_props.get(variable, "")
+        if prev_val != "":
+            del json_schema_props[variable]
             updated = True
     json_schema["properties"] = json_schema_props
     if updated is True:

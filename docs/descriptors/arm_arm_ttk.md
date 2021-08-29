@@ -55,6 +55,9 @@ This linter is available in the following flavours
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
+### How the linting is performed
+
+- arm-ttk is called one time by identified file
 
 ### Example calls
 

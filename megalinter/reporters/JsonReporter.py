@@ -32,6 +32,7 @@ class JsonReporter(Reporter):
     linter_fields = [
         "descriptor_id",
         "name",
+        "linter_name",
         "descriptor_type",
         "is_active",
         "files",

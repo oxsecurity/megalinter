@@ -1247,16 +1247,6 @@
       "title": "COPYPASTE_JSCPD: Override descriptor/linter matching file name regex",
       "type": "array"
     },
-    "COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/COPYPASTE_JSCPD_FILTER_REGEX_EXCLUDE",
-      "title": "COPYPASTE_JSCPD: Excluding Regex",
-      "type": "string"
-    },
-    "COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/COPYPASTE_JSCPD_FILTER_REGEX_INCLUDE",
-      "title": "COPYPASTE_JSCPD: Including Regex",
-      "type": "string"
-    },
     "COPYPASTE_JSCPD_POST_COMMANDS": {
       "$id": "#/properties/COPYPASTE_JSCPD_POST_COMMANDS",
       "examples": [
@@ -1471,16 +1461,6 @@
       },
       "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "CREDENTIALS_SECRETLINT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/CREDENTIALS_SECRETLINT_FILTER_REGEX_EXCLUDE",
-      "title": "CREDENTIALS_SECRETLINT: Excluding Regex",
-      "type": "string"
-    },
-    "CREDENTIALS_SECRETLINT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/CREDENTIALS_SECRETLINT_FILTER_REGEX_INCLUDE",
-      "title": "CREDENTIALS_SECRETLINT: Including Regex",
-      "type": "string"
     },
     "CREDENTIALS_SECRETLINT_POST_COMMANDS": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_POST_COMMANDS",
@@ -3026,16 +3006,6 @@
       },
       "title": "GIT_GIT_DIFF: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "GIT_GIT_DIFF_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/GIT_GIT_DIFF_FILTER_REGEX_EXCLUDE",
-      "title": "GIT_GIT_DIFF: Excluding Regex",
-      "type": "string"
-    },
-    "GIT_GIT_DIFF_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/GIT_GIT_DIFF_FILTER_REGEX_INCLUDE",
-      "title": "GIT_GIT_DIFF: Including Regex",
-      "type": "string"
     },
     "GIT_GIT_DIFF_POST_COMMANDS": {
       "$id": "#/properties/GIT_GIT_DIFF_POST_COMMANDS",
@@ -8212,16 +8182,6 @@
       "title": "RUST_CLIPPY: Override descriptor/linter matching file name regex",
       "type": "array"
     },
-    "RUST_CLIPPY_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/RUST_CLIPPY_FILTER_REGEX_EXCLUDE",
-      "title": "RUST_CLIPPY: Excluding Regex",
-      "type": "string"
-    },
-    "RUST_CLIPPY_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/RUST_CLIPPY_FILTER_REGEX_INCLUDE",
-      "title": "RUST_CLIPPY: Including Regex",
-      "type": "string"
-    },
     "RUST_CLIPPY_POST_COMMANDS": {
       "$id": "#/properties/RUST_CLIPPY_POST_COMMANDS",
       "examples": [
@@ -8479,16 +8439,6 @@
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching file name regex",
       "type": "array"
     },
-    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_EXCLUDE",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Excluding Regex",
-      "type": "string"
-    },
-    "SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_FILTER_REGEX_INCLUDE",
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Including Regex",
-      "type": "string"
-    },
     "SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_POST_COMMANDS",
       "examples": [
@@ -8609,16 +8559,6 @@
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_EXCLUDE",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Excluding Regex",
-      "type": "string"
-    },
-    "SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_FILTER_REGEX_INCLUDE",
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Including Regex",
-      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_POST_COMMANDS",
@@ -8776,16 +8716,6 @@
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_EXCLUDE",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Excluding Regex",
-      "type": "string"
-    },
-    "SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_FILTER_REGEX_INCLUDE",
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Including Regex",
-      "type": "string"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_POST_COMMANDS",
@@ -9823,16 +9753,6 @@
       },
       "title": "SWIFT_SWIFTLINT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_EXCLUDE",
-      "title": "SWIFT_SWIFTLINT: Excluding Regex",
-      "type": "string"
-    },
-    "SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/SWIFT_SWIFTLINT_FILTER_REGEX_INCLUDE",
-      "title": "SWIFT_SWIFTLINT: Including Regex",
-      "type": "string"
     },
     "SWIFT_SWIFTLINT_POST_COMMANDS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_POST_COMMANDS",
