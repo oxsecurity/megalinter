@@ -825,7 +825,12 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 ]
             )
         else:
-            remove_in_config_schema_file([f"{linter.name}_FILTER_REGEX_INCLUDE",f"{linter.name}_FILTER_REGEX_EXCLUDE"])
+            remove_in_config_schema_file(
+                [
+                    f"{linter.name}_FILTER_REGEX_INCLUDE",
+                    f"{linter.name}_FILTER_REGEX_EXCLUDE",
+                ]
+            )
 
         linter_doc_md += [
             f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
@@ -1077,7 +1082,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             linter_doc_md += [
                 f"{linter.linter_name} is called once on the whole project directory",
                 "",
-                f"- filtering can not be done using Mega-Linter configuration variables, it must be done using {linter.linter_name} configuration or ignore file (if existing)",
+                f"- filtering can not be done using Mega-Linter configuration variables,"
+                "it must be done using {linter.linter_name} configuration or ignore file (if existing)",
                 f"- `VALIDATE_ALL_CODEBASE: false` does not make {linter.linter_name} analyze only updated files",
             ]
         elif linter.cli_lint_mode == "list_of_files":
