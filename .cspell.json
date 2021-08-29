@@ -1080,6 +1080,7 @@
         "unichr",
         "unparser",
         "unpicklable",
+        "unserialize",
         "untracked",
         "untrusted",
         "updaterm",
