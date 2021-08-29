@@ -1,0 +1,18 @@
+{
+  "threshold": 0,
+  "reporters": ["html", "markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv'/**",
+    "**/*cache*/**",
+    "**/.automation/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/docs/**",
+    "**/*.test.js",
+    "**/CHANGELOG.md",
+    "**/README.md"
+  ]
+}
