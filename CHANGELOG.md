@@ -40,6 +40,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.367 to **2.0.376** on 2021-08-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.6 to **0.31.7** on 2021-08-28
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.9.0 to **1.10.0** on 2021-08-28
+  - [checkov](https://www.checkov.io/) from 2.0.376 to **2.0.377** on 2021-08-29
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
