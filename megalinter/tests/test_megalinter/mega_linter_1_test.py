@@ -277,3 +277,18 @@ class mega_linter_1_test(unittest.TestCase):
             os.path.isfile(expected_output_file),
             "Output json file " + expected_output_file + " should exist",
         )
+
+    def test_json_output_detailed(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {"JSON_REPORTER": "true", "JSON_REPORTER_OUTPUT_DETAIL": "detailed"}
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        expected_output_file = (
+            mega_linter.report_folder + os.path.sep + "mega-linter-report.json"
+        )
+        self.assertTrue(
+            os.path.isfile(expected_output_file),
+            "Output json file " + expected_output_file + " should exist",
+        )

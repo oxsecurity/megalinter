@@ -13,6 +13,7 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 | [Updated sources](reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
 | [GitHub Status](reporters/GitHubStatusReporter.md)          | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
 | [File.io](reporters/FileIoReporter.md)                      | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
+| [JSON](reporters/JsonReporter.md)                           | Generates a JSON output report file                                                                           | Inactive                |
 | [Email](reporters/EmailReporter.md)                         | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
 | [TAP files](reporters/TapReporter.md)                       | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
 | [Console](reporters/ConsoleReporter.md)                     | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
