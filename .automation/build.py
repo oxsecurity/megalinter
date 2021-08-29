@@ -1080,7 +1080,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"- filtering can not be done using Mega-Linter configuration variables, it must be done using {linter.linter_name} configuration or ignore file (if existing)",
                 f"- `VALIDATE_ALL_CODEBASE: false` does not make {linter.linter_name} analyze only updated files",
             ]
-        elif linter.Cli_lint_mode == "list_of_files":
+        elif linter.cli_lint_mode == "list_of_files":
             linter_doc_md += [
                 f"- {linter.linter_name} is called once with the list of files as arguments"
             ]
@@ -1539,8 +1539,8 @@ def remove_in_config_schema_file(variables):
     updated = False
     for variable in variables:
         prev_val = json_schema_props.get(variable, "")
-        del json_schema_props[variable]
         if prev_val != "":
+            del json_schema_props[variable]
             updated = True
     json_schema["properties"] = json_schema_props
     if updated is True:

@@ -59,6 +59,9 @@ This linter is available in the following flavours
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
+### How the linting is performed
+
+- flake8 is called once with the list of files as arguments
 
 ### Example calls
 
