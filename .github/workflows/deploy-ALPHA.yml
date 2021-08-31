@@ -27,6 +27,7 @@ on:
       - "**/linter-versions.json"
       - "TEMPLATES/**"
       - ".trivyignore"
+      - "**/*.py"
 
 ###############
 # Set the Job #
