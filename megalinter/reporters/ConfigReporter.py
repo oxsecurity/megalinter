@@ -39,21 +39,22 @@ class ConfigReporter(Reporter):
             if linter.is_active is True:
                 ide = getattr(linter,"ide",{})
                 # add in log
-                config_log+= [
-                    "",
-                    f"{linter.linter_name} ({linter.descriptor_id})"
-                ]
+                if len(ide.items()) > 0:
+                    config_log+= [
+                        "",
+                        f"{linter.linter_name} ({linter.descriptor_id})"
+                    ]
                 for ide_name,ide_extensions in ide.items():
                     config_log+= [f"  - {ide_name}:"]
                     for ide_extension in ide_extensions:
                         config_log += [f"    - {ide_extension['name']}: {ide_extension['url']}"]
                 # Get applicable VsCode extensions
-                vscode_extensions = getattr(ide,"vscode",[])
+                vscode_extensions = ide.get('vscode',[])
                 for vscode_extension in vscode_extensions:
                     if "?itemName=" in vscode_extension['url']:
                         vscode_recommended_extensions += vscode_extension['url'].split("?itemName=",1)[1]
                 # Get applicable IDEA extensions
-                idea_extensions = getattr(ide,"idea",[])
+                idea_extensions = ide.get('idea',[])
                 for idea_extension in idea_extensions:
                     if "https://plugins.jetbrains.com/plugin/" in idea_extension['url']:
                         idea_recommended_extensions += idea_extension['url'].split("https://plugins.jetbrains.com/plugin/",1)[1]                
@@ -72,7 +73,7 @@ INSTRUCTIONS
 
 - Copy the content of IDE-config folder at the root of your repository
 - Install the related extensions on your preferred IDE
-  - if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions)
+- if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions)
 
 IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
 {config_log_str}
