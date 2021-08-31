@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.367**
+- Version in Mega-Linter: **2.0.380**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -58,6 +58,9 @@ This linter is available in the following flavours
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
+### How the linting is performed
+
+- checkov is called one time by identified file
 
 ### Example calls
 
@@ -83,6 +86,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [-b BRANCH] [--skip-fixes] [--skip-suppressions]
                [--skip-policy-download]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
+               [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
                [--evaluate-variables EVALUATE_VARIABLES] [-ca CA_CERTIFICATE]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
@@ -174,6 +178,12 @@ optional arguments:
                         download external terraform modules from public git
                         repositories and terraform registry [env var:
                         DOWNLOAD_EXTERNAL_MODULES]
+  --var-file VAR_FILE   Variable files to load in addition to the default
+                        files (see https://www.terraform.io/docs/language/valu
+                        es/variables.html#variable-definitions-tfvars-
+                        files).Currently only supported for source Terraform
+                        (.tf file) scans. Requires using --directory, not
+                        --file.
   --external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH
                         set the path for the download external terraform
                         modules [env var: EXTERNAL_MODULES_DIR]

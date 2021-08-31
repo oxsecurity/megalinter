@@ -68,4 +68,24 @@ Disabled until find a way to run with default options
     }
     assert(stdout, "stdout is set");
   }).timeout(600000);
+
+  it("(CLI) run on own code base with json output", async () => {
+    const params = [
+      "--path",
+      "./..",
+      "--release",
+      release,
+      "-e",
+      '"ENABLE=YAML"',
+      "--json",
+    ];
+    if (nodockerpull) {
+      params.push("--nodockerpull");
+    }
+    const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
+    if (stderr) {
+      console.error(stderr);
+    }
+    assert(stdout, "stdout is set");
+  }).timeout(600000);
 });

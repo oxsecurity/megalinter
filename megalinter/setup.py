@@ -12,6 +12,7 @@ setup(
     install_requires=[
         "gitpython",
         "jsonschema",
+        "jsonpickle",
         "multiprocessing_logging",
         "pychalk",
         "pygithub",

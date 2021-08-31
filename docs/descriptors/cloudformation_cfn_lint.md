@@ -9,7 +9,7 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.53.0**
+- Version in Mega-Linter: **0.53.1**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
@@ -62,6 +62,9 @@ This linter is available in the following flavours
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
+### How the linting is performed
+
+- cfn-lint is called one time by identified file
 
 ### Example calls
 

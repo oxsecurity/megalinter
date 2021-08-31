@@ -65,9 +65,6 @@ RUN apk add --update --no-cache \
                 npm \
                 nodejs-current \
                 ansible-lint \
-                gcompat \
-                libunwind \
-                libuuid \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -211,9 +208,6 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
     && sh ./install-misspell.sh
 
-
-# tsqllint installation
-RUN npm install --no-cache tsqllint
 
 #OTHER__END
 

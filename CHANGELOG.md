@@ -8,11 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- JSON_REPORTER to generate an output json file in report folder
 - Manage pre_commands and post_commands at linter level
   - Default commands defined at linter descriptor level
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
 - Fix tflint config so no custom PRE_COMMAND is necessary
+- Use dotnet installer to setup tsqllint. tsqllint is now part of the main Mega-Linter flavor, but removed from JAVASCRIPT flavor
+- Ignore linter_FILTER_REGEX_INCLUDE/linter_FILTER_REGEX_EXCLUDE for linters running on the whole project directory
 - mega-linter-runner updates
+  - New CLI argument `--json`, to get the full report as JSON in stdout last line
   - Fix mega-linter-runner --install when local folder path contain spaces
   - Upgrade mega-linter-runner dependencies (npm audit fix)
   - Better comments for generated .mega-linter.yml config file
@@ -30,6 +34,17 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.363 to **2.0.367** on 2021-08-23
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.0 to **5.8.1** on 2021-08-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.5 to **0.31.6** on 2021-08-24
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.6.0 to **2.7.0** on 2021-08-28
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.0 to **3.1.1** on 2021-08-28
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.1 to **5.8.2** on 2021-08-28
+  - [checkov](https://www.checkov.io/) from 2.0.367 to **2.0.376** on 2021-08-28
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.6 to **0.31.7** on 2021-08-28
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.9.0 to **1.10.0** on 2021-08-28
+  - [checkov](https://www.checkov.io/) from 2.0.376 to **2.0.377** on 2021-08-29
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.53.0 to **0.53.1** on 2021-08-31
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.13.5.0 to **1.14.0.0** on 2021-08-31
+  - [checkov](https://www.checkov.io/) from 2.0.377 to **2.0.380** on 2021-08-31
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.7 to **0.31.8** on 2021-08-31
 <!-- linter-versions-end -->
 
 ## [Unreleased] - 2021-08-25

@@ -581,6 +581,7 @@ class Linter:
             files_sub_directory=self.files_sub_directory,
             lint_all_other_linters_files=self.lint_all_other_linters_files,
         )
+        self.files_number = len(self.files)
         logging.debug(
             "%s linter files after applying linter filters:\n- %s",
             self.name,

@@ -9,7 +9,7 @@
 
 ## terrascan documentation
 
-- Version in Mega-Linter: **1.9.0**
+- Version in Mega-Linter: **1.10.0**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -50,6 +50,9 @@ This linter is available in the following flavours
 
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
+### How the linting is performed
+
+- terrascan is called one time by identified file
 
 ### Example calls
 

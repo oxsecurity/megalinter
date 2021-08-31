@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "4.41.0",
+  "version": "4.45.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/nvuillam/mega-linter.git"
@@ -81,6 +81,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "find-package-json": "^1.2.0",
+    "fs-extra": "^10.0.0",
     "optionator": "^0.9.1",
     "which": "^2.0.2",
     "yeoman-environment": "^3.6.0",

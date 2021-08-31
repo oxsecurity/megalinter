@@ -75,6 +75,12 @@ module.exports = optionator({
       description: "Apply formatters and fixes in linted sources",
     },
     {
+      option: "json",
+      alias: "j",
+      type: "Boolean",
+      description: "Outputs results as JSON string",
+    },
+    {
       option: "nodockerpull",
       alias: "n",
       type: "Boolean",

@@ -46,9 +46,6 @@ linters:
   - linter_name: tsqllint
     descriptor_flavors:
       - dotnet
-      - javascript
-    descriptor_flavors_exclude:
-      - all
     linter_url: https://github.com/tsqllint/tsqllint
     linter_repo: https://github.com/tsqllint/tsqllint
     linter_image_url: https://tsqllint.gallerycdn.vsassets.io/extensions/tsqllint/tsqllint/1.2.0/1528922982751/Microsoft.VisualStudio.Services.Icons.Default
@@ -65,12 +62,8 @@ linters:
       - "tsqllint myfile.sql"
       - "tsqllint myfile.sql myfile2.sql"
     install:
-      apk:
-        - gcompat
-        - libunwind
-        - libuuid
       dockerfile:
-        - RUN npm install --no-cache tsqllint
+        - RUN dotnet tool install tsqllint -g
     ide:
       vscode:
         - name: TSQL Lint
