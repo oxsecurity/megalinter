@@ -27,6 +27,7 @@ on:
       - "mega-linter-runner/**"
       - "**/linter-versions.json"
       - "TEMPLATES/**"
+      - "**/*.py"
 
 ###############
 # Set the Job #
