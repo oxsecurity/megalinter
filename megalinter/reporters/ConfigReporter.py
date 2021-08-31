@@ -29,6 +29,7 @@ class ConfigReporter(Reporter):
     def produce_report(self):
         config_report_folder_name = config.get("CONFIG_REPORTER_SUB_FOLDER", "IDE-config")
         config_report_folder = f"{self.report_folder}{os.path.sep}{config_report_folder_name}"
+        os.makedirs(config_report_folder, exist_ok=True)
 
         # Collect info from linters execution
         config_log = []
@@ -42,20 +43,20 @@ class ConfigReporter(Reporter):
                     "",
                     f"{linter.linter_name} ({linter.descriptor_id})"
                 ]
-                for ide_name,ide_extensions in ide:
+                for ide_name,ide_extensions in ide.items():
                     config_log+= [f"  - {ide_name}:"]
                     for ide_extension in ide_extensions:
-                        config_log += [f"    - {ide_extension.name}: {ide_extension.url}"]
+                        config_log += [f"    - {ide_extension['name']}: {ide_extension['url']}"]
                 # Get applicable VsCode extensions
                 vscode_extensions = getattr(ide,"vscode",[])
                 for vscode_extension in vscode_extensions:
-                    if "?itemName=" in vscode_extension.url:
-                        vscode_recommended_extensions += vscode_extension.url.split("?itemName=",1)[1]
+                    if "?itemName=" in vscode_extension['url']:
+                        vscode_recommended_extensions += vscode_extension['url'].split("?itemName=",1)[1]
                 # Get applicable IDEA extensions
                 idea_extensions = getattr(ide,"idea",[])
                 for idea_extension in idea_extensions:
-                    if "https://plugins.jetbrains.com/plugin/" in idea_extension.url:
-                        idea_recommended_extensions += idea_extension.url.split("https://plugins.jetbrains.com/plugin/",1)[1]                
+                    if "https://plugins.jetbrains.com/plugin/" in idea_extension['url']:
+                        idea_recommended_extensions += idea_extension['url'].split("https://plugins.jetbrains.com/plugin/",1)[1]                
         
         # Copy config file if default
         if linter.final_config_file is not None:
@@ -64,6 +65,7 @@ class ConfigReporter(Reporter):
 
         # Write config log file
         config_report_log = f"{self.report_folder}{os.path.sep}IDE-config.txt"
+        config_log_str = "\n".join(config_log)
         config_log_text_full = f"""Mega-Linter can help you to define the same linter configuration locally
 
 INSTRUCTIONS
@@ -73,7 +75,7 @@ INSTRUCTIONS
   - if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions)
 
 IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
-{"\n".join(config_log)}
+{config_log_str}
 """
         with open(config_report_log, "w", encoding="utf-8") as text_file:
             text_file.write(config_log_text_full)
