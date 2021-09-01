@@ -4,6 +4,7 @@ Output results in console
 """
 import json
 import os
+from pathlib import Path
 from shutil import copyfile
 
 from megalinter import Reporter, config
@@ -55,10 +56,11 @@ class ConfigReporter(Reporter):
                 for idea_extension in idea_extensions:
                     if "https://plugins.jetbrains.com/plugin/" in idea_extension['url']:
                         idea_recommended_extensions += [idea_extension['url'].split("https://plugins.jetbrains.com/plugin/",1)[1]]                
-            # Copy config file if default
+            # Copy config file if default (and not already at the root of the folder)
             if linter.final_config_file is not None:
                 target_config_file = f"{config_report_folder}{os.path.sep}{os.path.basename(linter.final_config_file)}"
-                copyfile(linter.final_config_file, target_config_file)
+                if Path(os.path.dirname(linter.final_config_file)).resolve() != Path(self.master.workspace).resolve():
+                    copyfile(linter.final_config_file, target_config_file)
 
         # Write config log file
         config_report_log = f"{self.report_folder}{os.path.sep}IDE-config.txt"
