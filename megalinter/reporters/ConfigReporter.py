@@ -2,13 +2,10 @@
 """
 Output results in console
 """
-import copy
 import json
-import logging
 import os
 from shutil import copyfile
 
-import jsonpickle
 from megalinter import Reporter, config
 
 
@@ -66,13 +63,14 @@ class ConfigReporter(Reporter):
         # Write config log file
         config_report_log = f"{self.report_folder}{os.path.sep}IDE-config.txt"
         config_log_str = "\n".join(config_log)
+        # flake8: noqa
         config_log_text_full = f"""Mega-Linter can help you to define the same linter configuration locally
 
 INSTRUCTIONS
 
 - Copy the content of IDE-config folder at the root of your repository
-- Install the related extensions on your preferred IDE
-- if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions)
+- if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions
+- If not, you can install extensions manually using the following links.
 
 IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
 {config_log_str}
@@ -94,6 +92,7 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
             vscode_extensions_config_recommendations += vscode_recommended_extensions
             vscode_extensions_config["recommendations"] = list(set(vscode_extensions_config_recommendations))
             # Write .vscode/extensions.json file
+            output_vscode_extensions_file = f"{config_report_folder}{os.path.sep}.vscode{os.path.sep}extensions.json"
             vscode_extensions_config_json = json.dumps(vscode_extensions_config, sort_keys=True, indent=4)
             os.makedirs(os.path.dirname(vscode_extensions_file), exist_ok=True)
             with open(vscode_extensions_file, "w", encoding="utf-8") as json_file:
