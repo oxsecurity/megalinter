@@ -45,6 +45,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.13.5.0 to **1.14.0.0** on 2021-08-31
   - [checkov](https://www.checkov.io/) from 2.0.377 to **2.0.380** on 2021-08-31
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.7 to **0.31.8** on 2021-08-31
+  - [checkstyle](https://checkstyle.sourceforge.io) from 8.45.1 to **9.0** on 2021-09-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.2 to **5.9.0** on 2021-09-01
+  - [checkov](https://www.checkov.io/) from 2.0.380 to **2.0.387** on 2021-09-01
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
