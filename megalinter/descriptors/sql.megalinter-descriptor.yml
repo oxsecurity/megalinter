@@ -63,7 +63,7 @@ linters:
       - "tsqllint myfile.sql myfile2.sql"
     install:
       dockerfile:
-        - RUN dotnet tool install tsqllint -g
+        - RUN dotnet tool install --global TSQLLint
     ide:
       vscode:
         - name: TSQL Lint
