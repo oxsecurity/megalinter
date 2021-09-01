@@ -115,7 +115,9 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
                 vscode_extensions_config, sort_keys=True, indent=4
             )
             os.makedirs(os.path.dirname(output_vscode_extensions_file), exist_ok=True)
-            with open(output_vscode_extensions_file, "w", encoding="utf-8") as json_file:
+            with open(
+                output_vscode_extensions_file, "w", encoding="utf-8"
+            ) as json_file:
                 json_file.write(vscode_extensions_config_json)
 
         # Write idea plugin recommendations files (TODO)
