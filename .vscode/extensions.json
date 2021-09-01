@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "stylelint.vscode-stylelint",
+        "matangover.mypy",
+        "foxundermoon.shell-format",
+        "esbenp.prettier-vscode",
+        "paulhoughton.vscode-jscpd",
+        "streetsidesoftware.code-spell-checker",
+        "ms-python.python",
+        "exiasr.hadolint",
+        "timonwong.shellcheck"
+    ]
+}

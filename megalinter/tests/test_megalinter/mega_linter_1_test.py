@@ -294,9 +294,7 @@ class mega_linter_1_test(unittest.TestCase):
         )
 
     def test_config_reporter(self):
-        mega_linter, output = utilstest.call_mega_linter(
-            {"CONFIG_REPORTER": "true"}
-        )
+        mega_linter, output = utilstest.call_mega_linter({"CONFIG_REPORTER": "true"})
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
