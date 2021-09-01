@@ -232,7 +232,7 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 
 # tsqllint installation
-RUN dotnet tool install tsqllint -g
+RUN dotnet tool install --global TSQLLint
 
 #OTHER__END
 
