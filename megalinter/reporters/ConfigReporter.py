@@ -52,17 +52,16 @@ class ConfigReporter(Reporter):
                 vscode_extensions = ide.get('vscode',[])
                 for vscode_extension in vscode_extensions:
                     if "?itemName=" in vscode_extension['url']:
-                        vscode_recommended_extensions += vscode_extension['url'].split("?itemName=",1)[1]
+                        vscode_recommended_extensions += [vscode_extension['url'].split("?itemName=",1)[1]]
                 # Get applicable IDEA extensions
                 idea_extensions = ide.get('idea',[])
                 for idea_extension in idea_extensions:
                     if "https://plugins.jetbrains.com/plugin/" in idea_extension['url']:
-                        idea_recommended_extensions += idea_extension['url'].split("https://plugins.jetbrains.com/plugin/",1)[1]                
-        
-        # Copy config file if default
-        if linter.final_config_file is not None:
-            target_config_file = f"{config_report_folder}{os.path.sep}{os.path.basename(linter.final_config_file)}"
-            copyfile(linter.final_config_file, target_config_file)
+                        idea_recommended_extensions += [idea_extension['url'].split("https://plugins.jetbrains.com/plugin/",1)[1]]                
+            # Copy config file if default
+            if linter.final_config_file is not None:
+                target_config_file = f"{config_report_folder}{os.path.sep}{os.path.basename(linter.final_config_file)}"
+                copyfile(linter.final_config_file, target_config_file)
 
         # Write config log file
         config_report_log = f"{self.report_folder}{os.path.sep}IDE-config.txt"
@@ -92,9 +91,11 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
                 vscode_extensions_config = {}
             # Add recommendations
             vscode_extensions_config_recommendations = vscode_extensions_config.get("recommendations",[])
+            vscode_extensions_config_recommendations += vscode_recommended_extensions
             vscode_extensions_config["recommendations"] = list(set(vscode_extensions_config_recommendations))
             # Write .vscode/extensions.json file
             vscode_extensions_config_json = json.dumps(vscode_extensions_config, sort_keys=True, indent=4)
+            os.makedirs(os.path.dirname(vscode_extensions_file), exist_ok=True)
             with open(vscode_extensions_file, "w", encoding="utf-8") as json_file:
                 json_file.write(vscode_extensions_config_json)
         
