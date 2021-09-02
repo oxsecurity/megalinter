@@ -292,3 +292,16 @@ class mega_linter_1_test(unittest.TestCase):
             os.path.isfile(expected_output_file),
             "Output json file " + expected_output_file + " should exist",
         )
+
+    def test_config_reporter(self):
+        mega_linter, output = utilstest.call_mega_linter({"CONFIG_REPORTER": "true"})
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        expected_output_file = (
+            mega_linter.report_folder + os.path.sep + "IDE-config.txt"
+        )
+        self.assertTrue(
+            os.path.isfile(expected_output_file),
+            "Output IDE config file " + expected_output_file + " should exist",
+        )
