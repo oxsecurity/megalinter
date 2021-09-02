@@ -450,7 +450,8 @@ mega-linter:
   # You can override Mega-Linter flavor used to have faster performances
   # More info at https://nvuillam.github.io/mega-linter/flavors/
   image: nvuillam/mega-linter-python:v4
-  script: [ "true" ]
+  script:
+    - python -m megalinter.run
   variables:
     # All available variables are described in documentation
     # https://nvuillam.github.io/mega-linter/configuration/
