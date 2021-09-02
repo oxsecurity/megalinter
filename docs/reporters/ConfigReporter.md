@@ -18,14 +18,14 @@ This reporter **activated by default**.
 ## Usage
 
 - Copy the content of `report/IDE-config` at the root of your repository
-  - _You can copy all IDE_Config folder, or select config files and IDE extensions recommendations that you are interested into_ 
+  - _You can copy all IDE_Config folder, or select config files and IDE extensions recommendations that you are interested into_
 - Restart your IDE
 
 
 
 ## Configuration
 
-| Variable                    | Description                           | Default value           |
-|-----------------------------|---------------------------------------|-------------------------|
-| CONFIG_REPORTER               | Activates/deactivates reporter        | true                    |
+| Variable        | Description                    | Default value |
+|-----------------|--------------------------------|---------------|
+| CONFIG_REPORTER | Activates/deactivates reporter | true          |
 

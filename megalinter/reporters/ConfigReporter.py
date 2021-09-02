@@ -2,12 +2,12 @@
 """
 Output results in console
 """
-from genericpath import isfile
 import json
 import os
 from pathlib import Path
 from shutil import copyfile
 
+from genericpath import isfile
 from megalinter import Reporter, config
 
 
@@ -71,8 +71,8 @@ class ConfigReporter(Reporter):
                 target_config_file = f"{config_report_folder}{os.path.sep}{os.path.basename(linter.final_config_file)}"
                 if (
                     Path(os.path.dirname(linter.final_config_file)).resolve()
-                    != Path(self.master.workspace).resolve() and 
-                    Path(linter.final_config_file).is_file()
+                    != Path(self.master.workspace).resolve()
+                    and Path(linter.final_config_file).is_file()
                 ):
                     copyfile(linter.final_config_file, target_config_file)
 
