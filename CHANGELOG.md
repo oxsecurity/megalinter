@@ -49,6 +49,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkstyle](https://checkstyle.sourceforge.io) from 8.45.1 to **9.0** on 2021-09-01
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.2 to **5.9.0** on 2021-09-01
   - [checkov](https://www.checkov.io/) from 2.0.380 to **2.0.387** on 2021-09-01
+  - [phpstan](https://phpstan.org/) from 0.12.96 to **0.12.97** on 2021-09-02
+  - [checkov](https://www.checkov.io/) from 2.0.387 to **2.0.392** on 2021-09-02
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19

@@ -93,6 +93,6 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
 
 - Dockerfile commands :
 ```dockerfile
-RUN dotnet tool install tsqllint -g
+RUN dotnet tool install --global TSQLLint
 ```
 
