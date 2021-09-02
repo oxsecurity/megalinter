@@ -275,6 +275,7 @@ nav:
       - "All reporters": "reporters.md"
       - "Text files": "reporters/TextReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
+      - "IDE Configuration": "reporters/Config.md"
       - "E-mail": "reporters/EmailReporter.md"
       - "File.io": "reporters/FileIoReporter.md"
       - "Pull Request comments": "reporters/GitHubCommentReporter.md"
