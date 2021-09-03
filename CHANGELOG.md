@@ -52,6 +52,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [phpstan](https://phpstan.org/) from 0.12.96 to **0.12.97** on 2021-09-02
   - [checkov](https://www.checkov.io/) from 2.0.387 to **2.0.392** on 2021-09-02
   - [checkov](https://www.checkov.io/) from 2.0.392 to **2.0.393** on 2021-09-02
+  - [phpstan](https://phpstan.org/) from 0.12.97 to **0.12.98** on 2021-09-03
+  - [checkov](https://www.checkov.io/) from 2.0.393 to **2.0.395** on 2021-09-03
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
