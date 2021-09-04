@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.45.0] - 2021-09-04
+
 - New CONFIG_REPORTER to generate "ready to copy" folder containing default linter configurations and IDE extensions recommendations
 - New JSON_REPORTER to generate an output json file in report folder
 - Manage pre_commands and post_commands at linter level
