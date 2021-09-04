@@ -55,6 +55,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [phpstan](https://phpstan.org/) from 0.12.97 to **0.12.98** on 2021-09-03
   - [checkov](https://www.checkov.io/) from 2.0.393 to **2.0.395** on 2021-09-03
   - [checkov](https://www.checkov.io/) from 2.0.395 to **2.0.396** on 2021-09-04
+  - [black](https://black.readthedocs.io/en/stable/) from 20.8 to **21.8** on 2021-09-04
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.2 to **0.4.3** on 2021-09-04
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.5 to **1.0.6** on 2021-09-04
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
