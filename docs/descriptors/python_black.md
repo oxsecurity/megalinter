@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in Mega-Linter: **20.8**
+- Version in Mega-Linter: **21.8**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
   - If custom `.python-black` config file is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
@@ -90,7 +90,7 @@ black --config .python-black myfile.py
 ### Help content
 
 ```shell
-Usage: black [OPTIONS] [SRC]...
+Usage: black [OPTIONS] SRC ...
 
   The uncompromising code formatter.
 
@@ -99,7 +99,7 @@ Options:
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
 
-  -t, --target-version [py27|py33|py34|py35|py36|py37|py38]
+  -t, --target-version [py27|py33|py34|py35|py36|py37|py38|py39]
                                   Python versions that should be supported by
                                   Black's output. [default: per-file auto-
                                   detection]
@@ -108,13 +108,22 @@ Options:
                                   regardless of file extension (useful when
                                   piping source on standard input).
 
+  --ipynb                         Format all input files like Jupyter
+                                  Notebooks regardless of file extension
+                                  (useful when piping source on standard
+                                  input).
+
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
+  -C, --skip-magic-trailing-comma
+                                  Don't use trailing commas as a reason to
+                                  split lines.
+
   --check                         Don't write the files back, just return the
-                                  status.  Return code 0 means nothing would
-                                  change.  Return code 1 means some files
-                                  would be reformatted. Return code 123 means
-                                  there was an internal error.
+                                  status. Return code 0 means nothing would
+                                  change. Return code 1 means some files would
+                                  be reformatted. Return code 123 means there
+                                  was an internal error.
 
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
@@ -125,28 +134,44 @@ Options:
   --fast / --safe                 If --fast given, skip temporary sanity
                                   checks. [default: --safe]
 
+  --required-version TEXT         Require a specific version of Black to be
+                                  running (useful for unifying results across
+                                  many environments e.g. with a pyproject.toml
+                                  file).
+
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
-                                  recursive searches.  An empty value means
-                                  all files are included regardless of the
-                                  name.  Use forward slashes for directories
-                                  on all platforms (Windows, too).  Exclusions
-                                  are calculated first, inclusions later.
-                                  [default: \.pyi?$]
+                                  recursive searches. An empty value means all
+                                  files are included regardless of the name.
+                                  Use forward slashes for directories on all
+                                  platforms (Windows, too). Exclusions are
+                                  calculated first, inclusions later.
+                                  [default: (\.pyi?|\.ipynb)$]
 
   --exclude TEXT                  A regular expression that matches files and
                                   directories that should be excluded on
-                                  recursive searches.  An empty value means no
+                                  recursive searches. An empty value means no
                                   paths are excluded. Use forward slashes for
                                   directories on all platforms (Windows, too).
                                   Exclusions are calculated first, inclusions
-                                  later.  [default: /(\.direnv|\.eggs|\.git|\.
-                                  hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_bu
-                                  ild|buck-out|build|dist)/]
+                                  later. [default: /(\.direnv|\.eggs|\.git|\.h
+                                  g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
+                                  |_build|buck-out|build|dist)/]
+
+  --extend-exclude TEXT           Like --exclude, but adds additional files
+                                  and directories on top of the excluded ones.
+                                  (Useful if you simply want to add to the
+                                  default)
 
   --force-exclude TEXT            Like --exclude, but files and directories
                                   matching this regex will be excluded even
-                                  when they are passed explicitly as arguments
+                                  when they are passed explicitly as
+                                  arguments.
+
+  --stdin-filename TEXT           The name of the file when passing it through
+                                  stdin. Useful to make sure Black will
+                                  respect --force-exclude option on some
+                                  editors that rely on using stdin.
 
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
@@ -154,7 +179,7 @@ Options:
 
   -v, --verbose                   Also emit messages to stderr about files
                                   that were not changed or were ignored due to
-                                  --exclude=.
+                                  exclusion patterns.
 
   --version                       Show the version and exit.
   --config FILE                   Read configuration from FILE path.
