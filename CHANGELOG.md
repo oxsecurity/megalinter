@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04
@@ -28,41 +29,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Better comments for generated .mega-linter.yml config file
 
 - Linter versions upgrades
-  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.1.0 to **1.2.0** on 2021-08-20
-  - [phpstan](https://phpstan.org/) from 0.12.94 to **0.12.95** on 2021-08-20
-  - [pylint](https://www.pylint.org) from 2.9.6 to **2.10.1** on 2021-08-21
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.3 to **0.6.4** on 2021-08-21
-  - [phpstan](https://phpstan.org/) from 0.12.95 to **0.12.96** on 2021-08-21
-  - [pylint](https://www.pylint.org) from 2.10.1 to **2.10.2** on 2021-08-22
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.7.2 to **5.8.0** on 2021-08-22
-  - [yamllint](https://yamllint.readthedocs.io/) from 1.26.2 to **1.26.3** on 2021-08-22
-  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.5.0 to **1.6.0** on 2021-08-23
-  - [checkov](https://www.checkov.io/) from 2.0.363 to **2.0.367** on 2021-08-23
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.0 to **5.8.1** on 2021-08-24
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.5 to **0.31.6** on 2021-08-24
-  - [hadolint](https://github.com/hadolint/hadolint) from 2.6.0 to **2.7.0** on 2021-08-28
-  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.0 to **3.1.1** on 2021-08-28
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.1 to **5.8.2** on 2021-08-28
-  - [checkov](https://www.checkov.io/) from 2.0.367 to **2.0.376** on 2021-08-28
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.6 to **0.31.7** on 2021-08-28
-  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.9.0 to **1.10.0** on 2021-08-28
-  - [checkov](https://www.checkov.io/) from 2.0.376 to **2.0.377** on 2021-08-29
-  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.53.0 to **0.53.1** on 2021-08-31
-  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.13.5.0 to **1.14.0.0** on 2021-08-31
-  - [checkov](https://www.checkov.io/) from 2.0.377 to **2.0.380** on 2021-08-31
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.7 to **0.31.8** on 2021-08-31
-  - [checkstyle](https://checkstyle.sourceforge.io) from 8.45.1 to **9.0** on 2021-09-01
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.8.2 to **5.9.0** on 2021-09-01
-  - [checkov](https://www.checkov.io/) from 2.0.380 to **2.0.387** on 2021-09-01
-  - [phpstan](https://phpstan.org/) from 0.12.96 to **0.12.97** on 2021-09-02
-  - [checkov](https://www.checkov.io/) from 2.0.387 to **2.0.392** on 2021-09-02
-  - [checkov](https://www.checkov.io/) from 2.0.392 to **2.0.393** on 2021-09-02
-  - [phpstan](https://phpstan.org/) from 0.12.97 to **0.12.98** on 2021-09-03
-  - [checkov](https://www.checkov.io/) from 2.0.393 to **2.0.395** on 2021-09-03
-  - [checkov](https://www.checkov.io/) from 2.0.395 to **2.0.396** on 2021-09-04
-  - [black](https://black.readthedocs.io/en/stable/) from 20.8 to **21.8** on 2021-09-04
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.2 to **0.4.3** on 2021-09-04
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.5 to **1.0.6** on 2021-09-04
+  - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
