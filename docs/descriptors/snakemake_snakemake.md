@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.7.0**
+- Version in Mega-Linter: **6.8.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -133,7 +133,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
                  [-T RESTART_TIMES] [--attempt ATTEMPT]
                  [--wrapper-prefix WRAPPER_PREFIX]
-                 [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob}]
+                 [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}]
                  [--default-remote-prefix DEFAULT_REMOTE_PREFIX]
                  [--no-shared-fs] [--greediness GREEDINESS] [--no-hooks]
                  [--overwrite-shellcmd OVERWRITE_SHELLCMD] [--debug]
@@ -696,7 +696,7 @@ BEHAVIOR:
                         use a git URL like
                         'git+file://path/to/your/local/clone@'. (default:
                         https://github.com/snakemake/snakemake-wrappers/raw/)
-  --default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob}
+  --default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}
                         Specify default remote provider to be used for all
                         input and output files that don't yet specify one.
                         (default: None)

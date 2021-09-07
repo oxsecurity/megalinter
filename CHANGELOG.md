@@ -10,6 +10,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
+  - [golangci-lint](https://golangci-lint.run/) from 1.42.0 to **1.42.1** on 2021-09-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.7.0 to **6.8.0** on 2021-09-07
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04
@@ -30,6 +32,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
+  - [golangci-lint](https://golangci-lint.run/) from 1.42.0 to **1.42.1** on 2021-09-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.7.0 to **6.8.0** on 2021-09-07
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
