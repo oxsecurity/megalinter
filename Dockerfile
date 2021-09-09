@@ -62,6 +62,7 @@ RUN apk add --update --no-cache \
     make \
     musl-dev \
     openjdk8 \
+    openssh \
     npm \
     nodejs-current \
     py3-setuptools \
