@@ -21,7 +21,7 @@ setup(
         "pytest-timeout",
         "python-gitlab",
         "pyyaml",
-        "requests==2.24.0",
+        "requests",
         "terminaltables",
         "webpreview",
         "yq",
