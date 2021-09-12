@@ -12,6 +12,13 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
   - [golangci-lint](https://golangci-lint.run/) from 1.42.0 to **1.42.1** on 2021-09-07
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.7.0 to **6.8.0** on 2021-09-07
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.53.1 to **0.54.1** on 2021-09-12
+  - [prettier](https://prettier.io/) from 2.3.2 to **2.4.0** on 2021-09-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.54 to **0.1.55** on 2021-09-12
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.4 to **0.6.5** on 2021-09-12
+  - [checkov](https://www.checkov.io/) from 2.0.399 to **2.0.407** on 2021-09-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.8 to **0.31.10** on 2021-09-12
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.31.0 to **0.32.1** on 2021-09-12
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04
@@ -34,6 +41,13 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
   - [golangci-lint](https://golangci-lint.run/) from 1.42.0 to **1.42.1** on 2021-09-07
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.7.0 to **6.8.0** on 2021-09-07
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.53.1 to **0.54.1** on 2021-09-12
+  - [prettier](https://prettier.io/) from 2.3.2 to **2.4.0** on 2021-09-12
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.54 to **0.1.55** on 2021-09-12
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.4 to **0.6.5** on 2021-09-12
+  - [checkov](https://www.checkov.io/) from 2.0.399 to **2.0.407** on 2021-09-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.8 to **0.31.10** on 2021-09-12
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.31.0 to **0.32.1** on 2021-09-12
 <!-- linter-versions-end -->
 
 ## [4.44.0] - 2021-08-19
