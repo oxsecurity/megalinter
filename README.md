@@ -746,7 +746,8 @@ Mega-Linter can generate various reports that you can activate / deactivate and 
 | Reporter                                                                                                             | Description                                                                                                   | Default                 |
 |----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
 | [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)                     | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
-| [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if GitHub Action |
+| [Github Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if GitHub Action |
+| [Gitlab Merge Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if GitHub Action |
 | [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
 | [IDE Configuration](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/ConfigReporter.md)            | Apply Mega-Linter configuration in your local IDE with linter config files and IDE extensions                 | Active                  |
 | [GitHub Status](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubStatusReporter.md)          | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
@@ -983,7 +984,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ### More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
+- **C**, **C++**, **Copy-Paste detection**, **Credentials**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
 
 ### Automatically apply formatting and fixes
 

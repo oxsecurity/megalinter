@@ -19,6 +19,7 @@ setup(
         "pytablewriter",
         "pytest-cov",
         "pytest-timeout",
+        "python-gitlab",
         "pyyaml",
         "requests==2.24.0",
         "terminaltables",

@@ -2945,6 +2945,13 @@
       "title": "GitHub Workspace",
       "type": "string"
     },
+    "GITLAB_COMMENT_REPORTER": {
+      "$id": "#/properties/GITLAB_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts Mega-Linter results summary in the comments of the related merge request (if existing)",
+      "title": "Activate Gitlab MR Comments reporter",
+      "type": "boolean"
+    },
     "GIT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GIT_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for GIT descriptor",
