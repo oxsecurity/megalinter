@@ -13,7 +13,7 @@
 #FROM__START
 FROM cljkondo/clj-kondo:2021.06.18-alpine as clj-kondo
 FROM hadolint/hadolint:latest-alpine as hadolint
-FROM yoheimuta/protolint:latest as protolint
+FROM yoheimuta/protolint:v0.32.0 as protolint
 #FROM__END
 
 ##################
