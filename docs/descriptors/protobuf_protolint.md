@@ -116,7 +116,7 @@ Usage of lint:
 
 - Dockerfile commands :
 ```dockerfile
-FROM yoheimuta/protolint:latest as protolint
+FROM yoheimuta/protolint:v0.32.0 as protolint
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 ```
 
