@@ -11,7 +11,7 @@ import gitlab
 from megalinter import Reporter, config
 
 
-class GitlabelCommentReporter(Reporter):
+class GitlabCommentReporter(Reporter):
     name = "GITLAB_COMMENT"
     scope = "mega-linter"
 
