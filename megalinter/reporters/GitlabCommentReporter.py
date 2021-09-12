@@ -32,7 +32,7 @@ class GitlabCommentReporter(Reporter):
             gitlab_repo = config.get("CI_PROJECT_NAME")
             gitlab_project_id = config.get("CI_PROJECT_ID")
             gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID")
-            gitlab_api_url = config.get("CI_API_V4_URL", self.github_api_url)
+            gitlab_api_url = config.get("CI_API_V4_URL")
             action_run_url = config.get("CI_JOB_URL","")
             p_r_msg = build_markdown_summary(self,action_run_url)
 

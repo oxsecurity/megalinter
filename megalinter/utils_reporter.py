@@ -1,12 +1,12 @@
 import logging
 import os
 import urllib
-from megalinter import config
 from pytablewriter import MarkdownTableWriter
 
 DOCS_URL_DESCRIPTORS_ROOT = "https://nvuillam.github.io/mega-linter/descriptors"
 ISSUES_ROOT = "https://github.com/nvuillam/mega-linter/issues"
 DOC_URL = "https://nvuillam.github.io/mega-linter"
+
 
 def build_markdown_summary(reporter_self, action_run_url):
     table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
