@@ -9,7 +9,7 @@
 
 ## prettier documentation
 
-- Version in Mega-Linter: **2.3.2**
+- Version in Mega-Linter: **2.4.0**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -126,6 +126,8 @@ Format options:
   --arrow-parens <always|avoid>
                            Include parentheses around a sole arrow function parameter.
                            Defaults to always.
+  --bracket-same-line      Put > of opening tags on the last line instead of on a new line.
+                           Defaults to false.
   --no-bracket-spacing     Do not print spaces between brackets.
   --embedded-language-formatting <auto|off>
                            Control how Prettier formats quoted code embedded in the file.
@@ -136,8 +138,6 @@ Format options:
   --html-whitespace-sensitivity <css|strict|ignore>
                            How to handle whitespaces in HTML.
                            Defaults to css.
-  --jsx-bracket-same-line  Put > on the last line instead of at a new line.
-                           Defaults to false.
   --jsx-single-quote       Use single quotes in JSX.
                            Defaults to false.
   --parser <flow|babel|babel-flow|babel-ts|typescript|espree|meriyah|css|less|scss|json|json5|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
