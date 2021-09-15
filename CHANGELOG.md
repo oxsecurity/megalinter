@@ -22,6 +22,12 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.8 to **0.31.10** on 2021-09-12
   - [tflint](https://github.com/terraform-linters/tflint) from 0.31.0 to **0.32.1** on 2021-09-12
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.9.0 to **5.9.1** on 2021-09-12
+  - [phpstan](https://phpstan.org/) from 0.12.98 to **0.12.99** on 2021-09-15
+  - [puppet-lint](http://puppet-lint.com/) from 2.5.0 to **2.5.2** on 2021-09-15
+  - [black](https://black.readthedocs.io/en/stable/) from 21.8 to **21.9** on 2021-09-15
+  - [checkov](https://www.checkov.io/) from 2.0.407 to **2.0.414** on 2021-09-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.10 to **0.31.11** on 2021-09-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.11 to **0.32.1** on 2021-09-15
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04
