@@ -27,6 +27,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [black](https://black.readthedocs.io/en/stable/) from 21.8 to **21.9** on 2021-09-15
   - [checkov](https://www.checkov.io/) from 2.0.407 to **2.0.414** on 2021-09-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.10 to **0.31.11** on 2021-09-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.11 to **0.32.1** on 2021-09-15
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04
