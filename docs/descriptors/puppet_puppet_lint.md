@@ -4,7 +4,7 @@
 
 ## puppet-lint documentation
 
-- Version in Mega-Linter: **2.5.0**
+- Version in Mega-Linter: **2.5.2**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
