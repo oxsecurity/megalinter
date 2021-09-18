@@ -1171,6 +1171,26 @@
             "title": "Including regex filter for COFFEE descriptor",
             "type": "string"
         },
+        "CONFIG_REPORTER": {
+            "$id": "#/properties/CONFIG_REPORTER",
+            "default": true,
+            "description": "Generates a folder IDE-config located in report folder, containing default Mega-Linter configuration files used during the linting, and updated VsCode extensions.js config file",
+            "title": "Activate local configuration reporter",
+            "type": "boolean"
+        },
+        "CONFIG_REPORTER_SUB_FOLDER": {
+            "$id": "#/properties/CONFIG_REPORTER_SUB_FOLDER",
+            "title": "Output folder for IDE configuration files within report folder",
+            "type": "string",
+            "default": "IDE-config"
+        },
+        "CONSOLE_REPORTER": {
+            "$id": "#/properties/CONSOLE_REPORTER",
+            "default": true,
+            "description": "",
+            "title": "Activate console reporter",
+            "type": "boolean"
+        },
         "COPYPASTE_FILTER_REGEX_EXCLUDE": {
             "$id": "#/properties/COPYPASTE_FILTER_REGEX_EXCLUDE",
             "title": "Excluding regex filter for COPYPASTE descriptor",

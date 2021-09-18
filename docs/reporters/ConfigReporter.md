@@ -28,4 +28,4 @@ This reporter **activated by default**.
 | Variable        | Description                    | Default value |
 |-----------------|--------------------------------|---------------|
 | CONFIG_REPORTER | Activates/deactivates reporter | true          |
-
+| CONFIG_REPORTER_SUB_FOLDER | Output folder for IDE configuration files within report folder | `IDE-config`          |
