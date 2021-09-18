@@ -19,8 +19,11 @@ class plugins_test(unittest.TestCase):
         )
 
     def test_load_plugin_success(self):
-        local_repo = Repo(search_parent_directories=True)
-        local_branch = local_repo.active_branch.name
+        try:
+            local_repo = Repo(search_parent_directories=True)
+            local_branch = local_repo.active_branch.name
+        except:
+            local_branch = 'master'
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"+
