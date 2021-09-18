@@ -7,7 +7,6 @@
 - Version in Mega-Linter: **1.26.3**
 - Visit [Official Web Site](https://yamllint.readthedocs.io/){target=_blank}
 - See [How to configure yamllint rules](https://yamllint.readthedocs.io/en/stable/configuration.html#configuration){target=_blank}
-  - If custom `.yaml-lint.yml` config file is not found, [.yaml-lint.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.yaml-lint.yml){target=_blank} will be used
 - See [Index of problems detected by yamllint](https://yamllint.readthedocs.io/en/stable/rules.html){target=_blank}
 
 [![yamllint - GitHub](https://gh-card.dev/repos/adrienverge/yamllint.svg?fullname=)](https://github.com/adrienverge/yamllint){target=_blank}
@@ -26,7 +25,7 @@
 | YAML_YAMLLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
 | YAML_YAMLLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                             |
 | YAML_YAMLLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                             |
-| YAML_YAMLLINT_CONFIG_FILE                 | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.yaml-lint.yml`                                 |
+| YAML_YAMLLINT_CONFIG_FILE                 | yamllint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.yamllint.yml`                                  |
 | YAML_YAMLLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
 | YAML_YAMLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
 | YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
@@ -82,7 +81,7 @@ yamllint myfile.yaml
 ```
 
 ```shell
-yamllint -c .yaml-lint.yml myfile.yaml
+yamllint -c .yamllint.yml myfile.yaml
 ```
 
 
