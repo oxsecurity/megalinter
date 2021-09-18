@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Add openssh apk for git repos using ssh
+- Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
+- Allow to disable console reporter using `CONSOLE_REPORTER: false`
+- Performances
+  - Use list_of_files linting mode for yamllint , black and prettier
+- Fixes
+  - Add CONFIG_REPORTER in json schema
+  - Fix Broken CI due to mega-linter test plugin
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
