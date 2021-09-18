@@ -1171,7 +1171,6 @@
             "title": "Including regex filter for COFFEE descriptor",
             "type": "string"
         },
-<<<<<<< HEAD
         "CONFIG_REPORTER": {
             "$id": "#/properties/CONFIG_REPORTER",
             "default": true,
@@ -1192,8 +1191,6 @@
             "title": "Activate console reporter",
             "type": "boolean"
         },
-=======
->>>>>>> master
         "COPYPASTE_FILTER_REGEX_EXCLUDE": {
             "$id": "#/properties/COPYPASTE_FILTER_REGEX_EXCLUDE",
             "title": "Excluding regex filter for COPYPASTE descriptor",
