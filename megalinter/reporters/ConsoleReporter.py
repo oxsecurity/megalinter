@@ -8,7 +8,7 @@ import urllib
 
 import chalk as c
 import terminaltables
-from megalinter import config,Reporter
+from megalinter import Reporter, config
 
 
 class ConsoleReporter(Reporter):

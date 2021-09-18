@@ -10,7 +10,7 @@ Open GitHub action (or other CI tool) logs and look in Mega-Linter step
 
 ## Configuration
 
-| Variable        | Description                    | Default value |
-|-----------------|--------------------------------|---------------|
+| Variable         | Description                    | Default value |
+|------------------|--------------------------------|---------------|
 | CONSOLE_REPORTER | Activates/deactivates reporter | true          |
 
