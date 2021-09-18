@@ -11,6 +11,7 @@ linters:
     linter_url: http://xmlsoft.org/xmllint.html
     linter_rules_url: http://xmlsoft.org/xmllint.html#diagnostics
     version_extract_regex: "(?<=libxml version )\\d+(\\d+)+"
+    cli_lint_mode: list_of_files
     cli_help_arg_name: "--help"
     help_command_return_code: 1
     examples:

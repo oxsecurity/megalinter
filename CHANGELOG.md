@@ -11,6 +11,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Add openssh apk for git repos using ssh
 - Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
 - Allow to disable console reporter using `CONSOLE_REPORTER: false`
+- Performances
+  - Use list_of_files linting mode for yamllint , black and prettier
 - Fixes
   - Add CONFIG_REPORTER in json schema
   - Fix Broken CI due to mega-linter test plugin
