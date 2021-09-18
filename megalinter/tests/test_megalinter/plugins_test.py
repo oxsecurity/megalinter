@@ -22,7 +22,7 @@ class plugins_test(unittest.TestCase):
         try:
             local_repo = Repo(search_parent_directories=True)
             local_branch = local_repo.active_branch.name
-        except:
+        except: # noqa: E722
             local_branch = 'master'
         mega_linter, output = utilstest.call_mega_linter(
             {
