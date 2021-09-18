@@ -68,6 +68,7 @@ linters:
     linter_rules_configuration_url: https://yamllint.readthedocs.io/en/stable/configuration.html#configuration
     linter_megalinter_ref_url: "no"
     config_file_name: ".yamllint.yml"
+    cli_lint_mode: list_of_files
     examples:
       - "yamllint myfile.yaml"
       - "yamllint -c .yamllint.yml myfile.yaml"
