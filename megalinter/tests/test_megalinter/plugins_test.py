@@ -22,12 +22,13 @@ class plugins_test(unittest.TestCase):
         try:
             local_repo = Repo(search_parent_directories=True)
             local_branch = local_repo.active_branch.name
-        except: # noqa: E722
-            local_branch = 'master'
+        except:  # noqa: E722
+            local_branch = "master"
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"+
-                local_branch+"/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
+                "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
+                + local_branch
+                + "/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
