@@ -313,7 +313,7 @@ nav:
   - "Sponsoring": 'sponsor.md'
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":
-    - "How-to Contribute": "how-to-contribute.md"
-    - "Contributing Guide": "contributing.md"
+      - "How-to Contribute": "how-to-contribute.md"
+      - "Contributing Guide": "contributing.md"
   - "License": "license.md"
   - "Changelog": "CHANGELOG.md"
