@@ -848,7 +848,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                             "type": "string",
                             "title": f"{linter.name}: Override default cli lint mode",
                             "default": linter.cli_lint_mode,
-                            "enum": ["file","list_of_files", "project" ],
+                            "enum": ["file", "list_of_files", "project"],
                         },
                     ]
                 ]
