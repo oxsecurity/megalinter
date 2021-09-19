@@ -406,10 +406,19 @@ class Linter:
         if config.exists(self.name + "_CLI_LINT_MODE"):
             cli_lint_mode_descriptor = self.cli_lint_mode
             cli_lint_mode_config = config.get(self.name + "_CLI_LINT_MODE")
-            if cli_lint_mode_descriptor == 'project':
-                raise KeyError("You can not override {self.name} cli_lint_mode as it can not process a file or a list of files. If you think this could be, post an issue :)")
-            elif cli_lint_mode_descriptor == 'file' and cli_lint_mode_config == 'list_of_files':
-                raise KeyError("You can not override {self.name} cli_lint_mode with list_of_files, as it can process files only one by one. If you think it could be done, post an issue :)")
+            if cli_lint_mode_descriptor == "project":
+                raise KeyError(
+                    "You can not override {self.name} cli_lint_mode as it can "
+                    "not process a file or a list of files. If you think this could be, post an issue :)"
+                )
+            elif (
+                cli_lint_mode_descriptor == "file"
+                and cli_lint_mode_config == "list_of_files"
+            ):
+                raise KeyError(
+                    "You can not override {self.name} cli_lint_mode with list_of_files, "
+                    "as it can process files only one by one. If you think it could be done, post an issue :)"
+                )
             self.cli_lint_mode = cli_lint_mode_config
 
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE

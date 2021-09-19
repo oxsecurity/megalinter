@@ -328,5 +328,5 @@ class mega_linter_1_test(unittest.TestCase):
                 )
             )
             == 1,
-            "YAML_YAMLLLINT should have been processed with cli_lint_mode = file",
+            "YAML_YAMLLINT should have been processed with cli_lint_mode = file",
         )
