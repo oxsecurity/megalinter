@@ -1,0 +1,77 @@
+descriptor_id: NIX
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_extensions:
+  - ".nix"
+linters:
+  # nixpkgs-fmt [NIXOS]
+  - linter_name: nixpkgs-fmt-nixos
+    linter_repo: https://github.com/serokell/nixpkgs-fmt
+    linter_url: https://nixpkgs-fmt.serokell.io/
+    is_formatter: true
+    cli_docker_image: samcraig/nixpkgs-fmt
+    cli_docker_args:
+      - "-v"
+      - "{{WORKSPACE}}:/tmp/lint:rw"
+    cli_executable: nixpkgs-fmt
+    cli_help_arg_name: "--help"
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
+    cli_version_arg_name: "--version"
+    version_command_return_code: 1
+    version_extract_regex: "(\\d+(\\.\\d+)+)"
+    examples:
+      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
+      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt file.nix` – format the file in place"
+      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt file1.nix file2.nix` – format multiple files"
+    ide:
+      vscode:
+        - name: nixpkgs-fmt
+          url: https://marketplace.visualstudio.com/items?itemName=B4dM4n.nixpkgs-fmt
+  # nixpkgs-fmt [ALPINE LINUX]
+  - linter_name: nixpkgs-fmt-alpine
+    linter_repo: https://github.com/serokell/nixpkgs-fmt
+    linter_url: https://nixpkgs-fmt.serokell.io/
+    is_formatter: true
+    cli_executable: nixpkgs-fmt
+    cli_help_arg_name: "--help"
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_remove_args:
+      - "--check"
+    cli_version_arg_name: "--version"
+    version_command_return_code: 1
+    version_extract_regex: "(\\d+(\\.\\d+)+)"
+    examples:
+      - "`nixpkgs-fmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
+      - "`nixpkgs-fmt file.nix` – format the file in place"
+      - "`nixpkgs-fmt file1.nix file2.nix` – format multiple files"
+    install:
+      dockerfile:
+        - RUN apk add  \
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+          --update --no-cache \
+          bash \
+          boost-dev \
+          curl \
+          sudo \
+          tar \
+          xz
+        - RUN apk add  \
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+          --update --no-cache nix
+        - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+        - RUN nix-channel --update
+        - RUN rm -rf /nix/var/nix/profiles/default
+        - RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
+        - RUN nix-env -iA nixpkgs.nixpkgs-fmt
+        - RUN ln -s /nix/var/nix/profiles/default/bin/nixpkgs-fmt /usr/bin
+    ide:
+      vscode:
+        - name: nixpkgs-fmt
+          url: https://marketplace.visualstudio.com/items?itemName=B4dM4n.nixpkgs-fmt
