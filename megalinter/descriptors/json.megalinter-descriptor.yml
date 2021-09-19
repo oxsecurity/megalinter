@@ -151,6 +151,7 @@ linters:
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     config_file_name: ".prettierrc.json"
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_arg_name: "--write" # Workaround for Mega-Linter

@@ -8,7 +8,7 @@ import urllib
 
 import chalk as c
 import terminaltables
-from megalinter import Reporter
+from megalinter import Reporter, config
 
 
 class ConsoleReporter(Reporter):
@@ -22,6 +22,10 @@ class ConsoleReporter(Reporter):
         self.is_active = True
         self.processing_order = -9
         super().__init__(params)
+
+    def manage_activation(self):
+        if config.get("CONSOLE_REPORTER", "true") == "false":
+            self.is_active = False
 
     def initialize(self):
         # Display collection summary in log

@@ -1,3 +1,4 @@
+---
 site_name: Mega-Linter
 site_url: https://nvuillam.github.io/mega-linter
 repo_url: https://github.com/nvuillam/mega-linter
@@ -312,7 +313,7 @@ nav:
   - "Sponsoring": 'sponsor.md'
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":
-    - "How-to Contribute": "how-to-contribute.md"
-    - "Contributing Guide": "contributing.md"
+      - "How-to Contribute": "how-to-contribute.md"
+      - "Contributing Guide": "contributing.md"
   - "License": "license.md"
   - "Changelog": "CHANGELOG.md"

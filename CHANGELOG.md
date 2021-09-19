@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Add openssh apk for git repos using ssh
+- Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
+- Allow to disable console reporter using `CONSOLE_REPORTER: false`
+- Override `cli_lint_mode` of linters using configuration : _LINTER_\_CLI_LINT_MODE
+- Performances
+  - Use list_of_files linting mode for yamllint , black and prettier
+- Fixes
+  - Add CONFIG_REPORTER in json schema
+  - Fix Broken CI due to mega-linter test plugin
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.396 to **2.0.399** on 2021-09-06
@@ -28,6 +36,17 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.407 to **2.0.414** on 2021-09-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.10 to **0.31.11** on 2021-09-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.31.11 to **0.32.1** on 2021-09-15
+  - [secretlint](https://github.com/secretlint/secretlint) from 3.3.0 to **4.0.0** on 2021-09-18
+  - [htmlhint](https://htmlhint.com/) from 0.15.1 to **0.15.2** on 2021-09-18
+  - [prettier](https://prettier.io/) from 2.4.0 to **2.4.1** on 2021-09-18
+  - [pylint](https://www.pylint.org) from 2.10.2 to **2.11.1** on 2021-09-18
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.30 to **0.9.31** on 2021-09-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.9.1 to **5.10.1** on 2021-09-18
+  - [checkov](https://www.checkov.io/) from 2.0.414 to **2.0.421** on 2021-09-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.6 to **1.0.7** on 2021-09-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.1 to **0.32.2** on 2021-09-18
+  - [checkov](https://www.checkov.io/) from 2.0.421 to **2.0.425** on 2021-09-19
+  - [checkov](https://www.checkov.io/) from 2.0.425 to **2.0.426** on 2021-09-19
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04

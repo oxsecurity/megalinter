@@ -9,7 +9,7 @@ Scalafix lints and fixes scala files
 
 ## scalafix documentation
 
-- Version in Mega-Linter: **0.9.30**
+- Version in Mega-Linter: **0.9.31**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -23,19 +23,20 @@ Scalafix lints and fixes scala files
 - Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                                   | Description                                                                                                                                                                                  | Default value                                    |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| SCALA_SCALAFIX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| SCALA_SCALAFIX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                               |
-| SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                  |
-| SCALA_SCALAFIX_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".scala"]`                                     |
-| SCALA_SCALAFIX_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| SCALA_SCALAFIX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                             |
-| SCALA_SCALAFIX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                             |
-| SCALA_SCALAFIX_CONFIG_FILE                 | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.scalafix.conf`                                 |
-| SCALA_SCALAFIX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| SCALA_SCALAFIX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
-| SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
+| Variable                                   | Description                                                                                                                                                                                                         | Default value                                    |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| SCALA_SCALAFIX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
+| SCALA_SCALAFIX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
+| SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
+| SCALA_SCALAFIX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
+| SCALA_SCALAFIX_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".scala"]`                                     |
+| SCALA_SCALAFIX_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
+| SCALA_SCALAFIX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
+| SCALA_SCALAFIX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
+| SCALA_SCALAFIX_CONFIG_FILE                 | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.scalafix.conf`                                 |
+| SCALA_SCALAFIX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| SCALA_SCALAFIX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
+| SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## Mega-Linter Flavours
 
@@ -76,7 +77,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.9.30
+Scalafix 0.9.31
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and

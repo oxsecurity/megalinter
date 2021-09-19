@@ -9,7 +9,7 @@
 
 ## terraform-fmt documentation
 
-- Version in Mega-Linter: **1.0.6**
+- Version in Mega-Linter: **1.0.7**
 - Visit [Official Web Site](https://www.terraform.io/docs/cli/commands/fmt.html){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
@@ -21,17 +21,18 @@
 
 - Enable **auto-fixes** by adding `TERRAFORM_TERRAFORM_FMT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
-| Variable                                            | Description                                                                                                                                                                                  | Default value      |
-|-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| TERRAFORM_TERRAFORM_FMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
-| TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".tf"]`          |
-| TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
-| TERRAFORM_TERRAFORM_FMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
-| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`             |
-| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| Variable                                            | Description                                                                                                                                                                                                         | Default value            |
+|-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| TERRAFORM_TERRAFORM_FMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                          |
+| TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file       |
+| TERRAFORM_TERRAFORM_FMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file          |
+| TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |
+| TERRAFORM_TERRAFORM_FMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".tf"]`                |
+| TERRAFORM_TERRAFORM_FMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file       |
+| TERRAFORM_TERRAFORM_FMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                     |
+| TERRAFORM_TERRAFORM_FMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                     |
+| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                   |
+| TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
 
 ## IDE Integration
 

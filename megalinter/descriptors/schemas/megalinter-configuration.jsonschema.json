@@ -229,6 +229,17 @@
         "string"
       ]
     },
+    "ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "ANSIBLE_ANSIBLE_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "ANSIBLE_ANSIBLE_LINT_CONFIG_FILE": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CONFIG_FILE",
       "default": ".ansible-lint.yml",
@@ -385,6 +396,17 @@
         "string"
       ]
     },
+    "ARM_ARM_TTK_CLI_LINT_MODE": {
+      "$id": "#/properties/ARM_ARM_TTK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "ARM_ARM_TTK: Override default cli lint mode",
+      "type": "string"
+    },
     "ARM_ARM_TTK_CONFIG_FILE": {
       "$id": "#/properties/ARM_ARM_TTK_CONFIG_FILE",
       "default": ".arm-ttk.psd1",
@@ -511,6 +533,17 @@
         "string"
       ]
     },
+    "BASH_EXEC_CLI_LINT_MODE": {
+      "$id": "#/properties/BASH_EXEC_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "BASH_EXEC: Override default cli lint mode",
+      "type": "string"
+    },
     "BASH_EXEC_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_EXEC_DISABLE_ERRORS",
       "default": false,
@@ -617,6 +650,17 @@
         "string"
       ]
     },
+    "BASH_SHELLCHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/BASH_SHELLCHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "BASH_SHELLCHECK: Override default cli lint mode",
+      "type": "string"
+    },
     "BASH_SHELLCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHELLCHECK_DISABLE_ERRORS",
       "default": false,
@@ -713,6 +757,17 @@
         "string"
       ]
     },
+    "BASH_SHFMT_CLI_LINT_MODE": {
+      "$id": "#/properties/BASH_SHFMT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "BASH_SHFMT: Override default cli lint mode",
+      "type": "string"
+    },
     "BASH_SHFMT_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHFMT_DISABLE_ERRORS",
       "default": false,
@@ -808,6 +863,17 @@
         "array",
         "string"
       ]
+    },
+    "CLOJURE_CLJ_KONDO_CLI_LINT_MODE": {
+      "$id": "#/properties/CLOJURE_CLJ_KONDO_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CLOJURE_CLJ_KONDO: Override default cli lint mode",
+      "type": "string"
     },
     "CLOJURE_CLJ_KONDO_CONFIG_FILE": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_CONFIG_FILE",
@@ -935,6 +1001,17 @@
         "string"
       ]
     },
+    "CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/CLOUDFORMATION_CFN_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CLOUDFORMATION_CFN_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "CLOUDFORMATION_CFN_LINT_CONFIG_FILE": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_CONFIG_FILE",
       "default": ".cfnlintrc.yml",
@@ -1061,6 +1138,17 @@
         "string"
       ]
     },
+    "COFFEE_COFFEELINT_CLI_LINT_MODE": {
+      "$id": "#/properties/COFFEE_COFFEELINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "COFFEE_COFFEELINT: Override default cli lint mode",
+      "type": "string"
+    },
     "COFFEE_COFFEELINT_CONFIG_FILE": {
       "$id": "#/properties/COFFEE_COFFEELINT_CONFIG_FILE",
       "default": ".coffee-lint.json",
@@ -1170,6 +1258,26 @@
       "$id": "#/properties/COFFEE_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for COFFEE descriptor",
       "type": "string"
+    },
+    "CONFIG_REPORTER": {
+      "$id": "#/properties/CONFIG_REPORTER",
+      "default": true,
+      "description": "Generates a folder IDE-config located in report folder, containing default Mega-Linter configuration files used during the linting, and updated VsCode extensions.js config file",
+      "title": "Activate local configuration reporter",
+      "type": "boolean"
+    },
+    "CONFIG_REPORTER_SUB_FOLDER": {
+      "$id": "#/properties/CONFIG_REPORTER_SUB_FOLDER",
+      "default": "IDE-config",
+      "title": "Output folder for IDE configuration files within report folder",
+      "type": "string"
+    },
+    "CONSOLE_REPORTER": {
+      "$id": "#/properties/CONSOLE_REPORTER",
+      "default": true,
+      "description": "",
+      "title": "Activate console reporter",
+      "type": "boolean"
     },
     "COPYPASTE_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/COPYPASTE_FILTER_REGEX_EXCLUDE",
@@ -1302,6 +1410,17 @@
         "array",
         "string"
       ]
+    },
+    "CPP_CPPLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/CPP_CPPLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CPP_CPPLINT: Override default cli lint mode",
+      "type": "string"
     },
     "CPP_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CPP_CPPLINT_DISABLE_ERRORS",
@@ -1518,6 +1637,17 @@
         "string"
       ]
     },
+    "CSHARP_DOTNET_FORMAT_CLI_LINT_MODE": {
+      "$id": "#/properties/CSHARP_DOTNET_FORMAT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CSHARP_DOTNET_FORMAT: Override default cli lint mode",
+      "type": "string"
+    },
     "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_DISABLE_ERRORS",
       "default": false,
@@ -1633,6 +1763,17 @@
         "array",
         "string"
       ]
+    },
+    "CSS_SCSS_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/CSS_SCSS_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CSS_SCSS_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "CSS_SCSS_LINT_CONFIG_FILE": {
       "$id": "#/properties/CSS_SCSS_LINT_CONFIG_FILE",
@@ -1750,6 +1891,17 @@
         "string"
       ]
     },
+    "CSS_STYLELINT_CLI_LINT_MODE": {
+      "$id": "#/properties/CSS_STYLELINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "CSS_STYLELINT: Override default cli lint mode",
+      "type": "string"
+    },
     "CSS_STYLELINT_CONFIG_FILE": {
       "$id": "#/properties/CSS_STYLELINT_CONFIG_FILE",
       "default": ".stylelintrc.json",
@@ -1866,6 +2018,17 @@
         "string"
       ]
     },
+    "C_CPPLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/C_CPPLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "C_CPPLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "C_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/C_CPPLINT_DISABLE_ERRORS",
       "default": false,
@@ -1971,6 +2134,17 @@
         "array",
         "string"
       ]
+    },
+    "DART_DARTANALYZER_CLI_LINT_MODE": {
+      "$id": "#/properties/DART_DARTANALYZER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "DART_DARTANALYZER: Override default cli lint mode",
+      "type": "string"
     },
     "DART_DARTANALYZER_CONFIG_FILE": {
       "$id": "#/properties/DART_DARTANALYZER_CONFIG_FILE",
@@ -2153,6 +2327,17 @@
         "string"
       ]
     },
+    "DOCKERFILE_DOCKERFILELINT_CLI_LINT_MODE": {
+      "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "DOCKERFILE_DOCKERFILELINT: Override default cli lint mode",
+      "type": "string"
+    },
     "DOCKERFILE_DOCKERFILELINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_CONFIG_FILE",
       "default": ".dockerfilelintrc",
@@ -2279,6 +2464,17 @@
         "string"
       ]
     },
+    "DOCKERFILE_HADOLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/DOCKERFILE_HADOLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "DOCKERFILE_HADOLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "DOCKERFILE_HADOLINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CONFIG_FILE",
       "default": ".hadolint.yml",
@@ -2394,6 +2590,17 @@
         "array",
         "string"
       ]
+    },
+    "EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE": {
+      "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override default cli lint mode",
+      "type": "string"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE",
@@ -2601,6 +2808,17 @@
         "string"
       ]
     },
+    "ENV_DOTENV_LINTER_CLI_LINT_MODE": {
+      "$id": "#/properties/ENV_DOTENV_LINTER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "ENV_DOTENV_LINTER: Override default cli lint mode",
+      "type": "string"
+    },
     "ENV_DOTENV_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_DISABLE_ERRORS",
       "default": false,
@@ -2801,6 +3019,17 @@
         "array",
         "string"
       ]
+    },
+    "GHERKIN_GHERKIN_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/GHERKIN_GHERKIN_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GHERKIN_GHERKIN_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "GHERKIN_GHERKIN_LINT_CONFIG_FILE": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_CONFIG_FILE",
@@ -3074,6 +3303,17 @@
         "string"
       ]
     },
+    "GO_GOLANGCI_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/GO_GOLANGCI_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GO_GOLANGCI_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "GO_GOLANGCI_LINT_CONFIG_FILE": {
       "$id": "#/properties/GO_GOLANGCI_LINT_CONFIG_FILE",
       "default": ".golangci.yml",
@@ -3189,6 +3429,17 @@
         "array",
         "string"
       ]
+    },
+    "GO_REVIVE_CLI_LINT_MODE": {
+      "$id": "#/properties/GO_REVIVE_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GO_REVIVE: Override default cli lint mode",
+      "type": "string"
     },
     "GO_REVIVE_CONFIG_FILE": {
       "$id": "#/properties/GO_REVIVE_CONFIG_FILE",
@@ -3308,6 +3559,17 @@
         "array",
         "string"
       ]
+    },
+    "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE": {
+      "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override default cli lint mode",
+      "type": "string"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_CONFIG_FILE",
@@ -3435,6 +3697,17 @@
         "string"
       ]
     },
+    "GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "GROOVY_NPM_GROOVY_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "GROOVY_NPM_GROOVY_LINT_CONFIG_FILE": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_CONFIG_FILE",
       "default": ".groovylintrc.json",
@@ -3560,6 +3833,17 @@
         "array",
         "string"
       ]
+    },
+    "HTML_HTMLHINT_CLI_LINT_MODE": {
+      "$id": "#/properties/HTML_HTMLHINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "HTML_HTMLHINT: Override default cli lint mode",
+      "type": "string"
     },
     "HTML_HTMLHINT_CONFIG_FILE": {
       "$id": "#/properties/HTML_HTMLHINT_CONFIG_FILE",
@@ -3703,6 +3987,17 @@
         "string"
       ]
     },
+    "JAVASCRIPT_ES_CLI_LINT_MODE": {
+      "$id": "#/properties/JAVASCRIPT_ES_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JAVASCRIPT_ES: Override default cli lint mode",
+      "type": "string"
+    },
     "JAVASCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/JAVASCRIPT_ES_CONFIG_FILE",
       "default": ".eslintrc.json",
@@ -3829,6 +4124,17 @@
         "string"
       ]
     },
+    "JAVASCRIPT_PRETTIER_CLI_LINT_MODE": {
+      "$id": "#/properties/JAVASCRIPT_PRETTIER_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JAVASCRIPT_PRETTIER: Override default cli lint mode",
+      "type": "string"
+    },
     "JAVASCRIPT_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_CONFIG_FILE",
       "default": ".prettierrc.json",
@@ -3938,6 +4244,17 @@
         "string"
       ]
     },
+    "JAVASCRIPT_STANDARD_CLI_LINT_MODE": {
+      "$id": "#/properties/JAVASCRIPT_STANDARD_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JAVASCRIPT_STANDARD: Override default cli lint mode",
+      "type": "string"
+    },
     "JAVASCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_DISABLE_ERRORS",
       "default": false,
@@ -4033,6 +4350,17 @@
         "array",
         "string"
       ]
+    },
+    "JAVA_CHECKSTYLE_CLI_LINT_MODE": {
+      "$id": "#/properties/JAVA_CHECKSTYLE_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JAVA_CHECKSTYLE: Override default cli lint mode",
+      "type": "string"
     },
     "JAVA_CHECKSTYLE_CONFIG_FILE": {
       "$id": "#/properties/JAVA_CHECKSTYLE_CONFIG_FILE",
@@ -4160,6 +4488,17 @@
         "string"
       ]
     },
+    "JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Override default cli lint mode",
+      "type": "string"
+    },
     "JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_CONFIG_FILE",
       "default": ".eslintrc-json.json",
@@ -4286,6 +4625,17 @@
         "string"
       ]
     },
+    "JSON_JSONLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_JSONLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSON_JSONLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "JSON_JSONLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_JSONLINT_DISABLE_ERRORS",
       "default": false,
@@ -4381,6 +4731,17 @@
         "array",
         "string"
       ]
+    },
+    "JSON_PRETTIER_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_PRETTIER_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSON_PRETTIER: Override default cli lint mode",
+      "type": "string"
     },
     "JSON_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/JSON_PRETTIER_CONFIG_FILE",
@@ -4498,6 +4859,17 @@
         "string"
       ]
     },
+    "JSON_V8R_CLI_LINT_MODE": {
+      "$id": "#/properties/JSON_V8R_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSON_V8R: Override default cli lint mode",
+      "type": "string"
+    },
     "JSON_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_V8R_DISABLE_ERRORS",
       "default": false,
@@ -4593,6 +4965,17 @@
         "array",
         "string"
       ]
+    },
+    "JSX_ESLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/JSX_ESLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "JSX_ESLINT: Override default cli lint mode",
+      "type": "string"
     },
     "JSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/JSX_ESLINT_CONFIG_FILE",
@@ -4730,6 +5113,17 @@
         "string"
       ]
     },
+    "KOTLIN_KTLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/KOTLIN_KTLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KOTLIN_KTLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "KOTLIN_KTLINT_DISABLE_ERRORS": {
       "$id": "#/properties/KOTLIN_KTLINT_DISABLE_ERRORS",
       "default": false,
@@ -4841,6 +5235,17 @@
         "string"
       ]
     },
+    "KUBERNETES_KUBEVAL_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_KUBEVAL_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_KUBEVAL: Override default cli lint mode",
+      "type": "string"
+    },
     "KUBERNETES_KUBEVAL_DIRECTORY": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DIRECTORY",
       "default": "kubernetes",
@@ -4942,6 +5347,17 @@
         "array",
         "string"
       ]
+    },
+    "LATEX_CHKTEX_CLI_LINT_MODE": {
+      "$id": "#/properties/LATEX_CHKTEX_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "LATEX_CHKTEX: Override default cli lint mode",
+      "type": "string"
     },
     "LATEX_CHKTEX_CONFIG_FILE": {
       "$id": "#/properties/LATEX_CHKTEX_CONFIG_FILE",
@@ -5110,6 +5526,17 @@
         "string"
       ]
     },
+    "LUA_LUACHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/LUA_LUACHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "LUA_LUACHECK: Override default cli lint mode",
+      "type": "string"
+    },
     "LUA_LUACHECK_CONFIG_FILE": {
       "$id": "#/properties/LUA_LUACHECK_CONFIG_FILE",
       "default": ".luacheckrc",
@@ -5246,6 +5673,17 @@
         "string"
       ]
     },
+    "MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "MARKDOWN_MARKDOWNLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
       "default": ".markdown-lint.json",
@@ -5362,6 +5800,17 @@
         "string"
       ]
     },
+    "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override default cli lint mode",
+      "type": "string"
+    },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE",
       "default": ".markdown-link-check.json",
@@ -5477,6 +5926,17 @@
         "array",
         "string"
       ]
+    },
+    "MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE": {
+      "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override default cli lint mode",
+      "type": "string"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS",
@@ -5627,6 +6087,17 @@
         "string"
       ]
     },
+    "MARKDOWN_REMARK_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/MARKDOWN_REMARK_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "MARKDOWN_REMARK_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "MARKDOWN_REMARK_LINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_CONFIG_FILE",
       "default": ".remarkrc",
@@ -5745,6 +6216,17 @@
         "array",
         "string"
       ]
+    },
+    "OPENAPI_SPECTRAL_CLI_LINT_MODE": {
+      "$id": "#/properties/OPENAPI_SPECTRAL_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "OPENAPI_SPECTRAL: Override default cli lint mode",
+      "type": "string"
     },
     "OPENAPI_SPECTRAL_CONFIG_FILE": {
       "$id": "#/properties/OPENAPI_SPECTRAL_CONFIG_FILE",
@@ -5879,6 +6361,17 @@
         "string"
       ]
     },
+    "PERL_PERLCRITIC_CLI_LINT_MODE": {
+      "$id": "#/properties/PERL_PERLCRITIC_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PERL_PERLCRITIC: Override default cli lint mode",
+      "type": "string"
+    },
     "PERL_PERLCRITIC_DISABLE_ERRORS": {
       "$id": "#/properties/PERL_PERLCRITIC_DISABLE_ERRORS",
       "default": false,
@@ -5974,6 +6467,17 @@
         "array",
         "string"
       ]
+    },
+    "PHP_BUILTIN_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_BUILTIN_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_BUILTIN: Override default cli lint mode",
+      "type": "string"
     },
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
@@ -6080,6 +6584,17 @@
         "array",
         "string"
       ]
+    },
+    "PHP_PHPCS_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_PHPCS_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_PHPCS: Override default cli lint mode",
+      "type": "string"
     },
     "PHP_PHPCS_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPCS_CONFIG_FILE",
@@ -6197,6 +6712,17 @@
         "string"
       ]
     },
+    "PHP_PHPSTAN_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_PHPSTAN_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_PHPSTAN: Override default cli lint mode",
+      "type": "string"
+    },
     "PHP_PHPSTAN_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
       "default": "phpstan.neon",
@@ -6312,6 +6838,17 @@
         "array",
         "string"
       ]
+    },
+    "PHP_PSALM_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_PSALM_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_PSALM: Override default cli lint mode",
+      "type": "string"
     },
     "PHP_PSALM_CONFIG_FILE": {
       "$id": "#/properties/PHP_PSALM_CONFIG_FILE",
@@ -6472,6 +7009,17 @@
         "string"
       ]
     },
+    "POWERSHELL_POWERSHELL_CLI_LINT_MODE": {
+      "$id": "#/properties/POWERSHELL_POWERSHELL_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "POWERSHELL_POWERSHELL: Override default cli lint mode",
+      "type": "string"
+    },
     "POWERSHELL_POWERSHELL_CONFIG_FILE": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_CONFIG_FILE",
       "default": ".powershell-psscriptanalyzer.psd1",
@@ -6628,6 +7176,17 @@
         "string"
       ]
     },
+    "PROTOBUF_PROTOLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/PROTOBUF_PROTOLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PROTOBUF_PROTOLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "PROTOBUF_PROTOLINT_CONFIG_FILE": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_CONFIG_FILE",
       "default": ".protolintrc.yml",
@@ -6754,6 +7313,17 @@
         "string"
       ]
     },
+    "PUPPET_PUPPET_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/PUPPET_PUPPET_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PUPPET_PUPPET_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "PUPPET_PUPPET_LINT_CONFIG_FILE": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_CONFIG_FILE",
       "default": ".puppet-lint.rc",
@@ -6870,6 +7440,17 @@
         "string"
       ]
     },
+    "PYTHON_BANDIT_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_BANDIT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_BANDIT: Override default cli lint mode",
+      "type": "string"
+    },
     "PYTHON_BANDIT_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_BANDIT_CONFIG_FILE",
       "default": ".bandit.yml",
@@ -6978,6 +7559,17 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_BLACK_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_BLACK_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_BLACK: Override default cli lint mode",
+      "type": "string"
     },
     "PYTHON_BLACK_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_BLACK_CONFIG_FILE",
@@ -7105,6 +7697,17 @@
         "string"
       ]
     },
+    "PYTHON_FLAKE8_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_FLAKE8_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_FLAKE8: Override default cli lint mode",
+      "type": "string"
+    },
     "PYTHON_FLAKE8_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_FLAKE8_CONFIG_FILE",
       "default": ".flake8",
@@ -7220,6 +7823,17 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_ISORT_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_ISORT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_ISORT: Override default cli lint mode",
+      "type": "string"
     },
     "PYTHON_ISORT_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_ISORT_CONFIG_FILE",
@@ -7337,6 +7951,17 @@
         "string"
       ]
     },
+    "PYTHON_MYPY_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_MYPY_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_MYPY: Override default cli lint mode",
+      "type": "string"
+    },
     "PYTHON_MYPY_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_MYPY_CONFIG_FILE",
       "default": ".mypy.ini",
@@ -7445,6 +8070,17 @@
         "array",
         "string"
       ]
+    },
+    "PYTHON_PYLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/PYTHON_PYLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PYTHON_PYLINT: Override default cli lint mode",
+      "type": "string"
     },
     "PYTHON_PYLINT_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_PYLINT_CONFIG_FILE",
@@ -7571,6 +8207,17 @@
         "array",
         "string"
       ]
+    },
+    "RAKU_RAKU_CLI_LINT_MODE": {
+      "$id": "#/properties/RAKU_RAKU_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RAKU_RAKU: Override default cli lint mode",
+      "type": "string"
     },
     "RAKU_RAKU_CONFIG_FILE": {
       "$id": "#/properties/RAKU_RAKU_CONFIG_FILE",
@@ -7705,6 +8352,17 @@
         "string"
       ]
     },
+    "RST_RSTCHECK_CLI_LINT_MODE": {
+      "$id": "#/properties/RST_RSTCHECK_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RST_RSTCHECK: Override default cli lint mode",
+      "type": "string"
+    },
     "RST_RSTCHECK_CONFIG_FILE": {
       "$id": "#/properties/RST_RSTCHECK_CONFIG_FILE",
       "default": ".rstcheck.cfg",
@@ -7821,6 +8479,17 @@
         "string"
       ]
     },
+    "RST_RSTFMT_CLI_LINT_MODE": {
+      "$id": "#/properties/RST_RSTFMT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RST_RSTFMT: Override default cli lint mode",
+      "type": "string"
+    },
     "RST_RSTFMT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTFMT_DISABLE_ERRORS",
       "default": false,
@@ -7916,6 +8585,17 @@
         "array",
         "string"
       ]
+    },
+    "RST_RST_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/RST_RST_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RST_RST_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "RST_RST_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RST_LINT_DISABLE_ERRORS",
@@ -8022,6 +8702,17 @@
         "array",
         "string"
       ]
+    },
+    "RUBY_RUBOCOP_CLI_LINT_MODE": {
+      "$id": "#/properties/RUBY_RUBOCOP_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "RUBY_RUBOCOP: Override default cli lint mode",
+      "type": "string"
     },
     "RUBY_RUBOCOP_CONFIG_FILE": {
       "$id": "#/properties/RUBY_RUBOCOP_CONFIG_FILE",
@@ -8264,6 +8955,17 @@
         "array",
         "string"
       ]
+    },
+    "R_LINTR_CLI_LINT_MODE": {
+      "$id": "#/properties/R_LINTR_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "R_LINTR: Override default cli lint mode",
+      "type": "string"
     },
     "R_LINTR_CONFIG_FILE": {
       "$id": "#/properties/R_LINTR_CONFIG_FILE",
@@ -8790,6 +9492,17 @@
         "string"
       ]
     },
+    "SCALA_SCALAFIX_CLI_LINT_MODE": {
+      "$id": "#/properties/SCALA_SCALAFIX_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SCALA_SCALAFIX: Override default cli lint mode",
+      "type": "string"
+    },
     "SCALA_SCALAFIX_CONFIG_FILE": {
       "$id": "#/properties/SCALA_SCALAFIX_CONFIG_FILE",
       "default": ".scalafix.conf",
@@ -8930,6 +9643,17 @@
         "string"
       ]
     },
+    "SNAKEMAKE_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/SNAKEMAKE_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SNAKEMAKE_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "SNAKEMAKE_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_LINT_DISABLE_ERRORS",
       "default": false,
@@ -9025,6 +9749,17 @@
         "array",
         "string"
       ]
+    },
+    "SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE": {
+      "$id": "#/properties/SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SNAKEMAKE_SNAKEFMT: Override default cli lint mode",
+      "type": "string"
     },
     "SNAKEMAKE_SNAKEFMT_CONFIG_FILE": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_CONFIG_FILE",
@@ -9141,6 +9876,17 @@
         "array",
         "string"
       ]
+    },
+    "SPELL_CSPELL_CLI_LINT_MODE": {
+      "$id": "#/properties/SPELL_CSPELL_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SPELL_CSPELL: Override default cli lint mode",
+      "type": "string"
     },
     "SPELL_CSPELL_CONFIG_FILE": {
       "$id": "#/properties/SPELL_CSPELL_CONFIG_FILE",
@@ -9268,6 +10014,17 @@
         "string"
       ]
     },
+    "SPELL_MISSPELL_CLI_LINT_MODE": {
+      "$id": "#/properties/SPELL_MISSPELL_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SPELL_MISSPELL: Override default cli lint mode",
+      "type": "string"
+    },
     "SPELL_MISSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS",
       "default": false,
@@ -9373,6 +10130,17 @@
         "array",
         "string"
       ]
+    },
+    "SQL_SQLFLUFF_CLI_LINT_MODE": {
+      "$id": "#/properties/SQL_SQLFLUFF_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SQL_SQLFLUFF: Override default cli lint mode",
+      "type": "string"
     },
     "SQL_SQLFLUFF_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQLFLUFF_CONFIG_FILE",
@@ -9482,6 +10250,17 @@
         "array",
         "string"
       ]
+    },
+    "SQL_SQL_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/SQL_SQL_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SQL_SQL_LINT: Override default cli lint mode",
+      "type": "string"
     },
     "SQL_SQL_LINT_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQL_LINT_CONFIG_FILE",
@@ -9598,6 +10377,17 @@
         "array",
         "string"
       ]
+    },
+    "SQL_TSQLLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/SQL_TSQLLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "SQL_TSQLLINT: Override default cli lint mode",
+      "type": "string"
     },
     "SQL_TSQLLINT_CONFIG_FILE": {
       "$id": "#/properties/SQL_TSQLLINT_CONFIG_FILE",
@@ -9841,6 +10631,17 @@
         "string"
       ]
     },
+    "TEKTON_TEKTON_LINT_CLI_LINT_MODE": {
+      "$id": "#/properties/TEKTON_TEKTON_LINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TEKTON_TEKTON_LINT: Override default cli lint mode",
+      "type": "string"
+    },
     "TEKTON_TEKTON_LINT_CONFIG_FILE": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_CONFIG_FILE",
       "default": ".tektonlintrc.yaml",
@@ -9957,6 +10758,17 @@
         "string"
       ]
     },
+    "TERRAFORM_CHECKOV_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_CHECKOV_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_CHECKOV: Override default cli lint mode",
+      "type": "string"
+    },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS",
       "default": false,
@@ -10063,6 +10875,17 @@
         "string"
       ]
     },
+    "TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TERRAFORM_FMT: Override default cli lint mode",
+      "type": "string"
+    },
     "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS",
       "default": false,
@@ -10158,6 +10981,17 @@
         "array",
         "string"
       ]
+    },
+    "TERRAFORM_TERRAGRUNT_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TERRAGRUNT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TERRAGRUNT: Override default cli lint mode",
+      "type": "string"
     },
     "TERRAFORM_TERRAGRUNT_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_CONFIG_FILE",
@@ -10275,6 +11109,17 @@
         "string"
       ]
     },
+    "TERRAFORM_TERRASCAN_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TERRASCAN: Override default cli lint mode",
+      "type": "string"
+    },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
@@ -10370,6 +11215,17 @@
         "array",
         "string"
       ]
+    },
+    "TERRAFORM_TFLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_TFLINT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_TFLINT: Override default cli lint mode",
+      "type": "string"
     },
     "TERRAFORM_TFLINT_CONFIG_FILE": {
       "$id": "#/properties/TERRAFORM_TFLINT_CONFIG_FILE",
@@ -10500,6 +11356,17 @@
         "array",
         "string"
       ]
+    },
+    "TSX_ESLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/TSX_ESLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TSX_ESLINT: Override default cli lint mode",
+      "type": "string"
     },
     "TSX_ESLINT_CONFIG_FILE": {
       "$id": "#/properties/TSX_ESLINT_CONFIG_FILE",
@@ -10641,6 +11508,17 @@
         "string"
       ]
     },
+    "TYPESCRIPT_ES_CLI_LINT_MODE": {
+      "$id": "#/properties/TYPESCRIPT_ES_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TYPESCRIPT_ES: Override default cli lint mode",
+      "type": "string"
+    },
     "TYPESCRIPT_ES_CONFIG_FILE": {
       "$id": "#/properties/TYPESCRIPT_ES_CONFIG_FILE",
       "default": ".eslintrc.json",
@@ -10767,6 +11645,17 @@
         "string"
       ]
     },
+    "TYPESCRIPT_PRETTIER_CLI_LINT_MODE": {
+      "$id": "#/properties/TYPESCRIPT_PRETTIER_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TYPESCRIPT_PRETTIER: Override default cli lint mode",
+      "type": "string"
+    },
     "TYPESCRIPT_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_CONFIG_FILE",
       "default": ".prettierrc.json",
@@ -10875,6 +11764,17 @@
         "array",
         "string"
       ]
+    },
+    "TYPESCRIPT_STANDARD_CLI_LINT_MODE": {
+      "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TYPESCRIPT_STANDARD: Override default cli lint mode",
+      "type": "string"
     },
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_DISABLE_ERRORS",
@@ -10988,6 +11888,17 @@
         "array",
         "string"
       ]
+    },
+    "VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE": {
+      "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "VBDOTNET_DOTNET_FORMAT: Override default cli lint mode",
+      "type": "string"
     },
     "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS",
@@ -11105,6 +12016,17 @@
         "string"
       ]
     },
+    "XML_XMLLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/XML_XMLLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "XML_XMLLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "XML_XMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/XML_XMLLINT_DISABLE_ERRORS",
       "default": false,
@@ -11210,6 +12132,17 @@
         "array",
         "string"
       ]
+    },
+    "YAML_PRETTIER_CLI_LINT_MODE": {
+      "$id": "#/properties/YAML_PRETTIER_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "YAML_PRETTIER: Override default cli lint mode",
+      "type": "string"
     },
     "YAML_PRETTIER_CONFIG_FILE": {
       "$id": "#/properties/YAML_PRETTIER_CONFIG_FILE",
@@ -11320,6 +12253,17 @@
         "string"
       ]
     },
+    "YAML_V8R_CLI_LINT_MODE": {
+      "$id": "#/properties/YAML_V8R_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "YAML_V8R: Override default cli lint mode",
+      "type": "string"
+    },
     "YAML_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_V8R_DISABLE_ERRORS",
       "default": false,
@@ -11416,9 +12360,20 @@
         "string"
       ]
     },
+    "YAML_YAMLLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/YAML_YAMLLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "YAML_YAMLLINT: Override default cli lint mode",
+      "type": "string"
+    },
     "YAML_YAMLLINT_CONFIG_FILE": {
       "$id": "#/properties/YAML_YAMLLINT_CONFIG_FILE",
-      "default": ".yaml-lint.yml",
+      "default": ".yamllint.yml",
       "description": "YAML_YAMLLINT: User custom config file name if different from default",
       "title": "YAML_YAMLLINT: Custom config file name",
       "type": "string"

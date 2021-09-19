@@ -831,7 +831,35 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
                 ]
             )
-
+        # cli_lint_mode can be overridden by user config if the descriptor cli_lint_mode is not "project"
+        if linter.cli_lint_mode != "project":
+            linter_doc_md += [
+                f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
+                f"- `file`: Calls the linter for each file<br/>"
+                "- `list_of_files`: Call the linter with the list of files as argument<br/>"
+                "- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
+            ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_CLI_LINT_MODE",
+                        {
+                            "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
+                            "type": "string",
+                            "title": f"{linter.name}: Override default cli lint mode",
+                            "default": linter.cli_lint_mode,
+                            "enum": ["file", "list_of_files", "project"],
+                        },
+                    ]
+                ]
+            )
+        else:
+            remove_in_config_schema_file(
+                [
+                    f"{linter.name}_CLI_LINT_MODE",
+                ]
+            )
+        # Continue with default vars
         linter_doc_md += [
             f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
             f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'

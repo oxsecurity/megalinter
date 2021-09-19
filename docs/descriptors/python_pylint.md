@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in Mega-Linter: **2.10.2**
+- Version in Mega-Linter: **2.11.1**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-lint){target=_blank} will be used
@@ -23,19 +23,20 @@
 - Enable pylint by adding `PYTHON_PYLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable pylint by adding `PYTHON_PYLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                                  | Description                                                                                                                                                                                  | Default value                                    |
-|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| PYTHON_PYLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| PYTHON_PYLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                               |
-| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                  |
-| PYTHON_PYLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".py"]`                                        |
-| PYTHON_PYLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| PYTHON_PYLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                             |
-| PYTHON_PYLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                             |
-| PYTHON_PYLINT_CONFIG_FILE                 | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                            | `.python-lint`                                   |
-| PYTHON_PYLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| PYTHON_PYLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
-| PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
+| Variable                                  | Description                                                                                                                                                                                                         | Default value                                    |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| PYTHON_PYLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
+| PYTHON_PYLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
+| PYTHON_PYLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
+| PYTHON_PYLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
+| PYTHON_PYLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                        |
+| PYTHON_PYLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
+| PYTHON_PYLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
+| PYTHON_PYLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
+| PYTHON_PYLINT_CONFIG_FILE                 | pylint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.python-lint`                                   |
+| PYTHON_PYLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| PYTHON_PYLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
+| PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
@@ -96,9 +97,6 @@ Options:
     -E, --errors-only   In error mode, checkers without error messages are
                         disabled and for others, only the ERROR messages are
                         displayed, and no reports are done by default.
-    --py3k              In Python 3 porting mode, all checkers will be
-                        disabled and only messages emitted by the porting
-                        checker will be displayed.
     -v, --verbose       In verbose mode, extra non-checker-related info will
                         be displayed.
     --ignore=<file>[,<file>...]
@@ -158,6 +156,10 @@ Options:
                         continuous integration scripts.
     --from-stdin        Interpret the stdin as a python script, whose filename
                         needs to be passed as the module_or_package argument.
+    --py-version=<py_version>
+                        Min Python version to use for version dependend
+                        checks. Will default to the version used to run
+                        pylint. [current: 3.9]
 
   Commands:
     --rcfile=<file>     Specify a configuration file to load.

@@ -18,6 +18,7 @@ linters:
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     config_file_name: ".prettierrc.json"
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
     cli_lint_fix_arg_name: "--write"
@@ -67,10 +68,11 @@ linters:
     linter_rules_url: https://yamllint.readthedocs.io/en/stable/rules.html
     linter_rules_configuration_url: https://yamllint.readthedocs.io/en/stable/configuration.html#configuration
     linter_megalinter_ref_url: "no"
-    config_file_name: .yaml-lint.yml
+    config_file_name: ".yamllint.yml"
+    cli_lint_mode: list_of_files
     examples:
       - "yamllint myfile.yaml"
-      - "yamllint -c .yaml-lint.yml myfile.yaml"
+      - "yamllint -c .yamllint.yml myfile.yaml"
     install:
       pip:
         - yamllint
