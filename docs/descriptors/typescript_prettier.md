@@ -76,7 +76,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- prettier is called one time by identified file
+- prettier is called once with the list of files as arguments
 
 ### Example calls
 
