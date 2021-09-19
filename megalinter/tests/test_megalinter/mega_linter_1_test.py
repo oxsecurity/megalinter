@@ -305,3 +305,28 @@ class mega_linter_1_test(unittest.TestCase):
             os.path.isfile(expected_output_file),
             "Output IDE config file " + expected_output_file + " should exist",
         )
+
+    def test_override_cli_lint_mode(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE": "YAML",
+                "YAML_YAMLLINT_CLI_LINT_MODE": "file",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertTrue(
+            len(
+                list(
+                    filter(
+                        lambda x: (
+                            x.name == "YAML_YAMLLINT" and x.cli_lint_mode == "file"
+                        ),
+                        mega_linter.linters,
+                    )
+                )
+            )
+            == 1,
+            "YAML_YAMLLINT should have been processed with cli_lint_mode = file",
+        )
