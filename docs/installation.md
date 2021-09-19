@@ -69,6 +69,7 @@ jobs:
       - uses: fkirc/skip-duplicate-actions@master
         with:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          cancel_others: true
 
   build:
     name: Mega-Linter
