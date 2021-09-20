@@ -204,6 +204,16 @@
     "image": null,
     "title": "Welcome to mypy documentation! \u2014 Mypy 0.910 documentation"
   },
+  "nixpkgs-fmt-alpine": {
+    "description": "This project's goal is to provide a nix code formatter that would be\n    applied on nixpkgs. Ideally automatically with a tool like ofborg.",
+    "image": null,
+    "title": "nixpkgs-fmt-wasm"
+  },
+  "nixpkgs-fmt-nixos": {
+    "description": "This project's goal is to provide a nix code formatter that would be\n    applied on nixpkgs. Ideally automatically with a tool like ofborg.",
+    "image": null,
+    "title": "nixpkgs-fmt-wasm"
+  },
   "npm-groovy-lint": {
     "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files using command line - nvuillam/npm-groovy-lint",
     "image": "https://repository-images.githubusercontent.com/240214900/1dcdef80-773c-11ea-8c94-305acc58f5c6",

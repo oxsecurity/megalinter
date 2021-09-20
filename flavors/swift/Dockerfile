@@ -185,6 +185,16 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
     && cp kubeval /usr/local/bin
 
 
+# nixpkgs-fmt-alpine installation
+RUN apk add  \ --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \ --update --no-cache \ bash \ boost-dev \ curl \ sudo \ tar \ xz
+RUN apk add  \ --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \ --update --no-cache nix
+RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+RUN nix-channel --update
+RUN rm -rf /nix/var/nix/profiles/default
+RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
+RUN nix-env -iA nixpkgs.nixpkgs-fmt
+RUN ln -s /nix/var/nix/profiles/default/bin/nixpkgs-fmt /usr/bin
+
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
