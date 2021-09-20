@@ -7,8 +7,8 @@ file_extensions:
 linters:
   # nixpkgs-fmt [NIXOS]
   - linter_name: nixpkgs-fmt-nixos
-    linter_repo: https://github.com/serokell/nixpkgs-fmt
-    linter_url: https://nixpkgs-fmt.serokell.io/
+    linter_repo: https://github.com/nix-community/nixpkgs-fmt
+    linter_url: https://nix-community.github.io/nixpkgs-fmt/
     is_formatter: true
     cli_docker_image: samcraig/nixpkgs-fmt
     cli_docker_args:
@@ -30,12 +30,12 @@ linters:
       - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt file1.nix file2.nix` – format multiple files"
     ide:
       vscode:
-        - name: nixpkgs-fmt
-          url: https://marketplace.visualstudio.com/items?itemName=B4dM4n.nixpkgs-fmt
+        - name: nix-ide
+          url: https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide
   # nixpkgs-fmt [ALPINE LINUX]
   - linter_name: nixpkgs-fmt-alpine
-    linter_repo: https://github.com/serokell/nixpkgs-fmt
-    linter_url: https://nixpkgs-fmt.serokell.io/
+    linter_repo: https://github.com/nix-community/nixpkgs-fmt
+    linter_url: https://nix-community.github.io/nixpkgs-fmt/
     is_formatter: true
     cli_executable: nixpkgs-fmt
     cli_help_arg_name: "--help"
@@ -73,5 +73,5 @@ linters:
         - RUN ln -s /nix/var/nix/profiles/default/bin/nixpkgs-fmt /usr/bin
     ide:
       vscode:
-        - name: nixpkgs-fmt
-          url: https://marketplace.visualstudio.com/items?itemName=B4dM4n.nixpkgs-fmt
+        - name: nix-ide
+          url: https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide
