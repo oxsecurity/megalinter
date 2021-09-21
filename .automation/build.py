@@ -32,7 +32,7 @@ RELEASE = "--release" in sys.argv
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
-        RELEASE_TAG = "v"+RELEASE_TAG
+        RELEASE_TAG = "v" + RELEASE_TAG
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -2045,17 +2045,19 @@ def manage_output_variables():
 def generate_version():
     # npm version
     cwd_to_use = os.getcwd() + "/mega-linter-runner"
-    process = subprocess.run(['npm', 'version','--newversion',RELEASE_TAG], 
-                                stdout=subprocess.PIPE, 
-                                universal_newlines=True,
-                                cwd=cwd_to_use,
-                                shell=True)
+    process = subprocess.run(
+        ["npm", "version", "--newversion", RELEASE_TAG],
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+        cwd=cwd_to_use,
+        shell=True,
+    )
     print(process.stdout)
     print(process.stderr)
     # git add , commit & tag
     repo = git.Repo(os.getcwd())
     repo.git.add(update=True)
-    repo.git.commit('-m',"Release Mega-Linter "+RELEASE_TAG)
+    repo.git.commit("-m", "Release Mega-Linter " + RELEASE_TAG)
     repo.create_tag(RELEASE_TAG)
 
 
