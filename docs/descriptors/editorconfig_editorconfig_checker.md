@@ -81,43 +81,23 @@ editorconfig-checker myfile.js
 ### Help content
 
 ```shell
-USAGE:
-
-  -config string
-      config
-  -debug
-      print debugging information
-  -disable-end-of-line
-      disables the trailing whitespace check
-  -disable-indent-size
-      disables only the indent-size check
-  -disable-indentation
-      disables the indentation check
-  -disable-insert-final-newline
-      disables the final newline check
-  -disable-max-line-length
-      disables only the max-line-length check
-  -disable-trim-trailing-whitespace
-      disables the trailing whitespace check
-  -dry-run
-      show which files would be checked
-  -exclude string
-      a regex which files should be excluded from checking - needs to be a valid regular expression
-  -h  print the help
-  -help
-      print the help
-  -ignore-defaults
-      ignore default excludes
-  -init
-      creates an initial configuration
-  -no-color
-      dont print colors
-  -v  print debugging information
-  -verbose
-      print debugging information
-  -version
-      print the version number
-
+ERROR: Error: TAR_BAD_ARCHIVE: Unrecognized archive format
+    at Unpack.warn (/node_modules/tar/lib/warn-mixin.js:19:40)
+    at Unpack.warn (/node_modules/tar/lib/unpack.js:220:18)
+    at Unpack.<anonymous> (/node_modules/tar/lib/parse.js:81:14)
+    at Unpack.emit (node:events:390:22)
+    at Unpack.[emit] (/node_modules/tar/lib/parse.js:285:12)
+    at Unpack.[maybeEnd] (/node_modules/tar/lib/parse.js:401:17)
+    at Unpack.[consumeChunk] (/node_modules/tar/lib/parse.js:432:21)
+    at Unpack.write (/node_modules/tar/lib/parse.js:364:25)
+    at Unpack.end (/node_modules/tar/lib/parse.js:477:14)
+    at Yallist.<anonymous> (/node_modules/minipass/index.js:404:18) {
+  recoverable: false,
+  file: '/node_modules/editorconfig-checker/dist/../ec.tar.gz',
+  cwd: '/node_modules/editorconfig-checker',
+  code: 'TAR_BAD_ARCHIVE',
+  tarCode: 'TAR_BAD_ARCHIVE'
+}
 ```
 
 ### Installation on mega-linter Docker image
