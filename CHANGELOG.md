@@ -48,6 +48,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.421 to **2.0.425** on 2021-09-19
   - [checkov](https://www.checkov.io/) from 2.0.425 to **2.0.426** on 2021-09-19
   - [checkov](https://www.checkov.io/) from 2.0.426 to **2.0.427** on 2021-09-20
+  - [coffeelint](http://www.coffeelint.org) from 5.0.2 to **5.0.3** on 2021-09-21
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.9 to **0.0.10** on 2021-09-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.5 to **0.6.6** on 2021-09-21
+  - [checkov](https://www.checkov.io/) from 2.0.427 to **2.0.428** on 2021-09-21
 <!-- linter-versions-end -->
 
 ## [4.45.0] - 2021-09-04
