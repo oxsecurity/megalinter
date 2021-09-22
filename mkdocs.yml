@@ -143,7 +143,7 @@ nav:
               - "scalafix": "descriptors/scala_scalafix.md"
           - "SOLIDITY":
               - "All SOLIDITY linters": "descriptors/solidity.md"
-              - "slither-linter": "descriptors/solidity_slither_linter.md"
+              - "slither": "descriptors/solidity_slither.md"
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
               - "sql-lint": "descriptors/sql_sql_lint.md"

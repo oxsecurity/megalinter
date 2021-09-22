@@ -6,7 +6,7 @@ file_extensions:
   - ".sol"
 linters:
   # SOLIDITY LINTER
-  - linter_name: slither-linter
+  - linter_name: slither
     linter_url: https://github.com/crytic
     linter_repo: https://github.com/crytic/slither
     examples:

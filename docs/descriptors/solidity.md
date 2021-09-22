@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                       | Configuration key                      |
-|----------------------------------------------|----------------------------------------|
-| [slither-linter](solidity_slither_linter.md) | [SOLIDITY](solidity_slither_linter.md) |
+| Linter                         | Configuration key               |
+|--------------------------------|---------------------------------|
+| [slither](solidity_slither.md) | [SOLIDITY](solidity_slither.md) |
 
 ## Linted files
 
