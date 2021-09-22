@@ -137,6 +137,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'rstfmt' \
           'snakemake' \
           'snakefmt' \
+          'slither-analyzer' \
           'sqlfluff' \
           'checkov>=2.0.269' \
           'yamllint'

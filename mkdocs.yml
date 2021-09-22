@@ -5,7 +5,7 @@ repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 18 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 49 languages, 22 formats, 18 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2021 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -141,6 +141,9 @@ nav:
           - "SCALA":
               - "All SCALA linters": "descriptors/scala.md"
               - "scalafix": "descriptors/scala_scalafix.md"
+          - "SOLIDITY":
+              - "All SOLIDITY linters": "descriptors/solidity.md"
+              - "slither-linter": "descriptors/solidity_slither_linter.md"
           - "SQL":
               - "All SQL linters": "descriptors/sql.md"
               - "sql-lint": "descriptors/sql_sql_lint.md"
