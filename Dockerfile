@@ -138,6 +138,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'snakemake' \
           'snakefmt' \
           'slither-analyzer' \
+          'py-solc-x' \
           'sqlfluff' \
           'checkov>=2.0.269' \
           'yamllint'
