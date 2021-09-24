@@ -1,0 +1,21 @@
+descriptor_id: SOLIDITY
+descriptor_type: language
+descriptor_flavors:
+  - all
+file_extensions:
+  - ".sol"
+linters:
+  # SLITHER
+  - linter_name: slither
+    linter_url: https://github.com/crytic/slither
+    linter_repo: https://github.com/crytic/slither
+    examples:
+      - "slither uninitialized.sol"
+    install:
+      dockerfile:
+        - |
+          RUN wget https://github.com/ethereum/solidity/releases/download/v0.8.7/solc-static-linux -O /usr/local/bin/solc && \
+              chmod +x /usr/local/bin/solc 
+      pip:
+        - py-solc
+        - slither-analyzer

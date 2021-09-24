@@ -339,6 +339,11 @@
     "image": "https://avatars2.githubusercontent.com/u/3576549?s=400&v=4",
     "title": "mvdan/sh"
   },
+  "slither": {
+    "description": "Static Analyzer for Solidity. Contribute to crytic/slither development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/c6572c987b7c4b89dbee1a1810d91ea4e4e5dbce4ed72d2e0c87e609d4acec89/crytic/slither",
+    "title": "GitHub - crytic/slither: Static Analyzer for Solidity"
+  },
   "snakefmt": {
     "description": "The uncompromising Snakemake code formatter. Contribute to snakemake/snakefmt development by creating an account on GitHub.",
     "image": "https://avatars2.githubusercontent.com/u/33450111?s=400&v=4",

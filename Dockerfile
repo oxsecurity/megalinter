@@ -137,6 +137,8 @@ RUN pip3 install --no-cache-dir --upgrade \
           'rstfmt' \
           'snakemake' \
           'snakefmt' \
+          'py-solc' \
+          'slither-analyzer' \
           'sqlfluff' \
           'checkov>=2.0.269' \
           'yamllint'
@@ -426,6 +428,11 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
+
+# slither installation
+RUN wget https://github.com/ethereum/solidity/releases/download/v0.8.7/solc-static-linux -O /usr/local/bin/solc && \
+    chmod +x /usr/local/bin/solc 
+
 
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
