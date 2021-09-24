@@ -45,7 +45,6 @@ RUN apk add --update --no-cache \
     go \
     gnupg \
     icu-libs \
-    jq \
     krb5-libs \
     libcurl libintl libssl1.1 libstdc++ \
     libffi-dev \
