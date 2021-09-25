@@ -4,7 +4,7 @@
 
 ## rstfmt documentation
 
-- Version in Mega-Linter: **0.0.9**
+- Version in Mega-Linter: **0.0.10**
 - Visit [Official Web Site](https://github.com/dzhu/rstfmt#readme){target=_blank}
 
 [![rstfmt - GitHub](https://gh-card.dev/repos/dzhu/rstfmt.svg?fullname=)](https://github.com/dzhu/rstfmt){target=_blank}
@@ -64,18 +64,23 @@ rstfmt myfile.rst
 ### Help content
 
 ```shell
-usage: rstfmt [-h] [-v] [-w WIDTH] [--check] [--test] [--version] [files ...]
+usage: rstfmt [-h] [--version] [--check] [-w WIDTH] [--ext EXT] [--test] [-v]
+              [path ...]
 
 positional arguments:
-  files
+  path                  files/directories to run on
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --verbose
+  --version             show rstfmt version and exit
+  --check               don't update files, but exit with nonzero status if
+                        any files are not formatted
   -w WIDTH, --width WIDTH
-  --check
-  --test
-  --version
+                        the target line length in characters
+  --ext EXT             the extension of files to look at when passed a
+                        directory (default `rst`)
+  --test                [internal] run tests instead of updating files
+  -v, --verbose         [internal] print extra debugging information
 ```
 
 ### Installation on mega-linter Docker image

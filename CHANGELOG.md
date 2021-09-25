@@ -8,6 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.6.0 to **1.7.0** on 2021-09-23
+  - [checkov](https://www.checkov.io/) from 2.0.430 to **2.0.436** on 2021-09-23
+  - [coffeelint](http://www.coffeelint.org) from 5.0.3 to **5.0.4** on 2021-09-24
+  - [checkov](https://www.checkov.io/) from 2.0.436 to **2.0.438** on 2021-09-24
+  - [php](https://www.php.net) from 7.4.21 to **7.4.24** on 2021-09-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.3 to **0.32.4** on 2021-09-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.0 to **6.8.1** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.438 to **2.0.441** on 2021-09-25
+<!-- linter-versions-end -->
+
+## [4.46.0] - 2021-09-21
+
 - Add openssh apk for git repos using ssh
 - Change default yamllint config file name from `.yaml-lint.yml` to `.yamllint.yml`
 - Allow to disable console reporter using `CONSOLE_REPORTER: false`
@@ -47,7 +61,13 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.1 to **0.32.2** on 2021-09-18
   - [checkov](https://www.checkov.io/) from 2.0.421 to **2.0.425** on 2021-09-19
   - [checkov](https://www.checkov.io/) from 2.0.425 to **2.0.426** on 2021-09-19
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.0.426 to **2.0.427** on 2021-09-20
+  - [coffeelint](http://www.coffeelint.org) from 5.0.2 to **5.0.3** on 2021-09-21
+  - [rstfmt](https://github.com/dzhu/rstfmt) from 0.0.9 to **0.0.10** on 2021-09-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.5 to **0.6.6** on 2021-09-21
+  - [checkov](https://www.checkov.io/) from 2.0.427 to **2.0.428** on 2021-09-21
+  - [checkov](https://www.checkov.io/) from 2.0.428 to **2.0.430** on 2021-09-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.2 to **0.32.3** on 2021-09-21
 
 ## [4.45.0] - 2021-09-04
 
