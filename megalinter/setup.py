@@ -30,5 +30,10 @@ setup(
         "beautifulsoup4",
         "giturlparse",
     ],
+    entry_points={
+        'console_scripts': [
+            'mega-linter = megalinter.run',
+        ],
+    },
     zip_safe=False,
 )
