@@ -16,6 +16,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.436 to **2.0.438** on 2021-09-24
   - [php](https://www.php.net) from 7.4.21 to **7.4.24** on 2021-09-24
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.3 to **0.32.4** on 2021-09-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.0 to **6.8.1** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.438 to **2.0.441** on 2021-09-25
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
