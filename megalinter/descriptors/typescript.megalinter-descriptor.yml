@@ -147,6 +147,7 @@ linters:
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     config_file_name: ".prettierrc.json"
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"

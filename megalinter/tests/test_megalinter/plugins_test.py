@@ -6,6 +6,7 @@ Unit tests for Megalinter class
 import os
 import unittest
 
+from git import Repo
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -18,10 +19,16 @@ class plugins_test(unittest.TestCase):
         )
 
     def test_load_plugin_success(self):
+        try:
+            local_repo = Repo(search_parent_directories=True)
+            local_branch = local_repo.active_branch.name
+        except:  # noqa: E722
+            local_branch = "master"
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
-                "master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
+                + local_branch
+                + "/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",

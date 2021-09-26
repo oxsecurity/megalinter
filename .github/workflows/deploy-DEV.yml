@@ -36,6 +36,7 @@ jobs:
       - uses: fkirc/skip-duplicate-actions@master
         with:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          cancel_others: true
 
   build:
     # Name the Job
@@ -110,7 +111,7 @@ jobs:
         id: docker_build
         shell: bash
         run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
-        timeout-minutes: 60
+        timeout-minutes: 90
 
       ####################################
       # Build image (full for main repo) #

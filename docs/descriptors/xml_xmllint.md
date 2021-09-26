@@ -13,17 +13,18 @@
 - Enable xmllint by adding `XML_XMLLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable xmllint by adding `XML_XMLLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                                | Description                                                                                                                                                                                  | Default value      |
-|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| XML_XMLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
-| XML_XMLLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".xml"]`         |
-| XML_XMLLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| XML_XMLLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
-| XML_XMLLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
-| XML_XMLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
-| XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| Variable                                | Description                                                                                                                                                                                                         | Default value            |
+|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| XML_XMLLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                          |
+| XML_XMLLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file       |
+| XML_XMLLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file          |
+| XML_XMLLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |
+| XML_XMLLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".xml"]`               |
+| XML_XMLLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file       |
+| XML_XMLLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                     |
+| XML_XMLLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                     |
+| XML_XMLLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                  |
+| XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
 
 ## Mega-Linter Flavours
 
@@ -58,7 +59,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- xmllint is called one time by identified file
+- xmllint is called once with the list of files as arguments
 
 ### Example calls
 

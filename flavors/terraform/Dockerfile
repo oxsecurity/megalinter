@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:latest-alpine as hadolint
-FROM yoheimuta/protolint:latest as protolint
+FROM yoheimuta/protolint:v0.32.0 as protolint
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -53,6 +53,7 @@ RUN apk add --update --no-cache \
     make \
     musl-dev \
     openjdk8 \
+    openssh \
     npm \
     nodejs-current \
     py3-setuptools \

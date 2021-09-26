@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in Mega-Linter: **6.7.0**
+- Version in Mega-Linter: **6.8.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -19,17 +19,18 @@
 - Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 - Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
 
-| Variable                                   | Description                                                                                                                                                                                  | Default value      |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                    |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file    |
-| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".smk"]`         |
-| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["Snakefile"]`    |
-| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None               |
-| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None               |
-| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`            |
-| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                |
+| Variable                                   | Description                                                                                                                                                                                                         | Default value            |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                          |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file       |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file          |
+| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`               |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`          |
+| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                     |
+| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                     |
+| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                  |
+| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
 
 ## IDE Integration
 
@@ -133,7 +134,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
                  [-T RESTART_TIMES] [--attempt ATTEMPT]
                  [--wrapper-prefix WRAPPER_PREFIX]
-                 [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob}]
+                 [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}]
                  [--default-remote-prefix DEFAULT_REMOTE_PREFIX]
                  [--no-shared-fs] [--greediness GREEDINESS] [--no-hooks]
                  [--overwrite-shellcmd OVERWRITE_SHELLCMD] [--debug]
@@ -696,7 +697,7 @@ BEHAVIOR:
                         use a git URL like
                         'git+file://path/to/your/local/clone@'. (default:
                         https://github.com/snakemake/snakemake-wrappers/raw/)
-  --default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob}
+  --default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}
                         Specify default remote provider to be used for all
                         input and output files that don't yet specify one.
                         (default: None)

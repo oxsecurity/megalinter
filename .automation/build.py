@@ -7,12 +7,14 @@ import json
 import logging
 import os
 import re
+import subprocess
 import sys
 from datetime import date, datetime
 from shutil import copyfile
 from typing import Any
 from urllib import parse as parse_urllib
 
+import git
 import jsonschema
 import markdown
 import megalinter
@@ -29,6 +31,8 @@ UPDATE_DOC = "--doc" in sys.argv
 RELEASE = "--release" in sys.argv
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
+    if "v" not in RELEASE_TAG:
+        RELEASE_TAG = "v" + RELEASE_TAG
 
 BRANCH = "master"
 URL_ROOT = "https://github.com/nvuillam/mega-linter/tree/" + BRANCH
@@ -831,7 +835,35 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
                 ]
             )
-
+        # cli_lint_mode can be overridden by user config if the descriptor cli_lint_mode is not "project"
+        if linter.cli_lint_mode != "project":
+            linter_doc_md += [
+                f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
+                f"- `file`: Calls the linter for each file<br/>"
+                "- `list_of_files`: Call the linter with the list of files as argument<br/>"
+                "- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
+            ]
+            add_in_config_schema_file(
+                [
+                    [
+                        f"{linter.name}_CLI_LINT_MODE",
+                        {
+                            "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
+                            "type": "string",
+                            "title": f"{linter.name}: Override default cli lint mode",
+                            "default": linter.cli_lint_mode,
+                            "enum": ["file", "list_of_files", "project"],
+                        },
+                    ]
+                ]
+            )
+        else:
+            remove_in_config_schema_file(
+                [
+                    f"{linter.name}_CLI_LINT_MODE",
+                ]
+            )
+        # Continue with default vars
         linter_doc_md += [
             f"| {linter.name}_FILE_EXTENSIONS | Allowed file extensions."
             f' `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>'
@@ -2010,6 +2042,25 @@ def manage_output_variables():
             print("::set-output name=has_updated_versions::1")
 
 
+def generate_version():
+    # npm version
+    cwd_to_use = os.getcwd() + "/mega-linter-runner"
+    process = subprocess.run(
+        ["npm", "version", "--newversion", RELEASE_TAG],
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+        cwd=cwd_to_use,
+        shell=True,
+    )
+    print(process.stdout)
+    print(process.stderr)
+    # git add , commit & tag
+    repo = git.Repo(os.getcwd())
+    repo.git.add(update=True)
+    repo.git.commit("-m", "Release Mega-Linter " + RELEASE_TAG)
+    repo.create_tag(RELEASE_TAG)
+
+
 if __name__ == "__main__":
     try:
         logging.basicConfig(
@@ -2037,3 +2088,5 @@ if __name__ == "__main__":
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
+    if RELEASE is True:
+        generate_version()
