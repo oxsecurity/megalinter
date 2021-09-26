@@ -9,6 +9,7 @@ test_folder: action_actionlint
 linters:
   # ACTIONLINT
   - linter_name: actionlint
+    linter_text: Static checker for GitHub Actions workflow files
     linter_url: https://rhysd.github.io/actionlint/
     linter_repo: https://github.com/rhysd/actionlint
     linter_rules_configuration_url: https://github.com/rhysd/actionlint/blob/main/docs/config.md
