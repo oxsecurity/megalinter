@@ -12,8 +12,7 @@
     "generators"
   ],
   "bin": {
-    "mega-linter-runner": "lib/index.js",
-    "mega-linter": "lib/index.js"
+    "mega-linter-runner": "lib/index.js"
   },
   "scripts": {
     "test": "mocha \"test/**/*.test.js\""
