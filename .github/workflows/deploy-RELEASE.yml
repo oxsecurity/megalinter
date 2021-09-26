@@ -101,7 +101,7 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.0.18
+        uses: aquasecurity/trivy-action@0.0.20
         with:
           image-ref: "docker.io/nvuillam/mega-linter:${{ github.event.release.tag_name }}"
           format: "table"
