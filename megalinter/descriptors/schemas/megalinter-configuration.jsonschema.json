@@ -39,6 +39,7 @@
     },
     "enum_descriptor_keys": {
       "enum": [
+        "ACTION",
         "ANSIBLE",
         "ARM",
         "BASH",
@@ -100,6 +101,7 @@
     },
     "enum_linter_keys": {
       "enum": [
+        "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",
         "BASH_EXEC",

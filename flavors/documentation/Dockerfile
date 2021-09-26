@@ -149,6 +149,10 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 # GIT installation
 RUN git config --global core.autocrlf true
 
+# actionlint installation
+ENV GO111MODULE=on
+RUN go get github.com/rhysd/actionlint/cmd/actionlint
+
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec

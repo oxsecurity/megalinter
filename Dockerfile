@@ -281,6 +281,10 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 
+# actionlint installation
+ENV GO111MODULE=on
+RUN go get github.com/rhysd/actionlint/cmd/actionlint
+
 # arm-ttk installation
 ENV ARM_TTK_PSD1="${ARM_TTK_DIRECTORY}/arm-ttk-master/arm-ttk/arm-ttk.psd1"
 RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
