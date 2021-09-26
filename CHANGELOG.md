@@ -23,6 +23,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.0 to **6.8.1** on 2021-09-25
   - [checkov](https://www.checkov.io/) from 2.0.438 to **2.0.441** on 2021-09-25
   - [secretlint](https://github.com/secretlint/secretlint) from 4.0.0 to **4.1.0** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.441 to **2.0.442** on 2021-09-26
   - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-26
 <!-- linter-versions-end -->
 
