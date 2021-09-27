@@ -6,7 +6,7 @@ files_sub_directory: .github/workflows
 file_extensions:
   - ".yml"
   - ".yaml"
-test_folder: action_actionlint
+test_folder: action
 linters:
   # ACTIONLINT
   - linter_name: actionlint
