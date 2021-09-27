@@ -19,7 +19,6 @@ linters:
     cli_config_arg_name: "-config-file"
     cli_version_arg_name: "-version"
     examples:
-      - "actionlint /path/to/workflows"
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
     install:
       dockerfile:
