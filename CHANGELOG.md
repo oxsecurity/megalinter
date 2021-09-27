@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Upgrades
+  - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
+  - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.6.0 to **1.7.0** on 2021-09-23
@@ -19,6 +23,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.0 to **6.8.1** on 2021-09-25
   - [checkov](https://www.checkov.io/) from 2.0.438 to **2.0.441** on 2021-09-25
   - [secretlint](https://github.com/secretlint/secretlint) from 4.0.0 to **4.1.0** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.441 to **2.0.442** on 2021-09-26
+  - [checkov](https://www.checkov.io/) from 2.0.442 to **2.0.443** on 2021-09-27
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-26
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-27
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
