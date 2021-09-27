@@ -43,5 +43,5 @@ else
   if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
     printenv
   fi
-  python -m megalinter.run
+  mega-linter
 fi
