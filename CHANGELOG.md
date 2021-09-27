@@ -27,6 +27,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.442 to **2.0.443** on 2021-09-27
   - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-26
   - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-27
+  - [checkov](https://www.checkov.io/) from 2.0.443 to **2.0.446** on 2021-09-27
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
