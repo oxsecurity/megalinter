@@ -473,9 +473,7 @@ class Megalinter:
     def list_files_git_diff(self):
         # List all updated files from git
         logging.info(
-            "Listing updated files in ["
-            + self.github_workspace
-            + "] using git diff."
+            "Listing updated files in [" + self.github_workspace + "] using git diff."
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
         default_branch = config.get("DEFAULT_BRANCH", "master")
@@ -483,7 +481,9 @@ class Megalinter:
         if current_commit_sha == "":
             current_commit_sha = repo.active_branch.commit.hexsha
         repo.git.fetch()
-        diff = repo.git.diff(f"origin/{default_branch}...{current_commit_sha}", name_only=True)
+        diff = repo.git.diff(
+            f"origin/{default_branch}...{current_commit_sha}", name_only=True
+        )
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():
