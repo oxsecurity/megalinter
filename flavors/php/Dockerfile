@@ -72,6 +72,15 @@ RUN apk add --update --no-cache \
                 php7-curl \
                 php7-dom \
                 php7-simplexml \
+                php8 \
+                php8-phar \
+                php8-mbstring \
+                php8-xmlwriter \
+                php8-tokenizer \
+                php8-ctype \
+                php8-curl \
+                php8-dom \
+                php8-simplexml \
                 composer \
                 ansible-lint \
                 libc-dev \
