@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in Mega-Linter: **8.2.0**
+- Version in Mega-Linter: **9.0.0**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.groovylintrc.json){target=_blank} will be used
