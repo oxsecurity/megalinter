@@ -11,6 +11,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
   - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+- Add eslint-plugin-jsx-a11y dependency
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
