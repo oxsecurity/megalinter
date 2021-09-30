@@ -430,8 +430,9 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
 # slither installation
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.8.7/solc-static-linux -O /usr/local/bin/solc && \
-    chmod +x /usr/local/bin/solc 
+RUN wget https://github.com/ethereum/solidity/releases/download/v0.8.7/solc-static-linux -O /usr/local/bin/solc \
+     && chmod +x solc-static-linux \
+     && mv solc-static-linux /usr/bin/solc
 
 
 # misspell installation

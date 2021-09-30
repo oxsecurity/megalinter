@@ -12,6 +12,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.6.0 to **1.7.0** on 2021-09-23
   - [checkov](https://www.checkov.io/) from 2.0.430 to **2.0.436** on 2021-09-23
+  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **4.4.23** on 2021-09-28
+  - [git_diff](https://git-scm.com) from 2.30.2 to **2.28.0** on 2021-09-28
+  - [eslint](https://eslint.org) from 7.32.0 to **7.24.0** on 2021-09-28
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.4 to **5.1.17134** on 2021-09-28
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21

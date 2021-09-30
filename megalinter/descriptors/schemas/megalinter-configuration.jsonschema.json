@@ -4833,7 +4833,7 @@
     },
     "JSON_REPORTER": {
       "$id": "#/properties/JSON_REPORTER",
-      "default": false,
+      "default": true,
       "description": "Output a large execution log in a JSON file named mega-linter-report.json",
       "title": "JSON reporter",
       "type": "boolean"
