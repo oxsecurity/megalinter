@@ -9,9 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
 - Upgrades
-  - Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
   - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+- Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
 - Add eslint-plugin-jsx-a11y dependency
 
 - Linter versions upgrades
