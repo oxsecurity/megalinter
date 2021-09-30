@@ -16,7 +16,7 @@ setup(
         "multiprocessing_logging",
         "pychalk",
         "pygithub",
-        "pyjson5",
+        "jstyleson",
         "pytablewriter",
         "pytest-cov",
         "pytest-timeout",
