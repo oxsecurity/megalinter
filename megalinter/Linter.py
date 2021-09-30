@@ -140,6 +140,11 @@ class Linter:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
+
+        # Override default executable
+        self.cli_executable = config.get(
+            self.name + "_CLI_EXECUTABLE"
+        )
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
         if self.cli_executable_fix is None:
