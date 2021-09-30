@@ -15,6 +15,7 @@ DISABLE_LINTERS:
   - JSON_PRETTIER
 IGNORE_GITIGNORED_FILES: true
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
+JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'

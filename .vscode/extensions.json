@@ -1,4 +1,5 @@
 {
+    // Extension completed by Mega-Linter
     "recommendations": [
         "ms-python.python",
         "stylelint.vscode-stylelint",
