@@ -11,6 +11,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
   - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+- Add eslint-plugin-jsx-a11y dependency
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
@@ -37,6 +38,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.1 to **6.9.0** on 2021-09-30
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.11.0 to **5.11.1** on 2021-09-30
   - [checkov](https://www.checkov.io/) from 2.0.448 to **2.0.454** on 2021-09-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.0 to **6.9.1** on 2021-09-30
+  - [checkov](https://www.checkov.io/) from 2.0.454 to **2.0.461** on 2021-09-30
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21

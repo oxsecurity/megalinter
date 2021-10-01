@@ -39,6 +39,7 @@ linters:
       npm:
         - eslint
         - eslint-plugin-react
+        - eslint-plugin-jsx-a11y
     ide:
       atom:
         - name: linter-eslint

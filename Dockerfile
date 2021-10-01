@@ -196,6 +196,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \
+                eslint-plugin-jsx-a11y \
                 markdownlint-cli \
                 remark-cli \
                 remark-preset-lint-recommended \
