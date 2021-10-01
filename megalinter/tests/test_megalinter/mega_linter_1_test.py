@@ -346,7 +346,8 @@ class mega_linter_1_test(unittest.TestCase):
                 list(
                     filter(
                         lambda x: (
-                            x.name == "PHP_BUILTIN" and x.cli_executable == "/usr/bin/php8"
+                            x.name == "PHP_BUILTIN"
+                            and x.cli_executable == "/usr/bin/php8"
                         ),
                         mega_linter.linters,
                     )
