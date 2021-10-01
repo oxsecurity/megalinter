@@ -50,7 +50,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
   - [php7-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-phar)
   - [php7-json](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-json)
   - [php7-mbstring](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-mbstring)
-  - [php-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php-xmlwriter)
+  - [php7-xmlwriter](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-xmlwriter)
   - [php7-tokenizer](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-tokenizer)
   - [php7-ctype](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-ctype)
   - [php7-curl](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-curl)

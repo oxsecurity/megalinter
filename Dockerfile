@@ -89,7 +89,7 @@ RUN apk add --update --no-cache \
                 php7-phar \
                 php7-json \
                 php7-mbstring \
-                php-xmlwriter \
+                php7-xmlwriter \
                 php7-tokenizer \
                 php7-ctype \
                 php7-curl \
