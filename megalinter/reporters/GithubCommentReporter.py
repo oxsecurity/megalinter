@@ -136,7 +136,7 @@ class GithubCommentReporter(Reporter):
                 )
             else:
                 p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
-            if self.master.validate_all_code_base is False:
+            if self.master.validate_all_code_base is False and self.master.enable_suggestions is True:
                 p_r_msg += (
                     "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
                     + "all sources, not only the diff_"

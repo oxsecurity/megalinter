@@ -68,6 +68,7 @@ class Megalinter:
         # Get enable / disable vars
         self.enable_descriptors = config.get_list("ENABLE", [])
         self.enable_linters = config.get_list("ENABLE_LINTERS", [])
+        self.enable_suggestions = config.get("ENABLE_SUGGESTIONS", "true") == "true"
         self.disable_descriptors = config.get_list("DISABLE", [])
         self.disable_linters = config.get_list("DISABLE_LINTERS", [])
         self.manage_default_linter_activation()
@@ -149,11 +150,12 @@ class Megalinter:
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
 
         # Check if a Mega-Linter flavor can be used for this repo, except if:
-        # - FLAVOR_SUGGESTIONS: false is defined
+        # - ENABLE_SUGGESTIONS is false
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
         if (
             self.validate_all_code_base is True
-            and config.get("FLAVOR_SUGGESTIONS", "true") == "true"
+            and (self.enable_suggestions is True 
+                 or config.get("FLAVOR_SUGGESTIONS", "true") == "true")
         ):
             self.flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
                 active_linters

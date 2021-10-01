@@ -2792,6 +2792,13 @@
       "title": "Enabled linter keys",
       "type": "array"
     },
+    "ENABLE_SUGGESTIONS": {
+      "$id": "#/properties/ENABLE_SUGGESTIONS",
+      "default": true,
+      "description": "Provides suggestions about configuration and different Mega-Linter flavors to use to improve runtime performance and completeness",
+      "title": "Enable suggestions",
+      "type": "boolean"
+    },
     "ENV_DOTENV_LINTER_ARGUMENTS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_ARGUMENTS",
       "description": "ENV_DOTENV_LINTER: User custom arguments to add in linter CLI call",
@@ -2983,6 +2990,7 @@
     "FLAVOR_SUGGESTIONS": {
       "$id": "#/properties/FLAVOR_SUGGESTIONS",
       "default": true,
+      "deprecated": true,
       "description": "Provides suggestions about different Mega-Linter flavors to use to improve runtime performances",
       "title": "Flavor suggestions",
       "type": "boolean"
