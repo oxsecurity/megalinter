@@ -4,7 +4,7 @@
 
 ## luacheck documentation
 
-- Version in Mega-Linter: **0.23.0**
+- Version in Mega-Linter: **0.25.0**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file is not found, [.luacheckrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -101,7 +101,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 0.23.0, a linter and a static analyzer for Lua.
+luacheck 0.25.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -148,6 +148,8 @@ Options for configuring allowed globals:
                             lua52c - globals of Lua 5.2 with LUA_COMPAT_ALL;
                             lua53 - globals of Lua 5.3;
                             lua53c - globals of Lua 5.3 with LUA_COMPAT_5_2;
+                            lua54 - globals of Lua 5.4;
+                            lua54c - globals of Lua 5.4 with LUA_COMPAT_5_3;
                             luajit - globals of LuaJIT 2.x;
                             ngx_lua - globals of Openresty lua-nginx-module
                             0.10.10, including standard LuaJIT 2.x globals;

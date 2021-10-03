@@ -43,7 +43,6 @@ RUN apk add --update --no-cache \
     go \
     gnupg \
     icu-libs \
-    jq \
     krb5-libs \
     libcurl libintl libssl1.1 libstdc++ \
     libffi-dev \
@@ -172,7 +171,7 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 # shfmt installation
 ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt
+RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # clj-kondo installation
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/

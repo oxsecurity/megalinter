@@ -42,7 +42,6 @@ RUN apk add --update --no-cache \
     go \
     gnupg \
     icu-libs \
-    jq \
     krb5-libs \
     libcurl libintl libssl1.1 libstdc++ \
     libffi-dev \
@@ -67,12 +66,21 @@ RUN apk add --update --no-cache \
                 php7-phar \
                 php7-json \
                 php7-mbstring \
-                php-xmlwriter \
+                php7-xmlwriter \
                 php7-tokenizer \
                 php7-ctype \
                 php7-curl \
                 php7-dom \
                 php7-simplexml \
+                php8 \
+                php8-phar \
+                php8-mbstring \
+                php8-xmlwriter \
+                php8-tokenizer \
+                php8-ctype \
+                php8-curl \
+                php8-dom \
+                php8-simplexml \
                 composer \
                 ansible-lint \
                 libc-dev \
@@ -191,7 +199,7 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 # shfmt installation
 ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt
+RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint

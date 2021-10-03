@@ -42,7 +42,6 @@ RUN apk add --update --no-cache \
     go \
     gnupg \
     icu-libs \
-    jq \
     krb5-libs \
     libcurl libintl libssl1.1 libstdc++ \
     libffi-dev \
@@ -133,6 +132,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint eslint-plugin-jsonc \
                 v8r \
                 eslint-plugin-react \
+                eslint-plugin-jsx-a11y \
                 markdownlint-cli \
                 remark-cli \
                 remark-preset-lint-recommended \
@@ -186,7 +186,7 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 # shfmt installation
 ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt
+RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
