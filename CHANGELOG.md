@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Upgrades
+  - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
+  - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+- Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
+- Add eslint-plugin-jsx-a11y dependency
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.6.0 to **1.7.0** on 2021-09-23
@@ -18,6 +24,23 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.3 to **0.32.4** on 2021-09-24
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.0 to **6.8.1** on 2021-09-25
   - [checkov](https://www.checkov.io/) from 2.0.438 to **2.0.441** on 2021-09-25
+  - [secretlint](https://github.com/secretlint/secretlint) from 4.0.0 to **4.1.0** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.441 to **2.0.442** on 2021-09-26
+  - [checkov](https://www.checkov.io/) from 2.0.442 to **2.0.443** on 2021-09-27
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-26
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-27
+  - [checkov](https://www.checkov.io/) from 2.0.443 to **2.0.446** on 2021-09-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.10.1 to **5.11.0** on 2021-09-29
+  - [checkov](https://www.checkov.io/) from 2.0.446 to **2.0.448** on 2021-09-29
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 8.2.0 to **9.0.0** on 2021-09-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.11.0 to **2.12.0** on 2021-09-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.11.0 to **2.12.0** on 2021-09-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.11.0 to **2.12.0** on 2021-09-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.1 to **6.9.0** on 2021-09-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.11.0 to **5.11.1** on 2021-09-30
+  - [checkov](https://www.checkov.io/) from 2.0.448 to **2.0.454** on 2021-09-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.0 to **6.9.1** on 2021-09-30
+  - [checkov](https://www.checkov.io/) from 2.0.454 to **2.0.461** on 2021-09-30
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21

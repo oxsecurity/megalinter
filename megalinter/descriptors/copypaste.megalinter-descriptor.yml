@@ -49,7 +49,4 @@ linters:
     install:
       npm:
         - jscpd
-    ide:
-      vscode:
-        - name: vscode-jscpd
-          url: https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd
+

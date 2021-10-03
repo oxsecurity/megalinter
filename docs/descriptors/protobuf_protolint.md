@@ -4,7 +4,7 @@
 
 ## protolint documentation
 
-- Version in Mega-Linter: **0.32.0**
+- Version in Mega-Linter: **0.35.1**
 - Visit [Official Web Site](https://github.com/yoheimuta/protolint#readme){target=_blank}
 - See [How to configure protolint rules](https://github.com/yoheimuta/protolint#rules){target=_blank}
   - If custom `.protolintrc.yml` config file is not found, [.protolintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.protolintrc.yml){target=_blank} will be used
@@ -117,7 +117,7 @@ Usage of lint:
 
 - Dockerfile commands :
 ```dockerfile
-FROM yoheimuta/protolint:v0.32.0 as protolint
+FROM yoheimuta/protolint:v0.35.1 as protolint
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 ```
 

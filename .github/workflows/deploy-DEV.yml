@@ -183,7 +183,7 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: "12"
       - name: Install NPM dependencies

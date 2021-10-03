@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.441**
+- Version in Mega-Linter: **2.0.461**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -78,8 +78,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,json,junitxml,github_failed_only,sarif}]
                [--output-bc-ids] [--no-guide] [--quiet] [--compact]
-               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}]
-               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}]
+               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all}]
+               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json}]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [--bc-api-key BC_API_KEY]
                [--docker-image DOCKER_IMAGE]
@@ -130,10 +130,10 @@ optional arguments:
                         in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,all}
+  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all}
                         filter scan to run only on a specific infrastructure
                         code frameworks
-  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets}
+  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json}
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.

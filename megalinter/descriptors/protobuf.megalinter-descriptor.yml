@@ -23,7 +23,7 @@ linters:
       - "protolint lint -fix --config_path .protolintrc.yml myfile.proto"
     install:
       dockerfile:
-        - FROM yoheimuta/protolint:v0.32.0 as protolint
+        - FROM yoheimuta/protolint:v0.35.1 as protolint
         - COPY --from=protolint /usr/local/bin/protolint /usr/bin/
     ide:
       idea:
