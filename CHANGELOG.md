@@ -41,6 +41,11 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.448 to **2.0.454** on 2021-09-30
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.0 to **6.9.1** on 2021-09-30
   - [checkov](https://www.checkov.io/) from 2.0.454 to **2.0.461** on 2021-09-30
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.0 to **9.0.1** on 2021-10-03
+  - [luacheck](https://luacheck.readthedocs.io) from 0.23.0 to **0.25.0** on 2021-10-03
+  - [checkov](https://www.checkov.io/) from 2.0.461 to **2.0.467** on 2021-10-03
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.7 to **1.0.8** on 2021-10-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.4 to **0.34.0** on 2021-10-03
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
