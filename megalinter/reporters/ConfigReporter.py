@@ -3,11 +3,11 @@
 Output results in console
 """
 import json
-import commentjson
 import os
 from pathlib import Path
 from shutil import copyfile
 
+import commentjson
 from megalinter import Reporter, config
 
 
