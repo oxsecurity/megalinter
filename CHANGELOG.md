@@ -46,6 +46,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.461 to **2.0.467** on 2021-10-03
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.7 to **1.0.8** on 2021-10-03
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.4 to **0.34.0** on 2021-10-03
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.6 to **0.6.7** on 2021-10-05
+  - [checkov](https://www.checkov.io/) from 2.0.467 to **2.0.469** on 2021-10-05
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
