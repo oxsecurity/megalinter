@@ -91,7 +91,7 @@ linters:
     linter_image_url: https://i.imgur.com/MOt7taM.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
-    config_file_name: phpstan.neon
+    config_file_name: phpstan.neon.dist
     cli_lint_extra_args:
       - "analyse"
       - "--no-progress"
