@@ -6723,7 +6723,7 @@
     },
     "PHP_PHPSTAN_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
-      "default": "phpstan.neon",
+      "default": "phpstan.neon.dist",
       "description": "PHP_PHPSTAN: User custom config file name if different from default",
       "title": "PHP_PHPSTAN: Custom config file name",
       "type": "string"

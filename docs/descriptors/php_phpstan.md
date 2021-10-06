@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **0.12.99**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
-  - If custom `phpstan.neon` config file is not found, [phpstan.neon](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon){target=_blank} will be used
+  - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
 - See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs){target=_blank}
 
 [![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan){target=_blank}
@@ -27,7 +27,7 @@
 | PHP_PHPSTAN_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
 | PHP_PHPSTAN_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | PHP_PHPSTAN_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| PHP_PHPSTAN_CONFIG_FILE                 | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `phpstan.neon`                                   |
+| PHP_PHPSTAN_CONFIG_FILE                 | phpstan configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `phpstan.neon.dist`                              |
 | PHP_PHPSTAN_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
 | PHP_PHPSTAN_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
