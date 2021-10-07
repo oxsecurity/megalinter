@@ -12,7 +12,7 @@
     "clj-kondo": "2021.06.18",
     "coffeelint": "5.0.4",
     "cpplint": "1.5.5",
-    "cspell": "5.12.1",
+    "cspell": "5.12.2",
     "dartanalyzer": "0.0.0",
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.1.1",
