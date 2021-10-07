@@ -6712,7 +6712,7 @@
     },
     "PHP_PHPSTAN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPSTAN_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",

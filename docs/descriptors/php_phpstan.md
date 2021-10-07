@@ -60,7 +60,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- phpstan is called one time by identified file
+- phpstan is called once with the list of files as arguments
 
 ### Example calls
 
@@ -70,6 +70,14 @@ phpstan analyse --no-progress --no-ansi myfile.php
 
 ```shell
 phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php
+```
+
+```shell
+phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php
+```
+
+```shell
+phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php
 ```
 
 
