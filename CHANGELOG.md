@@ -14,6 +14,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
 - Add eslint-plugin-jsx-a11y dependency
 - Rename default PHPStan config file, from `phpstan.neon` to `phpstan.neon.dist` accordingly to [PHPStan resolution priority](https://phpstan.org/config-reference#config-file)
+- Allows `list_of_files` cli_lint_mode on PHPSTAN linter to improve performance compare to `file` mode
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
