@@ -102,6 +102,8 @@ linters:
     examples:
       - "phpstan analyse --no-progress --no-ansi myfile.php"
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
+      - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
+      - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
         - |
