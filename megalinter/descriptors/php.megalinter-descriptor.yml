@@ -107,9 +107,7 @@ linters:
     install:
       dockerfile:
         - |
-          RUN composer global require phpstan/phpstan \
-              && composer global config bin-dir --absolute
-        - ENV PATH="/root/.composer/vendor/bin:$PATH"
+          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
