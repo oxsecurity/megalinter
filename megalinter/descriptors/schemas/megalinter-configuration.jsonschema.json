@@ -6587,7 +6587,7 @@
     },
     "PHP_PHPCS_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPCS_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6714,7 +6714,7 @@
     },
     "PHP_PHPSTAN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPSTAN_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6725,7 +6725,7 @@
     },
     "PHP_PHPSTAN_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
-      "default": "phpstan.neon",
+      "default": "phpstan.neon.dist",
       "description": "PHP_PHPSTAN: User custom config file name if different from default",
       "title": "PHP_PHPSTAN: Custom config file name",
       "type": "string"

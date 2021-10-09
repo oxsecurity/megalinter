@@ -58,10 +58,12 @@ linters:
     linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
     linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
     config_file_name: phpcs.xml
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
+      - "phpcs --standard=phpcs.xml mydir/ myfile.php"
     install:
       dockerfile:
         - |
@@ -91,7 +93,8 @@ linters:
     linter_image_url: https://i.imgur.com/MOt7taM.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
-    config_file_name: phpstan.neon
+    config_file_name: phpstan.neon.dist
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "analyse"
       - "--no-progress"
@@ -101,12 +104,12 @@ linters:
     examples:
       - "phpstan analyse --no-progress --no-ansi myfile.php"
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
+      - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
+      - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
         - |
-          RUN composer global require phpstan/phpstan \
-              && composer global config bin-dir --absolute
-        - ENV PATH="/root/.composer/vendor/bin:$PATH"
+          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
     ide:
       idea:
         - name: PHPStan / Psalm / Generics

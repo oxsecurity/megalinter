@@ -710,6 +710,7 @@
         "musl",
         "mvdan",
         "mydebugpipe",
+        "mydir",
         "myext",
         "myfile",
         "myint",
