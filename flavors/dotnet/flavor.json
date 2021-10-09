@@ -6,6 +6,7 @@
     ],
     "label": "Optimized for C, C++, C# or VB based projects",
     "linters": [
+        "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",
         "BASH_EXEC",

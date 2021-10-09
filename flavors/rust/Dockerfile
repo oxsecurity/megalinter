@@ -152,6 +152,10 @@ RUN git config --global core.autocrlf true
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
+# actionlint installation
+ENV GO111MODULE=on
+RUN go get github.com/rhysd/actionlint/cmd/actionlint
+
 # bash-exec installation
 RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
     && chmod +x /usr/bin/bash-exec

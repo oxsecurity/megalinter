@@ -1,4 +1,9 @@
 {
+  "actionlint": {
+    "description": "None",
+    "image": "https://github.com/rhysd/ss/blob/master/actionlint/ogp.jpg?raw=true",
+    "title": "actionlint, a static checker for GitHub Actions workflow files"
+  },
   "ansible-lint": {
     "description": "Best practices checker for Ansible. Contribute to ansible/ansible-lint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/1507452?s=400&v=4",
