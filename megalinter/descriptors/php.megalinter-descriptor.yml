@@ -58,10 +58,12 @@ linters:
     linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
     linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
     config_file_name: phpcs.xml
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
+      - "phpcs --standard=phpcs.xml mydir/ myfile.php"
     install:
       dockerfile:
         - |

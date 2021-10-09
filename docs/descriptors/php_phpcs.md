@@ -64,7 +64,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- phpcs is called one time by identified file
+- phpcs is called once with the list of files as arguments
 
 ### Example calls
 
@@ -74,6 +74,10 @@ phpcs myfile.php
 
 ```shell
 phpcs --standard=phpcs.xml myfile.php
+```
+
+```shell
+phpcs --standard=phpcs.xml mydir/ myfile.php
 ```
 
 
