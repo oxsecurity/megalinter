@@ -164,7 +164,7 @@ Miscellaneous:
 
 - NPM packages (node.js):
   - [typescript](https://www.npmjs.com/package/typescript)
-  - [eslint](https://www.npmjs.com/package/eslint)
+  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
   - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
   - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
   - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)

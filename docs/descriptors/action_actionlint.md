@@ -6,6 +6,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
+- Version in Mega-Linter: **1.6.5**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
@@ -73,6 +74,63 @@ This linter is available in the following flavours
 actionlint /path/to/workflow1.yml /path/to/workflow2.yaml
 ```
 
+
+### Help content
+
+```shell
+Usage: actionlint [FLAGS] [FILES...] [-]
+
+  actionlint is a linter for GitHub Actions workflow files.
+
+  To check all YAML files in current repository, just run actionlint without
+  arguments. It automatically finds the nearest '.github/workflows' directory:
+
+    $ actionlint
+
+  To check specific files, pass the file paths as arguments:
+
+    $ actionlint file1.yaml file2.yaml
+
+  To check content which is not saved in file yet (e.g. output from some
+  command), pass - argument. It reads stdin and checks it as workflow file:
+
+    $ actionlint -
+
+  To serialize errors into JSON, use -format option. It allows to format error
+  messages flexibly with Go template syntax.
+
+    $ actionlint -format '{{json .}}'
+
+Documents:
+
+  https://github.com/rhysd/actionlint/tree/main/docs
+
+Flags:
+  -color
+      Always enable colorful output. This is useful to force colorful outputs
+  -config-file string
+      File path to config file
+  -debug
+      Enable debug output (for development)
+  -format string
+      Custom template to format error messages in Go template syntax. See https://github.com/rhysd/actionlint/tree/main/docs/usage.md#format
+  -ignore value
+      Regular expression matching to error messages you want to ignore. This flag is repeatable
+  -init-config
+      Generate default config file at .github/actionlint.yaml in current project
+  -no-color
+      Disable colorful output
+  -oneline
+      Use one line per one error. Useful for reading error messages from programs
+  -pyflakes string
+      Command name or file path of "pyflakes" external command (default "pyflakes")
+  -shellcheck string
+      Command name or file path of "shellcheck" external command (default "shellcheck")
+  -verbose
+      Enable verbose output
+  -version
+      Show version and how this binary was installed
+```
 
 ### Installation on mega-linter Docker image
 

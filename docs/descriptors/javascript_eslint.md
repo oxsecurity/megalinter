@@ -163,7 +163,7 @@ Miscellaneous:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [eslint](https://www.npmjs.com/package/eslint)
+  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
   - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
   - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
   - [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)

@@ -64,6 +64,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.10.0 to **1.11.0** on 2021-10-07
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.2 to **5.12.3** on 2021-10-09
   - [checkov](https://www.checkov.io/) from 2.0.477 to **2.0.479** on 2021-10-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.8 to **0.6.9** on 2021-10-10
+  - [checkov](https://www.checkov.io/) from 2.0.479 to **2.0.481** on 2021-10-10
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21

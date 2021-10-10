@@ -162,7 +162,7 @@ Miscellaneous:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [eslint](https://www.npmjs.com/package/eslint)
+  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
   - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
   - [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
 
