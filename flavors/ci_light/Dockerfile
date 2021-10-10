@@ -97,7 +97,8 @@ RUN npm install --no-cache --ignore-scripts \
                 dockerfilelint \
                 npm-groovy-lint \
                 jsonlint \
-                eslint eslint-plugin-jsonc \
+                eslint@7.32.0 \
+                eslint-plugin-jsonc \
                 v8r \
                 prettier
 #NPM__END

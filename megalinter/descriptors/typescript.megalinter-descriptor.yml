@@ -43,7 +43,7 @@ linters:
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
     install:
       npm:
-        - eslint
+        - eslint@7.32.0
         - eslint-config-airbnb
         - eslint-config-prettier
         - eslint-config-standard

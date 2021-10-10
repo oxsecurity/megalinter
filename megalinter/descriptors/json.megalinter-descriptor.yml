@@ -107,7 +107,8 @@ linters:
       - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
     install:
       npm:
-        - eslint eslint-plugin-jsonc
+        - eslint@7.32.0
+        - eslint-plugin-jsonc
     ide:
       vscode:
         - name: vscode-eslint
