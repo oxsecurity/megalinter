@@ -37,8 +37,9 @@ linters:
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
     install:
       npm:
-        - eslint
+        - eslint@7.32.0
         - eslint-plugin-react
+        - eslint-plugin-jsx-a11y
     ide:
       atom:
         - name: linter-eslint

@@ -62,6 +62,7 @@ class Linter:
         self.file_names_regex = []
         # Default name of the configuration file to use with the linter. Ex: '.eslintrc.js'
         self.config_file_name = None
+        self.final_config_file = None
         self.files_sub_directory = None
         self.file_contains_regex = []
         self.file_names_not_ends_with = []
@@ -139,6 +140,10 @@ class Linter:
             self.name = (
                 self.descriptor_id + "_" + self.linter_name.upper().replace("-", "_")
             )
+
+        # Override default executable
+        if config.exists(self.name + "_CLI_EXECUTABLE"):
+            self.cli_executable = config.get(self.name + "_CLI_EXECUTABLE")
         if self.cli_executable is None:
             self.cli_executable = self.linter_name
         if self.cli_executable_fix is None:
@@ -401,6 +406,25 @@ class Linter:
                 self.config_file_label = self.config_file.replace(
                     "/tmp/lint", ""
                 ).replace("/action/lib/.automation/", "")
+        # User override of cli_lint_mode
+        if config.exists(self.name + "_CLI_LINT_MODE"):
+            cli_lint_mode_descriptor = self.cli_lint_mode
+            cli_lint_mode_config = config.get(self.name + "_CLI_LINT_MODE")
+            if cli_lint_mode_descriptor == "project":
+                raise KeyError(
+                    f"You can not override {self.name} cli_lint_mode as it can "
+                    "not process a file or a list of files. If you think this could be, post an issue :)"
+                )
+            elif (
+                cli_lint_mode_descriptor == "file"
+                and cli_lint_mode_config == "list_of_files"
+            ):
+                raise KeyError(
+                    f"You can not override {self.name} cli_lint_mode with list_of_files, "
+                    "as it can process files only one by one. If you think it could be done, post an issue :)"
+                )
+            self.cli_lint_mode = cli_lint_mode_config
+
         # Include regex :try first NAME + _FILTER_REGEX_INCLUDE, then LANGUAGE + _FILTER_REGEX_INCLUDE
         if config.exists(self.name + "_FILTER_REGEX_INCLUDE"):
             self.filter_regex_include = config.get(self.name + "_FILTER_REGEX_INCLUDE")
@@ -789,15 +813,15 @@ class Linter:
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
         if self.config_file is not None:
-            final_config_file = self.config_file
+            self.final_config_file = self.config_file
             if self.cli_docker_image is not None:
-                final_config_file = final_config_file.replace(
+                self.final_config_file = self.final_config_file.replace(
                     self.workspace, "/tmp/lint"
                 )
             if self.cli_config_arg_name.endswith("="):
-                cmd += [self.cli_config_arg_name + final_config_file]
+                cmd += [self.cli_config_arg_name + self.final_config_file]
             elif self.cli_config_arg_name != "":
-                cmd += [self.cli_config_arg_name, final_config_file]
+                cmd += [self.cli_config_arg_name, self.final_config_file]
             cmd += self.cli_config_extra_args
         # Add other lint cli arguments after other arguments if defined
         cmd += self.cli_lint_extra_args_after

@@ -4,6 +4,8 @@ Generates a full execution log in JSON format within a file named **mega-linter-
 
 This reporter **is deactivated by default**.
 
+![Screenshot](../assets/images/JsonReporter.jpg)
+
 ## Usage
 
 Activate the reporter (`JSON_REPORTER: true`) to generate JSON report file

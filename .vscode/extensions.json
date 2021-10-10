@@ -1,0 +1,13 @@
+{
+    // Extension completed by Mega-Linter
+    "recommendations": [
+        "ms-python.python",
+        "stylelint.vscode-stylelint",
+        "foxundermoon.shell-format",
+        "matangover.mypy",
+        "streetsidesoftware.code-spell-checker",
+        "esbenp.prettier-vscode",
+        "exiasr.hadolint",
+        "timonwong.shellcheck"
+    ]
+} 

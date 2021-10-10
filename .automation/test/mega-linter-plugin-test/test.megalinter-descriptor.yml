@@ -10,4 +10,4 @@ linters:
       - "jsonlint myfile.jsonc"
     install:
       dockerfile:
-        - RUN npm install jsonlint && echo "This is my test Mega-Linter plugin !"
+        - RUN npm install jsonlint -g && echo "This is my test Mega-Linter plugin !"

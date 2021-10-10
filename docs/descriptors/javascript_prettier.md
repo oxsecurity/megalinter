@@ -9,7 +9,7 @@
 
 ## prettier documentation
 
-- Version in Mega-Linter: **2.3.2**
+- Version in Mega-Linter: **2.4.1**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -24,20 +24,21 @@
 
 - Enable **auto-fixes** by adding `JAVASCRIPT_PRETTIER` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
-| Variable                                        | Description                                                                                                                                                                                  | Default value                                    |
-|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| JAVASCRIPT_DEFAULT_STYLE                        | For prettier to be active, JAVASCRIPT_DEFAULT_STYLE must be `prettier`                                                                                                                       | `standard`                                       |
-| JAVASCRIPT_PRETTIER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                               |
-| JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                  |
-| JAVASCRIPT_PRETTIER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".js"]`                                        |
-| JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| JAVASCRIPT_PRETTIER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                             |
-| JAVASCRIPT_PRETTIER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                             |
-| JAVASCRIPT_PRETTIER_CONFIG_FILE                 | prettier configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                          | `.prettierrc.json`                               |
-| JAVASCRIPT_PRETTIER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| JAVASCRIPT_PRETTIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                           |
-| JAVASCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
+| Variable                                        | Description                                                                                                                                                                                                         | Default value                                    |
+|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| JAVASCRIPT_DEFAULT_STYLE                        | For prettier to be active, JAVASCRIPT_DEFAULT_STYLE must be `prettier`                                                                                                                                              | `standard`                                       |
+| JAVASCRIPT_PRETTIER_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
+| JAVASCRIPT_PRETTIER_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
+| JAVASCRIPT_PRETTIER_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
+| JAVASCRIPT_PRETTIER_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
+| JAVASCRIPT_PRETTIER_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".js"]`                                        |
+| JAVASCRIPT_PRETTIER_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
+| JAVASCRIPT_PRETTIER_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
+| JAVASCRIPT_PRETTIER_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
+| JAVASCRIPT_PRETTIER_CONFIG_FILE                 | prettier configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.prettierrc.json`                               |
+| JAVASCRIPT_PRETTIER_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| JAVASCRIPT_PRETTIER_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                           |
+| JAVASCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
@@ -63,8 +64,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                          | Flavor                                                                   | Description                                           | Embedded linters |                                                                                                                                                                                         Info |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor                            |        93        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|     <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor                            |        94        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|     <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
 
 ## Behind the scenes
 
@@ -76,7 +77,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- prettier is called one time by identified file
+- prettier is called once with the list of files as arguments
 
 ### Example calls
 
@@ -113,6 +114,8 @@ Format options:
   --arrow-parens <always|avoid>
                            Include parentheses around a sole arrow function parameter.
                            Defaults to always.
+  --bracket-same-line      Put > of opening tags on the last line instead of on a new line.
+                           Defaults to false.
   --no-bracket-spacing     Do not print spaces between brackets.
   --embedded-language-formatting <auto|off>
                            Control how Prettier formats quoted code embedded in the file.
@@ -123,8 +126,6 @@ Format options:
   --html-whitespace-sensitivity <css|strict|ignore>
                            How to handle whitespaces in HTML.
                            Defaults to css.
-  --jsx-bracket-same-line  Put > on the last line instead of at a new line.
-                           Defaults to false.
   --jsx-single-quote       Use single quotes in JSX.
                            Defaults to false.
   --parser <flow|babel|babel-flow|babel-ts|typescript|espree|meriyah|css|less|scss|json|json5|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>

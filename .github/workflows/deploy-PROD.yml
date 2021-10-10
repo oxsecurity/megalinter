@@ -41,6 +41,7 @@ jobs:
       - uses: fkirc/skip-duplicate-actions@master
         with:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          cancel_others: true
 
   build:
     # Name the Job
@@ -64,7 +65,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v2.1.5
+      - uses: actions/setup-node@v2.4.1
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"

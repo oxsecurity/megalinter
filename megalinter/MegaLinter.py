@@ -473,27 +473,18 @@ class Megalinter:
     def list_files_git_diff(self):
         # List all updated files from git
         logging.info(
-            "Listing updated files in ["
-            + self.github_workspace
-            + "] using git diff, then filter with:"
+            "Listing updated files in [" + self.github_workspace + "] using git diff."
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
         default_branch = config.get("DEFAULT_BRANCH", "master")
-        current_branch = config.get("GITHUB_SHA", "")
-        if current_branch == "":
-            current_branch = repo.active_branch.commit.hexsha
-        try:
-            repo.git.pull()
-        except git.GitCommandError:
-            try:
-                repo.git.checkout(current_branch)
-                repo.git.pull()
-            except git.GitCommandError:
-                logging.info(f"Warning: Unable to pull current branch {current_branch}")
-        repo.git.checkout(default_branch)
-        diff = repo.git.diff(f"{default_branch}...{current_branch}", name_only=True)
-        repo.git.checkout(current_branch)
-        logging.info(f"Git diff :\n{diff}")
+        current_commit_sha = config.get("GITHUB_SHA", "")
+        if current_commit_sha == "":
+            current_commit_sha = repo.active_branch.commit.hexsha
+        repo.git.fetch()
+        diff = repo.git.diff(
+            f"origin/{default_branch}...{current_commit_sha}", name_only=True
+        )
+        logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():
             if os.path.isfile(self.workspace + os.path.sep + diff_line):

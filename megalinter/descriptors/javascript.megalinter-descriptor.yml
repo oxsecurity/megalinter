@@ -47,7 +47,7 @@ linters:
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
     install:
       npm:
-        - eslint
+        - eslint@7.32.0
         - eslint-config-airbnb
         - eslint-config-prettier
         - eslint-config-standard
@@ -141,6 +141,7 @@ linters:
     linter_rules_inline_disable_url: https://prettier.io/docs/en/ignore.html#javascript
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     config_file_name: ".prettierrc.json"
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"

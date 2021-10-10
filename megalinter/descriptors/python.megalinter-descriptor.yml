@@ -52,6 +52,7 @@ linters:
     linter_rules_configuration_url: https://black.readthedocs.io/en/stable/compatible_configs.html
     config_file_name: .python-black
     cli_config_arg_name: "--config"
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--diff"
       - "--check"

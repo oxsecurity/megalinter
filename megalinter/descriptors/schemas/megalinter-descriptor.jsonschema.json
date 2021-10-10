@@ -631,10 +631,10 @@
           },
           "cli_lint_mode": {
             "$id": "#/properties/linters/items/properties/cli_lint_mode",
-            "default": "file_by_file",
-            "description": "Defines how the linter is called: file_by_file, project, list_of_files",
+            "default": "file",
+            "description": "Defines how the linter is called: file,  list_of_files, project",
             "enum": [
-              "file_by_file",
+              "file",
               "project",
               "list_of_files"
             ],

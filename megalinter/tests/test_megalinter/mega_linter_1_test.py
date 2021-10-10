@@ -292,3 +292,67 @@ class mega_linter_1_test(unittest.TestCase):
             os.path.isfile(expected_output_file),
             "Output json file " + expected_output_file + " should exist",
         )
+
+    def test_config_reporter(self):
+        mega_linter, output = utilstest.call_mega_linter({"CONFIG_REPORTER": "true"})
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        expected_output_file = (
+            mega_linter.report_folder + os.path.sep + "IDE-config.txt"
+        )
+        self.assertTrue(
+            os.path.isfile(expected_output_file),
+            "Output IDE config file " + expected_output_file + " should exist",
+        )
+
+    def test_override_cli_lint_mode(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE": "YAML",
+                "YAML_YAMLLINT_CLI_LINT_MODE": "file",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertTrue(
+            len(
+                list(
+                    filter(
+                        lambda x: (
+                            x.name == "YAML_YAMLLINT" and x.cli_lint_mode == "file"
+                        ),
+                        mega_linter.linters,
+                    )
+                )
+            )
+            == 1,
+            "YAML_YAMLLINT should have been processed with cli_lint_mode = file",
+        )
+
+    def test_override_cli_executable(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE": "PHP",
+                "PHP_BUILTIN_CLI_EXECUTABLE": "/usr/bin/php8",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertTrue(
+            len(
+                list(
+                    filter(
+                        lambda x: (
+                            x.name == "PHP_BUILTIN"
+                            and x.cli_executable == "/usr/bin/php8"
+                        ),
+                        mega_linter.linters,
+                    )
+                )
+            )
+            == 1,
+            "PHP_BUILTIN should have been processed with cli_executable = /usr/bin/php8",
+        )

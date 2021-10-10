@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in Mega-Linter: **20.8**
+- Version in Mega-Linter: **21.9**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
   - If custom `.python-black` config file is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
@@ -23,19 +23,20 @@
 
 - Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
 
-| Variable                                 | Description                                                                                                                                                                                  | Default value                                    |
-|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| PYTHON_BLACK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                  |
-| PYTHON_BLACK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                           | Include every file                               |
-| PYTHON_BLACK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                     | Exclude no file                                  |
-| PYTHON_BLACK_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".py"]`                                        |
-| PYTHON_BLACK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                               |
-| PYTHON_BLACK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                             |
-| PYTHON_BLACK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                             |
-| PYTHON_BLACK_CONFIG_FILE                 | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                             | `.python-black`                                  |
-| PYTHON_BLACK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then Mega-Linter default rules |
-| PYTHON_BLACK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `true`                                           |
-| PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
+| Variable                                 | Description                                                                                                                                                                                                         | Default value                                    |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| PYTHON_BLACK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
+| PYTHON_BLACK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
+| PYTHON_BLACK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
+| PYTHON_BLACK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
+| PYTHON_BLACK_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                        |
+| PYTHON_BLACK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
+| PYTHON_BLACK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
+| PYTHON_BLACK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
+| PYTHON_BLACK_CONFIG_FILE                 | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `.python-black`                                  |
+| PYTHON_BLACK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| PYTHON_BLACK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                           |
+| PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
@@ -57,8 +58,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                          | Flavor                                                           | Description                         | Embedded linters |                                                                                                                                                                                 Info |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor          |        93        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
 
 ## Behind the scenes
 
@@ -70,7 +71,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- black is called one time by identified file
+- black is called once with the list of files as arguments
 
 ### Example calls
 
@@ -90,7 +91,7 @@ black --config .python-black myfile.py
 ### Help content
 
 ```shell
-Usage: black [OPTIONS] [SRC]...
+Usage: black [OPTIONS] SRC ...
 
   The uncompromising code formatter.
 
@@ -99,7 +100,7 @@ Options:
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
 
-  -t, --target-version [py27|py33|py34|py35|py36|py37|py38]
+  -t, --target-version [py27|py33|py34|py35|py36|py37|py38|py39]
                                   Python versions that should be supported by
                                   Black's output. [default: per-file auto-
                                   detection]
@@ -108,13 +109,22 @@ Options:
                                   regardless of file extension (useful when
                                   piping source on standard input).
 
+  --ipynb                         Format all input files like Jupyter
+                                  Notebooks regardless of file extension
+                                  (useful when piping source on standard
+                                  input).
+
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
+  -C, --skip-magic-trailing-comma
+                                  Don't use trailing commas as a reason to
+                                  split lines.
+
   --check                         Don't write the files back, just return the
-                                  status.  Return code 0 means nothing would
-                                  change.  Return code 1 means some files
-                                  would be reformatted. Return code 123 means
-                                  there was an internal error.
+                                  status. Return code 0 means nothing would
+                                  change. Return code 1 means some files would
+                                  be reformatted. Return code 123 means there
+                                  was an internal error.
 
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
@@ -125,28 +135,44 @@ Options:
   --fast / --safe                 If --fast given, skip temporary sanity
                                   checks. [default: --safe]
 
+  --required-version TEXT         Require a specific version of Black to be
+                                  running (useful for unifying results across
+                                  many environments e.g. with a pyproject.toml
+                                  file).
+
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
-                                  recursive searches.  An empty value means
-                                  all files are included regardless of the
-                                  name.  Use forward slashes for directories
-                                  on all platforms (Windows, too).  Exclusions
-                                  are calculated first, inclusions later.
-                                  [default: \.pyi?$]
+                                  recursive searches. An empty value means all
+                                  files are included regardless of the name.
+                                  Use forward slashes for directories on all
+                                  platforms (Windows, too). Exclusions are
+                                  calculated first, inclusions later.
+                                  [default: (\.pyi?|\.ipynb)$]
 
   --exclude TEXT                  A regular expression that matches files and
                                   directories that should be excluded on
-                                  recursive searches.  An empty value means no
+                                  recursive searches. An empty value means no
                                   paths are excluded. Use forward slashes for
                                   directories on all platforms (Windows, too).
                                   Exclusions are calculated first, inclusions
-                                  later.  [default: /(\.direnv|\.eggs|\.git|\.
-                                  hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_bu
-                                  ild|buck-out|build|dist)/]
+                                  later. [default: /(\.direnv|\.eggs|\.git|\.h
+                                  g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
+                                  |_build|buck-out|build|dist)/]
+
+  --extend-exclude TEXT           Like --exclude, but adds additional files
+                                  and directories on top of the excluded ones.
+                                  (Useful if you simply want to add to the
+                                  default)
 
   --force-exclude TEXT            Like --exclude, but files and directories
                                   matching this regex will be excluded even
-                                  when they are passed explicitly as arguments
+                                  when they are passed explicitly as
+                                  arguments.
+
+  --stdin-filename TEXT           The name of the file when passing it through
+                                  stdin. Useful to make sure Black will
+                                  respect --force-exclude option on some
+                                  editors that rely on using stdin.
 
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
@@ -154,7 +180,7 @@ Options:
 
   -v, --verbose                   Also emit messages to stderr about files
                                   that were not changed or were ignored due to
-                                  --exclude=.
+                                  exclusion patterns.
 
   --version                       Show the version and exit.
   --config FILE                   Read configuration from FILE path.

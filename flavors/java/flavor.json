@@ -5,6 +5,7 @@
     ],
     "label": "Optimized for JAVA based projects",
     "linters": [
+        "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
         "BASH_SHELLCHECK",

@@ -12,6 +12,7 @@
     "language": "en",
     "version": "0.1",
     "words": [
+        "ACTIONLINT",
         "ADDITIONAL",
         "AFFERO",
         "AGPL",
@@ -201,6 +202,7 @@
         "Rakudo",
         "Rubo",
         "Rubocop",
+        "Rhysd",
         "SCALAFIX",
         "SCATTERITEMS",
         "SCRIPTDIR",
@@ -708,6 +710,7 @@
         "musl",
         "mvdan",
         "mydebugpipe",
+        "mydir",
         "myext",
         "myfile",
         "myint",

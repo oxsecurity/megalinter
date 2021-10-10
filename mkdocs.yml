@@ -1,10 +1,11 @@
+---
 site_name: Mega-Linter
 site_url: https://nvuillam.github.io/mega-linter
 repo_url: https://github.com/nvuillam/mega-linter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 18 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 19 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2021 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -211,6 +212,9 @@ nav:
       - "Tooling Formats linters":
           - "All tooling formats linters": "./supported-linters/#tooling-formats"
           # tooling_format-start
+          - "ACTION":
+              - "All ACTION linters": "descriptors/action.md"
+              - "actionlint": "descriptors/action_actionlint.md"
           - "ANSIBLE":
               - "All ANSIBLE linters": "descriptors/ansible.md"
               - "ansible-lint": "descriptors/ansible_ansible_lint.md"
@@ -275,6 +279,7 @@ nav:
       - "All reporters": "reporters.md"
       - "Text files": "reporters/TextReporter.md"
       - "Updated sources": "reporters/UpdatedSourcesReporter.md"
+      - "IDE Configuration": "reporters/ConfigReporter.md"
       - "E-mail": "reporters/EmailReporter.md"
       - "File.io": "reporters/FileIoReporter.md"
       - "Pull Request comments": "reporters/GitHubCommentReporter.md"
@@ -311,7 +316,7 @@ nav:
   - "Sponsoring": 'sponsor.md'
   - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":
-    - "How-to Contribute": "how-to-contribute.md"
-    - "Contributing Guide": "contributing.md"
+      - "How-to Contribute": "how-to-contribute.md"
+      - "Contributing Guide": "contributing.md"
   - "License": "license.md"
   - "Changelog": "CHANGELOG.md"
