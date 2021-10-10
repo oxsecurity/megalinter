@@ -66,6 +66,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.477 to **2.0.479** on 2021-10-09
   - [sqlfluff](https://www.sqlfluff.com/) from 0.6.8 to **0.6.9** on 2021-10-10
   - [checkov](https://www.checkov.io/) from 2.0.479 to **2.0.481** on 2021-10-10
+  - [checkov](https://www.checkov.io/) from 2.0.481 to **2.0.482** on 2021-10-10
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
