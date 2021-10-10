@@ -230,4 +230,5 @@ Miscellaneous:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [eslint eslint-plugin-jsonc](https://www.npmjs.com/package/eslint eslint-plugin-jsonc)
+  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
+  - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
