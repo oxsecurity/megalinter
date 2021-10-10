@@ -53,14 +53,6 @@ Example:
 | COPYPASTE_JSCPD_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                          |
 | COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                              |
 
-## IDE Integration
-
-Use jscpd in your favorite IDE to catch errors before Mega-Linter !
-
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                |                                                                                     Install                                                                                     |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-jscpd](https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/paulhoughton.vscode-jscpd){target=_blank} |
-
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours

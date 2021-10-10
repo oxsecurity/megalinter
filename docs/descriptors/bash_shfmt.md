@@ -133,7 +133,7 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 - Dockerfile commands :
 ```dockerfile
 ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt
+RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 ```
 
 

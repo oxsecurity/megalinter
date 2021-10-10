@@ -9,7 +9,7 @@
 
 ## secretlint documentation
 
-- Version in Mega-Linter: **4.0.0**
+- Version in Mega-Linter: **4.1.0**
 - Visit [Official Web Site](https://github.com/secretlint/secretlint#readme){target=_blank}
 - See [How to configure secretlint rules](https://github.com/secretlint/secretlint#configuration){target=_blank}
   - If custom `.secretlintrc.json` config file is not found, [.secretlintrc.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.secretlintrc.json){target=_blank} will be used

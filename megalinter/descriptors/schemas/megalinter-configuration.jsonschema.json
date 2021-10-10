@@ -39,6 +39,7 @@
     },
     "enum_descriptor_keys": {
       "enum": [
+        "ACTION",
         "ANSIBLE",
         "ARM",
         "BASH",
@@ -101,6 +102,7 @@
     },
     "enum_linter_keys": {
       "enum": [
+        "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",
         "BASH_EXEC",
@@ -6463,6 +6465,11 @@
         "string"
       ]
     },
+    "PHP_BUILTIN_CLI_EXECUTABLE": {
+      "$id": "#/properties/PHP_BUILTIN_CLI_EXECUTABLE",
+      "title": "PHP_BUILTIN: Override default CLI executable for linting request",
+      "type": "string"
+    },
     "PHP_BUILTIN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_BUILTIN_CLI_LINT_MODE",
       "default": "file",
@@ -6582,7 +6589,7 @@
     },
     "PHP_PHPCS_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPCS_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6709,7 +6716,7 @@
     },
     "PHP_PHPSTAN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPSTAN_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6720,7 +6727,7 @@
     },
     "PHP_PHPSTAN_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
-      "default": "phpstan.neon",
+      "default": "phpstan.neon.dist",
       "description": "PHP_PHPSTAN: User custom config file name if different from default",
       "title": "PHP_PHPSTAN: Custom config file name",
       "type": "string"

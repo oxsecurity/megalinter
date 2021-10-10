@@ -8,14 +8,62 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
 
+- Upgrades
+  - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
+  - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+- Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
+- Add eslint-plugin-jsx-a11y dependency
+- Rename default PHPStan config file, from `phpstan.neon` to `phpstan.neon.dist` accordingly to [PHPStan resolution priority](https://phpstan.org/config-reference#config-file)
+- Allows `list_of_files` cli_lint_mode on PHPSTAN linter to improve performance compare to `file` mode
+- `phpstan` is now installed with `phive` rather than `composer` (reduces disk usage)
+- Allows `list_of_files` cli_lint_mode on PHPCS linter to improve performance compare to `file` mode
+
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.6.0 to **1.7.0** on 2021-09-23
   - [checkov](https://www.checkov.io/) from 2.0.430 to **2.0.436** on 2021-09-23
-  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **4.4.23** on 2021-09-28
-  - [git_diff](https://git-scm.com) from 2.30.2 to **2.28.0** on 2021-09-28
-  - [eslint](https://eslint.org) from 7.32.0 to **7.24.0** on 2021-09-28
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.4 to **5.1.17134** on 2021-09-28
+  - [coffeelint](http://www.coffeelint.org) from 5.0.3 to **5.0.4** on 2021-09-24
+  - [checkov](https://www.checkov.io/) from 2.0.436 to **2.0.438** on 2021-09-24
+  - [php](https://www.php.net) from 7.4.21 to **7.4.24** on 2021-09-24
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.3 to **0.32.4** on 2021-09-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.0 to **6.8.1** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.438 to **2.0.441** on 2021-09-25
+  - [secretlint](https://github.com/secretlint/secretlint) from 4.0.0 to **4.1.0** on 2021-09-25
+  - [checkov](https://www.checkov.io/) from 2.0.441 to **2.0.442** on 2021-09-26
+  - [checkov](https://www.checkov.io/) from 2.0.442 to **2.0.443** on 2021-09-27
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-26
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.32.0 to **0.35.1** on 2021-09-27
+  - [checkov](https://www.checkov.io/) from 2.0.443 to **2.0.446** on 2021-09-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.10.1 to **5.11.0** on 2021-09-29
+  - [checkov](https://www.checkov.io/) from 2.0.446 to **2.0.448** on 2021-09-29
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 8.2.0 to **9.0.0** on 2021-09-30
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.11.0 to **2.12.0** on 2021-09-30
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.11.0 to **2.12.0** on 2021-09-30
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.11.0 to **2.12.0** on 2021-09-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.8.1 to **6.9.0** on 2021-09-30
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.11.0 to **5.11.1** on 2021-09-30
+  - [checkov](https://www.checkov.io/) from 2.0.448 to **2.0.454** on 2021-09-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.0 to **6.9.1** on 2021-09-30
+  - [checkov](https://www.checkov.io/) from 2.0.454 to **2.0.461** on 2021-09-30
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.0 to **9.0.1** on 2021-10-03
+  - [luacheck](https://luacheck.readthedocs.io) from 0.23.0 to **0.25.0** on 2021-10-03
+  - [checkov](https://www.checkov.io/) from 2.0.461 to **2.0.467** on 2021-10-03
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.7 to **1.0.8** on 2021-10-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.4 to **0.34.0** on 2021-10-03
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.6 to **0.6.7** on 2021-10-05
+  - [checkov](https://www.checkov.io/) from 2.0.467 to **2.0.469** on 2021-10-05
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.28.1 to **0.29.0** on 2021-10-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.11.1 to **5.12.0** on 2021-10-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.7 to **0.6.8** on 2021-10-06
+  - [checkov](https://www.checkov.io/) from 2.0.469 to **2.0.475** on 2021-10-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.0 to **5.12.1** on 2021-10-06
+  - [checkov](https://www.checkov.io/) from 2.0.475 to **2.0.476** on 2021-10-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.1 to **5.12.2** on 2021-10-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.0 to **0.34.1** on 2021-10-07
+  - [checkov](https://www.checkov.io/) from 2.0.476 to **2.0.477** on 2021-10-07
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.10.0 to **1.11.0** on 2021-10-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.2 to **5.12.3** on 2021-10-09
+  - [checkov](https://www.checkov.io/) from 2.0.477 to **2.0.479** on 2021-10-09
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
