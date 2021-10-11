@@ -23,7 +23,7 @@ module.exports = class extends Generator {
         choices: [
           {
             value: "all",
-            name: "Let Mega-Linter suggest me later (recommended)",
+            name: "Let Mega-Linter suggest to me later (recommended)",
           },
           { value: "dart", name: "Dart" },
           { value: "documentation", name: "Documentation" },
