@@ -305,10 +305,14 @@ class Megalinter:
             self.validate_all_code_base = False
         # Manage IGNORE_GITIGNORED_FILES
         if config.exists("IGNORE_GITIGNORED_FILES"):
-            self.ignore_gitignore_files = config.get("IGNORE_GITIGNORED_FILES", "false") == "true"
+            self.ignore_gitignore_files = (
+                config.get("IGNORE_GITIGNORED_FILES", "false") == "true"
+            )
         # Manage IGNORE_GENERATED_FILES
         if config.exists("IGNORE_GENERATED_FILES"):
-            self.ignore_generated_files = config.get("IGNORE_GENERATED_FILES", "false") == "true"
+            self.ignore_generated_files = (
+                config.get("IGNORE_GENERATED_FILES", "false") == "true"
+            )
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -513,7 +517,14 @@ class Megalinter:
         dirpath = os.path.realpath(self.github_workspace)
         repo = git.Repo(dirpath)
         ignored_files = repo.git.execute(
-            ["git", "ls-files", "--exclude-standard", "--ignored", "--others", "--cached"]
+            [
+                "git",
+                "ls-files",
+                "--exclude-standard",
+                "--ignored",
+                "--others",
+                "--cached",
+            ]
         ).splitlines()
         ignored_files = map(lambda x: x + "**" if x.endswith("/") else x, ignored_files)
         # ignored_files will be match against absolute path (in all_files), so it should be absolute
