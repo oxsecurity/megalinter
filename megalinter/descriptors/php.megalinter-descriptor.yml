@@ -60,6 +60,7 @@ linters:
     config_file_name: phpcs.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
+    cli_config_extra_args: ["--file-list={FILE_LIST}"]
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
