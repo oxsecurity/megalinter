@@ -109,7 +109,7 @@ RUN echo 'package-lock=false' >> .npmrc
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 jscpd \
-                secretlint \
+                secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend \
                 stylelint \
                 stylelint-config-standard \

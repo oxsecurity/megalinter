@@ -102,7 +102,7 @@ RUN echo 'package-lock=false' >> .npmrc
 RUN npm install --no-cache --ignore-scripts \
                 sfdx-cli \
                 jscpd \
-                secretlint \
+                secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend \
                 stylelint \
                 stylelint-config-standard \
