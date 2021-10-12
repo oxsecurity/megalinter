@@ -68,6 +68,10 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [sqlfluff](https://www.sqlfluff.com/) from 0.6.8 to **0.6.9** on 2021-10-10
   - [checkov](https://www.checkov.io/) from 2.0.479 to **2.0.481** on 2021-10-10
   - [checkov](https://www.checkov.io/) from 2.0.481 to **2.0.482** on 2021-10-10
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.0 to **3.6.1** on 2021-10-12
+  - [flake8](https://flake8.pycqa.org) from 3.9.2 to **4.0.1** on 2021-10-12
+  - [checkov](https://www.checkov.io/) from 2.0.482 to **2.0.484** on 2021-10-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.1 to **0.34.3** on 2021-10-12
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21

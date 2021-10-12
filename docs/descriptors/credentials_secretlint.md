@@ -123,5 +123,5 @@ secretlint --secretlintrc .secretlintrc.json "**/*"
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [secretlint](https://www.npmjs.com/package/secretlint)
-  - [@secretlint/secretlint-rule-preset-recommend](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend)
+  - [secretlint@4.1.0](https://www.npmjs.com/package/secretlint)
+  - [@secretlint/secretlint-rule-preset-recommend@4.1.0](https://www.npmjs.com/package/@secretlint/secretlint-rule-preset-recommend)

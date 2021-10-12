@@ -4,7 +4,7 @@
 
 ## flake8 documentation
 
-- Version in Mega-Linter: **3.9.2**
+- Version in Mega-Linter: **4.0.1**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
   - If custom `.flake8` config file is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8){target=_blank} will be used
@@ -124,8 +124,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E24', 'E704', 'E123', 'W503', 'E121',
-                        'E126', 'E226', 'W504'])
+                        (Default: ['E123', 'E24', 'E704', 'W504', 'E126',
+                        'W503', 'E121', 'E226'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-
@@ -145,6 +145,10 @@ optional arguments:
   --select errors       Comma-separated list of errors and warnings to enable.
                         For example, ``--select=E4,E51,W234``. (Default: ['E',
                         'F', 'W', 'C90'])
+  --extend-select errors
+                        Comma-separated list of errors and warnings to add to
+                        the list of selected ones. For example, ``--extend-
+                        select=E4,E51,W234``.
   --disable-noqa        Disable the effect of "# noqa". This will report
                         errors on lines with "# noqa" at the end.
   --show-source         Show the source generate each error or warning.
@@ -154,9 +158,6 @@ optional arguments:
                         Enable plugins and extensions that are otherwise
                         disabled by default
   --exit-zero           Exit with status code "0" even if there are errors.
-  --install-hook {git,mercurial}
-                        Install a hook that is run prior to a commit for the
-                        supported version control system.
   -j JOBS, --jobs JOBS  Number of subprocesses to use to run checks in
                         parallel. This is ignored on Windows. The default,
                         "auto", will auto-detect the number of processors
@@ -178,7 +179,7 @@ pyflakes:
   --exclude-from-doctest EXCLUDE_FROM_DOCTEST
                         Skip these files when running doctests
 
-Installed plugins: mccabe: 0.6.1, pycodestyle: 2.7.0, pyflakes: 2.3.1
+Installed plugins: mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0
 ```
 
 ### Installation on mega-linter Docker image
