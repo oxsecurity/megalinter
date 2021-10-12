@@ -26,7 +26,7 @@ class TapReporter(Reporter):
             if config.get("OUTPUT_DETAIL", "") == "detailed":
                 self.report_type = "detailed"
         # Mega-Linter vars (false by default)
-        elif config.get("TEXT_REPORTER", "false") == "true":
+        elif config.get("TAP_REPORTER", "false") == "true":
             self.is_active = True
         else:
             self.is_active = False
