@@ -167,8 +167,8 @@ RUN npm install --no-cache --ignore-scripts \
                 asl-validator \
                 @coffeelint/cli \
                 jscpd \
-                secretlint \
-                @secretlint/secretlint-rule-preset-recommend \
+                secretlint@4.1.0 \
+                @secretlint/secretlint-rule-preset-recommend@4.1.0 \
                 stylelint \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
