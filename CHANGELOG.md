@@ -72,6 +72,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [flake8](https://flake8.pycqa.org) from 3.9.2 to **4.0.1** on 2021-10-12
   - [checkov](https://www.checkov.io/) from 2.0.482 to **2.0.484** on 2021-10-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.1 to **0.34.3** on 2021-10-12
+  - [checkov](https://www.checkov.io/) from 2.0.484 to **2.0.485** on 2021-10-13
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
