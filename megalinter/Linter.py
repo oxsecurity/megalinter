@@ -827,11 +827,17 @@ class Linter:
             with open(file_list, "w") as collect_files:
                 collect_files.write("\n".join(self.files))
             logging.debug(
-                f"[{self.linter_name}] List of files and/or directories to check (one per line): {file_list} with {len(self.files)} entries"
+                f"[{self.linter_name}] List of files and/or directories to check (one per line): {file_list}"
+                + " with {len(self.files)} entries"
             )
-            with_file_list = any("{FILE_LIST}" in option for option in self.cli_config_extra_args)
+            with_file_list = any(
+                "{FILE_LIST}" in option for option in self.cli_config_extra_args
+            )
             if with_file_list is True:
-                cmd += [x.replace("{FILE_LIST}", file_list) if "{FILE_LIST}" in x else x for x in self.cli_config_extra_args]
+                cmd += [
+                    x.replace("{FILE_LIST}", file_list) if "{FILE_LIST}" in x else x
+                    for x in self.cli_config_extra_args
+                ]
             else:
                 cmd += self.cli_config_extra_args
         # Add other lint cli arguments after other arguments if defined
@@ -848,10 +854,11 @@ class Linter:
             cmd += [file]
         # If mode is "list of files", append all files as cli arguments
         elif self.cli_lint_mode == "list_of_files" and (
-                # Temporary file list exists but no placeholder is specified in cli_config_extra_args
-                file_list != None and with_file_list is False
-            ):
-                cmd += self.files
+            file_list is not None
+            and with_file_list is False
+            # Temporary file list exists but no placeholder is specified in cli_config_extra_args
+        ):
+            cmd += self.files
         return self.manage_docker_command(cmd)
 
     # Find number of errors in linter stdout log
