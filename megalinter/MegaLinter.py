@@ -481,13 +481,8 @@ class Megalinter:
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
         default_branch = config.get("DEFAULT_BRANCH", "master")
-        current_commit_sha = config.get("GITHUB_SHA", "")
-        if current_commit_sha == "":
-            current_commit_sha = repo.active_branch.commit.hexsha
         repo.git.fetch()
-        diff = repo.git.diff(
-            f"origin/{default_branch}...{current_commit_sha}", name_only=True
-        )
+        diff = repo.git.diff(f"origin/{default_branch}", name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():
