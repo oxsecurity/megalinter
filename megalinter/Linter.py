@@ -607,9 +607,8 @@ class Linter:
         )
         self.files_number = len(self.files)
         logging.debug(
-            "%s linter files after applying linter filters:\n- %s",
-            self.name,
-            "\n- ".join(self.files),
+            f"{self.name} linter kept {self.files_number} files after applying linter filters:"
+            + utils.format_bullet_list(self.files)
         )
 
     # lint a single file or whole project
