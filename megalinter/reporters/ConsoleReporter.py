@@ -57,7 +57,7 @@ class ConsoleReporter(Reporter):
         logging.info("")
 
     def produce_report(self):
-        table_header = ["Descriptor", "Linter", "Files", "Fixed", "Errors"]
+        table_header = ["Descriptor", "Linter", "Mode", "Files", "Fixed", "Errors"]
         if self.master.show_elapsed_time is True:
             table_header += ["Elapsed time"]
         table_data = [table_header]
@@ -75,7 +75,7 @@ class ConsoleReporter(Reporter):
                 )
                 errors = str(linter.total_number_errors)
                 if linter.cli_lint_mode == "project":
-                    found = "project"
+                    found = "n/a"
                     nb_fixed_cell = "yes" if nb_fixed_cell != "" else nb_fixed_cell
                 else:
                     found = str(len(linter.files))
@@ -83,6 +83,7 @@ class ConsoleReporter(Reporter):
                 table_line = [
                     status + " " + linter.descriptor_id,
                     linter.linter_name,
+                    linter.cli_lint_mode,
                     found,
                     nb_fixed_cell,
                     errors,
@@ -95,10 +96,11 @@ class ConsoleReporter(Reporter):
         table.justify_columns = {
             0: "left",
             1: "left",
-            2: "right",
+            2: "left",
             3: "right",
             4: "right",
             5: "right",
+            6: "right",
         }
         # Output table in console
         logging.info("")
