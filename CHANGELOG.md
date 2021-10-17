@@ -18,6 +18,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - `phpstan` is now installed with `phive` rather than `composer` (reduces disk usage)
 - Allows `list_of_files` cli_lint_mode on PHPCS linter to improve performance compare to `file` mode
 - Allows `list_of_files` cli_lint_mode on EditorConfig-Checker linter to improve performance compare to `file` mode
+- Fix ansible-lint version collection
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
