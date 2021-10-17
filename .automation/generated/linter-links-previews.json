@@ -204,6 +204,11 @@
     "image": null,
     "title": "Welcome to mypy documentation! \u2014 Mypy 0.910 documentation"
   },
+  "nixpkgs-fmt": {
+    "description": "We use functional programming to build custom high-performance software. Fintech, blockchain, machine learning, biotech.",
+    "image": "https://serokell.io/static/images/cover.png",
+    "title": "Serokell Software Development Company"
+  },
   "nixpkgs-fmt-alpine": {
     "description": "This project's goal is to provide a nix code formatter that would be\n    applied on nixpkgs. Ideally automatically with a tool like ofborg.",
     "image": null,

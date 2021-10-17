@@ -145,8 +145,7 @@
                 "MARKDOWN_REMARK_LINT",
                 "MARKDOWN_MARKDOWN_LINK_CHECK",
                 "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
-                "NIX_NIXPKGS_FMT_NIXOS",
-                "NIX_NIXPKGS_FMT_ALPINE",
+                "NIX_NIXPKGS_FMT",
                 "OPENAPI_SPECTRAL",
                 "PERL_PERLCRITIC",
                 "PHP_BUILTIN",
@@ -6304,6 +6303,79 @@
             "title": "NIX_NIXPKGS_FMT_ALPINE: Define or override a list of bash commands to run before the linter",
             "type": "array"
         },
+        "NIX_NIXPKGS_FMT_ARGUMENTS": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_ARGUMENTS",
+            "description": "NIX_NIXPKGS_FMT: User custom arguments to add in linter CLI call",
+            "examples:": [
+                "--foo",
+                "bar"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "NIX_NIXPKGS_FMT: Custom arguments",
+            "type": [
+                "array",
+                "string"
+            ]
+        },
+        "NIX_NIXPKGS_FMT_CLI_LINT_MODE": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_CLI_LINT_MODE",
+            "default": "file",
+            "enum": [
+                "file",
+                "list_of_files",
+                "project"
+            ],
+            "title": "NIX_NIXPKGS_FMT: Override default cli lint mode",
+            "type": "string"
+        },
+        "NIX_NIXPKGS_FMT_DISABLE_ERRORS": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_DISABLE_ERRORS",
+            "default": false,
+            "title": "NIX_NIXPKGS_FMT: Linter does not make Mega-Linter fail even if errors are found",
+            "type": "boolean"
+        },
+        "NIX_NIXPKGS_FMT_DISABLE_ERRORS_IF_LESS_THAN": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_DISABLE_ERRORS_IF_LESS_THAN",
+            "default": 0,
+            "title": "NIX_NIXPKGS_FMT: Maximum number of errors allowed",
+            "type": "number"
+        },
+        "NIX_NIXPKGS_FMT_FILE_EXTENSIONS": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_FILE_EXTENSIONS",
+            "examples:": [
+                ".py",
+                ".myext"
+            ],
+            "items": {
+                "$ref": "#/definitions/command_info"
+            },
+            "title": "NIX_NIXPKGS_FMT: Override descriptor/linter matching files extensions",
+            "type": "array"
+        },
+        "NIX_NIXPKGS_FMT_FILE_NAMES_REGEX": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_FILE_NAMES_REGEX",
+            "examples": [
+                "Dockerfile(-.+)?",
+                "Jenkinsfile"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "NIX_NIXPKGS_FMT: Override descriptor/linter matching file name regex",
+            "type": "array"
+        },
+        "NIX_NIXPKGS_FMT_FILTER_REGEX_EXCLUDE": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_FILTER_REGEX_EXCLUDE",
+            "title": "NIX_NIXPKGS_FMT: Excluding Regex",
+            "type": "string"
+        },
+        "NIX_NIXPKGS_FMT_FILTER_REGEX_INCLUDE": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_FILTER_REGEX_INCLUDE",
+            "title": "NIX_NIXPKGS_FMT: Including Regex",
+            "type": "string"
+        },
         "NIX_NIXPKGS_FMT_NIXOS_ARGUMENTS": {
             "$id": "#/properties/NIX_NIXPKGS_FMT_NIXOS_ARGUMENTS",
             "description": "NIX_NIXPKGS_FMT_NIXOS: User custom arguments to add in linter CLI call",
@@ -6409,6 +6481,40 @@
                 "$ref": "#/definitions/command_info"
             },
             "title": "NIX_NIXPKGS_FMT_NIXOS: Define or override a list of bash commands to run before the linter",
+            "type": "array"
+        },
+        "NIX_NIXPKGS_FMT_POST_COMMANDS": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_POST_COMMANDS",
+            "examples": [
+                [
+                    {
+                        "command": "npm run test",
+                        "continue_if_failed": false,
+                        "cwd": "workspace"
+                    }
+                ]
+            ],
+            "items": {
+                "type": "string"
+            },
+            "title": "NIX_NIXPKGS_FMT: Define or override a list of bash commands to run after the linter",
+            "type": "array"
+        },
+        "NIX_NIXPKGS_FMT_PRE_COMMANDS": {
+            "$id": "#/properties/NIX_NIXPKGS_FMT_PRE_COMMANDS",
+            "examples": [
+                [
+                    {
+                        "command": "tflint --init",
+                        "continue_if_failed": false,
+                        "cwd": "workspace"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "#/definitions/command_info"
+            },
+            "title": "NIX_NIXPKGS_FMT: Define or override a list of bash commands to run before the linter",
             "type": "array"
         },
         "OPENAPI_FILTER_REGEX_EXCLUDE": {

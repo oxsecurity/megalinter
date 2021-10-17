@@ -5,10 +5,9 @@
 
 ## Linters
 
-| Linter                                          | Configuration key                |
-|-------------------------------------------------|----------------------------------|
-| [nixpkgs-fmt-nixos](nix_nixpkgs_fmt_nixos.md)   | [NIX](nix_nixpkgs_fmt_nixos.md)  |
-| [nixpkgs-fmt-alpine](nix_nixpkgs_fmt_alpine.md) | [NIX](nix_nixpkgs_fmt_alpine.md) |
+| Linter                            | Configuration key         |
+|-----------------------------------|---------------------------|
+| [nixpkgs-fmt](nix_nixpkgs_fmt.md) | [NIX](nix_nixpkgs_fmt.md) |
 
 ## Linted files
 
