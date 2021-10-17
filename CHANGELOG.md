@@ -73,6 +73,14 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.482 to **2.0.484** on 2021-10-12
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.1 to **0.34.3** on 2021-10-12
   - [checkov](https://www.checkov.io/) from 2.0.484 to **2.0.485** on 2021-10-13
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.4 to **7.1.5** on 2021-10-16
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.9 to **0.7.0** on 2021-10-16
+  - [checkov](https://www.checkov.io/) from 2.0.485 to **2.0.491** on 2021-10-16
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.8 to **1.0.9** on 2021-10-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.3 to **0.35.3** on 2021-10-16
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.32.1 to **0.33.0** on 2021-10-16
+  - [checkov](https://www.checkov.io/) from 2.0.491 to **2.0.492** on 2021-10-17
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.5 to **1.6.6** on 2021-10-17
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
