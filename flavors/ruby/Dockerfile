@@ -66,6 +66,7 @@ RUN apk add --update --no-cache \
                 ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
+                ansible \
                 ansible-lint \
                 libc-dev \
                 libxml2-dev \
