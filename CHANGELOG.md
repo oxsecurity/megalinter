@@ -11,6 +11,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
   - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
+  - Add sqlfluff-templater-dbt plugin to sqlfluff installation instructions
 - Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
 - Add eslint-plugin-jsx-a11y dependency
 - Rename default PHPStan config file, from `phpstan.neon` to `phpstan.neon.dist` accordingly to [PHPStan resolution priority](https://phpstan.org/config-reference#config-file)

@@ -87,6 +87,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
+          'sqlfluff-templater-dbt' \
           'checkov>=2.0.269' \
           'yamllint'
 #PIP__END

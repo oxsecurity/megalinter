@@ -42,6 +42,7 @@ linters:
     install:
       pip:
         - sqlfluff
+        - sqlfluff-templater-dbt
   # TSQL
   - linter_name: tsqllint
     descriptor_flavors:
