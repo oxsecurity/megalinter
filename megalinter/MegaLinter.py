@@ -565,11 +565,11 @@ class Megalinter:
         )
         # Filter files according to file_extensions, file_names_regex,
         # filter_regex_include, and filter_regex_exclude
-        if len(self.file_extensions) > 0:
+        if self.file_extensions:
             logging.info(
                 "- File extensions: " + ", ".join(sorted(self.file_extensions))
             )
-        if len(self.file_names_regex) > 0:
+        if self.file_names_regex:
             logging.info(
                 "- File names (regex): " + ", ".join(sorted(self.file_names_regex))
             )
