@@ -563,7 +563,8 @@ class Megalinter:
         logging.debug(
             "All found files before filtering:" + utils.format_bullet_list(all_files)
         )
-        # Filter files according to fileExtensions, fileNames , filterRegexInclude and filterRegexExclude
+        # Filter files according to file_extensions, file_names_regex,
+        # filter_regex_include, and filter_regex_exclude
         if len(self.file_extensions) > 0:
             logging.info(
                 "- File extensions: " + ", ".join(sorted(self.file_extensions))
