@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `oxsecurity/megalinter:beta` docker image
 
+- Document the `-f` argument to mega-linter-runner ([#1895](https://github.com/oxsecurity/megalinter/issues/1895))
 - Fix a typo in documentation of bash-exec linter ([#1892](https://github.com/oxsecurity/megalinter/pull/1892))
 - Add quotes to arm-ttk linter command ([#1879](https://github.com/oxsecurity/megalinter/issues/1879))
 
