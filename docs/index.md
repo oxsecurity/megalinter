@@ -13,7 +13,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-556.3k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-565.3k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
@@ -25,7 +25,7 @@
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://nvuillam.github.io/mega-linter/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
 <!-- welcome-phrase-start -->
-Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](supported-linters.md#languages), [**22** formats](supported-linters.md#formats), [**19** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](supported-linters.md#languages), [**22** formats](supported-linters.md#formats), [**20** tooling formats](supported-linters.md#tooling-formats) , [**abusive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
 
 Ready to use [out of the box](installation.md) as a **GitHub Action** or **any CI system**, [**highly configurable**](configuration.md) and **free for all uses**
 
@@ -174,6 +174,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 |                                                                       <!-- --> <!-- linter-icon -->                                                                       |                                                            | [terragrunt](descriptors/terraform_terragrunt.md#readme)                        | [TERRAFORM_TERRAGRUNT](descriptors/terraform_terragrunt.md#readme)                           | :heavy_check_mark: |
 |                                                                       <!-- --> <!-- linter-icon -->                                                                       |                                                            | [terraform-fmt](descriptors/terraform_terraform_fmt.md#readme)                  | [TERRAFORM_TERRAFORM_FMT](descriptors/terraform_terraform_fmt.md#readme)                     | :heavy_check_mark: |
 |                                                                       <!-- --> <!-- linter-icon -->                                                                       |                                                            | [checkov](descriptors/terraform_checkov.md#readme)                              | [TERRAFORM_CHECKOV](descriptors/terraform_checkov.md#readme)                                 |                    |
+|                                                                       <!-- --> <!-- linter-icon -->                                                                       |                                                            | [kics](descriptors/terraform_kics.md#readme)                                    | [TERRAFORM_KICS](descriptors/terraform_kics.md#readme)                                       |                    |
 
 ### Other
 

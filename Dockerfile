@@ -18,6 +18,7 @@ FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
+FROM checkmarx/kics:alpine as kics
 #FROM__END
 
 ##################
@@ -458,6 +459,11 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 # terraform-fmt installation
 COPY --from=terragrunt /bin/terraform /usr/bin/
+
+# kics installation
+COPY --from=kics /app/bin/kics /usr/bin/
+COPY --from=kics /app/assets/queries /usr/bin/assets/queries
+COPY --from=kics /app/assets/libraries/* /usr/bin/assets/libraries/
 
 #OTHER__END
 

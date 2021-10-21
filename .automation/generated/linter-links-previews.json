@@ -159,6 +159,11 @@
     "image": "https://avatars3.githubusercontent.com/u/3903?s=400&v=4",
     "title": "zaach/jsonlint"
   },
+  "kics": {
+    "description": "KICS is an open source solution for static code analysis of Infrastructure as Code.",
+    "image": "./wp-content/uploads/2021/07/kics-hat-logo-full-e1625478786624.png",
+    "title": "KICS - Keeping Infrastructure as Code Secure"
+  },
   "ktlint": {
     "description": "An anti-bikeshedding Kotlin linter with built-in formatter.",
     "image": null,
