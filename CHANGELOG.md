@@ -81,6 +81,12 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [tflint](https://github.com/terraform-linters/tflint) from 0.32.1 to **0.33.0** on 2021-10-16
   - [checkov](https://www.checkov.io/) from 2.0.491 to **2.0.492** on 2021-10-17
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.5 to **1.6.6** on 2021-10-17
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.2 to **0.54.3** on 2021-10-21
+  - [coffeelint](http://www.coffeelint.org) from 5.0.4 to **5.0.5** on 2021-10-21
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.3 to **0.4.4** on 2021-10-21
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.5.2 to **0.6.0** on 2021-10-21
+  - [checkov](https://www.checkov.io/) from 2.0.492 to **2.0.497** on 2021-10-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.3 to **0.35.4** on 2021-10-21
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
