@@ -12,10 +12,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ## Manual installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/mega-linter/mega-linter/releases))
+The following instructions examples are using to latest Mega-Linter stable version (**v5** , always corresponding to the [latest release](https://github.com/mega-linter/mega-linter/releases))
 
-- GitHub Action: mega-linter/mega-linter@v4
-- Docker image: mega-linter/mega-linter:v4
+- GitHub Action: mega-linter/mega-linter@v5
+- Docker image: mega-linter/mega-linter:v5
 
 You can also use **insiders** version (beta release, corresponding to the content of master branch)
 
@@ -86,7 +86,7 @@ jobs:
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
         # More info at https://mega-linter.github.io/flavors/
-        uses: mega-linter/mega-linter@v4
+        uses: mega-linter/mega-linter@v5
         env:
           # All available variables are described in documentation
           # https://mega-linter.github.io/configuration/
@@ -148,7 +148,7 @@ You may activate [File.io reporter](https://mega-linter.github.io/reporters/File
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull mega-linter/mega-linter:v4
+        docker pull mega-linter/mega-linter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint mega-linter/mega-linter
       displayName: 'Code Scan using Mega-Linter'
 ```
@@ -164,7 +164,7 @@ You may activate [File.io reporter](https://mega-linter.github.io/reporters/File
 stage('Mega-Linter') {
     agent {
         docker {
-            image 'mega-linter/mega-linter:v4'
+            image 'mega-linter/mega-linter:v5'
             args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -187,7 +187,7 @@ mega-linter:
   stage: test
   # You can override Mega-Linter flavor used to have faster performances
   # More info at https://mega-linter.github.io/flavors/
-  image: mega-linter/mega-linter-python:v4
+  image: mega-linter/mega-linter-python:v5
   script: [ "true" ]
   variables:
     # All available variables are described in documentation
@@ -225,7 +225,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: mega-linter/mega-linter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -262,7 +262,7 @@ image_resource:
   type: docker-image
   source:
     repository: mega-linter/mega-linter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo

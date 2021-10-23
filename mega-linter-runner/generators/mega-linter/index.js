@@ -70,9 +70,9 @@ module.exports = class extends Generator {
         type: "list",
         name: "version",
         message: "Which Mega-Linter version do you want to use ?",
-        default: "v4",
+        default: "v5",
         choices: [
-          { name: "V4 (Latest stable version)", value: "v4" },
+          { name: "v5 (Latest stable version)", value: "v5" },
           {
             name: "Insiders (master branch of Mega-Linter repository)",
             value: "insiders",
@@ -171,9 +171,9 @@ module.exports = class extends Generator {
       this.dockerImageName = "mega-linter/mega-linter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v4") {
-      this.gitHubActionVersion = "v4";
-      this.dockerImageVersion = "v4";
+    if (this.props.version == "v5") {
+      this.gitHubActionVersion = "v5";
+      this.dockerImageVersion = "v5";
     } else {
       this.gitHubActionVersion = "insiders";
       this.dockerImageVersion = "latest";

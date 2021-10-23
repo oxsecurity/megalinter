@@ -51,13 +51,13 @@ class MegaLinterRunner {
 
     // Build Mega-Linter docker image name with flavor and release version
     const release =
-      options.release in ["v4", "stable"]
-        ? "v4"
+      options.release in ["v5", "stable"]
+        ? "v5"
         : options.release == "insiders"
         ? "latest"
         : options.release
         ? options.release
-        : "v4";
+        : "v5";
     const dockerImageName =
       options.flavor === "all" || options.flavor == null
         ? "mega-linter/mega-linter"

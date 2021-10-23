@@ -62,7 +62,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                               | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for Mega-Linter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                              | <!-- -->          |
-| `-r` <br/> `--release` | Allows to override Mega-Linter version used                                                                         | `v4`              |
+| `-r` <br/> `--release` | Allows to override Mega-Linter version used                                                                         | `v5`              |
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                        | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                     | <!-- -->          |
 | `-i` <br/> `--install` | Generate Mega-Linter configuration files                                                                            | <!-- -->          |
