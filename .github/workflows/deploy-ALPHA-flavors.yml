@@ -18,6 +18,7 @@ on:
   push:
     branches:
       - "alpha"
+      - "dev_v5"
       - "FlavoredMegaLinters"
     paths:
       - ".github/workflows/**"
