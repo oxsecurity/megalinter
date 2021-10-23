@@ -6,6 +6,7 @@ import logging
 import os
 
 from megalinter import Reporter, config, utils
+from megalinter.constants import ML_DOC_URL
 
 
 class TextReporter(Reporter):
@@ -37,7 +38,7 @@ class TextReporter(Reporter):
         lang_lower = self.master.descriptor_id.lower()
         linter_name_lower = self.master.linter_name.lower().replace("-", "_")
         doc_name = f"{lang_lower}_{linter_name_lower}"
-        doc_url = f"https://nvuillam.github.io/mega-linter/descriptors/{doc_name}/"
+        doc_url = f"{ML_DOC_URL}/descriptors/{doc_name}/"
         # Header lines
         text_report_lines = [
             f"Results of {self.master.linter_name} linter (version {self.master.get_linter_version()})",

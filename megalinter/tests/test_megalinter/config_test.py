@@ -7,11 +7,12 @@ import os
 import unittest
 
 from megalinter import config
+from megalinter.constants import ML_REPO
 
 
 class config_test(unittest.TestCase):
     test_folder = (
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/"
+        f"https://raw.githubusercontent.com/{ML_REPO}/"
         "master/.automation/test/mega-linter-config-test/"
     )
 

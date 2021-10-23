@@ -12,8 +12,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable cpplint by adding `CPP_CPPLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable cpplint by adding `CPP_CPPLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable cpplint by adding `CPP_CPPLINT` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Disable cpplint by adding `CPP_CPPLINT` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                                                         |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
@@ -34,8 +34,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                          | Flavor                                                           | Description                                   | Embedded linters |                                                                                                                                                                                 Info |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:----------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
+|       <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://mega-linter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-dotnet) |
 
 ## Behind the scenes
 
@@ -278,7 +278,7 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
 
 ```shell
 Results of cpplint linter (version 1.5.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cpplint/
+See documentation on https://mega-linter.github.io/descriptors/cpp_cpplint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/cpp/cpp_good_01.cpp
@@ -290,7 +290,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cppl
 
 ```shell
 Results of cpplint linter (version 1.5.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cpplint/
+See documentation on https://mega-linter.github.io/descriptors/cpp_cpplint/
 -----------------------------------------------
 
 [ERROR] .automation/test/cpp/cpp_bad_01.cpp

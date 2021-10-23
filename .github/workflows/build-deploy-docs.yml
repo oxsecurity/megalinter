@@ -15,7 +15,7 @@ jobs:
   skip_checks:
     name: Skip checks
     runs-on: ubuntu-latest
-    if: github.repository == 'nvuillam/mega-linter'
+    if: github.repository == 'mega-linter/mega-linter'
     steps:
       - uses: fkirc/skip-duplicate-actions@master
         with:
@@ -24,7 +24,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.repository == 'nvuillam/mega-linter'
+    if: github.repository == 'mega-linter/mega-linter'
     steps:
       - uses: actions/checkout@v2.3.5
       - uses: actions/setup-python@v2

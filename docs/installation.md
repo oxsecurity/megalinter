@@ -8,24 +8,24 @@
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
 
-![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/mega-linter/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
 ## Manual installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/mega-linter/mega-linter/releases))
 
-- GitHub Action: nvuillam/mega-linter@v4
-- Docker image: nvuillam/mega-linter:v4
+- GitHub Action: mega-linter/mega-linter@v4
+- Docker image: mega-linter/mega-linter:v4
 
 You can also use **insiders** version (beta release, corresponding to the content of master branch)
 
-- GitHub Action: nvuillam/mega-linter@insiders
-- Docker image: nvuillam/mega-linter:latest
+- GitHub Action: mega-linter/mega-linter@insiders
+- Docker image: mega-linter/mega-linter:latest
 
 ## GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
-2. Copy the [example workflow from below](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
+2. Copy the [example workflow from below](https://raw.githubusercontent.com/mega-linter/mega-linter/master/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
 3. Commit that file to a new branch
 4. Open up a pull request and observe the action working
 5. Enjoy your more _stable_, and _cleaner_ code base
@@ -45,7 +45,7 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://nvuillam.github.io/mega-linter
+# More info at https://mega-linter.github.io
 name: Mega-Linter
 
 on:
@@ -85,11 +85,11 @@ jobs:
       - name: Mega-Linter
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
-        # More info at https://nvuillam.github.io/mega-linter/flavors/
-        uses: nvuillam/mega-linter@v4
+        # More info at https://mega-linter.github.io/flavors/
+        uses: mega-linter/mega-linter@v4
         env:
           # All available variables are described in documentation
-          # https://nvuillam.github.io/mega-linter/configuration/
+          # https://mega-linter.github.io/configuration/
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -139,7 +139,7 @@ jobs:
 
 Use the following Azure workflow template
 
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://mega-linter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://mega-linter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```yaml
   - job: megalinter
@@ -148,8 +148,8 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull nvuillam/mega-linter:v4
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
+        docker pull mega-linter/mega-linter:v4
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint mega-linter/mega-linter
       displayName: 'Code Scan using Mega-Linter'
 ```
 
@@ -157,14 +157,14 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
 
 Add the following stage in your Jenkinsfile
 
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://mega-linter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://mega-linter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
-// Lint with Mega-Linter: https://nvuillam.github.io/mega-linter/
+// Lint with Mega-Linter: https://mega-linter.github.io/
 stage('Mega-Linter') {
     agent {
         docker {
-            image 'nvuillam/mega-linter:v4'
+            image 'mega-linter/mega-linter:v4'
             args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -181,17 +181,17 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 # Mega-Linter GitLab CI job configuration file
-# More info at https://nvuillam.github.io/mega-linter
+# More info at https://mega-linter.github.io
 
 mega-linter:
   stage: test
   # You can override Mega-Linter flavor used to have faster performances
-  # More info at https://nvuillam.github.io/mega-linter/flavors/
-  image: nvuillam/mega-linter-python:v4
+  # More info at https://mega-linter.github.io/flavors/
+  image: mega-linter/mega-linter-python:v4
   script: [ "true" ]
   variables:
     # All available variables are described in documentation
-    # https://nvuillam.github.io/mega-linter/configuration/
+    # https://mega-linter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     DEFAULT_BRANCH: master
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
@@ -202,7 +202,7 @@ mega-linter:
     expire_in: 1 week
 ```
 
-![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+![Screenshot](https://github.com/mega-linter/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
 ## Concourse
 
@@ -224,7 +224,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
           image_resource:
             type: docker-image
             source:
-              repository: nvuillam/mega-linter
+              repository: mega-linter/mega-linter
               tag: v4
           inputs:
             - name: repo
@@ -261,7 +261,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: nvuillam/mega-linter
+    repository: mega-linter/mega-linter
     tag: v4
 
 inputs:
@@ -313,9 +313,9 @@ resources:
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
+You can use [mega-linter-runner](https://mega-linter.github.io/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
-See [mega-linter-runner installation instructions](https://nvuillam.github.io/mega-linter/mega-linter-runner/#installation)
+See [mega-linter-runner installation instructions](https://mega-linter.github.io/mega-linter-runner/#installation)
 
 Example
 

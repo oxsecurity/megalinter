@@ -139,7 +139,7 @@ module.exports = class extends Generator {
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://nvuillam.github.io/mega-linter/installation/"
+        "Please follow manual instructions to define CI job at https://mega-linter.github.io/installation/"
       );
       this.log(
         "You may call `npx mega-linter-runner` to run Mega-Linter from any system (requires node.js & docker)"
@@ -163,12 +163,12 @@ module.exports = class extends Generator {
   _computeValues() {
     // Flavor
     if (this.props.flavor === "all") {
-      this.gitHubActionName = "nvuillam/mega-linter";
-      this.dockerImageName = "nvuillam/mega-linter";
+      this.gitHubActionName = "mega-linter/mega-linter";
+      this.dockerImageName = "mega-linter/mega-linter";
     } else {
       this.gitHubActionName =
-        "nvuillam/mega-linter/flavors/" + this.props.flavor;
-      this.dockerImageName = "nvuillam/mega-linter-" + this.props.flavor;
+        "mega-linter/mega-linter/flavors/" + this.props.flavor;
+      this.dockerImageName = "mega-linter/mega-linter-" + this.props.flavor;
     }
     // Version
     if (this.props.version == "v4") {
@@ -227,7 +227,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://mega-linter.github.io/installation/#jenkins"
     );
   }
 
@@ -251,7 +251,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://mega-linter.github.io/installation/#gitlab"
     );
   }
 

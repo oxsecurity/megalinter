@@ -20,6 +20,8 @@ from megalinter import (
 )
 from multiprocessing_logging import install_mp_handler
 
+from megalinter.constants import ML_DOC_URL
+
 
 # Function to run linters using multiprocessing pool
 def run_linters(linters):
@@ -582,7 +584,7 @@ class Megalinter:
         )
         logging.info(utils.format_hyphens(""))
         logging.info("The Mega-Linter documentation can be found at:")
-        logging.info(" - https://nvuillam.github.io/mega-linter")
+        logging.info(" - "+ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
         logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
         # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
@@ -611,7 +613,7 @@ class Megalinter:
                 "at the root of your repository"
             )
             logging.warning(
-                "More info at https://nvuillam.github.io/mega-linter/configuration/"
+                f"More info at {ML_DOC_URL}/configuration/"
             )
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":

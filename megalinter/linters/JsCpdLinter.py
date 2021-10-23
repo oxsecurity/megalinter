@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Use cspell to check spell in files
-https://github.com/nvuillam/npm-groovy-lint
+Use JSCPD to detect copy-pastes
+https://github.com/kucherenko/jscpd
 """
 import os
 import shutil

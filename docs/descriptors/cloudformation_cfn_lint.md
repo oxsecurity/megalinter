@@ -11,15 +11,15 @@
 
 - Version in Mega-Linter: **0.54.3**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
-  - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
+  - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/mega-linter/mega-linter/tree/master/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
 
 [![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                            | Description                                                                                                                                                                                                         | Default value                                    |
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -42,9 +42,9 @@ Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                    Install                                                                                     |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                                 | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint)                                         |                                                    [Visit Web Site](https://atom.io/packages/atom-cfn-lint){target=_blank}                                                     |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint)                                 |                         <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/10973"></iframe>                          |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/kddejong.vscode-cfn-lint){target=_blank} |
+|  <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                                 | [atom-cfn-lint](https://atom.io/packages/atom-cfn-lint)                                         |                                                    [Visit Web Site](https://atom.io/packages/atom-cfn-lint){target=_blank}                                                     |
+|  <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint)                                 |                         <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/10973"></iframe>                          |
+| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) | [![Install in VsCode](https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/kddejong.vscode-cfn-lint){target=_blank} |
 
 ## Mega-Linter Flavours
 
@@ -52,7 +52,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
 
 ## Behind the scenes
 
@@ -155,7 +155,7 @@ Advanced / Debugging:
 
 ```shell
 Results of cfn-lint linter (version 0.43.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+See documentation on https://mega-linter.github.io/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
@@ -176,7 +176,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudfor
 
 ```shell
 Results of cfn-lint linter (version 0.43.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+See documentation on https://mega-linter.github.io/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/cloudformation/cloudformation_bad_1.json

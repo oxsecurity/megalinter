@@ -56,7 +56,7 @@ jobs:
             "terraform",
           ]
 # flavors-end
-    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'mega-linter/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
@@ -77,7 +77,7 @@ jobs:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavor }}
+          IMAGE_REPO: mega-linter/mega-linter-${{ matrix.flavor }}
           IMAGE_VERSION: ${{ github.event.release.tag_name }}
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
           REGISTRY: Docker
@@ -97,7 +97,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: 'docker.io/nvuillam/mega-linter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}'
+          image-ref: 'docker.io/mega-linter/mega-linter-${{ matrix.flavor }}:${{ github.event.release.tag_name }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true

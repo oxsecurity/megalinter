@@ -6,8 +6,8 @@
 
 ## Contributors
 
-<a href="https://github.com/nvuillam/mega-linter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=nvuillam/mega-linter" />
+<a href="https://github.com/mega-linter/mega-linter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mega-linter/mega-linter" />
 </a>
 
 ## Sites referring to Mega-Linter
