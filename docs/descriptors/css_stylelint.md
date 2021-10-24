@@ -9,7 +9,7 @@
 
 ## stylelint documentation
 
-- Version in Mega-Linter: **13.13.1**
+- Version in Mega-Linter: **14.0.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file is not found, [.stylelintrc.json](https://github.com/megalinter/megalinter/tree/master/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -151,16 +151,9 @@ stylelint --fix --config .stylelintrc.json myfile.css
 
       Pattern of files to ignore (in addition to those in .stylelintignore)
 
-    --syntax, -s
-
-      Specify a syntax. Options: "css", "css-in-js", "html", "less",
-      "markdown", "sass", "scss", "sugarss". If you do not specify a syntax,
-      syntaxes will be automatically inferred by the file extensions
-      and file content.
-
     --fix
 
-      Automatically fix violations of certain rules.
+      Automatically fix problems of certain rules.
 
     --custom-syntax
 
@@ -176,7 +169,7 @@ stylelint --fix --config .stylelintrc.json myfile.css
 
     --ignore-disables, --id
 
-      Ignore styleline-disable comments.
+      Ignore stylelint-disable comments.
 
     --disable-default-ignores, --di
 
@@ -208,7 +201,7 @@ stylelint --fix --config .stylelintrc.json myfile.css
 
     --quiet, -q
 
-      Only register violations for rules with an "error"-level severity (ignore
+      Only register problems for rules with an "error"-level severity (ignore
       "warning"-level).
 
     --color
