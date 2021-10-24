@@ -59,7 +59,7 @@ class Megalinter:
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
-        self.ignore_gitignore_files = False
+        self.ignore_gitignore_files = True
         self.ignore_generated_files = False
         self.validate_all_code_base = True
         self.filter_regex_include = None
@@ -308,7 +308,7 @@ class Megalinter:
         # Manage IGNORE_GITIGNORED_FILES
         if config.exists("IGNORE_GITIGNORED_FILES"):
             self.ignore_gitignore_files = (
-                config.get("IGNORE_GITIGNORED_FILES", "false") == "true"
+                config.get("IGNORE_GITIGNORED_FILES", "true")
             )
         # Manage IGNORE_GENERATED_FILES
         if config.exists("IGNORE_GENERATED_FILES"):

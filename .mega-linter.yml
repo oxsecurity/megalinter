@@ -13,7 +13,6 @@ DISABLE:
   - TEKTON
 DISABLE_LINTERS:
   - JSON_PRETTIER
-IGNORE_GITIGNORED_FILES: true
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
