@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - dev_v5
     paths:
       - "**/build.py"
       - "docs/**"
@@ -24,6 +25,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: skip_checks
     if: github.repository == 'megalinter/megalinter'
     steps:
       - uses: actions/checkout@v2.3.5
@@ -33,3 +35,19 @@ jobs:
       - run: pip install mkdocs-material mdx_truly_sane_lists json-schema-for-humans
       - run: cd .automation && bash build_schemas_doc.sh && cd ..
       - run: mkdocs gh-deploy --force
+
+  git-sync:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "megalinter/megalinter"
+          source_branch: "gh-pages"
+          destination_repo: "git@github.com:megalinter/megalinter.github.io.git"
+          destination_branch: "gh-pages"
+          # ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
+          # source_ssh_private_key: ${{ secrets.SOURCE_SSH_PRIVATE_KEY }} # optional, will override `SSH_PRIVATE_KEY`
+          destination_ssh_private_key: ${{ secrets.MEGALINTER_GITHUB_IO_SSH_PRIVATE_KEY }} # optional, will override `SSH_PRIVATE_KEY`
+ 
