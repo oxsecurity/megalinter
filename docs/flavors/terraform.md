@@ -1,6 +1,6 @@
 # terraform Mega-Linter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v4)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for TERRAFORM based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/terraform@v4**
-- Docker image: **megalinter/megalinter-terraform:v4**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/terraform@v5**
+- Docker image: **megalinter/megalinter-terraform:v5**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor terraform`
 
 ## Embedded linters

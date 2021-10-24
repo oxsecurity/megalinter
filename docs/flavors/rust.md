@@ -1,6 +1,6 @@
 # rust Mega-Linter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v4)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for RUST based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/rust@v4**
-- Docker image: **megalinter/megalinter-rust:v4**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/rust@v5**
+- Docker image: **megalinter/megalinter-rust:v5**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor rust`
 
 ## Embedded linters

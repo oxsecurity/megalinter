@@ -1,6 +1,6 @@
 # salesforce Mega-Linter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v4)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for Salesforce based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/salesforce@v4**
-- Docker image: **megalinter/megalinter-salesforce:v4**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/salesforce@v5**
+- Docker image: **megalinter/megalinter-salesforce:v5**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor salesforce`
 
 ## Embedded linters

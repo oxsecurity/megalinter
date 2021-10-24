@@ -1,6 +1,6 @@
 # java Mega-Linter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v4)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for JAVA based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/java@v4**
-- Docker image: **megalinter/megalinter-java:v4**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/java@v5**
+- Docker image: **megalinter/megalinter-java:v5**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor java`
 
 ## Embedded linters

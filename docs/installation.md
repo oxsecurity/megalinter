@@ -12,10 +12,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ## Manual installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**v5** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
-- GitHub Action: megalinter/megalinter@v5
-- Docker image: megalinter/megalinter:v5
+- GitHub Action: megalinter/megalinter@v4
+- Docker image: megalinter/megalinter:v4
 
 You can also use **insiders** version (beta release, corresponding to the content of master branch)
 
@@ -45,7 +45,7 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://megalinter.github.io
+# More info at https://megalinter.github.io/
 name: Mega-Linter
 
 on:
@@ -86,7 +86,7 @@ jobs:
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: megalinter/megalinter@v5
+        uses: megalinter/megalinter@v4
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
@@ -148,7 +148,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v5
+        docker pull megalinter/megalinter:v4
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using Mega-Linter'
 ```
@@ -164,7 +164,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
 stage('Mega-Linter') {
     agent {
         docker {
-            image 'megalinter/megalinter:v5'
+            image 'megalinter/megalinter:v4'
             args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -181,13 +181,13 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 # Mega-Linter GitLab CI job configuration file
-# More info at https://megalinter.github.io
+# More info at https://megalinter.github.io/
 
 mega-linter:
   stage: test
   # You can override Mega-Linter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter-python:v5
+  image: megalinter/megalinter-python:v4
   script: [ "true" ]
   variables:
     # All available variables are described in documentation
@@ -225,7 +225,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v5
+              tag: v4
           inputs:
             - name: repo
           run:
@@ -262,7 +262,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v5
+    tag: v4
 
 inputs:
 - name: repo

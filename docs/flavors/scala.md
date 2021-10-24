@@ -1,6 +1,6 @@
 # scala Mega-Linter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v4)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for SCALA based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/scala@v4**
-- Docker image: **megalinter/megalinter-scala:v4**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/scala@v5**
+- Docker image: **megalinter/megalinter-scala:v5**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor scala`
 
 ## Embedded linters
