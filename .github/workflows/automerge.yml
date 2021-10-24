@@ -20,7 +20,7 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    if: github.repository == 'mega-linter/mega-linter'
+    if: github.repository == 'megalinter/megalinter'
     steps:
       - name: automerge
         env:

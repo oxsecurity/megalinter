@@ -6,7 +6,7 @@
 
 You can show Mega-Linter status with a badge in your repository README
 
-[![Mega-Linter](https://github.com/mega-linter/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/mega-linter/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
+[![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
 
 If your main branch is **main** , replace **master** by **main** in URLs
 

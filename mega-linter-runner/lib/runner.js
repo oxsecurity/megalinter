@@ -60,8 +60,8 @@ class MegaLinterRunner {
         : "v5";
     const dockerImageName =
       options.flavor === "all" || options.flavor == null
-        ? "mega-linter/mega-linter"
-        : `mega-linter/mega-linter-${options.flavor}`;
+        ? "megalinter/megalinter"
+        : `megalinter/megalinter-${options.flavor}`;
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation

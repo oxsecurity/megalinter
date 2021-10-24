@@ -10,14 +10,14 @@
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/mega-linter/mega-linter?maxAge=2592000)](https://GitHub.com/mega-linter/mega-linter/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
 <!-- readme-header-start -->
 
 <!-- readme-header-end -->
 
-This package allows to run [Mega-Linter](https://mega-linter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
+This package allows to run [Mega-Linter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
-![Screenshot](https://github.com/mega-linter/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 ## Installation
 
@@ -58,7 +58,7 @@ The options are only related to mega-linter-runner. For Mega-Linter options, ple
 | Option                 | Description                                                                                                         | Default           |
 |------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------|
 | `-p` <br/> `--path`    | Directory containing the files to lint                                                                              | current directory |
-| `--flavor`             | Set this parameter to use a [Mega-Linter flavor](https://mega-linter.github.io/flavors/)                            | `all`             |
+| `--flavor`             | Set this parameter to use a [Mega-Linter flavor](https://megalinter.github.io/flavors/)                            | `all`             |
 | `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                               | <!-- -->          |
 | `-e` <br/> `--env`     | Environment variables for Mega-Linter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
 | `--fix`                | Automatically apply formatting and fixes in your files                                                              | <!-- -->          |
@@ -85,9 +85,9 @@ mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=t
 
 ## Configuration
 
-You can define generate a ready to use [.mega-linter.yml configuration file](https://mega-linter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
+You can define generate a ready to use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
-![Runner Install](https://github.com/mega-linter/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
 <!-- linters-section-start -->
 

@@ -1,5 +1,5 @@
 # Configuration file for Mega-Linter
-# See all available variables at https://mega-linter.github.io/configuration/ and in linters documentation
+# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # all, none, or list of linter keys
 DEFAULT_BRANCH: master # Usually master or main

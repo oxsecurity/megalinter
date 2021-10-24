@@ -24,8 +24,8 @@ See more details in [Help](#help-content)
 
 ## Configuration in Mega-Linter
 
-- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -44,10 +44,10 @@ Use sfdx-scanner in your favorite IDE to catch errors before Mega-Linter !
 
 | <!-- -->                                                                                                                                         | IDE                                                      | Extension Name                                                                                                  | Install                                                                                                                                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin)                                                 | [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank}                                                                                                              |
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [pmd-emacs](https://github.com/pmd/pmd-emacs/)                                                                  | [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank}                                                                                                                      |
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>    | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin)                                             | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe>                                                            |
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VsCode](https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin)                                                 | [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank}                                                                                                              |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [pmd-emacs](https://github.com/pmd/pmd-emacs/)                                                                  | [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank}                                                                                                                      |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>    | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin)                                             | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe>                                                            |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
 
 ## Mega-Linter Flavours
 
@@ -55,8 +55,8 @@ This linter is available in the following flavours
 
 | <!-- -->                                                                                                                                                     | Flavor                                                          | Description                             | Embedded linters | Info                                                                                                                                                                                               |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|-----------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/)         | Default Mega-Linter Flavor              | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter)                       |
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://mega-linter.github.io/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-salesforce) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default Mega-Linter Flavor              | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter)                       |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://megalinter.github.io/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -401,7 +401,7 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 ```shell
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://mega-linter.github.io/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [SUCCESS] /tmp/098844eb-9b85-4505-b6b6-8c6bcd96050f
@@ -413,7 +413,7 @@ See documentation on https://mega-linter.github.io/descriptors/salesforce_sfdx_s
 
 ```shell
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://mega-linter.github.io/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [ERROR] /tmp/a62282d7-5f53-42be-9816-03d1c2da8715

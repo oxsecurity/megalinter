@@ -1,7 +1,7 @@
 ---
 site_name: Mega-Linter
-site_url: https://mega-linter.github.io
-repo_url: https://github.com/mega-linter/mega-linter
+site_url: https://megalinter.github.io
+repo_url: https://github.com/megalinter/megalinter
 edit_uri: tree/master/docs
 site_author: Nicolas Vuillamy
 # site_description-start
@@ -35,12 +35,12 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/regular/question-circle
-      link: https://github.com/mega-linter/mega-linter/issues
+      link: https://github.com/megalinter/megalinter/issues
       title: Need help ? Post an issue :)
     - icon: fontawesome/brands/github
-      link: https://github.com/mega-linter/mega-linter
+      link: https://github.com/megalinter/megalinter
     - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/mega-linter/mega-linter
+      link: https://hub.docker.com/r/megalinter/megalinter
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/NicolasVuillamy
   generator: false

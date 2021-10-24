@@ -1,6 +1,6 @@
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://mega-linter.github.io
+# More info at https://megalinter.github.io
 name: Mega-Linter
 
 on:
@@ -41,11 +41,11 @@ jobs:
       - name: Mega-Linter
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
-        # More info at https://mega-linter.github.io/flavors/
+        # More info at https://megalinter.github.io/flavors/
         uses: <%= GITHUB_ACTION_NAME %>@<%= GITHUB_ACTION_VERSION %>
         env:
           # All available variables are described in documentation
-          # https://mega-linter.github.io/configuration/
+          # https://megalinter.github.io/configuration/
           VALIDATE_ALL_CODEBASE: <%= VALIDATE_ALL_CODE_BASE_GHA %>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY

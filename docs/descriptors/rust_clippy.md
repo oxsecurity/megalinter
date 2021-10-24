@@ -14,8 +14,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable clippy by adding `RUST_CLIPPY` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable clippy by adding `RUST_CLIPPY` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                  | Default value                                    |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -35,7 +35,7 @@ Use clippy in your favorite IDE to catch errors before Mega-Linter !
 
 |                                                                   <!-- -->                                                                    | IDE                      | Extension Name                                              |                                   Install                                   |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|--------------------------|-------------------------------------------------------------|:---------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) | [Visit Web Site](https://github.com/rust-lang/atom-ide-rust){target=_blank} |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/) | [Atom IDE Rest](https://github.com/rust-lang/atom-ide-rust) | [Visit Web Site](https://github.com/rust-lang/atom-ide-rust){target=_blank} |
 
 ## Mega-Linter Flavours
 
@@ -43,8 +43,8 @@ This linter is available in the following flavours
 
 |                                                                           <!-- -->                                                                           | Flavor                                                  | Description                       | Embedded linters |                                                                                                                                                                                   Info |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor        |        94        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
-|        <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://mega-linter.github.io/flavors/rust/)     | Optimized for RUST based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-rust) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor        |        94        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)     | Optimized for RUST based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 
 ## Behind the scenes
 
@@ -126,7 +126,7 @@ RUN rustup component add clippy
 
 ```shell
 Results of clippy linter (version 0.0.212)
-See documentation on https://mega-linter.github.io/descriptors/rust_clippy/
+See documentation on https://megalinter.github.io/descriptors/rust_clippy/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/rust/good
@@ -149,7 +149,7 @@ See documentation on https://mega-linter.github.io/descriptors/rust_clippy/
 
 ```shell
 Results of clippy linter (version 0.0.212)
-See documentation on https://mega-linter.github.io/descriptors/rust_clippy/
+See documentation on https://megalinter.github.io/descriptors/rust_clippy/
 -----------------------------------------------
 
 [ERROR] .automation/test/rust/bad

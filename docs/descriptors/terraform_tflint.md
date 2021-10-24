@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **0.33.0**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
-  - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/mega-linter/mega-linter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
+  - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/megalinter/megalinter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
 - See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md){target=_blank}
 - See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules){target=_blank}
 
@@ -15,8 +15,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                     | Description                                                                                                                                                                                                         | Default value                                        |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
@@ -39,8 +39,8 @@ This linter is available in the following flavours
 
 |                                                                           <!-- -->                                                                           | Flavor                                                        | Description                            | Embedded linters |                                                                                                                                                                                             Info |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------|:---------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/)       | Default Mega-Linter Flavor             |        94        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
-|      <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://mega-linter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-terraform) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default Mega-Linter Flavor             |        94        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -135,7 +135,7 @@ COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
 ```shell
 Results of tflint linter (version 0.21.0)
-See documentation on https://mega-linter.github.io/descriptors/terraform_tflint/
+See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
@@ -147,7 +147,7 @@ See documentation on https://mega-linter.github.io/descriptors/terraform_tflint/
 
 ```shell
 Results of tflint linter (version 0.21.0)
-See documentation on https://mega-linter.github.io/descriptors/terraform_tflint/
+See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform/bad/terraform_bad_1.tf

@@ -11,8 +11,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable rst-lint by adding `RST_RST_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable rst-lint by adding `RST_RST_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value            |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
@@ -33,8 +33,8 @@ This linter is available in the following flavours
 
 |                                                                           <!-- -->                                                                           | Flavor                                                  | Description                         | Embedded linters |                                                                                                                                                                                       Info |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
-|       <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://mega-linter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-python) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -90,7 +90,7 @@ optional arguments:
 
 ```shell
 Results of rst-lint linter (version 1.3.2)
-See documentation on https://mega-linter.github.io/descriptors/rst_rst_lint/
+See documentation on https://megalinter.github.io/descriptors/rst_rst_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/rst/rst_good_1.rst
@@ -102,7 +102,7 @@ See documentation on https://mega-linter.github.io/descriptors/rst_rst_lint/
 
 ```shell
 Results of rst-lint linter (version 1.3.2)
-See documentation on https://mega-linter.github.io/descriptors/rst_rst_lint/
+See documentation on https://megalinter.github.io/descriptors/rst_rst_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/rst/rst_bad_1.rst

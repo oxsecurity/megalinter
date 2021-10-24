@@ -1,5 +1,5 @@
 # Configuration file for Mega-Linter
-# See all available variables at https://mega-linter.github.io/configuration/ and in linters documentation
+# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default
@@ -30,7 +30,7 @@ EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 JSON_REPORTER: true
 PLUGINS:
-  - https://raw.githubusercontent.com/mega-linter/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/megalinter/megalinter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
     cwd: "root"

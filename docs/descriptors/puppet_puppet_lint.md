@@ -14,10 +14,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://mega-linter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
 | Variable                                       | Description                                                                                                                                                                                                         | Default value                                    |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -40,7 +40,7 @@ Use puppet-lint in your favorite IDE to catch errors before Mega-Linter !
 
 |                                                                    <!-- -->                                                                     | IDE                                                  | Extension Name                                                                    |                                         Install                                         |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
 
 ## Mega-Linter Flavours
 
@@ -48,7 +48,7 @@ This linter is available in the following flavours
 
 |                                                                           <!-- -->                                                                           | Flavor                                                  | Description                | Embedded linters |                                                                                                                                                                         Info |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -190,7 +190,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 
 ```shell
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://mega-linter.github.io/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/puppet/puppet_good_1.pp
@@ -202,7 +202,7 @@ See documentation on https://mega-linter.github.io/descriptors/puppet_puppet_lin
 
 ```shell
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://mega-linter.github.io/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/puppet/puppet_bad_1.pp

@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable php by adding `PHP_BUILTIN` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable php by adding `PHP_BUILTIN` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value            |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
@@ -38,8 +38,8 @@ This linter is available in the following flavours
 
 |                                                                           <!-- -->                                                                           | Flavor                                                  | Description                      | Embedded linters |                                                                                                                                                                                 Info |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:---------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor       |        94        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
-|         <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://mega-linter.github.io/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-php) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor       |        94        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -114,7 +114,7 @@ Usage: php [options] [-f] <file> [--] [args...]
 
 ```shell
 Results of php linter (version 7.3.25)
-See documentation on https://mega-linter.github.io/descriptors/php_php/
+See documentation on https://megalinter.github.io/descriptors/php_php/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/php/php_good_1.php
@@ -129,7 +129,7 @@ See documentation on https://mega-linter.github.io/descriptors/php_php/
 
 ```shell
 Results of php linter (version 7.3.25)
-See documentation on https://mega-linter.github.io/descriptors/php_php/
+See documentation on https://megalinter.github.io/descriptors/php_php/
 -----------------------------------------------
 
 [ERROR] .automation/test/php/php_bad_1.php

@@ -1,6 +1,6 @@
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://mega-linter.github.io
+# More info at https://megalinter.github.io
 name: Mega-Linter
 
 # Start lint on any push and on pull requests
@@ -42,11 +42,11 @@ jobs:
       - name: Mega-Linter
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
-        # More info at https://mega-linter.github.io/flavors/
-        uses: mega-linter/mega-linter/flavors/python@latest
+        # More info at https://megalinter.github.io/flavors/
+        uses: megalinter/megalinter/flavors/python@latest
         env:
           # All available variables are described in documentation
-          # https://mega-linter.github.io/configuration/#shared-variables
+          # https://megalinter.github.io/configuration/#shared-variables
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           VALIDATE_ALL_CODEBASE: true #  ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -6,8 +6,8 @@
 
 ## Contributors
 
-<a href="https://github.com/mega-linter/mega-linter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=mega-linter/mega-linter" />
+<a href="https://github.com/megalinter/megalinter/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
 </a>
 
 ## Sites referring to Mega-Linter

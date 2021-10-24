@@ -11,10 +11,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
-- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://mega-linter.github.io/configuration/#activation-and-deactivation)
+- Enable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable dotnet-format by adding `VBDOTNET_DOTNET_FORMAT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://mega-linter.github.io/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `VBDOTNET_DOTNET_FORMAT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
 | Variable                                           | Description                                                                                                                                                                                                         | Default value            |
 |----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
@@ -35,8 +35,8 @@ This linter is available in the following flavours
 
 |                                                                           <!-- -->                                                                           | Flavor                                                  | Description                                   | Embedded linters |                                                                                                                                                                                       Info |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------|:----------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://mega-linter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter) |
-|       <img src="https://github.com/mega-linter/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://mega-linter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/mega-linter/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/mega-linter/mega-linter-dotnet) |
+| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -99,7 +99,7 @@ None
 
 ```shell
 Results of dotnet-format linter (version 4.1.131201)
-See documentation on https://mega-linter.github.io/descriptors/vbdotnet_dotnet_format/
+See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/vbdotnet/vbdotnet_good_1.vb
@@ -112,7 +112,7 @@ See documentation on https://mega-linter.github.io/descriptors/vbdotnet_dotnet_f
 
 ```shell
 Results of dotnet-format linter (version 4.1.131201)
-See documentation on https://mega-linter.github.io/descriptors/vbdotnet_dotnet_format/
+See documentation on https://megalinter.github.io/descriptors/vbdotnet_dotnet_format/
 -----------------------------------------------
 
 [ERROR] .automation/test/vbdotnet/vbdotnet_bad_1.vb

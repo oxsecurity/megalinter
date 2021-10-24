@@ -49,7 +49,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run this on the main repo
-    if: github.repository == 'mega-linter/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
@@ -84,7 +84,7 @@ jobs:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: mega-linter/mega-linter
+          IMAGE_REPO: megalinter/megalinter
           IMAGE_VERSION: latest
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: Docker
@@ -99,7 +99,7 @@ jobs:
           # Set the Env Vars
           GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
           GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: mega-linter/mega-linter
+          IMAGE_REPO: megalinter/megalinter
           IMAGE_VERSION: latest
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: GCR
@@ -114,7 +114,7 @@ jobs:
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint mega-linter/mega-linter:latest
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:latest
         timeout-minutes: 30
 
       # Free disk space
@@ -130,7 +130,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: "docker.io/mega-linter/mega-linter:latest"
+          image-ref: "docker.io/megalinter/megalinter:latest"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true
