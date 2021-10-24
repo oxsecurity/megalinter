@@ -6,6 +6,7 @@ on:
     branches:
       - "master"
       - "AutoUpdate"
+      - dev_v5
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
@@ -86,7 +87,7 @@ jobs:
         if: steps.compute_versions.outputs.has_updated_versions == 1
         uses: peter-evans/create-pull-request@v3.10.1
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
           commit-message: "[automation] Auto-update linters version, help and documentation"
           delete-branch: true
