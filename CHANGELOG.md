@@ -94,6 +94,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.497 to **2.0.506** on 2021-10-24
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.11.0 to **1.12.0** on 2021-10-24
   - [checkov](https://www.checkov.io/) from 2.0.506 to **2.0.507** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.507 to **2.0.509** on 2021-10-24
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
