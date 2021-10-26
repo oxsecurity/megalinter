@@ -18,6 +18,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - `phpstan` is now installed with `phive` rather than `composer` (reduces disk usage)
 - Allows `list_of_files` cli_lint_mode on PHPCS linter to improve performance compare to `file` mode
 - Allows `list_of_files` cli_lint_mode on EditorConfig-Checker linter to improve performance compare to `file` mode
+- Fix internal CSS because of StyleLint new rule `selector-class-pattern`
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
@@ -81,6 +82,22 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [tflint](https://github.com/terraform-linters/tflint) from 0.32.1 to **0.33.0** on 2021-10-16
   - [checkov](https://www.checkov.io/) from 2.0.491 to **2.0.492** on 2021-10-17
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.5 to **1.6.6** on 2021-10-17
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.2 to **0.54.3** on 2021-10-21
+  - [coffeelint](http://www.coffeelint.org) from 5.0.4 to **5.0.5** on 2021-10-21
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.3 to **0.4.4** on 2021-10-21
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.5.2 to **0.6.0** on 2021-10-21
+  - [checkov](https://www.checkov.io/) from 2.0.492 to **2.0.497** on 2021-10-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.3 to **0.35.4** on 2021-10-21
+  - [stylelint](https://stylelint.io) from 13.13.1 to **14.0.0** on 2021-10-24
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.55 to **0.1.56** on 2021-10-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.1 to **6.10.0** on 2021-10-24
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.7.0 to **0.7.1** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.497 to **2.0.506** on 2021-10-24
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.11.0 to **1.12.0** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.506 to **2.0.507** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.507 to **2.0.509** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.509 to **2.0.510** on 2021-10-25
+  - [checkov](https://www.checkov.io/) from 2.0.510 to **2.0.516** on 2021-10-26
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
