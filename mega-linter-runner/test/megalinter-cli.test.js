@@ -5,7 +5,7 @@ const childProcess = require("child_process");
 const util = require("util");
 const exec = util.promisify(childProcess.exec);
 
-const release = process.env.MEGALINTER_RELEASE || "insiders";
+const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
   process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
 

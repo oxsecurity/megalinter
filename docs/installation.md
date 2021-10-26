@@ -17,10 +17,10 @@ The following instructions examples are using to latest Mega-Linter stable versi
 - GitHub Action: megalinter/megalinter@v4
 - Docker image: megalinter/megalinter:v4
 
-You can also use **insiders** version (beta release, corresponding to the content of master branch)
+You can also use **beta** version (beta release, corresponding to the content of master branch)
 
-- GitHub Action: megalinter/megalinter@insiders
-- Docker image: megalinter/megalinter:latest
+- GitHub Action: megalinter/megalinter@beta
+- Docker image: megalinter/megalinter:beta
 
 ## GitHub Action
 

@@ -133,7 +133,7 @@ class ConsoleReporter(Reporter):
                 action_version = (
                     "v5"
                     if "v5" in build_version
-                    else "insiders"
+                    else "beta"
                     if build_version == "latest"
                     else build_version
                 )

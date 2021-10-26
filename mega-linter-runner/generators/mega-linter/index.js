@@ -72,10 +72,10 @@ module.exports = class extends Generator {
         message: "Which Mega-Linter version do you want to use ?",
         default: "v5",
         choices: [
-          { name: "v5 (Latest stable version)", value: "v5" },
+          { name: "v5 (Latest official release)", value: "v5" },
           {
-            name: "Insiders (master branch of Mega-Linter repository)",
-            value: "insiders",
+            name: "Beta (master branch of Mega-Linter repository)",
+            value: "beta",
           },
         ],
       },
@@ -175,8 +175,8 @@ module.exports = class extends Generator {
       this.gitHubActionVersion = "v5";
       this.dockerImageVersion = "v5";
     } else {
-      this.gitHubActionVersion = "insiders";
-      this.dockerImageVersion = "latest";
+      this.gitHubActionVersion = "beta";
+      this.dockerImageVersion = "beta";
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {

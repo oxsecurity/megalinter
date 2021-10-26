@@ -106,6 +106,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness & stability](#improve-robustness--stability)
+  - [v4 vs v5](#v4-vs-v5)
 <!-- table-of-contents-end -->
 
 ## Why Mega-Linter
@@ -283,10 +284,10 @@ The following instructions examples are using to latest Mega-Linter stable versi
 - GitHub Action: megalinter/megalinter@v4
 - Docker image: megalinter/megalinter:v4
 
-You can also use **insiders** version (beta release, corresponding to the content of master branch)
+You can also use **beta** version (corresponding to the content of master branch)
 
-- GitHub Action: megalinter/megalinter@insiders
-- Docker image: megalinter/megalinter:latest
+- GitHub Action: megalinter/megalinter@beta
+- Docker image: megalinter/megalinter:beta
 
 ### GitHub Action
 
@@ -1108,3 +1109,11 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
   - Validate descriptor YML files with json schema during build
   - Automated job to upgrade linters to their latest stable version
 <!-- mega-linter-vs-super-linter-section-end -->
+
+## V4 versus V5
+
+- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
+  - **latest** for latest official release
+  - **beta** for current content of master branch
+  - **alpha** for current content of alpha branch
+  - docker image, github action and mega-linter-runner can still be called with exact version number

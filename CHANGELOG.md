@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (master branch)
 
-Note: Can be used with `megalinter/megalinter@insiders` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter@latest` docker image
+Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter@beta` docker image
 
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13

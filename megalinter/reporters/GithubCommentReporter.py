@@ -172,9 +172,7 @@ class GithubCommentReporter(Reporter):
                         build_version = os.environ.get("BUILD_VERSION", "v5")
                         action_version = (
                             "v5"
-                            if "v5" in build_version or len(build_version) > 20
-                            else "insiders"
-                            if build_version == "latest"
+                            if len(build_version) > 20
                             else build_version
                         )
                         action_path = f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"

@@ -62,7 +62,7 @@ You can run mega-linter-runner without installation by using `npx`
 Example:
 
 ```shell
-npx mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ## Usage
@@ -98,7 +98,7 @@ mega-linter-runner -p myFolder --fix
 ```
 
 ```shell
-mega-linter-runner -r insiders -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
+mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 ```
 
 ## Configuration
