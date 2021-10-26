@@ -50,6 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     # Only run this on the main repo
     if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
+    environment: 
+      name: insiders
     ##################
     # Load all steps #
     ##################
