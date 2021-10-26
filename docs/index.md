@@ -15,7 +15,7 @@
 **To test V5 as alpha, you can use docker image megalinter/megalinter@alpha at your own risk :)**
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-330.0-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-411.0-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
 [![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
@@ -233,3 +233,11 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 <!-- mega-linter-vs-super-linter-section-start -->
 
 <!-- mega-linter-vs-super-linter-section-end -->
+
+## V4 versus V5
+
+- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
+  - **latest** for latest official release
+  - **beta** for current content of master branch
+  - **alpha** for current content of alpha branch
+  - docker image, github action and mega-linter-runner can still be called with exact version number

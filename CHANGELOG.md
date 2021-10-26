@@ -100,6 +100,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.11.0 to **1.12.0** on 2021-10-24
   - [checkov](https://www.checkov.io/) from 2.0.509 to **2.0.510** on 2021-10-25
   - [checkov](https://www.checkov.io/) from 2.0.510 to **2.0.516** on 2021-10-26
+  - [stylelint](https://stylelint.io) from 14.0.0 to **14.0.1** on 2021-10-26
+  - [php](https://www.php.net) from 7.4.24 to **7.4.25** on 2021-10-26
+  - [checkov](https://www.checkov.io/) from 2.0.516 to **2.0.524** on 2021-10-26
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
