@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [v5.0.0]
 
-- IGNORE_GITIGNORED_FILES default to true
+- **IGNORE_GITIGNORED_FILES** parameter default to `true`
 
 ## [Unreleased] (master branch)
 
