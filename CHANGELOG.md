@@ -98,6 +98,7 @@ Note: Can be used with `megalinter/megalinter@insiders` in your GitHub Action me
   - [checkov](https://www.checkov.io/) from 2.0.497 to **2.0.509** on 2021-10-24
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.11.0 to **1.12.0** on 2021-10-24
   - [checkov](https://www.checkov.io/) from 2.0.509 to **2.0.510** on 2021-10-25
+  - [checkov](https://www.checkov.io/) from 2.0.510 to **2.0.516** on 2021-10-26
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
