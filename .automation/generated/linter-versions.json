@@ -42,7 +42,7 @@
     "mypy": "0.910",
     "npm-groovy-lint": "9.0.0",
     "perlcritic": "1.140",
-    "php": "7.4.24",
+    "php": "7.4.25",
     "phpcs": "3.6.1",
     "phpstan": "0.12.99",
     "powershell": "7.1.5",
