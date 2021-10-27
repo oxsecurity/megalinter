@@ -75,49 +75,49 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                docker \
-                openrc \
-                lttng-ust-dev \
-                zlib \
-                zlib-dev \
-                go \
-                openjdk8 \
-                npm \
-                nodejs-current \
-                perl \
-                perl-dev \
-                php7 \
-                php7-phar \
-                php7-json \
-                php7-mbstring \
-                php7-xmlwriter \
-                php7-tokenizer \
-                php7-ctype \
-                php7-curl \
-                php7-dom \
-                php7-simplexml \
-                php8 \
-                php8-phar \
-                php8-mbstring \
-                php8-xmlwriter \
-                php8-tokenizer \
-                php8-ctype \
-                php8-curl \
-                php8-dom \
-                php8-simplexml \
-                composer \
-                ruby \
-                ruby-dev \
-                ruby-bundler \
-                ruby-rdoc \
-                ansible-lint \
-                R \
-                R-dev \
-                R-doc \
-                libc-dev \
-                libxml2-dev \
-                libxml2-utils \
-                libgcc
+    docker \
+    openrc \
+    lttng-ust-dev \
+    zlib \
+    zlib-dev \
+    go \
+    openjdk8 \
+    npm \
+    nodejs-current \
+    perl \
+    perl-dev \
+    php7 \
+    php7-phar \
+    php7-json \
+    php7-mbstring \
+    php7-xmlwriter \
+    php7-tokenizer \
+    php7-ctype \
+    php7-curl \
+    php7-dom \
+    php7-simplexml \
+    php8 \
+    php8-phar \
+    php8-mbstring \
+    php8-xmlwriter \
+    php8-tokenizer \
+    php8-ctype \
+    php8-curl \
+    php8-dom \
+    php8-simplexml \
+    composer \
+    ruby \
+    ruby-dev \
+    ruby-bundler \
+    ruby-rdoc \
+    ansible-lint \
+    R \
+    R-dev \
+    R-doc \
+    libc-dev \
+    libxml2-dev \
+    libxml2-utils \
+    libgcc
 #APK__END
 
 # PATH for golang
@@ -132,23 +132,23 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade \
-          'cpplint' \
-          'cfn-lint' \
-          'pylint' \
-          'black' \
-          'flake8' \
-          'isort' \
-          'bandit' \
-          'mypy' \
-          'restructuredtext_lint' \
-          'rstcheck' \
-          'sphinx<4.0' \
-          'rstfmt' \
-          'snakemake' \
-          'snakefmt' \
-          'sqlfluff' \
-          'checkov>=2.0.269' \
-          'yamllint'
+    'cpplint' \
+    'cfn-lint' \
+    'pylint' \
+    'black' \
+    'flake8' \
+    'isort' \
+    'bandit' \
+    'mypy' \
+    'restructuredtext_lint' \
+    'rstcheck' \
+    'sphinx<4.0' \
+    'rstfmt' \
+    'snakemake' \
+    'snakefmt' \
+    'sqlfluff' \
+    'checkov>=2.0.269' \
+    'yamllint'
 #PIP__END
 
 ############################
@@ -163,53 +163,53 @@ RUN npm install npm@latest-6 -g
 RUN echo 'package-lock=false' >> .npmrc 
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                sfdx-cli \
-                typescript \
-                asl-validator \
-                @coffeelint/cli \
-                jscpd \
-                secretlint@4.1.0 \
-                @secretlint/secretlint-rule-preset-recommend@4.1.0 \
-                stylelint \
-                stylelint-config-standard \
-                stylelint-config-sass-guidelines \
-                stylelint-scss \
-                dockerfilelint \
-                editorconfig-checker \
-                gherkin-lint \
-                graphql-schema-linter \
-                npm-groovy-lint \
-                htmlhint \
-                eslint@7.32.0 \
-                eslint-config-airbnb \
-                eslint-config-prettier \
-                eslint-config-standard \
-                eslint-plugin-import \
-                eslint-plugin-jest \
-                eslint-plugin-node \
-                eslint-plugin-prettier \
-                eslint-plugin-promise \
-                eslint-plugin-vue \
-                babel-eslint \
-                standard@15.0.1 \
-                prettier \
-                jsonlint \
-                eslint-plugin-jsonc \
-                v8r \
-                eslint-plugin-react \
-                eslint-plugin-jsx-a11y \
-                markdownlint-cli \
-                remark-cli \
-                remark-preset-lint-recommended \
-                markdown-link-check \
-                markdown-table-formatter \
-                @stoplight/spectral@5.6.0 \
-                cspell \
-                sql-lint \
-                tekton-lint \
-                prettyjson \
-                @typescript-eslint/eslint-plugin \
-                @typescript-eslint/parser
+    sfdx-cli \
+    typescript \
+    asl-validator \
+    @coffeelint/cli \
+    jscpd \
+    secretlint@4.1.0 \
+    @secretlint/secretlint-rule-preset-recommend@4.1.0 \
+    stylelint \
+    stylelint-config-standard \
+    stylelint-config-sass-guidelines \
+    stylelint-scss \
+    dockerfilelint \
+    editorconfig-checker \
+    gherkin-lint \
+    graphql-schema-linter \
+    npm-groovy-lint \
+    htmlhint \
+    eslint@7.32.0 \
+    eslint-config-airbnb \
+    eslint-config-prettier \
+    eslint-config-standard \
+    eslint-plugin-import \
+    eslint-plugin-jest \
+    eslint-plugin-node \
+    eslint-plugin-prettier \
+    eslint-plugin-promise \
+    eslint-plugin-vue \
+    babel-eslint \
+    standard@15.0.1 \
+    prettier \
+    jsonlint \
+    eslint-plugin-jsonc \
+    v8r \
+    eslint-plugin-react \
+    eslint-plugin-jsx-a11y \
+    markdownlint-cli \
+    remark-cli \
+    remark-preset-lint-recommended \
+    markdown-link-check \
+    markdown-table-formatter \
+    @stoplight/spectral@5.6.0 \
+    cspell \
+    sql-lint \
+    tekton-lint \
+    prettyjson \
+    @typescript-eslint/eslint-plugin \
+    @typescript-eslint/parser
 #NPM__END
 
 # Add node packages to path #
@@ -224,13 +224,13 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          scss_lint \
-          puppet-lint \
-          rubocop:0.82.0 \
-          rubocop-github:0.16.0 \
-          rubocop-performance:1.7.1 \
-          rubocop-rails:2.5 \
-          rubocop-rspec:1.41.0
+    scss_lint \
+    puppet-lint \
+    rubocop:0.82.0 \
+    rubocop-github:0.16.0 \
+    rubocop-performance:1.7.1 \
+    rubocop-rails:2.5 \
+    rubocop-rspec:1.41.0
 #GEM__END
 
 #############################################################################################
@@ -257,9 +257,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && wget --tries=5 -q -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
     && PHAR_KEY_ID="0x9D8A98B29B2D5D79" \
     && ( gpg --keyserver keyserver.pgp.com --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
-        || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
+    || gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver pgp.mit.edu --recv-keys "$PHAR_KEY_ID" \
+    || gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$PHAR_KEY_ID" ) \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
@@ -269,11 +269,11 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 # POWERSHELL installation
 RUN mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
+    | grep browser_download_url \
+    | grep linux-alpine-x64 \
+    | cut -d '"' -f 4 \
+    | xargs -n 1 wget -O - \
+    | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 
@@ -288,7 +288,7 @@ RUN echo y|sfdx plugins:install sfdx-hardis
 
 # SCALA installation
 RUN curl -fLo coursier https://git.io/coursier-cli && \
-        chmod +x coursier
+    chmod +x coursier
 
 
 # actionlint installation
@@ -351,11 +351,11 @@ RUN go get -u github.com/mgechev/revive
 
 # checkstyle installation
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
-        | grep browser_download_url \
-        | grep ".jar" \
-        | cut -d '"' -f 4) \
+    | grep browser_download_url \
+    | grep ".jar" \
+    | cut -d '"' -f 4) \
     && curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
-        --output /usr/bin/checkstyle
+    --output /usr/bin/checkstyle
 
 
 # ktlint installation
@@ -462,8 +462,9 @@ COPY --from=terragrunt /bin/terraform /usr/bin/
 
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/
-COPY --from=kics /app/assets/queries /usr/bin/assets/queries
-COPY --from=kics /app/assets/libraries/* /usr/bin/assets/libraries/
+RUN mkdir -p /opt/kics/assets
+ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+COPY --from=kics /app/assets/* /opt/kics/assets/
 
 #OTHER__END
 
@@ -510,16 +511,16 @@ ENV MEGALINTER_FLAVOR=all
 # Label the instance and set maintainer #
 #########################################
 LABEL com.github.actions.name="Mega-Linter" \
-      com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
-      com.github.actions.icon="code" \
-      com.github.actions.color="red" \
-      maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.created=$BUILD_DATE \
-      org.opencontainers.image.revision=$BUILD_REVISION \
-      org.opencontainers.image.version=$BUILD_VERSION \
-      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.url="https://nvuillam.github.io/mega-linter" \
-      org.opencontainers.image.source="https://github.com/nvuillam/mega-linter" \
-      org.opencontainers.image.documentation="https://nvuillam.github.io/mega-linter" \
-      org.opencontainers.image.vendor="Nicolas Vuillamy" \
-      org.opencontainers.image.description="Lint your code base with GitHub Actions"
+    com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
+    com.github.actions.icon="code" \
+    com.github.actions.color="red" \
+    maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+    org.opencontainers.image.created=$BUILD_DATE \
+    org.opencontainers.image.revision=$BUILD_REVISION \
+    org.opencontainers.image.version=$BUILD_VERSION \
+    org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+    org.opencontainers.image.url="https://nvuillam.github.io/mega-linter" \
+    org.opencontainers.image.source="https://github.com/nvuillam/mega-linter" \
+    org.opencontainers.image.documentation="https://nvuillam.github.io/mega-linter" \
+    org.opencontainers.image.vendor="Nicolas Vuillamy" \
+    org.opencontainers.image.description="Lint your code base with GitHub Actions"

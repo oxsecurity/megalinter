@@ -155,5 +155,6 @@ linters:
       dockerfile:
         - FROM checkmarx/kics:alpine as kics
         - COPY --from=kics /app/bin/kics /usr/bin/
-        - COPY --from=kics /app/assets/queries /usr/bin/assets/queries
-        - COPY --from=kics /app/assets/libraries/* /usr/bin/assets/libraries/
+        - RUN mkdir -p /opt/kics/assets
+        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+        - COPY --from=kics /app/assets/* /opt/kics/assets/

@@ -13,7 +13,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/nvuillam/mega-linter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-564.4k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-578.4k-blue)](https://nvuillam.github.io/mega-linter/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/mega-linter?maxAge=2592000)](https://GitHub.com/nvuillam/mega-linter/stargazers/)
 [![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
@@ -42,67 +42,67 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 ## Table of Contents
 
 - [Mega-Linter](#mega-linter)
-  - [Table of Contents](#table-of-contents)
-  - [Why Mega-Linter](#why-mega-linter)
-  - [Quick Start](#quick-start)
-  - [Supported Linters](#supported-linters)
-    - [Languages](#languages)
-    - [Formats](#formats)
-    - [Tooling formats](#tooling-formats)
-    - [Other](#other)
-  - [Installation](#installation)
-    - [Assisted installation](#assisted-installation)
-    - [Manual installation](#manual-installation)
-    - [GitHub Action](#github-action)
-    - [Azure](#azure)
-    - [Jenkins](#jenkins)
-    - [GitLab](#gitlab)
-    - [Concourse](#concourse)
-      - [Pipeline step](#pipeline-step)
-      - [Use it as reusable task](#use-it-as-reusable-task)
-    - [Run Mega-Linter locally](#run-mega-linter-locally)
-  - [Configuration](#configuration)
-    - [Common variables](#common-variables)
-    - [Activation and deactivation](#activation-and-deactivation)
-    - [Filter linted files](#filter-linted-files)
-    - [Apply fixes](#apply-fixes)
-    - [Linter specific variables](#linter-specific-variables)
-    - [Pre-commands](#pre-commands)
-    - [Post-commands](#post-commands)
-  - [Reporters](#reporters)
-  - [Flavors](#flavors)
-  - [Badge](#badge)
-    - [Markdown](#markdown)
-    - [reStructuredText](#restructuredtext)
-  - [Plugins](#plugins)
-    - [Use plugins](#use-plugins)
-      - [Example](#example)
-    - [Create plugins](#create-plugins)
-      - [Limitations](#limitations)
-  - [Frequently Asked Questions](#frequently-asked-questions)
-  - [How to contribute](#how-to-contribute)
-  - [Special thanks](#special-thanks)
-    - [Contributors](#contributors)
-    - [Sites referring to Mega-Linter](#sites-referring-to-mega-linter)
-      - [Global](#global)
-      - [Articles](#articles)
-      - [Linters](#linters)
-    - [Open-source teams](#open-source-teams)
-    - [Super-Linter team](#super-linter-team)
-  - [License](#license)
-  - [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
-    - [Performances](#performances)
-    - [More languages and formats linted](#more-languages-and-formats-linted)
-    - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
-    - [Run locally](#run-locally)
-    - [Reports](#reports)
-      - [Capabilities](#capabilities)
-      - [Additional Reporters](#additional-reporters)
-    - [Enhanced Configuration](#enhanced-configuration)
-    - [Enhanced Documentation](#enhanced-documentation)
-    - [Plugins management](#plugins-management)
-    - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
-    - [Improve robustness & stability](#improve-robustness--stability)
+- [Table of Contents](#table-of-contents)
+- [Why Mega-Linter](#why-mega-linter)
+- [Quick Start](#quick-start)
+- [Supported Linters](#supported-linters)
+  - [Languages](#languages)
+  - [Formats](#formats)
+  - [Tooling formats](#tooling-formats)
+  - [Other](#other)
+- [Installation](#installation)
+  - [Assisted installation](#assisted-installation)
+  - [Manual installation](#manual-installation)
+  - [GitHub Action](#github-action)
+  - [Azure](#azure)
+  - [Jenkins](#jenkins)
+  - [GitLab](#gitlab)
+  - [Concourse](#concourse)
+    - [Pipeline step](#pipeline-step)
+    - [Use it as reusable task](#use-it-as-reusable-task)
+  - [Run Mega-Linter locally](#run-mega-linter-locally)
+- [Configuration](#configuration)
+  - [Common variables](#common-variables)
+  - [Activation and deactivation](#activation-and-deactivation)
+  - [Filter linted files](#filter-linted-files)
+  - [Apply fixes](#apply-fixes)
+  - [Linter specific variables](#linter-specific-variables)
+  - [Pre-commands](#pre-commands)
+  - [Post-commands](#post-commands)
+- [Reporters](#reporters)
+- [Flavors](#flavors)
+- [Badge](#badge)
+  - [Markdown](#markdown)
+  - [reStructuredText](#restructuredtext)
+- [Plugins](#plugins)
+  - [Use plugins](#use-plugins)
+    - [Example](#example)
+  - [Create plugins](#create-plugins)
+    - [Limitations](#limitations)
+- [Frequently Asked Questions](#frequently-asked-questions)
+- [How to contribute](#how-to-contribute)
+- [Special thanks](#special-thanks)
+  - [Contributors](#contributors)
+  - [Sites referring to Mega-Linter](#sites-referring-to-mega-linter)
+    - [Global](#global)
+    - [Articles](#articles)
+    - [Linters](#linters)
+  - [Open-source teams](#open-source-teams)
+  - [Super-Linter team](#super-linter-team)
+- [License](#license)
+- [Mega-Linter vs Super-Linter](#mega-linter-vs-super-linter)
+  - [Performances](#performances)
+  - [More languages and formats linted](#more-languages-and-formats-linted)
+  - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
+  - [Run locally](#run-locally)
+  - [Reports](#reports)
+    - [Capabilities](#capabilities)
+    - [Additional Reporters](#additional-reporters)
+  - [Enhanced Configuration](#enhanced-configuration)
+  - [Enhanced Documentation](#enhanced-documentation)
+  - [Plugins management](#plugins-management)
+  - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
+  - [Improve robustness & stability](#improve-robustness--stability)
 <!-- table-of-contents-end -->
 
 ## Why Mega-Linter
@@ -150,7 +150,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ### Languages
 
 |                                                                               <!-- -->                                                                                | Language                                                                                                                    | Linter                                                                                                                           | Configuration key                                                                                                                           |     Format/Fix     |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|:------------------:|
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: |
 |    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/bash.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**BASH**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash.md#readme)                             | [bash-exec](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme)                       | [BASH_EXEC](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_bash_exec.md#readme)                                  |                    |
 |                                                                     <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                             | [shellcheck](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)                     | [BASH_SHELLCHECK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shellcheck.md#readme)                           |                    |
 |                                                                     <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                             | [shfmt](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme)                               | [BASH_SHFMT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/bash_shfmt.md#readme)                                     | :heavy_check_mark: |
@@ -203,7 +203,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ### Formats
 
 |                                                                              <!-- -->                                                                               | Format                                                                                                  | Linter                                                                                                                                       | Configuration key                                                                                                                                     |     Format/Fix     |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------:|
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: |
 |   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/css.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**CSS**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css.md#readme)           | [stylelint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme)                                    | [CSS_STYLELINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_stylelint.md#readme)                                         | :heavy_check_mark: |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                    |                                                                                                         | [scss-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme)                                    | [CSS_SCSS_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/css_scss_lint.md#readme)                                         |                    |
 |   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/env.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**ENV**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/env.md#readme)           | [dotenv-linter](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/env_dotenv_linter.md#readme)                            | [ENV_DOTENV_LINTER](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/env_dotenv_linter.md#readme)                                 | :heavy_check_mark: |
@@ -230,7 +230,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ### Tooling formats
 
 |                                                                                 <!-- -->                                                                                  | Tooling format                                                                                                      | Linter                                                                                                                                   | Configuration key                                                                                                                                     |     Format/Fix     |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------:|
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: |
 |    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->     | [**ACTION**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/action.md#readme)                 | [actionlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/action_actionlint.md#readme)                           | [ACTION_ACTIONLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/action_actionlint.md#readme)                                 |                    |
 |    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ansible.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->     | [**ANSIBLE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible.md#readme)               | [ansible-lint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme)                      | [ANSIBLE_ANSIBLE_LINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/ansible_ansible_lint.md#readme)                           |                    |
 |      <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/arm.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->       | [**ARM**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm.md#readme)                       | [arm-ttk](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme)                                    | [ARM_ARM_TTK](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/arm_arm_ttk.md#readme)                                             |                    |
@@ -255,7 +255,7 @@ All linters are integrated in the [Mega-Linter docker image](https://hub.docker.
 ### Other
 
 |                                                                               <!-- -->                                                                               | Code quality checker                                                                                          | Linter                                                                                                              | Configuration key                                                                                                               |     Format/Fix     |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|:------------------:|
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | :----------------: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/copypaste.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**COPYPASTE**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste.md#readme)     | [jscpd](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)             | [COPYPASTE_JSCPD](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/copypaste_jscpd.md#readme)               |                    |
 |  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->  | [**CREDENTIALS**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/credentials.md#readme) | [secretlint](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/credentials_secretlint.md#readme) | [CREDENTIALS_SECRETLINT](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/credentials_secretlint.md#readme) |                    |
 |    <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/git.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->    | [**GIT**](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git.md#readme)                 | [git_diff](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git_git_diff.md#readme)             | [GIT_GIT_DIFF](https://github.com/nvuillam/mega-linter/tree/master/docs/descriptors/git_git_diff.md#readme)                     |                    |
@@ -607,7 +607,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 ### Common variables
 
 | **ENV VAR**                                         | **Default Value**            | **Notes**                                                                                                                                                                                                   |
-|-----------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **ADDITIONAL_EXCLUDED_DIRECTORIES**                 | \[\]                         | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                                                     |
 | [**APPLY_FIXES**](#apply-fixes)                     | `none`                       | Activates formatting and auto-fixing [(more info)](#apply-fixes)                                                                                                                                            |
 | **DEFAULT_BRANCH**                                  | `master`                     | The name of the repository default branch. Warning: In new github repositories, master branch is named `main`, so you need to override this value with `main`                                               |
@@ -749,7 +749,7 @@ POST_COMMANDS:
 Mega-Linter can generate various reports that you can activate / deactivate and customize
 
 | Reporter                                                                                                             | Description                                                                                                   | Default                 |
-|----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | [Text files](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/TextReporter.md)                     | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
 | [Pull Request comments](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if GitHub Action |
 | [Updated sources](https://github.com/nvuillam/mega-linter/tree/master/docs/reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
@@ -772,7 +772,7 @@ To improve run performances, we generate **Flavored Mega-Linter images** contain
 
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                          | Flavor                                                                                                    | Description                                                            | Embedded linters |                                                                                                                                                                                               Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- | :--------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)                                          | Default Mega-Linter Flavor                                             |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
 |      <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        13        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-ci_light/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-ci_light) |
 |        <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://github.com/nvuillam/mega-linter/tree/master/docs/flavors/dart.md#readme)                   | Optimized for DART based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
