@@ -101,6 +101,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [stylelint](https://stylelint.io) from 14.0.0 to **14.0.1** on 2021-10-26
   - [checkov](https://www.checkov.io/) from 2.0.516 to **2.0.524** on 2021-10-26
   - [php](https://www.php.net) from 7.4.24 to **7.4.25** on 2021-10-27
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.3 to **0.54.4** on 2021-10-28
 <!-- linter-versions-end -->
 
 ## [4.46.0] - 2021-09-21
