@@ -20,6 +20,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Allows `list_of_files` cli_lint_mode on EditorConfig-Checker linter to improve performance compare to `file` mode
 - Fix internal CSS because of StyleLint new rule `selector-class-pattern`
 - Fix ansible-lint version collection
+- Message to recommend to upgrade to MegaLinter v5
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
