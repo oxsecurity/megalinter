@@ -12,8 +12,8 @@ Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
 
 ```yaml
 PLUGINS:
-  - https://raw.githubusercontent.com/megalinter/megalinter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
-  - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/master/cookietemple.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
 ```
 
 ## Create plugins

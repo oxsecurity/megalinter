@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                      | Configuration key      |
-|-----------------------------|------------------------|
+| Linter | Configuration key |
+| ------ | ----------------- |
 | [sql-lint](sql_sql_lint.md) | [SQL](sql_sql_lint.md) |
 | [sqlfluff](sql_sqlfluff.md) | [SQL](sql_sqlfluff.md) |
 | [tsqllint](sql_tsqllint.md) | [SQL](sql_tsqllint.md) |
@@ -18,8 +18,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable                 | Description                   | Default value |
-|--------------------------|-------------------------------|---------------|
-| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

@@ -125,7 +125,7 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
 
 - [Test classes](https://github.com/megalinter/megalinter/blob/main/megalinter/tests/test_megalinter) for each capability
 - [Test classes for each linter](https://github.com/megalinter/megalinter/tree/main/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/megalinter/megalinter/blob/main/.automation/build.py)
-- Setup **code coverage** [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
+- Setup **code coverage** [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 - **Development CD / CI**
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action
