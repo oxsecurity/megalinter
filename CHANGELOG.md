@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [v5.0.0]
 
-- Upgrade configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to nvuillam/mega-linter into megalinter/megalinter)
+- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
+- Migration from docker hub space **nvuillam** to space **megalinter**
+  - Docker images are now **megalinter/megalinter** or **megalinter/megalinter-FLAVOR**
+- Documentation is now hosted at <https://megalinter.github.io/>
+- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to nvuillam/mega-linter into megalinter/megalinter)
 - Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
   - **latest** for latest official release
   - **beta** for current content of main branch
