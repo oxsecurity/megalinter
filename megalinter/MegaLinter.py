@@ -486,7 +486,10 @@ class Megalinter:
         default_branch_remote = f"origin/{default_branch}"
         if default_branch_remote not in [ref.name for ref in repo.refs]:
             # Try to fetch default_branch from origin, because it isn't cached locally.
-            repo.git.fetch()
+            repo.git.fetch(
+                "origin",
+                f"refs/heads/{default_branch}:refs/remotes/{default_branch_remote}"
+            )
         diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
