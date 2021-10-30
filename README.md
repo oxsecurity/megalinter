@@ -13,7 +13,6 @@
 
 <!-- mega-linter-title-end -->
 **(V5 work in progress, please keep using [V4](https://github.com/nvuillam/mega-linter) for now)**
-**To test V5 as alpha, you can use docker image megalinter/megalinter@alpha at your own risk :)**
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-485.0-blue)](https://megalinter.github.io/flavors/)
