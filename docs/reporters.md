@@ -6,8 +6,8 @@
 
 Mega-Linter can generate various reports that you can activate / deactivate and customize
 
-| Reporter                                                    | Description                                                                                                   | Default                 |
-|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
+| Reporter                                                                                                            | Description                                                                                                   | Default                 |
+|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
 | [Text files](reporters/TextReporter.md)                     | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
 | [Pull Request comments](reporters/GitHubCommentReporter.md) | Mega-Linter posts a comment on the PR with a summary of lint results, and links to detailed logs              | Active if GitHub Action |
 | [Updated sources](reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |

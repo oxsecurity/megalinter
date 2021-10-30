@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                          | Configuration key           |
-|---------------------------------|-----------------------------|
+| Linter | Configuration key |
+| ------ | ----------------- |
 | [swiftlint](swift_swiftlint.md) | [SWIFT](swift_swiftlint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable                   | Description                   | Default value |
-|----------------------------|-------------------------------|---------------|
-| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| SWIFT_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| SWIFT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 

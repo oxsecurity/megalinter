@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter                             | Configuration key              |
-|------------------------------------|--------------------------------|
+| Linter | Configuration key |
+| ------ | ----------------- |
 | [actionlint](action_actionlint.md) | [ACTION](action_actionlint.md) |
 
 ## Linted files
@@ -17,8 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable                    | Description                   | Default value |
-|-----------------------------|-------------------------------|---------------|
-| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
-| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
+| Variable | Description | Default value |
+| ----------------- | -------------- | -------------- |
+| ACTION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
+| ACTION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
 
