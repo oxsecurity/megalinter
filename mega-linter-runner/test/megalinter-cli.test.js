@@ -38,6 +38,19 @@ describe("CLI", function () {
     );
   });
 
+  it("(CLI) Upgrade config", () => {
+    const params = ["--upgrade"];
+    const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
+    if (stderr) {
+      console.error(stderr);
+    }
+    assert(stdout, "stdout is set");
+    assert(
+      stdout.includes("mega-linter-runner applied"),
+      'stdout should contains "mega-linter-runner applied"'
+    );
+  });
+
   /*
 Disabled until find a way to run with default options
     it('(CLI) Run installer', async () => {

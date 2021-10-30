@@ -5,6 +5,7 @@ const { spawnSync } = require("child_process");
 const path = require("path");
 const which = require("which");
 const fs = require("fs-extra");
+const { MegaLinterUpgrader } = require("./upgrade");
 
 class MegaLinterRunner {
   async run(options) {
@@ -47,6 +48,13 @@ class MegaLinterRunner {
       console.log("Yeoman generator used: " + generatorPath);
       env.run(generatorPath);
       return { status: 0 };
+    }
+
+    // Run upgrader from v4 to v5
+    if (options.upgrade) {
+      const megaLinterUpgrader = new MegaLinterUpgrader();
+      await megaLinterUpgrader.run();
+      return { status: 0 }
     }
 
     // Build Mega-Linter docker image name with flavor and release version

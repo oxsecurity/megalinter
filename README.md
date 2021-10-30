@@ -277,6 +277,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ![Runner Install](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
+### Upgrade from Mega-Linter v4
+
+- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration to v5 :)
+
 ### Manual installation
 
 The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))

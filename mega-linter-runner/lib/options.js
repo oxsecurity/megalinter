@@ -110,6 +110,12 @@ module.exports = optionator({
       type: "Boolean",
       description: "Generate Mega-Linter configuration in your project",
     },
+    {
+      option: "upgrade",
+      alias: "u",
+      type: "Boolean",
+      description: "Upgrade local repository Mega-Linter configuration",
+    },
   ],
   mutuallyExclusive: [
     ["help", "version", "install"],
