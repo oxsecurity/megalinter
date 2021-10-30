@@ -8,6 +8,7 @@ const fs = require("fs-extra");
 const { MegaLinterUpgrader } = require("./upgrade");
 
 class MegaLinterRunner {
+
   async run(options) {
     // Show help ( index or for an options)
     if (options.help) {
@@ -58,14 +59,20 @@ class MegaLinterRunner {
     }
 
     // Build Mega-Linter docker image name with flavor and release version
-    const release = 
+    const release =
       options.release in ["stable"]
         ? "v5"
-        : options.release ;
+        : options.release;
     const dockerImageName =
-      options.flavor === "all" || options.flavor == null
-        ? "megalinter/megalinter"
-        : `megalinter/megalinter-${options.flavor}`;
+      // v4 retrocompatibility >>
+      ((options.flavor === "all" || options.flavor == null) && this.isv4(release))
+        ? "nvuillam/mega-linter"
+        : ((options.flavor === "all" || options.flavor == null && this.isv4(release))) ?
+          `nvuillam/mega-linter-${options.flavor}` :
+          // << v4 retrocompatibility 
+          options.flavor === "all" || options.flavor == null
+            ? "megalinter/megalinter"
+            : `megalinter/megalinter-${options.flavor}`;
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
@@ -160,6 +167,18 @@ ERROR: Docker engine has not been found on your system.
       stdout: spawnRes.stdout,
       stderr: spawnRes.stderr,
     };
+  }
+
+  isv4(release) {
+    const isV4flag = release === 'insiders' || release.includes('v4');
+    if (isV4flag) {
+      console.warn(c.yellow("#######################################################################"));
+      console.warn(c.yellow("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:"));
+      console.warn(c.yellow("- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"));
+      console.warn(c.yellow("- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of master branch of megalinter/megalinter)"));
+      console.warn(c.yellow("#######################################################################"));
+    }
+    return isV4flag;
   }
 }
 
