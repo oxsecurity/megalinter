@@ -2,8 +2,7 @@ name: "DOC - Build and deploy"
 on:
   push:
     branches:
-      - master
-      - dev_v5
+      - main
     paths:
       - "**/build.py"
       - "docs/**"

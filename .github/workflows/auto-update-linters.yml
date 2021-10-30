@@ -4,9 +4,8 @@ on:
   # Run when there is an update in master
   push:
     branches:
-      - "master"
+      - "main"
       - "AutoUpdate"
-      - dev_v5
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
