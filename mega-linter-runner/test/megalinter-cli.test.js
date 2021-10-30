@@ -42,7 +42,7 @@ describe("CLI", function () {
     if (process.env.CI) {
       // Skip in CI (bug to fix in CI but works locally :/ )
       done();
-      return ;
+      return;
     }
     const params = ["--upgrade"];
     exec(MEGA_LINTER + params.join(" "))
