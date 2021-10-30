@@ -6,8 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [v5.0.0]
 
+- Upgrade configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to nvuillam/mega-linter into megalinter/megalinter)
+- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
+  - **latest** for latest official release
+  - **beta** for current content of main branch
+  - **alpha** for current content of alpha branch
+  - docker image, github action and mega-linter-runner can still be called with exact version number
+- Being more inclusive: rename `master` branch into `main`
 - **IGNORE_GITIGNORED_FILES** parameter default to `true`
-- Upgrade configuration files using `npx mega-linter-runner --upgrade`
 
 ## [Unreleased] (main branch)
 
