@@ -899,7 +899,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                         "type": "array",
                         "title": f"{linter.name}: Override descriptor/linter matching files extensions",
                         "examples:": [".py", ".myext"],
-                        "items": {"$ref": "#/definitions/command_info"},
+                        "items": {"type": "string"},
                     },
                 ],
                 [
@@ -935,7 +935,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                                 }
                             ]
                         ],
-                        "items": {"type": "string"},
+                        "items": {"$ref": "#/definitions/command_info"},
                     },
                 ],
                 [
