@@ -38,17 +38,24 @@ describe("CLI", function () {
     );
   });
 
-  it("(CLI) Upgrade config", async () => {
+  it("(CLI) Upgrade config", (done) => {
     const params = ["--upgrade"];
-    const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
-    if (stderr) {
-      console.error(stderr);
-    }
-    assert(stdout, "stdout is set");
-    assert(
-      stdout.includes("mega-linter-runner applied"),
-      'stdout should contains "mega-linter-runner applied"'
-    );
+    exec(MEGA_LINTER + params.join(" ")).then((res) => {
+      const stdout = res.stdout;
+      const stderr = res.stderr;
+      if (stderr) {
+        console.error(stderr);
+      }
+      assert(stdout, "stdout is set");
+      assert(
+        stdout.includes("mega-linter-runner applied"),
+        'stdout should contains "mega-linter-runner applied"'
+      );
+      done()
+    }).catch((err) => {
+      done(err);
+      throw err;
+    });
   });
 
   /*
