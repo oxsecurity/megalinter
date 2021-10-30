@@ -175,7 +175,7 @@ ERROR: Docker engine has not been found on your system.
       console.warn(c.yellow("#######################################################################"));
       console.warn(c.yellow("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:"));
       console.warn(c.yellow("- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"));
-      console.warn(c.yellow("- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of master branch of megalinter/megalinter)"));
+      console.warn(c.yellow("- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of main branch of megalinter/megalinter)"));
       console.warn(c.yellow("#######################################################################"));
     }
     return isV4flag;

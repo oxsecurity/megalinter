@@ -6,7 +6,7 @@
 
 - Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme){target=_blank}
 - See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration){target=_blank}
-  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/megalinter/megalinter/tree/master/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
+  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
 - See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules){target=_blank}
 
 [![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint){target=_blank}
@@ -37,7 +37,7 @@ This linter is available in the following flavours
 
 |                                                                          <!-- -->                                                                          | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 

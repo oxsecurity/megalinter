@@ -17,7 +17,7 @@
 
 This package allows to run [Mega-Linter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 ## Installation
 
@@ -87,7 +87,7 @@ mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 
 You can define generate a ready to use [.mega-linter.yml configuration file](https://megalinter.github.io/configuration/) by running `npx mega-linter-runner --install` at the root of your repository
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
 <!-- linters-section-start -->
 

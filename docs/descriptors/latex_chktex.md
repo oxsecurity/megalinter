@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **1.7.6**
 - Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
 - See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
-  - If custom `.chktexrc` config file is not found, [.chktexrc](https://github.com/megalinter/megalinter/tree/master/TEMPLATES/.chktexrc){target=_blank} will be used
+  - If custom `.chktexrc` config file is not found, [.chktexrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
 
 ## Configuration in Mega-Linter
 
@@ -35,8 +35,8 @@ Use chktex in your favorite IDE to catch errors before Mega-Linter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                |                                                                                    Install                                                                                     |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                    [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                     |
-| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                    [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                     |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
 
 ## Mega-Linter Flavours
 
@@ -44,7 +44,7 @@ This linter is available in the following flavours
 
 |                                                                          <!-- -->                                                                          | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 

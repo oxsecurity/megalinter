@@ -36,7 +36,7 @@ if RELEASE is True:
     if "v" not in RELEASE_TAG:
         RELEASE_TAG = "v" + RELEASE_TAG
 
-BRANCH = "master"
+BRANCH = "main"
 URL_ROOT = ML_REPO_URL+"/tree/" + BRANCH
 MKDOCS_URL_ROOT = ML_DOC_URL
 URL_RAW_ROOT = ML_REPO_URL+ "/raw/" + BRANCH

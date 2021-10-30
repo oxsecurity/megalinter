@@ -11,7 +11,7 @@
 #
 
 #######################################
-# Start the job on all push to master #
+# Start the job on all push to main #
 #######################################
 name: "Build & Deploy - RELEASE"
 on:

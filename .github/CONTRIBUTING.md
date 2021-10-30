@@ -71,7 +71,7 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 - Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 - Write [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
-- Update [CHANGELOG.md](https://github.com/megalinter/megalinter/blob/master/CHANGELOG.md) to briefly describe your changes
+- Update [CHANGELOG.md](https://github.com/megalinter/megalinter/blob/main/CHANGELOG.md) to briefly describe your changes
 
 Draft pull requests are also welcome to get feedback early on, or if there is something blocking you.
 
@@ -93,7 +93,7 @@ Then run `bash build.py` and it will generate all the rest !
 - Configuration JSON schema
 - Online documentation menus
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ContributingAddLinter_1.jpg?raw=true>)
 
 
 ### CI/CT/CD
@@ -108,7 +108,7 @@ The **Mega-Linter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
 - The **Docker** container is then ran against the _test cases_ to validate all code sanity
   - `.automation/test` contains all test cases for each language that should be validated
 - These **GitHub** Actions utilize the Checks API and Protected Branches to help follow the SDLC
-- When the Pull Request is merged to master, the **Mega-Linter** **Docker** container is then updated and deployed with the new codebase
+- When the Pull Request is merged to main, the **Mega-Linter** **Docker** container is then updated and deployed with the new codebase
   - **Note:** The branch's **Docker** container is also removed from **DockerHub** to cleanup after itself
 
 ## Releasing

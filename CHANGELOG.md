@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **IGNORE_GITIGNORED_FILES** parameter default to `true`
 - Upgrade configuration files using `npx mega-linter-runner --upgrade`
 
-## [Unreleased] (master branch)
+## [Unreleased] (main branch)
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter@beta` docker image
 

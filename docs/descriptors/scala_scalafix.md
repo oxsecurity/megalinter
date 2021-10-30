@@ -12,7 +12,7 @@ Scalafix lints and fixes scala files
 - Version in Mega-Linter: **0.9.31**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
-  - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/megalinter/megalinter/tree/master/TEMPLATES/.scalafix.conf){target=_blank} will be used
+  - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html){target=_blank}
 - See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html){target=_blank}
 
@@ -44,8 +44,8 @@ This linter is available in the following flavours
 
 |                                                                          <!-- -->                                                                          | Flavor                                                 | Description                        | Embedded linters |                                                                                                                                                                                 Info |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor         |        94        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor         |        94        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
 
 ## Behind the scenes
 

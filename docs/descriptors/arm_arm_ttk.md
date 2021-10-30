@@ -6,7 +6,7 @@
 
 - Visit [Official Web Site](https://github.com/Azure/arm-ttk#readme){target=_blank}
 - See [How to configure arm-ttk rules](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/test-toolkit#customize-tests){target=_blank}
-  - If custom `.arm-ttk.psd1` config file is not found, [.arm-ttk.psd1](https://github.com/megalinter/megalinter/tree/master/TEMPLATES/.arm-ttk.psd1){target=_blank} will be used
+  - If custom `.arm-ttk.psd1` config file is not found, [.arm-ttk.psd1](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.arm-ttk.psd1){target=_blank} will be used
 
 [![arm-ttk - GitHub](https://gh-card.dev/repos/Azure/arm-ttk.svg?fullname=)](https://github.com/Azure/arm-ttk){target=_blank}
 
@@ -36,7 +36,7 @@ Use arm-ttk in your favorite IDE to catch errors before Mega-Linter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                   |                                                                                     Install                                                                                      |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [ARMTTKExtension](https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/Sam-Cogan.ARMTTKExtension){target=_blank} |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [ARMTTKExtension](https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Sam-Cogan.ARMTTKExtension){target=_blank} |
 
 ## Mega-Linter Flavours
 
@@ -44,8 +44,8 @@ This linter is available in the following flavours
 
 |                                                                          <!-- -->                                                                          | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 

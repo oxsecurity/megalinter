@@ -20,8 +20,8 @@ PLUGINS:
 
 You can implement your own descriptors and load them as plugins during Mega-Linter runtime
 
-- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [Mega-Linter Json Schema](https://github.com/megalinter/megalinter/blob/master/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
-- Descriptor format is exactly the same than [Mega-Linter embedded ones](https://github.com/megalinter/megalinter/tree/master/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
+- Plugins descriptor files must be named **\*\*.megalinter-descriptor.yml** and respect [Mega-Linter Json Schema](https://github.com/megalinter/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
+- Descriptor format is exactly the same than [Mega-Linter embedded ones](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors) ([see json schema documentation](https://megalinter.github.io/json-schemas/descriptor.html))
 - Plugins must be hosted in a url containing **\*\*/mega-linter-plugin-\*\*/**
 
 ### Limitations

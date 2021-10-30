@@ -13,7 +13,7 @@ from megalinter.constants import ML_REPO
 class config_test(unittest.TestCase):
     test_folder = (
         f"https://raw.githubusercontent.com/{ML_REPO}/"
-        "master/.automation/test/mega-linter-config-test/"
+        "main/.automation/test/mega-linter-config-test/"
     )
 
     def setUp(self):

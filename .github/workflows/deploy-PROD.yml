@@ -11,13 +11,13 @@
 #
 
 #######################################
-# Start the job on all push to master #
+# Start the job on all push to main #
 #######################################
 name: "Build & Deploy - PROD"
 on:
   push:
     branches:
-      - "master"
+      - "main"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"

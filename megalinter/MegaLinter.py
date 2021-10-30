@@ -652,7 +652,7 @@ class Megalinter:
             logging.warning(
                 c.yellow(
                     "- Replace versions used by latest (v5 latest stable version) "
-                    "or beta (previously 'insiders', content of master branch of megalinter/megalinter)"
+                    "or beta (previously 'insiders', content of main branch of megalinter/megalinter)"
                 )
             )
             logging.warning(

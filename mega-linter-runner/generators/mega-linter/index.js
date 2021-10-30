@@ -74,7 +74,7 @@ module.exports = class extends Generator {
         choices: [
           { name: "v5 (Latest official release)", value: "v5" },
           {
-            name: "Beta (master branch of Mega-Linter repository)",
+            name: "Beta (main branch of Mega-Linter repository)",
             value: "beta",
           },
         ],
@@ -83,7 +83,7 @@ module.exports = class extends Generator {
         type: "list",
         name: "defaultBranch",
         message: "What is the name of your repository default branch ?",
-        default: "master",
+        default: "main",
         choices: [
           { name: "master", value: "master" },
           { name: "main", value: "main" },
@@ -180,9 +180,9 @@ module.exports = class extends Generator {
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} to validate only diff with master branch`;
+      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
     }
     this.disable = false;
     // COPY PASTES

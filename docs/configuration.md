@@ -5,14 +5,14 @@
 # Configuration
 
 Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
-You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/megalinter/megalinter/blob/master/.mega-linter.yml)
+You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/megalinter/megalinter/blob/main/.mega-linter.yml)
 
 Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.github.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 - VsCode: You need a VsCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/master/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
 
 ## Common variables
 

@@ -1,7 +1,7 @@
 ---
 name: "Auto-Update Linters"
 on:
-  # Run when there is an update in master
+  # Run when there is an update in main
   push:
     branches:
       - "main"

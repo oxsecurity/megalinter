@@ -139,7 +139,7 @@ class mega_linter_1_test(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/master"
+                "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/main"
                 "/.automation/test/sample_project",
             }
         )
@@ -149,7 +149,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("### Processed [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
-            f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/master/"
+            f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
             ".automation/test/sample_project/.eslintrc.json]",
             output,
         )
@@ -158,7 +158,7 @@ class mega_linter_1_test(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/master/"
+                "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/main/"
                 ".automation/test/sample_project",
                 "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
             }
@@ -169,7 +169,7 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("### Processed [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
-            f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/master/"
+            f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
             ".automation/test/sample_project/.eslintrc-custom.yml]",
             output,
         )

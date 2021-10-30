@@ -8,7 +8,7 @@
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
 ## Upgrade from Mega-Linter v4
 
@@ -206,7 +206,7 @@ mega-linter:
     expire_in: 1 week
 ```
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
 ## Concourse
 

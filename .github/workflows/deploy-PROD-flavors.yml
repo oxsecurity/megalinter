@@ -11,13 +11,13 @@
 #
 
 #######################################
-# Start the job on all push to master #
+# Start the job on all push to main #
 #######################################
 name: "Build & Deploy - PROD Flavors"
 on:
   push:
     branches:
-      - "master"
+      - "main"
       - "FlavoredMegaLinters"
     paths:
       - ".github/workflows/**"

@@ -30,7 +30,7 @@ EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 JSON_REPORTER: true
 PLUGINS:
-  - https://raw.githubusercontent.com/megalinter/megalinter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
     cwd: "root"

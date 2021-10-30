@@ -2,7 +2,7 @@
 site_name: Mega-Linter
 site_url: https://megalinter.github.io
 repo_url: https://github.com/megalinter/megalinter
-edit_uri: tree/master/docs
+edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
 site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 19 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses

@@ -11,7 +11,7 @@
 #
 
 #######################################
-# Start the job on all push to master #
+# Start the job on all push to main #
 #######################################
 #############################
 # Start the job on all push #
@@ -19,7 +19,7 @@
 name: "Build & Deploy - DEV"
 on:
   push:
-    branches-ignore: [master, alpha]
+    branches-ignore: [main, alpha]
   pull_request:
     branches-ignore: []
 
