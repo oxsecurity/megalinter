@@ -129,6 +129,7 @@ optional arguments:
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
+  - [ansible](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible)
   - [ansible-lint](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible-lint)
 
 ### Example success log

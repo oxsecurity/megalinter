@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter@beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [4.47.0] - 2021-10-30
+
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
   - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
@@ -24,6 +29,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Allows `list_of_files` cli_lint_mode on PHPCS linter to improve performance compare to `file` mode
 - Allows `list_of_files` cli_lint_mode on EditorConfig-Checker linter to improve performance compare to `file` mode
 - Fix internal CSS because of StyleLint new rule `selector-class-pattern`
+- Fix ansible-lint version collection
+- Message to recommend to upgrade to MegaLinter v5
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
@@ -102,13 +109,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.509 to **2.0.510** on 2021-10-25
   - [checkov](https://www.checkov.io/) from 2.0.510 to **2.0.516** on 2021-10-26
   - [stylelint](https://stylelint.io) from 14.0.0 to **14.0.1** on 2021-10-26
-  - [php](https://www.php.net) from 7.4.24 to **7.4.25** on 2021-10-26
   - [checkov](https://www.checkov.io/) from 2.0.516 to **2.0.524** on 2021-10-26
+  - [php](https://www.php.net) from 7.4.24 to **7.4.25** on 2021-10-27
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.3 to **0.54.4** on 2021-10-28
-  - [htmlhint](https://htmlhint.com/) from 0.15.2 to **0.16.0** on 2021-10-30
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.9 to **1.0.10** on 2021-10-30
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.4 to **0.35.5** on 2021-10-30
-<!-- linter-versions-end -->
+  - [htmlhint](https://htmlhint.com/) from 0.15.2 to **0.16.0** on 2021-10-29
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.9 to **1.0.10** on 2021-10-29
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.4 to **0.35.5** on 2021-10-29
 
 ## [4.46.0] - 2021-09-21
 

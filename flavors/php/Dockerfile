@@ -82,6 +82,7 @@ RUN apk add --update --no-cache \
                 php8-dom \
                 php8-simplexml \
                 composer \
+                ansible \
                 ansible-lint \
                 libc-dev \
                 libxml2-dev \

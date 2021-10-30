@@ -9,6 +9,7 @@ import multiprocessing as mp
 import os
 import sys
 
+import chalk as c
 import git
 from megalinter import (
     config,
@@ -45,6 +46,7 @@ class Megalinter:
             config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"),
         )
         self.initialize_logger()
+        self.manage_upgrade_message()
         self.display_header()
         # Mega-Linter default rules location
         self.default_rules_location = (
@@ -169,6 +171,8 @@ class Megalinter:
             reporter.produce_report()
         # Manage return code
         self.check_results()
+        # Display upgrade recommendation if necessary
+        self.manage_upgrade_message()
 
     # noinspection PyMethodMayBeStatic
     def process_linters_serial(self, active_linters, _linters_do_fixes):
@@ -485,13 +489,14 @@ class Megalinter:
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
         default_branch = config.get("DEFAULT_BRANCH", "master")
-        current_commit_sha = config.get("GITHUB_SHA", "")
-        if current_commit_sha == "":
-            current_commit_sha = repo.active_branch.commit.hexsha
-        repo.git.fetch()
-        diff = repo.git.diff(
-            f"origin/{default_branch}...{current_commit_sha}", name_only=True
-        )
+        default_branch_remote = f"origin/{default_branch}"
+        if default_branch_remote not in [ref.name for ref in repo.refs]:
+            # Try to fetch default_branch from origin, because it isn't cached locally.
+            repo.git.fetch(
+                "origin",
+                f"refs/heads/{default_branch}:refs/remotes/{default_branch_remote}",
+            )
+        diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
         for diff_line in diff.splitlines():
@@ -623,3 +628,35 @@ class Megalinter:
                     config.delete()
                     sys.exit(self.return_code)
             config.delete()
+
+    def manage_upgrade_message(self):
+        mega_linter_version = config.get("BUILD_VERSION", "No docker image")
+        if "insiders" in mega_linter_version or "v4" in mega_linter_version:
+            logging.warning(
+                c.yellow(
+                    "#######################################################################"
+                )
+            )
+            logging.warning(
+                c.yellow(
+                    "MEGA-LINTER HAS A NEW V5 VERSION at https://github.com/megalinter/megalinter."
+                    " Please upgrade to it by:"
+                )
+            )
+            logging.warning(
+                c.yellow(
+                    "- Running the command at the root of your repo (requires node.js):"
+                    " npx mega-linter-runner --upgrade"
+                )
+            )
+            logging.warning(
+                c.yellow(
+                    "- Replace versions used by latest (v5 latest stable version) "
+                    "or beta (previously 'insiders', content of master branch of megalinter/megalinter)"
+                )
+            )
+            logging.warning(
+                c.yellow(
+                    "#######################################################################"
+                )
+            )

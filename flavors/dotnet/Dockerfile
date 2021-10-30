@@ -70,6 +70,7 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
+                ansible \
                 ansible-lint \
                 libc-dev \
                 libxml2-dev \
