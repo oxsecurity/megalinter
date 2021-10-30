@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                   | Configuration key                 |
+|------------------------------------------|-----------------------------------|
 | [dotnet-format](csharp_dotnet_format.md) | [CSHARP](csharp_dotnet_format.md) |
 
 ## Linted files
@@ -16,10 +16,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| CSHARP_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| CSHARP_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

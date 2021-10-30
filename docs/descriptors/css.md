@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                        | Configuration key                 |
+|-------------------------------|-----------------------------------|
 | [stylelint](css_stylelint.md) | [CSS_STYLELINT](css_stylelint.md) |
 | [scss-lint](css_scss_lint.md) | [CSS_SCSS_LINT](css_scss_lint.md) |
 
@@ -19,8 +19,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| CSS_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| CSS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

@@ -5,12 +5,12 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [jsonlint](json_jsonlint.md) | [JSON](json_jsonlint.md) |
+| Linter                                             | Configuration key                   |
+|----------------------------------------------------|-------------------------------------|
+| [jsonlint](json_jsonlint.md)                       | [JSON](json_jsonlint.md)            |
 | [eslint-plugin-jsonc](json_eslint_plugin_jsonc.md) | [JSON](json_eslint_plugin_jsonc.md) |
-| [v8r](json_v8r.md) | [JSON](json_v8r.md) |
-| [prettier](json_prettier.md) | [JSON](json_prettier.md) |
+| [v8r](json_v8r.md)                                 | [JSON](json_v8r.md)                 |
+| [prettier](json_prettier.md)                       | [JSON](json_prettier.md)            |
 
 ## Linted files
 
@@ -19,8 +19,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| JSON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| JSON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

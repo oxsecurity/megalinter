@@ -5,16 +5,16 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                      | Configuration key               |
+|-----------------------------|---------------------------------|
 | [jscpd](copypaste_jscpd.md) | [COPYPASTE](copypaste_jscpd.md) |
 
 ## Linted files
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                       | Description                   | Default value |
+|--------------------------------|-------------------------------|---------------|
+| COPYPASTE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| COPYPASTE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

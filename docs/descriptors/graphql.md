@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                                    | Configuration key                                                 |
+|-----------------------------------------------------------|-------------------------------------------------------------------|
 | [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| GRAPHQL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GRAPHQL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

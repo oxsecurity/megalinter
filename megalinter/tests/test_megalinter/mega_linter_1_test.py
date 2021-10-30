@@ -114,7 +114,7 @@ class mega_linter_1_test(unittest.TestCase):
             ),
         )
         mega_linter, output = utilstest.call_mega_linter(
-            {"ENABLE_LINTERS": "PYTHON_PYLINT", "VALIDATE_ALL_CODEBASE": "false"}
+            {"DEFAULT_BRANCH": "main","ENABLE_LINTERS": "PYTHON_PYLINT", "VALIDATE_ALL_CODEBASE": "false"}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"

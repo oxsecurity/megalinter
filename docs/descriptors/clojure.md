@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                            | Configuration key               |
+|-----------------------------------|---------------------------------|
 | [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) |
 
 ## Linted files
@@ -19,8 +19,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                     | Description                   | Default value |
+|------------------------------|-------------------------------|---------------|
+| CLOJURE_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| CLOJURE_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
