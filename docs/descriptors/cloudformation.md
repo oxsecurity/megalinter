@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                 | Configuration key                            |
+|----------------------------------------|----------------------------------------------|
 | [cfn-lint](cloudformation_cfn_lint.md) | [CLOUDFORMATION](cloudformation_cfn_lint.md) |
 
 ## Linted files
@@ -22,8 +22,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                            | Description                   | Default value |
+|-------------------------------------|-------------------------------|---------------|
+| CLOUDFORMATION_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| CLOUDFORMATION_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

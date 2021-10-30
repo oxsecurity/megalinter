@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                       | Configuration key        |
+|------------------------------|--------------------------|
 | [htmlhint](html_htmlhint.md) | [HTML](html_htmlhint.md) |
 
 ## Linted files
@@ -17,8 +17,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| HTML_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| HTML_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

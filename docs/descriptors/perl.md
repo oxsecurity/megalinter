@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                           | Configuration key          |
+|----------------------------------|----------------------------|
 | [perlcritic](perl_perlcritic.md) | [PERL](perl_perlcritic.md) |
 
 ## Linted files
@@ -23,10 +23,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| PERL_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| PERL_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

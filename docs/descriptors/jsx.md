@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                  | Configuration key    |
+|-------------------------|----------------------|
 | [eslint](jsx_eslint.md) | [JSX](jsx_eslint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| JSX_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| JSX_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                      | Configuration key      |
+|-----------------------------|------------------------|
 | [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) |
 | [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) |
-| [rstfmt](rst_rstfmt.md) | [RST](rst_rstfmt.md) |
+| [rstfmt](rst_rstfmt.md)     | [RST](rst_rstfmt.md)   |
 
 ## Linted files
 
@@ -18,8 +18,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| RST_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| RST_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

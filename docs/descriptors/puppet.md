@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                               | Configuration key               |
+|--------------------------------------|---------------------------------|
 | [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| PUPPET_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| PUPPET_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

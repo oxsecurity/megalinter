@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                | Configuration key           |
+|---------------------------------------|-----------------------------|
 | [dotenv-linter](env_dotenv_linter.md) | [ENV](env_dotenv_linter.md) |
 
 ## Linted files
@@ -16,8 +16,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                 | Description                   | Default value |
+|--------------------------|-------------------------------|---------------|
+| ENV_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| ENV_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

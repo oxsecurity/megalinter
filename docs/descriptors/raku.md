@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter               | Configuration key    |
+|----------------------|----------------------|
 | [raku](raku_raku.md) | [RAKU](raku_raku.md) |
 
 ## Linted files
@@ -21,8 +21,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| RAKU_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| RAKU_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
