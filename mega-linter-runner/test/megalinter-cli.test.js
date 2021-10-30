@@ -38,7 +38,7 @@ describe("CLI", function () {
     );
   });
 
-  it("(CLI) Upgrade config", async () => {
+  it("(CLI) Upgrade config", async (done) => {
     const params = ["--upgrade"];
     const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
     if (stderr) {
