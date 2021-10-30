@@ -6,10 +6,10 @@ const { MegaLinterUpgrader } = require("../lib/upgrade");
 
 describe("Upgrade config", function () {
   const upgrader = new MegaLinterUpgrader();
-  let i = 0 ;
+  let i = 0;
   for (const item of upgrader.replacements) {
-    i++ ;
-    it("("+i+") "+String(item.regex), () => {
+    i++;
+    it("(" + i + ") " + String(item.regex), () => {
       const replaceRes = item.test.replace(item.regex, item.replacement);
       assert(
         replaceRes === item.testRes,
