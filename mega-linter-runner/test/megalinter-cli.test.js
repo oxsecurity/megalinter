@@ -38,7 +38,7 @@ describe("CLI", function () {
     );
   });
 
-  it("(CLI) Upgrade config", () => {
+  it("(CLI) Upgrade config", async () => {
     const params = ["--upgrade"];
     const { stdout, stderr } = await exec(MEGA_LINTER + params.join(" "));
     if (stderr) {
@@ -49,6 +49,7 @@ describe("CLI", function () {
       stdout.includes("mega-linter-runner applied"),
       'stdout should contains "mega-linter-runner applied"'
     );
+    done();
   });
 
   /*

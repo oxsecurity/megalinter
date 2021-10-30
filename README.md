@@ -12,7 +12,6 @@
 ## Mega-Linter 
 
 <!-- mega-linter-title-end -->
-**(V5 work in progress, please keep using [V4](https://github.com/nvuillam/mega-linter) for now)**
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-718.0-blue)](https://megalinter.github.io/flavors/)
@@ -1115,9 +1114,21 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
 
 ## V4 versus V5
 
+- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to _nvuillam/mega-linter_ into _megalinter/megalinter_)
+
+- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
+
+- Migration from docker hub space **nvuillam** to space **megalinter**
+  - Docker images are now **megalinter/megalinter** or **megalinter/megalinter-FLAVOR**
+
+- Documentation is now hosted at <https://megalinter.github.io/>
+
 - Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
   - **latest** for latest official release
   - **beta** for current content of main branch
   - **alpha** for current content of alpha branch
   - docker image, github action and mega-linter-runner can still be called with exact version number
+ 
 - Being more inclusive: rename `master` branch into `main`
+
+- **IGNORE_GITIGNORED_FILES** parameter default to `true`
