@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (master branch)
 
-## [4.47.0] - 2021-10-30
-
 Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+
+## [4.47.0] - 2021-10-30
 
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
