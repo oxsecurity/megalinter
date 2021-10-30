@@ -11,7 +11,6 @@
 <!-- mega-linter-title-start -->
 
 <!-- mega-linter-title-end -->
-**(V5 work in progress, please keep using [V4](https://github.com/nvuillam/mega-linter) for now)**
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-718.0-blue)](https://megalinter.github.io/flavors/)

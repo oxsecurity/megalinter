@@ -16,7 +16,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
 <!-- readme-header-start -->
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-718.0-blue)](https://megalinter.github.io/flavors/)
-[![Mega-Linter](https://github.com/megalinter/megalinter/workflows/mainMega-Linter/badge.svg?branch=main)](https://megalinter.github.io)
+[![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=main)](https://megalinter.github.io)
 [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)

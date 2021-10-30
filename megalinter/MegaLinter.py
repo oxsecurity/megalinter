@@ -19,9 +19,8 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
-from multiprocessing_logging import install_mp_handler
-
 from megalinter.constants import ML_DOC_URL
+from multiprocessing_logging import install_mp_handler
 
 
 # Function to run linters using multiprocessing pool
@@ -311,9 +310,7 @@ class Megalinter:
             self.validate_all_code_base = False
         # Manage IGNORE_GITIGNORED_FILES
         if config.exists("IGNORE_GITIGNORED_FILES"):
-            self.ignore_gitignore_files = (
-                config.get("IGNORE_GITIGNORED_FILES", "true")
-            )
+            self.ignore_gitignore_files = config.get("IGNORE_GITIGNORED_FILES", "true")
         # Manage IGNORE_GENERATED_FILES
         if config.exists("IGNORE_GENERATED_FILES"):
             self.ignore_generated_files = (
@@ -589,7 +586,7 @@ class Megalinter:
         )
         logging.info(utils.format_hyphens(""))
         logging.info("The Mega-Linter documentation can be found at:")
-        logging.info(" - "+ML_DOC_URL)
+        logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
         logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
         # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
@@ -617,9 +614,7 @@ class Megalinter:
                 "To disable linters or customize their checks, you can use a .mega-linter.yml file "
                 "at the root of your repository"
             )
-            logging.warning(
-                f"More info at {ML_DOC_URL}/configuration/"
-            )
+            logging.warning(f"More info at {ML_DOC_URL}/configuration/")
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":
                     config.delete()
