@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [bash-exec](bash_bash_exec.md) | [BASH_EXEC](bash_bash_exec.md) |
+| Linter                           | Configuration key                     |
+|----------------------------------|---------------------------------------|
+| [bash-exec](bash_bash_exec.md)   | [BASH_EXEC](bash_bash_exec.md)        |
 | [shellcheck](bash_shellcheck.md) | [BASH_SHELLCHECK](bash_shellcheck.md) |
-| [shfmt](bash_shfmt.md) | [BASH_SHFMT](bash_shfmt.md) |
+| [shfmt](bash_shfmt.md)           | [BASH_SHFMT](bash_shfmt.md)           |
 
 ## Linted files
 
@@ -21,8 +21,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| BASH_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| BASH_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| BASH_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| BASH_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

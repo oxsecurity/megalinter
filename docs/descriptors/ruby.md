@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                     | Configuration key       |
+|----------------------------|-------------------------|
 | [rubocop](ruby_rubocop.md) | [RUBY](ruby_rubocop.md) |
 
 ## Linted files
@@ -16,10 +16,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                  | Description                   | Default value |
+|---------------------------|-------------------------------|---------------|
+| RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes

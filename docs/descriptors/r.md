@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
-| [lintr](r_lintr.md) | [R](r_lintr.md) |
+| Linter              | Configuration key |
+|---------------------|-------------------|
+| [lintr](r_lintr.md) | [R](r_lintr.md)   |
 
 ## Linted files
 
@@ -19,8 +19,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| R_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable               | Description                   | Default value |
+|------------------------|-------------------------------|---------------|
+| R_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| R_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

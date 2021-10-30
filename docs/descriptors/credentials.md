@@ -5,16 +5,16 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                                  | Configuration key                        |
+|-----------------------------------------|------------------------------------------|
 | [secretlint](credentials_secretlint.md) | [CREDENTIALS](credentials_secretlint.md) |
 
 ## Linted files
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| CREDENTIALS_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| CREDENTIALS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                         | Description                   | Default value |
+|----------------------------------|-------------------------------|---------------|
+| CREDENTIALS_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| CREDENTIALS_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

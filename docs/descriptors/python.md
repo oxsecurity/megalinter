@@ -5,14 +5,14 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                     | Configuration key                 |
+|----------------------------|-----------------------------------|
 | [pylint](python_pylint.md) | [PYTHON_PYLINT](python_pylint.md) |
-| [black](python_black.md) | [PYTHON_BLACK](python_black.md) |
+| [black](python_black.md)   | [PYTHON_BLACK](python_black.md)   |
 | [flake8](python_flake8.md) | [PYTHON_FLAKE8](python_flake8.md) |
-| [isort](python_isort.md) | [PYTHON_ISORT](python_isort.md) |
+| [isort](python_isort.md)   | [PYTHON_ISORT](python_isort.md)   |
 | [bandit](python_bandit.md) | [PYTHON_BANDIT](python_bandit.md) |
-| [mypy](python_mypy.md) | [PYTHON_MYPY](python_mypy.md) |
+| [mypy](python_mypy.md)     | [PYTHON_MYPY](python_mypy.md)     |
 
 ## Linted files
 
@@ -21,8 +21,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| PYTHON_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| PYTHON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                    | Description                   | Default value |
+|-----------------------------|-------------------------------|---------------|
+| PYTHON_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| PYTHON_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

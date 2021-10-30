@@ -5,8 +5,8 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                           | Configuration key                           |
+|----------------------------------|---------------------------------------------|
 | [kubeval](kubernetes_kubeval.md) | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md) |
 
 ## Linted files
@@ -23,8 +23,8 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                        | Description                   | Default value |
+|---------------------------------|-------------------------------|---------------|
+| KUBERNETES_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| KUBERNETES_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 

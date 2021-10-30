@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter | Configuration key |
-| ------ | ----------------- |
+| Linter                               | Configuration key         |
+|--------------------------------------|---------------------------|
 | [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
-| [revive](go_revive.md) | [GO](go_revive.md) |
+| [revive](go_revive.md)               | [GO](go_revive.md)        |
 
 ## Linted files
 
@@ -17,10 +17,10 @@
 
 ## Configuration in Mega-Linter
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |  |
-| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |  |
+| Variable                | Description                   | Default value |
+|-------------------------|-------------------------------|---------------|
+| GO_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
+| GO_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
 
 ## Behind the scenes
