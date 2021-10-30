@@ -9,7 +9,7 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## Mega-Linter 
+## Mega-Linter
 
 <!-- mega-linter-title-end -->
 
@@ -1128,7 +1128,7 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
   - **beta** for current content of main branch
   - **alpha** for current content of alpha branch
   - docker image, github action and mega-linter-runner can still be called with exact version number
- 
+
 - Being more inclusive: rename `master` branch into `main`
 
 - **IGNORE_GITIGNORED_FILES** parameter default to `true`
