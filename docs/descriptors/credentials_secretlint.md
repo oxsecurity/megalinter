@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/secretlint/secretlint#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://github.com/secretlint/secretlint/raw/master/docs/assets/SecretLintLP.png" alt="secretlint" height="150px" class="megalinter-banner">
+    <img src="https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png" alt="secretlint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
