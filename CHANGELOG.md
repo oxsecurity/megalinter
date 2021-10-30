@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] (main branch, beta version)
+
+Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
+
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.0.1]
+
+- Fix mega-linter-runner bug related to v5
+- Fix online documentation
+
 ## [v5.0.0]
 
 - Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
@@ -18,13 +30,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - docker image, github action and mega-linter-runner can still be called with exact version number
 - Being more inclusive: rename `master` branch into `main`
 - **IGNORE_GITIGNORED_FILES** parameter default to `true`
-
-## [Unreleased] (main branch)
-
-Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter@beta` docker image
-
-- Linter versions upgrades
-<!-- linter-versions-end -->
 
 ## [4.47.0] - 2021-10-30
 

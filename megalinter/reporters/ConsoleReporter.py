@@ -16,7 +16,7 @@ class ConsoleReporter(Reporter):
     name = "CONSOLE"
     scope = "mega-linter"
     gh_url = ML_DOC_URL
-    issues_root = ML_REPO_URL+"/issues"
+    issues_root = ML_REPO_URL + "/issues"
 
     def __init__(self, params=None):
         # Activate console output by default
@@ -144,7 +144,9 @@ class ConsoleReporter(Reporter):
                     )
                 )
                 for suggestion in self.master.flavor_suggestions:
-                    action_path = f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
+                    action_path = (
+                        f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
+                    )
                     flavor_msg = (
                         f"- [{suggestion['flavor']}] {action_path} ({suggestion['linters_number']} linters) "
                         f"{self.gh_url}/flavors/{suggestion['flavor']}/"
