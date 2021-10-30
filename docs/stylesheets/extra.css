@@ -1,4 +1,4 @@
-/* stylelint-disable SelectorFormat */
+/* stylelint-disable SelectorFormat, selector-class-pattern */
 .megalinter-banner {
   height: 50px;
   max-height: 150px;

@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in Mega-Linter: **2.0.492**
+- Version in Mega-Linter: **2.0.524**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -76,7 +76,7 @@ checkov --file myfile.tf
 usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
-               [-o {cli,json,junitxml,github_failed_only,sarif}]
+               [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-bc-ids] [--no-guide] [--quiet] [--compact]
                [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all}]
                [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json}]
@@ -119,7 +119,7 @@ optional arguments:
                         specify a subdirectory after a double-slash //. cannot
                         be used together with --external-checks-dir
   -l, --list            List checks
-  -o {cli,json,junitxml,github_failed_only,sarif}, --output {cli,json,junitxml,github_failed_only,sarif}
+  -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
                         Report output format. Can be repeated
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
