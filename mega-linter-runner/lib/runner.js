@@ -2,6 +2,7 @@
 "use strict";
 const optionsDefinition = require("./options");
 const { spawnSync } = require("child_process");
+const c = require("chalk");
 const path = require("path");
 const which = require("which");
 const fs = require("fs-extra");
@@ -67,7 +68,7 @@ class MegaLinterRunner {
       // v4 retrocompatibility >>
       ((options.flavor === "all" || options.flavor == null) && this.isv4(release))
         ? "nvuillam/mega-linter"
-        : ((options.flavor === "all" || options.flavor == null && this.isv4(release))) ?
+        : (options.flavor !== "all" && this.isv4(release)) ?
           `nvuillam/mega-linter-${options.flavor}` :
           // << v4 retrocompatibility 
           options.flavor === "all" || options.flavor == null
@@ -172,11 +173,11 @@ ERROR: Docker engine has not been found on your system.
   isv4(release) {
     const isV4flag = release === 'insiders' || release.includes('v4');
     if (isV4flag) {
-      console.warn(c.yellow("#######################################################################"));
-      console.warn(c.yellow("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:"));
-      console.warn(c.yellow("- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"));
-      console.warn(c.yellow("- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of main branch of megalinter/megalinter)"));
-      console.warn(c.yellow("#######################################################################"));
+      console.warn(c.bold("#######################################################################"));
+      console.warn(c.bold("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:"));
+      console.warn(c.bold("- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"));
+      console.warn(c.bold("- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of main branch of megalinter/megalinter)"));
+      console.warn(c.bold("#######################################################################"));
     }
     return isV4flag;
   }
