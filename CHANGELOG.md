@@ -8,9 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-- Fix mega-linter-runner bug related to v5
 - Linter versions upgrades
 <!-- linter-versions-end -->
+
+## [v5.0.1]
+
+- Fix mega-linter-runner bug related to v5
+- Fix online documentation
 
 ## [v5.0.0]
 
