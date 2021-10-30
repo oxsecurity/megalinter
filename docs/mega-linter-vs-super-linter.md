@@ -24,7 +24,7 @@ This is pretty handy, especially for linter errors related to formatting (in tha
 
 ## Run locally
 
-Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/)
+Mega-Linter can be run locally thanks to [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/)
 
 ## Reports
 
@@ -40,12 +40,12 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 
 - [Console](reporters/ConsoleReporter.md)
 
-![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 - [Text files](reporters/TextReporter.md)
 - [Pull Request comments](reporters/GitHubCommentReporter.md)
 
-![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
@@ -55,9 +55,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
 
-![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
-![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
 
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
@@ -71,9 +71,9 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
 
 ## Enhanced Documentation
 
-- [**HTML documentation**](https://nvuillam.github.io/mega-linter/)
+- [**HTML documentation**](https://megalinter.github.io/)
 
-![HTML doc home](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_home.jpg)
+![HTML doc home](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_home.jpg)
 
 - **One page per linter documentation** :
   - **All variables** that can be used with this linter
@@ -86,11 +86,11 @@ Mega-Linter can be run locally thanks to [mega-linter-runner](https://nvuillam.g
   - **Help** command text
   - Installation commands
 
-![HTML doc linter](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_linter.jpg)
+![HTML doc linter](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_linter.jpg)
 
 - Installation links for related IDEs
 
-![HTML doc IDE](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/html_doc_ide.jpg)
+![HTML doc IDE](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/html_doc_ide.jpg)
 
 - README
   - Separate languages, formats and tooling formats in the linters table
@@ -102,16 +102,16 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
 
 ## Simplify architecture and evolutive maintenance
 
-- Refactoring runtime in Python, for easier handling than bash thanks to [classes](https://github.com/nvuillam/mega-linter/tree/master/megalinter) and python modules
-- Everything related to each linter [in a single descriptor YML file](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors)
+- Refactoring runtime in Python, for easier handling than bash thanks to [classes](https://github.com/megalinter/megalinter/tree/main/megalinter) and python modules
+- Everything related to each linter [in a single descriptor YML file](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors)
   - easier evolutive maintenance
   - less conflicts to manage between PRs.
-  - Few special cases require a [python linter class](https://github.com/nvuillam/mega-linter/tree/master/megalinter/descriptors))
-- [Default behaviours for all linters](https://github.com/nvuillam/mega-linter/blob/master/megalinter/Linter.py), with possibility to override part of them for special cases
+  - Few special cases require a [python linter class](https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors))
+- [Default behaviours for all linters](https://github.com/megalinter/megalinter/blob/main/megalinter/Linter.py), with possibility to override part of them for special cases
 - Hierarchical architecture: Apply fixes and new behaviours to all linters with a single code update
 - **Documentation as code**
-  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://nvuillam.github.io/mega-linter/supported-linters/)
-  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/)
+  - Generate linters tables (ordered by type: language, format & tooling format) and include it in README. [(see result)](https://megalinter.github.io/supported-linters/)
+  - Generate one markdown file per Linter, containing all configuration variables, infos and examples [(See examples)](https://megalinter.github.io/descriptors/javascript_eslint/)
 - **Automatic generation of Dockerfile** using YML descriptors, always using the linter latest version
   - Dockerfile commands (FROM, ARG, ENV, COPY, RUN )
   - APK packages (linux)
@@ -123,9 +123,9 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
 
 ## Improve robustness & stability
 
-- [Test classes](https://github.com/nvuillam/mega-linter/blob/master/megalinter/tests/test_megalinter) for each capability
-- [Test classes for each linter](https://github.com/nvuillam/mega-linter/tree/master/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/nvuillam/mega-linter/blob/master/.automation/build.py)
-- Setup **code coverage** [![codecov](https://codecov.io/gh/nvuillam/mega-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/mega-linter)
+- [Test classes](https://github.com/megalinter/megalinter/blob/main/megalinter/tests/test_megalinter) for each capability
+- [Test classes for each linter](https://github.com/megalinter/megalinter/tree/main/megalinter/tests/test_megalinter/linters): Automatic generation of test classes using [.automation/build.py](https://github.com/megalinter/megalinter/blob/main/.automation/build.py)
+- Setup **code coverage** [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 - **Development CD / CI**
   - Validate multi-status on PR inside each PR (posted from step "Run against all code base")
   - Run test classes and code coverage with pytest during validation GitHub Action

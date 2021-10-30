@@ -27,9 +27,9 @@ module.exports = optionator({
       option: "release",
       alias: "r",
       type: "String",
-      default: "v4",
+      default: "v5",
       description: "Mega-Linter version",
-      example: ["stable", "latest", "v4.9.0"],
+      example: ["stable", "latest", "v5.9.0"],
     },
     {
       option: "flavor",
@@ -45,9 +45,9 @@ module.exports = optionator({
       type: "String",
       description: "Mega-Linter docker image",
       example: [
-        "ghcr.io/nvuillam/mega-linter:latest",
-        "ghcr.io/nvuillam/mega-linter:v4",
-        "my-registry.com/mega-linter-python:v4",
+        "ghcr.io/megalinter/megalinter:latest",
+        "ghcr.io/megalinter/megalinter:v5",
+        "my-registry.com/mega-linter-python:v5",
       ],
     },
     {
@@ -109,6 +109,12 @@ module.exports = optionator({
       alias: "i",
       type: "Boolean",
       description: "Generate Mega-Linter configuration in your project",
+    },
+    {
+      option: "upgrade",
+      alias: "u",
+      type: "Boolean",
+      description: "Upgrade local repository Mega-Linter configuration",
     },
   ],
   mutuallyExclusive: [

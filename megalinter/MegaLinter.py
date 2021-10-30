@@ -21,6 +21,8 @@ from megalinter import (
 )
 from multiprocessing_logging import install_mp_handler
 
+from megalinter.constants import ML_DOC_URL
+
 
 # Function to run linters using multiprocessing pool
 def run_linters(linters):
@@ -59,7 +61,7 @@ class Megalinter:
         # User-defined rules location
         self.linter_rules_path = self.github_workspace + os.path.sep + ".github/linters"
 
-        self.ignore_gitignore_files = False
+        self.ignore_gitignore_files = True
         self.ignore_generated_files = False
         self.validate_all_code_base = True
         self.filter_regex_include = None
@@ -310,7 +312,7 @@ class Megalinter:
         # Manage IGNORE_GITIGNORED_FILES
         if config.exists("IGNORE_GITIGNORED_FILES"):
             self.ignore_gitignore_files = (
-                config.get("IGNORE_GITIGNORED_FILES", "false") == "true"
+                config.get("IGNORE_GITIGNORED_FILES", "true")
             )
         # Manage IGNORE_GENERATED_FILES
         if config.exists("IGNORE_GENERATED_FILES"):
@@ -587,7 +589,7 @@ class Megalinter:
         )
         logging.info(utils.format_hyphens(""))
         logging.info("The Mega-Linter documentation can be found at:")
-        logging.info(" - https://nvuillam.github.io/mega-linter")
+        logging.info(" - "+ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
         logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))
         # logging.info("GITHUB_SHA: " + os.environ.get("GITHUB_SHA", ""))
@@ -616,7 +618,7 @@ class Megalinter:
                 "at the root of your repository"
             )
             logging.warning(
-                "More info at https://nvuillam.github.io/mega-linter/configuration/"
+                f"More info at {ML_DOC_URL}/configuration/"
             )
             if self.cli is True:
                 if config.get("DISABLE_ERRORS", "false") == "true":
@@ -650,7 +652,7 @@ class Megalinter:
             logging.warning(
                 c.yellow(
                     "- Replace versions used by latest (v5 latest stable version) "
-                    "or beta (previously 'insiders', content of master branch of megalinter/megalinter)"
+                    "or beta (previously 'insiders', content of main branch of megalinter/megalinter)"
                 )
             )
             logging.warning(

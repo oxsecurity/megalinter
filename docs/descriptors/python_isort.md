@@ -12,17 +12,17 @@
 - Version in Mega-Linter: **5.9.3**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
-  - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.isort.cfg){target=_blank} will be used
+  - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
 - See [How to disable isort rules in files](https://pycqa.github.io/isort/docs/configuration/action_comments/){target=_blank}
 
 [![isort - GitHub](https://gh-card.dev/repos/PyCQA/isort.svg?fullname=)](https://github.com/PyCQA/isort){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable isort by adding `PYTHON_ISORT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable isort by adding `PYTHON_ISORT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_ISORT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                    |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -43,24 +43,24 @@
 
 Use isort in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                              |                                           Install                                            |
-|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [atom-python-isort](https://github.com/bh/atom-python-isort)                |           [Visit Web Site](https://github.com/bh/atom-python-isort){target=_blank}           |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [atom-isort](https://atom.io/packages/atom-isort)                           |             [Visit Web Site](https://atom.io/packages/atom-isort){target=_blank}             |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [py-isort.el](https://github.com/paetzke/py-isort.el)                       |           [Visit Web Site](https://github.com/paetzke/py-isort.el){target=_blank}            |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [isort plugin](https://github.com/jcugat/sublime-text-isort-plugin#install) | [Visit Web Site](https://github.com/jcugat/sublime-text-isort-plugin#install){target=_blank} |
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/w0rp/ale)                                          |                 [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                 |
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [vim-isort](https://github.com/fisadev/vim-isort#installation)              |      [Visit Web Site](https://github.com/fisadev/vim-isort#installation){target=_blank}      |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Python Extension](https://github.com/Microsoft/vscode-python)       |         [Visit Web Site](https://github.com/Microsoft/vscode-python){target=_blank}          |
+|                                                                    <!-- -->                                                                    | IDE                                                  | Extension Name                                                              |                                           Install                                            |
+|:----------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [atom-python-isort](https://github.com/bh/atom-python-isort)                |           [Visit Web Site](https://github.com/bh/atom-python-isort){target=_blank}           |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [atom-isort](https://atom.io/packages/atom-isort)                           |             [Visit Web Site](https://atom.io/packages/atom-isort){target=_blank}             |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [py-isort.el](https://github.com/paetzke/py-isort.el)                       |           [Visit Web Site](https://github.com/paetzke/py-isort.el){target=_blank}            |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [isort plugin](https://github.com/jcugat/sublime-text-isort-plugin#install) | [Visit Web Site](https://github.com/jcugat/sublime-text-isort-plugin#install){target=_blank} |
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/w0rp/ale)                                          |                 [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                 |
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [vim-isort](https://github.com/fisadev/vim-isort#installation)              |      [Visit Web Site](https://github.com/fisadev/vim-isort#installation){target=_blank}      |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode Python Extension](https://github.com/Microsoft/vscode-python)       |         [Visit Web Site](https://github.com/Microsoft/vscode-python){target=_blank}          |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                         | Embedded linters |                                                                                                                                                                                 Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -453,7 +453,7 @@ section output options:
 
 ```shell
 Results of isort linter (version 5.6.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_isort/
+See documentation on https://megalinter.github.io/descriptors/python_isort/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/python/python_good_1.py
@@ -465,7 +465,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_i
 
 ```shell
 Results of isort linter (version 5.6.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_isort/
+See documentation on https://megalinter.github.io/descriptors/python_isort/
 -----------------------------------------------
 
 [ERROR] .automation/test/python/python_bad_1.py

@@ -7,6 +7,7 @@ import os
 import unittest
 
 from git import Repo
+from megalinter.constants import ML_REPO
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -26,7 +27,7 @@ class plugins_test(unittest.TestCase):
             local_branch = "master"
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
+                "PLUGINS": f"https://raw.githubusercontent.com/{ML_REPO}/"
                 + local_branch
                 + "/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
@@ -45,7 +46,7 @@ class plugins_test(unittest.TestCase):
         try:
             utilstest.call_mega_linter(
                 {
-                    "PLUGINS": "https://raw.githubus3ent.com/nvuillam/mega-linter/"
+                    "PLUGINS": f"https://raw.githubus3ent.com/{ML_REPO}/"
                     "plugins/.automation/test/mega-linter-plugin-test/test.not.here.megalinter-descriptor.yml",
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
@@ -59,7 +60,7 @@ class plugins_test(unittest.TestCase):
         try:
             utilstest.call_mega_linter(
                 {
-                    "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
+                    "PLUGINS": f"https://raw.githubusercontent.com/{ML_REPO}/"
                     "plugins/.automation/test/some_folder_name/test.megalinter-descriptor.yml",
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",
@@ -77,7 +78,7 @@ class plugins_test(unittest.TestCase):
         try:
             utilstest.call_mega_linter(
                 {
-                    "PLUGINS": "https://raw.githubusercontent.com/nvuillam/mega-linter/"
+                    "PLUGINS": f"https://raw.githubusercontent.com/{ML_REPO}/"
                     "plugins/.automation/test/mega-linter-plugin-test/test.megalinter-wrong.yml",
                     "LOG_LEVEL": "DEBUG",
                     "MULTI_STATUS": "false",

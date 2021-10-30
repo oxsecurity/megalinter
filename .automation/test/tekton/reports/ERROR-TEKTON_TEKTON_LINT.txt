@@ -1,5 +1,5 @@
 Results of tekton-lint linter (version 0.5.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/tekton_tekton_lint/
+See documentation on https://megalinter.github.io/descriptors/tekton_tekton_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/tekton/bad/tekton_bad_1.yml

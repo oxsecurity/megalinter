@@ -13,8 +13,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable rstcheck by adding `RST_RSTCHECK` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable rstcheck by adding `RST_RSTCHECK` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                 | Description                                                                                                                                                                                                         | Default value                                    |
 |------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -35,18 +35,18 @@
 
 Use rstcheck in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                  |                                                                                     Install                                                                                     |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                  |                                                                                     Install                                                                                      |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-restructuredtext](https://marketplace.visualstudio.com/items/lextudio.restructuredtext) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/lextudio.restructuredtext){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                         | Embedded linters |                                                                                                                                                                                 Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -112,7 +112,7 @@ optional arguments:
 
 ```shell
 Results of rstcheck linter (version 3.3.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstcheck/
+See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/rst/rst_good_1.rst
@@ -124,7 +124,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstc
 
 ```shell
 Results of rstcheck linter (version 3.3.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstcheck/
+See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
 -----------------------------------------------
 
 [ERROR] .automation/test/rst/rst_bad_1.rst

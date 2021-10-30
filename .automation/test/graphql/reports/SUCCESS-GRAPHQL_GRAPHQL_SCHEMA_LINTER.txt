@@ -1,5 +1,5 @@
 Results of graphql-schema-linter linter (version 1.0.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/graphql_graphql_schema_linter/
+See documentation on https://megalinter.github.io/descriptors/graphql_graphql_schema_linter/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/graphql/graphql_good_1.graphql

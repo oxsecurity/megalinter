@@ -1,15 +1,15 @@
 # Mega-Linter GitLab CI job configuration file
-# More info at https://nvuillam.github.io/mega-linter
+# More info at https://megalinter.github.io
 
 mega-linter:
   stage: test
   # You can override Mega-Linter flavor used to have faster performances
-  # More info at https://nvuillam.github.io/mega-linter/flavors/
+  # More info at https://megalinter.github.io/flavors/
   image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
   script: ["true"]
   variables:
     # All available variables are described in documentation
-    # https://nvuillam.github.io/mega-linter/configuration/
+    # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
     DEFAULT_BRANCH: <%= DEFAULT_BRANCH %>
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY

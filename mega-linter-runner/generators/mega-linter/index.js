@@ -70,12 +70,12 @@ module.exports = class extends Generator {
         type: "list",
         name: "version",
         message: "Which Mega-Linter version do you want to use ?",
-        default: "v4",
+        default: "v5",
         choices: [
-          { name: "V4 (Latest stable version)", value: "v4" },
+          { name: "v5 (Latest official release)", value: "v5" },
           {
-            name: "Insiders (master branch of Mega-Linter repository)",
-            value: "insiders",
+            name: "Beta (main branch of Mega-Linter repository)",
+            value: "beta",
           },
         ],
       },
@@ -83,7 +83,7 @@ module.exports = class extends Generator {
         type: "list",
         name: "defaultBranch",
         message: "What is the name of your repository default branch ?",
-        default: "master",
+        default: "main",
         choices: [
           { name: "master", value: "master" },
           { name: "main", value: "main" },
@@ -139,7 +139,7 @@ module.exports = class extends Generator {
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://nvuillam.github.io/mega-linter/installation/"
+        "Please follow manual instructions to define CI job at https://megalinter.github.io/installation/"
       );
       this.log(
         "You may call `npx mega-linter-runner` to run Mega-Linter from any system (requires node.js & docker)"
@@ -163,26 +163,26 @@ module.exports = class extends Generator {
   _computeValues() {
     // Flavor
     if (this.props.flavor === "all") {
-      this.gitHubActionName = "nvuillam/mega-linter";
-      this.dockerImageName = "nvuillam/mega-linter";
+      this.gitHubActionName = "megalinter/megalinter";
+      this.dockerImageName = "megalinter/megalinter";
     } else {
       this.gitHubActionName =
-        "nvuillam/mega-linter/flavors/" + this.props.flavor;
-      this.dockerImageName = "nvuillam/mega-linter-" + this.props.flavor;
+        "megalinter/megalinter/flavors/" + this.props.flavor;
+      this.dockerImageName = "megalinter/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v4") {
-      this.gitHubActionVersion = "v4";
-      this.dockerImageVersion = "v4";
+    if (this.props.version == "v5") {
+      this.gitHubActionVersion = "v5";
+      this.dockerImageVersion = "v5";
     } else {
-      this.gitHubActionVersion = "insiders";
-      this.dockerImageVersion = "latest";
+      this.gitHubActionVersion = "beta";
+      this.dockerImageVersion = "beta";
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} to validate only diff with master branch`;
+      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
     }
     this.disable = false;
     // COPY PASTES
@@ -227,7 +227,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#jenkins"
     );
   }
 
@@ -251,7 +251,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#gitlab"
     );
   }
 

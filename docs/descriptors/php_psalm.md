@@ -12,7 +12,7 @@
 - Version in Mega-Linter: **Psalm.4.x-dev@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
-  - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/psalm.xml){target=_blank} will be used
+  - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
 - See [How to disable psalm rules in files](https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression){target=_blank}
 - See [Index of problems detected by psalm](https://psalm.dev/docs/running_psalm/issues/){target=_blank}
 
@@ -20,8 +20,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable psalm by adding `PHP_PSALM` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable psalm by adding `PHP_PSALM` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                              | Description                                                                                                                                                                                                         | Default value                                    |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -42,19 +42,19 @@
 
 Use psalm in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                          |                                                                                      Install                                                                                       |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics)       |                           <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                            |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/getpsalm.psalm-vscode-plugin){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                          |                                                                                       Install                                                                                       |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics)       |                            <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                            |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Psalm VsCode Plugin](https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/getpsalm.psalm-vscode-plugin){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                      | Embedded linters |                                                                                                                                                                           Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor       |        94        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|         <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://nvuillam.github.io/mega-linter/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor       |        94        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -263,7 +263,7 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 
 ```shell
 Results of psalm linter (version 4.3.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
+See documentation on https://megalinter.github.io/descriptors/php_psalm/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/php/php_good_1.php
@@ -296,7 +296,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psal
 
 ```shell
 Results of psalm linter (version 4.3.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
+See documentation on https://megalinter.github.io/descriptors/php_psalm/
 -----------------------------------------------
 
 [ERROR] .automation/test/php/php_bad_1.php

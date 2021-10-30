@@ -18,7 +18,7 @@ linters:
       Scalafix lints and fixes scala files
 
       - As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
-      - scalafix arguments related to [semantic options](https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/#help-content) can not be used
+      - scalafix arguments related to [semantic options](https://megalinter.github.io/descriptors/scala_scalafix/#help-content) can not be used
     linter_rules_url: https://scalacenter.github.io/scalafix/docs/rules/overview.html
     linter_rules_configuration_url: https://scalacenter.github.io/scalafix/docs/users/configuration.html
     linter_rules_inline_disable_url: https://scalacenter.github.io/scalafix/docs/users/suppression.html

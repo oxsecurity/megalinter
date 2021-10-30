@@ -7,15 +7,15 @@
 - Version in Mega-Linter: **0.12.99**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
-  - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
+  - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
 - See [How to disable phpstan rules in files](https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs){target=_blank}
 
 [![phpstan - GitHub](https://gh-card.dev/repos/phpstan/phpstan.svg?fullname=)](https://github.com/phpstan/phpstan){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable phpstan by adding `PHP_PHPSTAN` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable phpstan by adding `PHP_PHPSTAN` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                | Description                                                                                                                                                                                                         | Default value                                    |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -36,19 +36,19 @@
 
 Use phpstan in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                    |                                                                                      Install                                                                                      |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |                           <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                           |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpstan](https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/calsmurf2904.vscode-phpstan){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                    |                                                                                      Install                                                                                       |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|---------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PHPStan / Psalm / Generics](https://plugins.jetbrains.com/plugin/12754-phpstan--psalm--generics) |                           <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/12754"></iframe>                            |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpstan](https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/calsmurf2904.vscode-phpstan){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                      | Embedded linters |                                                                                                                                                                           Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor       |        94        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|         <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://nvuillam.github.io/mega-linter/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-php/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-php) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor       |        94        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -144,7 +144,7 @@ RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 
 ```shell
 Results of phpstan linter (version 0.12.58)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
+See documentation on https://megalinter.github.io/descriptors/php_phpstan/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/php/php_good_1.php
@@ -161,7 +161,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phps
 
 ```shell
 Results of phpstan linter (version 0.12.58)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
+See documentation on https://megalinter.github.io/descriptors/php_phpstan/
 -----------------------------------------------
 
 [ERROR] .automation/test/php/php_bad_1.php

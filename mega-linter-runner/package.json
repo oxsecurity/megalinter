@@ -3,7 +3,7 @@
   "version": "4.47.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nvuillam/mega-linter.git"
+    "url": "https://github.com/megalinter/megalinter.git"
   },
   "description": "Local runner for Mega-Linter",
   "main": "index.js",
@@ -78,9 +78,10 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.2",
     "find-package-json": "^1.2.0",
     "fs-extra": "^10.0.0",
+    "glob-promise": "^4.2.2",
     "optionator": "^0.9.1",
     "which": "^2.0.2",
     "yeoman-environment": "^3.6.0",

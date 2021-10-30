@@ -11,15 +11,15 @@
 
 - Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme){target=_blank}
 - See [How to configure dartanalyzer rules](https://dart.dev/guides/language/analysis-options#the-analysis-options-file){target=_blank}
-  - If custom `analysis_options.yml` config file is not found, [analysis_options.yml](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/analysis_options.yml){target=_blank} will be used
+  - If custom `analysis_options.yml` config file is not found, [analysis_options.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/analysis_options.yml){target=_blank} will be used
 - See [How to disable dartanalyzer rules in files](https://dart.dev/guides/language/analysis-options#suppressing-rules-for-a-file){target=_blank}
 
 [![sdk - GitHub](https://gh-card.dev/repos/dart-lang/sdk.svg?fullname=)](https://github.com/dart-lang/sdk){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable dartanalyzer by adding `DART_DARTANALYZER` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable dartanalyzer by adding `DART_DARTANALYZER` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value                                    |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -40,19 +40,19 @@
 
 Use dartanalyzer in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                       |                                                                                  Install                                                                                  |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://plugins.jetbrains.com/plugin/6351-dart)              |                       <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/6351"></iframe>                        |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/Dart-Code.dart-code){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                       |                                                                                  Install                                                                                   |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [dart-jetbrains-plugin](https://plugins.jetbrains.com/plugin/6351-dart)              |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/6351"></iframe>                        |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [dart-code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Dart-Code.dart-code){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                       | Embedded linters |                                                                                                                                                                             Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor        |        94        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|        <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://nvuillam.github.io/mega-linter/flavors/dart/)     | Optimized for DART based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dart/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dart) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor        |        94        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)     | Optimized for DART based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 
 ## Behind the scenes
 
@@ -128,7 +128,7 @@ RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sger
 
 ```shell
 Results of dartanalyzer linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+See documentation on https://megalinter.github.io/descriptors/dart_dartanalyzer/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/dart/dart_good_1.dart
@@ -141,7 +141,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dar
 
 ```shell
 Results of dartanalyzer linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/dart_dartanalyzer/
+See documentation on https://megalinter.github.io/descriptors/dart_dartanalyzer/
 -----------------------------------------------
 
 [ERROR] .automation/test/dart/dart_bad_1.dart

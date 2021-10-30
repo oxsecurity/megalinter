@@ -1,5 +1,5 @@
 Results of standard linter (version 15.0.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_standard/
+See documentation on https://megalinter.github.io/descriptors/typescript_standard/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/typescript/typescript_good_1.ts

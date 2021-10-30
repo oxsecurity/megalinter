@@ -12,15 +12,15 @@
 - Version in Mega-Linter: **2021.06.18**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
-  - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
+  - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
 - See [Index of problems detected by clj-kondo](https://github.com/borkdude/clj-kondo#features){target=_blank}
 
 [![clj-kondo - GitHub](https://gh-card.dev/repos/borkdude/clj-kondo.svg?fullname=)](https://github.com/borkdude/clj-kondo){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable clj-kondo by adding `CLOJURE_CLJ_KONDO` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value                                    |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -41,21 +41,21 @@
 
 Use clj-kondo in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                      |                                                                                 Install                                                                                  |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-kondo](https://atom.io/packages/linter-kondo)                               |                                                  [Visit Web Site](https://atom.io/packages/linter-kondo){target=_blank}                                                  |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo)                |                                             [Visit Web Site](https://github.com/borkdude/flycheck-clj-kondo){target=_blank}                                              |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/borkdude.clj-kondo){target=_blank} |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint)                         |                                               [Visit Web Site](https://github.com/marcomorain/clojure-lint){target=_blank}                                               |
+|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                      |                                                                                  Install                                                                                  |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-kondo](https://atom.io/packages/linter-kondo)                               |                                                  [Visit Web Site](https://atom.io/packages/linter-kondo){target=_blank}                                                   |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck-clj-kondo](https://github.com/borkdude/flycheck-clj-kondo)                |                                              [Visit Web Site](https://github.com/borkdude/flycheck-clj-kondo){target=_blank}                                              |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [clj-kondo](https://marketplace.visualstudio.com/items?itemName=borkdude.clj-kondo) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/borkdude.clj-kondo){target=_blank} |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Clojure lint](https://github.com/marcomorain/clojure-lint)                         |                                               [Visit Web Site](https://github.com/marcomorain/clojure-lint){target=_blank}                                                |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                       | Embedded linters |                                                                                                                                                                             Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:----------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor        |        94        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|        <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://nvuillam.github.io/mega-linter/flavors/java/)     | Optimized for JAVA based projects |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-java/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-java) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor        |        94        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)     | Optimized for JAVA based projects |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 
 ## Behind the scenes
 
@@ -135,7 +135,7 @@ COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 
 ```shell
 Results of clj-kondo linter (version 2020.09.09)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_clj_kondo/
+See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/clojure/clojure_good_1.clj
@@ -147,7 +147,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_
 
 ```shell
 Results of clj-kondo linter (version 2020.09.09)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/clojure_clj_kondo/
+See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
 -----------------------------------------------
 
 [ERROR] .automation/test/clojure/clojure_bad_1.clj

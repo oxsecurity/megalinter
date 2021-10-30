@@ -1,5 +1,5 @@
 # Configuration file for Mega-Linter
-# See all available variables at https://nvuillam.github.io/mega-linter/configuration/ and in linters documentation
+# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default

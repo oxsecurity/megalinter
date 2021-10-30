@@ -1,5 +1,5 @@
 Results of rst-lint linter (version 1.3.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rst_lint/
+See documentation on https://megalinter.github.io/descriptors/rst_rst_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/rst/rst_good_1.rst

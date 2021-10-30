@@ -7,7 +7,7 @@
 - Version in Mega-Linter: **4.0.1**
 - Visit [Official Web Site](https://flake8.pycqa.org){target=_blank}
 - See [How to configure flake8 rules](https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration){target=_blank}
-  - If custom `.flake8` config file is not found, [.flake8](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.flake8){target=_blank} will be used
+  - If custom `.flake8` config file is not found, [.flake8](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.flake8){target=_blank} will be used
 - See [How to disable flake8 rules in files](https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors){target=_blank}
 - See [Index of problems detected by flake8](https://flake8.pycqa.org/en/latest/user/error-codes.html){target=_blank}
 
@@ -15,8 +15,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable flake8 by adding `PYTHON_FLAKE8` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable flake8 by adding `PYTHON_FLAKE8` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                  | Description                                                                                                                                                                                                         | Default value                                    |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -37,20 +37,20 @@
 
 Use flake8 in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                              |                                                            Install                                                            |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                                 | [linter-flake8](https://atom.io/packages/linter-flake8)                     |                            [Visit Web Site](https://atom.io/packages/linter-flake8){target=_blank}                            |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [flake8-support](https://plugins.jetbrains.com/plugin/11563-flake8-support) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11563"></iframe> |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Native Support](https://code.visualstudio.com/docs/python/linting#_flake8) |                  [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_flake8){target=_blank}                   |
+|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                              |                                                            Install                                                            |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-----------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                                 | [linter-flake8](https://atom.io/packages/linter-flake8)                     |                            [Visit Web Site](https://atom.io/packages/linter-flake8){target=_blank}                            |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [flake8-support](https://plugins.jetbrains.com/plugin/11563-flake8-support) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/11563"></iframe> |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [Native Support](https://code.visualstudio.com/docs/python/linting#_flake8) |                  [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_flake8){target=_blank}                   |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                         | Embedded linters |                                                                                                                                                                                 Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -191,7 +191,7 @@ Installed plugins: mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0
 
 ```shell
 Results of flake8 linter (version 3.8.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_flake8/
+See documentation on https://megalinter.github.io/descriptors/python_flake8/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/python/python_good_1.py
@@ -203,7 +203,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_f
 
 ```shell
 Results of flake8 linter (version 3.8.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_flake8/
+See documentation on https://megalinter.github.io/descriptors/python_flake8/
 -----------------------------------------------
 
 [ERROR] .automation/test/python/python_bad_1.py

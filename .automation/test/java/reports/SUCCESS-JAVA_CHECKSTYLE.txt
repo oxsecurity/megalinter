@@ -1,5 +1,5 @@
 Results of checkstyle linter (version 8.38)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/java_checkstyle/
+See documentation on https://megalinter.github.io/descriptors/java_checkstyle/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/java/java_good_1.java

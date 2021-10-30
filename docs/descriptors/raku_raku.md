@@ -11,8 +11,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                              | Description                                                                                                                                                                                                         | Default value                                               |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
@@ -33,19 +33,19 @@
 
 Use raku in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                   |                                                                                 Install                                                                                  |
-|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [language-perl6](https://atom.io/packages/language-perl6)                                        |                                                 [Visit Web Site](https://atom.io/packages/language-perl6){target=_blank}                                                 |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma                                                | [Native Support](https://commaide.com/)                                                          |                                                          [Visit Web Site](https://commaide.com/){target=_blank}                                                          |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
+|                                                                    <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                   |                                                                                  Install                                                                                  |
+|:----------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [language-perl6](https://atom.io/packages/language-perl6)                                        |                                                 [Visit Web Site](https://atom.io/packages/language-perl6){target=_blank}                                                  |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma                                                | [Native Support](https://commaide.com/)                                                          |                                                          [Visit Web Site](https://commaide.com/){target=_blank}                                                           |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -166,7 +166,7 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 ```shell
 Results of raku linter (version 2020.11)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
+See documentation on https://megalinter.github.io/descriptors/raku_raku/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/raku/raku_good_1.raku
@@ -178,7 +178,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_rak
 
 ```shell
 Results of raku linter (version 2020.11)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
+See documentation on https://megalinter.github.io/descriptors/raku_raku/
 -----------------------------------------------
 
 [ERROR] .automation/test/raku/raku_bad_1.raku

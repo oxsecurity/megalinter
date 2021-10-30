@@ -6,15 +6,15 @@
 
 - Visit [Official Web Site](https://github.com/jimhester/lintr#readme){target=_blank}
 - See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration){target=_blank}
-  - If custom `.lintr` config file is not found, [.lintr](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.lintr){target=_blank} will be used
+  - If custom `.lintr` config file is not found, [.lintr](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.lintr){target=_blank} will be used
 - See [Index of problems detected by lintr](https://github.com/jimhester/lintr#available-linters){target=_blank}
 
 [![lintr - GitHub](https://gh-card.dev/repos/jimhester/lintr.svg?fullname=)](https://github.com/jimhester/lintr){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable lintr by adding `R_LINTR` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable lintr by adding `R_LINTR` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                            | Description                                                                                                                                                                                                         | Default value                                    |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -35,22 +35,22 @@
 
 Use lintr in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                           |                                                                                  Install                                                                                   |
-|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [Atom lintr](https://github.com/AtomLinter/linter-lintr)                                 |                                                [Visit Web Site](https://github.com/AtomLinter/linter-lintr){target=_blank}                                                 |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](http://www.flycheck.org/en/latest/languages.html#r)                           |                                            [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#r){target=_blank}                                             |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | rstudio                                              | [Native Support](https://rstudio.com/)                                                   |                                                           [Visit Web Site](https://rstudio.com/){target=_blank}                                                            |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-lintr](https://github.com/jimhester/SublimeLinter-contrib-lintr)  |                                         [Visit Web Site](https://github.com/jimhester/SublimeLinter-contrib-lintr){target=_blank}                                          |
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                                             |                                                   [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                   |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode R LSP](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/REditorSupport.r-lsp){target=_blank} |
+|                                                                    <!-- -->                                                                    | IDE                                                  | Extension Name                                                                           |                                                                                   Install                                                                                   |
+|:----------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                             | [Atom lintr](https://github.com/AtomLinter/linter-lintr)                                 |                                                 [Visit Web Site](https://github.com/AtomLinter/linter-lintr){target=_blank}                                                 |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)         | [flycheck](http://www.flycheck.org/en/latest/languages.html#r)                           |                                             [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#r){target=_blank}                                             |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | rstudio                                              | [Native Support](https://rstudio.com/)                                                   |                                                            [Visit Web Site](https://rstudio.com/){target=_blank}                                                            |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-lintr](https://github.com/jimhester/SublimeLinter-contrib-lintr)  |                                          [Visit Web Site](https://github.com/jimhester/SublimeLinter-contrib-lintr){target=_blank}                                          |
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                                             |                                                   [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                    |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode R LSP](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/REditorSupport.r-lsp){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -96,7 +96,7 @@ RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos
 
 ```shell
 Results of lintr linter (version 2.0.1.9000)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
+See documentation on https://megalinter.github.io/descriptors/r_lintr/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/r/r_good_1.r
@@ -110,7 +110,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
 
 ```shell
 Results of lintr linter (version 2.0.1.9000)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
+See documentation on https://megalinter.github.io/descriptors/r_lintr/
 -----------------------------------------------
 
 [ERROR] .automation/test/r/r_bad_1.r

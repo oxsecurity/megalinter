@@ -7,15 +7,15 @@
 - Version in Mega-Linter: **7.1.5**
 - Visit [Official Web Site](https://github.com/PowerShell/PSScriptAnalyzer#readme){target=_blank}
 - See [How to configure powershell rules](https://github.com/PowerShell/PSScriptAnalyzer#explicit){target=_blank}
-  - If custom `.powershell-psscriptanalyzer.psd1` config file is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
+  - If custom `.powershell-psscriptanalyzer.psd1` config file is not found, [.powershell-psscriptanalyzer.psd1](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.powershell-psscriptanalyzer.psd1){target=_blank} will be used
 - See [How to disable powershell rules in files](https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules){target=_blank}
 
 [![PSScriptAnalyzer - GitHub](https://gh-card.dev/repos/PowerShell/PSScriptAnalyzer.svg?fullname=)](https://github.com/PowerShell/PSScriptAnalyzer){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable powershell by adding `POWERSHELL_POWERSHELL` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable powershell by adding `POWERSHELL_POWERSHELL` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                          | Description                                                                                                                                                                                                         | Default value                                                       |
 |---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
@@ -36,18 +36,18 @@
 
 Use powershell in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                          |                                                                                  Install                                                                                   |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.PowerShell){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                  | Extension Name                                                                                          |                                                                                   Install                                                                                   |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|---------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-vscode.PowerShell){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                                   | Embedded linters |                                                                                                                                                                                 Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:----------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://nvuillam.github.io/mega-linter/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-dotnet/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-dotnet) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -403,7 +403,7 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 
 ```shell
 Results of powershell linter (version 7.1.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershell_powershell/
+See documentation on https://megalinter.github.io/descriptors/powershell_powershell/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.ps1
@@ -421,7 +421,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershe
 
 ```shell
 Results of powershell linter (version 7.1.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershell_powershell/
+See documentation on https://megalinter.github.io/descriptors/powershell_powershell/
 -----------------------------------------------
 
 [ERROR] .automation/test/powershell/powershell_bad_1.ps1

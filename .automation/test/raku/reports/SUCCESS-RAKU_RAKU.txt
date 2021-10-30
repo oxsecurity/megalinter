@@ -1,5 +1,5 @@
 Results of raku linter (version 2020.11)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/raku_raku/
+See documentation on https://megalinter.github.io/descriptors/raku_raku/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/raku/raku_good_1.raku

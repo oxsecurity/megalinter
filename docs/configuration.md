@@ -5,14 +5,14 @@
 # Configuration
 
 Mega-Linter configuration variables can be defined in a **.mega-linter.yml** file at the root of the repository or with **environment variables**.
-You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/nvuillam/mega-linter/blob/master/.mega-linter.yml)
+You can see an example config file in this repo: [**.mega-linter.yml**](https://github.com/megalinter/megalinter/blob/main/.mega-linter.yml)
 
-Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://nvuillam.github.io/mega-linter/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
+Configuration is assisted with auto-completion and validation in most commonly used IDEs, thanks to [JSON schema](https://megalinter.github.io/json-schemas/configuration.html) stored on [schemastore.org](https://www.schemastore.org/)
 
 - VsCode: You need a VsCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
-![Assisted configuration](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
 
 ## Common variables
 
@@ -36,7 +36,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 | **FORMATTERS_DISABLE_ERRORS**                       | `true`                       | Formatter errors will be reported as errors (and not warnings) if this variable is set to `false`                                                                                                           |
 | **GITHUB_WORKSPACE**                                | ``                           | Base directory for `REPORT_OUTPUT_FOLDER`, for user-defined linter rules location, for location of linted files if `DEFAULT_WORKSPACE` is not set                                                           |
 | **IGNORE_GENERATED_FILES**                          | `false`                      | If set to `true`, Mega-Linter will skip files containing `@generated` marker but without `@not-generated` marker (more info at [https://generated.at](https://generated.at/))                               |
-| **IGNORE_GITIGNORED_FILES**                         | `false`                      | If set to `true`, Mega-Linter will skip files ignored by git using `.gitignore` file                                                                                                                        |
+| **IGNORE_GITIGNORED_FILES**                         | `true`                       | If set to `true`, Mega-Linter will skip files ignored by git using `.gitignore` file                                                                                                                        |
 | **JAVASCRIPT_DEFAULT_STYLE**                        | `standard`                   | Javascript default style to check/apply. `standard`,`prettier`                                                                                                                                              |
 | **LINTER_RULES_PATH**                               | `.github/linters`            | Directory for all linter configuration rules.<br/> Can be a local folder or a remote URL (ex: `https://raw.githubusercontent.com/some_org/some_repo/mega-linter-rules` )                                    |
 | **LOG_FILE**                                        | `mega-linter.log`            | The file name for outputting logs. All output is sent to the log file regardless of `LOG_LEVEL`.                                                                                                            |

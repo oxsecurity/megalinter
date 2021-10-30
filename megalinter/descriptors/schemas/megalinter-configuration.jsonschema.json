@@ -2396,7 +2396,7 @@
     },
     "DEFAULT_BRANCH": {
       "$id": "#/properties/DEFAULT_BRANCH",
-      "default": "master",
+      "default": "main",
       "description": "The name of the repository default branch. Warning: In new github repositories, master branch is named main, so you need to override this value with main",
       "examples": [
         "master",
@@ -3073,8 +3073,8 @@
       "$id": "#/properties/EXTENDS",
       "description": "Base mega-linter.yml config file(s) to extend local configuration from. Can be a single URL or a list of .mega-linter.yml config files URLs",
       "examples:": [
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
+        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
+        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
       ],
       "items": {
         "type": "string"

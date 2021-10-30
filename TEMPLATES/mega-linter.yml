@@ -1,10 +1,10 @@
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://nvuillam.github.io/mega-linter
+# More info at https://megalinter.github.io
 name: Mega-Linter
 
 on:
-  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
+  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to main
   push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
   pull_request:
     branches: [master, main]
@@ -41,12 +41,12 @@ jobs:
       - name: Mega-Linter
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
-        # More info at https://nvuillam.github.io/mega-linter/flavors/
-        uses: nvuillam/mega-linter@v4
+        # More info at https://megalinter.github.io/flavors/
+        uses: megalinter/megalinter@v5
         env:
           # All available variables are described in documentation
-          # https://nvuillam.github.io/mega-linter/configuration/
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
+          # https://megalinter.github.io/configuration/
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
@@ -79,10 +79,10 @@ jobs:
 
       # Push new commit if applicable (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/main' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
         run: sudo chown -Rc $UID .git/
       - name: Commit and push applied linter fixes
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/main' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}

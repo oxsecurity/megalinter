@@ -29,7 +29,7 @@ Posts a pack of text logs , zipped as a GitHub Action artifact
 
 - You can export `mega-linter.log` and folder `<WORKSPACE>/report` as external artifacts
 
-- You can also use [File.io Reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail Reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/)
+- You can also use [File.io Reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail Reporter](https://megalinter.github.io/reporters/EmailReporter/)
 
 ## Report folder structure
 

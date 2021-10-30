@@ -5,14 +5,14 @@
 Scalafix lints and fixes scala files
 
 - As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
-- scalafix arguments related to [semantic options](https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/#help-content) can not be used
+- scalafix arguments related to [semantic options](https://megalinter.github.io/descriptors/scala_scalafix/#help-content) can not be used
 
 ## scalafix documentation
 
 - Version in Mega-Linter: **0.9.31**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
-  - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.scalafix.conf){target=_blank} will be used
+  - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
 - See [How to disable scalafix rules in files](https://scalacenter.github.io/scalafix/docs/users/suppression.html){target=_blank}
 - See [Index of problems detected by scalafix](https://scalacenter.github.io/scalafix/docs/rules/overview.html){target=_blank}
 
@@ -20,8 +20,8 @@ Scalafix lints and fixes scala files
 
 ## Configuration in Mega-Linter
 
-- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                   | Description                                                                                                                                                                                                         | Default value                                    |
 |--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -42,10 +42,10 @@ Scalafix lints and fixes scala files
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                        | Embedded linters |                                                                                                                                                                               Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:-----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor         |        94        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|        <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://nvuillam.github.io/mega-linter/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-scala/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-scala) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                        | Embedded linters |                                                                                                                                                                                 Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor         |        94        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
 
 ## Behind the scenes
 
@@ -238,7 +238,7 @@ RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 
 ```shell
 Results of scalafix linter (version 0.9.24)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
+See documentation on https://megalinter.github.io/descriptors/scala_scalafix/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/scala/scala_good_1.scala
@@ -250,7 +250,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_sc
 
 ```shell
 Results of scalafix linter (version 0.9.24)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/
+See documentation on https://megalinter.github.io/descriptors/scala_scalafix/
 -----------------------------------------------
 
 [ERROR] .automation/test/scala/scala_bad_1.scala

@@ -4,9 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (master branch)
+## [v5.0.0]
 
-Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
+- Migration from docker hub space **nvuillam** to space **megalinter**
+  - Docker images are now **megalinter/megalinter** or **megalinter/megalinter-FLAVOR**
+- Documentation is now hosted at <https://megalinter.github.io/>
+- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to nvuillam/mega-linter into megalinter/megalinter)
+- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
+  - **latest** for latest official release
+  - **beta** for current content of main branch
+  - **alpha** for current content of alpha branch
+  - docker image, github action and mega-linter-runner can still be called with exact version number
+- Being more inclusive: rename `master` branch into `main`
+- **IGNORE_GITIGNORED_FILES** parameter default to `true`
+
+## [Unreleased] (main branch)
+
+Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter@beta` docker image
 
 - Linter versions upgrades
 <!-- linter-versions-end -->
@@ -99,10 +114,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.55 to **0.1.56** on 2021-10-24
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.1 to **6.10.0** on 2021-10-24
   - [sqlfluff](https://www.sqlfluff.com/) from 0.7.0 to **0.7.1** on 2021-10-24
-  - [checkov](https://www.checkov.io/) from 2.0.497 to **2.0.506** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.497 to **2.0.509** on 2021-10-24
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.11.0 to **1.12.0** on 2021-10-24
-  - [checkov](https://www.checkov.io/) from 2.0.506 to **2.0.507** on 2021-10-24
-  - [checkov](https://www.checkov.io/) from 2.0.507 to **2.0.509** on 2021-10-24
   - [checkov](https://www.checkov.io/) from 2.0.509 to **2.0.510** on 2021-10-25
   - [checkov](https://www.checkov.io/) from 2.0.510 to **2.0.516** on 2021-10-26
   - [stylelint](https://stylelint.io) from 14.0.0 to **14.0.1** on 2021-10-26
@@ -219,7 +232,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Upgrade tflint descriptor to use ghcr.io/terraform-linters/tflint docker image and initialize tflint
 - Add page for flavors stats in online documentation
-- Unable to list git ignored files when IGNORED_GITIGNORED_FILES: true ([#PR605](https://github.com/nvuillam/mega-linter/pull/605), by [David Bernard](https://github.com/davidB) with the contribution of [Tim Pansino](https://github.com/TimPansino))
+- Unable to list git ignored files when IGNORED_GITIGNORED_FILES: true ([#PR605](https://github.com/megalinter/megalinter/pull/605), by [David Bernard](https://github.com/davidB) with the contribution of [Tim Pansino](https://github.com/TimPansino))
 
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.3 to **7.1.4** on 2021-08-13
@@ -258,7 +271,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
 - Store docker pulls statistics history
 - add `IGNORE_GENERATED_FILES` in json schema
-- allow commonjs config file for eslint - [#629](https://github.com/nvuillam/mega-linter/pull/629), by [vitalitytv](https://github.com/vitaliytv)
+- allow commonjs config file for eslint - [#629](https://github.com/megalinter/megalinter/pull/629), by [vitalitytv](https://github.com/vitaliytv)
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.295 to **2.0.297** on 2021-07-25
@@ -438,12 +451,12 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.35.0] - 2021-06-12
 
-- Fix [#304](https://github.com/nvuillam/mega-linter/issues/304): Display error message when docker is not found when running mega-linter-runner
+- Fix [#304](https://github.com/megalinter/megalinter/issues/304): Display error message when docker is not found when running mega-linter-runner
 - Calculate sum of docker pulls for main page counter badge
-- Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/nvuillam/mega-linter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
+- Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/megalinter/megalinter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
 - Upgrade clj-kondo 2021.04.23-alpine
 - Upgrade to python:3.9.5-alpine
-- Partial fix [#481](https://github.com/nvuillam/mega-linter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/nvuillam/mega-linter/pull/487) by [Vít Kučera](https://github.com/vkucera))
+- Partial fix [#481](https://github.com/megalinter/megalinter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/megalinter/megalinter/pull/487) by [Vít Kučera](https://github.com/vkucera))
 - Fix build.sh on windows
 - Add trivy security check of all built Mega-Linter docker images
 
@@ -483,7 +496,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.34.0] - 2021-04-30
 
-- Fix bug in Mega-Linter plugins installation (related to [#PR403](https://github.com/nvuillam/mega-linter/pull/403))
+- Fix bug in Mega-Linter plugins installation (related to [#PR403](https://github.com/megalinter/megalinter/pull/403))
 
 - Linter versions upgrades
   - [sqlfluff](https://www.sqlfluff.com/) from 0.5.3 to **0.5.5** on 2021-05-14
@@ -516,7 +529,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.32.0] - 2021-04-20
 
 - Fix #376 : Link-title to license
-- Add support from prettier as JSON formatter ([#421](https://github.com/nvuillam/mega-linter/pull/421), by [Omeed Musavi](https://github.com/omusavi)
+- Add support from prettier as JSON formatter ([#421](https://github.com/megalinter/megalinter/pull/421), by [Omeed Musavi](https://github.com/omusavi)
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
@@ -660,7 +673,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Fix ansible-lint test cases for new version
   - Update --help expected return code for shfmt ash formatter and revive go linter
   - Add --write to update files fixed by eslint
-  - Pimp Mega-Linter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/nvuillam/mega-linter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
+  - Pimp Mega-Linter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/megalinter/megalinter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
   - Increase max line length to 500 in yaml-lint default configuration
 
 - Linter versions upgrades
@@ -707,9 +720,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Fixes
   - Prevent `unexpected token` error using mega-linter-runner on old versions of node
-  - [#293](https://github.com/nvuillam/mega-linter/issues/293) Fix CI for PR from forked repositories
-  - [#295](https://github.com/nvuillam/mega-linter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
-  - [#311](https://github.com/nvuillam/mega-linter/issues/295) Add java in salesforce flavor descriptor because it is used by Apex PMD
+  - [#293](https://github.com/megalinter/megalinter/issues/293) Fix CI for PR from forked repositories
+  - [#295](https://github.com/megalinter/megalinter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
+  - [#311](https://github.com/megalinter/megalinter/issues/295) Add java in salesforce flavor descriptor because it is used by Apex PMD
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.68 to **0.12.69** on 2021-01-24
@@ -746,7 +759,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add SQL linter [sqlfluff](https://github.com/sqlfluff/sqlfluff)
 
 - Fixes
-  - [#269](https://github.com/nvuillam/mega-linter/issues/269) eslint: .eslintrc.yml is considered as found whereas it's not located in workspace root
+  - [#269](https://github.com/megalinter/megalinter/issues/269) eslint: .eslintrc.yml is considered as found whereas it's not located in workspace root
 
 - Linter versions upgrades
   - [stylelint](https://stylelint.io) from 13.8.0 to **13.9.0** on 2021-01-19
@@ -764,7 +777,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Display ending message
 
 - Fixes
-  - [#266](https://github.com/nvuillam/mega-linter/issues/266): shfmt error in python flavor, and reactivate BASH_SHFMT and DOCKERFILE_HADOLINT for own sources linting)
+  - [#266](https://github.com/megalinter/megalinter/issues/266): shfmt error in python flavor, and reactivate BASH_SHFMT and DOCKERFILE_HADOLINT for own sources linting)
 
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
@@ -1078,7 +1091,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.8.0] - 2020-11-17
 
-- New reporter: [Updated sources](https://nvuillam.github.io/mega-linter/reporters/UpdatedSourcesReporter/)
+- New reporter: [Updated sources](https://megalinter.github.io/reporters/UpdatedSourcesReporter/)
 
 ## [4.7.1] - 2020-11-16
 
@@ -1096,7 +1109,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.6.0] - 2020-11-13
 
 - Automatic build of documentation with mkdocs-material
-- Automatic deployment to [https://nvuillam.github.io/mega-linter/](https://nvuillam.github.io/mega-linter/)
+- Automatic deployment to [https://megalinter.github.io/](https://megalinter.github.io/)
 - Add [markdown-link-check](https://github.com/tcort/markdown-link-check)
 
 ## [4.5.0] - 2020-11-11

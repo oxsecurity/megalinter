@@ -1,5 +1,5 @@
 Results of stylelint linter (version 13.8.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_stylelint/
+See documentation on https://megalinter.github.io/descriptors/css_stylelint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/css/css_good_01.css

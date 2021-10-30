@@ -1,5 +1,5 @@
 # Configuration file for Mega-Linter
-# See all available variables at https://nvuillam.github.io/mega-linter/configuration/ and in linters documentation
+# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default
@@ -7,13 +7,13 @@ APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment 
 DISABLE:
   - CLOUDFORMATION
   # - COPYPASTE # Uncomment to disable checks of abusive copy-pastes
+  - CSS
   - EDITORCONFIG
   # - SPELL # Uncomment to disable checks of spelling mistakes
   - JAVASCRIPT
   - TEKTON
 DISABLE_LINTERS:
   - JSON_PRETTIER
-IGNORE_GITIGNORED_FILES: true
 FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
@@ -30,7 +30,7 @@ EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 JSON_REPORTER: true
 PLUGINS:
-  - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
     cwd: "root"

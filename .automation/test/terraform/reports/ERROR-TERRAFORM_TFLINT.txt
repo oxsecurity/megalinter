@@ -1,5 +1,5 @@
 Results of tflint linter (version 0.21.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/
+See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform/bad/terraform_bad_1.tf

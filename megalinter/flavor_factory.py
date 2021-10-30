@@ -4,6 +4,7 @@ import os
 import sys
 
 from megalinter import config
+from megalinter.constants import ML_REPO
 
 ALL_FLAVORS_CACHE = None
 
@@ -82,7 +83,7 @@ def check_active_linters_match_flavor(active_linters):
             f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
             "As they are not available in this docker image, they will not be processed\n"
             "To solve this problem, please either: \n"
-            "- use default flavor nvuillam/mega-linter\n"
+            f"- use default flavor {ML_REPO}\n"
             "- add ignored linters in DISABLE or DISABLE_LINTERS variables in your .mega-linter.yml config file "
             "located in your root directory\n"
             "- ignore this message by setting config variable FLAVOR_SUGGESTIONS to false"

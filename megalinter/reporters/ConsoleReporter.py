@@ -9,13 +9,14 @@ import urllib
 import chalk as c
 import terminaltables
 from megalinter import Reporter, config
+from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
 
 
 class ConsoleReporter(Reporter):
     name = "CONSOLE"
     scope = "mega-linter"
-    gh_url = "https://nvuillam.github.io/mega-linter"
-    issues_root = "https://github.com/nvuillam/mega-linter/issues"
+    gh_url = ML_DOC_URL
+    issues_root = ML_REPO_URL+"/issues"
 
     def __init__(self, params=None):
         # Activate console output by default
@@ -128,11 +129,11 @@ class ConsoleReporter(Reporter):
                     f"[flavors] Use the following link to request the new flavor: {new_flavor_url}"
                 )
             else:
-                build_version = os.environ.get("BUILD_VERSION", "v4")
+                build_version = os.environ.get("BUILD_VERSION", "v5")
                 action_version = (
-                    "v4"
-                    if "v4" in build_version
-                    else "insiders"
+                    "v5"
+                    if "v5" in build_version
+                    else "beta"
                     if build_version == "latest"
                     else build_version
                 )
@@ -143,7 +144,7 @@ class ConsoleReporter(Reporter):
                     )
                 )
                 for suggestion in self.master.flavor_suggestions:
-                    action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                    action_path = f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                     flavor_msg = (
                         f"- [{suggestion['flavor']}] {action_path} ({suggestion['linters_number']} linters) "
                         f"{self.gh_url}/flavors/{suggestion['flavor']}/"

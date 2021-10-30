@@ -6,15 +6,15 @@
 
 - Visit [Official Web Site](https://github.com/vsiakka/gherkin-lint#readme){target=_blank}
 - See [How to configure gherkin-lint rules](https://github.com/vsiakka/gherkin-lint#rule-configuration){target=_blank}
-  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
+  - If custom `.gherkin-lintrc` config file is not found, [.gherkin-lintrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.gherkin-lintrc){target=_blank} will be used
 - See [Index of problems detected by gherkin-lint](https://github.com/vsiakka/gherkin-lint#available-rules){target=_blank}
 
 [![gherkin-lint - GitHub](https://gh-card.dev/repos/vsiakka/gherkin-lint.svg?fullname=)](https://github.com/vsiakka/gherkin-lint){target=_blank}
 
 ## Configuration in Mega-Linter
 
-- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable gherkin-lint by adding `GHERKIN_GHERKIN_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                         | Description                                                                                                                                                                                                         | Default value                                    |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -35,9 +35,9 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|                                                                          <!-- -->                                                                          | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -87,7 +87,7 @@ Options:
 
 ```shell
 Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_gherkin_lint/
+See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/gherkin/gherkin_good_01.feature
@@ -99,7 +99,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_
 
 ```shell
 Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_gherkin_lint/
+See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/gherkin/gherkin_bad_01.feature
