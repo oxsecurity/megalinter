@@ -139,9 +139,9 @@ jobs:
 
 </details>
 
-## Azure
+## Azure Pipelines
 
-Use the following Azure workflow template
+Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
