@@ -8,7 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Quick build to fix stargazers badge regression (see issue #873) (#909)
+- Improve Azure Pipeline template documentation (#908)
+- Take in account  legacy docker images for total docker pull count (#910)
+- Upgrade stale github action
+
 - Linter versions upgrades
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.3 to **5.12.4** on 2021-10-31
 <!-- linter-versions-end -->
 
 ## [v5.0.1]
