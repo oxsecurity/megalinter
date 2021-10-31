@@ -55,7 +55,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
     - [Assisted installation](#assisted-installation)
     - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
-    - [Azure](#azure)
+    - [Azure Pipelines](#azure-pipelines)
     - [Jenkins](#jenkins)
     - [GitLab](#gitlab)
     - [Concourse](#concourse)
@@ -404,9 +404,9 @@ jobs:
 
 </details>
 
-### Azure
+### Azure Pipelines
 
-Use the following Azure workflow template
+Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
