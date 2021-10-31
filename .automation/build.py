@@ -23,7 +23,13 @@ import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
-from megalinter.constants import ML_DOC_URL, ML_DOCKER_IMAGE, ML_REPO, ML_REPO_URL
+from megalinter.constants import (
+    ML_DOC_URL,
+    ML_DOCKER_IMAGE,
+    ML_DOCKER_IMAGE_LEGACY,
+    ML_REPO,
+    ML_REPO_URL,
+)
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
@@ -1294,13 +1300,17 @@ def update_docker_pulls_counter():
             docker_image_url = (
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}"
             )
+            legacy_docker_image_url = (
+                f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}"
+            )
         else:
             docker_image_url = (
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}-{flavor_id}"
             )
-        r = requests_retry_session().get(docker_image_url)
-        resp = r.json()
-        flavor_count = resp["pull_count"] or 0
+            legacy_docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
+        flavor_count_1 = perform_count_request(docker_image_url)
+        flavor_count_2 = perform_count_request(legacy_docker_image_url)
+        flavor_count = flavor_count_1 + flavor_count_2
         logging.info(f"- docker pulls for {flavor_id}: {flavor_count}")
         total_count = total_count + flavor_count
         flavor_stats = list(docker_stats.get(flavor_id, []))
@@ -1323,6 +1333,13 @@ def update_docker_pulls_counter():
     # Write docker stats
     with open(DOCKER_STATS_FILE, "w", encoding="utf-8") as jsonstats:
         json.dump(docker_stats, jsonstats, indent=4, sort_keys=True)
+
+
+def perform_count_request(docker_image_url):
+    r = requests_retry_session().get(docker_image_url)
+    resp = r.json()
+    flavor_count = resp["pull_count"] or 0
+    return flavor_count
 
 
 def keep_one_stat_by_day(flavor_stats):
