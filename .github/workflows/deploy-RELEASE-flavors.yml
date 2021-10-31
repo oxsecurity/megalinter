@@ -33,6 +33,8 @@ jobs:
     name: Deploy Docker Image - RELEASE - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    environment: 
+      name: latest-flavors
     strategy:
       matrix:
         os: [ubuntu-latest]

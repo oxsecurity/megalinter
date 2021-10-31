@@ -46,9 +46,11 @@ jobs:
 
   build:
     # Name the Job
-    name: Deploy Docker Image - PROD - Flavors
+    name: Deploy Docker Image - BETA - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    environment: 
+      name: beta-flavors
     strategy:
       matrix:
         os: [ubuntu-latest]
