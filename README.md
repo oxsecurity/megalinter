@@ -14,13 +14,13 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-1.1k-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-698.1k-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
-[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMega-Linter+branch%3Amain)
 [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
-[![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg)](https://gitHub.com/megalinter/megalinter/graphs/contributors/)
+[![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg)](https://github.com/megalinter/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
@@ -55,7 +55,7 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
     - [Assisted installation](#assisted-installation)
     - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
-    - [Azure](#azure)
+    - [Azure Pipelines](#azure-pipelines)
     - [Jenkins](#jenkins)
     - [GitLab](#gitlab)
     - [Concourse](#concourse)
@@ -404,9 +404,9 @@ jobs:
 
 </details>
 
-### Azure
+### Azure Pipelines
 
-Use the following Azure workflow template
+Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
@@ -845,6 +845,10 @@ _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [Git
 <!-- plugins-section-start -->
 ## Plugins
 
+For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.
+
+But any linter can be callable within MegaLinter thanks to the plugin mechanism !
+
 ### Use plugins
 
 Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
@@ -856,6 +860,10 @@ PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
 ```
+
+### Plugins Catalog
+
+Submit a PR if you want your plugin to appear here :)
 
 ### Create plugins
 

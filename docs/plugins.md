@@ -4,6 +4,10 @@
 
 # Plugins
 
+For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.
+
+But any linter can be callable within MegaLinter thanks to the plugin mechanism !
+
 ## Use plugins
 
 Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
@@ -15,6 +19,10 @@ PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
 ```
+
+## Plugins Catalog
+
+Submit a PR if you want your plugin to appear here :)
 
 ## Create plugins
 
