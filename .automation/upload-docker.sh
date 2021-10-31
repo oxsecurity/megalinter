@@ -490,6 +490,7 @@ UploadImage() {
     ############################################
     # Upload the docker image that was created #
     ############################################
+    docker push "${CONTAINER_URL}:latest" 2>&1
     docker push "${CONTAINER_URL}:${MAJOR_TAG}" 2>&1
 
     #######################
