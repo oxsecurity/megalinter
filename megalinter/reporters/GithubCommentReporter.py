@@ -10,11 +10,10 @@ import urllib
 
 import github
 from megalinter import Reporter, config
+from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
 from pytablewriter import MarkdownTableWriter
 
-from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
-
-DOCS_URL_DESCRIPTORS_ROOT = ML_DOC_URL+"/descriptors"
+DOCS_URL_DESCRIPTORS_ROOT = ML_DOC_URL + "/descriptors"
 
 
 def log_link(label, url):
@@ -171,11 +170,11 @@ class GithubCommentReporter(Reporter):
                     for suggestion in self.master.flavor_suggestions:
                         build_version = os.environ.get("BUILD_VERSION", "v5")
                         action_version = (
-                            "v5"
-                            if len(build_version) > 20
-                            else build_version
+                            "v5" if len(build_version) > 20 else build_version
                         )
-                        action_path = f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
+                        action_path = (
+                            f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
+                        )
                         p_r_msg += (
                             f"- [**{action_path}**]({self.gh_url}/flavors/{suggestion['flavor']}/)"
                             f" ({suggestion['linters_number']} linters)"

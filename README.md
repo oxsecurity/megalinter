@@ -9,12 +9,12 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## Mega-Linter 
+## Mega-Linter
 
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-718.0-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-1.1k-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
 [![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMega-Linter+branch%3Amain)
@@ -845,6 +845,10 @@ _Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [Git
 <!-- plugins-section-start -->
 ## Plugins
 
+For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.
+
+But any linter can be callable within MegaLinter thanks to the plugin mechanism !
+
 ### Use plugins
 
 Just add plugin URLs in `PLUGINS` property of `.mega-linter.yml`
@@ -856,6 +860,10 @@ PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
 ```
+
+### Plugins Catalog
+
+Submit a PR if you want your plugin to appear here :)
 
 ### Create plugins
 
@@ -1128,7 +1136,7 @@ For linters less commonly used, Mega-Linters offers a plugins architecture so an
   - **beta** for current content of main branch
   - **alpha** for current content of alpha branch
   - docker image, github action and mega-linter-runner can still be called with exact version number
- 
+
 - Being more inclusive: rename `master` branch into `main`
 
 - **IGNORE_GITIGNORED_FILES** parameter default to `true`

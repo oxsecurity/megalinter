@@ -23,11 +23,10 @@ import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
+from megalinter.constants import ML_DOC_URL, ML_DOCKER_IMAGE, ML_REPO, ML_REPO_URL
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
-
-from megalinter.constants import ML_DOC_URL, ML_DOCKER_IMAGE, ML_REPO, ML_REPO_URL
 
 UPDATE_DOC = "--doc" in sys.argv
 RELEASE = "--release" in sys.argv
@@ -37,9 +36,9 @@ if RELEASE is True:
         RELEASE_TAG = "v" + RELEASE_TAG
 
 BRANCH = "main"
-URL_ROOT = ML_REPO_URL+"/tree/" + BRANCH
+URL_ROOT = ML_REPO_URL + "/tree/" + BRANCH
 MKDOCS_URL_ROOT = ML_DOC_URL
-URL_RAW_ROOT = ML_REPO_URL+ "/raw/" + BRANCH
+URL_RAW_ROOT = ML_REPO_URL + "/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"
 DOCS_URL_ROOT = URL_ROOT + "/docs"
 DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
@@ -534,8 +533,7 @@ def generate_flavor_documentation(flavor_id, flavor, linters_tables_md):
         f"{ML_DOCKER_IMAGE}-{flavor_id}/v5)"
     )
     docker_pulls_badge = (
-        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/"
-        f"{ML_DOCKER_IMAGE}-{flavor_id})"
+        f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE}-{flavor_id})"
     )
     flavor_doc_md = [
         f"# {flavor_id} Mega-Linter Flavor",
@@ -1297,7 +1295,9 @@ def update_docker_pulls_counter():
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}"
             )
         else:
-            docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}-{flavor_id}"
+            docker_image_url = (
+                f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}-{flavor_id}"
+            )
         r = requests_retry_session().get(docker_image_url)
         resp = r.json()
         flavor_count = resp["pull_count"] or 0
