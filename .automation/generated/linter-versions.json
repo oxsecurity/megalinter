@@ -79,7 +79,7 @@
     "terraform-fmt": "1.0.10",
     "terragrunt": "0.35.5",
     "terrascan": "1.12.0",
-    "tflint": "0.33.0",
+    "tflint": "0.33.1",
     "tsqllint": "1.14.0.0",
     "v8r": "0.6.1",
     "xmllint": "20912",

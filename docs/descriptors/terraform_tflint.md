@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.33.0**
+- Version in Mega-Linter: **0.33.1**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
