@@ -9,9 +9,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.3 to **5.12.4** on 2021-10-31
-  - [checkstyle](https://checkstyle.sourceforge.io) from 9.0.1 to **9.1** on 2021-10-31
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.0 to **0.33.1** on 2021-10-31
 <!-- linter-versions-end -->
 
 ## [v5.0.2]
