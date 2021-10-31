@@ -1,6 +1,6 @@
 {
   "name": "mega-linter-runner",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/megalinter/megalinter.git"
