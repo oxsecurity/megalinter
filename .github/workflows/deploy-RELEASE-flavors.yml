@@ -86,21 +86,6 @@ jobs:
         shell: bash
         run: .automation/upload-docker.sh
 
-      ###################################
-      # Run Deploy script for Dockerhub #
-      ###################################
-      - name: Deploy Release image to Dockerhub (latest tag)
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter-${{ matrix.flavor }}
-          IMAGE_VERSION: latest
-          DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
-
       # Free disk space
       - name: Free Disk space
         shell: bash

@@ -77,21 +77,6 @@ jobs:
         shell: bash
         run: .automation/upload-docker.sh
 
-      ###################################
-      # Run Deploy script for Dockerhub #
-      ###################################
-      - name: Deploy Release image to Dockerhub (latest tag)
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter
-          IMAGE_VERSION: latest
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
-
       ###################################################
       # Run Deploy script for GitHub Container Registry #
       ###################################################
@@ -102,21 +87,6 @@ jobs:
           GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
           IMAGE_REPO: megalinter/megalinter
           IMAGE_VERSION: ${{ github.event.release.tag_name }}
-          DOCKERFILE_PATH: Dockerfile
-          REGISTRY: GCR
-        shell: bash
-        run: .automation/upload-docker.sh
-
-      ###################################################
-      # Run Deploy script for GitHub Container Registry #
-      ###################################################
-      - name: Deploy Release image to GitHub Container Registry (latest tag)
-        env:
-          # Set the Env Vars
-          GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
-          GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter
-          IMAGE_VERSION: latest
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: GCR
         shell: bash
