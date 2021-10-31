@@ -23,7 +23,13 @@ import terminaltables
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
-from megalinter.constants import ML_DOC_URL, ML_DOCKER_IMAGE,ML_DOCKER_IMAGE_LEGACY, ML_REPO, ML_REPO_URL
+from megalinter.constants import (
+    ML_DOC_URL,
+    ML_DOCKER_IMAGE,
+    ML_DOCKER_IMAGE_LEGACY,
+    ML_REPO,
+    ML_REPO_URL,
+)
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
@@ -1301,9 +1307,7 @@ def update_docker_pulls_counter():
             docker_image_url = (
                 f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE}-{flavor_id}"
             )
-            legacy_docker_image_url = (
-                f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
-            )
+            legacy_docker_image_url = f"https://hub.docker.com/v2/repositories/{ML_DOCKER_IMAGE_LEGACY}-{flavor_id}"
         flavor_count_1 = perform_count_request(docker_image_url)
         flavor_count_2 = perform_count_request(legacy_docker_image_url)
         flavor_count = flavor_count_1 + flavor_count_2
