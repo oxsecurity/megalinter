@@ -6,10 +6,10 @@ location$.subscribe(function(url) {
     }
     gtag("js", new Date());
 
-    gtag("config", "G-3DM50255LC");
+    gtag("config", "G-LQDMMC8FLG");
 });
 */
-var gtag_id = "G-3DM50255LC";
+var gtag_id = "G-LQDMMC8FLG";
 
 var script = document.createElement("script");
 script.src = "https://www.googletagmanager.com/gtag/js?id=" + gtag_id;
