@@ -8,10 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-- Use GH actions concurrency to cancel runs (#921)
-
 - Linter versions upgrades
 <!-- linter-versions-end -->
+
+## [v5.0.6]
+
+- Use GH actions concurrency to cancel runs (#921)
 
 ## [v5.0.5]
 
