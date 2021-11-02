@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in Mega-Linter: **0.12.99**
+- Version in Mega-Linter: **1.0.0**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -95,7 +95,6 @@ Arguments:
   paths                                        Paths with source code to run analysis on
 
 Options:
-      --paths-file=PATHS-FILE                  Path to a file with a list of paths to run analysis on
   -c, --configuration=CONFIGURATION            Path to project configuration file
   -l, --level=LEVEL                            Level of rule options - the higher the stricter
       --no-progress                            Do not show progress bar, only results
