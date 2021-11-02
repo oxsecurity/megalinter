@@ -8,9 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-- Fix `mega-linter-runner --install` template for Github Action Workflow
-- Replace expression "abusive copy-paste" by "excessive copy-paste"
-
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
