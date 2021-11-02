@@ -10,7 +10,7 @@ linters:
     linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
     linter_repo: https://github.com/kucherenko/jscpd
     linter_text: |
-      JSCPD browses all files of your repository to detect abusive copy-pastes
+      JSCPD browses all files of your repository to detect excessive copy-pastes
 
       If you need to ignore folders,files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 

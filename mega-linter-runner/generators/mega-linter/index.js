@@ -57,7 +57,7 @@ module.exports = class extends Generator {
       {
         type: "confirm",
         name: "copyPaste",
-        message: "Do you want to detect abusive copy-pastes ?",
+        message: "Do you want to detect excessive copy-pastes ?",
         default: true,
       },
       {
@@ -188,10 +188,10 @@ module.exports = class extends Generator {
     // COPY PASTES
     if (this.props.copyPaste === true) {
       this.configCopyPaste =
-        "# - COPYPASTE # Uncomment to disable checks of abusive copy-pastes";
+        "# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes";
     } else {
       this.configCopyPaste =
-        "- COPYPASTE # Comment to enable checks of abusive copy-pastes";
+        "- COPYPASTE # Comment to enable checks of excessive copy-pastes";
       this.disable = true;
     }
     // Spelling mistakes
