@@ -314,14 +314,14 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://megalinter.github.io/
+# More info at https://megalinter.github.io
 name: Mega-Linter
 
 on:
   # Trigger mega-linter at every push. Action will also be visible from Pull Requests to main
   push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
   pull_request:
-    branches: [main, main]
+    branches: [master, main]
 
 env: # Comment env block if you do not want to apply fixes
   # Apply linter fixes configuration
@@ -329,16 +329,11 @@ env: # Comment env block if you do not want to apply fixes
   APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
   APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
-jobs:
-  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  cancel_duplicates:
-    name: Cancel duplicate jobs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fkirc/skip-duplicate-actions@main
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
+jobs:
   build:
     name: Mega-Linter
     runs-on: ubuntu-latest
@@ -355,7 +350,7 @@ jobs:
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: megalinter/megalinter@v4
+        uses: megalinter/megalinter@v5
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/
