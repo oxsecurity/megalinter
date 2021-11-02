@@ -10,20 +10,14 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 ###############
 # Set the Job #
 ###############
 jobs:
-  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  skip_checks:
-    name: Skip checks
-    runs-on: ubuntu-latest
-    if: github.repository == 'megalinter/megalinter'
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          cancel_others: true
 
   build_help_versions:
     # Name the Job
