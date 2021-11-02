@@ -12,6 +12,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.0.5 to **5.1.0** on 2021-11-02
   - [phpstan](https://phpstan.org/) from 0.12.99 to **1.0.0** on 2021-11-02
   - [black](https://black.readthedocs.io/en/stable/) from 21.9 to **21.10** on 2021-11-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.4 to **5.12.5** on 2021-11-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.5 to **0.35.6** on 2021-11-02
 <!-- linter-versions-end -->
 
 ## [v5.0.2]
