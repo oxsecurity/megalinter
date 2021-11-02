@@ -157,6 +157,56 @@ class MegaLinterUpgrader {
         test: "wesh nvuillam/mega-linter",
         testRes: "wesh megalinter/megalinter",
       },
+      // Cancellation of duplicate runs
+      // Job "cancel_duplicate"
+      {
+        regex: /(?<prev_jobs>jobs\s*:(?:.|\n)*)\n(?<indent> *)cancel_duplicates\s*:(?:.|\n)*\n(?<next_job_key>\k<indent>\S*\s*:)/gmi,
+        replacement: `concurrency:
+  group: \${{ github.ref }}-\${{ github.workflow }}
+  cancel-in-progress: true
+
+$<prev_jobs>
+$<next_job_key>`,
+        test: `
+jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  cancel_duplicates:
+    name: Cancel duplicate jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: \${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          cancel_others: true
+
+  build:
+    name: Mega-Linter
+`,
+        testRes: `
+concurrency:
+  group: \${{ github.ref }}-\${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  build:
+    name: Mega-Linter
+`,
+      },
+      // Comment "# Cancel duplicate jobs: https://github.com/fkirc/..."
+      {
+        regex: /^\s*#\s*cancel\s*duplicate.*\n/gmi,
+        replacement: "",
+        test: `
+jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  build:
+`,
+        testRes: `
+jobs:
+  build:
+`,
+      },
     ];
   }
 
