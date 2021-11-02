@@ -9,6 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [coffeelint](http://www.coffeelint.org) from 5.0.5 to **5.1.0** on 2021-11-02
+  - [phpstan](https://phpstan.org/) from 0.12.99 to **1.0.0** on 2021-11-02
+  - [black](https://black.readthedocs.io/en/stable/) from 21.9 to **21.10** on 2021-11-02
 <!-- linter-versions-end -->
 
 ## [v5.0.2]

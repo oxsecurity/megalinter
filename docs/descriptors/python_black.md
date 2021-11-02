@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in Mega-Linter: **21.9**
+- Version in Mega-Linter: **21.10**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
   - If custom `.python-black` config file is not found, [.python-black](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-black){target=_blank} will be used
@@ -174,6 +174,7 @@ Options:
                                   respect --force-exclude option on some
                                   editors that rely on using stdin.
 
+  -W, --workers INTEGER RANGE     Number of parallel workers  [default: 2]
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
                                   2>/dev/null.
