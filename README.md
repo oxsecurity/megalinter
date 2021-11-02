@@ -335,7 +335,7 @@ jobs:
     name: Cancel duplicate jobs
     runs-on: ubuntu-latest
     steps:
-      - uses: fkirc/skip-duplicate-actions@main
+      - uses: fkirc/skip-duplicate-actions@master
         with:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
