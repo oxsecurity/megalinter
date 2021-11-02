@@ -26,17 +26,11 @@ on:
 ###############
 # Set the Job #
 ###############
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
-  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  skip_checks:
-    name: Skip checks
-    if: "!contains(github.event.head_commit.message, 'skip deploy')"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          cancel_others: true
 
   build:
     # Name the Job
