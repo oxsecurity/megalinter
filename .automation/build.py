@@ -395,7 +395,7 @@ def generate_documentation():
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
-        + ", [**abusive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
+        + ", [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
         + "repository sources, generates [**various reports**](#reporters), "
         + "and can even [apply **formatting** and **auto-fixes**](#apply-fixes), "
         + "to **ensure all your projects sources are clean**, whatever "

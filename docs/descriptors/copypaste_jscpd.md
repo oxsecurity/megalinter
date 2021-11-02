@@ -7,7 +7,7 @@
   </a>
 </div>
 
-JSCPD browses all files of your repository to detect abusive copy-pastes
+JSCPD browses all files of your repository to detect excessive copy-pastes
 
 If you need to ignore folders,files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 

@@ -27,6 +27,6 @@ class JsCpdLinter(Linter):
                     ]
                 return [
                     "",
-                    "copy-paste folder has been removed, as no abusive copy-paste has been detected",
+                    "copy-paste folder has been removed, as no excessive copy-paste has been detected",
                 ]
         return []

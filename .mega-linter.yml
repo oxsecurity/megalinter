@@ -7,7 +7,7 @@ DEFAULT_BRANCH: main
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 DISABLE:
   - CLOUDFORMATION
-  # - COPYPASTE # Uncomment to disable checks of abusive copy-pastes
+  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
   - CSS
   - EDITORCONFIG
   # - SPELL # Uncomment to disable checks of spelling mistakes
