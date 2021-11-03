@@ -12,6 +12,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.4 to **0.55.0** on 2021-11-03
   - [phpstan](https://phpstan.org/) from 1.0.0 to **1.0.1** on 2021-11-03
 <!-- linter-versions-end -->
+- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
 
 ## [v5.0.6]
 
