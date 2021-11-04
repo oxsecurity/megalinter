@@ -9,7 +9,7 @@
 
 ## isort documentation
 
-- Version in Mega-Linter: **5.9.3**
+- Version in Mega-Linter: **5.10.0**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
@@ -94,17 +94,19 @@ isort --profile black --settings-file .isort.cfg myfile.py
 ```shell
 usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-d] [--overwrite-in-place] [--show-config] [--show-files] [--df]
-             [-c] [--ws] [--sp SETTINGS_PATH] [--profile PROFILE]
-             [--old-finders] [-j [JOBS]] [--ac] [--interactive]
-             [--format-error FORMAT_ERROR] [--format-success FORMAT_SUCCESS]
-             [--filter-files] [-s SKIP] [--extend-skip EXTEND_SKIP]
-             [--sg SKIP_GLOB] [--extend-skip-glob SKIP_GLOB] [--gitignore]
+             [-c] [--ws] [--sp SETTINGS_PATH] [--cr CONFIG_ROOT]
+             [--resolve-all-configs] [--profile PROFILE] [--old-finders]
+             [-j [JOBS]] [--ac] [--interactive] [--format-error FORMAT_ERROR]
+             [--format-success FORMAT_SUCCESS] [--filter-files] [-s SKIP]
+             [--extend-skip EXTEND_SKIP] [--sg SKIP_GLOB]
+             [--extend-skip-glob EXTEND_SKIP_GLOB] [--gitignore]
              [--ext SUPPORTED_EXTENSIONS]
              [--blocked-extension BLOCKED_EXTENSIONS] [--dont-follow-links]
              [--filename FILENAME] [--allow-root] [-a ADD_IMPORTS] [--append]
              [--af] [--rm REMOVE_IMPORTS] [--float-to-top]
              [--dont-float-to-top] [--ca] [--cs] [-e] [--ff]
-             [--fgw [FORCE_GRID_WRAP]] [-i INDENT] [--lai LINES_AFTER_IMPORTS]
+             [--fgw [FORCE_GRID_WRAP]] [-i INDENT]
+             [--lbi LINES_BEFORE_IMPORTS] [--lai LINES_AFTER_IMPORTS]
              [--lbt LINES_BETWEEN_TYPES] [--le LINE_ENDING] [--ls] [--lss]
              [-m {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}]
              [-n] [--nis] [--ot] [--dt] [--rr] [--reverse-sort]
@@ -122,7 +124,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
              [-f KNOWN_FUTURE_LIBRARY] [-o KNOWN_THIRD_PARTY]
              [-p KNOWN_FIRST_PARTY] [--known-local-folder KNOWN_LOCAL_FOLDER]
              [--virtual-env VIRTUAL_ENV] [--conda-env CONDA_ENV]
-             [--py {all,2,27,3,35,36,37,38,39,auto}]
+             [--py {all,2,27,3,310,35,36,37,38,39,auto}]
              [files ...]
 
 Sort Python import definitions alphabetically within logical sections. Run
@@ -148,12 +150,12 @@ general options:
   -q, --quiet           Shows extra quiet output, only errors are outputted.
   -d, --stdout          Force resulting output to stdout, instead of in-place.
   --overwrite-in-place  Tells isort to overwrite in place using the same file
-                        handle.Comes at a performance and memory usage penalty
-                        over it's standard approach but ensures all file flags
-                        and modes stay unchanged.
+                        handle. Comes at a performance and memory usage
+                        penalty over its standard approach but ensures all
+                        file flags and modes stay unchanged.
   --show-config         See isort's determined config, as well as sources of
                         config options.
-  --show-files          See the files isort will be ran against with the
+  --show-files          See the files isort will be run against with the
                         current config options.
   --df, --diff          Prints a diff of all the changes isort would make to a
                         file, instead of changing it in place
@@ -168,6 +170,16 @@ general options:
   --sp SETTINGS_PATH, --settings-path SETTINGS_PATH, --settings-file SETTINGS_PATH, --settings SETTINGS_PATH
                         Explicitly set the settings path or file instead of
                         auto determining based on file location.
+  --cr CONFIG_ROOT, --config-root CONFIG_ROOT
+                        Explicitly set the config root for resolving all
+                        configs. When used with the --resolve-all-configs
+                        flag, isort will look at all sub-folders in this
+                        config root to resolve config files and sort files
+                        based on the closest available config(if any)
+  --resolve-all-configs
+                        Tells isort to resolve the configs for all sub-
+                        directories and sort files in terms of its closest
+                        config files.
   --profile PROFILE     Base profile type to use for configuration. Profiles
                         include: black, django, pycharm, google, open_stack,
                         plone, attrs, hug, wemake, appnexus. As well as any
@@ -204,23 +216,23 @@ target options:
                         glob.
   --sg SKIP_GLOB, --skip-glob SKIP_GLOB
                         Files that isort should skip over.
-  --extend-skip-glob SKIP_GLOB
+  --extend-skip-glob EXTEND_SKIP_GLOB
                         Additional files that isort should skip over
                         (extending --skip-glob).
   --gitignore, --skip-gitignore
                         Treat project as a git repository and ignore files
                         listed in .gitignore. NOTE: This requires git to be
-                        installed and accesible from the same shell as isort.
+                        installed and accessible from the same shell as isort.
   --ext SUPPORTED_EXTENSIONS, --extension SUPPORTED_EXTENSIONS, --supported-extension SUPPORTED_EXTENSIONS
-                        Specifies what extensions isort can be ran against.
+                        Specifies what extensions isort can be run against.
   --blocked-extension BLOCKED_EXTENSIONS
-                        Specifies what extensions isort can never be ran
+                        Specifies what extensions isort can never be run
                         against.
   --dont-follow-links   Tells isort not to follow symlinks that are
                         encountered when running recursively.
   --filename FILENAME   Provide the filename associated with a stream.
   --allow-root          Tells isort not to treat / specially, allowing it to
-                        be ran against the root dir.
+                        be run against the root dir.
 
 general output options:
   -a ADD_IMPORTS, --add-import ADD_IMPORTS
@@ -257,6 +269,7 @@ general output options:
   -i INDENT, --indent INDENT
                         String to place for indents defaults to " " (4
                         spaces).
+  --lbi LINES_BEFORE_IMPORTS, --lines-before-imports LINES_BEFORE_IMPORTS
   --lai LINES_AFTER_IMPORTS, --lines-after-imports LINES_AFTER_IMPORTS
   --lbt LINES_BETWEEN_TYPES, --lines-between-types LINES_BETWEEN_TYPES
   --le LINE_ENDING, --line-ending LINE_ENDING
@@ -364,9 +377,9 @@ section output options:
                         'LOCALFOLDER')
   --only-sections, --os
                         Causes imports to be sorted based on their sections
-                        like STDLIB,THIRDPARTY etc. Within sections, the
+                        like STDLIB, THIRDPARTY, etc. Within sections, the
                         imports are ordered by their import style and the
-                        imports with same style maintain their relative
+                        imports with the same style maintain their relative
                         positions.
   --ds, --no-sections   Put all imports into the same section bucket
   --fas, --force-alphabetical-sort
@@ -400,7 +413,8 @@ section output options:
   --src SRC_PATHS, --src-path SRC_PATHS
                         Add an explicitly defined source path (modules within
                         src paths have their imports automatically categorized
-                        as first_party).
+                        as first_party). Glob expansion (`*` and `**`) is
+                        supported for this option.
   -b KNOWN_STANDARD_LIBRARY, --builtin KNOWN_STANDARD_LIBRARY
                         Force isort to recognize a module as part of Python's
                         standard library.
@@ -412,8 +426,8 @@ section output options:
                         internal future compatibility libraries. WARNING: this
                         overrides the behavior of __future__ handling and
                         therefore can result in code that can't execute. If
-                        you're looking to add dependencies such as six a
-                        better option is to create a another section below
+                        you're looking to add dependencies such as six, a
+                        better option is to create another section below
                         --future using custom sections. See:
                         https://github.com/PyCQA/isort#custom-sections-and-
                         ordering and the discussion here:
@@ -434,7 +448,7 @@ section output options:
   --conda-env CONDA_ENV
                         Conda environment to use for determining whether a
                         package is third-party
-  --py {all,2,27,3,35,36,37,38,39,auto}, --python-version {all,2,27,3,35,36,37,38,39,auto}
+  --py {all,2,27,3,310,35,36,37,38,39,auto}, --python-version {all,2,27,3,310,35,36,37,38,39,auto}
                         Tells isort to set the known standard library based on
                         the specified Python version. Default is to assume any
                         Python 3 version could be the target, and use a union

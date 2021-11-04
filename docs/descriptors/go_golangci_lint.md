@@ -9,7 +9,7 @@
 
 ## golangci-lint documentation
 
-- Version in Mega-Linter: **1.42.1**
+- Version in Mega-Linter: **1.43.0**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
