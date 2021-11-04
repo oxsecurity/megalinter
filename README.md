@@ -428,7 +428,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
 stage('Mega-Linter') {
     agent {
         docker {
-            image 'megalinter/megalinter:v4'
+            image 'megalinter/megalinter:v5'
             args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
