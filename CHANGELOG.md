@@ -9,13 +9,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.0.7]
+
+- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
+
+- Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.4 to **0.55.0** on 2021-11-03
   - [phpstan](https://phpstan.org/) from 1.0.0 to **1.0.1** on 2021-11-03
   - [golangci-lint](https://golangci-lint.run/) from 1.42.1 to **1.43.0** on 2021-11-04
   - [phpstan](https://phpstan.org/) from 1.0.1 to **1.0.2** on 2021-11-04
   - [isort](https://pycqa.github.io/isort/) from 5.9.3 to **5.10.0** on 2021-11-04
-<!-- linter-versions-end -->
-- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
 
 ## [v5.0.6]
 
