@@ -15,6 +15,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.0.1 to **1.0.2** on 2021-11-04
   - [isort](https://pycqa.github.io/isort/) from 5.9.3 to **5.10.0** on 2021-11-04
 <!-- linter-versions-end -->
+- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
 
 ## [v5.0.6]
 

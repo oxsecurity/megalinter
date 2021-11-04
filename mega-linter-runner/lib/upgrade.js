@@ -161,7 +161,7 @@ class MegaLinterUpgrader {
       // Job "cancel_duplicate"
       {
         regex:
-          /(?<prev_jobs>jobs\s*:(?:.|\n)*)\n(?<indent> *)cancel_duplicates\s*:(?:.|\n)*\n(?<next_job_key>\k<indent>\S*\s*:)/gim,
+          /(?<prev_jobs>jobs\s*:(?:.|\n)*)\n(?<indent> *)cancel_duplicates\s*:(?:.|\n)*?\n(?<next_job_key>\k<indent>\S*\s*:)/gim,
         replacement: `concurrency:
   group: \${{ github.ref }}-\${{ github.workflow }}
   cancel-in-progress: true
@@ -170,6 +170,9 @@ $<prev_jobs>
 $<next_job_key>`,
         test: `
 jobs:
+  preceding_job:
+    # ..
+
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
   cancel_duplicates:
     name: Cancel duplicate jobs
@@ -180,6 +183,9 @@ jobs:
           github_token: \${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           cancel_others: true
 
+  intermediate_job:
+    # ..
+
   build:
     name: Mega-Linter
 `,
@@ -189,7 +195,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  preceding_job:
+    # ..
+
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  intermediate_job:
+    # ..
+
   build:
     name: Mega-Linter
 `,
