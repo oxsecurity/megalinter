@@ -134,3 +134,28 @@ linters:
         - name: Checkov
           url: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
     test_folder: terraform_checkov
+  # KICS
+  - linter_name: kics
+    name: TERRAFORM_KICS
+    linter_url: https://www.kics.io
+    linter_repo: https://github.com/checkmarx/kics
+    linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
+    linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
+    linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
+    linter_megalinter_ref_url: "no"
+    cli_config_arg_name: "--config"
+    cli_executable: kics
+    cli_lint_extra_args:
+      - scan
+      - --path
+    cli_version_arg_name: "version"
+    examples:
+      - "kics scan --path myfile.tf"
+    install:
+      dockerfile:
+        - FROM checkmarx/kics:alpine as kics
+        - COPY --from=kics /app/bin/kics /usr/bin/
+        - RUN mkdir -p /opt/kics/assets
+        - ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+        - COPY --from=kics /app/bin/assets /opt/kics/assets/
+    test_folder: terraform_kics
