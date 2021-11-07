@@ -48,6 +48,7 @@ linters:
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
+    downgraded_version: true
     install:
       npm:
-        - jscpd
+        - jscpd@3.3.26

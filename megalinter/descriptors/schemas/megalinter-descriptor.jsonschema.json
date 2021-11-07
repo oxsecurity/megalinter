@@ -707,6 +707,13 @@
             "title": "Disabled",
             "type": "boolean"
           },
+          "downgraded_version": {
+            "$id": "#/properties/linters/items/properties/downgraded_version",
+            "default": false,
+            "description": "Indicates that installation instructions does not use the latest release of the linter",
+            "title": "Downgraded version",
+            "type": "boolean"
+          },
           "examples": {
             "$id": "#/properties/linters/items/properties/examples",
             "description": "Please add an example with and without configuration file in the command. They will appear in documentation",
