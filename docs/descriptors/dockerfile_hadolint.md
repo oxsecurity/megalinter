@@ -146,7 +146,7 @@ Available options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM hadolint/hadolint:latest-alpine as hadolint
+FROM hadolint/hadolint:v2.7.0-alpine as hadolint
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 
