@@ -168,7 +168,7 @@ RUN npm install --no-cache --ignore-scripts \
                 typescript \
                 asl-validator \
                 @coffeelint/cli \
-                jscpd \
+                jscpd@3.3.26 \
                 secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend@4.1.0 \
                 stylelint \
