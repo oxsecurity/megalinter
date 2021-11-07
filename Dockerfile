@@ -11,7 +11,7 @@
 #############################################################################################
 #FROM__START
 FROM cljkondo/clj-kondo:2021.06.18-alpine as clj-kondo
-FROM hadolint/hadolint:latest-alpine as hadolint
+FROM hadolint/hadolint:v2.7.0-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:v0.35.1 as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
