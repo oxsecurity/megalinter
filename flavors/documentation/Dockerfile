@@ -100,7 +100,7 @@ RUN npm install npm@latest-6 -g
 RUN echo 'package-lock=false' >> .npmrc 
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                jscpd \
+                jscpd@3.3.26 \
                 secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend@4.1.0 \
                 stylelint \
