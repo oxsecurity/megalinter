@@ -7280,18 +7280,18 @@
       "title": "Pre-run commands",
       "type": "array"
     },
-    "PRINT_ALPACA": {
-      "$id": "#/properties/PRINT_ALPACA",
-      "default": true,
-      "description": "Enable printing alpaca image to console output",
-      "title": "Print le lama NUL (alpaca)",
-      "type": "boolean"
-    },
     "PRINT_ALL_FILES": {
       "$id": "#/properties/PRINT_ALL_FILES",
       "default": true,
       "description": "If set to false, only fixed and error files are displayed in logs",
       "title": "Print all files in console logs",
+      "type": "boolean"
+    },
+    "PRINT_ALPACA": {
+      "$id": "#/properties/PRINT_ALPACA",
+      "default": true,
+      "description": "Enable printing alpaca image to console output",
+      "title": "Print le lama NUL (alpaca)",
       "type": "boolean"
     },
     "PROTOBUF_FILTER_REGEX_EXCLUDE": {
