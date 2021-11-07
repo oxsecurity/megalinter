@@ -36,6 +36,7 @@ linters:
       - "eslint myfile.tsx"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.tsx"
+    downgraded_version: true
     install:
       npm:
         - typescript

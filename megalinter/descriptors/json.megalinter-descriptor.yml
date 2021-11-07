@@ -105,6 +105,7 @@ linters:
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json5"
       - "eslint -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.jsonc"
       - "eslint --fix -c .eslintrc-json.json --no-eslintrc --no-ignore myfile.json"
+    downgraded_version: true
     install:
       npm:
         - eslint@7.32.0
