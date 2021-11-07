@@ -361,3 +361,15 @@ class mega_linter_1_test(unittest.TestCase):
             == 1,
             "PHP_BUILTIN should have been processed with cli_executable = /usr/bin/php8",
         )
+
+    def test_print_all_files_false(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false"
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("- Number of files analyzed", output)
