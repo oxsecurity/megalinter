@@ -34,6 +34,9 @@ from megalinter import config, pre_post_factory, utils
 
 
 class Linter:
+    TEMPLATES_DIR = "/action/lib/.automation/"
+    DEFAULT_WORKSPACE_DIR = "/tmp/lint/"
+
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
         self.linter_version_cache = None
@@ -405,8 +408,8 @@ class Linter:
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
                 self.config_file_label = self.config_file.replace(
-                    "/tmp/lint", ""
-                ).replace("/action/lib/.automation/", "")
+                    self.DEFAULT_WORKSPACE_DIR, ""
+                ).replace(self.TEMPLATES_DIR, "")
         # User override of cli_lint_mode
         if config.exists(self.name + "_CLI_LINT_MODE"):
             cli_lint_mode_descriptor = self.cli_lint_mode
