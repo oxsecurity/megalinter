@@ -24,6 +24,7 @@ class mega_linter_2_fixes(unittest.TestCase):
                 "APPLY_FIXES": "JAVASCRIPT_STANDARD",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
+                "DISABLE_LINTERS": "TERRAFORM_KICS"
             }
         )
         self.assertTrue(
@@ -36,7 +37,12 @@ class mega_linter_2_fixes(unittest.TestCase):
 
     def test_2_apply_fixes_on_all_linters(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"APPLY_FIXES": "all", "LOG_LEVEL": "DEBUG", "MULTI_STATUS": "false"}
+            {
+             "APPLY_FIXES": "all",
+             "LOG_LEVEL": "DEBUG",
+             "MULTI_STATUS": "false",
+             "DISABLE_LINTERS": "TERRAFORM_KICS"
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
