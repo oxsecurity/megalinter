@@ -45,10 +45,9 @@ linters:
       - "eslint myfile.js"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.js"
-    downgraded_version: true
     install:
       npm:
-        - eslint@7.32.0
+        - eslint
         - eslint-config-airbnb
         - eslint-config-prettier
         - eslint-config-standard
@@ -102,10 +101,9 @@ linters:
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
-    downgraded_version: true
     install:
       npm:
-        - "standard@15.0.1"
+        - "standard"
     ide:
       atom:
         - name: linter-js-standard
