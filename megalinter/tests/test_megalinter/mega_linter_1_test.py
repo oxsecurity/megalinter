@@ -364,10 +364,7 @@ class mega_linter_1_test(unittest.TestCase):
 
     def test_print_all_files_false(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {
-                "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "PRINT_ALL_FILES": "false"
-            }
+            {"ENABLE_LINTERS": "JAVASCRIPT_ES", "PRINT_ALL_FILES": "false"}
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"

@@ -19,7 +19,7 @@ class ConsoleLinterReporter(Reporter):
         self.report_type = "simple"
         if config.get("OUTPUT_DETAIL", "") == "detailed":
             self.report_type = "detailed"
-        if config.get("PRINT_ALL_FILES","") == "false":
+        if config.get("PRINT_ALL_FILES", "") == "false":
             self.print_all_files = False
         super().__init__(params)
 
@@ -44,7 +44,9 @@ class ConsoleLinterReporter(Reporter):
         if self.master.config_file_error is not None:
             logging.warning(self.master.config_file_error)
         if self.print_all_files is False:
-            msg += [f"- Number of files analyzed: [{len(self.master.files_lint_results)}]"]
+            msg += [
+                f"- Number of files analyzed: [{len(self.master.files_lint_results)}]"
+            ]
         logging.info("\n".join(msg))
         # Output results
         for res in self.master.files_lint_results:
