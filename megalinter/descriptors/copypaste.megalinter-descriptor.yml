@@ -39,8 +39,8 @@ linters:
       - "console,html"
       - "--output"
       - "./report/copy-paste/"
-#      - "--exitCode" # uncomment when jscpd > 3.4.0
-#      - "1"
+    #      - "--exitCode" # uncomment when jscpd > 3.4.0
+    #      - "1"
     cli_lint_extra_args_after:
       - "."
     cli_lint_errors_count: regex_number
