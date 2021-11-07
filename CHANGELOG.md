@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Fix config issue with IGNORE_GITIGNORED_FILES (#932)
+
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.55.0 to **0.56.0** on 2021-11-06

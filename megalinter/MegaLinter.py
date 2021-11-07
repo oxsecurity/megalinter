@@ -310,7 +310,7 @@ class Megalinter:
             self.validate_all_code_base = False
         # Manage IGNORE_GITIGNORED_FILES
         if config.exists("IGNORE_GITIGNORED_FILES"):
-            self.ignore_gitignore_files = config.get("IGNORE_GITIGNORED_FILES", "true")
+            self.ignore_gitignore_files = config.get("IGNORE_GITIGNORED_FILES", "true") == "true"
         # Manage IGNORE_GENERATED_FILES
         if config.exists("IGNORE_GENERATED_FILES"):
             self.ignore_generated_files = (
