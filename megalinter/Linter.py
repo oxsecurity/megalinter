@@ -22,6 +22,7 @@ import errno
 import logging
 import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -691,10 +692,6 @@ class Linter:
     # Returns the version of the associated linter (can be overridden in special cases, like version has special format)
     def get_linter_version_output(self):
         command = self.build_version_command()
-        if sys.platform == "win32":
-            cli_absolute = shutil.which(command[0])
-            if cli_absolute is not None:
-                command[0] = cli_absolute
         logging.debug("Linter version command: " + str(command))
         try:
             process = subprocess.run(
@@ -877,7 +874,10 @@ class Linter:
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
-        cmd = [self.cli_executable_version]
+        cmd = shlex.split(self.cli_executable_version)
+        cli_absolute = shutil.which(cmd[0])
+        if cli_absolute is not None:
+            cmd[0] = cli_absolute
         cmd += self.cli_version_extra_args
         if self.cli_version_arg_name != "":
             cmd += [self.cli_version_arg_name]
