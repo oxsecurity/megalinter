@@ -116,7 +116,7 @@ RUN npm install --no-cache --ignore-scripts \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
-                eslint@7.32.0 \
+                eslint \
                 eslint-config-airbnb \
                 eslint-config-prettier \
                 eslint-config-standard \
@@ -127,7 +127,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
                 babel-eslint \
-                standard@15.0.1 \
+                standard \
                 prettier \
                 jsonlint \
                 eslint-plugin-jsonc \

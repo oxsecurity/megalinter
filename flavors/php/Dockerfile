@@ -133,7 +133,7 @@ RUN npm install --no-cache --ignore-scripts \
                 npm-groovy-lint \
                 htmlhint \
                 jsonlint \
-                eslint@7.32.0 \
+                eslint \
                 eslint-plugin-jsonc \
                 v8r \
                 prettier \
