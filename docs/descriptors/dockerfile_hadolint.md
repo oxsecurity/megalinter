@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in Mega-Linter: **2.7.0**
+- Version in Mega-Linter: **2.8.0**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
   - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.hadolint.yml){target=_blank} will be used
@@ -93,28 +93,33 @@ hadolint --config .hadolint.yml Dockerfile
 ```shell
 hadolint - Dockerfile Linter written in Haskell
 
-Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
-                [-V|--verbose] [-f|--format ARG] [DOCKERFILE...]
-                [--error RULECODE] [--warning RULECODE] [--info RULECODE]
-                [--style RULECODE] [--ignore RULECODE]
+Usage: hadolint [-v|--version] [-c|--config FILENAME] [DOCKERFILE...]
+                [--file-path-in-report FILEPATHINREPORT] [--no-fail]
+                [--no-color] [-V|--verbose] [-f|--format ARG] [--error RULECODE]
+                [--warning RULECODE] [--info RULECODE] [--style RULECODE]
+                [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
                 [--require-label LABELSCHEMA (e.g. maintainer:text)]
                 [--strict-labels] [-t|--failure-threshold THRESHOLD]
-                [--file-path-in-report FILEPATHINREPORT]
   Lint Dockerfile for errors and best practices
 
 Available options:
   -h,--help                Show this help text
   -v,--version             Show version
+  -c,--config FILENAME     Path to the configuration file
+  --file-path-in-report FILEPATHINREPORT
+                           The file path referenced in the generated report.
+                           This only applies for the 'checkstyle' format and is
+                           useful when running Hadolint with Docker to set the
+                           correct file path.
   --no-fail                Don't exit with a failure status code when any rule
                            is violated
   --no-color               Don't colorize output
-  -c,--config FILENAME     Path to the configuration file
   -V,--verbose             Enables verbose logging of hadolint's output to
                            stderr
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
-                           codacy | sonarqube] (default: tty)
+                           codacy | sonarqube | sarif] (default: tty)
   --error RULECODE         Make the rule `RULECODE` have the level `error`
   --warning RULECODE       Make the rule `RULECODE` have the level `warning`
   --info RULECODE          Make the rule `RULECODE` have the level `info`
@@ -135,11 +140,6 @@ Available options:
                            severity equal to or above THRESHOLD are violated.
                            Accepted values: [error | warning | info | style |
                            ignore | none] (default: info)
-  --file-path-in-report FILEPATHINREPORT
-                           The file path referenced in the generated report.
-                           This only applies for the 'checkstyle' format and is
-                           useful when running Hadolint with Docker to set the
-                           correct file path.
 ```
 
 ### Installation on mega-linter Docker image

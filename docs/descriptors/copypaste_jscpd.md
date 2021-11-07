@@ -28,7 +28,7 @@ Example:
 
 ## jscpd documentation
 
-- Version in Mega-Linter: **3.3.26**
+- Version in Mega-Linter: **3.4.2**
 - Visit [Official Web Site](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#readme){target=_blank}
 - See [How to configure jscpd rules](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd#config-file){target=_blank}
   - If custom `.jscpd.json` config file is not found, [.jscpd.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.jscpd.json){target=_blank} will be used
@@ -123,6 +123,7 @@ Options:
                              <path>)
   -i, --ignore [string]      glob pattern for files what should be excluded
                              from duplication detection
+  --ignore-pattern [string]  Ignore code blocks matching the regexp patterns
   -r, --reporters [string]   reporters or list of reporters separated with
                              comma to use (Default is time,console)
   -o, --output [string]      reporters to use (Default is ./report/)
@@ -150,6 +151,8 @@ Options:
   --list                     show list of total supported formats
   --skipLocal                skip duplicates in local folders, just detect
                              cross folders duplications
+  --exitCode [number]        exit code to use when code duplications are
+                             detected
   -h, --help                 display help for command
 ```
 

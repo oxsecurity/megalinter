@@ -9,6 +9,7 @@
 
 ## kics documentation
 
+- Version in Mega-Linter: **1.4.6**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
 - See [Index of problems detected by kics](https://docs.kics.io/latest/queries/all-queries/){target=_blank}
@@ -60,6 +61,35 @@ This linter is available in the following flavours
 kics scan --path myfile.tf
 ```
 
+
+### Help content
+
+```shell
+Keeping Infrastructure as Code Secure
+
+Usage:
+  kics [command]
+
+Available Commands:
+  generate-id    Generates uuid for query
+  help           Help about any command
+  list-platforms List supported platforms
+  scan           Executes a scan analysis
+  version        Displays the current version
+
+Flags:
+      --ci                  display only log messages to CLI output (mutually exclusive with silent)
+  -h, --help                help for kics
+  -f, --log-format string   determines log format (pretty,json) (default "pretty")
+      --log-level string    determines log level (TRACE,DEBUG,INFO,WARN,ERROR,FATAL) (default "INFO")
+      --log-path string     path to generate log file (info.log)
+      --no-color            disable CLI color output
+      --profiling string    enables performance profiler that prints resource consumption metrics in the logs during the execution (CPU, MEM)
+  -s, --silent              silence stdout messages (mutually exclusive with verbose and ci)
+  -v, --verbose             write logs to stdout too (mutually exclusive with silent)
+
+Use "kics [command] --help" for more information about a command.
+```
 
 ### Installation on mega-linter Docker image
 
