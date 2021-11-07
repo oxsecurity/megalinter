@@ -52,4 +52,3 @@ linters:
     install:
       npm:
         - jscpd@3.3.26
-
