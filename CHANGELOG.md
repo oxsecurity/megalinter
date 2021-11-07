@@ -16,6 +16,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [hadolint](https://github.com/hadolint/hadolint) from 2.7.0 to **2.8.0** on 2021-11-06
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.7.0 to **2.0.0** on 2021-11-06
   - [phpstan](https://phpstan.org/) from 1.0.2 to **1.1.0** on 2021-11-06
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.1 to **3.4.2** on 2021-11-07
 <!-- linter-versions-end -->
 
 ## [v5.0.7]
