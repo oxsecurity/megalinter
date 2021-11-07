@@ -35,8 +35,22 @@ Ready to use [out of the box](installation.md) as a **GitHub Action** or **any C
 
 <!-- online-doc-end -->
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+________
+
+_Process_
+
 ![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
+
+________
+
+_Console reporter_
+
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+
+________
+
+_Github PR reporter_
+
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->

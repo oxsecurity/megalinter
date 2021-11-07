@@ -142,7 +142,7 @@ linters:
     linter_rules_url: https://docs.kics.io/latest/queries/all-queries/
     linter_banner_image_url: https://raw.githubusercontent.com/checkmarx/kics/master/docs/img/logo/kics-hat-logo.png
     linter_rules_inline_disable_url: https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments
-    linter_megalinter_ref_url: "no"
+    linter_megalinter_ref_url: https://github.com/Checkmarx/kics/pull/4488
     cli_config_arg_name: "--config"
     cli_executable: kics
     cli_lint_extra_args:

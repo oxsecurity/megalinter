@@ -36,8 +36,22 @@ Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI 
 See [**Online Documentation Web Site which has a much easier user navigation than this README**](https://megalinter.github.io/)
 <!-- online-doc-end -->
 
-![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+________
+
+_Process_
+
 ![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
+
+________
+
+_Console reporter_
+
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
+
+________
+
+_Github PR reporter_
+
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
 
 <!-- table-of-contents-start -->
