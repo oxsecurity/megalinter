@@ -7287,6 +7287,13 @@
       "title": "Print le lama NUL (alpaca)",
       "type": "boolean"
     },
+    "PRINT_ALL_FILES": {
+      "$id": "#/properties/PRINT_ALL_FILES",
+      "default": true,
+      "description": "If set to false, only fixed and error files are displayed in logs",
+      "title": "Print all files in console logs",
+      "type": "boolean"
+    },
     "PROTOBUF_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/PROTOBUF_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for PROTOBUF descriptor",
