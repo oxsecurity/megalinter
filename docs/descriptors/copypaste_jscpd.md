@@ -159,7 +159,7 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [jscpd](https://www.npmjs.com/package/jscpd)
+  - [jscpd@3.3.26](https://www.npmjs.com/package/jscpd)
 
 ### Example success log
 
