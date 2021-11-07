@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in Mega-Linter: **0.35.4**
+- Version in Mega-Linter: **0.35.6**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 
@@ -12,10 +12,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable terragrunt by adding `TERRAFORM_TERRAGRUNT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TERRAFORM_TERRAGRUNT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
 | Variable                                         | Description                                                                                                                                                                                                         | Default value                                    |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -36,10 +36,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                                 | Description                            | Embedded linters |                                                                                                                                                                                       Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:---------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             |        94        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|      <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default Mega-Linter Flavor             |        95        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -114,7 +114,7 @@ GLOBAL OPTIONS:
    terragrunt-json-out                          The file path that terragrunt should use when rendering the terragrunt.hcl config as json. Only used in the render-json command. Defaults to terragrunt_rendered.json.
 
 VERSION:
-   v0.35.4
+   v0.35.6
 
 AUTHOR(S):
    Gruntwork <www.gruntwork.io>
@@ -134,7 +134,7 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 ```shell
 Results of terragrunt linter (version 0.26.7)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
+See documentation on https://megalinter.github.io/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl
@@ -147,7 +147,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 
 ```shell
 Results of terragrunt linter (version 0.26.7)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
+See documentation on https://megalinter.github.io/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terragrunt/terragrunt_bad_1.hcl

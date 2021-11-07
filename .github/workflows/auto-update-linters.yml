@@ -1,29 +1,23 @@
 ---
 name: "Auto-Update Linters"
 on:
-  # Run when there is an update in master
+  # Run when there is an update in main
   push:
     branches:
-      - "master"
+      - "main"
       - "AutoUpdate"
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 ###############
 # Set the Job #
 ###############
 jobs:
-  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  skip_checks:
-    name: Skip checks
-    runs-on: ubuntu-latest
-    if: github.repository == 'nvuillam/mega-linter'
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          cancel_others: true
 
   build_help_versions:
     # Name the Job
@@ -31,7 +25,7 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Prevent duplicate run from happening when a forked push is committed
-    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'nvuillam/mega-linter'
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'megalinter/megalinter'
     # Set max build time for the job
     timeout-minutes: 60
     ##################
@@ -42,7 +36,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v2.4.0
         with:
           # Full git history is needed to get a proper list of changed files within `mega-linter`
           fetch-depth: 0
@@ -58,8 +52,8 @@ jobs:
       ###################################
       - name: Build image
         shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t nvuillam/mega-linter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
-        timeout-minutes: 50
+        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t megalinter/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        timeout-minutes: 60
 
       #####################################
       # Run Linter against Test code base #
@@ -67,8 +61,8 @@ jobs:
       - name: Collect latest versions and help
         id: compute_versions
         shell: bash
-        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:auto_update_${GITHUB_SHA}
-        timeout-minutes: 15
+        run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:auto_update_${GITHUB_SHA}
+        timeout-minutes: 20
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
@@ -84,9 +78,9 @@ jobs:
       - name: Create Pull Request
         id: cpr
         if: steps.compute_versions.outputs.has_updated_versions == 1
-        uses: peter-evans/create-pull-request@v3.10.1
+        uses: peter-evans/create-pull-request@v3.11.0
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
           commit-message: "[automation] Auto-update linters version, help and documentation"
           delete-branch: true

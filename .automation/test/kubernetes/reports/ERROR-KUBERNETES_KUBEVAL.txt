@@ -1,5 +1,5 @@
 Results of kubeval linter (version 0.15.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/kubernetes_kubeval/
+See documentation on https://megalinter.github.io/descriptors/kubernetes_kubeval/
 -----------------------------------------------
 
 [ERROR] .automation/test/kubernetes/kubernetes/kubeval_bad_1.yaml

@@ -1,5 +1,5 @@
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/puppet/puppet_bad_1.pp

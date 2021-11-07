@@ -1,5 +1,5 @@
 Results of rubocop linter (version 0.82.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/ruby_rubocop/
+See documentation on https://megalinter.github.io/descriptors/ruby_rubocop/
 -----------------------------------------------
 
 [ERROR] .automation/test/ruby/ruby_bad_1.rb

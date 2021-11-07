@@ -4,10 +4,10 @@
 
 ## coffeelint documentation
 
-- Version in Mega-Linter: **5.0.5**
+- Version in Mega-Linter: **5.1.1**
 - Visit [Official Web Site](http://www.coffeelint.org){target=_blank}
 - See [How to configure coffeelint rules](http://www.coffeelint.org/#options){target=_blank}
-  - If custom `.coffee-lint.json` config file is not found, [.coffee-lint.json](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.coffee-lint.json){target=_blank} will be used
+  - If custom `.coffee-lint.json` config file is not found, [.coffee-lint.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.coffee-lint.json){target=_blank} will be used
 - See [How to disable coffeelint rules in files](http://www.coffeelint.org/#options){target=_blank}
 - See [Index of problems detected by coffeelint](http://www.coffeelint.org/#options){target=_blank}
 
@@ -15,8 +15,8 @@
 
 ## Configuration in Mega-Linter
 
-- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value                                    |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -37,19 +37,19 @@
 
 Use coffeelint in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                  <!-- -->                                                                  | IDE                                                      | Extension Name                                                     |                                                           Install                                                            |
-|:------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/)                                 | [linter-coffeelint](https://atom.io/packages/linter-coffeelint)    |                         [Visit Web Site](https://atom.io/packages/linter-coffeelint){target=_blank}                          |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7723"></iframe> |
+|                                                                 <!-- -->                                                                  | IDE                                                      | Extension Name                                                     |                                                           Install                                                            |
+|:-----------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/)                                 | [linter-coffeelint](https://atom.io/packages/linter-coffeelint)    |                         [Visit Web Site](https://atom.io/packages/linter-coffeelint){target=_blank}                          |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7723"></iframe> |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                                   | Description                                           | Embedded linters |                                                                                                                                                                                         Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor                            |        94        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|     <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default Mega-Linter Flavor                            |        95        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -114,7 +114,7 @@ Options:
 
 ```shell
 Results of coffeelint linter (version 4.1.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_coffeelint/
+See documentation on https://megalinter.github.io/descriptors/coffee_coffeelint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/coffeescript/coffeescript_good_1.coffee
@@ -129,7 +129,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_c
 
 ```shell
 Results of coffeelint linter (version 4.1.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_coffeelint/
+See documentation on https://megalinter.github.io/descriptors/coffee_coffeelint/
 -----------------------------------------------
 
 [ERROR] .automation/test/coffeescript/coffeescript_bad_1.coffee

@@ -1,5 +1,5 @@
 Results of sql-lint linter (version 0.0.15)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/sql_sql_lint/
+See documentation on https://megalinter.github.io/descriptors/sql_sql_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/sql/sql_good_1.sql

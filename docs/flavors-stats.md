@@ -9,7 +9,7 @@
 <script>
   const randomNum = () => Math.floor(Math.random() * (235 - 52 + 1) + 52);
   const randomRGB = () => `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
-  fetch('https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/generated/flavors-stats.json')
+  fetch('https://raw.githubusercontent.com/megalinter/megalinter/master/.automation/generated/flavors-stats.json')
     .then(function (response) {
       if (!response.ok) {
         throw new Error("HTTP error, status = " + response.status);

@@ -9,7 +9,7 @@ about: Used for creating issues about the Mega-Linter
 ### Issue with Mega-Linter
 
 ---
-**Branch/Version:** Example: Master
+**Branch/Version:** Example: main
 
 ---
 **How to Reproduce:** Example: tried to build it

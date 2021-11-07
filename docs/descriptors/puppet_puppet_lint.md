@@ -14,10 +14,10 @@
 
 ## Configuration in Mega-Linter
 
-- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
 | Variable                                       | Description                                                                                                                                                                                                         | Default value                                    |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
@@ -38,17 +38,17 @@
 
 Use puppet-lint in your favorite IDE to catch errors before Mega-Linter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                         Install                                         |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
+|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                         Install                                         |
+|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
 
 ## Mega-Linter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -115,70 +115,70 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
     Checks:
         --only-checks CHECKS         A comma separated list of checks that should be run
         --ignore-paths PATHS         A comma separated list of patterns to ignore
-        --no-unquoted_resource_title-check
-                                     Skip the unquoted_resource_title check.
-        --no-unquoted_file_mode-check
-                                     Skip the unquoted_file_mode check.
-        --no-ensure_first_param-check
-                                     Skip the ensure_first_param check.
-        --no-file_mode-check         Skip the file_mode check.
-        --no-ensure_not_symlink_target-check
-                                     Skip the ensure_not_symlink_target check.
-        --no-duplicate_params-check  Skip the duplicate_params check.
-        --no-variable_is_lowercase-check
-                                     Skip the variable_is_lowercase check.
-        --no-variable_contains_dash-check
-                                     Skip the variable_contains_dash check.
-        --no-documentation-check     Skip the documentation check.
-        --no-unquoted_node_name-check
-                                     Skip the unquoted_node_name check.
+        --no-selector_inside_resource-check
+                                     Skip the selector_inside_resource check.
+        --no-case_without_default-check
+                                     Skip the case_without_default check.
         --no-double_quoted_strings-check
                                      Skip the double_quoted_strings check.
+        --no-quoted_booleans-check   Skip the quoted_booleans check.
+        --quoted_booleans-check      Enable the quoted_booleans check.
+        --no-variables_not_enclosed-check
+                                     Skip the variables_not_enclosed check.
         --no-puppet_url_without_modules-check
                                      Skip the puppet_url_without_modules check.
         --no-only_variable_string-check
                                      Skip the only_variable_string check.
-        --no-variables_not_enclosed-check
-                                     Skip the variables_not_enclosed check.
         --no-single_quote_string_with_variables-check
                                      Skip the single_quote_string_with_variables check.
-        --no-quoted_booleans-check   Skip the quoted_booleans check.
-        --quoted_booleans-check      Enable the quoted_booleans check.
-        --no-star_comments-check     Skip the star_comments check.
-        --no-slash_comments-check    Skip the slash_comments check.
-        --no-case_without_default-check
-                                     Skip the case_without_default check.
-        --no-selector_inside_resource-check
-                                     Skip the selector_inside_resource check.
-        --no-arrow_alignment-check   Skip the arrow_alignment check.
-        --no-trailing_whitespace-check
-                                     Skip the trailing_whitespace check.
-        --no-hard_tabs-check         Skip the hard_tabs check.
-        --no-2sp_soft_tabs-check     Skip the 2sp_soft_tabs check.
-        --no-80chars-check           Skip the 80chars check.
-        --80chars-check              Enable the 80chars check.
-        --no-140chars-check          Skip the 140chars check.
+        --no-documentation-check     Skip the documentation check.
+        --no-variable_is_lowercase-check
+                                     Skip the variable_is_lowercase check.
+        --no-variable_contains_dash-check
+                                     Skip the variable_contains_dash check.
+        --no-parameter_order-check   Skip the parameter_order check.
         --no-class_inherits_from_params_class-check
                                      Skip the class_inherits_from_params_class check.
         --class_inherits_from_params_class-check
                                      Enable the class_inherits_from_params_class check.
+        --no-names_containing_uppercase-check
+                                     Skip the names_containing_uppercase check.
         --no-variable_scope-check    Skip the variable_scope check.
-        --no-nested_classes_or_defines-check
-                                     Skip the nested_classes_or_defines check.
+        --no-autoloader_layout-check Skip the autoloader_layout check.
+        --no-inherits_across_namespaces-check
+                                     Skip the inherits_across_namespaces check.
         --no-arrow_on_right_operand_line-check
                                      Skip the arrow_on_right_operand_line check.
         --no-code_on_top_scope-check Skip the code_on_top_scope check.
         --code_on_top_scope-check    Enable the code_on_top_scope check.
-        --no-autoloader_layout-check Skip the autoloader_layout check.
-        --no-parameter_order-check   Skip the parameter_order check.
-        --no-inherits_across_namespaces-check
-                                     Skip the inherits_across_namespaces check.
-        --no-right_to_left_relationship-check
-                                     Skip the right_to_left_relationship check.
         --no-names_containing_dash-check
                                      Skip the names_containing_dash check.
-        --no-names_containing_uppercase-check
-                                     Skip the names_containing_uppercase check.
+        --no-right_to_left_relationship-check
+                                     Skip the right_to_left_relationship check.
+        --no-nested_classes_or_defines-check
+                                     Skip the nested_classes_or_defines check.
+        --no-slash_comments-check    Skip the slash_comments check.
+        --no-star_comments-check     Skip the star_comments check.
+        --no-arrow_alignment-check   Skip the arrow_alignment check.
+        --no-2sp_soft_tabs-check     Skip the 2sp_soft_tabs check.
+        --no-140chars-check          Skip the 140chars check.
+        --no-trailing_whitespace-check
+                                     Skip the trailing_whitespace check.
+        --no-hard_tabs-check         Skip the hard_tabs check.
+        --no-80chars-check           Skip the 80chars check.
+        --80chars-check              Enable the 80chars check.
+        --no-ensure_first_param-check
+                                     Skip the ensure_first_param check.
+        --no-unquoted_resource_title-check
+                                     Skip the unquoted_resource_title check.
+        --no-unquoted_file_mode-check
+                                     Skip the unquoted_file_mode check.
+        --no-ensure_not_symlink_target-check
+                                     Skip the ensure_not_symlink_target check.
+        --no-duplicate_params-check  Skip the duplicate_params check.
+        --no-file_mode-check         Skip the file_mode check.
+        --no-unquoted_node_name-check
+                                     Skip the unquoted_node_name check.
 ```
 
 ### Installation on mega-linter Docker image
@@ -190,7 +190,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 
 ```shell
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/puppet/puppet_good_1.pp
@@ -202,7 +202,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_p
 
 ```shell
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/puppet/puppet_bad_1.pp

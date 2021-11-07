@@ -11,13 +11,14 @@
 #############################################################################################
 #FROM__START
 FROM cljkondo/clj-kondo:2021.06.18-alpine as clj-kondo
-FROM hadolint/hadolint:latest-alpine as hadolint
+FROM hadolint/hadolint:v2.7.0-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:v0.35.1 as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
+FROM checkmarx/kics:alpine as kics
 #FROM__END
 
 ##################
@@ -109,6 +110,7 @@ RUN apk add --update --no-cache \
                 ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
+                ansible \
                 ansible-lint \
                 R \
                 R-dev \
@@ -166,7 +168,7 @@ RUN npm install --no-cache --ignore-scripts \
                 typescript \
                 asl-validator \
                 @coffeelint/cli \
-                jscpd \
+                jscpd@3.3.26 \
                 secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend@4.1.0 \
                 stylelint \
@@ -459,6 +461,12 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 # terraform-fmt installation
 COPY --from=terragrunt /bin/terraform /usr/bin/
 
+# kics installation
+COPY --from=kics /app/bin/kics /usr/bin/
+RUN mkdir -p /opt/kics/assets
+ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
+COPY --from=kics /app/bin/assets /opt/kics/assets/
+
 #OTHER__END
 
 ######################
@@ -512,8 +520,8 @@ LABEL com.github.actions.name="Mega-Linter" \
       org.opencontainers.image.revision=$BUILD_REVISION \
       org.opencontainers.image.version=$BUILD_VERSION \
       org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.url="https://nvuillam.github.io/mega-linter" \
-      org.opencontainers.image.source="https://github.com/nvuillam/mega-linter" \
-      org.opencontainers.image.documentation="https://nvuillam.github.io/mega-linter" \
+      org.opencontainers.image.url="https://megalinter.github.io" \
+      org.opencontainers.image.source="https://github.com/megalinter/megalinter" \
+      org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"

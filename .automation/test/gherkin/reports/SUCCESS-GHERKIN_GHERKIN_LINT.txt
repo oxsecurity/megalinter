@@ -1,5 +1,5 @@
 Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/gherkin_gherkin_lint/
+See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/gherkin/gherkin_good_01.feature

@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM cljkondo/clj-kondo:2021.06.18-alpine as clj-kondo
-FROM hadolint/hadolint:latest-alpine as hadolint
+FROM hadolint/hadolint:v2.7.0-alpine as hadolint
 FROM yoheimuta/protolint:v0.35.1 as protolint
 #FROM__END
 
@@ -64,6 +64,7 @@ RUN apk add --update --no-cache \
 #APK__START
 RUN apk add --update --no-cache \
                 openjdk8 \
+                ansible \
                 ansible-lint \
                 libc-dev \
                 libxml2-dev \
@@ -101,7 +102,7 @@ RUN npm install npm@latest-6 -g
 RUN echo 'package-lock=false' >> .npmrc 
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                jscpd \
+                jscpd@3.3.26 \
                 secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend@4.1.0 \
                 stylelint \
@@ -265,8 +266,8 @@ LABEL com.github.actions.name="Mega-Linter" \
       org.opencontainers.image.revision=$BUILD_REVISION \
       org.opencontainers.image.version=$BUILD_VERSION \
       org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.url="https://nvuillam.github.io/mega-linter" \
-      org.opencontainers.image.source="https://github.com/nvuillam/mega-linter" \
-      org.opencontainers.image.documentation="https://nvuillam.github.io/mega-linter" \
+      org.opencontainers.image.url="https://megalinter.github.io" \
+      org.opencontainers.image.source="https://github.com/megalinter/megalinter" \
+      org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"

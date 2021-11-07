@@ -11,13 +11,13 @@
 #
 
 #######################################
-# Start the job on all push to master #
+# Start the job on all push to main #
 #######################################
 name: "Build & Deploy - PROD Flavors"
 on:
   push:
     branches:
-      - "master"
+      - "main"
       - "FlavoredMegaLinters"
     paths:
       - ".github/workflows/**"
@@ -32,23 +32,19 @@ on:
 ###############
 # Set the Job #
 ###############
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
-  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  skip_checks:
-    name: Skip checks
-    if: "!contains(github.event.head_commit.message, 'skip deploy')"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          cancel_others: true
 
   build:
     # Name the Job
-    name: Deploy Docker Image - PROD - Flavors
+    name: Deploy Docker Image - BETA - Flavors
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
+    environment: 
+      name: beta-flavors
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -73,7 +69,7 @@ jobs:
           ]
 # flavors-end
     # Only run this on the main repo
-    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     ##################
     # Load all steps #
     ##################
@@ -82,20 +78,20 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v2.4.0
         with:
           fetch-depth: 0
 
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy latest image to DockerHub
+      - name: Deploy beta image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter-${{ matrix.flavor }}
-          IMAGE_VERSION: latest
+          IMAGE_REPO: megalinter/megalinter-${{ matrix.flavor }}
+          IMAGE_VERSION: beta
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
           REGISTRY: Docker
         shell: bash
@@ -114,7 +110,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: 'docker.io/nvuillam/mega-linter-${{ matrix.flavor }}:latest'
+          image-ref: 'docker.io/megalinter/megalinter-${{ matrix.flavor }}:beta'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true

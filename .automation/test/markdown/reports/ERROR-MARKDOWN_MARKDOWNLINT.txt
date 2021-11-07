@@ -1,5 +1,5 @@
 Results of markdownlint linter (version 0.25.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown_markdownlint/
+See documentation on https://megalinter.github.io/descriptors/markdown_markdownlint/
 -----------------------------------------------
 
 [ERROR] .automation/test/markdown/markdown_bad_1.md

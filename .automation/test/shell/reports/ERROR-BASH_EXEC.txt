@@ -1,5 +1,5 @@
 Results of bash-exec linter (version 5.0.17)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_bash_exec/
+See documentation on https://megalinter.github.io/descriptors/bash_bash_exec/
 -----------------------------------------------
 
 [ERROR] .automation/test/shell/shell_bad_1.sh

@@ -7,7 +7,7 @@ outputs:
     description: "0 if no source file has been updated, 1 if source files has been updated"
 runs:
   using: "docker"
-  image: "docker://nvuillam/mega-linter-ruby:v4"
+  image: "docker://megalinter/megalinter-ruby:v5"
   args:
     - "-v"
     - "/var/run/docker.sock:/var/run/docker.sock:rw"

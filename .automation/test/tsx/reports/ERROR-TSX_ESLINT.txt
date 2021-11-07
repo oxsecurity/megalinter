@@ -1,5 +1,5 @@
 Results of eslint linter (version 7.15.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/tsx_eslint/
+See documentation on https://megalinter.github.io/descriptors/tsx_eslint/
 -----------------------------------------------
 
 [ERROR] .automation/test/tsx/tsx_bad_1.tsx

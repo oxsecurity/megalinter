@@ -186,6 +186,7 @@
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
         "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
@@ -260,7 +261,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ACTION_ACTIONLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -299,7 +300,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ACTION_ACTIONLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -410,7 +411,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -456,7 +457,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -571,7 +572,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ARM_ARM_TTK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -617,7 +618,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ARM_ARM_TTK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -701,7 +702,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "BASH_EXEC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -740,7 +741,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_EXEC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -818,7 +819,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "BASH_SHELLCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -857,7 +858,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_SHELLCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -925,7 +926,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "BASH_SHFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -964,7 +965,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_SHFMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1039,7 +1040,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CLOJURE_CLJ_KONDO: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1085,7 +1086,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CLOJURE_CLJ_KONDO: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1176,7 +1177,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CLOUDFORMATION_CFN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1222,7 +1223,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CLOUDFORMATION_CFN_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1313,7 +1314,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "COFFEE_COFFEELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1359,7 +1360,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "COFFEE_COFFEELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1469,7 +1470,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "COPYPASTE_JSCPD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1505,7 +1506,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "COPYPASTE_JSCPD: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1579,7 +1580,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CPP_CPPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1618,7 +1619,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CPP_CPPLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1702,7 +1703,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1731,7 +1732,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1805,7 +1806,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1844,7 +1845,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSHARP_DOTNET_FORMAT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1939,7 +1940,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CSS_SCSS_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1985,7 +1986,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSS_SCSS_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2066,7 +2067,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CSS_STYLELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2112,7 +2113,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSS_STYLELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2186,7 +2187,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "C_CPPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2225,7 +2226,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "C_CPPLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2310,7 +2311,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "DART_DARTANALYZER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2356,7 +2357,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DART_DARTANALYZER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2396,7 +2397,7 @@
     },
     "DEFAULT_BRANCH": {
       "$id": "#/properties/DEFAULT_BRANCH",
-      "default": "master",
+      "default": "main",
       "description": "The name of the repository default branch. Warning: In new github repositories, master branch is named main, so you need to override this value with main",
       "examples": [
         "master",
@@ -2502,7 +2503,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2548,7 +2549,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2639,7 +2640,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "DOCKERFILE_HADOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2685,7 +2686,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DOCKERFILE_HADOLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2766,7 +2767,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2812,7 +2813,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2976,7 +2977,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ENV_DOTENV_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3015,7 +3016,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ENV_DOTENV_LINTER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3073,8 +3074,8 @@
       "$id": "#/properties/EXTENDS",
       "description": "Base mega-linter.yml config file(s) to extend local configuration from. Can be a single URL or a list of .mega-linter.yml config files URLs",
       "examples:": [
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
+        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
+        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
       ],
       "items": {
         "type": "string"
@@ -3195,7 +3196,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GHERKIN_GHERKIN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3241,7 +3242,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GHERKIN_GHERKIN_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3357,7 +3358,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3386,7 +3387,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3471,7 +3472,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GO_GOLANGCI_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3517,7 +3518,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GO_GOLANGCI_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3598,7 +3599,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GO_REVIVE: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3637,7 +3638,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GO_REVIVE: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3728,7 +3729,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3774,7 +3775,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3865,7 +3866,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3911,7 +3912,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4002,7 +4003,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "HTML_HTMLHINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4048,7 +4049,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "HTML_HTMLHINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4155,7 +4156,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVASCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4201,7 +4202,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_ES: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4292,7 +4293,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4331,7 +4332,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4405,7 +4406,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVASCRIPT_STANDARD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4444,7 +4445,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_STANDARD: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4519,7 +4520,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVA_CHECKSTYLE: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4565,7 +4566,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVA_CHECKSTYLE: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4656,7 +4657,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4702,7 +4703,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4786,7 +4787,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_JSONLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4825,7 +4826,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_JSONLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4900,7 +4901,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4939,7 +4940,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5020,7 +5021,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_V8R: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5059,7 +5060,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_V8R: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5134,7 +5135,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5180,7 +5181,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSX_ESLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5274,7 +5275,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "KOTLIN_KTLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5313,7 +5314,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5402,7 +5403,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5441,7 +5442,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5516,7 +5517,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "LATEX_CHKTEX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5562,7 +5563,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "LATEX_CHKTEX: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5694,7 +5695,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "LUA_LUACHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5740,7 +5741,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "LUA_LUACHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5841,7 +5842,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_MARKDOWNLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5887,7 +5888,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWNLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5968,7 +5969,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6014,7 +6015,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6088,7 +6089,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6127,7 +6128,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6255,7 +6256,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6294,7 +6295,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_REMARK_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6385,7 +6386,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "OPENAPI_SPECTRAL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6431,7 +6432,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "OPENAPI_SPECTRAL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6522,7 +6523,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PERL_PERLCRITIC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6561,7 +6562,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PERL_PERLCRITIC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6634,7 +6635,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_BUILTIN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6673,7 +6674,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6758,7 +6759,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_PHPCS: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6804,7 +6805,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PHPCS: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6885,7 +6886,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_PHPSTAN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6931,7 +6932,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PHPSTAN: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7012,7 +7013,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_PSALM: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7058,7 +7059,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PSALM: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7182,7 +7183,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "POWERSHELL_POWERSHELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7228,7 +7229,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "POWERSHELL_POWERSHELL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7349,7 +7350,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PROTOBUF_PROTOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7395,7 +7396,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PROTOBUF_PROTOLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7486,7 +7487,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PUPPET_PUPPET_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7532,7 +7533,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PUPPET_PUPPET_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7613,7 +7614,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_BANDIT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7652,7 +7653,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_BANDIT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7733,7 +7734,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_BLACK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7779,7 +7780,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_BLACK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7870,7 +7871,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_FLAKE8: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7916,7 +7917,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_FLAKE8: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7997,7 +7998,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_ISORT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8043,7 +8044,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_ISORT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8124,7 +8125,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_MYPY: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8163,7 +8164,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_MYPY: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8244,7 +8245,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_PYLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8290,7 +8291,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_PYLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8381,7 +8382,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RAKU_RAKU: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8427,7 +8428,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RAKU_RAKU: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8525,7 +8526,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RST_RSTCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8571,7 +8572,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RSTCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8645,7 +8646,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RST_RSTFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8684,7 +8685,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RSTFMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8752,7 +8753,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RST_RST_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8791,7 +8792,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RST_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8876,7 +8877,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RUBY_RUBOCOP: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8922,7 +8923,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RUBY_RUBOCOP: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8992,7 +8993,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RUST_CLIPPY: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9028,7 +9029,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RUST_CLIPPY: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9129,7 +9130,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "R_LINTR: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9175,7 +9176,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "R_LINTR: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9267,7 +9268,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9296,7 +9297,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9388,7 +9389,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9417,7 +9418,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9545,7 +9546,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9574,7 +9575,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9665,7 +9666,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SCALA_SCALAFIX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9711,7 +9712,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SCALA_SCALAFIX: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9809,7 +9810,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SNAKEMAKE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9848,7 +9849,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SNAKEMAKE_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9923,7 +9924,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9969,7 +9970,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10050,7 +10051,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SPELL_CSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10096,7 +10097,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SPELL_CSPELL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10180,7 +10181,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10219,7 +10220,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SPELL_MISSPELL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10304,7 +10305,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SQL_SQLFLUFF: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10343,7 +10344,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_SQLFLUFF: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10424,7 +10425,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SQL_SQL_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10470,7 +10471,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_SQL_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10551,7 +10552,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SQL_TSQLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10590,7 +10591,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_TSQLLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10670,7 +10671,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SWIFT_SWIFTLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10699,7 +10700,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SWIFT_SWIFTLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10804,7 +10805,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TEKTON_TEKTON_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10850,7 +10851,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TEKTON_TEKTON_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10924,7 +10925,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10963,7 +10964,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10994,6 +10995,113 @@
       "$id": "#/properties/TERRAFORM_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for TERRAFORM descriptor",
       "type": "string"
+    },
+    "TERRAFORM_KICS_ARGUMENTS": {
+      "$id": "#/properties/TERRAFORM_KICS_ARGUMENTS",
+      "description": "TERRAFORM_KICS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "TERRAFORM_KICS_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_KICS_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_KICS: Override default cli lint mode",
+      "type": "string"
+    },
+    "TERRAFORM_KICS_DISABLE_ERRORS": {
+      "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
+      "default": false,
+      "title": "TERRAFORM_KICS: Linter does not make Mega-Linter fail even if errors are found",
+      "type": "boolean"
+    },
+    "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TERRAFORM_KICS: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "TERRAFORM_KICS_FILE_EXTENSIONS": {
+      "$id": "#/properties/TERRAFORM_KICS_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "TERRAFORM_KICS_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TERRAFORM_KICS_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "TERRAFORM_KICS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_EXCLUDE",
+      "title": "TERRAFORM_KICS: Excluding Regex",
+      "type": "string"
+    },
+    "TERRAFORM_KICS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_INCLUDE",
+      "title": "TERRAFORM_KICS: Including Regex",
+      "type": "string"
+    },
+    "TERRAFORM_KICS_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_KICS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_KICS_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_KICS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_ARGUMENTS",
@@ -11041,7 +11149,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11080,7 +11188,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAFORM_FMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11155,7 +11263,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TERRAGRUNT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11201,7 +11309,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAGRUNT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11275,7 +11383,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11314,7 +11422,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11389,7 +11497,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TFLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11435,7 +11543,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TFLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11530,7 +11638,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11576,7 +11684,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TSX_ESLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11681,7 +11789,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TYPESCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11727,7 +11835,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_ES: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11818,7 +11926,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11857,7 +11965,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11931,7 +12039,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TYPESCRIPT_STANDARD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11970,7 +12078,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_STANDARD: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12055,7 +12163,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12094,7 +12202,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12182,7 +12290,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "XML_XMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12221,7 +12329,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "XML_XMLLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12306,7 +12414,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "YAML_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12345,7 +12453,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12419,7 +12527,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "YAML_V8R: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12458,7 +12566,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_V8R: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12533,7 +12641,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "YAML_YAMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12579,7 +12687,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_YAMLLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"

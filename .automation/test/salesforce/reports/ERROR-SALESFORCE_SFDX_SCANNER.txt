@@ -1,5 +1,5 @@
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [ERROR] /tmp/a62282d7-5f53-42be-9816-03d1c2da8715

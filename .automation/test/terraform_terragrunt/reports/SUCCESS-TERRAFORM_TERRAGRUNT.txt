@@ -1,5 +1,5 @@
 Results of terragrunt linter (version 0.26.7)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terragrunt/
+See documentation on https://megalinter.github.io/descriptors/terraform_terragrunt/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform_terragrunt/terragrunt_good_1.hcl

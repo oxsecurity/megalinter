@@ -1,5 +1,5 @@
 Results of luacheck linter (version 0.23.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/lua_luacheck/
+See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/lua/lua_good_1.lua

@@ -8,24 +8,28 @@
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
 
-![Runner Install](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+
+## Upgrade from Mega-Linter v4
+
+- Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration to v5 :)
 
 ## Manual installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/nvuillam/mega-linter/releases))
+The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
-- GitHub Action: nvuillam/mega-linter@v4
-- Docker image: nvuillam/mega-linter:v4
+- GitHub Action: megalinter/megalinter@v4
+- Docker image: megalinter/megalinter:v4
 
-You can also use **insiders** version (beta release, corresponding to the content of master branch)
+You can also use **beta** version (corresponding to the content of main branch)
 
-- GitHub Action: nvuillam/mega-linter@insiders
-- Docker image: nvuillam/mega-linter:latest
+- GitHub Action: megalinter/megalinter@beta
+- Docker image: megalinter/megalinter:beta
 
 ## GitHub Action
 
 1. Create a new file in your repository called `.github/workflows/mega-linter.yml`
-2. Copy the [example workflow from below](https://raw.githubusercontent.com/nvuillam/mega-linter/master/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
+2. Copy the [example workflow from below](https://raw.githubusercontent.com/megalinter/megalinter/main/TEMPLATES/mega-linter.yml) into that new file, no extra configuration required
 3. Commit that file to a new branch
 4. Open up a pull request and observe the action working
 5. Enjoy your more _stable_, and _cleaner_ code base
@@ -45,11 +49,11 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 ```yml
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://nvuillam.github.io/mega-linter
+# More info at https://megalinter.github.io
 name: Mega-Linter
 
 on:
-  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
+  # Trigger mega-linter at every push. Action will also be visible from Pull Requests to main
   push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
   pull_request:
     branches: [master, main]
@@ -60,16 +64,11 @@ env: # Comment env block if you do not want to apply fixes
   APPLY_FIXES_EVENT: pull_request # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
   APPLY_FIXES_MODE: commit # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
 
-jobs:
-  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  cancel_duplicates:
-    name: Cancel duplicate jobs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
+jobs:
   build:
     name: Mega-Linter
     runs-on: ubuntu-latest
@@ -85,12 +84,12 @@ jobs:
       - name: Mega-Linter
         id: ml
         # You can override Mega-Linter flavor used to have faster performances
-        # More info at https://nvuillam.github.io/mega-linter/flavors/
-        uses: nvuillam/mega-linter@v4
+        # More info at https://megalinter.github.io/flavors/
+        uses: megalinter/megalinter@v5
         env:
           # All available variables are described in documentation
-          # https://nvuillam.github.io/mega-linter/configuration/
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
+          # https://megalinter.github.io/configuration/
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
@@ -123,10 +122,10 @@ jobs:
 
       # Push new commit if applicable (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/main' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         run: sudo chown -Rc $UID .git/
       - name: Commit and push applied linter fixes
-        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/main' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
@@ -135,11 +134,11 @@ jobs:
 
 </details>
 
-## Azure
+## Azure Pipelines
 
-Use the following Azure workflow template
+Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
 
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```yaml
   - job: megalinter
@@ -148,8 +147,8 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull nvuillam/mega-linter:v4
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint nvuillam/mega-linter
+        docker pull megalinter/megalinter:v4
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using Mega-Linter'
 ```
 
@@ -157,14 +156,14 @@ You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/repor
 
 Add the following stage in your Jenkinsfile
 
-You may activate [File.io reporter](https://nvuillam.github.io/mega-linter/reporters/FileIoReporter/) or [E-mail reporter](https://nvuillam.github.io/mega-linter/reporters/EmailReporter/) to access detailed logs and fixed source
+You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
-// Lint with Mega-Linter: https://nvuillam.github.io/mega-linter/
+// Lint with Mega-Linter: https://megalinter.github.io/
 stage('Mega-Linter') {
     agent {
         docker {
-            image 'nvuillam/mega-linter:v4'
+            image 'megalinter/megalinter:v5'
             args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
@@ -181,19 +180,19 @@ Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
 # Mega-Linter GitLab CI job configuration file
-# More info at https://nvuillam.github.io/mega-linter
+# More info at https://megalinter.github.io/
 
 mega-linter:
   stage: test
   # You can override Mega-Linter flavor used to have faster performances
-  # More info at https://nvuillam.github.io/mega-linter/flavors/
-  image: nvuillam/mega-linter-python:v4
+  # More info at https://megalinter.github.io/flavors/
+  image: megalinter/megalinter-python:v4
   script: [ "true" ]
   variables:
     # All available variables are described in documentation
-    # https://nvuillam.github.io/mega-linter/configuration/
+    # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    DEFAULT_BRANCH: master
+    DEFAULT_BRANCH: main
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
@@ -202,7 +201,7 @@ mega-linter:
     expire_in: 1 week
 ```
 
-![Screenshot](https://github.com/nvuillam/mega-linter/blob/master/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
 ## Concourse
 
@@ -224,7 +223,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
           image_resource:
             type: docker-image
             source:
-              repository: nvuillam/mega-linter
+              repository: megalinter/megalinter
               tag: v4
           inputs:
             - name: repo
@@ -243,7 +242,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             # APPLY_FIXES: all
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
-            # DEFAULT_BRANCH: master
+            # DEFAULT_BRANCH: main
 
 ```
 
@@ -261,7 +260,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: nvuillam/mega-linter
+    repository: megalinter/megalinter
     tag: v4
 
 inputs:
@@ -304,7 +303,7 @@ resources:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-        #   DEFAULT_BRANCH: master
+        #   DEFAULT_BRANCH: main
 ```
 
 ## Run Mega-Linter locally
@@ -313,9 +312,9 @@ resources:
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://nvuillam.github.io/mega-linter/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
+You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
-See [mega-linter-runner installation instructions](https://nvuillam.github.io/mega-linter/mega-linter-runner/#installation)
+See [mega-linter-runner installation instructions](https://megalinter.github.io/mega-linter-runner/#installation)
 
 Example
 

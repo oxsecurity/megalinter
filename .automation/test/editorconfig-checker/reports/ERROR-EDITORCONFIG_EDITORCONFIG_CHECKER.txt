@@ -1,5 +1,5 @@
 Results of editorconfig-checker linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/editorconfig_editorconfig_checker/
+See documentation on https://megalinter.github.io/descriptors/editorconfig_editorconfig_checker/
 -----------------------------------------------
 
 [ERROR] .automation/test/editorconfig-checker/editorconfig-checker_bad_1.ext

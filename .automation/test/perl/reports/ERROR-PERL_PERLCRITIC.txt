@@ -1,5 +1,5 @@
 Results of perlcritic linter (version 1.138)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/perl_perlcritic/
+See documentation on https://megalinter.github.io/descriptors/perl_perlcritic/
 -----------------------------------------------
 
 [ERROR] .automation/test/perl/perl_bad_1.pl

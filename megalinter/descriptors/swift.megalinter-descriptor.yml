@@ -5,7 +5,7 @@ descriptor_flavors:
 file_extensions:
   - ".swift"
 linters:
-  # Dart Analyzer
+  # Swift lint
   - linter_name: swiftlint
     linter_url: https://github.com/realm/SwiftLint
     linter_repo: https://github.com/realm/SwiftLint

@@ -1,5 +1,5 @@
 Results of htmlhint linter (version 0.14.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/html_htmlhint/
+See documentation on https://megalinter.github.io/descriptors/html_htmlhint/
 -----------------------------------------------
 
 [ERROR] .automation/test/html/html_bad_01.html
