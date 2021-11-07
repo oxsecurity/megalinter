@@ -20,6 +20,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.7.0 to **2.0.0** on 2021-11-06
   - [phpstan](https://phpstan.org/) from 1.0.2 to **1.1.0** on 2021-11-06
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.1 to **3.4.2** on 2021-11-07
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.7.2 to **0.8.0** on 2021-11-07
+  - [coffeelint](http://www.coffeelint.org) from 5.1.1 to **5.2.0** on 2021-11-07
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.2 to **3.3.26** on 2021-11-07
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.8.0 to **2.7.0** on 2021-11-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.7.1 to **0.8.0** on 2021-11-07
 <!-- linter-versions-end -->
 
 ## [v5.0.7]
