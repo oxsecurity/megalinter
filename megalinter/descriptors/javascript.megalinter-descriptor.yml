@@ -101,9 +101,10 @@ linters:
     examples:
       - "standard myfile.js"
       - "standard --fix myfile.js"
+    downgraded_version: true
     install:
       npm:
-        - "standard"
+        - "standard@15.0.1"
     ide:
       atom:
         - name: linter-js-standard
