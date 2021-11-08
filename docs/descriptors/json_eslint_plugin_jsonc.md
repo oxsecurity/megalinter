@@ -186,7 +186,7 @@ Specifying rules and plugins:
 Fixing problems:
   --fix                           Automatically fix problems
   --fix-dry-run                   Automatically fix problems without saving the changes to the file system
-  --fix-type Array                Specify the types of fixes to apply (problem, suggestion, layout)
+  --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignoring files:
   --ignore-path path::String      Specify path of ignore file
@@ -230,5 +230,5 @@ Miscellaneous:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
+  - [eslint](https://www.npmjs.com/package/eslint)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)

@@ -13,7 +13,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in Mega-Linter: **7.32.0**
+- Version in Mega-Linter: **8.2.0**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -119,7 +119,7 @@ Specifying rules and plugins:
 Fixing problems:
   --fix                           Automatically fix problems
   --fix-dry-run                   Automatically fix problems without saving the changes to the file system
-  --fix-type Array                Specify the types of fixes to apply (problem, suggestion, layout)
+  --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignoring files:
   --ignore-path path::String      Specify path of ignore file
@@ -163,7 +163,7 @@ Miscellaneous:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
+  - [eslint](https://www.npmjs.com/package/eslint)
   - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
   - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
   - [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)

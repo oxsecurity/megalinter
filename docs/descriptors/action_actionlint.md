@@ -6,7 +6,7 @@ Static checker for GitHub Actions workflow files
 
 ## actionlint documentation
 
-- Version in Mega-Linter: **1.6.6**
+- Version in Mega-Linter: **1.6.7**
 - Visit [Official Web Site](https://rhysd.github.io/actionlint/){target=_blank}
 - See [How to configure actionlint rules](https://github.com/rhysd/actionlint/blob/main/docs/config.md){target=_blank}
 
