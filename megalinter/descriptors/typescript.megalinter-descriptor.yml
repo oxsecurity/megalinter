@@ -41,10 +41,9 @@ linters:
       - "eslint myfile.ts"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.ts"
-    downgraded_version: true
     install:
       npm:
-        - eslint@7.32.0
+        - eslint
         - eslint-config-airbnb
         - eslint-config-prettier
         - eslint-config-standard

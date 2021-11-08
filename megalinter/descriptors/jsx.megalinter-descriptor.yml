@@ -35,10 +35,9 @@ linters:
       - "eslint myfile.jsx"
       - "eslint -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
       - "eslint --fix -c .eslintrc.json --no-eslintrc --no-ignore myfile.jsx"
-    downgraded_version: true
     install:
       npm:
-        - eslint@7.32.0
+        - eslint
         - eslint-plugin-react
         - eslint-plugin-jsx-a11y
     ide:
