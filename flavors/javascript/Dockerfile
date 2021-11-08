@@ -127,7 +127,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
                 babel-eslint \
-                standard \
+                standard@15.0.1 \
                 prettier \
                 jsonlint \
                 eslint-plugin-jsonc \
