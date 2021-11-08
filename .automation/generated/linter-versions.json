@@ -75,7 +75,7 @@
     "sqlfluff": "0.8.1",
     "standard": "15.0.1",
     "stylelint": "14.0.1",
-    "swiftlint": "0.43.1",
+    "swiftlint": "0.44.0",
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.0.10",
     "terragrunt": "0.35.6",
