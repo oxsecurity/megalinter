@@ -11,8 +11,8 @@
 
 - Version in Mega-Linter: **21.10**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
-- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
-  - If custom `.python-black` config file is not found, [.python-black](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-black){target=_blank} will be used
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
+  - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
 
 [![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
 
@@ -33,7 +33,7 @@
 | PYTHON_BLACK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
 | PYTHON_BLACK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | PYTHON_BLACK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| PYTHON_BLACK_CONFIG_FILE                 | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `.python-black`                                  |
+| PYTHON_BLACK_CONFIG_FILE                 | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `pyproject.toml`                                 |
 | PYTHON_BLACK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
 | PYTHON_BLACK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                           |
 | PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
@@ -80,11 +80,11 @@ black --diff --check myfile.py
 ```
 
 ```shell
-black --config .python-black --diff --check myfile.py
+black --config pyproject.toml --diff --check myfile.py
 ```
 
 ```shell
-black --config .python-black myfile.py
+black --config pyproject.toml myfile.py
 ```
 
 
