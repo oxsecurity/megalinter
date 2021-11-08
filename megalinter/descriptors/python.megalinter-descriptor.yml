@@ -49,8 +49,8 @@ linters:
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
-    linter_rules_configuration_url: https://black.readthedocs.io/en/stable/compatible_configs.html
-    config_file_name: .python-black
+    linter_rules_configuration_url: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
+    config_file_name: pyproject.toml
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
@@ -62,8 +62,8 @@ linters:
       - "--check"
     examples:
       - "black --diff --check myfile.py"
-      - "black --config .python-black --diff --check myfile.py"
-      - "black --config .python-black myfile.py" # format
+      - "black --config pyproject.toml --diff --check myfile.py"
+      - "black --config pyproject.toml myfile.py" # format
     install:
       pip:
         - black
