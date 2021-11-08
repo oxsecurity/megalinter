@@ -27,6 +27,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [hadolint](https://github.com/hadolint/hadolint) from 2.8.0 to **2.7.0** on 2021-11-07
   - [sqlfluff](https://www.sqlfluff.com/) from 0.7.1 to **0.8.0** on 2021-11-07
   - [sqlfluff](https://www.sqlfluff.com/) from 0.8.0 to **0.8.1** on 2021-11-08
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.43.1 to **0.44.0** on 2021-11-08
 <!-- linter-versions-end -->
 
 ## [v5.0.7]
