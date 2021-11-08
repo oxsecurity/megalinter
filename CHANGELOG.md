@@ -32,6 +32,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.6 to **1.6.7** on 2021-11-08
   - [eslint](https://eslint.org) from 7.32.0 to **8.2.0** on 2021-11-08
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.44.0 to **0.45.0** on 2021-11-08
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.5 to **7.2.0** on 2021-11-08
 <!-- linter-versions-end -->
 
 ## [v5.0.7]
