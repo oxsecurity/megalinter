@@ -43,7 +43,7 @@ class ConsoleLinterReporter(Reporter):
             msg += [f"- Rules config: identified by [{self.master.linter_name}]"]
         if self.master.config_file_error is not None:
             logging.warning(self.master.config_file_error)
-        if self.print_all_files is False:
+        if self.print_all_files is False and self.master.cli_lint_mode != "project":
             msg += [
                 f"- Number of files analyzed: [{len(self.master.files_lint_results)}]"
             ]
