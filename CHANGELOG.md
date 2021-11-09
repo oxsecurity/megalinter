@@ -12,6 +12,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Bypass random CI issue with sql_tsqllint_test test version and test help
 - New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
 - Update **black** configuration, that now uses a `pyproject.toml` file (#949)
+- Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04

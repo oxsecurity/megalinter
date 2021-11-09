@@ -66,7 +66,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- psalm is called one time by identified file
+- psalm is called once with the list of files as arguments
 
 ### Example calls
 
@@ -75,7 +75,15 @@ psalm myfile.php
 ```
 
 ```shell
+psalm myfile.php mydir/
+```
+
+```shell
 psalm --config=psalm.xml myfile.php
+```
+
+```shell
+psalm --config=psalm.xml myfile.php mydir/
 ```
 
 
