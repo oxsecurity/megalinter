@@ -45,7 +45,7 @@
     "perlcritic": "1.140",
     "php": "7.4.25",
     "phpcs": "3.6.1",
-    "phpstan": "1.1.1",
+    "phpstan": "1.1.2",
     "powershell": "7.2.0",
     "prettier": "2.4.1",
     "protolint": "0.35.2",

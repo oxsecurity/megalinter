@@ -36,6 +36,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.5 to **7.2.0** on 2021-11-08
   - [protolint](https://github.com/yoheimuta/protolint) from 0.35.1 to **0.35.2** on 2021-11-09
   - [isort](https://pycqa.github.io/isort/) from 5.10.0 to **5.10.1** on 2021-11-09
+  - [phpstan](https://phpstan.org/) from 1.1.1 to **1.1.2** on 2021-11-09
 <!-- linter-versions-end -->
 
 ## [v5.0.7] - 2021-11-04
