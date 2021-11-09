@@ -83,7 +83,7 @@ jobs:
               echo "Checking existence of https://hub.docker.com/v2/repositories/$1/tags/$2"
               curl --silent -f -lSL https://hub.docker.com/v2/repositories/$1/tags/$2 > /dev/null
           }
-          MEGA_LINTER_BASE_IMAGE="megalinter/megalinter:latest"
+          MEGA_LINTER_BASE_IMAGE="megalinter/megalinter:beta"
           if docker_tag_exists megalinter/megalinter ${{steps.image_tag.outputs.tag}}; then
              MEGA_LINTER_BASE_IMAGE="megalinter/megalinter:${{steps.image_tag.outputs.tag}}"
              echo "Reusing previously built image as base for quick build: ${MEGA_LINTER_BASE_IMAGE}"
