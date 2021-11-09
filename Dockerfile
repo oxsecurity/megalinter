@@ -151,7 +151,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
-          'checkov>=2.0.269' \
+          'checkov' \
           'yamllint'
 #PIP__END
 
