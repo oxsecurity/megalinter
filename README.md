@@ -445,7 +445,7 @@ stage('Mega-Linter') {
     agent {
         docker {
             image 'megalinter/megalinter:v5'
-            args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
     }
