@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Beta] (main branch content)
+## [Unreleased] (beta, main branch content)
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
@@ -35,7 +35,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.5 to **7.2.0** on 2021-11-08
 <!-- linter-versions-end -->
 
-## [v5.0.7]
+## [v5.0.7] - 2021-11-04
 
 - Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
 
@@ -46,11 +46,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.0.1 to **1.0.2** on 2021-11-04
   - [isort](https://pycqa.github.io/isort/) from 5.9.3 to **5.10.0** on 2021-11-04
 
-## [v5.0.6]
+## [v5.0.6] - 2021-11-03
 
 - Use GH actions concurrency to cancel runs (#921)
 
-## [v5.0.5]
+## [v5.0.5] - 2021-11-02
 
 - Fix `mega-linter-runner --install` template for Github Action Workflow
 - Replace expression "abusive copy-paste" by "excessive copy-paste"
@@ -62,7 +62,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.4 to **5.12.5** on 2021-11-02
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.5 to **0.35.6** on 2021-11-02
 
-## [v5.0.2]
+## [v5.0.2] - 2021-10-31
 
 - Quick build to fix stargazers badge regression (see issue #873) (#909)
 - Improve Azure Pipeline template documentation (#908)
@@ -74,12 +74,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 9.0.1 to **9.1** on 2021-10-31
   - [tflint](https://github.com/terraform-linters/tflint) from 0.33.0 to **0.33.1** on 2021-10-31
 
-## [v5.0.1]
+## [v5.0.1] - 2021-10-30
 
 - Fix mega-linter-runner bug related to v5
 - Fix online documentation
 
-## [v5.0.0]
+## [v5.0.0] - 2021-10-30
 
 - Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
 - Migration from docker hub space **nvuillam** to space **megalinter**
