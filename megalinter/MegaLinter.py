@@ -608,7 +608,9 @@ class Megalinter:
             logging.info(c.green("✅ Successfully linted all files without errors"))
             config.delete()
         elif self.status == "warning":
-            logging.warning(c.yellow("◬ Successfully linted all files, but with ignored errors"))
+            logging.warning(
+                c.yellow("◬ Successfully linted all files, but with ignored errors")
+            )
             config.delete()
         else:
             logging.error(c.red("❌ Error(s) have been found during linting"))
