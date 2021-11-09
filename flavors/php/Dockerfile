@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.7.0-alpine as hadolint
-FROM yoheimuta/protolint:v0.35.1 as protolint
+FROM yoheimuta/protolint:latest as protolint
 #FROM__END
 
 ##################
