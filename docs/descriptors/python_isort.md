@@ -9,7 +9,7 @@
 
 ## isort documentation
 
-- Version in Mega-Linter: **5.10.0**
+- Version in Mega-Linter: **5.10.1**
 - Visit [Official Web Site](https://pycqa.github.io/isort/){target=_blank}
 - See [How to configure isort rules](https://pycqa.github.io/isort/docs/configuration/config_files/){target=_blank}
   - If custom `.isort.cfg` config file is not found, [.isort.cfg](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.isort.cfg){target=_blank} will be used
