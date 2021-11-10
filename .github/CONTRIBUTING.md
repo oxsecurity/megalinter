@@ -14,9 +14,9 @@ We're thrilled that you'd like to contribute to this project. Your help is essen
 
 - Run the following commands at the root of the repository to install required dev dependencies
 ```shell
-python3 -m venv venv
-. venv/bin/activate
-echo "venv/" >> .git/info/exclude
+python3 -m venv .venv
+. .venv/bin/activate
+echo ".venv/" >> .git/info/exclude
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.dev.txt
 ```
