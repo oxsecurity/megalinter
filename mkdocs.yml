@@ -33,6 +33,9 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css
 extra:
+  version:
+    provider: mike
+    default: latest
   social:
     - icon: fontawesome/regular/question-circle
       link: https://github.com/megalinter/megalinter/issues
