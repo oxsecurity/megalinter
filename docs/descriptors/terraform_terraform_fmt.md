@@ -9,7 +9,7 @@
 
 ## terraform-fmt documentation
 
-- Version in Mega-Linter: **1.0.10**
+- Version in Mega-Linter: **1.0.11**
 - Visit [Official Web Site](https://www.terraform.io/docs/cli/commands/fmt.html){target=_blank}
 
 [![terraform - GitHub](https://gh-card.dev/repos/hashicorp/terraform.svg?fullname=)](https://github.com/hashicorp/terraform){target=_blank}
