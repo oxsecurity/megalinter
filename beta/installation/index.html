@@ -5475,7 +5475,7 @@
 <p><strong>NOTES:</strong></p>
 <ul>
 <li>If you pass the <em>Environment</em> variable <code>GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code> in your workflow, then the <strong>GitHub MegaLinter</strong> will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the <strong>GitHub</strong> Secret as it is automatically set by GitHub, it only needs to be passed to the action.</li>
-<li>You can also <strong>use it outside of GitHub Actions</strong> (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run)</li>
+<li>You can also <strong>use it outside of GitHub Actions</strong> (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run) provided that <code>GITHUB_TARGET_URL</code> environment variable exists.</li>
 </ul>
 <p>In your repository you should have a <code>.github/workflows</code> folder with <strong>GitHub</strong> Action similar to below:</p>
 <ul>
