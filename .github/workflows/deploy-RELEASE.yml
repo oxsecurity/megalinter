@@ -111,3 +111,64 @@ jobs:
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
+
+  deploy_doc:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.repository == 'megalinter/megalinter'
+    steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+      - name: Get release version
+        id: version
+        run: |
+          echo "::set-output name=cversion::$(git describe --tags --match='v*' --abbrev=0 | cut -c2-)"
+          echo "::set-output name=ctag::$(git describe --tags --match='v*' --abbrev=0)"
+          echo "::set-output name=pversion::$(git describe --abbrev=0 --match='v*' --tags $(git rev-list --tags --skip=1 --max-count=1) | cut -c2-)"
+          echo "::set-output name=ptag::$(git describe --abbrev=0 --match='v*' --tags $(git rev-list --tags --skip=1 --max-count=1))"
+      - name: Print tags
+        run: |
+          echo "prev tag ${{ steps.version.outputs.ptag }}"
+          echo "curr tag ${{ steps.version.outputs.ctag }}"
+          echo "prev ver ${{ steps.version.outputs.pversion }}"
+          echo "curr ver ${{ steps.version.outputs.cversion }}"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans
+      - run: cd .automation && bash build_schemas_doc.sh && cd ..
+      # - run: mkdocs gh-deploy --force
+      - run: |
+          git config --global user.name megalinter-bot
+          git config --global user.email megalinter@megalinter.com
+      - name: Checkout previous tag
+        run: |
+          git checkout ${{ steps.version.outputs.ptag }}
+      - name: Mike deploy previous version
+        run: |
+          mike delete ${{ steps.version.outputs.pversion }} || echo 'version does not exists yet'
+          mike deploy ${{ steps.version.outputs.pversion }}
+      - name: Checkout current tag
+        run: |
+          git checkout ${{ steps.version.outputs.ctag }}
+      - name: Mike deploy current version
+        run: |
+          mike delete latest
+          mike deploy --push latest ${{ steps.version.outputs.cversion }}
+
+  git-sync:
+    runs-on: ubuntu-latest
+    needs: deploy_doc
+    steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "megalinter/megalinter"
+          source_branch: "gh-pages"
+          destination_repo: "git@github.com:megalinter/megalinter.github.io.git"
+          destination_branch: "gh-pages"
+          # ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
+          # source_ssh_private_key: ${{ secrets.SOURCE_SSH_PRIVATE_KEY }} # optional, will override `SSH_PRIVATE_KEY`
+          destination_ssh_private_key: ${{ secrets.MEGALINTER_GITHUB_IO_SSH_PRIVATE_KEY }} # optional, will override `SSH_PRIVATE_KEY`
+ 
