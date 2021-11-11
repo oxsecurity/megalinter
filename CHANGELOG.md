@@ -17,6 +17,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Documentation versioning with mike
 - Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
 - Downgrade dotnet from 6.0 to 5.0, to be compliant with tsqllint
+- Allow GithubStatusReporter to work for other CI platforms
 - Add license badge in linters documentation (All linters)
 
 - Linter versions upgrades
