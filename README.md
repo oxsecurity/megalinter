@@ -974,7 +974,9 @@ To help, you can also:
 - [eslint](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
 - [eslint-plugin-jsonc](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
 - [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
+- [htmlhint](https://htmlhint.com/docs/user-guide/integrations/task-runner){target=_blank}
 - [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
+- [kics](https://docs.kics.io/latest/integrations/){target=_blank}
 - [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
 - [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
 - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
