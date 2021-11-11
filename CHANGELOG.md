@@ -15,6 +15,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
 - mega-linter-runner: Upgrade yeoman environment to allow spaces in path
 - Documentation versioning with mike
+- Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
