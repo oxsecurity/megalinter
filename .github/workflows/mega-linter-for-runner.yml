@@ -1,7 +1,7 @@
 ---
-# Mega-Linter GitHub Action configuration file
+# MegaLinter GitHub Action configuration file
 # More info at https://megalinter.github.io
-name: Mega-Linter for mega-linter-runner
+name: MegaLinter for mega-linter-runner
 
 # Start lint on any push and on pull requests
 on:
@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   build:
-    name: Mega-Linter
+    name: MegaLinter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -31,10 +31,10 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # Mega-Linter
-      - name: Mega-Linter
+      # MegaLinter
+      - name: MegaLinter
         id: ml
-        # You can override Mega-Linter flavor used to have faster performances
+        # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
         uses: megalinter/megalinter/flavors/javascript@beta
         env:
@@ -46,12 +46,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PAT: ${{ secrets.PAT }}
 
-      # Upload Mega-Linter artifacts
+      # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
-          name: Mega-Linter reports
+          name: MegaLinter reports
           path: |
             report
             mega-linter.log
@@ -63,8 +63,8 @@ jobs:
         uses: peter-evans/create-pull-request@v3.11.0
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          commit-message: "[Mega-Linter] Apply linters automatic fixes"
-          title: "[Mega-Linter] Apply linters automatic fixes"
+          commit-message: "[MegaLinter] Apply linters automatic fixes"
+          title: "[MegaLinter] Apply linters automatic fixes"
           labels: bot
       - name: Create PR output
         if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
@@ -81,4 +81,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
-          commit_message: "[Mega-Linter] Apply linters fixes"
+          commit_message: "[MegaLinter] Apply linters fixes"

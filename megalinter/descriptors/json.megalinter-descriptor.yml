@@ -155,7 +155,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
-    cli_lint_fix_arg_name: "--write" # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--write" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
     test_folder: json_prettier

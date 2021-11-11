@@ -10,7 +10,7 @@
 
 [![arm-ttk - GitHub](https://gh-card.dev/repos/Azure/arm-ttk.svg?fullname=)](https://github.com/Azure/arm-ttk){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable arm-ttk by adding `ARM_ARM_TTK` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable arm-ttk by adding `ARM_ARM_TTK` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -26,25 +26,25 @@
 | ARM_ARM_TTK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | ARM_ARM_TTK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | ARM_ARM_TTK_CONFIG_FILE                 | arm-ttk configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `.arm-ttk.psd1`                                  |
-| ARM_ARM_TTK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| ARM_ARM_TTK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | ARM_ARM_TTK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | ARM_ARM_TTK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use arm-ttk in your favorite IDE to catch errors before Mega-Linter !
+Use arm-ttk in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                   |                                                                                    Install                                                                                     |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [ARMTTKExtension](https://marketplace.visualstudio.com/items?itemName=Sam-Cogan.ARMTTKExtension) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/Sam-Cogan.ARMTTKExtension){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor                    |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                    |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes

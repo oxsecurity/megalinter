@@ -9,14 +9,14 @@
 
 ## cfn-lint documentation
 
-- Version in Mega-Linter: **0.56.0**
+- Version in MegaLinter: **0.56.0**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}
 
 [![cfn-lint - GitHub](https://gh-card.dev/repos/martysweet/cfn-lint.svg?fullname=)](https://github.com/martysweet/cfn-lint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable cfn-lint by adding `CLOUDFORMATION_CFN_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -32,13 +32,13 @@
 | CLOUDFORMATION_CFN_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | CLOUDFORMATION_CFN_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | CLOUDFORMATION_CFN_LINT_CONFIG_FILE                 | cfn-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.cfnlintrc.yml`                                 |
-| CLOUDFORMATION_CFN_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| CLOUDFORMATION_CFN_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
+Use cfn-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                    Install                                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -46,13 +46,13 @@ Use cfn-lint in your favorite IDE to catch errors before Mega-Linter !
 |  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>  | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [cfn-lint](https://plugins.jetbrains.com/plugin/10973-cfn-lint)                                 |                         <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/10973"></iframe>                         |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/kddejong.vscode-cfn-lint){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 

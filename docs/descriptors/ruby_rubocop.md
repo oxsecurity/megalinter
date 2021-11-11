@@ -9,7 +9,7 @@
 
 ## rubocop documentation
 
-- Version in Mega-Linter: **0.82.0**
+- Version in MegaLinter: **0.82.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -18,7 +18,7 @@
 
 [![rubocop - GitHub](https://gh-card.dev/repos/rubocop-hq/rubocop.svg?fullname=)](https://github.com/rubocop-hq/rubocop){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable rubocop by adding `RUBY_RUBOCOP` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable rubocop by adding `RUBY_RUBOCOP` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -36,13 +36,13 @@
 | RUBY_RUBOCOP_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | RUBY_RUBOCOP_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | RUBY_RUBOCOP_CONFIG_FILE                 | rubocop configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                  | `.ruby-lint.yml`                                 |
-| RUBY_RUBOCOP_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| RUBY_RUBOCOP_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | RUBY_RUBOCOP_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use rubocop in your favorite IDE to catch errors before Mega-Linter !
+Use rubocop in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                             |                                                                              Install                                                                               |
 |:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -56,13 +56,13 @@ Use rubocop in your favorite IDE to catch errors before Mega-Linter !
 |   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [ale](https://github.com/w0rp/ale)                                                         |                                                    [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                    |
 |  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode Ruby Extension](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/rebornix.Ruby){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor        |        95        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        95        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)     | Optimized for RUBY based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 
 ## Behind the scenes

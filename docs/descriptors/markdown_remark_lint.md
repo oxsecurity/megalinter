@@ -4,7 +4,7 @@
 
 ## remark-lint documentation
 
-- Version in Mega-Linter: **14.0.1**
+- Version in MegaLinter: **14.0.1**
 - Visit [Official Web Site](https://remark.js.org/){target=_blank}
 - See [How to configure remark-lint rules](https://github.com/remarkjs/remark-lint#configuring-remark-lint){target=_blank}
   - If custom `.remarkrc` config file is not found, [.remarkrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.remarkrc){target=_blank} will be used
@@ -13,7 +13,7 @@
 
 [![remark-lint - GitHub](https://gh-card.dev/repos/remarkjs/remark-lint.svg?fullname=)](https://github.com/remarkjs/remark-lint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable remark-lint by adding `MARKDOWN_REMARK_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable remark-lint by adding `MARKDOWN_REMARK_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -32,13 +32,13 @@
 | MARKDOWN_REMARK_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | MARKDOWN_REMARK_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | MARKDOWN_REMARK_LINT_CONFIG_FILE                 | remark-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                              | `.remarkrc`                                      |
-| MARKDOWN_REMARK_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| MARKDOWN_REMARK_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_REMARK_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                           |
 | MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use remark-lint in your favorite IDE to catch errors before Mega-Linter !
+Use remark-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                            |                                                Install                                                |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------:|
@@ -47,15 +47,15 @@ Use remark-lint in your favorite IDE to catch errors before Mega-Linter !
 |   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/w0rp/ale)                                                                        |                     [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                      |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [vscode-remark-lint](https://github.com/drewbourne/vscode-remark-lint)                                    |           [Visit Web Site](https://github.com/drewbourne/vscode-remark-lint){target=_blank}           |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default Mega-Linter Flavor                            |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                            |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                     |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
-|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | Mega-Linter for documentation projects                |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
+|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        47        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                       |        42        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                     |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |

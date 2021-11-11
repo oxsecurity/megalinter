@@ -1,11 +1,11 @@
-# documentation Mega-Linter Flavor
+# documentation MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation)
 
 ## Description
 
-Mega-Linter for documentation projects
+MegaLinter for documentation projects
 
 ## Usage
 

@@ -28,7 +28,7 @@ module.exports = optionator({
       alias: "r",
       type: "String",
       default: "v5",
-      description: "Mega-Linter version",
+      description: "MegaLinter version",
       example: ["stable", "latest", "v5.9.0"],
     },
     {
@@ -36,14 +36,14 @@ module.exports = optionator({
       alias: "f",
       type: "String",
       default: "all",
-      description: "Mega-Linter flavor",
+      description: "MegaLinter flavor",
       example: ["dotnet", "javascript", "java", "php", "python"],
     },
     {
       option: "image",
       alias: "d",
       type: "String",
-      description: "Mega-Linter docker image",
+      description: "MegaLinter docker image",
       example: [
         "ghcr.io/megalinter/megalinter:latest",
         "ghcr.io/megalinter/megalinter:v5",
@@ -108,13 +108,13 @@ module.exports = optionator({
       option: "install",
       alias: "i",
       type: "Boolean",
-      description: "Generate Mega-Linter configuration in your project",
+      description: "Generate MegaLinter configuration in your project",
     },
     {
       option: "upgrade",
       alias: "u",
       type: "Boolean",
-      description: "Upgrade local repository Mega-Linter configuration",
+      description: "Upgrade local repository MegaLinter configuration",
     },
   ],
   mutuallyExclusive: [

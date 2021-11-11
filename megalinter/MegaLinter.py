@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Main Mega-Linter class, encapsulating all linters process and reporting
+Main MegaLinter class, encapsulating all linters process and reporting
 
 """
 
@@ -30,7 +30,7 @@ def run_linters(linters):
     return linters
 
 
-# Main Mega-Linter class, orchestrating files collection, linter processes and reporters
+# Main MegaLinter class, orchestrating files collection, linter processes and reporters
 class Megalinter:
 
     # Constructor: Load global config, linters & compute file extensions
@@ -47,7 +47,7 @@ class Megalinter:
         self.initialize_logger()
         self.manage_upgrade_message()
         self.display_header()
-        # Mega-Linter default rules location
+        # MegaLinter default rules location
         self.default_rules_location = (
             "/action/lib/.automation"
             if os.path.isdir("/action/lib/.automation")
@@ -98,7 +98,7 @@ class Megalinter:
         # Initialize linters and gather criteria to browse files
         self.load_linters()
         self.compute_file_extensions()
-        # Load Mega-Linter reporters
+        # Load MegaLinter reporters
         self.load_reporters()
 
     # Collect files, run linters on them and write reports
@@ -131,7 +131,7 @@ class Megalinter:
         else:
             self.process_linters_serial(active_linters, linters_do_fixes)
 
-        # Update main Mega-Linter status according to results of linters run
+        # Update main MegaLinter status according to results of linters run
         for linter in self.linters:
             if linter.status != "success":
                 # Not blocking linter error
@@ -151,7 +151,7 @@ class Megalinter:
         # Sort linters before reports production
         self.linters = sorted(self.linters, key=lambda l: (l.descriptor_id, l.name))
 
-        # Check if a Mega-Linter flavor can be used for this repo, except if:
+        # Check if a MegaLinter flavor can be used for this repo, except if:
         # - FLAVOR_SUGGESTIONS: false is defined
         # - VALIDATE_ALL_CODE_BASE is false, or diff failed (we don't have all the files to calculate the suggestion)
         if (
@@ -575,7 +575,7 @@ class Megalinter:
     def display_header():
         # Header prints
         logging.info(utils.format_hyphens(""))
-        logging.info(utils.format_hyphens("Mega-Linter"))
+        logging.info(utils.format_hyphens("MegaLinter"))
         logging.info(utils.format_hyphens(""))
         logging.info(
             " - Image Creation Date: " + config.get("BUILD_DATE", "No docker image")
@@ -587,7 +587,7 @@ class Megalinter:
             " - Image Version: " + config.get("BUILD_VERSION", "No docker image")
         )
         logging.info(utils.format_hyphens(""))
-        logging.info("The Mega-Linter documentation can be found at:")
+        logging.info("The MegaLinter documentation can be found at:")
         logging.info(" - " + ML_DOC_URL)
         logging.info(utils.format_hyphens(""))
         logging.info("GITHUB_REPOSITORY: " + os.environ.get("GITHUB_REPOSITORY", ""))

@@ -15,7 +15,7 @@
   - `.kt`
   - `.kts`
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 | Variable                    | Description                   | Default value |
 |-----------------------------|-------------------------------|---------------|

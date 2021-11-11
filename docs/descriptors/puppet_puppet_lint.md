@@ -4,7 +4,7 @@
 
 ## puppet-lint documentation
 
-- Version in Mega-Linter: **2.5.2**
+- Version in MegaLinter: **2.5.2**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -12,7 +12,7 @@
 
 [![puppet-lint - GitHub](https://gh-card.dev/repos/rodjek/puppet-lint.svg?fullname=)](https://github.com/rodjek/puppet-lint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -30,25 +30,25 @@
 | PUPPET_PUPPET_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | PUPPET_PUPPET_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | PUPPET_PUPPET_LINT_CONFIG_FILE                 | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                              | `.puppet-lint.rc`                                |
-| PUPPET_PUPPET_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| PUPPET_PUPPET_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PUPPET_PUPPET_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use puppet-lint in your favorite IDE to catch errors before Mega-Linter !
+Use puppet-lint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                         Install                                         |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------:|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 

@@ -13,7 +13,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in Mega-Linter: **1.7.0**
+- Version in MegaLinter: **1.7.0**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
 - See [How to disable bandit rules in files](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines){target=_blank}
@@ -21,7 +21,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 [![bandit - GitHub](https://gh-card.dev/repos/PyCQA/bandit.svg?fullname=)](https://github.com/PyCQA/bandit){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable bandit by adding `PYTHON_BANDIT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable bandit by adding `PYTHON_BANDIT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -37,13 +37,13 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 | PYTHON_BANDIT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | PYTHON_BANDIT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | PYTHON_BANDIT_CONFIG_FILE                 | bandit configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.bandit.yml`                                    |
-| PYTHON_BANDIT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| PYTHON_BANDIT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PYTHON_BANDIT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use bandit in your favorite IDE to catch errors before Mega-Linter !
+Use bandit in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                |                                          Install                                           |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------:|
@@ -51,13 +51,13 @@ Use bandit in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-bandit](https://github.com/SublimeLinter/SublimeLinter-bandit) |   [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-bandit){target=_blank}   |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_bandit)   | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_bandit){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor          |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes

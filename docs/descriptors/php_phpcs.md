@@ -4,7 +4,7 @@
 
 ## phpcs documentation
 
-- Version in Mega-Linter: **3.6.1**
+- Version in MegaLinter: **3.6.1**
 - Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file is not found, [phpcs.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -12,7 +12,7 @@
 
 [![PHP_CodeSniffer - GitHub](https://gh-card.dev/repos/squizlabs/PHP_CodeSniffer.svg?fullname=)](https://github.com/squizlabs/PHP_CodeSniffer){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable phpcs by adding `PHP_PHPCS` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable phpcs by adding `PHP_PHPCS` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -28,13 +28,13 @@
 | PHP_PHPCS_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | PHP_PHPCS_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | PHP_PHPCS_CONFIG_FILE                 | phpcs configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `phpcs.xml`                                      |
-| PHP_PHPCS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| PHP_PHPCS_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | PHP_PHPCS_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use phpcs in your favorite IDE to catch errors before Mega-Linter !
+Use phpcs in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                      |                                                                              Install                                                                               |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -45,13 +45,13 @@ Use phpcs in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-phpcs](https://github.com/SublimeLinter/SublimeLinter-phpcs)         |                                       [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-phpcs){target=_blank}                                        |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-phpcs](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs)   | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ikappas.phpcs){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor       |        95        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor       |        95        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes

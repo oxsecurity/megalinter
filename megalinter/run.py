@@ -11,5 +11,5 @@ linter = megalinter.Megalinter({"cli": True})
 # Guess who's there ? :)
 megalinter.alpaca()
 
-# Run Mega-Linter
+# Run MegaLinter
 linter.run()

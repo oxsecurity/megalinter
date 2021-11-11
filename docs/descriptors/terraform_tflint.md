@@ -4,7 +4,7 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.33.1**
+- Version in MegaLinter: **0.33.1**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
   - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
@@ -13,7 +13,7 @@
 
 [![tflint - GitHub](https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=)](https://github.com/terraform-linters/tflint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -29,17 +29,17 @@
 | TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | `[{"command": "tflint --init", "cwd": "workspace"}]` |
 | TERRAFORM_TFLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                                 |
 | TERRAFORM_TFLINT_CONFIG_FILE                 | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.tflint.hcl`                                        |
-| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules     |
+| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules     |
 | TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                              |
 | TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                  |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default Mega-Linter Flavor             |        95        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor             |        95        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes

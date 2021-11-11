@@ -54,7 +54,7 @@
           plugins: {
             title: {
               display: true,
-              text: 'Mega-Linter flavors stats'
+              text: 'MegaLinter flavors stats'
             }
           },
           scales: {

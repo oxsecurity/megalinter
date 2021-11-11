@@ -4,12 +4,12 @@
 
 ## chktex documentation
 
-- Version in Mega-Linter: **1.7.6**
+- Version in MegaLinter: **1.7.6**
 - Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
 - See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
   - If custom `.chktexrc` config file is not found, [.chktexrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable chktex by adding `LATEX_CHKTEX` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable chktex by adding `LATEX_CHKTEX` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -25,26 +25,26 @@
 | LATEX_CHKTEX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | LATEX_CHKTEX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | LATEX_CHKTEX_CONFIG_FILE                 | chktex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.chktexrc`                                      |
-| LATEX_CHKTEX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| LATEX_CHKTEX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | LATEX_CHKTEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use chktex in your favorite IDE to catch errors before Mega-Linter !
+Use chktex in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                |                                                                                   Install                                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                   [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                    |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 

@@ -10,7 +10,7 @@ function helloName(string $name): array
 
 function helloMegalinter(): void
 {
-    $hello = helloName("Mega-Linter");
+    $hello = helloName("MegaLinter");
     echo implode(" ", $hello) . PHP_EOL;
 }
 

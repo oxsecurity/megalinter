@@ -98,7 +98,7 @@ Then run `bash build.py` and it will generate all the rest !
 
 ### CI/CT/CD
 
-The **Mega-Linter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
+The **MegaLinter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
 
 - When a branch is created and code is pushed, a **GitHub** Action is triggered for building the new **Docker** container with the new codebase
   - To test your updates during your development, you may have to create a draft Pull Request to trigger CI on the main repo
@@ -108,7 +108,7 @@ The **Mega-Linter** has _CI/CT/CD_ configured utilizing **GitHub** Actions.
 - The **Docker** container is then ran against the _test cases_ to validate all code sanity
   - `.automation/test` contains all test cases for each language that should be validated
 - These **GitHub** Actions utilize the Checks API and Protected Branches to help follow the SDLC
-- When the Pull Request is merged to main, the **Mega-Linter** **Docker** container is then updated and deployed with the new codebase
+- When the Pull Request is merged to main, the **MegaLinter** **Docker** container is then updated and deployed with the new codebase
   - **Note:** The branch's **Docker** container is also removed from **DockerHub** to cleanup after itself
 
 ## Releasing

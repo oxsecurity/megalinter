@@ -262,7 +262,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Default commands defined at linter descriptor level
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
 - Fix tflint config so no custom PRE_COMMAND is necessary
-- Use dotnet installer to setup tsqllint. tsqllint is now part of the main Mega-Linter flavor, but removed from JAVASCRIPT flavor
+- Use dotnet installer to setup tsqllint. tsqllint is now part of the main MegaLinter flavor, but removed from JAVASCRIPT flavor
 - Ignore linter_FILTER_REGEX_INCLUDE/linter_FILTER_REGEX_EXCLUDE for linters running on the whole project directory
 - mega-linter-runner updates
   - New CLI argument `--json`, to get the full report as JSON in stdout last line
@@ -394,8 +394,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [4.41.0] - 2021-07-25
 
-- New config variable **IGNORE_GITIGNORED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files ignored by git using `.gitignore` files
-- New config variable **IGNORE_GENERATED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files containing `@generated` marker and not containing `@not-generated` marker
+- New config variable **IGNORE_GITIGNORED_FILES** (default: `false`). If set to `true`, MegaLinter will skips files ignored by git using `.gitignore` files
+- New config variable **IGNORE_GENERATED_FILES** (default: `false`). If set to `true`, MegaLinter will skips files containing `@generated` marker and not containing `@not-generated` marker
 
 - Linter versions upgrades
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
@@ -457,7 +457,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 ## [4.38.0] - 2021-07-10
 
 - New python linter: [bandit](https://github.com/PyCQA/bandit), added by [Tom Pansino](https://github.com/tpansino)
-- Manage Github action versioning: Match Mega-Linter docker image version
+- Manage Github action versioning: Match MegaLinter docker image version
 
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.2 to **6.5.3** on 2021-07-07
@@ -537,7 +537,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Upgrade to python:3.9.5-alpine
 - Partial fix [#481](https://github.com/megalinter/megalinter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/megalinter/megalinter/pull/487) by [Vít Kučera](https://github.com/vkucera))
 - Fix build.sh on windows
-- Add trivy security check of all built Mega-Linter docker images
+- Add trivy security check of all built MegaLinter docker images
 
 - Linter versions upgrades
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
@@ -575,7 +575,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [4.34.0] - 2021-04-30
 
-- Fix bug in Mega-Linter plugins installation (related to [#PR403](https://github.com/megalinter/megalinter/pull/403))
+- Fix bug in MegaLinter plugins installation (related to [#PR403](https://github.com/megalinter/megalinter/pull/403))
 
 - Linter versions upgrades
   - [sqlfluff](https://www.sqlfluff.com/) from 0.5.3 to **0.5.5** on 2021-05-14
@@ -682,7 +682,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 ## [4.29.0] - 2021-03-12
 
 - Fix regex to list Salesforce errors
-- Fix Updated Files Reporter when Mega-Linter is not running on GitHub Action
+- Fix Updated Files Reporter when MegaLinter is not running on GitHub Action
 - Fix #359 - invalid literal with _DISABLE_ERRORS_IF_LESS_THAN
 
 - Linter versions upgrades
@@ -752,7 +752,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Fix ansible-lint test cases for new version
   - Update --help expected return code for shfmt ash formatter and revive go linter
   - Add --write to update files fixed by eslint
-  - Pimp Mega-Linter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/megalinter/megalinter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
+  - Pimp MegaLinter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/megalinter/megalinter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
   - Increase max line length to 500 in yaml-lint default configuration
 
 - Linter versions upgrades
@@ -824,7 +824,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linters
   - Add [revive](https://github.com/mgechev/revive) GO linter
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
-  - New Mega-Linter flavor **swift**
+  - New MegaLinter flavor **swift**
   - Get correct version for eslint-plugin-jsonc
 
 - Linter versions upgrades
@@ -916,7 +916,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.2 to **0.44.3** on 2021-01-09
   - [tflint](https://github.com/terraform-linters/tflint) from 0.23.0 to **0.23.1** on 2021-01-10
   - [dotenv-linter](https://dotenv-linter.github.io/) from 2.2.1 to **3.0.0** on 2021-01-11
-    - Update Mega-Linter to call dotenv-linter v3 with `fix` and not `--fix` anymore
+    - Update MegaLinter to call dotenv-linter v3 with `fix` and not `--fix` anymore
   - [phpstan](https://phpstan.org/) from 0.12.65 to **0.12.66** on 2021-01-11
 
 ## [4.22.1] - 2021-01-07
@@ -953,7 +953,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - isort
 
 - Core
-  - Implement architecture for Mega-Linter plugins
+  - Implement architecture for MegaLinter plugins
   - Count number of errors in linter logs with regexes (`cli_lint_errors_count` and `cli_lint_errors_regex` in descriptor files)
   - Cleanup unused legacy from Super-Linter
 
@@ -963,7 +963,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Documentation
   - Add Install button for VsCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available
-  - Add a new page **All linters** listing all linters and references to Mega-Linter in their documentation
+  - Add a new page **All linters** listing all linters and references to MegaLinter in their documentation
   - Add json-schema documentation generation and references
 
 - CI
@@ -994,7 +994,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 ## [4.18.0] - 2020-12-23
 
 - Core
-  - Do not suggest flavors when Mega-Linter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
+  - Do not suggest flavors when MegaLinter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
   - Fix ConsoleReporter active linters table content
   - Check if linter is able to fix before flagging it as a fixing linter during runtime
 
@@ -1007,7 +1007,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
   - Add docker pulls badge in flavors documentation
-  - Generate list of references to Mega-Linter
+  - Generate list of references to MegaLinter
 
 ## [4.17.0] - 2020-12-18
 
@@ -1026,16 +1026,16 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [4.16.0] - 2020-12-14
 
-- Flavored Mega-Linters
-  - Generate lightweight docker images to improve Mega-Linter performances on some language based projects
-  - During Mega-Linter run, suggest user to use a flavor and write it in reporters
+- Flavored MegaLinters
+  - Generate lightweight docker images to improve MegaLinter performances on some language based projects
+  - During MegaLinter run, suggest user to use a flavor and write it in reporters
   - Update descriptor YML files to define flavours
-  - Update build.py to create one Dockerfile by Mega-Linter flavour & flavors documentation
-  - New GHA workflows to build all flavoured Mega-Linters when pushing in master
+  - Update build.py to create one Dockerfile by MegaLinter flavour & flavors documentation
+  - New GHA workflows to build all flavoured MegaLinters when pushing in master
 
 - Fixes
   - Output reporter problems as warnings
-  - Do not make Mega-Linter fail in case GitHubStatusReporter fails
+  - Do not make MegaLinter fail in case GitHubStatusReporter fails
 
 - Doc
   - Rename "index" pages into more meaningful labels
@@ -1140,8 +1140,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add performances by linter in console log
 - New option **SHOW_ELAPSED_TIME** , allowing the number of seconds elapsed by linter in reports
 
-- NPM package **Mega-Linter runner**
-  - runs Mega-Linter locally, using .mega-linter.yml configuration (requires docker installed on your computer)
+- NPM package **MegaLinter runner**
+  - runs MegaLinter locally, using .mega-linter.yml configuration (requires docker installed on your computer)
   - test cases added in CI
 
 ## [4.9.0] - 2020-11-23
@@ -1179,11 +1179,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 ## [4.7.0] - 2020-11-16
 
 - Update markdown-link-check default config
-- Add tip in documentation about .cspell.json generated by Mega-Linter
+- Add tip in documentation about .cspell.json generated by MegaLinter
 - Remove /tmp/lint from logs
 - Improve summary table for linters in project mode (all project linted in one call, not one file by one file)
 - Add Reporters in documentation, with screenshots
-- New Mega-Linter variables to activate/deactivate/configure reporters
+- New MegaLinter variables to activate/deactivate/configure reporters
 
 ## [4.6.0] - 2020-11-13
 
@@ -1210,7 +1210,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add spell checker **cspell**
 - Add Github Action Workflow to automatically:
   - update linters dependencies
-  - rebuild Mega-Linter documentation
+  - rebuild MegaLinter documentation
   - create a PR with updates
 
 - Apply fixes performed by linters:

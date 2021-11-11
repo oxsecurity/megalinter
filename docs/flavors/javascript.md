@@ -1,4 +1,4 @@
-# javascript Mega-Linter Flavor
+# javascript MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript)

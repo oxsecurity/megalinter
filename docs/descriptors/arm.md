@@ -17,7 +17,7 @@
 - Detected file content:
   - `schema\.management\.azure\.com`
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 | Variable                 | Description                   | Default value |
 |--------------------------|-------------------------------|---------------|

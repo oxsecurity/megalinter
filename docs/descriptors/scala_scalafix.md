@@ -9,7 +9,7 @@ Scalafix lints and fixes scala files
 
 ## scalafix documentation
 
-- Version in Mega-Linter: **0.9.31**
+- Version in MegaLinter: **0.9.31**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -18,7 +18,7 @@ Scalafix lints and fixes scala files
 
 [![scalafix - GitHub](https://gh-card.dev/repos/scalacenter/scalafix.svg?fullname=)](https://github.com/scalacenter/scalafix){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable scalafix by adding `SCALA_SCALAFIX` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable scalafix by adding `SCALA_SCALAFIX` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -34,17 +34,17 @@ Scalafix lints and fixes scala files
 | SCALA_SCALAFIX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | SCALA_SCALAFIX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | SCALA_SCALAFIX_CONFIG_FILE                 | scalafix configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.scalafix.conf`                                 |
-| SCALA_SCALAFIX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| SCALA_SCALAFIX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SCALA_SCALAFIX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                        | Embedded linters |                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor         |        95        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        95        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
 
 ## Behind the scenes

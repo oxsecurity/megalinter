@@ -1,6 +1,6 @@
 # .automation
 
-This folder holds automation scripts to help `deploy` and `cleanup` **DockerHub** images of the **Mega-Linter**
+This folder holds automation scripts to help `deploy` and `cleanup` **DockerHub** images of the **MegaLinter**
 
 ## cleanup-docker.sh
 
@@ -12,7 +12,7 @@ It will then search **DockerHub** for the image that was deployed during the dev
 This script uses **GitHub Actions** so that when a push to the repository is committed, it will complete the following:
 
 - Checkout the source code
-- Build the **Docker** container for **Mega-Linter** using that source code
+- Build the **Docker** container for **MegaLinter** using that source code
 - Upload the container to **DockerHub**
 
 When the script is triggered on main, it will push with the tag:**latest** which is used by all scripting for general availability.
@@ -25,4 +25,4 @@ When the script is triggered in a branch, it will push with the tag:**NameOfBran
 
 ## test
 
-This folder holds all **Test Cases** to help run the _CI/CT/CD_ process for the **Mega-Linter**.
+This folder holds all **Test Cases** to help run the _CI/CT/CD_ process for the **MegaLinter**.

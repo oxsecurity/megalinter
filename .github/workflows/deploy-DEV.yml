@@ -158,12 +158,12 @@ jobs:
         run: docker run -e GITHUB_REPOSITORY="${{github.repository}}" -e GITHUB_SHA="${{github.sha}}" -e GITHUB_TOKEN="${{github.token}}" -e GITHUB_RUN_ID="${{github.run_id}}" -e PAT="${{secrets.PAT}}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:${{steps.image_tag.outputs.tag}}
         timeout-minutes: 10
 
-      # Upload Mega-Linter artifacts
+      # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
-          name: Mega-Linter reports
+          name: MegaLinter reports
           path: |
             report
             mega-linter.log

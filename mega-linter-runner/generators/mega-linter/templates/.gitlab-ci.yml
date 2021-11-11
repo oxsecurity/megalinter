@@ -1,9 +1,9 @@
-# Mega-Linter GitLab CI job configuration file
+# MegaLinter GitLab CI job configuration file
 # More info at https://megalinter.github.io
 
 mega-linter:
   stage: test
-  # You can override Mega-Linter flavor used to have faster performances
+  # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
   image: <%= DOCKER_IMAGE_NAME %>:<%= DOCKER_IMAGE_VERSION %>
   script: ["true"]

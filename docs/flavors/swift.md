@@ -1,4 +1,4 @@
-# swift Mega-Linter Flavor
+# swift MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift)

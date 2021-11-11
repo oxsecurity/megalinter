@@ -66,7 +66,7 @@ Of course, please correct real typos before :)
             except ValueError:
                 logging.error(
                     f"[cspell] ERROR: Unable to parse {cspell_config_file} JSON data"
-                    "please fix it manually before running Mega-Linter again"
+                    "please fix it manually before running MegaLinter again"
                 )
                 return []
             prev_words = data.get("words", [])

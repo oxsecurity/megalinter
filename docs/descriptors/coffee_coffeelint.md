@@ -4,7 +4,7 @@
 
 ## coffeelint documentation
 
-- Version in Mega-Linter: **5.2.0**
+- Version in MegaLinter: **5.2.0**
 - Visit [Official Web Site](http://www.coffeelint.org){target=_blank}
 - See [How to configure coffeelint rules](http://www.coffeelint.org/#options){target=_blank}
   - If custom `.coffee-lint.json` config file is not found, [.coffee-lint.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.coffee-lint.json){target=_blank} will be used
@@ -13,7 +13,7 @@
 
 [![coffeelint - GitHub](https://gh-card.dev/repos/clutchski/coffeelint.svg?fullname=)](https://github.com/clutchski/coffeelint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable coffeelint by adding `COFFEE_COFFEELINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable coffeelint by adding `COFFEE_COFFEELINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -29,26 +29,26 @@
 | COFFEE_COFFEELINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
 | COFFEE_COFFEELINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
 | COFFEE_COFFEELINT_CONFIG_FILE                 | coffeelint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                               | `.coffee-lint.json`                              |
-| COFFEE_COFFEELINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
+| COFFEE_COFFEELINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | COFFEE_COFFEELINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
 | COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
 
 ## IDE Integration
 
-Use coffeelint in your favorite IDE to catch errors before Mega-Linter !
+Use coffeelint in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                 <!-- -->                                                                  | IDE                                                      | Extension Name                                                     |                                                           Install                                                            |
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a> | [Atom](https://atom.io/)                                 | [linter-coffeelint](https://atom.io/packages/linter-coffeelint)    |                         [Visit Web Site](https://atom.io/packages/linter-coffeelint){target=_blank}                          |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a> | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [coffeelint](https://plugins.jetbrains.com/plugin/7723-coffeelint) | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7723"></iframe> |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default Mega-Linter Flavor                            |        95        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                            |        95        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes

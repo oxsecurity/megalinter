@@ -1,4 +1,4 @@
-# dotnet Mega-Linter Flavor
+# dotnet MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet)

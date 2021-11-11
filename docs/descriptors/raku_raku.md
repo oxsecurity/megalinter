@@ -4,12 +4,12 @@
 
 ## raku documentation
 
-- Version in Mega-Linter: **2020.10**
+- Version in MegaLinter: **2020.10**
 - Visit [Official Web Site](https://raku.org/){target=_blank}
 
 [![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable raku by adding `RAKU_RAKU` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable raku by adding `RAKU_RAKU` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
@@ -25,13 +25,13 @@
 | RAKU_RAKU_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                                        |
 | RAKU_RAKU_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                                        |
 | RAKU_RAKU_CONFIG_FILE                 | raku configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                     | `META6.json`                                                |
-| RAKU_RAKU_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules            |
+| RAKU_RAKU_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules            |
 | RAKU_RAKU_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                                     |
 | RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                         |
 
 ## IDE Integration
 
-Use raku in your favorite IDE to catch errors before Mega-Linter !
+Use raku in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                   |                                                                                 Install                                                                                 |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -39,13 +39,13 @@ Use raku in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | comma                                                | [Native Support](https://commaide.com/)                                                          |                                                         [Visit Web Site](https://commaide.com/){target=_blank}                                                          |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Perl6 Language Support](https://marketplace.visualstudio.com/items?itemName=scriplit.perl6-lsp) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/scriplit.perl6-lsp){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                | Embedded linters |                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 

@@ -1,4 +1,4 @@
-name: "Mega-Linter"
+name: "MegaLinter"
 author: "Nicolas Vuillamy"
 description: "Combine all available linters to automatically validate your sources without configuration !"
 outputs:

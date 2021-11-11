@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/megalinter/megalinter.git"
   },
-  "description": "Local runner for Mega-Linter",
+  "description": "Local runner for MegaLinter",
   "main": "index.js",
   "files": [
     "lib",

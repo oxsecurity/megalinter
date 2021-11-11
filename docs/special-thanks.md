@@ -10,7 +10,7 @@
   <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
 </a>
 
-## Sites referring to Mega-Linter
+## Sites referring to MegaLinter
 
 ### Global
 
@@ -19,7 +19,7 @@
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 
 ### Articles
-- [Linting a Jekyll blog with Mega-Linter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
+- [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
 
 ### Linters
@@ -46,11 +46,11 @@
 
 ## Open-source teams
 
-Mega-Linter obviously would not exist without its linters and libraries, so many thanks to all the dedicated Open-Source teams maintaining all these awesome linters !
+MegaLinter obviously would not exist without its linters and libraries, so many thanks to all the dedicated Open-Source teams maintaining all these awesome linters !
 
 ## Super-Linter team
 
-Mega-Linter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
+MegaLinter has been built on the ashes of a [rejected Pull Request](https://github.com/github/super-linter/pull/791){target=_blank} on [GitHub Super-Linter](https://github.com/github/super-linter){target=_blank}.
 
 Even if I disagree with their decision to remain in bash, the core team has always been nice and supporting [during the time I was a Super-Linter contributor](https://github.com/github/super-linter/pulls?q=is%3Apr+is%3Aclosed+author%3Anvuillam+review%3Aapproved){target=_blank} :)
 

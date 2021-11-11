@@ -36,7 +36,7 @@ class ConsoleLinterReporter(Reporter):
             f"- Using [{self.master.linter_name} v{linter_version}] {self.master.linter_url}",
         ]
         if self.master.descriptor_id != self.master.name:
-            msg += [f"- Mega-Linter key: [{self.master.name}]"]
+            msg += [f"- MegaLinter key: [{self.master.name}]"]
         if self.master.config_file is not None:
             msg += [f"- Rules config: [{self.master.config_file_label}]"]
         else:
@@ -89,5 +89,5 @@ class ConsoleLinterReporter(Reporter):
             )
         else:
             logging.error(
-                f"❌ There is a Mega-Linter issue, please report it: {self.master.return_code} / {self.master.status}"
+                f"❌ There is a MegaLinter issue, please report it: {self.master.return_code} / {self.master.status}"
             )

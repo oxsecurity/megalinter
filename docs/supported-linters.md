@@ -4,7 +4,7 @@
 
 # Supported Linters
 
-All linters are integrated in the [Mega-Linter docker image](https://hub.docker.com/r/megalinter/megalinter), which is frequently upgraded with their latest versions
+All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/megalinter/megalinter), which is frequently upgraded with their latest versions
 
 <!-- languages-section-start-->
 <!-- linters-table-start -->
