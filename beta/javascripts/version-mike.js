@@ -18,9 +18,12 @@
         }
       }
       const item = Array.from(document.querySelectorAll('.md-version__item')).find(i => i.textContent.includes('latest'))
+      const betaItem = Array.from(document.querySelectorAll('.md-version__item')).find(i => i.textContent.includes('beta'))
       const parentNode = document.getElementsByClassName('md-version__list')[0]
       if (parentNode && item) {
         item.remove()
+        betaItem.remove()
+        parentNode.insertBefore(betaItem, parentNode.firstChild)
         parentNode.insertBefore(item, parentNode.firstChild)
         parentNode.scrollTop = 0;
       }
