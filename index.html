@@ -7,14 +7,32 @@
     <meta http-equiv="refresh" content="1; url=latest/" />
   </noscript>
   <script>
-    const redirectLocation = window.location.href.replace(
-            "megalinter.github.io/megalinter",
-            "megalinter.github.io/megalinter/latest"
-           );
-    window.location.replace(redirectLocation);
+    window.onload = function () {
+      const defaultVersion = 'latest' ;
+      const destination = window.location.href;
+      if (window.location.href.includes("megalinter.github.io/" + defaultVersion)){
+          return ;
+      }
+      else if (window.location.href.includes("megalinter.github.io/megalinter")) {
+          const redirectLocation = window.location.href.replace(
+              "megalinter.github.io/megalinter",
+              "megalinter.github.io/" + defaultVersion
+          );
+          document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
+          window.location.href = redirectLocation;
+      }
+      else if (window.location.href.includes("megalinter.github.io")) {
+          const redirectLocation = window.location.href.replace(
+              "megalinter.github.io",
+              "megalinter.github.io/" + defaultVersion
+          );
+          document.getElementById("body").innerHTML = "Redirecting to " + redirectLocation + " ...";
+          window.location.href = redirectLocation;
+      }
+  }
   </script>
 </head>
 <body>
-  Redirecting to <a href="latest/">beta/</a>...
+  Redirecting to <a href="latest/">latest/</a>...
 </body>
 </html>
