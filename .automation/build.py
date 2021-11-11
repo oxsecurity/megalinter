@@ -2003,7 +2003,7 @@ def generate_documentation_all_linters():
             linter_licenses = json.load(json_file)
             license = ""
             md_license = "<!-- -->"
-            ## get license from github api
+            # get license from github api
             if (
                 hasattr(linter, "linter_repo")
                 and linter.linter_repo is not None
@@ -2033,7 +2033,7 @@ def generate_documentation_all_linters():
                         if license != "":
                             md_license = license
                             linter_licenses[linter.linter_name] = license
-            ## get license from descriptor
+            # get license from descriptor
             if (
                 license == ""
                 and hasattr(linter, "linter_spdx_license")
@@ -2041,11 +2041,11 @@ def generate_documentation_all_linters():
             ):
                 license = linter.linter_spdx_license
                 md_license = license
-            ## get license from licenses file
+            # get license from licenses file
             if license == "" and linter.linter_name in linter_licenses:
                 license = linter_licenses[linter.linter_name]
                 md_license = license
-        ## Update licenses file
+        # Update licenses file
         with open(LICENSES_FILE, "w", encoding="utf-8") as outfile:
             json.dump(linter_licenses, outfile, indent=4, sort_keys=True)
         # line
