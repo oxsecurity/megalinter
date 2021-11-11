@@ -55,6 +55,7 @@ REPO_ICONS = REPO_HOME + "/docs/assets/icons"
 REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
+LICENSES_FILE = REPO_HOME + "/.automation/generated/linter-licenses.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
@@ -1998,30 +1999,55 @@ def generate_documentation_all_linters():
                     f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url}){{target=_blank}}"
                 ]
         # license
-        license = ""
-        md_license = "<!-- -->"
-        ## get license from github api
-        if (
-            hasattr(linter, "linter_repo")
-            and linter.linter_repo is not None
-            and linter.linter_repo.startswith("https://github.com")
-        ):
-            repo = linter.linter_repo.split("https://github.com/", 1)[1]
-            api_github_repo = f"https://api.github.com/repos/{repo}"
-            r = requests_retry_session().get(api_github_repo)
-            if r is not None:
-                resp = r.json()
-                if "license" in resp and "spdx_id" in resp["license"]:
-                    license = resp["license"]["spdx_id"] or ""
-                    md_license = license
-        ## get license from descriptor
-        if (
-            license == ""
-            and hasattr(linter, "linter_spdx_license")
-            and linter.linter_spdx_license is not None
-        ):
-            license = linter.linter_spdx_license
-            md_license = license
+        with open(LICENSES_FILE, "r", encoding="utf-8") as json_file:
+            linter_licenses = json.load(json_file)
+            license = ""
+            md_license = "<!-- -->"
+            ## get license from github api
+            if (
+                hasattr(linter, "linter_repo")
+                and linter.linter_repo is not None
+                and linter.linter_repo.startswith("https://github.com")
+            ):
+                repo = linter.linter_repo.split("https://github.com/", 1)[1]
+                api_github_url = f"https://api.github.com/repos/{repo}"
+                api_github_headers = {"content-type": "application/json"}
+                if "GITHUB_TOKEN" in os.environ:
+                    github_token = os.environ["GITHUB_TOKEN"]
+                    api_github_headers["authorization"] = f"Bearer {github_token}"
+                logging.info(f"Getting license info for {api_github_url}")
+                session = requests_retry_session()
+                r = session.get(api_github_url, headers=api_github_headers)
+                if r is not None:
+                    resp = r.json()
+                    if "license" in resp and "spdx_id" in resp["license"]:
+                        license = (
+                            resp["license"]["spdx_id"]
+                            if resp["license"]["spdx_id"] != "NOASSERTION"
+                            else resp["license"]["name"]
+                            if "name" in resp["license"]
+                            else resp["license"]["key"]
+                            if "key" in resp["license"]
+                            else ""
+                        )
+                        if license != "":
+                            md_license = license
+                            linter_licenses[linter.linter_name] = license
+            ## get license from descriptor
+            if (
+                license == ""
+                and hasattr(linter, "linter_spdx_license")
+                and linter.linter_spdx_license is not None
+            ):
+                license = linter.linter_spdx_license
+                md_license = license
+            ## get license from licenses file
+            if license == "" and linter.linter_name in linter_licenses:
+                license = linter_licenses[linter.linter_name]
+                md_license = license
+        ## Update licenses file
+        with open(LICENSES_FILE, "w", encoding="utf-8") as outfile:
+            json.dump(linter_licenses, outfile, indent=4, sort_keys=True)
         # line
         table_line = [
             linter.linter_name,
