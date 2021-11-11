@@ -5418,7 +5418,7 @@
 </ul>
 <pre><code class="language-dockerfile">RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     &amp;&amp; chmod +x dotnet-install.sh \
-    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel Current -version latest
+    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 
 ENV PATH=&quot;${PATH}:/root/.dotnet/tools:/usr/share/dotnet&quot;
 </code></pre>
