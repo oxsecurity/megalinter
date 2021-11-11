@@ -1944,13 +1944,14 @@ def generate_documentation_all_linters():
             duplicate.descriptor_id_list.sort()
             linters[index] = duplicate
     linters.sort(key=lambda x: x.linter_name)
-    table_header = ["Linter", "Version", "Descriptors", "Status", "URL"]
+    table_header = ["Linter", "Version", "License", "Descriptors", "Status", "URL"]
     md_table_lines = []
     table_data = [table_header]
     hearth_linters_md = []
     for linter in linters:
         status = "Not submitted"
         md_status = ":white_circle:"
+        # url
         url = (
             linter.linter_repo
             if hasattr(linter, "linter_repo") and linter.linter_repo is not None
@@ -1961,12 +1962,14 @@ def generate_documentation_all_linters():
             if hasattr(linter, "linter_repo") and linter.linter_repo is not None
             else f"[Web Site]({linter.linter_url}){{target=_blank}}"
         )
+        # version
         linter_version = "N/A"
         if (
             linter.linter_name in linter_versions
             and linter_versions[linter.linter_name] != "0.0.0"
         ):
             linter_version = linter_versions[linter.linter_name]
+        # reference on linter documentation
         if hasattr(
             linter, "linter_megalinter_ref_url"
         ) and linter.linter_megalinter_ref_url not in ["", None]:
@@ -1994,9 +1997,36 @@ def generate_documentation_all_linters():
                 hearth_linters_md += [
                     f"- [{linter.linter_name}]({linter.linter_megalinter_ref_url}){{target=_blank}}"
                 ]
+        # license
+        license = ""
+        md_license = "<!-- -->"
+        ## get license from github api
+        if (
+            hasattr(linter, "linter_repo")
+            and linter.linter_repo is not None
+            and linter.linter_repo.startswith("https://github.com")
+        ):
+            repo = linter.linter_repo.split("https://github.com/", 1)[1]
+            api_github_repo = f"https://api.github.com/repos/{repo}"
+            r = requests_retry_session().get(api_github_repo)
+            if r is not None:
+                resp = r.json()
+                if "license" in resp and "spdx_id" in resp["license"]:
+                    license = resp["license"]["spdx_id"] or ""
+                    md_license = license
+        ## get license from descriptor
+        if (
+            license == ""
+            and hasattr(linter, "linter_spdx_license")
+            and linter.linter_spdx_license is not None
+        ):
+            license = linter.linter_spdx_license
+            md_license = license
+        # line
         table_line = [
             linter.linter_name,
             linter_version,
+            license,
             ", ".join(linter.descriptor_id_list),
             status,
             url,
@@ -2011,6 +2041,7 @@ def generate_documentation_all_linters():
         md_table_line = [
             f"**{linter.linter_name}**",
             linter_version,
+            md_license,
             "<br/> ".join(linter_doc_links),
             md_status,
             md_url,
@@ -2026,7 +2057,7 @@ def generate_documentation_all_linters():
         hearth_linters_md_str,
     )
 
-    # Display results
+    # Display results (disabled)
     table = terminaltables.AsciiTable(table_data)
     table.title = "----Reference to MegaLinter in linters documentation summary"
     # Output table in console
@@ -2034,6 +2065,7 @@ def generate_documentation_all_linters():
     # for table_line in table.table.splitlines():
     #    logging.info(table_line)
     logging.info("")
+
     # Write in file
     with open(REPO_HOME + "/docs/all_linters.md", "w", encoding="utf-8") as outfile:
         outfile.write(
@@ -2042,8 +2074,12 @@ def generate_documentation_all_linters():
         )
         outfile.write("<!-- markdownlint-disable -->\n\n")
         outfile.write("# References\n\n")
-        outfile.write("| Linter | Version | Descriptors | Reference status | URL |\n")
-        outfile.write("| :----  | :-----: | :---------  | :--------------: | :-: |\n")
+        outfile.write(
+            "| Linter | Version | License | Descriptors | Reference status | URL |\n"
+        )
+        outfile.write(
+            "| :----  | :-----: | :-----: | :---------  | :--------------: | :-: |\n"
+        )
         for md_table_line in md_table_lines:
             outfile.write("| %s |\n" % " | ".join(md_table_line))
 

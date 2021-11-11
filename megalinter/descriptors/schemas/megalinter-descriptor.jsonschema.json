@@ -983,6 +983,12 @@
             "title": "Linter rules URL",
             "type": "string"
           },
+          "linter_spdx_license": {
+            "$id": "#/properties/linters/items/properties/linter_spdx_license",
+            "description": "spdx license id of the linter",
+            "title": "spdx license",
+            "type": "string"
+          },
           "linter_text": {
             "$id": "#/properties/linters/items/properties/linter_text",
             "title": "Additional text for MegaLinter online documentation",
