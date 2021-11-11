@@ -7,7 +7,11 @@
     <meta http-equiv="refresh" content="1; url=beta/" />
   </noscript>
   <script>
-    window.location.replace("beta/" + window.location.hash);
+    const redirectLocation = window.location.href.replace(
+            "megalinter.github.io/megalinter",
+            "megalinter.github.io/megalinter/beta"
+           );
+    window.location.replace(redirectLocation);
   </script>
 </head>
 <body>
