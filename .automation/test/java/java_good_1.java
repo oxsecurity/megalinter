@@ -1,3 +1,4 @@
+package com.dummy.nico
 /**
  * Represents a good Java file.
 */

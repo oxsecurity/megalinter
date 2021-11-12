@@ -55,7 +55,9 @@ linters:
   - class: JavaPmdLinter
     linter_name: pmd
     linter_url: TODO
+    cli_lint_mode: list_of_files
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "-rulesets"
+    linter_version_cache: "6.40.0"
     examples:
       - "pmd -rulesets java-pmd-rulesets.xml myfile.java"
