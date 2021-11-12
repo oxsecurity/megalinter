@@ -54,10 +54,12 @@ linters:
   # PMD for java
   - class: JavaPmdLinter
     linter_name: pmd
-    linter_url: TODO
+    linter_url: https://pmd.github.io/
     cli_lint_mode: list_of_files
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "-rulesets"
     linter_version_cache: "6.40.0"
     examples:
-      - "pmd -rulesets java-pmd-rulesets.xml myfile.java"
+      - "pmd -rulesets java-pmd-ruleset.xml -d myfile.java"
+      - "pmd -rulesets java-pmd-ruleset.xml -files /tmp/list-off-files-generated-by-megalinter.txt"
+      - "pmd -rulesets java-pmd-ruleset.xml -dir /path/to/sources"
