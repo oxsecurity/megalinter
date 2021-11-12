@@ -51,3 +51,10 @@ linters:
       vscode:
         - name: vscode-checkstyle
           url: https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle
+  # PMD for java
+  - class: JavaPmdLinter
+    linter_name: pmd
+    config_file_name: java-pmd-ruleset.xml
+    cli_config_arg_name: "-rulesets"
+    examples:
+      - "pmd -rulesets java-pmd-rulesets.xml myfile.java"
