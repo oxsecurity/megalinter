@@ -2160,6 +2160,38 @@ def manage_output_variables():
             print("::set-output name=has_updated_versions::1")
 
 
+def reformat_markdown_tables():
+    logging.info("Formatting markdown tables...")
+    # list markdown files
+    all_files = [
+        os.path.join(REPO_HOME, file)
+        for file in sorted(os.listdir(REPO_HOME))
+        if os.path.isfile(os.path.join(REPO_HOME, file))
+    ]
+    excluded_directories = ['.automation',"node_modules"]
+    for (dirpath, dirnames, filenames) in os.walk(REPO_HOME, topdown=True):
+        dirnames[:] = [d for d in dirnames if d not in excluded_directories]
+        all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
+    all_md_files = []
+    for file in all_files:
+        base_file_name = os.path.basename(file)
+        _, file_extension = os.path.splitext(base_file_name)
+        if file_extension == 'md':
+            all_md_files += [file]
+    # Call markdown-table-formatter with the list of files
+    format_md_tables_command = ['npx','markdown-table-formatter'] + all_md_files
+    logging.info("Running command: "+str(format_md_tables_command))
+    process = subprocess.run(
+        format_md_tables_command,
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+        cwd=os.getcwd(),
+        shell=True,
+    )
+    print(process.stdout)
+    print(process.stderr)
+
+
 def generate_version():
     # npm version
     logging.info("Updating npm package version...")
@@ -2171,7 +2203,7 @@ def generate_version():
             "--newversion",
             RELEASE_TAG,
             "-no-git-tag-version",
-            "--no-commit-hooks"
+            "--no-commit-hooks",
         ],
         stdout=subprocess.PIPE,
         universal_newlines=True,
@@ -2234,5 +2266,6 @@ if __name__ == "__main__":
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
+    reformat_markdown_tables()
     if RELEASE is True:
         generate_version()
