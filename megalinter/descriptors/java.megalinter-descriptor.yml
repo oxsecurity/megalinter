@@ -54,6 +54,7 @@ linters:
   # PMD for java
   - class: JavaPmdLinter
     linter_name: pmd
+    linter_url: TODO
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "-rulesets"
     examples:

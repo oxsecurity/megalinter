@@ -24,6 +24,7 @@
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
         "JAVA_CHECKSTYLE",
+        "JAVA_PMD",
         "JSON_JSONLINT",
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",

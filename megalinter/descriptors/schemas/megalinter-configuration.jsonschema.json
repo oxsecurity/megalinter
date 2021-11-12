@@ -130,6 +130,7 @@
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
         "JAVA_CHECKSTYLE",
+        "JAVA_PMD",
         "JAVASCRIPT_ES",
         "JAVASCRIPT_STANDARD",
         "JAVASCRIPT_PRETTIER",
