@@ -5440,7 +5440,7 @@
 
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.0.524</strong></li>
+<li>Version in MegaLinter: <strong>2.0.566</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -5576,7 +5576,8 @@
 <pre><code class="language-shell">checkov --file myfile.tf
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
+<pre><code class="language-shell">usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
+               [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
@@ -5606,6 +5607,7 @@ optional arguments:
   -d DIRECTORY, --directory DIRECTORY
                         IaC root directory (can not be used together with
                         --file).
+  --add-check           Generate a new check via CLI prompt
   -f FILE, --file FILE  IaC file(can not be used together with --directory)
   --skip-path SKIP_PATH
                         Path (file or directory) to skip, using regular
