@@ -2110,15 +2110,15 @@ def generate_documentation_all_linters():
     if leave is True:
         logging.warning("Error during process: Do not regenerate list of linters")
         return
-    else:
-        # Write referring linters to README
-        hearth_linters_md_str = "\n".join(hearth_linters_md)
-        replace_in_file(
-            f"{REPO_HOME}/README.md",
-            "<!-- referring-linters-start -->",
-            "<!-- referring-linters-end -->",
-            hearth_linters_md_str,
-        )
+
+    # Write referring linters to README
+    hearth_linters_md_str = "\n".join(hearth_linters_md)
+    replace_in_file(
+        f"{REPO_HOME}/README.md",
+        "<!-- referring-linters-start -->",
+        "<!-- referring-linters-end -->",
+        hearth_linters_md_str,
+    )
 
     # Display results (disabled)
     table = terminaltables.AsciiTable(table_data)
