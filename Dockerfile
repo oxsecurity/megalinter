@@ -151,7 +151,6 @@ RUN pip3 install --no-cache-dir --upgrade \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
-          'checkov' \
           'yamllint'
 #PIP__END
 
@@ -463,6 +462,11 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 # terraform-fmt installation
 COPY --from=terragrunt /bin/terraform /usr/bin/
+
+# checkov installation
+RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools \
+    && pip3 install checkov
+
 
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/

@@ -1963,6 +1963,7 @@ def generate_documentation_all_linters():
             if hasattr(linter, "linter_repo") and linter.linter_repo is not None
             else f"[Web Site]({linter.linter_url}){{target=_blank}}"
         )
+        md_linter_name = f"[**{linter.linter_name}**]({url}){{target=_blank}}"
         # version
         linter_version = "N/A"
         if (
@@ -2031,7 +2032,6 @@ def generate_documentation_all_linters():
                             else ""
                         )
                         if license != "":
-                            md_license = license
                             linter_licenses[linter.linter_name] = license
             # get license from descriptor
             if (
@@ -2040,10 +2040,11 @@ def generate_documentation_all_linters():
                 and linter.linter_spdx_license is not None
             ):
                 license = linter.linter_spdx_license
-                md_license = license
             # get license from licenses file
             if license == "" and linter.linter_name in linter_licenses:
                 license = linter_licenses[linter.linter_name]
+            # build md_license
+            if license != "":
                 md_license = license
         # Update licenses file
         with open(LICENSES_FILE, "w", encoding="utf-8") as outfile:
@@ -2065,7 +2066,7 @@ def generate_documentation_all_linters():
             link = f"[{descriptor_id}]({doc_url(linter_doc_url)})"
             linter_doc_links += [link]
         md_table_line = [
-            f"**{linter.linter_name}**",
+            md_linter_name,
             linter_version,
             md_license,
             "<br/> ".join(linter_doc_links),
