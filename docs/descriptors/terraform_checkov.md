@@ -230,5 +230,10 @@ override config file values which override defaults.
 
 ### Installation on mega-linter Docker image
 
-- PIP packages (Python):
-  - [checkov](https://pypi.org/project/checkov)
+- Dockerfile commands :
+```dockerfile
+RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools \
+    && pip3 install checkov
+
+```
+
