@@ -26,6 +26,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Fix config issue with IGNORE_GITIGNORED_FILES (#932)
   - Bypass random CI issue with sql_tsqllint_test test version and test help
   - mega-linter-runner: Upgrade yeoman environment to allow spaces in path
+  - Manage offline run of `bash build.sh` for those who want to code in planes :)
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
