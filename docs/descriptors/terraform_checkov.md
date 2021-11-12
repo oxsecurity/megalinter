@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.524**
+- Version in MegaLinter: **2.0.566**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -73,7 +73,8 @@ checkov --file myfile.tf
 ### Help content
 
 ```shell
-usage: checkov [-h] [-v] [-d DIRECTORY] [-f FILE] [--skip-path SKIP_PATH]
+usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
+               [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
@@ -103,6 +104,7 @@ optional arguments:
   -d DIRECTORY, --directory DIRECTORY
                         IaC root directory (can not be used together with
                         --file).
+  --add-check           Generate a new check via CLI prompt
   -f FILE, --file FILE  IaC file(can not be used together with --directory)
   --skip-path SKIP_PATH
                         Path (file or directory) to skip, using regular

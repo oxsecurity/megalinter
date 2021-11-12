@@ -99,47 +99,37 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-
   -t, --target-version [py27|py33|py34|py35|py36|py37|py38|py39]
                                   Python versions that should be supported by
                                   Black's output. [default: per-file auto-
                                   detection]
-
   --pyi                           Format all input files like typing stubs
                                   regardless of file extension (useful when
                                   piping source on standard input).
-
   --ipynb                         Format all input files like Jupyter
                                   Notebooks regardless of file extension
                                   (useful when piping source on standard
                                   input).
-
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
   -C, --skip-magic-trailing-comma
                                   Don't use trailing commas as a reason to
                                   split lines.
-
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
                                   change. Return code 1 means some files would
                                   be reformatted. Return code 123 means there
                                   was an internal error.
-
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
-
   --color / --no-color            Show colored diff. Only applies when
                                   `--diff` is given.
-
   --fast / --safe                 If --fast given, skip temporary sanity
                                   checks. [default: --safe]
-
   --required-version TEXT         Require a specific version of Black to be
                                   running (useful for unifying results across
                                   many environments e.g. with a pyproject.toml
                                   file).
-
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
                                   recursive searches. An empty value means all
@@ -148,7 +138,6 @@ Options:
                                   platforms (Windows, too). Exclusions are
                                   calculated first, inclusions later.
                                   [default: (\.pyi?|\.ipynb)$]
-
   --exclude TEXT                  A regular expression that matches files and
                                   directories that should be excluded on
                                   recursive searches. An empty value means no
@@ -158,31 +147,26 @@ Options:
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
                                   g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
                                   |_build|buck-out|build|dist)/]
-
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
                                   (Useful if you simply want to add to the
                                   default)
-
   --force-exclude TEXT            Like --exclude, but files and directories
                                   matching this regex will be excluded even
                                   when they are passed explicitly as
                                   arguments.
-
   --stdin-filename TEXT           The name of the file when passing it through
                                   stdin. Useful to make sure Black will
                                   respect --force-exclude option on some
                                   editors that rely on using stdin.
-
-  -W, --workers INTEGER RANGE     Number of parallel workers  [default: 2]
+  -W, --workers INTEGER RANGE     Number of parallel workers  [default: 2;
+                                  x>=1]
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
                                   2>/dev/null.
-
   -v, --verbose                   Also emit messages to stderr about files
                                   that were not changed or were ignored due to
                                   exclusion patterns.
-
   --version                       Show the version and exit.
   --config FILE                   Read configuration from FILE path.
   -h, --help                      Show this message and exit.

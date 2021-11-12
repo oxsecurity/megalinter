@@ -47,6 +47,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.4.6 to **1.4.7** on 2021-11-11
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.10 to **1.0.11** on 2021-11-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.6 to **0.35.8** on 2021-11-11
+  - [htmlhint](https://htmlhint.com/) from 0.16.0 to **0.16.1** on 2021-11-12
+  - [checkov](https://www.checkov.io/) from 2.0.524 to **2.0.566** on 2021-11-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.8 to **0.35.9** on 2021-11-12
 <!-- linter-versions-end -->
 
 ## [v5.0.7] - 2021-11-04
