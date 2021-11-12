@@ -20,6 +20,7 @@ import markdown
 import megalinter
 import requests
 import terminaltables
+import webpreview
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
@@ -96,7 +97,14 @@ def generate_all_flavors():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
     if UPDATE_DOC is True:
-        update_docker_pulls_counter()
+        try:
+            update_docker_pulls_counter()
+        except requests.exceptions.ConnectionError as e:
+            logging.warning(
+                "Connection error - Unable to update docker pull counters: " + str(e)
+            )
+        except Exception as e:
+            logging.warning("Unable to update docker pull counters: " + str(e))
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
@@ -1909,16 +1917,23 @@ def collect_linter_previews():
             logging.info(
                 f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}"
             )
-            title, description, image = web_preview(
-                linter.linter_url, parser="html.parser", timeout=1000
-            )
-            item = {
-                "title": megalinter.utils.decode_utf8(title),
-                "description": megalinter.utils.decode_utf8(description),
-                "image": image,
-            }
-            data[linter.linter_name] = item
-            updated = True
+            title = None
+            try:
+                title, description, image = web_preview(
+                    linter.linter_url, parser="html.parser", timeout=1000
+                )
+            except webpreview.excepts.URLUnreachable as e:
+                logging.error("URLUnreachable: " + str(e))
+            except Exception as e:
+                logging.error(str(e))
+            if title is not None:
+                item = {
+                    "title": megalinter.utils.decode_utf8(title),
+                    "description": megalinter.utils.decode_utf8(description),
+                    "image": image,
+                }
+                data[linter.linter_name] = item
+                updated = True
     # Update file
     if updated is True:
         with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
@@ -1949,6 +1964,7 @@ def generate_documentation_all_linters():
     md_table_lines = []
     table_data = [table_header]
     hearth_linters_md = []
+    leave = False
     for linter in linters:
         status = "Not submitted"
         md_status = ":white_circle:"
@@ -2017,8 +2033,21 @@ def generate_documentation_all_linters():
                     github_token = os.environ["GITHUB_TOKEN"]
                     api_github_headers["authorization"] = f"Bearer {github_token}"
                 logging.info(f"Getting license info for {api_github_url}")
-                session = requests_retry_session()
-                r = session.get(api_github_url, headers=api_github_headers)
+                try:
+                    session = requests_retry_session()
+                    r = session.get(api_github_url, headers=api_github_headers)
+                except requests.exceptions.ConnectionError as e:
+                    logging.warning(
+                        "Connection error - Unable to get info from github api: "
+                        + str(e)
+                    )
+                    leave = True
+                    break
+                except Exception as e:
+                    logging.warning("Unable to update docker pull counters: " + str(e))
+                    leave = True
+                    break
+
                 if r is not None:
                     resp = r.json()
                     if "license" in resp and "spdx_id" in resp["license"]:
@@ -2046,6 +2075,9 @@ def generate_documentation_all_linters():
             # build md_license
             if license != "":
                 md_license = license
+        if leave is True:
+            logging.warning("Error during process: Do not regenerate list of linters")
+            return
         # Update licenses file
         with open(LICENSES_FILE, "w", encoding="utf-8") as outfile:
             json.dump(linter_licenses, outfile, indent=4, sort_keys=True)
