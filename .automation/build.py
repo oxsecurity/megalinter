@@ -2165,7 +2165,14 @@ def generate_version():
     logging.info("Updating npm package version...")
     cwd_to_use = os.getcwd() + "/mega-linter-runner"
     process = subprocess.run(
-        ["npm", "version", "--newversion", RELEASE_TAG],
+        [
+            "npm",
+            "version",
+            "--newversion",
+            RELEASE_TAG,
+            "-no-git-tag-version",
+            "--no-commit-hooks"
+        ],
         stdout=subprocess.PIPE,
         universal_newlines=True,
         cwd=cwd_to_use,
@@ -2178,17 +2185,18 @@ def generate_version():
 
     with open(changelog_file, "r", encoding="utf-8") as md_file:
         changelog_content = md_file.read()
-    changelog_content = changelog_content.replace("<!-- linter-versions-end -->","") 
+    changelog_content = changelog_content.replace("<!-- linter-versions-end -->", "")
     new_release_lines = [
-        ","
-        "<!-- unreleased-content-marker -->",
+        "," "<!-- unreleased-content-marker -->",
         "",
         "- Linter versions upgrades",
         "<!-- linter-versions-end -->",
         "",
-        f"## [{RELEASE_TAG}] - {datetime.today().strftime('%Y-%m-%d')}"
+        f"## [{RELEASE_TAG}] - {datetime.today().strftime('%Y-%m-%d')}",
     ]
-    changelog_content = changelog_content.replace('<!-- unreleased-content-marker -->',"\n".join(new_release_lines))        
+    changelog_content = changelog_content.replace(
+        "<!-- unreleased-content-marker -->", "\n".join(new_release_lines)
+    )
     with open(changelog_file, "w", encoding="utf-8") as file:
         file.write(changelog_content)
 
