@@ -2176,7 +2176,7 @@ def reformat_markdown_tables():
     for file in all_files:
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
-        if file_extension == 'md':
+        if file_extension == '.md':
             all_md_files += [file]
     # Call markdown-table-formatter with the list of files
     format_md_tables_command = ['npx','markdown-table-formatter'] + all_md_files
