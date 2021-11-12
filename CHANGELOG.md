@@ -20,6 +20,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Allow GithubStatusReporter to work for other CI platforms
 - Add license badge in linters documentation (All linters)
 - Upgrade checkov install instructions to use alpine-oriented ones
+- Upgrade ktlint from 0.40.0 to 0.42.1 (latest that works with JDK 1.8)
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
