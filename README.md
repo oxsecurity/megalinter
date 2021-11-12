@@ -967,7 +967,25 @@ To help, you can also:
 #### Linters
 
 <!-- referring-linters-start -->
-
+- [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
+- [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
+- [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
+- [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
+- [eslint](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
+- [eslint-plugin-jsonc](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
+- [hadolint](https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter){target=_blank}
+- [htmlhint](https://htmlhint.com/docs/user-guide/integrations/task-runner){target=_blank}
+- [jscpd](https://github.com/kucherenko/jscpd#who-uses-jscpd){target=_blank}
+- [kics](https://docs.kics.io/latest/integrations/){target=_blank}
+- [ktlint](https://github.com/pinterest/ktlint#-with-continuous-integration){target=_blank}
+- [markdown-link-check](https://github.com/tcort/markdown-link-check#run-in-other-tools){target=_blank}
+- [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/#mega-linter){target=_blank}
+- [rst-lint](https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools){target=_blank}
+- [rubocop](https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration){target=_blank}
+- [scalafix](https://scalacenter.github.io/scalafix/docs/users/installation.html#plugins-for-other-build-tools){target=_blank}
+- [secretlint](https://github.com/secretlint/secretlint#mega-linter){target=_blank}
+- [stylelint](https://stylelint.io/user-guide/integrations/other#analysis-platform-engines){target=_blank}
 <!-- referring-linters-end -->
 
 ### Open-source teams
