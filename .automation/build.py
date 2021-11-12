@@ -35,8 +35,8 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
-UPDATE_DOC = "--doc" in sys.argv
 RELEASE = "--release" in sys.argv
+UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
@@ -2162,6 +2162,7 @@ def manage_output_variables():
 
 def generate_version():
     # npm version
+    logging.info("Updating npm package version...")
     cwd_to_use = os.getcwd() + "/mega-linter-runner"
     process = subprocess.run(
         ["npm", "version", "--newversion", RELEASE_TAG],
@@ -2172,6 +2173,25 @@ def generate_version():
     )
     print(process.stdout)
     print(process.stderr)
+    # Update changelog
+    changelog_file = f"{REPO_HOME}/CHANGELOG.md"
+
+    with open(changelog_file, "r", encoding="utf-8") as md_file:
+        changelog_content = md_file.read()
+    changelog_content = changelog_content.replace("<!-- linter-versions-end -->","") 
+    new_release_lines = [
+        ","
+        "<!-- unreleased-content-marker -->",
+        "",
+        "- Linter versions upgrades",
+        "<!-- linter-versions-end -->",
+        "",
+        f"## [{RELEASE_TAG}] - {datetime.today().strftime('%Y-%m-%d')}"
+    ]
+    changelog_content = changelog_content.replace('<!-- unreleased-content-marker -->',"\n".join(new_release_lines))        
+    with open(changelog_file, "w", encoding="utf-8") as file:
+        file.write(changelog_content)
+
     # git add , commit & tag
     repo = git.Repo(os.getcwd())
     repo.git.add(update=True)
