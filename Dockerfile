@@ -11,14 +11,13 @@
 #############################################################################################
 #FROM__START
 FROM cljkondo/clj-kondo:2021.06.18-alpine as clj-kondo
-FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+FROM hadolint/hadolint:latest-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
-FROM yoheimuta/protolint:latest as protolint
+FROM yoheimuta/protolint:v0.35.1 as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
-FROM checkmarx/kics:alpine as kics
 #FROM__END
 
 ##################
@@ -151,6 +150,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
+          'checkov>=2.0.269' \
           'yamllint'
 #PIP__END
 
@@ -170,7 +170,7 @@ RUN npm install --no-cache --ignore-scripts \
                 typescript \
                 asl-validator \
                 @coffeelint/cli \
-                jscpd@3.3.26 \
+                jscpd \
                 secretlint@4.1.0 \
                 @secretlint/secretlint-rule-preset-recommend@4.1.0 \
                 stylelint \
@@ -183,7 +183,7 @@ RUN npm install --no-cache --ignore-scripts \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
-                eslint \
+                eslint@7.32.0 \
                 eslint-config-airbnb \
                 eslint-config-prettier \
                 eslint-config-standard \
@@ -244,7 +244,7 @@ RUN rc-update add docker boot && rc-service docker start || true
 # CSHARP installation
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel Current -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -362,7 +362,7 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 
 
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.42.1/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 
@@ -462,17 +462,6 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 
 # terraform-fmt installation
 COPY --from=terragrunt /bin/terraform /usr/bin/
-
-# checkov installation
-RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
-    && pip3 install --no-cache-dir checkov
-
-
-# kics installation
-COPY --from=kics /app/bin/kics /usr/bin/
-RUN mkdir -p /opt/kics/assets
-ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
-COPY --from=kics /app/bin/assets /opt/kics/assets/
 
 #OTHER__END
 
