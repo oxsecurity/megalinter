@@ -234,8 +234,8 @@ override config file values which override defaults.
 
 - Dockerfile commands :
 ```dockerfile
-RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools \
-    && pip3 install checkov
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
 
 ```
 

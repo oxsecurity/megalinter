@@ -464,8 +464,8 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 COPY --from=terragrunt /bin/terraform /usr/bin/
 
 # checkov installation
-RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools \
-    && pip3 install checkov
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
 
 
 # kics installation
