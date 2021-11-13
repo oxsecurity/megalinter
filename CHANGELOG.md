@@ -108,7 +108,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [v5.0.7] - 2021-11-04
 
-- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
+- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.4 to **0.55.0** on 2021-11-03

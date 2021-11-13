@@ -243,7 +243,6 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
             # DEFAULT_BRANCH: main
-
 ```
 
 OR
