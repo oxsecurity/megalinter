@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.566**
+- Version in MegaLinter: **2.0.569**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -234,8 +234,8 @@ override config file values which override defaults.
 
 - Dockerfile commands :
 ```dockerfile
-RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools \
-    && pip3 install checkov
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
 
 ```
 

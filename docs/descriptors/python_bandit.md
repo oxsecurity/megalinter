@@ -13,7 +13,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.7.0**
+- Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
 - See [How to disable bandit rules in files](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines){target=_blank}
@@ -87,7 +87,9 @@ bandit --configfile .bandit.yml myfile.py
 
 ```shell
 usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
-              [-p PROFILE] [-t TESTS] [-s SKIPS] [-l] [-i]
+              [-p PROFILE] [-t TESTS] [-s SKIPS]
+              [-l | --severity-level {all,low,medium,high}]
+              [-i | --confidence-level {all,low,medium,high}]
               [-f {csv,custom,html,json,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
@@ -118,8 +120,18 @@ optional arguments:
                         comma-separated list of test IDs to skip
   -l, --level           report only issues of a given severity level or higher
                         (-l for LOW, -ll for MEDIUM, -lll for HIGH)
+  --severity-level {all,low,medium,high}
+                        report only issues of a given severity level or
+                        higher. "all" and "low" are likely to produce the same
+                        results, but it is possible for rules to be undefined
+                        which will not be listed in "low".
   -i, --confidence      report only issues of a given confidence level or
                         higher (-i for LOW, -ii for MEDIUM, -iii for HIGH)
+  --confidence-level {all,low,medium,high}
+                        report only issues of a given confidence level or
+                        higher. "all" and "low" are likely to produce the same
+                        results, but it is possible for rules to be undefined
+                        which will not be listed in "low".
   -f {csv,custom,html,json,screen,txt,xml,yaml}, --format {csv,custom,html,json,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
@@ -153,7 +165,7 @@ CUSTOM FORMATTING
 
 Available tags:
 
-    {abspath}, {relpath}, {line},  {test_id},
+    {abspath}, {relpath}, {line}, {col}, {test_id},
     {severity}, {msg}, {confidence}, {range}
 
 Example usage:
