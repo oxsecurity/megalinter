@@ -20,6 +20,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Allow GithubStatusReporter to work for other CI platforms
 - Add license badge in linters documentation (All linters)
 - Upgrade checkov install instructions to use alpine-oriented ones
+- Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
+- Fix typo error in `.jscpd.json` config file (#986)
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
