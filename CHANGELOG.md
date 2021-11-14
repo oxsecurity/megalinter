@@ -56,6 +56,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.31 to **0.9.32** on 2021-11-13
   - [checkov](https://www.checkov.io/) from 2.0.566 to **2.0.569** on 2021-11-13
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.9 to **0.35.10** on 2021-11-13
+  - [checkov](https://www.checkov.io/) from 2.0.569 to **2.0.571** on 2021-11-14
 <!-- linter-versions-end -->
 
 ## [v5.0.7] - 2021-11-04
