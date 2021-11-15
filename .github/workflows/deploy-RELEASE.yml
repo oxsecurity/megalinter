@@ -142,6 +142,7 @@ jobs:
       - run: |
           git config --global user.name megalinter-bot
           git config --global user.email megalinter@megalinter.com
+          git stash
       - name: Checkout previous tag
         run: |
           git checkout ${{ steps.version.outputs.ptag }}
