@@ -6,17 +6,17 @@
 
 ## Assisted installation
 
-Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for Mega-Linter :)
+Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
 ![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
 
-## Upgrade from Mega-Linter v4
+## Upgrade from MegaLinter v4
 
 - Run `npx mega-linter-runner --upgrade` to automatically upgrade your configuration to v5 :)
 
 ## Manual installation
 
-The following instructions examples are using to latest Mega-Linter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest MegaLinter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
 - GitHub Action: megalinter/megalinter@v4
 - Docker image: megalinter/megalinter:v4
@@ -36,8 +36,8 @@ You can also use **beta** version (corresponding to the content of main branch)
 
 **NOTES:**
 
-- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **GitHub Mega-Linter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
-- You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run)
+- If you pass the _Environment_ variable `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` in your workflow, then the **MegaLinter** will mark the status of each individual linter run in the Checks section of a pull request. Without this you will only see the overall status of the full run. There is no need to set the **GitHub** Secret as it is automatically set by GitHub, it only needs to be passed to the action.
+- You can also **use it outside of GitHub Actions** (CircleCI, Azure Pipelines, Jenkins, GitLab, or even locally with a docker run) , and have status on Github Pull Request if `GITHUB_TARGET_URL` environment variable exists.
 
 In your repository you should have a `.github/workflows` folder with **GitHub** Action similar to below:
 
@@ -48,9 +48,9 @@ In your repository you should have a `.github/workflows` folder with **GitHub** 
 
 ```yml
 ---
-# Mega-Linter GitHub Action configuration file
+# MegaLinter GitHub Action configuration file
 # More info at https://megalinter.github.io
-name: Mega-Linter
+name: MegaLinter
 
 on:
   # Trigger mega-linter at every push. Action will also be visible from Pull Requests to main
@@ -70,7 +70,7 @@ concurrency:
 
 jobs:
   build:
-    name: Mega-Linter
+    name: MegaLinter
     runs-on: ubuntu-latest
     steps:
       # Git Checkout
@@ -80,10 +80,10 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # Mega-Linter
-      - name: Mega-Linter
+      # MegaLinter
+      - name: MegaLinter
         id: ml
-        # You can override Mega-Linter flavor used to have faster performances
+        # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
         uses: megalinter/megalinter@v5
         env:
@@ -94,12 +94,12 @@ jobs:
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           # DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
 
-      # Upload Mega-Linter artifacts
+      # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
-          name: Mega-Linter reports
+          name: MegaLinter reports
           path: |
             report
             mega-linter.log
@@ -111,8 +111,8 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          commit-message: "[Mega-Linter] Apply linters automatic fixes"
-          title: "[Mega-Linter] Apply linters automatic fixes"
+          commit-message: "[MegaLinter] Apply linters automatic fixes"
+          title: "[MegaLinter] Apply linters automatic fixes"
           labels: bot
       - name: Create PR output
         if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && !contains(github.event.head_commit.message, 'skip fix')
@@ -129,7 +129,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
-          commit_message: "[Mega-Linter] Apply linters fixes"
+          commit_message: "[MegaLinter] Apply linters fixes"
 ```
 
 </details>
@@ -142,14 +142,14 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
 
 ```yaml
   - job: megalinter
-    displayName: Mega-Linter
+    displayName: MegaLinter
     pool:
       vmImage: ubuntu-latest
     steps:
     - script: |
         docker pull megalinter/megalinter:v4
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
-      displayName: 'Code Scan using Mega-Linter'
+      displayName: 'Code Scan using MegaLinter'
 ```
 
 ## Jenkins
@@ -159,12 +159,12 @@ Add the following stage in your Jenkinsfile
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```groovy
-// Lint with Mega-Linter: https://megalinter.github.io/
-stage('Mega-Linter') {
+// Lint with MegaLinter: https://megalinter.github.io/
+stage('MegaLinter') {
     agent {
         docker {
             image 'megalinter/megalinter:v5'
-            args "-e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
+            args "-u root -e VALIDATE_ALL_CODEBASE=true -v ${WORKSPACE}:/tmp/lint --entrypoint=''"
             reuseNode true
         }
     }
@@ -179,12 +179,12 @@ stage('Mega-Linter') {
 Create or update `.gitlab-ci.yml` file at the root of your repository
 
 ```yaml
-# Mega-Linter GitLab CI job configuration file
+# MegaLinter GitLab CI job configuration file
 # More info at https://megalinter.github.io/
 
 mega-linter:
   stage: test
-  # You can override Mega-Linter flavor used to have faster performances
+  # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
   image: megalinter/megalinter-python:v4
   script: [ "true" ]
@@ -306,13 +306,13 @@ resources:
         #   DEFAULT_BRANCH: main
 ```
 
-## Run Mega-Linter locally
+## Run MegaLinter locally
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 
-You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run Mega-Linter with the same configuration defined in [.mega-linter.yml](configuration.md) file
+You can use [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/) to locally run MegaLinter with the same configuration defined in [.mega-linter.yml](configuration.md) file
 
 See [mega-linter-runner installation instructions](https://megalinter.github.io/mega-linter-runner/#installation)
 

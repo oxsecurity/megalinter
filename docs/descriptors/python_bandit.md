@@ -13,7 +13,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in Mega-Linter: **1.7.0**
+- Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
 - See [How to disable bandit rules in files](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines){target=_blank}
@@ -21,29 +21,29 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 [![bandit - GitHub](https://gh-card.dev/repos/PyCQA/bandit.svg?fullname=)](https://github.com/PyCQA/bandit){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable bandit by adding `PYTHON_BANDIT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable bandit by adding `PYTHON_BANDIT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value                                    |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| PYTHON_BANDIT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
-| PYTHON_BANDIT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
-| PYTHON_BANDIT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
-| PYTHON_BANDIT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
-| PYTHON_BANDIT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                        |
-| PYTHON_BANDIT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
-| PYTHON_BANDIT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
-| PYTHON_BANDIT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| PYTHON_BANDIT_CONFIG_FILE                 | bandit configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.bandit.yml`                                    |
-| PYTHON_BANDIT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
-| PYTHON_BANDIT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
-| PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
+| Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PYTHON_BANDIT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PYTHON_BANDIT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| PYTHON_BANDIT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| PYTHON_BANDIT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| PYTHON_BANDIT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
+| PYTHON_BANDIT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| PYTHON_BANDIT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| PYTHON_BANDIT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| PYTHON_BANDIT_CONFIG_FILE                 | bandit configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.bandit.yml`                                   |
+| PYTHON_BANDIT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| PYTHON_BANDIT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
 ## IDE Integration
 
-Use bandit in your favorite IDE to catch errors before Mega-Linter !
+Use bandit in your favorite IDE to catch errors before MegaLinter !
 
 |                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                |                                          Install                                           |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------:|
@@ -51,13 +51,13 @@ Use bandit in your favorite IDE to catch errors before Mega-Linter !
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-bandit](https://github.com/SublimeLinter/SublimeLinter-bandit) |   [Visit Web Site](https://github.com/SublimeLinter/SublimeLinter-bandit){target=_blank}   |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [Native Support](https://code.visualstudio.com/docs/python/linting#_bandit)   | [Visit Web Site](https://code.visualstudio.com/docs/python/linting#_bandit){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default Mega-Linter Flavor          |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
@@ -87,7 +87,9 @@ bandit --configfile .bandit.yml myfile.py
 
 ```shell
 usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
-              [-p PROFILE] [-t TESTS] [-s SKIPS] [-l] [-i]
+              [-p PROFILE] [-t TESTS] [-s SKIPS]
+              [-l | --severity-level {all,low,medium,high}]
+              [-i | --confidence-level {all,low,medium,high}]
               [-f {csv,custom,html,json,screen,txt,xml,yaml}]
               [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
               [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
@@ -118,8 +120,18 @@ optional arguments:
                         comma-separated list of test IDs to skip
   -l, --level           report only issues of a given severity level or higher
                         (-l for LOW, -ll for MEDIUM, -lll for HIGH)
+  --severity-level {all,low,medium,high}
+                        report only issues of a given severity level or
+                        higher. "all" and "low" are likely to produce the same
+                        results, but it is possible for rules to be undefined
+                        which will not be listed in "low".
   -i, --confidence      report only issues of a given confidence level or
                         higher (-i for LOW, -ii for MEDIUM, -iii for HIGH)
+  --confidence-level {all,low,medium,high}
+                        report only issues of a given confidence level or
+                        higher. "all" and "low" are likely to produce the same
+                        results, but it is possible for rules to be undefined
+                        which will not be listed in "low".
   -f {csv,custom,html,json,screen,txt,xml,yaml}, --format {csv,custom,html,json,screen,txt,xml,yaml}
                         specify output format
   --msg-template MSG_TEMPLATE
@@ -153,7 +165,7 @@ CUSTOM FORMATTING
 
 Available tags:
 
-    {abspath}, {relpath}, {line},  {test_id},
+    {abspath}, {relpath}, {line}, {col}, {test_id},
     {severity}, {msg}, {confidence}, {range}
 
 Example usage:

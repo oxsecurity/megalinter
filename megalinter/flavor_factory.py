@@ -34,7 +34,7 @@ def get_all_flavors():
 
 def list_megalinter_flavors():
     flavors = {
-        "all": {"label": "Mega-Linter for any type of project"},
+        "all": {"label": "MegaLinter for any type of project"},
         "ci_light": {
             "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas, XML)"
         },
@@ -62,13 +62,11 @@ def get_image_flavor():
     return os.environ.get("MEGALINTER_FLAVOR", "all")
 
 
-# Compare linters active for the current repo, and linters available in the current Mega-Linter image flavor
+# Compare linters active for the current repo, and linters available in the current MegaLinter image flavor
 def check_active_linters_match_flavor(active_linters):
     flavor = get_image_flavor()
     if flavor == "all":
-        logging.debug(
-            'Mega-Linter flavor is "all", no need to check match with linters'
-        )
+        logging.debug('MegaLinter flavor is "all", no need to check match with linters')
         return True
     all_flavors = get_all_flavors()
     flavor_linters = all_flavors[flavor]["linters"]
@@ -80,7 +78,7 @@ def check_active_linters_match_flavor(active_linters):
     if len(missing_linters) > 0:
         missing_linters_str = ",".join(missing_linters)
         logging.warning(
-            f"Mega-Linter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
+            f"MegaLinter flavor [{flavor}] does not contain linters {missing_linters_str}.\n"
             "As they are not available in this docker image, they will not be processed\n"
             "To solve this problem, please either: \n"
             f"- use default flavor {ML_REPO}\n"

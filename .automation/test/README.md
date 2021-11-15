@@ -1,9 +1,9 @@
 # Test Cases
 
-This folder holds `test cases` that are used to validate the sanity of the **Mega-Linter**.
+This folder holds `test cases` that are used to validate the sanity of the **MegaLinter**.
 The format:
 
-- Each **Mega-Linter** language should have its own folder
+- Each **MegaLinter** language should have its own folder
   - Folder(s) containing test cases for each language supported
   - Passing test case(s) per language denoted in naming scheme
     - **FORMAT:** `LANGUAGE_(TYPE)_FILE.EXTENSION`
@@ -14,4 +14,4 @@ The format:
     - **FORMAT:** `LANGUAGE_(TYPE)_FILE.EXTENSION`
     - **Example:** `markdown_bad_5.md`
     - **Note:** (good=Standard linting should be successful bad=standard linting should fail )
-- Script to run test cases and validate the sanity of **Mega-Linter**
+- Script to run test cases and validate the sanity of **MegaLinter**

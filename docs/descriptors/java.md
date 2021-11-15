@@ -14,7 +14,7 @@
 - File extensions:
   - `.java`
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 | Variable                  | Description                   | Default value |
 |---------------------------|-------------------------------|---------------|

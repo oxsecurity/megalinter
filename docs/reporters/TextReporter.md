@@ -13,7 +13,7 @@ Posts a pack of text logs , zipped as a GitHub Action artifact
 
 ![Screenshot](../assets/images/AccessActionRun.jpg)
 
-- Click on Artifacts then click on [**Mega-Linter reports**](#report-folder-structure)
+- Click on Artifacts then click on [**MegaLinter reports**](#report-folder-structure)
 
 ![Screenshot](../assets/images/TextReporter_1.jpg)
 

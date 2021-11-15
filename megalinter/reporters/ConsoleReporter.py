@@ -112,17 +112,17 @@ class ConsoleReporter(Reporter):
             if self.master.flavor_suggestions[0] == "new":
                 logging.warning(
                     "[flavors] You could have same capabilities but better runtime performances"
-                    " if you request a new Mega-Linter flavor."
+                    " if you request a new MegaLinter flavor."
                 )
                 linters_list_formatted = ", ".join(self.master.flavor_suggestions[1])
                 body = (
-                    "Mega-Linter would run faster on my project if I had a flavor containing the following "
+                    "MegaLinter would run faster on my project if I had a flavor containing the following "
                     f"list of linters:\n\n{linters_list_formatted}\n\n"
                     "Would it be possible to create one ? Thanks :relaxed:"
                 )
                 new_flavor_url = (
                     f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
-                    f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
+                    f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
                     f"&body={urllib.parse.quote(body)}"
                 )
                 logging.warning(
@@ -140,7 +140,7 @@ class ConsoleReporter(Reporter):
                 logging.warning(
                     c.blue(
                         "You could have same capabilities but better runtime performances"
-                        " if you use a Mega-Linter flavor:"
+                        " if you use a MegaLinter flavor:"
                     )
                 )
                 for suggestion in self.master.flavor_suggestions:

@@ -15,7 +15,7 @@
           "type": "string"
         },
         "continue_if_failed": {
-          "Description": "If command fails, continue Mega-Linter process or not",
+          "Description": "If command fails, continue MegaLinter process or not",
           "default": true,
           "title": "Continue if failed",
           "type": "boolean"
@@ -200,7 +200,7 @@
       "type": "string"
     }
   },
-  "description": "Mega-Linter configuration file",
+  "description": "MegaLinter configuration file",
   "properties": {
     "ACTION_ACTIONLINT_ARGUMENTS": {
       "$id": "#/properties/ACTION_ACTIONLINT_ARGUMENTS",
@@ -245,7 +245,7 @@
     "ACTION_ACTIONLINT_DISABLE_ERRORS": {
       "$id": "#/properties/ACTION_ACTIONLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "ACTION_ACTIONLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ACTION_ACTIONLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ACTION_ACTIONLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -340,7 +340,7 @@
     },
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
-      "description": "List of additional excluded directory basenames to add to Mega-Linter default excluded directories. They are excluded at any nested level.",
+      "description": "List of additional excluded directory basenames to add to MegaLinter default excluded directories. They are excluded at any nested level.",
       "examples": [
         [
           "test"
@@ -395,7 +395,7 @@
     "ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "ANSIBLE_ANSIBLE_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ANSIBLE_ANSIBLE_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -556,7 +556,7 @@
     "ARM_ARM_TTK_DISABLE_ERRORS": {
       "$id": "#/properties/ARM_ARM_TTK_DISABLE_ERRORS",
       "default": false,
-      "title": "ARM_ARM_TTK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ARM_ARM_TTK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ARM_ARM_TTK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -686,7 +686,7 @@
     "BASH_EXEC_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_EXEC_DISABLE_ERRORS",
       "default": false,
-      "title": "BASH_EXEC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "BASH_EXEC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -803,7 +803,7 @@
     "BASH_SHELLCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHELLCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "BASH_SHELLCHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "BASH_SHELLCHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "BASH_SHELLCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -910,7 +910,7 @@
     "BASH_SHFMT_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHFMT_DISABLE_ERRORS",
       "default": false,
-      "title": "BASH_SHFMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "BASH_SHFMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1024,7 +1024,7 @@
     "CLOJURE_CLJ_KONDO_DISABLE_ERRORS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_DISABLE_ERRORS",
       "default": false,
-      "title": "CLOJURE_CLJ_KONDO: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CLOJURE_CLJ_KONDO: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CLOJURE_CLJ_KONDO_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1161,7 +1161,7 @@
     "CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CLOUDFORMATION_CFN_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CLOUDFORMATION_CFN_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1298,7 +1298,7 @@
     "COFFEE_COFFEELINT_DISABLE_ERRORS": {
       "$id": "#/properties/COFFEE_COFFEELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "COFFEE_COFFEELINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "COFFEE_COFFEELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1401,7 +1401,7 @@
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
-      "description": "Generates a folder IDE-config located in report folder, containing default Mega-Linter configuration files used during the linting, and updated VsCode extensions.js config file",
+      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VsCode extensions.js config file",
       "title": "Activate local configuration reporter",
       "type": "boolean"
     },
@@ -1454,7 +1454,7 @@
     "COPYPASTE_JSCPD_DISABLE_ERRORS": {
       "$id": "#/properties/COPYPASTE_JSCPD_DISABLE_ERRORS",
       "default": false,
-      "title": "COPYPASTE_JSCPD: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "COPYPASTE_JSCPD: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1564,7 +1564,7 @@
     "CPP_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CPP_CPPLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CPP_CPPLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CPP_CPPLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CPP_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1687,7 +1687,7 @@
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CREDENTIALS_SECRETLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CREDENTIALS_SECRETLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1790,7 +1790,7 @@
     "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_DISABLE_ERRORS",
       "default": false,
-      "title": "CSHARP_DOTNET_FORMAT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CSHARP_DOTNET_FORMAT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1924,7 +1924,7 @@
     "CSS_SCSS_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_SCSS_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CSS_SCSS_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CSS_SCSS_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CSS_SCSS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2051,7 +2051,7 @@
     "CSS_STYLELINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_STYLELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CSS_STYLELINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CSS_STYLELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CSS_STYLELINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2171,7 +2171,7 @@
     "C_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/C_CPPLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "C_CPPLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "C_CPPLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "C_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2295,7 +2295,7 @@
     "DART_DARTANALYZER_DISABLE_ERRORS": {
       "$id": "#/properties/DART_DARTANALYZER_DISABLE_ERRORS",
       "default": false,
-      "title": "DART_DARTANALYZER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "DART_DARTANALYZER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2431,7 +2431,7 @@
     "DISABLE_ERRORS": {
       "$id": "#/properties/DISABLE_ERRORS",
       "default": false,
-      "description": "Flag to have the Mega-Linter complete with exit code 0 even if errors were detected.",
+      "description": "Flag to have the MegaLinter complete with exit code 0 even if errors were detected.",
       "title": "Disable errors",
       "type": "boolean"
     },
@@ -2487,7 +2487,7 @@
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2624,7 +2624,7 @@
     "DOCKERFILE_HADOLINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "DOCKERFILE_HADOLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "DOCKERFILE_HADOLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2751,7 +2751,7 @@
     "EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS",
       "default": false,
-      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2854,7 +2854,7 @@
     "EMAIL_REPORTER": {
       "$id": "#/properties/EMAIL_REPORTER",
       "default": true,
-      "description": "Mega-Linter can send email with reports to given addresses. Please set EMAIL_REPORTER_** variables if activated",
+      "description": "MegaLinter can send email with reports to given addresses. Please set EMAIL_REPORTER_** variables if activated",
       "title": "Activate Email reporter",
       "type": "boolean"
     },
@@ -2961,7 +2961,7 @@
     "ENV_DOTENV_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_DISABLE_ERRORS",
       "default": false,
-      "title": "ENV_DOTENV_LINTER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ENV_DOTENV_LINTER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ENV_DOTENV_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3057,7 +3057,7 @@
     },
     "EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/EXCLUDED_DIRECTORIES",
-      "description": "List of excluded directory basenames replacing Mega-Linter default excluded directories. They are excluded at any nested level.",
+      "description": "List of excluded directory basenames replacing MegaLinter default excluded directories. They are excluded at any nested level.",
       "examples": [
         [
           ".github",
@@ -3080,7 +3080,7 @@
       "items": {
         "type": "string"
       },
-      "title": "Mega-Linter config files to extend from",
+      "title": "MegaLinter config files to extend from",
       "type": [
         "array",
         "string"
@@ -3089,14 +3089,14 @@
     "FAIL_IF_MISSING_LINTER_IN_FLAVOR": {
       "$id": "#/properties/FAIL_IF_MISSING_LINTER_IN_FLAVOR",
       "default": false,
-      "description": "Mega-Linter fails if a linter is missing in the selected flavor",
+      "description": "MegaLinter fails if a linter is missing in the selected flavor",
       "title": "Fail if missing linter",
       "type": "boolean"
     },
     "FILEIO_REPORTER": {
       "$id": "#/properties/FILEIO_REPORTER",
       "default": false,
-      "description": "If you don't use artifacts upload to read Mega-Linter reports, you can access them with an hyperlink to file.io. Important: Mega-Linter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
+      "description": "If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io. Important: MegaLinter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
       "title": "Activate File.io reporter",
       "type": "boolean"
     },
@@ -3122,7 +3122,7 @@
     "FLAVOR_SUGGESTIONS": {
       "$id": "#/properties/FLAVOR_SUGGESTIONS",
       "default": true,
-      "description": "Provides suggestions about different Mega-Linter flavors to use to improve runtime performances",
+      "description": "Provides suggestions about different MegaLinter flavors to use to improve runtime performances",
       "title": "Flavor suggestions",
       "type": "boolean"
     },
@@ -3180,7 +3180,7 @@
     "GHERKIN_GHERKIN_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "GHERKIN_GHERKIN_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GHERKIN_GHERKIN_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GHERKIN_GHERKIN_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3284,7 +3284,7 @@
     "GITHUB_COMMENT_REPORTER": {
       "$id": "#/properties/GITHUB_COMMENT_REPORTER",
       "default": true,
-      "description": "Posts Mega-Linter results summary in the comments of the related pull request (if existing)",
+      "description": "Posts MegaLinter results summary in the comments of the related pull request (if existing)",
       "title": "Activate GitHub PR Comments reporter",
       "type": "boolean"
     },
@@ -3342,7 +3342,7 @@
     "GIT_GIT_DIFF_DISABLE_ERRORS": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS",
       "default": false,
-      "title": "GIT_GIT_DIFF: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GIT_GIT_DIFF: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3456,7 +3456,7 @@
     "GO_GOLANGCI_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "GO_GOLANGCI_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GO_GOLANGCI_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GO_GOLANGCI_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3583,7 +3583,7 @@
     "GO_REVIVE_DISABLE_ERRORS": {
       "$id": "#/properties/GO_REVIVE_DISABLE_ERRORS",
       "default": false,
-      "title": "GO_REVIVE: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GO_REVIVE: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3713,7 +3713,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS",
       "default": false,
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3850,7 +3850,7 @@
     "GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "GROOVY_NPM_GROOVY_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GROOVY_NPM_GROOVY_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3987,7 +3987,7 @@
     "HTML_HTMLHINT_DISABLE_ERRORS": {
       "$id": "#/properties/HTML_HTMLHINT_DISABLE_ERRORS",
       "default": false,
-      "title": "HTML_HTMLHINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "HTML_HTMLHINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "HTML_HTMLHINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4080,13 +4080,13 @@
     "IGNORE_GENERATED_FILES": {
       "$id": "#/properties/IGNORE_GENERATED_FILES",
       "default": false,
-      "title": "Makes Mega-Linter skip files containing @generated marker (and not containing @not-generated)",
+      "title": "Makes MegaLinter skip files containing @generated marker (and not containing @not-generated)",
       "type": "boolean"
     },
     "IGNORE_GITIGNORED_FILES": {
       "$id": "#/properties/IGNORE_GITIGNORED_FILES",
       "default": false,
-      "title": "Makes Mega-Linter skip files that are ignored by git using .gitignore",
+      "title": "Makes MegaLinter skip files that are ignored by git using .gitignore",
       "type": "boolean"
     },
     "JAVASCRIPT_DEFAULT_STYLE": {
@@ -4140,7 +4140,7 @@
     "JAVASCRIPT_ES_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_ES_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVASCRIPT_ES: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVASCRIPT_ES: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4277,7 +4277,7 @@
     "JAVASCRIPT_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVASCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVASCRIPT_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVASCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4390,7 +4390,7 @@
     "JAVASCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVASCRIPT_STANDARD: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVASCRIPT_STANDARD: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVASCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4504,7 +4504,7 @@
     "JAVA_CHECKSTYLE_DISABLE_ERRORS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVA_CHECKSTYLE: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVA_CHECKSTYLE: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVA_CHECKSTYLE_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4641,7 +4641,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4771,7 +4771,7 @@
     "JSON_JSONLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_JSONLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_JSONLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_JSONLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4885,7 +4885,7 @@
     "JSON_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5005,7 +5005,7 @@
     "JSON_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_V8R_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_V8R: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_V8R: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_V8R_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5119,7 +5119,7 @@
     "JSX_ESLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSX_ESLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "JSX_ESLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSX_ESLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5259,7 +5259,7 @@
     "KOTLIN_KTLINT_DISABLE_ERRORS": {
       "$id": "#/properties/KOTLIN_KTLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "KOTLIN_KTLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "KOTLIN_KTLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5387,7 +5387,7 @@
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS",
       "default": false,
-      "title": "KUBERNETES_KUBEVAL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "KUBERNETES_KUBEVAL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5501,7 +5501,7 @@
     "LATEX_CHKTEX_DISABLE_ERRORS": {
       "$id": "#/properties/LATEX_CHKTEX_DISABLE_ERRORS",
       "default": false,
-      "title": "LATEX_CHKTEX: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "LATEX_CHKTEX: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5679,7 +5679,7 @@
     "LUA_LUACHECK_DISABLE_ERRORS": {
       "$id": "#/properties/LUA_LUACHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "LUA_LUACHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "LUA_LUACHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "LUA_LUACHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5826,7 +5826,7 @@
     "MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWNLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWNLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5953,7 +5953,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6073,7 +6073,7 @@
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6166,7 +6166,7 @@
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS": {
@@ -6240,7 +6240,7 @@
     "MARKDOWN_REMARK_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_REMARK_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_REMARK_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6370,7 +6370,7 @@
     "OPENAPI_SPECTRAL_DISABLE_ERRORS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_DISABLE_ERRORS",
       "default": false,
-      "title": "OPENAPI_SPECTRAL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "OPENAPI_SPECTRAL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "OPENAPI_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6463,7 +6463,7 @@
     "PARALLEL": {
       "$id": "#/properties/PARALLEL",
       "default": true,
-      "description": "Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files",
+      "description": "Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files",
       "title": "Parallel processing",
       "type": "boolean"
     },
@@ -6507,7 +6507,7 @@
     "PERL_PERLCRITIC_DISABLE_ERRORS": {
       "$id": "#/properties/PERL_PERLCRITIC_DISABLE_ERRORS",
       "default": false,
-      "title": "PERL_PERLCRITIC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PERL_PERLCRITIC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6619,7 +6619,7 @@
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_BUILTIN: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6743,7 +6743,7 @@
     "PHP_PHPCS_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PHPCS_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_PHPCS: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_PHPCS: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6870,7 +6870,7 @@
     "PHP_PHPSTAN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PHPSTAN_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_PHPSTAN: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_PHPSTAN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6997,7 +6997,7 @@
     "PHP_PSALM_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PSALM_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_PSALM: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_PSALM: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7089,7 +7089,7 @@
     },
     "PLUGINS": {
       "$id": "#/properties/PLUGINS",
-      "description": "List of Mega-Linter plugins. URL must follow format https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml",
+      "description": "List of MegaLinter plugins. URL must follow format https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml",
       "examples": [
         [
           "https://raw.githubusercontent.com/cookiejar/megalinter-plugin-cookiejar/master/cookietemplate.mega-linter-descriptor.yml"
@@ -7167,7 +7167,7 @@
     "POWERSHELL_POWERSHELL_DISABLE_ERRORS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_DISABLE_ERRORS",
       "default": false,
-      "title": "POWERSHELL_POWERSHELL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "POWERSHELL_POWERSHELL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "POWERSHELL_POWERSHELL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7341,7 +7341,7 @@
     "PROTOBUF_PROTOLINT_DISABLE_ERRORS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "PROTOBUF_PROTOLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PROTOBUF_PROTOLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7478,7 +7478,7 @@
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "PUPPET_PUPPET_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PUPPET_PUPPET_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7605,7 +7605,7 @@
     "PYTHON_BANDIT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BANDIT_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_BANDIT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_BANDIT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7725,7 +7725,7 @@
     "PYTHON_BLACK_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BLACK_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_BLACK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_BLACK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7862,7 +7862,7 @@
     "PYTHON_FLAKE8_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_FLAKE8_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_FLAKE8: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_FLAKE8: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_FLAKE8_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7989,7 +7989,7 @@
     "PYTHON_ISORT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_ISORT_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_ISORT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_ISORT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_ISORT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8116,7 +8116,7 @@
     "PYTHON_MYPY_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_MYPY_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_MYPY: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_MYPY: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_MYPY_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8236,7 +8236,7 @@
     "PYTHON_PYLINT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_PYLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_PYLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_PYLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8373,7 +8373,7 @@
     "RAKU_RAKU_DISABLE_ERRORS": {
       "$id": "#/properties/RAKU_RAKU_DISABLE_ERRORS",
       "default": false,
-      "title": "RAKU_RAKU: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RAKU_RAKU: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8517,7 +8517,7 @@
     "RST_RSTCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "RST_RSTCHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RST_RSTCHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8637,7 +8637,7 @@
     "RST_RSTFMT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTFMT_DISABLE_ERRORS",
       "default": false,
-      "title": "RST_RSTFMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RST_RSTFMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8744,7 +8744,7 @@
     "RST_RST_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RST_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "RST_RST_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RST_RST_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8868,7 +8868,7 @@
     "RUBY_RUBOCOP_DISABLE_ERRORS": {
       "$id": "#/properties/RUBY_RUBOCOP_DISABLE_ERRORS",
       "default": false,
-      "title": "RUBY_RUBOCOP: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RUBY_RUBOCOP: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8984,7 +8984,7 @@
     "RUST_CLIPPY_DISABLE_ERRORS": {
       "$id": "#/properties/RUST_CLIPPY_DISABLE_ERRORS",
       "default": false,
-      "title": "RUST_CLIPPY: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RUST_CLIPPY: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RUST_CLIPPY_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9121,7 +9121,7 @@
     "R_LINTR_DISABLE_ERRORS": {
       "$id": "#/properties/R_LINTR_DISABLE_ERRORS",
       "default": false,
-      "title": "R_LINTR: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "R_LINTR: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "R_LINTR_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9259,7 +9259,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9380,7 +9380,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9462,7 +9462,7 @@
     "SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9537,7 +9537,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9657,7 +9657,7 @@
     "SCALA_SCALAFIX_DISABLE_ERRORS": {
       "$id": "#/properties/SCALA_SCALAFIX_DISABLE_ERRORS",
       "default": false,
-      "title": "SCALA_SCALAFIX: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SCALA_SCALAFIX: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9801,7 +9801,7 @@
     "SNAKEMAKE_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SNAKEMAKE_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SNAKEMAKE_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9915,7 +9915,7 @@
     "SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS",
       "default": false,
-      "title": "SNAKEMAKE_SNAKEFMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SNAKEMAKE_SNAKEFMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10042,7 +10042,7 @@
     "SPELL_CSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_CSPELL_DISABLE_ERRORS",
       "default": false,
-      "title": "SPELL_CSPELL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SPELL_CSPELL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10172,7 +10172,7 @@
     "SPELL_MISSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS",
       "default": false,
-      "title": "SPELL_MISSPELL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SPELL_MISSPELL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10296,7 +10296,7 @@
     "SQL_SQLFLUFF_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_SQLFLUFF_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_SQLFLUFF: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SQL_SQLFLUFF: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10416,7 +10416,7 @@
     "SQL_SQL_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_SQL_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_SQL_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SQL_SQL_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10543,7 +10543,7 @@
     "SQL_TSQLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_TSQLLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_TSQLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SQL_TSQLLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10662,7 +10662,7 @@
     "SWIFT_SWIFTLINT_DISABLE_ERRORS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SWIFT_SWIFTLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SWIFT_SWIFTLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10796,7 +10796,7 @@
     "TEKTON_TEKTON_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "TEKTON_TEKTON_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TEKTON_TEKTON_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TEKTON_TEKTON_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10916,7 +10916,7 @@
     "TERRAFORM_CHECKOV_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_CHECKOV: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_CHECKOV: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11033,7 +11033,7 @@
     "TERRAFORM_KICS_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_KICS: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_KICS: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11140,7 +11140,7 @@
     "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRAFORM_FMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TERRAFORM_FMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11254,7 +11254,7 @@
     "TERRAFORM_TERRAGRUNT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRAGRUNT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TERRAGRUNT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11374,7 +11374,7 @@
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRASCAN: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TERRASCAN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11488,7 +11488,7 @@
     "TERRAFORM_TFLINT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TFLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TFLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TFLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11629,7 +11629,7 @@
     "TSX_ESLINT_DISABLE_ERRORS": {
       "$id": "#/properties/TSX_ESLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "TSX_ESLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TSX_ESLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11780,7 +11780,7 @@
     "TYPESCRIPT_ES_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_ES_DISABLE_ERRORS",
       "default": false,
-      "title": "TYPESCRIPT_ES: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TYPESCRIPT_ES: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11917,7 +11917,7 @@
     "TYPESCRIPT_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "TYPESCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TYPESCRIPT_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TYPESCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12030,7 +12030,7 @@
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_DISABLE_ERRORS",
       "default": false,
-      "title": "TYPESCRIPT_STANDARD: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TYPESCRIPT_STANDARD: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12154,7 +12154,7 @@
     "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS",
       "default": false,
-      "title": "VBDOTNET_DOTNET_FORMAT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "VBDOTNET_DOTNET_FORMAT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12281,7 +12281,7 @@
     "XML_XMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/XML_XMLLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "XML_XMLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "XML_XMLLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12405,7 +12405,7 @@
     "YAML_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "YAML_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "YAML_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "YAML_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12518,7 +12518,7 @@
     "YAML_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_V8R_DISABLE_ERRORS",
       "default": false,
-      "title": "YAML_V8R: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "YAML_V8R: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "YAML_V8R_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12632,7 +12632,7 @@
     "YAML_YAMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_YAMLLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "YAML_YAMLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "YAML_YAMLLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN": {

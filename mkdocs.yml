@@ -1,11 +1,11 @@
 ---
-site_name: Mega-Linter
+site_name: MegaLinter
 site_url: https://megalinter.github.io
 repo_url: https://github.com/megalinter/megalinter
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2021 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -30,9 +30,13 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
   - javascripts/gtag.js
+  - javascripts/version-mike.js
 extra_css:
   - stylesheets/extra.css
 extra:
+  version:
+    provider: mike
+    default: latest
   social:
     - icon: fontawesome/regular/question-circle
       link: https://github.com/megalinter/megalinter/issues
@@ -315,7 +319,7 @@ nav:
   - "Plugins": "plugins.md"
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
-  - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
+  - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"

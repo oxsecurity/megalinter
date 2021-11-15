@@ -2,38 +2,38 @@
 
 <!-- header-logo-start -->
 <div align="center">
-  <a href="https://megalinter.github.io" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="300px">
+  <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
+    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="300px">
   </a>
 </div>
 <!-- header-logo-end -->
 
-# Mega-Linter Runner
+# MegaLinter Runner
 
 [![Version](https://img.shields.io/npm/v/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![Downloads/total](https://img.shields.io/npm/dt/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?maxAge=2592000)](https://GitHub.com/megalinter/megalinter/stargazers/)
 <!-- readme-header-start -->
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-1.5M-blue)](https://megalinter.github.io/flavors/)
-[![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=main)](https://megalinter.github.io)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.0M-blue)](https://megalinter.github.io/flavors/)
+[![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://megalinter.github.io)
 [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/master/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
 <!-- welcome-phrase-start -->
-**Mega-Linter** analyzes [**37 languages**](#languages), [**15 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate [**reports in several formats**](#reports), and can even [**apply formatting and auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
+**MegaLinter** analyzes [**37 languages**](#languages), [**15 formats**](#formats), [**16 tooling formats**](#tooling-formats) , [**copy-pastes**](#other) and [**spell**](#other) in your repository sources, generate [**reports in several formats**](#reports), and can even [**apply formatting and auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, to ensure all your projects are clean, whatever IDE/toolbox are used by their developers !
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
-See [**Mega-Linter Online Documentation Web Site**](https://megalinter.github.io/)
+See [**MegaLinter Online Documentation Web Site**](https://megalinter.github.io/)
 <!-- online-doc-end -->
 
 <!-- readme-header-end -->
 
-This package allows to run [Mega-Linter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
+This package allows to run [MegaLinter](https://megalinter.github.io/) locally before running it in your CD/CI workflow, or simply to locally apply reformatting and fixes without having to install up to date linters for your files
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
@@ -41,7 +41,7 @@ This package allows to run [Mega-Linter](https://megalinter.github.io/) locally 
 
 ### Pre-requisites
 
-You need to have [NodeJS](https://nodejs.org/en/) and [Docker](https://www.docker.com/) installed on your computer to run Mega-Linter locally with Mega-Linter Runner
+You need to have [NodeJS](https://nodejs.org/en/) and [Docker](https://www.docker.com/) installed on your computer to run MegaLinter locally with MegaLinter Runner
 
 ### Global installation
 
@@ -71,19 +71,19 @@ npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=t
 mega-linter-runner [OPTIONS]
 ```
 
-The options are only related to mega-linter-runner. For Mega-Linter options, please use a `.mega-linter.yml` [configuration file](#configuration)
+The options are only related to mega-linter-runner. For MegaLinter options, please use a `.mega-linter.yml` [configuration file](#configuration)
 
-| Option                 | Description                                                                                                         | Default           |
-|------------------------|---------------------------------------------------------------------------------------------------------------------|-------------------|
-| `-p` <br/> `--path`    | Directory containing the files to lint                                                                              | current directory |
-| `--flavor`             | Set this parameter to use a [Mega-Linter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
-| `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                               | <!-- -->          |
-| `-e` <br/> `--env`     | Environment variables for Mega-Linter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
-| `--fix`                | Automatically apply formatting and fixes in your files                                                              | <!-- -->          |
-| `-r` <br/> `--release` | Allows to override Mega-Linter version used                                                                         | `v5`              |
-| `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                        | <!-- -->          |
-| `-v` <br/> `--version` | Show mega-linter-runner version                                                                                     | <!-- -->          |
-| `-i` <br/> `--install` | Generate Mega-Linter configuration files                                                                            | <!-- -->          |
+| Option                 | Description                                                                                                        | Default           |
+|------------------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
+| `-p` <br/> `--path`    | Directory containing the files to lint                                                                             | current directory |
+| `--flavor`             | Set this parameter to use a [MegaLinter flavor](https://megalinter.github.io/flavors/)                             | `all`             |
+| `-d` <br/> `--image`   | You can override the used docker image, including if it is on another docker registry                              | <!-- -->          |
+| `-e` <br/> `--env`     | Environment variables for MegaLinter, following format **'ENV_VAR_NAME=VALUE'** <br/>Warning: Quotes are mandatory | <!-- -->          |
+| `--fix`                | Automatically apply formatting and fixes in your files                                                             | <!-- -->          |
+| `-r` <br/> `--release` | Allows to override MegaLinter version used                                                                         | `v5`              |
+| `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
+| `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
+| `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 

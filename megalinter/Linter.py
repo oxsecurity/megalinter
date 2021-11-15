@@ -263,7 +263,7 @@ class Linter:
                         f" {str(self.active_only_if_file_found)}"
                     )
 
-            # Load Mega-Linter reporters
+            # Load MegaLinter reporters
             self.load_reporters()
 
             # Runtime items
@@ -366,12 +366,12 @@ class Linter:
                 except urllib.error.HTTPError as e:
                     self.config_file_error = (
                         f"Unable to fetch {remote_config_file}\n{str(e)}\n"
-                        f" fallback to repository config or Mega-Linter default config"
+                        f" fallback to repository config or MegaLinter default config"
                     )
                 except Exception as e:
                     self.config_file_error = (
                         f"Unable to fetch {remote_config_file}\n{str(e)}\n"
-                        f" fallback to repository config or Mega-Linter default config"
+                        f" fallback to repository config or MegaLinter default config"
                     )
             # in repo root (already here or fetched by code above)
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
@@ -520,7 +520,7 @@ class Linter:
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None)
 
-        # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
+        # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
             # Disable errors: no failure, just warning
             if self.disable_errors is True:
@@ -603,7 +603,7 @@ class Linter:
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=[],
-            ignore_generated_files=False,  # This filter is applied at Mega-Linter level
+            ignore_generated_files=False,  # This filter is applied at MegaLinter level
             file_names_not_ends_with=self.file_names_not_ends_with,
             file_contains_regex=self.file_contains_regex,
             files_sub_directory=self.files_sub_directory,

@@ -58,7 +58,7 @@ class MegaLinterRunner {
       return { status: 0 };
     }
 
-    // Build Mega-Linter docker image name with flavor and release version
+    // Build MegaLinter docker image name with flavor and release version
     const release = options.release in ["stable"] ? "v5" : options.release;
     const dockerImageName =
       // v4 retrocompatibility >>
@@ -77,7 +77,7 @@ class MegaLinterRunner {
     whichPromise.catch(() => {
       console.error(`
 ERROR: Docker engine has not been found on your system.
-- to run Mega-Linter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
+- to run MegaLinter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
 - to run docker on CI, use a base image containing docker engine`);
     });
 

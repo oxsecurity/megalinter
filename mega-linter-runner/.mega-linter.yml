@@ -1,4 +1,4 @@
-# Configuration file for Mega-Linter
+# Configuration file for MegaLinter
 # See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
@@ -8,6 +8,7 @@ DISABLE:
   - EDITORCONFIG
 JAVASCRIPT_DEFAULT_STYLE: prettier
 YAML_FILTER_REGEX_EXCLUDE: (templates)
+MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 GITHUB_COMMENT_REPORTER: false
 GITHUB_STATUS_REPORTER: false
 SHOW_ELAPSED_TIME: true

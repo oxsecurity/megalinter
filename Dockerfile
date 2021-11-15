@@ -1,6 +1,6 @@
 ###########################################
 ###########################################
-## Dockerfile to run Mega-Linter ##
+## Dockerfile to run MegaLinter ##
 ###########################################
 ###########################################
 
@@ -151,7 +151,6 @@ RUN pip3 install --no-cache-dir --upgrade \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
-          'checkov' \
           'yamllint'
 #PIP__END
 
@@ -245,7 +244,7 @@ RUN rc-update add docker boot && rc-service docker start || true
 # CSHARP installation
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel Current -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -464,6 +463,11 @@ COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
 # terraform-fmt installation
 COPY --from=terragrunt /bin/terraform /usr/bin/
 
+# checkov installation
+RUN pip3 install --upgrade --no-cache-dir pip && pip3 install --upgrade --no-cache-dir setuptools \
+    && pip3 install --no-cache-dir checkov
+
+
 # kics installation
 COPY --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
@@ -514,7 +518,7 @@ ENV MEGALINTER_FLAVOR=all
 #########################################
 # Label the instance and set maintainer #
 #########################################
-LABEL com.github.actions.name="Mega-Linter" \
+LABEL com.github.actions.name="MegaLinter" \
       com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
       com.github.actions.icon="code" \
       com.github.actions.color="red" \

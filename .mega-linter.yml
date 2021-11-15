@@ -1,4 +1,4 @@
-# Configuration file for Mega-Linter
+# Configuration file for MegaLinter
 # See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
@@ -34,8 +34,8 @@ JSON_REPORTER: true
 PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
-  - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
+  - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"
 POST_COMMANDS:
-  - command: echo "This is Mega-Linter POST_COMMAND on own Mega-Linter ! :)"
+  - command: echo "This is MegaLinter POST_COMMAND on own MegaLinter ! :)"
     cwd: "workspace"

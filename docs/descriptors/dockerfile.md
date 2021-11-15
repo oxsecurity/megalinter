@@ -15,7 +15,7 @@
 - File names:
   - `Dockerfile`
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 | Variable                        | Description                   | Default value |
 |---------------------------------|-------------------------------|---------------|

@@ -38,7 +38,7 @@ linters:
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
     cli_lint_extra_args:
       - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
     test_folder: rst_rstfmt

@@ -1,7 +1,7 @@
 # MEGA-LINTER FLAVOR [dotnet]: Optimized for C, C++, C# or VB based projects
 ###########################################
 ###########################################
-## Dockerfile to run Mega-Linter ##
+## Dockerfile to run MegaLinter ##
 ###########################################
 ###########################################
 
@@ -162,7 +162,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 # CSHARP installation
 RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel Current -version latest
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
@@ -287,7 +287,7 @@ ENV MEGALINTER_FLAVOR=dotnet
 #########################################
 # Label the instance and set maintainer #
 #########################################
-LABEL com.github.actions.name="Mega-Linter" \
+LABEL com.github.actions.name="MegaLinter" \
       com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
       com.github.actions.icon="code" \
       com.github.actions.color="red" \

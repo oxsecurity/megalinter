@@ -56,7 +56,7 @@ linters:
     cli_lint_extra_args:
       - "--diff"
       - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
@@ -93,6 +93,7 @@ linters:
     name: PYTHON_FLAKE8
     linter_url: https://flake8.pycqa.org
     linter_repo: https://github.com/PyCQA/flake8
+    linter_spdx_license: MIT
     linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors

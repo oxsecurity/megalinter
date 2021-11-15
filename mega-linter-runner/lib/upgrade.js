@@ -187,7 +187,7 @@ jobs:
     # ..
 
   build:
-    name: Mega-Linter
+    name: MegaLinter
 `,
         testRes: `
 concurrency:
@@ -203,7 +203,7 @@ jobs:
     # ..
 
   build:
-    name: Mega-Linter
+    name: MegaLinter
 `,
       },
       // Comment "# Cancel duplicate jobs: https://github.com/fkirc/..."

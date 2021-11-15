@@ -33,7 +33,6 @@ class GithubStatusReporter(Reporter):
             config.exists("GITHUB_REPOSITORY")
             and config.exists("GITHUB_SHA")
             and config.exists("GITHUB_TOKEN")
-            and config.exists("GITHUB_RUN_ID")
         ):
             github_repo = config.get("GITHUB_REPOSITORY")
             github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
@@ -49,7 +48,10 @@ class GithubStatusReporter(Reporter):
                 "authorization": f"Bearer {config.get('GITHUB_TOKEN')}",
                 "content-type": "application/json",
             }
-            target_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+            if config.exists("GITHUB_RUN_ID"):
+                target_url = f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
+            else:
+                target_url = config.get("GITHUB_TARGET_URL")
             description = (
                 success_msg
                 if self.master.status == "success" and self.master.return_code == 0

@@ -1,7 +1,7 @@
 # MEGA-LINTER FLAVOR [swift]: Optimized for SWIFT based projects
 ###########################################
 ###########################################
-## Dockerfile to run Mega-Linter ##
+## Dockerfile to run MegaLinter ##
 ###########################################
 ###########################################
 
@@ -245,7 +245,7 @@ ENV MEGALINTER_FLAVOR=swift
 #########################################
 # Label the instance and set maintainer #
 #########################################
-LABEL com.github.actions.name="Mega-Linter" \
+LABEL com.github.actions.name="MegaLinter" \
       com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
       com.github.actions.icon="code" \
       com.github.actions.color="red" \

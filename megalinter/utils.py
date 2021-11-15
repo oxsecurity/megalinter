@@ -20,7 +20,7 @@ REPO_HOME_DEFAULT = (
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 LIST_OF_REPLACEMENTS = [
-    # Mega-Linter image
+    # MegaLinter image
     ["/tmp/lint/", ""],
     ["tmp/lint/", ""],
     # GitHub Actions

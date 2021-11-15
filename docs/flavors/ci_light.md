@@ -1,4 +1,4 @@
-# ci_light Mega-Linter Flavor
+# ci_light MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light)

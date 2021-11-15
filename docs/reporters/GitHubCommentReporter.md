@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 # GitHub Comment Reporter
 
-Posts Mega-Linter results summary in the comments of the related pull request (if existing)
+Posts MegaLinter results summary in the comments of the related pull request (if existing)
 
 ## Usage
 

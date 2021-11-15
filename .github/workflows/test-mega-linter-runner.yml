@@ -9,7 +9,7 @@ concurrency:
 jobs:
 
   build:
-    name: Test Mega-Linter runner
+    name: Test MegaLinter runner
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Prevent duplicate run from happening when a forked push is committed

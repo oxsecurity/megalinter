@@ -3,8 +3,8 @@
 
 <!-- header-logo-start -->
 <div align="center">
-  <a href="https://megalinter.github.io" target="blank" title="Visit Mega-Linter Web Site">
-    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="Mega-Linter" height="200px">
+  <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
+    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-logo.png" alt="MegaLinter" height="200px">
   </a>
 </div>
 <!-- header-logo-end -->
@@ -13,19 +13,19 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-1.5M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.0M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
-[![Mega-Linter](https://github.com/megalinter/megalinter/workflows/Mega-Linter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMega-Linter+branch%3Amain)
+[![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 [![codecov](https://codecov.io/gh/megalinter/megalinter/branch/main/graph/badge.svg)](https://codecov.io/gh/megalinter/megalinter)
 [![Secured with Trivy](https://img.shields.io/badge/Trivy-secured-green?logo=docker)](https://github.com/aquasecurity/trivy)
 [![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg)](https://github.com/megalinter/megalinter/graphs/contributors/)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+Mega-Linter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
 <!-- welcome-phrase-start -->
-Mega-Linter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](supported-linters.md#languages), [**22** formats](supported-linters.md#formats), [**20** tooling formats](supported-linters.md#tooling-formats) , [**excessive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](supported-linters.md#languages), [**22** formats](supported-linters.md#formats), [**20** tooling formats](supported-linters.md#tooling-formats) , [**excessive copy-pastes**](supported-linters.md#other) and [**spelling mistakes**](supported-linters.md#other) in your repository sources, generates [**various reports**](reporters.md), and can even [apply **formatting** and **auto-fixes**](configuration.md#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
 
 Ready to use [out of the box](installation.md) as a **GitHub Action** or **any CI system**, [**highly configurable**](configuration.md) and **free for all uses**
 
@@ -57,7 +57,7 @@ _Github PR reporter_
 
 <!-- table-of-contents-end -->
 
-## Why Mega-Linter
+## Why MegaLinter
 
 Projects need to contain clean code, in order to **avoid technical debt**, that makes **evolutive maintenance harder and time consuming**.
 
@@ -65,15 +65,15 @@ By using [**code formatters and code linters**](supported-linters.md), you ensur
 
 Not all developers have the good habit to use linters in their IDEs, making code reviews harder and longer to process
 
-By using **Mega-Linter**, you'll enjoy the following benefits for you and your team:
+By using **MegaLinter**, you'll enjoy the following benefits for you and your team:
 
 - At **each pull request** it will **automatically analyze all updated code in all languages**
 - Reading error logs, **developers learn best practices** of the language they are using
-- [**Mega-Linter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
-- Mega-Linter is **ready out of the box** after a [**quick setup**](quick-start.md)
+- [**MegaLinter documentation**](https://megalinter.github.io/) provides the **list of IDE plugins integrating each linter**, so developers know which linter and plugins to install
+- MegaLinter is **ready out of the box** after a [**quick setup**](quick-start.md)
 - **Formatting and fixes** can be automatically [**applied on the git branch**](configuration.md#apply-fixes) or [**provided in reports**](reporters/UpdatedSourcesReporter.md)
 - This tool is **100% open-source** and **free for all uses** (personal, professional, public and private repositories)
-- Mega-Linter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
+- MegaLinter can run on [**any CI tool**](installation.md) and be [**run locally**](https://megalinter.github.io/mega-linter-runner/): **no need to authorize an external application**, and **your code base never leaves your tooling ecosystem**
 
 <!-- quick-start-section-start -->
 
@@ -82,7 +82,7 @@ By using **Mega-Linter**, you'll enjoy the following benefits for you and your t
 <!-- supported-linters-section-start -->
 ## Supported Linters
 
-All linters are integrated in the [Mega-Linter docker image](https://hub.docker.com/r/megalinter/megalinter), which is frequently upgraded with their latest versions
+All linters are integrated in the [MegaLinter docker image](https://hub.docker.com/r/megalinter/megalinter), which is frequently upgraded with their latest versions
 
 <!-- languages-section-start-->
 <!-- linters-table-start -->

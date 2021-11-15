@@ -1,4 +1,4 @@
-# java Mega-Linter Flavor
+# java MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java)

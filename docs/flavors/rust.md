@@ -1,4 +1,4 @@
-# rust Mega-Linter Flavor
+# rust MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust)

@@ -64,12 +64,12 @@ jobs:
         run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:auto_update_${GITHUB_SHA}
         timeout-minutes: 20
 
-      # Upload Mega-Linter artifacts
+      # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
-          name: Mega-Linter reports
+          name: MegaLinter reports
           path: |
             docs
             report

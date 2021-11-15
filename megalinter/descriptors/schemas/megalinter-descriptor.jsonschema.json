@@ -15,7 +15,7 @@
           "type": "string"
         },
         "continue_if_failed": {
-          "Description": "If command fails, continue Mega-Linter process or not",
+          "Description": "If command fails, continue MegaLinter process or not",
           "default": true,
           "title": "Continue if failed",
           "type": "boolean"
@@ -60,7 +60,7 @@
       "type": "string"
     }
   },
-  "description": "Descriptor definition for Mega-Linter",
+  "description": "Descriptor definition for MegaLinter",
   "properties": {
     "active_only_if_file_found": {
       "$id": "#/properties/active_only_if_file_found",
@@ -80,7 +80,7 @@
     "descriptor_flavors": {
       "$id": "#/properties/descriptor_flavors",
       "default": [],
-      "description": "Mega-Linter flavors matching this descriptor",
+      "description": "MegaLinter flavors matching this descriptor",
       "examples": [
         [
           "all_flavors",
@@ -97,7 +97,7 @@
     "descriptor_flavors_exclude": {
       "$id": "#/properties/descriptor_flavors_exclude",
       "default": [],
-      "description": "Mega-Linter flavors that must not contain this descriptor",
+      "description": "MegaLinter flavors that must not contain this descriptor",
       "examples": [
         [
           "all_flavors",
@@ -451,7 +451,7 @@
           },
           "class": {
             "$id": "#/properties/linters/items/properties/class",
-            "description": "If Mega-Linter core is not enough, use a custom class inheriting from Linter class",
+            "description": "If MegaLinter core is not enough, use a custom class inheriting from Linter class",
             "examples": [
               "CSpellLinter",
               "DotnetFormatLinter",
@@ -669,7 +669,7 @@
           "descriptor_flavors": {
             "$id": "#/properties/linters/items/properties/descriptor_flavors",
             "default": [],
-            "description": "Mega-Linter flavors matching this linter",
+            "description": "MegaLinter flavors matching this linter",
             "examples": [
               [
                 "all_flavors",
@@ -686,7 +686,7 @@
           "descriptor_flavors_exclude": {
             "$id": "#/properties/linters/items/properties/descriptor_flavors_exclude",
             "default": [],
-            "description": "Mega-Linter flavors that must not contain this descriptor",
+            "description": "MegaLinter flavors that must not contain this descriptor",
             "examples": [
               [
                 "all_flavors",
@@ -703,7 +703,7 @@
           "disabled": {
             "$id": "#/properties/linters/items/properties/disabled",
             "default": false,
-            "description": "Disable linter in Mega-Linter next builds",
+            "description": "Disable linter in MegaLinter next builds",
             "title": "Disabled",
             "type": "boolean"
           },
@@ -939,8 +939,8 @@
           },
           "linter_megalinter_ref_url": {
             "$id": "#/properties/linters/items/properties/linter_megalinter_ref_url",
-            "description": "URL to linter documentation referring to Mega-Linter",
-            "title": "Mega-Linter reference URL",
+            "description": "URL to linter documentation referring to MegaLinter",
+            "title": "MegaLinter reference URL",
             "type": "string"
           },
           "linter_name": {
@@ -983,9 +983,15 @@
             "title": "Linter rules URL",
             "type": "string"
           },
+          "linter_spdx_license": {
+            "$id": "#/properties/linters/items/properties/linter_spdx_license",
+            "description": "spdx license id of the linter",
+            "title": "spdx license",
+            "type": "string"
+          },
           "linter_text": {
             "$id": "#/properties/linters/items/properties/linter_text",
-            "title": "Additional text for Mega-Linter online documentation",
+            "title": "Additional text for MegaLinter online documentation",
             "type": "string"
           },
           "linter_url": {
@@ -1153,6 +1159,6 @@
     "descriptor_type",
     "linters"
   ],
-  "title": "Mega-Linter descriptor",
+  "title": "MegaLinter descriptor",
   "type": "object"
 }

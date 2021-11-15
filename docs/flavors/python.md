@@ -1,4 +1,4 @@
-# python Mega-Linter Flavor
+# python MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python)

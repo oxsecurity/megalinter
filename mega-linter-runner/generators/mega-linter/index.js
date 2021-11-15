@@ -9,7 +9,7 @@ module.exports = class extends Generator {
     this.log(
       yosay(
         `Welcome to the ${chalk.red(
-          "Mega-Linter"
+          "MegaLinter"
         )} configuration generator !\n When you don't know, please use default values`
       )
     );
@@ -23,7 +23,7 @@ module.exports = class extends Generator {
         choices: [
           {
             value: "all",
-            name: "Let Mega-Linter suggest to me later (recommended)",
+            name: "Let MegaLinter suggest to me later (recommended)",
           },
           { value: "dart", name: "Dart" },
           { value: "documentation", name: "Documentation" },
@@ -69,12 +69,12 @@ module.exports = class extends Generator {
       {
         type: "list",
         name: "version",
-        message: "Which Mega-Linter version do you want to use ?",
+        message: "Which MegaLinter version do you want to use ?",
         default: "v5",
         choices: [
           { name: "v5 (Latest official release)", value: "v5" },
           {
-            name: "Beta (main branch of Mega-Linter repository)",
+            name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
           },
         ],
@@ -93,7 +93,7 @@ module.exports = class extends Generator {
         type: "list",
         name: "validateAllCodeBase",
         message:
-          "Do you want Mega-Linter to validate all source code or only updated one ?",
+          "Do you want MegaLinter to validate all source code or only updated one ?",
         default: "all",
         choices: [
           { name: "Validate all sources", value: "all" },
@@ -114,7 +114,7 @@ module.exports = class extends Generator {
         type: "confirm",
         name: "fileIoReporter",
         message:
-          "Do you want Mega-Linter to upload reports on file.io ? (report is deleted after being downloaded once)",
+          "Do you want MegaLinter to upload reports on file.io ? (report is deleted after being downloaded once)",
         default: false,
       },
       {
@@ -142,7 +142,7 @@ module.exports = class extends Generator {
         "Please follow manual instructions to define CI job at https://megalinter.github.io/installation/"
       );
       this.log(
-        "You may call `npx mega-linter-runner` to run Mega-Linter from any system (requires node.js & docker)"
+        "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
       );
     }
     // Generate .mega-linter.yml config
@@ -156,7 +156,7 @@ module.exports = class extends Generator {
   end() {
     this.log("You're all set !");
     this.log(
-      "Now commit, push and create a pull request to see Mega-Linter catching errors !"
+      "Now commit, push and create a pull request to see MegaLinter catching errors !"
     );
   }
 

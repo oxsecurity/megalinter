@@ -1,12 +1,12 @@
 <!-- markdownlint-disable -->
 ---
 name: Issue Template
-about: Used for creating issues about the Mega-Linter
+about: Used for creating issues about the MegaLinter
 
 ---
 
 ---
-### Issue with Mega-Linter
+### Issue with MegaLinter
 
 ---
 **Branch/Version:** Example: main

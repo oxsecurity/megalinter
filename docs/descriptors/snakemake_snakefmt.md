@@ -4,44 +4,44 @@
 
 ## snakefmt documentation
 
-- Version in Mega-Linter: **0.4.4**
+- Version in MegaLinter: **0.4.4**
 - Visit [Official Web Site](https://github.com/snakemake/snakefmt#readme){target=_blank}
 - See [How to configure snakefmt rules](https://github.com/snakemake/snakefmt#configuration){target=_blank}
   - If custom `.snakefmt.toml` config file is not found, [.snakefmt.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.snakefmt.toml){target=_blank} will be used
 
 [![snakefmt - GitHub](https://gh-card.dev/repos/snakemake/snakefmt.svg?fullname=)](https://github.com/snakemake/snakefmt){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 - Enable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable snakefmt by adding `SNAKEMAKE_SNAKEFMT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 - Enable **auto-fixes** by adding `SNAKEMAKE_SNAKEFMT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
-| Variable                                       | Description                                                                                                                                                                                                         | Default value                                    |
-|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| SNAKEMAKE_SNAKEFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
-| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
-| SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
-| SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`                                       |
-| SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`                                  |
-| SNAKEMAKE_SNAKEFMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
-| SNAKEMAKE_SNAKEFMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| SNAKEMAKE_SNAKEFMT_CONFIG_FILE                 | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.snakefmt.toml`                                 |
-| SNAKEMAKE_SNAKEFMT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
-| SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                           |
-| SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
+| Variable                                       | Description                                                                                                                                                                                                         | Default value                                   |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| SNAKEMAKE_SNAKEFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| SNAKEMAKE_SNAKEFMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| SNAKEMAKE_SNAKEFMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| SNAKEMAKE_SNAKEFMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`                                      |
+| SNAKEMAKE_SNAKEFMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`                                 |
+| SNAKEMAKE_SNAKEFMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| SNAKEMAKE_SNAKEFMT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| SNAKEMAKE_SNAKEFMT_CONFIG_FILE                 | snakefmt configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.snakefmt.toml`                                |
+| SNAKEMAKE_SNAKEFMT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
+| SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default Mega-Linter Flavor                            |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                             |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                     |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
-|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | Mega-Linter for documentation projects                |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
+|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                 |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        47        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                       |        42        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                     |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
@@ -90,9 +90,8 @@ Usage: snakefmt [OPTIONS] [SRC]...
 
   The uncompromising Snakemake code formatter.
 
-  SRC specifies directories and files to format. Directories will be
-  searched for file names that conform to the include/exclude patterns
-  provided.
+  SRC specifies directories and files to format. Directories will be searched
+  for file names that conform to the include/exclude patterns provided.
 
   Files are modified in-place by default; use diff, check, or  `snakefmt - <
   Snakefile` to avoid this.
@@ -103,13 +102,10 @@ Options:
                          Return code 0 means nothing would change. Return code
                          1 means some files would be reformatted. Return code
                          123 means there was an error.
-
   -d, --diff             Don't write the files back, just output a diff for
                          each file to stdout.
-
   --compact-diff         Same as --diff but only shows lines that would change
                          plus a few lines of context.
-
   --include PATTERN      A regular expression that matches files and
                          directories that should be included on recursive
                          searches.  An empty value means all files are
@@ -117,7 +113,6 @@ Options:
                          for directories on all platforms (Windows, too).
                          Exclusions are calculated first, inclusions later.
                          [default: (\.smk$|^Snakefile)]
-
   --exclude PATTERN      A regular expression that matches files and
                          directories that should be excluded on recursive
                          searches.  An empty value means no paths are
@@ -126,10 +121,8 @@ Options:
                          first, inclusions later.  [default: (\.snakemake|\.eg
                          gs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|\.svn|_
                          build|buck-out|build|dist)]
-
   -c, --config PATH      Read configuration from PATH. By default, will try to
                          read from `./pyproject.toml`
-
   -h, --help             Show this message and exit.
   -V, --version          Show the version and exit.
   -v, --verbose          Turns on debug-level logger.

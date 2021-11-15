@@ -27,7 +27,7 @@ class TextReporter(Reporter):
         output_format = config.get("OUTPUT_FORMAT", "")
         if output_format.startswith("text"):
             self.is_active = True
-        # Mega-Linter vars (true by default)
+        # MegaLinter vars (true by default)
         elif config.get("TEXT_REPORTER", "true") != "true":
             self.is_active = False
         else:

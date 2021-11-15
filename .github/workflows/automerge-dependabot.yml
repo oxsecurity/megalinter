@@ -42,7 +42,7 @@ jobs:
         id: wait-for-ci
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Mega-Linter
+          checkName: MegaLinter
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: merge

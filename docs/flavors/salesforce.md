@@ -1,4 +1,4 @@
-# salesforce Mega-Linter Flavor
+# salesforce MegaLinter Flavor
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce)

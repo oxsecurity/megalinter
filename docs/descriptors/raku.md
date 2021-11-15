@@ -19,7 +19,7 @@
   - `.pl6`
   - `.p6`
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
 | Variable                  | Description                   | Default value |
 |---------------------------|-------------------------------|---------------|

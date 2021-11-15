@@ -1,7 +1,7 @@
 # MEGA-LINTER FLAVOR [java]: Optimized for JAVA based projects
 ###########################################
 ###########################################
-## Dockerfile to run Mega-Linter ##
+## Dockerfile to run MegaLinter ##
 ###########################################
 ###########################################
 
@@ -260,7 +260,7 @@ ENV MEGALINTER_FLAVOR=java
 #########################################
 # Label the instance and set maintainer #
 #########################################
-LABEL com.github.actions.name="Mega-Linter" \
+LABEL com.github.actions.name="MegaLinter" \
       com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
       com.github.actions.icon="code" \
       com.github.actions.color="red" \
