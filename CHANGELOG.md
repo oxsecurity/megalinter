@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.1.0] - 2021-11-15
+
 - Fix config issue with IGNORE_GITIGNORED_FILES (#932)
 - Bypass random CI issue with sql_tsqllint_test test version and test help
 - New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
@@ -59,7 +64,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.569 to **2.0.571** on 2021-11-14
   - [stylelint](https://stylelint.io) from 14.0.1 to **14.1.0** on 2021-11-14
   - [checkov](https://www.checkov.io/) from 2.0.571 to **2.0.572** on 2021-11-14
-<!-- linter-versions-end -->
 
 ## [v5.0.7] - 2021-11-04
 
