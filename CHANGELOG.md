@@ -13,6 +13,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.7 to **1.6.8** on 2021-11-15
   - [checkov](https://www.checkov.io/) from 2.0.572 to **2.0.573** on 2021-11-15
+  - [checkov](https://www.checkov.io/) from 2.0.573 to **2.0.574** on 2021-11-15
 <!-- linter-versions-end -->
 
 ## [v5.1.0] - 2021-11-15
