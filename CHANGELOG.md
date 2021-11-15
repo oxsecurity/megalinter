@@ -57,6 +57,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.566 to **2.0.569** on 2021-11-13
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.9 to **0.35.10** on 2021-11-13
   - [checkov](https://www.checkov.io/) from 2.0.569 to **2.0.571** on 2021-11-14
+  - [stylelint](https://stylelint.io) from 14.0.1 to **14.1.0** on 2021-11-14
+  - [checkov](https://www.checkov.io/) from 2.0.571 to **2.0.572** on 2021-11-14
 <!-- linter-versions-end -->
 
 ## [v5.0.7] - 2021-11-04
