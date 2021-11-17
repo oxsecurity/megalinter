@@ -10,7 +10,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 <!-- unreleased-content-marker -->
 
+- Add [PMD](https://pmd.github.io/) to lint java files
 - Fix release doc CI
+- Manage offline run of `bash build.sh` for those who want to code in planes :)
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.7 to **1.6.8** on 2021-11-15
@@ -47,7 +49,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Add license info in **List of linters** documentation page
 
 - Linters
-  - Add [PMD](https://pmd.github.io/) to lint java files
   - Update **black** configuration, that now uses a `pyproject.toml` file (#949)
   - Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
   - Upgrade checkov install instructions to use alpine-oriented ones
@@ -58,7 +59,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Fix config issue with IGNORE_GITIGNORED_FILES (#932)
   - Bypass random CI issue with sql_tsqllint_test test version and test help
   - mega-linter-runner: Upgrade yeoman environment to allow spaces in path
-  - Manage offline run of `bash build.sh` for those who want to code in planes :)
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04

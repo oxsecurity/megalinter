@@ -63,3 +63,12 @@ linters:
       - "pmd -rulesets java-pmd-ruleset.xml -d myfile.java"
       - "pmd -rulesets java-pmd-ruleset.xml -files /tmp/list-off-files-generated-by-megalinter.txt"
       - "pmd -rulesets java-pmd-ruleset.xml -dir /path/to/sources"
+    install:
+      dockerfile:
+        - |
+          ARG PMD_VERSION=6.12.0 && \
+          RUN curl -L -o pmd-bin-${PMD_VERSION}.zip https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${VERSION}.zip && \
+          sha256sum -c pmd-bin-${PMD_VERSION}.zip.sha256 && \
+          unzip pmd-bin-${PMD_VERSION}.zip && \
+          rm pmd-bin-${PMD_VERSION}.zip && \
+          mv /pmd-bin-${VERSION} /usr/bin/pmd
