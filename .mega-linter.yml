@@ -31,6 +31,7 @@ SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 JSON_REPORTER: true
+GITHUB_STATUS_REPORTER: false
 PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
