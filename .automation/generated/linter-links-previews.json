@@ -239,6 +239,11 @@
     "image": "https://avatars3.githubusercontent.com/u/16435710?s=400&v=4",
     "title": "phpstan/phpstan"
   },
+  "pmd": {
+    "description": "PMD is a source code analyzer. It finds unused variables, empty catch blocks, unnecessary object creation, and so forth.",
+    "image": null,
+    "title": "PMD"
+  },
   "powershell": {
     "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/33149177/18c68000-a5b0-11e9-9d88-c03ff0e21635",

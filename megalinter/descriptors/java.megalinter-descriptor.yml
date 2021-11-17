@@ -54,11 +54,16 @@ linters:
   # PMD for java
   - class: JavaPmdLinter
     linter_name: pmd
+    linter_repo: https://github.com/pmd/pmd
     linter_url: https://pmd.github.io/
+    linter_rules_url: https://pmd.github.io/pmd-6.40.0/pmd_rules_java.html
+    linter_rules_configuration_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_configuring_rules.html
+    linter_rules_inline_disable_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_suppressing_warnings.html
+    linter_image_url: https://pmd.github.io/img/pmd_logo.png
     cli_lint_mode: list_of_files
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "-rulesets"
-    linter_version_cache: "6.40.0"
+    # linter_version_cache: "6.40.0"
     examples:
       - "pmd -rulesets java-pmd-ruleset.xml -d myfile.java"
       - "pmd -rulesets java-pmd-ruleset.xml -files /tmp/list-off-files-generated-by-megalinter.txt"
@@ -66,7 +71,7 @@ linters:
     install:
       dockerfile:
         - |
-          ARG PMD_VERSION=6.12.0 && \
+          ARG PMD_VERSION=6.40.0 && \
           RUN curl -L -o pmd-bin-${PMD_VERSION}.zip https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${VERSION}.zip && \
           sha256sum -c pmd-bin-${PMD_VERSION}.zip.sha256 && \
           unzip pmd-bin-${PMD_VERSION}.zip && \
