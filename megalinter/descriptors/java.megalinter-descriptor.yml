@@ -77,3 +77,4 @@ linters:
           unzip pmd-bin-${PMD_VERSION}.zip && \
           rm pmd-bin-${PMD_VERSION}.zip && \
           mv /pmd-bin-${VERSION} /usr/bin/pmd
+        - ENV PATH="${PATH}:/usr/bin/pmd"
