@@ -18,15 +18,15 @@ class GithubStatusReporter(Reporter):
 
     def __init__(self, params=None):
         # Activate GitHub Status by default
-        self.is_active = True
+        self.is_active = False
         super().__init__(params)
 
     def manage_activation(self):
         # Disable status for each linter if MULTI_STATUS is 'false'
-        if config.exists("MULTI_STATUS") and config.get("MULTI_STATUS") == "false":
-            self.is_active = False
-        elif config.get("GITHUB_STATUS_REPORTER", "true") != "true":
-            self.is_active = False
+        if config.exists("MULTI_STATUS") and config.get("MULTI_STATUS") == "true":
+            self.is_active = True
+        elif config.get("GITHUB_STATUS_REPORTER", "false") != "false":
+            self.is_active = True
 
     def produce_report(self):
         if (

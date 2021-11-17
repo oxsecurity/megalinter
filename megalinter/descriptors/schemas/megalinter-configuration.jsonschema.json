@@ -3301,7 +3301,7 @@
     },
     "GITHUB_STATUS_REPORTER": {
       "$id": "#/properties/GITHUB_STATUS_REPORTER",
-      "default": true,
+      "default": false,
       "description": "Posts a status on the pull request for each processed linter",
       "title": "Activate GitHub Status reporter",
       "type": "boolean"
