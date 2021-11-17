@@ -10,6 +10,36 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 <!-- unreleased-content-marker -->
 
+- Fix release doc CI
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.7 to **1.6.8** on 2021-11-15
+  - [checkov](https://www.checkov.io/) from 2.0.572 to **2.0.573** on 2021-11-15
+  - [checkov](https://www.checkov.io/) from 2.0.573 to **2.0.574** on 2021-11-15
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.0 to **0.56.1** on 2021-11-17
+  - [checkov](https://www.checkov.io/) from 2.0.574 to **2.0.580** on 2021-11-17
+  - [black](https://black.readthedocs.io/en/stable/) from 21.10 to **21.11** on 2021-11-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.6 to **5.13.0** on 2021-11-17
+  - [checkov](https://www.checkov.io/) from 2.0.580 to **2.0.582** on 2021-11-17
+<!-- linter-versions-end -->
+
+## [v5.1.0] - 2021-11-15
+
+- Fix config issue with IGNORE_GITIGNORED_FILES (#932)
+- Bypass random CI issue with sql_tsqllint_test test version and test help
+- New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
+- Update **black** configuration, that now uses a `pyproject.toml` file (#949)
+- Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
+- mega-linter-runner: Upgrade yeoman environment to allow spaces in path
+- Documentation versioning with mike
+- Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
+- Downgrade dotnet from 6.0 to 5.0, to be compliant with tsqllint
+- Allow GithubStatusReporter to work for other CI platforms
+- Add license badge in linters documentation (All linters)
+- Upgrade checkov install instructions to use alpine-oriented ones
+- Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
+- Fix typo error in `.jscpd.json` config file (#986)
+
 - Core architecture
   - New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
   - Documentation versioning with mike
@@ -56,7 +86,16 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.4.6 to **1.4.7** on 2021-11-11
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.10 to **1.0.11** on 2021-11-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.6 to **0.35.8** on 2021-11-11
-<!-- linter-versions-end -->
+  - [htmlhint](https://htmlhint.com/) from 0.16.0 to **0.16.1** on 2021-11-12
+  - [checkov](https://www.checkov.io/) from 2.0.524 to **2.0.566** on 2021-11-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.8 to **0.35.9** on 2021-11-12
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.0 to **1.7.1** on 2021-11-13
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.31 to **0.9.32** on 2021-11-13
+  - [checkov](https://www.checkov.io/) from 2.0.566 to **2.0.569** on 2021-11-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.9 to **0.35.10** on 2021-11-13
+  - [checkov](https://www.checkov.io/) from 2.0.569 to **2.0.571** on 2021-11-14
+  - [stylelint](https://stylelint.io) from 14.0.1 to **14.1.0** on 2021-11-14
+  - [checkov](https://www.checkov.io/) from 2.0.571 to **2.0.572** on 2021-11-14
 
 ## [v5.0.7] - 2021-11-04
 
