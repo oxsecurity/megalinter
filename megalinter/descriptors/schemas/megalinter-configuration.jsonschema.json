@@ -7282,8 +7282,8 @@
     },
     "PRINT_ALL_FILES": {
       "$id": "#/properties/PRINT_ALL_FILES",
-      "default": true,
-      "description": "If set to false, only fixed and error files are displayed in logs",
+      "default": false,
+      "description": "If set to true, display all files instead of only their number",
       "title": "Print all files in console logs",
       "type": "boolean"
     },
