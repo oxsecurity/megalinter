@@ -15,6 +15,7 @@ linters:
   - linter_name: checkstyle
     linter_url: https://checkstyle.sourceforge.io
     linter_repo: https://github.com/checkstyle/checkstyle
+    linter_spdx_license: LGPL-2.1
     linter_rules_url: https://checkstyle.sourceforge.io/checks.html
     linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
     linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview
@@ -56,6 +57,7 @@ linters:
     linter_name: pmd
     linter_repo: https://github.com/pmd/pmd
     linter_url: https://pmd.github.io/
+    linter_spdx_license: Apache-2.0
     linter_rules_url: https://pmd.github.io/pmd-6.40.0/pmd_rules_java.html
     linter_rules_configuration_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_configuring_rules.html
     linter_rules_inline_disable_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_suppressing_warnings.html
@@ -63,7 +65,6 @@ linters:
     cli_lint_mode: list_of_files
     config_file_name: java-pmd-ruleset.xml
     cli_config_arg_name: "-rulesets"
-    # linter_version_cache: "6.40.0"
     examples:
       - "pmd -rulesets java-pmd-ruleset.xml -d myfile.java"
       - "pmd -rulesets java-pmd-ruleset.xml -files /tmp/list-off-files-generated-by-megalinter.txt"

@@ -14,6 +14,7 @@ linters:
     linter_text: Git diff checks for git conflicts markers in files
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
+    linter_spdx_license: LGPL-2.1
     linter_megalinter_ref_url: never
     cli_config_arg_name: ""
     cli_executable: git
