@@ -2168,7 +2168,7 @@ def reformat_markdown_tables():
         for file in sorted(os.listdir(REPO_HOME))
         if os.path.isfile(os.path.join(REPO_HOME, file))
     ]
-    excluded_directories = ['.automation',"node_modules"]
+    excluded_directories = [".automation", "node_modules"]
     for (dirpath, dirnames, filenames) in os.walk(REPO_HOME, topdown=True):
         dirnames[:] = [d for d in dirnames if d not in excluded_directories]
         all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
@@ -2176,11 +2176,11 @@ def reformat_markdown_tables():
     for file in all_files:
         base_file_name = os.path.basename(file)
         _, file_extension = os.path.splitext(base_file_name)
-        if file_extension == '.md':
+        if file_extension == ".md":
             all_md_files += [file]
     # Call markdown-table-formatter with the list of files
-    format_md_tables_command = ['npx','markdown-table-formatter'] + all_md_files
-    logging.info("Running command: "+str(format_md_tables_command))
+    format_md_tables_command = ["npx", "markdown-table-formatter"] + all_md_files
+    logging.info("Running command: " + str(format_md_tables_command))
     process = subprocess.run(
         format_md_tables_command,
         stdout=subprocess.PIPE,
