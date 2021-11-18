@@ -2064,7 +2064,7 @@ def generate_documentation_all_linters():
                             linter_licenses[linter.linter_name] = license
             # get license from descriptor
             if (
-                ( license == "" or license == "Other")
+                (license == "" or license == "Other")
                 and hasattr(linter, "linter_spdx_license")
                 and linter.linter_spdx_license is not None
             ):
