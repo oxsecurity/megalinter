@@ -6,7 +6,10 @@ import logging
 
 import chalk as c
 from megalinter import Reporter, config, utils
+from megalinter.constants import ML_DOC_URL
 
+mega_linter_version = config.get("BUILD_VERSION", "latest")
+DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 class ConsoleLinterReporter(Reporter):
     name = "CONSOLE"
@@ -29,11 +32,15 @@ class ConsoleLinterReporter(Reporter):
 
     def produce_report(self):
         linter_version = self.master.get_linter_version()
+        linter_doc_url = (
+            f"{DOCS_URL_DESCRIPTORS_ROOT}/{self.master.descriptor_id.lower()}_"
+            f"{self.master.linter_name.lower().replace('-', '_')}"
+        )
         # Linter header prints
         msg = [
             "",
             c.bold(f"### Processed [{self.master.descriptor_id}] files"),
-            f"- Using [{self.master.linter_name} v{linter_version}] {self.master.linter_url}",
+            f"- Using [{self.master.linter_name} v{linter_version}] {linter_doc_url}",
         ]
         if self.master.descriptor_id != self.master.name:
             msg += [f"- MegaLinter key: [{self.master.name}]"]
