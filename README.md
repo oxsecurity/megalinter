@@ -877,6 +877,8 @@ PLUGINS:
 
 ### Plugins Catalog
 
+* [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter
+
 Submit a PR if you want your plugin to appear here :)
 
 ### Create plugins
