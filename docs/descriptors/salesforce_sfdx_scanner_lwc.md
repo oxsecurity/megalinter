@@ -83,6 +83,7 @@ sfdx scanner:run
 ### Help content
 
 ```shell
+ ›   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.
 evaluate a selection of rules against a codebase
 
 USAGE
@@ -219,6 +220,7 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
+ ›   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.
 NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE
 ─────────────────────────────────────────────────  ───────────  ────────────────  ────────────────────────────────────────────────  ─────────────────
 VfCsrf                                             visualforce  Security          Basic VF                                          pmd
