@@ -877,7 +877,7 @@ PLUGINS:
 
 ### Plugins Catalog
 
-* [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter
+* [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
 
 Submit a PR if you want your plugin to appear here :)
 
