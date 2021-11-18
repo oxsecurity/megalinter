@@ -619,6 +619,7 @@
         "jsonpickle",
         "jsonschema",
         "jspm",
+        "jupyfmt",
         "jwiebalk",
         "kdocs",
         "keyserver",
