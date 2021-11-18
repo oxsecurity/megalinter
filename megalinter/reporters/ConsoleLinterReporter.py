@@ -11,6 +11,7 @@ from megalinter.constants import ML_DOC_URL
 mega_linter_version = config.get("BUILD_VERSION", "latest")
 DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
+
 class ConsoleLinterReporter(Reporter):
     name = "CONSOLE"
     scope = "linter"
