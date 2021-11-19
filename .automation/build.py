@@ -3,6 +3,7 @@
 Automatically generate source code ,descriptive files Dockerfiles and documentation
 """
 # pylint: disable=import-error
+import glob
 import json
 import logging
 import os
@@ -248,6 +249,7 @@ branding:
             gem_packages += item["install"]["gem"]
     # Replace between tags in Dockerfile
     # Commands
+    docker_from += []
     replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))
     replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(docker_arg))
     replace_in_file(
@@ -361,6 +363,28 @@ def list_descriptors_for_build():
     return descriptors, linters_by_type
 
 
+def get_descriptor_stat():
+    cwd_to_use = os.getcwd() + "/megalinter/descriptors/"
+
+    linters_by_type = {"language": 0, "format": 0, "tooling_format": 0, "other": 0}
+
+    for file_name in glob.iglob(
+        cwd_to_use + "*.megalinter-descriptor.yml", recursive=False
+    ):
+        process = subprocess.run(
+            ["yq", "e", ".descriptor_type", file_name],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True,
+            cwd=cwd_to_use,
+            shell=False,
+        )
+        if len(process.stdout) > 0:
+            linters_by_type[process.stdout.strip()] += 1
+
+    return linters_by_type
+
+
 # Automatically generate README linters table and a MD file for each linter
 def generate_documentation():
     descriptors, linters_by_type = list_descriptors_for_build()
@@ -389,18 +413,18 @@ def generate_documentation():
         "<!-- linters-table-end -->",
         linters_tables_md_str,
     )
+    linters_by_type = get_descriptor_stat()
     # Update welcome phrase
     welcome_phrase = (
         "MegaLinter is an **100% Open-Source tool for CI/CD workflows** "
-        + f"that **analyzes consistency and quality** of [**{len(linters_by_type['language'])}** languages]"
-        + "(#languages), "
-        + f"[**{len(linters_by_type['format'])}** formats](#formats), "
-        + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
-        + ", [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
-        + "repository sources, generates [**various reports**](#reporters), "
+        + f"that **analyzes consistency and quality** of [**{linters_by_type['language']}** languages](#languages), "
+        + f"[**{linters_by_type['format']}** formats](#formats), "
+        + f"[**{linters_by_type['tooling_format']}** tooling formats](#tooling-formats), "
+        + "[**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) "
+        + "in your repository sources, generates [**various reports**](#reporters), "
         + "and can even [apply **formatting** and **auto-fixes**](#apply-fixes), "
-        + "to **ensure all your projects sources are clean**, whatever "
-        + "IDE/toolbox are used by their developers.\n\n"
+        + "to **ensure all your projects sources are clean**, "
+        + "whatever IDE/toolbox are used by their developers.\n\n"
         + "Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, "
         "[**highly configurable**](#configuration) and **free for all uses**\n"
     )
@@ -411,12 +435,37 @@ def generate_documentation():
         "<!-- welcome-phrase-end -->",
         welcome_phrase,
     )
+    # Update docs/index.md
+    replace_in_file(
+        f"{REPO_HOME}/docs/index.md",
+        "<!-- welcome-phrase-start -->",
+        "<!-- welcome-phrase-end -->",
+        welcome_phrase,
+    )
     # Update mkdocs.yml file
     replace_in_file(
         f"{REPO_HOME}/mkdocs.yml",
         "# site_description-start",
         "# site_description-end",
         "site_description: " + md_to_text(welcome_phrase.replace("\n", "")),
+    )
+    # Update welcome phrase for Mega-Linter-Runner only
+    welcome_phrase_2 = (
+        f"**MegaLinter** analyzes [**{linters_by_type['language']} languages**](#languages), "
+        + f"[**{linters_by_type['format']} formats**](#formats), "
+        + f"[**{linters_by_type['tooling_format']} tooling formats**](#tooling-formats), "
+        + "[**copy-pastes**](#other) and [**spelling mistakes**](#other) "
+        + "in your repository sources, generates [**reports in several formats**](#reporters), "
+        + "and can even [**apply formatting** and **auto-fixes**](#apply-fixes) with **auto-generated commit or PR**, "
+        + "to **ensure all your projects sources are clean, "
+        + "whatever IDE/toolbox are used by their developers.\n\n"
+    )
+    # Update mega-linter-runner/README.md
+    replace_in_file(
+        f"{REPO_HOME}/mega-linter-runner/README.md",
+        "<!-- welcome-phrase-start -->",
+        "<!-- welcome-phrase-end -->",
+        welcome_phrase_2,
     )
     # Build & Update flavors table
     flavors_table_md = build_flavors_md_table()
