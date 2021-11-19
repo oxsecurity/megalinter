@@ -249,7 +249,6 @@ branding:
             gem_packages += item["install"]["gem"]
     # Replace between tags in Dockerfile
     # Commands
-    docker_from += []
     replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))
     replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(docker_arg))
     replace_in_file(
