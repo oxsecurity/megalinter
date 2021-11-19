@@ -1379,8 +1379,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['E226', 'W504', 'E704', 'E24', 'E123',",
-        "                        'W503', 'E121', 'E126'])",
+        "                        (Default: ['W503', 'E121', 'E704', 'E24', 'E226',",
+        "                        'E126', 'W504', 'E123'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
@@ -3841,7 +3841,7 @@
     "remark-lint": [
         "Usage: remark [options] [path | glob ...]",
         "",
-        "  CLI to process markdown with remark",
+        "  Command line interface to inspect and change markdown files with remark",
         "",
         "Options:",
         "",
@@ -4571,7 +4571,6 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-apex": [
-        " \u203a   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.",
         "evaluate a selection of rules against a codebase",
         "",
         "USAGE",
@@ -4708,7 +4707,6 @@
         "      E.g., $ sfdx scanner:run --target \"/some-project/\" --severity-threshold 2",
         "",
         "",
-        " \u203a   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.",
         "NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE",
         "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
         "VfCsrf                                             visualforce  Security          Basic VF                                          pmd",
@@ -4906,7 +4904,6 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-aura": [
-        " \u203a   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.",
         "evaluate a selection of rules against a codebase",
         "",
         "USAGE",
@@ -5043,7 +5040,6 @@
         "      E.g., $ sfdx scanner:run --target \"/some-project/\" --severity-threshold 2",
         "",
         "",
-        " \u203a   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.",
         "NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE",
         "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
         "VfCsrf                                             visualforce  Security          Basic VF                                          pmd",
@@ -5241,7 +5237,6 @@
         "@typescript-eslint/unbound-method                  typescript   Best Practices    Best Practices                                    eslint-typescript"
     ],
     "sfdx-scanner-lwc": [
-        " \u203a   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.",
         "evaluate a selection of rules against a codebase",
         "",
         "USAGE",
@@ -5378,7 +5373,6 @@
         "      E.g., $ sfdx scanner:run --target \"/some-project/\" --severity-threshold 2",
         "",
         "",
-        " \u203a   Warning: sfdx-cli update available from 7.126.0 to 7.127.0.",
         "NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE",
         "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
         "VfCsrf                                             visualforce  Security          Basic VF                                          pmd",

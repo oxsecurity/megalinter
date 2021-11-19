@@ -4,7 +4,7 @@
 
 ## remark-lint documentation
 
-- Version in MegaLinter: **14.0.1**
+- Version in MegaLinter: **14.0.2**
 - Visit [Official Web Site](https://remark.js.org/){target=_blank}
 - See [How to configure remark-lint rules](https://github.com/remarkjs/remark-lint#configuring-remark-lint){target=_blank}
   - If custom `.remarkrc` config file is not found, [.remarkrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.remarkrc){target=_blank} will be used
@@ -101,7 +101,7 @@ remark --frail -o --rc-path .remarkrc myfile.md
 ```shell
 Usage: remark [options] [path | glob ...]
 
-  CLI to process markdown with remark
+  Command line interface to inspect and change markdown files with remark
 
 Options:
 
