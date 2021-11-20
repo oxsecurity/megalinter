@@ -332,6 +332,9 @@ RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 # clj-kondo installation
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+
 # dotnet-format installation
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 

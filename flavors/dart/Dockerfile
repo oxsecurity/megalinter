@@ -173,6 +173,9 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+
 # dartanalyzer installation
 RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
     && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \

@@ -181,6 +181,9 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 

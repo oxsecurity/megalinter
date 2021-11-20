@@ -16,6 +16,7 @@
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
         "CREDENTIALS_SECRETLINT",
+        "CREDENTIALS_GITLEAKS",
         "CSHARP_DOTNET_FORMAT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
