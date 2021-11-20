@@ -8,11 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-<!-- unreleased-content-marker -->
-
 - Add [PMD](https://pmd.github.io/) to lint java files
+
+- Linter versions upgrades
+  - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
+  - [php](https://www.php.net) from 7.4.25 to **7.4.26** on 2021-11-19
+  - [checkov](https://www.checkov.io/) from 2.0.587 to **2.0.588** on 2021-11-19
+<!-- linter-versions-end -->
+
+## [v5.2.0] - 2021-11-18
+
 - Fix release doc CI
-- Manage offline run of `bash build.sh` for those who want to code in planes :)
+- Add <utteranc.es> comments in online documentation
+- Add link to MegaLinter documentation in console logs
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.7 to **1.6.8** on 2021-11-15
@@ -23,7 +31,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 21.10 to **21.11** on 2021-11-17
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.6 to **5.13.0** on 2021-11-17
   - [checkov](https://www.checkov.io/) from 2.0.580 to **2.0.582** on 2021-11-17
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.0.582 to **2.0.583** on 2021-11-18
+  - [phpstan](https://phpstan.org/) from 1.1.2 to **1.2.0** on 2021-11-18
+  - [checkov](https://www.checkov.io/) from 2.0.583 to **2.0.587** on 2021-11-18
 
 ## [v5.1.0] - 2021-11-15
 

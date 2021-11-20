@@ -9,7 +9,7 @@
 
 ## php documentation
 
-- Version in MegaLinter: **7.4.25**
+- Version in MegaLinter: **7.4.26**
 - Visit [Official Web Site](https://www.php.net){target=_blank}
 
 [![php-src - GitHub](https://gh-card.dev/repos/php/php-src.svg?fullname=)](https://github.com/php/php-src){target=_blank}
