@@ -575,6 +575,7 @@
         "hyhs",
         "idiv",
         "ighe",
+        "iglob",
         "ignorepattern",
         "ilrs",
         "imagepath",
