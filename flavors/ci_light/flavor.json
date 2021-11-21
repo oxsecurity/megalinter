@@ -1,6 +1,7 @@
 {
     "descriptors": [
-        "GIT"
+        "GIT",
+        "REPOSITORY"
     ],
     "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
     "linters": [
@@ -13,6 +14,9 @@
         "JSON_ESLINT_PLUGIN_JSONC",
         "JSON_V8R",
         "JSON_PRETTIER",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
         "XML_XMLLINT",
         "YAML_PRETTIER",
         "YAML_YAMLLINT",

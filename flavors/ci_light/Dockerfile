@@ -103,7 +103,9 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint \
                 eslint-plugin-jsonc \
                 v8r \
-                prettier
+                prettier \
+                secretlint@4.1.0 \
+                @secretlint/secretlint-rule-preset-recommend@4.1.0
 #NPM__END
 
 # Add node packages to path #
@@ -126,11 +128,17 @@ ENV PATH="/node_modules/.bin:${PATH}"
 # GIT installation
 RUN git config --global core.autocrlf true
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 #OTHER__END
 

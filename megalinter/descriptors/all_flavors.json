@@ -1,7 +1,8 @@
 {
     "ci_light": {
         "descriptors": [
-            "GIT"
+            "GIT",
+            "REPOSITORY"
         ],
         "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
         "linters": [
@@ -14,6 +15,9 @@
             "JSON_ESLINT_PLUGIN_JSONC",
             "JSON_V8R",
             "JSON_PRETTIER",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "XML_XMLLINT",
             "YAML_PRETTIER",
             "YAML_YAMLLINT",
@@ -22,7 +26,8 @@
     },
     "dart": {
         "descriptors": [
-            "GIT"
+            "GIT",
+            "REPOSITORY"
         ],
         "label": "Optimized for DART based projects",
         "linters": [
@@ -33,7 +38,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DART_DARTANALYZER",
@@ -57,6 +61,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -72,7 +79,8 @@
     },
     "documentation": {
         "descriptors": [
-            "GIT"
+            "GIT",
+            "REPOSITORY"
         ],
         "label": "MegaLinter for documentation projects",
         "linters": [
@@ -83,7 +91,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -106,6 +113,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -123,7 +133,8 @@
         "descriptors": [
             "CSHARP",
             "GIT",
-            "POWERSHELL"
+            "POWERSHELL",
+            "REPOSITORY"
         ],
         "label": "Optimized for C, C++, C# or VB based projects",
         "linters": [
@@ -137,7 +148,6 @@
             "COPYPASTE_JSCPD",
             "CPP_CPPLINT",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSHARP_DOTNET_FORMAT",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
@@ -162,6 +172,9 @@
             "OPENAPI_SPECTRAL",
             "POWERSHELL_POWERSHELL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -180,7 +193,8 @@
     "go": {
         "descriptors": [
             "GIT",
-            "GO"
+            "GO",
+            "REPOSITORY"
         ],
         "label": "Optimized for GO based projects",
         "linters": [
@@ -191,7 +205,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -216,6 +229,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -232,7 +248,8 @@
     "java": {
         "descriptors": [
             "GIT",
-            "JAVA"
+            "JAVA",
+            "REPOSITORY"
         ],
         "label": "Optimized for JAVA based projects",
         "linters": [
@@ -244,7 +261,6 @@
             "CLOJURE_CLJ_KONDO",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -269,6 +285,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -286,6 +305,7 @@
         "descriptors": [
             "GIT",
             "JAVASCRIPT",
+            "REPOSITORY",
             "TYPESCRIPT"
         ],
         "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",
@@ -298,7 +318,6 @@
             "COFFEE_COFFEELINT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -325,6 +344,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -345,7 +367,8 @@
     "php": {
         "descriptors": [
             "GIT",
-            "PHP"
+            "PHP",
+            "REPOSITORY"
         ],
         "label": "Optimized for PHP based projects",
         "linters": [
@@ -356,7 +379,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -383,6 +405,9 @@
             "PHP_PHPSTAN",
             "PHP_PSALM",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -398,7 +423,8 @@
     },
     "python": {
         "descriptors": [
-            "GIT"
+            "GIT",
+            "REPOSITORY"
         ],
         "label": "Optimized for PYTHON based projects",
         "linters": [
@@ -409,7 +435,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -438,6 +463,9 @@
             "PYTHON_ISORT",
             "PYTHON_BANDIT",
             "PYTHON_MYPY",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "RST_RST_LINT",
             "RST_RSTCHECK",
             "RST_RSTFMT",
@@ -457,6 +485,7 @@
     "ruby": {
         "descriptors": [
             "GIT",
+            "REPOSITORY",
             "RUBY"
         ],
         "label": "Optimized for RUBY based projects",
@@ -468,7 +497,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -491,6 +519,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "RUBY_RUBOCOP",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
@@ -508,6 +539,7 @@
     "rust": {
         "descriptors": [
             "GIT",
+            "REPOSITORY",
             "RUST"
         ],
         "label": "Optimized for RUST based projects",
@@ -519,7 +551,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -542,6 +573,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "RUST_CLIPPY",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
@@ -559,6 +593,7 @@
     "salesforce": {
         "descriptors": [
             "GIT",
+            "REPOSITORY",
             "SALESFORCE"
         ],
         "label": "Optimized for Salesforce based projects",
@@ -570,7 +605,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -593,6 +627,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SALESFORCE_SFDX_SCANNER_APEX",
             "SALESFORCE_SFDX_SCANNER_AURA",
             "SALESFORCE_SFDX_SCANNER_LWC",
@@ -612,6 +649,7 @@
     "scala": {
         "descriptors": [
             "GIT",
+            "REPOSITORY",
             "SCALA"
         ],
         "label": "Optimized for SCALA based projects",
@@ -623,7 +661,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -646,6 +683,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SCALA_SCALAFIX",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
@@ -662,7 +702,8 @@
     },
     "swift": {
         "descriptors": [
-            "GIT"
+            "GIT",
+            "REPOSITORY"
         ],
         "label": "Optimized for SWIFT based projects",
         "linters": [
@@ -673,7 +714,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -696,6 +736,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",
@@ -712,7 +755,8 @@
     },
     "terraform": {
         "descriptors": [
-            "GIT"
+            "GIT",
+            "REPOSITORY"
         ],
         "label": "Optimized for TERRAFORM based projects",
         "linters": [
@@ -723,7 +767,6 @@
             "BASH_SHFMT",
             "COPYPASTE_JSCPD",
             "CREDENTIALS_SECRETLINT",
-            "CREDENTIALS_GITLEAKS",
             "CSS_STYLELINT",
             "CSS_SCSS_LINT",
             "DOCKERFILE_DOCKERFILELINT",
@@ -746,6 +789,9 @@
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
             "PROTOBUF_PROTOLINT",
+            "REPOSITORY_GIT_DIFF",
+            "REPOSITORY_SECRETLINT",
+            "REPOSITORY_GITLEAKS",
             "SNAKEMAKE_LINT",
             "SNAKEMAKE_SNAKEFMT",
             "SPELL_MISSPELL",

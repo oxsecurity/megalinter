@@ -1,7 +1,8 @@
 {
     "descriptors": [
         "GIT",
-        "GO"
+        "GO",
+        "REPOSITORY"
     ],
     "label": "Optimized for GO based projects",
     "linters": [
@@ -12,7 +13,6 @@
         "BASH_SHFMT",
         "COPYPASTE_JSCPD",
         "CREDENTIALS_SECRETLINT",
-        "CREDENTIALS_GITLEAKS",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_DOCKERFILELINT",
@@ -37,6 +37,9 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",

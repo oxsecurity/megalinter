@@ -180,6 +180,9 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # actionlint installation
 ENV GO111MODULE=on
 RUN go get github.com/rhysd/actionlint/cmd/actionlint
@@ -208,9 +211,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
-# gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
-
 # dotnet-format installation
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
@@ -237,6 +237,9 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \

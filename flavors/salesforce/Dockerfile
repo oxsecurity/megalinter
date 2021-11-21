@@ -155,6 +155,9 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 # GIT installation
 RUN git config --global core.autocrlf true
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # SALESFORCE installation
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
@@ -179,9 +182,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
-# gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
-
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
@@ -202,6 +202,9 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # sfdx-scanner-apex installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner

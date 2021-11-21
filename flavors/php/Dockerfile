@@ -187,6 +187,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && rm phive.phar.asc
 
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # actionlint installation
 ENV GO111MODULE=on
 RUN go get github.com/rhysd/actionlint/cmd/actionlint
@@ -205,9 +208,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 # shfmt installation
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
-
-# gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -241,6 +241,9 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \

@@ -1,6 +1,7 @@
 {
     "descriptors": [
         "GIT",
+        "REPOSITORY",
         "SCALA"
     ],
     "label": "Optimized for SCALA based projects",
@@ -12,7 +13,6 @@
         "BASH_SHFMT",
         "COPYPASTE_JSCPD",
         "CREDENTIALS_SECRETLINT",
-        "CREDENTIALS_GITLEAKS",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_DOCKERFILELINT",
@@ -35,6 +35,9 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
         "SCALA_SCALAFIX",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",

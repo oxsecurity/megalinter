@@ -153,6 +153,9 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 # GIT installation
 RUN git config --global core.autocrlf true
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # RUST installation
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
@@ -176,9 +179,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
-# gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
-
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
@@ -199,6 +199,9 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # clippy installation
 RUN rustup component add clippy

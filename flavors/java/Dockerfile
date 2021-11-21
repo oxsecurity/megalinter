@@ -165,6 +165,9 @@ RUN git config --global core.autocrlf true
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # actionlint installation
 ENV GO111MODULE=on
 RUN go get github.com/rhysd/actionlint/cmd/actionlint
@@ -186,9 +189,6 @@ RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # clj-kondo installation
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
-
-# gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
@@ -222,6 +222,9 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \

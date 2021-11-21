@@ -2,7 +2,8 @@
     "descriptors": [
         "CSHARP",
         "GIT",
-        "POWERSHELL"
+        "POWERSHELL",
+        "REPOSITORY"
     ],
     "label": "Optimized for C, C++, C# or VB based projects",
     "linters": [
@@ -16,7 +17,6 @@
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
         "CREDENTIALS_SECRETLINT",
-        "CREDENTIALS_GITLEAKS",
         "CSHARP_DOTNET_FORMAT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
@@ -41,6 +41,9 @@
         "OPENAPI_SPECTRAL",
         "POWERSHELL_POWERSHELL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",

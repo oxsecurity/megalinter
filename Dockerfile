@@ -287,6 +287,9 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
+
 # RUST installation
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
@@ -331,9 +334,6 @@ RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # clj-kondo installation
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
-
-# gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # dotnet-format installation
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
@@ -439,6 +439,9 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
     && /opt/rakudo-pkg/bin/install-zef-as-user
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # clippy installation
 RUN rustup component add clippy
