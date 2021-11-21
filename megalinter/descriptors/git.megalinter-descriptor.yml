@@ -1,3 +1,4 @@
+# TODO: remove in next major version v6 (replaced by REPOSITORY)
 descriptor_id: GIT
 descriptor_type: other
 descriptor_flavors:
