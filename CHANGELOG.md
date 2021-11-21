@@ -12,6 +12,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
   - [php](https://www.php.net) from 7.4.25 to **7.4.26** on 2021-11-19
   - [checkov](https://www.checkov.io/) from 2.0.587 to **2.0.588** on 2021-11-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.29.0 to **0.30.0** on 2021-11-21
+  - [checkov](https://www.checkov.io/) from 2.0.588 to **2.0.591** on 2021-11-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.10 to **0.35.12** on 2021-11-21
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
