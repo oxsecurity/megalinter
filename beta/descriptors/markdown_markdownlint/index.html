@@ -5466,7 +5466,7 @@
 <h1 id="markdownlint"><a href="https://github.com/DavidAnson/markdownlint" target="blank" title="Visit linter Web Site"><img src="https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default" alt="markdownlint" height="100px" class="megalinter-logo"></a>markdownlint</h1>
 <h2 id="markdownlint-documentation">markdownlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.29.0</strong></li>
+<li>Version in MegaLinter: <strong>0.30.0</strong></li>
 <li>Visit <a href="https://github.com/DavidAnson/markdownlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/igorshubovych/markdownlint-cli#configuration" target="_blank">How to configure markdownlint rules</a><ul>
 <li>If custom <code>.markdown-lint.json</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdown-lint.json" target="_blank">.markdown-lint.json</a> will be used</li>
@@ -5750,8 +5750,11 @@ Options:
   -j, --json                                  write issues in json format
   -o, --output [outputFile]                   write issues to file (no console)
   -p, --ignore-path [file]                    path to file with ignore pattern(s)
-  -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
+  -q, --quiet                                 do not write issues to STDOUT
+  -r, --rules  [file|directory|glob|package]  include custom rule files (default: [])
   -s, --stdin                                 read from STDIN (does not work with files)
+  --enable [rules...]                         Enable certain rules, e.g. --enable MD013 MD041
+  --disable [rules...]                        Disable certain rules, e.g. --disable MD013 MD041
   -h, --help                                  display help for command
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
