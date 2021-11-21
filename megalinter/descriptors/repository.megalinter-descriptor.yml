@@ -26,7 +26,7 @@ linters:
     cli_help_arg_name: "--help"
     examples:
       - "git diff --check"
-  
+
   # SECRETLINT
   - linter_name: secretlint
     linter_url: https://github.com/secretlint/secretlint
@@ -59,7 +59,7 @@ linters:
     config_file_name: gitleaks.toml
     cli_config_arg_name: "--config-path"
     cli_lint_mode: project
-    cli_lint_extra_args_after: 
+    cli_lint_extra_args_after:
       - "--path=."
       - "--no-git"
       - "--verbose"
@@ -68,8 +68,8 @@ linters:
     help_command_return_code: 1
     test_folder: credentials
     examples:
-      - 'gitleaks'
-      - 'gitleaks --config-path gitleaks.toml'
+      - "gitleaks"
+      - "gitleaks --config-path gitleaks.toml"
     install:
       dockerfile:
         - RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
@@ -90,8 +90,8 @@ linters:
     cli_help_arg_name: "help"
     test_folder: repository_goodcheck
     examples:
-      - 'goodcheck check'
-      - 'goodcheck check -c goodcheck.yml'
+      - "goodcheck check"
+      - "goodcheck check -c goodcheck.yml"
     install:
       gem:
         - goodcheck
