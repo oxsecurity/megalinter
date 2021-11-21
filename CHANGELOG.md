@@ -8,8 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+<!-- unreleased-content-marker -->
+
 - Add [PMD](https://pmd.github.io/) to lint java files
 - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
+- Manage offline run of `bash build.sh` for those who want to code in planes :)
+- Automate update of CHANGELOG.md after release (pilot)
 
 - Linter versions upgrades
   - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
