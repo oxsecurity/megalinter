@@ -42,7 +42,8 @@ RUN curl -L -o pmd-bin-${PMD_VERSION}.zip https://github.com/pmd/pmd/releases/do
 sha256sum -c pmd-bin-${PMD_VERSION}.zip.sha256 && \
 unzip pmd-bin-${PMD_VERSION}.zip && \
 rm pmd-bin-${PMD_VERSION}.zip && \
-mv /pmd-bin-${VERSION} /usr/bin/pmd
+mv /pmd-bin-${VERSION} /usr/bin/pmd && \
+alias pmd="/usr/bin/pmd/bin/run.sh pmd"
 
 ARG PSSA_VERSION='latest'
 #ARG__END

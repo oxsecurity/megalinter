@@ -77,5 +77,6 @@ linters:
           sha256sum -c pmd-bin-${PMD_VERSION}.zip.sha256 && \
           unzip pmd-bin-${PMD_VERSION}.zip && \
           rm pmd-bin-${PMD_VERSION}.zip && \
-          mv /pmd-bin-${VERSION} /usr/bin/pmd
+          mv /pmd-bin-${VERSION} /usr/bin/pmd && \
+          alias pmd="/usr/bin/pmd/bin/run.sh pmd"
         - ENV PATH="${PATH}:/usr/bin/pmd"
