@@ -4,7 +4,7 @@
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.29.0**
+- Version in MegaLinter: **0.30.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
   - If custom `.markdown-lint.json` config file is not found, [.markdown-lint.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdown-lint.json){target=_blank} will be used
@@ -112,8 +112,11 @@ Options:
   -j, --json                                  write issues in json format
   -o, --output [outputFile]                   write issues to file (no console)
   -p, --ignore-path [file]                    path to file with ignore pattern(s)
-  -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
+  -q, --quiet                                 do not write issues to STDOUT
+  -r, --rules  [file|directory|glob|package]  include custom rule files (default: [])
   -s, --stdin                                 read from STDIN (does not work with files)
+  --enable [rules...]                         Enable certain rules, e.g. --enable MD013 MD041
+  --disable [rules...]                        Disable certain rules, e.g. --disable MD013 MD041
   -h, --help                                  display help for command
 ```
 
