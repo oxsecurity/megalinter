@@ -148,6 +148,7 @@ ENV PATH="/node_modules/.bin:${PATH}"
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
+          goodcheck \
           rubocop:0.82.0 \
           rubocop-github:0.16.0 \
           rubocop-performance:1.7.1 \

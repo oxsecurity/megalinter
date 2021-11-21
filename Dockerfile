@@ -236,6 +236,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
           puppet-lint \
+          goodcheck \
           rubocop:0.82.0 \
           rubocop-github:0.16.0 \
           rubocop-performance:1.7.1 \

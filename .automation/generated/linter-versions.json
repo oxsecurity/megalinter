@@ -26,6 +26,7 @@
     "git_diff": "2.30.2",
     "gitleaks": "0.0.0",
     "golangci-lint": "1.43.0",
+    "goodcheck": "3.1.0",
     "graphql-schema-linter": "2.0.1",
     "hadolint": "2.7.0",
     "htmlhint": "0.16.1",

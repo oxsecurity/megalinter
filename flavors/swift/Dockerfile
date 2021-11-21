@@ -145,7 +145,8 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          scss_lint
+          scss_lint \
+          goodcheck
 #GEM__END
 
 #############################################################################################
