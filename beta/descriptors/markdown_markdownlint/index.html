@@ -5469,7 +5469,7 @@
 <li>Version in MegaLinter: <strong>0.30.0</strong></li>
 <li>Visit <a href="https://github.com/DavidAnson/markdownlint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/igorshubovych/markdownlint-cli#configuration" target="_blank">How to configure markdownlint rules</a><ul>
-<li>If custom <code>.markdown-lint.json</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdown-lint.json" target="_blank">.markdown-lint.json</a> will be used</li>
+<li>If custom <code>.markdownlint.json</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdownlint.json" target="_blank">.markdownlint.json</a> will be used</li>
 </ul>
 </li>
 <li>See <a href="https://github.com/DavidAnson/markdownlint#configuration" target="_blank">How to disable markdownlint rules in files</a></li>
@@ -5541,7 +5541,7 @@
 <tr>
 <td>MARKDOWN_MARKDOWNLINT_CONFIG_FILE</td>
 <td>markdownlint configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.markdown-lint.json</code></td>
+<td><code>.markdownlint.json</code></td>
 </tr>
 <tr>
 <td>MARKDOWN_MARKDOWNLINT_RULES_PATH</td>
@@ -5732,9 +5732,9 @@
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">markdownlint myfile.md
 </code></pre>
-<pre><code class="language-shell">markdownlint -c .markdown-lint.json myfile.md
+<pre><code class="language-shell">markdownlint -c .markdownlint.json myfile.md
 </code></pre>
-<pre><code class="language-shell">markdownlint --fix -c .markdown-lint.json myfile.md
+<pre><code class="language-shell">markdownlint --fix -c .markdownlint.json myfile.md
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">Usage: markdownlint [options] &lt;files|directories|globs&gt;
