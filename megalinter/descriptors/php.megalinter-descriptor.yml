@@ -90,7 +90,7 @@ linters:
     name: PHP_PHPSTAN
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
-    linter_image_url: https://i.imgur.com/MOt7taM.png
+    linter_image_url: https://i.imgur.com/WaRKPlC.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
     config_file_name: phpstan.neon.dist
