@@ -71,12 +71,10 @@ linters:
       - "pmd -rulesets java-pmd-ruleset.xml -dir /path/to/sources"
     install:
       dockerfile:
+        - ARG PMD_VERSION=6.40.0 
         - |
-          ARG PMD_VERSION=6.40.0 && \
-          RUN curl -L -o pmd-bin-${PMD_VERSION}.zip https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${VERSION}.zip && \
-          sha256sum -c pmd-bin-${PMD_VERSION}.zip.sha256 && \
-          unzip pmd-bin-${PMD_VERSION}.zip && \
-          rm pmd-bin-${PMD_VERSION}.zip && \
-          mv /pmd-bin-${VERSION} /usr/bin/pmd && \
-          alias pmd="/usr/bin/pmd/bin/run.sh pmd"
-        - ENV PATH="${PATH}:/usr/bin/pmd"
+          RUN cd $HOME && \
+              wet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+              unzip pmd-bin-${PMD_VERSION}.zip && \
+              rm pmd-bin-${PMD_VERSION}.zip && \
+              alias pmd="$HOME/pmd-bin-${PMD_VERSION}/bin/run.sh pmd"

@@ -37,14 +37,7 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
-ARG PMD_VERSION=6.40.0 && \
-RUN curl -L -o pmd-bin-${PMD_VERSION}.zip https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${VERSION}.zip && \
-sha256sum -c pmd-bin-${PMD_VERSION}.zip.sha256 && \
-unzip pmd-bin-${PMD_VERSION}.zip && \
-rm pmd-bin-${PMD_VERSION}.zip && \
-mv /pmd-bin-${VERSION} /usr/bin/pmd && \
-alias pmd="/usr/bin/pmd/bin/run.sh pmd"
-
+ARG PMD_VERSION=6.40.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -374,7 +367,12 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 
 
 # pmd installation
-ENV PATH="${PATH}:/usr/bin/pmd"
+RUN cd $HOME && \
+    wet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+    unzip pmd-bin-${PMD_VERSION}.zip && \
+    rm pmd-bin-${PMD_VERSION}.zip && \
+    alias pmd="$HOME/pmd-bin-${PMD_VERSION}/bin/run.sh pmd"
+
 
 # ktlint installation
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
