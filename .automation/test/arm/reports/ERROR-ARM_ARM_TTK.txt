@@ -1,5 +1,5 @@
 Results of arm-ttk linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/arm_arm_ttk/
+See documentation on https://megalinter.github.io/descriptors/arm_arm_ttk/
 -----------------------------------------------
 
 [ERROR] .automation/test/arm/arm_bad_1.json

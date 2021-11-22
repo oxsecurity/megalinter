@@ -1,5 +1,5 @@
 Results of chktex linter (version 1.7.6)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_chktex/
+See documentation on https://megalinter.github.io/descriptors/latex_chktex/
 -----------------------------------------------
 
 [ERROR] .automation/test/latex/latex_bad_1.tex

@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://eslint.org" target="blank" title="Visit linter Web Site">
-    <img src="https://i.imgur.com/CFdruO8.jpg" alt="eslint" height="150px" class="megalinter-banner">
+    <img src="https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png" alt="eslint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -13,7 +13,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in Mega-Linter: **7.32.0**
+- Version in MegaLinter: **8.3.0**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -21,52 +21,52 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 [![eslint - GitHub](https://gh-card.dev/repos/eslint/eslint.svg?fullname=)](https://github.com/eslint/eslint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable eslint by adding `TYPESCRIPT_ES` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable eslint by adding `TYPESCRIPT_ES` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `TYPESCRIPT_ES` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value                                    |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| TYPESCRIPT_ES_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
-| TYPESCRIPT_ES_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
-| TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
-| TYPESCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
-| TYPESCRIPT_ES_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".ts"]`                                        |
-| TYPESCRIPT_ES_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
-| TYPESCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
-| TYPESCRIPT_ES_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| TYPESCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.eslintrc.json`                                 |
-| TYPESCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
-| TYPESCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
-| TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
+| Variable                                  | Description                                                                                                                                                                                                         | Default value                                   |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| TYPESCRIPT_ES_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| TYPESCRIPT_ES_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| TYPESCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| TYPESCRIPT_ES_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".ts"]`                                       |
+| TYPESCRIPT_ES_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| TYPESCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| TYPESCRIPT_ES_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| TYPESCRIPT_ES_CONFIG_FILE                 | eslint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.eslintrc.json`                                |
+| TYPESCRIPT_ES_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| TYPESCRIPT_ES_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
 ## IDE Integration
 
-Use eslint in your favorite IDE to catch errors before Mega-Linter !
+Use eslint in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                    <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                 |                                                                                   Install                                                                                    |
-|:----------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                    |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                          | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                             |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                       [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                         [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [ESLint Plugin](https://plugins.jetbrains.com/plugin/7494-eslint)                              |                         <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7494"></iframe>                         |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint)                       |                                              [Visit Web Site](https://github.com/roadhump/SublimeLinter-eslint){target=_blank}                                               |
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [ale](https://github.com/w0rp/ale)                                                             |                                                         [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                         |
-|   <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |                              [Visit Web Site](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript){target=_blank}                              |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)    | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/dbaeumer.vscode-eslint){target=_blank} |
+|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                 |                                                                                   Install                                                                                   |
+|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [linter-eslint](https://atom.io/packages/linter-eslint)                                        |                                                   [Visit Web Site](https://atom.io/packages/linter-eslint){target=_blank}                                                   |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/brackets.ico" alt="" height="32px" class="megalinter-icon"></a> | [Brackets](http://brackets.io/)                          | [brackets-eslint](https://github.com/brackets-userland/brackets-eslint)                        |                                            [Visit Web Site](https://github.com/brackets-userland/brackets-eslint){target=_blank}                                            |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Eclipse](https://www.eclipse.org/)                      | [Tern-Linter-ESLint](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint)          |                                      [Visit Web Site](https://github.com/angelozerr/tern.java/wiki/Tern-Linter-ESLint){target=_blank}                                       |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [flycheck](http://www.flycheck.org/en/latest/languages.html#javascript)                        |                                        [Visit Web Site](http://www.flycheck.org/en/latest/languages.html#javascript){target=_blank}                                         |
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [ESLint Plugin](https://plugins.jetbrains.com/plugin/7494-eslint)                              |                        <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/7494"></iframe>                         |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Sublime Text](https://www.sublimetext.com/)             | [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint)                       |                                              [Visit Web Site](https://github.com/roadhump/SublimeLinter-eslint){target=_blank}                                              |
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [ale](https://github.com/w0rp/ale)                                                             |                                                        [Visit Web Site](https://github.com/w0rp/ale){target=_blank}                                                         |
+|   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>    | [vim](https://www.vim.org/)                              | [Syntastic](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript) |                             [Visit Web Site](https://github.com/vim-syntastic/syntastic/tree/master/syntax_checkers/javascript){target=_blank}                              |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)    | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/dbaeumer.vscode-eslint){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                                   | Description                                           | Embedded linters |                                                                                                                                                                                         Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor                            |        94        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|     <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://nvuillam.github.io/mega-linter/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-javascript/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        95        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -119,7 +119,7 @@ Specifying rules and plugins:
 Fixing problems:
   --fix                           Automatically fix problems
   --fix-dry-run                   Automatically fix problems without saving the changes to the file system
-  --fix-type Array                Specify the types of fixes to apply (problem, suggestion, layout)
+  --fix-type Array                Specify the types of fixes to apply (directive, problem, suggestion, layout)
 
 Ignoring files:
   --ignore-path path::String      Specify path of ignore file
@@ -164,7 +164,7 @@ Miscellaneous:
 
 - NPM packages (node.js):
   - [typescript](https://www.npmjs.com/package/typescript)
-  - [eslint@7.32.0](https://www.npmjs.com/package/eslint)
+  - [eslint](https://www.npmjs.com/package/eslint)
   - [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)
   - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
   - [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)
@@ -183,7 +183,7 @@ Miscellaneous:
 
 ```shell
 Results of eslint linter (version 7.15.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
+See documentation on https://megalinter.github.io/descriptors/typescript_eslint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/typescript/typescript_good_1.ts
@@ -195,7 +195,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescri
 
 ```shell
 Results of eslint linter (version 7.15.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/typescript_eslint/
+See documentation on https://megalinter.github.io/descriptors/typescript_eslint/
 -----------------------------------------------
 
 [ERROR] .automation/test/typescript/typescript_bad_1.ts

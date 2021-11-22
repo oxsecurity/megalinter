@@ -1,5 +1,5 @@
 Results of flake8 linter (version 3.8.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_flake8/
+See documentation on https://megalinter.github.io/descriptors/python_flake8/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/python/python_good_1.py

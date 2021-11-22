@@ -1,5 +1,5 @@
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [SUCCESS] /tmp/098844eb-9b85-4505-b6b6-8c6bcd96050f

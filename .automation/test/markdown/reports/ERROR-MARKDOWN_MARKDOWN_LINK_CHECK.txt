@@ -1,5 +1,5 @@
 Results of markdown-link-check linter (version 0.0.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/markdown_markdown_link_check/
+See documentation on https://megalinter.github.io/descriptors/markdown_markdown_link_check/
 -----------------------------------------------
 
 [ERROR] .automation/test/markdown/markdown_bad_1.md

@@ -1,7 +1,7 @@
 <!-- markdownlint-disable -->
 ---
 name: Enhancement Request
-about: Used for requesting enhancements to the Mega-Linter
+about: Used for requesting enhancements to the MegaLinter
 
 ---
 

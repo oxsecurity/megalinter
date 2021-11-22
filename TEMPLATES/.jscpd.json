@@ -8,7 +8,7 @@
     "**/node_modules/**",
     "**/.git/**",
     "**/.rbenv/**",
-    "**/.venv'/**",
+    "**/.venv/**",
     "**/report/**",
     "**/*cache*/**",
     "**/*.json",

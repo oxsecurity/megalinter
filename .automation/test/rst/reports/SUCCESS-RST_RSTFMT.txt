@@ -1,5 +1,5 @@
 Results of rstfmt linter (version ERROR)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstfmt/
+See documentation on https://megalinter.github.io/descriptors/rst_rstfmt/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/rst/rst_good_1.rst

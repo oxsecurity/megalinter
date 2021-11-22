@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Use cspell to check spell in files
-https://github.com/nvuillam/npm-groovy-lint
+https://github.com/streetsidesoftware/cspell
 """
 import json
 import logging
@@ -66,7 +66,7 @@ Of course, please correct real typos before :)
             except ValueError:
                 logging.error(
                     f"[cspell] ERROR: Unable to parse {cspell_config_file} JSON data"
-                    "please fix it manually before running Mega-Linter again"
+                    "please fix it manually before running MegaLinter again"
                 )
                 return []
             prev_words = data.get("words", [])

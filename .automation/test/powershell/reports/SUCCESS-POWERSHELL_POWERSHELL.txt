@@ -1,5 +1,5 @@
 Results of powershell linter (version 7.1.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/powershell_powershell/
+See documentation on https://megalinter.github.io/descriptors/powershell_powershell/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/powershell/powershell_good_1.ps1

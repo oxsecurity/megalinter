@@ -9,6 +9,7 @@ __all__ = [
     "Linter",
     "Reporter",
     "config",
+    "constants",
     "flavor_factory",
     "linter_factory",
     "plugin_factory",

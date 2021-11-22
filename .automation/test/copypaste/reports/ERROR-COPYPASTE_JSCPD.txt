@@ -1,5 +1,5 @@
 Results of jscpd linter (version 3.3.22)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/copypaste_jscpd/
+See documentation on https://megalinter.github.io/descriptors/copypaste_jscpd/
 -----------------------------------------------
 
 [ERROR] .automation/test/copypaste/bad

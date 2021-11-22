@@ -1,5 +1,5 @@
 Results of dotnet-format linter (version 4.1.131201)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/csharp_dotnet_format/
+See documentation on https://megalinter.github.io/descriptors/csharp_dotnet_format/
 -----------------------------------------------
 
 [ERROR] .automation/test/csharp/csharp_bad_01.cs

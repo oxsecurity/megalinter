@@ -1,5 +1,5 @@
 Results of yamllint linter (version 1.25.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/yaml_yamllint/
+See documentation on https://megalinter.github.io/descriptors/yaml_yamllint/
 -----------------------------------------------
 
 [ERROR] .automation/test/yaml/yml_bad_1.yml

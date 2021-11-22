@@ -9,17 +9,17 @@
 
 ## terrascan documentation
 
-- Version in Mega-Linter: **1.11.0**
+- Version in MegaLinter: **1.12.0**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 
 [![terrascan - GitHub](https://gh-card.dev/repos/accurics/terrascan.svg?fullname=)](https://github.com/accurics/terrascan){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                        | Description                                                                                                                                                                                                         | Default value            |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
@@ -34,14 +34,14 @@
 | TERRAFORM_TERRASCAN_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                  |
 | TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                                 | Description                            | Embedded linters |                                                                                                                                                                                       Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:---------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             |        94        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|      <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        95        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -102,7 +102,7 @@ RUN terrascan init
 
 ```shell
 Results of terrascan linter (version 1.2.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform_terrascan/good/terraform_good_1.tf
@@ -120,7 +120,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 
 ```shell
 Results of terrascan linter (version 1.2.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terrascan/bad/terraform_bad_1.tf

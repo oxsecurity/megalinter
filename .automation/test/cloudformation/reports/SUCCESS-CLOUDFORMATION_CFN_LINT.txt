@@ -1,5 +1,5 @@
 Results of cfn-lint linter (version 0.43.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/cloudformation_cfn_lint/
+See documentation on https://megalinter.github.io/descriptors/cloudformation_cfn_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json

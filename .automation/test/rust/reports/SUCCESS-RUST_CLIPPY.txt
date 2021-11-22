@@ -1,5 +1,5 @@
 Results of clippy linter (version 0.0.212)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/rust_clippy/
+See documentation on https://megalinter.github.io/descriptors/rust_clippy/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/rust/good

@@ -9,7 +9,7 @@ module.exports = class extends Generator {
     this.log(
       yosay(
         `Welcome to the ${chalk.red(
-          "Mega-Linter"
+          "MegaLinter"
         )} configuration generator !\n When you don't know, please use default values`
       )
     );
@@ -23,7 +23,7 @@ module.exports = class extends Generator {
         choices: [
           {
             value: "all",
-            name: "Let Mega-Linter suggest me later (recommended)",
+            name: "Let MegaLinter suggest to me later (recommended)",
           },
           { value: "dart", name: "Dart" },
           { value: "documentation", name: "Documentation" },
@@ -57,7 +57,7 @@ module.exports = class extends Generator {
       {
         type: "confirm",
         name: "copyPaste",
-        message: "Do you want to detect abusive copy-pastes ?",
+        message: "Do you want to detect excessive copy-pastes ?",
         default: true,
       },
       {
@@ -69,13 +69,13 @@ module.exports = class extends Generator {
       {
         type: "list",
         name: "version",
-        message: "Which Mega-Linter version do you want to use ?",
-        default: "v4",
+        message: "Which MegaLinter version do you want to use ?",
+        default: "v5",
         choices: [
-          { name: "V4 (Latest stable version)", value: "v4" },
+          { name: "v5 (Latest official release)", value: "v5" },
           {
-            name: "Insiders (master branch of Mega-Linter repository)",
-            value: "insiders",
+            name: "Beta (main branch of MegaLinter repository)",
+            value: "beta",
           },
         ],
       },
@@ -83,7 +83,7 @@ module.exports = class extends Generator {
         type: "list",
         name: "defaultBranch",
         message: "What is the name of your repository default branch ?",
-        default: "master",
+        default: "main",
         choices: [
           { name: "master", value: "master" },
           { name: "main", value: "main" },
@@ -93,7 +93,7 @@ module.exports = class extends Generator {
         type: "list",
         name: "validateAllCodeBase",
         message:
-          "Do you want Mega-Linter to validate all source code or only updated one ?",
+          "Do you want MegaLinter to validate all source code or only updated one ?",
         default: "all",
         choices: [
           { name: "Validate all sources", value: "all" },
@@ -114,7 +114,7 @@ module.exports = class extends Generator {
         type: "confirm",
         name: "fileIoReporter",
         message:
-          "Do you want Mega-Linter to upload reports on file.io ? (report is deleted after being downloaded once)",
+          "Do you want MegaLinter to upload reports on file.io ? (report is deleted after being downloaded once)",
         default: false,
       },
       {
@@ -139,10 +139,10 @@ module.exports = class extends Generator {
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://nvuillam.github.io/mega-linter/installation/"
+        "Please follow manual instructions to define CI job at https://megalinter.github.io/installation/"
       );
       this.log(
-        "You may call `npx mega-linter-runner` to run Mega-Linter from any system (requires node.js & docker)"
+        "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
       );
     }
     // Generate .mega-linter.yml config
@@ -156,42 +156,42 @@ module.exports = class extends Generator {
   end() {
     this.log("You're all set !");
     this.log(
-      "Now commit, push and create a pull request to see Mega-Linter catching errors !"
+      "Now commit, push and create a pull request to see MegaLinter catching errors !"
     );
   }
 
   _computeValues() {
     // Flavor
     if (this.props.flavor === "all") {
-      this.gitHubActionName = "nvuillam/mega-linter";
-      this.dockerImageName = "nvuillam/mega-linter";
+      this.gitHubActionName = "megalinter/megalinter";
+      this.dockerImageName = "megalinter/megalinter";
     } else {
       this.gitHubActionName =
-        "nvuillam/mega-linter/flavors/" + this.props.flavor;
-      this.dockerImageName = "nvuillam/mega-linter-" + this.props.flavor;
+        "megalinter/megalinter/flavors/" + this.props.flavor;
+      this.dockerImageName = "megalinter/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v4") {
-      this.gitHubActionVersion = "v4";
-      this.dockerImageVersion = "v4";
+    if (this.props.version == "v5") {
+      this.gitHubActionVersion = "v5";
+      this.dockerImageVersion = "v5";
     } else {
-      this.gitHubActionVersion = "insiders";
-      this.dockerImageVersion = "latest";
+      this.gitHubActionVersion = "beta";
+      this.dockerImageVersion = "beta";
     }
     // VALIDATE_ALL_CODE_BASE
     if (this.props.validateAllCodeBase === "all") {
-      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} to validate only diff with master branch`;
+      this.validateAllCodeBaseGha = `true # Set \${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} to validate only diff with main branch`;
     } else {
-      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Set 'true' if you always want to lint all sources`;
+      this.validateAllCodeBaseGha = `\${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Validates all source when push on main, else just the git diff with main. Set 'true' if you always want to lint all sources`;
     }
     this.disable = false;
     // COPY PASTES
     if (this.props.copyPaste === true) {
       this.configCopyPaste =
-        "# - COPYPASTE # Uncomment to disable checks of abusive copy-pastes";
+        "# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes";
     } else {
       this.configCopyPaste =
-        "- COPYPASTE # Comment to enable checks of abusive copy-pastes";
+        "- COPYPASTE # Comment to enable checks of excessive copy-pastes";
       this.disable = true;
     }
     // Spelling mistakes
@@ -227,7 +227,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#jenkins"
     );
   }
 
@@ -251,7 +251,7 @@ module.exports = class extends Generator {
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://nvuillam.github.io/mega-linter/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#gitlab"
     );
   }
 

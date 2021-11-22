@@ -42,7 +42,7 @@ class EmailReporter(Reporter):
         ):
             logging.info(
                 "[Email Reporter] No mail sent, "
-                "as the Mega-Linter status is success and there are no updated source"
+                "as the MegaLinter status is success and there are no updated source"
             )
             return
 
@@ -77,7 +77,7 @@ class EmailReporter(Reporter):
 
         # Create the message
         the_msg = MIMEMultipart()
-        the_msg["Subject"] = "Mega-Linter report"
+        the_msg["Subject"] = "MegaLinter report"
         the_msg["To"] = ", ".join(recipients)
         the_msg["From"] = "mega-linter@gmail.com"
         the_msg.preamble = "I am not using a MIME-aware mail reader.\n"

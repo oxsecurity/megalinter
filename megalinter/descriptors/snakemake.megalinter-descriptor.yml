@@ -39,7 +39,7 @@ linters:
       - "--check"
       - "--compact-diff"
     cli_config_arg_name: "--config"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Mega-Linter workaround
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # MegaLinter workaround
     cli_lint_fix_remove_args:
       - "--check"
       - "--compact-diff"

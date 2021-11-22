@@ -1,5 +1,5 @@
 Results of golangci-lint linter (version 1.33.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/go_golangci_lint/
+See documentation on https://megalinter.github.io/descriptors/go_golangci_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/golang/golang_bad_01.go

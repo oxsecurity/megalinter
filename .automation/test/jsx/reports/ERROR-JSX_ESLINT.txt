@@ -1,5 +1,5 @@
 Results of eslint linter (version 7.15.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/jsx_eslint/
+See documentation on https://megalinter.github.io/descriptors/jsx_eslint/
 -----------------------------------------------
 
 [ERROR] .automation/test/jsx/jsx_bad_1.jsx

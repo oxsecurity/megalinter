@@ -1,5 +1,5 @@
 Results of psalm linter (version 4.3.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_psalm/
+See documentation on https://megalinter.github.io/descriptors/php_psalm/
 -----------------------------------------------
 
 [ERROR] .automation/test/php/php_bad_1.php

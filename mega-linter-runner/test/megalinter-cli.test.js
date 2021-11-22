@@ -5,7 +5,7 @@ const childProcess = require("child_process");
 const util = require("util");
 const exec = util.promisify(childProcess.exec);
 
-const release = process.env.MEGALINTER_RELEASE || "insiders";
+const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
   process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
 
@@ -36,6 +36,33 @@ describe("CLI", function () {
       stdout.includes("mega-linter-runner version"),
       'stdout should contains "mega-linter-runner version"'
     );
+  });
+
+  it("(CLI) Upgrade config", (done) => {
+    if (process.env.CI) {
+      // Skip in CI (bug to fix in CI but works locally :/ )
+      done();
+      return;
+    }
+    const params = ["--upgrade"];
+    exec(MEGA_LINTER + params.join(" "))
+      .then((res) => {
+        const stdout = res.stdout;
+        const stderr = res.stderr;
+        if (stderr) {
+          console.error(stderr);
+        }
+        assert(stdout, "stdout is set");
+        assert(
+          stdout.includes("mega-linter-runner applied"),
+          'stdout should contains "mega-linter-runner applied"'
+        );
+        done();
+      })
+      .catch((err) => {
+        done(err);
+        throw err;
+      });
   });
 
   /*

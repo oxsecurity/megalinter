@@ -86,6 +86,7 @@ linters:
     examples:
       - "shfmt -d myfile.sh"
       - "shfmt -w myfile.sh" # Fix
+    downgraded_version: true
     install:
       dockerfile:
         - ENV GO111MODULE=on

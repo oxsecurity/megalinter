@@ -10,9 +10,11 @@ import urllib
 
 import github
 from megalinter import Reporter, config
+from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
 from pytablewriter import MarkdownTableWriter
 
-DOCS_URL_DESCRIPTORS_ROOT = "https://nvuillam.github.io/mega-linter/descriptors"
+mega_linter_version = config.get("BUILD_VERSION", "latest")
+DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 
 def log_link(label, url):
@@ -28,8 +30,8 @@ class GithubCommentReporter(Reporter):
 
     github_api_url = "https://api.github.com"
     github_server_url = "https://github.com"
-    gh_url = "https://nvuillam.github.io/mega-linter"
-    issues_root = "https://github.com/nvuillam/mega-linter/issues"
+    gh_url = ML_DOC_URL
+    issues_root = ML_REPO_URL + "/issues"
 
     def manage_activation(self):
         if config.get("GITHUB_COMMENT_REPORTER", "true") != "true":
@@ -124,18 +126,18 @@ class GithubCommentReporter(Reporter):
                 + log_link(f"**{self.master.status.upper()}**", action_run_url)
             )
             p_r_msg = (
-                f"## [Mega-Linter]({self.gh_url}) status: {status_with_href}"
+                f"## [MegaLinter]({self.gh_url}) status: {status_with_href}"
                 + os.linesep
                 + os.linesep
             )
             p_r_msg += table_content + os.linesep
             if action_run_url != "":
                 p_r_msg += (
-                    "See errors details in [**artifact Mega-Linter reports** on "
+                    "See errors details in [**artifact MegaLinter reports** on "
                     f"GitHub Action page]({action_run_url})" + os.linesep
                 )
             else:
-                p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
+                p_r_msg += "See errors details in MegaLinter reports" + os.linesep
             if self.master.validate_all_code_base is False:
                 p_r_msg += (
                     "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
@@ -147,16 +149,16 @@ class GithubCommentReporter(Reporter):
                     p_r_msg += (
                         os.linesep
                         + "You could have same capabilities but better runtime performances"
-                        " if you request a new Mega-Linter flavor.\n"
+                        " if you request a new MegaLinter flavor.\n"
                     )
                     body = (
-                        "Mega-Linter would run faster on my project if I had a flavor containing the following "
+                        "MegaLinter would run faster on my project if I had a flavor containing the following "
                         "list of linters: \n\n - Add languages/linters list here\n\n"
                         "Would it be possible to create one ? Thanks :relaxed:"
                     )
                     new_flavor_url = (
                         f"{self.issues_root}/new?assignees=&labels=enhancement&template=feature_request.md"
-                        f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
+                        f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
                         f"&body={urllib.parse.quote(body)}"
                     )
                     p_r_msg += f"- [**Click here to request the new flavor**]({new_flavor_url})"
@@ -164,18 +166,16 @@ class GithubCommentReporter(Reporter):
                     p_r_msg += (
                         os.linesep
                         + "You could have the same capabilities but better runtime performances"
-                        " if you use a Mega-Linter flavor:" + os.linesep
+                        " if you use a MegaLinter flavor:" + os.linesep
                     )
                     for suggestion in self.master.flavor_suggestions:
-                        build_version = os.environ.get("BUILD_VERSION", "v4")
+                        build_version = os.environ.get("BUILD_VERSION", "v5")
                         action_version = (
-                            "v4"
-                            if "v4" in build_version or len(build_version) > 20
-                            else "insiders"
-                            if build_version == "latest"
-                            else build_version
+                            "v5" if len(build_version) > 20 else build_version
                         )
-                        action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                        action_path = (
+                            f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
+                        )
                         p_r_msg += (
                             f"- [**{action_path}**]({self.gh_url}/flavors/{suggestion['flavor']}/)"
                             f" ({suggestion['linters_number']} linters)"
@@ -214,18 +214,18 @@ class GithubCommentReporter(Reporter):
                 # Ignore if PR is already merged
                 if pr.is_merged():
                     continue
-                # Check if there is already a comment from Mega-Linter
+                # Check if there is already a comment from MegaLinter
                 existing_comment = None
                 existing_comments = pr.get_issue_comments()
                 for comment in existing_comments:
                     if (
-                        "See errors details in [**artifact Mega-Linter reports** on"
+                        "See errors details in [**artifact MegaLinter reports** on"
                         in comment.body
                     ):
                         existing_comment = comment
                 # Process comment
                 try:
-                    # Edit if there is already a Mega-Linter comment
+                    # Edit if there is already a MegaLinter comment
                     if existing_comment is not None:
                         existing_comment.edit(p_r_msg)
                     # Or create a new PR comment

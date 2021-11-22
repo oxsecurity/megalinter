@@ -1,5 +1,5 @@
 Results of standard linter (version 15.0.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_standard/
+See documentation on https://megalinter.github.io/descriptors/javascript_standard/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/javascript/javascript_good_1.js

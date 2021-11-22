@@ -22,6 +22,7 @@ import errno
 import logging
 import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -33,6 +34,9 @@ from megalinter import config, pre_post_factory, utils
 
 
 class Linter:
+    TEMPLATES_DIR = "/action/lib/.automation/"
+    DEFAULT_WORKSPACE_DIR = "/tmp/lint/"
+
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
         self.linter_version_cache = None
@@ -259,7 +263,7 @@ class Linter:
                         f" {str(self.active_only_if_file_found)}"
                     )
 
-            # Load Mega-Linter reporters
+            # Load MegaLinter reporters
             self.load_reporters()
 
             # Runtime items
@@ -362,12 +366,12 @@ class Linter:
                 except urllib.error.HTTPError as e:
                     self.config_file_error = (
                         f"Unable to fetch {remote_config_file}\n{str(e)}\n"
-                        f" fallback to repository config or Mega-Linter default config"
+                        f" fallback to repository config or MegaLinter default config"
                     )
                 except Exception as e:
                     self.config_file_error = (
                         f"Unable to fetch {remote_config_file}\n{str(e)}\n"
-                        f" fallback to repository config or Mega-Linter default config"
+                        f" fallback to repository config or MegaLinter default config"
                     )
             # in repo root (already here or fetched by code above)
             if os.path.isfile(self.workspace + os.path.sep + self.config_file_name):
@@ -404,8 +408,8 @@ class Linter:
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
                 self.config_file_label = self.config_file.replace(
-                    "/tmp/lint", ""
-                ).replace("/action/lib/.automation/", "")
+                    self.DEFAULT_WORKSPACE_DIR, ""
+                ).replace(self.TEMPLATES_DIR, "")
         # User override of cli_lint_mode
         if config.exists(self.name + "_CLI_LINT_MODE"):
             cli_lint_mode_descriptor = self.cli_lint_mode
@@ -516,7 +520,7 @@ class Linter:
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None)
 
-        # Set return code to 0 if failures in this linter must not make the Mega-Linter run fail
+        # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
             # Disable errors: no failure, just warning
             if self.disable_errors is True:
@@ -599,7 +603,7 @@ class Linter:
             file_names_regex=self.file_names_regex,
             file_extensions=self.file_extensions,
             ignored_files=[],
-            ignore_generated_files=False,  # This filter is applied at Mega-Linter level
+            ignore_generated_files=False,  # This filter is applied at MegaLinter level
             file_names_not_ends_with=self.file_names_not_ends_with,
             file_contains_regex=self.file_contains_regex,
             files_sub_directory=self.files_sub_directory,
@@ -607,9 +611,8 @@ class Linter:
         )
         self.files_number = len(self.files)
         logging.debug(
-            "%s linter files after applying linter filters:\n- %s",
-            self.name,
-            "\n- ".join(self.files),
+            f"{self.name} linter kept {self.files_number} files after applying linter filters:"
+            + utils.format_bullet_list(self.files)
         )
 
     # lint a single file or whole project
@@ -692,10 +695,6 @@ class Linter:
     # Returns the version of the associated linter (can be overridden in special cases, like version has special format)
     def get_linter_version_output(self):
         command = self.build_version_command()
-        if sys.platform == "win32":
-            cli_absolute = shutil.which(command[0])
-            if cli_absolute is not None:
-                command[0] = cli_absolute
         logging.debug("Linter version command: " + str(command))
         try:
             process = subprocess.run(
@@ -878,7 +877,10 @@ class Linter:
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
-        cmd = [self.cli_executable_version]
+        cmd = shlex.split(self.cli_executable_version)
+        cli_absolute = shutil.which(cmd[0])
+        if cli_absolute is not None:
+            cmd[0] = cli_absolute
         cmd += self.cli_version_extra_args
         if self.cli_version_arg_name != "":
             cmd += [self.cli_version_arg_name]

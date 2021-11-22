@@ -4,7 +4,7 @@ template: |
   # Changelog
   $CHANGES
 
-  See details of [all code changes](https://github.com/nvuillam/mega-linter/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION) since previous release
+  See details of [all code changes](https://github.com/megalinter/megalinter/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION) since previous release
 
 categories:
   - title: "🚀 Features"

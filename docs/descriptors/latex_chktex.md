@@ -4,47 +4,47 @@
 
 ## chktex documentation
 
-- Version in Mega-Linter: **1.7.6**
+- Version in MegaLinter: **1.7.6**
 - Visit [Official Web Site](https://www.nongnu.org/chktex){target=_blank}
 - See [How to configure chktex rules](https://github.com/amaloz/dotfiles/blob/master/chktexrc){target=_blank}
-  - If custom `.chktexrc` config file is not found, [.chktexrc](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.chktexrc){target=_blank} will be used
+  - If custom `.chktexrc` config file is not found, [.chktexrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.chktexrc){target=_blank} will be used
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable chktex by adding `LATEX_CHKTEX` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable chktex by adding `LATEX_CHKTEX` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable chktex by adding `LATEX_CHKTEX` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable chktex by adding `LATEX_CHKTEX` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-| Variable                                 | Description                                                                                                                                                                                                         | Default value                                    |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| LATEX_CHKTEX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
-| LATEX_CHKTEX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
-| LATEX_CHKTEX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
-| LATEX_CHKTEX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
-| LATEX_CHKTEX_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".tex"]`                                       |
-| LATEX_CHKTEX_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
-| LATEX_CHKTEX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
-| LATEX_CHKTEX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| LATEX_CHKTEX_CONFIG_FILE                 | chktex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.chktexrc`                                      |
-| LATEX_CHKTEX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
-| LATEX_CHKTEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
-| LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
+| Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| LATEX_CHKTEX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| LATEX_CHKTEX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| LATEX_CHKTEX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| LATEX_CHKTEX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| LATEX_CHKTEX_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".tex"]`                                      |
+| LATEX_CHKTEX_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| LATEX_CHKTEX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| LATEX_CHKTEX_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| LATEX_CHKTEX_CONFIG_FILE                 | chktex configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.chktexrc`                                     |
+| LATEX_CHKTEX_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| LATEX_CHKTEX_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
 ## IDE Integration
 
-Use chktex in your favorite IDE to catch errors before Mega-Linter !
+Use chktex in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                |                                                                                    Install                                                                                    |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                    [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                    |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
+|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                                |                                                                                   Install                                                                                    |
+|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Atom](https://atom.io/)                             | [linter-chktex](https://atom.io/packages/linter-chktex)                                       |                                                   [Visit Web Site](https://atom.io/packages/linter-chktex){target=_blank}                                                    |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [latex-workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/James-Yu.latex-workshop){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        94        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        95        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -159,7 +159,7 @@ RUN cd ~ && touch .chktexrc
 
 ```shell
 Results of chktex linter (version 1.7.6)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_chktex/
+See documentation on https://megalinter.github.io/descriptors/latex_chktex/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/latex/latex_good_1.tex
@@ -171,7 +171,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_ch
 
 ```shell
 Results of chktex linter (version 1.7.6)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/latex_chktex/
+See documentation on https://megalinter.github.io/descriptors/latex_chktex/
 -----------------------------------------------
 
 [ERROR] .automation/test/latex/latex_bad_1.tex

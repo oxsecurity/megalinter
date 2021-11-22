@@ -2,19 +2,14 @@
 name: "Test mega-linter-runner"
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
-  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  skip_checks:
-    name: Skip checks
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          cancel_others: true
 
   build:
-    name: Test Mega-Linter runner
+    name: Test MegaLinter runner
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Prevent duplicate run from happening when a forked push is committed
@@ -22,7 +17,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
       - name: Setup Node
         uses: actions/setup-node@v2.4.1
         with:

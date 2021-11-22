@@ -1,5 +1,5 @@
 Results of hadolint linter (version 1.19.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfile_hadolint/
+See documentation on https://megalinter.github.io/descriptors/dockerfile_hadolint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/docker/good/Dockerfile

@@ -4,19 +4,19 @@
 
 ## tflint documentation
 
-- Version in Mega-Linter: **0.32.1**
+- Version in MegaLinter: **0.33.1**
 - Visit [Official Web Site](https://github.com/terraform-linters/tflint#readme){target=_blank}
 - See [How to configure tflint rules](https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md){target=_blank}
-  - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.tflint.hcl){target=_blank} will be used
+  - If custom `.tflint.hcl` config file is not found, [.tflint.hcl](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.tflint.hcl){target=_blank} will be used
 - See [How to disable tflint rules in files](https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md){target=_blank}
 - See [Index of problems detected by tflint](https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules){target=_blank}
 
 [![tflint - GitHub](https://gh-card.dev/repos/terraform-linters/tflint.svg?fullname=)](https://github.com/terraform-linters/tflint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable tflint by adding `TERRAFORM_TFLINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable tflint by adding `TERRAFORM_TFLINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                     | Description                                                                                                                                                                                                         | Default value                                        |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
@@ -29,18 +29,18 @@
 | TERRAFORM_TFLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | `[{"command": "tflint --init", "cwd": "workspace"}]` |
 | TERRAFORM_TFLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                                 |
 | TERRAFORM_TFLINT_CONFIG_FILE                 | tflint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                   | `.tflint.hcl`                                        |
-| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules     |
+| TERRAFORM_TFLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules      |
 | TERRAFORM_TFLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                              |
 | TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                  |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                                 | Description                            | Embedded linters |                                                                                                                                                                                       Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------|:---------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)       | Default Mega-Linter Flavor             |        94        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|      <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://nvuillam.github.io/mega-linter/flavors/terraform/) | Optimized for TERRAFORM based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-terraform/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        95        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -72,39 +72,53 @@ Usage:
   tflint [OPTIONS] [FILE or DIR...]
 
 Application Options:
-  -v, --version                                           Print TFLint version
-      --init                                              Install plugins
-      --langserver                                        Start language server
-  -f, --format=[default|json|checkstyle|junit|compact]    Output format
-                                                          (default: default)
-  -c, --config=FILE                                       Config file name
-                                                          (default: .tflint.hcl)
-      --ignore-module=SOURCE                              Ignore module sources
-      --enable-rule=RULE_NAME                             Enable rules from the
-                                                          command line
-      --disable-rule=RULE_NAME                            Disable rules from
-                                                          the command line
-      --only=RULE_NAME                                    Enable only this
-                                                          rule, disabling all
-                                                          other defaults. Can
-                                                          be specified multiple
-                                                          times
-      --enable-plugin=PLUGIN_NAME                         Enable plugins from
-                                                          the command line
-      --var-file=FILE                                     Terraform variable
-                                                          file name
-      --var='foo=bar'                                     Set a Terraform
-                                                          variable
-      --module                                            Inspect modules
-      --force                                             Return zero exit
-                                                          status even if issues
-                                                          found
-      --no-color                                          Disable colorized
-                                                          output
-      --loglevel=[trace|debug|info|warn|error]            Change the loglevel
+  -v, --version                                                 Print TFLint
+                                                                version
+      --init                                                    Install plugins
+      --langserver                                              Start language
+                                                                server
+  -f, --format=[default|json|checkstyle|junit|compact|sarif]    Output format
+                                                                (default:
+                                                                default)
+  -c, --config=FILE                                             Config file
+                                                                name (default:
+                                                                .tflint.hcl)
+      --ignore-module=SOURCE                                    Ignore module
+                                                                sources
+      --enable-rule=RULE_NAME                                   Enable rules
+                                                                from the
+                                                                command line
+      --disable-rule=RULE_NAME                                  Disable rules
+                                                                from the
+                                                                command line
+      --only=RULE_NAME                                          Enable only
+                                                                this rule,
+                                                                disabling all
+                                                                other defaults.
+                                                                Can be
+                                                                specified
+                                                                multiple times
+      --enable-plugin=PLUGIN_NAME                               Enable plugins
+                                                                from the
+                                                                command line
+      --var-file=FILE                                           Terraform
+                                                                variable file
+                                                                name
+      --var='foo=bar'                                           Set a Terraform
+                                                                variable
+      --module                                                  Inspect modules
+      --force                                                   Return zero
+                                                                exit status
+                                                                even if issues
+                                                                found
+      --no-color                                                Disable
+                                                                colorized output
+      --loglevel=[trace|debug|info|warn|error]                  Change the
+                                                                loglevel
 
 Help Options:
-  -h, --help                                              Show this help message
+  -h, --help                                                    Show this help
+                                                                message
 
 ```
 
@@ -121,7 +135,7 @@ COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
 ```shell
 Results of tflint linter (version 0.21.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/
+See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
@@ -133,7 +147,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/terrafor
 
 ```shell
 Results of tflint linter (version 0.21.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_tflint/
+See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform/bad/terraform_bad_1.tf

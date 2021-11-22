@@ -6,6 +6,7 @@
     "**/vscode-extension/**",
     "**/.git/**",
     ".vscode",
+    "megalinter",
     "package-lock.json",
     "report"
   ],

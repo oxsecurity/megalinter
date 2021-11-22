@@ -101,6 +101,8 @@ linters:
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) error"
     examples:
       - "phpstan analyse --no-progress --no-ansi myfile.php"
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
@@ -127,11 +129,16 @@ linters:
     linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config="
     version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) error"
     examples:
       - "psalm myfile.php"
+      - "psalm myfile.php mydir/"
       - "psalm --config=psalm.xml myfile.php"
+      - "psalm --config=psalm.xml myfile.php mydir/"
     install:
       dockerfile:
         - |

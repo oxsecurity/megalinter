@@ -1,11 +1,11 @@
 {
   "name": "mega-linter-runner",
-  "version": "4.46.0",
+  "version": "5.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nvuillam/mega-linter.git"
+    "url": "https://github.com/megalinter/megalinter.git"
   },
-  "description": "Local runner for Mega-Linter",
+  "description": "Local runner for MegaLinter",
   "main": "index.js",
   "files": [
     "lib",
@@ -78,12 +78,13 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.2",
     "find-package-json": "^1.2.0",
     "fs-extra": "^10.0.0",
+    "glob-promise": "^4.2.2",
     "optionator": "^0.9.1",
     "which": "^2.0.2",
-    "yeoman-environment": "^3.6.0",
+    "yeoman-environment": "^3.8.0",
     "yeoman-generator": "^5.4.2",
     "yosay": "^2.0.2"
   },

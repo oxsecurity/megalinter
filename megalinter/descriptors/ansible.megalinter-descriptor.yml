@@ -22,9 +22,11 @@ linters:
     config_file_name: .ansible-lint.yml
     cli_config_extra_args:
       - "-v"
+    cli_version_arg_name: "--version"
     examples:
       - "ansible-lint -v myfile.yml"
       - "ansible-lint -v -c .ansible-lint.yml myfile.yml"
     install:
       apk:
+        - ansible
         - ansible-lint
