@@ -5,7 +5,7 @@
     "**/node_modules/**",
     "**/.git/**",
     "**/.rbenv/**",
-    "**/.venv'/**",
+    "**/.venv/**",
     "**/*cache*/**",
     "**/.github/**",
     "**/.idea/**",

@@ -5944,7 +5944,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
-      "default": ".markdown-lint.json",
+      "default": ".markdownlint.json",
       "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
       "type": "string"
@@ -5975,7 +5975,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_FILE_NAME": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_NAME",
-      "default": ".markdown-lint.json",
+      "default": ".markdownlint.json",
       "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
       "type": "string"
