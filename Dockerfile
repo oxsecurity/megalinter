@@ -368,7 +368,7 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 
 # pmd installation
 RUN cd $HOME && \
-    wet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+    wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
     unzip pmd-bin-${PMD_VERSION}.zip && \
     rm pmd-bin-${PMD_VERSION}.zip && \
     alias pmd="$HOME/pmd-bin-${PMD_VERSION}/bin/run.sh pmd"
