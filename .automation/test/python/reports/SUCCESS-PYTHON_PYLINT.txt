@@ -1,5 +1,5 @@
 Results of pylint linter (version 2.6.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_pylint/
+See documentation on https://megalinter.github.io/descriptors/python_pylint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/python/python_good_1.py

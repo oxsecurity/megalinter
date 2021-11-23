@@ -1,5 +1,5 @@
 Results of protolint linter (version 0.26.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/protobuf_protolint/
+See documentation on https://megalinter.github.io/descriptors/protobuf_protolint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/protobuf/protobuf_good_1.proto

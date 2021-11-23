@@ -1,5 +1,5 @@
 Results of terrascan linter (version 1.2.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/terraform_terrascan/
+See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
 -----------------------------------------------
 
 [ERROR] .automation/test/terraform_terrascan/bad/terraform_bad_1.tf

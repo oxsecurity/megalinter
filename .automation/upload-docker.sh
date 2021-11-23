@@ -328,7 +328,10 @@ BuildImage() {
   # Need to see if we need to tag a major update as well #
   ########################################################
   if [ ${UPDATE_MAJOR_TAG} -eq 1 ]; then
-    # Tag the image with the major tag as well
+    # docker tag "${CONTAINER_URL}:${IMAGE_VERSION}" "${CONTAINER_URL}:latest"
+
+    # Tag the image with the major tag & latest tag as well
+    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
     docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${CONTAINER_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
@@ -388,8 +391,9 @@ BuildImage() {
   ########################################################
   if [ ${UPDATE_MAJOR_TAG} -eq 1 ]; then
     ###################
-    # Build the image #
+    # Build the image with latest tags#
     ###################
+    docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:latest" -f "${DOCKERFILE_PATH}" . 2>&1
     docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${BUILD_REVISION}" --build-arg "BUILD_VERSION=${MAJOR_TAG}" -t "${ADDITIONAL_URL}:${MAJOR_TAG}" -f "${DOCKERFILE_PATH}" . 2>&1
 
     #######################
@@ -486,6 +490,7 @@ UploadImage() {
     ############################################
     # Upload the docker image that was created #
     ############################################
+    docker push "${CONTAINER_URL}:latest" 2>&1
     docker push "${CONTAINER_URL}:${MAJOR_TAG}" 2>&1
 
     #######################

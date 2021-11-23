@@ -1,5 +1,5 @@
 Results of shellcheck linter (version 0.7.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shellcheck/
+See documentation on https://megalinter.github.io/descriptors/bash_shellcheck/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/shell/shell_good_1.sh

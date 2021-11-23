@@ -1,5 +1,5 @@
 EXTENDS:
-  - "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension1.mega-linter.yml"
-  - "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
+  - "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension1.mega-linter.yml"
+  - "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
 FILTER_REGEX_INCLUDE: "(base)"
 SHOW_ELAPSED_TIME: true

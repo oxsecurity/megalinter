@@ -11,13 +11,13 @@
 #
 
 #######################################
-# Start the job on all push to master #
+# Start the job on all push to main #
 #######################################
 name: "Build & Deploy - PROD"
 on:
   push:
     branches:
-      - "master"
+      - "main"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -31,17 +31,11 @@ on:
 ###############
 # Set the Job #
 ###############
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
-  # Skip checks: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
-  skip_checks:
-    name: Skip checks
-    if: "!contains(github.event.head_commit.message, 'skip deploy')"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          cancel_others: true
 
   build:
     # Name the Job
@@ -49,7 +43,9 @@ jobs:
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run this on the main repo
-    if: github.repository == 'nvuillam/mega-linter' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    environment: 
+      name: beta
     ##################
     # Load all steps #
     ##################
@@ -58,14 +54,14 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
         with:
           fetch-depth: 0
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v2.1.5
+      - uses: actions/setup-node@v2.4.1
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
@@ -79,13 +75,13 @@ jobs:
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy latest image to DockerHub
+      - name: Deploy beta image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter
-          IMAGE_VERSION: latest
+          IMAGE_REPO: megalinter/megalinter
+          IMAGE_VERSION: beta
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: Docker
         shell: bash
@@ -94,13 +90,13 @@ jobs:
       #############################
       # Run Deploy script for GPR #
       #############################
-      - name: Deploy Latest image to GitHub Container Registry
+      - name: Deploy beta image to GitHub Container Registry
         env:
           # Set the Env Vars
           GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
           GCR_TOKEN: ${{ secrets.GCR_PASSWORD }}
-          IMAGE_REPO: nvuillam/mega-linter
-          IMAGE_VERSION: latest
+          IMAGE_REPO: megalinter/megalinter
+          IMAGE_VERSION: beta
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: GCR
         shell: bash
@@ -114,7 +110,7 @@ jobs:
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint nvuillam/mega-linter:latest
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:beta
         timeout-minutes: 30
 
       # Free disk space
@@ -130,7 +126,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: "docker.io/nvuillam/mega-linter:latest"
+          image-ref: "docker.io/megalinter/megalinter:beta"
           format: "table"
           exit-code: "1"
           ignore-unfixed: true

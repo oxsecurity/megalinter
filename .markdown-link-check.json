@@ -1,5 +1,5 @@
 {
   "retryOn429": true,
   "retryCount": 10,
-  "ignorePatterns": ["(github\\.com/nvuillam/mega-linter/tree/master/docs)"]
+  "ignorePatterns": ["(github\\.com/megalinter/megalinter/tree/main/docs)"]
 }

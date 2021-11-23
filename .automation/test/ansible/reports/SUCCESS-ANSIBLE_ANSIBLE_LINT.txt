@@ -1,5 +1,5 @@
 Results of ansible-lint linter (version 4.2.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/ansible_ansible_lint/
+See documentation on https://megalinter.github.io/descriptors/ansible_ansible_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/ansible/ansible/ansible_good_1.yml

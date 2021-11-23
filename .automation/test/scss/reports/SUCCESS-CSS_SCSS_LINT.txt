@@ -1,5 +1,5 @@
 Results of scss-lint linter (version 0.59.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/css_scss_lint/
+See documentation on https://megalinter.github.io/descriptors/css_scss_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/scss/scss_good_01.scss

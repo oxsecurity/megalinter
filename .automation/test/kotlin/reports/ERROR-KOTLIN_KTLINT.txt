@@ -1,5 +1,5 @@
 Results of ktlint linter (version 0.40.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
+See documentation on https://megalinter.github.io/descriptors/kotlin_ktlint/
 -----------------------------------------------
 
 [ERROR] .automation/test/kotlin/kotlin_bad_1.kt

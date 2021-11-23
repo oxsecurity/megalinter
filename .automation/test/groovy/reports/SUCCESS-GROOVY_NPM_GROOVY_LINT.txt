@@ -1,5 +1,5 @@
 Results of npm-groovy-lint linter (version 8.0.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/groovy_npm_groovy_lint/
+See documentation on https://megalinter.github.io/descriptors/groovy_npm_groovy_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/groovy/groovy_good_01.groovy

@@ -1,5 +1,5 @@
 Results of php linter (version 7.3.25)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_php/
+See documentation on https://megalinter.github.io/descriptors/php_php/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/php/php_good_1.php

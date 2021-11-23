@@ -49,21 +49,21 @@ linters:
     linter_url: https://black.readthedocs.io/en/stable/
     linter_repo: https://github.com/psf/black
     linter_banner_image_url: https://raw.githubusercontent.com/psf/black/master/docs/_static/logo2-readme.png
-    linter_rules_configuration_url: https://black.readthedocs.io/en/stable/compatible_configs.html
-    config_file_name: .python-black
+    linter_rules_configuration_url: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format
+    config_file_name: pyproject.toml
     cli_config_arg_name: "--config"
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--diff"
       - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
     examples:
       - "black --diff --check myfile.py"
-      - "black --config .python-black --diff --check myfile.py"
-      - "black --config .python-black myfile.py" # format
+      - "black --config pyproject.toml --diff --check myfile.py"
+      - "black --config pyproject.toml myfile.py" # format
     install:
       pip:
         - black
@@ -93,6 +93,7 @@ linters:
     name: PYTHON_FLAKE8
     linter_url: https://flake8.pycqa.org
     linter_repo: https://github.com/PyCQA/flake8
+    linter_spdx_license: MIT
     linter_rules_url: https://flake8.pycqa.org/en/latest/user/error-codes.html
     linter_rules_configuration_url: https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration
     linter_rules_inline_disable_url: https://flake8.pycqa.org/en/3.1.1/user/ignoring-errors.html#in-line-ignoring-errors

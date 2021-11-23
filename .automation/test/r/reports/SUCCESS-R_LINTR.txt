@@ -1,5 +1,5 @@
 Results of lintr linter (version 2.0.1.9000)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/r_lintr/
+See documentation on https://megalinter.github.io/descriptors/r_lintr/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/r/r_good_1.r

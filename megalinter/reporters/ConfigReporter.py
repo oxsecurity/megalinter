@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from shutil import copyfile
 
-from genericpath import isfile
+import commentjson
 from megalinter import Reporter, config
 
 
@@ -80,7 +80,7 @@ class ConfigReporter(Reporter):
         config_report_log = f"{self.report_folder}{os.path.sep}IDE-config.txt"
         config_log_str = "\n".join(config_log)
         # flake8: noqa
-        config_log_text_full = f"""Mega-Linter can help you to define the same linter configuration locally
+        config_log_text_full = f"""MegaLinter can help you to define the same linter configuration locally
 
 INSTRUCTIONS
 
@@ -100,7 +100,7 @@ IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
             vscode_extensions_file = f"{self.master.workspace}{os.path.sep}.vscode{os.path.sep}extensions.json"
             if os.path.isfile(vscode_extensions_file):
                 with open(vscode_extensions_file, "r", encoding="utf-8") as json_file:
-                    vscode_extensions_config = json.load(json_file)
+                    vscode_extensions_config = commentjson.loads(json_file.read())
             else:
                 vscode_extensions_config = {}
             # Add recommendations

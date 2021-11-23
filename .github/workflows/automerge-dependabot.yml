@@ -27,7 +27,7 @@ jobs:
   automerge:
     name: automerge dependabot
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]' && github.repository == 'nvuillam/mega-linter'
+    if: github.actor == 'dependabot[bot]' && github.repository == 'megalinter/megalinter'
     steps:
       - name: Wait for CI/CT/CD to succeed
         uses: fountainhead/action-wait-for-check@v1.0.0
@@ -42,12 +42,12 @@ jobs:
         id: wait-for-ci
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Mega-Linter
+          checkName: MegaLinter
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: merge
         if: steps.wait-for-build.outputs.conclusion == 'success' || steps.wait-for-build.outputs.conclusion == 'skipped' && steps.wait-for-ci.outputs.conclusion == 'success'
-        uses: actions/github-script@v4.1
+        uses: actions/github-script@v5
         with:
           script: |
             github.pulls.createReview({

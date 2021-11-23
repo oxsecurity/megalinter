@@ -1,5 +1,5 @@
 Results of phpcs linter (version 3.5.8)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpcs/
+See documentation on https://megalinter.github.io/descriptors/php_phpcs/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/php/php_good_1.php

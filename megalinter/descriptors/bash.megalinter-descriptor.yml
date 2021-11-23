@@ -86,10 +86,11 @@ linters:
     examples:
       - "shfmt -d myfile.sh"
       - "shfmt -w myfile.sh" # Fix
+    downgraded_version: true
     install:
       dockerfile:
         - ENV GO111MODULE=on
-        - RUN go get mvdan.cc/sh/v3/cmd/shfmt
+        - RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
     ide:
       atom:
         - name: format-shell

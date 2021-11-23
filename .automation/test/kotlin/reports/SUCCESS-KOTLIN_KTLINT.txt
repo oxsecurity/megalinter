@@ -1,5 +1,5 @@
 Results of ktlint linter (version 0.40.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/kotlin_ktlint/
+See documentation on https://megalinter.github.io/descriptors/kotlin_ktlint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/kotlin/kotlint_good_1.kt

@@ -9,57 +9,57 @@
 
 ## black documentation
 
-- Version in Mega-Linter: **21.9**
+- Version in MegaLinter: **21.11**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
-- See [How to configure black rules](https://black.readthedocs.io/en/stable/compatible_configs.html){target=_blank}
-  - If custom `.python-black` config file is not found, [.python-black](https://github.com/nvuillam/mega-linter/tree/master/TEMPLATES/.python-black){target=_blank} will be used
+- See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
+  - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
 
 [![black - GitHub](https://gh-card.dev/repos/psf/black.svg?fullname=)](https://github.com/psf/black){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable black by adding `PYTHON_BLACK` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable black by adding `PYTHON_BLACK` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PYTHON_BLACK` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
-| Variable                                 | Description                                                                                                                                                                                                         | Default value                                    |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| PYTHON_BLACK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
-| PYTHON_BLACK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
-| PYTHON_BLACK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
-| PYTHON_BLACK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
-| PYTHON_BLACK_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                        |
-| PYTHON_BLACK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
-| PYTHON_BLACK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
-| PYTHON_BLACK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| PYTHON_BLACK_CONFIG_FILE                 | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `.python-black`                                  |
-| PYTHON_BLACK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
-| PYTHON_BLACK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                           |
-| PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
+| Variable                                 | Description                                                                                                                                                                                                         | Default value                                   |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PYTHON_BLACK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PYTHON_BLACK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| PYTHON_BLACK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| PYTHON_BLACK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| PYTHON_BLACK_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
+| PYTHON_BLACK_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| PYTHON_BLACK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| PYTHON_BLACK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| PYTHON_BLACK_CONFIG_FILE                 | black configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                    | `pyproject.toml`                                |
+| PYTHON_BLACK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| PYTHON_BLACK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
+| PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
 ## IDE Integration
 
-Use black in your favorite IDE to catch errors before Mega-Linter !
+Use black in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                    | IDE                                                      | Extension Name                                                                                  |                                                                                Install                                                                                 |
-|:---------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [python-black](https://atom.io/packages/python-black)                                           |                                                 [Visit Web Site](https://atom.io/packages/python-black){target=_blank}                                                 |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [blacken](https://github.com/pythonic-emacs/blacken)                                            |                                               [Visit Web Site](https://github.com/pythonic-emacs/blacken){target=_blank}                                               |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [reformatter.el](https://github.com/purcell/reformatter.el)                                     |                                               [Visit Web Site](https://github.com/purcell/reformatter.el){target=_blank}                                               |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                 |
-|  <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)   |                         [Visit Web Site](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea){target=_blank}                          |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                  |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
+|                                                                   <!-- -->                                                                   | IDE                                                      | Extension Name                                                                                  |                                                                                Install                                                                                |
+|:--------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/atom.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Atom](https://atom.io/)                                 | [python-black](https://atom.io/packages/python-black)                                           |                                                [Visit Web Site](https://atom.io/packages/python-black){target=_blank}                                                 |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [blacken](https://github.com/pythonic-emacs/blacken)                                            |                                              [Visit Web Site](https://github.com/pythonic-emacs/blacken){target=_blank}                                               |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [reformatter.el](https://github.com/purcell/reformatter.el)                                     |                                              [Visit Web Site](https://github.com/purcell/reformatter.el){target=_blank}                                               |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Emacs](https://www.gnu.org/software/emacs/)             | [elpy](https://github.com/jorgenschaefer/elpy)                                                  |                                                [Visit Web Site](https://github.com/jorgenschaefer/elpy){target=_blank}                                                |
+|  <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>   | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)   |                         [Visit Web Site](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea){target=_blank}                         |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)             | [sublack](https://github.com/jgirardet/sublack)                                                 |                                                 [Visit Web Site](https://github.com/jgirardet/sublack){target=_blank}                                                 |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [VsCode Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/ms-python.python){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                         | Embedded linters |                                                                                                                                                                                 Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor          |        94        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
-|       <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://nvuillam.github.io/mega-linter/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-python/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -80,11 +80,11 @@ black --diff --check myfile.py
 ```
 
 ```shell
-black --config .python-black --diff --check myfile.py
+black --config pyproject.toml --diff --check myfile.py
 ```
 
 ```shell
-black --config .python-black myfile.py
+black --config pyproject.toml myfile.py
 ```
 
 
@@ -99,47 +99,37 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-
-  -t, --target-version [py27|py33|py34|py35|py36|py37|py38|py39]
+  -t, --target-version [py27|py33|py34|py35|py36|py37|py38|py39|py310]
                                   Python versions that should be supported by
                                   Black's output. [default: per-file auto-
                                   detection]
-
   --pyi                           Format all input files like typing stubs
                                   regardless of file extension (useful when
                                   piping source on standard input).
-
   --ipynb                         Format all input files like Jupyter
                                   Notebooks regardless of file extension
                                   (useful when piping source on standard
                                   input).
-
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
   -C, --skip-magic-trailing-comma
                                   Don't use trailing commas as a reason to
                                   split lines.
-
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
                                   change. Return code 1 means some files would
                                   be reformatted. Return code 123 means there
                                   was an internal error.
-
   --diff                          Don't write the files back, just output a
                                   diff for each file on stdout.
-
   --color / --no-color            Show colored diff. Only applies when
                                   `--diff` is given.
-
   --fast / --safe                 If --fast given, skip temporary sanity
                                   checks. [default: --safe]
-
   --required-version TEXT         Require a specific version of Black to be
                                   running (useful for unifying results across
                                   many environments e.g. with a pyproject.toml
                                   file).
-
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
                                   recursive searches. An empty value means all
@@ -148,7 +138,6 @@ Options:
                                   platforms (Windows, too). Exclusions are
                                   calculated first, inclusions later.
                                   [default: (\.pyi?|\.ipynb)$]
-
   --exclude TEXT                  A regular expression that matches files and
                                   directories that should be excluded on
                                   recursive searches. An empty value means no
@@ -158,30 +147,26 @@ Options:
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
                                   g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
                                   |_build|buck-out|build|dist)/]
-
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
                                   (Useful if you simply want to add to the
                                   default)
-
   --force-exclude TEXT            Like --exclude, but files and directories
                                   matching this regex will be excluded even
                                   when they are passed explicitly as
                                   arguments.
-
   --stdin-filename TEXT           The name of the file when passing it through
                                   stdin. Useful to make sure Black will
                                   respect --force-exclude option on some
                                   editors that rely on using stdin.
-
+  -W, --workers INTEGER RANGE     Number of parallel workers  [default: 2;
+                                  x>=1]
   -q, --quiet                     Don't emit non-error messages to stderr.
                                   Errors are still emitted; silence those with
                                   2>/dev/null.
-
   -v, --verbose                   Also emit messages to stderr about files
                                   that were not changed or were ignored due to
                                   exclusion patterns.
-
   --version                       Show the version and exit.
   --config FILE                   Read configuration from FILE path.
   -h, --help                      Show this message and exit.
@@ -196,7 +181,7 @@ Options:
 
 ```shell
 Results of black linter (version 19.10)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+See documentation on https://megalinter.github.io/descriptors/python_black/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/python/python_good_1.py
@@ -209,7 +194,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_b
 
 ```shell
 Results of black linter (version 19.10)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/python_black/
+See documentation on https://megalinter.github.io/descriptors/python_black/
 -----------------------------------------------
 
 [ERROR] .automation/test/python/python_bad_1.py

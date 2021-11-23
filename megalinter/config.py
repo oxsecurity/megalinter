@@ -152,7 +152,7 @@ def delete(key=None):
     if key is None:
         CONFIG_DATA = None
         CONFIG_SOURCE = None
-        logging.debug("Cleared Mega-Linter runtime config")
+        logging.debug("Cleared MegaLinter runtime config")
         return
     config = get_config()
     if key in config:

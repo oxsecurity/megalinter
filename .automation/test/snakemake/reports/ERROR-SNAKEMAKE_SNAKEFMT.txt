@@ -1,5 +1,5 @@
 Results of snakefmt linter (version 0.2.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/snakemake_snakefmt/
+See documentation on https://megalinter.github.io/descriptors/snakemake_snakefmt/
 -----------------------------------------------
 
 [ERROR] .automation/test/snakemake/snakemake_bad_1.smk

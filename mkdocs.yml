@@ -1,11 +1,11 @@
 ---
-site_name: Mega-Linter
-site_url: https://nvuillam.github.io/mega-linter
-repo_url: https://github.com/nvuillam/mega-linter
-edit_uri: tree/master/docs
+site_name: MegaLinter
+site_url: https://megalinter.github.io
+repo_url: https://github.com/megalinter/megalinter
+edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: Mega-Linter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 23 formats, 18 tooling formats , abusive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
+site_description: MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses
 # site_description-end
 copyright: Copyright &copy; 2021 <a href="https://github.com/nvuillam">Nicolas Vuillamy</a>
 theme:
@@ -30,17 +30,21 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
   - javascripts/gtag.js
+  - javascripts/version-mike.js
 extra_css:
   - stylesheets/extra.css
 extra:
+  version:
+    provider: mike
+    default: latest
   social:
     - icon: fontawesome/regular/question-circle
-      link: https://github.com/nvuillam/mega-linter/issues
+      link: https://github.com/megalinter/megalinter/issues
       title: Need help ? Post an issue :)
     - icon: fontawesome/brands/github
-      link: https://github.com/nvuillam/mega-linter
+      link: https://github.com/megalinter/megalinter
     - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/nvuillam/mega-linter
+      link: https://hub.docker.com/r/megalinter/megalinter
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/NicolasVuillamy
   generator: false
@@ -192,9 +196,6 @@ nav:
               - "remark-lint": "descriptors/markdown_remark_lint.md"
               - "markdown-link-check": "descriptors/markdown_markdown_link_check.md"
               - "markdown-table-formatter": "descriptors/markdown_markdown_table_formatter.md"
-          - "NIX":
-              - "All NIX linters": "descriptors/nix.md"
-              - "nixpkgs-fmt": "descriptors/nix_nixpkgs_fmt.md"
           - "PROTOBUF":
               - "All PROTOBUF linters": "descriptors/protobuf.md"
               - "protolint": "descriptors/protobuf_protolint.md"
@@ -215,6 +216,9 @@ nav:
       - "Tooling Formats linters":
           - "All tooling formats linters": "./supported-linters/#tooling-formats"
           # tooling_format-start
+          - "ACTION":
+              - "All ACTION linters": "descriptors/action.md"
+              - "actionlint": "descriptors/action_actionlint.md"
           - "ANSIBLE":
               - "All ANSIBLE linters": "descriptors/ansible.md"
               - "ansible-lint": "descriptors/ansible_ansible_lint.md"
@@ -257,6 +261,7 @@ nav:
               - "terragrunt": "descriptors/terraform_terragrunt.md"
               - "terraform-fmt": "descriptors/terraform_terraform_fmt.md"
               - "checkov": "descriptors/terraform_checkov.md"
+              - "kics": "descriptors/terraform_kics.md"
 # tooling_format-end
       - "Other checks":
           - "All other linters": "./supported-linters/#other"
@@ -314,7 +319,7 @@ nav:
   - "Plugins": "plugins.md"
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
-  - "Mega-Linter vs Super-Linter": "mega-linter-vs-super-linter.md"
+  - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
   - "Contribute":
       - "How-to Contribute": "how-to-contribute.md"
       - "Contributing Guide": "contributing.md"
