@@ -9,7 +9,7 @@
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **0.8.1**
+- Version in MegaLinter: **0.8.2**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
 - See [Index of problems detected by sqlfluff](https://docs.sqlfluff.com/en/stable/rules.html){target=_blank}
@@ -85,8 +85,8 @@ Usage: sqlfluff [OPTIONS] COMMAND [ARGS]...
   Sqlfluff is a modular sql linter for humans.
 
 Options:
-  --version  Show the version and exit.
-  --help     Show this message and exit.
+  --version   Show the version and exit.
+  -h, --help  Show this message and exit.
 
 Commands:
   dialects  Show the current dialects available.

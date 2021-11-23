@@ -30,6 +30,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.10 to **0.35.12** on 2021-11-21
   - [eslint](https://eslint.org) from 8.2.0 to **8.3.0** on 2021-11-21
   - [checkov](https://www.checkov.io/) from 2.0.591 to **2.0.595** on 2021-11-21
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.1 to **0.56.2** on 2021-11-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.1 to **0.8.2** on 2021-11-22
+  - [checkov](https://www.checkov.io/) from 2.0.595 to **2.0.597** on 2021-11-22
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
