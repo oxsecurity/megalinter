@@ -95,7 +95,6 @@ linters:
     config_file_name: .markdown-link-check.json
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
-    linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
