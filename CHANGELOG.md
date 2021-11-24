@@ -24,6 +24,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.1 to **0.56.2** on 2021-11-22
   - [sqlfluff](https://www.sqlfluff.com/) from 0.8.1 to **0.8.2** on 2021-11-22
   - [checkov](https://www.checkov.io/) from 2.0.595 to **2.0.597** on 2021-11-22
+  - [htmlhint](https://htmlhint.com/) from 0.16.1 to **0.16.2** on 2021-11-24
+  - [checkov](https://www.checkov.io/) from 2.0.597 to **2.0.600** on 2021-11-24
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
