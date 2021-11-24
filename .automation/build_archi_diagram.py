@@ -3,14 +3,14 @@
 Generate architecture diagram of Mega-Linter
 See how to do it at https://kroki.io/#how
 """
+import base64
+import tempfile
+import zlib
+from string import Template
+
 # pylint: disable=import-error
 import requests
-import sys
-import base64
-import zlib
-import tempfile
 
-from string import Template
 
 class diagram:
     GATEWAY_SERVER = "https://kroki.io"
@@ -20,46 +20,49 @@ class diagram:
         self,
         descriptor_language_count,
         descriptor_format_count,
-        descriptor_tooling_format_count
+        descriptor_tooling_format_count,
     ):
         self.diagram_dict = dict(
             language=str(descriptor_language_count),
             format=str(descriptor_format_count),
-            tooling_format=str(descriptor_tooling_format_count)
+            tooling_format=str(descriptor_tooling_format_count),
         )
 
         self.build_diagram()
 
-    ### get binary image generated following format specified
-    def get_image_bin(self, format='svg', tempfile='kroki'):
+    # get binary image generated following format specified
+    def get_image_bin(self, format="svg", tempfile="kroki"):
         image_content = self.run_query(
-            self.GATEWAY_SERVER,
-            'blockdiag',
-            format,
-            self.encoded_diagram
+            self.GATEWAY_SERVER, "blockdiag", format, self.encoded_diagram
         )
 
-        output_file = tempfile + '.' + format
-        with open(output_file, 'wb') as file:
+        output_file = tempfile + "." + format
+        with open(output_file, "wb") as file:
             file.write(image_content)
 
         return output_file
 
-    ### get diagram textual description
+    # get diagram textual description
     def get_image_text(self):
         return self.asset
 
-    ### generated image on gateway (default: online kroki.io server)
+    # generated image on gateway (default: online kroki.io server)
     def run_query(self, gateway, diagram_type, diagram_format, encoded_diagram):
-        request = requests.get(f"{gateway}/{diagram_type}/{diagram_format}/{encoded_diagram}")
+        request = requests.get(
+            f"{gateway}/{diagram_type}/{diagram_format}/{encoded_diagram}"
+        )
         if request.status_code == 200:
             return request.content
         else:
-            raise Exception("Query failed to run by returning code of {}".format(request.status_code))
+            raise Exception(
+                "Query failed to run by returning code of {}".format(
+                    request.status_code
+                )
+            )
 
-    ### build diagram textual description and return deflate + base64 encoded version
+    # build diagram textual description and return deflate + base64 encoded version
     def build_diagram(self):
-        with open(self.DIAGRAM_TEMPLATE, 'rt') as file:
+        with open(self.DIAGRAM_TEMPLATE, "rt") as file:
             diagram_source = file.read().rstrip()
 
         self.asset = Template(diagram_source).safe_substitute(self.diagram_dict)
