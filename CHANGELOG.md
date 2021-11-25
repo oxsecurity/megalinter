@@ -26,6 +26,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.595 to **2.0.597** on 2021-11-22
   - [htmlhint](https://htmlhint.com/) from 0.16.1 to **0.16.2** on 2021-11-24
   - [checkov](https://www.checkov.io/) from 2.0.597 to **2.0.600** on 2021-11-24
+  - [htmlhint](https://htmlhint.com/) from 0.16.2 to **0.16.3** on 2021-11-25
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 0.0.0 to **3.9.0** on 2021-11-25
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.0 to **5.13.1** on 2021-11-25
+  - [checkov](https://www.checkov.io/) from 2.0.600 to **2.0.603** on 2021-11-25
+  - [kics](https://www.kics.io) from 1.4.7 to **1.4.8** on 2021-11-25
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
