@@ -57,9 +57,9 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter](#mega-linter)
+- [MegaLinter](#megalinter)
   - [Table of Contents](#table-of-contents)
-  - [Why MegaLinter](#why-mega-linter)
+  - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
@@ -99,7 +99,7 @@ _Github PR reporter_
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
     - [Contributors](#contributors)
-    - [Sites referring to MegaLinter](#sites-referring-to-mega-linter)
+    - [Sites referring to MegaLinter](#sites-referring-to-megalinter)
       - [Global](#global)
       - [Articles](#articles)
       - [Linters](#linters)

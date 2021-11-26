@@ -11,6 +11,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
 
 
 - Linter versions upgrades
