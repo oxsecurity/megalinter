@@ -473,7 +473,6 @@ mega-linter:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    DEFAULT_BRANCH: main
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
@@ -523,8 +522,6 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             # APPLY_FIXES: all
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
-            # DEFAULT_BRANCH: main
-
 ```
 
 OR
@@ -584,7 +581,6 @@ resources:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-        #   DEFAULT_BRANCH: main
 ```
 
 ### Run MegaLinter locally
@@ -626,7 +622,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 |-----------------------------------------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **ADDITIONAL_EXCLUDED_DIRECTORIES**                 | \[\]                         | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                                                    |
 | [**APPLY_FIXES**](#apply-fixes)                     | `none`                       | Activates formatting and auto-fixing [(more info)](#apply-fixes)                                                                                                                                           |
-| **DEFAULT_BRANCH**                                  | `main`                       | The name of the repository default branch. Warning: In new github repositories, main branch is named `main`, so you need to override this value with `main`                                                |
+| **DEFAULT_BRANCH**                                  | `HEAD`                       | Deprecated: The name of the repository's default branch.                                                                                                                                                   |
 | **DEFAULT_WORKSPACE**                               | `/tmp/lint`                  | The location containing files to lint if you are running locally.                                                                                                                                          |
 | **DISABLE_ERRORS**                                  | `false`                      | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                            |
 | [**DISABLE**](#activation-and-deactivation)         | <!-- -->                     | List of disabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                              |

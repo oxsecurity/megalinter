@@ -2397,8 +2397,8 @@
     },
     "DEFAULT_BRANCH": {
       "$id": "#/properties/DEFAULT_BRANCH",
-      "default": "main",
-      "description": "The name of the repository default branch. Warning: In new github repositories, master branch is named main, so you need to override this value with main",
+      "default": "HEAD",
+      "description": "Deprecated: The name of the repository's default branch.",
       "examples": [
         "master",
         "main"
