@@ -5618,7 +5618,6 @@ mega-linter:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    DEFAULT_BRANCH: main
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
@@ -5661,8 +5660,6 @@ mega-linter:
             # APPLY_FIXES: all
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
-            # DEFAULT_BRANCH: main
-
 </code></pre>
 <p>OR</p>
 <h3 id="use-it-as-reusable-task">Use it as reusable task</h3>
@@ -5714,7 +5711,6 @@ run:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-        #   DEFAULT_BRANCH: main
 </code></pre>
 <h2 id="run-megalinter-locally">Run MegaLinter locally</h2>
 <p><a href="https://npmjs.org/package/mega-linter-runner"><img alt="Version" src="https://img.shields.io/npm/v/mega-linter-runner.svg" /></a>
