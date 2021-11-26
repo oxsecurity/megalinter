@@ -966,7 +966,7 @@ To help, you can also:
 <!-- referring-linters-start -->
 - [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
-- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell#mega-linter){target=_blank}
 - [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
 - [eslint](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
