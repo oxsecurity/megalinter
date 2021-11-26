@@ -31,6 +31,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.0 to **5.13.1** on 2021-11-25
   - [checkov](https://www.checkov.io/) from 2.0.600 to **2.0.603** on 2021-11-25
   - [kics](https://www.kics.io) from 1.4.7 to **1.4.8** on 2021-11-25
+  - [prettier](https://prettier.io/) from 2.4.1 to **2.5.0** on 2021-11-26
+  - [pylint](https://www.pylint.org) from 2.11.1 to **2.12.1** on 2021-11-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.10.0 to **6.11.0** on 2021-11-26
+  - [checkov](https://www.checkov.io/) from 2.0.603 to **2.0.605** on 2021-11-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.12 to **0.35.13** on 2021-11-26
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18

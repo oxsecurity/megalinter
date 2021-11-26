@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.11.1**
+- Version in MegaLinter: **2.12.1**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-lint){target=_blank} will be used
@@ -99,6 +99,9 @@ Options:
                         displayed, and no reports are done by default.
     -v, --verbose       In verbose mode, extra non-checker-related info will
                         be displayed.
+    --enable-all-extensions
+                        Load and enable all available extensions. Use --list-
+                        extensions to see a list all available extensions.
     --ignore=<file>[,<file>...]
                         Files or directories to be skipped. They should be
                         base names, not paths. [current: CVS]
@@ -108,9 +111,9 @@ Options:
                         paths. [current: none]
     --ignore-paths=<pattern>[,<pattern>...]
                         Add files or directories matching the regex patterns
-                        to the ignore-list. The regex matches against paths.
-                        [current: none]
-    --persistent=<y_or_n>
+                        to the ignore-list. The regex matches against paths
+                        and can be in Posix or Windows format. [current: none]
+    --persistent=<y or n>
                         Pickle collected data for later comparisons. [current:
                         yes]
     --load-plugins=<modules>
@@ -147,7 +150,7 @@ Options:
                         arbitrary code. (This is an alternative name to
                         extension-pkg-allow-list for backward compatibility.)
                         [current: none]
-    --suggestion-mode=<yn>
+    --suggestion-mode=<y or n>
                         When enabled, pylint would attempt to guess common
                         misconfiguration and emit user-friendly hints instead
                         of false-positive error messages. [current: yes]
@@ -157,7 +160,7 @@ Options:
     --from-stdin        Interpret the stdin as a python script, whose filename
                         needs to be passed as the module_or_package argument.
     --py-version=<py_version>
-                        Min Python version to use for version dependend
+                        Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
                         pylint. [current: 3.9]
 
@@ -216,7 +219,7 @@ Options:
                         parseable, colorized, json and msvs (visual studio).
                         You can also give a reporter class, e.g.
                         mypackage.mymodule.MyReporterClass. [current: text]
-    -r <y_or_n>, --reports=<y_or_n>
+    -r <y or n>, --reports=<y or n>
                         Tells whether to display a full report or only the
                         messages. [current: no]
     --evaluation=<python_expression>
@@ -229,7 +232,7 @@ Options:
                         evaluation report (RP0004). [current: 10.0 - ((float(5
                         * error + warning + refactor + convention) /
                         statement) * 10)]
-    -s <y_or_n>, --score=<y_or_n>
+    -s <y or n>, --score=<y or n>
                         Activate the evaluation score. [current: yes]
     --msg-template=<template>
                         Template used to display messages. This is a python
