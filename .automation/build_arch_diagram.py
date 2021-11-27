@@ -8,7 +8,6 @@ import tempfile
 import zlib
 from string import Template
 
-# pylint: disable=import-error
 import requests
 
 
