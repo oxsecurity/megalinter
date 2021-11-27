@@ -1,6 +1,6 @@
 # !/usr/bin/env python3
 """
-Generate architecture diagram of Mega-Linter
+Generate architecture diagram of MegaLinter
 See how to do it at https://kroki.io/#how
 """
 import base64
