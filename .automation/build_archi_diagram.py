@@ -55,9 +55,7 @@ class diagram:
             return request.content
         else:
             raise Exception(
-                "Query failed to run by returning code of {}".format(
-                    request.status_code
-                )
+                f"Query failed to run by returning code of {request.status_code}"
             )
 
     # Build diagram textual description and return deflate + base64 encoded version
