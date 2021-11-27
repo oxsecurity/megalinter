@@ -30,7 +30,7 @@ class diagram:
 
         self.build_diagram()
 
-    # get binary image generated following format specified
+    # Generate binary image following specified format
     def get_image_bin(self, format="svg", tempfile="kroki"):
         image_content = self.run_query(
             self.GATEWAY_SERVER, "blockdiag", format, self.encoded_diagram
@@ -42,11 +42,11 @@ class diagram:
 
         return output_file
 
-    # get diagram textual description
+    # Get diagram textual description
     def get_image_text(self):
         return self.asset
 
-    # generated image on gateway (default: online kroki.io server)
+    # Get generated image from gateway (default: kroki.io server)"
     def run_query(self, gateway, diagram_type, diagram_format, encoded_diagram):
         request = requests.get(
             f"{gateway}/{diagram_type}/{diagram_format}/{encoded_diagram}"
@@ -60,7 +60,7 @@ class diagram:
                 )
             )
 
-    # build diagram textual description and return deflate + base64 encoded version
+    # Build diagram textual description and return deflate + base64 encoded version
     def build_diagram(self):
         with open(self.DIAGRAM_TEMPLATE, "rt") as file:
             diagram_source = file.read().rstrip()
