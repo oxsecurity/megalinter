@@ -766,7 +766,7 @@ class Linter:
     def manage_docker_command(self, command):
         if self.cli_docker_image is None:
             return command
-        docker_command = ["docker", "run"]
+        docker_command = ["docker", "run", "--rm"]
         if hasattr(self, "workspace"):
             volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
             if volume_root != "":
