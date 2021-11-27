@@ -192,7 +192,6 @@ mega-linter:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    DEFAULT_BRANCH: main
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
@@ -242,8 +241,6 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             # APPLY_FIXES: all
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
-            # DEFAULT_BRANCH: main
-
 ```
 
 OR
@@ -303,7 +300,6 @@ resources:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-        #   DEFAULT_BRANCH: main
 ```
 
 ## Run MegaLinter locally

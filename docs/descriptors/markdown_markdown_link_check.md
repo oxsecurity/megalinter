@@ -4,6 +4,7 @@
 
 ## markdown-link-check documentation
 
+- Version in MegaLinter: **3.9.0**
 - Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
 - See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
   - If custom `.markdown-link-check.json` config file is not found, [.markdown-link-check.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdown-link-check.json){target=_blank} will be used
@@ -82,6 +83,7 @@ markdown-link-check -c .markdown-link-check.json myfile.md
 Usage: markdown-link-check [options] [filenameOrUrl]
 
 Options:
+  -V, --version          output the version number
   -p, --progress         show progress bar
   -c, --config [config]  apply a config file (JSON), holding e.g. url specific
                          header configuration
