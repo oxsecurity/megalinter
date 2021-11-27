@@ -60,7 +60,7 @@ class diagram:
 
     # Build diagram textual description and return deflate + base64 encoded version
     def build_diagram(self):
-        with open(self.DIAGRAM_TEMPLATE, "rt") as file:
+        with open(self.DIAGRAM_TEMPLATE, "r") as file:
             diagram_source = file.read().rstrip()
 
         self.asset = Template(diagram_source).safe_substitute(self.diagram_dict)
