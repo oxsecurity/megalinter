@@ -12,7 +12,7 @@ from string import Template
 import requests
 
 
-class diagram:
+class BuildArchDiagram:
     GATEWAY_SERVER = "https://kroki.io"
     DIAGRAM_TEMPLATE = "docs/assets/archi.blockdiag.txt"
 
