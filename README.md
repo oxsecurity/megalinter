@@ -57,9 +57,9 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter](#mega-linter)
+- [MegaLinter](#megalinter)
   - [Table of Contents](#table-of-contents)
-  - [Why MegaLinter](#why-mega-linter)
+  - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
@@ -99,7 +99,7 @@ _Github PR reporter_
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
     - [Contributors](#contributors)
-    - [Sites referring to MegaLinter](#sites-referring-to-mega-linter)
+    - [Sites referring to MegaLinter](#sites-referring-to-megalinter)
       - [Global](#global)
       - [Articles](#articles)
       - [Linters](#linters)
@@ -783,7 +783,7 @@ To improve run performances, we generate **Flavored MegaLinter images** containi
 - When using default MegaLinter, if a MegaLinter Flavor would cover all your project requirements, a message is added in the logs
 - If your project uses a MegaLinter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
 
-_The following table does not display docker pulls from [MegaLinter v4 images](https://hub.docker.com/r/nvuillam/mega-linter)_
+_The following table does not display docker pulls from [MegaLinter v4 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                                   | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
@@ -966,7 +966,7 @@ To help, you can also:
 <!-- referring-linters-start -->
 - [checkstyle](https://checkstyle.sourceforge.io/index.html#Related_Tools_Active_Tools){target=_blank}
 - [clj-kondo](https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github){target=_blank}
-- [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#mega-linter){target=_blank}
+- [cspell](https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell#mega-linter){target=_blank}
 - [dotenv-linter](https://dotenv-linter.github.io/#/integrations/mega_linter){target=_blank}
 - [editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker#mega-linter){target=_blank}
 - [eslint](https://eslint.org/docs/user-guide/integrations#source-control){target=_blank}
