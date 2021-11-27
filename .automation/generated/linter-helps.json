@@ -1379,8 +1379,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['E704', 'E226', 'E24', 'W503', 'E121',",
-        "                        'W504', 'E123', 'E126'])",
+        "                        (Default: ['W503', 'E126', 'E226', 'E121', 'E704',",
+        "                        'W504', 'E24', 'E123'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
@@ -4075,7 +4075,7 @@
         "                                     reports. This is useful for editor integration."
     ],
     "scalafix": [
-        "Scalafix 0.9.32",
+        "Scalafix 0.9.33",
         "Usage: scalafix [options] [<path> ...]",
         "",
         "Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and",
