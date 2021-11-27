@@ -36,7 +36,7 @@ class diagram:
             self.GATEWAY_SERVER, "blockdiag", format, self.encoded_diagram
         )
 
-        output_file = tempfile + "." + format
+        output_file = f"{tempfile}.{format}"
         with open(output_file, "wb") as file:
             file.write(image_content)
 
