@@ -10,13 +10,15 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 <!-- unreleased-content-marker -->
 
-- Add [PMD](https://pmd.github.io/) to lint java files
+- Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
 - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
 - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
 - Add [trivy](https://github.com/aquasecurity/trivy) security linter
+- New flavor **Security**
 - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck (in next major versions, credentials and git descriptors will be deprecated, then removed)
 - Manage offline run of `bash build.sh` for those who want to code in planes :)
 - Automate update of CHANGELOG.md after release (pilot)
+
 
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json

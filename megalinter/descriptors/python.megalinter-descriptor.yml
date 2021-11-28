@@ -172,6 +172,9 @@ linters:
   # BANDIT
   - linter_name: bandit
     name: PYTHON_BANDIT
+    descriptor_flavors:
+      - python
+      - security
     linter_text: |
       bandit checks for security risks
 

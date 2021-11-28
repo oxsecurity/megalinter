@@ -3,6 +3,7 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
+  - security
 lint_all_files: true
 install:
   dockerfile:

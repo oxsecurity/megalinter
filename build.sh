@@ -9,12 +9,6 @@ else
   python ./.automation/build.py "$@"
 fi
 
-# Prettify markdown tables
-echo "Formatting markdown tables..."
-# shellcheck disable=SC2086
-MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*") && npx markdown-table-formatter $MD_FILES
-# NVUILLAMY TODO: Try to move than someday in build.py to avoid to mess with new releases ( --release)
-
 # Build online documentation
 if type python3 >/dev/null 2>/dev/null; then
   python3 -m mkdocs build

@@ -23,6 +23,10 @@ linters:
   # Hadolint
   - linter_name: hadolint
     name: DOCKERFILE_HADOLINT
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
     linter_url: https://github.com/hadolint/hadolint
     linter_rules_url: https://github.com/hadolint/hadolint#rules
     linter_image_url: https://hadolint.github.io/hadolint/img/cat_container.png

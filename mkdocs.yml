@@ -309,6 +309,7 @@ nav:
       - "rust": "flavors/rust.md"
       - "salesforce": "flavors/salesforce.md"
       - "scala": "flavors/scala.md"
+      - "security": "flavors/security.md"
       - "swift": "flavors/swift.md"
       - "terraform": "flavors/terraform.md"
 # flavors-end

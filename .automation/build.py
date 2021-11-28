@@ -117,14 +117,14 @@ def generate_flavor(flavor, flavor_info):
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
-            if match_flavor(descriptor, flavor) is True and "install" in descriptor:
+            if match_flavor(descriptor, flavor, flavor_info) is True and "install" in descriptor:
                 descriptor_and_linters += [descriptor]
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
     requires_docker = False
     for linter in linters:
-        if match_flavor(vars(linter), flavor) is True:
+        if match_flavor(vars(linter), flavor, flavor_info) is True:
             descriptor_and_linters += [vars(linter)]
             flavor_linters += [linter.name]
             if linter.cli_docker_image is not None:
@@ -302,7 +302,8 @@ branding:
     replace_in_file(dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env)
 
 
-def match_flavor(item, flavor):
+def match_flavor(item, flavor, flavor_info):
+    is_strict = "strict" in flavor_info and flavor_info["strict"] is True
     if (
         "descriptor_flavors_exclude" in item
         and flavor in item["descriptor_flavors_exclude"]
@@ -314,6 +315,7 @@ def match_flavor(item, flavor):
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
             and not flavor.endswith("_light")
+            and not is_strict
         ):
             return True
     return False
@@ -2162,30 +2164,14 @@ def manage_output_variables():
 
 def reformat_markdown_tables():
     logging.info("Formatting markdown tables...")
-    # list markdown files
-    all_files = [
-        os.path.join(REPO_HOME, file)
-        for file in sorted(os.listdir(REPO_HOME))
-        if os.path.isfile(os.path.join(REPO_HOME, file))
-    ]
-    excluded_directories = [".automation", "node_modules"]
-    for (dirpath, dirnames, filenames) in os.walk(REPO_HOME, topdown=True):
-        dirnames[:] = [d for d in dirnames if d not in excluded_directories]
-        all_files += [os.path.join(dirpath, file) for file in sorted(filenames)]
-    all_md_files = []
-    for file in all_files:
-        base_file_name = os.path.basename(file)
-        _, file_extension = os.path.splitext(base_file_name)
-        if file_extension == ".md":
-            all_md_files += [file]
     # Call markdown-table-formatter with the list of files
-    format_md_tables_command = ["npx", "markdown-table-formatter"] + all_md_files
+    format_md_tables_command = ["bash", "format-tables.sh"]
     logging.info("Running command: " + str(format_md_tables_command))
     process = subprocess.run(
         format_md_tables_command,
         stdout=subprocess.PIPE,
         universal_newlines=True,
-        cwd=os.getcwd(),
+        cwd=os.getcwd()+'/.automation',
         shell=True,
     )
     print(process.stdout)
