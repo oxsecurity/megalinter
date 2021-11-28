@@ -86,7 +86,8 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade \
           'ansible-lint[yamllint]' \
-          'bandit'
+          'bandit' \
+          'bandit_sarif_formatter'
 #PIP__END
 
 ############################

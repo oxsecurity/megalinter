@@ -92,6 +92,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'flake8' \
           'isort' \
           'bandit' \
+          'bandit_sarif_formatter' \
           'mypy' \
           'restructuredtext_lint' \
           'rstcheck' \

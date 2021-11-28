@@ -145,6 +145,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'flake8' \
           'isort' \
           'bandit' \
+          'bandit_sarif_formatter' \
           'mypy' \
           'restructuredtext_lint' \
           'rstcheck' \
@@ -332,7 +333,7 @@ COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 # dartanalyzer installation
-RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
     && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
     && apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk \
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
