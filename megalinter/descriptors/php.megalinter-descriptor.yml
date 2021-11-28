@@ -155,13 +155,14 @@ linters:
     linter_url: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
-    cli_docker_image: overtrue/phplint
-    cli_docker_image_version: "7.4"
-    cli_docker_args:
-      - "-v"
-      - "{{WORKSPACE}}:/workdir"
     examples:
       - "phplint myfile.php"
       - "phplint mydir"
       - "phplint mydir myfile.php"
       - "phplint mydir -vvv"
+    install:
+      dockerfile:
+        - |
+          RUN composer global require overtrue/phplint 3.0.0 \
+              && composer global config bin-dir --absolute
+        - ENV PATH="/root/.composer/vendor/bin:$PATH"

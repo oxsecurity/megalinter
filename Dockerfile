@@ -407,6 +407,12 @@ RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
 
+# phplint installation
+RUN composer global require overtrue/phplint 3.0.0 \
+    && composer global config bin-dir --absolute
+
+ENV PATH="/root/.composer/vendor/bin:$PATH"
+
 # powershell installation
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 
