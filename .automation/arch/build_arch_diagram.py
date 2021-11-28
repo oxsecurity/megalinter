@@ -29,16 +29,16 @@ class BuildArchDiagram:
         self.build_diagram()
 
     # Generate binary image following specified format
-    def get_image_bin(self, format="svg", tempfile="kroki"):
+    def get_image_file(self, format="svg", assetfile="kroki"):
         image_content = self.run_query(
             self.GATEWAY_SERVER, "blockdiag", format, self.encoded_diagram
         )
 
-        output_file = f"{tempfile}.{format}"
+        output_file = f"{assetfile}.{format}"
         with open(output_file, "wb") as file:
             file.write(image_content)
 
-        return output_file
+        return image_content
 
     # Get diagram textual description
     def get_image_text(self):
