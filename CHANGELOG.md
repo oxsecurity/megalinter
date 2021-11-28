@@ -13,6 +13,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add [PMD](https://pmd.github.io/) to lint java files
 - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
 - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+- Add [trivy](https://github.com/aquasecurity/trivy) security linter
 - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck (in next major versions, credentials and git descriptors will be deprecated, then removed)
 - Manage offline run of `bash build.sh` for those who want to code in planes :)
 - Automate update of CHANGELOG.md after release (pilot)
