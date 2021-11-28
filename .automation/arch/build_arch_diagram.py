@@ -4,7 +4,6 @@ Generate architecture diagram of MegaLinter
 See how to do it at https://kroki.io/#how
 """
 import base64
-import tempfile
 import zlib
 from string import Template
 
