@@ -142,6 +142,7 @@ def test_linter_success(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
+        "PRINT_ALL_FILES": True
     }
     if linter.lint_all_other_linters_files is not False:
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
