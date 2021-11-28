@@ -124,6 +124,7 @@ linters:
   # CHECKOV
   - linter_name: checkov
     name: TERRAFORM_CHECKOV
+    can_output_sarif: true
     descriptor_flavors:
       - terraform
       - security
@@ -134,6 +135,7 @@ linters:
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
     linter_megalinter_ref_url: "no"
     cli_config_arg_name: "--config-file"
+    cli_sarif_args: ["--output", "sarif"]
     cli_lint_extra_args:
       - "--file"
     examples:

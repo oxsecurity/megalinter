@@ -450,6 +450,13 @@
             "title": "Active if one of file names found",
             "type": "array"
           },
+          "can_output_sarif": {
+            "$id": "#/properties/linters/items/properties/can_output_sarif",
+            "default": false,
+            "description": "Shows if the linter is capable of output SARIF report within MegaLinter",
+            "title": "Can output SARIF",
+            "type": "boolean"
+          },
           "class": {
             "$id": "#/properties/linters/items/properties/class",
             "description": "If MegaLinter core is not enough, use a custom class inheriting from Linter class",
@@ -641,6 +648,24 @@
             ],
             "title": "Linting mode",
             "type": "string"
+          },
+          "cli_sarif_args": {
+            "$id": "#/properties/linters/items/properties/cli_sarif_args",
+            "default": [],
+            "description": "Arguments to generate SARIF output",
+            "examples": [
+              [
+                "--format",
+                "sarif",
+                "--output",
+                "{{SARIF_OUTPUT_FILE}}"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI SARIF run arguments",
+            "type": "array"
           },
           "cli_version_arg_name": {
             "$id": "#/properties/linters/items/properties/cli_version_arg_name",
