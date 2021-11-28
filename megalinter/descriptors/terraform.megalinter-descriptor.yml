@@ -134,6 +134,7 @@ linters:
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
     linter_megalinter_ref_url: "no"
     cli_config_arg_name: "--config-file"
+    cli_sarif_args: ["--output", "sarif"]
     cli_lint_extra_args:
       - "--file"
     examples:
