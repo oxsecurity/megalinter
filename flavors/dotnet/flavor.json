@@ -1,7 +1,6 @@
 {
     "descriptors": [
         "CSHARP",
-        "GIT",
         "POWERSHELL",
         "REPOSITORY"
     ],
@@ -16,7 +15,6 @@
         "C_CPPLINT",
         "COPYPASTE_JSCPD",
         "CPP_CPPLINT",
-        "CREDENTIALS_SECRETLINT",
         "CSHARP_DOTNET_FORMAT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
@@ -24,7 +22,6 @@
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
-        "GIT_GIT_DIFF",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",

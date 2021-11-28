@@ -14,7 +14,9 @@
     "eslint-plugin-jsonc": "MIT",
     "flake8": "Other",
     "git_diff": "Other",
+    "gitleaks": "MIT",
     "golangci-lint": "GPL-3.0",
+    "goodcheck": "MIT",
     "htmlhint": "MIT",
     "isort": "MIT",
     "jscpd": "MIT",
@@ -51,6 +53,7 @@
     "terraform-fmt": "MPL-2.0",
     "terragrunt": "MIT",
     "terrascan": "Apache-2.0",
+    "trivy": "Apache-2.0",
     "tsqllint": "MIT",
     "yamllint": "GPL-3.0"
 }

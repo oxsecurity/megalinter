@@ -1,6 +1,5 @@
 {
     "descriptors": [
-        "GIT",
         "REPOSITORY",
         "RUST"
     ],
@@ -12,14 +11,12 @@
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
         "COPYPASTE_JSCPD",
-        "CREDENTIALS_SECRETLINT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_DOCKERFILELINT",
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
-        "GIT_GIT_DIFF",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",

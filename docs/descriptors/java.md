@@ -8,7 +8,6 @@
 | Linter                           | Configuration key          |
 |----------------------------------|----------------------------|
 | [checkstyle](java_checkstyle.md) | [JAVA](java_checkstyle.md) |
-| [pmd](java_pmd.md)               | [JAVA](java_pmd.md)        |
 
 ## Linted files
 
