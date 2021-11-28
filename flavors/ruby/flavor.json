@@ -1,6 +1,7 @@
 {
     "descriptors": [
         "GIT",
+        "REPOSITORY",
         "RUBY"
     ],
     "label": "Optimized for RUBY based projects",
@@ -34,6 +35,10 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
         "RUBY_RUBOCOP",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",

@@ -2,7 +2,8 @@
     "descriptors": [
         "CSHARP",
         "GIT",
-        "POWERSHELL"
+        "POWERSHELL",
+        "REPOSITORY"
     ],
     "label": "Optimized for C, C++, C# or VB based projects",
     "linters": [
@@ -40,6 +41,10 @@
         "OPENAPI_SPECTRAL",
         "POWERSHELL_POWERSHELL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",

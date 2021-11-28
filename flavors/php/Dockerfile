@@ -163,7 +163,8 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          scss_lint
+          scss_lint \
+          goodcheck
 #GEM__END
 
 #############################################################################################
@@ -186,6 +187,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && mv phive.phar /usr/local/bin/phive \
     && rm phive.phar.asc
 
+
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
 
 # actionlint installation
 ENV GO111MODULE=on
@@ -238,6 +242,9 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \

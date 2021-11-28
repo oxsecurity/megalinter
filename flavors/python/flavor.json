@@ -1,6 +1,7 @@
 {
     "descriptors": [
-        "GIT"
+        "GIT",
+        "REPOSITORY"
     ],
     "label": "Optimized for PYTHON based projects",
     "linters": [
@@ -39,6 +40,10 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",

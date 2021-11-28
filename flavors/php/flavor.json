@@ -1,7 +1,8 @@
 {
     "descriptors": [
         "GIT",
-        "PHP"
+        "PHP",
+        "REPOSITORY"
     ],
     "label": "Optimized for PHP based projects",
     "linters": [
@@ -38,6 +39,10 @@
         "PHP_PHPSTAN",
         "PHP_PSALM",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",

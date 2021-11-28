@@ -35,7 +35,7 @@ from megalinter import config, pre_post_factory, utils
 
 class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
-    DEFAULT_WORKSPACE_DIR = "/tmp/lint/"
+    DEFAULT_WORKSPACE_DIR = "/tmp/lint"
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):

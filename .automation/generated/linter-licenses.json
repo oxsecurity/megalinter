@@ -28,6 +28,7 @@
     "perlcritic": "Other",
     "php": "Other",
     "phpstan": "MIT",
+    "pmd": "Other",
     "prettier": "MIT",
     "psalm": "MIT",
     "puppet-lint": "MIT",

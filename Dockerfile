@@ -37,6 +37,7 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
+ARG PMD_VERSION=6.40.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -229,6 +230,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
           puppet-lint \
+          goodcheck \
           rubocop:0.82.0 \
           rubocop-github:0.16.0 \
           rubocop-performance:1.7.1 \
@@ -279,6 +281,9 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
         | tar -xzC ${PWSH_DIRECTORY} \
     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
+
+# REPOSITORY installation
+RUN git config --global core.autocrlf true
 
 # RUST installation
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -361,6 +366,14 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
         --output /usr/bin/checkstyle
 
 
+# pmd installation
+RUN cd $HOME && \
+    wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
+    unzip pmd-bin-${PMD_VERSION}.zip && \
+    rm pmd-bin-${PMD_VERSION}.zip && \
+    alias pmd="$HOME/pmd-bin-${PMD_VERSION}/bin/run.sh pmd"
+
+
 # ktlint installation
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
     chmod a+x ktlint && \
@@ -426,6 +439,9 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
     && /opt/rakudo-pkg/bin/install-zef-as-user
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # clippy installation
 RUN rustup component add clippy

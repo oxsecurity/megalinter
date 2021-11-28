@@ -17,6 +17,7 @@ linters:
     name: KUBERNETES_KUBEVAL
     linter_url: https://www.kubeval.com/
     linter_repo: https://github.com/instrumenta/kubeval
+    linter_spdx_license: Apache-2.0
     cli_config_extra_args:
       - "--strict"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"

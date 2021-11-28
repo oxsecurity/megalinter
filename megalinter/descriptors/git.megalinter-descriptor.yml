@@ -1,3 +1,4 @@
+# TODO: remove in next major version v6 (replaced by REPOSITORY)
 descriptor_id: GIT
 descriptor_type: other
 descriptor_flavors:
@@ -14,6 +15,7 @@ linters:
     linter_text: Git diff checks for git conflicts markers in files
     linter_url: https://git-scm.com
     linter_repo: https://github.com/git/git
+    linter_spdx_license: LGPL-2.1
     linter_megalinter_ref_url: never
     cli_config_arg_name: ""
     cli_executable: git

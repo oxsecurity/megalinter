@@ -124,10 +124,20 @@
     "image": null,
     "title": "Git"
   },
+  "gitleaks": {
+    "description": "Scan git repos (or files) for secrets using regex and entropy \ud83d\udd11 - GitHub - zricethezav/gitleaks: Scan git repos (or files) for secrets using regex and entropy \ud83d\udd11",
+    "image": "https://opengraph.githubassets.com/a84e777c61cc9ba80250c9dddb6fdbdee3791fd5e6e9b40f4e53d91dcad39d5c/zricethezav/gitleaks",
+    "title": "GitHub - zricethezav/gitleaks: Scan git repos (or files) for secrets using regex and entropy \ud83d\udd11"
+  },
   "golangci-lint": {
     "description": "Fast linters Runner for Go. Contribute to golangci/golangci-lint development by creating an account on GitHub.",
     "image": "https://repository-images.githubusercontent.com/132145189/05239680-dfaf-11e9-9646-2c3ef2f5f8d4",
     "title": "golangci/golangci-lint"
+  },
+  "goodcheck": {
+    "description": "None",
+    "image": null,
+    "title": "Goodcheck"
   },
   "graphql-schema-linter": {
     "description": "Validate GraphQL schema definitions against a set of rules - cjoudrey/graphql-schema-linter",
@@ -238,6 +248,11 @@
     "description": "PHP Static Analysis Tool - discover bugs in your code without running it! - phpstan/phpstan",
     "image": "https://avatars3.githubusercontent.com/u/16435710?s=400&v=4",
     "title": "phpstan/phpstan"
+  },
+  "pmd": {
+    "description": "PMD is a source code analyzer. It finds unused variables, empty catch blocks, unnecessary object creation, and so forth.",
+    "image": null,
+    "title": "PMD"
   },
   "powershell": {
     "description": "Download ScriptAnalyzer from PowerShellGallery. Contribute to PowerShell/PSScriptAnalyzer development by creating an account on GitHub.",

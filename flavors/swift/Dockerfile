@@ -145,7 +145,8 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #GEM__START
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
-          scss_lint
+          scss_lint \
+          goodcheck
 #GEM__END
 
 #############################################################################################
@@ -154,6 +155,9 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
 # GIT installation
+RUN git config --global core.autocrlf true
+
+# REPOSITORY installation
 RUN git config --global core.autocrlf true
 
 # actionlint installation
@@ -195,6 +199,9 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
 
 # misspell installation
 RUN curl -L -o ./install-misspell.sh https://git.io/misspell \

@@ -1,6 +1,7 @@
 {
     "descriptors": [
-        "GIT"
+        "GIT",
+        "REPOSITORY"
     ],
     "label": "Optimized for DART based projects",
     "linters": [
@@ -34,6 +35,10 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",

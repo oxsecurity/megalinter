@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+<!-- unreleased-content-marker -->
+
+- Add [PMD](https://pmd.github.io/) to lint java files
+- Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
+- Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+- New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck (in next major versions, credentials and git descriptors will be deprecated, then removed)
+- Manage offline run of `bash build.sh` for those who want to code in planes :)
+- Automate update of CHANGELOG.md after release (pilot)
+
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
@@ -79,6 +88,24 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
 - Fix typo error in `.jscpd.json` config file (#986)
 - Deprecate `DEFAULT_BRANCH`, and change its default from `master` to `HEAD` (#915)
+
+- Core architecture
+  - New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
+  - Documentation versioning with mike
+  - Allow GithubStatusReporter to work for other CI platforms
+  - Add license info in **List of linters** documentation page
+
+- Linters
+  - Update **black** configuration, that now uses a `pyproject.toml` file (#949)
+  - Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
+  - Upgrade checkov install instructions to use alpine-oriented ones
+  - Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
+  - Downgrade dotnet from 6.0 to 5.0, to be compliant with tsqllint
+
+- Bug fixes
+  - Fix config issue with IGNORE_GITIGNORED_FILES (#932)
+  - Bypass random CI issue with sql_tsqllint_test test version and test help
+  - mega-linter-runner: Upgrade yeoman environment to allow spaces in path
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
