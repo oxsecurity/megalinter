@@ -124,6 +124,7 @@ linters:
   # CHECKOV
   - linter_name: checkov
     name: TERRAFORM_CHECKOV
+    can_output_sarif: true
     descriptor_flavors:
       - terraform
       - security
