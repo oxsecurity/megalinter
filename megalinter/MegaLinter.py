@@ -19,7 +19,7 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
-from megalinter.constants import ML_DOC_URL
+from megalinter.constants import ML_DOC_URL, DEFAULT_REPORT_FOLDER_NAME
 from multiprocessing_logging import install_mp_handler
 
 
@@ -42,7 +42,7 @@ class Megalinter:
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER",
-            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"),
+            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME),
         )
         self.initialize_logger()
         self.manage_upgrade_message()
@@ -67,6 +67,7 @@ class Megalinter:
         self.filter_regex_exclude = None
         self.cli = params["cli"] if "cli" in params else False
         self.default_linter_activation = True
+        self.output_sarif = False
 
         # Get enable / disable vars
         self.enable_descriptors = config.get_list("ENABLE", [])
@@ -318,6 +319,9 @@ class Megalinter:
             self.ignore_generated_files = (
                 config.get("IGNORE_GENERATED_FILES", "false") == "true"
             )
+        # Manage SARIF output
+        if config.get("SARIF_REPORTER", "") == "true":
+            self.output_sarif = True
 
     # Calculate default linter activation according to env variables
     def manage_default_linter_activation(self):
@@ -347,6 +351,7 @@ class Megalinter:
             "report_folder": self.report_folder,
             "apply_fixes": self.apply_fixes,
             "show_elapsed_time": self.show_elapsed_time,
+            "output_sarif": self.output_sarif
         }
 
         # Build linters from descriptor files

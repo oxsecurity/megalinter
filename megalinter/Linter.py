@@ -53,6 +53,8 @@ class Linter:
         self.disabled = False
         self.is_formatter = False
         self.linter_name = "Field 'linter_name' must be overridden at custom linter class level"  # Ex: eslint
+        self.can_output_sarif = False
+        self.output_sarif = False
         # ex: https://eslint.org/
         self.linter_url = (
             "Field 'linter_url' must be overridden at custom linter class level"
@@ -89,6 +91,8 @@ class Linter:
         self.cli_config_extra_args = (
             []
         )  # Extra arguments to send to cli when a config file is used
+        self.cli_sarif_args = []
+        self.sarif_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
@@ -133,6 +137,7 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
+        self.output_sarif = params["output_sarif"] if "output_sarif" in params else self.output_sarif
         self.disable_errors_if_less_than = None
         self.disable_errors = (
             True
@@ -822,6 +827,26 @@ class Linter:
             elif self.cli_config_arg_name != "":
                 cmd += [self.cli_config_arg_name, self.final_config_file]
             cmd += self.cli_config_extra_args
+        # Manage SARIF arguments
+        if self.can_output_sarif is True and self.output_sarif is True:
+
+            def replace_vars(txt):
+                if "{{SARIF_OUTPUT_FILE}}" in txt:
+                    self.sarif_output_file = (
+                        self.report_folder
+                        + os.sep
+                        + "sarif"
+                        + os.sep
+                        + self.name
+                        + ".sarif"
+                    )
+                    txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
+                    os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
+                return txt
+
+            self.cli_sarif_args = map(lambda x: replace_vars(x), self.cli_sarif_args)
+            cmd += self.cli_sarif_args
+
         # Add other lint cli arguments after other arguments if defined
         cmd += self.cli_lint_extra_args_after
         # Some linters/formatters update files by default.

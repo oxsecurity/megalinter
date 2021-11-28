@@ -25,6 +25,7 @@ import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter.constants import (
+    DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
     ML_DOCKER_IMAGE,
     ML_DOCKER_IMAGE_LEGACY,
@@ -1169,7 +1170,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             + os.path.sep
             + linter.test_folder
             + os.path.sep
-            + "reports"
+            + DEFAULT_REPORT_FOLDER_NAME
         )
         success_log_file_example = (
             test_report_folder + os.path.sep + f"SUCCESS-{linter.name}.txt"

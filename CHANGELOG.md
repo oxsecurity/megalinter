@@ -18,7 +18,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck (in next major versions, credentials and git descriptors will be deprecated, then removed)
 - Manage offline run of `bash build.sh` for those who want to code in planes :)
 - Automate update of CHANGELOG.md after release (pilot)
-
+- Manage **SARIF** output format
 
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
