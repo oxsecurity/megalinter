@@ -68,7 +68,6 @@ RUN git config --global core.autocrlf true
 RUN apk add --update --no-cache \
                 openjdk8 \
                 ansible \
-                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -89,6 +88,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade \
+          'ansible-lint[yamllint]' \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \

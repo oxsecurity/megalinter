@@ -74,7 +74,6 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 ansible \
-                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -95,6 +94,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade \
+          'ansible-lint[yamllint]' \
           'cpplint' \
           'snakemake' \
           'snakefmt' \
