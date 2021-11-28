@@ -62,13 +62,8 @@ class BuildArchDiagram:
         with open(self.DIAGRAM_TEMPLATE, "r") as file:
             diagram_source = file.read().rstrip()
 
-        self.asset = Template(diagram_source).safe_substitute(self.diagram_dict)
+        self.asset = Template(diagram_source).substitute(self.diagram_dict)
 
-        try:
-            temp = tempfile.NamedTemporaryFile(prefix="MegaLinter_")
-            temp.write(self.asset.encode())
-            temp.seek(0)
-            encoded_diagram = base64.urlsafe_b64encode(zlib.compress(temp.read(), 9))
-            self.encoded_diagram = encoded_diagram.decode()
-        finally:
-            temp.close()
+        compressed_diagram = zlib.compress(self.asset.encode(), zlib.Z_BEST_COMPRESSION)
+        encoded_diagram = base64.urlsafe_b64encode(compressed_diagram)
+        self.encoded_diagram = encoded_diagram.decode()
