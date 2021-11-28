@@ -95,3 +95,18 @@ linters:
     install:
       gem:
         - goodcheck
+
+  # TRIVY
+  - linter_name: trivy
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - "config"
+    test_folder: trivy
+    examples:
+      - 'trivy config'
+    install:
+      dockerfile:
+        - RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1

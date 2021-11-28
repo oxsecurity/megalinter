@@ -44,6 +44,7 @@
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GOODCHECK",
+        "REPOSITORY_TRIVY",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",

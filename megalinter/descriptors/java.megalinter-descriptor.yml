@@ -52,29 +52,3 @@ linters:
       vscode:
         - name: vscode-checkstyle
           url: https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-checkstyle
-  # PMD for java
-  - class: JavaPmdLinter
-    linter_name: pmd
-    linter_repo: https://github.com/pmd/pmd
-    linter_url: https://pmd.github.io/
-    linter_spdx_license: Apache-2.0
-    linter_rules_url: https://pmd.github.io/pmd-6.40.0/pmd_rules_java.html
-    linter_rules_configuration_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_configuring_rules.html
-    linter_rules_inline_disable_url: https://pmd.github.io/pmd-6.40.0/pmd_userdocs_suppressing_warnings.html
-    linter_image_url: https://pmd.github.io/img/pmd_logo.png
-    cli_lint_mode: list_of_files
-    config_file_name: java-pmd-ruleset.xml
-    cli_config_arg_name: "-rulesets"
-    examples:
-      - "pmd -rulesets java-pmd-ruleset.xml -d myfile.java"
-      - "pmd -rulesets java-pmd-ruleset.xml -files /tmp/list-off-files-generated-by-megalinter.txt"
-      - "pmd -rulesets java-pmd-ruleset.xml -dir /path/to/sources"
-    install:
-      dockerfile:
-        - ARG PMD_VERSION=6.40.0 
-        - |
-          RUN cd $HOME && \
-              wget --quiet https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
-              unzip pmd-bin-${PMD_VERSION}.zip && \
-              rm pmd-bin-${PMD_VERSION}.zip && \
-              alias pmd="$HOME/pmd-bin-${PMD_VERSION}/bin/run.sh pmd"

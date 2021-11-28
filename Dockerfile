@@ -37,7 +37,6 @@ ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
-ARG PMD_VERSION=6.40.0
 ARG PSSA_VERSION='latest'
 #ARG__END
 
@@ -366,14 +365,6 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
         --output /usr/bin/checkstyle
 
 
-# pmd installation
-RUN cd $HOME && \
-    wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip && \
-    unzip pmd-bin-${PMD_VERSION}.zip && \
-    rm pmd-bin-${PMD_VERSION}.zip && \
-    alias pmd="$HOME/pmd-bin-${PMD_VERSION}/bin/run.sh pmd"
-
-
 # ktlint installation
 RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
     chmod a+x ktlint && \
@@ -442,6 +433,9 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 
 # gitleaks installation
 RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+
+# trivy installation
+RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
 
 # clippy installation
 RUN rustup component add clippy

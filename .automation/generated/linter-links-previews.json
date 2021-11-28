@@ -429,6 +429,11 @@
     "image": "https://avatars1.githubusercontent.com/u/54197850?s=400&v=4",
     "title": "terraform-linters/tflint"
   },
+  "trivy": {
+    "description": "None",
+    "image": null,
+    "title": "Redirecting"
+  },
   "tsqllint": {
     "description": "Configurable linting for TSQL. Contribute to tsqllint/tsqllint development by creating an account on GitHub.",
     "image": "https://opengraph.githubassets.com/07bcefab8d31eb93bc746724c678639f64a396bb33c2f36f56b4c47d73906d60/tsqllint/tsqllint",
