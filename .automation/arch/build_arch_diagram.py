@@ -13,7 +13,7 @@ import requests
 
 class BuildArchDiagram:
     GATEWAY_SERVER = "https://kroki.io"
-    DIAGRAM_TEMPLATE = "docs/assets/archi.blockdiag.txt"
+    DIAGRAM_TEMPLATE = ".automation/arch/blockdiag.tpl"
 
     def __init__(
         self,
