@@ -45,7 +45,7 @@ jobs:
     # Only run this on the main repo
     if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     environment: 
-      name: beta
+      name: v6-alpha
     ##################
     # Load all steps #
     ##################
