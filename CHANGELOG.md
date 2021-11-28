@@ -10,6 +10,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
+- Deprecate `DEFAULT_BRANCH` setting (#948)
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
 
 
 - Linter versions upgrades
@@ -36,6 +38,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.10.0 to **6.11.0** on 2021-11-26
   - [checkov](https://www.checkov.io/) from 2.0.603 to **2.0.605** on 2021-11-26
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.12 to **0.35.13** on 2021-11-26
+  - [htmlhint](https://htmlhint.com/) from 0.16.3 to **1.0.0** on 2021-11-27
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.32 to **0.9.33** on 2021-11-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.0 to **6.11.1** on 2021-11-27
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
