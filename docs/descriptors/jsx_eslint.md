@@ -3,7 +3,7 @@
 
 <div align="center">
   <a href="https://github.com/yannickcr/eslint-plugin-react#readme" target="blank" title="Visit linter Web Site">
-    <img src="https://i.imgur.com/CFdruO8.jpg" alt="eslint" height="150px" class="megalinter-banner">
+    <img src="https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png" alt="eslint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -12,7 +12,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.2.0**
+- Version in MegaLinter: **8.3.0**
 - Visit [Official Web Site](https://github.com/yannickcr/eslint-plugin-react#readme){target=_blank}
 - See [How to configure eslint rules](https://github.com/yannickcr/eslint-plugin-react#configuration){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}

@@ -4,10 +4,10 @@
 
 ## markdownlint documentation
 
-- Version in MegaLinter: **0.29.0**
+- Version in MegaLinter: **0.30.0**
 - Visit [Official Web Site](https://github.com/DavidAnson/markdownlint#readme){target=_blank}
 - See [How to configure markdownlint rules](https://github.com/igorshubovych/markdownlint-cli#configuration){target=_blank}
-  - If custom `.markdown-lint.json` config file is not found, [.markdown-lint.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdown-lint.json){target=_blank} will be used
+  - If custom `.markdownlint.json` config file is not found, [.markdownlint.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdownlint.json){target=_blank} will be used
 - See [How to disable markdownlint rules in files](https://github.com/DavidAnson/markdownlint#configuration){target=_blank}
 - See [Index of problems detected by markdownlint](https://github.com/DavidAnson/markdownlint#rules--aliases){target=_blank}
 
@@ -31,7 +31,7 @@
 | MARKDOWN_MARKDOWNLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | MARKDOWN_MARKDOWNLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | MARKDOWN_MARKDOWNLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| MARKDOWN_MARKDOWNLINT_CONFIG_FILE                 | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                             | `.markdown-lint.json`                           |
+| MARKDOWN_MARKDOWNLINT_CONFIG_FILE                 | markdownlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                             | `.markdownlint.json`                            |
 | MARKDOWN_MARKDOWNLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `true`                                          |
 | MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -88,11 +88,11 @@ markdownlint myfile.md
 ```
 
 ```shell
-markdownlint -c .markdown-lint.json myfile.md
+markdownlint -c .markdownlint.json myfile.md
 ```
 
 ```shell
-markdownlint --fix -c .markdown-lint.json myfile.md
+markdownlint --fix -c .markdownlint.json myfile.md
 ```
 
 
@@ -112,8 +112,11 @@ Options:
   -j, --json                                  write issues in json format
   -o, --output [outputFile]                   write issues to file (no console)
   -p, --ignore-path [file]                    path to file with ignore pattern(s)
-  -r, --rules  [file|directory|glob|package]  custom rule files (default: [])
+  -q, --quiet                                 do not write issues to STDOUT
+  -r, --rules  [file|directory|glob|package]  include custom rule files (default: [])
   -s, --stdin                                 read from STDIN (does not work with files)
+  --enable [rules...]                         Enable certain rules, e.g. --enable MD013 MD041
+  --disable [rules...]                        Disable certain rules, e.g. --disable MD013 MD041
   -h, --help                                  display help for command
 ```
 

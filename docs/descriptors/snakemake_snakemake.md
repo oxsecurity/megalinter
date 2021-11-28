@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **6.10.0**
+- Version in MegaLinter: **6.11.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -315,7 +315,11 @@ EXECUTION:
                         (see the docs). Values specified in JSON or YAML
                         format are available in the global config dictionary
                         inside the workflow. Multiple files overwrite each
-                        other in the given order. (default: None)
+                        other in the given order. Thereby missing keys in
+                        previous config files are extended by following
+                        configfiles. Note that this order also includes a
+                        config file defined in the workflow definition itself
+                        (which will come first). (default: None)
   --envvars VARNAME [VARNAME ...]
                         Environment variables to pass to cloud jobs. (default:
                         None)

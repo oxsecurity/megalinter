@@ -13,7 +13,7 @@ linters:
       You can create it by typing `npx eslint --init` in the root of your repository
     linter_url: https://github.com/yannickcr/eslint-plugin-react
     linter_rules_url: https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
-    linter_banner_image_url: https://i.imgur.com/CFdruO8.jpg
+    linter_banner_image_url: https://d33wubrfki0l68.cloudfront.net/3b5ac7586466159bb6f237b633bfc4f5a8d5acf8/ee0a1/assets/img/posts/eslint-collective.png
     linter_rules_configuration_url: https://github.com/yannickcr/eslint-plugin-react#configuration
     linter_rules_inline_disable_url: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
     linter_megalinter_ref_url: https://eslint.org/docs/user-guide/integrations#source-control

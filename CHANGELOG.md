@@ -8,7 +8,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Fix jscpd typo about `.venv` (#986)
+- markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
+- Deprecate `DEFAULT_BRANCH` setting (#948)
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+
+
+- Linter versions upgrades
+  - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
+  - [php](https://www.php.net) from 7.4.25 to **7.4.26** on 2021-11-19
+  - [checkov](https://www.checkov.io/) from 2.0.587 to **2.0.588** on 2021-11-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.29.0 to **0.30.0** on 2021-11-21
+  - [checkov](https://www.checkov.io/) from 2.0.588 to **2.0.591** on 2021-11-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.10 to **0.35.12** on 2021-11-21
+  - [eslint](https://eslint.org) from 8.2.0 to **8.3.0** on 2021-11-21
+  - [checkov](https://www.checkov.io/) from 2.0.591 to **2.0.595** on 2021-11-21
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.1 to **0.56.2** on 2021-11-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.1 to **0.8.2** on 2021-11-22
+  - [checkov](https://www.checkov.io/) from 2.0.595 to **2.0.597** on 2021-11-22
+  - [htmlhint](https://htmlhint.com/) from 0.16.1 to **0.16.2** on 2021-11-24
+  - [checkov](https://www.checkov.io/) from 2.0.597 to **2.0.600** on 2021-11-24
+  - [htmlhint](https://htmlhint.com/) from 0.16.2 to **0.16.3** on 2021-11-25
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 0.0.0 to **3.9.0** on 2021-11-25
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.0 to **5.13.1** on 2021-11-25
+  - [checkov](https://www.checkov.io/) from 2.0.600 to **2.0.603** on 2021-11-25
+  - [kics](https://www.kics.io) from 1.4.7 to **1.4.8** on 2021-11-25
+  - [prettier](https://prettier.io/) from 2.4.1 to **2.5.0** on 2021-11-26
+  - [pylint](https://www.pylint.org) from 2.11.1 to **2.12.1** on 2021-11-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.10.0 to **6.11.0** on 2021-11-26
+  - [checkov](https://www.checkov.io/) from 2.0.603 to **2.0.605** on 2021-11-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.12 to **0.35.13** on 2021-11-26
+  - [htmlhint](https://htmlhint.com/) from 0.16.3 to **1.0.0** on 2021-11-27
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.32 to **0.9.33** on 2021-11-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.0 to **6.11.1** on 2021-11-27
+<!-- linter-versions-end -->
+
+## [v5.2.0] - 2021-11-18
+
 - Fix release doc CI
+- Add <utteranc.es> comments in online documentation
+- Add link to MegaLinter documentation in console logs
 
 - Linter versions upgrades
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.7 to **1.6.8** on 2021-11-15
@@ -19,7 +58,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 21.10 to **21.11** on 2021-11-17
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.6 to **5.13.0** on 2021-11-17
   - [checkov](https://www.checkov.io/) from 2.0.580 to **2.0.582** on 2021-11-17
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.0.582 to **2.0.583** on 2021-11-18
+  - [phpstan](https://phpstan.org/) from 1.1.2 to **1.2.0** on 2021-11-18
+  - [checkov](https://www.checkov.io/) from 2.0.583 to **2.0.587** on 2021-11-18
 
 ## [v5.1.0] - 2021-11-15
 
@@ -37,6 +78,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Upgrade checkov install instructions to use alpine-oriented ones
 - Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
 - Fix typo error in `.jscpd.json` config file (#986)
+- Deprecate `DEFAULT_BRANCH`, and change its default from `master` to `HEAD` (#915)
 
 - Linter versions upgrades
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
@@ -77,7 +119,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [v5.0.7] - 2021-11-04
 
-- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)  
+- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.4 to **0.55.0** on 2021-11-03
