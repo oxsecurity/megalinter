@@ -472,7 +472,7 @@ def test_linter_report_tap(linter, test_self):
 def test_linter_report_sarif(linter, test_self):
     if linter.disabled is True or "all" in getattr(
         linter, "descriptor_flavors_exclude", []
-    ):
+    ) or linter.can_output_sarif is False:
         raise unittest.SkipTest("SARIF is not configured for this linter")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
