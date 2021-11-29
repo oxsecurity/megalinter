@@ -194,6 +194,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
                 babel-eslint \
+                @babel/eslint-parser \
                 standard@15.0.1 \
                 prettier \
                 jsonlint \
@@ -408,7 +409,7 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 
 
 # phplint installation
-RUN composer global require overtrue/phplint 3.0.0 \
+RUN composer global require overtrue/phplint ^3.0 \
     && composer global config bin-dir --absolute
 
 ENV PATH="/root/.composer/vendor/bin:$PATH"
