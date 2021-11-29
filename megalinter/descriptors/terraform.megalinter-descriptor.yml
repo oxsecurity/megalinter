@@ -136,7 +136,8 @@ linters:
     linter_megalinter_ref_url: "no"
     cli_config_arg_name: "--config-file"
     cli_sarif_args: ["--output", "sarif"]
-    cli_lint_extra_args:
+    sarif_default_output_file: ./results.sarif
+    cli_lint_extra_args_after:
       - "--file"
     examples:
       - "checkov --file myfile.tf"

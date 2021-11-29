@@ -93,6 +93,7 @@ class Linter:
         )  # Extra arguments to send to cli when a config file is used
         self.cli_sarif_args = []
         self.sarif_output_file = None
+        self.sarif_default_output_file = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli everytime
         self.cli_lint_fix_arg_name = None  # Name of the cli argument to send in case of APPLY_FIXES required by user
@@ -626,6 +627,10 @@ class Linter:
         command = self.build_lint_command(file)
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         return_code, return_output = self.execute_lint_command(command)
+        # Move SARIF file if necessary
+        if self.sarif_output_file is not None and self.sarif_default_output_file is not None and os.path.isfile(self.sarif_default_output_file):
+            shutil.move(self.sarif_default_output_file,self.sarif_output_file)
+            logging.debug(f"Moved {self.sarif_default_output_file} to {self.sarif_output_file}")
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
@@ -829,17 +834,16 @@ class Linter:
             cmd += self.cli_config_extra_args
         # Manage SARIF arguments
         if self.can_output_sarif is True and self.output_sarif is True:
-
+            self.sarif_output_file = (
+                self.report_folder
+                + os.sep
+                + "sarif"
+                + os.sep
+                + self.name
+                + ".sarif"
+            )
             def replace_vars(txt):
                 if "{{SARIF_OUTPUT_FILE}}" in txt:
-                    self.sarif_output_file = (
-                        self.report_folder
-                        + os.sep
-                        + "sarif"
-                        + os.sep
-                        + self.name
-                        + ".sarif"
-                    )
                     txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
                     os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
                 return txt
