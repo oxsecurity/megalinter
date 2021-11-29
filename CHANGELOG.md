@@ -12,6 +12,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
 - Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Docker run -- clean-up containers when exits (#1033)
+
+- Linters
+  - New linter `phplint` to speed-up linting of php files (#1031)
 
 
 - Linter versions upgrades

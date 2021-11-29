@@ -150,3 +150,19 @@ linters:
       vscode:
         - name: Psalm VsCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
+  # PHPLint
+  - linter_name: phplint
+    linter_url: https://github.com/overtrue/phplint
+    config_file_name: .phplint.yml
+    cli_lint_mode: list_of_files
+    examples:
+      - "phplint myfile.php"
+      - "phplint mydir"
+      - "phplint mydir myfile.php"
+      - "phplint mydir -vvv"
+    install:
+      dockerfile:
+        - |
+          RUN composer global require overtrue/phplint 3.0.0 \
+              && composer global config bin-dir --absolute
+        - ENV PATH="/root/.composer/vendor/bin:$PATH"
