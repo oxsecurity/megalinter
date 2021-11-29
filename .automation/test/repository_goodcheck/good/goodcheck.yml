@@ -14,3 +14,4 @@ rules:
 exclude:
   - node_modules
   - vendor
+  - "**/goodcheck.yml"
