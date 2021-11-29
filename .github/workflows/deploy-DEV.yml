@@ -127,7 +127,7 @@ jobs:
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: Docker
         shell: bash
-        run: .automation/upload-docker.sh || true
+        run: .automation/upload-docker.sh
 
       #####################################
       # Run Linter test cases #
