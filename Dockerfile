@@ -433,7 +433,7 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
 # gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6
 
 # trivy installation
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1

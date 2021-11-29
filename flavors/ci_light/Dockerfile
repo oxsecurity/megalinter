@@ -139,7 +139,7 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6
 
 # trivy installation
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1

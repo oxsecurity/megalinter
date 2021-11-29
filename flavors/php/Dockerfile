@@ -243,7 +243,7 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v7
+RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6
 
 # trivy installation
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1

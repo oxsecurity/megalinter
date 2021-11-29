@@ -73,7 +73,7 @@ linters:
       - "gitleaks --config-path gitleaks.toml"
     install:
       dockerfile:
-        - RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6
+        - "RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6"
 
   # GOODCHECK
   - linter_name: goodcheck
