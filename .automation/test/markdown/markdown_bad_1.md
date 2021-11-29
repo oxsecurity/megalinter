@@ -15,8 +15,8 @@ ls -la
 ```
 
 | this   | is a wrong | table              |
-|--------|------------|--------------------|
-| hahaha | naaaaaaah  | wrong formatting ! |
+|--------|------------           |--------------------|
+| hahaha |                 naaaaaaah  | wrong formatting !            |
 | hahaha | naaaaaaah  | wrong formatting ! |
 
 # Walk away
