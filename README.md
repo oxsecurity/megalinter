@@ -385,7 +385,7 @@ jobs:
         with:
           name: MegaLinter reports
           path: |
-            report
+            megalinter-reports
             mega-linter.log
 
       # Create pull request if applicable (for now works only on PR from same repository, not from forks)

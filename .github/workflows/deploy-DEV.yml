@@ -165,7 +165,7 @@ jobs:
         with:
           name: MegaLinter reports
           path: |
-            report
+            megalinter-reports
             mega-linter.log
             linter-helps.json
             linter-versions.json

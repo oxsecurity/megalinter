@@ -38,7 +38,7 @@ linters:
       - "--reporters"
       - "console,html"
       - "--output"
-      - "./report/copy-paste/"
+      - ./{{REPORT_FOLDER}}/copy-paste/
     #      - "--exitCode" # uncomment when jscpd > 3.4.0
     #      - "1"
     cli_lint_extra_args_after:
