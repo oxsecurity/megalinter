@@ -65,7 +65,6 @@ RUN git config --global core.autocrlf true
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                ansible \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -86,6 +85,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade \
+          'ansible' \
           'ansible-lint[yamllint]' \
           'pylint' \
           'black' \

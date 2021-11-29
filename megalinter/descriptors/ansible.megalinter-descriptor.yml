@@ -28,7 +28,6 @@ linters:
       - "ansible-lint -v myfile.yml"
       - "ansible-lint -v -c .ansible-lint.yml myfile.yml"
     install:
-      apk:
-        - ansible
       pip:
+        - ansible
         - ansible-lint[yamllint]
