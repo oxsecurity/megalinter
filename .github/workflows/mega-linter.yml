@@ -36,7 +36,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.github.io/flavors/
-        uses: megalinter/megalinter/flavors/python@v6-alpha
+        uses: megalinter/megalinter/flavors/python@beta
         env:
           # All available variables are described in documentation
           # https://megalinter.github.io/configuration/#shared-variables
