@@ -163,6 +163,6 @@ linters:
     install:
       dockerfile:
         - |
-          RUN composer global require overtrue/phplint 3.0.0 \
+          RUN composer global require overtrue/phplint ^3.0 \
               && composer global config bin-dir --absolute
         - ENV PATH="/root/.composer/vendor/bin:$PATH"

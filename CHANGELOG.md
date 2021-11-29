@@ -16,6 +16,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linters
   - New linter `phplint` to speed-up linting of php files (#1031)
+    - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
 
 
 - Linter versions upgrades
