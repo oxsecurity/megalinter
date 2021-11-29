@@ -9,7 +9,7 @@ To improve run performances, we generate **Flavored MegaLinter images** containi
 - When using default MegaLinter, if a MegaLinter Flavor would cover all your project requirements, a message is added in the logs
 - If your project uses a MegaLinter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
 
-_The following table does not display docker pulls from [MegaLinter v4 images](https://hub.docker.com/r/nvuillam/mega-linter)_
+_The following table does not display docker pulls from [MegaLinter v4 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
