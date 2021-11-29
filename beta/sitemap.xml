@@ -531,6 +531,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.github.io/beta/descriptors/php_phplint/</loc>
+         <lastmod>2021-11-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.github.io/beta/descriptors/php_phpstan/</loc>
          <lastmod>2021-11-29</lastmod>
          <changefreq>daily</changefreq>
