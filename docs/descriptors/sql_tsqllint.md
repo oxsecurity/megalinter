@@ -81,12 +81,6 @@ tsqllint [options] [file.sql] | [dir] | [file.sql | dir]
   -c, --config          Used to specify a .tsqllintrc file path other than the
                         default
   -f, --force           Used to force generation of default config file when
-                        one already exists
-  -i, --init            Generate default .tsqllintrc config file
-  -p, --print-config    Print path to config file
-  -l, --list-plugins    List the loaded plugins
-  -v, --version         Display tsqllint version
-  -h, --help            Display this help dialog
 
 ```
 
