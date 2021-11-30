@@ -104,6 +104,8 @@ RUN npm install --no-cache --ignore-scripts \
                 jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
+                v8r@0.6.1 \
+                prettier
                 v8r \
                 prettier \
                 secretlint@4.1.0 \
