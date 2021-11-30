@@ -1,0 +1,28 @@
+descriptor_id: FISH
+descriptor_type: language
+descriptor_flavors:
+  - all_flavors
+file_extensions:
+  - ".fish"
+install:
+  apk:
+    - fish
+linters:
+  # fish_indent
+  - linter_name: fish_indent
+    name: FISH_INDENT
+    is_formatter: true
+    linter_url: https://fishshell.com/docs/current/cmds/fish_indent.html
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--write"
+    cli_lint_fix_remove_args:
+      - "--check"
+    test_folder: fish_indent
+    examples:
+      - "fish_indent --check myfile.fish"
+      - "fish_indent --write myfile.fish" # Fix
+    ide:
+      vscode:
+        - name: vscode-fish
+          url: https://marketplace.visualstudio.com/items?itemName=bmalehorn.vscode-fish
