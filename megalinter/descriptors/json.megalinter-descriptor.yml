@@ -127,7 +127,7 @@ linters:
       - "v8r --ignore-errors myfile.json"
     install:
       npm:
-        - v8r
+        - v8r@0.6.1
     ide:
       eclipse:
         - name: native support
