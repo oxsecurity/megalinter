@@ -554,18 +554,17 @@ class Linter:
         return self
 
     def replace_vars(self, variables):
-        # Function for lambda
-        def replace_var(txt):
+        variables_with_replacements = []
+        for txt in variables:
             if "{{SARIF_OUTPUT_FILE}}" in txt:
                 txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
                 os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
                 os.makedirs(os.path.dirname(self.report_folder), exist_ok=True)
-            return txt
+            variables_with_replacements += [txt]
 
-        variables = map(lambda x: replace_var(x), variables)
-        return variables
+        return variables_with_replacements
 
     def update_files_lint_results(
         self, linted_files, return_code, file_status, stdout, file_errors_number
