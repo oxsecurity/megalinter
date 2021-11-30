@@ -107,6 +107,8 @@ linters:
       - fs
       - --security-checks
       - vuln,config
+      - --exit-code
+      - "1"
     cli_lint_extra_args_after:
       - '.'
     test_folder: trivy
