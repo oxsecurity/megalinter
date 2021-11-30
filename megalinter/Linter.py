@@ -32,6 +32,7 @@ from time import perf_counter
 
 from megalinter import config, pre_post_factory, utils
 
+
 class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
     DEFAULT_WORKSPACE_DIR = "/tmp/lint"
@@ -137,7 +138,9 @@ class Linter:
             }
 
         self.is_active = params["default_linter_activation"]
-        self.output_sarif = params["output_sarif"] if "output_sarif" in params else self.output_sarif
+        self.output_sarif = (
+            params["output_sarif"] if "output_sarif" in params else self.output_sarif
+        )
         self.disable_errors_if_less_than = None
         self.disable_errors = (
             True
@@ -550,16 +553,19 @@ class Linter:
 
         return self
 
+    def replace_vars(self, variables):
+        # Function for lambda
+        def replace_var(txt):
+            if "{{SARIF_OUTPUT_FILE}}" in txt:
+                txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
+                os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
+            elif "{{REPORT_FOLDER}}" in txt:
+                txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
+                os.makedirs(os.path.dirname(self.report_folder), exist_ok=True)
+            return txt
 
-    def replace_vars(self,txt):
-        if "{{SARIF_OUTPUT_FILE}}" in txt:
-            txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
-            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
-        elif "{{REPORT_FOLDER}}" in txt:
-            txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
-            os.makedirs(os.path.dirname(self.report_folder), exist_ok=True)
-        return txt
-
+        variables = map(lambda x: replace_var(x), variables)
+        return variables
 
     def update_files_lint_results(
         self, linted_files, return_code, file_status, stdout, file_errors_number
@@ -638,9 +644,15 @@ class Linter:
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         return_code, return_output = self.execute_lint_command(command)
         # Move SARIF file if necessary
-        if self.sarif_output_file is not None and self.sarif_default_output_file is not None and os.path.isfile(self.sarif_default_output_file):
-            shutil.move(self.sarif_default_output_file,self.sarif_output_file)
-            logging.debug(f"Moved {self.sarif_default_output_file} to {self.sarif_output_file}")
+        if (
+            self.sarif_output_file is not None
+            and self.sarif_default_output_file is not None
+            and os.path.isfile(self.sarif_default_output_file)
+        ):
+            shutil.move(self.sarif_default_output_file, self.sarif_output_file)
+            logging.debug(
+                f"Moved {self.sarif_default_output_file} to {self.sarif_output_file}"
+            )
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
@@ -819,7 +831,7 @@ class Linter:
     def build_lint_command(self, file=None):
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
-        self.cli_lint_extra_args = map(lambda x: self.replace_vars(x), self.cli_lint_extra_args)
+        self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
         cmd += self.cli_lint_extra_args
         # Add fix argument if defined
         if self.apply_fixes is True and (
@@ -830,7 +842,7 @@ class Linter:
             cmd += [self.cli_lint_fix_arg_name]
             self.try_fix = True
         # Add user-defined extra arguments if defined
-        self.cli_lint_user_args = map(lambda x: self.replace_vars(x), self.cli_lint_user_args)
+        self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
         if self.config_file is not None:
@@ -847,18 +859,15 @@ class Linter:
         # Manage SARIF arguments
         if self.can_output_sarif is True and self.output_sarif is True:
             self.sarif_output_file = (
-                self.report_folder
-                + os.sep
-                + "sarif"
-                + os.sep
-                + self.name
-                + ".sarif"
+                self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
             )
-            self.cli_sarif_args = map(lambda x: self.replace_vars(x), self.cli_sarif_args)
+            self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
             cmd += self.cli_sarif_args
 
         # Add other lint cli arguments after other arguments if defined
-        self.cli_lint_extra_args_after = map(lambda x: self.replace_vars(x), self.cli_lint_extra_args_after)
+        self.cli_lint_extra_args_after = self.replace_vars(
+            self.cli_lint_extra_args_after
+        )
         cmd += self.cli_lint_extra_args_after
         # Some linters/formatters update files by default.
         # To avoid that, declare -megalinter-fix-flag as cli_lint_fix_arg_name
