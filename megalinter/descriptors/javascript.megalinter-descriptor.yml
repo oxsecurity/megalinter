@@ -58,6 +58,7 @@ linters:
         - eslint-plugin-promise
         - eslint-plugin-vue
         - babel-eslint
+        - "@babel/core"
         - "@babel/eslint-parser"
     ide:
       atom:
