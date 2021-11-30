@@ -64,7 +64,7 @@ RUN apk add --update --no-cache \
     openjdk8 \
     openssh \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -83,8 +83,6 @@ RUN apk add --update --no-cache \
                 zlib-dev \
                 go \
                 openjdk8 \
-                npm \
-                nodejs-current \
                 perl \
                 perl-dev \
                 php7 \

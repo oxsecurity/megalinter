@@ -7061,7 +7061,7 @@
         ""
     ],
     "v8r": [
-        "v8r <filename>",
+        "index.js <filename>",
         "",
         "Validate a local json/yaml file against a schema",
         "",

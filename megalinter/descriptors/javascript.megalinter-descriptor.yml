@@ -4,10 +4,6 @@ descriptor_flavors:
   - javascript
 file_extensions:
   - ".js"
-install:
-  apk:
-    - npm
-    - nodejs-current
 linters:
   # ESLINT
   - linter_name: eslint
