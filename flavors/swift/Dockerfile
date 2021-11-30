@@ -65,7 +65,6 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 docker \
                 openrc \
-                fish \
                 ansible \
                 ansible-lint \
                 libc-dev \

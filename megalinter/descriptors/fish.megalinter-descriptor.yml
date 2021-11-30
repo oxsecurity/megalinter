@@ -1,7 +1,5 @@
 descriptor_id: FISH
 descriptor_type: language
-descriptor_flavors:
-  - all_flavors
 file_extensions:
   - ".fish"
 install:
