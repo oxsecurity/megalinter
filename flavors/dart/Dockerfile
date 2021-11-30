@@ -64,6 +64,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                fish \
                 ansible \
                 ansible-lint \
                 libc-dev \

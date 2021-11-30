@@ -63,6 +63,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                fish \
                 php7 \
                 php7-phar \
                 php7-json \

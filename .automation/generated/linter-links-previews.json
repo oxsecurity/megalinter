@@ -109,6 +109,11 @@
     "image": null,
     "title": "Introduction | eslint-plugin-jsonc"
   },
+  "fish_indent": {
+    "description": "fish_indent is used to indent a piece of fish code. fish_indent reads commands from standard input or the given filenames and outputs them to standard output or a specified file (if -w is given).",
+    "image": null,
+    "title": "fish_indent - indenter and prettifier \u2014 fish-shell 3.3.1 documentation"
+  },
   "flake8": {
     "description": "To install Flake8, open an interactive shell and run:",
     "image": null,

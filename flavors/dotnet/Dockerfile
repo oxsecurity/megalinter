@@ -71,6 +71,7 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
+                fish \
                 ansible \
                 ansible-lint \
                 libc-dev \

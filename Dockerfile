@@ -81,6 +81,7 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
+                fish \
                 go \
                 openjdk8 \
                 npm \

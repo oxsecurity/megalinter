@@ -22,6 +22,7 @@
     },
     "dart": {
         "descriptors": [
+            "FISH",
             "GIT"
         ],
         "label": "Optimized for DART based projects",
@@ -40,6 +41,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -71,6 +73,7 @@
     },
     "documentation": {
         "descriptors": [
+            "FISH",
             "GIT"
         ],
         "label": "MegaLinter for documentation projects",
@@ -88,6 +91,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -120,6 +124,7 @@
     "dotnet": {
         "descriptors": [
             "CSHARP",
+            "FISH",
             "GIT",
             "POWERSHELL"
         ],
@@ -142,6 +147,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -176,6 +182,7 @@
     },
     "go": {
         "descriptors": [
+            "FISH",
             "GIT",
             "GO"
         ],
@@ -194,6 +201,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GO_GOLANGCI_LINT",
             "GO_REVIVE",
@@ -227,6 +235,7 @@
     },
     "java": {
         "descriptors": [
+            "FISH",
             "GIT",
             "JAVA"
         ],
@@ -246,6 +255,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -278,6 +288,7 @@
     },
     "javascript": {
         "descriptors": [
+            "FISH",
             "GIT",
             "JAVASCRIPT",
             "TYPESCRIPT"
@@ -298,6 +309,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -337,6 +349,7 @@
     },
     "php": {
         "descriptors": [
+            "FISH",
             "GIT",
             "PHP"
         ],
@@ -355,6 +368,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -391,6 +405,7 @@
     },
     "python": {
         "descriptors": [
+            "FISH",
             "GIT"
         ],
         "label": "Optimized for PYTHON based projects",
@@ -408,6 +423,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -448,6 +464,7 @@
     },
     "ruby": {
         "descriptors": [
+            "FISH",
             "GIT",
             "RUBY"
         ],
@@ -466,6 +483,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -498,6 +516,7 @@
     },
     "rust": {
         "descriptors": [
+            "FISH",
             "GIT",
             "RUST"
         ],
@@ -516,6 +535,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -548,6 +568,7 @@
     },
     "salesforce": {
         "descriptors": [
+            "FISH",
             "GIT",
             "SALESFORCE"
         ],
@@ -566,6 +587,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -600,6 +622,7 @@
     },
     "scala": {
         "descriptors": [
+            "FISH",
             "GIT",
             "SCALA"
         ],
@@ -618,6 +641,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -650,6 +674,7 @@
     },
     "swift": {
         "descriptors": [
+            "FISH",
             "GIT"
         ],
         "label": "Optimized for SWIFT based projects",
@@ -667,6 +692,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -699,6 +725,7 @@
     },
     "terraform": {
         "descriptors": [
+            "FISH",
             "GIT"
         ],
         "label": "Optimized for TERRAFORM based projects",
@@ -716,6 +743,7 @@
             "DOCKERFILE_HADOLINT",
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
+            "FISH_INDENT",
             "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",

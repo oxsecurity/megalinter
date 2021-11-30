@@ -63,6 +63,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                fish \
                 openjdk8 \
                 ansible \
                 ansible-lint \
