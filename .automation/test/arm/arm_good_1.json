@@ -30,7 +30,7 @@
         {
             "name": "[variables('Network.Name')]",
             "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-12-01",
+            "apiVersion": "2021-05-01",
             "location": "[variables('Network.Location')]",
             "tags": "[variables('Network.Tags')]",
             "properties": {
