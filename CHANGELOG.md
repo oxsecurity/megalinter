@@ -54,6 +54,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.7.0** on 2021-11-30
   - [v8r](https://github.com/chris48s/v8r) from 0.7.0 to **0.6.1** on 2021-12-01
   - [checkov](https://www.checkov.io/) from 2.0.614 to **2.0.616** on 2021-12-01
+  - [checkov](https://www.checkov.io/) from 2.0.616 to **2.0.618** on 2021-12-01
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
