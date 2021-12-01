@@ -16,6 +16,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 - Version in MegaLinter: **1.7.1**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
+  - If custom `.bandit.yml` config file is not found, [.bandit.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
 - See [How to disable bandit rules in files](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines){target=_blank}
 - See [Index of problems detected by bandit](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing){target=_blank}
 
