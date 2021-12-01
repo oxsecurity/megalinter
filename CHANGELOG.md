@@ -48,6 +48,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.0 to **6.11.1** on 2021-11-27
   - [checkstyle](https://checkstyle.sourceforge.io) from 9.1 to **9.2** on 2021-11-29
   - [checkov](https://www.checkov.io/) from 2.0.605 to **2.0.606** on 2021-11-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.1 to **6.12.1** on 2021-11-30
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.45.0 to **0.45.1** on 2021-11-30
+  - [checkov](https://www.checkov.io/) from 2.0.606 to **2.0.609** on 2021-11-30
+  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.7.0** on 2021-11-30
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18

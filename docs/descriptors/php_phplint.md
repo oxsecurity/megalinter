@@ -4,6 +4,7 @@
 
 ## phplint documentation
 
+- Version in MegaLinter: **3.0**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
   - If custom `.phplint.yml` config file is not found, [.phplint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
 
@@ -68,6 +69,38 @@ phplint mydir myfile.php
 phplint mydir -vvv
 ```
 
+
+### Help content
+
+```shell
+Description:
+  Lint something
+
+Usage:
+  phplint [options] [--] [<path>...]
+
+Arguments:
+  path                               Path to file or directory to lint.
+
+Options:
+      --exclude=EXCLUDE              Path to file or directory to exclude from linting (multiple values allowed)
+      --extensions=EXTENSIONS        Check only files with selected extensions (default: php)
+  -j, --jobs=JOBS                    Number of parraled jobs to run (default: 5)
+  -c, --configuration=CONFIGURATION  Read configuration from config file (default: ./.phplint.yml).
+      --no-configuration             Ignore default configuration file (default: ./.phplint.yml).
+      --no-cache                     Ignore cached data.
+      --cache=CACHE                  Path to the cache file.
+      --no-progress                  Hide the progress output.
+      --json[=JSON]                  Path to store JSON results.
+      --xml[=XML]                    Path to store JUnit XML results.
+  -w, --warning                      Also show warnings.
+  -q, --quiet                        Do not output any message
+  -h, --help                         Display help for the given command. When no command is given display help for the list command
+  -V, --version                      Display this application version
+      --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction               Do not ask any interactive question
+  -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+```
 
 ### Installation on mega-linter Docker image
 

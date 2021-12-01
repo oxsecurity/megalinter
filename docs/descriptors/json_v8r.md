@@ -6,7 +6,7 @@ v8r checks the validity of JSON/YAML files if they have a matching schema define
 
 ## v8r documentation
 
-- Version in MegaLinter: **0.6.1**
+- Version in MegaLinter: **0.7.0**
 - Visit [Official Web Site](https://github.com/chris48s/v8r#readme){target=_blank}
 - See [Index of problems detected by v8r](https://www.schemastore.org/json/){target=_blank}
 
@@ -86,7 +86,7 @@ v8r --ignore-errors myfile.json
 ### Help content
 
 ```shell
-v8r <filename>
+index.js <filename>
 
 Validate a local json/yaml file against a schema
 
@@ -115,4 +115,4 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [v8r](https://www.npmjs.com/package/v8r)
+  - [v8r@0.6.1](https://www.npmjs.com/package/v8r)
