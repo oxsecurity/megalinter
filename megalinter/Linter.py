@@ -561,7 +561,7 @@ class Linter:
                 os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
-                os.makedirs(os.path.dirname(self.report_folder), exist_ok=True)
+                os.makedirs(self.report_folder, exist_ok=True)
             variables_with_replacements += [txt]
 
         return variables_with_replacements
