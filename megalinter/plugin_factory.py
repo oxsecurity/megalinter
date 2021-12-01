@@ -1,4 +1,4 @@
-# Class to manage Mega-Linter plugins
+# Class to manage MegaLinter plugins
 import logging
 import shutil
 import subprocess

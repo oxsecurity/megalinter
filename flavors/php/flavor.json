@@ -5,6 +5,7 @@
     ],
     "label": "Optimized for PHP based projects",
     "linters": [
+        "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
         "BASH_EXEC",
         "BASH_SHELLCHECK",
@@ -36,6 +37,7 @@
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",
+        "PHP_PHPLINT",
         "PROTOBUF_PROTOLINT",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",

@@ -35,7 +35,7 @@ class FileIoReporter(Reporter):
         ):
             logging.info(
                 "[File.io Reporter] No file sent, "
-                "as the Mega-Linter status is success and there are no updated source"
+                "as the MegaLinter status is success and there are no updated source"
             )
             return
 

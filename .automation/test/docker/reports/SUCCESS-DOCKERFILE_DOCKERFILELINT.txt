@@ -1,5 +1,5 @@
 Results of dockerfilelint linter (version 1.8.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/dockerfile_dockerfilelint/
+See documentation on https://megalinter.github.io/descriptors/dockerfile_dockerfilelint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/docker/good/Dockerfile

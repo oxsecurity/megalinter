@@ -7,6 +7,7 @@ import os
 import unittest
 
 import megalinter
+from megalinter.constants import ML_REPO
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -113,7 +114,10 @@ class mega_linter_1_test(unittest.TestCase):
             ),
         )
         mega_linter, output = utilstest.call_mega_linter(
-            {"ENABLE_LINTERS": "PYTHON_PYLINT", "VALIDATE_ALL_CODEBASE": "false"}
+            {
+                "ENABLE_LINTERS": "PYTHON_PYLINT",
+                "VALIDATE_ALL_CODEBASE": "false",
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"
@@ -138,8 +142,8 @@ class mega_linter_1_test(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "LINTER_RULES_PATH": "https://raw.githubusercontent.com/nvuillam/"
-                "mega-linter/master/.automation/test/sample_project",
+                "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/main"
+                "/.automation/test/sample_project",
             }
         )
         self.assertTrue(
@@ -148,8 +152,8 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("### Processed [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
-            "- Rules config: [https://raw.githubusercontent.com/nvuillam/"
-            "mega-linter/master/.automation/test/sample_project/.eslintrc.json]",
+            f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
+            ".automation/test/sample_project/.eslintrc.json]",
             output,
         )
 
@@ -157,8 +161,8 @@ class mega_linter_1_test(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "LINTER_RULES_PATH": "https://raw.githubusercontent.com/nvuillam/"
-                "mega-linter/master/.automation/test/sample_project",
+                "LINTER_RULES_PATH": f"https://raw.githubusercontent.com/{ML_REPO}/main/"
+                ".automation/test/sample_project",
                 "JAVASCRIPT_ES_CONFIG_FILE": ".eslintrc-custom.yml",
             }
         )
@@ -168,8 +172,8 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("### Processed [JAVASCRIPT] files", output)
         self.assertIn("Using [eslint", output)
         self.assertIn(
-            "- Rules config: [https://raw.githubusercontent.com/nvuillam/"
-            "mega-linter/master/.automation/test/sample_project/.eslintrc-custom.yml]",
+            f"- Rules config: [https://raw.githubusercontent.com/{ML_REPO}/main/"
+            ".automation/test/sample_project/.eslintrc-custom.yml]",
             output,
         )
         self.assertIn(".eslintrc-custom.yml", output)
@@ -178,7 +182,7 @@ class mega_linter_1_test(unittest.TestCase):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
-                "LINTER_RULES_PATH": "https://raw.githubusercontent.com/nvuillam/notexisting",
+                "LINTER_RULES_PATH": "https://raw.githubusercontent.com/notexisting/wesh",
             }
         )
         self.assertTrue(
@@ -186,7 +190,7 @@ class mega_linter_1_test(unittest.TestCase):
         )
         self.assertIn("### Processed [JAVASCRIPT] files", output)
         self.assertIn(
-            "Unable to fetch https://raw.githubusercontent.com/nvuillam/notexisting",
+            "Unable to fetch https://raw.githubusercontent.com/notexisting/wesh",
             output,
         )
 
@@ -356,3 +360,12 @@ class mega_linter_1_test(unittest.TestCase):
             == 1,
             "PHP_BUILTIN should have been processed with cli_executable = /usr/bin/php8",
         )
+
+    def test_print_all_files_false(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {"ENABLE_LINTERS": "JAVASCRIPT_ES", "PRINT_ALL_FILES": "false"}
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("- Number of files analyzed", output)

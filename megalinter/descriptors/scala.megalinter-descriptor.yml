@@ -18,7 +18,7 @@ linters:
       Scalafix lints and fixes scala files
 
       - As there is no prior compilation or semantic db generation, the linting is applied only with [built-in syntactic rules](https://scalacenter.github.io/scalafix/docs/rules/overview.html)
-      - scalafix arguments related to [semantic options](https://nvuillam.github.io/mega-linter/descriptors/scala_scalafix/#help-content) can not be used
+      - scalafix arguments related to [semantic options](https://megalinter.github.io/descriptors/scala_scalafix/#help-content) can not be used
     linter_rules_url: https://scalacenter.github.io/scalafix/docs/rules/overview.html
     linter_rules_configuration_url: https://scalacenter.github.io/scalafix/docs/users/configuration.html
     linter_rules_inline_disable_url: https://scalacenter.github.io/scalafix/docs/users/suppression.html
@@ -28,7 +28,7 @@ linters:
     cli_config_arg_name: "--config"
     cli_lint_extra_args:
       - "--check"
-      # cli_lint_fix_arg_name: '--megalinter-fix-flag' # Mega-Linter workaround
+      # cli_lint_fix_arg_name: '--megalinter-fix-flag' # MegaLinter workaround
       # cli_lint_fix_remove_args:
       # - "--check"
     examples:

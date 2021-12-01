@@ -1,20 +1,21 @@
-# Configuration file for Mega-Linter
-# See all available variables at https://nvuillam.github.io/mega-linter/configuration/ and in linters documentation
+# Configuration file for MegaLinter
+# See all available variables at https://megalinter.github.io/configuration/ and in linters documentation
 
 APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment variable (in github/workflows/mega-linter.yml or other CI tool)
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 DISABLE:
   - CLOUDFORMATION
-  # - COPYPASTE # Uncomment to disable checks of abusive copy-pastes
+  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+  - CSS
   - EDITORCONFIG
   # - SPELL # Uncomment to disable checks of spelling mistakes
   - JAVASCRIPT
   - TEKTON
 DISABLE_LINTERS:
   - JSON_PRETTIER
-IGNORE_GITIGNORED_FILES: true
-FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
+PRINT_ALL_FILES: false
+FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES)'
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
@@ -29,11 +30,12 @@ SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
 FILEIO_REPORTER: true
 JSON_REPORTER: true
+GITHUB_STATUS_REPORTER: false
 PLUGINS:
-  - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
-  - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
+  - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"
 POST_COMMANDS:
-  - command: echo "This is Mega-Linter POST_COMMAND on own Mega-Linter ! :)"
+  - command: echo "This is MegaLinter POST_COMMAND on own MegaLinter ! :)"
     cwd: "workspace"

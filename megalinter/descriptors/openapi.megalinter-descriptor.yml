@@ -29,6 +29,7 @@ linters:
     examples:
       - "spectral lint myfile.yml"
       - "spectral lint -r .openapirc.yml myfile.yml"
+    downgraded_version: true
     install:
       npm:
         - "@stoplight/spectral@5.6.0"

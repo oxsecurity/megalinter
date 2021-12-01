@@ -34,9 +34,10 @@ linters:
     examples:
       - "hadolint Dockerfile"
       - "hadolint --config .hadolint.yml Dockerfile"
+    downgraded_version: true
     install:
       dockerfile:
-        - FROM hadolint/hadolint:latest-alpine as hadolint
+        - FROM hadolint/hadolint:v2.7.0-alpine as hadolint
         - COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
       atom:

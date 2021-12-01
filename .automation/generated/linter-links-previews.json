@@ -1,4 +1,9 @@
 {
+  "actionlint": {
+    "description": "None",
+    "image": "https://github.com/rhysd/ss/blob/master/actionlint/ogp.jpg?raw=true",
+    "title": "actionlint, a static checker for GitHub Actions workflow files"
+  },
   "ansible-lint": {
     "description": "Best practices checker for Ansible. Contribute to ansible/ansible-lint development by creating an account on GitHub.",
     "image": "https://avatars3.githubusercontent.com/u/1507452?s=400&v=4",
@@ -154,6 +159,11 @@
     "image": "https://avatars3.githubusercontent.com/u/3903?s=400&v=4",
     "title": "zaach/jsonlint"
   },
+  "kics": {
+    "description": "KICS is an open source solution for static code analysis of Infrastructure as Code.",
+    "image": "./wp-content/uploads/2021/07/kics-hat-logo-full-e1625478786624.png",
+    "title": "KICS - Keeping Infrastructure as Code Secure"
+  },
   "ktlint": {
     "description": "An anti-bikeshedding Kotlin linter with built-in formatter.",
     "image": null,
@@ -223,6 +233,11 @@
     "description": "PHP_CodeSniffer tokenizes PHP files and detects violations of a defined set of coding standards. - squizlabs/PHP_CodeSniffer",
     "image": "https://avatars2.githubusercontent.com/u/997547?s=400&v=4",
     "title": "squizlabs/PHP_CodeSniffer"
+  },
+  "phplint": {
+    "description": ":bug:  A tool that can speed up linting of php files by running several lint processes at once. - GitHub - overtrue/phplint: A tool that can speed up linting of php files by running several lint pr...",
+    "image": "https://opengraph.githubassets.com/d631c8888ed10dc0fd444873f2c959fbff09fabde3d9413887e24f02f51f366c/overtrue/phplint",
+    "title": "GitHub - overtrue/phplint: A tool that can speed up linting of php files by running several lint processes at once."
   },
   "phpstan": {
     "description": "PHP Static Analysis Tool - discover bugs in your code without running it! - phpstan/phpstan",

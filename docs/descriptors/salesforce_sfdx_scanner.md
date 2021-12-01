@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner documentation
 
-- Version in Mega-Linter: **2.8.0**
+- Version in MegaLinter: **2.8.0**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner rules](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html){target=_blank}
 - See [How to disable sfdx-scanner rules in files](https://pmd.github.io/latest/pmd_userdocs_suppressing_warnings.html){target=_blank}
@@ -22,10 +22,10 @@ See more details in [Help](#help-content)
 
 [![sfdx-scanner - GitHub](https://gh-card.dev/repos/forcedotcom/sfdx-scanner.svg?fullname=)](https://github.com/forcedotcom/sfdx-scanner){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable sfdx-scanner by adding `SALESFORCE_SFDX_SCANNER` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                            | Description                                                                                                                                                                                  | Default value      |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -40,23 +40,23 @@ See more details in [Help](#help-content)
 
 ## IDE Integration
 
-Use sfdx-scanner in your favorite IDE to catch errors before Mega-Linter !
+Use sfdx-scanner in your favorite IDE to catch errors before MegaLinter !
 
-| <!-- -->                                                                                                                                      | IDE                                                      | Extension Name                                                                                                  | Install                                                                                                                                                                              |
-|-----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin)                                                 | [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank}                                                                                                           |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [pmd-emacs](https://github.com/pmd/pmd-emacs/)                                                                  | [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank}                                                                                                                   |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>    | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin)                                             | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe>                                                         |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VsCode](https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
+| <!-- -->                                                                                                                                     | IDE                                                      | Extension Name                                                                                                  | Install                                                                                                                                                                             |
+|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/eclipse.ico" alt="" height="32px" class="megalinter-icon"></a> | [Eclipse](https://www.eclipse.org/)                      | [pmd-eclipse-plugin](https://github.com/pmd/pmd-eclipse-plugin)                                                 | [Visit Web Site](https://github.com/pmd/pmd-eclipse-plugin){target=_blank}                                                                                                          |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/emacs.ico" alt="" height="32px" class="megalinter-icon"></a>   | [Emacs](https://www.gnu.org/software/emacs/)             | [pmd-emacs](https://github.com/pmd/pmd-emacs/)                                                                  | [Visit Web Site](https://github.com/pmd/pmd-emacs/){target=_blank}                                                                                                                  |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/idea.ico" alt="" height="32px" class="megalinter-icon"></a>    | [IDEA](https://www.jetbrains.com/products.html#type=ide) | [PMD IntelliJ](https://plugins.jetbrains.com/plugin/1137-pmdplugin)                                             | <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/1137"></iframe>                                                        |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/)     | [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/salesforce.salesforcedx-vscode){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-| <!-- -->                                                                                                                                                  | Flavor                                                                   | Description                             | Embedded linters | Info                                                                                                                                                                                         |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|-----------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/)         | Default Mega-Linter Flavor              | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter)                       |
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://nvuillam.github.io/mega-linter/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter-salesforce) |
+| <!-- -->                                                                                                                                                 | Flavor                                                         | Description                             | Embedded linters | Info                                                                                                                                                                                           |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor               | 87               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter)                       |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>          | [salesforce](https://megalinter.github.io/flavors/salesforce/) | Optimized for Salesforce based projects | 41               | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -401,7 +401,7 @@ RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 ```shell
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [SUCCESS] /tmp/098844eb-9b85-4505-b6b6-8c6bcd96050f
@@ -413,7 +413,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesfor
 
 ```shell
 Results of sfdx-scanner linter (version 2.4.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/salesforce_sfdx_scanner/
+See documentation on https://megalinter.github.io/descriptors/salesforce_sfdx_scanner/
 -----------------------------------------------
 
 [ERROR] /tmp/a62282d7-5f53-42be-9816-03d1c2da8715

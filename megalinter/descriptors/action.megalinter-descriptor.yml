@@ -1,0 +1,26 @@
+descriptor_id: ACTION
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+files_sub_directory: .github/workflows
+file_extensions:
+  - ".yml"
+  - ".yaml"
+test_folder: action
+linters:
+  # ACTIONLINT
+  - linter_name: actionlint
+    linter_text: Static checker for GitHub Actions workflow files
+    linter_url: https://rhysd.github.io/actionlint/
+    linter_repo: https://github.com/rhysd/actionlint
+    linter_rules_configuration_url: https://github.com/rhysd/actionlint/blob/main/docs/config.md
+    config_file_name: actionlint.yml
+    cli_lint_mode: list_of_files
+    cli_config_arg_name: "-config-file"
+    cli_version_arg_name: "-version"
+    examples:
+      - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
+    install:
+      dockerfile:
+        - ENV GO111MODULE=on
+        - RUN go get github.com/rhysd/actionlint/cmd/actionlint

@@ -1,5 +1,5 @@
 Results of dotenv-linter linter (version 2.2.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/env_dotenv_linter/
+See documentation on https://megalinter.github.io/descriptors/env_dotenv_linter/
 -----------------------------------------------
 
 [ERROR] .automation/test/env/env_bad_1.env

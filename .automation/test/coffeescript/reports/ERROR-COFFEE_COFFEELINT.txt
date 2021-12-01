@@ -1,5 +1,5 @@
 Results of coffeelint linter (version 4.1.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/coffee_coffeelint/
+See documentation on https://megalinter.github.io/descriptors/coffee_coffeelint/
 -----------------------------------------------
 
 [ERROR] .automation/test/coffeescript/coffeescript_bad_1.coffee

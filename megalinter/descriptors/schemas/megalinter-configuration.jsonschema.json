@@ -15,7 +15,7 @@
           "type": "string"
         },
         "continue_if_failed": {
-          "Description": "If command fails, continue Mega-Linter process or not",
+          "Description": "If command fails, continue MegaLinter process or not",
           "default": true,
           "title": "Continue if failed",
           "type": "boolean"
@@ -39,6 +39,7 @@
     },
     "enum_descriptor_keys": {
       "enum": [
+        "ACTION",
         "ANSIBLE",
         "ARM",
         "BASH",
@@ -100,6 +101,7 @@
     },
     "enum_linter_keys": {
       "enum": [
+        "ACTION_ACTIONLINT",
         "ANSIBLE_ANSIBLE_LINT",
         "ARM_ARM_TTK",
         "BASH_EXEC",
@@ -150,6 +152,7 @@
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",
+        "PHP_PHPLINT",
         "POWERSHELL_POWERSHELL",
         "PROTOBUF_PROTOLINT",
         "PUPPET_PUPPET_LINT",
@@ -184,6 +187,7 @@
         "TERRAFORM_TERRAGRUNT",
         "TERRAFORM_TERRAFORM_FMT",
         "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS",
         "TSX_ESLINT",
         "TYPESCRIPT_ES",
         "TYPESCRIPT_STANDARD",
@@ -197,11 +201,147 @@
       "type": "string"
     }
   },
-  "description": "Mega-Linter configuration file",
+  "description": "MegaLinter configuration file",
   "properties": {
+    "ACTION_ACTIONLINT_ARGUMENTS": {
+      "$id": "#/properties/ACTION_ACTIONLINT_ARGUMENTS",
+      "description": "ACTION_ACTIONLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ACTIONLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "ACTION_ACTIONLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/ACTION_ACTIONLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "ACTION_ACTIONLINT: Override default cli lint mode",
+      "type": "string"
+    },
+    "ACTION_ACTIONLINT_CONFIG_FILE": {
+      "$id": "#/properties/ACTION_ACTIONLINT_CONFIG_FILE",
+      "default": "actionlint.yml",
+      "description": "ACTION_ACTIONLINT: User custom config file name if different from default",
+      "title": "ACTION_ACTIONLINT: Custom config file name",
+      "type": "string"
+    },
+    "ACTION_ACTIONLINT_DIRECTORY": {
+      "$id": "#/properties/ACTION_ACTIONLINT_DIRECTORY",
+      "default": ".github/workflows",
+      "title": "ACTION_ACTIONLINT: Directory containing ACTION files",
+      "type": "string"
+    },
+    "ACTION_ACTIONLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/ACTION_ACTIONLINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "ACTION_ACTIONLINT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "ACTION_ACTIONLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/ACTION_ACTIONLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "ACTION_ACTIONLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "ACTION_ACTIONLINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/ACTION_ACTIONLINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ACTIONLINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "ACTION_ACTIONLINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/ACTION_ACTIONLINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "ACTION_ACTIONLINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "ACTION_ACTIONLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/ACTION_ACTIONLINT_FILTER_REGEX_EXCLUDE",
+      "title": "ACTION_ACTIONLINT: Excluding Regex",
+      "type": "string"
+    },
+    "ACTION_ACTIONLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/ACTION_ACTIONLINT_FILTER_REGEX_INCLUDE",
+      "title": "ACTION_ACTIONLINT: Including Regex",
+      "type": "string"
+    },
+    "ACTION_ACTIONLINT_POST_COMMANDS": {
+      "$id": "#/properties/ACTION_ACTIONLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ACTION_ACTIONLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "ACTION_ACTIONLINT_PRE_COMMANDS": {
+      "$id": "#/properties/ACTION_ACTIONLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "ACTION_ACTIONLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "ACTION_ACTIONLINT_RULES_PATH": {
+      "$id": "#/properties/ACTION_ACTIONLINT_RULES_PATH",
+      "description": "ACTION_ACTIONLINT: Path where to find linter configuration file",
+      "title": "ACTION_ACTIONLINT: Custom config file path",
+      "type": "string"
+    },
+    "ACTION_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/ACTION_FILTER_REGEX_EXCLUDE",
+      "title": "Excluding regex filter for ACTION descriptor",
+      "type": "string"
+    },
+    "ACTION_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/ACTION_FILTER_REGEX_INCLUDE",
+      "title": "Including regex filter for ACTION descriptor",
+      "type": "string"
+    },
     "ADDITIONAL_EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/ADDITIONAL_EXCLUDED_DIRECTORIES",
-      "description": "List of additional excluded directory basenames to add to Mega-Linter default excluded directories. They are excluded at any nested level.",
+      "description": "List of additional excluded directory basenames to add to MegaLinter default excluded directories. They are excluded at any nested level.",
       "examples": [
         [
           "test"
@@ -256,7 +396,7 @@
     "ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "ANSIBLE_ANSIBLE_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ANSIBLE_ANSIBLE_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -272,7 +412,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -318,7 +458,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -417,7 +557,7 @@
     "ARM_ARM_TTK_DISABLE_ERRORS": {
       "$id": "#/properties/ARM_ARM_TTK_DISABLE_ERRORS",
       "default": false,
-      "title": "ARM_ARM_TTK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ARM_ARM_TTK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ARM_ARM_TTK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -433,7 +573,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ARM_ARM_TTK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -479,7 +619,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ARM_ARM_TTK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -547,7 +687,7 @@
     "BASH_EXEC_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_EXEC_DISABLE_ERRORS",
       "default": false,
-      "title": "BASH_EXEC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "BASH_EXEC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "BASH_EXEC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -563,7 +703,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "BASH_EXEC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -602,7 +742,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_EXEC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -664,7 +804,7 @@
     "BASH_SHELLCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHELLCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "BASH_SHELLCHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "BASH_SHELLCHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "BASH_SHELLCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -680,7 +820,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "BASH_SHELLCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -719,7 +859,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_SHELLCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -771,7 +911,7 @@
     "BASH_SHFMT_DISABLE_ERRORS": {
       "$id": "#/properties/BASH_SHFMT_DISABLE_ERRORS",
       "default": false,
-      "title": "BASH_SHFMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "BASH_SHFMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "BASH_SHFMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -787,7 +927,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "BASH_SHFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -826,7 +966,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "BASH_SHFMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -885,7 +1025,7 @@
     "CLOJURE_CLJ_KONDO_DISABLE_ERRORS": {
       "$id": "#/properties/CLOJURE_CLJ_KONDO_DISABLE_ERRORS",
       "default": false,
-      "title": "CLOJURE_CLJ_KONDO: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CLOJURE_CLJ_KONDO: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CLOJURE_CLJ_KONDO_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -901,7 +1041,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CLOJURE_CLJ_KONDO: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -947,7 +1087,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CLOJURE_CLJ_KONDO: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1022,7 +1162,7 @@
     "CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CLOUDFORMATION_CFN_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CLOUDFORMATION_CFN_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CLOUDFORMATION_CFN_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1038,7 +1178,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CLOUDFORMATION_CFN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1084,7 +1224,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CLOUDFORMATION_CFN_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1159,7 +1299,7 @@
     "COFFEE_COFFEELINT_DISABLE_ERRORS": {
       "$id": "#/properties/COFFEE_COFFEELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "COFFEE_COFFEELINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "COFFEE_COFFEELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "COFFEE_COFFEELINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1175,7 +1315,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "COFFEE_COFFEELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1221,7 +1361,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "COFFEE_COFFEELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1262,7 +1402,7 @@
     "CONFIG_REPORTER": {
       "$id": "#/properties/CONFIG_REPORTER",
       "default": true,
-      "description": "Generates a folder IDE-config located in report folder, containing default Mega-Linter configuration files used during the linting, and updated VsCode extensions.js config file",
+      "description": "Generates a folder IDE-config located in report folder, containing default MegaLinter configuration files used during the linting, and updated VsCode extensions.js config file",
       "title": "Activate local configuration reporter",
       "type": "boolean"
     },
@@ -1315,7 +1455,7 @@
     "COPYPASTE_JSCPD_DISABLE_ERRORS": {
       "$id": "#/properties/COPYPASTE_JSCPD_DISABLE_ERRORS",
       "default": false,
-      "title": "COPYPASTE_JSCPD: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "COPYPASTE_JSCPD: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "COPYPASTE_JSCPD_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1331,7 +1471,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "COPYPASTE_JSCPD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1367,7 +1507,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "COPYPASTE_JSCPD: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1425,7 +1565,7 @@
     "CPP_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CPP_CPPLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CPP_CPPLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CPP_CPPLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CPP_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1441,7 +1581,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CPP_CPPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1480,7 +1620,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CPP_CPPLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1548,7 +1688,7 @@
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS": {
       "$id": "#/properties/CREDENTIALS_SECRETLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CREDENTIALS_SECRETLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CREDENTIALS_SECRETLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CREDENTIALS_SECRETLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1564,7 +1704,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CREDENTIALS_SECRETLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1593,7 +1733,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CREDENTIALS_SECRETLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1651,7 +1791,7 @@
     "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/CSHARP_DOTNET_FORMAT_DISABLE_ERRORS",
       "default": false,
-      "title": "CSHARP_DOTNET_FORMAT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CSHARP_DOTNET_FORMAT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CSHARP_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1667,7 +1807,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CSHARP_DOTNET_FORMAT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1706,7 +1846,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSHARP_DOTNET_FORMAT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1785,7 +1925,7 @@
     "CSS_SCSS_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_SCSS_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CSS_SCSS_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CSS_SCSS_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CSS_SCSS_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1801,7 +1941,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CSS_SCSS_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1847,7 +1987,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSS_SCSS_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -1912,7 +2052,7 @@
     "CSS_STYLELINT_DISABLE_ERRORS": {
       "$id": "#/properties/CSS_STYLELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "CSS_STYLELINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "CSS_STYLELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "CSS_STYLELINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -1928,7 +2068,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "CSS_STYLELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -1974,7 +2114,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "CSS_STYLELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2032,7 +2172,7 @@
     "C_CPPLINT_DISABLE_ERRORS": {
       "$id": "#/properties/C_CPPLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "C_CPPLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "C_CPPLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "C_CPPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2048,7 +2188,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "C_CPPLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2087,7 +2227,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "C_CPPLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2156,7 +2296,7 @@
     "DART_DARTANALYZER_DISABLE_ERRORS": {
       "$id": "#/properties/DART_DARTANALYZER_DISABLE_ERRORS",
       "default": false,
-      "title": "DART_DARTANALYZER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "DART_DARTANALYZER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DART_DARTANALYZER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2172,7 +2312,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "DART_DARTANALYZER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2218,7 +2358,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DART_DARTANALYZER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2258,8 +2398,8 @@
     },
     "DEFAULT_BRANCH": {
       "$id": "#/properties/DEFAULT_BRANCH",
-      "default": "master",
-      "description": "The name of the repository default branch. Warning: In new github repositories, master branch is named main, so you need to override this value with main",
+      "default": "HEAD",
+      "description": "Deprecated: The name of the repository's default branch.",
       "examples": [
         "master",
         "main"
@@ -2292,7 +2432,7 @@
     "DISABLE_ERRORS": {
       "$id": "#/properties/DISABLE_ERRORS",
       "default": false,
-      "description": "Flag to have the Mega-Linter complete with exit code 0 even if errors were detected.",
+      "description": "Flag to have the MegaLinter complete with exit code 0 even if errors were detected.",
       "title": "Disable errors",
       "type": "boolean"
     },
@@ -2348,7 +2488,7 @@
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS",
       "default": false,
-      "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "DOCKERFILE_DOCKERFILELINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DOCKERFILE_DOCKERFILELINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2364,7 +2504,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "DOCKERFILE_DOCKERFILELINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2410,7 +2550,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DOCKERFILE_DOCKERFILELINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2485,7 +2625,7 @@
     "DOCKERFILE_HADOLINT_DISABLE_ERRORS": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "DOCKERFILE_HADOLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "DOCKERFILE_HADOLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2501,7 +2641,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "DOCKERFILE_HADOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2547,7 +2687,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "DOCKERFILE_HADOLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2593,7 +2733,7 @@
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -2612,7 +2752,7 @@
     "EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS": {
       "$id": "#/properties/EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS",
       "default": false,
-      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "EDITORCONFIG_EDITORCONFIG_CHECKER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2628,7 +2768,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2674,7 +2814,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "EDITORCONFIG_EDITORCONFIG_CHECKER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2715,7 +2855,7 @@
     "EMAIL_REPORTER": {
       "$id": "#/properties/EMAIL_REPORTER",
       "default": true,
-      "description": "Mega-Linter can send email with reports to given addresses. Please set EMAIL_REPORTER_** variables if activated",
+      "description": "MegaLinter can send email with reports to given addresses. Please set EMAIL_REPORTER_** variables if activated",
       "title": "Activate Email reporter",
       "type": "boolean"
     },
@@ -2822,7 +2962,7 @@
     "ENV_DOTENV_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/ENV_DOTENV_LINTER_DISABLE_ERRORS",
       "default": false,
-      "title": "ENV_DOTENV_LINTER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "ENV_DOTENV_LINTER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "ENV_DOTENV_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -2838,7 +2978,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "ENV_DOTENV_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -2877,7 +3017,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "ENV_DOTENV_LINTER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -2918,7 +3058,7 @@
     },
     "EXCLUDED_DIRECTORIES": {
       "$id": "#/properties/EXCLUDED_DIRECTORIES",
-      "description": "List of excluded directory basenames replacing Mega-Linter default excluded directories. They are excluded at any nested level.",
+      "description": "List of excluded directory basenames replacing MegaLinter default excluded directories. They are excluded at any nested level.",
       "examples": [
         [
           ".github",
@@ -2935,13 +3075,13 @@
       "$id": "#/properties/EXTENDS",
       "description": "Base mega-linter.yml config file(s) to extend local configuration from. Can be a single URL or a list of .mega-linter.yml config files URLs",
       "examples:": [
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
-        "https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
+        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension1.mega-linter.yml",
+        "https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-config-test/extension2.mega-linter.yml"
       ],
       "items": {
         "type": "string"
       },
-      "title": "Mega-Linter config files to extend from",
+      "title": "MegaLinter config files to extend from",
       "type": [
         "array",
         "string"
@@ -2950,14 +3090,14 @@
     "FAIL_IF_MISSING_LINTER_IN_FLAVOR": {
       "$id": "#/properties/FAIL_IF_MISSING_LINTER_IN_FLAVOR",
       "default": false,
-      "description": "Mega-Linter fails if a linter is missing in the selected flavor",
+      "description": "MegaLinter fails if a linter is missing in the selected flavor",
       "title": "Fail if missing linter",
       "type": "boolean"
     },
     "FILEIO_REPORTER": {
       "$id": "#/properties/FILEIO_REPORTER",
       "default": false,
-      "description": "If you don't use artifacts upload to read Mega-Linter reports, you can access them with an hyperlink to file.io. Important: Mega-Linter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
+      "description": "If you don't use artifacts upload to read MegaLinter reports, you can access them with an hyperlink to file.io. Important: MegaLinter has no affiliation with file.io, but it's supposed to be secured, and only one download is available for a report (snapchat for files, basically)",
       "title": "Activate File.io reporter",
       "type": "boolean"
     },
@@ -2983,7 +3123,7 @@
     "FLAVOR_SUGGESTIONS": {
       "$id": "#/properties/FLAVOR_SUGGESTIONS",
       "default": true,
-      "description": "Provides suggestions about different Mega-Linter flavors to use to improve runtime performances",
+      "description": "Provides suggestions about different MegaLinter flavors to use to improve runtime performances",
       "title": "Flavor suggestions",
       "type": "boolean"
     },
@@ -3041,7 +3181,7 @@
     "GHERKIN_GHERKIN_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GHERKIN_GHERKIN_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "GHERKIN_GHERKIN_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GHERKIN_GHERKIN_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GHERKIN_GHERKIN_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3057,7 +3197,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GHERKIN_GHERKIN_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3103,7 +3243,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GHERKIN_GHERKIN_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3145,7 +3285,7 @@
     "GITHUB_COMMENT_REPORTER": {
       "$id": "#/properties/GITHUB_COMMENT_REPORTER",
       "default": true,
-      "description": "Posts Mega-Linter results summary in the comments of the related pull request (if existing)",
+      "description": "Posts MegaLinter results summary in the comments of the related pull request (if existing)",
       "title": "Activate GitHub PR Comments reporter",
       "type": "boolean"
     },
@@ -3210,7 +3350,7 @@
     "GIT_GIT_DIFF_DISABLE_ERRORS": {
       "$id": "#/properties/GIT_GIT_DIFF_DISABLE_ERRORS",
       "default": false,
-      "title": "GIT_GIT_DIFF: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GIT_GIT_DIFF: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GIT_GIT_DIFF_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3226,7 +3366,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GIT_GIT_DIFF: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3255,7 +3395,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GIT_GIT_DIFF: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3324,7 +3464,7 @@
     "GO_GOLANGCI_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GO_GOLANGCI_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "GO_GOLANGCI_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GO_GOLANGCI_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GO_GOLANGCI_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3340,7 +3480,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GO_GOLANGCI_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3386,7 +3526,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GO_GOLANGCI_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3451,7 +3591,7 @@
     "GO_REVIVE_DISABLE_ERRORS": {
       "$id": "#/properties/GO_REVIVE_DISABLE_ERRORS",
       "default": false,
-      "title": "GO_REVIVE: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GO_REVIVE: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GO_REVIVE_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3467,7 +3607,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GO_REVIVE: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3506,7 +3646,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GO_REVIVE: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3581,7 +3721,7 @@
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS": {
       "$id": "#/properties/GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS",
       "default": false,
-      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GRAPHQL_GRAPHQL_SCHEMA_LINTER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3597,7 +3737,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3643,7 +3783,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GRAPHQL_GRAPHQL_SCHEMA_LINTER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3718,7 +3858,7 @@
     "GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "GROOVY_NPM_GROOVY_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "GROOVY_NPM_GROOVY_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "GROOVY_NPM_GROOVY_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3734,7 +3874,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3780,7 +3920,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "GROOVY_NPM_GROOVY_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3855,7 +3995,7 @@
     "HTML_HTMLHINT_DISABLE_ERRORS": {
       "$id": "#/properties/HTML_HTMLHINT_DISABLE_ERRORS",
       "default": false,
-      "title": "HTML_HTMLHINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "HTML_HTMLHINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "HTML_HTMLHINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -3871,7 +4011,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "HTML_HTMLHINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -3917,7 +4057,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "HTML_HTMLHINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -3948,13 +4088,13 @@
     "IGNORE_GENERATED_FILES": {
       "$id": "#/properties/IGNORE_GENERATED_FILES",
       "default": false,
-      "title": "Makes Mega-Linter skip files containing @generated marker (and not containing @not-generated)",
+      "title": "Makes MegaLinter skip files containing @generated marker (and not containing @not-generated)",
       "type": "boolean"
     },
     "IGNORE_GITIGNORED_FILES": {
       "$id": "#/properties/IGNORE_GITIGNORED_FILES",
       "default": false,
-      "title": "Makes Mega-Linter skip files that are ignored by git using .gitignore",
+      "title": "Makes MegaLinter skip files that are ignored by git using .gitignore",
       "type": "boolean"
     },
     "JAVASCRIPT_DEFAULT_STYLE": {
@@ -4008,7 +4148,7 @@
     "JAVASCRIPT_ES_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_ES_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVASCRIPT_ES: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVASCRIPT_ES: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVASCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4024,7 +4164,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVASCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4070,7 +4210,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_ES: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4145,7 +4285,7 @@
     "JAVASCRIPT_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVASCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVASCRIPT_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVASCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4161,7 +4301,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVASCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4200,7 +4340,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4258,7 +4398,7 @@
     "JAVASCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVASCRIPT_STANDARD: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVASCRIPT_STANDARD: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVASCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4274,7 +4414,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVASCRIPT_STANDARD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4313,7 +4453,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVASCRIPT_STANDARD: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4372,7 +4512,7 @@
     "JAVA_CHECKSTYLE_DISABLE_ERRORS": {
       "$id": "#/properties/JAVA_CHECKSTYLE_DISABLE_ERRORS",
       "default": false,
-      "title": "JAVA_CHECKSTYLE: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JAVA_CHECKSTYLE: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JAVA_CHECKSTYLE_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4388,7 +4528,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JAVA_CHECKSTYLE: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4434,7 +4574,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JAVA_CHECKSTYLE: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4509,7 +4649,7 @@
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_ESLINT_PLUGIN_JSONC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_ESLINT_PLUGIN_JSONC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_ESLINT_PLUGIN_JSONC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4525,7 +4665,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4571,7 +4711,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_ESLINT_PLUGIN_JSONC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4639,7 +4779,7 @@
     "JSON_JSONLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_JSONLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_JSONLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_JSONLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_JSONLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4655,7 +4795,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_JSONLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4694,7 +4834,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_JSONLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4753,7 +4893,7 @@
     "JSON_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4769,7 +4909,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4808,7 +4948,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4873,7 +5013,7 @@
     "JSON_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/JSON_V8R_DISABLE_ERRORS",
       "default": false,
-      "title": "JSON_V8R: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSON_V8R: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSON_V8R_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -4889,7 +5029,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSON_V8R: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -4928,7 +5068,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSON_V8R: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -4987,7 +5127,7 @@
     "JSX_ESLINT_DISABLE_ERRORS": {
       "$id": "#/properties/JSX_ESLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "JSX_ESLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "JSX_ESLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "JSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5003,7 +5143,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "JSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5049,7 +5189,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "JSX_ESLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5127,7 +5267,7 @@
     "KOTLIN_KTLINT_DISABLE_ERRORS": {
       "$id": "#/properties/KOTLIN_KTLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "KOTLIN_KTLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "KOTLIN_KTLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5143,7 +5283,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "KOTLIN_KTLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5182,7 +5322,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "KOTLIN_KTLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5255,7 +5395,7 @@
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_DISABLE_ERRORS",
       "default": false,
-      "title": "KUBERNETES_KUBEVAL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "KUBERNETES_KUBEVAL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "KUBERNETES_KUBEVAL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5271,7 +5411,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "KUBERNETES_KUBEVAL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5310,7 +5450,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "KUBERNETES_KUBEVAL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5369,7 +5509,7 @@
     "LATEX_CHKTEX_DISABLE_ERRORS": {
       "$id": "#/properties/LATEX_CHKTEX_DISABLE_ERRORS",
       "default": false,
-      "title": "LATEX_CHKTEX: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "LATEX_CHKTEX: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "LATEX_CHKTEX_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5385,7 +5525,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "LATEX_CHKTEX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5431,7 +5571,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "LATEX_CHKTEX: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5547,7 +5687,7 @@
     "LUA_LUACHECK_DISABLE_ERRORS": {
       "$id": "#/properties/LUA_LUACHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "LUA_LUACHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "LUA_LUACHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "LUA_LUACHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5563,7 +5703,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "LUA_LUACHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5609,7 +5749,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "LUA_LUACHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5686,7 +5826,7 @@
     },
     "MARKDOWN_MARKDOWNLINT_CONFIG_FILE": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_CONFIG_FILE",
-      "default": ".markdown-lint.json",
+      "default": ".markdownlint.json",
       "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
       "type": "string"
@@ -5694,7 +5834,7 @@
     "MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWNLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWNLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5710,14 +5850,14 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_MARKDOWNLINT: Override descriptor/linter matching files extensions",
       "type": "array"
     },
     "MARKDOWN_MARKDOWNLINT_FILE_NAME": {
       "$id": "#/properties/MARKDOWN_MARKDOWNLINT_FILE_NAME",
-      "default": ".markdown-lint.json",
+      "default": ".markdownlint.json",
       "description": "MARKDOWN_MARKDOWNLINT: User custom config file name if different from default",
       "title": "MARKDOWN_MARKDOWNLINT: Custom config file name",
       "type": "string"
@@ -5756,7 +5896,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWNLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5821,7 +5961,7 @@
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5837,7 +5977,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5883,7 +6023,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_LINK_CHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -5941,7 +6081,7 @@
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_TABLE_FORMATTER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -5957,7 +6097,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -5996,7 +6136,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_MARKDOWN_TABLE_FORMATTER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6034,7 +6174,7 @@
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_TABLE_PRETTIFY_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_MARKDOWN_TABLE_PRETTIFY: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_MARKDOWN_TABLE_PRETTIFY_FILE_EXTENSIONS": {
@@ -6108,7 +6248,7 @@
     "MARKDOWN_REMARK_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/MARKDOWN_REMARK_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "MARKDOWN_REMARK_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "MARKDOWN_REMARK_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "MARKDOWN_REMARK_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6124,7 +6264,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "MARKDOWN_REMARK_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6163,7 +6303,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "MARKDOWN_REMARK_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6238,7 +6378,7 @@
     "OPENAPI_SPECTRAL_DISABLE_ERRORS": {
       "$id": "#/properties/OPENAPI_SPECTRAL_DISABLE_ERRORS",
       "default": false,
-      "title": "OPENAPI_SPECTRAL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "OPENAPI_SPECTRAL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "OPENAPI_SPECTRAL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6254,7 +6394,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "OPENAPI_SPECTRAL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6300,7 +6440,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "OPENAPI_SPECTRAL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6331,7 +6471,7 @@
     "PARALLEL": {
       "$id": "#/properties/PARALLEL",
       "default": true,
-      "description": "Process linters in parallel to improve overall Mega-Linter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files",
+      "description": "Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files",
       "title": "Parallel processing",
       "type": "boolean"
     },
@@ -6375,7 +6515,7 @@
     "PERL_PERLCRITIC_DISABLE_ERRORS": {
       "$id": "#/properties/PERL_PERLCRITIC_DISABLE_ERRORS",
       "default": false,
-      "title": "PERL_PERLCRITIC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PERL_PERLCRITIC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PERL_PERLCRITIC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6391,7 +6531,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PERL_PERLCRITIC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6430,7 +6570,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PERL_PERLCRITIC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6487,7 +6627,7 @@
     "PHP_BUILTIN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_BUILTIN_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_BUILTIN: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_BUILTIN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_BUILTIN_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6503,7 +6643,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_BUILTIN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6542,7 +6682,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_BUILTIN: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6592,7 +6732,7 @@
     },
     "PHP_PHPCS_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPCS_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6611,7 +6751,7 @@
     "PHP_PHPCS_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PHPCS_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_PHPCS: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_PHPCS: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_PHPCS_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6627,7 +6767,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_PHPCS: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6673,7 +6813,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PHPCS: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6701,6 +6841,133 @@
       "title": "PHP_PHPCS: Custom config file path",
       "type": "string"
     },
+    "PHP_PHPLINT_ARGUMENTS": {
+      "$id": "#/properties/PHP_PHPLINT_ARGUMENTS",
+      "description": "PHP_PHPLINT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPLINT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "PHP_PHPLINT_CLI_LINT_MODE": {
+      "$id": "#/properties/PHP_PHPLINT_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "PHP_PHPLINT: Override default cli lint mode",
+      "type": "string"
+    },
+    "PHP_PHPLINT_CONFIG_FILE": {
+      "$id": "#/properties/PHP_PHPLINT_CONFIG_FILE",
+      "default": ".phplint.yml",
+      "description": "PHP_PHPLINT: User custom config file name if different from default",
+      "title": "PHP_PHPLINT: Custom config file name",
+      "type": "string"
+    },
+    "PHP_PHPLINT_DISABLE_ERRORS": {
+      "$id": "#/properties/PHP_PHPLINT_DISABLE_ERRORS",
+      "default": false,
+      "title": "PHP_PHPLINT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "PHP_PHPLINT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/PHP_PHPLINT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "PHP_PHPLINT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "PHP_PHPLINT_FILE_EXTENSIONS": {
+      "$id": "#/properties/PHP_PHPLINT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPLINT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "PHP_PHPLINT_FILE_NAME": {
+      "$id": "#/properties/PHP_PHPLINT_FILE_NAME",
+      "default": ".phplint.yml",
+      "description": "PHP_PHPLINT: User custom config file name if different from default",
+      "title": "PHP_PHPLINT: Custom config file name",
+      "type": "string"
+    },
+    "PHP_PHPLINT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/PHP_PHPLINT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "PHP_PHPLINT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "PHP_PHPLINT_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/PHP_PHPLINT_FILTER_REGEX_EXCLUDE",
+      "title": "PHP_PHPLINT: Excluding Regex",
+      "type": "string"
+    },
+    "PHP_PHPLINT_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/PHP_PHPLINT_FILTER_REGEX_INCLUDE",
+      "title": "PHP_PHPLINT: Including Regex",
+      "type": "string"
+    },
+    "PHP_PHPLINT_POST_COMMANDS": {
+      "$id": "#/properties/PHP_PHPLINT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPLINT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "PHP_PHPLINT_PRE_COMMANDS": {
+      "$id": "#/properties/PHP_PHPLINT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "PHP_PHPLINT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "PHP_PHPLINT_RULES_PATH": {
+      "$id": "#/properties/PHP_PHPLINT_RULES_PATH",
+      "description": "PHP_PHPLINT: Path where to find linter configuration file",
+      "title": "PHP_PHPLINT: Custom config file path",
+      "type": "string"
+    },
     "PHP_PHPSTAN_ARGUMENTS": {
       "$id": "#/properties/PHP_PHPSTAN_ARGUMENTS",
       "description": "PHP_PHPSTAN: User custom arguments to add in linter CLI call",
@@ -6719,7 +6986,7 @@
     },
     "PHP_PHPSTAN_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PHPSTAN_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6730,7 +6997,7 @@
     },
     "PHP_PHPSTAN_CONFIG_FILE": {
       "$id": "#/properties/PHP_PHPSTAN_CONFIG_FILE",
-      "default": "phpstan.neon",
+      "default": "phpstan.neon.dist",
       "description": "PHP_PHPSTAN: User custom config file name if different from default",
       "title": "PHP_PHPSTAN: Custom config file name",
       "type": "string"
@@ -6738,7 +7005,7 @@
     "PHP_PHPSTAN_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PHPSTAN_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_PHPSTAN: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_PHPSTAN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_PHPSTAN_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6754,7 +7021,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_PHPSTAN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6800,7 +7067,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PHPSTAN: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6846,7 +7113,7 @@
     },
     "PHP_PSALM_CLI_LINT_MODE": {
       "$id": "#/properties/PHP_PSALM_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -6865,7 +7132,7 @@
     "PHP_PSALM_DISABLE_ERRORS": {
       "$id": "#/properties/PHP_PSALM_DISABLE_ERRORS",
       "default": false,
-      "title": "PHP_PSALM: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PHP_PSALM: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PHP_PSALM_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -6881,7 +7148,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PHP_PSALM: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -6927,7 +7194,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PHP_PSALM: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -6957,7 +7224,7 @@
     },
     "PLUGINS": {
       "$id": "#/properties/PLUGINS",
-      "description": "List of Mega-Linter plugins. URL must follow format https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml",
+      "description": "List of MegaLinter plugins. URL must follow format https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml",
       "examples": [
         [
           "https://raw.githubusercontent.com/cookiejar/megalinter-plugin-cookiejar/master/cookietemplate.mega-linter-descriptor.yml"
@@ -7035,7 +7302,7 @@
     "POWERSHELL_POWERSHELL_DISABLE_ERRORS": {
       "$id": "#/properties/POWERSHELL_POWERSHELL_DISABLE_ERRORS",
       "default": false,
-      "title": "POWERSHELL_POWERSHELL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "POWERSHELL_POWERSHELL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "POWERSHELL_POWERSHELL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7051,7 +7318,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "POWERSHELL_POWERSHELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7097,7 +7364,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "POWERSHELL_POWERSHELL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7147,6 +7414,13 @@
       },
       "title": "Pre-run commands",
       "type": "array"
+    },
+    "PRINT_ALL_FILES": {
+      "$id": "#/properties/PRINT_ALL_FILES",
+      "default": true,
+      "description": "If set to false, only fixed and error files are displayed in logs",
+      "title": "Print all files in console logs",
+      "type": "boolean"
     },
     "PRINT_ALPACA": {
       "$id": "#/properties/PRINT_ALPACA",
@@ -7202,7 +7476,7 @@
     "PROTOBUF_PROTOLINT_DISABLE_ERRORS": {
       "$id": "#/properties/PROTOBUF_PROTOLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "PROTOBUF_PROTOLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PROTOBUF_PROTOLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PROTOBUF_PROTOLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7218,7 +7492,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PROTOBUF_PROTOLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7264,7 +7538,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PROTOBUF_PROTOLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7339,7 +7613,7 @@
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/PUPPET_PUPPET_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "PUPPET_PUPPET_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PUPPET_PUPPET_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7355,7 +7629,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PUPPET_PUPPET_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7401,7 +7675,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PUPPET_PUPPET_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7466,7 +7740,7 @@
     "PYTHON_BANDIT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BANDIT_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_BANDIT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_BANDIT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_BANDIT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7482,7 +7756,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_BANDIT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7521,7 +7795,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_BANDIT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7578,7 +7852,7 @@
     },
     "PYTHON_BLACK_CONFIG_FILE": {
       "$id": "#/properties/PYTHON_BLACK_CONFIG_FILE",
-      "default": ".python-black",
+      "default": "pyproject.toml",
       "description": "PYTHON_BLACK: User custom config file name if different from default",
       "title": "PYTHON_BLACK: Custom config file name",
       "type": "string"
@@ -7586,7 +7860,7 @@
     "PYTHON_BLACK_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_BLACK_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_BLACK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_BLACK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_BLACK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7602,7 +7876,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_BLACK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7648,7 +7922,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_BLACK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7723,7 +7997,7 @@
     "PYTHON_FLAKE8_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_FLAKE8_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_FLAKE8: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_FLAKE8: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_FLAKE8_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7739,7 +8013,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_FLAKE8: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7785,7 +8059,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_FLAKE8: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7850,7 +8124,7 @@
     "PYTHON_ISORT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_ISORT_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_ISORT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_ISORT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_ISORT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7866,7 +8140,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_ISORT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -7912,7 +8186,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_ISORT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -7977,7 +8251,7 @@
     "PYTHON_MYPY_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_MYPY_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_MYPY: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_MYPY: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_MYPY_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -7993,7 +8267,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_MYPY: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8032,7 +8306,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_MYPY: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8097,7 +8371,7 @@
     "PYTHON_PYLINT_DISABLE_ERRORS": {
       "$id": "#/properties/PYTHON_PYLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "PYTHON_PYLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "PYTHON_PYLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "PYTHON_PYLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8113,7 +8387,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "PYTHON_PYLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8159,7 +8433,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "PYTHON_PYLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8234,7 +8508,7 @@
     "RAKU_RAKU_DISABLE_ERRORS": {
       "$id": "#/properties/RAKU_RAKU_DISABLE_ERRORS",
       "default": false,
-      "title": "RAKU_RAKU: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RAKU_RAKU: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RAKU_RAKU_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8250,7 +8524,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RAKU_RAKU: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8296,7 +8570,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RAKU_RAKU: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8378,7 +8652,7 @@
     "RST_RSTCHECK_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTCHECK_DISABLE_ERRORS",
       "default": false,
-      "title": "RST_RSTCHECK: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RST_RSTCHECK: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RST_RSTCHECK_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8394,7 +8668,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RST_RSTCHECK: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8440,7 +8714,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RSTCHECK: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8498,7 +8772,7 @@
     "RST_RSTFMT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RSTFMT_DISABLE_ERRORS",
       "default": false,
-      "title": "RST_RSTFMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RST_RSTFMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RST_RSTFMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8514,7 +8788,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RST_RSTFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8553,7 +8827,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RSTFMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8605,7 +8879,7 @@
     "RST_RST_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/RST_RST_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "RST_RST_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RST_RST_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RST_RST_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8621,7 +8895,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RST_RST_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8660,7 +8934,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RST_RST_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8729,7 +9003,7 @@
     "RUBY_RUBOCOP_DISABLE_ERRORS": {
       "$id": "#/properties/RUBY_RUBOCOP_DISABLE_ERRORS",
       "default": false,
-      "title": "RUBY_RUBOCOP: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RUBY_RUBOCOP: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RUBY_RUBOCOP_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8745,7 +9019,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RUBY_RUBOCOP: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8791,7 +9065,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RUBY_RUBOCOP: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8845,7 +9119,7 @@
     "RUST_CLIPPY_DISABLE_ERRORS": {
       "$id": "#/properties/RUST_CLIPPY_DISABLE_ERRORS",
       "default": false,
-      "title": "RUST_CLIPPY: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "RUST_CLIPPY: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "RUST_CLIPPY_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8861,7 +9135,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "RUST_CLIPPY: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -8897,7 +9171,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "RUST_CLIPPY: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -8982,7 +9256,7 @@
     "R_LINTR_DISABLE_ERRORS": {
       "$id": "#/properties/R_LINTR_DISABLE_ERRORS",
       "default": false,
-      "title": "R_LINTR: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "R_LINTR: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "R_LINTR_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -8998,7 +9272,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "R_LINTR: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9044,7 +9318,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "R_LINTR: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9120,7 +9394,7 @@
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER_APEX: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_APEX_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9136,7 +9410,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9165,7 +9439,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_APEX: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9241,7 +9515,7 @@
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER_AURA: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_AURA_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9257,7 +9531,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9286,7 +9560,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_AURA: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9323,7 +9597,7 @@
     "SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9398,7 +9672,7 @@
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS": {
       "$id": "#/properties/SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS",
       "default": false,
-      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SALESFORCE_SFDX_SCANNER_LWC: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SALESFORCE_SFDX_SCANNER_LWC_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9414,7 +9688,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9443,7 +9717,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SALESFORCE_SFDX_SCANNER_LWC: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9518,7 +9792,7 @@
     "SCALA_SCALAFIX_DISABLE_ERRORS": {
       "$id": "#/properties/SCALA_SCALAFIX_DISABLE_ERRORS",
       "default": false,
-      "title": "SCALA_SCALAFIX: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SCALA_SCALAFIX: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SCALA_SCALAFIX_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9534,7 +9808,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SCALA_SCALAFIX: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9580,7 +9854,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SCALA_SCALAFIX: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9662,7 +9936,7 @@
     "SNAKEMAKE_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SNAKEMAKE_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SNAKEMAKE_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9678,7 +9952,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SNAKEMAKE_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9717,7 +9991,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SNAKEMAKE_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9776,7 +10050,7 @@
     "SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS": {
       "$id": "#/properties/SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS",
       "default": false,
-      "title": "SNAKEMAKE_SNAKEFMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SNAKEMAKE_SNAKEFMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SNAKEMAKE_SNAKEFMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9792,7 +10066,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9838,7 +10112,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SNAKEMAKE_SNAKEFMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -9903,7 +10177,7 @@
     "SPELL_CSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_CSPELL_DISABLE_ERRORS",
       "default": false,
-      "title": "SPELL_CSPELL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SPELL_CSPELL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SPELL_CSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -9919,7 +10193,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SPELL_CSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -9965,7 +10239,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SPELL_CSPELL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10033,7 +10307,7 @@
     "SPELL_MISSPELL_DISABLE_ERRORS": {
       "$id": "#/properties/SPELL_MISSPELL_DISABLE_ERRORS",
       "default": false,
-      "title": "SPELL_MISSPELL: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SPELL_MISSPELL: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SPELL_MISSPELL_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10049,7 +10323,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SPELL_MISSPELL: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10088,7 +10362,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SPELL_MISSPELL: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10157,7 +10431,7 @@
     "SQL_SQLFLUFF_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_SQLFLUFF_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_SQLFLUFF: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SQL_SQLFLUFF: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10173,7 +10447,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SQL_SQLFLUFF: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10212,7 +10486,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_SQLFLUFF: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10277,7 +10551,7 @@
     "SQL_SQL_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_SQL_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_SQL_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SQL_SQL_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SQL_SQL_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10293,7 +10567,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SQL_SQL_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10339,7 +10613,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_SQL_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10404,7 +10678,7 @@
     "SQL_TSQLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/SQL_TSQLLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SQL_TSQLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SQL_TSQLLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SQL_TSQLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10420,7 +10694,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SQL_TSQLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10459,7 +10733,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SQL_TSQLLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10523,7 +10797,7 @@
     "SWIFT_SWIFTLINT_DISABLE_ERRORS": {
       "$id": "#/properties/SWIFT_SWIFTLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "SWIFT_SWIFTLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "SWIFT_SWIFTLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "SWIFT_SWIFTLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10539,7 +10813,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "SWIFT_SWIFTLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10568,7 +10842,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "SWIFT_SWIFTLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10657,7 +10931,7 @@
     "TEKTON_TEKTON_LINT_DISABLE_ERRORS": {
       "$id": "#/properties/TEKTON_TEKTON_LINT_DISABLE_ERRORS",
       "default": false,
-      "title": "TEKTON_TEKTON_LINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TEKTON_TEKTON_LINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TEKTON_TEKTON_LINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10673,7 +10947,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TEKTON_TEKTON_LINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10719,7 +10993,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TEKTON_TEKTON_LINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10777,7 +11051,7 @@
     "TERRAFORM_CHECKOV_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_CHECKOV_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_CHECKOV: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_CHECKOV: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_CHECKOV_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10793,7 +11067,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_CHECKOV: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10832,7 +11106,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_CHECKOV: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -10864,6 +11138,113 @@
       "title": "Including regex filter for TERRAFORM descriptor",
       "type": "string"
     },
+    "TERRAFORM_KICS_ARGUMENTS": {
+      "$id": "#/properties/TERRAFORM_KICS_ARGUMENTS",
+      "description": "TERRAFORM_KICS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "TERRAFORM_KICS_CLI_LINT_MODE": {
+      "$id": "#/properties/TERRAFORM_KICS_CLI_LINT_MODE",
+      "default": "file",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "TERRAFORM_KICS: Override default cli lint mode",
+      "type": "string"
+    },
+    "TERRAFORM_KICS_DISABLE_ERRORS": {
+      "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS",
+      "default": false,
+      "title": "TERRAFORM_KICS: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/TERRAFORM_KICS_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "TERRAFORM_KICS: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "TERRAFORM_KICS_FILE_EXTENSIONS": {
+      "$id": "#/properties/TERRAFORM_KICS_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "TERRAFORM_KICS_FILE_NAMES_REGEX": {
+      "$id": "#/properties/TERRAFORM_KICS_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "TERRAFORM_KICS: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "TERRAFORM_KICS_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_EXCLUDE",
+      "title": "TERRAFORM_KICS: Excluding Regex",
+      "type": "string"
+    },
+    "TERRAFORM_KICS_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/TERRAFORM_KICS_FILTER_REGEX_INCLUDE",
+      "title": "TERRAFORM_KICS: Including Regex",
+      "type": "string"
+    },
+    "TERRAFORM_KICS_POST_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_KICS_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "TERRAFORM_KICS_PRE_COMMANDS": {
+      "$id": "#/properties/TERRAFORM_KICS_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "TERRAFORM_KICS: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
     "TERRAFORM_TERRAFORM_FMT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_ARGUMENTS",
       "description": "TERRAFORM_TERRAFORM_FMT: User custom arguments to add in linter CLI call",
@@ -10894,7 +11275,7 @@
     "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRAFORM_FMT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TERRAFORM_FMT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRAFORM_FMT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -10910,7 +11291,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TERRAFORM_FMT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -10949,7 +11330,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAFORM_FMT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11008,7 +11389,7 @@
     "TERRAFORM_TERRAGRUNT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRAGRUNT_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRAGRUNT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TERRAGRUNT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRAGRUNT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11024,7 +11405,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TERRAGRUNT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11070,7 +11451,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRAGRUNT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11128,7 +11509,7 @@
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TERRASCAN: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TERRASCAN: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11144,7 +11525,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TERRASCAN: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11183,7 +11564,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11242,7 +11623,7 @@
     "TERRAFORM_TFLINT_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TFLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "TERRAFORM_TFLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TERRAFORM_TFLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TERRAFORM_TFLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11258,7 +11639,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TERRAFORM_TFLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11304,7 +11685,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TERRAFORM_TFLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11383,7 +11764,7 @@
     "TSX_ESLINT_DISABLE_ERRORS": {
       "$id": "#/properties/TSX_ESLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "TSX_ESLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TSX_ESLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TSX_ESLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11399,7 +11780,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TSX_ESLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11445,7 +11826,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TSX_ESLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11534,7 +11915,7 @@
     "TYPESCRIPT_ES_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_ES_DISABLE_ERRORS",
       "default": false,
-      "title": "TYPESCRIPT_ES: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TYPESCRIPT_ES: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TYPESCRIPT_ES_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11550,7 +11931,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TYPESCRIPT_ES: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11596,7 +11977,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_ES: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11671,7 +12052,7 @@
     "TYPESCRIPT_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "TYPESCRIPT_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TYPESCRIPT_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TYPESCRIPT_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11687,7 +12068,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TYPESCRIPT_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11726,7 +12107,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11784,7 +12165,7 @@
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_DISABLE_ERRORS",
       "default": false,
-      "title": "TYPESCRIPT_STANDARD: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "TYPESCRIPT_STANDARD: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "TYPESCRIPT_STANDARD_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11800,7 +12181,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "TYPESCRIPT_STANDARD: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11839,7 +12220,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "TYPESCRIPT_STANDARD: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -11908,7 +12289,7 @@
     "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS": {
       "$id": "#/properties/VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS",
       "default": false,
-      "title": "VBDOTNET_DOTNET_FORMAT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "VBDOTNET_DOTNET_FORMAT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "VBDOTNET_DOTNET_FORMAT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -11924,7 +12305,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -11963,7 +12344,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "VBDOTNET_DOTNET_FORMAT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12035,7 +12416,7 @@
     "XML_XMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/XML_XMLLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "XML_XMLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "XML_XMLLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "XML_XMLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12051,7 +12432,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "XML_XMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12090,7 +12471,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "XML_XMLLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12159,7 +12540,7 @@
     "YAML_PRETTIER_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_PRETTIER_DISABLE_ERRORS",
       "default": false,
-      "title": "YAML_PRETTIER: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "YAML_PRETTIER: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "YAML_PRETTIER_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12175,7 +12556,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "YAML_PRETTIER: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12214,7 +12595,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_PRETTIER: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12272,7 +12653,7 @@
     "YAML_V8R_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_V8R_DISABLE_ERRORS",
       "default": false,
-      "title": "YAML_V8R: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "YAML_V8R: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "YAML_V8R_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12288,7 +12669,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "YAML_V8R: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12327,7 +12708,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_V8R: Define or override a list of bash commands to run after the linter",
       "type": "array"
@@ -12386,7 +12767,7 @@
     "YAML_YAMLLINT_DISABLE_ERRORS": {
       "$id": "#/properties/YAML_YAMLLINT_DISABLE_ERRORS",
       "default": false,
-      "title": "YAML_YAMLLINT: Linter does not make Mega-Linter fail even if errors are found",
+      "title": "YAML_YAMLLINT: Linter does not make MegaLinter fail even if errors are found",
       "type": "boolean"
     },
     "YAML_YAMLLINT_DISABLE_ERRORS_IF_LESS_THAN": {
@@ -12402,7 +12783,7 @@
         ".myext"
       ],
       "items": {
-        "$ref": "#/definitions/command_info"
+        "type": "string"
       },
       "title": "YAML_YAMLLINT: Override descriptor/linter matching files extensions",
       "type": "array"
@@ -12448,7 +12829,7 @@
         ]
       ],
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/command_info"
       },
       "title": "YAML_YAMLLINT: Define or override a list of bash commands to run after the linter",
       "type": "array"

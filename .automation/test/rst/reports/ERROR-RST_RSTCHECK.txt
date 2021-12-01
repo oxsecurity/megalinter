@@ -1,5 +1,5 @@
 Results of rstcheck linter (version 3.3.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/rst_rstcheck/
+See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
 -----------------------------------------------
 
 [ERROR] .automation/test/rst/rst_bad_1.rst

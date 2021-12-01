@@ -28,6 +28,7 @@ linters:
       - "rubocop --force-exclusion myfile.rb"
       - "rubocop --force-exclusion -c .ruby-lint.yml myfile.rb"
       - "rubocop --force-exclusion --safe-auto-correct -c .ruby-lint.yml myfile.rb"
+    downgraded_version: true
     install:
       gem:
         - rubocop:0.82.0

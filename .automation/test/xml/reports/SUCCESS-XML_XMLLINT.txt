@@ -1,5 +1,5 @@
 Results of xmllint linter (version 20910)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/xml_xmllint/
+See documentation on https://megalinter.github.io/descriptors/xml_xmllint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/xml/xml_good_1.xml

@@ -9,7 +9,11 @@ import os
 import re
 import github
 from megalinter import Reporter, config
+from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
+from pytablewriter import MarkdownTableWriter
 
+mega_linter_version = config.get("BUILD_VERSION", "latest")
+DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 class GithubCommentReporter(Reporter):
     name = "GITHUB_COMMENT"
@@ -17,6 +21,8 @@ class GithubCommentReporter(Reporter):
 
     github_api_url = "https://api.github.com"
     github_server_url = "https://github.com"
+    gh_url = ML_DOC_URL
+    issues_root = ML_REPO_URL + "/issues"
 
     def manage_activation(self):
         if config.get("GITHUB_COMMENT_REPORTER", "true") != "true":
@@ -76,18 +82,18 @@ class GithubCommentReporter(Reporter):
                 # Ignore if PR is already merged
                 if pr.is_merged():
                     continue
-                # Check if there is already a comment from Mega-Linter
+                # Check if there is already a comment from MegaLinter
                 existing_comment = None
                 existing_comments = pr.get_issue_comments()
                 for comment in existing_comments:
                     if (
-                        "See errors details in [**artifact Mega-Linter reports** on"
+                        "See errors details in [**artifact MegaLinter reports** on"
                         in comment.body
                     ):
                         existing_comment = comment
                 # Process comment
                 try:
-                    # Edit if there is already a Mega-Linter comment
+                    # Edit if there is already a MegaLinter comment
                     if existing_comment is not None:
                         existing_comment.edit(p_r_msg)
                     # Or create a new PR comment

@@ -2,9 +2,11 @@
 "use strict";
 const optionsDefinition = require("./options");
 const { spawnSync } = require("child_process");
+const c = require("chalk");
 const path = require("path");
 const which = require("which");
 const fs = require("fs-extra");
+const { MegaLinterUpgrader } = require("./upgrade");
 
 class MegaLinterRunner {
   async run(options) {
@@ -49,19 +51,25 @@ class MegaLinterRunner {
       return { status: 0 };
     }
 
-    // Build Mega-Linter docker image name with flavor and release version
-    const release =
-      options.release in ["v4", "stable"]
-        ? "v4"
-        : options.release == "insiders"
-        ? "latest"
-        : options.release
-        ? options.release
-        : "v4";
+    // Run upgrader from v4 to v5
+    if (options.upgrade) {
+      const megaLinterUpgrader = new MegaLinterUpgrader();
+      await megaLinterUpgrader.run();
+      return { status: 0 };
+    }
+
+    // Build MegaLinter docker image name with flavor and release version
+    const release = options.release in ["stable"] ? "v5" : options.release;
     const dockerImageName =
-      options.flavor === "all" || options.flavor == null
+      // v4 retrocompatibility >>
+      (options.flavor === "all" || options.flavor == null) && this.isv4(release)
         ? "nvuillam/mega-linter"
-        : `nvuillam/mega-linter-${options.flavor}`;
+        : options.flavor !== "all" && this.isv4(release)
+        ? `nvuillam/mega-linter-${options.flavor}`
+        : // << v4 retrocompatibility
+        options.flavor === "all" || options.flavor == null
+        ? "megalinter/megalinter"
+        : `megalinter/megalinter-${options.flavor}`;
     const dockerImage = options.image || `${dockerImageName}:${release}`; // Docker image can be directly sent in options
 
     // Check for docker installation
@@ -69,7 +77,7 @@ class MegaLinterRunner {
     whichPromise.catch(() => {
       console.error(`
 ERROR: Docker engine has not been found on your system.
-- to run Mega-Linter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
+- to run MegaLinter locally, please install docker desktop: https://www.docker.com/products/docker-desktop
 - to run docker on CI, use a base image containing docker engine`);
     });
 
@@ -156,6 +164,36 @@ ERROR: Docker engine has not been found on your system.
       stdout: spawnRes.stdout,
       stderr: spawnRes.stderr,
     };
+  }
+
+  isv4(release) {
+    const isV4flag = release === "insiders" || release.includes("v4");
+    if (isV4flag) {
+      console.warn(
+        c.bold(
+          "#######################################################################"
+        )
+      );
+      console.warn(
+        c.bold("MEGA-LINTER HAS A NEW V5 VERSION. Please upgrade to it by:")
+      );
+      console.warn(
+        c.bold(
+          "- Running the command at the root of your repo (requires node.js): npx mega-linter-runner --upgrade"
+        )
+      );
+      console.warn(
+        c.bold(
+          "- Replace versions used by latest (v5 latest stable version) or beta (previously 'insiders', content of main branch of megalinter/megalinter)"
+        )
+      );
+      console.warn(
+        c.bold(
+          "#######################################################################"
+        )
+      );
+    }
+    return isV4flag;
   }
 }
 

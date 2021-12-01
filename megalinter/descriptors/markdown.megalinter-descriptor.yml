@@ -19,13 +19,13 @@ linters:
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
     linter_rules_inline_disable_url: https://github.com/DavidAnson/markdownlint#configuration
     cli_lint_mode: list_of_files
-    config_file_name: .markdown-lint.json
+    config_file_name: .markdownlint.json
     cli_lint_fix_arg_name: "--fix"
     cli_lint_errors_count: total_lines
     examples:
       - "markdownlint myfile.md"
-      - "markdownlint -c .markdown-lint.json myfile.md"
-      - "markdownlint --fix -c .markdown-lint.json myfile.md"
+      - "markdownlint -c .markdownlint.json myfile.md"
+      - "markdownlint --fix -c .markdownlint.json myfile.md"
     install:
       npm:
         - markdownlint-cli
@@ -95,7 +95,6 @@ linters:
     config_file_name: .markdown-link-check.json
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"
-    linter_version_cache: "0.0.0" # markdown-link-check does notnumber provide version :/
     examples:
       - "markdown-link-check myfile.md"
       - "markdown-link-check -c .markdown-link-check.json myfile.md"
@@ -112,7 +111,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--check"
-    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
+    cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
     examples:

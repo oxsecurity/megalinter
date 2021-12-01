@@ -1,5 +1,5 @@
 Results of eslint linter (version 7.15.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/javascript_eslint/
+See documentation on https://megalinter.github.io/descriptors/javascript_eslint/
 -----------------------------------------------
 
 [ERROR] .automation/test/javascript/javascript_bad_1.js

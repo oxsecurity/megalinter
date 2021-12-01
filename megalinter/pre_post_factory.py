@@ -1,4 +1,4 @@
-# Class to manage Mega-Linter plugins
+# Class to manage MegaLinter plugins
 import logging
 import os
 import shutil
@@ -75,9 +75,9 @@ def run_command(command_info, log_key, mega_linter):
         logging.info(f"{log_key} [{return_stdout}] {return_stdout}")
     else:
         logging.error(f"{log_key} [{return_stdout}] {return_stdout}")
-    # If user defined command to fail in case of crash, stop running Mega-Linter
+    # If user defined command to fail in case of crash, stop running MegaLinter
     if return_code > 0 and command_info.get("continue_if_failed", True) is False:
-        raise Exception(f"{log_key}: User command failed, stop running Mega-Linter")
+        raise Exception(f"{log_key}: User command failed, stop running MegaLinter")
     return {
         "command_info": command_info,
         "status": return_code,

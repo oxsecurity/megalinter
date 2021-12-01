@@ -4,15 +4,206 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (master branch)
+## [Unreleased] (beta, main branch content)
 
-Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action mega-linter.yml file, or with `nvuillam/mega-linter@latest` docker image
+Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
+
+- Fix jscpd typo about `.venv` (#986)
+- markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
+- Deprecate `DEFAULT_BRANCH` setting (#948)
+- Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Docker run -- clean-up containers when exits (#1033)
+
+- Linters
+  - New linter `phplint` to speed-up linting of php files (#1031)
+    - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
+
+
+- Linter versions upgrades
+  - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
+  - [php](https://www.php.net) from 7.4.25 to **7.4.26** on 2021-11-19
+  - [checkov](https://www.checkov.io/) from 2.0.587 to **2.0.588** on 2021-11-19
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.29.0 to **0.30.0** on 2021-11-21
+  - [checkov](https://www.checkov.io/) from 2.0.588 to **2.0.591** on 2021-11-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.10 to **0.35.12** on 2021-11-21
+  - [eslint](https://eslint.org) from 8.2.0 to **8.3.0** on 2021-11-21
+  - [checkov](https://www.checkov.io/) from 2.0.591 to **2.0.595** on 2021-11-21
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.1 to **0.56.2** on 2021-11-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.1 to **0.8.2** on 2021-11-22
+  - [checkov](https://www.checkov.io/) from 2.0.595 to **2.0.597** on 2021-11-22
+  - [htmlhint](https://htmlhint.com/) from 0.16.1 to **0.16.2** on 2021-11-24
+  - [checkov](https://www.checkov.io/) from 2.0.597 to **2.0.600** on 2021-11-24
+  - [htmlhint](https://htmlhint.com/) from 0.16.2 to **0.16.3** on 2021-11-25
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 0.0.0 to **3.9.0** on 2021-11-25
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.0 to **5.13.1** on 2021-11-25
+  - [checkov](https://www.checkov.io/) from 2.0.600 to **2.0.603** on 2021-11-25
+  - [kics](https://www.kics.io) from 1.4.7 to **1.4.8** on 2021-11-25
+  - [prettier](https://prettier.io/) from 2.4.1 to **2.5.0** on 2021-11-26
+  - [pylint](https://www.pylint.org) from 2.11.1 to **2.12.1** on 2021-11-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.10.0 to **6.11.0** on 2021-11-26
+  - [checkov](https://www.checkov.io/) from 2.0.603 to **2.0.605** on 2021-11-26
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.12 to **0.35.13** on 2021-11-26
+  - [htmlhint](https://htmlhint.com/) from 0.16.3 to **1.0.0** on 2021-11-27
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.32 to **0.9.33** on 2021-11-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.0 to **6.11.1** on 2021-11-27
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.1 to **9.2** on 2021-11-29
+  - [checkov](https://www.checkov.io/) from 2.0.605 to **2.0.606** on 2021-11-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.1 to **6.12.1** on 2021-11-30
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.45.0 to **0.45.1** on 2021-11-30
+  - [checkov](https://www.checkov.io/) from 2.0.606 to **2.0.609** on 2021-11-30
+  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.7.0** on 2021-11-30
+  - [v8r](https://github.com/chris48s/v8r) from 0.7.0 to **0.6.1** on 2021-12-01
+  - [checkov](https://www.checkov.io/) from 2.0.614 to **2.0.616** on 2021-12-01
+<!-- linter-versions-end -->
+
+## [v5.2.0] - 2021-11-18
+
+- Fix release doc CI
+- Add <utteranc.es> comments in online documentation
+- Add link to MegaLinter documentation in console logs
+
+- Linter versions upgrades
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.7 to **1.6.8** on 2021-11-15
+  - [checkov](https://www.checkov.io/) from 2.0.572 to **2.0.573** on 2021-11-15
+  - [checkov](https://www.checkov.io/) from 2.0.573 to **2.0.574** on 2021-11-15
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.0 to **0.56.1** on 2021-11-17
+  - [checkov](https://www.checkov.io/) from 2.0.574 to **2.0.580** on 2021-11-17
+  - [black](https://black.readthedocs.io/en/stable/) from 21.10 to **21.11** on 2021-11-17
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.6 to **5.13.0** on 2021-11-17
+  - [checkov](https://www.checkov.io/) from 2.0.580 to **2.0.582** on 2021-11-17
+  - [checkov](https://www.checkov.io/) from 2.0.582 to **2.0.583** on 2021-11-18
+  - [phpstan](https://phpstan.org/) from 1.1.2 to **1.2.0** on 2021-11-18
+  - [checkov](https://www.checkov.io/) from 2.0.583 to **2.0.587** on 2021-11-18
+
+## [v5.1.0] - 2021-11-15
+
+- Fix config issue with IGNORE_GITIGNORED_FILES (#932)
+- Bypass random CI issue with sql_tsqllint_test test version and test help
+- New configuration **PRINT_ALL_FILES** (default: `true`). If set to `false`, console log only displays updated and error files, not all of them
+- Update **black** configuration, that now uses a `pyproject.toml` file (#949)
+- Allows `list_of_files` cli_lint_mode on Psalm linter to improve performance compare to `file` mode
+- mega-linter-runner: Upgrade yeoman environment to allow spaces in path
+- Documentation versioning with mike
+- Accordingly, to official [PHPStan documentation](https://phpstan.org/user-guide/rule-levels), the TEMPLATES/phpstan.neon.dist config file set default level to zero.
+- Downgrade dotnet from 6.0 to 5.0, to be compliant with tsqllint
+- Allow GithubStatusReporter to work for other CI platforms
+- Add license badge in linters documentation (All linters)
+- Upgrade checkov install instructions to use alpine-oriented ones
+- Fix wrong errors count displayed with PHPStan and Psalm linters (#985)
+- Fix typo error in `.jscpd.json` config file (#986)
+- Deprecate `DEFAULT_BRANCH`, and change its default from `master` to `HEAD` (#915)
+
+- Linter versions upgrades
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.5 to **5.12.6** on 2021-11-04
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.55.0 to **0.56.0** on 2021-11-06
+  - [coffeelint](http://www.coffeelint.org) from 5.1.0 to **5.1.1** on 2021-11-06
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.3.26 to **3.4.1** on 2021-11-06
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.7.0 to **2.8.0** on 2021-11-06
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 1.7.0 to **2.0.0** on 2021-11-06
+  - [phpstan](https://phpstan.org/) from 1.0.2 to **1.1.0** on 2021-11-06
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.1 to **3.4.2** on 2021-11-07
+  - [shellcheck](https://github.com/koalaman/shellcheck) from 0.7.2 to **0.8.0** on 2021-11-07
+  - [coffeelint](http://www.coffeelint.org) from 5.1.1 to **5.2.0** on 2021-11-07
+  - [jscpd](https://github.com/kucherenko/jscpd/tree/master/packages/jscpd) from 3.4.2 to **3.3.26** on 2021-11-07
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.8.0 to **2.7.0** on 2021-11-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.7.1 to **0.8.0** on 2021-11-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.0 to **0.8.1** on 2021-11-08
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.43.1 to **0.44.0** on 2021-11-08
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.6 to **1.6.7** on 2021-11-08
+  - [eslint](https://eslint.org) from 7.32.0 to **8.2.0** on 2021-11-08
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.44.0 to **0.45.0** on 2021-11-08
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.5 to **7.2.0** on 2021-11-08
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.35.1 to **0.35.2** on 2021-11-09
+  - [isort](https://pycqa.github.io/isort/) from 5.10.0 to **5.10.1** on 2021-11-09
+  - [phpstan](https://phpstan.org/) from 1.1.1 to **1.1.2** on 2021-11-09
+  - [kics](https://www.kics.io) from 1.4.6 to **1.4.7** on 2021-11-11
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.10 to **1.0.11** on 2021-11-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.6 to **0.35.8** on 2021-11-11
+  - [htmlhint](https://htmlhint.com/) from 0.16.0 to **0.16.1** on 2021-11-12
+  - [checkov](https://www.checkov.io/) from 2.0.524 to **2.0.566** on 2021-11-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.8 to **0.35.9** on 2021-11-12
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.0 to **1.7.1** on 2021-11-13
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.31 to **0.9.32** on 2021-11-13
+  - [checkov](https://www.checkov.io/) from 2.0.566 to **2.0.569** on 2021-11-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.9 to **0.35.10** on 2021-11-13
+  - [checkov](https://www.checkov.io/) from 2.0.569 to **2.0.571** on 2021-11-14
+  - [stylelint](https://stylelint.io) from 14.0.1 to **14.1.0** on 2021-11-14
+  - [checkov](https://www.checkov.io/) from 2.0.571 to **2.0.572** on 2021-11-14
+
+## [v5.0.7] - 2021-11-04
+
+- Fix that upgrader removed all jobs after cancel_duplicates but the last (#925)
+
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.4 to **0.55.0** on 2021-11-03
+  - [phpstan](https://phpstan.org/) from 1.0.0 to **1.0.1** on 2021-11-03
+  - [golangci-lint](https://golangci-lint.run/) from 1.42.1 to **1.43.0** on 2021-11-04
+  - [phpstan](https://phpstan.org/) from 1.0.1 to **1.0.2** on 2021-11-04
+  - [isort](https://pycqa.github.io/isort/) from 5.9.3 to **5.10.0** on 2021-11-04
+
+## [v5.0.6] - 2021-11-03
+
+- Use GH actions concurrency to cancel runs (#921)
+
+## [v5.0.5] - 2021-11-02
+
+- Fix `mega-linter-runner --install` template for Github Action Workflow
+- Replace expression "abusive copy-paste" by "excessive copy-paste"
+
+- Linter versions upgrades
+  - [coffeelint](http://www.coffeelint.org) from 5.0.5 to **5.1.0** on 2021-11-02
+  - [phpstan](https://phpstan.org/) from 0.12.99 to **1.0.0** on 2021-11-02
+  - [black](https://black.readthedocs.io/en/stable/) from 21.9 to **21.10** on 2021-11-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.4 to **5.12.5** on 2021-11-02
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.5 to **0.35.6** on 2021-11-02
+
+## [v5.0.2] - 2021-10-31
+
+- Quick build to fix stargazers badge regression (see issue #873) (#909)
+- Improve Azure Pipeline template documentation (#908)
+- Take in account  legacy docker images for total docker pull count (#910)
+- Upgrade stale github action
+
+- Linter versions upgrades
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.3 to **5.12.4** on 2021-10-31
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.0.1 to **9.1** on 2021-10-31
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.0 to **0.33.1** on 2021-10-31
+
+## [v5.0.1] - 2021-10-30
+
+- Fix mega-linter-runner bug related to v5
+- Fix online documentation
+
+## [v5.0.0] - 2021-10-30
+
+- Migration from github individual repo **nvuillam/mega-linter** to github organization repo **megalinter/megalinter**
+- Migration from docker hub space **nvuillam** to space **megalinter**
+  - Docker images are now **megalinter/megalinter** or **megalinter/megalinter-FLAVOR**
+- Documentation is now hosted at <https://megalinter.github.io/>
+- Tool to upgrade user repos configuration files using `npx mega-linter-runner --upgrade` (will upgrade references to nvuillam/mega-linter into megalinter/megalinter)
+- Version management: Now mega-linter docker images, github action and mega-linter-runner versions are aligned
+  - **latest** for latest official release
+  - **beta** for current content of main branch
+  - **alpha** for current content of alpha branch
+  - docker image, github action and mega-linter-runner can still be called with exact version number
+- Being more inclusive: rename `master` branch into `main`
+- **IGNORE_GITIGNORED_FILES** parameter default to `true`
+
+## [4.47.0] - 2021-10-30
 
 - Upgrades
   - Base docker image python:3.9.6-alpine3.13 to python:3.9.7-alpine3.13
   - Automerge internal job pascalgn/automerge-action-0.14.2 to pascalgn/automerge-action-0.14.3
 - Config reporter: Parse `.vscode/extensions.json` as json5 (with comments)
 - Add eslint-plugin-jsx-a11y dependency
+- Rename default PHPStan config file, from `phpstan.neon` to `phpstan.neon.dist` accordingly to [PHPStan resolution priority](https://phpstan.org/config-reference#config-file)
+- Allows `list_of_files` cli_lint_mode on PHPSTAN linter to improve performance compare to `file` mode
+- `phpstan` is now installed with `phive` rather than `composer` (reduces disk usage)
+- Allows `list_of_files` cli_lint_mode on PHPCS linter to improve performance compare to `file` mode
+- Allows `list_of_files` cli_lint_mode on EditorConfig-Checker linter to improve performance compare to `file` mode
+- Fix internal CSS because of StyleLint new rule `selector-class-pattern`
+- Fix ansible-lint version collection
+- Message to recommend to upgrade to MegaLinter v5
 
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.1 to **0.54.2** on 2021-09-23
@@ -41,7 +232,62 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [checkov](https://www.checkov.io/) from 2.0.448 to **2.0.454** on 2021-09-30
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.0 to **6.9.1** on 2021-09-30
   - [checkov](https://www.checkov.io/) from 2.0.454 to **2.0.461** on 2021-09-30
-<!-- linter-versions-end -->
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.0 to **9.0.1** on 2021-10-03
+  - [luacheck](https://luacheck.readthedocs.io) from 0.23.0 to **0.25.0** on 2021-10-03
+  - [checkov](https://www.checkov.io/) from 2.0.461 to **2.0.467** on 2021-10-03
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.7 to **1.0.8** on 2021-10-03
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.32.4 to **0.34.0** on 2021-10-03
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.6 to **0.6.7** on 2021-10-05
+  - [checkov](https://www.checkov.io/) from 2.0.467 to **2.0.469** on 2021-10-05
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.28.1 to **0.29.0** on 2021-10-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.11.1 to **5.12.0** on 2021-10-06
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.7 to **0.6.8** on 2021-10-06
+  - [checkov](https://www.checkov.io/) from 2.0.469 to **2.0.475** on 2021-10-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.0 to **5.12.1** on 2021-10-06
+  - [checkov](https://www.checkov.io/) from 2.0.475 to **2.0.476** on 2021-10-06
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.1 to **5.12.2** on 2021-10-07
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.0 to **0.34.1** on 2021-10-07
+  - [checkov](https://www.checkov.io/) from 2.0.476 to **2.0.477** on 2021-10-07
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.10.0 to **1.11.0** on 2021-10-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.12.2 to **5.12.3** on 2021-10-09
+  - [checkov](https://www.checkov.io/) from 2.0.477 to **2.0.479** on 2021-10-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.8 to **0.6.9** on 2021-10-10
+  - [checkov](https://www.checkov.io/) from 2.0.479 to **2.0.481** on 2021-10-10
+  - [checkov](https://www.checkov.io/) from 2.0.481 to **2.0.482** on 2021-10-10
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.0 to **3.6.1** on 2021-10-12
+  - [flake8](https://flake8.pycqa.org) from 3.9.2 to **4.0.1** on 2021-10-12
+  - [checkov](https://www.checkov.io/) from 2.0.482 to **2.0.484** on 2021-10-12
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.1 to **0.34.3** on 2021-10-12
+  - [checkov](https://www.checkov.io/) from 2.0.484 to **2.0.485** on 2021-10-13
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.4 to **7.1.5** on 2021-10-16
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.6.9 to **0.7.0** on 2021-10-16
+  - [checkov](https://www.checkov.io/) from 2.0.485 to **2.0.491** on 2021-10-16
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.8 to **1.0.9** on 2021-10-16
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.34.3 to **0.35.3** on 2021-10-16
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.32.1 to **0.33.0** on 2021-10-16
+  - [checkov](https://www.checkov.io/) from 2.0.491 to **2.0.492** on 2021-10-17
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.5 to **1.6.6** on 2021-10-17
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.2 to **0.54.3** on 2021-10-21
+  - [coffeelint](http://www.coffeelint.org) from 5.0.4 to **5.0.5** on 2021-10-21
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.4.3 to **0.4.4** on 2021-10-21
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 0.5.2 to **0.6.0** on 2021-10-21
+  - [checkov](https://www.checkov.io/) from 2.0.492 to **2.0.497** on 2021-10-21
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.3 to **0.35.4** on 2021-10-21
+  - [stylelint](https://stylelint.io) from 13.13.1 to **14.0.0** on 2021-10-24
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.55 to **0.1.56** on 2021-10-24
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.9.1 to **6.10.0** on 2021-10-24
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.7.0 to **0.7.1** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.497 to **2.0.509** on 2021-10-24
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.11.0 to **1.12.0** on 2021-10-24
+  - [checkov](https://www.checkov.io/) from 2.0.509 to **2.0.510** on 2021-10-25
+  - [checkov](https://www.checkov.io/) from 2.0.510 to **2.0.516** on 2021-10-26
+  - [stylelint](https://stylelint.io) from 14.0.0 to **14.0.1** on 2021-10-26
+  - [checkov](https://www.checkov.io/) from 2.0.516 to **2.0.524** on 2021-10-26
+  - [php](https://www.php.net) from 7.4.24 to **7.4.25** on 2021-10-27
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.54.3 to **0.54.4** on 2021-10-28
+  - [htmlhint](https://htmlhint.com/) from 0.15.2 to **0.16.0** on 2021-10-29
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.9 to **1.0.10** on 2021-10-29
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.4 to **0.35.5** on 2021-10-29
 
 ## [4.46.0] - 2021-09-21
 
@@ -100,7 +346,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Default commands defined at linter descriptor level
   - Overridable by user in linterName_PRE_COMMANDS and linterName_POST_COMMANDS in `.mega-linter.yml`
 - Fix tflint config so no custom PRE_COMMAND is necessary
-- Use dotnet installer to setup tsqllint. tsqllint is now part of the main Mega-Linter flavor, but removed from JAVASCRIPT flavor
+- Use dotnet installer to setup tsqllint. tsqllint is now part of the main MegaLinter flavor, but removed from JAVASCRIPT flavor
 - Ignore linter_FILTER_REGEX_INCLUDE/linter_FILTER_REGEX_EXCLUDE for linters running on the whole project directory
 - mega-linter-runner updates
   - New CLI argument `--json`, to get the full report as JSON in stdout last line
@@ -149,7 +395,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Upgrade tflint descriptor to use ghcr.io/terraform-linters/tflint docker image and initialize tflint
 - Add page for flavors stats in online documentation
-- Unable to list git ignored files when IGNORED_GITIGNORED_FILES: true ([#PR605](https://github.com/nvuillam/mega-linter/pull/605), by [David Bernard](https://github.com/davidB) with the contribution of [Tim Pansino](https://github.com/TimPansino))
+- Unable to list git ignored files when IGNORED_GITIGNORED_FILES: true ([#PR605](https://github.com/megalinter/megalinter/pull/605), by [David Bernard](https://github.com/davidB) with the contribution of [Tim Pansino](https://github.com/TimPansino))
 
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.3 to **7.1.4** on 2021-08-13
@@ -188,7 +434,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Add [tsqllint](https://github.com/tsqllint/tsqllint) to lint [TSQL files](https://www.tsql.info/)
 - Store docker pulls statistics history
 - add `IGNORE_GENERATED_FILES` in json schema
-- allow commonjs config file for eslint - [#629](https://github.com/nvuillam/mega-linter/pull/629), by [vitalitytv](https://github.com/vitaliytv)
+- allow commonjs config file for eslint - [#629](https://github.com/megalinter/megalinter/pull/629), by [vitalitytv](https://github.com/vitaliytv)
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.295 to **2.0.297** on 2021-07-25
@@ -232,8 +478,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.41.0] - 2021-07-25
 
-- New config variable **IGNORE_GITIGNORED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files ignored by git using `.gitignore` files
-- New config variable **IGNORE_GENERATED_FILES** (default: `false`). If set to `true`, Mega-Linter will skips files containing `@generated` marker and not containing `@not-generated` marker
+- New config variable **IGNORE_GITIGNORED_FILES** (default: `false`). If set to `true`, MegaLinter will skips files ignored by git using `.gitignore` files
+- New config variable **IGNORE_GENERATED_FILES** (default: `false`). If set to `true`, MegaLinter will skips files containing `@generated` marker and not containing `@not-generated` marker
 
 - Linter versions upgrades
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.9.2 to **2.9.1** on 2021-07-14
@@ -295,7 +541,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.38.0] - 2021-07-10
 
 - New python linter: [bandit](https://github.com/PyCQA/bandit), added by [Tom Pansino](https://github.com/tpansino)
-- Manage Github action versioning: Match Mega-Linter docker image version
+- Manage Github action versioning: Match MegaLinter docker image version
 
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.5.2 to **6.5.3** on 2021-07-07
@@ -368,14 +614,14 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.35.0] - 2021-06-12
 
-- Fix [#304](https://github.com/nvuillam/mega-linter/issues/304): Display error message when docker is not found when running mega-linter-runner
+- Fix [#304](https://github.com/megalinter/megalinter/issues/304): Display error message when docker is not found when running mega-linter-runner
 - Calculate sum of docker pulls for main page counter badge
-- Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/nvuillam/mega-linter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
+- Check _RULES_PATH for active_only_if_file_found check ([#418](https://github.com/megalinter/megalinter/pull/418), by [Omeed Musavi](https://github.com/omusavi))
 - Upgrade clj-kondo 2021.04.23-alpine
 - Upgrade to python:3.9.5-alpine
-- Partial fix [#481](https://github.com/nvuillam/mega-linter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/nvuillam/mega-linter/pull/487) by [Vít Kučera](https://github.com/vkucera))
+- Partial fix [#481](https://github.com/megalinter/megalinter/issues/481): Allow applying fixes on push events ([PR487](https://github.com/megalinter/megalinter/pull/487) by [Vít Kučera](https://github.com/vkucera))
 - Fix build.sh on windows
-- Add trivy security check of all built Mega-Linter docker images
+- Add trivy security check of all built MegaLinter docker images
 
 - Linter versions upgrades
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.29.2 to **0.29.3** on 2021-05-16
@@ -413,7 +659,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.34.0] - 2021-04-30
 
-- Fix bug in Mega-Linter plugins installation (related to [#PR403](https://github.com/nvuillam/mega-linter/pull/403))
+- Fix bug in MegaLinter plugins installation (related to [#PR403](https://github.com/megalinter/megalinter/pull/403))
 
 - Linter versions upgrades
   - [sqlfluff](https://www.sqlfluff.com/) from 0.5.3 to **0.5.5** on 2021-05-14
@@ -446,7 +692,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.32.0] - 2021-04-20
 
 - Fix #376 : Link-title to license
-- Add support from prettier as JSON formatter ([#421](https://github.com/nvuillam/mega-linter/pull/421), by [Omeed Musavi](https://github.com/omusavi)
+- Add support from prettier as JSON formatter ([#421](https://github.com/megalinter/megalinter/pull/421), by [Omeed Musavi](https://github.com/omusavi)
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.82 to **0.12.83** on 2021-04-03
@@ -520,7 +766,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.29.0] - 2021-03-12
 
 - Fix regex to list Salesforce errors
-- Fix Updated Files Reporter when Mega-Linter is not running on GitHub Action
+- Fix Updated Files Reporter when MegaLinter is not running on GitHub Action
 - Fix #359 - invalid literal with _DISABLE_ERRORS_IF_LESS_THAN
 
 - Linter versions upgrades
@@ -590,7 +836,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Fix ansible-lint test cases for new version
   - Update --help expected return code for shfmt ash formatter and revive go linter
   - Add --write to update files fixed by eslint
-  - Pimp Mega-Linter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/nvuillam/mega-linter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
+  - Pimp MegaLinter sources by adding newLines when missing (manually and from build.py) + fix logger initialization error + call python3 by default ([PR329](https://github.com/megalinter/megalinter/pull/329) by [Tom Klingenberg](https://github.com/ktomk))
   - Increase max line length to 500 in yaml-lint default configuration
 
 - Linter versions upgrades
@@ -637,9 +883,9 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Fixes
   - Prevent `unexpected token` error using mega-linter-runner on old versions of node
-  - [#293](https://github.com/nvuillam/mega-linter/issues/293) Fix CI for PR from forked repositories
-  - [#295](https://github.com/nvuillam/mega-linter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
-  - [#311](https://github.com/nvuillam/mega-linter/issues/295) Add java in salesforce flavor descriptor because it is used by Apex PMD
+  - [#293](https://github.com/megalinter/megalinter/issues/293) Fix CI for PR from forked repositories
+  - [#295](https://github.com/megalinter/megalinter/issues/295) Fix crash when .cspell.json is not parseable (wrong JSON format)
+  - [#311](https://github.com/megalinter/megalinter/issues/295) Add java in salesforce flavor descriptor because it is used by Apex PMD
 
 - Linter versions upgrades
   - [phpstan](https://phpstan.org/) from 0.12.68 to **0.12.69** on 2021-01-24
@@ -662,7 +908,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Linters
   - Add [revive](https://github.com/mgechev/revive) GO linter
   - Add [SwiftLint](https://github.com/realm/SwiftLint) for Swift language
-  - New Mega-Linter flavor **swift**
+  - New MegaLinter flavor **swift**
   - Get correct version for eslint-plugin-jsonc
 
 - Linter versions upgrades
@@ -676,7 +922,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Add SQL linter [sqlfluff](https://github.com/sqlfluff/sqlfluff)
 
 - Fixes
-  - [#269](https://github.com/nvuillam/mega-linter/issues/269) eslint: .eslintrc.yml is considered as found whereas it's not located in workspace root
+  - [#269](https://github.com/megalinter/megalinter/issues/269) eslint: .eslintrc.yml is considered as found whereas it's not located in workspace root
 
 - Linter versions upgrades
   - [stylelint](https://stylelint.io) from 13.8.0 to **13.9.0** on 2021-01-19
@@ -694,7 +940,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - Display ending message
 
 - Fixes
-  - [#266](https://github.com/nvuillam/mega-linter/issues/266): shfmt error in python flavor, and reactivate BASH_SHFMT and DOCKERFILE_HADOLINT for own sources linting)
+  - [#266](https://github.com/megalinter/megalinter/issues/266): shfmt error in python flavor, and reactivate BASH_SHFMT and DOCKERFILE_HADOLINT for own sources linting)
 
 - Linter versions upgrades
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.1.0 to **7.1.1** on 2021-01-15
@@ -754,7 +1000,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.44.2 to **0.44.3** on 2021-01-09
   - [tflint](https://github.com/terraform-linters/tflint) from 0.23.0 to **0.23.1** on 2021-01-10
   - [dotenv-linter](https://dotenv-linter.github.io/) from 2.2.1 to **3.0.0** on 2021-01-11
-    - Update Mega-Linter to call dotenv-linter v3 with `fix` and not `--fix` anymore
+    - Update MegaLinter to call dotenv-linter v3 with `fix` and not `--fix` anymore
   - [phpstan](https://phpstan.org/) from 0.12.65 to **0.12.66** on 2021-01-11
 
 ## [4.22.1] - 2021-01-07
@@ -791,7 +1037,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
     - isort
 
 - Core
-  - Implement architecture for Mega-Linter plugins
+  - Implement architecture for MegaLinter plugins
   - Count number of errors in linter logs with regexes (`cli_lint_errors_count` and `cli_lint_errors_regex` in descriptor files)
   - Cleanup unused legacy from Super-Linter
 
@@ -801,7 +1047,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Documentation
   - Add Install button for VsCode IDE extensions when available
   - Add Install button for JetBrains IDEs extensions when available
-  - Add a new page **All linters** listing all linters and references to Mega-Linter in their documentation
+  - Add a new page **All linters** listing all linters and references to MegaLinter in their documentation
   - Add json-schema documentation generation and references
 
 - CI
@@ -832,7 +1078,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.18.0] - 2020-12-23
 
 - Core
-  - Do not suggest flavors when Mega-Linter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
+  - Do not suggest flavors when MegaLinter validates only the diff files (`VALIDATE_ALL_CODE_BASE: false`)
   - Fix ConsoleReporter active linters table content
   - Check if linter is able to fix before flagging it as a fixing linter during runtime
 
@@ -845,7 +1091,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 - Doc
   - Add docker pulls badge in flavors documentation
-  - Generate list of references to Mega-Linter
+  - Generate list of references to MegaLinter
 
 ## [4.17.0] - 2020-12-18
 
@@ -864,16 +1110,16 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.16.0] - 2020-12-14
 
-- Flavored Mega-Linters
-  - Generate lightweight docker images to improve Mega-Linter performances on some language based projects
-  - During Mega-Linter run, suggest user to use a flavor and write it in reporters
+- Flavored MegaLinters
+  - Generate lightweight docker images to improve MegaLinter performances on some language based projects
+  - During MegaLinter run, suggest user to use a flavor and write it in reporters
   - Update descriptor YML files to define flavours
-  - Update build.py to create one Dockerfile by Mega-Linter flavour & flavors documentation
-  - New GHA workflows to build all flavoured Mega-Linters when pushing in master
+  - Update build.py to create one Dockerfile by MegaLinter flavour & flavors documentation
+  - New GHA workflows to build all flavoured MegaLinters when pushing in master
 
 - Fixes
   - Output reporter problems as warnings
-  - Do not make Mega-Linter fail in case GitHubStatusReporter fails
+  - Do not make MegaLinter fail in case GitHubStatusReporter fails
 
 - Doc
   - Rename "index" pages into more meaningful labels
@@ -978,8 +1224,8 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Add performances by linter in console log
 - New option **SHOW_ELAPSED_TIME** , allowing the number of seconds elapsed by linter in reports
 
-- NPM package **Mega-Linter runner**
-  - runs Mega-Linter locally, using .mega-linter.yml configuration (requires docker installed on your computer)
+- NPM package **MegaLinter runner**
+  - runs MegaLinter locally, using .mega-linter.yml configuration (requires docker installed on your computer)
   - test cases added in CI
 
 ## [4.9.0] - 2020-11-23
@@ -1008,7 +1254,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 
 ## [4.8.0] - 2020-11-17
 
-- New reporter: [Updated sources](https://nvuillam.github.io/mega-linter/reporters/UpdatedSourcesReporter/)
+- New reporter: [Updated sources](https://megalinter.github.io/reporters/UpdatedSourcesReporter/)
 
 ## [4.7.1] - 2020-11-16
 
@@ -1017,16 +1263,16 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 ## [4.7.0] - 2020-11-16
 
 - Update markdown-link-check default config
-- Add tip in documentation about .cspell.json generated by Mega-Linter
+- Add tip in documentation about .cspell.json generated by MegaLinter
 - Remove /tmp/lint from logs
 - Improve summary table for linters in project mode (all project linted in one call, not one file by one file)
 - Add Reporters in documentation, with screenshots
-- New Mega-Linter variables to activate/deactivate/configure reporters
+- New MegaLinter variables to activate/deactivate/configure reporters
 
 ## [4.6.0] - 2020-11-13
 
 - Automatic build of documentation with mkdocs-material
-- Automatic deployment to [https://nvuillam.github.io/mega-linter/](https://nvuillam.github.io/mega-linter/)
+- Automatic deployment to [https://megalinter.github.io/](https://megalinter.github.io/)
 - Add [markdown-link-check](https://github.com/tcort/markdown-link-check)
 
 ## [4.5.0] - 2020-11-11
@@ -1048,7 +1294,7 @@ Note: Can be used with `nvuillam/mega-linter@insiders` in your GitHub Action meg
 - Add spell checker **cspell**
 - Add Github Action Workflow to automatically:
   - update linters dependencies
-  - rebuild Mega-Linter documentation
+  - rebuild MegaLinter documentation
   - create a PR with updates
 
 - Apply fixes performed by linters:

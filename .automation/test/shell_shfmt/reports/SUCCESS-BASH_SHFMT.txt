@@ -1,5 +1,5 @@
 Results of shfmt linter (version 3.2.1)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/bash_shfmt/
+See documentation on https://megalinter.github.io/descriptors/bash_shfmt/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/shell_shfmt/shell-shfmt_good_1.sh

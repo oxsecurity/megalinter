@@ -58,10 +58,12 @@ linters:
     linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
     linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
     config_file_name: phpcs.xml
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--standard="
     examples:
       - "phpcs myfile.php"
       - "phpcs --standard=phpcs.xml myfile.php"
+      - "phpcs --standard=phpcs.xml mydir/ myfile.php"
     install:
       dockerfile:
         - |
@@ -88,25 +90,28 @@ linters:
     name: PHP_PHPSTAN
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
-    linter_image_url: https://i.imgur.com/MOt7taM.png
+    linter_image_url: https://i.imgur.com/WaRKPlC.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
-    config_file_name: phpstan.neon
+    config_file_name: phpstan.neon.dist
+    cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "analyse"
       - "--no-progress"
       - "--no-ansi"
       - "--memory-limit"
       - "1G"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) error"
     examples:
       - "phpstan analyse --no-progress --no-ansi myfile.php"
       - "phpstan analyse --no-progress --no-ansi -c phpstan.neon myfile.php"
+      - "phpstan analyse --no-progress --no-ansi myfile1.php myfile2.php"
+      - "phpstan analyse --no-progress --no-ansi mydir1/ mydir2/ myfile.php"
     install:
       dockerfile:
         - |
-          RUN composer global require phpstan/phpstan \
-              && composer global config bin-dir --absolute
-        - ENV PATH="/root/.composer/vendor/bin:$PATH"
+          RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
     ide:
       idea:
         - name: PHPStan / Psalm / Generics
@@ -124,11 +129,16 @@ linters:
     linter_rules_configuration_url: https://psalm.dev/docs/running_psalm/configuration/
     linter_rules_inline_disable_url: https://psalm.dev/docs/running_psalm/dealing_with_code_issues/#docblock-suppression
     config_file_name: psalm.xml
+    cli_lint_mode: list_of_files
     cli_config_arg_name: "--config="
     version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "([0-9]+) error"
     examples:
       - "psalm myfile.php"
+      - "psalm myfile.php mydir/"
       - "psalm --config=psalm.xml myfile.php"
+      - "psalm --config=psalm.xml myfile.php mydir/"
     install:
       dockerfile:
         - |
@@ -140,3 +150,19 @@ linters:
       vscode:
         - name: Psalm VsCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
+  # PHPLint
+  - linter_name: phplint
+    linter_url: https://github.com/overtrue/phplint
+    config_file_name: .phplint.yml
+    cli_lint_mode: list_of_files
+    examples:
+      - "phplint myfile.php"
+      - "phplint mydir"
+      - "phplint mydir myfile.php"
+      - "phplint mydir -vvv"
+    install:
+      dockerfile:
+        - |
+          RUN composer global require overtrue/phplint ^3.0 \
+              && composer global config bin-dir --absolute
+        - ENV PATH="/root/.composer/vendor/bin:$PATH"

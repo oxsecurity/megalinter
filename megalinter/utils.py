@@ -20,7 +20,7 @@ REPO_HOME_DEFAULT = (
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 LIST_OF_REPLACEMENTS = [
-    # Mega-Linter image
+    # MegaLinter image
     ["/tmp/lint/", ""],
     ["tmp/lint/", ""],
     # GitHub Actions
@@ -245,3 +245,10 @@ def normalize_log_string(str_in):
     for replacement in LIST_OF_REPLACEMENTS:
         str_in = str_in.replace(replacement[0], replacement[1])
     return str_in
+
+
+def format_bullet_list(files):
+    list_separator = "\n- "
+    prefix = list_separator if any(files) is True else ""
+    file_list = list_separator.join(files) if len(files) > 0 else ""
+    return "{}{}".format(prefix, file_list)

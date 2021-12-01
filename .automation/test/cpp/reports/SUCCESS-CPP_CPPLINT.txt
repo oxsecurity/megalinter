@@ -1,5 +1,5 @@
 Results of cpplint linter (version 1.5.4)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/cpp_cpplint/
+See documentation on https://megalinter.github.io/descriptors/cpp_cpplint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/cpp/cpp_good_01.cpp

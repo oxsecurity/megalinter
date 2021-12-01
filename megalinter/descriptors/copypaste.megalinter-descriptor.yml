@@ -10,7 +10,7 @@ linters:
     linter_url: https://github.com/kucherenko/jscpd/tree/master/packages/jscpd
     linter_repo: https://github.com/kucherenko/jscpd
     linter_text: |
-      JSCPD browses all files of your repository to detect abusive copy-pastes
+      JSCPD browses all files of your repository to detect excessive copy-pastes
 
       If you need to ignore folders,files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file
 
@@ -39,6 +39,8 @@ linters:
       - "console,html"
       - "--output"
       - "./report/copy-paste/"
+    #      - "--exitCode" # uncomment when jscpd > 3.4.0
+    #      - "1"
     cli_lint_extra_args_after:
       - "."
     cli_lint_errors_count: regex_number
@@ -46,7 +48,7 @@ linters:
     examples:
       - "jscpd --output ./report/copy-paste/ ."
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
+    downgraded_version: true
     install:
       npm:
-        - jscpd
-
+        - jscpd@3.3.26

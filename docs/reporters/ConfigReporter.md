@@ -4,8 +4,8 @@ Generates a folder **IDE-config** located in report folder.
 
 It contains:
 
-- All default Mega-Linter configuration files used during the linting
-- Updated `.vscode/extensions.json` containing VsCode extensions corresponding to the linters used during Mega-Linter run
+- All default MegaLinter configuration files used during the linting
+- Updated `.vscode/extensions.json` containing VsCode extensions corresponding to the linters used during MegaLinter run
 
 This reporter **activated by default**.
 

@@ -3,7 +3,7 @@
 const { MegaLinterRunner } = require("../lib/index");
 const assert = require("assert");
 
-const release = process.env.MEGALINTER_RELEASE || "insiders";
+const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
   process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
 

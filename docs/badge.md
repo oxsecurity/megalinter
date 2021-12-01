@@ -4,24 +4,24 @@
 
 # Badge
 
-You can show Mega-Linter status with a badge in your repository README
+You can show MegaLinter status with a badge in your repository README
 
-[![Mega-Linter](https://github.com/nvuillam/mega-linter/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/mega-linter/actions?query=workflow%3AMega-Linter+branch%3Amaster)
+[![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
 
-If your main branch is **main** , replace **master** by **main** in URLs
+If your main branch is **main** , replace **main** by **main** in URLs
 
 ## Markdown
 
 - Format
 
 ```markdown
-[![Mega-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/<OWNER>/<REPOSITORY>/actions?query=workflow%3AMega-Linter+branch%3Amaster)
+[![MegaLinter](https://github.com/<OWNER>/<REPOSITORY>/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/<OWNER>/<REPOSITORY>/actions?query=workflow%3AMegaLinter+branch%3Amain)
 ```
 
 - Example
 
 ```markdown
-[![Mega-Linter](https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master)](https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMega-Linter+branch%3Amaster)
+[![MegaLinter](https://github.com/nvuillam/npm-groovy-lint/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMegaLinter+branch%3Amain)
 ```
 
 ## reStructuredText
@@ -29,17 +29,17 @@ If your main branch is **main** , replace **master** by **main** in URLs
 - Format
 
 ```markdown
-.. |Mega-Linter yes| image:: https://github.com/<OWNER>/<REPOSITORY>/workflows/Mega-Linter/badge.svg?branch=master
-   :target: https://github.com/<OWNER>/<REPOSITORY>/actions?query=workflow%3AMega-Linter+branch%3Amaster
+.. |MegaLinter yes| image:: https://github.com/<OWNER>/<REPOSITORY>/workflows/MegaLinter/badge.svg?branch=main
+   :target: https://github.com/<OWNER>/<REPOSITORY>/actions?query=workflow%3AMegaLinter+branch%3Amain
 ```
 
 - Example
 
 ```markdown
-.. |Mega-Linter yes| image:: https://github.com/nvuillam/npm-groovy-lint/workflows/Mega-Linter/badge.svg?branch=master
-   :target: https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMega-Linter+branch%3Amaster
+.. |MegaLinter yes| image:: https://github.com/nvuillam/npm-groovy-lint/workflows/MegaLinter/badge.svg?branch=main
+   :target: https://github.com/nvuillam/npm-groovy-lint/actions?query=workflow%3AMegaLinter+branch%3Amain
 ```
 
-_Note:_ IF you did not use `Mega-Linter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository){target=_blank}
+_Note:_ IF you did not use `MegaLinter` as GitHub Action name, please read [GitHub Actions Badges documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#adding-a-workflow-status-badge-to-your-repository){target=_blank}
 
 <!-- badge-section-end -->

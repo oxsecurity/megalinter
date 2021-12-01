@@ -4,7 +4,7 @@
 
 ## puppet-lint documentation
 
-- Version in Mega-Linter: **2.5.2**
+- Version in MegaLinter: **2.5.2**
 - Visit [Official Web Site](http://puppet-lint.com/){target=_blank}
 - See [How to configure puppet-lint rules](https://github.com/rodjek/puppet-lint#configuration-file){target=_blank}
 - See [How to disable puppet-lint rules in files](http://puppet-lint.com/controlcomments/){target=_blank}
@@ -12,43 +12,43 @@
 
 [![puppet-lint - GitHub](https://gh-card.dev/repos/rodjek/puppet-lint.svg?fullname=)](https://github.com/rodjek/puppet-lint){target=_blank}
 
-## Configuration in Mega-Linter
+## Configuration in MegaLinter
 
-- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
-- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://nvuillam.github.io/mega-linter/configuration/#activation-and-deactivation)
+- Enable puppet-lint by adding `PUPPET_PUPPET_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable puppet-lint by adding `PUPPET_PUPPET_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://nvuillam.github.io/mega-linter/configuration/#apply-fixes)
+- Enable **auto-fixes** by adding `PUPPET_PUPPET_LINT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
-| Variable                                       | Description                                                                                                                                                                                                         | Default value                                    |
-|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| PUPPET_PUPPET_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                  |
-| PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                               |
-| PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                  |
-| PUPPET_PUPPET_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                         |
-| PUPPET_PUPPET_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".pp"]`                                        |
-| PUPPET_PUPPET_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                               |
-| PUPPET_PUPPET_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                             |
-| PUPPET_PUPPET_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                             |
-| PUPPET_PUPPET_LINT_CONFIG_FILE                 | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                              | `.puppet-lint.rc`                                |
-| PUPPET_PUPPET_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then Mega-Linter default rules |
-| PUPPET_PUPPET_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                          |
-| PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                              |
+| Variable                                       | Description                                                                                                                                                                                                         | Default value                                   |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PUPPET_PUPPET_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
+| PUPPET_PUPPET_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
+| PUPPET_PUPPET_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
+| PUPPET_PUPPET_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| PUPPET_PUPPET_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".pp"]`                                       |
+| PUPPET_PUPPET_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
+| PUPPET_PUPPET_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
+| PUPPET_PUPPET_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
+| PUPPET_PUPPET_LINT_CONFIG_FILE                 | puppet-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                              | `.puppet-lint.rc`                               |
+| PUPPET_PUPPET_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
+| PUPPET_PUPPET_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
+| PUPPET_PUPPET_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
 
 ## IDE Integration
 
-Use puppet-lint in your favorite IDE to catch errors before Mega-Linter !
+Use puppet-lint in your favorite IDE to catch errors before MegaLinter !
 
-|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                         Install                                         |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
+|                                                                  <!-- -->                                                                   | IDE                                                  | Extension Name                                                                    |                                         Install                                         |
+|:-------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|-----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [Puppet VsCode Extension](https://puppet-vscode.github.io/docs/features/linting/) | [Visit Web Site](https://puppet-vscode.github.io/docs/features/linting/){target=_blank} |
 
-## Mega-Linter Flavours
+## MegaLinter Flavours
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                          | Flavor                                                           | Description                | Embedded linters |                                                                                                                                                                   Info |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------|:---------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/nvuillam/mega-linter/raw/master/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://nvuillam.github.io/mega-linter/supported-linters/) | Default Mega-Linter Flavor |        93        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/nvuillam/mega-linter/v4) ![Docker Pulls](https://img.shields.io/docker/pulls/nvuillam/mega-linter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -115,70 +115,70 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
     Checks:
         --only-checks CHECKS         A comma separated list of checks that should be run
         --ignore-paths PATHS         A comma separated list of patterns to ignore
-        --no-unquoted_file_mode-check
-                                     Skip the unquoted_file_mode check.
-        --no-unquoted_resource_title-check
-                                     Skip the unquoted_resource_title check.
-        --no-file_mode-check         Skip the file_mode check.
-        --no-duplicate_params-check  Skip the duplicate_params check.
-        --no-ensure_not_symlink_target-check
-                                     Skip the ensure_not_symlink_target check.
-        --no-ensure_first_param-check
-                                     Skip the ensure_first_param check.
-        --no-variable_is_lowercase-check
-                                     Skip the variable_is_lowercase check.
-        --no-variable_contains_dash-check
-                                     Skip the variable_contains_dash check.
-        --no-selector_inside_resource-check
-                                     Skip the selector_inside_resource check.
-        --no-case_without_default-check
-                                     Skip the case_without_default check.
-        --no-documentation-check     Skip the documentation check.
-        --no-arrow_on_right_operand_line-check
-                                     Skip the arrow_on_right_operand_line check.
-        --no-variable_scope-check    Skip the variable_scope check.
-        --no-names_containing_uppercase-check
-                                     Skip the names_containing_uppercase check.
-        --no-names_containing_dash-check
-                                     Skip the names_containing_dash check.
+        --no-unquoted_node_name-check
+                                     Skip the unquoted_node_name check.
         --no-right_to_left_relationship-check
                                      Skip the right_to_left_relationship check.
-        --no-code_on_top_scope-check Skip the code_on_top_scope check.
-        --code_on_top_scope-check    Enable the code_on_top_scope check.
-        --no-parameter_order-check   Skip the parameter_order check.
-        --no-inherits_across_namespaces-check
-                                     Skip the inherits_across_namespaces check.
-        --no-nested_classes_or_defines-check
-                                     Skip the nested_classes_or_defines check.
-        --no-autoloader_layout-check Skip the autoloader_layout check.
         --no-class_inherits_from_params_class-check
                                      Skip the class_inherits_from_params_class check.
         --class_inherits_from_params_class-check
                                      Enable the class_inherits_from_params_class check.
-        --no-variables_not_enclosed-check
-                                     Skip the variables_not_enclosed check.
-        --no-only_variable_string-check
-                                     Skip the only_variable_string check.
+        --no-autoloader_layout-check Skip the autoloader_layout check.
+        --no-names_containing_dash-check
+                                     Skip the names_containing_dash check.
+        --no-variable_scope-check    Skip the variable_scope check.
+        --no-arrow_on_right_operand_line-check
+                                     Skip the arrow_on_right_operand_line check.
+        --no-code_on_top_scope-check Skip the code_on_top_scope check.
+        --code_on_top_scope-check    Enable the code_on_top_scope check.
+        --no-nested_classes_or_defines-check
+                                     Skip the nested_classes_or_defines check.
+        --no-inherits_across_namespaces-check
+                                     Skip the inherits_across_namespaces check.
+        --no-parameter_order-check   Skip the parameter_order check.
+        --no-names_containing_uppercase-check
+                                     Skip the names_containing_uppercase check.
+        --no-slash_comments-check    Skip the slash_comments check.
+        --no-star_comments-check     Skip the star_comments check.
+        --no-ensure_not_symlink_target-check
+                                     Skip the ensure_not_symlink_target check.
+        --no-file_mode-check         Skip the file_mode check.
+        --no-ensure_first_param-check
+                                     Skip the ensure_first_param check.
+        --no-duplicate_params-check  Skip the duplicate_params check.
+        --no-unquoted_file_mode-check
+                                     Skip the unquoted_file_mode check.
+        --no-unquoted_resource_title-check
+                                     Skip the unquoted_resource_title check.
         --no-single_quote_string_with_variables-check
                                      Skip the single_quote_string_with_variables check.
         --no-double_quoted_strings-check
                                      Skip the double_quoted_strings check.
+        --no-variables_not_enclosed-check
+                                     Skip the variables_not_enclosed check.
         --no-quoted_booleans-check   Skip the quoted_booleans check.
         --quoted_booleans-check      Enable the quoted_booleans check.
+        --no-only_variable_string-check
+                                     Skip the only_variable_string check.
         --no-puppet_url_without_modules-check
                                      Skip the puppet_url_without_modules check.
-        --no-unquoted_node_name-check
-                                     Skip the unquoted_node_name check.
-        --no-slash_comments-check    Skip the slash_comments check.
-        --no-star_comments-check     Skip the star_comments check.
-        --no-hard_tabs-check         Skip the hard_tabs check.
-        --no-140chars-check          Skip the 140chars check.
-        --no-2sp_soft_tabs-check     Skip the 2sp_soft_tabs check.
-        --no-trailing_whitespace-check
-                                     Skip the trailing_whitespace check.
+        --no-variable_contains_dash-check
+                                     Skip the variable_contains_dash check.
+        --no-variable_is_lowercase-check
+                                     Skip the variable_is_lowercase check.
         --no-80chars-check           Skip the 80chars check.
         --80chars-check              Enable the 80chars check.
+        --no-hard_tabs-check         Skip the hard_tabs check.
+        --no-2sp_soft_tabs-check     Skip the 2sp_soft_tabs check.
         --no-arrow_alignment-check   Skip the arrow_alignment check.
+        --no-trailing_whitespace-check
+                                     Skip the trailing_whitespace check.
+        --no-140chars-check          Skip the 140chars check.
+        --no-documentation-check     Skip the documentation check.
+        --no-case_without_default-check
+                                     Skip the case_without_default check.
+        --no-selector_inside_resource-check
+                                     Skip the selector_inside_resource check.
 ```
 
 ### Installation on mega-linter Docker image
@@ -190,7 +190,7 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 
 ```shell
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [SUCCESS] .automation/test/puppet/puppet_good_1.pp
@@ -202,7 +202,7 @@ See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_p
 
 ```shell
 Results of puppet-lint linter (version 2.4.2)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/puppet_puppet_lint/
+See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
 -----------------------------------------------
 
 [ERROR] .automation/test/puppet/puppet_bad_1.pp

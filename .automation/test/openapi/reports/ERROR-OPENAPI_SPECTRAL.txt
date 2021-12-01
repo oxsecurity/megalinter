@@ -1,5 +1,5 @@
 Results of spectral linter (version 5.6.0)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/openapi_spectral/
+See documentation on https://megalinter.github.io/descriptors/openapi_spectral/
 -----------------------------------------------
 
 [ERROR] .automation/test/openapi/openapi_bad_1.yml

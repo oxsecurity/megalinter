@@ -3,11 +3,11 @@
 Output results in console
 """
 import json
-import commentjson
 import os
 from pathlib import Path
 from shutil import copyfile
 
+import commentjson
 from megalinter import Reporter, config
 
 
@@ -80,7 +80,7 @@ class ConfigReporter(Reporter):
         config_report_log = f"{self.report_folder}{os.path.sep}IDE-config.txt"
         config_log_str = "\n".join(config_log)
         # flake8: noqa
-        config_log_text_full = f"""Mega-Linter can help you to define the same linter configuration locally
+        config_log_text_full = f"""MegaLinter can help you to define the same linter configuration locally
 
 INSTRUCTIONS
 

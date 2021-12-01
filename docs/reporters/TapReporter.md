@@ -10,7 +10,7 @@ Access GitHub action run
 
 ![Screenshot](../assets/images/AccessActionRun.jpg)
 
-Click on Artifacts then click on **Mega-Linter reports**
+Click on Artifacts then click on **MegaLinter reports**
 
 ![Screenshot](../assets/images/TextReporter_1.jpg)
 

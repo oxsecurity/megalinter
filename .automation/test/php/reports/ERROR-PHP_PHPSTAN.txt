@@ -1,5 +1,5 @@
 Results of phpstan linter (version 0.12.58)
-See documentation on https://nvuillam.github.io/mega-linter/descriptors/php_phpstan/
+See documentation on https://megalinter.github.io/descriptors/php_phpstan/
 -----------------------------------------------
 
 [ERROR] .automation/test/php/php_bad_1.php
