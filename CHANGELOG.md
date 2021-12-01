@@ -13,6 +13,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Deprecate `DEFAULT_BRANCH` setting (#948)
 - Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
 - Docker run -- clean-up containers when exits (#1033)
+- Add missing Bandit config file and rules path options (#679)
 
 - Linters
   - New linter `phplint` to speed-up linting of php files (#1031)
