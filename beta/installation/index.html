@@ -5626,8 +5626,8 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter-python:v4
-  script: [ &quot;true&quot; ]
+  image: megalinter/megalinter:v5
+  script: [ &quot;true&quot; ] # if script: [&quot;true&quot;] does not work, you may try -&gt;  script: [ &quot;/bin/bash /entrypoint.sh&quot; ]
   variables:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
