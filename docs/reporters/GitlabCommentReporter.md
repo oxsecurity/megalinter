@@ -15,4 +15,4 @@ Click on hyperlinks to access detailed logs
 |-------------------------|-------------------------------------------------------------------------------------------|--------------------------|
 | GITLAB_COMMENT_REPORTER | Activates/deactivates reporter                                                            | true                     |
 | GITLAB_API_URL          | URL where the github API can be reached<br/>May be overridden if using self-hosted Gitlab | `https://api.gitlab.com` |
-| GITLAB_SERVER_URL       | URL of the Gitlab instance<br/>May be overridden if using self-hosted Gitlab               | `https://gitlab.com`     |
+| GITLAB_SERVER_URL       | URL of the Gitlab instance<br/>May be overridden if using self-hosted Gitlab              | `https://gitlab.com`     |
