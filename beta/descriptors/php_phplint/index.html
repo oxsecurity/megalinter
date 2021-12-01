@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/beta/descriptors/php_phplint/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.1">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.2">
     
     
       
@@ -1535,6 +1535,13 @@
           <li class="md-nav__item">
   <a href="#example-calls" class="md-nav__link">
     Example calls
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
   </a>
   
 </li>
@@ -5391,6 +5398,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5424,6 +5438,7 @@
 <h1 id="phplint">phplint</h1>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
+<li>Version in MegaLinter: <strong>3.0</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a><ul>
 <li>If custom <code>.phplint.yml</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
 </ul>
@@ -5555,6 +5570,35 @@
 </code></pre>
 <pre><code class="language-shell">phplint mydir -vvv
 </code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">Description:
+  Lint something
+
+Usage:
+  phplint [options] [--] [&lt;path&gt;...]
+
+Arguments:
+  path                               Path to file or directory to lint.
+
+Options:
+      --exclude=EXCLUDE              Path to file or directory to exclude from linting (multiple values allowed)
+      --extensions=EXTENSIONS        Check only files with selected extensions (default: php)
+  -j, --jobs=JOBS                    Number of parraled jobs to run (default: 5)
+  -c, --configuration=CONFIGURATION  Read configuration from config file (default: ./.phplint.yml).
+      --no-configuration             Ignore default configuration file (default: ./.phplint.yml).
+      --no-cache                     Ignore cached data.
+      --cache=CACHE                  Path to the cache file.
+      --no-progress                  Hide the progress output.
+      --json[=JSON]                  Path to store JSON results.
+      --xml[=XML]                    Path to store JUnit XML results.
+  -w, --warning                      Also show warnings.
+  -q, --quiet                        Do not output any message
+  -h, --help                         Display help for the given command. When no command is given display help for the list command
+  -V, --version                      Display this application version
+      --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction               Do not ask any interactive question
+  -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+</code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :</li>
@@ -5685,7 +5729,7 @@ ENV PATH=&quot;/root/.composer/vendor/bin:$PATH&quot;
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a87c2adc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ff0eccb3.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

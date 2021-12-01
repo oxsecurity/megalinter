@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/beta/descriptors/snakemake_snakemake/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.1">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.2">
     
     
       
@@ -5482,7 +5482,7 @@
 
 <h2 id="snakemake-documentation">snakemake documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>6.11.1</strong></li>
+<li>Version in MegaLinter: <strong>6.12.1</strong></li>
 <li>Visit <a href="https://snakemake.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/snakemake/snakemake" target="_blank"><img alt="snakemake - GitHub" src="https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=" /></a></p>
@@ -5739,11 +5739,12 @@
                  [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
-                 [--edit-notebook TARGET] [--notebook-listen IP:PORT]
-                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
-                 [--containerize] [--export-cwl FILE] [--list]
-                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
-                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
+                 [--draft-notebook TARGET] [--edit-notebook TARGET]
+                 [--notebook-listen IP:PORT] [--lint [{text,json}]]
+                 [--generate-unit-tests [TESTPATH]] [--containerize]
+                 [--export-cwl FILE] [--list] [--list-target-rules] [--dag]
+                 [--rulegraph] [--filegraph] [--d3dag] [--summary]
+                 [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock] [--list-version-changes]
                  [--list-code-changes] [--list-input-changes]
@@ -6073,6 +6074,13 @@ REPORTS:
                         custom logo, see docs. (default: None)
 
 NOTEBOOKS:
+  --draft-notebook TARGET
+                        Draft a skeleton notebook for the rule used to
+                        generate the given target file. This notebook can then
+                        be opened in a jupyter server, exeucted and
+                        implemented until ready. After saving, it will
+                        automatically be reused in non-interactive mode by
+                        Snakemake for subsequent jobs. (default: None)
   --edit-notebook TARGET
                         Interactively edit the notebook associated with the
                         rule used to generate the given target file. This will
@@ -6754,7 +6762,7 @@ See documentation on https://megalinter.github.io/descriptors/snakemake_snakemak
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a87c2adc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ff0eccb3.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
