@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **6.11.1**
+- Version in MegaLinter: **6.12.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -111,11 +111,12 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
-                 [--edit-notebook TARGET] [--notebook-listen IP:PORT]
-                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
-                 [--containerize] [--export-cwl FILE] [--list]
-                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
-                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
+                 [--draft-notebook TARGET] [--edit-notebook TARGET]
+                 [--notebook-listen IP:PORT] [--lint [{text,json}]]
+                 [--generate-unit-tests [TESTPATH]] [--containerize]
+                 [--export-cwl FILE] [--list] [--list-target-rules] [--dag]
+                 [--rulegraph] [--filegraph] [--d3dag] [--summary]
+                 [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock] [--list-version-changes]
                  [--list-code-changes] [--list-input-changes]
@@ -445,6 +446,13 @@ REPORTS:
                         custom logo, see docs. (default: None)
 
 NOTEBOOKS:
+  --draft-notebook TARGET
+                        Draft a skeleton notebook for the rule used to
+                        generate the given target file. This notebook can then
+                        be opened in a jupyter server, exeucted and
+                        implemented until ready. After saving, it will
+                        automatically be reused in non-interactive mode by
+                        Snakemake for subsequent jobs. (default: None)
   --edit-notebook TARGET
                         Interactively edit the notebook associated with the
                         rule used to generate the given target file. This will
