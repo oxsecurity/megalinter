@@ -174,6 +174,7 @@ Miscellaneous:
   - [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)
   - [eslint-plugin-vue](https://www.npmjs.com/package/eslint-plugin-vue)
   - [babel-eslint](https://www.npmjs.com/package/babel-eslint)
+  - [@babel/core](https://www.npmjs.com/package/@babel/core)
   - [@babel/eslint-parser](https://www.npmjs.com/package/@babel/eslint-parser)
 
 ### Example success log

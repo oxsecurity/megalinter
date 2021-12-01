@@ -51,7 +51,7 @@ RUN apk add --update --no-cache \
     openjdk8 \
     openssh \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -120,7 +120,7 @@ RUN npm install --no-cache --ignore-scripts \
                 jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
-                v8r \
+                v8r@0.6.1 \
                 prettier \
                 markdownlint-cli \
                 remark-cli \

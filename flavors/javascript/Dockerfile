@@ -51,7 +51,7 @@ RUN apk add --update --no-cache \
     openjdk8 \
     openssh \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -63,8 +63,6 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                npm \
-                nodejs-current \
                 ansible \
                 ansible-lint \
                 libc-dev \
@@ -130,12 +128,13 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
                 babel-eslint \
+                @babel/core \
                 @babel/eslint-parser \
                 standard@15.0.1 \
                 prettier \
                 jsonlint \
                 eslint-plugin-jsonc \
-                v8r \
+                v8r@0.6.1 \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \
