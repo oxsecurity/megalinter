@@ -112,7 +112,6 @@ USAGE:
       creates an initial configuration
   -no-color
       dont print colors
-
   -v  print debugging information
   -verbose
       print debugging information
