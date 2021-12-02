@@ -58,6 +58,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.616 to **2.0.618** on 2021-12-01
   - [coffeelint](http://www.coffeelint.org) from 5.2.0 to **5.2.1** on 2021-12-02
   - [checkov](https://www.checkov.io/) from 2.0.618 to **2.0.621** on 2021-12-02
+  - [ktlint](https://ktlint.github.io) from 0.40.0 to **0.43.2** on 2021-12-02
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
