@@ -12,6 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+FROM zricethezav/gitleaks:latest as gitleaks
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -149,7 +150,7 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kube
 
 
 # gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6
+COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1

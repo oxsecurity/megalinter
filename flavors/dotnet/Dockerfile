@@ -13,6 +13,7 @@
 #FROM__START
 FROM hadolint/hadolint:v2.7.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
+FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
 
 ##################
@@ -239,7 +240,7 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 
 # gitleaks installation
-RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6
+COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1

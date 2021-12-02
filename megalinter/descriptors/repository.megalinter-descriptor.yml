@@ -57,23 +57,24 @@ linters:
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
     linter_rules_configuration_url: https://github.com/zricethezav/gitleaks#configuration
-    config_file_name: gitleaks.toml
-    cli_config_arg_name: "--config-path"
+    config_file_name: .gitleaks.toml
+    cli_config_arg_name: "-c"
     cli_lint_mode: project
     cli_lint_extra_args_after:
-      - "--path=."
       - "--no-git"
-      - "--verbose"
+      - "--source"
+      - "."
     linter_version_cache: "0.0.0" # TODO: retrieve gitleaks version
-    cli_help_arg_name: --help
+    cli_help_arg_name: help
     help_command_return_code: 1
     test_folder: credentials
     examples:
-      - "gitleaks"
-      - "gitleaks --config-path gitleaks.toml"
+      - "gitleaks -q --no-git -p"
+      - "gitleaks -q -c .gitleaks.toml --no-git -p"
     install:
       dockerfile:
-        - "RUN GO111MODULE=on go get github.com/zricethezav/gitleaks/v6"
+        - FROM zricethezav/gitleaks:latest as gitleaks
+        - COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
   # GOODCHECK
   - linter_name: goodcheck
