@@ -23,6 +23,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - bandit
   - checkov
   - eslint
+- Rename default report folder from `report` to `megalinter-reports`
 
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
