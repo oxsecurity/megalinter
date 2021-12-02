@@ -1,7 +1,6 @@
 {
     "descriptors": [
         "GIT",
-        "JAVASCRIPT",
         "TYPESCRIPT"
     ],
     "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",

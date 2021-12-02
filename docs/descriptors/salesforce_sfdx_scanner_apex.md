@@ -204,7 +204,7 @@ EXAMPLE
       E.g, $ sfdx scanner:run --target "src" --pmdconfig "pmd_rule_ref.xml"
 
     To use Eslint with your own .eslintrc.json file, use --eslintconfig. Make sure
-  that the directory you run the command from has all the NPM dependencies
+   that the directory you run the command from has all the NPM dependencies
   installed.
       E.g., $ sfdx scanner:run --target "src" --eslintconfig
   "/home/my/setup/.eslintrc.json"
@@ -216,8 +216,8 @@ EXAMPLE
   --normalize-severity
 
     Use --severity-threshold to throw a non-zero exit code when rule violations of
-  a specific severity (or greater) are found. For this example, if there are any
-  rule violations with a severity of 2 or more (which includes 1-high and
+   a specific severity (or greater) are found. For this example, if there are
+  any rule violations with a severity of 2 or more (which includes 1-high and
   2-moderate), the exit code will be equal to the severity of the most severe
   violation.
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2

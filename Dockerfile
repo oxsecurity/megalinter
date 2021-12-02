@@ -64,7 +64,7 @@ RUN apk add --update --no-cache \
     openjdk8 \
     openssh \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -84,8 +84,6 @@ RUN apk add --update --no-cache \
                 fish \
                 go \
                 openjdk8 \
-                npm \
-                nodejs-current \
                 perl \
                 perl-dev \
                 php7 \
@@ -195,12 +193,13 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
                 babel-eslint \
+                @babel/core \
                 @babel/eslint-parser \
                 standard@15.0.1 \
                 prettier \
                 jsonlint \
                 eslint-plugin-jsonc \
-                v8r \
+                v8r@0.6.1 \
                 eslint-plugin-react \
                 eslint-plugin-jsx-a11y \
                 markdownlint-cli \
@@ -364,7 +363,7 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 
 
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 

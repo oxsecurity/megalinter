@@ -119,4 +119,4 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
-  - [v8r](https://www.npmjs.com/package/v8r)
+  - [v8r@0.6.1](https://www.npmjs.com/package/v8r)
