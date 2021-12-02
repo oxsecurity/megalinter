@@ -60,14 +60,16 @@ linters:
     config_file_name: .gitleaks.toml
     cli_config_arg_name: "-c"
     cli_lint_mode: project
+    cli_lint_extra_args:
+      - detect
     cli_lint_extra_args_after:
       - "--no-git"
       - "--source"
       - "."
     linter_version_cache: "0.0.0" # TODO: retrieve gitleaks version
-    cli_help_arg_name: help
+    cli_help_arg_name: --help
     help_command_return_code: 1
-    test_folder: credentials
+    test_folder: gitleaks
     examples:
       - "gitleaks -q --no-git -p"
       - "gitleaks -q -c .gitleaks.toml --no-git -p"
