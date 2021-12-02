@@ -9,6 +9,10 @@
 <a href="https://github.com/megalinter/megalinter/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
 </a>
+<br/>
+<a href="https://cauldron.io/project/5222">
+  <img src="https://cauldron.io/project/5222/stats.svg" />
+</a>
 
 ## Sites referring to MegaLinter
 
@@ -17,10 +21,13 @@
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
+- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
 
 ### Articles
+
 - [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
+- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
 
 ### Linters
 
