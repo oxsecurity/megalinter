@@ -14,7 +14,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.3M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.4M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
@@ -949,6 +949,10 @@ To help, you can also:
 <a href="https://github.com/megalinter/megalinter/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
 </a>
+<br/>
+<a href="https://cauldron.io/project/5222">
+  <img src="https://cauldron.io/project/5222/stats.svg" />
+</a>
 
 ### Sites referring to MegaLinter
 
@@ -957,10 +961,13 @@ To help, you can also:
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
+- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
 
 #### Articles
+
 - [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
+- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
 
 #### Linters
 
