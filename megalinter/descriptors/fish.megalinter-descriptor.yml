@@ -19,6 +19,7 @@ linters:
     cli_lint_fix_remove_args:
       - "--check"
     cli_help_arg_name: "--help"
+    help_command_return_code: 0
     version_extract_regex: "(?<=fish_indent, version )\\d+(\\.\\d+)+"
     test_folder: fish_indent
     examples:
