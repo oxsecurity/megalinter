@@ -152,7 +152,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 **Notes**:
 
 - This repo is a hard-fork of [GitHub Super-Linter](https://github.com/github/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `megalinter/megalinter@v4` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `megalinter/megalinter@v5` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](#installation)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 <!-- quick-start-section-end -->
@@ -298,10 +298,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ### Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
-- GitHub Action: megalinter/megalinter@v4
-- Docker image: megalinter/megalinter:v4
+- GitHub Action: megalinter/megalinter@v5
+- Docker image: megalinter/megalinter:v5
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -429,7 +429,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v4
+        docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using MegaLinter'
 ```
@@ -505,7 +505,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -540,7 +540,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo

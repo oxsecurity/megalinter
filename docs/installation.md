@@ -16,10 +16,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ## Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
-- GitHub Action: megalinter/megalinter@v4
-- Docker image: megalinter/megalinter:v4
+- GitHub Action: megalinter/megalinter@v5
+- Docker image: megalinter/megalinter:v5
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -147,7 +147,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v4
+        docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using MegaLinter'
 ```
@@ -223,7 +223,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -258,7 +258,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo
