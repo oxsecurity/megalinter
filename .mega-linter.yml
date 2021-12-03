@@ -19,13 +19,16 @@ FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.github/workfl
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
 YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
-YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
+# YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
+YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.mega-linter.yml|\.codecov\.yml)' # TODOv6: Remove when published v6
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
 MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'
 DOCKERFILE_HADOLINT_ARGUMENTS: "--ignore DL3003 --ignore DL3007 --ignore DL3013 --ignore DL3016 --ignore DL3018 --ignore DL3028 --ignore DL4001 --ignore DL4006 --ignore SC2015 --ignore SC2016 --ignore SC2039 --ignore SC2086 --ignore SC1091"
-REPOSITORY_TRIVY_ARGUMENTS: ["--skip-dirs", "./automation/test"]
+REPOSITORY_TRIVY_ARGUMENTS: 
+  - "--skip-dirs"
+  - ".automation/test"
 PYTHON_BANDIT_DISABLE_ERRORS: true
 SHOW_ELAPSED_TIME: true
 EMAIL_REPORTER_EMAIL: nicolas.vuillamy@gmail.com
@@ -40,3 +43,4 @@ PRE_COMMANDS:
 POST_COMMANDS:
   - command: echo "This is MegaLinter POST_COMMAND on own MegaLinter ! :)"
     cwd: "workspace"
+LOG_LEVEL: DEBUG
