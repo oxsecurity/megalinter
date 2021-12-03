@@ -4,8 +4,6 @@
 ## Deploy Docker Image Flavors ##
 #########################
 #########################
-
-#
 # Documentation:
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 #
@@ -13,11 +11,11 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-name: "Build & Deploy - PROD Flavors"
+name: "Build & Deploy - v6-alpha Flavors"
 on:
   push:
     branches:
-      - "v6-alpha"
+      - "v6_dev"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"

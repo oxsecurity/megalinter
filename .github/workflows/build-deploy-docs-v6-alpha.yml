@@ -2,7 +2,7 @@ name: "DOC - Build and deploy - v6-alpha"
 on:
   push:
     branches:
-      - dev_v6
+      - v6_dev
     paths:
       - "**/build.py"
       - "docs/**"
