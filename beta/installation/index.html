@@ -5467,10 +5467,10 @@
 <li>Run <code>npx mega-linter-runner --upgrade</code> to automatically upgrade your configuration to v5 :)</li>
 </ul>
 <h2 id="manual-installation">Manual installation</h2>
-<p>The following instructions examples are using to latest MegaLinter stable version (<strong>V4</strong> , always corresponding to the <a href="https://github.com/megalinter/megalinter/releases">latest release</a>)</p>
+<p>The following instructions examples are using to latest MegaLinter stable version (<strong>v5</strong> , always corresponding to the <a href="https://github.com/megalinter/megalinter/releases">latest release</a>)</p>
 <ul>
-<li>GitHub Action: megalinter/megalinter@v4</li>
-<li>Docker image: megalinter/megalinter:v4</li>
+<li>GitHub Action: megalinter/megalinter@v5</li>
+<li>Docker image: megalinter/megalinter:v5</li>
 </ul>
 <p>You can also use <strong>beta</strong> version (corresponding to the content of main branch)</p>
 <ul>
@@ -5595,7 +5595,7 @@ jobs:
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v4
+        docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using MegaLinter'
 </code></pre>
@@ -5655,7 +5655,7 @@ mega-linter:
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -5686,7 +5686,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo
