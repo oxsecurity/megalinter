@@ -68,14 +68,14 @@ jobs:
       - run: cd mega-linter-runner && npm install
       - run: cd mega-linter-runner && BETAID=$(date '+%Y%m%d%H%M') && npm version prerelease --preid="v6-alpha$BETAID"
         shell: bash
-      - run: cd mega-linter-runner && npm publish --tag V6-alpha || echo "mega-linter-runner beta not published"
+      - run: cd mega-linter-runner && npm publish --tag v6-alpha || echo "mega-linter-runner v6-alpha not published"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy beta image to DockerHub
+      - name: Deploy v6-alpha image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -90,7 +90,7 @@ jobs:
       #############################
       # Run Deploy script for GPR #
       #############################
-      - name: Deploy beta image to GitHub Container Registry
+      - name: Deploy v6-alpha image to GitHub Container Registry
         env:
           # Set the Env Vars
           GCR_USERNAME: ${{ secrets.GCR_USERNAME }}
@@ -110,7 +110,7 @@ jobs:
         run: |
           export CI_ENV="$(bash <(curl -s https://codecov.io/env)) -e GITHUB_ACTIONS"
           echo "CI_ENV=${CI_ENV}"
-          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:beta
+          docker run $CI_ENV -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter:v6-alpha
         timeout-minutes: 30
 
       # Free disk space
