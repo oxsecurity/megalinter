@@ -112,10 +112,6 @@ linters:
       - vuln,config
       - --exit-code
       - "1"
-      - --report-format
-      - csv
-      - --report-path
-      - ./{{REPORT_FOLDER}}/gitleaks
     cli_lint_extra_args_after:
       - '.'
     test_folder: trivy
