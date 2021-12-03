@@ -171,7 +171,9 @@ title = "gitleaks config"
 [allowlist]
     description = "Allowlisted files"
     files = ['''^\.?gitleaks.toml$''',
-    '''(.*?)test(.*)$''',
-    '''(.*?)megalinter-reports(.*)$''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
+    regexes = [
+    '''(.*)automation/test(.*)$''',
+    '''(.*?)megalinter-reports(.*)$'''
+    ]
