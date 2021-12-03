@@ -1,6 +1,6 @@
 {
     "descriptors": [
-        "GIT"
+        "REPOSITORY"
     ],
     "label": "Optimized for PYTHON based projects",
     "linters": [
@@ -10,14 +10,12 @@
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
         "COPYPASTE_JSCPD",
-        "CREDENTIALS_SECRETLINT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_DOCKERFILELINT",
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
-        "GIT_GIT_DIFF",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
@@ -39,6 +37,11 @@
         "PYTHON_ISORT",
         "PYTHON_BANDIT",
         "PYTHON_MYPY",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
+        "REPOSITORY_TRIVY",
         "RST_RST_LINT",
         "RST_RSTCHECK",
         "RST_RSTFMT",

@@ -13,8 +13,11 @@ linters:
   - class: BashBashExecLinter
     linter_name: bash-exec
     linter_url: https://tiswww.case.edu/php/chet/bash/bashtop.html
-    linter_megalinter_ref_url: never
     name: BASH_EXEC
+    descriptor_flavors:
+      - all_flavors
+      - security
+    linter_megalinter_ref_url: never
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"
@@ -32,6 +35,9 @@ linters:
   # Shellcheck
   - linter_name: shellcheck
     name: BASH_SHELLCHECK
+    descriptor_flavors:
+      - all_flavors
+      - security
     linter_url: https://github.com/koalaman/shellcheck
     linter_rules_url: https://github.com/koalaman/shellcheck#gallery-of-bad-code
     linter_rules_inline_disable_url: https://github.com/koalaman/shellcheck/wiki/Ignore

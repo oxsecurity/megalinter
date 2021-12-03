@@ -70,7 +70,7 @@ def linter_test_setup(params=None):
         )
     config.init_config(workspace)
     # Ignore report folder
-    config.set_value("FILTER_REGEX_EXCLUDE", r"\/report\/")
+    config.set_value("FILTER_REGEX_EXCLUDE", r"\/megalinter-reports\/")
     # TAP Output deactivated by default
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
@@ -142,6 +142,7 @@ def test_linter_success(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
+        "PRINT_ALL_FILES": True
     }
     if linter.lint_all_other_linters_files is not False:
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
@@ -466,6 +467,37 @@ def test_linter_report_tap(linter, test_self):
                     f"{str(identical_nb)} TAP lines on the total {str(len(expected_lines))} "
                     f"remain perfectly identical :)"
                 )
+
+# Test that the linter provides a SARIF output if it is configured like that
+def test_linter_report_sarif(linter, test_self):
+    if linter.disabled is True or "all" in getattr(
+        linter, "descriptor_flavors_exclude", []
+    ) or linter.can_output_sarif is False:
+        raise unittest.SkipTest("SARIF is not configured for this linter")
+    test_folder = linter.test_folder
+    workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+    # Call linter
+    tmp_report_folder = tempfile.gettempdir()
+    env_vars = {
+        "DEFAULT_WORKSPACE": workspace,
+        "SARIF_REPORTER": "true",
+        "REPORT_OUTPUT_FOLDER": tmp_report_folder,
+        "ENABLE_LINTERS": linter.name,
+        "LOG_LEVEL": "DEBUG",
+    }
+    env_vars.update(linter.test_variables)
+    mega_linter, _output = call_mega_linter(env_vars)
+    test_self.assertTrue(
+        len(mega_linter.linters) > 0, "Linters have been created and run"
+    )
+    # Check TAP file has been produced
+    tmp_tap_file_name = (
+        f"{tmp_report_folder}{os.path.sep}sarif{os.path.sep}{linter.name}.sarif"
+    )
+    test_self.assertTrue(
+        os.path.isfile(tmp_tap_file_name), f"SARIF report not found {tmp_tap_file_name}"
+    )
 
 
 def assert_is_skipped(skipped_item, output, test_self):

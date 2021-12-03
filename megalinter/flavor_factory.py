@@ -52,6 +52,7 @@ def list_megalinter_flavors():
         "rust": {"label": "Optimized for RUST based projects"},
         "salesforce": {"label": "Optimized for Salesforce based projects"},
         "scala": {"label": "Optimized for SCALA based projects"},
+        "security": { "label": "Optimized for security", "strict": True},
         "swift": {"label": "Optimized for SWIFT based projects"},
         "terraform": {"label": "Optimized for TERRAFORM based projects"},
     }

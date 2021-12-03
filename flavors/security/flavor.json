@@ -1,0 +1,24 @@
+{
+    "descriptors": [
+        "REPOSITORY"
+    ],
+    "label": "Optimized for security",
+    "linters": [
+        "ANSIBLE_ANSIBLE_LINT",
+        "BASH_EXEC",
+        "BASH_SHELLCHECK",
+        "DOCKERFILE_HADOLINT",
+        "KUBERNETES_KUBEVAL",
+        "PYTHON_BANDIT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
+        "REPOSITORY_TRIVY",
+        "TERRAFORM_TFLINT",
+        "TERRAFORM_TERRASCAN",
+        "TERRAFORM_TERRAGRUNT",
+        "TERRAFORM_CHECKOV",
+        "TERRAFORM_KICS"
+    ]
+}

@@ -2,6 +2,7 @@ descriptor_id: KUBERNETES
 descriptor_type: tooling_format
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
+  - security
 files_sub_directory: kubernetes
 file_extensions:
   - ".yml"
@@ -17,6 +18,7 @@ linters:
     name: KUBERNETES_KUBEVAL
     linter_url: https://www.kubeval.com/
     linter_repo: https://github.com/instrumenta/kubeval
+    linter_spdx_license: Apache-2.0
     cli_config_extra_args:
       - "--strict"
     version_extract_regex: "((\\d+(\\.\\d+)+)|(dev))"

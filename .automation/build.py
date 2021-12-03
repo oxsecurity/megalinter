@@ -20,10 +20,12 @@ import markdown
 import megalinter
 import requests
 import terminaltables
+import webpreview
 import yaml
 from bs4 import BeautifulSoup
 from giturlparse import parse
 from megalinter.constants import (
+    DEFAULT_REPORT_FOLDER_NAME,
     ML_DOC_URL,
     ML_DOCKER_IMAGE,
     ML_DOCKER_IMAGE_LEGACY,
@@ -34,8 +36,8 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
-UPDATE_DOC = "--doc" in sys.argv
 RELEASE = "--release" in sys.argv
+UPDATE_DOC = "--doc" in sys.argv or RELEASE is True
 if RELEASE is True:
     RELEASE_TAG = sys.argv[sys.argv.index("--release") + 1]
     if "v" not in RELEASE_TAG:
@@ -96,7 +98,14 @@ def generate_all_flavors():
         generate_flavor(flavor, flavor_info)
     update_mkdocs_and_workflow_yml_with_flavors()
     if UPDATE_DOC is True:
-        update_docker_pulls_counter()
+        try:
+            update_docker_pulls_counter()
+        except requests.exceptions.ConnectionError as e:
+            logging.warning(
+                "Connection error - Unable to update docker pull counters: " + str(e)
+            )
+        except Exception as e:
+            logging.warning("Unable to update docker pull counters: " + str(e))
 
 
 # Automatically generate Dockerfile , action.yml and upgrade all_flavors.json
@@ -109,14 +118,14 @@ def generate_flavor(flavor, flavor_info):
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
-            if match_flavor(descriptor, flavor) is True and "install" in descriptor:
+            if match_flavor(descriptor, flavor, flavor_info) is True and "install" in descriptor:
                 descriptor_and_linters += [descriptor]
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
     requires_docker = False
     for linter in linters:
-        if match_flavor(vars(linter), flavor) is True:
+        if match_flavor(vars(linter), flavor, flavor_info) is True:
             descriptor_and_linters += [vars(linter)]
             flavor_linters += [linter.name]
             if linter.cli_docker_image is not None:
@@ -294,7 +303,8 @@ branding:
     replace_in_file(dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env)
 
 
-def match_flavor(item, flavor):
+def match_flavor(item, flavor, flavor_info):
+    is_strict = "strict" in flavor_info and flavor_info["strict"] is True
     if (
         "descriptor_flavors_exclude" in item
         and flavor in item["descriptor_flavors_exclude"]
@@ -306,6 +316,7 @@ def match_flavor(item, flavor):
         if flavor in item["descriptor_flavors"] or (
             "all_flavors" in item["descriptor_flavors"]
             and not flavor.endswith("_light")
+            and not is_strict
         ):
             return True
     return False
@@ -1159,7 +1170,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             + os.path.sep
             + linter.test_folder
             + os.path.sep
-            + "reports"
+            + DEFAULT_REPORT_FOLDER_NAME
         )
         success_log_file_example = (
             test_report_folder + os.path.sep + f"SUCCESS-{linter.name}.txt"
@@ -1909,16 +1920,23 @@ def collect_linter_previews():
             logging.info(
                 f"Collecting link preview info for {linter.linter_name} at {linter.linter_url}"
             )
-            title, description, image = web_preview(
-                linter.linter_url, parser="html.parser", timeout=1000
-            )
-            item = {
-                "title": megalinter.utils.decode_utf8(title),
-                "description": megalinter.utils.decode_utf8(description),
-                "image": image,
-            }
-            data[linter.linter_name] = item
-            updated = True
+            title = None
+            try:
+                title, description, image = web_preview(
+                    linter.linter_url, parser="html.parser", timeout=1000
+                )
+            except webpreview.excepts.URLUnreachable as e:
+                logging.error("URLUnreachable: " + str(e))
+            except Exception as e:
+                logging.error(str(e))
+            if title is not None:
+                item = {
+                    "title": megalinter.utils.decode_utf8(title),
+                    "description": megalinter.utils.decode_utf8(description),
+                    "image": image,
+                }
+                data[linter.linter_name] = item
+                updated = True
     # Update file
     if updated is True:
         with open(LINKS_PREVIEW_FILE, "w", encoding="utf-8") as outfile:
@@ -1949,6 +1967,7 @@ def generate_documentation_all_linters():
     md_table_lines = []
     table_data = [table_header]
     hearth_linters_md = []
+    leave = False
     for linter in linters:
         status = "Not submitted"
         md_status = ":white_circle:"
@@ -2017,8 +2036,21 @@ def generate_documentation_all_linters():
                     github_token = os.environ["GITHUB_TOKEN"]
                     api_github_headers["authorization"] = f"Bearer {github_token}"
                 logging.info(f"Getting license info for {api_github_url}")
-                session = requests_retry_session()
-                r = session.get(api_github_url, headers=api_github_headers)
+                try:
+                    session = requests_retry_session()
+                    r = session.get(api_github_url, headers=api_github_headers)
+                except requests.exceptions.ConnectionError as e:
+                    logging.warning(
+                        "Connection error - Unable to get info from github api: "
+                        + str(e)
+                    )
+                    leave = True
+                    break
+                except Exception as e:
+                    logging.warning("Unable to update docker pull counters: " + str(e))
+                    leave = True
+                    break
+
                 if r is not None:
                     resp = r.json()
                     if "license" in resp and "spdx_id" in resp["license"]:
@@ -2035,7 +2067,7 @@ def generate_documentation_all_linters():
                             linter_licenses[linter.linter_name] = license
             # get license from descriptor
             if (
-                license == ""
+                (license == "" or license == "Other")
                 and hasattr(linter, "linter_spdx_license")
                 and linter.linter_spdx_license is not None
             ):
@@ -2046,6 +2078,9 @@ def generate_documentation_all_linters():
             # build md_license
             if license != "":
                 md_license = license
+        if leave is True:
+            logging.warning("Error during process: Do not regenerate list of linters")
+            return
         # Update licenses file
         with open(LICENSES_FILE, "w", encoding="utf-8") as outfile:
             json.dump(linter_licenses, outfile, indent=4, sort_keys=True)
@@ -2074,6 +2109,10 @@ def generate_documentation_all_linters():
             md_url,
         ]
         md_table_lines += [md_table_line]
+
+    if leave is True:
+        logging.warning("Error during process: Do not regenerate list of linters")
+        return
 
     # Write referring linters to README
     hearth_linters_md_str = "\n".join(hearth_linters_md)
@@ -2124,11 +2163,35 @@ def manage_output_variables():
             print("::set-output name=has_updated_versions::1")
 
 
+def reformat_markdown_tables():
+    logging.info("Formatting markdown tables...")
+    # Call markdown-table-formatter with the list of files
+    format_md_tables_command = ["bash", "format-tables.sh"]
+    logging.info("Running command: " + str(format_md_tables_command))
+    process = subprocess.run(
+        format_md_tables_command,
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+        cwd=os.getcwd()+'/.automation',
+        shell=True,
+    )
+    print(process.stdout)
+    print(process.stderr)
+
+
 def generate_version():
     # npm version
+    logging.info("Updating npm package version...")
     cwd_to_use = os.getcwd() + "/mega-linter-runner"
     process = subprocess.run(
-        ["npm", "version", "--newversion", RELEASE_TAG],
+        [
+            "npm",
+            "version",
+            "--newversion",
+            RELEASE_TAG,
+            "-no-git-tag-version",
+            "--no-commit-hooks",
+        ],
         stdout=subprocess.PIPE,
         universal_newlines=True,
         cwd=cwd_to_use,
@@ -2136,6 +2199,26 @@ def generate_version():
     )
     print(process.stdout)
     print(process.stderr)
+    # Update changelog
+    changelog_file = f"{REPO_HOME}/CHANGELOG.md"
+
+    with open(changelog_file, "r", encoding="utf-8") as md_file:
+        changelog_content = md_file.read()
+    changelog_content = changelog_content.replace("<!-- linter-versions-end -->", "")
+    new_release_lines = [
+        "," "<!-- unreleased-content-marker -->",
+        "",
+        "- Linter versions upgrades",
+        "<!-- linter-versions-end -->",
+        "",
+        f"## [{RELEASE_TAG}] - {datetime.today().strftime('%Y-%m-%d')}",
+    ]
+    changelog_content = changelog_content.replace(
+        "<!-- unreleased-content-marker -->", "\n".join(new_release_lines)
+    )
+    with open(changelog_file, "w", encoding="utf-8") as file:
+        file.write(changelog_content)
+
     # git add , commit & tag
     repo = git.Repo(os.getcwd())
     repo.git.add(update=True)
@@ -2170,5 +2253,6 @@ if __name__ == "__main__":
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
+    reformat_markdown_tables()
     if RELEASE is True:
         generate_version()

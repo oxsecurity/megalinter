@@ -1,6 +1,6 @@
 {
     "descriptors": [
-        "GIT"
+        "REPOSITORY"
     ],
     "label": "Optimized for TERRAFORM based projects",
     "linters": [
@@ -10,14 +10,12 @@
         "BASH_SHELLCHECK",
         "BASH_SHFMT",
         "COPYPASTE_JSCPD",
-        "CREDENTIALS_SECRETLINT",
         "CSS_STYLELINT",
         "CSS_SCSS_LINT",
         "DOCKERFILE_DOCKERFILELINT",
         "DOCKERFILE_HADOLINT",
         "EDITORCONFIG_EDITORCONFIG_CHECKER",
         "ENV_DOTENV_LINTER",
-        "GIT_GIT_DIFF",
         "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
         "GROOVY_NPM_GROOVY_LINT",
         "HTML_HTMLHINT",
@@ -33,6 +31,11 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PROTOBUF_PROTOLINT",
+        "REPOSITORY_GIT_DIFF",
+        "REPOSITORY_SECRETLINT",
+        "REPOSITORY_GITLEAKS",
+        "REPOSITORY_GOODCHECK",
+        "REPOSITORY_TRIVY",
         "SNAKEMAKE_LINT",
         "SNAKEMAKE_SNAKEFMT",
         "SPELL_MISSPELL",

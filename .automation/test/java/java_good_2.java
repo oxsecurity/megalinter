@@ -1,3 +1,5 @@
+package com.dummy.nico;
+
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
 public class Application {
 

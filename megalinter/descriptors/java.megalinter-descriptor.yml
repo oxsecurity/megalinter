@@ -15,6 +15,7 @@ linters:
   - linter_name: checkstyle
     linter_url: https://checkstyle.sourceforge.io
     linter_repo: https://github.com/checkstyle/checkstyle
+    linter_spdx_license: LGPL-2.1
     linter_rules_url: https://checkstyle.sourceforge.io/checks.html
     linter_banner_image_url: https://checkstyle.sourceforge.io/images/header-checkstyle-logo.png
     linter_rules_configuration_url: https://checkstyle.sourceforge.io/config.html#Overview

@@ -8,6 +8,9 @@ linters:
   # TFLINT
   - linter_name: tflint
     name: TERRAFORM_TFLINT
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://github.com/terraform-linters/tflint
     linter_rules_url: https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
@@ -26,6 +29,9 @@ linters:
   # TERRASCAN
   - linter_name: terrascan
     name: TERRAFORM_TERRASCAN
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://www.accurics.com/products/terrascan/
     linter_repo: https://github.com/accurics/terrascan
     linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
@@ -54,6 +60,9 @@ linters:
       - ".hcl"
     file_names_not_ends_with:
       - ".tflint.hcl"
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://terragrunt.gruntwork.io
     linter_repo: https://github.com/gruntwork-io/terragrunt
     linter_rules_configuration_url: https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file
@@ -115,6 +124,10 @@ linters:
   # CHECKOV
   - linter_name: checkov
     name: TERRAFORM_CHECKOV
+    can_output_sarif: true
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://www.checkov.io/
     linter_repo: https://github.com/bridgecrewio/checkov
     linter_banner_image_url: https://raw.githubusercontent.com/bridgecrewio/checkov/25388a34231e09ac17b266ad9db0b4c0e806e956/docs/web/images/checkov-logo.svg
@@ -122,7 +135,9 @@ linters:
     linter_rules_url: https://www.checkov.io/5.Policy%20Index/all.html
     linter_megalinter_ref_url: "no"
     cli_config_arg_name: "--config-file"
-    cli_lint_extra_args:
+    cli_sarif_args: ["--output", "sarif"]
+    sarif_default_output_file: ./results.sarif
+    cli_lint_extra_args_after:
       - "--file"
     examples:
       - "checkov --file myfile.tf"
@@ -139,6 +154,9 @@ linters:
   # KICS
   - linter_name: kics
     name: TERRAFORM_KICS
+    descriptor_flavors:
+      - terraform
+      - security
     linter_url: https://www.kics.io
     linter_repo: https://github.com/checkmarx/kics
     linter_rules_url: https://docs.kics.io/latest/queries/all-queries/

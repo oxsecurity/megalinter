@@ -127,7 +127,7 @@ jobs:
           DOCKERFILE_PATH: Dockerfile
           REGISTRY: Docker
         shell: bash
-        run: .automation/upload-docker.sh || true
+        run: .automation/upload-docker.sh
 
       #####################################
       # Run Linter test cases #
@@ -165,7 +165,7 @@ jobs:
         with:
           name: MegaLinter reports
           path: |
-            report
+            megalinter-reports
             mega-linter.log
             linter-helps.json
             linter-versions.json
@@ -176,15 +176,15 @@ jobs:
 
       # Test mega-linter-runner with newly created image
       - name: Setup Node
-        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
+        if: ${{ steps.docker_build.outcome }} == 'success' && ${{ success() }} && !contains(github.event.head_commit.message, 'quick build')
         uses: actions/setup-node@v2.4.1
         with:
           node-version: "12"
       - name: Install NPM dependencies
-        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
+        if: ${{ steps.docker_build.outcome }} == 'success' && ${{ success() }} && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && sudo npm ci && sudo npm link
       - name: Run mega-linter-runner tests
-        if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
+        if: ${{ steps.docker_build.outcome }} == 'success' && ${{ success() }} && !contains(github.event.head_commit.message, 'quick build')
         run: cd mega-linter-runner && MEGALINTER_RELEASE=${{steps.image_tag.outputs.tag}} MEGALINTER_NO_DOCKER_PULL=true npm run test
 
       # Free disk space

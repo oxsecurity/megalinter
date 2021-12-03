@@ -34,3 +34,7 @@ class LinterTestRoot:
     def test_report_tap(self):
         utilstest.linter_test_setup({"report_type": "tap"})
         utilstest.test_linter_report_tap(self.get_linter_instance(), self)
+
+    def test_report_sarif(self):
+        utilstest.linter_test_setup({"report_type": "SARIF"})
+        utilstest.test_linter_report_sarif(self.get_linter_instance(), self)

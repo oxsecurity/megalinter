@@ -1,0 +1,51 @@
+name: "DOC - Build and deploy - v6-alpha"
+on:
+  push:
+    branches:
+      - dev_v6
+    paths:
+      - "**/build.py"
+      - "docs/**"
+      - "**.yml"
+      - "**.md"
+      - "**.json"
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.repository == 'megalinter/megalinter'
+    steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mike mkdocs-material mdx_truly_sane_lists json-schema-for-humans
+      - run: cd .automation && bash build_schemas_doc.sh && cd ..
+      # - run: mkdocs gh-deploy --force
+      - run: |
+          git config --global user.name megalinter-bot
+          git config --global user.email megalinter@megalinter.com
+      - run: mike deploy v6-alpha --push
+
+  git-sync:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "megalinter/megalinter"
+          source_branch: "gh-pages"
+          destination_repo: "git@github.com:megalinter/megalinter.github.io.git"
+          destination_branch: "gh-pages"
+          # ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
+          # source_ssh_private_key: ${{ secrets.SOURCE_SSH_PRIVATE_KEY }} # optional, will override `SSH_PRIVATE_KEY`
+          destination_ssh_private_key: ${{ secrets.MEGALINTER_GITHUB_IO_SSH_PRIVATE_KEY }} # optional, will override `SSH_PRIVATE_KEY`
+ 
