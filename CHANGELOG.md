@@ -60,6 +60,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.2.0 to **5.2.1** on 2021-12-02
   - [checkov](https://www.checkov.io/) from 2.0.618 to **2.0.621** on 2021-12-02
   - [ktlint](https://ktlint.github.io) from 0.40.0 to **0.43.2** on 2021-12-02
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.56 to **0.1.57** on 2021-12-03
+  - [checkov](https://www.checkov.io/) from 2.0.621 to **2.0.625** on 2021-12-03
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
