@@ -70,7 +70,7 @@ def linter_test_setup(params=None):
         )
     config.init_config(workspace)
     # Ignore report folder
-    config.set_value("FILTER_REGEX_EXCLUDE", rf"\/megalinter-reports\/")
+    config.set_value("FILTER_REGEX_EXCLUDE", r"\/megalinter-reports\/")
     # TAP Output deactivated by default
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")

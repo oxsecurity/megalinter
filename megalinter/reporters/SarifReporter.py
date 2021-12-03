@@ -6,7 +6,6 @@ import json
 import logging
 import os
 
-import jsonpickle
 from megalinter import Reporter, config
 
 

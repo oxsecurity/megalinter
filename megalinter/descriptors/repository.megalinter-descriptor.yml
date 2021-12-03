@@ -64,6 +64,7 @@ linters:
       - detect
     cli_lint_extra_args_after:
       - "--no-git"
+      - "--verbose"
       - "--source"
       - "."
     linter_version_cache: "0.0.0" # TODO: retrieve gitleaks version
