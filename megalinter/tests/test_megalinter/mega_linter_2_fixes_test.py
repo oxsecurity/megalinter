@@ -41,7 +41,7 @@ class mega_linter_2_fixes(unittest.TestCase):
                 "APPLY_FIXES": "all",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
-                "DISABLE_LINTERS": "TERRAFORM_KICS",
+                "DISABLE_LINTERS": "TERRAFORM_KICS,REPOSITORY_GITLEAKS,REPOSITORY_TRIVY,JSON_V8R,YAML_V8R,MARKDOWN_MARKDOWN_LINK_CHECK,TERRAFORM_CHECKOV",
             }
         )
         self.assertTrue(

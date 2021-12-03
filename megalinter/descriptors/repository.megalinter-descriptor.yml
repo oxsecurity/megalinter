@@ -67,8 +67,7 @@ linters:
       - "--source"
       - "."
     linter_version_cache: "0.0.0" # TODO: retrieve gitleaks version
-    cli_help_arg_name: --help
-    help_command_return_code: 1
+    cli_help_arg_name: help
     test_folder: gitleaks
     examples:
       - "gitleaks -q --no-git -p"
