@@ -65,6 +65,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.2 to **0.56.3** on 2021-12-04
   - [pylint](https://www.pylint.org) from 2.12.1 to **2.12.2** on 2021-12-04
   - [checkov](https://www.checkov.io/) from 2.0.625 to **2.0.626** on 2021-12-04
+  - [eslint](https://eslint.org) from 8.3.0 to **8.4.0** on 2021-12-04
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
