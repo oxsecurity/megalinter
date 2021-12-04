@@ -52,7 +52,7 @@ RUN apk add --update --no-cache \
     openjdk8 \
     openssh \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -217,7 +217,7 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 
@@ -239,6 +239,12 @@ RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 # psalm installation
 RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0F1D262429A5
 
+
+# phplint installation
+RUN composer global require overtrue/phplint ^3.0 \
+    && composer global config bin-dir --absolute
+
+ENV PATH="/root/.composer/vendor/bin:$PATH"
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/

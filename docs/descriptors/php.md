@@ -11,6 +11,7 @@
 | [phpcs](php_phpcs.md)     | [PHP_PHPCS](php_phpcs.md)     |
 | [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) |
 | [psalm](php_psalm.md)     | [PHP_PSALM](php_psalm.md)     |
+| [phplint](php_phplint.md) | [PHP](php_phplint.md)         |
 
 ## Linted files
 

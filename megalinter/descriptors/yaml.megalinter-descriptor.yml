@@ -96,10 +96,10 @@ linters:
     examples:
       - "v8r --ignore-errors myfile.yml"
       - "v8r --ignore-errors myfile.yaml"
+    downgraded_version: true
     install:
       npm:
         - v8r@0.6.1
-
     ide:
       eclipse:
         - name: native support

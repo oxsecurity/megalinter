@@ -35,6 +35,7 @@
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",
+        "PHP_PHPLINT",
         "PROTOBUF_PROTOLINT",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_SECRETLINT",

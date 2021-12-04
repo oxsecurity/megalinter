@@ -244,6 +244,11 @@
     "image": "https://avatars2.githubusercontent.com/u/997547?s=400&v=4",
     "title": "squizlabs/PHP_CodeSniffer"
   },
+  "phplint": {
+    "description": ":bug:  A tool that can speed up linting of php files by running several lint processes at once. - GitHub - overtrue/phplint: A tool that can speed up linting of php files by running several lint pr...",
+    "image": "https://opengraph.githubassets.com/d631c8888ed10dc0fd444873f2c959fbff09fabde3d9413887e24f02f51f366c/overtrue/phplint",
+    "title": "GitHub - overtrue/phplint: A tool that can speed up linting of php files by running several lint processes at once."
+  },
   "phpstan": {
     "description": "PHP Static Analysis Tool - discover bugs in your code without running it! - phpstan/phpstan",
     "image": "https://avatars3.githubusercontent.com/u/16435710?s=400&v=4",
