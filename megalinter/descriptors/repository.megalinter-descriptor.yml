@@ -73,8 +73,8 @@ linters:
     cli_lint_errors_regex: "leaks found: ([0-9]+)"
     test_folder: gitleaks
     examples:
-      - "gitleaks -q --no-git -p"
-      - "gitleaks -q -c .gitleaks.toml --no-git -p"
+      - "gitleaks detect --no-git --verbose --source ."
+      - "gitleaks detect -c .gitleaks.toml --no-git --verbose --source ."
     install:
       dockerfile:
         - FROM zricethezav/gitleaks:latest as gitleaks
