@@ -727,9 +727,10 @@ class Linter:
     def get_linter_version_output(self):
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
+        cwd = os.getcwd() if command[0] != "npm" else "~/"
         try:
             process = subprocess.run(
-                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd
             )
             return_code = process.returncode
             output = utils.decode_utf8(process.stdout)
