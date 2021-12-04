@@ -58,8 +58,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                         | Description                             | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:----------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor               |        98        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/) | Optimized for Salesforce based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor               |        96        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/) | Optimized for Salesforce based projects |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 
 ## Behind the scenes
 
@@ -204,7 +204,7 @@ EXAMPLE
       E.g, $ sfdx scanner:run --target "src" --pmdconfig "pmd_rule_ref.xml"
 
     To use Eslint with your own .eslintrc.json file, use --eslintconfig. Make sure
-  that the directory you run the command from has all the NPM dependencies
+   that the directory you run the command from has all the NPM dependencies
   installed.
       E.g., $ sfdx scanner:run --target "src" --eslintconfig
   "/home/my/setup/.eslintrc.json"
@@ -216,8 +216,8 @@ EXAMPLE
   --normalize-severity
 
     Use --severity-threshold to throw a non-zero exit code when rule violations of
-  a specific severity (or greater) are found. For this example, if there are any
-  rule violations with a severity of 2 or more (which includes 1-high and
+   a specific severity (or greater) are found. For this example, if there are
+  any rule violations with a severity of 2 or more (which includes 1-high and
   2-moderate), the exit code will be equal to the severity of the most severe
   violation.
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2

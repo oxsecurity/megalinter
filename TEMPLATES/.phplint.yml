@@ -1,0 +1,6 @@
+path: .
+jobs: 5
+extensions:
+  - php
+exclude: []
+warning: false

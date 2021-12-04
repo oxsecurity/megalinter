@@ -125,6 +125,7 @@ linters:
     test_folder: json_schema
     examples:
       - "v8r --ignore-errors myfile.json"
+    downgraded_version: true
     install:
       npm:
         - v8r@0.6.1

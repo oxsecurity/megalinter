@@ -52,7 +52,7 @@ RUN apk add --update --no-cache \
     openjdk8 \
     openssh \
     npm \
-    nodejs-current \
+    nodejs \
     py3-setuptools \
     readline-dev \
     ruby-bundler \
@@ -66,8 +66,8 @@ RUN git config --global core.autocrlf true
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                npm \
-                nodejs-current \
+                ansible \
+                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -131,7 +131,8 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-plugin-promise \
                 eslint-plugin-vue \
                 babel-eslint \
-                @microsoft/eslint-formatter-sarif \
+                @babel/core \
+                @babel/eslint-parser \
                 standard@15.0.1 \
                 prettier \
                 jsonlint \
@@ -204,7 +205,7 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 

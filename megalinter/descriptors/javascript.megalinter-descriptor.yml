@@ -4,10 +4,6 @@ descriptor_flavors:
   - javascript
 file_extensions:
   - ".js"
-install:
-  apk:
-    - npm
-    - nodejs-current
 linters:
   # ESLINT
   - linter_name: eslint
@@ -64,6 +60,8 @@ linters:
         - eslint-plugin-promise
         - eslint-plugin-vue
         - babel-eslint
+        - "@babel/core"
+        - "@babel/eslint-parser"
         - "@microsoft/eslint-formatter-sarif"
     ide:
       atom:

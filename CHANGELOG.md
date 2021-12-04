@@ -29,6 +29,13 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
 - Correct some broken links in `README` from "Mega-Linter" to "MegaLinter" (#1030)
+- Docker run -- clean-up containers when exits (#1033)
+- Add missing Bandit config file and rules path options (#679)
+- Fix getting linter version of npm plugin. (#845)
+
+- Linters
+  - New linter `phplint` to speed-up linting of php files (#1031)
+    - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
 
 
 - Linter versions upgrades
@@ -60,6 +67,22 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.0 to **6.11.1** on 2021-11-27
   - [checkstyle](https://checkstyle.sourceforge.io) from 9.1 to **9.2** on 2021-11-29
   - [checkov](https://www.checkov.io/) from 2.0.605 to **2.0.606** on 2021-11-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.1 to **6.12.1** on 2021-11-30
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.45.0 to **0.45.1** on 2021-11-30
+  - [checkov](https://www.checkov.io/) from 2.0.606 to **2.0.609** on 2021-11-30
+  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.7.0** on 2021-11-30
+  - [v8r](https://github.com/chris48s/v8r) from 0.7.0 to **0.6.1** on 2021-12-01
+  - [checkov](https://www.checkov.io/) from 2.0.614 to **2.0.616** on 2021-12-01
+  - [checkov](https://www.checkov.io/) from 2.0.616 to **2.0.618** on 2021-12-01
+  - [coffeelint](http://www.coffeelint.org) from 5.2.0 to **5.2.1** on 2021-12-02
+  - [checkov](https://www.checkov.io/) from 2.0.618 to **2.0.621** on 2021-12-02
+  - [ktlint](https://ktlint.github.io) from 0.40.0 to **0.43.2** on 2021-12-02
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.56 to **0.1.57** on 2021-12-03
+  - [checkov](https://www.checkov.io/) from 2.0.621 to **2.0.625** on 2021-12-03
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.2 to **0.56.3** on 2021-12-04
+  - [pylint](https://www.pylint.org) from 2.12.1 to **2.12.2** on 2021-12-04
+  - [checkov](https://www.checkov.io/) from 2.0.625 to **2.0.626** on 2021-12-04
+  - [eslint](https://eslint.org) from 8.3.0 to **8.4.0** on 2021-12-04
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18

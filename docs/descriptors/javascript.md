@@ -23,11 +23,3 @@
 | JAVASCRIPT_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | JAVASCRIPT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-
-## Behind the scenes
-
-### Installation
-
-- APK packages (Linux):
-  - [npm](https://pkgs.alpinelinux.org/packages?branch=edge&name=npm)
-  - [nodejs-current](https://pkgs.alpinelinux.org/packages?branch=edge&name=nodejs-current)
