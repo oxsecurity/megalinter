@@ -54,11 +54,6 @@ title = "gitleaks config"
     tags = ["key", "Github"]
 
 [[rules]]
-    description = "LinkedIn Client ID"
-    regex = '''(?i)linkedin(.{0,20})?(?-i)[0-9a-z]{12}'''
-    tags = ["client", "LinkedIn"]
-
-[[rules]]
     description = "LinkedIn Secret Key"
     regex = '''(?i)linkedin(.{0,20})?[0-9a-z]{16}'''
     tags = ["secret", "LinkedIn"]
@@ -172,9 +167,9 @@ title = "gitleaks config"
     description = "Allowlisted files"
     paths = [
     '''.automation/test''',
-    '''megalinter-reports'''
-    ]
-    files = ['''^\.?gitleaks.toml$''',
+    '''megalinter-reports''',
+    '''.github/linters''',
+    '''(.*?)gitleaks\.toml$''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
 

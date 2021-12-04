@@ -3,7 +3,6 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
-  - security
 lint_all_files: true
 install:
   dockerfile:
@@ -30,6 +29,10 @@ linters:
 
   # SECRETLINT
   - linter_name: secretlint
+    descriptor_flavors:
+    - all_flavors # Applicable to CI in any language project
+    - ci_light
+    - security
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
@@ -54,6 +57,10 @@ linters:
 
   # GITLEAKS
   - linter_name: gitleaks
+    descriptor_flavors:
+    - all_flavors # Applicable to CI in any language project
+    - ci_light
+    - security
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
     linter_rules_configuration_url: https://github.com/zricethezav/gitleaks#configuration
@@ -82,6 +89,10 @@ linters:
 
   # GOODCHECK
   - linter_name: goodcheck
+    descriptor_flavors:
+    - all_flavors # Applicable to CI in any language project
+    - ci_light
+    - security
     linter_url: https://sider.github.io/goodcheck/
     linter_repo: https://github.com/sider/goodcheck
     linter_rules_url: https://sider.github.io/goodcheck/docs/rules
@@ -104,6 +115,10 @@ linters:
 
   # TRIVY
   - linter_name: trivy
+    descriptor_flavors:
+    - all_flavors # Applicable to CI in any language project
+    - ci_light
+    - security
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
