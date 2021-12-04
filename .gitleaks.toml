@@ -168,8 +168,8 @@ title = "gitleaks config"
     paths = [
     '''.automation/test''',
     '''megalinter-reports''',
-    '''.github/linters''']
-    regexes = ['''(.*?)gitleaks\.toml$''',
+    '''.github/linters''',
+    '''(.*?)gitleaks\.toml$''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
 
