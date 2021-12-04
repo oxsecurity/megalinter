@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
+        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 49 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -1563,6 +1563,20 @@
     <li class="md-nav__item">
       <a href="../php_psalm/" class="md-nav__link">
         psalm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../php_phplint/" class="md-nav__link">
+        phplint
       </a>
     </li>
   
@@ -5478,7 +5492,7 @@
 <p>You can create it by typing <code>npx eslint --init</code> in the root of your repository</p>
 <h2 id="eslint-documentation">eslint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>8.3.0</strong></li>
+<li>Version in MegaLinter: <strong>8.4.0</strong></li>
 <li>Visit <a href="https://eslint.org" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring" target="_blank">How to configure eslint rules</a></li>
 <li>See <a href="https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments" target="_blank">How to disable eslint rules in files</a></li>
@@ -5649,14 +5663,14 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">98</td>
+<td align="center">96</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/flavors/javascript/">javascript</a></td>
 <td align="left">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
-<td align="center">52</td>
+<td align="center">49</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-javascript" /></td>
 </tr>
 </tbody>
@@ -5694,9 +5708,9 @@ Basic configuration:
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specifying rules and plugins:
-  --rulesdir [path::String]       Use additional rules from this directory
   --plugin [String]               Specify plugins
   --rule Object                   Specify rules
+  --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fixing problems:
   --fix                           Automatically fix problems
@@ -5755,6 +5769,8 @@ Miscellaneous:
 <li><a href="https://www.npmjs.com/package/eslint-plugin-promise">eslint-plugin-promise</a></li>
 <li><a href="https://www.npmjs.com/package/eslint-plugin-vue">eslint-plugin-vue</a></li>
 <li><a href="https://www.npmjs.com/package/babel-eslint">babel-eslint</a></li>
+<li><a href="https://www.npmjs.com/package/@babel/core">@babel/core</a></li>
+<li><a href="https://www.npmjs.com/package/@babel/eslint-parser">@babel/eslint-parser</a></li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
+        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 49 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -1554,6 +1554,20 @@
     <li class="md-nav__item">
       <a href="../descriptors/php_psalm/" class="md-nav__link">
         psalm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/php_phplint/" class="md-nav__link">
+        phplint
       </a>
     </li>
   
@@ -5462,10 +5476,10 @@
 <li>Run <code>npx mega-linter-runner --upgrade</code> to automatically upgrade your configuration to v5 :)</li>
 </ul>
 <h2 id="manual-installation">Manual installation</h2>
-<p>The following instructions examples are using to latest MegaLinter stable version (<strong>V4</strong> , always corresponding to the <a href="https://github.com/megalinter/megalinter/releases">latest release</a>)</p>
+<p>The following instructions examples are using to latest MegaLinter stable version (<strong>v5</strong> , always corresponding to the <a href="https://github.com/megalinter/megalinter/releases">latest release</a>)</p>
 <ul>
-<li>GitHub Action: megalinter/megalinter@v4</li>
-<li>Docker image: megalinter/megalinter:v4</li>
+<li>GitHub Action: megalinter/megalinter@v5</li>
+<li>Docker image: megalinter/megalinter:v5</li>
 </ul>
 <p>You can also use <strong>beta</strong> version (corresponding to the content of main branch)</p>
 <ul>
@@ -5590,7 +5604,7 @@ jobs:
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v4
+        docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using MegaLinter'
 </code></pre>
@@ -5620,8 +5634,8 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter-python:v4
-  script: [ &quot;true&quot; ]
+  image: megalinter/megalinter:v5
+  script: [ &quot;true&quot; ] # if script: [&quot;true&quot;] does not work, you may try -&gt;  script: [ &quot;/bin/bash /entrypoint.sh&quot; ]
   variables:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
@@ -5650,7 +5664,7 @@ mega-linter:
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -5681,7 +5695,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo
