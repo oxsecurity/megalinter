@@ -66,8 +66,6 @@ RUN git config --global core.autocrlf true
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                ansible \
-                ansible-lint \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -133,6 +131,7 @@ RUN npm install --no-cache --ignore-scripts \
                 babel-eslint \
                 @babel/core \
                 @babel/eslint-parser \
+                @microsoft/eslint-formatter-sarif \
                 standard@15.0.1 \
                 prettier \
                 jsonlint \
