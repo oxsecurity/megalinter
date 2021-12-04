@@ -1,7 +1,5 @@
 {
-    "descriptors": [
-        "REPOSITORY"
-    ],
+    "descriptors": [],
     "label": "Optimized for security",
     "linters": [
         "ANSIBLE_ANSIBLE_LINT",
@@ -10,7 +8,6 @@
         "DOCKERFILE_HADOLINT",
         "KUBERNETES_KUBEVAL",
         "PYTHON_BANDIT",
-        "REPOSITORY_GIT_DIFF",
         "REPOSITORY_SECRETLINT",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GOODCHECK",
