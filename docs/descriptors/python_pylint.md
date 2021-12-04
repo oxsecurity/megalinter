@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.12.1**
+- Version in MegaLinter: **2.12.2**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-lint){target=_blank} will be used
