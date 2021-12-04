@@ -4,7 +4,6 @@ Unit tests for Megalinter class
 
 """
 import os
-import time
 import unittest
 
 from megalinter.tests.test_megalinter.helpers import utilstest

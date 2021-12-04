@@ -10,20 +10,29 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 <!-- unreleased-content-marker -->
 
-- Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
-- Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
-- Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
-- Add [trivy](https://github.com/aquasecurity/trivy) security linter
-- New flavor **Security**
-- New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck (in next major versions, credentials and git descriptors will be deprecated, then removed)
-- Manage offline run of `bash build.sh` for those who want to code in planes :)
-- Automate update of CHANGELOG.md after release (pilot)
-- New reporter **SARIF**
-- SARIF management for:
-  - bandit
-  - checkov
-  - eslint
-- Rename default report folder from `report` to `megalinter-reports`
+- Core architecture
+  - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
+  - Manage offline run of `bash build.sh` for those who want to code in planes :)
+  - Automate update of CHANGELOG.md after release (pilot)
+  - Rename default report folder from `report` to `megalinter-reports`
+
+- Linters:
+  - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
+  - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
+  - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+  - Add [trivy](https://github.com/aquasecurity/trivy) security linter
+  - SARIF management for:
+    - bandit
+    - checkov
+    - eslint
+    - gitleaks
+
+- Descriptors:
+  - New flavor **Security**
+  - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck
+    - remove CREDENTIALS and GIT descriptors
+
+
 
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
