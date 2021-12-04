@@ -26,6 +26,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - checkov
     - eslint
     - gitleaks
+    - trivy
 
 - Descriptors:
   - New flavor **Security**
