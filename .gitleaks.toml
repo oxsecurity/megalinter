@@ -170,7 +170,7 @@ title = "gitleaks config"
     '''megalinter-reports''',
     '''.github/linters'''
     ]
-    files = ['''^\.?gitleaks.toml$''',
+    files = ['''gitleaks\.toml''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
 
