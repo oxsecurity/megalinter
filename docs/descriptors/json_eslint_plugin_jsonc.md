@@ -179,9 +179,9 @@ Basic configuration:
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specifying rules and plugins:
-  --rulesdir [path::String]       Use additional rules from this directory
   --plugin [String]               Specify plugins
   --rule Object                   Specify rules
+  --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fixing problems:
   --fix                           Automatically fix problems
