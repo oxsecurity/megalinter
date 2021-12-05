@@ -36,7 +36,7 @@ def list_all_linters(linters_init_params=None):
 
 # List flavor linters
 def list_flavor_linters(linters_init_params=None, flavor_id="all"):
-    all_linters = list_all_linters(linters_init_params=None)
+    all_linters = list_all_linters(linters_init_params)
     flavor_linter_ids = flavor_factory.list_flavor_linters(flavor_id)
     linters = []
     for linter in all_linters:

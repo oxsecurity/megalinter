@@ -361,7 +361,7 @@ class mega_linter_1_test(unittest.TestCase):
             "PHP_BUILTIN should have been processed with cli_executable = /usr/bin/php8",
         )
 
-    def test_print_all_files_false(self):
+    def test_print_all_files_false_and_no_flavor_suggestion(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "ENABLE_LINTERS": "JAVASCRIPT_ES",
