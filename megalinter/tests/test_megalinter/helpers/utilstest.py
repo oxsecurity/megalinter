@@ -40,6 +40,8 @@ def linter_test_setup(params=None):
         "IGNORE_GITIGNORED_FILES",
         "IGNORE_GENERATED_FILES",
         "SHOW_ELAPSED_TIME",
+        "MEGALINTER_FLAVOR",
+        "FLAVOR_SUGGESTIONS",
     ]:
         if key in os.environ:
             del os.environ[key]
