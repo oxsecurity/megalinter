@@ -6230,10 +6230,14 @@
 
 <ul>
 <li>Core architecture<ul>
-<li>New reporter <strong>SARIF_REPORTER</strong> that aggregates all SARIF output files into a single one</li>
+<li>New reporter <strong>SARIF_REPORTER</strong> that aggregates all SARIF output files into a single one<ul>
+<li>Correct SARIF files for known format errors</li>
+</ul>
+</li>
 <li>Manage offline run of <code>bash build.sh</code> for those who want to code in planes :)</li>
 <li>Automate update of CHANGELOG.md after release (pilot)</li>
 <li>Rename default report folder from <code>report</code> to <code>megalinter-reports</code></li>
+<li>Accelerate internal CI testing performances</li>
 </ul>
 </li>
 </ul>
@@ -6248,6 +6252,7 @@
 <li>checkov</li>
 <li>eslint</li>
 <li>gitleaks</li>
+<li>trivy</li>
 </ul>
 </li>
 </ul>
@@ -6271,6 +6276,7 @@
 <li>Docker run -- clean-up containers when exits (#1033)</li>
 <li>Add missing Bandit config file and rules path options (#679)</li>
 <li>Fix getting linter version of npm plugin. (#845)</li>
+<li>Improve runtime performances when using a flavor and defining <code>FLAVORS_SUGGESTION: false</code></li>
 </ul>
 <ul>
 <li>Linters<ul>
@@ -6327,6 +6333,7 @@
 <li><a href="https://www.pylint.org">pylint</a> from 2.12.1 to <strong>2.12.2</strong> on 2021-12-04</li>
 <li><a href="https://www.checkov.io/">checkov</a> from 2.0.625 to <strong>2.0.626</strong> on 2021-12-04</li>
 <li><a href="https://eslint.org">eslint</a> from 8.3.0 to <strong>8.4.0</strong> on 2021-12-04</li>
+<li><a href="https://prettier.io/">prettier</a> from 2.5.0 to <strong>2.5.1</strong> on 2021-12-05</li>
 </ul>
 </li>
 </ul>
