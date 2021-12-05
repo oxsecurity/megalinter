@@ -44,6 +44,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Docker run -- clean-up containers when exits (#1033)
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)
+- Improve runtime performances when using a flavor and defining `FLAVORS_SUGGESTION: false`
 
 - Linters
   - New linter `phplint` to speed-up linting of php files (#1031)
@@ -95,6 +96,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://www.pylint.org) from 2.12.1 to **2.12.2** on 2021-12-04
   - [checkov](https://www.checkov.io/) from 2.0.625 to **2.0.626** on 2021-12-04
   - [eslint](https://eslint.org) from 8.3.0 to **8.4.0** on 2021-12-04
+  - [prettier](https://prettier.io/) from 2.5.0 to **2.5.1** on 2021-12-05
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
