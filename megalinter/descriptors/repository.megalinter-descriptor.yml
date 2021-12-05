@@ -57,6 +57,7 @@ linters:
 
   # GITLEAKS
   - linter_name: gitleaks
+    can_output_sarif: true
     descriptor_flavors:
     - all_flavors # Applicable to CI in any language project
     - ci_light
@@ -69,6 +70,11 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - detect
+    cli_sarif_args:
+      - --report-format
+      - sarif
+      - --report-path
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args_after:
       - "--no-git"
       - "--verbose"

@@ -14,6 +14,7 @@ from distutils.dir_util import copy_tree
 
 from git import Repo
 from megalinter import Megalinter, config, utils
+from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
 
 REPO_HOME = (
     "/tmp/lint"
@@ -253,7 +254,7 @@ def manage_copy_sources(workspace):
 def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     updated_sources_dir = (
         f"{REPO_HOME}{os.path.sep}report{os.path.sep}updated_dev_sources{os.path.sep}"
-        f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}reports"
+        f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
     )
     target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace(
         ".log", ".txt"
@@ -399,13 +400,13 @@ def test_linter_report_tap(linter, test_self):
         f"expected-{linter.descriptor_id}.tap",
     ] + reports_with_extension
     for file_nm in list(dict.fromkeys(possible_reports)):
-        if os.path.isfile(f"{workspace}{os.path.sep}reports{os.path.sep}{file_nm}"):
+        if os.path.isfile(f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"):
             expected_file_name = (
-                f"{workspace}{os.path.sep}reports{os.path.sep}{file_nm}"
+                f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"
             )
     if expected_file_name == "":
         raise unittest.SkipTest(
-            f"Expected report not defined in {workspace}{os.path.sep}reports"
+            f"Expected report not defined in {workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
         )
     # Call linter
     tmp_report_folder = tempfile.gettempdir()
