@@ -11,3 +11,4 @@ ML_DOCKER_IMAGE_LEGACY = "nvuillam/mega-linter"
 
 DEFAULT_REPORT_FOLDER_NAME = "megalinter-reports"
 DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
+DEFAULT_RELEASE = "v6-alpha" # TODOv6 : replace with v6
