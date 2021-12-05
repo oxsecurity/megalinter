@@ -40,6 +40,7 @@ class Megalinter:
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
+        self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
         self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER",
             config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + "report"),
@@ -350,7 +351,17 @@ class Megalinter:
         }
 
         # Build linters from descriptor files
-        all_linters = linter_factory.list_all_linters(linter_init_params)
+        # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
+        if (
+            self.megalinter_flavor != "all"
+            and config.get("FLAVOR_SUGGESTIONS", "true") != "true"
+        ):
+            all_linters = linter_factory.list_flavor_linters(
+                linter_init_params, self.megalinter_flavor
+            )
+        else:
+            all_linters = linter_factory.list_all_linters(linter_init_params)
+
         skipped_linters = []
         for linter in all_linters:
             linter.master = self
