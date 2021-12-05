@@ -65,7 +65,7 @@ def list_megalinter_flavors():
 
 
 def get_image_flavor():
-    return os.environ.get("MEGALINTER_FLAVOR", "all")
+    return config.get("MEGALINTER_FLAVOR", "all")
 
 
 # Compare linters active for the current repo, and linters available in the current MegaLinter image flavor
