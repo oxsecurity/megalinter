@@ -35,7 +35,7 @@ def get_all_flavors():
 def list_flavor_linters(flavor_id):
     all_flavors = get_all_flavors()
     flavor_definition = all_flavors[flavor_id]
-    return flavor_definition['linters']
+    return flavor_definition["linters"]
 
 
 def list_megalinter_flavors():
