@@ -12,6 +12,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Core architecture
   - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
+    - Correct SARIF files for known format errors
   - Manage offline run of `bash build.sh` for those who want to code in planes :)
   - Automate update of CHANGELOG.md after release (pilot)
   - Rename default report folder from `report` to `megalinter-reports`

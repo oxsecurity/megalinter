@@ -40,6 +40,7 @@ class SarifReporter(Reporter):
                     linter.sarif_output_file, "r", encoding="utf-8"
                 ) as linter_sarif_file:
                     linter_sarif_obj = json.load(linter_sarif_file)
+                linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
                 sarif_obj["runs"] += linter_sarif_obj["runs"]
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
         # Write output file
@@ -67,3 +68,33 @@ class SarifReporter(Reporter):
                 except:  # noqa: E722
                     pass
         return obj
+
+    # Some SARIF linter output contain errors (like references to line 0)
+    # We must correct them so SARIF is valid
+    def fix_sarif(self, linter_sarif_obj):
+        # browse runs
+        if "runs" in linter_sarif_obj:
+            for id_run, run in enumerate(linter_sarif_obj["runs"]):
+                if "results" in run:
+                    # browse run results
+                    for id_result, result in enumerate(run["results"]):
+                        if "locations" in result:
+                            # browse result locations
+                            for id_location, location in enumerate(result["locations"]):
+                                if "physical_location" in location:
+                                    location["physical_location"] = self.fix_physical_location(location["physical_location"])
+                            result["locations"][id_location] = location
+                        run["results"][id_result] = result
+                linter_sarif_obj["runs"][id_run] = run
+        return linter_sarif_obj
+
+    # Replace startLine and endLine in region or contextRegion
+    def fix_sarif_physical_location(self, physical_location):
+        for location_key in physical_location.keys():
+            location_item = physical_location[location_key]
+            if "startLine" in location_item and location_item["startLine"] == 0:
+                location_item["startLine"] = 1
+            if "endLine" in location_item and location_item["endLine"] == 0:
+                location_item["endLine"] = 1
+            physical_location[location_key] = location_item
+        return physical_location
