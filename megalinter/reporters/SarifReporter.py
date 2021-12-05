@@ -82,7 +82,11 @@ class SarifReporter(Reporter):
                             # browse result locations
                             for id_location, location in enumerate(result["locations"]):
                                 if "physical_location" in location:
-                                    location["physical_location"] = self.fix_physical_location(location["physical_location"])
+                                    location[
+                                        "physical_location"
+                                    ] = self.fix_sarif_physical_location(
+                                        location["physical_location"]
+                                    )
                             result["locations"][id_location] = location
                         run["results"][id_result] = result
                 linter_sarif_obj["runs"][id_run] = run
