@@ -3,6 +3,7 @@
 Produce SARIF report
 """
 import json
+from json.decoder import JSONDecodeError
 import logging
 import os
 
@@ -36,16 +37,35 @@ class SarifReporter(Reporter):
             if linter.sarif_output_file is not None and os.path.isfile(
                 linter.sarif_output_file
             ):
+                # Read SARIF output file
                 with open(
                     linter.sarif_output_file, "r", encoding="utf-8"
                 ) as linter_sarif_file:
-                    linter_sarif_obj = json.load(linter_sarif_file)
-                linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
-                sarif_obj["runs"] += linter_sarif_obj["runs"]
+                    # parse sarif file
+                    try:
+                        linter_sarif_obj = json.load(linter_sarif_file)
+                    except JSONDecodeError as e:
+                        # JSON decoding error
+                        logging.error(
+                            f"[SARIF reporter] ERROR: Unable to decode {linter.name} SARIF file {linter.sarif_output_file}"
+                        )
+                        logging.error(e.msg)
+                        logging.debug(f"SARIF File content:\n{linter_sarif_file.read()}")
+                    except Exception as e:  # noqa: E722
+                        # Other error
+                        logging.error(
+                            f"[SARIF reporter] ERROR: Unknown error with {linter.name} SARIF file {linter.sarif_output_file}"
+                        )
+                        logging.error(e.msg)
+                if linter_sarif_obj:
+                    # fix sarif file
+                    linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
+                    # append to global megalinter sarif run
+                    sarif_obj["runs"] += linter_sarif_obj["runs"]
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
         # Write output file
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
-            "SARIF_REPORTER_FILE_NAME", "mega-linter-report.sarif"
+            "SARIF_REPORTER_FILE_NAME", "megalinter-report.sarif"
         )
         with open(sarif_file_name, "w", encoding="utf-8") as sarif_file:
             sarif_file.write(result_json)
