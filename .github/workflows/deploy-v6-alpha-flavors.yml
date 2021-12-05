@@ -59,6 +59,7 @@ jobs:
             "rust",
             "salesforce",
             "scala",
+            "security",
             "swift",
             "terraform",
           ]
