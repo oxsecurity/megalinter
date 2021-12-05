@@ -15,6 +15,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Manage offline run of `bash build.sh` for those who want to code in planes :)
   - Automate update of CHANGELOG.md after release (pilot)
   - Rename default report folder from `report` to `megalinter-reports`
+  - Accelerate internal CI testing performances
 
 - Linters:
   - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)

@@ -34,6 +34,11 @@ REPO_HOME = (
 # Define env variables before any test case
 def linter_test_setup(params=None):
     for key in [
+        "APPLY_FIXES",
+        "ENABLE",
+        "ENABLE_LINTERS",
+        "DISABLE",
+        "DISABLE_LINTERS",
         "MEGALINTER_CONFIG",
         "EXTENDS",
         "FILTER_REGEX_INCLUDE",
@@ -41,6 +46,7 @@ def linter_test_setup(params=None):
         "IGNORE_GITIGNORED_FILES",
         "IGNORE_GENERATED_FILES",
         "SHOW_ELAPSED_TIME",
+        "UPDATED_SOURCES_REPORTER"
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -76,6 +82,7 @@ def linter_test_setup(params=None):
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
     config.set_value("PLUGINS", "")
+    config.set_value("GITHUB_STATUS_REPORTER", "false")
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
@@ -140,6 +147,7 @@ def test_linter_success(linter, test_self):
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": r"(good)",
         "TEXT_REPORTER": "true",
+        "UPDATED_SOURCES_REPORTER": "false",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
@@ -200,6 +208,7 @@ def test_linter_failure(linter, test_self):
         "FILTER_REGEX_INCLUDE": r"(bad)",
         "OUTPUT_FORMAT": "text",
         "OUTPUT_DETAIL": "detailed",
+        "UPDATED_SOURCES_REPORTER": "false",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
