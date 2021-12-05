@@ -10,7 +10,7 @@ import urllib
 
 import github
 from megalinter import Reporter, config
-from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.constants import DEFAULT_RELEASE, ML_DOC_URL, ML_REPO, ML_REPO_URL
 from pytablewriter import MarkdownTableWriter
 
 mega_linter_version = config.get("BUILD_VERSION", "latest")
@@ -169,7 +169,7 @@ class GithubCommentReporter(Reporter):
                         " if you use a MegaLinter flavor:" + os.linesep
                     )
                     for suggestion in self.master.flavor_suggestions:
-                        build_version = os.environ.get("BUILD_VERSION", "v5")
+                        build_version = os.environ.get("BUILD_VERSION", DEFAULT_RELEASE)
                         action_version = (
                             "v5" if len(build_version) > 20 else build_version
                         )

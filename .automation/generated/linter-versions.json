@@ -50,7 +50,7 @@
     "phplint": "3.0",
     "phpstan": "1.2.0",
     "powershell": "7.2.0",
-    "prettier": "2.5.0",
+    "prettier": "2.5.1",
     "protolint": "0.35.2",
     "psalm": "Psalm.4.x-dev@",
     "puppet-lint": "2.5.2",

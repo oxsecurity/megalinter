@@ -105,7 +105,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
                  [--wms-monitor [WMS_MONITOR]]
                  [--wms-monitor-arg [NAME=VALUE ...]]
-                 [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
+                 [--scheduler-ilp-solver {PULP_CBC_CMD}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
                  [--groups GROUPS [GROUPS ...]]
@@ -406,7 +406,7 @@ EXECUTION:
                         id=12345 and the arguments will be provided to the
                         endpoint to first interact with the workflow (default:
                         None)
-  --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
+  --scheduler-ilp-solver {PULP_CBC_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH

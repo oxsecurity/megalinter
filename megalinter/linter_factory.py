@@ -3,7 +3,7 @@ import importlib
 import os
 
 import yaml
-from megalinter import Linter
+from megalinter import Linter, flavor_factory
 
 
 # Returns directory where all .yml language descriptors are defined
@@ -31,6 +31,19 @@ def list_all_linters(linters_init_params=None):
             descriptor_file, linters_init_params
         )
         linters += descriptor_linters
+    return linters
+
+
+# List flavor linters
+def list_flavor_linters(linters_init_params=None, flavor_id="all"):
+    all_linters = list_all_linters(linters_init_params)
+    flavor_linter_ids = flavor_factory.list_flavor_linters(flavor_id)
+    linters = []
+    for linter in all_linters:
+        if linter.name in flavor_linter_ids:
+            linters += [linter]
+        else:
+            del linter
     return linters
 
 

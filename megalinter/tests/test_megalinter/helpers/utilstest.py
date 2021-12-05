@@ -34,6 +34,11 @@ REPO_HOME = (
 # Define env variables before any test case
 def linter_test_setup(params=None):
     for key in [
+        "APPLY_FIXES",
+        "ENABLE",
+        "ENABLE_LINTERS",
+        "DISABLE",
+        "DISABLE_LINTERS",
         "MEGALINTER_CONFIG",
         "EXTENDS",
         "FILTER_REGEX_INCLUDE",
@@ -41,6 +46,9 @@ def linter_test_setup(params=None):
         "IGNORE_GITIGNORED_FILES",
         "IGNORE_GENERATED_FILES",
         "SHOW_ELAPSED_TIME",
+        "UPDATED_SOURCES_REPORTER"
+        "MEGALINTER_FLAVOR",
+        "FLAVOR_SUGGESTIONS",
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -76,6 +84,7 @@ def linter_test_setup(params=None):
     config.set_value("OUTPUT_FORMAT", "text")
     config.set_value("OUTPUT_DETAIL", "detailed")
     config.set_value("PLUGINS", "")
+    config.set_value("GITHUB_STATUS_REPORTER", "false")
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     # Root path of files to lint
@@ -140,6 +149,7 @@ def test_linter_success(linter, test_self):
         "DEFAULT_WORKSPACE": workspace,
         "FILTER_REGEX_INCLUDE": r"(good)",
         "TEXT_REPORTER": "true",
+        "UPDATED_SOURCES_REPORTER": "false",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
@@ -200,6 +210,7 @@ def test_linter_failure(linter, test_self):
         "FILTER_REGEX_INCLUDE": r"(bad)",
         "OUTPUT_FORMAT": "text",
         "OUTPUT_DETAIL": "detailed",
+        "UPDATED_SOURCES_REPORTER": "false",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
@@ -492,12 +503,12 @@ def test_linter_report_sarif(linter, test_self):
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
-    # Check TAP file has been produced
-    tmp_tap_file_name = (
+    # Check SARIF file has been produced
+    tmp_sarif_file_name = (
         f"{tmp_report_folder}{os.path.sep}sarif{os.path.sep}{linter.name}.sarif"
     )
     test_self.assertTrue(
-        os.path.isfile(tmp_tap_file_name), f"SARIF report not found {tmp_tap_file_name}"
+        os.path.isfile(tmp_sarif_file_name), f"SARIF report not found {tmp_sarif_file_name}"
     )
 
 

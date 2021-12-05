@@ -6,6 +6,7 @@ Unit tests for Megalinter class
 import os
 import unittest
 
+from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -31,7 +32,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
             len(mega_linter.linters) > 0, "Linters have been created and run"
         )
         expected_output_file = (
-            mega_linter.report_folder + os.path.sep + "mega-linter-report.sarif"
+            mega_linter.report_folder + os.path.sep + DEFAULT_SARIF_REPORT_FILE_NAME
         )
         self.assertTrue(
             os.path.isfile(expected_output_file),

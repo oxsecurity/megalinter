@@ -121,6 +121,7 @@ linters:
 
   # TRIVY
   - linter_name: trivy
+    can_output_sarif: true
     descriptor_flavors:
     - all_flavors # Applicable to CI in any language project
     - ci_light
@@ -129,6 +130,13 @@ linters:
     linter_repo: https://github.com/aquasecurity/trivy
     linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
     cli_lint_mode: project
+    cli_sarif_args:
+      - --format
+      - template
+      - --template
+      - "@contrib/sarif.tpl"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args:
       - fs
       - --security-checks
