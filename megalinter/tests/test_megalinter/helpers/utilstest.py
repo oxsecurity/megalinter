@@ -501,12 +501,12 @@ def test_linter_report_sarif(linter, test_self):
     test_self.assertTrue(
         len(mega_linter.linters) > 0, "Linters have been created and run"
     )
-    # Check TAP file has been produced
-    tmp_tap_file_name = (
+    # Check SARIF file has been produced
+    tmp_sarif_file_name = (
         f"{tmp_report_folder}{os.path.sep}sarif{os.path.sep}{linter.name}.sarif"
     )
     test_self.assertTrue(
-        os.path.isfile(tmp_tap_file_name), f"SARIF report not found {tmp_tap_file_name}"
+        os.path.isfile(tmp_sarif_file_name), f"SARIF report not found {tmp_sarif_file_name}"
     )
 
 

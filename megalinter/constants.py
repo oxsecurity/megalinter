@@ -9,4 +9,5 @@ ML_DOCKER_NAME = "megalinter"
 ML_DOCKER_IMAGE = f"{ML_DOCKER_OWNER}/{ML_DOCKER_NAME}"
 ML_DOCKER_IMAGE_LEGACY = "nvuillam/mega-linter"
 
-DEFAULT_REPORT_FOLDER_NAME = 'megalinter-reports'
+DEFAULT_REPORT_FOLDER_NAME = "megalinter-reports"
+DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"

@@ -8,7 +8,7 @@ import logging
 import os
 
 from megalinter import Reporter, config
-
+from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 
 class SarifReporter(Reporter):
     name = "SARIF"
@@ -65,7 +65,7 @@ class SarifReporter(Reporter):
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
         # Write output file
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
-            "SARIF_REPORTER_FILE_NAME", "megalinter-report.sarif"
+            "SARIF_REPORTER_FILE_NAME", DEFAULT_SARIF_REPORT_FILE_NAME
         )
         with open(sarif_file_name, "w", encoding="utf-8") as sarif_file:
             sarif_file.write(result_json)
