@@ -6229,22 +6229,39 @@
 <!-- unreleased-content-marker -->
 
 <ul>
+<li>Core architecture<ul>
+<li>New reporter <strong>SARIF_REPORTER</strong> that aggregates all SARIF output files into a single one</li>
+<li>Manage offline run of <code>bash build.sh</code> for those who want to code in planes :)</li>
+<li>Automate update of CHANGELOG.md after release (pilot)</li>
+<li>Rename default report folder from <code>report</code> to <code>megalinter-reports</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linters:<ul>
 <li>Add <a href="https://pmd.github.io/">PMD</a> to lint java files (disabled for now)</li>
 <li>Add <a href="https://github.com/zricethezav/gitleaks">gitleaks</a> to lint git repository</li>
 <li>Add <a href="https://github.com/sider/goodcheck">goodcheck</a> as regex-based linter</li>
 <li>Add <a href="https://github.com/aquasecurity/trivy">trivy</a> security linter</li>
-<li>New flavor <strong>Security</strong></li>
-<li>New descriptor <strong>repository</strong>: contains secretlint, git_diff, gitleaks and goodcheck (in next major versions, credentials and git descriptors will be deprecated, then removed)</li>
-<li>Manage offline run of <code>bash build.sh</code> for those who want to code in planes :)</li>
-<li>Automate update of CHANGELOG.md after release (pilot)</li>
-<li>New reporter <strong>SARIF</strong></li>
 <li>SARIF management for:<ul>
 <li>bandit</li>
 <li>checkov</li>
 <li>eslint</li>
+<li>gitleaks</li>
 </ul>
 </li>
-<li>Rename default report folder from <code>report</code> to <code>megalinter-reports</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Descriptors:<ul>
+<li>New flavor <strong>Security</strong></li>
+<li>New descriptor <strong>repository</strong>: contains secretlint, git_diff, gitleaks and goodcheck<ul>
+<li>remove CREDENTIALS and GIT descriptors</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Fix jscpd typo about <code>.venv</code> (#986)</li>
