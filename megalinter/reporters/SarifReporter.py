@@ -10,6 +10,7 @@ import os
 from megalinter import Reporter, config
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 
+
 class SarifReporter(Reporter):
     name = "SARIF"
     scope = "mega-linter"
@@ -47,16 +48,20 @@ class SarifReporter(Reporter):
                     except JSONDecodeError as e:
                         # JSON decoding error
                         logging.error(
-                            f"[SARIF reporter] ERROR: Unable to decode {linter.name} SARIF file {linter.sarif_output_file}"
+                            f"[SARIF reporter] ERROR: Unable to decode {linter.name} "
+                            f"SARIF file {linter.sarif_output_file}"
                         )
-                        logging.error(e.msg)
-                        logging.debug(f"SARIF File content:\n{linter_sarif_file.read()}")
+                        logging.error(str(e))
+                        logging.debug(
+                            f"SARIF File content:\n{linter_sarif_file.read()}"
+                        )
                     except Exception as e:  # noqa: E722
                         # Other error
                         logging.error(
-                            f"[SARIF reporter] ERROR: Unknown error with {linter.name} SARIF file {linter.sarif_output_file}"
+                            f"[SARIF reporter] ERROR: Unknown error with {linter.name} "
+                            f"SARIF file {linter.sarif_output_file}"
                         )
-                        logging.error(e.msg)
+                        logging.error(str(e))
                 if linter_sarif_obj:
                     # fix sarif file
                     linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
