@@ -14,6 +14,7 @@ linters:
         expected_value: markdownlint
         default_value: markdownlint
     linter_url: https://github.com/DavidAnson/markdownlint
+    linter_repo: https://github.com/DavidAnson/markdownlint
     linter_rules_url: https://github.com/DavidAnson/markdownlint#rules--aliases
     linter_image_url: https://davidanson.gallerycdn.vsassets.io/extensions/davidanson/vscode-markdownlint/0.37.1/1601748708034/Microsoft.VisualStudio.Services.Icons.Default
     linter_rules_configuration_url: https://github.com/igorshubovych/markdownlint-cli#configuration
@@ -89,6 +90,7 @@ linters:
   # Markdown Link Check
   - linter_name: markdown-link-check
     linter_url: https://github.com/tcort/markdown-link-check
+    linter_repo: https://github.com/tcort/markdown-link-check
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
     linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools

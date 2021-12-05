@@ -31,6 +31,7 @@ linters:
   - class: PowershellLinter
     linter_name: powershell
     linter_url: https://github.com/PowerShell/PSScriptAnalyzer
+    linter_repo: https://github.com/PowerShell/PSScriptAnalyzer
     linter_image_url: https://github.com/PowerShell/PSScriptAnalyzer/raw/master/logo.png
     linter_rules_configuration_url: https://github.com/PowerShell/PSScriptAnalyzer#explicit
     linter_rules_inline_disable_url: https://github.com/PowerShell/PSScriptAnalyzer#suppressing-rules

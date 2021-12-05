@@ -55,6 +55,7 @@ linters:
       - ".scss"
       - ".saas"
     linter_url: https://github.com/sds/scss-lint
+    linter_repo: https://github.com/sds/scss-lint
     linter_banner_image_url: https://raw.githubusercontent.com/sds/scss-lint/master/logo/horizontal.png
     linter_rules_configuration_url: https://github.com/sds/scss-lint#configuration
     linter_rules_inline_disable_url: https://stylelint.io/user-guide/ignore-code
