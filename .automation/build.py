@@ -1964,7 +1964,7 @@ def generate_documentation_all_linters():
             duplicate.descriptor_id_list.sort()
             linters[index] = duplicate
     linters.sort(key=lambda x: x.linter_name)
-    table_header = ["Linter", "Version", "License", "Descriptors", "Status", "URL"]
+    table_header = ["Linter", "Version", "License", "Popularity", "Descriptors", "Status", "URL"]
     md_table_lines = []
     table_data = [table_header]
     hearth_linters_md = []
@@ -2025,11 +2025,8 @@ def generate_documentation_all_linters():
             license = ""
             md_license = "<!-- -->"
             # get license from github api
-            if (
-                hasattr(linter, "linter_repo")
-                and linter.linter_repo is not None
-                and linter.linter_repo.startswith("https://github.com")
-            ):
+            repo = get_github_repo(linter)
+            if repo is not None:
                 repo = linter.linter_repo.split("https://github.com/", 1)[1]
                 api_github_url = f"https://api.github.com/repos/{repo}"
                 api_github_headers = {"content-type": "application/json"}
@@ -2085,11 +2082,20 @@ def generate_documentation_all_linters():
         # Update licenses file
         with open(LICENSES_FILE, "w", encoding="utf-8") as outfile:
             json.dump(linter_licenses, outfile, indent=4, sort_keys=True)
+        # popularity
+        md_popularity = "<!-- -->"
+        repo = get_github_repo(linter)
+        if repo is not None:
+            md_popularity = (
+                f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
+                f"(https://github.com/{repo}){{target=_blank}}"
+            )
         # line
         table_line = [
             linter.linter_name,
             linter_version,
             license,
+            "N/A",
             ", ".join(linter.descriptor_id_list),
             status,
             url,
@@ -2105,6 +2111,7 @@ def generate_documentation_all_linters():
             md_linter_name,
             linter_version,
             md_license,
+            md_popularity,
             "<br/> ".join(linter_doc_links),
             md_status,
             md_url,
@@ -2142,14 +2149,24 @@ def generate_documentation_all_linters():
         outfile.write("<!-- markdownlint-disable -->\n\n")
         outfile.write("# References\n\n")
         outfile.write(
-            "| Linter | Version | License | Descriptors | Reference status | URL |\n"
+            "| Linter | Version | License | Popularity | Descriptors | Reference status | URL |\n"
         )
         outfile.write(
-            "| :----  | :-----: | :-----: | :---------  | :--------------: | :-: |\n"
+            "| :----  | :-----: | :-----: | :-----: | :---------  | :--------------: | :-: |\n"
         )
         for md_table_line in md_table_lines:
             outfile.write("| %s |\n" % " | ".join(md_table_line))
 
+
+def get_github_repo(linter):
+    if (
+        hasattr(linter, "linter_repo")
+        and linter.linter_repo is not None
+        and linter.linter_repo.startswith("https://github.com")
+    ):
+        repo = linter.linter_repo.split("https://github.com/", 1)[1]    
+        return repo
+    return None
 
 def manage_output_variables():
     if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":

@@ -8748,7 +8748,7 @@
     },
     "REPOSITORY_GITLEAKS_CONFIG_FILE": {
       "$id": "#/properties/REPOSITORY_GITLEAKS_CONFIG_FILE",
-      "default": "gitleaks.toml",
+      "default": ".gitleaks.toml",
       "description": "REPOSITORY_GITLEAKS: User custom config file name if different from default",
       "title": "REPOSITORY_GITLEAKS: Custom config file name",
       "type": "string"

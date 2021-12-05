@@ -8,6 +8,7 @@ linters:
   # restructuredtext-lint
   - linter_name: rst-lint
     linter_url: https://github.com/twolfson/restructuredtext-lint
+    linter_repo: https://github.com/twolfson/restructuredtext-lint
     linter_megalinter_ref_url: https://github.com/twolfson/restructuredtext-lint/wiki/Integration-in-other-tools#integration-in-other-tools
     examples:
       - "rst-lint myfile.rst"
@@ -17,6 +18,7 @@ linters:
   # rstcheck
   - linter_name: rstcheck
     linter_url: https://github.com/myint/rstcheck
+    linter_repo: https://github.com/myint/rstcheck
     config_file_name: ".rstcheck.cfg"
     linter_rules_configuration_url: https://github.com/myint/rstcheck#configuration-file
     linter_rules_inline_disable_url: https://github.com/myint/rstcheck#ignore-specific-errors
@@ -35,6 +37,7 @@ linters:
   - linter_name: rstfmt
     is_formatter: true
     linter_url: https://github.com/dzhu/rstfmt
+    linter_repo: https://github.com/dzhu/rstfmt
     linter_megalinter_ref_url: https://github.com/dzhu/rstfmt/pull/1
     cli_lint_extra_args:
       - "--check"

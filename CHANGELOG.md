@@ -17,6 +17,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Automate update of CHANGELOG.md after release (pilot)
   - Rename default report folder from `report` to `megalinter-reports`
   - Accelerate internal CI testing performances
+  - Display GitHub stars in linters summary table in documentation 
 
 - Linters:
   - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)

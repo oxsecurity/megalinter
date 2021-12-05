@@ -55,6 +55,7 @@ linters:
   - linter_name: phpcs
     name: PHP_PHPCS
     linter_url: https://github.com/squizlabs/PHP_CodeSniffer
+    linter_repo: https://github.com/squizlabs/PHP_CodeSniffer
     linter_rules_configuration_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file
     linter_rules_inline_disable_url: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
     config_file_name: phpcs.xml
@@ -153,6 +154,7 @@ linters:
   # PHPLint
   - linter_name: phplint
     linter_url: https://github.com/overtrue/phplint
+    linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
     examples:

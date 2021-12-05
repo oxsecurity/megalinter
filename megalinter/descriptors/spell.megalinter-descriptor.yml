@@ -9,6 +9,7 @@ linters:
     name: SPELL_MISSPELL
     linter_text: misspell detects and corrects commonly misspelled english words
     linter_url: https://github.com/client9/misspell
+    linter_repo: https://github.com/client9/misspell
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "-error"
