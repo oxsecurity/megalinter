@@ -52,7 +52,7 @@ jobs:
       ###################################
       - name: Build image
         shell: bash
-        run: docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t megalinter/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
+        run: DOCKER_BUILDKIT=1 docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=auto_update_${GITHUB_SHA}" --build-arg "BUILD_VERSION=auto_update_${GITHUB_SHA}" --no-cache -t megalinter/megalinter:auto_update_${GITHUB_SHA} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
       #####################################
