@@ -119,7 +119,10 @@ def generate_flavor(flavor, flavor_info):
     for descriptor_file in descriptor_files:
         with open(descriptor_file, "r", encoding="utf-8") as f:
             descriptor = yaml.load(f, Loader=yaml.FullLoader)
-            if match_flavor(descriptor, flavor, flavor_info) is True and "install" in descriptor:
+            if (
+                match_flavor(descriptor, flavor, flavor_info) is True
+                and "install" in descriptor
+            ):
                 descriptor_and_linters += [descriptor]
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
@@ -619,8 +622,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Additional | Format/Fix |",
-        "| :---: | ----------------- | -------------- | ------------ | :-----: | :-----: |",
+        f"| <!-- --> | {col_header} | Linter | Configuration key | Additional  |",
+        "| :---: | ----------------- | -------------- | ------------ | :-----:  |",
     ]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
@@ -655,23 +658,31 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             else ""
         )
         prev_lang = linter.descriptor_id
-        fix_col = "" if linter.cli_lint_fix_arg_name is None else ":heavy_check_mark:"
+        # Build extra badges
+        md_extras = []
+        repo = get_github_repo(linter)
+        if repo is not None:
+            md_extras += [
+                f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
+                f"(https://github.com/{repo})"
+            ]
+        if hasattr(linter, "is_formatter") and linter.is_formatter is True:
+            md_extras += ["![formatter](https://shields.io/badge/-format-yellow)"]
+        elif linter.cli_lint_fix_arg_name is not None:
+            md_extras += ["![autofix](https://shields.io/badge/-autofix-green)"]
+        if hasattr(linter, "can_output_sarif") and linter.can_output_sarif is True:
+            md_extras += ["![sarif](https://shields.io/badge/-SARIF-orange)"]
+        md_extra = " ".join(md_extras)
+        # Build doc URL
         linter_doc_url = (
             f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         )
-        md_popularity = "<!-- -->"
-        repo = get_github_repo(linter)
-        if repo is not None:
-            md_popularity = (
-                f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
-                f"(https://github.com/{repo}){{target=_blank}}"
-            )
+        # Build md table line
         linters_tables_md += [
             f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
             f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
             f"| [{linter.name}]({doc_url(linter_doc_url)})"
-            f"| {md_popularity}"
-            f"| {fix_col} |"
+            f"| {md_extra}"
         ]
 
         # Build individual linter doc
@@ -1232,9 +1243,7 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
         + len(linters_by_type["tooling_format"])
         + +len(linters_by_type["other"])
     )
-    docker_image_badge = (
-        f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{DEFAULT_RELEASE})"
-    )
+    docker_image_badge = f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/{ML_DOCKER_IMAGE}/{DEFAULT_RELEASE})"
     docker_pulls_badge = (
         f"![Docker Pulls]({BASE_SHIELD_COUNT_LINK}/" f"{ML_DOCKER_IMAGE})"
     )
@@ -1972,7 +1981,15 @@ def generate_documentation_all_linters():
             duplicate.descriptor_id_list.sort()
             linters[index] = duplicate
     linters.sort(key=lambda x: x.linter_name)
-    table_header = ["Linter", "Version", "License", "Popularity", "Descriptors", "Status", "URL"]
+    table_header = [
+        "Linter",
+        "Version",
+        "License",
+        "Popularity",
+        "Descriptors",
+        "Status",
+        "URL",
+    ]
     md_table_lines = []
     table_data = [table_header]
     hearth_linters_md = []
@@ -2058,8 +2075,8 @@ def generate_documentation_all_linters():
                     break
 
                 if r is not None:
-                    resp = r.json() or {}
-                    if "license" in resp and "spdx_id" in resp["license"]:
+                    resp = r.json()
+                    if resp is not None and "license" in resp and "spdx_id" in resp["license"]:
                         license = (
                             resp["license"]["spdx_id"]
                             if resp["license"]["spdx_id"] != "NOASSERTION"
@@ -2073,7 +2090,7 @@ def generate_documentation_all_linters():
                             linter_licenses[linter.linter_name] = license
             # get license from descriptor
             if (
-                (license == "" or license == "Other")
+                (license is None or license == "" or license == "Other")
                 and hasattr(linter, "linter_spdx_license")
                 and linter.linter_spdx_license is not None
             ):
@@ -2157,7 +2174,7 @@ def generate_documentation_all_linters():
         outfile.write("<!-- markdownlint-disable -->\n\n")
         outfile.write("# References\n\n")
         outfile.write(
-            "| Linter | Version | License | Popularity | Descriptors | Reference status | URL |\n"
+            "| Linter | Version | License | Popularity | Descriptors | Ref | URL |\n"
         )
         outfile.write(
             "| :----  | :-----: | :-----: | :-----: | :---------  | :--------------: | :-: |\n"
@@ -2172,9 +2189,10 @@ def get_github_repo(linter):
         and linter.linter_repo is not None
         and linter.linter_repo.startswith("https://github.com")
     ):
-        repo = linter.linter_repo.split("https://github.com/", 1)[1]    
+        repo = linter.linter_repo.split("https://github.com/", 1)[1]
         return repo
     return None
+
 
 def manage_output_variables():
     if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":
@@ -2198,7 +2216,7 @@ def reformat_markdown_tables():
         format_md_tables_command,
         stdout=subprocess.PIPE,
         universal_newlines=True,
-        cwd=os.getcwd()+'/.automation',
+        cwd=os.getcwd() + "/.automation",
         shell=True,
     )
     print(process.stdout)
