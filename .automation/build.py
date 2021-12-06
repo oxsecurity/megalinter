@@ -619,8 +619,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Format/Fix |",
-        "| :---: | ----------------- | -------------- | ------------ | :-----: |",
+        f"| <!-- --> | {col_header} | Linter | Configuration key | Additional | Format/Fix |",
+        "| :---: | ----------------- | -------------- | ------------ | :-----: | :-----: |",
     ]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
@@ -659,10 +659,18 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_url = (
             f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         )
+        md_popularity = "<!-- -->"
+        repo = get_github_repo(linter)
+        if repo is not None:
+            md_popularity = (
+                f"[![GitHub stars](https://img.shields.io/github/stars/{repo}?cacheSeconds=3600)]"
+                f"(https://github.com/{repo}){{target=_blank}}"
+            )
         linters_tables_md += [
             f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
             f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
             f"| [{linter.name}]({doc_url(linter_doc_url)})"
+            f"| {md_popularity}"
             f"| {fix_col} |"
         ]
 
