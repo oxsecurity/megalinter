@@ -68,6 +68,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.625 to **2.0.626** on 2021-12-04
   - [eslint](https://eslint.org) from 8.3.0 to **8.4.0** on 2021-12-04
   - [prettier](https://prettier.io/) from 2.5.0 to **2.5.1** on 2021-12-05
+  - [black](https://black.readthedocs.io/en/stable/) from 21.11 to **21.12** on 2021-12-06
+  - [checkov](https://www.checkov.io/) from 2.0.626 to **2.0.628** on 2021-12-06
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
