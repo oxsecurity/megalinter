@@ -310,6 +310,7 @@
         "assignuser",
         "autocorrect",
         "autocrlf",
+        "autofix",
         "autoload",
         "autoloader",
         "automagically",
