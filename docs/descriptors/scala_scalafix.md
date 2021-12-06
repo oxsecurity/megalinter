@@ -42,10 +42,10 @@ Scalafix lints and fixes scala files
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                        | Embedded linters |                                                                                                                                                                                 Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor          |        96        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                        | Embedded linters |                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor          |        99        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
 
 ## Behind the scenes
 
@@ -233,29 +233,3 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
 ```
 
-
-### Example success log
-
-```shell
-Results of scalafix linter (version 0.9.24)
-See documentation on https://megalinter.github.io/descriptors/scala_scalafix/
------------------------------------------------
-
-[SUCCESS] .automation/test/scala/scala_good_1.scala
-    
-
-```
-
-### Example error log
-
-```shell
-Results of scalafix linter (version 0.9.24)
-See documentation on https://megalinter.github.io/descriptors/scala_scalafix/
------------------------------------------------
-
-[ERROR] .automation/test/scala/scala_bad_1.scala
-    .automation/test/scala/scala_bad_1.scala:3:34: error: [DisableSyntax.offensive] Please consider a less offensive word such as 'extension' or 'enrichment'
-            println("Hello, world of pimps !")
-                                     ^^^^
-
-```

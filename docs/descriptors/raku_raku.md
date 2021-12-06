@@ -43,9 +43,9 @@ Use raku in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -161,30 +161,3 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 ```
 
-
-### Example success log
-
-```shell
-Results of raku linter (version 2020.11)
-See documentation on https://megalinter.github.io/descriptors/raku_raku/
------------------------------------------------
-
-[SUCCESS] .automation/test/raku/raku_good_1.raku
-    Syntax OK
-
-```
-
-### Example error log
-
-```shell
-Results of raku linter (version 2020.11)
-See documentation on https://megalinter.github.io/descriptors/raku_raku/
------------------------------------------------
-
-[ERROR] .automation/test/raku/raku_bad_1.raku
-    ===SORRY!=== Error while compiling .automation/test/raku/raku_bad_1.raku
-    Variable '$foo' is not declared.  Did you mean '@foo'?
-    at .automation/test/raku/raku_bad_1.raku:4
-    ------> <BOL>⏏$foo[1] = 42
-
-```

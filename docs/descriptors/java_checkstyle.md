@@ -52,10 +52,10 @@ Use checkstyle in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        96        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)     | Optimized for JAVA based projects |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        99        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)     | Optimized for JAVA based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 
 ## Behind the scenes
 
@@ -154,36 +154,3 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
 
 ```
 
-
-### Example success log
-
-```shell
-Results of checkstyle linter (version 8.38)
-See documentation on https://megalinter.github.io/descriptors/java_checkstyle/
------------------------------------------------
-
-[SUCCESS] .automation/test/java/java_good_1.java
-    Starting audit...
-    Audit done.
-
-```
-
-### Example error log
-
-```shell
-Results of checkstyle linter (version 8.38)
-See documentation on https://megalinter.github.io/descriptors/java_checkstyle/
------------------------------------------------
-
-[ERROR] .automation/test/java/java_bad_1.java
-    Starting audit...
-    [ERROR] .automation/test/java/java_bad_1.java:1:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
-    [ERROR] .automation/test/java/java_bad_1.java:1:7: Name 'java_bad_1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. [TypeName]
-    [ERROR] .automation/test/java/java_bad_1.java:2:1: '{' at column 1 should be on the previous line. [LeftCurly]
-    [ERROR] .automation/test/java/java_bad_1.java:4:29: Parameter args should be final. [FinalParameters]
-    [ERROR] .automation/test/java/java_bad_1.java:4:40: Array brackets at illegal position. [ArrayTypeStyle]
-    [ERROR] .automation/test/java/java_bad_1.java:5:5: '{' at column 5 should be on the previous line. [LeftCurly]
-    Audit done.
-    Checkstyle ends with 6 errors.
-
-```

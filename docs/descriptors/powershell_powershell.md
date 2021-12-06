@@ -44,10 +44,10 @@ Use powershell in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -398,116 +398,3 @@ ARG PSSA_VERSION='latest'
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 ```
 
-
-### Example success log
-
-```shell
-Results of powershell linter (version 7.1.0)
-See documentation on https://megalinter.github.io/descriptors/powershell_powershell/
------------------------------------------------
-
-[SUCCESS] .automation/test/powershell/powershell_good_1.ps1
-    
-
-[SUCCESS] .automation/test/powershell/powershell_good_1.psd1
-    
-
-[SUCCESS] .automation/test/powershell/powershell_good_1.psm1
-    
-
-```
-
-### Example error log
-
-```shell
-Results of powershell linter (version 7.1.0)
-See documentation on https://megalinter.github.io/descriptors/powershell_powershell/
------------------------------------------------
-
-[ERROR] .automation/test/powershell/powershell_bad_1.ps1
-    
-    RuleName                            Severity     ScriptName Line  Message
-    --------                            --------     ---------- ----  -------
-    PSAvoidUsingEmptyCatchBlock         Warning      powershell 12    Empty catch b
-                                                     _bad_1.ps1       lock is used.
-                                                                       Please use W
-                                                                      rite-Error or
-                                                                       throw statem
-                                                                      ents in catch
-                                                                       blocks.
-    PSAvoidTrailingWhitespace           Information  powershell 11    Line has trai
-                                                     _bad_1.ps1       ling whitespa
-                                                                      ce
-    PSAvoidUsingUsernameAndPasswordPara Error        powershell 4     Function 'Bad
-    ms                                               _bad_1.ps1       Function' has
-                                                                       both Usernam
-                                                                      e and Passwor
-                                                                      d parameters.
-                                                                       Either set t
-                                                                      he type of th
-                                                                      e Password pa
-                                                                      rameter to Se
-                                                                      cureString or
-                                                                       replace the
-                                                                      Username and
-                                                                      Password para
-                                                                      meters with a
-                                                                       Credential p
-                                                                      arameter of t
-                                                                      ype PSCredent
-                                                                      ial. If using
-                                                                       a Credential
-                                                                       parameter in
-                                                                       PowerShell 4
-                                                                      .0 or earlier
-                                                                      , please defi
-                                                                      ne a credenti
-                                                                      al transforma
-                                                                      tion attribut
-                                                                      e after the P
-                                                                      SCredential t
-                                                                      ype attribute
-                                                                      .
-    PSAvoidUsingPlainTextForPassword    Warning      powershell 5     Parameter '$P
-                                                     _bad_1.ps1       assword' shou
-                                                                      ld use Secure
-                                                                      String, other
-                                                                      wise this wil
-                                                                      l expose sens
-                                                                      itive informa
-                                                                      tion. See Con
-                                                                      vertTo-Secure
-                                                                      String for mo
-                                                                      re informatio
-                                                                      n.
-    PSUseDeclaredVarsMoreThanAssignment Warning      powershell 9     The variable
-    s                                                _bad_1.ps1       'VariableThat
-                                                                      IsNotUsedLate
-                                                                      r' is assigne
-                                                                      d but never u
-                                                                      sed.
-
-[ERROR] .automation/test/powershell/powershell_bad_1.psd1
-    
-    RuleName                            Severity     ScriptName Line  Message
-    --------                            --------     ---------- ----  -------
-    TerminatorExpectedAtEndOfString     ParseError   powershell 2     The string is
-                                                     _bad_1.psd        missing the
-                                                     1                terminator: '
-                                                                      .
-    MissingEndCurlyBrace                ParseError   powershell 1     Missing closi
-                                                     _bad_1.psd       ng '}' in sta
-                                                     1                tement block
-                                                                      or type defin
-                                                                      ition.
-
-[ERROR] .automation/test/powershell/powershell_bad_1.psm1
-    
-    RuleName                            Severity     ScriptName Line  Message
-    --------                            --------     ---------- ----  -------
-    TerminatorExpectedAtEndOfString     ParseError   powershell 1     The string is
-                                                     _bad_1.psm        missing the
-                                                     1                terminator: "
-                                                                      .
-
-```

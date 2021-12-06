@@ -49,10 +49,10 @@ Use phpcs in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        96        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        99        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -175,69 +175,3 @@ RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192
 
 ```
 
-
-### Example success log
-
-```shell
-Results of phpcs linter (version 3.5.8)
-See documentation on https://megalinter.github.io/descriptors/php_phpcs/
------------------------------------------------
-
-[SUCCESS] .automation/test/php/php_good_1.php
-    
-
-[SUCCESS] .automation/test/php/php_good_2.php
-    
-
-```
-
-### Example error log
-
-```shell
-Results of phpcs linter (version 3.5.8)
-See documentation on https://megalinter.github.io/descriptors/php_phpcs/
------------------------------------------------
-
-[ERROR] .automation/test/php/php_bad_1.php
-    
-    FILE: .automation/test/php/php_bad_1.php
-    ----------------------------------------------------------------------
-    FOUND 7 ERRORS AFFECTING 1 LINE
-    ----------------------------------------------------------------------
-     3 | ERROR | [x] Expected at least 1 space before "-"; 0 found
-     3 | ERROR | [x] Expected at least 1 space after "-"; 0 found
-     3 | ERROR | [x] Expected at least 1 space before "="; 0 found
-     3 | ERROR | [x] Expected at least 1 space after "="; 0 found
-     3 | ERROR | [x] Expected at least 1 space before "-"; 0 found
-     3 | ERROR | [x] Expected at least 1 space before "-"; 0 found
-     3 | ERROR | [x] Expected at least 1 space after "-"; 0 found
-    ----------------------------------------------------------------------
-    PHPCBF CAN FIX THE 7 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-    ----------------------------------------------------------------------
-    
-    Time: 49ms; Memory: 6MB
-
-[ERROR] .automation/test/php/php_bad_2.php
-    
-    FILE: .automation/test/php/php_bad_2.php
-    ----------------------------------------------------------------------
-    FOUND 4 ERRORS AND 1 WARNING AFFECTING 4 LINES
-    ----------------------------------------------------------------------
-      1 | WARNING | [ ] A file should declare new symbols (classes,
-        |         |     functions, constants, etc.) and cause no other
-        |         |     side effects, or it should execute logic with
-        |         |     side effects, but should not do both. The first
-        |         |     symbol is defined on line 6 and the first side
-        |         |     effect is on line 10.
-      6 | ERROR   | [x] Opening brace should be on a new line
-     14 | ERROR   | [x] Space before opening parenthesis of function call
-        |         |     prohibited
-     15 | ERROR   | [x] Newline required after opening brace
-     15 | ERROR   | [x] Closing brace must be on a line by itself
-    ----------------------------------------------------------------------
-    PHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-    ----------------------------------------------------------------------
-    
-    Time: 45ms; Memory: 6MB
-
-```

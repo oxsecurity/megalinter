@@ -1,6 +1,6 @@
 # ci_light MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v5)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v6-alpha)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/ci_light@v5**
-- Docker image: **megalinter/megalinter-ci_light:v5**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/ci_light@v6-alpha**
+- Docker image: **megalinter/megalinter-ci_light:v6-alpha**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor ci_light`
 
 ## Embedded linters

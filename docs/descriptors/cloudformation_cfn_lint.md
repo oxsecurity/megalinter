@@ -50,9 +50,9 @@ Use cfn-lint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -150,49 +150,3 @@ Advanced / Debugging:
   - [asl-validator](https://www.npmjs.com/package/asl-validator)
 - PIP packages (Python):
   - [cfn-lint](https://pypi.org/project/cfn-lint)
-
-### Example success log
-
-```shell
-Results of cfn-lint linter (version 0.43.0)
-See documentation on https://megalinter.github.io/descriptors/cloudformation_cfn_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/cloudformation/cloudformation_good_1.json
-    
-
-[SUCCESS] .automation/test/cloudformation/cloudformation_good_2.yaml
-    
-
-[SUCCESS] .automation/test/cloudformation/cloudformation_good_3.json
-    
-
-[SUCCESS] .automation/test/cloudformation/cloudformation_good_4.yaml
-    
-
-```
-
-### Example error log
-
-```shell
-Results of cfn-lint linter (version 0.43.0)
-See documentation on https://megalinter.github.io/descriptors/cloudformation_cfn_lint/
------------------------------------------------
-
-[ERROR] .automation/test/cloudformation/cloudformation_bad_1.json
-    E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
-    .automation/test/cloudformation/cloudformation_bad_1.json:6:10
-
-[ERROR] .automation/test/cloudformation/cloudformation_bad_2.yaml
-    E3001 Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1
-    .automation/test/cloudformation/cloudformation_bad_2.yaml:5:5
-
-[ERROR] .automation/test/cloudformation/cloudformation_bad_3.json
-    E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
-    .automation/test/cloudformation/cloudformation_bad_3.json:11:13
-
-[ERROR] .automation/test/cloudformation/cloudformation_bad_4.yaml
-    E3002 Invalid Property Resources/myDNSRecord/Properties/Ttl
-    .automation/test/cloudformation/cloudformation_bad_4.yaml:9:7
-
-```

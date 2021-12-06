@@ -36,10 +36,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        96        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        99        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -109,35 +109,3 @@ Usage: php [options] [-f] <file> [--] [args...]
 
 ### Installation on mega-linter Docker image
 
-
-### Example success log
-
-```shell
-Results of php linter (version 7.3.25)
-See documentation on https://megalinter.github.io/descriptors/php_php/
------------------------------------------------
-
-[SUCCESS] .automation/test/php/php_good_1.php
-    No syntax errors detected in .automation/test/php/php_good_1.php
-
-[SUCCESS] .automation/test/php/php_good_2.php
-    No syntax errors detected in .automation/test/php/php_good_2.php
-
-```
-
-### Example error log
-
-```shell
-Results of php linter (version 7.3.25)
-See documentation on https://megalinter.github.io/descriptors/php_php/
------------------------------------------------
-
-[ERROR] .automation/test/php/php_bad_1.php
-    PHP Parse error:  syntax error, unexpected 'pe98y' (T_STRING) in .automation/test/php/php_bad_1.php on line 3
-    Errors parsing .automation/test/php/php_bad_1.php
-
-[ERROR] .automation/test/php/php_bad_2.php
-    PHP Parse error:  syntax error, unexpected '}' in .automation/test/php/php_bad_2.php on line 15
-    Errors parsing .automation/test/php/php_bad_2.php
-
-```

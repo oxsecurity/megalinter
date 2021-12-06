@@ -55,10 +55,10 @@ Use standard in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        96        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        99        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -118,28 +118,3 @@ Flags (advanced):
 
 - NPM packages (node.js):
   - [standard@15.0.1](https://www.npmjs.com/package/standard)
-
-### Example success log
-
-```shell
-Results of standard linter (version 15.0.1)
-See documentation on https://megalinter.github.io/descriptors/javascript_standard/
------------------------------------------------
-
-[SUCCESS] .automation/test/javascript/javascript_good_1.js
-    
-
-```
-
-### Example error log
-
-```shell
-Results of standard linter (version 15.0.1)
-See documentation on https://megalinter.github.io/descriptors/javascript_standard/
------------------------------------------------
-
-[ERROR] .automation/test/javascript/javascript_bad_1.js
-    standard: Use JavaScript Standard Style (https://standardjs.com)
-      .automation/test/javascript/javascript_bad_1.js:4:40: Parsing error: Unterminated regular expression
-
-```

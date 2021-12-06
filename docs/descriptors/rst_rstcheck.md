@@ -43,10 +43,10 @@ Use rstcheck in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -107,27 +107,3 @@ optional arguments:
 
 - PIP packages (Python):
   - [rstcheck](https://pypi.org/project/rstcheck)
-
-### Example success log
-
-```shell
-Results of rstcheck linter (version 3.3.1)
-See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
------------------------------------------------
-
-[SUCCESS] .automation/test/rst/rst_good_1.rst
-    
-
-```
-
-### Example error log
-
-```shell
-Results of rstcheck linter (version 3.3.1)
-See documentation on https://megalinter.github.io/descriptors/rst_rstcheck/
------------------------------------------------
-
-[ERROR] .automation/test/rst/rst_bad_1.rst
-    .automation/test/rst/rst_bad_1.rst:2: (WARNING/2) Title underline too short.
-
-```

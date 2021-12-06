@@ -35,9 +35,9 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -82,30 +82,3 @@ Options:
 
 - NPM packages (node.js):
   - [gherkin-lint](https://www.npmjs.com/package/gherkin-lint)
-
-### Example success log
-
-```shell
-Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/gherkin/gherkin_good_01.feature
-    
-
-```
-
-### Example error log
-
-```shell
-Results of gherkin-lint linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/gherkin_gherkin_lint/
------------------------------------------------
-
-[ERROR] .automation/test/gherkin/gherkin_bad_01.feature
-    .automation/test/gherkin/gherkin_bad_01.feature
-      8     Scenario name is already used in: .automation/test/gherkin/gherkin_bad_01.feature:4    no-dupe-scenario-names
-      11    Trailing spaces are not allowed                                                                  no-trailing-spaces
-      12    Multiple empty lines are not allowed                                                             no-multiple-empty-lines
-
-```

@@ -47,10 +47,10 @@ Use flake8 in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -186,42 +186,3 @@ Installed plugins: mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0
 
 - PIP packages (Python):
   - [flake8](https://pypi.org/project/flake8)
-
-### Example success log
-
-```shell
-Results of flake8 linter (version 3.8.4)
-See documentation on https://megalinter.github.io/descriptors/python_flake8/
------------------------------------------------
-
-[SUCCESS] .automation/test/python/python_good_1.py
-    
-
-```
-
-### Example error log
-
-```shell
-Results of flake8 linter (version 3.8.4)
-See documentation on https://megalinter.github.io/descriptors/python_flake8/
------------------------------------------------
-
-[ERROR] .automation/test/python/python_bad_1.py
-    .automation/test/python/python_bad_1.py:6:13: E261 at least two spaces before inline comment
-    .automation/test/python/python_bad_1.py:7:31: E261 at least two spaces before inline comment
-    .automation/test/python/python_bad_1.py:8:16: E261 at least two spaces before inline comment
-    .automation/test/python/python_bad_1.py:11:67: E202 whitespace before ')'
-    .automation/test/python/python_bad_1.py:13:1: E128 continuation line under-indented for visual indent
-    .automation/test/python/python_bad_1.py:15:23: E999 SyntaxError: invalid syntax
-    .automation/test/python/python_bad_1.py:16:5: E113 unexpected indentation
-    .automation/test/python/python_bad_1.py:17:9: E128 continuation line under-indented for visual indent
-    .automation/test/python/python_bad_1.py:18:9: E128 continuation line under-indented for visual indent
-    .automation/test/python/python_bad_1.py:27:1: E302 expected 2 blank lines, found 1
-    .automation/test/python/python_bad_1.py:56:1: E302 expected 2 blank lines, found 1
-    .automation/test/python/python_bad_1.py:66:24: E201 whitespace after '{'
-    .automation/test/python/python_bad_1.py:87:1: E302 expected 2 blank lines, found 1
-    .automation/test/python/python_bad_1.py:110:1: E302 expected 2 blank lines, found 1
-    .automation/test/python/python_bad_1.py:153:1: E305 expected 2 blank lines after class or function definition, found 1
-    .automation/test/python/python_bad_1.py:156:18: E261 at least two spaces before inline comment
-
-```

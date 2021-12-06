@@ -46,10 +46,10 @@ Use coffeelint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        96        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        99        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -109,35 +109,3 @@ Options:
 
 - NPM packages (node.js):
   - [@coffeelint/cli](https://www.npmjs.com/package/@coffeelint/cli)
-
-### Example success log
-
-```shell
-Results of coffeelint linter (version 4.1.2)
-See documentation on https://megalinter.github.io/descriptors/coffee_coffeelint/
------------------------------------------------
-
-[SUCCESS] .automation/test/coffeescript/coffeescript_good_1.coffee
-      ⚡ .automation/test/coffeescript/coffeescript_good_1.coffee
-         ⚡ #65-65: Line contains inconsistent indentation. (indentation) Expected 2 got 3.
-    
-    ⚡ Warning! » 0 errors and 1 warning in 1 file
-
-```
-
-### Example error log
-
-```shell
-Results of coffeelint linter (version 4.1.2)
-See documentation on https://megalinter.github.io/descriptors/coffee_coffeelint/
------------------------------------------------
-
-[ERROR] .automation/test/coffeescript/coffeescript_bad_1.coffee
-      ✗ .automation/test/coffeescript/coffeescript_bad_1.coffee
-         ✗ #39: [stdin]:39:29: error: unmatched )
-    module.exports = (robot) -> )
-                                ^. (coffeescript_error)
-    
-    ✗ Lint! » 1 error and 0 warnings in 1 file
-
-```

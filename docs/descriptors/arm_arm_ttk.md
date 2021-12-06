@@ -42,10 +42,10 @@ Use arm-ttk in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -108,83 +108,3 @@ RUN curl --retry 5 --retry-delay 5 -sLO "${ARM_TTK_URI}" \
 
 ```
 
-
-### Example success log
-
-```shell
-Results of arm-ttk linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/arm_arm_ttk/
------------------------------------------------
-
-[SUCCESS] .automation/test/arm/arm_good_1.json
-                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_good_1.json  deploymentTemplate
-        [+] adminUsername Should Not Be A Literal (70 ms)
-    
-        [+] apiVersions Should Be Recent (67 ms)
-        [+] artifacts parameter (12 ms)
-        [+] DependsOn Best Practices (8 ms)
-        [+] Deployment Resources Must Not Be Debug (8 ms)
-        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (17 ms)
-        [+] DeploymentTemplate Schema Is Correct (4 ms)
-        [+] Dynamic Variable References Should Not Use Concat (69 ms)
-        [+] IDs Should Be Derived From ResourceIDs (33 ms)
-        [+] Location Should Not Be Hardcoded (30 ms)
-        [+] ManagedIdentityExtension must not be used (2 ms)
-        [+] Min And Max Value Are Numbers (6 ms)
-        [+] Outputs Must Not Contain Secrets (9 ms)
-        [+] Parameters Must Be Referenced (9 ms)
-        [+] Parameters Property Must Exist (3 ms)
-        [+] providers apiVersions Is Not Permitted (2 ms)
-        [+] ResourceIds should not contain (9 ms)
-        [+] Resources Should Have Location (2 ms)
-        [+] Secure String Parameters Cannot Have Default (3 ms)
-        [+] Template Should Not Contain Blanks (6 ms)
-        [+] Variables Must Be Referenced (28 ms)
-        [+] Virtual Machines Should Not Be Preview (16 ms)
-        [+] VM Images Should Use Latest Version (1 ms)
-        [+] VM Size Should Be A Parameter (15 ms)
-
-```
-
-### Example error log
-
-```shell
-Results of arm-ttk linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/arm_arm_ttk/
------------------------------------------------
-
-[ERROR] .automation/test/arm/arm_bad_1.json
-                                                                                                                                                                                                                                                                                                                                                                                                                    Validating arm\arm_bad_1.json  deploymentTemplate
-        [+] adminUsername Should Not Be A Literal (69 ms)
-    
-        [+] apiVersions Should Be Recent (97 ms)
-        [+] artifacts parameter (11 ms)
-        [+] DependsOn Best Practices (6 ms)
-        [+] Deployment Resources Must Not Be Debug (7 ms)
-        [+] DeploymentTemplate Must Not Contain Hardcoded Uri (17 ms)
-        [+] DeploymentTemplate Schema Is Correct (4 ms)
-        [+] Dynamic Variable References Should Not Use Concat (3 ms)
-        [+] IDs Should Be Derived From ResourceIDs (18 ms)
-        [+] Location Should Not Be Hardcoded (27 ms)
-        [+] ManagedIdentityExtension must not be used (3 ms)
-        [+] Min And Max Value Are Numbers (7 ms)
-        [+] Outputs Must Not Contain Secrets (10 ms)
-        [+] Parameters Must Be Referenced (10 ms)
-        [+] Parameters Property Must Exist (3 ms)
-        [+] providers apiVersions Is Not Permitted (2 ms)
-        [+] ResourceIds should not contain (10 ms)
-        [+] Resources Should Have Location (2 ms)
-        [+] Secure String Parameters Cannot Have Default (3 ms)
-        [-] Template Should Not Contain Blanks (21 ms) 
-    ::error::        Empty property:  [] found on line: 28 Index:1331
-    ::error::        Empty property:  "" found on line: 3 Index:121
-    
-        [-] Variables Must Be Referenced (80 ms) 
-    ::error::        Unreferenced variable: Network.Location
-    ::error::        Unreferenced variable: Test.Blank.Variable
-    
-        [+] Virtual Machines Should Not Be Preview (18 ms)
-        [+] VM Images Should Use Latest Version (1 ms)
-        [+] VM Size Should Be A Parameter (13 ms)
-
-```

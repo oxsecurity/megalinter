@@ -63,10 +63,10 @@ Use eslint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        96        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
+|                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        99        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes
 
@@ -178,31 +178,3 @@ Miscellaneous:
   - [prettyjson](https://www.npmjs.com/package/prettyjson)
   - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
   - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-
-### Example success log
-
-```shell
-Results of eslint linter (version 7.15.0)
-See documentation on https://megalinter.github.io/descriptors/typescript_eslint/
------------------------------------------------
-
-[SUCCESS] .automation/test/typescript/typescript_good_1.ts
-    
-
-```
-
-### Example error log
-
-```shell
-Results of eslint linter (version 7.15.0)
-See documentation on https://megalinter.github.io/descriptors/typescript_eslint/
------------------------------------------------
-
-[ERROR] .automation/test/typescript/typescript_bad_1.ts
-    
-    .automation/test/typescript/typescript_bad_1.ts
-      5:39  error  Parsing error: Unterminated regular expression literal
-    
-    ✖ 1 problem (1 error, 0 warnings)
-
-```

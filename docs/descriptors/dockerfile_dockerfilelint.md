@@ -36,24 +36,24 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                                              |        96        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.github.io/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        13        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
-|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                                  |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        47        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                                        |        42        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        49        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                                       |        45        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                                    |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)                   | Optimized for RUST based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
-|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        43        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)                 | Optimized for SCALA based projects                                     |        41        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.github.io/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        41        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        46        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                                            | Embedded linters |                                                                                                                                                                                                       Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                                              |        99        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://megalinter.github.io/flavors/ci_light/)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        17        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
+|    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                                  |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects                          |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                                        |        45        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                                      |        45        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        52        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                                       |        48        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                                    |        52        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)                   | Optimized for RUST based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
+|     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        46        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)                 | Optimized for SCALA based projects                                     |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.github.io/flavors/swift/)                 | Optimized for SWIFT based projects                                     |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/)         | Optimized for TERRAFORM based projects                                 |        49        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -103,97 +103,3 @@ Examples:
 
 - NPM packages (node.js):
   - [dockerfilelint](https://www.npmjs.com/package/dockerfilelint)
-
-### Example success log
-
-```shell
-Results of dockerfilelint linter (version 1.8.0)
-See documentation on https://megalinter.github.io/descriptors/dockerfile_dockerfilelint/
------------------------------------------------
-
-[SUCCESS] .automation/test/docker/good/Dockerfile
-    
-    File:   .automation/test/docker/good/Dockerfile
-    Issues: None found 👍
-
-[SUCCESS] .automation/test/docker/good/Dockerfile.dev
-    
-    File:   .automation/test/docker/good/Dockerfile.dev
-    Issues: None found 👍
-
-```
-
-### Example error log
-
-```shell
-Results of dockerfilelint linter (version 1.8.0)
-See documentation on https://megalinter.github.io/descriptors/dockerfile_dockerfilelint/
------------------------------------------------
-
-[ERROR] .automation/test/docker/bad/Dockerfile
-    
-    File:   .automation/test/docker/bad/Dockerfile
-    Issues: 5
-    
-    Line 1: from node:latest
-    Issue  Category      Title                 Description
-        1  Clarity       Capitalize            For clarity and readability, all instructions in a Dockerfile
-                         Dockerfile            should be uppercase.
-                         Instructions          This is a convention adopted by most of the official images and
-                                               greatly improves readability in long Dockerfiles.  For an example
-                                               of
-                                               why this makes a difference, check out the current [redis
-                                               Dockerfile](https://github.com/docker-library/redis/blob/b375650fb6
-                                               9b7db819e90c0033433c705b28656e/3.0/Dockerfile)
-                                               and you should be able to easily see the instructions used.
-    
-    Line 4: run mkdir -p /usr/src/app
-    Issue  Category      Title                 Description
-        2  Clarity       Capitalize            For clarity and readability, all instructions in a Dockerfile
-                         Dockerfile            should be uppercase.
-                         Instructions          This is a convention adopted by most of the official images and
-                                               greatly improves readability in long Dockerfiles.  For an example
-                                               of
-                                               why this makes a difference, check out the current [redis
-                                               Dockerfile](https://github.com/docker-library/redis/blob/b375650fb6
-                                               9b7db819e90c0033433c705b28656e/3.0/Dockerfile)
-                                               and you should be able to easily see the instructions used.
-    
-    Line 8: copy package.json /usr/src/app/ /here/there
-    Issue  Category      Title                 Description
-        3  Clarity       Capitalize            For clarity and readability, all instructions in a Dockerfile
-                         Dockerfile            should be uppercase.
-                         Instructions          This is a convention adopted by most of the official images and
-                                               greatly improves readability in long Dockerfiles.  For an example
-                                               of
-                                               why this makes a difference, check out the current [redis
-                                               Dockerfile](https://github.com/docker-library/redis/blob/b375650fb6
-                                               9b7db819e90c0033433c705b28656e/3.0/Dockerfile)
-                                               and you should be able to easily see the instructions used.
-    
-    Line 9: RUN sudo npm install
-    Issue  Category      Title                 Description
-        4  Possible Bug  Use Of sudo Is Not    Use of `sudo` is not allowed in a Dockerfile.  From the official
-                         Allowed               document [Best practices for writing
-                                               Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/doc
-                                               kerfile_best-practices/):
-                                               > You should avoid installing or using `sudo` since it has
-                                               unpredictable TTY and signal-forwarding behavior that can cause
-                                               more problems than it solves.
-                                               > If you absolutely need functionality similar to `sudo` (e.g.,
-                                               initializing the daemon as root but running it as non-root), you
-                                               may be able to use `gosu`.
-    
-    Line 14: ENtrypoint /tmp/here.sh
-    Issue  Category      Title                 Description
-        5  Clarity       Capitalize            For clarity and readability, all instructions in a Dockerfile
-                         Dockerfile            should be uppercase.
-                         Instructions          This is a convention adopted by most of the official images and
-                                               greatly improves readability in long Dockerfiles.  For an example
-                                               of
-                                               why this makes a difference, check out the current [redis
-                                               Dockerfile](https://github.com/docker-library/redis/blob/b375650fb6
-                                               9b7db819e90c0033433c705b28656e/3.0/Dockerfile)
-                                               and you should be able to easily see the instructions used.
-
-```

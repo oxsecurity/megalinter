@@ -57,10 +57,10 @@ Use isort in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -462,45 +462,3 @@ section output options:
 - PIP packages (Python):
   - [isort](https://pypi.org/project/isort)
   - [black](https://pypi.org/project/black)
-
-### Example success log
-
-```shell
-Results of isort linter (version 5.6.4)
-See documentation on https://megalinter.github.io/descriptors/python_isort/
------------------------------------------------
-
-[SUCCESS] .automation/test/python/python_good_1.py
-    
-
-```
-
-### Example error log
-
-```shell
-Results of isort linter (version 5.6.4)
-See documentation on https://megalinter.github.io/descriptors/python_isort/
------------------------------------------------
-
-[ERROR] .automation/test/python/python_bad_1.py
-    ERROR: .automation/test/python/python_bad_1.py Imports are incorrectly sorted and/or formatted.
-    --- .automation/test/python/python_bad_1.py:before	2020-12-05 12:08:47.707389
-    +++ .automation/test/python/python_bad_1.py:after	2020-12-05 12:34:28.504872
-    @@ -1,11 +1,11 @@
-     import json
-    +import sys
-     from os import getenv, path
-     from pprint import pprint
-    -import sys
-     
-    -import click # pylint: disable=import-error
-    -from dotenv import load_dotenv # pylint: disable=import-error
-    -import requests # pylint: disable=import-error
-    +import click  # pylint: disable=import-error
-    +import requests  # pylint: disable=import-error
-    +from dotenv import load_dotenv  # pylint: disable=import-error
-     
-     env = load_dotenv()
-     api_url = getenv(API_URL, default='https://api.github.com/graphql' )
-
-```

@@ -38,10 +38,11 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        96        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                               Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        99        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/flavors/security/)   | Optimized for security                 |        15        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -97,57 +98,3 @@ COPY --from=terrascan /go/bin/terrascan /usr/bin/
 RUN terrascan init
 ```
 
-
-### Example success log
-
-```shell
-Results of terrascan linter (version 1.2.0)
-See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
------------------------------------------------
-
-[SUCCESS] .automation/test/terraform_terrascan/good/terraform_good_1.tf
-    results:
-        violations: []
-        count:
-            low: 0
-            medium: 0
-            high: 0
-            total: 0
-
-```
-
-### Example error log
-
-```shell
-Results of terrascan linter (version 1.2.0)
-See documentation on https://megalinter.github.io/descriptors/terraform_terrascan/
------------------------------------------------
-
-[ERROR] .automation/test/terraform_terrascan/bad/terraform_bad_1.tf
-    results:
-        violations:
-            - rule_name: instanceWithNoVpc
-              description: Instance should be configured in vpc. AWS VPCs provides the controls to facilitate a formal process for approving and testing all network connections and changes to the firewall and router configurations.
-              rule_id: AWS.Instance.NetworkSecurity.Medium.0506
-              severity: MEDIUM
-              category: Network Security
-              resource_name: instanceWithNoVpc
-              resource_type: aws_instance
-              file: terraform_bad_1.tf
-              line: 1
-            - rule_name: ec2UsingIMDSv1
-              description: EC2 instances should disable IMDS or require IMDSv2
-              rule_id: AC-AWS-NS-IN-M-1172
-              severity: MEDIUM
-              category: Network Security
-              resource_name: instanceWithNoVpc
-              resource_type: aws_instance
-              file: terraform_bad_1.tf
-              line: 1
-        count:
-            low: 0
-            medium: 2
-            high: 0
-            total: 2
-
-```

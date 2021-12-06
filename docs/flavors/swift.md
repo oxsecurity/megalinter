@@ -1,6 +1,6 @@
 # swift MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v5)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v6-alpha)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for SWIFT based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/swift@v5**
-- Docker image: **megalinter/megalinter-swift:v5**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/swift@v6-alpha**
+- Docker image: **megalinter/megalinter-swift:v6-alpha**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor swift`
 
 ## Embedded linters

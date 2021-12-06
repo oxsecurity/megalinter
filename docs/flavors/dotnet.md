@@ -1,6 +1,6 @@
 # dotnet MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for C, C++, C# or VB based projects
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/dotnet@v5**
-- Docker image: **megalinter/megalinter-dotnet:v5**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/dotnet@v6-alpha**
+- Docker image: **megalinter/megalinter-dotnet:v6-alpha**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor dotnet`
 
 ## Embedded linters

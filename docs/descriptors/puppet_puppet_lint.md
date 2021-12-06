@@ -46,9 +46,9 @@ Use puppet-lint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -185,30 +185,3 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
 
 - GEM packages (Ruby) :
   - [puppet-lint](https://rubygems.org/gems/puppet-lint)
-
-### Example success log
-
-```shell
-Results of puppet-lint linter (version 2.4.2)
-See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/puppet/puppet_good_1.pp
-    
-
-```
-
-### Example error log
-
-```shell
-Results of puppet-lint linter (version 2.4.2)
-See documentation on https://megalinter.github.io/descriptors/puppet_puppet_lint/
------------------------------------------------
-
-[ERROR] .automation/test/puppet/puppet_bad_1.pp
-    WARNING: class not documented on line 1
-    WARNING: line has more than 140 characters on line 7
-    WARNING: double quoted string containing no variables on line 4
-    WARNING: double quoted string containing no variables on line 5
-
-```

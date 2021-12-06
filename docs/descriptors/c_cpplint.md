@@ -32,10 +32,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -273,30 +273,3 @@ Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
 
 - PIP packages (Python):
   - [cpplint](https://pypi.org/project/cpplint)
-
-### Example success log
-
-```shell
-Results of cpplint linter (version 1.5.4)
-See documentation on https://megalinter.github.io/descriptors/c_cpplint/
------------------------------------------------
-
-[SUCCESS] .automation/test/c/c_good_01.c
-    Done processing .automation/test/c/c_good_01.c
-
-```
-
-### Example error log
-
-```shell
-Results of cpplint linter (version 1.5.4)
-See documentation on https://megalinter.github.io/descriptors/c_cpplint/
------------------------------------------------
-
-[ERROR] .automation/test/c/c_bad_01.c
-    .automation/test/c/c_bad_01.c:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
-    .automation/test/c/c_bad_01.c:6:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
-    Done processing .automation/test/c/c_bad_01.c
-    Total errors found: 2
-
-```

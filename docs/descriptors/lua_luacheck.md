@@ -50,9 +50,9 @@ Use luacheck in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -282,33 +282,3 @@ RUN wget --tries=5 https://www.lua.org/ftp/lua-5.3.5.tar.gz -O - -q | tar -xzf -
 
 ```
 
-
-### Example success log
-
-```shell
-Results of luacheck linter (version 0.23.0)
-See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
------------------------------------------------
-
-[SUCCESS] .automation/test/lua/lua_good_1.lua
-    Checking .automation/test/lua/lua_good_1.lua OK
-    
-    Total: 0 warnings / 0 errors in 1 file
-
-```
-
-### Example error log
-
-```shell
-Results of luacheck linter (version 0.23.0)
-See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
------------------------------------------------
-
-[ERROR] .automation/test/lua/lua_bad_1.lua
-    Checking .automation/test/lua/lua_bad_1.lua 1 error
-    
-        .automation/test/lua/lua_bad_1.lua:10:1: expected 'end' (to close 'function' on line 7) near <eof>
-    
-    Total: 0 warnings / 1 error in 1 file
-
-```

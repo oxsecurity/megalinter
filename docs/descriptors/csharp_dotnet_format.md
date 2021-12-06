@@ -33,10 +33,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                   Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                   | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor                     |        99        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/) | Optimized for C, C++, C# or VB based projects |        50        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 
 ## Behind the scenes
 
@@ -105,31 +105,3 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 ```
 
-
-### Example success log
-
-```shell
-Results of dotnet-format linter (version 4.1.131201)
-See documentation on https://megalinter.github.io/descriptors/csharp_dotnet_format/
------------------------------------------------
-
-[SUCCESS] .automation/test/csharp/csharp_good_01.cs
-      Formatting code files in workspace '.automation/test/csharp'.
-      Format complete in 1181ms.
-
-```
-
-### Example error log
-
-```shell
-Results of dotnet-format linter (version 4.1.131201)
-See documentation on https://megalinter.github.io/descriptors/csharp_dotnet_format/
------------------------------------------------
-
-[ERROR] .automation/test/csharp/csharp_bad_01.cs
-      Formatting code files in workspace '.automation/test/csharp'.
-      csharp/csharp_bad_01.cs(1,33): Fix whitespace formatting.
-      Formatted code file '.automation/test/csharp/csharp_bad_01.cs'.
-      Format complete in 1295ms.
-
-```

@@ -1,6 +1,6 @@
 # security MegaLinter Flavor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v5)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha)
 ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security)
 
 ## Description
@@ -9,8 +9,8 @@ Optimized for security
 
 ## Usage
 
-- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/security@v5**
-- Docker image: **megalinter/megalinter-security:v5**
+- [GitHub Action](https://megalinter.github.io/installation/#github-action): **megalinter/megalinter/flavors/security@v6-alpha**
+- Docker image: **megalinter/megalinter-security:v6-alpha**
 - [mega-linter-runner](https://megalinter.github.io/mega-linter-runner/): `mega-linter-runner --flavor security`
 
 ## Embedded linters
@@ -43,11 +43,10 @@ Optimized for security
 
 ### Other
 
-|                                                                             <!-- -->                                                                              | Code quality checker                                                   | Linter                                                                        | Configuration key                                                                        | Format/Fix |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|:----------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**REPOSITORY**](https://megalinter.github.io/descriptors/repository/) | [git_diff](https://megalinter.github.io/descriptors/repository_git_diff/)     | [REPOSITORY_GIT_DIFF](https://megalinter.github.io/descriptors/repository_git_diff/)     |            |
-|                                                                   <!-- --> <!-- linter-icon -->                                                                   |                                                                        | [secretlint](https://megalinter.github.io/descriptors/repository_secretlint/) | [REPOSITORY_SECRETLINT](https://megalinter.github.io/descriptors/repository_secretlint/) |            |
-|                                                                   <!-- --> <!-- linter-icon -->                                                                   |                                                                        | [gitleaks](https://megalinter.github.io/descriptors/repository_gitleaks/)     | [REPOSITORY_GITLEAKS](https://megalinter.github.io/descriptors/repository_gitleaks/)     |            |
-|                                                                   <!-- --> <!-- linter-icon -->                                                                   |                                                                        | [goodcheck](https://megalinter.github.io/descriptors/repository_goodcheck/)   | [REPOSITORY_GOODCHECK](https://megalinter.github.io/descriptors/repository_goodcheck/)   |            |
-|                                                                   <!-- --> <!-- linter-icon -->                                                                   |                                                                        | [trivy](https://megalinter.github.io/descriptors/repository_trivy/)           | [REPOSITORY_TRIVY](https://megalinter.github.io/descriptors/repository_trivy/)           |            |
+|           <!-- -->            | Code quality checker | Linter                                                                        | Configuration key                                                                        | Format/Fix |
+|:-----------------------------:|----------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|:----------:|
+| <!-- --> <!-- linter-icon --> |                      | [secretlint](https://megalinter.github.io/descriptors/repository_secretlint/) | [REPOSITORY_SECRETLINT](https://megalinter.github.io/descriptors/repository_secretlint/) |            |
+| <!-- --> <!-- linter-icon --> |                      | [gitleaks](https://megalinter.github.io/descriptors/repository_gitleaks/)     | [REPOSITORY_GITLEAKS](https://megalinter.github.io/descriptors/repository_gitleaks/)     |            |
+| <!-- --> <!-- linter-icon --> |                      | [goodcheck](https://megalinter.github.io/descriptors/repository_goodcheck/)   | [REPOSITORY_GOODCHECK](https://megalinter.github.io/descriptors/repository_goodcheck/)   |            |
+| <!-- --> <!-- linter-icon --> |                      | [trivy](https://megalinter.github.io/descriptors/repository_trivy/)           | [REPOSITORY_TRIVY](https://megalinter.github.io/descriptors/repository_trivy/)           |            |
 

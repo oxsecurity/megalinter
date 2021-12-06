@@ -41,10 +41,10 @@ Use clippy in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        96        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)     | Optimized for RUST based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        99        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)     | Optimized for RUST based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 
 ## Behind the scenes
 
@@ -121,54 +121,3 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN rustup component add clippy
 ```
 
-
-### Example success log
-
-```shell
-Results of clippy linter (version 0.0.212)
-See documentation on https://megalinter.github.io/descriptors/rust_clippy/
------------------------------------------------
-
-[SUCCESS] .automation/test/rust/good
-        Checking megalinter v1.0.0 (.automation/test/rust/good)
-    warning: function is never used: `main`
-     --> rust_good_1.rs:9:4
-      |
-    9 | fn main() {
-      |    ^^^^
-      |
-      = note: `#[warn(dead_code)]` on by default
-    
-    warning: 1 warning emitted
-    
-        Finished dev [unoptimized + debuginfo] target(s) in 0.24s
-
-```
-
-### Example error log
-
-```shell
-Results of clippy linter (version 0.0.212)
-See documentation on https://megalinter.github.io/descriptors/rust_clippy/
------------------------------------------------
-
-[ERROR] .automation/test/rust/bad
-        Checking megalinter v1.0.0 (.automation/test/rust/bad)
-    error: mismatched closing delimiter: `}`
-      --> rust_bad_1.rs:14:1
-       |
-    9  | fn main() {
-       |           - closing delimiter possibly meant for this
-    ...
-    13 |     println!("Hello World!"
-       |             - unclosed delimiter
-    14 | }
-       | ^ mismatched closing delimiter
-    
-    error: aborting due to previous error
-    
-    error: could not compile `megalinter`
-    
-    To learn more, run the command again with --verbose.
-
-```

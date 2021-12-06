@@ -49,10 +49,10 @@ Use dartanalyzer in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        96        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)     | Optimized for DART based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                                     Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        99        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)     | Optimized for DART based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 
 ## Behind the scenes
 
@@ -113,7 +113,7 @@ For more information, see https://www.dartlang.org/tools/analyzer.
 ```dockerfile
 ARG DART_VERSION='2.8.4'
 ARG GLIBC_VERSION='2.31-r0'
-RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+RUN wget --tries=50 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
     && wget --tries=5 -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
     && apk add --no-cache glibc-${GLIBC_VERSION}.apk && rm glibc-${GLIBC_VERSION}.apk \
     && wget --tries=5 https://storage.googleapis.com/dart-archive/channels/stable/release/${DART_VERSION}/sdk/dartsdk-linux-x64-release.zip -O - -q | unzip -q - \
@@ -123,30 +123,3 @@ RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sger
 
 ```
 
-
-### Example success log
-
-```shell
-Results of dartanalyzer linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/dart_dartanalyzer/
------------------------------------------------
-
-[SUCCESS] .automation/test/dart/dart_good_1.dart
-    Analyzing .automation/test/dart/dart_good_1.dart...
-    No issues found!
-
-```
-
-### Example error log
-
-```shell
-Results of dartanalyzer linter (version 0.0.0)
-See documentation on https://megalinter.github.io/descriptors/dart_dartanalyzer/
------------------------------------------------
-
-[ERROR] .automation/test/dart/dart_bad_1.dart
-    Analyzing .automation/test/dart/dart_bad_1.dart...
-      lint • Use `;` instead of `{}` for empty constructor bodies. • .automation/test/dart/dart_bad_1.dart:4:25 • empty_constructor_bodies
-    1 lint found.
-
-```

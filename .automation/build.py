@@ -2050,7 +2050,7 @@ def generate_documentation_all_linters():
                     break
 
                 if r is not None:
-                    resp = r.json()
+                    resp = r.json() or {}
                     if "license" in resp and "spdx_id" in resp["license"]:
                         license = (
                             resp["license"]["spdx_id"]

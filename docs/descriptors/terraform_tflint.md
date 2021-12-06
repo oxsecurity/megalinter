@@ -37,10 +37,11 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        96        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        46        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                               Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        99        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/flavors/security/)   | Optimized for security                 |        15        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -130,35 +131,3 @@ FROM ghcr.io/terraform-linters/tflint:latest as tflint
 COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 ```
 
-
-### Example success log
-
-```shell
-Results of tflint linter (version 0.21.0)
-See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
------------------------------------------------
-
-[SUCCESS] .automation/test/terraform/good/terraform_good_1.tf
-    
-
-```
-
-### Example error log
-
-```shell
-Results of tflint linter (version 0.21.0)
-See documentation on https://megalinter.github.io/descriptors/terraform_tflint/
------------------------------------------------
-
-[ERROR] .automation/test/terraform/bad/terraform_bad_1.tf
-    Failed to load configurations. 1 error(s) occurred:
-    
-    Error: Invalid expression
-    
-      on .automation/test/terraform/bad/terraform_bad_1.tf line 3, in resource "aws_instance" "bad":
-       3:   instance_type =            # invalid type!
-       4: }
-    
-    Expected the start of an expression, but found an invalid expression token.
-
-```

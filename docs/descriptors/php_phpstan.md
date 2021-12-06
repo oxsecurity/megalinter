@@ -45,10 +45,10 @@ Use phpstan in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        96        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        99        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -138,61 +138,3 @@ RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
 
 ```
 
-
-### Example success log
-
-```shell
-Results of phpstan linter (version 0.12.58)
-See documentation on https://megalinter.github.io/descriptors/php_phpstan/
------------------------------------------------
-
-[SUCCESS] .automation/test/php/php_good_1.php
-    
-     [OK] No errors
-
-[SUCCESS] .automation/test/php/php_good_2.php
-    
-     [OK] No errors
-
-```
-
-### Example error log
-
-```shell
-Results of phpstan linter (version 0.12.58)
-See documentation on https://megalinter.github.io/descriptors/php_phpstan/
------------------------------------------------
-
-[ERROR] .automation/test/php/php_bad_1.php
-     ------ ---------------------------------------------- 
-      Line   php_bad_1.php                                 
-     ------ ---------------------------------------------- 
-      3      Invalid numeric literal on line 3             
-      3      Invalid numeric literal on line 3             
-      3      Syntax error, unexpected '=' on line 3        
-      3      Syntax error, unexpected T_LNUMBER on line 3  
-      3      Syntax error, unexpected T_STRING on line 3   
-      3      Syntax error, unexpected T_STRING on line 3   
-     ------ ---------------------------------------------- 
-    
-     [ERROR] Found 6 errors                                                         
-    
-    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Invalid numeric literal on line 3
-    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Invalid numeric literal on line 3
-    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected '=' on line 3
-    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_LNUMBER on line 3
-    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_STRING on line 3
-    ::error file=mp/lint/.automation/test/php/php_bad_1.php,line=3,col=0::Syntax error, unexpected T_STRING on line 3
-
-[ERROR] .automation/test/php/php_bad_2.php
-     ------ ----------------------------------------- 
-      Line   php_bad_2.php                            
-     ------ ----------------------------------------- 
-      15     Syntax error, unexpected '}' on line 15  
-     ------ ----------------------------------------- 
-    
-     [ERROR] Found 1 error                                                          
-    
-    ::error file=mp/lint/.automation/test/php/php_bad_2.php,line=15,col=0::Syntax error, unexpected '}' on line 15
-
-```

@@ -48,9 +48,9 @@ Use lintr in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        96        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description               | Embedded linters |                                                                                                                                                                           Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor |        99        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 
 ## Behind the scenes
 
@@ -91,54 +91,3 @@ RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos
   - [R](https://pkgs.alpinelinux.org/packages?branch=edge&name=R)
   - [R-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-dev)
   - [R-doc](https://pkgs.alpinelinux.org/packages?branch=edge&name=R-doc)
-
-### Example success log
-
-```shell
-Results of lintr linter (version 2.0.1.9000)
-See documentation on https://megalinter.github.io/descriptors/r_lintr/
------------------------------------------------
-
-[SUCCESS] .automation/test/r/r_good_1.r
-    Warning message:
-    In readLines(filename) :
-      incomplete final line found on '.automation/test/r/r_good_1.r'
-
-```
-
-### Example error log
-
-```shell
-Results of lintr linter (version 2.0.1.9000)
-See documentation on https://megalinter.github.io/descriptors/r_lintr/
------------------------------------------------
-
-[ERROR] .automation/test/r/r_bad_1.r
-    style:.automation/test/r/r_bad_1.r:8:3::Use <-, not =, for assignment.
-    style:.automation/test/r/r_bad_1.r:8:14::Remove spaces before the left parenthesis in a function call.
-    style:.automation/test/r/r_bad_1.r:8:17::Commas should always have a space after.
-    style:.automation/test/r/r_bad_1.r:8:22::There should be a space between right parenthesis and an opening curly brace.
-    style:.automation/test/r/r_bad_1.r:8:23::Opening curly braces should never go on their own line and should always be followed by a new line.
-    style:.automation/test/r/r_bad_1.r:8:24::Closing curly-braces should always be on their own line, unless it's followed by an else.
-    style:.automation/test/r/r_bad_1.r:11:3::Commented code should be removed.
-    style:.automation/test/r/r_bad_1.r:21:1::functions should have cyclomatic complexity of less than 15, this has 22.
-    style:.automation/test/r/r_bad_1.r:21:1::Variable and function names should not be longer than 30 characters.
-    style:.automation/test/r/r_bad_1.r:21:1::Variable and function name style should be snake_case.
-    style:.automation/test/r/r_bad_1.r:22:1::Opening curly braces should never go on their own line and should always be followed by a new line.
-    style:.automation/test/r/r_bad_1.r:24:1::Lines should not be more than 80 characters.
-    style:.automation/test/r/r_bad_1.r:24:44::Put spaces around all infix operators.
-    warning:.automation/test/r/r_bad_1.r:24:57::Use is.na rather than == NA.
-    style:.automation/test/r/r_bad_1.r:24:64::Opening curly braces should never go on their own line and should always be followed by a new line.
-    style:.automation/test/r/r_bad_1.r:24:69::Closing curly-braces should always be on their own line, unless it's followed by an else.
-    style:.automation/test/r/r_bad_1.r:24:76::Opening curly braces should never go on their own line and should always be followed by a new line.
-    style:.automation/test/r/r_bad_1.r:24:82::Closing curly-braces should always be on their own line, unless it's followed by an else.
-    style:.automation/test/r/r_bad_1.r:31:3::Do not place spaces around code in parentheses or square brackets.
-    warning:.automation/test/r/r_bad_1.r:32:1::Avoid 1:length(...) expressions, use seq_len.
-    style:.automation/test/r/r_bad_1.r:32:37::Put spaces around all infix operators.
-    style:.automation/test/r/r_bad_1.r:32:43::`%>%` should always have a space before it and a new line after it, unless the full pipeline fits on one line.
-    style:.automation/test/r/r_bad_1.r:36:9::Only use double-quotes.
-    style:.automation/test/r/r_bad_1.r:40:8::Put spaces around all infix operators.
-    style:.automation/test/r/r_bad_1.r:40:9::Place a space before left parenthesis, except in a function call.
-    style:.automation/test/r/r_bad_1.r:43:1::Trailing blank lines are superfluous.
-
-```

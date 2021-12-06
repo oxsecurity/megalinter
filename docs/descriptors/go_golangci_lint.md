@@ -56,10 +56,10 @@ Use golangci-lint in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                     | Embedded linters |                                                                                                                                                                           Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor       |        96        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)         | Optimized for GO based projects |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                     | Embedded linters |                                                                                                                                                                                 Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:--------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor       |        99        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)         | Optimized for GO based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 
 ## Behind the scenes
 
@@ -124,30 +124,3 @@ RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master
 
 ```
 
-
-### Example success log
-
-```shell
-Results of golangci-lint linter (version 1.33.0)
-See documentation on https://megalinter.github.io/descriptors/go_golangci_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/golang/golang_good_01.go
-    
-
-```
-
-### Example error log
-
-```shell
-Results of golangci-lint linter (version 1.33.0)
-See documentation on https://megalinter.github.io/descriptors/go_golangci_lint/
------------------------------------------------
-
-[ERROR] .automation/test/golang/golang_bad_01.go
-    level=error msg="[linters context] typechecking error: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if'"
-    level=warning msg="[runner] Can't run linter goanalysis_metalinter: S1020: failed prerequisites: [(inspect@command-line-arguments, isgenerated@command-line-arguments): analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']]"
-    level=warning msg="[runner] Can't run linter unused: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
-    level=error msg="Running error: buildir: analysis skipped: errors in package: [-: .automation/test/golang/golang_bad_01.go:1:1: expected 'package', found 'if']"
-
-```
