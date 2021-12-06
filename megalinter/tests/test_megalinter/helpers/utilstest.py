@@ -264,7 +264,7 @@ def manage_copy_sources(workspace):
 # Copy logs for documentation
 def copy_logs_for_doc(text_report_file, test_folder, report_file_name):
     updated_sources_dir = (
-        f"{REPO_HOME}{os.path.sep}report{os.path.sep}updated_dev_sources{os.path.sep}"
+        f"{REPO_HOME}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}updated_dev_sources{os.path.sep}"
         f".automation{os.path.sep}test{os.path.sep}{test_folder}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
     )
     target_file = f"{updated_sources_dir}{os.path.sep}{report_file_name}".replace(
