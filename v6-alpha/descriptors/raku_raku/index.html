@@ -1873,20 +1873,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5447,20 +5433,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5617,8 +5589,8 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">96</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">99</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 </tbody>
 </table>
@@ -5726,27 +5698,6 @@ The following environment variables are respected:
     &amp;&amp; /opt/rakudo-pkg/bin/install-zef-as-user
 
 ENV PATH=&quot;~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH&quot;
-</code></pre>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of raku linter (version 2020.11)
-See documentation on https://megalinter.github.io/descriptors/raku_raku/
------------------------------------------------
-
-[SUCCESS] .automation/test/raku/raku_good_1.raku
-    Syntax OK
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of raku linter (version 2020.11)
-See documentation on https://megalinter.github.io/descriptors/raku_raku/
------------------------------------------------
-
-[ERROR] .automation/test/raku/raku_bad_1.raku
-    ===SORRY!=== Error while compiling .automation/test/raku/raku_bad_1.raku
-    Variable '$foo' is not declared.  Did you mean '@foo'?
-    at .automation/test/raku/raku_bad_1.raku:4
-    ------&gt; &lt;BOL&gt;⏏$foo[1] = 42
-
 </code></pre>
 
               

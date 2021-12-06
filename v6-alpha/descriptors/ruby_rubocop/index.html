@@ -1930,20 +1930,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5441,20 +5427,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5664,15 +5636,15 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">96</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">99</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/flavors/ruby/">ruby</a></td>
 <td align="left">Optimized for RUBY based projects</td>
-<td align="center">41</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-ruby" /></td>
+<td align="center">44</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-ruby" /></td>
 </tr>
 </tbody>
 </table>
@@ -5799,49 +5771,6 @@
 </ul>
 </li>
 </ul>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of rubocop linter (version 0.82.0)
-See documentation on https://megalinter.github.io/descriptors/ruby_rubocop/
------------------------------------------------
-
-[SUCCESS] .automation/test/ruby/ruby_good_1.rb
-    Inspecting 1 file
-    .
-
-    1 file inspected, no offenses detected
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of rubocop linter (version 0.82.0)
-See documentation on https://megalinter.github.io/descriptors/ruby_rubocop/
------------------------------------------------
-
-[ERROR] .automation/test/ruby/ruby_bad_1.rb
-    Inspecting 1 file
-    C
-
-    Offenses:
-
-    mp/lint/.automation/test/ruby/ruby_bad_1.rb:1:1: C: Style/FrozenStringLiteralComment: Missing frozen string literal comment.
-    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:11: C: Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-    File.open('/tmp/urls.txt', &quot; w&quot; ) do | file|
-              ^^^^^^^^^^^^^^^
-    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:32: C: Layout/SpaceInsideParens: Space inside parentheses detected.
-    File.open('/tmp/urls.txt', &quot; w&quot; ) do | file|
-                                   ^
-    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:39: C: Layout/SpaceAroundBlockParameters: Space before first block parameter detected.
-    File.open('/tmp/urls.txt', &quot; w&quot; ) do | file|
-                                          ^
-    mp/lint/.automation/test/ruby/ruby_bad_1.rb:12:24: C: Layout/SpaceAroundBlockParameters: Space after last block parameter detected.
-      Hook.active.map do |h |
-                           ^
-    mp/lint/.automation/test/ruby/ruby_bad_1.rb:13:13: C: Layout/SpaceInsideArrayLiteralBrackets: Do not use space inside array brackets.
-        urls = [ ARRAY_OF_URLS_CALLING_INSTANCE]
-                ^
-
-    1 file inspected, 6 offenses detected
-
-</code></pre>
 
               
             </article>

@@ -1381,20 +1381,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5447,20 +5433,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5641,8 +5613,8 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">96</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">99</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 </tbody>
 </table>
@@ -5861,30 +5833,6 @@ Links:
     &amp;&amp; make -b install \
     &amp;&amp; cd .. &amp;&amp; rm -r luarocks-3.3.1-super-linter/ \
     &amp;&amp; luarocks install luacheck
-
-</code></pre>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of luacheck linter (version 0.23.0)
-See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
------------------------------------------------
-
-[SUCCESS] .automation/test/lua/lua_good_1.lua
-    Checking .automation/test/lua/lua_good_1.lua OK
-
-    Total: 0 warnings / 0 errors in 1 file
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of luacheck linter (version 0.23.0)
-See documentation on https://megalinter.github.io/descriptors/lua_luacheck/
------------------------------------------------
-
-[ERROR] .automation/test/lua/lua_bad_1.lua
-    Checking .automation/test/lua/lua_bad_1.lua 1 error
-
-        .automation/test/lua/lua_bad_1.lua:10:1: expected 'end' (to close 'function' on line 7) near &lt;eof&gt;
-
-    Total: 0 warnings / 1 error in 1 file
 
 </code></pre>
 

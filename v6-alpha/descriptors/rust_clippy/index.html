@@ -1995,20 +1995,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5447,20 +5433,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5593,15 +5565,15 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">96</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">99</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/flavors/rust/">rust</a></td>
 <td align="left">Optimized for RUST based projects</td>
-<td align="center">41</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-rust" /></td>
+<td align="center">44</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-rust" /></td>
 </tr>
 </tbody>
 </table>
@@ -5669,51 +5641,6 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH=&quot;/root/.cargo/bin:${PATH}&quot;
 # Linter install
 RUN rustup component add clippy
-</code></pre>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of clippy linter (version 0.0.212)
-See documentation on https://megalinter.github.io/descriptors/rust_clippy/
------------------------------------------------
-
-[SUCCESS] .automation/test/rust/good
-        Checking megalinter v1.0.0 (.automation/test/rust/good)
-    warning: function is never used: `main`
-     --&gt; rust_good_1.rs:9:4
-      |
-    9 | fn main() {
-      |    ^^^^
-      |
-      = note: `#[warn(dead_code)]` on by default
-
-    warning: 1 warning emitted
-
-        Finished dev [unoptimized + debuginfo] target(s) in 0.24s
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of clippy linter (version 0.0.212)
-See documentation on https://megalinter.github.io/descriptors/rust_clippy/
------------------------------------------------
-
-[ERROR] .automation/test/rust/bad
-        Checking megalinter v1.0.0 (.automation/test/rust/bad)
-    error: mismatched closing delimiter: `}`
-      --&gt; rust_bad_1.rs:14:1
-       |
-    9  | fn main() {
-       |           - closing delimiter possibly meant for this
-    ...
-    13 |     println!(&quot;Hello World!&quot;
-       |             - unclosed delimiter
-    14 | }
-       | ^ mismatched closing delimiter
-
-    error: aborting due to previous error
-
-    error: could not compile `megalinter`
-
-    To learn more, run the command again with --verbose.
-
 </code></pre>
 
               

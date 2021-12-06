@@ -1719,20 +1719,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5441,20 +5427,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5651,15 +5623,15 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">96</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">99</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/flavors/python/">python</a></td>
 <td align="left">Optimized for PYTHON based projects</td>
-<td align="center">49</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-python" /></td>
+<td align="center">52</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-python" /></td>
 </tr>
 </tbody>
 </table>
@@ -6054,42 +6026,6 @@ section output options:
 </ul>
 </li>
 </ul>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of isort linter (version 5.6.4)
-See documentation on https://megalinter.github.io/descriptors/python_isort/
------------------------------------------------
-
-[SUCCESS] .automation/test/python/python_good_1.py
-
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of isort linter (version 5.6.4)
-See documentation on https://megalinter.github.io/descriptors/python_isort/
------------------------------------------------
-
-[ERROR] .automation/test/python/python_bad_1.py
-    ERROR: .automation/test/python/python_bad_1.py Imports are incorrectly sorted and/or formatted.
-    --- .automation/test/python/python_bad_1.py:before  2020-12-05 12:08:47.707389
-    +++ .automation/test/python/python_bad_1.py:after   2020-12-05 12:34:28.504872
-    @@ -1,11 +1,11 @@
-     import json
-    +import sys
-     from os import getenv, path
-     from pprint import pprint
-    -import sys
-
-    -import click # pylint: disable=import-error
-    -from dotenv import load_dotenv # pylint: disable=import-error
-    -import requests # pylint: disable=import-error
-    +import click  # pylint: disable=import-error
-    +import requests  # pylint: disable=import-error
-    +from dotenv import load_dotenv  # pylint: disable=import-error
-
-     env = load_dotenv()
-     api_url = getenv(API_URL, default='https://api.github.com/graphql' )
-
-</code></pre>
 
               
             </article>

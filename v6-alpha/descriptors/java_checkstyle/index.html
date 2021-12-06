@@ -1105,20 +1105,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5441,20 +5427,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5625,15 +5597,15 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">96</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
+<td align="center">99</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/flavors/java/">java</a></td>
 <td align="left">Optimized for JAVA based projects</td>
-<td align="center">42</td>
-<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-java" /></td>
+<td align="center">45</td>
+<td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-java" /></td>
 </tr>
 </tbody>
 </table>
@@ -5721,33 +5693,6 @@ RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checksty
         | cut -d '&quot;' -f 4) \
     &amp;&amp; curl --retry 5 --retry-delay 5 -sSL $CHECKSTYLE_LATEST \
         --output /usr/bin/checkstyle
-
-</code></pre>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of checkstyle linter (version 8.38)
-See documentation on https://megalinter.github.io/descriptors/java_checkstyle/
------------------------------------------------
-
-[SUCCESS] .automation/test/java/java_good_1.java
-    Starting audit...
-    Audit done.
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of checkstyle linter (version 8.38)
-See documentation on https://megalinter.github.io/descriptors/java_checkstyle/
------------------------------------------------
-
-[ERROR] .automation/test/java/java_bad_1.java
-    Starting audit...
-    [ERROR] .automation/test/java/java_bad_1.java:1:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
-    [ERROR] .automation/test/java/java_bad_1.java:1:7: Name 'java_bad_1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. [TypeName]
-    [ERROR] .automation/test/java/java_bad_1.java:2:1: '{' at column 1 should be on the previous line. [LeftCurly]
-    [ERROR] .automation/test/java/java_bad_1.java:4:29: Parameter args should be final. [FinalParameters]
-    [ERROR] .automation/test/java/java_bad_1.java:4:40: Array brackets at illegal position. [ArrayTypeStyle]
-    [ERROR] .automation/test/java/java_bad_1.java:5:5: '{' at column 5 should be on the previous line. [LeftCurly]
-    Audit done.
-    Checkstyle ends with 6 errors.
 
 </code></pre>
 
