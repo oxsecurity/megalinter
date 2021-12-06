@@ -1,0 +1,90 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Bandit",
+          "rules": [
+            {
+              "id": "B110",
+              "name": "try_except_pass",
+              "helpUri": "https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html"
+            }
+          ]
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2021-12-06T10:23:18Z"
+        }
+      ],
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 4,
+            "nosec": 0,
+            "SEVERITY.UNDEFINED": 0.0,
+            "CONFIDENCE.UNDEFINED": 0.0,
+            "SEVERITY.LOW": 1.0,
+            "CONFIDENCE.LOW": 0.0,
+            "SEVERITY.MEDIUM": 0.0,
+            "CONFIDENCE.MEDIUM": 0.0,
+            "SEVERITY.HIGH": 0.0,
+            "CONFIDENCE.HIGH": 1.0
+          },
+          "/github/workspace/python_bad_1.py": {
+            "loc": 4,
+            "nosec": 0,
+            "SEVERITY.UNDEFINED": 0.0,
+            "SEVERITY.LOW": 1.0,
+            "SEVERITY.MEDIUM": 0.0,
+            "SEVERITY.HIGH": 0.0,
+            "CONFIDENCE.UNDEFINED": 0.0,
+            "CONFIDENCE.LOW": 0.0,
+            "CONFIDENCE.MEDIUM": 0.0,
+            "CONFIDENCE.HIGH": 1.0
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Try, Except, Pass detected."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "snippet": {
+                    "text": "except:\n"
+                  },
+                  "startLine": 3
+                },
+                "artifactLocation": {
+                  "uri": "file:///github/workspace/python_bad_1.py"
+                },
+                "contextRegion": {
+                  "snippet": {
+                    "text": "    pass\nexcept:\n    pass\n"
+                  },
+                  "endLine": 4,
+                  "startLine": 2
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_confidence": "HIGH",
+            "issue_severity": "LOW"
+          },
+          "ruleId": "B110",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.4.json"
+}

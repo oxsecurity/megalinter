@@ -39,12 +39,14 @@ class SarifReporter(Reporter):
                 linter.sarif_output_file
             ):
                 # Read SARIF output file
+                load_ok = False
                 with open(
                     linter.sarif_output_file, "r", encoding="utf-8"
                 ) as linter_sarif_file:
                     # parse sarif file
                     try:
                         linter_sarif_obj = json.load(linter_sarif_file)
+                        load_ok = True
                     except JSONDecodeError as e:
                         # JSON decoding error
                         logging.error(
@@ -62,7 +64,7 @@ class SarifReporter(Reporter):
                             f"SARIF file {linter.sarif_output_file}"
                         )
                         logging.error(str(e))
-                if linter_sarif_obj:
+                if load_ok is True:
                     # fix sarif file
                     linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
                     # append to global megalinter sarif run
@@ -106,13 +108,13 @@ class SarifReporter(Reporter):
                         if "locations" in result:
                             # browse result locations
                             for id_location, location in enumerate(result["locations"]):
-                                if "physical_location" in location:
+                                if "physicalLocation" in location:
                                     location[
-                                        "physical_location"
+                                        "physicalLocation"
                                     ] = self.fix_sarif_physical_location(
-                                        location["physical_location"]
+                                        location["physicalLocation"]
                                     )
-                            result["locations"][id_location] = location
+                                result["locations"][id_location] = location
                         run["results"][id_result] = result
                 linter_sarif_obj["runs"][id_run] = run
         return linter_sarif_obj
