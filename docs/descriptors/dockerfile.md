@@ -5,10 +5,9 @@
 
 ## Linters
 
-| Linter                                         | Configuration key                                         |
-|------------------------------------------------|-----------------------------------------------------------|
-| [dockerfilelint](dockerfile_dockerfilelint.md) | [DOCKERFILE_DOCKERFILELINT](dockerfile_dockerfilelint.md) |
-| [hadolint](dockerfile_hadolint.md)             | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md)             |
+| Linter                             | Configuration key                             |
+|------------------------------------|-----------------------------------------------|
+| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) |
 
 ## Linted files
 
