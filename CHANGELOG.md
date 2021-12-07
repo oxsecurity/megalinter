@@ -16,11 +16,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)
 - Improve runtime performances when using a flavor and defining `FLAVORS_SUGGESTION: false`
+- Do not check for updated files when `APPLY_FIXES` is not active
 
 - Linters
   - New linter `phplint` to speed-up linting of php files (#1031)
     - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
-
+  - `cpplint`: Use `cli_lint_mode: project` to improve performances
 
 - Linter versions upgrades
   - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
