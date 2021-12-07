@@ -5520,7 +5520,7 @@
 <tr>
 <td>PHP_PHPSTAN_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>{linter.cli_lint_mode}</code></td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>PHP_PHPSTAN_FILE_EXTENSIONS</td>
@@ -5686,7 +5686,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     &amp;&amp; gpg --verify phive.phar.asc phive.phar \
     &amp;&amp; chmod +x phive.phar \
     &amp;&amp; mv phive.phar /usr/local/bin/phive \
-    &amp;&amp; rm phive.phar.asc
+    &amp;&amp; rm phive.phar.asc \
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 # Linter install
 RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720

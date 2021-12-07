@@ -5455,7 +5455,9 @@
     &amp;&amp; gpg --verify phive.phar.asc phive.phar \
     &amp;&amp; chmod +x phive.phar \
     &amp;&amp; mv phive.phar /usr/local/bin/phive \
-    &amp;&amp; rm phive.phar.asc
+    &amp;&amp; rm phive.phar.asc \
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 </code></pre>
 <ul>
@@ -5480,6 +5482,7 @@
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php8-dom">php8-dom</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=php8-simplexml">php8-simplexml</a></li>
 <li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=composer">composer</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=dpkg">dpkg</a></li>
 </ul>
 </li>
 </ul>
