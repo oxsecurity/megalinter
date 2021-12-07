@@ -848,7 +848,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
                 f"- `file`: Calls the linter for each file<br/>"
                 "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-                "- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
+                f"- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
             ]
             add_in_config_schema_file(
                 [
