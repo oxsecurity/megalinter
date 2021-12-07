@@ -1,5 +1,7 @@
 descriptor_id: CLOUDFORMATION
 descriptor_type: tooling_format
+descriptor_flavors:
+  - security
 file_extensions:
   - ".yml"
   - ".yaml"
@@ -10,20 +12,19 @@ file_contains_regex:
 linters:
   # AWS CloudFormation Lint
   - linter_name: cfn-lint
-    linter_url: https://github.com/martysweet/cfn-lint
-    linter_repo: https://github.com/martysweet/cfn-lint
-    linter_rules_url: https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do
-    linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-python-lint/master/logo/cfn-lint-label%401x.png
+    linter_url: https://github.com/aws-cloudformation/cfn-lint
+    linter_repo: https://github.com/aws-cloudformation/cfn-lint
+    linter_rules_url: https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md
+    linter_banner_image_url: https://raw.githubusercontent.com/aws-cloudformation/cfn-lint/main/logo.png
     config_file_name: .cfnlintrc.yml
     cli_config_arg_name: "--config-file"
+    cli_lint_mode: list_of_files
     examples:
       - "cfn-lint myfile.yml"
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
     install:
       pip:
         - cfn-lint
-      npm:
-        - asl-validator
     ide:
       atom:
         - name: atom-cfn-lint
@@ -31,6 +32,9 @@ linters:
       idea:
         - name: cfn-lint
           url: https://plugins.jetbrains.com/plugin/10973-cfn-lint
+      sublime:
+        - name: SublimeLinter CloudFormation
+          url: https://packagecontrol.io/packages/SublimeLinter-contrib-cloudformation
       vscode:
         - name: vscode-cfn-lint
           url: https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint
