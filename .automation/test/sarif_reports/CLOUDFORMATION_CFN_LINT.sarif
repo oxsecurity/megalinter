@@ -1,0 +1,141 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cfn-lint",
+          "rules": [
+            {
+              "id": "E3002",
+              "fullDescription": {
+                "text": "Making sure that resources properties are properly configured"
+              },
+              "helpUri": "https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#properties",
+              "shortDescription": {
+                "text": "Resource properties are valid"
+              }
+            },
+            {
+              "id": "E3001",
+              "fullDescription": {
+                "text": "Making sure the basic CloudFormation resources are properly configured"
+              },
+              "helpUri": "https://github.com/aws-cloudformation/cfn-python-lint",
+              "shortDescription": {
+                "text": "Basic CloudFormation Resource Check"
+              }
+            }
+          ],
+          "version": "0.56.3",
+          "informationUri": "https://github.com/aws-cloudformation/cfn-lint",
+          "shortDescription": {
+            "text": "Validates AWS CloudFormation templates against the resource specification and additional checks."
+          }
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "endColumn": 16,
+                  "endLine": 6,
+                  "startColumn": 10,
+                  "startLine": 6
+                },
+                "artifactLocation": {
+                  "uri": "/github/workspace/cloudformation_bad_1.json",
+                  "uriBaseId": "EXECUTIONROOT"
+                }
+              }
+            }
+          ],
+          "ruleId": "E3001"
+        },
+        {
+          "message": {
+            "text": "Invalid or unsupported Type AWS::Route53::HostedZonee for resource DNS in us-east-1"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "endColumn": 9,
+                  "endLine": 5,
+                  "startColumn": 5,
+                  "startLine": 5
+                },
+                "artifactLocation": {
+                  "uri": "/github/workspace/cloudformation_bad_2.yaml",
+                  "uriBaseId": "EXECUTIONROOT"
+                }
+              }
+            }
+          ],
+          "ruleId": "E3001"
+        },
+        {
+          "message": {
+            "text": "Invalid Property Resources/myDNSRecord/Properties/Ttl"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 11,
+                  "startColumn": 13,
+                  "startLine": 11
+                },
+                "artifactLocation": {
+                  "uri": "/github/workspace/cloudformation_bad_3.json",
+                  "uriBaseId": "EXECUTIONROOT"
+                }
+              }
+            }
+          ],
+          "ruleId": "E3002"
+        },
+        {
+          "message": {
+            "text": "Invalid Property Resources/myDNSRecord/Properties/Ttl"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "region": {
+                  "endColumn": 10,
+                  "endLine": 9,
+                  "startColumn": 7,
+                  "startLine": 9
+                },
+                "artifactLocation": {
+                  "uri": "/github/workspace/cloudformation_bad_4.yaml",
+                  "uriBaseId": "EXECUTIONROOT"
+                }
+              }
+            }
+          ],
+          "ruleId": "E3002"
+        }
+      ],
+      "originalUriBaseIds": {
+        "EXECUTIONROOT": {
+          "description": {
+            "text": "The directory in which cfn-lint was run."
+          }
+        }
+      }
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/cos02/schemas/sarif-schema-2.1.0.json"
+}
