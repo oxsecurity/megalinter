@@ -3,7 +3,7 @@
     "ansible-lint": "MIT",
     "bandit": "Apache-2.0",
     "black": "MIT",
-    "cfn-lint": "MIT",
+    "cfn-lint": "MIT-0",
     "checkov": "Apache-2.0",
     "checkstyle": "Other",
     "clippy": "Other",

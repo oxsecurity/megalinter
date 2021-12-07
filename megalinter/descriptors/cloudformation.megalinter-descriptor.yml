@@ -12,6 +12,7 @@ file_contains_regex:
 linters:
   # AWS CloudFormation Lint
   - linter_name: cfn-lint
+    can_output_sarif: true
     linter_url: https://github.com/aws-cloudformation/cfn-lint
     linter_repo: https://github.com/aws-cloudformation/cfn-lint
     linter_rules_url: https://github.com/aws-cloudformation/cfn-lint/blob/main/docs/rules.md
@@ -19,6 +20,11 @@ linters:
     config_file_name: .cfnlintrc.yml
     cli_config_arg_name: "--config-file"
     cli_lint_mode: list_of_files
+    cli_sarif_args:
+      - --format
+      - sarif
+      - --output-file
+      - "{{SARIF_OUTPUT_FILE}}"
     examples:
       - "cfn-lint myfile.yml"
       - "cfn-lint --config-file .cfnlintrc.yml myfile.yml"
