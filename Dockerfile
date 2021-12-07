@@ -170,7 +170,6 @@ RUN echo 'package-lock=false' >> .npmrc
 RUN npm install --no-cache --ignore-scripts \
                 sfdx-cli \
                 typescript \
-                asl-validator \
                 @coffeelint/cli \
                 jscpd@3.3.26 \
                 stylelint \

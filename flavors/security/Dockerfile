@@ -87,6 +87,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 RUN pip3 install --no-cache-dir --upgrade \
           'ansible' \
           'ansible-lint[yamllint]' \
+          'cfn-lint' \
           'bandit' \
           'bandit_sarif_formatter'
 #PIP__END
@@ -117,9 +118,7 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #############################################################################################
 
 #GEM__START
-RUN echo 'gem: --no-document' >> ~/.gemrc && \
-    gem install \
-          goodcheck
+
 #GEM__END
 
 #############################################################################################
