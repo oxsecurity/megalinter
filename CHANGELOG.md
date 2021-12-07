@@ -75,6 +75,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.628 to **2.0.632** on 2021-12-07
   - [eslint](https://eslint.org) from 8.4.0 to **8.4.1** on 2021-12-07
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.1 to **5.13.2** on 2021-12-07
+  - [checkov](https://www.checkov.io/) from 2.0.632 to **2.0.634** on 2021-12-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.1 to **0.33.2** on 2021-12-07
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
