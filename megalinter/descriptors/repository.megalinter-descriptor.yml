@@ -98,7 +98,6 @@ linters:
     descriptor_flavors:
     - all_flavors # Applicable to CI in any language project
     - ci_light
-    - security
     linter_url: https://sider.github.io/goodcheck/
     linter_repo: https://github.com/sider/goodcheck
     linter_rules_url: https://sider.github.io/goodcheck/docs/rules
