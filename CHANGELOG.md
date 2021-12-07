@@ -17,6 +17,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix getting linter version of npm plugin. (#845)
 - Improve runtime performances when using a flavor and defining `FLAVORS_SUGGESTION: false`
 - Do not check for updated files when `APPLY_FIXES` is not active
+- Fix CLI_LINT_MODE default value in doc (#1086)
 
 - Linters
   - New linter `phplint` to speed-up linting of php files (#1031)
