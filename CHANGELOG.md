@@ -73,6 +73,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [black](https://black.readthedocs.io/en/stable/) from 21.11 to **21.12** on 2021-12-06
   - [checkov](https://www.checkov.io/) from 2.0.626 to **2.0.628** on 2021-12-06
   - [checkov](https://www.checkov.io/) from 2.0.628 to **2.0.632** on 2021-12-07
+  - [eslint](https://eslint.org) from 8.4.0 to **8.4.1** on 2021-12-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.1 to **5.13.2** on 2021-12-07
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
