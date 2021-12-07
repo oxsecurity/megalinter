@@ -154,7 +154,6 @@ linters:
   # PHPLint
   - linter_name: phplint
     linter_url: https://github.com/overtrue/phplint
-    linter_repo: https://github.com/overtrue/phplint
     config_file_name: .phplint.yml
     cli_lint_mode: list_of_files
     examples:

@@ -13,7 +13,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.5M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.6M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
@@ -114,7 +114,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 | <!-- --> <!-- linter-icon --> |  | [phpcs](descriptors/php_phpcs.md#readme)| [PHP_PHPCS](descriptors/php_phpcs.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/squizlabs/PHP_CodeSniffer?cacheSeconds=3600)](https://github.com/squizlabs/PHP_CodeSniffer)
 | <!-- --> <!-- linter-icon --> |  | [phpstan](descriptors/php_phpstan.md#readme)| [PHP_PHPSTAN](descriptors/php_phpstan.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan)
 | <!-- --> <!-- linter-icon --> |  | [psalm](descriptors/php_psalm.md#readme)| [PHP_PSALM](descriptors/php_psalm.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm)
-| <!-- --> <!-- linter-icon --> |  | [phplint](descriptors/php_phplint.md#readme)| [PHP_PHPLINT](descriptors/php_phplint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint)
+| <!-- --> <!-- linter-icon --> |  | [phplint](descriptors/php_phplint.md#readme)| [PHP_PHPLINT](descriptors/php_phplint.md#readme)| 
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/powershell.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**POWERSHELL**](descriptors/powershell.md#readme) | [powershell](descriptors/powershell_powershell.md#readme)| [POWERSHELL_POWERSHELL](descriptors/powershell_powershell.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/PowerShell/PSScriptAnalyzer?cacheSeconds=3600)](https://github.com/PowerShell/PSScriptAnalyzer)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**PYTHON**](descriptors/python.md#readme) | [pylint](descriptors/python_pylint.md#readme)| [PYTHON_PYLINT](descriptors/python_pylint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/PyCQA/pylint?cacheSeconds=3600)](https://github.com/PyCQA/pylint)
 | <!-- --> <!-- linter-icon --> |  | [black](descriptors/python_black.md#readme)| [PYTHON_BLACK](descriptors/python_black.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/psf/black?cacheSeconds=3600)](https://github.com/psf/black) ![formatter](https://shields.io/badge/-format-yellow)

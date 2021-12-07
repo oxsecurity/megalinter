@@ -879,7 +879,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 f"| {linter.name}_CLI_LINT_MODE | Override default CLI lint mode<br/>"
                 f"- `file`: Calls the linter for each file<br/>"
                 "- `list_of_files`: Call the linter with the list of files as argument<br/>"
-                "- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
+                f"- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |"
             ]
             add_in_config_schema_file(
                 [
@@ -2076,18 +2076,19 @@ def generate_documentation_all_linters():
 
                 if r is not None:
                     resp = r.json()
-                    if resp is not None and "license" in resp and "spdx_id" in resp["license"]:
-                        license = (
-                            resp["license"]["spdx_id"]
-                            if resp["license"]["spdx_id"] != "NOASSERTION"
-                            else resp["license"]["name"]
-                            if "name" in resp["license"]
-                            else resp["license"]["key"]
-                            if "key" in resp["license"]
-                            else ""
-                        )
-                        if license != "":
-                            linter_licenses[linter.linter_name] = license
+                    if resp is not None:
+                        if "license" in resp and "spdx_id" in resp["license"]:
+                            license = (
+                                resp["license"]["spdx_id"]
+                                if resp["license"]["spdx_id"] != "NOASSERTION"
+                                else resp["license"]["name"]
+                                if "name" in resp["license"]
+                                else resp["license"]["key"]
+                                if "key" in resp["license"]
+                                else ""
+                            )
+                            if license != "":
+                                linter_licenses[linter.linter_name] = license
             # get license from descriptor
             if (
                 (license is None or license == "" or license == "Other")

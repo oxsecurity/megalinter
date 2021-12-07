@@ -13,7 +13,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.4.0**
+- Version in MegaLinter: **8.4.1**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -33,7 +33,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | JAVASCRIPT_ES_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | JAVASCRIPT_ES_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | JAVASCRIPT_ES_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| JAVASCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| JAVASCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | JAVASCRIPT_ES_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".js", ".vue"]`                               |
 | JAVASCRIPT_ES_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | JAVASCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |

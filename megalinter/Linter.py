@@ -569,7 +569,10 @@ class Linter:
     def update_files_lint_results(
         self, linted_files, return_code, file_status, stdout, file_errors_number
     ):
-        updated_files = utils.list_updated_files(self.github_workspace)
+        if self.try_fix is True:
+            updated_files = utils.list_updated_files(self.github_workspace)
+        else:
+            updated_files = []
         for file in linted_files:
             if self.try_fix is True:
                 fixed = utils.check_updated_file(

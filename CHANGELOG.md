@@ -47,10 +47,13 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add missing Bandit config file and rules path options (#679)
 - Fix getting linter version of npm plugin. (#845)
 - Improve runtime performances when using a flavor and defining `FLAVORS_SUGGESTION: false`
+- Do not check for updated files when `APPLY_FIXES` is not active
+- Fix CLI_LINT_MODE default value in doc (#1086)
 
 - Linters
   - New linter `phplint` to speed-up linting of php files (#1031)
     - Fix `phplint` constraint to accept all future bugfix v3.0.x versions (PHP 7.4 support) (#1043)
+  - `cpplint`: Use `cli_lint_mode: project` to improve performances
 
 
 - Linter versions upgrades
@@ -99,6 +102,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.625 to **2.0.626** on 2021-12-04
   - [eslint](https://eslint.org) from 8.3.0 to **8.4.0** on 2021-12-04
   - [prettier](https://prettier.io/) from 2.5.0 to **2.5.1** on 2021-12-05
+  - [black](https://black.readthedocs.io/en/stable/) from 21.11 to **21.12** on 2021-12-06
+  - [checkov](https://www.checkov.io/) from 2.0.626 to **2.0.628** on 2021-12-06
+  - [checkov](https://www.checkov.io/) from 2.0.628 to **2.0.632** on 2021-12-07
+  - [eslint](https://eslint.org) from 8.4.0 to **8.4.1** on 2021-12-07
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.1 to **5.13.2** on 2021-12-07
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18

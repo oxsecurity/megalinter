@@ -23,7 +23,7 @@
 | PYTHON_FLAKE8_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | PYTHON_FLAKE8_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | PYTHON_FLAKE8_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| PYTHON_FLAKE8_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| PYTHON_FLAKE8_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | PYTHON_FLAKE8_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
 | PYTHON_FLAKE8_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | PYTHON_FLAKE8_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -124,8 +124,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E126', 'E24', 'E704', 'W503', 'E123',
-                        'W504', 'E226', 'E121'])
+                        (Default: ['E123', 'E121', 'W503', 'E126', 'E226',
+                        'E704', 'W504', 'E24'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

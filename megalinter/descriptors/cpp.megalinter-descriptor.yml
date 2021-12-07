@@ -22,6 +22,7 @@ linters:
     linter_url: https://github.com/cpplint/cpplint
     linter_repo: https://github.com/cpplint/cpplint
     linter_rules_url: https://google.github.io/styleguide/cppguide.html
+    cli_lint_mode: list_of_files
     cli_help_arg_name: "--help"
     examples:
       - "cpplint myfile.cpp"
