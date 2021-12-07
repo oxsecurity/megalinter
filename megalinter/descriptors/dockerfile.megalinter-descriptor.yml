@@ -7,20 +7,6 @@ file_names_regex:
   - "Dockerfile"
 test_folder: docker
 linters:
-  # dockerfilelint
-  - linter_name: dockerfilelint
-    name: DOCKERFILE_DOCKERFILELINT
-    linter_url: https://github.com/replicatedhq/dockerfilelint
-    linter_repo: https://github.com/replicatedhq/dockerfilelint
-    linter_rules_url: https://github.com/replicatedhq/dockerfilelint#checks-performed
-    linter_rules_configuration_url: https://github.com/replicatedhq/dockerfilelint#configuring
-    config_file_name: .dockerfilelintrc
-    cli_config_arg_name: ""
-    examples:
-      - "dockerfilelint Dockerfile"
-    install:
-      npm:
-        - dockerfilelint
   # Hadolint
   - linter_name: hadolint
     name: DOCKERFILE_HADOLINT

@@ -4,7 +4,6 @@
     ],
     "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
     "linters": [
-        "DOCKERFILE_DOCKERFILELINT",
         "DOCKERFILE_HADOLINT",
         "ENV_DOTENV_LINTER",
         "GROOVY_NPM_GROOVY_LINT",

@@ -111,7 +111,6 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-config-standard \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
-                dockerfilelint \
                 editorconfig-checker \
                 graphql-schema-linter \
                 npm-groovy-lint \

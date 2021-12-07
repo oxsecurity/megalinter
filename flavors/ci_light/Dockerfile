@@ -100,7 +100,6 @@ RUN npm install npm@latest-6 -g
 RUN echo 'package-lock=false' >> .npmrc 
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                dockerfilelint \
                 npm-groovy-lint \
                 jsonlint \
                 eslint \

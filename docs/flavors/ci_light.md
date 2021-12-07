@@ -39,8 +39,7 @@ Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 
 | <!-- --> | Tooling format | Linter | Configuration key | Additional  |
 | :---: | ----------------- | -------------- | ------------ | :-----:  |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dockerfile.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**DOCKERFILE**](https://megalinter.github.io/v6-alpha/descriptors/dockerfile/) | [dockerfilelint](https://megalinter.github.io/v6-alpha/descriptors/dockerfile_dockerfilelint/)| [DOCKERFILE_DOCKERFILELINT](https://megalinter.github.io/v6-alpha/descriptors/dockerfile_dockerfilelint/)| [![GitHub stars](https://img.shields.io/github/stars/replicatedhq/dockerfilelint?cacheSeconds=3600)](https://github.com/replicatedhq/dockerfilelint)
-| <!-- --> <!-- linter-icon --> |  | [hadolint](https://megalinter.github.io/v6-alpha/descriptors/dockerfile_hadolint/)| [DOCKERFILE_HADOLINT](https://megalinter.github.io/v6-alpha/descriptors/dockerfile_hadolint/)| [![GitHub stars](https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600)](https://github.com/hadolint/hadolint)
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dockerfile.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**DOCKERFILE**](https://megalinter.github.io/v6-alpha/descriptors/dockerfile/) | [hadolint](https://megalinter.github.io/v6-alpha/descriptors/dockerfile_hadolint/)| [DOCKERFILE_HADOLINT](https://megalinter.github.io/v6-alpha/descriptors/dockerfile_hadolint/)| [![GitHub stars](https://img.shields.io/github/stars/hadolint/hadolint?cacheSeconds=3600)](https://github.com/hadolint/hadolint)
 
 ### Other
 
