@@ -19,6 +19,7 @@ linters:
         - jsonlint
   # ESLINT-PLUGIN-JSONC
   - linter_name: eslint-plugin-jsonc
+    can_output_sarif: true
     file_extensions:
       - ".json"
       - ".json5"
@@ -95,6 +96,11 @@ linters:
     cli_lint_extra_args:
       - "--no-ignore"
     cli_lint_fix_arg_name: "--fix"
+    cli_sarif_args:
+      - --format
+      - "@microsoft/eslint-formatter-sarif"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "✖ ([0-9]+) problem"
     cli_executable_version: "npm"
@@ -110,6 +116,7 @@ linters:
       npm:
         - eslint
         - eslint-plugin-jsonc
+        - "@microsoft/eslint-formatter-sarif"
     ide:
       vscode:
         - name: vscode-eslint
