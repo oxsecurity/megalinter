@@ -28,8 +28,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - SARIF management for:
     - bandit
     - checkov
+    - cfn-lint
     - eslint
     - gitleaks
+    - hadolint
     - trivy
 
 - Descriptors:

@@ -10,6 +10,7 @@ linters:
   # Hadolint
   - linter_name: hadolint
     name: DOCKERFILE_HADOLINT
+    can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
@@ -23,13 +24,16 @@ linters:
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
     cli_config_arg_name: "--config"
     config_file_name: .hadolint.yml
+    cli_sarif_args:
+      - --format
+      - sarif
     examples:
       - "hadolint Dockerfile"
       - "hadolint --config .hadolint.yml Dockerfile"
     downgraded_version: true
     install:
       dockerfile:
-        - FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+        - FROM hadolint/hadolint:v2.8.0-alpine as hadolint
         - COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
       atom:
