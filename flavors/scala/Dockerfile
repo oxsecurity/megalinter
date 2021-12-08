@@ -118,6 +118,7 @@ RUN npm install --no-cache --ignore-scripts \
                 jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
+                @microsoft/eslint-formatter-sarif \
                 v8r@0.6.1 \
                 prettier \
                 markdownlint-cli \

@@ -2076,7 +2076,7 @@ def generate_documentation_all_linters():
 
                 if r is not None:
                     resp = r.json()
-                    if resp is not None:
+                    if resp is not None and not isinstance(resp, type(None)):
                         if "license" in resp and "spdx_id" in resp["license"]:
                             license = (
                                 resp["license"]["spdx_id"]

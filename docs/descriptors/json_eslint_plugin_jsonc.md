@@ -232,3 +232,4 @@ Miscellaneous:
 - NPM packages (node.js):
   - [eslint](https://www.npmjs.com/package/eslint)
   - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
+  - [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif)
