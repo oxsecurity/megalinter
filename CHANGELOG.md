@@ -33,6 +33,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - eslint
     - gitleaks
     - hadolint
+    - ktlint
     - trivy
 
 - Descriptors:
