@@ -34,6 +34,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - gitleaks
     - hadolint
     - ktlint
+    - psalm
     - revive
     - trivy
 

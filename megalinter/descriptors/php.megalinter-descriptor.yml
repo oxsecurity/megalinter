@@ -123,6 +123,7 @@ linters:
   # PSALM
   - linter_name: psalm
     name: PHP_PSALM
+    can_output_sarif: true
     linter_url: https://psalm.dev
     linter_repo: https://github.com/vimeo/psalm
     linter_rules_url: https://psalm.dev/docs/running_psalm/issues/
@@ -132,6 +133,8 @@ linters:
     config_file_name: psalm.xml
     cli_lint_mode: list_of_files
     cli_config_arg_name: "--config="
+    cli_sarif_args:
+      - "--report={{SARIF_OUTPUT_FILE}}"
     version_extract_regex: "((\\d+(\\.\\d+)+)|Psalm (.*)@)"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "([0-9]+) error"
