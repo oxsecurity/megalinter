@@ -63,6 +63,7 @@ HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
 FLAVORS_DIR = REPO_HOME + "/flavors"
+LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
 BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
@@ -218,6 +219,10 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
+    build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor)
+
+
+def build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor):
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
@@ -324,6 +329,36 @@ def match_flavor(item, flavor, flavor_info):
         ):
             return True
     return False
+
+
+# Automatically generate Dockerfile for standalone linters
+def generate_linter_dockerfiles():
+    # Browse descriptors 
+    descriptor_files = megalinter.linter_factory.list_descriptor_files()
+    for descriptor_file in descriptor_files:
+        descriptor_items = []
+        with open(descriptor_file, "r", encoding="utf-8") as f:
+            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+        if "install" in descriptor:
+            descriptor_items += [descriptor]
+        descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
+            descriptor_file, None
+        )
+        # Browse descriptor linters
+        for linter in descriptor_linters:
+            # Unique linter dockerfile
+            linter_lower_name = linter.name.lower()
+            dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
+            if not os.path.isdir(os.path.dirname(dockerfile)):
+                os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
+            requires_docker = False
+            if linter.cli_docker_image is not None:
+                requires_docker = True
+            descriptor_and_linter = descriptor_items + [vars(linter)]
+            copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
+            build_dockerfile( 
+                dockerfile,descriptor_and_linter , requires_docker, None
+            )
 
 
 # Automatically generate a test class for each linter class
@@ -2291,6 +2326,7 @@ if __name__ == "__main__":
     generate_json_schema_enums()
     validate_descriptors()
     generate_all_flavors()
+    generate_linter_dockerfiles()
     generate_linter_test_classes()
     if UPDATE_DOC is True:
         generate_documentation()
