@@ -4,13 +4,11 @@ Use PHP to lint php files
 https://www.php.net
 """
 import logging
-import os
 import subprocess
 
-import megalinter
+from megalinter import Linter, config, utils
 
-
-class PhpLinter(megalinter.Linter):
+class PhpLinter(Linter):
 
     # To execute before linting files
     def before_lint_files(self):
@@ -26,5 +24,5 @@ class PhpLinter(megalinter.Linter):
             shell=True,
         )
         return_code = process.returncode
-        return_stdout = megalinter.utils.decode_utf8(process.stdout)
+        return_stdout = utils.decode_utf8(process.stdout)
         logging.debug(f"{return_code} : {return_stdout}")
