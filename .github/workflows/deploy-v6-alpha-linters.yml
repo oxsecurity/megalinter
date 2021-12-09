@@ -189,7 +189,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: 'docker.io/megalinter/megalinter-${{ matrix.linter }}:v6-alpha'
+          image-ref: 'docker.io/megalinter/megalinter-only-${{ matrix.linter }}:v6-alpha'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
