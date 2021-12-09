@@ -11,6 +11,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.1 to **6.12.2** on 2021-12-09
   - [checkov](https://www.checkov.io/) from 2.0.636 to **2.0.639** on 2021-12-09
+  - [checkov](https://www.checkov.io/) from 2.0.639 to **2.0.641** on 2021-12-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.11 to **1.1.0** on 2021-12-09
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
