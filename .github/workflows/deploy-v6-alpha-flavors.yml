@@ -41,6 +41,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         # flavors-start

@@ -46,6 +46,7 @@ jobs:
     environment: 
       name: beta-flavors
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         # flavors-start
