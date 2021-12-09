@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.1 to **6.12.2** on 2021-12-09
+  - [checkov](https://www.checkov.io/) from 2.0.636 to **2.0.639** on 2021-12-09
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
@@ -30,59 +32,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - `cpplint`: Use `cli_lint_mode: project` to improve performances
 
 - Linter versions upgrades
-  - [remark-lint](https://remark.js.org/) from 14.0.1 to **14.0.2** on 2021-11-19
-  - [php](https://www.php.net) from 7.4.25 to **7.4.26** on 2021-11-19
-  - [checkov](https://www.checkov.io/) from 2.0.587 to **2.0.588** on 2021-11-19
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.29.0 to **0.30.0** on 2021-11-21
-  - [checkov](https://www.checkov.io/) from 2.0.588 to **2.0.591** on 2021-11-21
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.10 to **0.35.12** on 2021-11-21
-  - [eslint](https://eslint.org) from 8.2.0 to **8.3.0** on 2021-11-21
-  - [checkov](https://www.checkov.io/) from 2.0.591 to **2.0.595** on 2021-11-21
-  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.1 to **0.56.2** on 2021-11-22
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.1 to **0.8.2** on 2021-11-22
-  - [checkov](https://www.checkov.io/) from 2.0.595 to **2.0.597** on 2021-11-22
-  - [htmlhint](https://htmlhint.com/) from 0.16.1 to **0.16.2** on 2021-11-24
-  - [checkov](https://www.checkov.io/) from 2.0.597 to **2.0.600** on 2021-11-24
-  - [htmlhint](https://htmlhint.com/) from 0.16.2 to **0.16.3** on 2021-11-25
-  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 0.0.0 to **3.9.0** on 2021-11-25
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.0 to **5.13.1** on 2021-11-25
-  - [checkov](https://www.checkov.io/) from 2.0.600 to **2.0.603** on 2021-11-25
-  - [kics](https://www.kics.io) from 1.4.7 to **1.4.8** on 2021-11-25
-  - [prettier](https://prettier.io/) from 2.4.1 to **2.5.0** on 2021-11-26
-  - [pylint](https://www.pylint.org) from 2.11.1 to **2.12.1** on 2021-11-26
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.10.0 to **6.11.0** on 2021-11-26
-  - [checkov](https://www.checkov.io/) from 2.0.603 to **2.0.605** on 2021-11-26
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.12 to **0.35.13** on 2021-11-26
-  - [htmlhint](https://htmlhint.com/) from 0.16.3 to **1.0.0** on 2021-11-27
-  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.32 to **0.9.33** on 2021-11-27
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.0 to **6.11.1** on 2021-11-27
-  - [checkstyle](https://checkstyle.sourceforge.io) from 9.1 to **9.2** on 2021-11-29
-  - [checkov](https://www.checkov.io/) from 2.0.605 to **2.0.606** on 2021-11-29
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.11.1 to **6.12.1** on 2021-11-30
-  - [swiftlint](https://github.com/realm/SwiftLint) from 0.45.0 to **0.45.1** on 2021-11-30
-  - [checkov](https://www.checkov.io/) from 2.0.606 to **2.0.609** on 2021-11-30
-  - [v8r](https://github.com/chris48s/v8r) from 0.6.1 to **0.7.0** on 2021-11-30
-  - [v8r](https://github.com/chris48s/v8r) from 0.7.0 to **0.6.1** on 2021-12-01
-  - [checkov](https://www.checkov.io/) from 2.0.614 to **2.0.616** on 2021-12-01
-  - [checkov](https://www.checkov.io/) from 2.0.616 to **2.0.618** on 2021-12-01
-  - [coffeelint](http://www.coffeelint.org) from 5.2.0 to **5.2.1** on 2021-12-02
-  - [checkov](https://www.checkov.io/) from 2.0.618 to **2.0.621** on 2021-12-02
-  - [ktlint](https://ktlint.github.io) from 0.40.0 to **0.43.2** on 2021-12-02
-  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.56 to **0.1.57** on 2021-12-03
-  - [checkov](https://www.checkov.io/) from 2.0.621 to **2.0.625** on 2021-12-03
-  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.2 to **0.56.3** on 2021-12-04
-  - [pylint](https://www.pylint.org) from 2.12.1 to **2.12.2** on 2021-12-04
-  - [checkov](https://www.checkov.io/) from 2.0.625 to **2.0.626** on 2021-12-04
-  - [eslint](https://eslint.org) from 8.3.0 to **8.4.0** on 2021-12-04
-  - [prettier](https://prettier.io/) from 2.5.0 to **2.5.1** on 2021-12-05
-  - [black](https://black.readthedocs.io/en/stable/) from 21.11 to **21.12** on 2021-12-06
-  - [checkov](https://www.checkov.io/) from 2.0.626 to **2.0.628** on 2021-12-06
-  - [checkov](https://www.checkov.io/) from 2.0.628 to **2.0.632** on 2021-12-07
-  - [eslint](https://eslint.org) from 8.4.0 to **8.4.1** on 2021-12-07
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.1 to **5.13.2** on 2021-12-07
-  - [checkov](https://www.checkov.io/) from 2.0.632 to **2.0.634** on 2021-12-07
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.1 to **0.33.2** on 2021-12-07
-  - [checkov](https://www.checkov.io/) from 2.0.634 to **2.0.636** on 2021-12-08
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.1 to **6.12.2** on 2021-12-09
+  - [checkov](https://www.checkov.io/) from 2.0.636 to **2.0.639** on 2021-12-09
 <!-- linter-versions-end -->
 
 ## [v5.2.0] - 2021-11-18
