@@ -222,7 +222,9 @@ branding:
     build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, [])
 
 
-def build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines):
+def build_dockerfile(
+    dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+):
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
@@ -339,8 +341,9 @@ def match_flavor(item, flavor, flavor_info):
 
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
-    # Browse descriptors 
+    # Browse descriptors
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
+    gha_workflow_yml = ["        linter:", "          ["]
     for descriptor_file in descriptor_files:
         descriptor_items = []
         with open(descriptor_file, "r", encoding="utf-8") as f:
@@ -365,11 +368,21 @@ def generate_linter_dockerfiles():
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 f"    FLAVOR_SUGGESTIONS=false \\",
-                f"    SINGLE_LINTER={linter.name}"
+                f"    SINGLE_LINTER={linter.name}",
             ]
-            build_dockerfile( 
-                dockerfile,descriptor_and_linter , requires_docker, "none", extra_lines
+            build_dockerfile(
+                dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
+            gha_workflow_yml += [f'            "{linter_lower_name}",']
+
+    # Update github action workflow
+    gha_workflow_yml += ["          ]"]
+    replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-v6-alpha-linters.yml",
+        "# linters-start",
+        "# linters-end",
+        "\n".join(gha_workflow_yml),
+    )
 
 
 # Automatically generate a test class for each linter class

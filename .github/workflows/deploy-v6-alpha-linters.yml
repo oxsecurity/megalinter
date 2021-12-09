@@ -1,0 +1,197 @@
+---
+#########################
+#########################
+## Deploy Docker Image Flavors ##
+#########################
+#########################
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to main #
+#######################################
+name: "Build & Deploy - v6-alpha linters"
+on:
+  push:
+    branches:
+      - "v6_dev"
+      - "v6/docker-standalone-linters"
+    paths:
+      - ".github/workflows/**"
+      - "Dockerfile"
+      - "flavors/**"
+      - "megalinter/**"
+      - "mega-linter-runner/**"
+      - "**/linter-versions.json"
+      - "TEMPLATES/**"
+      - ".trivyignore"
+
+###############
+# Set the Job #
+###############
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+
+  build:
+    # Name the Job
+    name: Deploy Docker Image - v6-alpha - Linters
+    # Set the agent to run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        # linters-start
+        linter:
+          [
+            "action_actionlint",
+            "ansible_ansible_lint",
+            "arm_arm_ttk",
+            "bash_exec",
+            "bash_shellcheck",
+            "bash_shfmt",
+            "c_cpplint",
+            "clojure_clj_kondo",
+            "cloudformation_cfn_lint",
+            "coffee_coffeelint",
+            "copypaste_jscpd",
+            "cpp_cpplint",
+            "csharp_dotnet_format",
+            "css_stylelint",
+            "css_scss_lint",
+            "dart_dartanalyzer",
+            "dockerfile_hadolint",
+            "editorconfig_editorconfig_checker",
+            "env_dotenv_linter",
+            "gherkin_gherkin_lint",
+            "go_golangci_lint",
+            "go_revive",
+            "graphql_graphql_schema_linter",
+            "groovy_npm_groovy_lint",
+            "html_htmlhint",
+            "java_checkstyle",
+            "javascript_es",
+            "javascript_standard",
+            "javascript_prettier",
+            "json_jsonlint",
+            "json_eslint_plugin_jsonc",
+            "json_v8r",
+            "json_prettier",
+            "jsx_eslint",
+            "kotlin_ktlint",
+            "kubernetes_kubeval",
+            "latex_chktex",
+            "lua_luacheck",
+            "markdown_markdownlint",
+            "markdown_remark_lint",
+            "markdown_markdown_link_check",
+            "markdown_markdown_table_formatter",
+            "openapi_spectral",
+            "perl_perlcritic",
+            "php_builtin",
+            "php_phpcs",
+            "php_phpstan",
+            "php_psalm",
+            "php_phplint",
+            "powershell_powershell",
+            "protobuf_protolint",
+            "puppet_puppet_lint",
+            "python_pylint",
+            "python_black",
+            "python_flake8",
+            "python_isort",
+            "python_bandit",
+            "python_mypy",
+            "r_lintr",
+            "raku_raku",
+            "repository_git_diff",
+            "repository_secretlint",
+            "repository_gitleaks",
+            "repository_goodcheck",
+            "repository_trivy",
+            "rst_rst_lint",
+            "rst_rstcheck",
+            "rst_rstfmt",
+            "ruby_rubocop",
+            "rust_clippy",
+            "salesforce_sfdx_scanner_apex",
+            "salesforce_sfdx_scanner_aura",
+            "salesforce_sfdx_scanner_lwc",
+            "scala_scalafix",
+            "snakemake_lint",
+            "snakemake_snakefmt",
+            "spell_misspell",
+            "spell_cspell",
+            "sql_sql_lint",
+            "sql_sqlfluff",
+            "sql_tsqllint",
+            "swift_swiftlint",
+            "tekton_tekton_lint",
+            "terraform_tflint",
+            "terraform_terrascan",
+            "terraform_terragrunt",
+            "terraform_terraform_fmt",
+            "terraform_checkov",
+            "terraform_kics",
+            "tsx_eslint",
+            "typescript_es",
+            "typescript_standard",
+            "typescript_prettier",
+            "vbdotnet_dotnet_format",
+            "xml_xmllint",
+            "yaml_prettier",
+            "yaml_yamllint",
+            "yaml_v8r",
+          ]
+# linters-end
+    # Only run this on the main repo
+    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+
+      #####################
+      # Run Deploy script #
+      #####################
+      - name: Deploy v6-alpha image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
+          IMAGE_VERSION: v6-alpha
+          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      # Free disk space
+      - name: Free Disk space
+        shell: bash
+        run: |
+          sudo rm -rf /usr/local/lib/android  # will release about 10 GB if you don't need Android
+          sudo rm -rf /usr/share/dotnet # will release about 20GB if you don't need .NET
+
+      ##############################################
+      # Check Docker image security with Trivy #
+      ##############################################
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          image-ref: 'docker.io/megalinter/megalinter-${{ matrix.linter }}:v6-alpha'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
