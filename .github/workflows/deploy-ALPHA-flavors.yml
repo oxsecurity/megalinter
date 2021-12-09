@@ -93,6 +93,7 @@ jobs:
           IMAGE_VERSION: alpha
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
           REGISTRY: Docker
+          SQUASH: "true"
         shell: bash
         run: .automation/upload-docker.sh
 
