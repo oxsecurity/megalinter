@@ -219,10 +219,10 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
-    build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor)
+    build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, [])
 
 
-def build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor):
+def build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines):
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
@@ -310,6 +310,12 @@ def build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor
     replace_in_file(dockerfile, "#GEM__START", "#GEM__END", gem_install_command)
     flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
     replace_in_file(dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env)
+    replace_in_file(
+        dockerfile,
+        "#EXTRA_DOCKERFILE_LINES__START",
+        "#EXTRA_DOCKERFILE_LINES__END",
+        "\n".join(extra_lines),
+    )
 
 
 def match_flavor(item, flavor, flavor_info):
@@ -356,8 +362,13 @@ def generate_linter_dockerfiles():
                 requires_docker = True
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
+            extra_lines = [
+                f"ENV ENABLE_LINTERS={linter.name} \\",
+                f"    FLAVOR_SUGGESTIONS=false \\",
+                f"    SINGLE_LINTER={linter.name}"
+            ]
             build_dockerfile( 
-                dockerfile,descriptor_and_linter , requires_docker, None
+                dockerfile,descriptor_and_linter , requires_docker, "none", extra_lines
             )
 
 

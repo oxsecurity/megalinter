@@ -43,7 +43,10 @@ class Megalinter:
         self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
         self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER",
-            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME),
+            config.get(
+                "OUTPUT_FOLDER",
+                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
+            ),
         )
         self.initialize_logger()
         self.manage_upgrade_message()
@@ -352,12 +355,19 @@ class Megalinter:
             "report_folder": self.report_folder,
             "apply_fixes": self.apply_fixes,
             "show_elapsed_time": self.show_elapsed_time,
-            "output_sarif": self.output_sarif
+            "output_sarif": self.output_sarif,
         }
 
         # Build linters from descriptor files
         # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
-        if (
+        if self.megalinter_flavor == "none":
+            # Single linter docker image
+            unique_linter = config.get("SINGLE_LINTER")
+            all_linters = linter_factory.list_linters_by_name(
+                linter_init_params, [unique_linter]
+            )
+        elif (
+            # Flavored MegaLinter
             self.megalinter_flavor != "all"
             and config.get("FLAVOR_SUGGESTIONS", "true") != "true"
         ):
@@ -365,6 +375,7 @@ class Megalinter:
                 linter_init_params, self.megalinter_flavor
             )
         else:
+            # main flavor
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []

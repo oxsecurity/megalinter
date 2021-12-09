@@ -186,6 +186,10 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=ci_light
 #FLAVOR__END
 
+#EXTRA_DOCKERFILE_LINES__START
+
+#EXTRA_DOCKERFILE_LINES__END
+
 #########################################
 # Label the instance and set maintainer #
 #########################################
