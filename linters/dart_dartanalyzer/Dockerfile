@@ -32,6 +32,7 @@ ARG GLIBC_VERSION='2.31-r0'
 
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
+        bash \
         curl \
         gcc \
         git \

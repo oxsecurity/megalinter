@@ -37,6 +37,7 @@ FROM python:3.9.7-alpine3.13
 
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
+        bash \
         curl \
         gcc \
         git \
