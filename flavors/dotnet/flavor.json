@@ -4,8 +4,10 @@
         "ARM",
         "BASH",
         "CSHARP",
+        "KOTLIN",
         "POWERSHELL",
-        "REPOSITORY"
+        "REPOSITORY",
+        "VBDOTNET"
     ],
     "label": "Optimized for C, C++, C# or VB based projects",
     "linters": [

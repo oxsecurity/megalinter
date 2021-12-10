@@ -3,6 +3,7 @@
         "ACTION",
         "BASH",
         "JAVA",
+        "KOTLIN",
         "REPOSITORY"
     ],
     "label": "Optimized for JAVA based projects",

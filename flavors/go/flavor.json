@@ -3,6 +3,7 @@
         "ACTION",
         "BASH",
         "GO",
+        "KOTLIN",
         "REPOSITORY"
     ],
     "label": "Optimized for GO based projects",

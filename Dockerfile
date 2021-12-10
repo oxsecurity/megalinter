@@ -104,6 +104,7 @@ RUN apk add --update --no-cache \
                 yarn \
                 openssl \
                 readline-dev \
+                libxml2 \
                 R \
                 R-dev \
                 R-doc \
@@ -305,6 +306,13 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
         chmod +x coursier
 
 
+# VBDOTNET installation
+RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+    && chmod +x dotnet-install.sh \
+    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+
+ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+
 # actionlint installation
 ENV GO111MODULE=on
 RUN go get github.com/rhysd/actionlint/cmd/actionlint
@@ -435,14 +443,8 @@ COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
 RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
 
 # raku installation
-RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
-    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
-    && source /root/.profile \
-    && /opt/rakudo-pkg/bin/install-zef-as-user
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash
 
-ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
@@ -501,6 +503,9 @@ COPY --from=kics /app/bin/kics /usr/bin/
 RUN mkdir -p /opt/kics/assets
 ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/assets/libraries
 COPY --from=kics /app/bin/assets /opt/kics/assets/
+
+# dotnet-format installation
+RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 

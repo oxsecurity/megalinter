@@ -27,6 +27,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for DART based projects",
@@ -80,6 +81,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "MegaLinter for documentation projects",
@@ -134,8 +136,10 @@
             "ARM",
             "BASH",
             "CSHARP",
+            "KOTLIN",
             "POWERSHELL",
-            "REPOSITORY"
+            "REPOSITORY",
+            "VBDOTNET"
         ],
         "label": "Optimized for C, C++, C# or VB based projects",
         "linters": [
@@ -195,6 +199,7 @@
             "ACTION",
             "BASH",
             "GO",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for GO based projects",
@@ -250,6 +255,7 @@
             "ACTION",
             "BASH",
             "JAVA",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for JAVA based projects",
@@ -304,6 +310,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY",
             "TYPESCRIPT"
         ],
@@ -366,6 +373,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "PHP",
             "REPOSITORY"
         ],
@@ -423,6 +431,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for PYTHON based projects",
@@ -484,6 +493,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for RUBY based projects",
@@ -537,6 +547,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY",
             "RUST"
         ],
@@ -591,6 +602,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY",
             "SALESFORCE"
         ],
@@ -647,6 +659,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY",
             "SCALA"
         ],
@@ -722,6 +735,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for SWIFT based projects",
@@ -775,6 +789,7 @@
         "descriptors": [
             "ACTION",
             "BASH",
+            "KOTLIN",
             "REPOSITORY"
         ],
         "label": "Optimized for TERRAFORM based projects",

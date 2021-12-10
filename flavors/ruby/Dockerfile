@@ -50,10 +50,10 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 go \
                 bash \
+                openjdk8 \
                 nodejs \
                 npm \
                 yarn \
-                openjdk8 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

@@ -45,6 +45,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                libxml2 \
                 R \
                 R-dev \
                 R-doc

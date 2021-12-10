@@ -84,6 +84,7 @@ RUN npm install --no-cache --ignore-scripts \
                 eslint-config-prettier \
                 eslint-plugin-jest \
                 eslint-plugin-prettier \
+                eslint-plugin-react \
                 babel-eslint \
                 prettier \
                 prettyjson \

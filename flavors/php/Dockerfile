@@ -50,6 +50,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 go \
                 bash \
+                openjdk8 \
                 gnupg \
                 php7 \
                 php7-phar \
@@ -74,7 +75,6 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                openjdk8 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

@@ -2,6 +2,7 @@
     "descriptors": [
         "ACTION",
         "BASH",
+        "KOTLIN",
         "REPOSITORY"
     ],
     "label": "Optimized for SWIFT based projects",
