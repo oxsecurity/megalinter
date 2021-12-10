@@ -54,7 +54,8 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                ruby-dev
+                ruby-dev \
+                ruby-bundler
 #APK__END
 
 # Ignore npm package issues

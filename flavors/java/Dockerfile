@@ -59,7 +59,8 @@ RUN apk add --update --no-cache \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
-                ruby-dev
+                ruby-dev \
+                ruby-bundler
 #APK__END
 
 # Ignore npm package issues

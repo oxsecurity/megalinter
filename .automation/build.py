@@ -271,7 +271,7 @@ def build_dockerfile(
         apk_packages += ["nodejs", "npm", "yarn"]
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
-        apk_packages += ["ruby-dev"]
+        apk_packages += ["ruby-dev", "ruby-bundler"]
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))
@@ -383,8 +383,7 @@ def generate_linter_dockerfiles():
                 "    GITHUB_COMMENT_REPORTER=false \\",
                 "    EMAIL_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
-                "    CONFIG_REPORTER=false"
-
+                "    CONFIG_REPORTER=false",
             ]
             build_dockerfile(
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
