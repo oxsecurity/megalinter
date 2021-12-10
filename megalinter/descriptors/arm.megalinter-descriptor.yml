@@ -7,6 +7,8 @@ file_extensions:
 file_contains_regex:
   - 'schema\.management\.azure\.com'
 install:
+  apk:
+    - icu-libs
   dockerfile:
     - ARG PWSH_VERSION='latest'
     - ARG PWSH_DIRECTORY='/opt/microsoft/powershell'

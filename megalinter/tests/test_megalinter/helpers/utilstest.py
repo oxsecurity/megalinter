@@ -49,6 +49,7 @@ def linter_test_setup(params=None):
         "UPDATED_SOURCES_REPORTER"
         "MEGALINTER_FLAVOR",
         "FLAVOR_SUGGESTIONS",
+        "SARIF_REPORTER"
     ]:
         if key in os.environ:
             del os.environ[key]

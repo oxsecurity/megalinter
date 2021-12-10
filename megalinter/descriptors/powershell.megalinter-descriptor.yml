@@ -14,6 +14,8 @@ file_extensions:
 # Slightly modified to always retrieve latest stable Powershell version
 # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
 install:
+  apk:
+    - icu-libs
   dockerfile:
     - ARG PWSH_VERSION='latest'
     - ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
