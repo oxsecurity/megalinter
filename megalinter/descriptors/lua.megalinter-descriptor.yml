@@ -18,6 +18,7 @@ linters:
       - "luacheck --config .chktexrc myfile.lua"
     install:
       apk:
+        - openssl
         - readline-dev
       dockerfile:
         - |
