@@ -54,7 +54,8 @@ RUN apk add --update --no-cache \
         gcc \
         git \
         libffi-dev \
-        make && \
+        make \
+        musl-dev && \
     git config --global core.autocrlf true
 
 #############################################################################################
