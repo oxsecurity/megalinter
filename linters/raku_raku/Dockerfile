@@ -95,8 +95,14 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #############################################################################################
 #OTHER__START
 # raku installation
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash
+RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
+    && source /root/.profile \
+    && /opt/rakudo-pkg/bin/install-zef-as-user
 
+ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
 #OTHER__END
 

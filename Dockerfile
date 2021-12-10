@@ -19,6 +19,7 @@ FROM zricethezav/gitleaks:latest as gitleaks
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
+FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
 #FROM__END
 
@@ -443,8 +444,14 @@ COPY --from=lintr-lib /usr/lib/R/library/ /home/r-library
 RUN R -e "install.packages(list.dirs('/home/r-library',recursive = FALSE), repos = NULL, type = 'source')"
 
 # raku installation
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.alpine.sh' | sudo -E bash
+RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk > rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && apk add --no-cache --allow-untrusted rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && rm rakudo-pkg-Alpine3.12_2020.10-02_x86_64.apk \
+    && /opt/rakudo-pkg/bin/add-rakudo-to-path \
+    && source /root/.profile \
+    && /opt/rakudo-pkg/bin/install-zef-as-user
 
+ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
