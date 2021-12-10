@@ -36,6 +36,7 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         curl \
+        gcc \
         git && \
     git config --global core.autocrlf true
 

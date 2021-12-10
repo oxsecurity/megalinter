@@ -36,6 +36,7 @@ ARG GLIBC_VERSION='2.31-r0'
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         curl \
+        gcc \
         git && \
     git config --global core.autocrlf true
 
@@ -44,10 +45,11 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                go \
+                bash \
                 nodejs \
                 npm \
                 yarn \
-                bash \
                 ruby \
                 libc-dev \
                 libxml2-dev \

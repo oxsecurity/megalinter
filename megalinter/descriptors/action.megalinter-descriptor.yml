@@ -8,9 +8,7 @@ file_extensions:
   - ".yaml"
 install:
   apk:
-    - nodejs
-    - npm
-    - yarn
+    - go
 test_folder: action
 linters:
   # ACTIONLINT

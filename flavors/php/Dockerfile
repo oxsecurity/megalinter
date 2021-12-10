@@ -35,6 +35,7 @@ FROM python:3.9.7-alpine3.13
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         curl \
+        gcc \
         git && \
     git config --global core.autocrlf true
 
@@ -43,9 +44,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                nodejs \
-                npm \
-                yarn \
+                go \
                 bash \
                 php7 \
                 php7-phar \
@@ -67,6 +66,9 @@ RUN apk add --update --no-cache \
                 php8-dom \
                 php8-simplexml \
                 composer \
+                nodejs \
+                npm \
+                yarn \
                 ruby \
                 libc-dev \
                 libxml2-dev \

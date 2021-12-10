@@ -50,6 +50,7 @@ ARG PSSA_VERSION='latest'
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         curl \
+        gcc \
         git && \
     git config --global core.autocrlf true
 
@@ -60,14 +61,14 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 docker \
                 openrc \
+                go \
+                bash \
                 nodejs \
                 npm \
                 yarn \
-                bash \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
-                go \
                 openjdk8 \
                 perl \
                 perl-dev \
