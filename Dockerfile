@@ -67,9 +67,6 @@ RUN apk add --update --no-cache \
                 openrc \
                 go \
                 bash \
-                nodejs \
-                npm \
-                yarn \
                 libcurl \
                 libintl \
                 libssl1.1 \
@@ -80,6 +77,7 @@ RUN apk add --update --no-cache \
                 openjdk8 \
                 perl \
                 perl-dev \
+                gnupg \
                 php7 \
                 php7-phar \
                 php7-json \
@@ -101,16 +99,19 @@ RUN apk add --update --no-cache \
                 php8-simplexml \
                 composer \
                 ruby \
-                ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
+                nodejs \
+                npm \
+                yarn \
                 R \
                 R-dev \
                 R-doc \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc
+                libgcc \
+                ruby-dev
 #APK__END
 
 # Ignore npm package issues

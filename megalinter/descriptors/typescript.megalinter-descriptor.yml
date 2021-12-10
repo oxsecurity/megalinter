@@ -5,10 +5,6 @@ descriptor_flavors:
 file_extensions:
   - ".ts"
 install:
-  apk:
-    - nodejs
-    - npm
-    - yarn
   npm:
     - typescript
 linters:

@@ -15,9 +15,5 @@ linters:
       - "gherkin-lint myfile.feature"
       - "gherkin-lint -c .gherkin-lintrc myfile.feature"
     install:
-      apk:
-        - nodejs
-        - npm
-        - yarn
       npm:
         - gherkin-lint

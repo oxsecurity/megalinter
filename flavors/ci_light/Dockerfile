@@ -47,13 +47,14 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                nodejs \
-                npm \
-                yarn \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc
+                libgcc \
+                nodejs \
+                npm \
+                yarn \
+                ruby-dev
 #APK__END
 
 # Ignore npm package issues

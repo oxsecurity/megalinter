@@ -4,11 +4,6 @@ descriptor_flavors:
   - javascript
 file_extensions:
   - ".coffee"
-install:
-  apk:
-    - nodejs
-    - npm
-    - yarn
 test_folder: coffeescript
 linters:
   # Coffee Lint

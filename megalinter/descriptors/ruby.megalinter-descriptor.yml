@@ -7,7 +7,6 @@ file_extensions:
 install:
   apk:
     - ruby
-    - ruby-dev
     - ruby-bundler
     - ruby-rdoc
 linters:

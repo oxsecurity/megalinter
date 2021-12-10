@@ -2,11 +2,7 @@
     "descriptors": [
         "ACTION",
         "BASH",
-        "COFFEE",
-        "JAVASCRIPT",
-        "JSX",
         "REPOSITORY",
-        "TSX",
         "TYPESCRIPT"
     ],
     "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",

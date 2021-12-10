@@ -50,6 +50,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 go \
                 bash \
+                gnupg \
                 php7 \
                 php7-phar \
                 php7-json \
@@ -73,11 +74,11 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                ruby-dev \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc
+                libgcc \
+                ruby-dev
 #APK__END
 
 # Ignore npm package issues

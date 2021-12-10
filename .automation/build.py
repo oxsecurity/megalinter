@@ -266,6 +266,12 @@ def build_dockerfile(
         # Collect ruby packages
         if "gem" in item["install"]:
             gem_packages += item["install"]["gem"]
+    # Add node install if node packages are here
+    if len(npm_packages) > 0:
+        apk_packages += ["nodejs", "npm", "yarn"]
+    # Add ruby apk packages if gem packages are here
+    if len(gem_packages) > 0:
+        apk_packages += ["ruby-dev"]
     # Replace between tags in Dockerfile
     # Commands
     replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))

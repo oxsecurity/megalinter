@@ -51,7 +51,6 @@ RUN apk add --update --no-cache \
                 go \
                 bash \
                 ruby \
-                ruby-dev \
                 ruby-bundler \
                 ruby-rdoc \
                 nodejs \
@@ -60,7 +59,8 @@ RUN apk add --update --no-cache \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
-                libgcc
+                libgcc \
+                ruby-dev
 #APK__END
 
 # Ignore npm package issues
