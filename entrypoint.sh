@@ -34,8 +34,10 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
     echo "Error(s) found by Pytest"
     exit 1
   fi
-  # Upload to codecov.io
-  bash <(curl -s https://codecov.io/bash)
+  # Upload to codecov.io if all tests run
+  if [ -z "${TEST_KEYWORDS}" ]; then
+    bash <(curl -s https://codecov.io/bash)
+  fi
 
 else
   # Normal run
