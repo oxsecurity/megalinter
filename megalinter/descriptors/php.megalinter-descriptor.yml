@@ -6,6 +6,7 @@ file_extensions:
   - ".php"
 install:
   apk:
+    - gnupg
     - php7
     - php7-phar
     - php7-json
