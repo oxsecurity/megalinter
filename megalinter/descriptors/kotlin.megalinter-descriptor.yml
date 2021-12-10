@@ -5,6 +5,9 @@ descriptor_flavors:
 file_extensions:
   - ".kt"
   - ".kts"
+install:
+  apk:
+    - openjdk8
 linters:
   # KTLINT
   - linter_name: ktlint
