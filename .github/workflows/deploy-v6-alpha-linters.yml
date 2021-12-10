@@ -94,7 +94,6 @@ jobs:
             "markdown_markdown_table_formatter",
             "openapi_spectral",
             "perl_perlcritic",
-            "php_builtin",
             "php_phpcs",
             "php_phpstan",
             "php_psalm",

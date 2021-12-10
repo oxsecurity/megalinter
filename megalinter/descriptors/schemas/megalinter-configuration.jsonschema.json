@@ -144,7 +144,6 @@
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
         "PERL_PERLCRITIC",
-        "PHP_BUILTIN",
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",

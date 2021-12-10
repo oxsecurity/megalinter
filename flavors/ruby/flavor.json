@@ -2,8 +2,7 @@
     "descriptors": [
         "ACTION",
         "BASH",
-        "REPOSITORY",
-        "RUBY"
+        "REPOSITORY"
     ],
     "label": "Optimized for RUBY based projects",
     "linters": [

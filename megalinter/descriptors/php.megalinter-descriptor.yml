@@ -41,17 +41,6 @@ install:
           && mv phive.phar /usr/local/bin/phive \
           && rm phive.phar.asc
 linters:
-  # PHP Built in Linter
-  - linter_name: php
-    linter_url: https://www.php.net
-    linter_repo: https://github.com/php/php-src
-    linter_banner_image_url: https://www.php.net/images/logos/new-php-logo.svg
-    linter_megalinter_ref_url: never
-    name: PHP_BUILTIN
-    cli_lint_extra_args:
-      - "-l"
-    examples:
-      - "php -l myfile.js"
   # PHPCS
   - linter_name: phpcs
     name: PHP_PHPCS

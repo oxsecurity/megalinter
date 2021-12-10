@@ -47,6 +47,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                openjdk8 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -54,8 +55,10 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
+                ruby \
                 ruby-dev \
-                ruby-bundler
+                ruby-bundler \
+                ruby-rdoc
 #APK__END
 
 # Ignore npm package issues

@@ -99,12 +99,10 @@ RUN apk add --update --no-cache \
                 php8-dom \
                 php8-simplexml \
                 composer \
-                ruby \
-                ruby-bundler \
-                ruby-rdoc \
                 nodejs \
                 npm \
                 yarn \
+                readline-dev \
                 R \
                 R-dev \
                 R-doc \
@@ -112,7 +110,10 @@ RUN apk add --update --no-cache \
                 libxml2-dev \
                 libxml2-utils \
                 libgcc \
-                ruby-dev
+                ruby \
+                ruby-dev \
+                ruby-bundler \
+                ruby-rdoc
 #APK__END
 
 # Ignore npm package issues

@@ -4,11 +4,6 @@ descriptor_flavors:
   - ruby
 file_extensions:
   - ".rb"
-install:
-  apk:
-    - ruby
-    - ruby-bundler
-    - ruby-rdoc
 linters:
   # RUBOCOP
   - linter_name: rubocop
