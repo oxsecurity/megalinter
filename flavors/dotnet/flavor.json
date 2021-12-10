@@ -1,5 +1,8 @@
 {
     "descriptors": [
+        "ACTION",
+        "ARM",
+        "BASH",
         "CSHARP",
         "POWERSHELL",
         "REPOSITORY"

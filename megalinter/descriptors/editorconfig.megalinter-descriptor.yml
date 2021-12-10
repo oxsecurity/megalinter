@@ -23,5 +23,9 @@ linters:
     examples:
       - "editorconfig-checker myfile.js"
     install:
+      apk:
+        - nodejs
+        - npm
+        - yarn
       npm:
         - editorconfig-checker

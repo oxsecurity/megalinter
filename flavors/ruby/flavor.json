@@ -1,5 +1,7 @@
 {
     "descriptors": [
+        "ACTION",
+        "BASH",
         "REPOSITORY",
         "RUBY"
     ],

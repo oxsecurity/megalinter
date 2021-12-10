@@ -25,6 +25,8 @@
     },
     "dart": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY"
         ],
         "label": "Optimized for DART based projects",
@@ -76,6 +78,8 @@
     },
     "documentation": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY"
         ],
         "label": "MegaLinter for documentation projects",
@@ -126,6 +130,9 @@
     },
     "dotnet": {
         "descriptors": [
+            "ACTION",
+            "ARM",
+            "BASH",
             "CSHARP",
             "POWERSHELL",
             "REPOSITORY"
@@ -185,6 +192,8 @@
     },
     "go": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "GO",
             "REPOSITORY"
         ],
@@ -238,6 +247,8 @@
     },
     "java": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "JAVA",
             "REPOSITORY"
         ],
@@ -291,6 +302,9 @@
     },
     "javascript": {
         "descriptors": [
+            "ACTION",
+            "BASH",
+            "COFFEE",
             "REPOSITORY",
             "TYPESCRIPT"
         ],
@@ -351,6 +365,8 @@
     },
     "php": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "PHP",
             "REPOSITORY"
         ],
@@ -407,6 +423,8 @@
     },
     "python": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY"
         ],
         "label": "Optimized for PYTHON based projects",
@@ -466,6 +484,8 @@
     },
     "ruby": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY",
             "RUBY"
         ],
@@ -518,6 +538,8 @@
     },
     "rust": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY",
             "RUST"
         ],
@@ -570,6 +592,8 @@
     },
     "salesforce": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY",
             "SALESFORCE"
         ],
@@ -624,6 +648,8 @@
     },
     "scala": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY",
             "SCALA"
         ],
@@ -697,6 +723,8 @@
     },
     "swift": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY"
         ],
         "label": "Optimized for SWIFT based projects",
@@ -748,6 +776,8 @@
     },
     "terraform": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "REPOSITORY"
         ],
         "label": "Optimized for TERRAFORM based projects",

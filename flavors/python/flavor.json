@@ -1,5 +1,7 @@
 {
     "descriptors": [
+        "ACTION",
+        "BASH",
         "REPOSITORY"
     ],
     "label": "Optimized for PYTHON based projects",

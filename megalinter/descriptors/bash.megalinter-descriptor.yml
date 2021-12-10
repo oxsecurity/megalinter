@@ -7,6 +7,9 @@ file_extensions:
   - ".bash"
   - ".dash"
   - ".ksh"
+install:
+  apk:
+    - bash
 test_folder: shell
 linters:
   # Bash Built in Linter
