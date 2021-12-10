@@ -43,7 +43,8 @@ ARG PSSA_VERSION='latest'
 RUN apk add --update --no-cache \
         curl \
         gcc \
-        git && \
+        git \
+        libffi-dev && \
     git config --global core.autocrlf true
 
 #############################################################################################

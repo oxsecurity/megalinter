@@ -34,7 +34,8 @@ ARG GLIBC_VERSION='2.31-r0'
 RUN apk add --update --no-cache \
         curl \
         gcc \
-        git && \
+        git \
+        libffi-dev && \
     git config --global core.autocrlf true
 
 #############################################################################################

@@ -39,7 +39,8 @@ FROM python:3.9.7-alpine3.13
 RUN apk add --update --no-cache \
         curl \
         gcc \
-        git && \
+        git \
+        libffi-dev && \
     git config --global core.autocrlf true
 
 #############################################################################################

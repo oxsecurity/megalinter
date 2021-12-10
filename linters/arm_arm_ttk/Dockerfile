@@ -37,7 +37,8 @@ ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 RUN apk add --update --no-cache \
         curl \
         gcc \
-        git && \
+        git \
+        libffi-dev && \
     git config --global core.autocrlf true
 
 #############################################################################################
