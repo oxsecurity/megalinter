@@ -17,8 +17,6 @@ setup(
         "pygithub",
         "commentjson",
         "pytablewriter",
-        "pytest-cov",
-        "pytest-timeout",
         "pyyaml",
         "requests==2.24.0",
         "terminaltables",

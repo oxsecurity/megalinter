@@ -5,6 +5,7 @@ export PYTHONPATH
 
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "UPGRADING LINTER VERSION"
+  pip install pytest-cov pytest-timeout
   # Run only get_linter_version test methods
   pytest -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
@@ -19,6 +20,7 @@ fi
 
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
+  pip install pytest-cov pytest-timeout
   echo "RUNNING TEST CASES"
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest -v --timeout=80 --durations=0 --cov=megalinter --cov-report=xml megalinter/
