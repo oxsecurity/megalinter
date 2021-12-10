@@ -4,6 +4,11 @@ descriptor_flavors:
   - javascript
 file_extensions:
   - ".tsx"
+install:
+  apk:
+    - nodejs
+    - npm
+    - yarn
 linters:
   # ESLINT
   - linter_name: eslint

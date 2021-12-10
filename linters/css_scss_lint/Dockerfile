@@ -45,7 +45,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                ruby
+                ruby-dev
 #APK__END
 
 # Ignore npm package issues

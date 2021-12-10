@@ -19,5 +19,9 @@ linters:
     examples:
       - "graphql-schema-linter myfile.graphql"
     install:
+      apk:
+        - nodejs
+        - npm
+        - yarn
       npm:
         - graphql-schema-linter

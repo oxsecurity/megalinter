@@ -99,6 +99,8 @@ linters:
       - "shfmt -w myfile.sh" # Fix
     downgraded_version: true
     install:
+      apk:
+        - go
       dockerfile:
         - ENV GO111MODULE=on
         - RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1

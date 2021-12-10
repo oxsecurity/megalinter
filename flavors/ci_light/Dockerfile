@@ -47,6 +47,9 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                nodejs \
+                npm \
+                yarn \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

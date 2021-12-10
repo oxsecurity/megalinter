@@ -54,7 +54,7 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
-                ruby \
+                ruby-dev \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

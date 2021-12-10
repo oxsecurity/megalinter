@@ -21,6 +21,10 @@ linters:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"
     install:
+      apk:
+        - nodejs
+        - npm
+        - yarn
       npm:
         - htmlhint
     ide:

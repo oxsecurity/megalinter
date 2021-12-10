@@ -32,6 +32,10 @@ linters:
       - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json"
       - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
     install:
+      apk:
+        - nodejs
+        - npm
+        - yarn
       npm:
         - npm-groovy-lint
     ide:

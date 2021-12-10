@@ -45,6 +45,10 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                libcurl \
+                libintl \
+                libssl1.1 \
+                libstdc++ \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev

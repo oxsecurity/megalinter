@@ -70,6 +70,10 @@ RUN apk add --update --no-cache \
                 nodejs \
                 npm \
                 yarn \
+                libcurl \
+                libintl \
+                libssl1.1 \
+                libstdc++ \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \

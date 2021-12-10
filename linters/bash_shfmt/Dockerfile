@@ -45,7 +45,8 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                bash
+                bash \
+                go
 #APK__END
 
 # Ignore npm package issues

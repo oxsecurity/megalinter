@@ -7,6 +7,10 @@ file_extensions:
   - ".cs"
 install:
   apk:
+    - libcurl
+    - libintl 
+    - libssl1.1 
+    - libstdc++
     - lttng-ust-dev
     - zlib
     - zlib-dev

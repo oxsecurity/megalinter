@@ -70,7 +70,7 @@ linters:
       - "scss-lint -config .scss-lint.yml myfile.scss"
     install:
       apk:
-        - ruby
+        - ruby-dev
       gem:
         - scss_lint
     ide:

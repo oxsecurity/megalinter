@@ -57,13 +57,17 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 go \
                 bash \
+                libcurl \
+                libintl \
+                libssl1.1 \
+                libstdc++ \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
                 nodejs \
                 npm \
                 yarn \
-                ruby \
+                ruby-dev \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
