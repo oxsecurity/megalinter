@@ -48,6 +48,7 @@ class Megalinter:
                 self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
             ),
         )
+        os.makedirs(self.report_folder, exist_ok=True)
         self.initialize_logger()
         self.manage_upgrade_message()
         self.display_header()

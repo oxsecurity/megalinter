@@ -558,10 +558,8 @@ class Linter:
         for txt in variables:
             if "{{SARIF_OUTPUT_FILE}}" in txt:
                 txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
-                os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
-                os.makedirs(self.report_folder, exist_ok=True)
             variables_with_replacements += [txt]
 
         return variables_with_replacements
@@ -878,6 +876,7 @@ class Linter:
             self.sarif_output_file = (
                 self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
             )
+            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
             self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
             cmd += self.cli_sarif_args
 
