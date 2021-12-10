@@ -376,7 +376,7 @@ def generate_linter_dockerfiles():
                 f"    FLAVOR_SUGGESTIONS=false \\",
                 f"    SINGLE_LINTER={linter.name} \\",
                 "     PRINT_ALPACA=false \\",
-                "     SARIF_REPORTER=true \\"
+                "     SARIF_REPORTER=true \\",
                 "     TEXT_REPORTER=false \\",
                 "     UPDATED_SOURCES_REPORTER=false \\",
                 "     GITHUB_STATUS_REPORTER=false \\",
