@@ -374,7 +374,17 @@ def generate_linter_dockerfiles():
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 f"    FLAVOR_SUGGESTIONS=false \\",
-                f"    SINGLE_LINTER={linter.name}",
+                f"    SINGLE_LINTER={linter.name} \\",
+                "     PRINT_ALPACA=false \\",
+                "     SARIF_REPORTER=true \\"
+                "     TEXT_REPORTER=false \\",
+                "     UPDATED_SOURCES_REPORTER=false \\",
+                "     GITHUB_STATUS_REPORTER=false \\",
+                "     GITHUB_COMMENT_REPORTER=false \\",
+                "     EMAIL_REPORTER=false \\",
+                "     FILEIO_REPORTER=false \\",
+                "     CONFIG_REPORTER=false"
+
             ]
             build_dockerfile(
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
