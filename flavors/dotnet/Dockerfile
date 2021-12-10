@@ -57,6 +57,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 go \
                 bash \
+                icu-libs \
                 libcurl \
                 libintl \
                 libssl1.1 \

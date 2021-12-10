@@ -67,6 +67,7 @@ RUN apk add --update --no-cache \
                 openrc \
                 go \
                 bash \
+                icu-libs \
                 libcurl \
                 libintl \
                 libssl1.1 \

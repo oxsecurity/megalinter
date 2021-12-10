@@ -45,6 +45,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
+                icu-libs \
                 libcurl \
                 libintl \
                 libssl1.1 \
