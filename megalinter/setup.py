@@ -11,7 +11,6 @@ setup(
     packages=["megalinter", "megalinter.linters", "megalinter.reporters"],
     install_requires=[
         "gitpython",
-        "jsonschema",
         "jsonpickle",
         "multiprocessing_logging",
         "pychalk",
@@ -23,13 +22,7 @@ setup(
         "pyyaml",
         "requests==2.24.0",
         "terminaltables",
-        "webpreview",
-        "yq",
         "importlib-metadata>=3.10",
-        "mkdocs-material",
-        "mdx_truly_sane_lists",
-        "beautifulsoup4",
-        "giturlparse",
     ],
     zip_safe=False,
 )
