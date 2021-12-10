@@ -21,13 +21,3 @@
 | RUBY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | RUBY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
-
-## Behind the scenes
-
-### Installation
-
-- APK packages (Linux):
-  - [ruby](https://pkgs.alpinelinux.org/packages?branch=edge&name=ruby)
-  - [ruby-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=ruby-dev)
-  - [ruby-bundler](https://pkgs.alpinelinux.org/packages?branch=edge&name=ruby-bundler)
-  - [ruby-rdoc](https://pkgs.alpinelinux.org/packages?branch=edge&name=ruby-rdoc)

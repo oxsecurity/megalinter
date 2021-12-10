@@ -24,3 +24,25 @@
 | ARM_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | ARM_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
+
+## Behind the scenes
+
+### Installation
+
+- Dockerfile commands :
+```dockerfile
+ARG PWSH_VERSION='latest'
+ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
+RUN mkdir -p ${PWSH_DIRECTORY} \
+    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+        | grep browser_download_url \
+        | grep linux-alpine-x64 \
+        | cut -d '"' -f 4 \
+        | xargs -n 1 wget -O - \
+        | tar -xzC ${PWSH_DIRECTORY} \
+    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
+
+```
+
+- APK packages (Linux):
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)

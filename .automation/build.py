@@ -348,6 +348,9 @@ def match_flavor(item, flavor, flavor_info):
 # Automatically generate Dockerfile for standalone linters
 def generate_linter_dockerfiles():
     # Browse descriptors
+    linters_md = "# Standalone linter docker images\n\n"
+    linters_md += "| Linter key | Docker image | Size |\n"
+    linters_md += "| :----------| :----------- | :--: |\n"
     descriptor_files = megalinter.linter_factory.list_descriptor_files()
     gha_workflow_yml = ["        linter:", "          ["]
     for descriptor_file in descriptor_files:
@@ -389,6 +392,12 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
+            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{DEFAULT_RELEASE}"
+            docker_image_badge = (
+                f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{DEFAULT_RELEASE})"
+            )
+            linters_md += f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
 
     # Update github action workflow
     gha_workflow_yml += ["          ]"]
@@ -398,6 +407,10 @@ def generate_linter_dockerfiles():
         "# linters-end",
         "\n".join(gha_workflow_yml),
     )
+    # Write MD file
+    file = open(f"{REPO_HOME}/docs/standalone-linters.md", "w", encoding="utf-8")
+    file.write(linters_md + "\n")
+    file.close()
 
 
 # Automatically generate a test class for each linter class

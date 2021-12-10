@@ -22,3 +22,10 @@
 | KOTLIN_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | KOTLIN_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
 
+
+## Behind the scenes
+
+### Installation
+
+- APK packages (Linux):
+  - [openjdk8](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk8)

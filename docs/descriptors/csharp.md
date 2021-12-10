@@ -36,6 +36,11 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 ```
 
 - APK packages (Linux):
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)
+  - [libcurl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libcurl)
+  - [libintl](https://pkgs.alpinelinux.org/packages?branch=edge&name=libintl)
+  - [libssl1.1](https://pkgs.alpinelinux.org/packages?branch=edge&name=libssl1.1)
+  - [libstdc++](https://pkgs.alpinelinux.org/packages?branch=edge&name=libstdc++)
   - [lttng-ust-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=lttng-ust-dev)
   - [zlib](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib)
   - [zlib-dev](https://pkgs.alpinelinux.org/packages?branch=edge&name=zlib-dev)
