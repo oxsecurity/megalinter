@@ -376,7 +376,7 @@ def generate_linter_dockerfiles():
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
-                f"    FLAVOR_SUGGESTIONS=false \\",
+                "    FLAVOR_SUGGESTIONS=false \\",
                 f"    SINGLE_LINTER={linter.name} \\",
                 "    PRINT_ALPACA=false \\",
                 "    SARIF_REPORTER=true \\",
