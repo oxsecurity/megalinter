@@ -1,0 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  # pull image for caches
+  - init: docker pull megalinter/megalinter:latest
+vscode:
+  extensions:
+    - ms-python.python
+    - stylelint.vscode-stylelint
+    - foxundermoon.shell-format
+    - matangover.mypy
+    - streetsidesoftware.code-spell-checker
+    - esbenp.prettier-vscode
+    - exiasr.hadolint
+    - timonwong.shellcheck
