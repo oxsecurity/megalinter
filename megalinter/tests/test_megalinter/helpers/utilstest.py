@@ -46,11 +46,11 @@ def linter_test_setup(params=None):
         "IGNORE_GITIGNORED_FILES",
         "IGNORE_GENERATED_FILES",
         "SHOW_ELAPSED_TIME",
-        "UPDATED_SOURCES_REPORTER"
+        "UPDATED_SOURCES_REPORTER",
         "MEGALINTER_FLAVOR",
         "FLAVOR_SUGGESTIONS",
         "SARIF_REPORTER",
-        "LOG_FILE"
+        "LOG_FILE",
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -155,7 +155,7 @@ def test_linter_success(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "LOG_LEVEL": "DEBUG",
         "ENABLE_LINTERS": linter.name,
-        "PRINT_ALL_FILES": True
+        "PRINT_ALL_FILES": True,
     }
     if linter.lint_all_other_linters_files is not False:
         env_vars["ENABLE_LINTERS"] += ",JAVASCRIPT_ES"
@@ -413,10 +413,10 @@ def test_linter_report_tap(linter, test_self):
         f"expected-{linter.descriptor_id}.tap",
     ] + reports_with_extension
     for file_nm in list(dict.fromkeys(possible_reports)):
-        if os.path.isfile(f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"):
-            expected_file_name = (
-                f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"
-            )
+        if os.path.isfile(
+            f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"
+        ):
+            expected_file_name = f"{workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}{os.path.sep}{file_nm}"
     if expected_file_name == "":
         raise unittest.SkipTest(
             f"Expected report not defined in {workspace}{os.path.sep}{DEFAULT_REPORT_FOLDER_NAME}"
@@ -482,24 +482,31 @@ def test_linter_report_tap(linter, test_self):
                     f"remain perfectly identical :)"
                 )
 
+
 # Test that the linter provides a SARIF output if it is configured like that
 def test_linter_report_sarif(linter, test_self):
-    if linter.disabled is True or "all" in getattr(
-        linter, "descriptor_flavors_exclude", []
-    ) or linter.can_output_sarif is False:
+    if (
+        linter.disabled is True
+        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
+        or linter.can_output_sarif is False
+    ):
         raise unittest.SkipTest("SARIF is not configured for this linter")
     test_folder = linter.test_folder
     workspace = config.get("DEFAULT_WORKSPACE") + os.path.sep + test_folder
+    if os.path.isdir(workspace + os.path.sep + "bad"):
+        workspace = workspace + os.path.sep + "bad"
+        workspace = manage_copy_sources(workspace)
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
     tmp_report_folder = tempfile.gettempdir()
     env_vars = {
         "DEFAULT_WORKSPACE": workspace,
+        "FILTER_REGEX_INCLUDE": r"(bad)",
         "SARIF_REPORTER": "true",
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "ENABLE_LINTERS": linter.name,
         "LOG_LEVEL": "DEBUG",
-        "LOG_FILE": 'megalinter.log'
+        "LOG_FILE": "megalinter.log",
     }
     env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
@@ -511,8 +518,21 @@ def test_linter_report_sarif(linter, test_self):
         f"{tmp_report_folder}{os.path.sep}sarif{os.path.sep}{linter.name}.sarif"
     )
     test_self.assertTrue(
-        os.path.isfile(tmp_sarif_file_name), f"SARIF report not found {tmp_sarif_file_name}"
+        os.path.isfile(tmp_sarif_file_name),
+        f"SARIF report not found {tmp_sarif_file_name}",
     )
+
+    # Check SARIF file length
+    with open(tmp_sarif_file_name, "r", encoding="utf-8") as json_file:
+        content = json_file.read()
+        test_self.assertTrue(len(content) > 1, "SARIF output file is not empty")
+
+    # Check SARIF file content
+    with open(tmp_sarif_file_name, "r", encoding="utf-8") as json_file:
+        sarif_data = json.load(json_file)
+        test_self.assertTrue(
+            "runs" in sarif_data, "SARIF output file contains runs info"
+        )
 
 
 def assert_is_skipped(skipped_item, output, test_self):

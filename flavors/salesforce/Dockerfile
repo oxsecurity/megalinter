@@ -198,7 +198,7 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
+RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.2
 
 # sfdx-scanner-apex installation
 RUN sfdx plugins:install @salesforce/sfdx-scanner
