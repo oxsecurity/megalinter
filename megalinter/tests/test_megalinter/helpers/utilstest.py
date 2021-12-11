@@ -49,7 +49,8 @@ def linter_test_setup(params=None):
         "UPDATED_SOURCES_REPORTER"
         "MEGALINTER_FLAVOR",
         "FLAVOR_SUGGESTIONS",
-        "SARIF_REPORTER"
+        "SARIF_REPORTER",
+        "LOG_FILE"
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -498,6 +499,7 @@ def test_linter_report_sarif(linter, test_self):
         "REPORT_OUTPUT_FOLDER": tmp_report_folder,
         "ENABLE_LINTERS": linter.name,
         "LOG_LEVEL": "DEBUG",
+        "LOG_FILE": 'megalinter.log'
     }
     env_vars.update(linter.test_variables)
     mega_linter, _output = call_mega_linter(env_vars)
