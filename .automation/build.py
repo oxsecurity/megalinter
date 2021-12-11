@@ -274,8 +274,8 @@ def build_dockerfile(
         apk_packages += ["ruby", "ruby-dev", "ruby-bundler","ruby-rdoc"]
     # Replace between tags in Dockerfile
     # Commands
-    replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))
-    replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(docker_arg))
+    replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(list(dict.fromkeys(docker_from))))
+    replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(list(dict.fromkeys(docker_arg))))
     replace_in_file(
         dockerfile,
         "#OTHER__START",

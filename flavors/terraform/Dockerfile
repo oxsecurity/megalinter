@@ -17,7 +17,6 @@ FROM zricethezav/gitleaks:latest as gitleaks
 FROM ghcr.io/terraform-linters/tflint:latest as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
-FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
 #FROM__END
 

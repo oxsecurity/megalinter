@@ -27,8 +27,6 @@ FROM python:3.9.7-alpine3.13
 #ARG__START
 ARG PWSH_VERSION='latest'
 ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
-ARG PWSH_VERSION='latest'
-ARG PWSH_DIRECTORY='/opt/microsoft/powershell'
 ARG ARM_TTK_NAME='master.zip'
 ARG ARM_TTK_URI='https://github.com/Azure/arm-ttk/archive/master.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
