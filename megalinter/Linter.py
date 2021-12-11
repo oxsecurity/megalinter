@@ -202,6 +202,14 @@ class Linter:
             else:
                 self.apply_fixes = False
 
+            # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
+            # because there are no other linters
+            if (
+                self.lint_all_other_linters_files is True
+                and config.get("SINGLE_LINTER", "") != ""
+            ):
+                self.lint_all_other_linters_files = False
+
             # Config items
             self.linter_rules_path = (
                 params["linter_rules_path"] if "linter_rules_path" in params else "."
@@ -558,10 +566,8 @@ class Linter:
         for txt in variables:
             if "{{SARIF_OUTPUT_FILE}}" in txt:
                 txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
-                os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
-                os.makedirs(self.report_folder, exist_ok=True)
             variables_with_replacements += [txt]
 
         return variables_with_replacements
@@ -878,6 +884,7 @@ class Linter:
             self.sarif_output_file = (
                 self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
             )
+            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
             self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
             cmd += self.cli_sarif_args
 

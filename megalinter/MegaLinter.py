@@ -43,8 +43,12 @@ class Megalinter:
         self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
         self.report_folder = config.get(
             "REPORT_OUTPUT_FOLDER",
-            config.get("OUTPUT_FOLDER", self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME),
+            config.get(
+                "OUTPUT_FOLDER",
+                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
+            ),
         )
+        os.makedirs(self.report_folder, exist_ok=True)
         self.initialize_logger()
         self.manage_upgrade_message()
         self.display_header()
@@ -352,12 +356,19 @@ class Megalinter:
             "report_folder": self.report_folder,
             "apply_fixes": self.apply_fixes,
             "show_elapsed_time": self.show_elapsed_time,
-            "output_sarif": self.output_sarif
+            "output_sarif": self.output_sarif,
         }
 
         # Build linters from descriptor files
         # if flavor selected and no flavor suggestion, ignore linters that are not in current flavor)
-        if (
+        if self.megalinter_flavor == "none":
+            # Single linter docker image
+            unique_linter = config.get("SINGLE_LINTER")
+            all_linters = linter_factory.list_linters_by_name(
+                linter_init_params, [unique_linter]
+            )
+        elif (
+            # Flavored MegaLinter
             self.megalinter_flavor != "all"
             and config.get("FLAVOR_SUGGESTIONS", "true") != "true"
         ):
@@ -365,6 +376,7 @@ class Megalinter:
                 linter_init_params, self.megalinter_flavor
             )
         else:
+            # main flavor
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
@@ -575,19 +587,31 @@ class Megalinter:
             else logging.INFO
         )
         log_file = (
-            self.report_folder + os.path.sep + config.get("LOG_FILE", "mega-linter.log")
+            self.report_folder + os.path.sep + config.get("LOG_FILE", "megalinter.log")
         )
         if not os.path.isdir(os.path.dirname(log_file)):
             os.makedirs(os.path.dirname(log_file), exist_ok=True)
-        logging.basicConfig(
-            force=True,
-            level=logging_level,
-            format="%(message)s",
-            handlers=[
-                logging.FileHandler(log_file, "w", "utf-8"),
-                logging.StreamHandler(sys.stdout),
-            ],
-        )
+        if (config.get("LOG_FILE","") == "none"):
+            # Do not log console output in a file
+            logging.basicConfig(
+                force=True,
+                level=logging_level,
+                format="%(message)s",
+                handlers=[
+                    logging.StreamHandler(sys.stdout),
+                ],
+            )
+        else:
+            # Log console output in a file
+            logging.basicConfig(
+                force=True,
+                level=logging_level,
+                format="%(message)s",
+                handlers=[
+                    logging.FileHandler(log_file, "w", "utf-8"),
+                    logging.StreamHandler(sys.stdout),
+                ],
+            )
 
     @staticmethod
     def display_header():

@@ -1,7 +1,9 @@
 {
     "descriptors": [
+        "ACTION",
+        "BASH",
         "JAVA",
-        "REPOSITORY"
+        "KOTLIN"
     ],
     "label": "Optimized for JAVA based projects",
     "linters": [

@@ -33,3 +33,5 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
 
 ```
 
+- APK packages (Linux):
+  - [openjdk8](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk8)

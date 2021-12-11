@@ -50,5 +50,9 @@ linters:
       - "jscpd --output ./report/copy-paste/ -c .jscpd.json ."
     downgraded_version: true
     install:
+      apk:
+        - nodejs
+        - npm
+        - yarn
       npm:
         - jscpd@3.3.26

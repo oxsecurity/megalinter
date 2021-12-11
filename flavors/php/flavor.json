@@ -1,7 +1,9 @@
 {
     "descriptors": [
-        "PHP",
-        "REPOSITORY"
+        "ACTION",
+        "BASH",
+        "KOTLIN",
+        "PHP"
     ],
     "label": "Optimized for PHP based projects",
     "linters": [
@@ -30,7 +32,6 @@
         "MARKDOWN_MARKDOWN_LINK_CHECK",
         "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
         "OPENAPI_SPECTRAL",
-        "PHP_BUILTIN",
         "PHP_PHPCS",
         "PHP_PHPSTAN",
         "PHP_PSALM",

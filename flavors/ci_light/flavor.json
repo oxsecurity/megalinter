@@ -1,7 +1,5 @@
 {
-    "descriptors": [
-        "REPOSITORY"
-    ],
+    "descriptors": [],
     "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
     "linters": [
         "DOCKERFILE_HADOLINT",

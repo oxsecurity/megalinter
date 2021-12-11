@@ -3,6 +3,8 @@ descriptor_type: other
 descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
 lint_all_other_linters_files: true
+file_extensions:
+  - "*"
 linters:
   # MISSPELL
   - linter_name: misspell

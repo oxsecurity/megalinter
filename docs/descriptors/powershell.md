@@ -47,3 +47,5 @@ RUN mkdir -p ${PWSH_DIRECTORY} \
 
 ```
 
+- APK packages (Linux):
+  - [icu-libs](https://pkgs.alpinelinux.org/packages?branch=edge&name=icu-libs)

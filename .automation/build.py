@@ -63,6 +63,7 @@ HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
 FLAVORS_DIR = REPO_HOME + "/flavors"
+LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
 
 BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
@@ -218,6 +219,12 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
+    build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, [])
+
+
+def build_dockerfile(
+    dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+):
     # Gather all dockerfile commands
     docker_from = []
     docker_arg = []
@@ -244,6 +251,12 @@ branding:
                     docker_from += [dockerfile_item]
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
+                elif dockerfile_item in docker_other:
+                    dockerfile_item = (
+                        "# Next line commented because already managed by another linter\n"
+                        "# " + "\n# ".join(dockerfile_item.splitlines())
+                    )
+                    docker_other += [dockerfile_item]
                 else:
                     docker_other += [dockerfile_item]
             docker_other += [""]
@@ -259,10 +272,26 @@ branding:
         # Collect ruby packages
         if "gem" in item["install"]:
             gem_packages += item["install"]["gem"]
+    # Add node install if node packages are here
+    if len(npm_packages) > 0:
+        apk_packages += ["nodejs", "npm", "yarn"]
+    # Add ruby apk packages if gem packages are here
+    if len(gem_packages) > 0:
+        apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
     # Replace between tags in Dockerfile
     # Commands
-    replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(docker_from))
-    replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(docker_arg))
+    replace_in_file(
+        dockerfile,
+        "#FROM__START",
+        "#FROM__END",
+        "\n".join(list(dict.fromkeys(docker_from))),
+    )
+    replace_in_file(
+        dockerfile,
+        "#ARG__START",
+        "#ARG__END",
+        "\n".join(list(dict.fromkeys(docker_arg))),
+    )
     replace_in_file(
         dockerfile,
         "#OTHER__START",
@@ -305,6 +334,12 @@ branding:
     replace_in_file(dockerfile, "#GEM__START", "#GEM__END", gem_install_command)
     flavor_env = f"ENV MEGALINTER_FLAVOR={flavor}"
     replace_in_file(dockerfile, "#FLAVOR__START", "#FLAVOR__END", flavor_env)
+    replace_in_file(
+        dockerfile,
+        "#EXTRA_DOCKERFILE_LINES__START",
+        "#EXTRA_DOCKERFILE_LINES__END",
+        "\n".join(extra_lines),
+    )
 
 
 def match_flavor(item, flavor, flavor_info):
@@ -324,6 +359,79 @@ def match_flavor(item, flavor, flavor_info):
         ):
             return True
     return False
+
+
+# Automatically generate Dockerfile for standalone linters
+def generate_linter_dockerfiles():
+    # Browse descriptors
+    linters_md = "# Standalone linter docker images\n\n"
+    linters_md += "| Linter key | Docker image | Size |\n"
+    linters_md += "| :----------| :----------- | :--: |\n"
+    descriptor_files = megalinter.linter_factory.list_descriptor_files()
+    gha_workflow_yml = ["        linter:", "          ["]
+    for descriptor_file in descriptor_files:
+        descriptor_items = []
+        with open(descriptor_file, "r", encoding="utf-8") as f:
+            descriptor = yaml.load(f, Loader=yaml.FullLoader)
+        if "install" in descriptor:
+            descriptor_items += [descriptor]
+        descriptor_linters = megalinter.linter_factory.build_descriptor_linters(
+            descriptor_file, None
+        )
+        # Browse descriptor linters
+        for linter in descriptor_linters:
+            # Unique linter dockerfile
+            linter_lower_name = linter.name.lower()
+            dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
+            if not os.path.isdir(os.path.dirname(dockerfile)):
+                os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
+            requires_docker = False
+            if linter.cli_docker_image is not None:
+                requires_docker = True
+            descriptor_and_linter = descriptor_items + [vars(linter)]
+            copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
+            extra_lines = [
+                f"ENV ENABLE_LINTERS={linter.name} \\",
+                "    FLAVOR_SUGGESTIONS=false \\",
+                f"    SINGLE_LINTER={linter.name} \\",
+                "    PRINT_ALPACA=false \\",
+                "    LOG_FILE=none \\",
+                "    SARIF_REPORTER=true \\",
+                "    TEXT_REPORTER=false \\",
+                "    UPDATED_SOURCES_REPORTER=false \\",
+                "    GITHUB_STATUS_REPORTER=false \\",
+                "    GITHUB_COMMENT_REPORTER=false \\",
+                "    EMAIL_REPORTER=false \\",
+                "    FILEIO_REPORTER=false \\",
+                "    CONFIG_REPORTER=false",
+            ]
+            build_dockerfile(
+                dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
+            )
+            gha_workflow_yml += [f'            "{linter_lower_name}",']
+            docker_image = (
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{DEFAULT_RELEASE}"
+            )
+            docker_image_badge = (
+                f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{DEFAULT_RELEASE})"
+            )
+            linters_md += (
+                f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
+            )
+
+    # Update github action workflow
+    gha_workflow_yml += ["          ]"]
+    replace_in_file(
+        f"{REPO_HOME}/.github/workflows/deploy-v6-alpha-linters.yml",
+        "# linters-start",
+        "# linters-end",
+        "\n".join(gha_workflow_yml),
+    )
+    # Write MD file
+    file = open(f"{REPO_HOME}/docs/standalone-linters.md", "w", encoding="utf-8")
+    file.write(linters_md + "\n")
+    file.close()
 
 
 # Automatically generate a test class for each linter class
@@ -2291,6 +2399,7 @@ if __name__ == "__main__":
     generate_json_schema_enums()
     validate_descriptors()
     generate_all_flavors()
+    generate_linter_dockerfiles()
     generate_linter_test_classes()
     if UPDATE_DOC is True:
         generate_documentation()

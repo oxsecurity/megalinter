@@ -1,6 +1,8 @@
 {
     "descriptors": [
-        "REPOSITORY"
+        "ACTION",
+        "BASH",
+        "KOTLIN"
     ],
     "label": "Optimized for SWIFT based projects",
     "linters": [

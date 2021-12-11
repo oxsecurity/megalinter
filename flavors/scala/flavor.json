@@ -1,6 +1,8 @@
 {
     "descriptors": [
-        "REPOSITORY",
+        "ACTION",
+        "BASH",
+        "KOTLIN",
         "SCALA"
     ],
     "label": "Optimized for SCALA based projects",

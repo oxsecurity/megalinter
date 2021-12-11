@@ -1,6 +1,8 @@
 {
     "descriptors": [
-        "REPOSITORY",
+        "ACTION",
+        "BASH",
+        "KOTLIN",
         "TYPESCRIPT"
     ],
     "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",

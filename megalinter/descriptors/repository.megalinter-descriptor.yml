@@ -4,9 +4,6 @@ descriptor_flavors:
   - all_flavors # Applicable to CI in any language project
   - ci_light
 lint_all_files: true
-install:
-  dockerfile:
-    - RUN git config --global core.autocrlf true
 linters:
   # GIT_DIFF
   - linter_name: git_diff

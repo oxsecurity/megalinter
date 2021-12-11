@@ -106,6 +106,7 @@ linters:
       - "terraform fmt myfile.tf"
     install:
       dockerfile:
+        - FROM alpine/terragrunt:latest as terragrunt
         - COPY --from=terragrunt /bin/terraform /usr/bin/
     ide:
       atom:

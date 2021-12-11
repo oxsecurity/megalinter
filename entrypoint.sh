@@ -5,6 +5,7 @@ export PYTHONPATH
 
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "UPGRADING LINTER VERSION"
+  pip install pytest-cov pytest-timeout
   # Run only get_linter_version test methods
   pytest -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
@@ -19,6 +20,7 @@ fi
 
 if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Run test cases with pytest
+  pip install pytest-cov pytest-timeout
   echo "RUNNING TEST CASES"
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest -v --timeout=80 --durations=0 --cov=megalinter --cov-report=xml megalinter/
@@ -34,8 +36,10 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
     echo "Error(s) found by Pytest"
     exit 1
   fi
-  # Upload to codecov.io
-  bash <(curl -s https://codecov.io/bash)
+  # Upload to codecov.io if all tests run
+  if [ -z "${TEST_KEYWORDS}" ]; then
+    bash <(curl -s https://codecov.io/bash)
+  fi
 
 else
   # Normal run

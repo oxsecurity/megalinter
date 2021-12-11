@@ -6,6 +6,9 @@ files_sub_directory: .github/workflows
 file_extensions:
   - ".yml"
   - ".yaml"
+install:
+  apk:
+    - go
 test_folder: action
 linters:
   # ACTIONLINT

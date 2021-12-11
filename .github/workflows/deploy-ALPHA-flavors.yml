@@ -44,6 +44,7 @@ jobs:
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         # flavors-start
@@ -92,6 +93,7 @@ jobs:
           IMAGE_VERSION: alpha
           DOCKERFILE_PATH: flavors/${{ matrix.flavor }}/Dockerfile
           REGISTRY: Docker
+          SQUASH: "true"
         shell: bash
         run: .automation/upload-docker.sh
 

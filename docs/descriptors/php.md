@@ -7,7 +7,6 @@
 
 | Linter                    | Configuration key             |
 |---------------------------|-------------------------------|
-| [php](php_php.md)         | [PHP_BUILTIN](php_php.md)     |
 | [phpcs](php_phpcs.md)     | [PHP_PHPCS](php_phpcs.md)     |
 | [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) |
 | [psalm](php_psalm.md)     | [PHP_PSALM](php_psalm.md)     |
@@ -47,6 +46,7 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 ```
 
 - APK packages (Linux):
+  - [gnupg](https://pkgs.alpinelinux.org/packages?branch=edge&name=gnupg)
   - [php7](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7)
   - [php7-phar](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-phar)
   - [php7-json](https://pkgs.alpinelinux.org/packages?branch=edge&name=php7-json)

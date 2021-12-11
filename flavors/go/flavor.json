@@ -1,7 +1,9 @@
 {
     "descriptors": [
+        "ACTION",
+        "BASH",
         "GO",
-        "REPOSITORY"
+        "KOTLIN"
     ],
     "label": "Optimized for GO based projects",
     "linters": [

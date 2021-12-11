@@ -7,7 +7,7 @@
 ##################
 # Get base image #
 ##################
-ARG MEGALINTER_BASE_IMAGE=megalinter/megalinter:latest
+ARG MEGALINTER_BASE_IMAGE=megalinter/megalinter:beta
 FROM $MEGALINTER_BASE_IMAGE
 
 ################################

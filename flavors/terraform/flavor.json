@@ -1,6 +1,8 @@
 {
     "descriptors": [
-        "REPOSITORY"
+        "ACTION",
+        "BASH",
+        "KOTLIN"
     ],
     "label": "Optimized for TERRAFORM based projects",
     "linters": [

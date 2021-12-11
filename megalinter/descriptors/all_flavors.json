@@ -1,8 +1,6 @@
 {
     "ci_light": {
-        "descriptors": [
-            "REPOSITORY"
-        ],
+        "descriptors": [],
         "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
         "linters": [
             "DOCKERFILE_HADOLINT",
@@ -25,7 +23,9 @@
     },
     "dart": {
         "descriptors": [
-            "REPOSITORY"
+            "ACTION",
+            "BASH",
+            "KOTLIN"
         ],
         "label": "Optimized for DART based projects",
         "linters": [
@@ -76,7 +76,9 @@
     },
     "documentation": {
         "descriptors": [
-            "REPOSITORY"
+            "ACTION",
+            "BASH",
+            "KOTLIN"
         ],
         "label": "MegaLinter for documentation projects",
         "linters": [
@@ -126,9 +128,13 @@
     },
     "dotnet": {
         "descriptors": [
+            "ACTION",
+            "ARM",
+            "BASH",
             "CSHARP",
+            "KOTLIN",
             "POWERSHELL",
-            "REPOSITORY"
+            "VBDOTNET"
         ],
         "label": "Optimized for C, C++, C# or VB based projects",
         "linters": [
@@ -185,8 +191,10 @@
     },
     "go": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "GO",
-            "REPOSITORY"
+            "KOTLIN"
         ],
         "label": "Optimized for GO based projects",
         "linters": [
@@ -238,8 +246,10 @@
     },
     "java": {
         "descriptors": [
+            "ACTION",
+            "BASH",
             "JAVA",
-            "REPOSITORY"
+            "KOTLIN"
         ],
         "label": "Optimized for JAVA based projects",
         "linters": [
@@ -291,7 +301,9 @@
     },
     "javascript": {
         "descriptors": [
-            "REPOSITORY",
+            "ACTION",
+            "BASH",
+            "KOTLIN",
             "TYPESCRIPT"
         ],
         "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",
@@ -351,8 +363,10 @@
     },
     "php": {
         "descriptors": [
-            "PHP",
-            "REPOSITORY"
+            "ACTION",
+            "BASH",
+            "KOTLIN",
+            "PHP"
         ],
         "label": "Optimized for PHP based projects",
         "linters": [
@@ -381,7 +395,6 @@
             "MARKDOWN_MARKDOWN_LINK_CHECK",
             "MARKDOWN_MARKDOWN_TABLE_FORMATTER",
             "OPENAPI_SPECTRAL",
-            "PHP_BUILTIN",
             "PHP_PHPCS",
             "PHP_PHPSTAN",
             "PHP_PSALM",
@@ -407,7 +420,9 @@
     },
     "python": {
         "descriptors": [
-            "REPOSITORY"
+            "ACTION",
+            "BASH",
+            "KOTLIN"
         ],
         "label": "Optimized for PYTHON based projects",
         "linters": [
@@ -466,8 +481,9 @@
     },
     "ruby": {
         "descriptors": [
-            "REPOSITORY",
-            "RUBY"
+            "ACTION",
+            "BASH",
+            "KOTLIN"
         ],
         "label": "Optimized for RUBY based projects",
         "linters": [
@@ -518,7 +534,9 @@
     },
     "rust": {
         "descriptors": [
-            "REPOSITORY",
+            "ACTION",
+            "BASH",
+            "KOTLIN",
             "RUST"
         ],
         "label": "Optimized for RUST based projects",
@@ -570,7 +588,9 @@
     },
     "salesforce": {
         "descriptors": [
-            "REPOSITORY",
+            "ACTION",
+            "BASH",
+            "KOTLIN",
             "SALESFORCE"
         ],
         "label": "Optimized for Salesforce based projects",
@@ -624,7 +644,9 @@
     },
     "scala": {
         "descriptors": [
-            "REPOSITORY",
+            "ACTION",
+            "BASH",
+            "KOTLIN",
             "SCALA"
         ],
         "label": "Optimized for SCALA based projects",
@@ -697,7 +719,9 @@
     },
     "swift": {
         "descriptors": [
-            "REPOSITORY"
+            "ACTION",
+            "BASH",
+            "KOTLIN"
         ],
         "label": "Optimized for SWIFT based projects",
         "linters": [
@@ -748,7 +772,9 @@
     },
     "terraform": {
         "descriptors": [
-            "REPOSITORY"
+            "ACTION",
+            "BASH",
+            "KOTLIN"
         ],
         "label": "Optimized for TERRAFORM based projects",
         "linters": [
