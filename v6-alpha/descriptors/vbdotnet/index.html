@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 49 languages, 22 formats, 19 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
+        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 19 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/v6-alpha/descriptors/vbdotnet/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a617204b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.82f3c0b9.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -1397,20 +1397,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../php_php/" class="md-nav__link">
-        php
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../php_phpcs/" class="md-nav__link">
         phpcs
       </a>
@@ -2439,6 +2425,26 @@
   <a href="#configuration-in-megalinter" class="md-nav__link">
     Configuration in MegaLinter
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    Behind the scenes
+  </a>
+  
+    <nav class="md-nav" aria-label="Behind the scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5314,6 +5320,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    Behind the scenes
+  </a>
+  
+    <nav class="md-nav" aria-label="Behind the scenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5379,6 +5405,30 @@
 </tr>
 </tbody>
 </table>
+<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h3 id="installation">Installation</h3>
+<ul>
+<li>Dockerfile commands :</li>
+</ul>
+<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+    &amp;&amp; chmod +x dotnet-install.sh \
+    &amp;&amp; ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+
+ENV PATH=&quot;${PATH}:/root/.dotnet/tools:/usr/share/dotnet&quot;
+</code></pre>
+<ul>
+<li>APK packages (Linux):<ul>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=icu-libs">icu-libs</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libcurl">libcurl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libintl">libintl</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libssl1.1">libssl1.1</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=libstdc++">libstdc++</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=lttng-ust-dev">lttng-ust-dev</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib">zlib</a></li>
+<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=zlib-dev">zlib-dev</a></li>
+</ul>
+</li>
+</ul>
 
               
             </article>
@@ -5486,7 +5536,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a5f8ea78.min.js"></script>
+      <script src="../../assets/javascripts/bundle.17f42bbf.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
