@@ -591,15 +591,27 @@ class Megalinter:
         )
         if not os.path.isdir(os.path.dirname(log_file)):
             os.makedirs(os.path.dirname(log_file), exist_ok=True)
-        logging.basicConfig(
-            force=True,
-            level=logging_level,
-            format="%(message)s",
-            handlers=[
-                logging.FileHandler(log_file, "w", "utf-8"),
-                logging.StreamHandler(sys.stdout),
-            ],
-        )
+        if (config.get("LOG_FILE","") == "none"):
+            # Do not log console output in a file
+            logging.basicConfig(
+                force=True,
+                level=logging_level,
+                format="%(message)s",
+                handlers=[
+                    logging.StreamHandler(sys.stdout),
+                ],
+            )
+        else:
+            # Log console output in a file
+            logging.basicConfig(
+                force=True,
+                level=logging_level,
+                format="%(message)s",
+                handlers=[
+                    logging.FileHandler(log_file, "w", "utf-8"),
+                    logging.StreamHandler(sys.stdout),
+                ],
+            )
 
     @staticmethod
     def display_header():
