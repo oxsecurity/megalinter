@@ -3,7 +3,6 @@
         "ACTION",
         "BASH",
         "KOTLIN",
-        "REPOSITORY",
         "TYPESCRIPT"
     ],
     "label": "Optimized for JAVASCRIPT or TYPESCRIPT based projects",

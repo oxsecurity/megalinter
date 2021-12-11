@@ -2,8 +2,7 @@
     "descriptors": [
         "ACTION",
         "BASH",
-        "KOTLIN",
-        "REPOSITORY"
+        "KOTLIN"
     ],
     "label": "MegaLinter for documentation projects",
     "linters": [

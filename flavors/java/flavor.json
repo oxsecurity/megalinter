@@ -3,8 +3,7 @@
         "ACTION",
         "BASH",
         "JAVA",
-        "KOTLIN",
-        "REPOSITORY"
+        "KOTLIN"
     ],
     "label": "Optimized for JAVA based projects",
     "linters": [

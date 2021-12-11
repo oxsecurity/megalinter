@@ -6,7 +6,6 @@
         "CSHARP",
         "KOTLIN",
         "POWERSHELL",
-        "REPOSITORY",
         "VBDOTNET"
     ],
     "label": "Optimized for C, C++, C# or VB based projects",

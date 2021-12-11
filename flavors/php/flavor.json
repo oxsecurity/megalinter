@@ -3,8 +3,7 @@
         "ACTION",
         "BASH",
         "KOTLIN",
-        "PHP",
-        "REPOSITORY"
+        "PHP"
     ],
     "label": "Optimized for PHP based projects",
     "linters": [

@@ -3,8 +3,7 @@
         "ACTION",
         "BASH",
         "GO",
-        "KOTLIN",
-        "REPOSITORY"
+        "KOTLIN"
     ],
     "label": "Optimized for GO based projects",
     "linters": [
