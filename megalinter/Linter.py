@@ -202,8 +202,12 @@ class Linter:
             else:
                 self.apply_fixes = False
 
-            # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image, because there are no other linters
-            if self.lint_all_other_linters_files is True and config.get("SINGLE_LINTER","") != "": 
+            # Disable lint_all_other_linters_files=true if we are in a standalone linter docker image,
+            # because there are no other linters
+            if (
+                self.lint_all_other_linters_files is True
+                and config.get("SINGLE_LINTER", "") != ""
+            ):
                 self.lint_all_other_linters_files = False
 
             # Config items

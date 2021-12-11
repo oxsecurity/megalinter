@@ -271,11 +271,21 @@ def build_dockerfile(
         apk_packages += ["nodejs", "npm", "yarn"]
     # Add ruby apk packages if gem packages are here
     if len(gem_packages) > 0:
-        apk_packages += ["ruby", "ruby-dev", "ruby-bundler","ruby-rdoc"]
+        apk_packages += ["ruby", "ruby-dev", "ruby-bundler", "ruby-rdoc"]
     # Replace between tags in Dockerfile
     # Commands
-    replace_in_file(dockerfile, "#FROM__START", "#FROM__END", "\n".join(list(dict.fromkeys(docker_from))))
-    replace_in_file(dockerfile, "#ARG__START", "#ARG__END", "\n".join(list(dict.fromkeys(docker_arg))))
+    replace_in_file(
+        dockerfile,
+        "#FROM__START",
+        "#FROM__END",
+        "\n".join(list(dict.fromkeys(docker_from))),
+    )
+    replace_in_file(
+        dockerfile,
+        "#ARG__START",
+        "#ARG__END",
+        "\n".join(list(dict.fromkeys(docker_arg))),
+    )
     replace_in_file(
         dockerfile,
         "#OTHER__START",
@@ -392,12 +402,16 @@ def generate_linter_dockerfiles():
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
-            docker_image = f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{DEFAULT_RELEASE}"
+            docker_image = (
+                f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}:{DEFAULT_RELEASE}"
+            )
             docker_image_badge = (
                 f"![Docker Image Size (tag)]({BASE_SHIELD_IMAGE_LINK}/"
                 f"{ML_DOCKER_IMAGE}-only-{linter_lower_name}/{DEFAULT_RELEASE})"
             )
-            linters_md += f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
+            linters_md += (
+                f"| {linter.name} | {docker_image} | {docker_image_badge}  |\n"
+            )
 
     # Update github action workflow
     gha_workflow_yml += ["          ]"]
