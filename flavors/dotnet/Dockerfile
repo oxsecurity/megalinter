@@ -79,9 +79,9 @@ RUN apk add --update --no-cache \
 
 # PATH for golang
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go \
-    # hadolint ignore=DL3044
-    PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+    GOPATH=/go
+# hadolint ignore=DL3044
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
     # Ignore npm package issues
     yarn config set ignore-engines true || true
@@ -180,22 +180,23 @@ RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # POWERSHELL installation
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
-
+# Next line commented because already managed by another linter
+# RUN mkdir -p ${PWSH_DIRECTORY} \
+#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+#         | grep browser_download_url \
+#         | grep linux-alpine-x64 \
+#         | cut -d '"' -f 4 \
+#         | xargs -n 1 wget -O - \
+#         | tar -xzC ${PWSH_DIRECTORY} \
+#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 # VBDOTNET installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # actionlint installation
 ENV GO111MODULE=on
@@ -222,7 +223,8 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 
 # shfmt installation
-ENV GO111MODULE=on
+# Next line commented because already managed by another linter
+# ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # dotnet-format installation
@@ -264,15 +266,17 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 
 # tsqllint installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN dotnet tool install --global TSQLLint
 
 # dotnet-format installation
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+# Next line commented because already managed by another linter
+# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 

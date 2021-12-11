@@ -58,9 +58,9 @@ RUN apk add --update --no-cache \
 
 # PATH for golang
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go \
-    # hadolint ignore=DL3044
-    PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+    GOPATH=/go
+# hadolint ignore=DL3044
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
     # Ignore npm package issues
     yarn config set ignore-engines true || true

@@ -118,9 +118,9 @@ RUN apk add --update --no-cache \
 
 # PATH for golang
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go \
-    # hadolint ignore=DL3044
-    PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+    GOPATH=/go
+# hadolint ignore=DL3044
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
     # Ignore npm package issues
     yarn config set ignore-engines true || true
@@ -278,23 +278,25 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
 
 
 # POWERSHELL installation
-RUN mkdir -p ${PWSH_DIRECTORY} \
-    && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
-        | grep browser_download_url \
-        | grep linux-alpine-x64 \
-        | cut -d '"' -f 4 \
-        | xargs -n 1 wget -O - \
-        | tar -xzC ${PWSH_DIRECTORY} \
-    && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
-
+# Next line commented because already managed by another linter
+# RUN mkdir -p ${PWSH_DIRECTORY} \
+#     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \
+#         | grep browser_download_url \
+#         | grep linux-alpine-x64 \
+#         | cut -d '"' -f 4 \
+#         | xargs -n 1 wget -O - \
+#         | tar -xzC ${PWSH_DIRECTORY} \
+#     && ln -sf ${PWSH_DIRECTORY}/pwsh /usr/bin/pwsh
 
 # RUST installation
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # SALESFORCE installation
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
+# Next line commented because already managed by another linter
+# ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+# Next line commented because already managed by another linter
+# ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis
 
 # SCALA installation
@@ -303,11 +305,12 @@ RUN curl -fLo coursier https://git.io/coursier-cli && \
 
 
 # VBDOTNET installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # actionlint installation
 ENV GO111MODULE=on
@@ -334,7 +337,8 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 
 # shfmt installation
-ENV GO111MODULE=on
+# Next line commented because already managed by another linter
+# ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # clj-kondo installation
@@ -461,10 +465,12 @@ RUN rustup component add clippy
 RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-aura installation
-RUN sfdx plugins:install @salesforce/sfdx-scanner
+# Next line commented because already managed by another linter
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # sfdx-scanner-lwc installation
-RUN sfdx plugins:install @salesforce/sfdx-scanner
+# Next line commented because already managed by another linter
+# RUN sfdx plugins:install @salesforce/sfdx-scanner
 
 # scalafix installation
 RUN ./coursier install scalafix --quiet --install-dir /usr/bin
@@ -475,11 +481,12 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 
 # tsqllint installation
-RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x dotnet-install.sh \
-    && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
-
-ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN dotnet tool install --global TSQLLint
 
 # tflint installation
@@ -507,7 +514,8 @@ ENV KICS_QUERIES_PATH=/opt/kics/assets/queries KICS_LIBRARIES_PATH=/opt/kics/ass
 COPY --from=kics /app/bin/assets /opt/kics/assets/
 
 # dotnet-format installation
-RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
+# Next line commented because already managed by another linter
+# RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 #OTHER__END
 

@@ -66,9 +66,9 @@ RUN apk add --update --no-cache \
 
 # PATH for golang
 ENV GOROOT=/usr/lib/go \
-    GOPATH=/go \
-    # hadolint ignore=DL3044
-    PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+    GOPATH=/go
+# hadolint ignore=DL3044
+ENV PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
     # Ignore npm package issues
     yarn config set ignore-engines true || true
@@ -163,7 +163,8 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 
 # shfmt installation
-ENV GO111MODULE=on
+# Next line commented because already managed by another linter
+# ENV GO111MODULE=on
 RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
 
 # hadolint installation

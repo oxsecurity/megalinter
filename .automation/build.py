@@ -251,6 +251,12 @@ def build_dockerfile(
                     docker_from += [dockerfile_item]
                 elif dockerfile_item.startswith("ARG"):
                     docker_arg += [dockerfile_item]
+                elif dockerfile_item in docker_other:
+                    dockerfile_item = (
+                        "# Next line commented because already managed by another linter\n"
+                        "# " + "\n# ".join(dockerfile_item.splitlines())
+                    )
+                    docker_other += [dockerfile_item]
                 else:
                     docker_other += [dockerfile_item]
             docker_other += [""]
