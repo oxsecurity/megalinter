@@ -52,10 +52,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 fi
 
 # Run ssh server and wait for calls
-if [ "${KEEP_ALIVE_MEGALINTER}" == "true" ]; then
-  echo "[MegaLinter init] REUSABLE CONTAINER"
-  ssh-keygen -A
-  exec /usr/sbin/sshd -D -e "$@"
+if [ "${MEGALINTER_SERVER}" == "true" ]; then
+  echo "[MegaLinter init] MEGALINTER SERVER"
+  python -m megalinter_server.run
 else
   # Normal run
   echo "[MegaLinter init] ONE-SHOT RUN"
