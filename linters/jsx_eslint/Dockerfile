@@ -38,7 +38,8 @@ RUN apk add --update --no-cache \
         libffi-dev \
         make \
         musl-dev \
-        openssh && \
+        openssh \
+        openrc && \
     git config --global core.autocrlf true
 
 #############################################################################################
