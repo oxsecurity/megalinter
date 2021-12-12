@@ -17,6 +17,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.641 to **2.0.648** on 2021-12-11
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.2 to **5.13.3** on 2021-12-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.13 to **0.35.14** on 2021-12-11
+  - [checkov](https://www.checkov.io/) from 2.0.648 to **2.0.649** on 2021-12-12
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
