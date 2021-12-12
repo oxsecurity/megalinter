@@ -7,6 +7,7 @@ file_extensions:
 linters:
   # TFLINT
   - linter_name: tflint
+    can_output_sarif: true
     name: TERRAFORM_TFLINT
     descriptor_flavors:
       - terraform
@@ -20,6 +21,9 @@ linters:
     pre_commands:
       - command: tflint --init
         cwd: workspace
+    cli_sarif_args:
+      - --format
+      - sarif
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
@@ -29,6 +33,7 @@ linters:
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - linter_name: terrascan
+    can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
       - terraform
@@ -44,6 +49,10 @@ linters:
       - "terraform"
       - "-t"
       - "all"
+    cli_sarif_args:
+      - -o
+      - sarif
+    cli_lint_extra_args_after:
       - "-f"
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
