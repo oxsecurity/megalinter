@@ -150,6 +150,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
+RUN go get -u github.com/reviewdog/errorformat/cmd/errorformat
 # actionlint installation
 ENV GO111MODULE=on
 RUN go get github.com/rhysd/actionlint/cmd/actionlint

@@ -241,6 +241,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 RUN rc-update add docker boot && rc-service docker start || true
+RUN go get -u github.com/reviewdog/errorformat/cmd/errorformat
 # ARM installation
 RUN mkdir -p ${PWSH_DIRECTORY} \
     && curl --retry 5 --retry-delay 5 -s https://api.github.com/repos/powershell/powershell/releases/${PWSH_VERSION} \

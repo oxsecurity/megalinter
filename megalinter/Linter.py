@@ -721,13 +721,14 @@ class Linter:
             command = [
                 "errorformat",
                 f"-name={self.sarif_errorformat_name}",
-                "-w=sarif",
-                return_stdout,
+                "-w=sarif"
             ]
             errorformat_process = subprocess.run(
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                input=return_stdout,
+                text=True
             )
             errorformat_stdout = utils.decode_utf8(errorformat_process.stdout)
             if errorformat_stdout.startswith("{"):

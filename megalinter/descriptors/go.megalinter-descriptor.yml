@@ -21,6 +21,8 @@ linters:
     config_file_name: .golangci.yml
     cli_lint_extra_args:
       - "run"
+    cli_sarif_args:
+      - --out-format=line-number
     cli_version_arg_name: "version"
     sarif_errorformat_name: golangci-lint
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"

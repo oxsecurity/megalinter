@@ -15,6 +15,7 @@ file_extensions:
 linters:
   # ANSIBLE LINT
   - linter_name: ansible-lint
+    can_output_sarif: true
     linter_url: https://ansible-lint.readthedocs.io/en/latest/
     linter_repo: https://github.com/ansible/ansible-lint
     linter_rules_url: https://ansible-lint.readthedocs.io/en/latest/default_rules.html
@@ -24,6 +25,7 @@ linters:
     cli_config_extra_args:
       - "-v"
     cli_version_arg_name: "--version"
+    sarif_errorformat_name: ansible-lint
     examples:
       - "ansible-lint -v myfile.yml"
       - "ansible-lint -v -c .ansible-lint.yml myfile.yml"
