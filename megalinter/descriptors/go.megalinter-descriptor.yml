@@ -11,6 +11,7 @@ install:
 linters:
   # GOLANG CI LINT
   - linter_name: golangci-lint
+    can_output_sarif: true
     linter_url: https://golangci-lint.run/
     linter_repo: https://github.com/golangci/golangci-lint
     linter_rules_url: https://golangci-lint.run/usage/linters/
@@ -21,6 +22,7 @@ linters:
     cli_lint_extra_args:
       - "run"
     cli_version_arg_name: "version"
+    sarif_errorformat_name: golangci-lint
     version_extract_regex: "((\\d+(\\.\\d+)+)|(master))"
     examples:
       - "golangci-lint run myfile.go"

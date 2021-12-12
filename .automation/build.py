@@ -128,13 +128,15 @@ def generate_flavor(flavor, flavor_info):
                 flavor_descriptors += [descriptor["descriptor_id"]]
     # Get install instructions at linter level
     linters = megalinter.linter_factory.list_all_linters()
-    requires_docker = False
+    requires_apps = []
     for linter in linters:
         if match_flavor(vars(linter), flavor, flavor_info) is True:
             descriptor_and_linters += [vars(linter)]
             flavor_linters += [linter.name]
             if linter.cli_docker_image is not None:
-                requires_docker = True
+                requires_apps += ["docker"]
+            if linter.sarif_errorformat_name is not None:
+                requires_apps += ["errorformat"]
     # Initialize Dockerfile
     if flavor == "all":
         dockerfile = f"{REPO_HOME}/Dockerfile"
@@ -219,11 +221,11 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
-    build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, [])
+    build_dockerfile(dockerfile, descriptor_and_linters, requires_apps, flavor, [])
 
 
 def build_dockerfile(
-    dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+    dockerfile, descriptor_and_linters, requires_apps, flavor, extra_lines
 ):
     # Gather all dockerfile commands
     docker_from = []
@@ -234,10 +236,16 @@ def build_dockerfile(
     pip_packages = []
     gem_packages = []
     # Manage docker
-    if requires_docker is True:
+    if "docker" in requires_apps:
         apk_packages += ["docker", "openrc"]
         docker_other += [
             "RUN rc-update add docker boot && rc-service docker start || true"
+        ]
+    # Manage errorformat
+    if "errorformat" in requires_apps:
+        apk_packages += ["go"]
+        docker_other += [
+            "RUN go get -u github.com/reviewdog/errorformat/cmd/errorformat"
         ]
     for item in descriptor_and_linters:
         if "install" not in item:
@@ -385,9 +393,11 @@ def generate_linter_dockerfiles():
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
             if not os.path.isdir(os.path.dirname(dockerfile)):
                 os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
-            requires_docker = False
+            requires_apps = []
             if linter.cli_docker_image is not None:
-                requires_docker = True
+                requires_apps += ["docker"]
+            if linter.sarif_errorformat_name is not None:
+                requires_apps += ["errorformat"]
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
             extra_lines = [
@@ -406,7 +416,7 @@ def generate_linter_dockerfiles():
                 "    CONFIG_REPORTER=false",
             ]
             build_dockerfile(
-                dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
+                dockerfile, descriptor_and_linter, requires_apps, "none", extra_lines
             )
             gha_workflow_yml += [f'            "{linter_lower_name}",']
             docker_image = (
