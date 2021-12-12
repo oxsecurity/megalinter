@@ -131,7 +131,9 @@ RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/m
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.2
+RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.2 && \
+    curl --retry 5 --retry-delay 5 -sSLO https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl && mv sarif.tpl /contrib
+
 
 #OTHER__END
 
