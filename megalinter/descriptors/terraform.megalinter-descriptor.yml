@@ -49,10 +49,11 @@ linters:
       - "terraform"
       - "-t"
       - "all"
-      - "-f"
     cli_sarif_args:
       - -o
       - sarif
+    cli_lint_extra_args_after:
+      - "-f"
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
