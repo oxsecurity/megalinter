@@ -155,6 +155,24 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=none
 #FLAVOR__END
 
+#########################################
+# Label the instance and set maintainer #
+#########################################
+LABEL com.github.actions.name="MegaLinter" \
+      com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
+      com.github.actions.icon="code" \
+      com.github.actions.color="red" \
+      maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.revision=$BUILD_REVISION \
+      org.opencontainers.image.version=$BUILD_VERSION \
+      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
+      org.opencontainers.image.url="https://megalinter.github.io" \
+      org.opencontainers.image.source="https://github.com/megalinter/megalinter" \
+      org.opencontainers.image.documentation="https://megalinter.github.io" \
+      org.opencontainers.image.vendor="Nicolas Vuillamy" \
+      org.opencontainers.image.description="Lint your code base with GitHub Actions"
+
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=JAVASCRIPT_ES \
     FLAVOR_SUGGESTIONS=false \
@@ -173,21 +191,3 @@ ENV ENABLE_LINTERS=JAVASCRIPT_ES \
 EXPOSE 22
 CMD ["/usr/sbin/sshd","-D"]
 #EXTRA_DOCKERFILE_LINES__END
-
-#########################################
-# Label the instance and set maintainer #
-#########################################
-LABEL com.github.actions.name="MegaLinter" \
-      com.github.actions.description="The ultimate linters aggregator to make sure your projects are clean" \
-      com.github.actions.icon="code" \
-      com.github.actions.color="red" \
-      maintainer="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.created=$BUILD_DATE \
-      org.opencontainers.image.revision=$BUILD_REVISION \
-      org.opencontainers.image.version=$BUILD_VERSION \
-      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@gmail.com>" \
-      org.opencontainers.image.url="https://megalinter.github.io" \
-      org.opencontainers.image.source="https://github.com/megalinter/megalinter" \
-      org.opencontainers.image.documentation="https://megalinter.github.io" \
-      org.opencontainers.image.vendor="Nicolas Vuillamy" \
-      org.opencontainers.image.description="Lint your code base with GitHub Actions"

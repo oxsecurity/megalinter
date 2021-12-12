@@ -261,10 +261,6 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=javascript
 #FLAVOR__END
 
-#EXTRA_DOCKERFILE_LINES__START
-
-#EXTRA_DOCKERFILE_LINES__END
-
 #########################################
 # Label the instance and set maintainer #
 #########################################
@@ -282,3 +278,7 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
+
+#EXTRA_DOCKERFILE_LINES__START
+
+#EXTRA_DOCKERFILE_LINES__END
