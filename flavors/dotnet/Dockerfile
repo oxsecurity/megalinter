@@ -281,13 +281,6 @@ RUN dotnet tool install --global TSQLLint
 
 #OTHER__END
 
-######################
-# Set the entrypoint #
-######################
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
-
 ################################
 # Installs python dependencies #
 ################################
@@ -339,5 +332,7 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
 
 #EXTRA_DOCKERFILE_LINES__START
-
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
