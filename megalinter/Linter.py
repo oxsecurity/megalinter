@@ -723,14 +723,11 @@ class Linter:
                 f"-name={self.sarif_errorformat_name}",
                 "-w=sarif"
             ]
-            errorformat_process = subprocess.run(
+            errorformat_stdout = subprocess.check_output(
                 command,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                input=return_stdout,
+                input=str(process.stdout),
                 text=True
             )
-            errorformat_stdout = utils.decode_utf8(errorformat_process.stdout)
             if errorformat_stdout.startswith("{"):
                 with open(self.sarif_output_file, "w", encoding="utf-8") as file:
                     file.write(errorformat_stdout)
