@@ -130,7 +130,7 @@ linters:
       - --format
       - template
       - --template
-      - "@contrib/sarif.tpl"
+      - "@/contrib/sarif.tpl"
       - -o
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args:
