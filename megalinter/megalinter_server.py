@@ -16,10 +16,20 @@ subprocess_env_default = {**os.environ, "FORCE_COLOR": "0"}
 parser = reqparse.RequestParser()
 parser.add_argument('workspace')
 
+running_processes = 0
+
 class LintRequest(Resource):
+
+    def get(self):
+        global running_processes
+        return {"runningProcesses": running_processes}
+
     def post(self):
+        global running_processes
+        running_processes += 1
         args = parser.parse_args()
         if not "workspace" in args:
+            running_processes -= 1
             abort(404, message="Missing workspace property")
         workspace = args["workspace"] 
         print (f"Received request to lint workspace {args}")
@@ -40,6 +50,7 @@ class LintRequest(Resource):
             'returnCode': return_code, 
             'stdout': str(process.stdout)
             }
+        running_processes -= 1
         return result
 
 api.add_resource(LintRequest, '/lint_request')
