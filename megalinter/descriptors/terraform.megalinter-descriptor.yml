@@ -7,6 +7,7 @@ file_extensions:
 linters:
   # TFLINT
   - linter_name: tflint
+    can_output_sarif: true
     name: TERRAFORM_TFLINT
     descriptor_flavors:
       - terraform
@@ -20,6 +21,9 @@ linters:
     pre_commands:
       - command: tflint --init
         cwd: workspace
+    cli_sarif_args:
+      - --format
+      - sarif
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
