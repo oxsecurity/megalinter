@@ -38,8 +38,7 @@ RUN apk add --update --no-cache \
         libffi-dev \
         make \
         musl-dev \
-        openssh \
-        openrc && \
+        openssh && \
     git config --global core.autocrlf true
 
 #############################################################################################
@@ -155,6 +154,9 @@ ENV ENABLE_LINTERS=TERRAFORM_TFLINT \
     EMAIL_REPORTER=false \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]
 #EXTRA_DOCKERFILE_LINES__END
 
 #########################################

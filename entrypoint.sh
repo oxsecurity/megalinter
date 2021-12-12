@@ -54,9 +54,20 @@ fi
 # Run ssh server and wait for calls
 if [ "${KEEP_ALIVE_MEGALINTER}" == "true" ]; then
   echo "[MegaLinter init] REUSABLE CONTAINER"
-  rc-update add sshd
-  rc-status
-  /etc/init.d/sshd start
+  if [ ! -f "/etc/ssh/ssh_host_rsa_key" ]; then
+    # generate fresh rsa key
+    ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+  fi
+  if [ ! -f "/etc/ssh/ssh_host_dsa_key" ]; then
+    # generate fresh dsa key
+    ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+  fi
+
+  #prepare run dir
+  if [ ! -d "/var/run/sshd" ]; then
+    mkdir -p /var/run/sshd
+  fi
+  exec "$@"
 else
   # Normal run
   echo "[MegaLinter init] ONE-SHOT RUN"

@@ -407,6 +407,9 @@ def generate_linter_dockerfiles():
                 "    EMAIL_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
                 "    CONFIG_REPORTER=false",
+                "",
+                "EXPOSE 22",
+                "CMD [\"/usr/sbin/sshd\",\"-D\"]"
             ]
             build_dockerfile(
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
