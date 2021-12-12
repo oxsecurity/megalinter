@@ -380,6 +380,9 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
+            # Do not build standalone linter if it does not manage SARIF
+            if linter.can_output_sarif is False:
+                continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
