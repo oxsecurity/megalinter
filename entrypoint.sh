@@ -9,8 +9,9 @@ if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
   printenv
 fi
 
+# Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
-  echo "UPGRADING LINTER VERSION"
+  echo "[MegaLinter init] UPGRADING LINTER VERSION"
   pip install pytest-cov pytest-timeout
   # Run only get_linter_version test methods
   pytest -v --durations=0 -k _get_linter_version megalinter/
@@ -24,10 +25,10 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   exit $?
 fi
 
+# Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
-  # Run test cases with pytest
+  echo "[MegaLinter init] RUNNING TEST CASES"
   pip install pytest-cov pytest-timeout
-  echo "RUNNING TEST CASES"
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest -v --timeout=80 --durations=0 --cov=megalinter --cov-report=xml megalinter/
   else
@@ -46,14 +47,16 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   if [ -z "${TEST_KEYWORDS}" ]; then
     bash <(curl -s https://codecov.io/bash)
   fi
+fi
 
+# Run ssh server and wait for calls
 if [ "${KEEP_ALIVE_MEGALINTER}" == "true" ]; then
+  echo "[MegaLinter init] REUSABLE CONTAINER"
   rc-update add sshd
   rc-status
   /etc/init.d/sshd start
-fi
-
 else
   # Normal run
+  echo "[MegaLinter init] ONE-SHOT RUN"
   python -m megalinter.run
 fi
