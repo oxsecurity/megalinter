@@ -176,6 +176,7 @@ ENV ENABLE_LINTERS=JAVA_CHECKSTYLE \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false
 
+EXPOSE 80
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

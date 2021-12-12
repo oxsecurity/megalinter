@@ -54,7 +54,7 @@ fi
 # Run ssh server and wait for calls
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
   echo "[MegaLinter init] MEGALINTER SERVER"
-  python -m megalinter_server.run
+  python ./megalinter/megalinter_server.py
 else
   # Normal run
   echo "[MegaLinter init] ONE-SHOT RUN"
