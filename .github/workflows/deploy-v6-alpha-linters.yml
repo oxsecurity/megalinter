@@ -16,7 +16,7 @@ on:
   push:
     branches:
       - "v6_dev"
-      - "v6*"
+      - "v6/keep-alive-images"
       - "v6/docker-standalone-linters"
     paths:
       - ".github/workflows/**"
