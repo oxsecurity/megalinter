@@ -29,6 +29,7 @@ linters:
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - linter_name: terrascan
+    can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
       - terraform
@@ -45,6 +46,9 @@ linters:
       - "-t"
       - "all"
       - "-f"
+    cli_sarif_args:
+      - -o
+      - sarif
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
