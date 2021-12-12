@@ -5,7 +5,7 @@ Start MegaLinter server
 import os
 import subprocess
 from flask import Flask
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, Api, reqparse, abort
 
 print ("MegaLinter Server starting...")
 app = Flask(__name__)
@@ -20,7 +20,7 @@ class LintRequest(Resource):
     def post(self):
         args = parser.parse_args()
         if not "workspace" in args:
-            return {"errorMessage": "Missing workspace property"}
+            abort(404, message="Missing workspace property")
         workspace = args["workspace"] 
         print (f"Received request to lint workspace {args}")
         command = [
@@ -45,4 +45,4 @@ class LintRequest(Resource):
 api.add_resource(LintRequest, '/lint_request')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=80,debug=True)
