@@ -3,6 +3,12 @@
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
+# Manage debug mode
+LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
+if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
+  printenv
+fi
+
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "UPGRADING LINTER VERSION"
   pip install pytest-cov pytest-timeout
@@ -41,11 +47,13 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
     bash <(curl -s https://codecov.io/bash)
   fi
 
+if [ "${KEEP_ALIVE_MEGALINTER}" == "true" ]; then
+  rc-update add sshd
+  rc-status
+  /etc/init.d/sshd start
+fi
+
 else
   # Normal run
-  LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
-  if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
-    printenv
-  fi
   python -m megalinter.run
 fi
