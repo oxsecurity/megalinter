@@ -178,6 +178,7 @@ ENV ENABLE_LINTERS=JSX_ESLINT \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false
 
+RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+RUN echo -n 'root:megalinter' | chpasswd
 EXPOSE 22
-CMD ["/usr/sbin/sshd","-D"]
 #EXTRA_DOCKERFILE_LINES__END
