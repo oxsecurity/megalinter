@@ -46,7 +46,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Upload to codecov.io if all tests run
   if [ -z "${TEST_KEYWORDS}" ]; then
     bash <(curl -s https://codecov.io/bash)
+    exit $?
   fi
+  exit $?
 fi
 
 # Run ssh server and wait for calls
