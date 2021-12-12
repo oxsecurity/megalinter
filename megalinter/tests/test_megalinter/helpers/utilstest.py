@@ -6,6 +6,7 @@ import logging
 import os
 import re
 import shutil
+import sys
 import tempfile
 import unittest
 import uuid
@@ -296,55 +297,57 @@ def test_get_linter_version(linter, test_self):
     test_self.assertTrue(
         version == version_cache, "Version not found in linter instance cache"
     )
-    # Write in linter-versions.json
-    root_dir = (
-        "/tmp/lint"
-        if os.path.isdir("/tmp/lint")
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
+    # Write in linter-versions.json if not during local tests on windows
+    pf = sys.platform
+    if pf != "win32":
+        root_dir = (
+            "/tmp/lint"
+            if os.path.isdir("/tmp/lint")
+            else os.path.relpath(
+                os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
+            )
         )
-    )
-    versions_file = (
-        root_dir + os.path.sep + "/.automation/generated/linter-versions.json"
-    )
-    data = {}
-    if os.path.isfile(versions_file):
-        with open(versions_file, "r", encoding="utf-8") as json_file:
-            data = json.load(json_file)
-    if (
-        linter.linter_name in data and data[linter.linter_name] != version
-    ) or linter.linter_name not in data:
-        prev_version = None
-        if linter.linter_name in data and data[linter.linter_name] != version:
-            prev_version = data[linter.linter_name]
-        data[linter.linter_name] = version
-        with open(versions_file, "w", encoding="utf-8") as outfile:
-            json.dump(data, outfile, indent=4, sort_keys=True)
-        # Upgrade version in changelog
-        if prev_version is not None:
-            changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
-            with open(changelog_file, "r", encoding="utf-8") as md_file:
-                changelog_content = md_file.read()
-            start = "- Linter versions upgrades"
-            end = "<!-- linter-versions-end -->"
-            regex = rf"{start}([\s\S]*?){end}"
-            existing_text_find = re.findall(regex, changelog_content, re.DOTALL)
-            if existing_text_find is None:
-                raise Exception(
-                    f"CHANGELOG.md must contain a single block scoped by '{start}' and '{end}'"
+        versions_file = (
+            root_dir + os.path.sep + "/.automation/generated/linter-versions.json"
+        )
+        data = {}
+        if os.path.isfile(versions_file):
+            with open(versions_file, "r", encoding="utf-8") as json_file:
+                data = json.load(json_file)
+        if (
+            linter.linter_name in data and data[linter.linter_name] != version
+        ) or linter.linter_name not in data:
+            prev_version = None
+            if linter.linter_name in data and data[linter.linter_name] != version:
+                prev_version = data[linter.linter_name]
+            data[linter.linter_name] = version
+            with open(versions_file, "w", encoding="utf-8") as outfile:
+                json.dump(data, outfile, indent=4, sort_keys=True)
+            # Upgrade version in changelog
+            if prev_version is not None:
+                changelog_file = root_dir + os.path.sep + "/CHANGELOG.md"
+                with open(changelog_file, "r", encoding="utf-8") as md_file:
+                    changelog_content = md_file.read()
+                start = "- Linter versions upgrades"
+                end = "<!-- linter-versions-end -->"
+                regex = rf"{start}([\s\S]*?){end}"
+                existing_text_find = re.findall(regex, changelog_content, re.DOTALL)
+                if existing_text_find is None:
+                    raise Exception(
+                        f"CHANGELOG.md must contain a single block scoped by '{start}' and '{end}'"
+                    )
+                versions_text = existing_text_find[0]
+                versions_text += (
+                    f"  - [{linter.linter_name}]({linter.linter_url}) from {prev_version} to **{version}**"
+                    f" on {datetime.today().strftime('%Y-%m-%d')}\n"
                 )
-            versions_text = existing_text_find[0]
-            versions_text += (
-                f"  - [{linter.linter_name}]({linter.linter_url}) from {prev_version} to **{version}**"
-                f" on {datetime.today().strftime('%Y-%m-%d')}\n"
-            )
-            versions_block = f"{start}{versions_text}{end}"
-            changelog_content = re.sub(
-                regex, versions_block, changelog_content, re.DOTALL
-            )
-            with open(changelog_file, "w", encoding="utf-8") as md_file:
-                md_file.write(changelog_content)
-            logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
+                versions_block = f"{start}{versions_text}{end}"
+                changelog_content = re.sub(
+                    regex, versions_block, changelog_content, re.DOTALL
+                )
+                with open(changelog_file, "w", encoding="utf-8") as md_file:
+                    md_file.write(changelog_content)
+                logging.info(f"Updated {linter.linter_name} in CHANGELOG.md")
 
 
 def test_get_linter_help(linter, test_self):
@@ -361,38 +364,40 @@ def test_get_linter_help(linter, test_self):
     test_self.assertFalse(
         help_txt == "ERROR", "Returned help invalid: [" + help_txt + "]"
     )
-    # Write in linter-helps.json
-    root_dir = (
-        "/tmp/lint"
-        if os.path.isdir("/tmp/lint")
-        else os.path.relpath(
-            os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
+    # Write in linter-helps.json if not during local tests on windows
+    pf = sys.platform
+    if pf != "win32":
+        root_dir = (
+            "/tmp/lint"
+            if os.path.isdir("/tmp/lint")
+            else os.path.relpath(
+                os.path.relpath(os.path.dirname(os.path.abspath(__file__))) + "/../../../.."
+            )
         )
-    )
-    helps_file = root_dir + os.path.sep + "/.automation/generated/linter-helps.json"
-    data = {}
-    help_lines = help_txt.splitlines()
-    help_lines_clean = []
-    for help_line in help_lines:
-        line_clean = (
-            help_line.replace("\\t", "  ")
-            .replace("\t", "  ")
-            .replace("\\r", "")
-            .replace("\r", "")
-            .replace(r"(\[..m)", "")
-            .replace(r"(\[.m)", "")
-            .rstrip()
-        )
-        help_lines_clean += [line_clean]
-    if os.path.isfile(helps_file):
-        with open(helps_file, "r", encoding="utf-8") as json_file:
-            data = json.load(json_file)
-    if (
-        linter.linter_name in data and data[linter.linter_name] != help_lines_clean
-    ) or linter.linter_name not in data:
-        data[linter.linter_name] = help_lines_clean
-        with open(helps_file, "w", encoding="utf-8") as outfile:
-            json.dump(data, outfile, indent=4, sort_keys=True)
+        helps_file = root_dir + os.path.sep + "/.automation/generated/linter-helps.json"
+        data = {}
+        help_lines = help_txt.splitlines()
+        help_lines_clean = []
+        for help_line in help_lines:
+            line_clean = (
+                help_line.replace("\\t", "  ")
+                .replace("\t", "  ")
+                .replace("\\r", "")
+                .replace("\r", "")
+                .replace(r"(\[..m)", "")
+                .replace(r"(\[.m)", "")
+                .rstrip()
+            )
+            help_lines_clean += [line_clean]
+        if os.path.isfile(helps_file):
+            with open(helps_file, "r", encoding="utf-8") as json_file:
+                data = json.load(json_file)
+        if (
+            linter.linter_name in data and data[linter.linter_name] != help_lines_clean
+        ) or linter.linter_name not in data:
+            data[linter.linter_name] = help_lines_clean
+            with open(helps_file, "w", encoding="utf-8") as outfile:
+                json.dump(data, outfile, indent=4, sort_keys=True)
 
 
 def test_linter_report_tap(linter, test_self):
