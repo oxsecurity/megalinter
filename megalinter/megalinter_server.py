@@ -15,6 +15,7 @@ subprocess_env_default = {**os.environ, "FORCE_COLOR": "0"}
 
 parser = reqparse.RequestParser()
 parser.add_argument('workspace')
+parser.add_argument('debug')
 
 running_processes = 0
 
@@ -39,6 +40,8 @@ class LintRequest(Resource):
             "megalinter.run"
         ]
         subprocess_env = {**subprocess_env_default, "DEFAULT_WORKSPACE": workspace}
+        if "debug" in args:
+            subprocess_env["LOG_LEVEL"] = "DEBUG"
         process = subprocess.run(
             command,
             stdout=subprocess.PIPE,
