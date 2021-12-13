@@ -53,7 +53,7 @@ class LintRequest(Resource):
         subprocess_env = {
             **subprocess_env_default,
             "DEFAULT_WORKSPACE": workspace,
-            "SARIF_REPORTER_FILE_NAME": workspace+"/megalinter-reports/"+sarif_file_name,
+            "SARIF_REPORTER_FILE_NAME": sarif_file_name,
         }
         if "debug" in args:
             subprocess_env["LOG_LEVEL"] = "DEBUG"
@@ -67,7 +67,7 @@ class LintRequest(Resource):
         result = {
             "returnCode": return_code,
             "stdout": str(process.stdout),
-            "sarifResult": sarif_file_name,
+            "sarifResult": workspace+"/megalinter-reports/"+sarif_file_name,
         }
         running_processes -= 1
         return result
