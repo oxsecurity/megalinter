@@ -2,6 +2,7 @@
 """
 Start MegaLinter server
 """
+import json
 import os
 import subprocess
 import time
@@ -53,6 +54,7 @@ class LintRequest(Resource):
         subprocess_env = {
             **subprocess_env_default,
             "DEFAULT_WORKSPACE": workspace,
+            #            "REPORT_OUTPUT_FOLDER": "/tmp/megalinter-reports", not yet but soon
             "SARIF_REPORTER_FILE_NAME": sarif_file_name,
         }
         if "debug" in args:
@@ -63,12 +65,21 @@ class LintRequest(Resource):
             stderr=subprocess.STDOUT,
             env=subprocess_env,
         )
+        # Base result
         return_code = process.returncode
+        sarif_result_file = workspace + "/megalinter-reports/" + sarif_file_name
         result = {
             "returnCode": return_code,
-            "stdout": str(process.stdout),
-            "sarifResult": workspace+"/megalinter-reports/"+sarif_file_name,
+            "sarifFile": sarif_result_file,
         }
+        # Add stdout if debug mode
+        if "debug" in args:
+            result["stdout"] = str(process.stdout)
+        # Add SARIF in output if found
+        if os.path.isfile(sarif_result_file):
+            with open(sarif_result_file, "r", encoding="utf-8") as json_file:
+                sarif_json = json.load(json_file)
+                result["sarif"] = sarif_json
         running_processes -= 1
         return result
 
