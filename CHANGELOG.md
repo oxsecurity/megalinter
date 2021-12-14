@@ -18,6 +18,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.2 to **5.13.3** on 2021-12-11
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.13 to **0.35.14** on 2021-12-11
   - [checkov](https://www.checkov.io/) from 2.0.648 to **2.0.649** on 2021-12-12
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.1 to **3.6.2** on 2021-12-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.2 to **0.9.0** on 2021-12-14
+  - [checkov](https://www.checkov.io/) from 2.0.649 to **2.0.659** on 2021-12-14
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.2 to **0.34.0** on 2021-12-14
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
