@@ -22,6 +22,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 0.8.2 to **0.9.0** on 2021-12-14
   - [checkov](https://www.checkov.io/) from 2.0.649 to **2.0.659** on 2021-12-14
   - [tflint](https://github.com/terraform-linters/tflint) from 0.33.2 to **0.34.0** on 2021-12-14
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.0.0 to **9.1.0** on 2021-12-15
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.0 to **7.2.1** on 2021-12-15
+  - [checkov](https://www.checkov.io/) from 2.0.659 to **2.0.660** on 2021-12-15
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
