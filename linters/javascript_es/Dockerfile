@@ -192,5 +192,6 @@ RUN /usr/bin/ssh-keygen -A
 RUN ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile 
+RUN env | grep _ >> /etc/environment
 EXPOSE 22
 #EXTRA_DOCKERFILE_LINES__END
