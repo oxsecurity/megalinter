@@ -51,12 +51,18 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   exit $?
 fi
 
-# Run ssh server and wait for calls
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
+  # MegaLinter server run
   echo "[MegaLinter init] MEGALINTER SERVER"
   python ./megalinter/megalinter_server.py
 else
-  # Normal run
-  echo "[MegaLinter init] ONE-SHOT RUN"
-  python -m megalinter.run
+  if [ "${MEGALINTER_SSH}" == "true" ]; then
+    # SSH startup
+    echo "[MegaLinter init] SSH"
+    /usr/sbin/sshd -D
+  else
+    # Normal  (run megalinter)
+    echo "[MegaLinter init] ONE-SHOT RUN"
+    python -m megalinter.run
+  fi
 fi
