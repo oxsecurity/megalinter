@@ -25,6 +25,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.0.0 to **9.1.0** on 2021-12-15
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.0 to **7.2.1** on 2021-12-15
   - [checkov](https://www.checkov.io/) from 2.0.659 to **2.0.660** on 2021-12-15
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.910 to **0.920** on 2021-12-16
+  - [checkov](https://www.checkov.io/) from 2.0.660 to **2.0.662** on 2021-12-16
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
