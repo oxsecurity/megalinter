@@ -31,6 +31,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.0 to **1.1.1** on 2021-12-17
   - [eslint](https://eslint.org) from 8.4.1 to **8.5.0** on 2021-12-18
   - [checkov](https://www.checkov.io/) from 2.0.668 to **2.0.672** on 2021-12-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.3 to **5.13.4** on 2021-12-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.1 to **1.1.2** on 2021-12-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.14 to **0.35.16** on 2021-12-18
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
