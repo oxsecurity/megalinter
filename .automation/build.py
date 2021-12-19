@@ -416,16 +416,16 @@ def generate_linter_dockerfiles():
                 "    CONFIG_REPORTER=false",
                 "",
                 # "EXPOSE 80",
-                "RUN mkdir -p /var/run/sshd \\",
-                "ssh-keygen -A \\"
-                "sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config \\",
-                "sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config \\",
-                "sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config \\",
-                "echo \"root:root\" | chpasswd",
+                "RUN mkdir -p /var/run/sshd && \\",
+                "    ssh-keygen -A && \\",
+                "    sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config && \\",
+                "    sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config && \\",
+                "    sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config && \\",
+                "    echo \"root:root\" | chpasswd ",
+                "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "RUN chmod +x entrypoint.sh",
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
-                "EXPOSE 22",
             ]
             build_dockerfile(
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
