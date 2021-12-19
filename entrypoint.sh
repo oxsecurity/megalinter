@@ -59,6 +59,8 @@ else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # SSH startup
     echo "[MegaLinter init] SSH"
+    set -eu
+    tmux new -s main -d
     /usr/sbin/sshd -D
   else
     # Normal  (run megalinter)
