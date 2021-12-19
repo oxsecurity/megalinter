@@ -183,7 +183,6 @@ ENV ENABLE_LINTERS=TSX_ESLINT \
 
 RUN mkdir -p /var/run/sshd && \
     ssh-keygen -A && \
-    sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config && \
     sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config && \
     sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config && \
     echo "root:root" | chpasswd 
