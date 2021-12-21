@@ -36,6 +36,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.14 to **0.35.16** on 2021-12-18
   - [coffeelint](http://www.coffeelint.org) from 5.2.1 to **5.2.2** on 2021-12-21
   - [checkov](https://www.checkov.io/) from 2.0.672 to **2.0.680** on 2021-12-21
+  - [kics](https://www.kics.io) from 1.4.8 to **1.4.9** on 2021-12-21
 <!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
