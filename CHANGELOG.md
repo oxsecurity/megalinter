@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.4.0] - 2021-12-21
+
+- Linter versions upgrades
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.1 to **6.12.2** on 2021-12-09
   - [checkov](https://www.checkov.io/) from 2.0.636 to **2.0.639** on 2021-12-09
   - [checkov](https://www.checkov.io/) from 2.0.639 to **2.0.641** on 2021-12-09
@@ -37,7 +42,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.2.1 to **5.2.2** on 2021-12-21
   - [checkov](https://www.checkov.io/) from 2.0.672 to **2.0.680** on 2021-12-21
   - [kics](https://www.kics.io) from 1.4.8 to **1.4.9** on 2021-12-21
-<!-- linter-versions-end -->
 
 ## [v5.3.0] - 2021-12-08
 
