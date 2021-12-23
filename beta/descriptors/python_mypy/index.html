@@ -5455,7 +5455,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>- PYTHON_BANDIT</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="mypy-documentation">mypy documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.920</strong></li>
+<li>Version in MegaLinter: <strong>0.930</strong></li>
 <li>Visit <a href="https://mypy.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mypy.readthedocs.io/en/stable/config_file.html" target="_blank">How to configure mypy rules</a><ul>
 <li>If custom <code>.mypy.ini</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.mypy.ini" target="_blank">.mypy.ini</a> will be used</li>
@@ -5893,7 +5893,8 @@ Running code:
   --exclude PATTERN         Regular expression to match file names, directory
                             names or paths which mypy should ignore while
                             recursively discovering files to check, e.g.
-                            --exclude '/setup\.py$'
+                            --exclude '/setup\.py$'. May be specified more
+                            than once, eg. --exclude a --exclude b
   -m MODULE, --module MODULE
                             Type-check module; can repeat for more modules
   -p PACKAGE, --package PACKAGE
