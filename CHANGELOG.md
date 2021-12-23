@@ -15,6 +15,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.681 to **2.0.687** on 2021-12-23
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.1.0 to **9.2.0** on 2021-12-23
   - [checkov](https://www.checkov.io/) from 2.0.687 to **2.0.690** on 2021-12-23
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.06.18 to **2021.12.19** on 2021-12-23
+
 <!-- linter-versions-end -->
 
 ## [v5.4.0] - 2021-12-21
