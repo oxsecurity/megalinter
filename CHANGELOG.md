@@ -13,6 +13,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [stylelint](https://stylelint.io) from 14.1.0 to **14.2.0** on 2021-12-23
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.920 to **0.930** on 2021-12-23
   - [checkov](https://www.checkov.io/) from 2.0.681 to **2.0.687** on 2021-12-23
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.1.0 to **9.2.0** on 2021-12-23
+  - [checkov](https://www.checkov.io/) from 2.0.687 to **2.0.690** on 2021-12-23
 <!-- linter-versions-end -->
 
 ## [v5.4.0] - 2021-12-21
