@@ -195,6 +195,8 @@ RUN npm install --no-cache --ignore-scripts \
                 babel-eslint \
                 @babel/core \
                 @babel/eslint-parser \
+                putout \
+                eslint-plugin-putout \
                 standard@15.0.1 \
                 prettier \
                 jsonlint \

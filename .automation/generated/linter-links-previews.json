@@ -269,6 +269,11 @@
     "image": "https://avatars3.githubusercontent.com/u/80629?s=400&v=4",
     "title": "rodjek/puppet-lint"
   },
+  "putout": {
+    "description": "\ud83d\udc0a  Pluggable and configurable code transformer with built-in ESLint, Babel plugins support for js, jsx typescript, flow, markdown, yaml and json - GitHub - coderaiser/putout: \ud83d\udc0a  Pluggable and confi...",
+    "image": "https://opengraph.githubassets.com/f8216db389eadddef184da3a7ec677e3e2350d007f33a185def2161852090bf2/coderaiser/putout",
+    "title": "GitHub - coderaiser/putout: \ud83d\udc0a  Pluggable and configurable code transformer with built-in ESLint, Babel plugins support for js, jsx typescript, flow, markdown, yaml and json"
+  },
   "pylint": {
     "description": "python, pylint, pyreverse, code analysis, checker, logilab, pep8",
     "image": null,

@@ -302,6 +302,7 @@
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",
             "JAVASCRIPT_ES",
+            "JAVASCRIPT_PUTOUT",
             "JAVASCRIPT_STANDARD",
             "JAVASCRIPT_PRETTIER",
             "JSON_JSONLINT",

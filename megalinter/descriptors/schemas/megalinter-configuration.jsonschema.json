@@ -131,6 +131,7 @@
         "HTML_HTMLHINT",
         "JAVA_CHECKSTYLE",
         "JAVASCRIPT_ES",
+        "JAVASCRIPT_PUTOUT",
         "JAVASCRIPT_STANDARD",
         "JAVASCRIPT_PRETTIER",
         "JSON_JSONLINT",

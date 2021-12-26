@@ -88,19 +88,16 @@ linters:
     name: JAVASCRIPT_PUTOUT
     file_extensions:
       - ".js"
-      - ".jsx"
-      - ".ts"
-      - ".tsx"
-      - ".json"
-      - ".yml"
-      - "*.md"
     linter_text: |
-      🐊Putout doesn't requires a custom configuration file applicable to your project, but you can add one if you needed.
+      🐊Putout is a pluggable and configurable code transformer with built-in ESLint and Babel plugins support for js, jsx typescript and flow files.
+      It has a lot of transformations that will keep your codebase in a clean state, transforming any code smell to readable code according to best practices.
     linter_url: https://github.com/coderaiser/putout
     linter_repo: https://github.com/coderaiser/putout
     linter_rules_url: https://github.com/coderaiser/putout#-built-in-transformations
     linter_banner_image_url: https://raw.githubusercontent.com/coderaiser/putout/v23.1.0/images/putout-logo.svg
     linter_rules_configuration_url: https://github.com/coderaiser/putout/#-configuration
+    active_only_if_file_found:
+      - ".putout.json"
     cli_lint_mode: list_of_files
     config_file_name: .putout.json
     cli_config_extra_args:
