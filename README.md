@@ -76,7 +76,7 @@ _Github PR reporter_
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
-    - [Run MegaLinter locally](#run-mega-linter-locally)
+    - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
     - [Activation and deactivation](#activation-and-deactivation)
