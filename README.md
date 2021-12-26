@@ -106,7 +106,7 @@ _Github PR reporter_
     - [Open-source teams](#open-source-teams)
     - [Super-Linter team](#super-linter-team)
   - [License](#license)
-  - [MegaLinter vs Super-Linter](#mega-linter-vs-super-linter)
+  - [MegaLinter vs Super-Linter](#megalinter-vs-super-linter)
     - [Performances](#performances)
     - [More languages and formats linted](#more-languages-and-formats-linted)
     - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
