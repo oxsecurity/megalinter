@@ -57,6 +57,20 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   python ./megalinter/megalinter_server.py
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
+    # SSH key copy from local volume
+    SSH_VOLUME_FOLDER=/root/docker_ssh
+    if [ -d "$SSH_VOLUME_FOLDER" ]; then
+        echo "Docker ssh folder content:"
+        ls "$SSH_VOLUME_FOLDER"
+        cp $SSH_VOLUME_FOLDER/id_rsa.pub /root/.ssh/authorized_keys
+        chmod 644 /root/.ssh/authorized_keys
+        mkdir -p /var/run/sshd
+        ssh-keygen -A
+        sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
+        sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config
+        sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config
+        echo "root:root" | chpasswd
+    fi
     # SSH startup
     echo "[MegaLinter init] SSH"
     set -eu
