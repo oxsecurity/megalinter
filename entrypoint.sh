@@ -62,7 +62,11 @@ else
     if [ -d "$SSH_VOLUME_FOLDER" ]; then
         echo "Docker ssh folder content:"
         ls "$SSH_VOLUME_FOLDER"
-        cp $SSH_VOLUME_FOLDER/id_rsa.pub /root/.ssh/authorized_keys
+        mkdir ~/.ssh
+        chmod 700 ~/.ssh
+        touch ~/.ssh/authorized_keys
+        chmod 600 ~/.ssh/authorized_keys
+        cat $SSH_VOLUME_FOLDER/id_rsa.pub >> ~/.ssh/authorized_keys
         chmod 644 /root/.ssh/authorized_keys
         mkdir -p /var/run/sshd
         ssh-keygen -A
