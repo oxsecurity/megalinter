@@ -179,6 +179,6 @@ COPY sh /usr/bin/megalinter-sh
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
     echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias tmux_cmd='/usr/bin/megalinter-sh/tmux_cmd.sh'" >> ~/.bashrc && source ~/.bashrc
+    echo "alias tmux_cmd='/usr/bin/megalinter-sh/tmux_exec.sh'" >> ~/.bashrc && source ~/.bashrc
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
