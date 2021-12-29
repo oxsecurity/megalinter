@@ -4,6 +4,8 @@ Main MegaLinter class, encapsulating all linters process and reporting
 
 """
 
+from genericpath import isdir
+import getopt
 import logging
 import multiprocessing as mp
 import os
@@ -37,18 +39,14 @@ class Megalinter:
     def __init__(self, params=None):
         if params is None:
             params = {}
+        self.arg_input = None
+        self.arg_output = None
+        self.load_cli_vars()
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
-        self.report_folder = config.get(
-            "REPORT_OUTPUT_FOLDER",
-            config.get(
-                "OUTPUT_FOLDER",
-                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
-            ),
-        )
-        os.makedirs(self.report_folder, exist_ok=True)
+        self.initialize_output()
         self.initialize_logger()
         self.manage_upgrade_message()
         self.display_header()
@@ -229,8 +227,17 @@ class Megalinter:
     def get_workspace(self):
         default_workspace = config.get("DEFAULT_WORKSPACE", "")
         github_workspace = config.get("GITHUB_WORKSPACE", "")
+        # Use CLI input argument
+        if self.arg_input is not None:
+            logging.debug(
+                f"[Context] workspace sent as input argument: {self.arg_input}"
+            )
+            assert os.path.isdir("/tmp/lint/" + self.arg_input), (
+                f"--input directory not found at /tmp/lint/" + self.arg_input
+            )
+            return "/tmp/lint/" + self.arg_input
         # Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint
-        if (
+        elif (
             default_workspace == ""
             and github_workspace != ""
             and os.path.isdir(github_workspace + "/tmp/lint")
@@ -290,6 +297,18 @@ class Megalinter:
                 f"DEFAULT_WORKSPACE: {default_workspace}\n"
                 f"GITHUB_WORKSPACE: {github_workspace}"
             )
+
+    # Manage CLI variables
+    def load_cli_vars(self):
+        argv = sys.argv[1:]
+        opts, args = getopt.getopt(argv, "i:o:", ["input =", "output ="])
+        for opt, arg in opts:
+            # Input folder to lint
+            if opt in ["-i", "--input"]:
+                self.arg_input = arg
+            # Report folder or file
+            elif opt in ["-o", "--output"]:
+                self.arg_output = arg
 
     # Manage configuration variables
     def load_config_vars(self):
@@ -570,6 +589,32 @@ class Megalinter:
         ignored_files = sorted(list(ignored_files))
         return ignored_files
 
+    def initialize_output(self):
+        self.report_folder = config.get(
+            "REPORT_OUTPUT_FOLDER",
+            config.get(
+                "OUTPUT_FOLDER",
+                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
+            ),
+        )
+        # Manage case when output is sent as argument.
+        if self.arg_output is not None:
+            if ".sarif" in self.arg_output:
+                if "/" in self.arg_output:
+                    # --output /logs/megalinter/myoutputfile.sarif
+                    self.report_folder = os.path.dirname(self.arg_output)
+                    config.set(
+                        "SARIF_REPORTER_FILE_NAME", os.path.basename(self.arg_output)
+                    )
+                else:
+                    # --output myoutputfile.sarif
+                    config.set("SARIF_REPORTER_FILE_NAME", self.arg_output)
+            elif os.path.isdir(self.arg_output):
+                # --output /logs/megalinter
+                self.report_folder = self.arg_output
+        # Initialize output dir
+        os.makedirs(self.report_folder, exist_ok=True)
+
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
@@ -591,7 +636,7 @@ class Megalinter:
         )
         if not os.path.isdir(os.path.dirname(log_file)):
             os.makedirs(os.path.dirname(log_file), exist_ok=True)
-        if (config.get("LOG_FILE","") == "none"):
+        if config.get("LOG_FILE", "") == "none":
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,
