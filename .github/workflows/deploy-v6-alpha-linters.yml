@@ -21,6 +21,7 @@ on:
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
+      - "**/Dockerfile"
       - "flavors/**"
       - "megalinter/**"
       - "mega-linter-runner/**"
