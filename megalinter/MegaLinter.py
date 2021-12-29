@@ -5,7 +5,7 @@ Main MegaLinter class, encapsulating all linters process and reporting
 """
 
 from genericpath import isdir
-import getopt
+import argparse
 import logging
 import multiprocessing as mp
 import os
@@ -300,15 +300,16 @@ class Megalinter:
 
     # Manage CLI variables
     def load_cli_vars(self):
-        argv = sys.argv[1:]
-        opts, args = getopt.getopt(argv, "i:o:", ["input =", "output ="])
-        for opt, arg in opts:
-            # Input folder to lint
-            if opt in ["-i", "--input"]:
-                self.arg_input = arg
-            # Report folder or file
-            elif opt in ["-o", "--output"]:
-                self.arg_output = arg
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--input", type=str, help="Input folder to lint")
+        parser.add_argument("--output", type=str, help="Output file or directory")
+        args = parser.parse_args()
+        # Input folder to lint
+        if args.input:
+            self.arg_input = args.input
+        # Report folder or file
+        if args.output:
+            self.arg_output = args.output
 
     # Manage configuration variables
     def load_config_vars(self):
