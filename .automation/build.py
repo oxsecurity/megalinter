@@ -416,10 +416,12 @@ def generate_linter_dockerfiles():
                 "    CONFIG_REPORTER=false",
                 "",
                 # "EXPOSE 80",
-                "RUN mkdir /root/docker_ssh",
+                "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
-                "RUN chmod +x entrypoint.sh",
+                "COPY sh /usr/bin/megalinter-sh",
+                "RUN find /usr/bin/megalinter-sh/ -type f -iname \"*.sh\" -exec chmod +x {} \; &&",
+                "    chmod +x entrypoint.sh",
                 'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
             ]
             build_dockerfile(
