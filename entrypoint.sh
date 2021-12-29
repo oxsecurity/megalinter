@@ -55,6 +55,7 @@ if [ "${MEGALINTER_SERVER}" == "true" ]; then
   # MegaLinter server run
   set -eu
   echo "[MegaLinter init] MEGALINTER SERVER"
+  echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc
   python ./megalinter/megalinter_server.py
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
