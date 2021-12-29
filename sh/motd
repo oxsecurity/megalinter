@@ -1,0 +1,12 @@
+####################################
+Welcome to MegaLinter SSH server !
+####################################
+(2021) Nicolas Vuillamy
+
+You can run the following commands:
+- bash : get within bash context
+- Run MegaLinter using tmux alias
+    - tmux_exec "megalinter --input myrepository --output myoutputfile.sarif"
+- Enter tmux then Run MegaLinter using megalinter alias
+    - tmux
+    - megalinter --input myrepository --output myoutputfile.sarif

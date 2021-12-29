@@ -420,6 +420,7 @@ def generate_linter_dockerfiles():
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "COPY sh /usr/bin/megalinter-sh",
+                "COPY sh/motd /etc/motd",
                 "RUN find /usr/bin/megalinter-sh/ -type f -iname \"*.sh\" -exec chmod +x {} \; && \\",
                 "    chmod +x entrypoint.sh && \\",
                 "    echo \"alias megalinter='python -m megalinter.run'\" >> ~/.bashrc && source ~/.bashrc && \\",
