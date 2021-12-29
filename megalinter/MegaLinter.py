@@ -303,7 +303,7 @@ class Megalinter:
         parser = argparse.ArgumentParser()
         parser.add_argument("--input", type=str, help="Input folder to lint")
         parser.add_argument("--output", type=str, help="Output file or directory")
-        args = parser.parse_args()
+        args, _unknown = parser.parse_known_args()
         # Input folder to lint
         if args.input:
             self.arg_input = args.input
