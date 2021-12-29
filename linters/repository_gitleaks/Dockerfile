@@ -167,13 +167,13 @@ ENV ENABLE_LINTERS=REPOSITORY_GITLEAKS \
     FILEIO_REPORTER=false \
     CONFIG_REPORTER=false
 
-RUN mkdir -p /var/run/sshd && \
-    ssh-keygen -A && \
-    sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config && \
-    sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config && \
-    echo "root:root" | chpasswd 
+RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY sh /usr/bin/megalinter-sh
+RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
+    chmod +x entrypoint.sh && \
+    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
+    echo "alias tmux_cmd='/usr/bin/megalinter-sh/tmux_cmd.sh'" >> ~/.bashrc && source ~/.bashrc
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END

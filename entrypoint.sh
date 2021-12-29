@@ -52,17 +52,17 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
-  # MegaLinter server run
+  # MegaLinter HTTP server run
   set -eu
   echo "[MegaLinter init] MEGALINTER SERVER"
-  echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc
   python ./megalinter/megalinter_server.py
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
-    # SSH key copy from local volume
+    # MegaLinter SSH server
     set -eu
     SSH_VOLUME_FOLDER=/root/docker_ssh
     if [ -d "$SSH_VOLUME_FOLDER" ]; then
+        # SSH key copy from local volume
         echo "Docker ssh folder content:"
         ls "$SSH_VOLUME_FOLDER"
         mkdir ~/.ssh
