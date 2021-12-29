@@ -134,7 +134,7 @@ COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 ### Example success log
 
 ```shell
-Results of clj-kondo linter (version 2021.12.19)
+Results of clj-kondo linter (version 2020.09.09)
 See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
 -----------------------------------------------
 
@@ -146,7 +146,7 @@ See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
 ### Example error log
 
 ```shell
-Results of clj-kondo linter (version 2021.12.19)
+Results of clj-kondo linter (version 2020.09.09)
 See documentation on https://megalinter.github.io/descriptors/clojure_clj_kondo/
 -----------------------------------------------
 
