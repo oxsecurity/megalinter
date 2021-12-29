@@ -26,6 +26,7 @@ install:
     - php8-dom
     - php8-simplexml
     - composer
+    - dpkg
   dockerfile:
     - |
       RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
@@ -38,7 +39,9 @@ install:
           && gpg --verify phive.phar.asc phive.phar \
           && chmod +x phive.phar \
           && mv phive.phar /usr/local/bin/phive \
-          && rm phive.phar.asc
+          && rm phive.phar.asc \
+          && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+          && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 linters:
   # PHP Built in Linter
   - linter_name: php
@@ -90,7 +93,7 @@ linters:
     name: PHP_PHPSTAN
     linter_url: https://phpstan.org/
     linter_repo: https://github.com/phpstan/phpstan
-    linter_image_url: https://i.imgur.com/MOt7taM.png
+    linter_image_url: https://i.imgur.com/WaRKPlC.png
     linter_rules_configuration_url: https://phpstan.org/config-reference#neon-format
     linter_rules_inline_disable_url: https://phpstan.org/user-guide/ignoring-errors#ignoring-in-code-using-phpdocs
     config_file_name: phpstan.neon.dist
@@ -150,3 +153,19 @@ linters:
       vscode:
         - name: Psalm VsCode Plugin
           url: https://marketplace.visualstudio.com/items?itemName=getpsalm.psalm-vscode-plugin
+  # PHPLint
+  - linter_name: phplint
+    linter_url: https://github.com/overtrue/phplint
+    config_file_name: .phplint.yml
+    cli_lint_mode: list_of_files
+    examples:
+      - "phplint myfile.php"
+      - "phplint mydir"
+      - "phplint mydir myfile.php"
+      - "phplint mydir -vvv"
+    install:
+      dockerfile:
+        - |
+          RUN composer global require overtrue/phplint ^3.0 \
+              && composer global config bin-dir --absolute
+        - ENV PATH="/root/.composer/vendor/bin:$PATH"

@@ -13,7 +13,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 
 ## eslint documentation
 
-- Version in MegaLinter: **8.3.0**
+- Version in MegaLinter: **8.5.0**
 - Visit [Official Web Site](https://eslint.org){target=_blank}
 - See [How to configure eslint rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable eslint rules in files](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments){target=_blank}
@@ -33,7 +33,7 @@ You can create it by typing `npx eslint --init` in the root of your repository
 | TYPESCRIPT_ES_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | TYPESCRIPT_ES_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | TYPESCRIPT_ES_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| TYPESCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| TYPESCRIPT_ES_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | TYPESCRIPT_ES_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".ts"]`                                       |
 | TYPESCRIPT_ES_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | TYPESCRIPT_ES_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -65,7 +65,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                         | Description                                           | Embedded linters |                                                                                                                                                                                           Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        95        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)         | Default MegaLinter Flavor                             |        96        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes
@@ -112,9 +112,9 @@ Basic configuration:
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specifying rules and plugins:
-  --rulesdir [path::String]       Use additional rules from this directory
   --plugin [String]               Specify plugins
   --rule Object                   Specify rules
+  --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fixing problems:
   --fix                           Automatically fix problems

@@ -16,10 +16,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ## Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
-- GitHub Action: megalinter/megalinter@v4
-- Docker image: megalinter/megalinter:v4
+- GitHub Action: megalinter/megalinter@v5
+- Docker image: megalinter/megalinter:v5
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -147,7 +147,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v4
+        docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using MegaLinter'
 ```
@@ -186,13 +186,12 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter-python:v4
-  script: [ "true" ]
+  image: megalinter/megalinter:v5
+  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    DEFAULT_BRANCH: main
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
@@ -224,7 +223,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -242,8 +241,6 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             # APPLY_FIXES: all
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
-            # DEFAULT_BRANCH: main
-
 ```
 
 OR
@@ -261,7 +258,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo
@@ -303,7 +300,6 @@ resources:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-        #   DEFAULT_BRANCH: main
 ```
 
 ## Run MegaLinter locally

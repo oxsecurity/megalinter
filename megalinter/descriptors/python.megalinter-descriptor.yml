@@ -87,7 +87,6 @@ linters:
       vscode:
         - name: VsCode Python Extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
-
   # FLAKE8
   - linter_name: flake8
     name: PYTHON_FLAKE8
@@ -117,7 +116,6 @@ linters:
       vscode:
         - name: Native Support
           url: https://code.visualstudio.com/docs/python/linting#_flake8
-
   # ISORT
   - linter_name: isort
     name: PYTHON_ISORT
@@ -184,8 +182,6 @@ linters:
     linter_rules_configuration_url: https://bandit.readthedocs.io/en/latest/config.html#
     linter_rules_inline_disable_url: https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines
     cli_lint_mode: list_of_files
-    cli_config_arg_name: "--configfile"
-    cli_version_arg_name: "--version"
     config_file_name: ".bandit.yml"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: ">> Issue: \\["

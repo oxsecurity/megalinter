@@ -115,7 +115,6 @@ class mega_linter_1_test(unittest.TestCase):
         )
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "DEFAULT_BRANCH": "main",
                 "ENABLE_LINTERS": "PYTHON_PYLINT",
                 "VALIDATE_ALL_CODEBASE": "false",
             }
@@ -362,9 +361,14 @@ class mega_linter_1_test(unittest.TestCase):
             "PHP_BUILTIN should have been processed with cli_executable = /usr/bin/php8",
         )
 
-    def test_print_all_files_false(self):
+    def test_print_all_files_false_and_no_flavor_suggestion(self):
         mega_linter, output = utilstest.call_mega_linter(
-            {"ENABLE_LINTERS": "JAVASCRIPT_ES", "PRINT_ALL_FILES": "false"}
+            {
+                "ENABLE_LINTERS": "JAVASCRIPT_ES",
+                "PRINT_ALL_FILES": "false",
+                "MEGALINTER_FLAVOR": "javascript",
+                "FLAVOR_SUGGESTIONS": "false",
+            }
         )
         self.assertTrue(
             len(mega_linter.linters) > 0, "Linters have been created and run"

@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **6.10.0**
+- Version in MegaLinter: **6.12.3**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -19,18 +19,18 @@
 - Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-| Variable                                   | Description                                                                                                                                                                                                         | Default value            |
-|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                          |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file       |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file          |
-| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |
-| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`               |
-| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`          |
-| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                     |
-| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                     |
-| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                  |
-| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
+| Variable                                   | Description                                                                                                                                                                                                         | Default value      |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
+| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`             |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`         |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`    |
+| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
+| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
+| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
+| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
 
 ## IDE Integration
 
@@ -47,14 +47,14 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                               | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                             |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)               | Default MegaLinter Flavor                             |        96        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/flavors/dart/)                   | Optimized for DART based projects                     |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/flavors/documentation/) | MegaLinter for documentation projects                 |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        47        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/flavors/go/)                       | Optimized for GO based projects                       |        42        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                     |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        49        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                      |        44        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                      |        45        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                   |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)                   | Optimized for RUBY based projects                     |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)                   | Optimized for RUST based projects                     |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
@@ -105,17 +105,18 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
                  [--wms-monitor [WMS_MONITOR]]
                  [--wms-monitor-arg [NAME=VALUE ...]]
-                 [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
+                 [--scheduler-ilp-solver {PULP_CBC_CMD}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
                  [--groups GROUPS [GROUPS ...]]
                  [--group-components GROUP_COMPONENTS [GROUP_COMPONENTS ...]]
                  [--report [FILE]] [--report-stylesheet CSSFILE]
-                 [--edit-notebook TARGET] [--notebook-listen IP:PORT]
-                 [--lint [{text,json}]] [--generate-unit-tests [TESTPATH]]
-                 [--containerize] [--export-cwl FILE] [--list]
-                 [--list-target-rules] [--dag] [--rulegraph] [--filegraph]
-                 [--d3dag] [--summary] [--detailed-summary] [--archive FILE]
+                 [--draft-notebook TARGET] [--edit-notebook TARGET]
+                 [--notebook-listen IP:PORT] [--lint [{text,json}]]
+                 [--generate-unit-tests [TESTPATH]] [--containerize]
+                 [--export-cwl FILE] [--list] [--list-target-rules] [--dag]
+                 [--rulegraph] [--filegraph] [--d3dag] [--summary]
+                 [--detailed-summary] [--archive FILE]
                  [--cleanup-metadata FILE [FILE ...]] [--cleanup-shadow]
                  [--skip-script-cleanup] [--unlock] [--list-version-changes]
                  [--list-code-changes] [--list-input-changes]
@@ -315,7 +316,11 @@ EXECUTION:
                         (see the docs). Values specified in JSON or YAML
                         format are available in the global config dictionary
                         inside the workflow. Multiple files overwrite each
-                        other in the given order. (default: None)
+                        other in the given order. Thereby missing keys in
+                        previous config files are extended by following
+                        configfiles. Note that this order also includes a
+                        config file defined in the workflow definition itself
+                        (which will come first). (default: None)
   --envvars VARNAME [VARNAME ...]
                         Environment variables to pass to cloud jobs. (default:
                         None)
@@ -401,7 +406,7 @@ EXECUTION:
                         id=12345 and the arguments will be provided to the
                         endpoint to first interact with the workflow (default:
                         None)
-  --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
+  --scheduler-ilp-solver {PULP_CBC_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
@@ -441,6 +446,13 @@ REPORTS:
                         custom logo, see docs. (default: None)
 
 NOTEBOOKS:
+  --draft-notebook TARGET
+                        Draft a skeleton notebook for the rule used to
+                        generate the given target file. This notebook can then
+                        be opened in a jupyter server, exeucted and
+                        implemented until ready. After saving, it will
+                        automatically be reused in non-interactive mode by
+                        Snakemake for subsequent jobs. (default: None)
   --edit-notebook TARGET
                         Interactively edit the notebook associated with the
                         rule used to generate the given target file. This will

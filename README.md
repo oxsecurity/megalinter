@@ -14,7 +14,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.1M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.9M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
@@ -26,7 +26,7 @@
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](#languages), [**22** formats](#formats), [**20** tooling formats](#tooling-formats) , [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**49** languages](#languages), [**22** formats](#formats), [**20** tooling formats](#tooling-formats) , [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
 
 Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, [**highly configurable**](#configuration) and **free for all uses**
 
@@ -57,9 +57,9 @@ _Github PR reporter_
 <!-- table-of-contents-start -->
 ## Table of Contents
 
-- [MegaLinter](#mega-linter)
+- [MegaLinter](#megalinter)
   - [Table of Contents](#table-of-contents)
-  - [Why MegaLinter](#why-mega-linter)
+  - [Why MegaLinter](#why-megalinter)
   - [Quick Start](#quick-start)
   - [Supported Linters](#supported-linters)
     - [Languages](#languages)
@@ -99,14 +99,14 @@ _Github PR reporter_
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
     - [Contributors](#contributors)
-    - [Sites referring to MegaLinter](#sites-referring-to-mega-linter)
+    - [Sites referring to MegaLinter](#sites-referring-to-megalinter)
       - [Global](#global)
       - [Articles](#articles)
       - [Linters](#linters)
     - [Open-source teams](#open-source-teams)
     - [Super-Linter team](#super-linter-team)
   - [License](#license)
-  - [MegaLinter vs Super-Linter](#mega-linter-vs-super-linter)
+  - [MegaLinter vs Super-Linter](#megalinter-vs-super-linter)
     - [Performances](#performances)
     - [More languages and formats linted](#more-languages-and-formats-linted)
     - [Automatically apply formatting and fixes](#automatically-apply-formatting-and-fixes)
@@ -152,7 +152,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 **Notes**:
 
 - This repo is a hard-fork of [GitHub Super-Linter](https://github.com/github/super-linter), rewritten in python to add [lots of additional features](#mega-linter-vs-super-linter)
-- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `megalinter/megalinter@v4` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
+- If you are a Super-Linter user, you can transparently **switch to MegaLinter and keep the same configuration** (just replace `github/super-linter@v3` by `megalinter/megalinter@v5` in your GitHub Action YML file, [like on this PR](https://github.com/nvuillam/npm-groovy-lint/pull/109))
 - If you want to use MegaLinter extra features (recommended), please take 5 minutes to use [MegaLinter assisted installation](#installation)
 - For a hand-holdy example of getting started with mega-linter check out [this blog post](https://ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter) by Alec Johnson
 <!-- quick-start-section-end -->
@@ -192,6 +192,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [phpcs](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_phpcs.md#readme)                                | [PHP_PHPCS](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_phpcs.md#readme)                                       |                    |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [phpstan](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_phpstan.md#readme)                            | [PHP_PHPSTAN](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_phpstan.md#readme)                                   |                    |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [psalm](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_psalm.md#readme)                                | [PHP_PSALM](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_psalm.md#readme)                                       |                    |
+|                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [phplint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_phplint.md#readme)                            | [PHP_PHPLINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/php_phplint.md#readme)                                   |                    |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/powershell.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**POWERSHELL**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/powershell.md#readme)                 | [powershell](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/powershell_powershell.md#readme)               | [POWERSHELL_POWERSHELL](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/powershell_powershell.md#readme)               |                    |
 |   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon -->   | [**PYTHON**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python.md#readme)                         | [pylint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_pylint.md#readme)                           | [PYTHON_PYLINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_pylint.md#readme)                               |                    |
 |                                                                    <!-- --> <!-- linter-icon -->                                                                     |                                                                                                                            | [black](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_black.md#readme)                             | [PYTHON_BLACK](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/python_black.md#readme)                                 | :heavy_check_mark: |
@@ -297,10 +298,10 @@ Just run `npx mega-linter-runner --install` at the root of your repository and a
 
 ### Manual installation
 
-The following instructions examples are using to latest MegaLinter stable version (**V4** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
+The following instructions examples are using to latest MegaLinter stable version (**v5** , always corresponding to the [latest release](https://github.com/megalinter/megalinter/releases))
 
-- GitHub Action: megalinter/megalinter@v4
-- Docker image: megalinter/megalinter:v4
+- GitHub Action: megalinter/megalinter@v5
+- Docker image: megalinter/megalinter:v5
 
 You can also use **beta** version (corresponding to the content of main branch)
 
@@ -428,7 +429,7 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
       vmImage: ubuntu-latest
     steps:
     - script: |
-        docker pull megalinter/megalinter:v4
+        docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
       displayName: 'Code Scan using MegaLinter'
 ```
@@ -467,13 +468,12 @@ mega-linter:
   stage: test
   # You can override MegaLinter flavor used to have faster performances
   # More info at https://megalinter.github.io/flavors/
-  image: megalinter/megalinter-python:v4
-  script: [ "true" ]
+  image: megalinter/megalinter:v5
+  script: [ "true" ] # if script: ["true"] does not work, you may try ->  script: [ "/bin/bash /entrypoint.sh" ]
   variables:
     # All available variables are described in documentation
     # https://megalinter.github.io/configuration/
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    DEFAULT_BRANCH: main
     # ADD YOUR CUSTOM ENV VARIABLES HERE TO OVERRIDE VALUES OF .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
   artifacts:
     when: always
@@ -505,7 +505,7 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             type: docker-image
             source:
               repository: megalinter/megalinter
-              tag: v4
+              tag: v5
           inputs:
             - name: repo
           run:
@@ -523,8 +523,6 @@ Note: make sure you have `job.plan.get` step which gets `repo` containing your r
             # APPLY_FIXES: all
             # DISABLE_ERRORS: true
             # VALIDATE_ALL_CODEBASE: true
-            # DEFAULT_BRANCH: main
-
 ```
 
 OR
@@ -542,7 +540,7 @@ image_resource:
   type: docker-image
   source:
     repository: megalinter/megalinter
-    tag: v4
+    tag: v5
 
 inputs:
 - name: repo
@@ -584,7 +582,6 @@ resources:
         #   APPLY_FIXES: all
         #   DISABLE_ERRORS: true
         #   VALIDATE_ALL_CODEBASE: true
-        #   DEFAULT_BRANCH: main
 ```
 
 ### Run MegaLinter locally
@@ -626,7 +623,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 |-----------------------------------------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **ADDITIONAL_EXCLUDED_DIRECTORIES**                 | \[\]                         | List of additional excluded directory basenames. They are excluded at any nested level.                                                                                                                    |
 | [**APPLY_FIXES**](#apply-fixes)                     | `none`                       | Activates formatting and auto-fixing [(more info)](#apply-fixes)                                                                                                                                           |
-| **DEFAULT_BRANCH**                                  | `main`                       | The name of the repository default branch. Warning: In new github repositories, main branch is named `main`, so you need to override this value with `main`                                                |
+| **DEFAULT_BRANCH**                                  | `HEAD`                       | Deprecated: The name of the repository's default branch.                                                                                                                                                   |
 | **DEFAULT_WORKSPACE**                               | `/tmp/lint`                  | The location containing files to lint if you are running locally.                                                                                                                                          |
 | **DISABLE_ERRORS**                                  | `false`                      | Flag to have the linter complete with exit code 0 even if errors were detected.                                                                                                                            |
 | [**DISABLE**](#activation-and-deactivation)         | <!-- -->                     | List of disabled descriptors keys [(more info)](#activation-and-deactivation)                                                                                                                              |
@@ -787,12 +784,12 @@ To improve run performances, we generate **Flavored MegaLinter images** containi
 - When using default MegaLinter, if a MegaLinter Flavor would cover all your project requirements, a message is added in the logs
 - If your project uses a MegaLinter Flavor not covering linter requirements, an error message will be thrown with instructions about how to solve the issue
 
-_The following table does not display docker pulls from [MegaLinter v4 images](https://hub.docker.com/r/nvuillam/mega-linter)_
+_The following table does not display docker pulls from [MegaLinter v4 images](https://hub.docker.com/r/nvuillam/mega-linter)._
 
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                                   | Description                                                            | Embedded linters |                                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)                                                   | Default MegaLinter Flavor                                              |        95        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)                                                   | Default MegaLinter Flavor                                              |        96        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/megalinter/megalinter/tree/main/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        13        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://github.com/megalinter/megalinter/tree/main/docs/flavors/dart.md#readme)                   | Optimized for DART based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/megalinter/megalinter/tree/main/docs/flavors/documentation.md#readme) | MegaLinter for documentation projects                                  |        40        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
@@ -800,7 +797,7 @@ _The following table does not display docker pulls from [MegaLinter v4 images](h
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://github.com/megalinter/megalinter/tree/main/docs/flavors/go.md#readme)                       | Optimized for GO based projects                                        |        42        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://github.com/megalinter/megalinter/tree/main/docs/flavors/java.md#readme)                   | Optimized for JAVA based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://github.com/megalinter/megalinter/tree/main/docs/flavors/javascript.md#readme)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        49        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://github.com/megalinter/megalinter/tree/main/docs/flavors/php.md#readme)                     | Optimized for PHP based projects                                       |        44        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://github.com/megalinter/megalinter/tree/main/docs/flavors/php.md#readme)                     | Optimized for PHP based projects                                       |        45        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://github.com/megalinter/megalinter/tree/main/docs/flavors/python.md#readme)               | Optimized for PYTHON based projects                                    |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://github.com/megalinter/megalinter/tree/main/docs/flavors/ruby.md#readme)                   | Optimized for RUBY based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://github.com/megalinter/megalinter/tree/main/docs/flavors/rust.md#readme)                   | Optimized for RUST based projects                                      |        41        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
@@ -952,6 +949,10 @@ To help, you can also:
 <a href="https://github.com/megalinter/megalinter/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=megalinter/megalinter" />
 </a>
+<br/>
+<a href="https://cauldron.io/project/5222">
+  <img src="https://cauldron.io/project/5222/stats.svg" />
+</a>
 
 ### Sites referring to MegaLinter
 
@@ -960,10 +961,13 @@ To help, you can also:
 - [analysis-tools.dev](https://analysis-tools.dev/tool/mega-linter){target=_blank}
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
+- [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
 
 #### Articles
+
 - [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
 - [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
+- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
 
 #### Linters
 

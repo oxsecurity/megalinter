@@ -13,7 +13,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.910**
+- Version in MegaLinter: **0.930**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -31,7 +31,7 @@ If you don't use python static typing, you should disable this linter by adding 
 | PYTHON_MYPY_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | PYTHON_MYPY_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | PYTHON_MYPY_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| PYTHON_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| PYTHON_MYPY_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | PYTHON_MYPY_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".py"]`                                       |
 | PYTHON_MYPY_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | PYTHON_MYPY_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -61,7 +61,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        95        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
@@ -341,7 +341,8 @@ Running code:
   --exclude PATTERN         Regular expression to match file names, directory
                             names or paths which mypy should ignore while
                             recursively discovering files to check, e.g.
-                            --exclude '/setup\.py$'
+                            --exclude '/setup\.py$'. May be specified more
+                            than once, eg. --exclude a --exclude b
   -m MODULE, --module MODULE
                             Type-check module; can repeat for more modules
   -p PACKAGE, --package PACKAGE

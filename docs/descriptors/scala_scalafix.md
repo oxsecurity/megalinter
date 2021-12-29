@@ -9,7 +9,7 @@ Scalafix lints and fixes scala files
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.9.32**
+- Version in MegaLinter: **0.9.33**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file is not found, [.scalafix.conf](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -28,7 +28,7 @@ Scalafix lints and fixes scala files
 | SCALA_SCALAFIX_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | SCALA_SCALAFIX_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | SCALA_SCALAFIX_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| SCALA_SCALAFIX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| SCALA_SCALAFIX_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`                                          |
 | SCALA_SCALAFIX_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".scala"]`                                    |
 | SCALA_SCALAFIX_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | SCALA_SCALAFIX_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -44,7 +44,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                        | Embedded linters |                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor          |        95        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor          |        96        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/flavors/scala/)   | Optimized for SCALA based projects |        41        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
 
 ## Behind the scenes
@@ -77,7 +77,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.9.32
+Scalafix 0.9.33
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
