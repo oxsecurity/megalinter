@@ -53,11 +53,13 @@ fi
 
 if [ "${MEGALINTER_SERVER}" == "true" ]; then
   # MegaLinter server run
+  set -eu
   echo "[MegaLinter init] MEGALINTER SERVER"
   python ./megalinter/megalinter_server.py
 else
   if [ "${MEGALINTER_SSH}" == "true" ]; then
     # SSH key copy from local volume
+    set -eu
     SSH_VOLUME_FOLDER=/root/docker_ssh
     if [ -d "$SSH_VOLUME_FOLDER" ]; then
         echo "Docker ssh folder content:"
@@ -77,7 +79,6 @@ else
     fi
     # SSH startup
     echo "[MegaLinter init] SSH"
-    set -eu
     tmux new -s main -d
     /usr/sbin/sshd -D
   else
