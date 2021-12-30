@@ -420,7 +420,7 @@ def generate_linter_dockerfiles():
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "COPY sh /usr/bin/megalinter-sh",
-                "COPY sh/megalinter_tmux /usr/bin/megalinter_tmux",
+                "COPY sh/megalinter_tmux /usr/bin/megalinter_tmux", 
                 "COPY sh/motd /etc/motd",
                 "RUN find /usr/bin/megalinter-sh/ -type f -iname \"*.sh\" -exec chmod +x {} \; && \\",
                 "    chmod +x entrypoint.sh && \\",

@@ -91,7 +91,7 @@ if [ "${OUTPUT}" == "" ]; then
   printf 'ERROR: No output given (--output)\n' >&2
   exit 1
 fi
-MEGALINTER_SCAN_COMMAND="DEFAULT_WORKSPACE=${INPUT} python -m megalinter.run --output ${OUTPUT}"
+MEGALINTER_SCAN_COMMAND="python -m megalinter.run --input ${INPUT} --output ${OUTPUT}"
 if [ "${CAPTURE_STD}" == "" ]; then
   printf 'ERROR: No output given (--capture-std)\n' >&2
   exit 1
