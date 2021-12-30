@@ -7,7 +7,7 @@ import os
 import unittest
 
 import megalinter
-from megalinter.constants import ML_REPO
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_REPO
 from megalinter.tests.test_megalinter.helpers import utilstest
 
 
@@ -105,8 +105,8 @@ class mega_linter_1_test(unittest.TestCase):
         megalinter.config.set_value(
             "GITHUB_WORKSPACE",
             (
-                "/tmp/lint"
-                if os.path.isdir("/tmp/lint")
+                DEFAULT_DOCKER_WORKSPACE_DIR
+                if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
                 else os.path.relpath(
                     os.path.relpath(os.path.dirname(os.path.abspath(__file__)))
                     + "/../../.."

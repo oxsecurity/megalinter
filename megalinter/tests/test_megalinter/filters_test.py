@@ -7,6 +7,7 @@ import re
 import unittest
 
 from megalinter import utils
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
 class utilsTest(unittest.TestCase):
@@ -49,7 +50,7 @@ class utilsTest(unittest.TestCase):
         )
 
     def test_filter_files_with_ignored_files(self):
-        basedir = "/tmp/lint/"
+        basedir = DEFAULT_DOCKER_WORKSPACE_DIR + "/"
         all_files = [
             f"{basedir}src/foo.ext",
             f"{basedir}README.md",
@@ -81,7 +82,7 @@ class utilsTest(unittest.TestCase):
             )
 
     def test_filter_files_with_file_extensions(self):
-        basedir = "/tmp/lint/"
+        basedir = DEFAULT_DOCKER_WORKSPACE_DIR + "/"
         all_files = [
             f"{basedir}src/foo.ext",
             f"{basedir}README.md",
