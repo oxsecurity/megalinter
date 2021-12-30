@@ -247,7 +247,7 @@ class Megalinter:
                     f"--input directory not found at {DEFAULT_DOCKER_WORKSPACE_DIR}/"
                     + self.arg_input
                 )
-                return DEFAULT_DOCKER_WORKSPACE_DIR + self.arg_input
+                return DEFAULT_DOCKER_WORKSPACE_DIR + "/" + self.arg_input
         # Github action run without override of DEFAULT_WORKSPACE and using DEFAULT_DOCKER_WORKSPACE_DIR
         elif (
             default_workspace == ""
