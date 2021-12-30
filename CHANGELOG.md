@@ -23,6 +23,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 9.2 to **9.2.1** on 2021-12-29
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.4 to **5.14.0** on 2021-12-29
   - [checkov](https://www.checkov.io/) from 2.0.690 to **2.0.695** on 2021-12-29
+  - [phpstan](https://phpstan.org/) from 1.2.0 to **1.3.0** on 2021-12-29
 <!-- linter-versions-end -->
 
 ## [v5.4.0] - 2021-12-21
