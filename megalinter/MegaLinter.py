@@ -21,7 +21,11 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
-from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR, ML_DOC_URL, DEFAULT_REPORT_FOLDER_NAME
+from megalinter.constants import (
+    DEFAULT_DOCKER_WORKSPACE_DIR,
+    ML_DOC_URL,
+    DEFAULT_REPORT_FOLDER_NAME,
+)
 from multiprocessing_logging import install_mp_handler
 
 
@@ -237,8 +241,11 @@ class Megalinter:
                 logging.debug(
                     f"[Context] workspace sent as input argument: {self.arg_input}"
                 )
-                assert os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR + self.arg_input), (
-                    f"--input directory not found at {DEFAULT_DOCKER_WORKSPACE_DIR}/" + self.arg_input
+                assert os.path.isdir(
+                    DEFAULT_DOCKER_WORKSPACE_DIR + "/" + self.arg_input
+                ), (
+                    f"--input directory not found at {DEFAULT_DOCKER_WORKSPACE_DIR}/"
+                    + self.arg_input
                 )
                 return DEFAULT_DOCKER_WORKSPACE_DIR + self.arg_input
         # Github action run without override of DEFAULT_WORKSPACE and using DEFAULT_DOCKER_WORKSPACE_DIR
@@ -248,7 +255,8 @@ class Megalinter:
             and os.path.isdir(github_workspace + DEFAULT_DOCKER_WORKSPACE_DIR)
         ):
             logging.debug(
-                "[Context] Github action run without override of DEFAULT_WORKSPACE - "+ DEFAULT_DOCKER_WORKSPACE_DIR
+                "[Context] Github action run without override of DEFAULT_WORKSPACE - "
+                + DEFAULT_DOCKER_WORKSPACE_DIR
             )
             return github_workspace + DEFAULT_DOCKER_WORKSPACE_DIR
         # Docker run without override of DEFAULT_WORKSPACE
@@ -259,7 +267,12 @@ class Megalinter:
                 "[Context] Docker run without override of DEFAULT_WORKSPACE"
                 f" - {default_workspace}{DEFAULT_DOCKER_WORKSPACE_DIR}{os.path.sep + default_workspace}"
             )
-            return default_workspace + DEFAULT_DOCKER_WORKSPACE_DIR + os.path.sep + default_workspace
+            return (
+                default_workspace
+                + DEFAULT_DOCKER_WORKSPACE_DIR
+                + os.path.sep
+                + default_workspace
+            )
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
             logging.debug(
@@ -269,7 +282,8 @@ class Megalinter:
         # Docker run test classes without override of DEFAULT_WORKSPACE
         elif os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR):
             logging.debug(
-                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - "+DEFAULT_DOCKER_WORKSPACE_DIR
+                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - "
+                + DEFAULT_DOCKER_WORKSPACE_DIR
             )
             return DEFAULT_DOCKER_WORKSPACE_DIR
         # Github action with override of DEFAULT_WORKSPACE
