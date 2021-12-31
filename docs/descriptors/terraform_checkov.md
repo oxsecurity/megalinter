@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.695**
+- Version in MegaLinter: **2.0.701**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -185,8 +185,8 @@ optional arguments:
                         files (see https://www.terraform.io/docs/language/valu
                         es/variables.html#variable-definitions-tfvars-
                         files).Currently only supported for source Terraform
-                        (.tf file) scans. Requires using --directory, not
-                        --file.
+                        (.tf file), and Helm chart scans.Requires using
+                        --directory, not --file.
   --external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH
                         set the path for the download external terraform
                         modules [env var: EXTERNAL_MODULES_DIR]
