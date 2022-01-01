@@ -25,6 +25,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.690 to **2.0.695** on 2021-12-29
   - [phpstan](https://phpstan.org/) from 1.2.0 to **1.3.0** on 2021-12-29
   - [checkov](https://www.checkov.io/) from 2.0.695 to **2.0.701** on 2021-12-31
+  - [htmlhint](https://htmlhint.com/) from 1.0.0 to **1.1.0** on 2022-01-01
+  - [eslint](https://eslint.org) from 8.5.0 to **8.6.0** on 2022-01-01
 <!-- linter-versions-end -->
 
 ## [v5.4.0] - 2021-12-21
