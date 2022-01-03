@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-###################################################################
+###############################################################################################
 #Script Name	    : megalinter_tmux
-#Description	    : Run the megalinter scanner
+#Description	    : Run the Megalinter scanner, for use when Megalinter is running in SSH mode
 #Owner            : ox.security
 #Email Contact    : support@ox.security
 #Email Author     : inbar@ox.security
-###################################################################
+###############################################################################################
 
 usage()
 {
@@ -14,7 +14,7 @@ usage()
     echo -e "execute megalinter"
     echo -e ""
     echo -e "Usage"
-    echo -e "\tmegalinter --input <INPUT> --output <OUTPUT> [--capture-std <LOG>]"
+    echo -e "\tmegalinter_tmux [options] --input <INPUT> --output <OUTPUT> [--capture-std <LOG>]"
     echo -e ""
     echo -e "Arguments"
     echo -e "\t-h|-?|--help                          show usage (this message)"
@@ -22,17 +22,21 @@ usage()
     echo -e "\t--output           <OUTPUT>           specify the path for the report file to be created at"
     echo -e "\t--capture-std      <LOG>              specify a path to write all captured STDOUT and STDERR to"
     echo -e ""
+    echo -e "Options"
+    echo -e "\t-v|--verbose                          verbose output (useful for debugging)"
+    echo -e ""
     echo -e "Examples"
     echo -e "\t1. scan megalinter repo"
-    echo -e "\t\tmegalinter --input /megalinter --output /tmp/output.sarif"
+    echo -e "\t\tmegalinter_tmux --input /megalinter --output /tmp/output.sarif"
     echo -e "\t2. scan megalinter repo with capture std"
-    echo -e "\t\tmegalinter --input /megalinter --output /tmp/output.sarif --capture-std /tmp/out.log"
+    echo -e "\t\tmegalinter_tmux --input /megalinter --output /tmp/output.sarif --capture-std /tmp/out.log"
     echo -e ""
 }
 
 INPUT=""
 OUTPUT=""
 CAPTURE_STD=""
+VERBOSE=0
 
 # parse command line arguments
 while :; do
@@ -41,6 +45,11 @@ while :; do
             usage
             exit
             ;;
+        # options
+        -v|--verbose)
+            VERBOSE=1
+            ;;
+        # arguments
         --input)
             if [ -n "$2" ]; then
                 INPUT=$2
@@ -81,7 +90,7 @@ while :; do
     shift
 done
 
-## prepare megalinter scan command
+## prepare Megalinter scan command
 if [ "${INPUT}" == "" ]; then
   printf 'ERROR: No input given (--input)\n' >&2
   exit 1
@@ -91,13 +100,18 @@ if [ "${OUTPUT}" == "" ]; then
   printf 'ERROR: No output given (--output)\n' >&2
   exit 1
 fi
-MEGALINTER_SCAN_COMMAND="python -m megalinter.run --input ${INPUT} --output ${OUTPUT}"
+MEGALINTER_SCAN_COMMAND="DEFAULT_WORKSPACE=${INPUT} python -m megalinter.run --output ${OUTPUT}"
 if [ "${CAPTURE_STD}" != "" ]; then
   MEGALINTER_SCAN_COMMAND="${MEGALINTER_SCAN_COMMAND} &> ${CAPTURE_STD}"
 fi
 ## prepare bash command
+if [ "${VERBOSE}" == "1" ]; then
+  echo "The Megalinter Scan command is: ${MEGALINTER_SCAN_COMMAND}"
+fi
 BASH_COMMAND_TO_EXECUTE="/usr/bin/megalinter-sh/tmux_exec.sh '${MEGALINTER_SCAN_COMMAND}'"
-echo "about to run bash command, setting -x: ${BASH_COMMAND_TO_EXECUTE}"
+if [ "${VERBOSE}" == "1" ]; then
+  echo "About to run the following scan command (also setting -x): ${BASH_COMMAND_TO_EXECUTE}"
+  set -x
+fi
 ## run bash command
-set -x
 bash --login -c "${BASH_COMMAND_TO_EXECUTE}"
