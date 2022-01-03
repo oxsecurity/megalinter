@@ -4,7 +4,6 @@ Main MegaLinter class, encapsulating all linters process and reporting
 
 """
 
-from genericpath import isdir
 import argparse
 import logging
 import multiprocessing as mp
@@ -305,7 +304,8 @@ class Megalinter:
             and os.path.isdir(github_workspace)
         ):
             logging.debug(
-                f"[Context] Github action without override of DEFAULT_WORKSPACE and NOT using {DEFAULT_DOCKER_WORKSPACE_DIR}"
+                "[Context] Github action without override of DEFAULT_WORKSPACE"
+                f" and NOT using {DEFAULT_DOCKER_WORKSPACE_DIR}"
                 f" - {github_workspace}"
             )
             return github_workspace

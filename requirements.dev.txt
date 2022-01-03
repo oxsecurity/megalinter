@@ -20,4 +20,4 @@ mdx_truly_sane_lists
 beautifulsoup4
 giturlparse
 json-schema-for-humans
-flask-restful
+# flask-restful

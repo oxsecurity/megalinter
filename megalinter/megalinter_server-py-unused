@@ -38,7 +38,7 @@ class LintRequest(Resource):
             running_processes -= 1
             abort(423, message="This server is already busy")
         # Missing workspacec property
-        if not "workspace" in args:
+        if "workspace" not in args:
             running_processes -= 1
             abort(400, message="Missing workspace property")
         workspace = args["workspace"]
@@ -49,7 +49,7 @@ class LintRequest(Resource):
             + ".sarif"
         )
         # Lint command
-        command = ["python", f"-m", "megalinter.run"]
+        command = ["python", "-m", "megalinter.run"]
         # Lint env variables
         subprocess_env = {
             **subprocess_env_default,
