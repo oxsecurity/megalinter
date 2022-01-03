@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.5.0] - 2022-01-03
+
+- Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.680 to **2.0.681** on 2021-12-21
   - [stylelint](https://stylelint.io) from 14.1.0 to **14.2.0** on 2021-12-23
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.920 to **0.930** on 2021-12-23
@@ -16,8 +21,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.1.0 to **9.2.0** on 2021-12-23
   - [checkov](https://www.checkov.io/) from 2.0.687 to **2.0.690** on 2021-12-23
   - [tflint](https://github.com/terraform-linters/tflint) from 0.34.0 to **0.34.1** on 2021-12-26
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.06.18 to **2021.12.19** on 2021-12-23
-
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.06.18 to **2021.12.19** on 2021-12-29
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.2.0 to **9.3.0** on 2021-12-29
   - [checkstyle](https://checkstyle.sourceforge.io) from 9.2 to **9.2.1** on 2021-12-29
@@ -28,7 +31,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [htmlhint](https://htmlhint.com/) from 1.0.0 to **1.1.0** on 2022-01-01
   - [eslint](https://eslint.org) from 8.5.0 to **8.6.0** on 2022-01-01
   - [checkov](https://www.checkov.io/) from 2.0.701 to **2.0.702** on 2022-01-03
-<!-- linter-versions-end -->
 
 ## [v5.4.0] - 2021-12-21
 
