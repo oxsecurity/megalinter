@@ -92,10 +92,7 @@ if [ "${OUTPUT}" == "" ]; then
   exit 1
 fi
 MEGALINTER_SCAN_COMMAND="python -m megalinter.run --input ${INPUT} --output ${OUTPUT}"
-if [ "${CAPTURE_STD}" == "" ]; then
-  printf 'ERROR: No output given (--capture-std)\n' >&2
-  exit 1
-else
+if [ "${CAPTURE_STD}" != "" ]; then
   MEGALINTER_SCAN_COMMAND="${MEGALINTER_SCAN_COMMAND} &> ${CAPTURE_STD}"
 fi
 ## prepare bash command
