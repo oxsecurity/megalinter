@@ -117,7 +117,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
+    && rm phive.phar.asc \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 # Linter install
 RUN composer global require overtrue/phplint ^3.0 \

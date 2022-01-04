@@ -13,7 +13,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.910**
+- Version in MegaLinter: **0.930**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -341,7 +341,8 @@ Running code:
   --exclude PATTERN         Regular expression to match file names, directory
                             names or paths which mypy should ignore while
                             recursively discovering files to check, e.g.
-                            --exclude '/setup\.py$'
+                            --exclude '/setup\.py$'. May be specified more
+                            than once, eg. --exclude a --exclude b
   -m MODULE, --module MODULE
                             Type-check module; can repeat for more modules
   -p PACKAGE, --package PACKAGE
