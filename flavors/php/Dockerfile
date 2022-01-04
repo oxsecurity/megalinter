@@ -74,6 +74,7 @@ RUN apk add --update --no-cache \
                 php8-dom \
                 php8-simplexml \
                 composer \
+                dpkg \
                 nodejs \
                 npm \
                 yarn \

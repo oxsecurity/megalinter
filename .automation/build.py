@@ -420,9 +420,9 @@ def generate_linter_dockerfiles():
                 "EXPOSE 22",
                 "COPY entrypoint.sh /entrypoint.sh",
                 "COPY sh /usr/bin/megalinter-sh",
-                "COPY sh/megalinter_tmux /usr/bin/megalinter_tmux", 
+                "COPY sh/megalinter_tmux /usr/bin/megalinter_tmux",
                 "COPY sh/motd /etc/motd",
-                "RUN find /usr/bin/megalinter-sh/ -type f -iname \"*.sh\" -exec chmod +x {} \\; && \\",
+                'RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \\; && \\',
                 "    chmod +x entrypoint.sh && \\",
                 "    chmod +x /usr/bin/megalinter_tmux && \\",
                 "    echo \"alias megalinter='python -m megalinter.run'\" >> ~/.bashrc && source ~/.bashrc && \\",
@@ -1731,7 +1731,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
-    logging.info("Updated " + file.name)
+    logging.info("Updated " + file.name + " between " + start + " and " + end)
 
 
 def add_in_config_schema_file(variables):
@@ -1802,7 +1802,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
-    logging.info("Updated " + file.name)
+    logging.info("Updated " + file.name + " between " + start + " and " + end)
     bracket_content = (
         bracket_content.replace("####", "#THREE#")
         .replace("###", "#TWO#")
