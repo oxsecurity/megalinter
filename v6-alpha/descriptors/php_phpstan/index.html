@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/v6-alpha/descriptors/php_phpstan/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.82f3c0b9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -5432,7 +5432,7 @@
 <h1 id="phpstan"><a href="https://phpstan.org/" target="blank" title="Visit linter Web Site"><img src="https://i.imgur.com/WaRKPlC.png" alt="phpstan" height="100px" class="megalinter-logo"></a>phpstan</h1>
 <h2 id="phpstan-documentation">phpstan documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.2.0</strong></li>
+<li>Version in MegaLinter: <strong>1.3.0</strong></li>
 <li>Visit <a href="https://phpstan.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://phpstan.org/config-reference#neon-format" target="_blank">How to configure phpstan rules</a><ul>
 <li>If custom <code>phpstan.neon.dist</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpstan.neon.dist" target="_blank">phpstan.neon.dist</a> will be used</li>
@@ -5611,16 +5611,16 @@ Options:
   -a, --autoload-file=AUTOLOAD-FILE            Project's additional autoload file path
       --error-format=ERROR-FORMAT              Format in which to print the result of the analysis
       --generate-baseline[=GENERATE-BASELINE]  Path to a file where the baseline should be saved [default: false]
+      --allow-empty-baseline                   Do not error out when the generated baseline is empty
       --memory-limit=MEMORY-LIMIT              Memory limit for analysis
       --xdebug                                 Allow running with XDebug for debugging purposes
       --fix                                    Launch PHPStan Pro
       --watch                                  Launch PHPStan Pro
       --pro                                    Launch PHPStan Pro
-  -h, --help                                   Display this help message
+  -h, --help                                   Display help for the given command. When no command is given display help for the analyse command
   -q, --quiet                                  Do not output any message
   -V, --version                                Display this application version
-      --ansi                                   Force ANSI output
-      --no-ansi                                Disable ANSI output
+      --ansi|--no-ansi                         Force (or disable --no-ansi) ANSI output
   -n, --no-interaction                         Do not ask any interactive question
   -v|vv|vvv, --verbose                         Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 </code></pre>
@@ -5639,7 +5639,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     &amp;&amp; gpg --verify phive.phar.asc phive.phar \
     &amp;&amp; chmod +x phive.phar \
     &amp;&amp; mv phive.phar /usr/local/bin/phive \
-    &amp;&amp; rm phive.phar.asc
+    &amp;&amp; rm phive.phar.asc \
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    &amp;&amp; update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 # Linter install
 RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
@@ -5749,10 +5751,10 @@ RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.17f42bbf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

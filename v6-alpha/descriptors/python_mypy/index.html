@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/v6-alpha/descriptors/python_mypy/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.82f3c0b9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -5436,7 +5436,7 @@
 <p>If you don't use python static typing, you should disable this linter by adding <code>- PYTHON_BANDIT</code> in <code>DISABLE_LINTERS</code> variable in your <code>.mega-linter.yml</code> config file</p>
 <h2 id="mypy-documentation">mypy documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.910</strong></li>
+<li>Version in MegaLinter: <strong>0.930</strong></li>
 <li>Visit <a href="https://mypy.readthedocs.io/en/stable/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://mypy.readthedocs.io/en/stable/config_file.html" target="_blank">How to configure mypy rules</a><ul>
 <li>If custom <code>.mypy.ini</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.mypy.ini" target="_blank">.mypy.ini</a> will be used</li>
@@ -5874,7 +5874,8 @@ Running code:
   --exclude PATTERN         Regular expression to match file names, directory
                             names or paths which mypy should ignore while
                             recursively discovering files to check, e.g.
-                            --exclude '/setup\.py$'
+                            --exclude '/setup\.py$'. May be specified more
+                            than once, eg. --exclude a --exclude b
   -m MODULE, --module MODULE
                             Type-check module; can repeat for more modules
   -p PACKAGE, --package PACKAGE
@@ -5998,10 +5999,10 @@ Environment variables:
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.17f42bbf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
