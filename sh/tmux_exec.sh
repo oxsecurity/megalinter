@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMMAND=("$@")
+COMMAND="$@"
 
 tmux new-window -t main "
   trap 'tmux wait-for -S main-neww-done' 0
