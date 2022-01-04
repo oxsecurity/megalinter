@@ -119,7 +119,7 @@ RUN npm install --no-cache --ignore-scripts \
                 jsonlint \
                 eslint \
                 eslint-plugin-jsonc \
-                v8r@0.6.1 \
+                v8r \
                 prettier \
                 markdownlint-cli \
                 remark-cli \
