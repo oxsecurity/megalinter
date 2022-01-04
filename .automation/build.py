@@ -219,7 +219,14 @@ branding:
         with open(flavor_action_yml, "w", encoding="utf-8") as file:
             file.write(action_yml)
             logging.info(f"Updated {flavor_action_yml}")
-    build_dockerfile(dockerfile, descriptor_and_linters, requires_docker, flavor, [])
+    extra_lines = [
+        "COPY entrypoint.sh /entrypoint.sh",
+        "RUN chmod +x entrypoint.sh",
+        'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
+    ]
+    build_dockerfile(
+        dockerfile, descriptor_and_linters, requires_docker, flavor, extra_lines
+    )
 
 
 def build_dockerfile(
@@ -380,6 +387,9 @@ def generate_linter_dockerfiles():
         )
         # Browse descriptor linters
         for linter in descriptor_linters:
+            # Do not build standalone linter if it does not manage SARIF
+            if linter.can_output_sarif is False:
+                continue
             # Unique linter dockerfile
             linter_lower_name = linter.name.lower()
             dockerfile = f"{LINTERS_DIR}/{linter_lower_name}/Dockerfile"
@@ -404,6 +414,20 @@ def generate_linter_dockerfiles():
                 "    EMAIL_REPORTER=false \\",
                 "    FILEIO_REPORTER=false \\",
                 "    CONFIG_REPORTER=false",
+                "",
+                # "EXPOSE 80",
+                "RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh",
+                "EXPOSE 22",
+                "COPY entrypoint.sh /entrypoint.sh",
+                "COPY sh /usr/bin/megalinter-sh",
+                "COPY sh/megalinter_tmux /usr/bin/megalinter_tmux",
+                "COPY sh/motd /etc/motd",
+                'RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \\; && \\',
+                "    chmod +x entrypoint.sh && \\",
+                "    chmod +x /usr/bin/megalinter_tmux && \\",
+                "    echo \"alias megalinter='python -m megalinter.run'\" >> ~/.bashrc && source ~/.bashrc && \\",
+                "    echo \"alias tmux_exec='/usr/bin/megalinter-sh/tmux_exec.sh'\" >> ~/.bashrc && source ~/.bashrc",
+                'ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]',
             ]
             build_dockerfile(
                 dockerfile, descriptor_and_linter, requires_docker, "none", extra_lines
@@ -1707,7 +1731,7 @@ def replace_in_file(file_path, start, end, content, add_new_line=True):
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
-    logging.info("Updated " + file.name)
+    logging.info("Updated " + file.name + " between " + start + " and " + end)
 
 
 def add_in_config_schema_file(variables):
@@ -1778,7 +1802,7 @@ def move_to_file(file_path, start, end, target_file, keep_in_source=False):
     # Write the file out again
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(file_content)
-    logging.info("Updated " + file.name)
+    logging.info("Updated " + file.name + " between " + start + " and " + end)
     bracket_content = (
         bracket_content.replace("####", "#THREE#")
         .replace("###", "#TWO#")

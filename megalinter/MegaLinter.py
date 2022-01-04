@@ -4,6 +4,7 @@ Main MegaLinter class, encapsulating all linters process and reporting
 
 """
 
+import argparse
 import logging
 import multiprocessing as mp
 import os
@@ -19,7 +20,11 @@ from megalinter import (
     pre_post_factory,
     utils,
 )
-from megalinter.constants import ML_DOC_URL, DEFAULT_REPORT_FOLDER_NAME
+from megalinter.constants import (
+    DEFAULT_DOCKER_WORKSPACE_DIR,
+    ML_DOC_URL,
+    DEFAULT_REPORT_FOLDER_NAME,
+)
 from multiprocessing_logging import install_mp_handler
 
 
@@ -37,18 +42,14 @@ class Megalinter:
     def __init__(self, params=None):
         if params is None:
             params = {}
+        self.arg_input = None
+        self.arg_output = None
+        self.load_cli_vars()
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
-        self.report_folder = config.get(
-            "REPORT_OUTPUT_FOLDER",
-            config.get(
-                "OUTPUT_FOLDER",
-                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
-            ),
-        )
-        os.makedirs(self.report_folder, exist_ok=True)
+        self.initialize_output()
         self.initialize_logger()
         self.manage_upgrade_message()
         self.display_header()
@@ -229,25 +230,48 @@ class Megalinter:
     def get_workspace(self):
         default_workspace = config.get("DEFAULT_WORKSPACE", "")
         github_workspace = config.get("GITHUB_WORKSPACE", "")
-        # Github action run without override of DEFAULT_WORKSPACE and using /tmp/lint
-        if (
+        # Use CLI input argument
+        if self.arg_input is not None:
+            if os.path.isdir(self.arg_input):
+                # Absolute directory
+                return self.arg_input
+            else:
+                # Relative directory
+                logging.debug(
+                    f"[Context] workspace sent as input argument: {self.arg_input}"
+                )
+                assert os.path.isdir(
+                    DEFAULT_DOCKER_WORKSPACE_DIR + "/" + self.arg_input
+                ), (
+                    f"--input directory not found at {DEFAULT_DOCKER_WORKSPACE_DIR}/"
+                    + self.arg_input
+                )
+                return DEFAULT_DOCKER_WORKSPACE_DIR + "/" + self.arg_input
+        # Github action run without override of DEFAULT_WORKSPACE and using DEFAULT_DOCKER_WORKSPACE_DIR
+        elif (
             default_workspace == ""
             and github_workspace != ""
-            and os.path.isdir(github_workspace + "/tmp/lint")
+            and os.path.isdir(github_workspace + DEFAULT_DOCKER_WORKSPACE_DIR)
         ):
             logging.debug(
-                "[Context] Github action run without override of DEFAULT_WORKSPACE - /tmp/lint"
+                "[Context] Github action run without override of DEFAULT_WORKSPACE - "
+                + DEFAULT_DOCKER_WORKSPACE_DIR
             )
-            return github_workspace + "/tmp/lint"
+            return github_workspace + DEFAULT_DOCKER_WORKSPACE_DIR
         # Docker run without override of DEFAULT_WORKSPACE
         elif default_workspace != "" and os.path.isdir(
-            "/tmp/lint" + os.path.sep + default_workspace
+            DEFAULT_DOCKER_WORKSPACE_DIR + os.path.sep + default_workspace
         ):
             logging.debug(
                 "[Context] Docker run without override of DEFAULT_WORKSPACE"
-                f" - {default_workspace}/tmp/lint{os.path.sep + default_workspace}"
+                f" - {default_workspace}{DEFAULT_DOCKER_WORKSPACE_DIR}{os.path.sep + default_workspace}"
             )
-            return default_workspace + "/tmp/lint" + os.path.sep + default_workspace
+            return (
+                default_workspace
+                + DEFAULT_DOCKER_WORKSPACE_DIR
+                + os.path.sep
+                + default_workspace
+            )
         # Docker run with override of DEFAULT_WORKSPACE for test cases
         elif default_workspace != "" and os.path.isdir(default_workspace):
             logging.debug(
@@ -255,11 +279,12 @@ class Megalinter:
             )
             return default_workspace
         # Docker run test classes without override of DEFAULT_WORKSPACE
-        elif os.path.isdir("/tmp/lint"):
+        elif os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR):
             logging.debug(
-                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - /tmp/lint"
+                "[Context] Docker run test classes without override of DEFAULT_WORKSPACE - "
+                + DEFAULT_DOCKER_WORKSPACE_DIR
             )
-            return "/tmp/lint"
+            return DEFAULT_DOCKER_WORKSPACE_DIR
         # Github action with override of DEFAULT_WORKSPACE
         elif (
             default_workspace != ""
@@ -271,7 +296,7 @@ class Megalinter:
                 f" - {github_workspace + os.path.sep + default_workspace}"
             )
             return github_workspace + os.path.sep + default_workspace
-        # Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint
+        # Github action without override of DEFAULT_WORKSPACE and NOT using DEFAULT_DOCKER_WORKSPACE_DIR
         elif (
             default_workspace == ""
             and github_workspace != ""
@@ -279,7 +304,8 @@ class Megalinter:
             and os.path.isdir(github_workspace)
         ):
             logging.debug(
-                "[Context] Github action without override of DEFAULT_WORKSPACE and NOT using /tmp/lint"
+                "[Context] Github action without override of DEFAULT_WORKSPACE"
+                f" and NOT using {DEFAULT_DOCKER_WORKSPACE_DIR}"
                 f" - {github_workspace}"
             )
             return github_workspace
@@ -290,6 +316,19 @@ class Megalinter:
                 f"DEFAULT_WORKSPACE: {default_workspace}\n"
                 f"GITHUB_WORKSPACE: {github_workspace}"
             )
+
+    # Manage CLI variables
+    def load_cli_vars(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--input", type=str, help="Input folder to lint")
+        parser.add_argument("--output", type=str, help="Output file or directory")
+        args, _unknown = parser.parse_known_args()
+        # Input folder to lint
+        if args.input:
+            self.arg_input = args.input
+        # Report folder or file
+        if args.output:
+            self.arg_output = args.output
 
     # Manage configuration variables
     def load_config_vars(self):
@@ -570,6 +609,32 @@ class Megalinter:
         ignored_files = sorted(list(ignored_files))
         return ignored_files
 
+    def initialize_output(self):
+        self.report_folder = config.get(
+            "REPORT_OUTPUT_FOLDER",
+            config.get(
+                "OUTPUT_FOLDER",
+                self.github_workspace + os.path.sep + DEFAULT_REPORT_FOLDER_NAME,
+            ),
+        )
+        # Manage case when output is sent as argument.
+        if self.arg_output is not None:
+            if ".sarif" in self.arg_output:
+                if "/" in self.arg_output:
+                    # --output /logs/megalinter/myoutputfile.sarif
+                    self.report_folder = os.path.dirname(self.arg_output)
+                    config.set(
+                        "SARIF_REPORTER_FILE_NAME", os.path.basename(self.arg_output)
+                    )
+                else:
+                    # --output myoutputfile.sarif
+                    config.set("SARIF_REPORTER_FILE_NAME", self.arg_output)
+            elif os.path.isdir(self.arg_output):
+                # --output /logs/megalinter
+                self.report_folder = self.arg_output
+        # Initialize output dir
+        os.makedirs(self.report_folder, exist_ok=True)
+
     def initialize_logger(self):
         logging_level_key = config.get("LOG_LEVEL", "INFO").upper()
         logging_level_list = {
@@ -591,7 +656,7 @@ class Megalinter:
         )
         if not os.path.isdir(os.path.dirname(log_file)):
             os.makedirs(os.path.dirname(log_file), exist_ok=True)
-        if (config.get("LOG_FILE","") == "none"):
+        if config.get("LOG_FILE", "") == "none":
             # Do not log console output in a file
             logging.basicConfig(
                 force=True,

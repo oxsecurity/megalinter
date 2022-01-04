@@ -1,0 +1,17 @@
+####################################
+Welcome to MegaLinter SSH server !
+####################################
+(2021) Nicolas Vuillamy
+
+You can run the following commands:
+
+- bash : get within bash context
+
+- Run MegaLinter using tmux alias
+
+    - tmux_exec "megalinter --input myrepository --output myoutputfile.sarif" (not working yet, it seems that megalinter alias is not found)
+    - tmux_exec "python -m megalinter.run --input demo-megalinter-security-flavor --output /tmp/report" (requires a /tmp/report mounted volume)
+    - tmux_exec "python -m megalinter.run --input demo-megalinter-security-flavor --output /tmp/report/myfile.sarif" (requires a /tmp/report mounted volume)
+    - tmux_exec "python -m megalinter.run --input demo-megalinter-security-flavor --output myfile.sarif" (Will generate myfile.sarif in repo megalinter-reports folder)
+    - tmux_exec "DEFAULT_WORKSPACE=/tmp/lint/demo-megalinter-security-flavor python -m megalinter.run" (working !)
+

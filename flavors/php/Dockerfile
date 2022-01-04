@@ -40,7 +40,9 @@ RUN apk add --update --no-cache \
         git \
         libffi-dev \
         make \
-        musl-dev && \
+        musl-dev \
+        openssh \
+        tmux && \
     git config --global core.autocrlf true
 
 #############################################################################################
@@ -72,6 +74,7 @@ RUN apk add --update --no-cache \
                 php8-dom \
                 php8-simplexml \
                 composer \
+                dpkg \
                 nodejs \
                 npm \
                 yarn \
@@ -179,7 +182,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
+    && rm phive.phar.asc \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 
 # actionlint installation
@@ -254,13 +259,6 @@ RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
 
 #OTHER__END
 
-######################
-# Set the entrypoint #
-######################
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
-
 ################################
 # Installs python dependencies #
 ################################
@@ -293,10 +291,6 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=php
 #FLAVOR__END
 
-#EXTRA_DOCKERFILE_LINES__START
-
-#EXTRA_DOCKERFILE_LINES__END
-
 #########################################
 # Label the instance and set maintainer #
 #########################################
@@ -314,3 +308,9 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
+
+#EXTRA_DOCKERFILE_LINES__START
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+#EXTRA_DOCKERFILE_LINES__END

@@ -3,8 +3,15 @@
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
+# Manage debug mode
+LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
+if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
+  printenv
+fi
+
+# Called by Auto-update CI job
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
-  echo "UPGRADING LINTER VERSION"
+  echo "[MegaLinter init] UPGRADING LINTER VERSION"
   pip install pytest-cov pytest-timeout
   # Run only get_linter_version test methods
   pytest -v --durations=0 -k _get_linter_version megalinter/
@@ -18,10 +25,10 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   exit $?
 fi
 
+# Run test cases with pytest
 if [ "${TEST_CASE_RUN}" == "true" ]; then
-  # Run test cases with pytest
+  echo "[MegaLinter init] RUNNING TEST CASES"
   pip install pytest-cov pytest-timeout
-  echo "RUNNING TEST CASES"
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest -v --timeout=80 --durations=0 --cov=megalinter --cov-report=xml megalinter/
   else
@@ -39,13 +46,45 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   # Upload to codecov.io if all tests run
   if [ -z "${TEST_KEYWORDS}" ]; then
     bash <(curl -s https://codecov.io/bash)
+    exit $?
   fi
+  exit $?
+fi
 
+if [ "${MEGALINTER_SERVER}" == "true" ]; then
+  # MegaLinter HTTP server run
+  set -eu
+  echo "[MegaLinter init] MEGALINTER SERVER"
+  python ./megalinter/megalinter_server.py
 else
-  # Normal run
-  LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
-  if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
-    printenv
+  if [ "${MEGALINTER_SSH}" == "true" ]; then
+    # MegaLinter SSH server
+    set -eu
+    SSH_VOLUME_FOLDER=/root/docker_ssh
+    if [ -d "$SSH_VOLUME_FOLDER" ]; then
+        # SSH key copy from local volume
+        echo "Docker ssh folder content:"
+        ls "$SSH_VOLUME_FOLDER"
+        mkdir ~/.ssh
+        chmod 700 ~/.ssh
+        touch ~/.ssh/authorized_keys
+        chmod 600 ~/.ssh/authorized_keys
+        cat $SSH_VOLUME_FOLDER/id_rsa.pub >> ~/.ssh/authorized_keys
+        chmod 644 /root/.ssh/authorized_keys
+        mkdir -p /var/run/sshd
+        ssh-keygen -A
+        sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
+        sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ yes/ /etc/ssh/sshd_config
+        sed -i s/^#PermitUserEnvironment\ no/PermitUserEnvironment\ yes/ /etc/ssh/sshd_config
+        echo "root:root" | chpasswd
+    fi
+    # SSH startup
+    echo "[MegaLinter init] SSH"
+    tmux new -s main -d
+    /usr/sbin/sshd -D
+  else
+    # Normal  (run megalinter)
+    echo "[MegaLinter init] ONE-SHOT RUN"
+    python -m megalinter.run
   fi
-  python -m megalinter.run
 fi

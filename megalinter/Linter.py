@@ -31,11 +31,11 @@ import urllib.request
 from time import perf_counter
 
 from megalinter import config, pre_post_factory, utils
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 
 class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
-    DEFAULT_WORKSPACE_DIR = "/tmp/lint"
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
@@ -424,7 +424,7 @@ class Linter:
             # Set config file label if not set by remote rule
             if self.config_file is not None and self.config_file_label is None:
                 self.config_file_label = self.config_file.replace(
-                    self.DEFAULT_WORKSPACE_DIR, ""
+                    DEFAULT_DOCKER_WORKSPACE_DIR, ""
                 ).replace(self.TEMPLATES_DIR, "")
         # User override of cli_lint_mode
         if config.exists(self.name + "_CLI_LINT_MODE"):
@@ -826,12 +826,14 @@ class Linter:
             volume_root = config.get("MEGALINTER_VOLUME_ROOT", "")
             if volume_root != "":
                 workspace_value = (
-                    volume_root + "/" + self.workspace.replace("/tmp/lint", "")
+                    volume_root
+                    + "/"
+                    + self.workspace.replace(DEFAULT_DOCKER_WORKSPACE_DIR, "")
                 )
             else:
                 workspace_value = self.workspace
         else:
-            workspace_value = "/tmp/lint"
+            workspace_value = DEFAULT_DOCKER_WORKSPACE_DIR
         docker_command += map(
             lambda arg, w=workspace_value: arg.replace("{{WORKSPACE}}", w),
             self.cli_docker_args,
@@ -840,7 +842,9 @@ class Linter:
         if type(command) == str:
             command = " ".join(docker_command) + " " + command
         else:
-            command = docker_command + command  # ["ls", "-A", "/tmp/lint"]
+            command = (
+                docker_command + command
+            )  # ["ls", "-A", DEFAULT_DOCKER_WORKSPACE_DIR]
         return command
 
     ########################################
@@ -872,7 +876,7 @@ class Linter:
             self.final_config_file = self.config_file
             if self.cli_docker_image is not None:
                 self.final_config_file = self.final_config_file.replace(
-                    self.workspace, "/tmp/lint"
+                    self.workspace, DEFAULT_DOCKER_WORKSPACE_DIR
                 )
             if self.cli_config_arg_name.endswith("="):
                 cmd += [self.cli_config_arg_name + self.final_config_file]

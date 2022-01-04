@@ -22,7 +22,7 @@ YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml)'
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
 # YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.mega-linter.yml|\.codecov\.yml)' # TODOv6: Remove when published v6
-BASH_FILTER_REGEX_EXCLUDE: "(lib)"
+BASH_FILTER_REGEX_EXCLUDE: "(lib|tmux_exec\\.sh)"
 MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md)'
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: '(\.automation/generated|docs/descriptors)'

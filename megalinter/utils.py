@@ -9,10 +9,11 @@ from typing import Any, Optional, Pattern, Sequence
 
 import git
 from megalinter import config
+from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
 REPO_HOME_DEFAULT = (
-    "/tmp/lint"
-    if os.path.isdir("/tmp/lint")
+    DEFAULT_DOCKER_WORKSPACE_DIR
+    if os.path.isdir(DEFAULT_DOCKER_WORKSPACE_DIR)
     else os.environ.get("DEFAULT_WORKSPACE")
     if os.path.isdir(os.environ.get("DEFAULT_WORKSPACE", "null"))
     else os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
@@ -21,7 +22,7 @@ REPO_HOME_DEFAULT = (
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
 LIST_OF_REPLACEMENTS = [
     # MegaLinter image
-    ["/tmp/lint/", ""],
+    [f"{DEFAULT_DOCKER_WORKSPACE_DIR}/", ""],
     ["tmp/lint/", ""],
     # GitHub Actions
     ["/github/workspace/", ""],

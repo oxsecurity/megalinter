@@ -43,7 +43,9 @@ RUN apk add --update --no-cache \
         git \
         libffi-dev \
         make \
-        musl-dev && \
+        musl-dev \
+        openssh \
+        tmux && \
     git config --global core.autocrlf true
 
 #############################################################################################
@@ -160,13 +162,6 @@ COPY --from=kics /app/bin/assets /opt/kics/assets/
 
 #OTHER__END
 
-######################
-# Set the entrypoint #
-######################
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
-
 ################################
 # Installs python dependencies #
 ################################
@@ -199,10 +194,6 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=security
 #FLAVOR__END
 
-#EXTRA_DOCKERFILE_LINES__START
-
-#EXTRA_DOCKERFILE_LINES__END
-
 #########################################
 # Label the instance and set maintainer #
 #########################################
@@ -220,3 +211,9 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
+
+#EXTRA_DOCKERFILE_LINES__START
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+#EXTRA_DOCKERFILE_LINES__END

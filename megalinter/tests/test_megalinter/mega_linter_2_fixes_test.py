@@ -78,7 +78,7 @@ class mega_linter_2_fixes_test(unittest.TestCase):
             # file_name = (
             #     updated_sources_dir
             #    + os.path.sep
-            #    + fixable_file.replace('/tmp/lint', "")
+            #    + fixable_file.replace(DEFAULT_DOCKER_WORKSPACE_DIR, "")
             # )
             # self.assertTrue(
             #    os.path.isfile(file_name),

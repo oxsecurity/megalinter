@@ -37,7 +37,9 @@ RUN apk add --update --no-cache \
         git \
         libffi-dev \
         make \
-        musl-dev && \
+        musl-dev \
+        openssh \
+        tmux && \
     git config --global core.autocrlf true
 
 #############################################################################################
@@ -65,7 +67,8 @@ RUN apk add --update --no-cache \
                 php8-curl \
                 php8-dom \
                 php8-simplexml \
-                composer
+                composer \
+                dpkg
 #APK__END
 
 # PATH for golang
@@ -127,7 +130,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
+    && rm phive.phar.asc \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 
 # psalm installation
@@ -135,13 +140,6 @@ RUN phive --no-progress install psalm -g --trust-gpg-keys 8A03EA3B385DBAA1,12CE0
 
 
 #OTHER__END
-
-######################
-# Set the entrypoint #
-######################
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 ################################
 # Installs python dependencies #
@@ -175,22 +173,6 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=none
 #FLAVOR__END
 
-#EXTRA_DOCKERFILE_LINES__START
-ENV ENABLE_LINTERS=PHP_PSALM \
-    FLAVOR_SUGGESTIONS=false \
-    SINGLE_LINTER=PHP_PSALM \
-    PRINT_ALPACA=false \
-    LOG_FILE=none \
-    SARIF_REPORTER=true \
-    TEXT_REPORTER=false \
-    UPDATED_SOURCES_REPORTER=false \
-    GITHUB_STATUS_REPORTER=false \
-    GITHUB_COMMENT_REPORTER=false \
-    EMAIL_REPORTER=false \
-    FILEIO_REPORTER=false \
-    CONFIG_REPORTER=false
-#EXTRA_DOCKERFILE_LINES__END
-
 #########################################
 # Label the instance and set maintainer #
 #########################################
@@ -208,3 +190,32 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
+
+#EXTRA_DOCKERFILE_LINES__START
+ENV ENABLE_LINTERS=PHP_PSALM \
+    FLAVOR_SUGGESTIONS=false \
+    SINGLE_LINTER=PHP_PSALM \
+    PRINT_ALPACA=false \
+    LOG_FILE=none \
+    SARIF_REPORTER=true \
+    TEXT_REPORTER=false \
+    UPDATED_SOURCES_REPORTER=false \
+    GITHUB_STATUS_REPORTER=false \
+    GITHUB_COMMENT_REPORTER=false \
+    EMAIL_REPORTER=false \
+    FILEIO_REPORTER=false \
+    CONFIG_REPORTER=false
+
+RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+EXPOSE 22
+COPY entrypoint.sh /entrypoint.sh
+COPY sh /usr/bin/megalinter-sh
+COPY sh/megalinter_tmux /usr/bin/megalinter_tmux
+COPY sh/motd /etc/motd
+RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
+    chmod +x entrypoint.sh && \
+    chmod +x /usr/bin/megalinter_tmux && \
+    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
+    echo "alias tmux_exec='/usr/bin/megalinter-sh/tmux_exec.sh'" >> ~/.bashrc && source ~/.bashrc
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+#EXTRA_DOCKERFILE_LINES__END

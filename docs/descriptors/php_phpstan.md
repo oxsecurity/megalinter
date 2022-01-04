@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.2.0**
+- Version in MegaLinter: **1.3.0**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -102,16 +102,16 @@ Options:
   -a, --autoload-file=AUTOLOAD-FILE            Project's additional autoload file path
       --error-format=ERROR-FORMAT              Format in which to print the result of the analysis
       --generate-baseline[=GENERATE-BASELINE]  Path to a file where the baseline should be saved [default: false]
+      --allow-empty-baseline                   Do not error out when the generated baseline is empty
       --memory-limit=MEMORY-LIMIT              Memory limit for analysis
       --xdebug                                 Allow running with XDebug for debugging purposes
       --fix                                    Launch PHPStan Pro
       --watch                                  Launch PHPStan Pro
       --pro                                    Launch PHPStan Pro
-  -h, --help                                   Display this help message
+  -h, --help                                   Display help for the given command. When no command is given display help for the analyse command
   -q, --quiet                                  Do not output any message
   -V, --version                                Display this application version
-      --ansi                                   Force ANSI output
-      --no-ansi                                Disable ANSI output
+      --ansi|--no-ansi                         Force (or disable --no-ansi) ANSI output
   -n, --no-interaction                         Do not ask any interactive question
   -v|vv|vvv, --verbose                         Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
@@ -131,7 +131,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
+    && rm phive.phar.asc \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 # Linter install
 RUN phive --no-progress install phpstan -g --trust-gpg-keys CF1A108D0E7AE720

@@ -20,7 +20,8 @@ setup(
         "pyyaml",
         "requests==2.24.0",
         "terminaltables",
-        "importlib-metadata>=3.10",
+        "importlib-metadata>=3.10"
+        # "flask-restful"
     ],
     zip_safe=False,
 )

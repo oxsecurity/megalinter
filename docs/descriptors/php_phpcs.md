@@ -4,7 +4,7 @@
 
 ## phpcs documentation
 
-- Version in MegaLinter: **3.6.1**
+- Version in MegaLinter: **3.6.2**
 - Visit [Official Web Site](https://github.com/squizlabs/PHP_CodeSniffer#readme){target=_blank}
 - See [How to configure phpcs rules](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file){target=_blank}
   - If custom `phpcs.xml` config file is not found, [phpcs.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpcs.xml){target=_blank} will be used
@@ -168,7 +168,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
+    && rm phive.phar.asc \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 # Linter install
 RUN phive --no-progress install phpcs -g --trust-gpg-keys 31C7E470E2138192

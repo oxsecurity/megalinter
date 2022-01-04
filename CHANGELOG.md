@@ -45,6 +45,64 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.5.0] - 2022-01-03
+
+- Linter versions upgrades
+  - [checkov](https://www.checkov.io/) from 2.0.680 to **2.0.681** on 2021-12-21
+  - [stylelint](https://stylelint.io) from 14.1.0 to **14.2.0** on 2021-12-23
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.920 to **0.930** on 2021-12-23
+  - [checkov](https://www.checkov.io/) from 2.0.681 to **2.0.687** on 2021-12-23
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.1.0 to **9.2.0** on 2021-12-23
+  - [checkov](https://www.checkov.io/) from 2.0.687 to **2.0.690** on 2021-12-23
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.34.0 to **0.34.1** on 2021-12-26
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.06.18 to **2021.12.19** on 2021-12-29
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.2.0 to **9.3.0** on 2021-12-29
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.2 to **9.2.1** on 2021-12-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.4 to **5.14.0** on 2021-12-29
+  - [checkov](https://www.checkov.io/) from 2.0.690 to **2.0.695** on 2021-12-29
+  - [phpstan](https://phpstan.org/) from 1.2.0 to **1.3.0** on 2021-12-29
+  - [checkov](https://www.checkov.io/) from 2.0.695 to **2.0.701** on 2021-12-31
+  - [htmlhint](https://htmlhint.com/) from 1.0.0 to **1.1.0** on 2022-01-01
+  - [eslint](https://eslint.org) from 8.5.0 to **8.6.0** on 2022-01-01
+  - [checkov](https://www.checkov.io/) from 2.0.701 to **2.0.702** on 2022-01-03
+
+## [v5.4.0] - 2021-12-21
+
+- Linter versions upgrades
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.1 to **6.12.2** on 2021-12-09
+  - [checkov](https://www.checkov.io/) from 2.0.636 to **2.0.639** on 2021-12-09
+  - [checkov](https://www.checkov.io/) from 2.0.639 to **2.0.641** on 2021-12-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.0.11 to **1.1.0** on 2021-12-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.2 to **6.12.3** on 2021-12-11
+  - [checkov](https://www.checkov.io/) from 2.0.641 to **2.0.648** on 2021-12-11
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.2 to **5.13.3** on 2021-12-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.13 to **0.35.14** on 2021-12-11
+  - [checkov](https://www.checkov.io/) from 2.0.648 to **2.0.649** on 2021-12-12
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.1 to **3.6.2** on 2021-12-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.8.2 to **0.9.0** on 2021-12-14
+  - [checkov](https://www.checkov.io/) from 2.0.649 to **2.0.659** on 2021-12-14
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.2 to **0.34.0** on 2021-12-14
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.0.0 to **9.1.0** on 2021-12-15
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.0 to **7.2.1** on 2021-12-15
+  - [checkov](https://www.checkov.io/) from 2.0.659 to **2.0.660** on 2021-12-15
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.910 to **0.920** on 2021-12-16
+  - [checkov](https://www.checkov.io/) from 2.0.660 to **2.0.662** on 2021-12-16
+  - [checkov](https://www.checkov.io/) from 2.0.662 to **2.0.668** on 2021-12-17
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.0 to **1.1.1** on 2021-12-17
+  - [eslint](https://eslint.org) from 8.4.1 to **8.5.0** on 2021-12-18
+  - [checkov](https://www.checkov.io/) from 2.0.668 to **2.0.672** on 2021-12-18
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.3 to **5.13.4** on 2021-12-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.1 to **1.1.2** on 2021-12-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.14 to **0.35.16** on 2021-12-18
+  - [coffeelint](http://www.coffeelint.org) from 5.2.1 to **5.2.2** on 2021-12-21
+  - [checkov](https://www.checkov.io/) from 2.0.672 to **2.0.680** on 2021-12-21
+  - [kics](https://www.kics.io) from 1.4.8 to **1.4.9** on 2021-12-21
+
+## [v5.3.0] - 2021-12-08
+
 - Fix jscpd typo about `.venv` (#986)
 - markdownlint: rename default config file from .markdown-lint.json to .markdownlint.json
 - Deprecate `DEFAULT_BRANCH` setting (#948)
@@ -113,7 +171,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.628 to **2.0.632** on 2021-12-07
   - [eslint](https://eslint.org) from 8.4.0 to **8.4.1** on 2021-12-07
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.1 to **5.13.2** on 2021-12-07
-<!-- linter-versions-end -->
+  - [checkov](https://www.checkov.io/) from 2.0.632 to **2.0.634** on 2021-12-07
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.33.1 to **0.33.2** on 2021-12-07
+  - [checkov](https://www.checkov.io/) from 2.0.634 to **2.0.636** on 2021-12-08
 
 ## [v5.2.0] - 2021-11-18
 

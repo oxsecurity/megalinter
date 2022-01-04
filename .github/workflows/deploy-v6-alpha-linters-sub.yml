@@ -1,0 +1,124 @@
+---
+#########################
+#########################
+## Deploy Docker Image Flavors ##
+#########################
+#########################
+# Documentation:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+#
+
+#######################################
+# Start the job on all push to main #
+#######################################
+name: "Build & Deploy - v6-alpha-inbar linters"
+on:
+  push:
+    branches:
+      - "v6_inbar"
+    paths:
+      - ".github/workflows/**"
+      - "Dockerfile"
+      - "**/Dockerfile"
+      - "flavors/**"
+      - "megalinter/**"
+      - "mega-linter-runner/**"
+      - "**/linter-versions.json"
+      - "TEMPLATES/**"
+      - ".trivyignore"
+      - "**/*.sh"
+      - "**/*.py"
+      - "**/sh/**"
+
+###############
+# Set the Job #
+###############
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+
+  build:
+    # Name the Job
+    name: Deploy Docker Image - v6-alpha-inbar - Linters
+    # Set the agent to run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        # linters-start
+        linter:
+          [
+            "cloudformation_cfn_lint",
+            "dockerfile_hadolint",
+            "go_revive",
+            "java_checkstyle",
+            "javascript_es",
+            "json_eslint_plugin_jsonc",
+            "jsx_eslint",
+            "kotlin_ktlint",
+            "php_psalm",
+            "python_bandit",
+            "repository_gitleaks",
+            "repository_trivy",
+            "terraform_tflint",
+            "terraform_terrascan",
+            "terraform_checkov",
+            "tsx_eslint",
+            "typescript_es",
+          ]
+# linters-end
+    # Only run this on the main repo
+    if: github.repository == 'megalinter/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    ##################
+    # Load all steps #
+    ##################
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+
+      #####################
+      # Run Deploy script #
+      #####################
+      - name: Deploy v6-alpha-inbar image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
+          IMAGE_VERSION: v6-alpha-inbar
+          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      #####################################
+      # Run Linter test cases #
+      #####################################
+      - name: Run Test Cases
+        shell: bash
+        run: |
+          TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
+          TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter-only-${{ matrix.linter }}:v6-alpha-inbar
+        timeout-minutes: 30
+
+      ##############################################
+      # Check Docker image security with Trivy #
+      ##############################################
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          image-ref: 'docker.io/megalinter/megalinter-only-${{ matrix.linter }}:v6-alpha-inbar'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
