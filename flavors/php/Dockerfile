@@ -83,6 +83,7 @@ RUN apk add --update --no-cache \
                 php8-dom \
                 php8-simplexml \
                 composer \
+                dpkg \
                 ansible \
                 ansible-lint \
                 libc-dev \
@@ -184,7 +185,9 @@ RUN wget --tries=5 -q -O phive.phar https://phar.io/releases/phive.phar \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive \
-    && rm phive.phar.asc
+    && rm phive.phar.asc \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php7 100 \
+    && update-alternatives --install /usr/bin/php php /usr/bin/php8 10
 
 
 # actionlint installation
@@ -213,7 +216,7 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # ktlint installation
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 

@@ -1553,7 +1553,7 @@
     },
     "CPP_CPPLINT_CLI_LINT_MODE": {
       "$id": "#/properties/CPP_CPPLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -2160,7 +2160,7 @@
     },
     "C_CPPLINT_CLI_LINT_MODE": {
       "$id": "#/properties/C_CPPLINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",

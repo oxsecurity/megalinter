@@ -32,6 +32,12 @@ def get_all_flavors():
     return all_flavors
 
 
+def list_flavor_linters(flavor_id):
+    all_flavors = get_all_flavors()
+    flavor_definition = all_flavors[flavor_id]
+    return flavor_definition["linters"]
+
+
 def list_megalinter_flavors():
     flavors = {
         "all": {"label": "MegaLinter for any type of project"},
@@ -59,7 +65,7 @@ def list_megalinter_flavors():
 
 
 def get_image_flavor():
-    return os.environ.get("MEGALINTER_FLAVOR", "all")
+    return config.get("MEGALINTER_FLAVOR", "all")
 
 
 # Compare linters active for the current repo, and linters available in the current MegaLinter image flavor

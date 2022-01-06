@@ -36,22 +36,6 @@ jobs:
           exempt-issue-labels: "O: backlog 🤖"
           stale-pr-label: "O: stale 🤖"
           exempt-pr-labels: "O: backlog 🤖"
-
-  ##################
-  # Mark not stale #
-  ##################
-  marknotstale:
-    runs-on: ubuntu-latest
-    # do not run on schedule
-    if: "github.event_name == 'issue_comment' && contains(github.event.issue.labels.*.name, 'O: stale 🤖') && github.event.issue.user.type != 'Bot'"
-    steps:
-      - name: Mark issue not stale
-        uses: actions/github-script@v5
-        with:
-          script: |
-            github.issues.removeLabel({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              name: 'O: stale 🤖'
-            })
+          labels-to-remove-when-unstale: "O: stale 🤖"
+          remove-issue-stale-when-updated: true
+          remove-pr-stale-when-updated: true

@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **6.12.1**
+- Version in MegaLinter: **6.12.3**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -19,18 +19,18 @@
 - Enable snakemake by adding `SNAKEMAKE_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable snakemake by adding `SNAKEMAKE_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-| Variable                                   | Description                                                                                                                                                                                                         | Default value            |
-|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                          |
-| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file       |
-| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file          |
-| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |
-| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`               |
-| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`          |
-| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                     |
-| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                     |
-| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                  |
-| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
+| Variable                                   | Description                                                                                                                                                                                                         | Default value      |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| SNAKEMAKE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
+| SNAKEMAKE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
+| SNAKEMAKE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
+| SNAKEMAKE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`             |
+| SNAKEMAKE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".smk"]`         |
+| SNAKEMAKE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Snakefile"]`    |
+| SNAKEMAKE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
+| SNAKEMAKE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
+| SNAKEMAKE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
+| SNAKEMAKE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
 
 ## IDE Integration
 
@@ -105,7 +105,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
                  [--wms-monitor [WMS_MONITOR]]
                  [--wms-monitor-arg [NAME=VALUE ...]]
-                 [--scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}]
+                 [--scheduler-ilp-solver {PULP_CBC_CMD}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--conda-base-path CONDA_BASE_PATH] [--no-subworkflows]
                  [--groups GROUPS [GROUPS ...]]
@@ -406,7 +406,7 @@ EXECUTION:
                         id=12345 and the arguments will be provided to the
                         endpoint to first interact with the workflow (default:
                         None)
-  --scheduler-ilp-solver {PULP_CBC_CMD,PULP_CHOCO_CMD}
+  --scheduler-ilp-solver {PULP_CBC_CMD}
                         Specifies solver to be utilized when selecting ilp-
                         scheduler. (default: COIN_CMD)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH

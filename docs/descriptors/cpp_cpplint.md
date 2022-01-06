@@ -20,7 +20,7 @@
 | CPP_CPPLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                                                       |
 | CPP_CPPLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                                                                    |
 | CPP_CPPLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                                                       |
-| CPP_CPPLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                                                              |
+| CPP_CPPLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                                                       |
 | CPP_CPPLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".cpp", ".h", ".cc", ".hpp", ".cxx", ".cu", ".hxx", ".c++", ".hh", ".h++", ".cuh"]` |
 | CPP_CPPLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                                                                    |
 | CPP_CPPLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                                                                  |
@@ -47,7 +47,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- cpplint is called one time by identified file
+- cpplint is called once with the list of files as arguments
 
 ### Example calls
 

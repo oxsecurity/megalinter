@@ -9,7 +9,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.40.0**
+- Version in MegaLinter: **0.43.2**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -22,18 +22,18 @@
 
 - Enable **auto-fixes** by adding `KOTLIN_KTLINT` in [APPLY_FIXES variable](https://megalinter.github.io/configuration/#apply-fixes)
 
-| Variable                                  | Description                                                                                                                                                                                                         | Default value            |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| KOTLIN_KTLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                          |
-| KOTLIN_KTLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file       |
-| KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file          |
-| KOTLIN_KTLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}` |
-| KOTLIN_KTLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".kt", ".kts"]`        |
-| KOTLIN_KTLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file       |
-| KOTLIN_KTLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                     |
-| KOTLIN_KTLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                     |
-| KOTLIN_KTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                  |
-| KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                      |
+| Variable                                  | Description                                                                                                                                                                                                         | Default value      |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| KOTLIN_KTLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
+| KOTLIN_KTLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file |
+| KOTLIN_KTLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
+| KOTLIN_KTLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`             |
+| KOTLIN_KTLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".kt", ".kts"]`  |
+| KOTLIN_KTLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file |
+| KOTLIN_KTLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
+| KOTLIN_KTLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
+| KOTLIN_KTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
+| KOTLIN_KTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
 
 ## IDE Integration
 
@@ -92,34 +92,43 @@ ktlint --format myfile.kt
 ### Help content
 
 ```shell
-An anti-bikeshedding Kotlin linter with built-in formatter
+
+An anti-bikeshedding Kotlin linter with built-in formatter.
 (https://github.com/pinterest/ktlint).
 
 Usage:
   ktlint <flags> [patterns]
-  java -jar ktlint <flags> [patterns]
+  java -jar ktlint.jar <flags> [patterns]
 
 Examples:
-  # check the style of all Kotlin files inside the current dir (recursively)
-  # (hidden folders will be skipped)
+  # Check the style of all Kotlin files (ending with '.kt' or '.kts') inside
+the current dir (recursively).
+  #
+  # Hidden folders will be skipped.
   ktlint
 
-  # check only certain locations (prepend ! to negate the pattern,
-  # Ktlint uses .gitignore pattern style syntax)
+  # Check only certain locations starting from the current directory.
+  #
+  # Prepend ! to negate the pattern, KtLint uses .gitignore pattern style
+syntax.
+  # Globs are applied starting from the last one.
+  #
+  # Hidden folders will be skipped.
+  # Check all '.kt' files in 'src/' directory, but ignore files ending with
+'Test.kt':
   ktlint "src/**/*.kt" "!src/**/*Test.kt"
+  # Check all '.kt' files in 'src/' directory, but ignore 'generated' directory
+and its subdirectories:
+  ktlint "src/**/*.kt" "!src/**/generated/**"
 
-  # auto-correct style violations
+  # Auto-correct style violations.
   ktlint -F "src/**/*.kt"
 
-  # custom reporter
-  ktlint --reporter=plain?group_by_file
-  # multiple reporters can be specified like this
-  ktlint --reporter=plain \
-    --reporter=checkstyle,output=ktlint-checkstyle-report.xml
-  # 3rd-party reporter
-  ktlint --reporter=csv,artifact=com.github.user:repo:master-SNAPSHOT
-
+  # Using custom reporter jar and overriding report location
+  ktlint --reporter=csv,artifact=/path/to/reporter/csv.jar,
+output=my-custom-report.csv
 Flags:
+
   -a, --android              Turn on Android Kotlin Style Guide compatibility
       --color                Make output colorful
       --color-name=<colorName>
@@ -134,9 +143,10 @@ Flags:
       --relative             Print files relative to the working directory (e.g.
                                dir/file.kt instead of /home/user/project/dir/file.kt)
       --reporter=<reporters> A reporter to use (built-in: plain (default), plain?
-                               group_by_file, json, checkstyle, html). To use a
-                               third-party reporter specify a path to a JAR file on
-                               the filesystem.
+                               group_by_file, json, sarif, checkstyle, html). To use
+                               a third-party reporter specify a path to a JAR file
+                               on the filesystem via ',artifact=' option. To
+                               override reporter output, use ',output=' option.
   -R, --ruleset=<rulesets>   A path to a JAR file containing additional ruleset(s)
       --stdin                Read file from stdin
   -v, --verbose              Show error codes
@@ -175,7 +185,7 @@ Commands:
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && \
+RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/releases/latest/download/ktlint && \
     chmod a+x ktlint && \
     mv "ktlint" /usr/bin/
 

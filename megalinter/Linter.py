@@ -548,7 +548,10 @@ class Linter:
     def update_files_lint_results(
         self, linted_files, return_code, file_status, stdout, file_errors_number
     ):
-        updated_files = utils.list_updated_files(self.github_workspace)
+        if self.try_fix is True:
+            updated_files = utils.list_updated_files(self.github_workspace)
+        else:
+            updated_files = []
         for file in linted_files:
             if self.try_fix is True:
                 fixed = utils.check_updated_file(
@@ -696,9 +699,10 @@ class Linter:
     def get_linter_version_output(self):
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
+        cwd = os.getcwd() if command[0] != "npm" else "~/"
         try:
             process = subprocess.run(
-                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+                command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd
             )
             return_code = process.returncode
             output = utils.decode_utf8(process.stdout)

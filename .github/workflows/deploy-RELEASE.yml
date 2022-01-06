@@ -111,6 +111,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
+          timeout: 5m0s
 
   deploy_doc:
     runs-on: ubuntu-latest

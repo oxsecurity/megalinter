@@ -87,7 +87,7 @@ DISABLE_LINTERS:
 | JSON_ESLINT_PLUGIN_JSONC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
 | JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
 | JSON_ESLINT_PLUGIN_JSONC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `{linter.cli_lint_mode}`                        |
+| JSON_ESLINT_PLUGIN_JSONC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                                 |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".json", ".json5", ".jsonc"]`                 |
 | JSON_ESLINT_PLUGIN_JSONC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | JSON_ESLINT_PLUGIN_JSONC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
@@ -179,9 +179,9 @@ Basic configuration:
   --resolve-plugins-relative-to path::String  A folder where plugins should be resolved from, CWD by default
 
 Specifying rules and plugins:
-  --rulesdir [path::String]       Use additional rules from this directory
   --plugin [String]               Specify plugins
   --rule Object                   Specify rules
+  --rulesdir [path::String]       Load additional rules from this directory. Deprecated: Use rules from plugins
 
 Fixing problems:
   --fix                           Automatically fix problems
