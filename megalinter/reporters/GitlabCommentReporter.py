@@ -31,6 +31,7 @@ class GitlabCommentReporter(Reporter):
             gitlab_repo = config.get("CI_PROJECT_NAME")
             gitlab_project_id = config.get("CI_PROJECT_ID")
             gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID", None)
+            logging.info("NICO: merge request id: " + gitlab_merge_request_id)
             if (
                 gitlab_merge_request_id is None
                 and config.get("CI_OPEN_MERGE_REQUESTS", None) is not None
@@ -38,14 +39,17 @@ class GitlabCommentReporter(Reporter):
                 gitlab_merge_request_id = (
                     config.get("CI_OPEN_MERGE_REQUESTS").split(",")[0].split("!")[1]
                 )
-                logging.debug("merge request id: " + gitlab_merge_request_id)
+                logging.info("NICO: merge request id: " + gitlab_merge_request_id)
             gitlab_server_url = config.get("CI_SERVER_URL", self.gitlab_server_url)
             action_run_url = config.get("CI_JOB_URL", "")
             p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Post comment on merge request if found
             gl = gitlab.Gitlab(gitlab_server_url, job_token=os.environ["CI_JOB_TOKEN"])
+            logging.info("NICO: gitlab_project_id: " + gitlab_project_id)
+            logging.info("NICO: gl: " + gl)
             project = gl.projects.get(gitlab_project_id)
+
             mr = project.mergerequests.get(gitlab_merge_request_id)
             if mr is None:
                 logging.info(
