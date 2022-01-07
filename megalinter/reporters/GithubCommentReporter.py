@@ -9,7 +9,7 @@ import os
 import re
 import github
 from megalinter import Reporter, config
-from megalinter.constants import ML_DOC_URL, ML_REPO, ML_REPO_URL
+from megalinter.constants import ML_DOC_URL, ML_REPO_URL
 from pytablewriter import MarkdownTableWriter
 
 mega_linter_version = config.get("BUILD_VERSION", "latest")

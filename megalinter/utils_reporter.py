@@ -3,9 +3,7 @@ import os
 import urllib
 from pytablewriter import MarkdownTableWriter
 
-DOCS_URL_DESCRIPTORS_ROOT = "https://nvuillam.github.io/mega-linter/descriptors"
-ISSUES_ROOT = "https://github.com/nvuillam/mega-linter/issues"
-DOC_URL = "https://nvuillam.github.io/mega-linter"
+from megalinter.constants import ML_DOC_URL,ML_DOC_URL_DESCRIPTORS_ROOT, ML_REPO_ISSUES_URL
 
 
 def build_markdown_summary(reporter_self, action_run_url):
@@ -26,7 +24,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             lang_lower = linter.descriptor_id.lower()
             linter_name_lower = linter.linter_name.lower().replace("-", "_")
             linter_doc_url = (
-                f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+                f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
             )
             linter_link = f"[{linter.linter_name}]({linter_doc_url})"
             nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ""
@@ -73,7 +71,7 @@ def build_markdown_summary(reporter_self, action_run_url):
         + log_link(f"**{reporter_self.master.status.upper()}**", action_run_url)
     )
     p_r_msg = (
-        f"## [Mega-Linter]({DOC_URL}) status: {status_with_href}"
+        f"## [Mega-Linter]({ML_DOC_URL}) status: {status_with_href}"
         + os.linesep
         + os.linesep
     )
@@ -104,7 +102,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                 "Would it be possible to create one ? Thanks :relaxed:"
             )
             new_flavor_url = (
-                f"{ISSUES_ROOT}/new?assignees=&labels=enhancement&template=feature_request.md"
+                f"{ML_REPO_ISSUES_URL}/new?assignees=&labels=enhancement&template=feature_request.md"
                 f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
                 f"&body={urllib.parse.quote(body)}"
             )
@@ -124,9 +122,9 @@ def build_markdown_summary(reporter_self, action_run_url):
                     if build_version == "latest"
                     else build_version
                 )
-                action_path = f"nvuillam/mega-linter/flavors/{suggestion['flavor']}@{action_version}"
+                action_path = f"megalinter/megalinter/flavors/{suggestion['flavor']}@{action_version}"
                 p_r_msg += (
-                    f"- [**{action_path}**]({DOC_URL}/flavors/{suggestion['flavor']}/)"
+                    f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)"
                 )
     logging.debug("\n" + p_r_msg)
