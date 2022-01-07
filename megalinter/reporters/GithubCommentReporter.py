@@ -75,7 +75,7 @@ class GithubCommentReporter(Reporter):
                 pr_list = commit.get_pulls()
                 if pr_list.totalCount == 0:
                     logging.info(
-                        "[GitHub Comment Reporter] No pull request was found, so no comment has been posted"
+                        "[GitHub Comment Reporter] No pull request has been found, so no comment has been posted"
                     )
                     return
             for pr in pr_list:
@@ -121,5 +121,5 @@ class GithubCommentReporter(Reporter):
         # Not in github context, or env var POST_GITHUB_COMMENT = false
         else:
             logging.debug(
-                "[GitHub Comment Reporter] No GitHub Token found, so skipped post of PR comment"
+                "[GitHub Comment Reporter] No GitHub Token has been found, so skipped post of PR comment"
             )

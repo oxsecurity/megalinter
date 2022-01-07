@@ -31,25 +31,33 @@ class GitlabCommentReporter(Reporter):
         if config.get("CI_JOB_TOKEN", "") != "":
             gitlab_repo = config.get("CI_PROJECT_NAME")
             gitlab_project_id = config.get("CI_PROJECT_ID")
-            gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID")
+            gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID", None)
+            if (
+                gitlab_merge_request_id is None
+                and config.get("CI_OPEN_MERGE_REQUESTS", None) is not None
+            ):
+                gitlab_merge_request_id = (
+                    config.get("CI_OPEN_MERGE_REQUESTS").split(",")[0].split("!")[1]
+                )
+                logging.debug('merge request id: '+gitlab_merge_request_id)
             gitlab_api_url = config.get("CI_SERVER_URL")
-            action_run_url = config.get("CI_JOB_URL","")
-            p_r_msg = build_markdown_summary(self,action_run_url)
+            action_run_url = config.get("CI_JOB_URL", "")
+            p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Post comment on merge request if found
-            gl = gitlab.Gitlab(gitlab_api_url, job_token=os.environ['CI_JOB_TOKEN'])
+            gl = gitlab.Gitlab(gitlab_api_url, job_token=os.environ["CI_JOB_TOKEN"])
             project = gl.projects.get(gitlab_project_id)
             mr = project.mergerequests.get(gitlab_merge_request_id)
             if mr is None:
                 logging.info(
-                    "[Gitlab Comment Reporter] No pull request was found, so no comment has been posted"
+                    "[Gitlab Comment Reporter] No merge request has been found, so no comment has been posted"
                 )
                 return
 
             # Ignore if PR is already merged
             if mr.state == "merged":
                 return
-            
+
             # Check if there is already a comment from Mega-Linter
             existing_comment = None
             existing_comments = mr.notes.list()
@@ -67,7 +75,7 @@ class GitlabCommentReporter(Reporter):
                     existing_comment.save()
                 # Or create a new PR comment
                 else:
-                    mr.notes.create({'body': 'note content'})
+                    mr.notes.create({"body": "note content"})
                 logging.debug(f"Posted Gitlab comment: {p_r_msg}")
                 logging.info(
                     f"[Gitlab Comment Reporter] Posted summary as comment on {gitlab_repo} #MR{mr.id}"
