@@ -15,7 +15,6 @@ class GitlabCommentReporter(Reporter):
     name = "GITLAB_COMMENT"
     scope = "mega-linter"
 
-    gitlab_api_url = "https://gitlab.com/api/v4/"
     gitlab_server_url = "https://gitlab.com"
 
     def manage_activation(self):
@@ -39,13 +38,13 @@ class GitlabCommentReporter(Reporter):
                 gitlab_merge_request_id = (
                     config.get("CI_OPEN_MERGE_REQUESTS").split(",")[0].split("!")[1]
                 )
-                logging.debug('merge request id: '+gitlab_merge_request_id)
-            gitlab_api_url = config.get("CI_SERVER_URL")
+                logging.debug("merge request id: " + gitlab_merge_request_id)
+            gitlab_server_url = config.get("CI_SERVER_URL", self.gitlab_server_url)
             action_run_url = config.get("CI_JOB_URL", "")
             p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Post comment on merge request if found
-            gl = gitlab.Gitlab(gitlab_api_url, job_token=os.environ["CI_JOB_TOKEN"])
+            gl = gitlab.Gitlab(gitlab_server_url, job_token=os.environ["CI_JOB_TOKEN"])
             project = gl.projects.get(gitlab_project_id)
             mr = project.mergerequests.get(gitlab_merge_request_id)
             if mr is None:

@@ -15,13 +15,13 @@ from pytablewriter import MarkdownTableWriter
 mega_linter_version = config.get("BUILD_VERSION", "latest")
 DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
+
 class GithubCommentReporter(Reporter):
     name = "GITHUB_COMMENT"
     scope = "mega-linter"
 
     github_api_url = "https://api.github.com"
     github_server_url = "https://github.com"
-    gh_url = ML_DOC_URL
     issues_root = ML_REPO_URL + "/issues"
 
     def manage_activation(self):
@@ -47,7 +47,7 @@ class GithubCommentReporter(Reporter):
                 )
             else:
                 action_run_url = ""
-            p_r_msg = build_markdown_summary(self,action_run_url)
+            p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Post comment on pull request if found
             github_auth = (

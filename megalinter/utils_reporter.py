@@ -128,7 +128,7 @@ def build_markdown_summary(reporter_self, action_run_url):
                     f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                 )
                 p_r_msg += (
-                    f"- [**{action_path}**]({reporter_self.gh_url}/flavors/{suggestion['flavor']}/)"
+                    f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)"
                 )
     logging.debug("\n" + p_r_msg)
