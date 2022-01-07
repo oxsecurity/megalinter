@@ -2,8 +2,16 @@ import logging
 import os
 import urllib
 from pytablewriter import MarkdownTableWriter
+from megalinter import config
+from megalinter.constants import (
+    ML_DOC_URL,
+    ML_DOC_URL_DESCRIPTORS_ROOT,
+    ML_REPO,
+    ML_REPO_ISSUES_URL,
+)
 
-from megalinter.constants import ML_DOC_URL,ML_DOC_URL_DESCRIPTORS_ROOT, ML_REPO_ISSUES_URL
+mega_linter_version = config.get("BUILD_VERSION", "latest")
+DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
 
 
 def build_markdown_summary(reporter_self, action_run_url):
@@ -114,21 +122,18 @@ def build_markdown_summary(reporter_self, action_run_url):
                 " if you use a Mega-Linter flavor:" + os.linesep
             )
             for suggestion in reporter_self.master.flavor_suggestions:
-                build_version = os.environ.get("BUILD_VERSION", "v4")
-                action_version = (
-                    "v4"
-                    if "v4" in build_version or len(build_version) > 20
-                    else "insiders"
-                    if build_version == "latest"
-                    else build_version
+                build_version = os.environ.get("BUILD_VERSION", "v5")
+                action_version = "v5" if len(build_version) > 20 else build_version
+                action_path = (
+                    f"{ML_REPO}/flavors/{suggestion['flavor']}@{action_version}"
                 )
-                action_path = f"megalinter/megalinter/flavors/{suggestion['flavor']}@{action_version}"
                 p_r_msg += (
-                    f"- [**{action_path}**]({ML_DOC_URL}/flavors/{suggestion['flavor']}/)"
+                    f"- [**{action_path}**]({reporter_self.gh_url}/flavors/{suggestion['flavor']}/)"
                     f" ({suggestion['linters_number']} linters)"
                 )
     logging.debug("\n" + p_r_msg)
     return p_r_msg
+
 
 def log_link(label, url):
     if url == "":
