@@ -88,6 +88,7 @@ class Linter:
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = "-c"
+        self.cli_config_default_value = None
         self.cli_config_extra_args = (
             []
         )  # Extra arguments to send to cli when a config file is used
@@ -874,7 +875,14 @@ class Linter:
         self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
-        if self.config_file is not None:
+        if (
+            self.cli_config_arg_name in cmd
+            or self.cli_config_arg_name in self.cli_config_extra_args
+        ):
+            # User overridden config within LINTER_NAME_ARGUMENTS
+            cmd += self.cli_config_extra_args
+        elif self.config_file is not None:
+            # Config file
             self.final_config_file = self.config_file
             if self.cli_docker_image is not None:
                 self.final_config_file = self.final_config_file.replace(
@@ -884,6 +892,10 @@ class Linter:
                 cmd += [self.cli_config_arg_name + self.final_config_file]
             elif self.cli_config_arg_name != "":
                 cmd += [self.cli_config_arg_name, self.final_config_file]
+            cmd += self.cli_config_extra_args
+        elif self.cli_config_default_value is not None:
+            # Default config value
+            cmd += [self.cli_config_arg_name, self.cli_config_default_value]
             cmd += self.cli_config_extra_args
         # Manage SARIF arguments
         if self.can_output_sarif is True and self.output_sarif is True:

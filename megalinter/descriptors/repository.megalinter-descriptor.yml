@@ -27,9 +27,9 @@ linters:
   # SECRETLINT
   - linter_name: secretlint
     descriptor_flavors:
-    - all_flavors # Applicable to CI in any language project
-    - ci_light
-    - security
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
     linter_url: https://github.com/secretlint/secretlint
     linter_repo: https://github.com/secretlint/secretlint
     linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
@@ -56,9 +56,9 @@ linters:
   - linter_name: gitleaks
     can_output_sarif: true
     descriptor_flavors:
-    - all_flavors # Applicable to CI in any language project
-    - ci_light
-    - security
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
     linter_url: https://github.com/zricethezav/gitleaks
     linter_repo: https://github.com/zricethezav/gitleaks
     linter_rules_configuration_url: https://github.com/zricethezav/gitleaks#configuration
@@ -93,8 +93,8 @@ linters:
   # GOODCHECK
   - linter_name: goodcheck
     descriptor_flavors:
-    - all_flavors # Applicable to CI in any language project
-    - ci_light
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
     linter_url: https://sider.github.io/goodcheck/
     linter_repo: https://github.com/sider/goodcheck
     linter_rules_url: https://sider.github.io/goodcheck/docs/rules
@@ -119,9 +119,9 @@ linters:
   - linter_name: trivy
     can_output_sarif: true
     descriptor_flavors:
-    - all_flavors # Applicable to CI in any language project
-    - ci_light
-    - security
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
     linter_url: https://aquasecurity.github.io/trivy/
     linter_repo: https://github.com/aquasecurity/trivy
     linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
@@ -140,10 +140,10 @@ linters:
       - --exit-code
       - "1"
     cli_lint_extra_args_after:
-      - '.'
+      - "."
     test_folder: trivy
     examples:
-      - 'trivy fs --security-checks vuln,config .'
+      - "trivy fs --security-checks vuln,config ."
     install:
       dockerfile:
         - RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
@@ -152,24 +152,27 @@ linters:
   - linter_name: semgrep
     can_output_sarif: true
     descriptor_flavors:
-    - all_flavors # Applicable to CI in any language project
-    - security
+      - all_flavors # Applicable to CI in any language project
+      - security
     linter_url: https://semgrep.dev/
     linter_repo: https://github.com/returntocorp/semgrep
     linter_text: |
       If you do not want to use default semgrep recommended rules, you can send them as arguments
-      
+
       Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
     linter_rules_url: https://semgrep.dev/r
     linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
     linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
     cli_lint_mode: project
     cli_config_arg_name: --config
+    cli_config_default_value: auto
     cli_lint_extra_args_after:
       - "{{WORKSPACE}}"
     cli_lint_fix_arg_name: --autofix
     cli_sarif_args:
       - --sarif
+    cli_help_arg_name: -h
+    cli_help_extra_args: ["--help"]
     test_folder: repository_semgrep
     examples:
       - "semgrep /tmp/lint"
