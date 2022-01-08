@@ -265,13 +265,13 @@ def find_json_in_stdout(stdout: str):
     # Try to find a json line within stdout
     found_json = ""
     stdout_lines = stdout.splitlines()
-    if stdout_lines is not None:
-        for line in stdout_lines.reverse():
-            if line.startswith("{"):
-                json_only = truncate_json_from_line(line)
-                if json_only != "":
-                    found_json = line
-                    break
+    stdout_lines.reverse() # start from last lines
+    for line in stdout_lines:
+        if line.startswith("{"):
+            json_only = truncate_json_from_line(line)
+            if json_only != "":
+                found_json = line
+                break
     return found_json
 
 
