@@ -650,6 +650,9 @@ class Linter:
 
     # lint a single file or whole project
     def process_linter(self, file=None):
+        # Remove previous run SARIF file if necessary
+        if self.sarif_output_file is not None and os.path.isfile(self.sarif_output_file):
+            os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         logging.debug(f"[{self.linter_name}] command: {str(command)}")

@@ -279,5 +279,5 @@ def truncate_json_from_line(line: str):
     start_pos = line.find("{")
     end_pos = line.rfind("}")
     if start_pos > -1 and end_pos > -1:
-        return line[start_pos : end_pos]
+        return line[start_pos : end_pos + 1]
     return ""
