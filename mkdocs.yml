@@ -275,6 +275,7 @@ nav:
               - "gitleaks": "descriptors/repository_gitleaks.md"
               - "goodcheck": "descriptors/repository_goodcheck.md"
               - "trivy": "descriptors/repository_trivy.md"
+              - "semgrep": "descriptors/repository_semgrep.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
               - "misspell": "descriptors/spell_misspell.md"
