@@ -253,3 +253,28 @@ def format_bullet_list(files):
     prefix = list_separator if any(files) is True else ""
     file_list = list_separator.join(files) if len(files) > 0 else ""
     return "{}{}".format(prefix, file_list)
+
+
+def find_json_in_stdout(stdout: str):
+    # Whole stdout is json
+    if stdout.startswith("{"):
+        return truncate_json_from_line(stdout)
+    # Last line of stdout is json
+    elif stdout.splitlines()[-1].startswith("{"):
+        return truncate_json_from_line(stdout.splitlines()[-1])
+    # Try to find a json line within stdout
+    found_json = ""
+    for line in stdout.splitlines().reverse():
+        if line.startswith("{"):
+            json_only = truncate_json_from_line(line)
+            if json_only != "":
+                found_json = line
+                break
+    return found_json
+
+
+def truncate_json_from_line(line: str):
+    matches = re.search(r"\{(.*)\}", line)
+    if matches:
+        matches.group(1)
+    return ""
