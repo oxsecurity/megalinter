@@ -720,14 +720,19 @@ class Linter:
             and self.output_sarif is True
             and not os.path.isfile(self.sarif_output_file)
         ):
+            sarif_stdout = ""
             if return_stdout.startswith("{"):
-                with open(self.sarif_output_file, "w", encoding="utf-8") as file:
-                    file.write(return_stdout)
+                sarif_stdout = return_stdout
+            elif return_stdout.splitlines()[-1].startswith("{"):
+                sarif_stdout = return_stdout.splitlines()[-1]
             else:
                 logging.error(
                     "[Sarif] ERROR: there is no SARIF output file found, and stdout does not contain SARIF"
                 )
                 logging.error("[Sarif] stdout: " + return_stdout)
+            if sarif_stdout != "":
+                with open(self.sarif_output_file, "w", encoding="utf-8") as file:
+                    file.write(return_stdout)
         # Return linter result
         return return_code, return_stdout
 
