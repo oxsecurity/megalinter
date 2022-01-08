@@ -473,6 +473,11 @@
             "title": "CLI configuration file argument name if different from -c",
             "type": "string"
           },
+          "cli_config_default_value": {
+            "$id": "#/properties/linters/items/properties/cli_config_default_value",
+            "title": "Default value for config argument, in case it is not a file",
+            "type": "string"
+          },
           "cli_config_extra_args": {
             "$id": "#/properties/linters/items/properties/cli_config_extra_args",
             "default": [],

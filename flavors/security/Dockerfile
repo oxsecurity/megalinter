@@ -76,7 +76,8 @@ RUN pip3 install --no-cache-dir --upgrade \
           'ansible-lint[yamllint]' \
           'cfn-lint' \
           'bandit' \
-          'bandit_sarif_formatter'
+          'bandit_sarif_formatter' \
+          'semgrep'
 #PIP__END
 
 ############################

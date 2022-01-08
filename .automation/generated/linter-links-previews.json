@@ -339,6 +339,11 @@
     "image": "https://repository-images.githubusercontent.com/239106765/29bc0580-5b2f-11ea-89e2-d985890508c1",
     "title": "GitHub - secretlint/secretlint: Pluggable linting tool to prevent committing credential."
   },
+  "semgrep": {
+    "description": "None",
+    "image": null,
+    "title": "Semgrep"
+  },
   "sfdx-scanner": {
     "description": "",
     "image": null,

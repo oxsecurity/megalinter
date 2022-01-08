@@ -83,6 +83,9 @@ class SarifReporter(Reporter):
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
             "SARIF_REPORTER_FILE_NAME", DEFAULT_SARIF_REPORT_FILE_NAME
         )
+        if os.path.isfile(sarif_file_name):
+            # Remove from previous run
+            os.remove(sarif_file_name)
         with open(sarif_file_name, "w", encoding="utf-8") as sarif_file:
             sarif_file.write(result_json)
             logging.info(

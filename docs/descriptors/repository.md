@@ -12,6 +12,7 @@
 | [gitleaks](repository_gitleaks.md)     | [REPOSITORY](repository_gitleaks.md)   |
 | [goodcheck](repository_goodcheck.md)   | [REPOSITORY](repository_goodcheck.md)  |
 | [trivy](repository_trivy.md)           | [REPOSITORY](repository_trivy.md)      |
+| [semgrep](repository_semgrep.md)       | [REPOSITORY](repository_semgrep.md)    |
 
 ## Linted files
 
@@ -21,14 +22,4 @@
 |---------------------------------|-------------------------------|---------------|
 | REPOSITORY_FILTER_REGEX_INCLUDE | Custom regex including filter |               |
 | REPOSITORY_FILTER_REGEX_EXCLUDE | Custom regex excluding filter |               |
-
-
-## Behind the scenes
-
-### Installation
-
-- Dockerfile commands :
-```dockerfile
-RUN git config --global core.autocrlf true
-```
 

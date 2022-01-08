@@ -96,6 +96,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'ansible' \
           'ansible-lint[yamllint]' \
           'cpplint' \
+          'semgrep' \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \

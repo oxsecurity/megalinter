@@ -88,6 +88,7 @@ class Linter:
         self.cli_executable_help = None
         # Default arg name for configurations to use in linter CLI call
         self.cli_config_arg_name = "-c"
+        self.cli_config_default_value = None
         self.cli_config_extra_args = (
             []
         )  # Extra arguments to send to cli when a config file is used
@@ -568,6 +569,8 @@ class Linter:
                 txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
+            elif "{{WORKSPACE}}" in txt:
+                txt = txt.replace("{{WORKSPACE}}", self.workspace)
             variables_with_replacements += [txt]
 
         return variables_with_replacements
@@ -647,6 +650,9 @@ class Linter:
 
     # lint a single file or whole project
     def process_linter(self, file=None):
+        # Remove previous run SARIF file if necessary
+        if self.sarif_output_file is not None and os.path.isfile(self.sarif_output_file):
+            os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
@@ -655,12 +661,14 @@ class Linter:
         if (
             self.sarif_output_file is not None
             and self.sarif_default_output_file is not None
-            and os.path.isfile(self.sarif_default_output_file)
         ):
-            shutil.move(self.sarif_default_output_file, self.sarif_output_file)
-            logging.debug(
-                f"Moved {self.sarif_default_output_file} to {self.sarif_output_file}"
+            linter_sarif_report = (
+                self.sarif_default_output_file
+                if os.path.isfile(self.sarif_default_output_file)
+                else os.path.join(self.workspace, self.sarif_default_output_file)
             )
+            shutil.move(linter_sarif_report, self.sarif_output_file)
+            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
@@ -717,9 +725,10 @@ class Linter:
             and self.output_sarif is True
             and not os.path.isfile(self.sarif_output_file)
         ):
-            if return_stdout.startswith("{"):
+            sarif_stdout = utils.find_json_in_stdout(return_stdout)
+            if sarif_stdout != "":
                 with open(self.sarif_output_file, "w", encoding="utf-8") as file:
-                    file.write(return_stdout)
+                    file.write(sarif_stdout)
             else:
                 logging.error(
                     "[Sarif] ERROR: there is no SARIF output file found, and stdout does not contain SARIF"
@@ -872,7 +881,14 @@ class Linter:
         self.cli_lint_user_args = self.replace_vars(self.cli_lint_user_args)
         cmd += self.cli_lint_user_args
         # Add config arguments if defined (except for case when no_config_if_fix is True)
-        if self.config_file is not None:
+        if (
+            self.cli_config_arg_name in cmd
+            or self.cli_config_arg_name in self.cli_config_extra_args
+        ):
+            # User overridden config within LINTER_NAME_ARGUMENTS
+            cmd += self.cli_config_extra_args
+        elif self.config_file is not None:
+            # Config file
             self.final_config_file = self.config_file
             if self.cli_docker_image is not None:
                 self.final_config_file = self.final_config_file.replace(
@@ -882,6 +898,10 @@ class Linter:
                 cmd += [self.cli_config_arg_name + self.final_config_file]
             elif self.cli_config_arg_name != "":
                 cmd += [self.cli_config_arg_name, self.final_config_file]
+            cmd += self.cli_config_extra_args
+        elif self.cli_config_default_value is not None:
+            # Default config value
+            cmd += [self.cli_config_arg_name, self.cli_config_default_value]
             cmd += self.cli_config_extra_args
         # Manage SARIF arguments
         if self.can_output_sarif is True and self.output_sarif is True:
