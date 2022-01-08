@@ -30,16 +30,18 @@ class GitlabCommentReporter(Reporter):
         if config.get("CI_JOB_TOKEN", "") != "":
             gitlab_repo = config.get("CI_PROJECT_NAME")
             gitlab_project_id = config.get("CI_PROJECT_ID")
-            gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID", None)
+            gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID", "")
             logging.info("NICO: merge request id: " + gitlab_merge_request_id)
             if (
-                gitlab_merge_request_id is None
-                and config.get("CI_OPEN_MERGE_REQUESTS", None) is not None
+                gitlab_merge_request_id == ""
+                and config.get("CI_OPEN_MERGE_REQUESTS", "") != ""
             ):
                 gitlab_merge_request_id = (
-                    config.get("CI_OPEN_MERGE_REQUESTS").split(",")[0].split("!")[1]
+                    config.get("CI_OPEN_MERGE_REQUESTS", "missing!missing")
+                    .split(",")[0]
+                    .split("!")[1]
                 )
-                logging.info("NICO: merge request id: " + gitlab_merge_request_id)
+                logging.info("NICO: merge request id 2: " + gitlab_merge_request_id)
             gitlab_server_url = config.get("CI_SERVER_URL", self.gitlab_server_url)
             action_run_url = config.get("CI_JOB_URL", "")
             p_r_msg = build_markdown_summary(self, action_run_url)
