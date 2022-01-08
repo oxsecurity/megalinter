@@ -520,6 +520,17 @@ def test_linter_report_sarif(linter, test_self):
         os.path.isfile(tmp_sarif_file_name),
         f"SARIF report not found {tmp_sarif_file_name}",
     )
+    # Check SARIF file contains appropriate format and runs
+    with open(tmp_sarif_file_name, "r", encoding="utf-8") as json_file:
+        sarif_content = json.load(json_file)
+    test_self.assertTrue(
+        "runs" in sarif_content,
+        f'Missing property "runs" in {tmp_sarif_file_name}',
+    )
+    test_self.assertTrue(
+        len(sarif_content["runs"]) > 0,
+        f"Empty runs list in {tmp_sarif_file_name}",
+    )
 
 
 def assert_is_skipped(skipped_item, output, test_self):
