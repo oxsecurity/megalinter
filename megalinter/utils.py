@@ -265,7 +265,7 @@ def find_json_in_stdout(stdout: str):
     # Try to find a json line within stdout
     found_json = ""
     stdout_lines = stdout.splitlines()
-    stdout_lines.reverse() # start from last lines
+    stdout_lines.reverse()  # start from last lines
     for line in stdout_lines:
         if line.startswith("{"):
             json_only = truncate_json_from_line(line)
@@ -279,5 +279,5 @@ def truncate_json_from_line(line: str):
     start_pos = line.find("{")
     end_pos = line.rfind("}")
     if start_pos > -1 and end_pos > -1:
-        return line[start_pos:end_pos]
+        return line[start_pos : end_pos + 1]
     return ""
