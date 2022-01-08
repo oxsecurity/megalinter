@@ -658,12 +658,14 @@ class Linter:
         if (
             self.sarif_output_file is not None
             and self.sarif_default_output_file is not None
-            and os.path.isfile(self.sarif_default_output_file)
         ):
-            shutil.move(self.sarif_default_output_file, self.sarif_output_file)
-            logging.debug(
-                f"Moved {self.sarif_default_output_file} to {self.sarif_output_file}"
+            linter_sarif_report = (
+                self.sarif_default_output_file
+                if os.path.isfile(self.sarif_default_output_file)
+                else os.path.join(self.workspace, self.sarif_default_output_file)
             )
+            shutil.move(linter_sarif_report, self.sarif_output_file)
+            logging.debug(f"Moved {linter_sarif_report} to {self.sarif_output_file}")
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
