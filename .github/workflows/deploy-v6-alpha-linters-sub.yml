@@ -11,11 +11,12 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-name: "Build & Deploy - v6-alpha-inbar linters"
+name: "Build & Deploy - v6-alpha-DEV linters"
 on:
   push:
     branches:
       - "v6_inbar"
+      - "v6-**"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
@@ -34,14 +35,14 @@ on:
 # Set the Job #
 ###############
 concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}
+  group: $${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
 
   build:
     # Name the Job
-    name: Deploy Docker Image - v6-alpha-inbar - Linters
+    name: Deploy Docker Image - curent branch name - Linters
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
@@ -62,6 +63,7 @@ jobs:
             "php_psalm",
             "python_bandit",
             "repository_gitleaks",
+            "repository_semgrep",
             "repository_trivy",
             "terraform_tflint",
             "terraform_terrascan",
@@ -84,16 +86,26 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get branch name (merge)
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+
+      - name: Get branch name (pull request)
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy v6-alpha-inbar image to DockerHub
+      - name: Deploy ${{ env.BRANCH_NAME }} image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: v6-alpha-inbar
+          IMAGE_VERSION: "${{ env.BRANCH_NAME }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
         shell: bash
@@ -107,7 +119,7 @@ jobs:
         run: |
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter-only-${{ matrix.linter }}:v6-alpha-inbar
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter-only-${{ matrix.linter }}:${{ env.BRANCH_NAME }}
         timeout-minutes: 30
 
       ##############################################
@@ -116,7 +128,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: 'docker.io/megalinter/megalinter-only-${{ matrix.linter }}:v6-alpha-inbar'
+          image-ref: 'docker.io/megalinter/megalinter-only-${{ matrix.linter }}:${{ env.BRANCH_NAME }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true

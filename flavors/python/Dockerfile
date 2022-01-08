@@ -89,6 +89,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'bandit' \
           'bandit_sarif_formatter' \
           'mypy' \
+          'semgrep' \
           'restructuredtext_lint' \
           'rstcheck' \
           'sphinx<4.0' \

@@ -65,6 +65,7 @@ jobs:
             "python_bandit",
             "repository_gitleaks",
             "repository_trivy",
+            "repository_semgrep",
             "terraform_tflint",
             "terraform_terrascan",
             "terraform_checkov",

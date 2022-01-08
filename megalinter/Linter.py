@@ -568,6 +568,8 @@ class Linter:
                 txt = txt.replace("{{SARIF_OUTPUT_FILE}}", self.sarif_output_file)
             elif "{{REPORT_FOLDER}}" in txt:
                 txt = txt.replace("{{REPORT_FOLDER}}", self.report_folder)
+            elif "{{WORKSPACE}}" in txt:
+                txt = txt.replace("{{WORKSPACE}}", self.workspace)
             variables_with_replacements += [txt]
 
         return variables_with_replacements
