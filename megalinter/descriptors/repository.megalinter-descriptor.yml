@@ -166,6 +166,8 @@ linters:
     cli_lint_mode: project
     cli_config_arg_name: --config
     cli_config_default_value: auto
+    cli_lint_extra_args:
+      - --error # Exit 1 when errors are found
     cli_lint_extra_args_after:
       - "{{WORKSPACE}}"
     cli_lint_fix_arg_name: --autofix
