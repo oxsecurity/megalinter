@@ -183,3 +183,10 @@ linters:
     install:
       pip:
         - semgrep
+    variables:
+      - name: REPOSITORY_SEMGREP_RULESETS
+        description: List of semgrep rulesets identifiers that you want to enforce
+        default_value: auto
+      - name: REPOSITORY_SEMGREP_RULESETS_TYPE
+        description: "MegaLinter semgrep ruleset list preset id . Available values: security"
+        default_value: ""
