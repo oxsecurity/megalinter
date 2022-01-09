@@ -13,6 +13,7 @@ import sys
 import chalk as c
 import git
 from megalinter import (
+    Linter,
     config,
     flavor_factory,
     linter_factory,
@@ -90,7 +91,7 @@ class Megalinter:
         self.load_config_vars()
         # Runtime properties
         self.reporters = []
-        self.linters = []
+        self.linters: list[Linter] = []
         self.file_extensions = []
         self.file_names_regex = []
         self.status = "success"

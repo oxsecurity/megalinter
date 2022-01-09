@@ -149,7 +149,8 @@ linters:
         - RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
 
   # SEMGREP
-  - linter_name: semgrep
+  - class: SemgrepLinter
+    linter_name: semgrep
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
