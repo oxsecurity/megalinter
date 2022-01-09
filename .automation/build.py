@@ -480,14 +480,16 @@ class {lang_lower}_{linter_name_lower}_test(TestCase, LinterTestRoot):
     descriptor_id = "{linter.descriptor_id}"
     linter_name = "{linter.linter_name}"
 """
-        file = open(
-            f"{REPO_HOME}/megalinter/tests/test_megalinter/linters/{lang_lower}_{linter_name_lower}_test.py",
-            "w",
-            encoding="utf-8",
-        )
-        file.write(test_class_code)
-        file.close()
-        logging.info("Updated " + file.name)
+        test_class_file_name = f"{REPO_HOME}/megalinter/tests/test_megalinter/linters/{lang_lower}_{linter_name_lower}_test.py"
+        if not os.path.isfile(test_class_file_name):
+            file = open(
+                test_class_file_name,
+                "w",
+                encoding="utf-8",
+            )
+            file.write(test_class_code)
+            file.close()
+            logging.info("Updated " + file.name)
 
 
 def list_descriptors_for_build():
