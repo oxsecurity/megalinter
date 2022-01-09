@@ -16,7 +16,11 @@ class SemgrepLinter(Linter):
         replace_index = cmd.index(self.cli_config_default_value)
         custom_rulesets = self.get_custom_rulesets()
         if len(custom_rulesets) > 0 and replace_index > -1:
-            cmd = cmd[:replace_index] + custom_rulesets + cmd[replace_index + 1 :]
+            custom_rulesets_args = []
+            for custom_ruleset in custom_rulesets:
+                custom_rulesets_args.append("--config")
+                custom_rulesets_args.append(custom_ruleset)
+            cmd = cmd[:replace_index -1] + custom_rulesets_args + cmd[replace_index + 1 :]
             logging.debug(
                 "[SemgrepLinter] Custom rulesets: " + ",".join(custom_rulesets)
             )
@@ -29,7 +33,7 @@ class SemgrepLinter(Linter):
         elif (
             # security rulesets
             self.master.megalinter_flavor in ["security", "none"]
-            or config.get("REPOSITORY_SEMGREP_RULESETS", "") == "security"
+            or config.get("REPOSITORY_SEMGREP_RULESETS_TYPE", "") == "security"
         ):
             return [
                 "p/docker-compose",
