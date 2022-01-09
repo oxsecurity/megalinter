@@ -7,12 +7,13 @@
 
 | Linter                                 | Configuration key                      |
 |----------------------------------------|----------------------------------------|
+| [devskim](repository_devskim.md)       | [REPOSITORY](repository_devskim.md)    |
 | [git_diff](repository_git_diff.md)     | [REPOSITORY](repository_git_diff.md)   |
-| [secretlint](repository_secretlint.md) | [REPOSITORY](repository_secretlint.md) |
 | [gitleaks](repository_gitleaks.md)     | [REPOSITORY](repository_gitleaks.md)   |
 | [goodcheck](repository_goodcheck.md)   | [REPOSITORY](repository_goodcheck.md)  |
-| [trivy](repository_trivy.md)           | [REPOSITORY](repository_trivy.md)      |
+| [secretlint](repository_secretlint.md) | [REPOSITORY](repository_secretlint.md) |
 | [semgrep](repository_semgrep.md)       | [REPOSITORY](repository_semgrep.md)    |
+| [trivy](repository_trivy.md)           | [REPOSITORY](repository_trivy.md)      |
 
 ## Linted files
 
