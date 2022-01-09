@@ -5,6 +5,53 @@ descriptor_flavors:
   - ci_light
 lint_all_files: true
 linters:
+
+  # DEVSKIM 
+  - linter_name: devskim
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_url: https://github.com/microsoft/DevSkim
+    linter_repo: https://github.com/microsoft/DevSkim
+    linter_image_url: https://github.com/microsoft/DevSkim/raw/main/media/devskim_logo.svg
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - analyze
+    cli_sarif_args:
+      - --file-format
+      - sarif
+    cli_lint_extra_args_after:
+      - "."
+      - -E
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(\\[.*\\])"
+    test_folder: devskim
+    examples:
+      - "devskim analyze ."
+      - "devskim analyze --file-format sarif ."
+    install:
+      apk:
+        - icu-libs
+        - libcurl
+        - libintl 
+        - libssl1.1 
+        - libstdc++
+        - lttng-ust-dev
+        - zlib
+        - zlib-dev
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+              && chmod +x dotnet-install.sh \
+              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+    ide:
+      vscode:
+        - name: VsCode DevSkim
+          url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
+
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true
@@ -87,49 +134,6 @@ linters:
       gem:
         - goodcheck
 
-  # SEMGREP
-  - class: SemgrepLinter
-    linter_name: semgrep
-    can_output_sarif: true
-    descriptor_flavors:
-      - all_flavors # Applicable to CI in any language project
-      - security
-    linter_url: https://semgrep.dev/
-    linter_repo: https://github.com/returntocorp/semgrep
-    linter_text: |
-      If you do not want to use default semgrep recommended rules, you can send them as arguments
-
-      Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
-    linter_rules_url: https://semgrep.dev/r
-    linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
-    linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
-    cli_lint_mode: project
-    cli_config_arg_name: --config
-    cli_config_default_value: auto
-    cli_lint_extra_args:
-      - --error # Exit 1 when errors are found
-    cli_lint_extra_args_after:
-      - "{{WORKSPACE}}"
-    cli_lint_fix_arg_name: --autofix
-    cli_sarif_args:
-      - --sarif
-    cli_help_arg_name: -h
-    cli_help_extra_args: ["--help"]
-    test_folder: repository_semgrep
-    examples:
-      - "semgrep /tmp/lint"
-      - "semgrep "
-    install:
-      pip:
-        - semgrep
-    variables:
-      - name: REPOSITORY_SEMGREP_RULESETS
-        description: List of semgrep rulesets identifiers that you want to enforce
-        default_value: auto
-      - name: REPOSITORY_SEMGREP_RULESETS_TYPE
-        description: "MegaLinter semgrep ruleset list preset id . Available values: security"
-        default_value: ""
-
   # SECRETLINT
   - linter_name: secretlint
     descriptor_flavors:
@@ -157,6 +161,54 @@ linters:
       npm:
         - secretlint@4.1.0
         - "@secretlint/secretlint-rule-preset-recommend@4.1.0"
+
+  # SEMGREP
+  - class: SemgrepLinter
+    linter_name: semgrep
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - security
+    linter_url: https://semgrep.dev/
+    linter_repo: https://github.com/returntocorp/semgrep
+    linter_text: |
+      If you do not want to use default semgrep recommended rules, you can send them as arguments
+
+      Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
+    linter_rules_url: https://semgrep.dev/r
+    linter_rules_configuration_url: https://semgrep.dev/docs/running-rules/
+    linter_rules_inline_disable_url: https://semgrep.dev/docs/ignoring-findings/#inline-comments
+    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    cli_lint_mode: project
+    cli_config_arg_name: --config
+    cli_config_default_value: auto
+    cli_lint_extra_args:
+      - --error # Exit 1 when errors are found
+    cli_lint_extra_args_after:
+      - "{{WORKSPACE}}"
+    cli_lint_fix_arg_name: --autofix
+    cli_sarif_args:
+      - --sarif
+    cli_help_arg_name: -h
+    cli_help_extra_args: ["--help"]
+    test_folder: repository_semgrep
+    examples:
+      - "semgrep /tmp/lint"
+      - "semgrep "
+    install:
+      pip:
+        - semgrep
+    variables:
+      - name: REPOSITORY_SEMGREP_RULESETS
+        description: List of semgrep rulesets identifiers that you want to enforce
+        default_value: auto
+      - name: REPOSITORY_SEMGREP_RULESETS_TYPE
+        description: "MegaLinter semgrep ruleset list preset id . Available values: security"
+        default_value: ""
+    ide:
+      vscode:
+        - name: VsCode SemGrep
+          url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
 
   # TRIVY
   - linter_name: trivy
@@ -193,3 +245,8 @@ linters:
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \
               wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl && \
               chmod 644 /usr/local/bin/sarif.tpl
+    ide:
+      vscode:
+        - name: VsCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+    

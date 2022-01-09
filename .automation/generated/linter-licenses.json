@@ -11,6 +11,7 @@
     "coffeelint": "Other",
     "cspell": "MIT",
     "dartanalyzer": "BSD-3-Clause",
+    "devskim": "MIT",
     "dockerfilelint": "MIT",
     "dotenv-linter": "MIT",
     "dotnet-format": "MIT",
