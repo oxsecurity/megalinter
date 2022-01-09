@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.702**
+- Version in MegaLinter: **2.0.708**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -142,11 +142,11 @@ optional arguments:
   -c CHECK, --check CHECK
                         filter scan to run only on a specific check
                         identifier(allowlist), You can specify multiple checks
-                        separated by comma delimiter
+                        separated by comma delimiter [env var: CKV_CHECK]
   --skip-check SKIP_CHECK
                         filter scan to run on all check but a specific check
                         identifier(denylist), You can specify multiple checks
-                        separated by comma delimiter
+                        separated by comma delimiter [env var: CKV_SKIP_CHECK]
   --run-all-external-checks
                         Run all external checks (loaded via --external-checks
                         options) even if the checks are not present in the
