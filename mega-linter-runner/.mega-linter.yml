@@ -6,8 +6,11 @@ APPLY_FIXES: all # When active, APPLY_FIXES must also be defined as environment 
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 DISABLE:
   - EDITORCONFIG
+DISABLE_LINTERS:
+  - REPOSITORY_SEMGREP
 JAVASCRIPT_DEFAULT_STYLE: prettier
 YAML_FILTER_REGEX_EXCLUDE: (templates)
+YAML_V8R_DISABLE_ERRORS: true #todov6: remove
 MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 GITHUB_COMMENT_REPORTER: false
 GITHUB_STATUS_REPORTER: false
