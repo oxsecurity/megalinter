@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [coffeelint](http://www.coffeelint.org) from 5.2.2 to **5.2.3** on 2022-01-09
+  - [phpstan](https://phpstan.org/) from 1.3.0 to **1.3.3** on 2022-01-09
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.930 to **0.931** on 2022-01-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.14.0 to **5.15.1** on 2022-01-09
+  - [checkov](https://www.checkov.io/) from 2.0.702 to **2.0.708** on 2022-01-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.2 to **1.1.3** on 2022-01-09
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.12.0 to **1.13.0** on 2022-01-09
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
