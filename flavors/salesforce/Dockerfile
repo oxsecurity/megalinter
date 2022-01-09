@@ -201,7 +201,7 @@ COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
-RUN wget --tries=5 -q https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \
+RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \
     wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl
 
 
