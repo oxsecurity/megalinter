@@ -49,7 +49,7 @@ class GitlabCommentReporter(Reporter):
             # Post comment on merge request if found
             gl = gitlab.Gitlab(gitlab_server_url, job_token=os.environ["CI_JOB_TOKEN"])
             logging.info("NICO: gitlab_project_id: " + gitlab_project_id)
-            logging.info("NICO: gl: " + gl)
+            logging.info("NICO: gl: " + str(gl))
             project = gl.projects.get(gitlab_project_id)
 
             mr = project.mergerequests.get(gitlab_merge_request_id)
