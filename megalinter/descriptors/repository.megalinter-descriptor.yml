@@ -24,34 +24,6 @@ linters:
     examples:
       - "git diff --check"
 
-  # SECRETLINT
-  - linter_name: secretlint
-    descriptor_flavors:
-      - all_flavors # Applicable to CI in any language project
-      - ci_light
-      - security
-    linter_url: https://github.com/secretlint/secretlint
-    linter_repo: https://github.com/secretlint/secretlint
-    linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
-    linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
-    linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
-    linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
-    config_file_name: .secretlintrc.json
-    cli_config_arg_name: "--secretlintrc"
-    cli_lint_mode: project
-    cli_lint_extra_args_after:
-      - "**/*"
-    cli_help_arg_name: "--help"
-    test_folder: credentials
-    examples:
-      - 'secretlint "*/**"'
-      - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
-    downgraded_version: true
-    install:
-      npm:
-        - secretlint@4.1.0
-        - "@secretlint/secretlint-rule-preset-recommend@4.1.0"
-
   # GITLEAKS
   - linter_name: gitleaks
     can_output_sarif: true
@@ -115,39 +87,6 @@ linters:
       gem:
         - goodcheck
 
-  # TRIVY
-  - linter_name: trivy
-    can_output_sarif: true
-    descriptor_flavors:
-      - all_flavors # Applicable to CI in any language project
-      - ci_light
-      - security
-    linter_url: https://aquasecurity.github.io/trivy/
-    linter_repo: https://github.com/aquasecurity/trivy
-    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
-    cli_lint_mode: project
-    cli_sarif_args:
-      - --format
-      - template
-      - --template
-      - "@contrib/sarif.tpl"
-      - -o
-      - "{{SARIF_OUTPUT_FILE}}"
-    cli_lint_extra_args:
-      - fs
-      - --security-checks
-      - vuln,config
-      - --exit-code
-      - "1"
-    cli_lint_extra_args_after:
-      - "."
-    test_folder: trivy
-    examples:
-      - "trivy fs --security-checks vuln,config ."
-    install:
-      dockerfile:
-        - RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
-
   # SEMGREP
   - class: SemgrepLinter
     linter_name: semgrep
@@ -190,3 +129,66 @@ linters:
       - name: REPOSITORY_SEMGREP_RULESETS_TYPE
         description: "MegaLinter semgrep ruleset list preset id . Available values: security"
         default_value: ""
+
+  # SECRETLINT
+  - linter_name: secretlint
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
+    linter_url: https://github.com/secretlint/secretlint
+    linter_repo: https://github.com/secretlint/secretlint
+    linter_banner_image_url: https://github.com/secretlint/secretlint/raw/main/docs/assets/SecretLintLP.png
+    linter_rules_url: https://github.com/secretlint/secretlint#rule-packages
+    linter_rules_configuration_url: https://github.com/secretlint/secretlint#configuration
+    linter_megalinter_ref_url: https://github.com/secretlint/secretlint#mega-linter
+    config_file_name: .secretlintrc.json
+    cli_config_arg_name: "--secretlintrc"
+    cli_lint_mode: project
+    cli_lint_extra_args_after:
+      - "**/*"
+    cli_help_arg_name: "--help"
+    test_folder: credentials
+    examples:
+      - 'secretlint "*/**"'
+      - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
+    downgraded_version: true
+    install:
+      npm:
+        - secretlint@4.1.0
+        - "@secretlint/secretlint-rule-preset-recommend@4.1.0"
+
+  # TRIVY
+  - linter_name: trivy
+    can_output_sarif: true
+    descriptor_flavors:
+      - all_flavors # Applicable to CI in any language project
+      - ci_light
+      - security
+    linter_url: https://aquasecurity.github.io/trivy/
+    linter_repo: https://github.com/aquasecurity/trivy
+    linter_banner_image_url: https://aquasecurity.github.io/trivy/v0.21.1/imgs/logo.png
+    cli_lint_mode: project
+    cli_sarif_args:
+      - --format
+      - template
+      - --template
+      - "@contrib/sarif.tpl"
+      - -o
+      - "{{SARIF_OUTPUT_FILE}}"
+    cli_lint_extra_args:
+      - fs
+      - --security-checks
+      - vuln,config
+      - --exit-code
+      - "1"
+    cli_lint_extra_args_after:
+      - "."
+    test_folder: trivy
+    examples:
+      - "trivy fs --security-checks vuln,config ."
+    install:
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1 && \
+              wget --tries=5 -q -O contrib/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl
