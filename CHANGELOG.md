@@ -16,6 +16,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.702 to **2.0.708** on 2022-01-09
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.2 to **1.1.3** on 2022-01-09
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.12.0 to **1.13.0** on 2022-01-09
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.3.0 to **9.3.2** on 2022-01-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.0 to **0.9.1** on 2022-01-09
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
