@@ -54,6 +54,8 @@ def linter_test_setup(params=None):
         "FLAVOR_SUGGESTIONS",
         "SARIF_REPORTER",
         "LOG_FILE",
+        "REPOSITORY_SEMGREP_RULESETS_TYPE",
+        "REPOSITORY_SEMGREP_RULESETS"
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -92,6 +94,9 @@ def linter_test_setup(params=None):
     config.set_value("GITHUB_STATUS_REPORTER", "false")
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
+    if params.get("additional_test_variables"):
+        for env_var_key, env_var_value in params.get("additional_test_variables").items():
+            config.set_value(env_var_key, env_var_value)
     # Root path of files to lint
     config.set_value(
         "DEFAULT_WORKSPACE",

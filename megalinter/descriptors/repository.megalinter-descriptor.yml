@@ -149,7 +149,8 @@ linters:
         - RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
 
   # SEMGREP
-  - linter_name: semgrep
+  - class: SemgrepLinter
+    linter_name: semgrep
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
@@ -182,3 +183,10 @@ linters:
     install:
       pip:
         - semgrep
+    variables:
+      - name: REPOSITORY_SEMGREP_RULESETS
+        description: List of semgrep rulesets identifiers that you want to enforce
+        default_value: auto
+      - name: REPOSITORY_SEMGREP_RULESETS_TYPE
+        description: "MegaLinter semgrep ruleset list preset id . Available values: security"
+        default_value: ""
