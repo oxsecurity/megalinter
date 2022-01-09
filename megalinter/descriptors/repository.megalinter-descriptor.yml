@@ -6,7 +6,7 @@ descriptor_flavors:
 lint_all_files: true
 linters:
 
-  # DEVSKIM
+  # DEVSKIM 
   - linter_name: devskim
     can_output_sarif: true
     descriptor_flavors:
@@ -22,7 +22,8 @@ linters:
       - sarif
     cli_lint_extra_args_after:
       - "."
-    cli_lint_errors_count: regex_sum
+      - -E
+    cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "(\\[.*\\])"
     test_folder: devskim
     examples:
