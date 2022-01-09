@@ -99,7 +99,8 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #OTHER__START
 # trivy installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \
-    wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl
+    wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl && \
+    chmd 644 /usr/local/bin/sarif.tpl
 
 
 #OTHER__END

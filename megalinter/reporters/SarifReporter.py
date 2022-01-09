@@ -83,11 +83,11 @@ class SarifReporter(Reporter):
                     linter_sarif_obj = self.fix_sarif(linter_sarif_obj)
                     # append to global megalinter sarif run
                     sarif_obj["runs"] += linter_sarif_obj["runs"]
-                # Delete linter SARIF file if LOG_FILE=none
-                if keep_sarif_logs is False and os.path.isfile(
-                    linter.sarif_output_file
-                ):
-                    os.remove(linter.sarif_output_file)
+                    # Delete linter SARIF file if LOG_FILE=none
+                    if keep_sarif_logs is False and os.path.isfile(
+                        linter.sarif_output_file
+                    ):
+                        os.remove(linter.sarif_output_file)
         result_json = json.dumps(sarif_obj, sort_keys=True, indent=4)
         # Write output file
         sarif_file_name = f"{self.report_folder}{os.path.sep}" + config.get(
