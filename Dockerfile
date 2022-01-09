@@ -458,6 +458,15 @@ RUN curl -L https://github.com/nxadm/rakudo-pkg/releases/download/v2020.10-02/ra
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 
+# devskim installation
+# Next line commented because already managed by another linter
+# RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+#     && chmod +x dotnet-install.sh \
+#     && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+# Next line commented because already managed by another linter
+# ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 

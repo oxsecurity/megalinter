@@ -5,6 +5,51 @@ descriptor_flavors:
   - ci_light
 lint_all_files: true
 linters:
+
+  # DEVSKIM
+  - linter_name: devskim
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_url: https://github.com/microsoft/DevSkim
+    linter_repo: https://github.com/microsoft/DevSkim
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - analyze
+    cli_sarif_args:
+      - --file-format
+      - sarif
+    cli_lint_extra_args_after:
+      - "."
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "(\\[.*\\])"
+    test_folder: devskim
+    examples:
+      - "devskim analyze ."
+      - "devskim analyze --file-format sarif ."
+    install:
+      apk:
+        - icu-libs
+        - libcurl
+        - libintl 
+        - libssl1.1 
+        - libstdc++
+        - lttng-ust-dev
+        - zlib
+        - zlib-dev
+      dockerfile:
+        - |
+          RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
+              && chmod +x dotnet-install.sh \
+              && ./dotnet-install.sh --install-dir /usr/share/dotnet -channel 5.0 -version latest
+        - ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
+        - RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
+    ide:
+      vscode:
+        - name: VsCode DevSkim
+          url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
+
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true
@@ -129,6 +174,11 @@ linters:
       - name: REPOSITORY_SEMGREP_RULESETS_TYPE
         description: "MegaLinter semgrep ruleset list preset id . Available values: security"
         default_value: ""
+    ide:
+      vscode:
+        - name: VsCode SemGrep
+          url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
+        
 
   # SECRETLINT
   - linter_name: secretlint
@@ -193,3 +243,8 @@ linters:
           RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \
               wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl && \
               chmod 644 /usr/local/bin/sarif.tpl
+    ide:
+      vscode:
+        - name: VsCode Trivy
+          url: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner
+    

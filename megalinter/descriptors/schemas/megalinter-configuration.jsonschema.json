@@ -159,6 +159,7 @@
         "PYTHON_MYPY",
         "R_LINTR",
         "RAKU_RAKU",
+        "REPOSITORY_DEVSKIM",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GOODCHECK",
