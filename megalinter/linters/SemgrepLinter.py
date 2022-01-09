@@ -20,7 +20,11 @@ class SemgrepLinter(Linter):
             for custom_ruleset in custom_rulesets:
                 custom_rulesets_args.append("--config")
                 custom_rulesets_args.append(custom_ruleset)
-            cmd = cmd[:replace_index -1] + custom_rulesets_args + cmd[replace_index + 1 :]
+            cmd = (
+                cmd[: replace_index - 1]
+                + custom_rulesets_args
+                + cmd[replace_index + 1 :] # noqa: E203
+            )
             logging.debug(
                 "[SemgrepLinter] Custom rulesets: " + ",".join(custom_rulesets)
             )
@@ -49,6 +53,6 @@ class SemgrepLinter(Linter):
                 "p/react",
                 "p/security-audit",
                 "p/sql-injection",
-                "p/xss"
+                "p/xss",
             ]
         return []
