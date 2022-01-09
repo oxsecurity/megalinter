@@ -24,7 +24,7 @@ class repository_semgrep_test(TestCase, LinterTestRoot):
         )
         utilstest.test_linter_success(self.get_linter_instance(), self)
 
-    def test_security_flavor_success(self):
+    def test_security_flavor_failure(self):
         utilstest.linter_test_setup(
             {
                 "additional_test_variables": {
