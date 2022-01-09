@@ -641,6 +641,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://megalinter.github.io/v6-alpha/descriptors/repository_devskim/</loc>
+         <lastmod>2022-01-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://megalinter.github.io/v6-alpha/descriptors/repository_git_diff/</loc>
          <lastmod>2022-01-09</lastmod>
          <changefreq>daily</changefreq>

@@ -4353,8 +4353,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_git_diff/" class="md-nav__link">
-        git_diff
+      <a href="../repository_devskim/" class="md-nav__link">
+        devskim
       </a>
     </li>
   
@@ -4367,8 +4367,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository_secretlint/" class="md-nav__link">
-        secretlint
+      <a href="../repository_git_diff/" class="md-nav__link">
+        git_diff
       </a>
     </li>
   
@@ -4397,6 +4397,34 @@
     <li class="md-nav__item">
       <a href="../repository_goodcheck/" class="md-nav__link">
         goodcheck
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repository_secretlint/" class="md-nav__link">
+        secretlint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repository_semgrep/" class="md-nav__link">
+        semgrep
       </a>
     </li>
   
@@ -4453,6 +4481,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ide-integration" class="md-nav__link">
+    IDE Integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#megalinter-flavours" class="md-nav__link">
     MegaLinter Flavours
   </a>
@@ -4504,20 +4539,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../repository_semgrep/" class="md-nav__link">
-        semgrep
-      </a>
     </li>
   
 
@@ -5343,6 +5364,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ide-integration" class="md-nav__link">
+    IDE Integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#megalinter-flavours" class="md-nav__link">
     MegaLinter Flavours
   </a>
@@ -5474,6 +5502,26 @@
 </tr>
 </tbody>
 </table>
+<h2 id="ide-integration">IDE Integration</h2>
+<p>Use trivy in your favorite IDE to catch errors before MegaLinter !</p>
+<table>
+<thead>
+<tr>
+<th align="center"><!-- --></th>
+<th>IDE</th>
+<th>Extension Name</th>
+<th align="center">Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a></td>
+<td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner">VsCode Trivy</a></td>
+<td align="center"><a href="vscode:extension/AquaSecurityOfficial.trivy-vulnerability-scanner" target="_blank"><img alt="Install in VsCode" src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png" /></a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="megalinter-flavours">MegaLinter Flavours</h2>
 <p>This linter is available in the following flavours</p>
 <table>
@@ -5491,7 +5539,7 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/v6-alpha/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">98</td>
+<td align="center">99</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
@@ -5589,7 +5637,7 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/v6-alpha/flavors/security/">security</a></td>
 <td align="left">Optimized for security</td>
-<td align="center">16</td>
+<td align="center">17</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter-security" /></td>
 </tr>
 <tr>
@@ -5628,7 +5676,10 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
+<pre><code class="language-dockerfile">RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 &amp;&amp; \
+    wget --tries=5 -q -O /usr/local/bin/sarif.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/sarif.tpl &amp;&amp; \
+    chmod 644 /usr/local/bin/sarif.tpl
+
 </code></pre>
 
               
@@ -5643,7 +5694,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../repository_goodcheck/" class="md-footer__link md-footer__link--prev" aria-label="Previous: goodcheck" rel="prev">
+        <a href="../repository_semgrep/" class="md-footer__link md-footer__link--prev" aria-label="Previous: semgrep" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -5652,20 +5703,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              goodcheck
+              semgrep
             </div>
           </div>
         </a>
       
       
         
-        <a href="../repository_semgrep/" class="md-footer__link md-footer__link--next" aria-label="Next: semgrep" rel="next">
+        <a href="../spell/" class="md-footer__link md-footer__link--next" aria-label="Next: All SPELL linters" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              semgrep
+              All SPELL linters
             </div>
           </div>
           <div class="md-footer__button md-icon">
