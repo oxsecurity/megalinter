@@ -11,12 +11,12 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-name: "Build & Deploy - v6-alpha-DEV linters"
+name: "Build & Deploy - v6-alpha linters BRANCH"
 on:
   push:
     branches:
-      - "v6_inbar"
       - "v6-**"
+      - "v6_**"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
