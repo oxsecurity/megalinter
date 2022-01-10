@@ -17,6 +17,7 @@ on:
     branches:
       - "v6-**"
       - "v6_**"
+      - "!v6_dev"
     paths:
       - ".github/workflows/**"
       - "Dockerfile"
