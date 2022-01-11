@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/beta/descriptors/terraform_checkov/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ee0f47ba.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cd566b2a.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -5453,7 +5453,7 @@
 
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.0.708</strong></li>
+<li>Version in MegaLinter: <strong>2.0.709</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -5595,8 +5595,8 @@
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-bc-ids] [--no-guide] [--quiet] [--compact]
-               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} ...]]
-               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} ...]]
+               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,all} ...]]
+               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [--bc-api-key BC_API_KEY]
                [--docker-image DOCKER_IMAGE]
@@ -5648,10 +5648,10 @@ optional arguments:
                         in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} ...]
+  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} ...]
+  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
@@ -5857,10 +5857,10 @@ override config file values which override defaults.
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b6ff8c07.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5e13d264.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
