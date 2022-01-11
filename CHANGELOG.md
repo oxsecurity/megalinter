@@ -18,6 +18,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.12.0 to **1.13.0** on 2022-01-09
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.3.0 to **9.3.2** on 2022-01-09
   - [sqlfluff](https://www.sqlfluff.com/) from 0.9.0 to **0.9.1** on 2022-01-09
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.3 to **0.56.4** on 2022-01-11
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.3.2 to **9.4.0** on 2022-01-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.3 to **6.13.0** on 2022-01-11
+  - [checkov](https://www.checkov.io/) from 2.0.708 to **2.0.709** on 2022-01-11
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
