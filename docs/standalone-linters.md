@@ -5,6 +5,7 @@
 | CLOUDFORMATION_CFN_LINT  | megalinter/megalinter-only-cloudformation_cfn_lint:v6-alpha  | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-cloudformation_cfn_lint/v6-alpha)  |
 | DOCKERFILE_HADOLINT      | megalinter/megalinter-only-dockerfile_hadolint:v6-alpha      |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-dockerfile_hadolint/v6-alpha)    |
 | GO_REVIVE                | megalinter/megalinter-only-go_revive:v6-alpha                |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-go_revive/v6-alpha)         |
+| GROOVY_NPM_GROOVY_LINT   | megalinter/megalinter-only-groovy_npm_groovy_lint:v6-alpha   |  ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-groovy_npm_groovy_lint/v6-alpha)  |
 | JAVA_CHECKSTYLE          | megalinter/megalinter-only-java_checkstyle:v6-alpha          |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-java_checkstyle/v6-alpha)      |
 | JAVASCRIPT_ES            | megalinter/megalinter-only-javascript_es:v6-alpha            |      ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-javascript_es/v6-alpha)       |
 | JSON_ESLINT_PLUGIN_JSONC | megalinter/megalinter-only-json_eslint_plugin_jsonc:v6-alpha | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-json_eslint_plugin_jsonc/v6-alpha) |

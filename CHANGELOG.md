@@ -32,12 +32,17 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - checkov
     - checkstyle
     - cfn-lint
+    - devskim
     - eslint
     - gitleaks
     - hadolint
     - ktlint
+    - npm-groovy-lint
     - psalm
+    - semgrep
     - revive
+    - terrascan
+    - tflint
     - trivy
 
 - Descriptors:
@@ -48,6 +53,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 
 - Linter versions upgrades
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.3.0 to **9.4.1** on 2022-01-13
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03

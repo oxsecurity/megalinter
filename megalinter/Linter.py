@@ -903,15 +903,8 @@ class Linter:
             # Default config value
             cmd += [self.cli_config_arg_name, self.cli_config_default_value]
             cmd += self.cli_config_extra_args
-        # Manage SARIF arguments
-        if self.can_output_sarif is True and self.output_sarif is True:
-            self.sarif_output_file = (
-                self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
-            )
-            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
-            self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
-            cmd += self.cli_sarif_args
-
+        # Manage SARIF arguments if necessary
+        cmd += self.get_sarif_arguments()
         # Add other lint cli arguments after other arguments if defined
         self.cli_lint_extra_args_after = self.replace_vars(
             self.cli_lint_extra_args_after
@@ -931,6 +924,17 @@ class Linter:
         elif self.cli_lint_mode == "list_of_files":
             cmd += self.files
         return self.manage_docker_command(cmd)
+
+        # Manage SARIF arguments
+    def get_sarif_arguments(self):
+        if self.can_output_sarif is True and self.output_sarif is True:
+            self.sarif_output_file = (
+                self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
+            )
+            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
+            self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
+            return self.cli_sarif_args
+        return []
 
     # Find number of errors in linter stdout log
     def get_total_number_errors(self, stdout):

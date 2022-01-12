@@ -27,4 +27,6 @@ class GroovyNpmGroovyLintLinter(Linter):
         cmd += ["--path ", dir_name, "--files ", f"**/{file_name}"]
         if self.config_file is not None:
             cmd += [self.cli_config_arg_name, self.config_file]
+        # Add sarif arguments if necessary
+        cmd += self.get_sarif_arguments()
         return cmd
