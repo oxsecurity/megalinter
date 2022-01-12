@@ -27,4 +27,12 @@ class GroovyNpmGroovyLintLinter(Linter):
         cmd += ["--path ", dir_name, "--files ", f"**/{file_name}"]
         if self.config_file is not None:
             cmd += [self.cli_config_arg_name, self.config_file]
+        # Manage SARIF arguments
+        if self.can_output_sarif is True and self.output_sarif is True:
+            self.sarif_output_file = (
+                self.report_folder + os.sep + "sarif" + os.sep + self.name + ".sarif"
+            )
+            os.makedirs(os.path.dirname(self.sarif_output_file), exist_ok=True)
+            self.cli_sarif_args = self.replace_vars(self.cli_sarif_args)
+            cmd += self.cli_sarif_args
         return cmd

@@ -28,7 +28,7 @@ linters:
       - "info"
     cli_sarif_args:
       - --output
-      - "{{SARIF_OUTPUT_FILE}}"
+      - sarif
     cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:
