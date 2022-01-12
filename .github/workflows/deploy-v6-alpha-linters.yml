@@ -56,6 +56,7 @@ jobs:
             "cloudformation_cfn_lint",
             "dockerfile_hadolint",
             "go_revive",
+            "groovy_npm_groovy_lint",
             "java_checkstyle",
             "javascript_es",
             "json_eslint_plugin_jsonc",

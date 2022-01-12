@@ -14,6 +14,7 @@ linters:
   # npm-groovy-lint
   - class: GroovyNpmGroovyLintLinter
     linter_name: npm-groovy-lint
+    can_output_sarif: true
     linter_url: https://nvuillam.github.io/npm-groovy-lint/
     linter_repo: https://github.com/nvuillam/npm-groovy-lint
     linter_rules_url: https://codenarc.org/codenarc-rule-index.html
@@ -25,6 +26,9 @@ linters:
     cli_lint_extra_args:
       - "--failon"
       - "info"
+    cli_sarif_args:
+      - --output
+      - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_fix_arg_name: "--fix"
     version_extract_regex: "(?<=npm-groovy-lint version )\\d+(\\.\\d+)+"
     examples:

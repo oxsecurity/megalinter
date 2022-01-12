@@ -61,6 +61,7 @@ jobs:
             "json_eslint_plugin_jsonc",
             "jsx_eslint",
             "kotlin_ktlint",
+            "groovy_npm_groovy_lint",
             "php_psalm",
             "python_bandit",
             "repository_devskim",

@@ -32,11 +32,14 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
     - checkov
     - checkstyle
     - cfn-lint
+    - devskim
     - eslint
     - gitleaks
     - hadolint
     - ktlint
+    - npm-groovy-lint
     - psalm
+    - semgrep
     - revive
     - trivy
 
