@@ -92,6 +92,7 @@ linters:
       - --report-path
       - "{{SARIF_OUTPUT_FILE}}"
     cli_lint_extra_args_after:
+      - "--no-git"
       - "--verbose"
       - "--source"
       - "."
