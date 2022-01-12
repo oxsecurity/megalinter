@@ -86,6 +86,7 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - detect
+      - --no-git
     cli_sarif_args:
       - --report-format
       - sarif
