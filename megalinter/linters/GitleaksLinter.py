@@ -3,9 +3,7 @@
 Use GitLeaks to check for credentials in repository
 """
 
-import logging
-
-from megalinter import Linter, config
+from megalinter import Linter
 from megalinter.utils import is_git_repo
 
 

@@ -235,7 +235,7 @@ def is_git_repo(path):
     try:
         _ = git.Repo(path).git_dir
         return True
-    except git.exc.InvalidGitRepositoryError:
+    except git.InvalidGitRepositoryError:
         return False
 
 
@@ -284,5 +284,5 @@ def truncate_json_from_line(line: str):
     start_pos = line.find("{")
     end_pos = line.rfind("}")
     if start_pos > -1 and end_pos > -1:
-        return line[start_pos : end_pos + 1] # noqa: E203
+        return line[start_pos : end_pos + 1]  # noqa: E203
     return ""
