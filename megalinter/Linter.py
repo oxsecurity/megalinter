@@ -651,7 +651,9 @@ class Linter:
     # lint a single file or whole project
     def process_linter(self, file=None):
         # Remove previous run SARIF file if necessary
-        if self.sarif_output_file is not None and os.path.isfile(self.sarif_output_file):
+        if self.sarif_output_file is not None and os.path.isfile(
+            self.sarif_output_file
+        ):
             os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
@@ -864,7 +866,7 @@ class Linter:
         pass
 
     # Build the CLI command to call to lint a file (can be overridden)
-    def build_lint_command(self, file=None):
+    def build_lint_command(self, file=None) -> list:
         cmd = [self.cli_executable]
         # Add other lint cli arguments if defined
         self.cli_lint_extra_args = self.replace_vars(self.cli_lint_extra_args)
@@ -925,7 +927,7 @@ class Linter:
             cmd += self.files
         return self.manage_docker_command(cmd)
 
-        # Manage SARIF arguments
+    # Manage SARIF arguments
     def get_sarif_arguments(self):
         if self.can_output_sarif is True and self.output_sarif is True:
             self.sarif_output_file = (

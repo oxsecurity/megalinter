@@ -231,6 +231,14 @@ def list_updated_files(repo_home):
     return changed_files
 
 
+def is_git_repo(path):
+    try:
+        _ = git.Repo(path).git_dir
+        return True
+    except git.InvalidGitRepositoryError:
+        return False
+
+
 def check_updated_file(file, repo_home, changed_files=None):
     if changed_files is None:
         changed_files = list_updated_files(repo_home)
@@ -276,5 +284,5 @@ def truncate_json_from_line(line: str):
     start_pos = line.find("{")
     end_pos = line.rfind("}")
     if start_pos > -1 and end_pos > -1:
-        return line[start_pos : end_pos + 1] # noqa: E203
+        return line[start_pos : end_pos + 1]  # noqa: E203
     return ""
