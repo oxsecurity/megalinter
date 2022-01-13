@@ -45,6 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PAT: ${{ secrets.PAT }}
           EMAIL_REPORTER_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SARIF_REPORTER: true
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
@@ -55,6 +56,13 @@ jobs:
           path: |
             megalinter-reports
             mega-linter.log
+
+      # Uploads results.sarif to GitHub repository using the upload-sarif action
+      - uses: github/codeql-action/upload-sarif@v1
+        if: ${{ success() }} || ${{ failure() }}
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: megalinter-reports/megalinter-report.sarif
 
       # Create pull request if applicable (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
