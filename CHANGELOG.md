@@ -26,6 +26,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.13.0 to **6.13.1** on 2022-01-12
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.15.1 to **5.15.2** on 2022-01-12
   - [checkov](https://www.checkov.io/) from 2.0.709 to **2.0.710** on 2022-01-12
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.4.0 to **9.4.1** on 2022-01-13
+  - [checkov](https://www.checkov.io/) from 2.0.710 to **2.0.712** on 2022-01-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.16 to **0.35.18** on 2022-01-13
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
