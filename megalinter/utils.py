@@ -231,6 +231,14 @@ def list_updated_files(repo_home):
     return changed_files
 
 
+def is_git_repo(path):
+    try:
+        _ = git.Repo(path).git_dir
+        return True
+    except git.exc.InvalidGitRepositoryError:
+        return False
+
+
 def check_updated_file(file, repo_home, changed_files=None):
     if changed_files is None:
         changed_files = list_updated_files(repo_home)

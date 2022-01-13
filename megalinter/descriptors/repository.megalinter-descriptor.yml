@@ -72,7 +72,8 @@ linters:
       - "git diff --check"
 
   # GITLEAKS
-  - linter_name: gitleaks
+  - class: GitleaksLinter
+    linter_name: gitleaks
     can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
