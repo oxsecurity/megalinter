@@ -744,7 +744,7 @@
         "        --list                     List installed commands",
         "        --explain <CODE>           Run `rustc --explain CODE`",
         "    -v, --verbose                  Use verbose output (-vv very verbose/build.rs output)",
-        "    -q, --quiet                    No output printed to stdout",
+        "    -q, --quiet                    Do not print cargo log messages",
         "        --color <WHEN>             Coloring: auto, always, never",
         "        --frozen                   Require Cargo.lock and cache are up to date",
         "        --locked                   Require Cargo.lock is up to date",
@@ -773,7 +773,7 @@
         ""
     ],
     "clj-kondo": [
-        "clj-kondo v2021.12.19",
+        "clj-kondo v2022.01.13",
         "",
         "",
         "Options:",
@@ -796,7 +796,7 @@
         "  nearest `.clj-kondo` directory in the current and parent directories.",
         "",
         "  --config <config>: config may be a file or an EDN expression. See",
-        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2021.12.19/doc/configuration",
+        "    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.01.13/doc/configuration",
         "",
         "  --config-dir <config-dir>: use this config directory instead of auto-detected",
         "    .clj-kondo dir.",
@@ -809,6 +809,8 @@
         "",
         "  --fail-level <level>: minimum severity for exit with error code.  Supported values:",
         "    warning, error.  The default level if unspecified is warning.",
+        "",
+        "  --debug: print debug information.",
         ""
     ],
     "coffeelint": [
@@ -1379,8 +1381,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['E123', 'W503', 'E704', 'E226', 'E126',",
-        "                        'E24', 'E121', 'W504'])",
+        "                        (Default: ['E704', 'E123', 'W503', 'E226', 'E24',",
+        "                        'E121', 'E126', 'W504'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
