@@ -1289,6 +1289,7 @@ def update_mkdocs_and_workflow_yml_with_flavors():
 
 
 def update_docker_pulls_counter():
+    return
     logging.info("Fetching docker pull counters on flavors images")
     total_count = 0
     all_flavors_ids = list(megalinter.flavor_factory.get_all_flavors().keys())
@@ -2042,10 +2043,13 @@ def generate_documentation_all_linters():
                         r_license = session.get(api_github_license_url, headers=api_github_headers)
                         if r_license is not None:
                             resp_license = r_license.json()
-                            license_downloaded = session.get(resp_license.download_url,{"authorization": f"Bearer {github_token}"})
-                            with open(linter_license_md, "w", encoding="utf-8") as license_out_file:
-                                license_out_file.write(license_downloaded.text)
-                                logging.info(f"Copied license of {linter.linter_name} in {linter_license_md}")
+                            if "download_url" in resp_license:
+                                license_downloaded = session.get(resp_license["download_url"])
+                                with open(linter_license_md, "w", encoding="utf-8") as license_out_file:
+                                    license_out_file.write(license_downloaded.text)
+                                    logging.info(f"Copied license of {linter.linter_name} in {linter_license_md}")
+                            else:
+                                logging.warning(f"WARNING: No download_url returned in {api_github_license_url}")
 
 
             # get license from descriptor
