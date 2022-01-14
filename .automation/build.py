@@ -48,7 +48,6 @@ URL_RAW_ROOT = ML_REPO_URL + "/raw/" + BRANCH
 TEMPLATES_URL_ROOT = URL_ROOT + "/TEMPLATES"
 DOCS_URL_ROOT = URL_ROOT + "/docs"
 DOCS_URL_DESCRIPTORS_ROOT = DOCS_URL_ROOT + "/descriptors"
-DOCS_URL_LICENSES_ROOT = DOCS_URL_ROOT + "/licenses"
 DOCS_URL_FLAVORS_ROOT = DOCS_URL_ROOT + "/flavors"
 DOCS_URL_RAW_ROOT = URL_RAW_ROOT + "/docs"
 REPO_HOME = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."
@@ -2067,7 +2066,7 @@ def generate_documentation_all_linters():
             # build md_license
             if license != "":
                 if linter_license_md_file is not None:
-                    license_doc_url =f"{DOCS_URL_LICENSES_ROOT}/{linter.linter_name}.md"
+                    license_doc_url =f"licenses/{linter.linter_name}.md"
                     md_license = f"[{license}]({license_doc_url})"
                 else:
                     md_license = license
