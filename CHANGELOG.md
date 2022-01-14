@@ -29,6 +29,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.4.0 to **9.4.1** on 2022-01-13
   - [checkov](https://www.checkov.io/) from 2.0.710 to **2.0.712** on 2022-01-13
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.16 to **0.35.18** on 2022-01-13
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.12.19 to **2022.01.13** on 2022-01-14
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.57 to **0.1.58** on 2022-01-14
+  - [checkov](https://www.checkov.io/) from 2.0.712 to **2.0.717** on 2022-01-14
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
