@@ -2020,19 +2020,34 @@ def generate_documentation_all_linters():
                 session = requests_retry_session()
                 r = session.get(api_github_url, headers=api_github_headers)
                 if r is not None:
+                    # Update license key for licenses file
                     resp = r.json()
-                    if "license" in resp and "spdx_id" in resp["license"]:
-                        license = (
-                            resp["license"]["spdx_id"]
-                            if resp["license"]["spdx_id"] != "NOASSERTION"
-                            else resp["license"]["name"]
-                            if "name" in resp["license"]
-                            else resp["license"]["key"]
-                            if "key" in resp["license"]
-                            else ""
-                        )
-                        if license != "":
-                            linter_licenses[linter.linter_name] = license
+                    if resp is not None and not isinstance(resp, type(None)):
+                        if "license" in resp and "spdx_id" in resp["license"]:
+                            license = (
+                                resp["license"]["spdx_id"]
+                                if resp["license"]["spdx_id"] != "NOASSERTION"
+                                else resp["license"]["name"]
+                                if "name" in resp["license"]
+                                else resp["license"]["key"]
+                                if "key" in resp["license"]
+                                else ""
+                            )
+                            if license != "":
+                                linter_licenses[linter.linter_name] = license
+                    # Fetch and update license file if not in repo
+                    linter_license_md = f"{REPO_HOME}/docs/licenses/{linter.linter_name}.md"
+                    if not os.path.isfile(linter_license_md):
+                        api_github_license_url = api_github_url + "/license"
+                        r_license = session.get(api_github_license_url, headers=api_github_headers)
+                        if r_license is not None:
+                            resp_license = r_license.json()
+                            license_downloaded = session.get(resp_license.download_url,{"authorization": f"Bearer {github_token}"})
+                            with open(linter_license_md, "w", encoding="utf-8") as license_out_file:
+                                license_out_file.write(license_downloaded.text)
+                                logging.info(f"Copied license of {linter.linter_name} in {linter_license_md}")
+
+
             # get license from descriptor
             if (
                 license == ""
