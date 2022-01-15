@@ -1289,7 +1289,6 @@ def update_mkdocs_and_workflow_yml_with_flavors():
 
 
 def update_docker_pulls_counter():
-    return #TODOONOW remove
     logging.info("Fetching docker pull counters on flavors images")
     total_count = 0
     all_flavors_ids = list(megalinter.flavor_factory.get_all_flavors().keys())
