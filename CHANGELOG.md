@@ -34,6 +34,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.712 to **2.0.717** on 2022-01-14
   - [phpstan](https://phpstan.org/) from 1.3.3 to **1.4.0** on 2022-01-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.18 to **0.35.19** on 2022-01-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.19 to **0.35.20** on 2022-01-15
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
