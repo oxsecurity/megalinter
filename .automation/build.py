@@ -2037,20 +2037,31 @@ def generate_documentation_all_linters():
                             if license != "":
                                 linter_licenses[linter.linter_name] = license
                     # Fetch and update license file if not in repo
-                    linter_license_md_file = f"{REPO_HOME}/docs/licenses/{linter.linter_name}.md"
+                    linter_license_md_file = (
+                        f"{REPO_HOME}/docs/licenses/{linter.linter_name}.md"
+                    )
                     if not os.path.isfile(linter_license_md_file):
                         api_github_license_url = api_github_url + "/license"
-                        r_license = session.get(api_github_license_url, headers=api_github_headers)
+                        r_license = session.get(
+                            api_github_license_url, headers=api_github_headers
+                        )
                         if r_license is not None:
                             resp_license = r_license.json()
                             if "download_url" in resp_license:
-                                license_downloaded = session.get(resp_license["download_url"])
-                                with open(linter_license_md_file, "w", encoding="utf-8") as license_out_file:
+                                license_downloaded = session.get(
+                                    resp_license["download_url"]
+                                )
+                                with open(
+                                    linter_license_md_file, "w", encoding="utf-8"
+                                ) as license_out_file:
                                     license_out_file.write(license_downloaded.text)
-                                    logging.info(f"Copied license of {linter.linter_name} in {linter_license_md_file}")
+                                    logging.info(
+                                        f"Copied license of {linter.linter_name} in {linter_license_md_file}"
+                                    )
                             else:
-                                logging.warning(f"WARNING: No download_url returned in {api_github_license_url}")
-
+                                logging.warning(
+                                    f"WARNING: No download_url returned in {api_github_license_url}"
+                                )
 
             # get license from descriptor
             if (
@@ -2065,7 +2076,7 @@ def generate_documentation_all_linters():
             # build md_license
             if license != "":
                 if linter_license_md_file is not None:
-                    license_doc_url =f"licenses/{linter.linter_name}.md"
+                    license_doc_url = f"licenses/{linter.linter_name}.md"
                     md_license = f"[{license}]({license_doc_url})"
                 else:
                     md_license = license

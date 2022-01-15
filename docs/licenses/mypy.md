@@ -125,7 +125,7 @@ between BeOpen and Licensee.  This License Agreement does not grant
 permission to use BeOpen trademarks or trade names in a trademark
 sense to endorse or promote products or services of Licensee, or any
 third party.  As an exception, the "BeOpen Python" logos available at
-http://www.pythonlabs.com/logos.html may be used according to the
+<http://www.pythonlabs.com/logos.html> may be used according to the
 permissions granted on that web page.
 
 7. By copying, installing or otherwise using the software, Licensee
@@ -157,7 +157,7 @@ conditions in CNRI's License Agreement.  This Agreement together with
 Python 1.6.1 may be located on the Internet using the following
 unique, persistent identifier (known as a handle): 1895.22/1013.  This
 Agreement may also be obtained from a proxy server on the Internet
-using the following URL: http://hdl.handle.net/1895.22/1013".
+using the following URL: <http://hdl.handle.net/1895.22/1013>".
 
 3. In the event Licensee prepares a derivative work that is based on
 or incorporates Python 1.6.1 or any part thereof, and wants to make
@@ -207,21 +207,21 @@ bound by the terms and conditions of this License Agreement.
 CWI LICENSE AGREEMENT FOR PYTHON 0.9.0 THROUGH 1.2
 --------------------------------------------------
 
-Copyright (c) 1991 - 1995, Stichting Mathematisch Centrum Amsterdam,
+Copyright (c) 1991 - 1995, Stitching Mathematics Centrum Amsterdam,
 The Netherlands.  All rights reserved.
 
 Permission to use, copy, modify, and distribute this software and its
 documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
 both that copyright notice and this permission notice appear in
-supporting documentation, and that the name of Stichting Mathematisch
+supporting documentation, and that the name of Stitching Mathematics
 Centrum or CWI not be used in advertising or publicity pertaining to
 distribution of the software without specific, written prior
 permission.
 
-STICHTING MATHEMATISCH CENTRUM DISCLAIMS ALL WARRANTIES WITH REGARD TO
+STITCHING MATHEMATICS CENTRUM DISCLAIMS ALL WARRANTIES WITH REGARD TO
 THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS, IN NO EVENT SHALL STICHTING MATHEMATISCH CENTRUM BE LIABLE
+FITNESS, IN NO EVENT SHALL STITCHING MATHEMATICS CENTRUM BE LIABLE
 FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
