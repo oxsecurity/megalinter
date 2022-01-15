@@ -5,6 +5,7 @@
         "**/.automation/generated/**",
         "**/.git/**",
         "**/package-lock.json",
+        "**/licenses/*.md",
         "lib",
         "report",
         ".vscode"
