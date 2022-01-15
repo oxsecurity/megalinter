@@ -35,6 +35,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.12.19 to **2022.01.13** on 2022-01-14
   - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.57 to **0.1.58** on 2022-01-14
   - [checkov](https://www.checkov.io/) from 2.0.712 to **2.0.717** on 2022-01-14
+  - [phpstan](https://phpstan.org/) from 1.3.3 to **1.4.0** on 2022-01-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.18 to **0.35.19** on 2022-01-15
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
