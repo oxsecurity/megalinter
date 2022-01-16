@@ -37,5 +37,5 @@ PRE_COMMANDS:
   - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"
 POST_COMMANDS:
-  - command: echo "This is MegaLinter POST_COMMAND on own MegaLinter ! :)"
+  - command: echo "This is MegaLinter POST_COMMAND on own MegaLinter! :)"
     cwd: "workspace"
