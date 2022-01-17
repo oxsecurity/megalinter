@@ -10,6 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Add linters licenses to online documentation
 - Fix issue when config vars are both from ENV and from config file ([#1154](https://github.com/megalinter/megalinter/issues/1154))
+- Fix issue of --files argument format when calling npm-groovy-lint ([#1176](https://github.com/megalinter/megalinter/issues/1176))
 
 - Linter versions upgrades
   - [coffeelint](http://www.coffeelint.org) from 5.2.2 to **5.2.3** on 2022-01-09
