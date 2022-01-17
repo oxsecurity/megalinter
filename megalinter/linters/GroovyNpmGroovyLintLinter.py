@@ -22,7 +22,7 @@ class GroovyNpmGroovyLintLinter(Linter):
             self.try_fix = True
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
-        if self.cli_lint_mode == 'file':
+        if self.cli_lint_mode == "file":
             dir_name = os.path.dirname(file)
             file_name = os.path.basename(file)
             cmd += ["--path ", dir_name, "--files ", f"{file_name}"]
