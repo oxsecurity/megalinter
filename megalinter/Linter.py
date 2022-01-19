@@ -138,6 +138,8 @@ class Linter:
             True
             if self.is_formatter is True
             and not config.get("FORMATTERS_DISABLE_ERRORS", "true") == "false"
+            else True
+            if config.get("DISABLE_ERRORS", "false") == "true"
             else False
         )
         if self.name is None:
@@ -499,8 +501,10 @@ class Linter:
                 file_errors_number = 0
                 if return_code > 0:
                     file_status = "error"
-                    self.status = "error"
-                    self.return_code = 1
+                    self.status = "warning" if self.disable_errors is True else "error"
+                    self.return_code = (
+                        self.return_code if self.disable_errors is True else 1
+                    )
                     self.number_errors += 1
                     file_errors_number = self.get_total_number_errors(stdout)
                     self.total_number_errors += file_errors_number
@@ -512,8 +516,8 @@ class Linter:
             return_code, stdout = self.process_linter()
             self.stdout = stdout
             if return_code != 0:
-                self.status = "error"
-                self.return_code = 1
+                self.status = "warning" if self.disable_errors is True else "error"
+                self.return_code = 0 if self.disable_errors is True else 1
                 self.number_errors += 1
                 self.total_number_errors += self.get_total_number_errors(stdout)
             # Build result for list of files
@@ -876,7 +880,7 @@ class Linter:
             )
         if self.status == "success":
             return 0
-        elif self.status == "error":
+        else:
             return 1
 
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
