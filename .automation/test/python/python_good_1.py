@@ -65,7 +65,8 @@ def get_labels(owner, repo):
     :type owner: str
     :param repo: Repository name.
     :type repo: str
-    :return: A tuple with the GitHub id for the repository and a list of labels defined in the repository
+    :return: A tuple with the GitHub id for the repository and
+        a list of labels defined in the repository
     """
 
     query_variables = {
@@ -91,7 +92,8 @@ def get_labels(owner, repo):
         return repo_id, labels
     else:
         raise Exception(
-            "[ERROR] getting issue labels. Status Code: {status_code} - Message: {result}".format(
+            "[ERROR] getting issue labels. \
+            Status Code: {status_code} - Message: {result}".format(
                 status_code=status_code, result=result["message"]
             )
         )
@@ -128,9 +130,11 @@ def copy_labels(source_repo, target_repo, dry):
     """
     Copy labels from the source repository to the target repository.
     \f
-    :param source: The full name of a GitHub repo from where the labels will be copied from. Eg. github/opensourcefriday
+    :param source: The full name of a GitHub repo from where the labels will be
+        copied from. Eg. github/opensourcefriday
     :type source: str
-    :param target: The full name of a GitHub repo to where the labels will be copied. Eg. github/opensourcefriday
+    :param target: The full name of a GitHub repo to where the labels will be copied.
+        Eg. github/opensourcefriday
     :type target: str
     :return:
     """
