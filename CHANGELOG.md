@@ -42,6 +42,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.717 to **2.0.718** on 2022-01-16
   - [eslint](https://eslint.org) from 8.6.0 to **8.7.0** on 2022-01-17
   - [checkov](https://www.checkov.io/) from 2.0.718 to **2.0.720** on 2022-01-17
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.4 to **0.57.0** on 2022-01-19
+  - [phpstan](https://phpstan.org/) from 1.4.0 to **1.4.2** on 2022-01-19
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.35.2 to **0.36.0** on 2022-01-19
+  - [checkov](https://www.checkov.io/) from 2.0.720 to **2.0.733** on 2022-01-19
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
