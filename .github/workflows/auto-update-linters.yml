@@ -78,7 +78,7 @@ jobs:
       - name: Create Pull Request
         id: cpr
         if: steps.compute_versions.outputs.has_updated_versions == 1
-        uses: peter-evans/create-pull-request@v3.11.0
+        uses: peter-evans/create-pull-request@v3.12.0
         with:
           token: ${{ secrets.PAT  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
