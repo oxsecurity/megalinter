@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/v6-alpha/CHANGELOG/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
@@ -5254,6 +5254,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6-alpha-v6-alpha-v6_dev-branch-content" class="md-nav__link">
+    [v6-alpha] (v6-alpha, v6_dev branch content)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v560-2022-01-22" class="md-nav__link">
+    [v5.6.0] - 2022-01-22
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v550-2022-01-03" class="md-nav__link">
     [v5.5.0] - 2022-01-03
   </a>
@@ -5771,6 +5785,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#v6-alpha-v6-alpha-v6_dev-branch-content" class="md-nav__link">
+    [v6-alpha] (v6-alpha, v6_dev branch content)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v560-2022-01-22" class="md-nav__link">
+    [v5.6.0] - 2022-01-22
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v550-2022-01-03" class="md-nav__link">
     [v5.5.0] - 2022-01-03
   </a>
@@ -6270,6 +6298,7 @@
 <p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <!-- unreleased-content-marker -->
 
+<h2 id="v6-alpha-v6-alpha-v6_dev-branch-content">[v6-alpha] (v6-alpha, v6_dev branch content)</h2>
 <ul>
 <li>Core architecture<ul>
 <li>New reporter <strong>SARIF_REPORTER</strong> that aggregates all SARIF output files into a single one<ul>
@@ -6326,13 +6355,66 @@
 </li>
 </ul>
 <ul>
-<li>Linter versions upgrades<ul>
-<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 9.3.0 to <strong>9.4.1</strong> on 2022-01-13</li>
-</ul>
-</li>
+<li>Linter versions upgrades</li>
 </ul>
 <!-- linter-versions-end -->
 
+<h2 id="v560-2022-01-22">[v5.6.0] - 2022-01-22</h2>
+<ul>
+<li>Add linters licenses to online documentation</li>
+<li>Fix issue when config vars are both from ENV and from config file (<a href="https://github.com/megalinter/megalinter/issues/1154">#1154</a>)</li>
+<li>Fix issue of --files argument format when calling npm-groovy-lint (<a href="https://github.com/megalinter/megalinter/issues/1176">#1176</a>)</li>
+<li>Fix wrong status in reports when DISABLE_ERRORS is used</li>
+<li>Increase memory size for node.js-based linters (<a href="https://github.com/megalinter/megalinter/pull/1149">#1149</a>)</li>
+<li>Make python linters play nice with each other (<a href="https://github.com/megalinter/megalinter/pull/1182">#1182</a>)</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="http://www.coffeelint.org">coffeelint</a> from 5.2.2 to <strong>5.2.3</strong> on 2022-01-09</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.3.0 to <strong>1.3.3</strong> on 2022-01-09</li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 0.930 to <strong>0.931</strong> on 2022-01-09</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.14.0 to <strong>5.15.1</strong> on 2022-01-09</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.702 to <strong>2.0.708</strong> on 2022-01-09</li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.1.2 to <strong>1.1.3</strong> on 2022-01-09</li>
+<li><a href="https://www.accurics.com/products/terrascan/">terrascan</a> from 1.12.0 to <strong>1.13.0</strong> on 2022-01-09</li>
+<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 9.3.0 to <strong>9.3.2</strong> on 2022-01-09</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 0.9.0 to <strong>0.9.1</strong> on 2022-01-09</li>
+<li><a href="https://github.com/martysweet/cfn-lint">cfn-lint</a> from 0.56.3 to <strong>0.56.4</strong> on 2022-01-11</li>
+<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 9.3.2 to <strong>9.4.0</strong> on 2022-01-11</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.12.3 to <strong>6.13.0</strong> on 2022-01-11</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.708 to <strong>2.0.709</strong> on 2022-01-11</li>
+<li><a href="https://scalacenter.github.io/scalafix/">scalafix</a> from 0.9.33 to <strong>0.9.34</strong> on 2022-01-12</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.13.0 to <strong>6.13.1</strong> on 2022-01-12</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.15.1 to <strong>5.15.2</strong> on 2022-01-12</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.709 to <strong>2.0.710</strong> on 2022-01-12</li>
+<li><a href="https://nvuillam.github.io/npm-groovy-lint/">npm-groovy-lint</a> from 9.4.0 to <strong>9.4.1</strong> on 2022-01-13</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.710 to <strong>2.0.712</strong> on 2022-01-13</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.35.16 to <strong>0.35.18</strong> on 2022-01-13</li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2021.12.19 to <strong>2022.01.13</strong> on 2022-01-14</li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.57 to <strong>0.1.58</strong> on 2022-01-14</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.712 to <strong>2.0.717</strong> on 2022-01-14</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.3.3 to <strong>1.4.0</strong> on 2022-01-15</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.35.18 to <strong>0.35.19</strong> on 2022-01-15</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.35.19 to <strong>0.35.20</strong> on 2022-01-15</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.717 to <strong>2.0.718</strong> on 2022-01-16</li>
+<li><a href="https://eslint.org">eslint</a> from 8.6.0 to <strong>8.7.0</strong> on 2022-01-17</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.718 to <strong>2.0.720</strong> on 2022-01-17</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.0 to <strong>1.4.1</strong> on 2022-01-18</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.720 to <strong>2.0.727</strong> on 2022-01-18</li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.01.13 to <strong>2022.01.15</strong> on 2022-01-22</li>
+<li><a href="https://github.com/martysweet/cfn-lint">cfn-lint</a> from 0.56.4 to <strong>0.57.0</strong> on 2022-01-22</li>
+<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.9.0 to <strong>3.9.2</strong> on 2022-01-22</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.1 to <strong>1.4.2</strong> on 2022-01-22</li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.35.2 to <strong>0.36.0</strong> on 2022-01-22</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.15.2 to <strong>5.16.0</strong> on 2022-01-22</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.45.1 to <strong>0.46.0</strong> on 2022-01-22</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.727 to <strong>2.0.744</strong> on 2022-01-22</li>
+<li><a href="https://www.kics.io">kics</a> from 1.4.9 to <strong>1.5.0</strong> on 2022-01-22</li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.1.3 to <strong>1.1.4</strong> on 2022-01-22</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.35.20 to <strong>0.36.0</strong> on 2022-01-22</li>
+</ul>
+</li>
+</ul>
 <h2 id="v550-2022-01-03">[v5.5.0] - 2022-01-03</h2>
 <ul>
 <li>Linter versions upgrades<ul>
@@ -8138,7 +8220,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.1514a9a0.min.js"></script>
+      <script src="../assets/javascripts/bundle.01de222e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
