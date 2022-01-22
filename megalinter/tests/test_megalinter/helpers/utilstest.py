@@ -231,7 +231,10 @@ def test_linter_failure(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
         )
     # Check text reporter output log
-    report_file_name = f"ERROR-{linter.name}.log"
+    if linter.disable_errors is True:
+        report_file_name = f"WARNING-{linter.name}.log"
+    else:
+        report_file_name = f"ERROR-{linter.name}.log"
     text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"
