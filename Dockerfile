@@ -11,7 +11,7 @@
 #############################################################################################
 #FROM__START
 FROM cljkondo/clj-kondo:2022.01.15-alpine as clj-kondo
-FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+FROM hadolint/hadolint:v2.8.0-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
@@ -100,12 +100,12 @@ RUN apk add --update --no-cache \
                 php8-simplexml \
                 composer \
                 dpkg \
-                ruby \
-                ruby-dev \
-                ruby-bundler \
-                ruby-rdoc \
-                ansible \
-                ansible-lint \
+                nodejs \
+                npm \
+                yarn \
+                openssl \
+                readline-dev \
+                libxml2 \
                 R \
                 R-dev \
                 R-doc \
