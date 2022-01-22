@@ -11,6 +11,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add linters licenses to online documentation
 - Fix issue when config vars are both from ENV and from config file ([#1154](https://github.com/megalinter/megalinter/issues/1154))
 - Fix issue of --files argument format when calling npm-groovy-lint ([#1176](https://github.com/megalinter/megalinter/issues/1176))
+- Fix wrong status in reports when DISABLE_ERRORS is used
 
 - Linter versions upgrades
   - [coffeelint](http://www.coffeelint.org) from 5.2.2 to **5.2.3** on 2022-01-09
@@ -44,6 +45,17 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.718 to **2.0.720** on 2022-01-17
   - [phpstan](https://phpstan.org/) from 1.4.0 to **1.4.1** on 2022-01-18
   - [checkov](https://www.checkov.io/) from 2.0.720 to **2.0.727** on 2022-01-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.01.13 to **2022.01.15** on 2022-01-22
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.4 to **0.57.0** on 2022-01-22
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.9.0 to **3.9.2** on 2022-01-22
+  - [phpstan](https://phpstan.org/) from 1.4.1 to **1.4.2** on 2022-01-22
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.35.2 to **0.36.0** on 2022-01-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.15.2 to **5.16.0** on 2022-01-22
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.45.1 to **0.46.0** on 2022-01-22
+  - [checkov](https://www.checkov.io/) from 2.0.727 to **2.0.744** on 2022-01-22
+  - [kics](https://www.kics.io) from 1.4.9 to **1.5.0** on 2022-01-22
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.3 to **1.1.4** on 2022-01-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.20 to **0.36.0** on 2022-01-22
 <!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
