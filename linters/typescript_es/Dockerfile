@@ -75,10 +75,10 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
-RUN npm install npm@latest-6 -g || true && \
-    # Disable package-lock.json to avoid sudden crash. Try to remove later if possible
-    echo 'package-lock=false' >> .npmrc || true
-
+RUN npm install npm@latest-6 -g || true
+# Disable package-lock.json to avoid sudden crash. Try to remove later if possible
+RUN echo 'package-lock=false' >> .npmrc || true
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 typescript \

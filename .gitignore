@@ -104,3 +104,5 @@ site/
 .sfdx/
 
 .vscode/settings.json
+
+megalinter-reports/

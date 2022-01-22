@@ -52,6 +52,7 @@ def linter_test_setup(params=None):
         "UPDATED_SOURCES_REPORTER",
         "MEGALINTER_FLAVOR",
         "FLAVOR_SUGGESTIONS",
+        "DISABLE_ERRORS",
         "SARIF_REPORTER",
         "LOG_FILE",
         "REPOSITORY_SEMGREP_RULESETS_TYPE",
@@ -251,7 +252,10 @@ def test_linter_failure(linter, test_self):
             rf"Linted \[{linter.descriptor_id}\] files with \[{linter_name}\]: Found",
         )
     # Check text reporter output log
-    report_file_name = f"ERROR-{linter.name}.log"
+    if mega_linter.linters[0].disable_errors is True:
+        report_file_name = f"WARNING-{linter.name}.log"
+    else:
+        report_file_name = f"ERROR-{linter.name}.log"
     text_report_file = (
         f"{tmp_report_folder}{os.path.sep}linters_logs"
         f"{os.path.sep}{report_file_name}"

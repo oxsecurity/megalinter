@@ -166,6 +166,10 @@ puppet-lint --fail-on-warnings --no-autoloader_layout-check --fix myfile.pp
                                      Skip the variable_contains_dash check.
         --no-quoted_booleans-check   Skip the quoted_booleans check.
         --quoted_booleans-check      Enable the quoted_booleans check.
+        --no-single_quote_string_with_variables-check
+                                     Skip the single_quote_string_with_variables check.
+        --no-only_variable_string-check
+                                     Skip the only_variable_string check.
         --no-variables_not_enclosed-check
                                      Skip the variables_not_enclosed check.
         --no-double_quoted_strings-check
