@@ -1,23 +1,15 @@
-resource "aws_db_instance" "default" {
-  allocated_storage    = 10
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "5.7.16"
-  instance_class       = "db.t2.micro"
-  name                 = "mydb"
-  username             = "foo"
-  password             = var.database_master_password
-  db_subnet_group_name = "my_database_subnet_group"
-  parameter_group_name = "default.mysql5.7"
-}
+resource "aws_sagemaker_domain" "pass" {
+  domain_name = "examplea"
+  auth_mode   = "IAM"
+  vpc_id      = aws_vpc.test.id
+  subnet_ids  = [aws_subnet.test.id]
+  kms_key_id  = aws_kms_key.test.arn
 
-resource "aws_ssm_parameter" "secret" {
-  name        = "/production/database/password/master"
-  description = "The parameter description"
-  type        = "SecureString"
-  value       = var.database_master_password
+  default_user_settings {
+    execution_role = aws_iam_role.test.arn
+  }
 
-  tags = {
-    environment = "production"
+  retention_policy {
+    home_efs_file_system = "Delete"
   }
 }
