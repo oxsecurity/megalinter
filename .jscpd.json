@@ -26,6 +26,7 @@
     "**/*.test.js",
     "**/CHANGELOG.md",
     "**/mega-linter-runner/README.md",
+    "**/licenses/*.md",
     "**/TEMPLATES/apex-pmd-ruleset.xml",
     "**/TEMPLATES/java-pmd-ruleset.xml"
   ]

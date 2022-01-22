@@ -120,6 +120,8 @@ Options:
   --fail-level <level>: minimum severity for exit with error code.  Supported values:
     warning, error.  The default level if unspecified is warning.
 
+  --debug: print debug information.
+
 ```
 
 ### Installation on mega-linter Docker image

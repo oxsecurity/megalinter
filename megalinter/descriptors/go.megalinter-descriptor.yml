@@ -61,6 +61,8 @@ linters:
     linter_rules_configuration_url: https://revive.run/docs#custom-configuration
     config_file_name: revive.toml
     cli_config_arg_name: "-config"
+    cli_lint_extra_args:
+      - -set_exit_status
     cli_sarif_args:
       - -formatter
       - sarif
