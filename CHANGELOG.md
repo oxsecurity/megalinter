@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.6.0] - 2022-01-22
+
 - Add linters licenses to online documentation
 - Fix issue when config vars are both from ENV and from config file ([#1154](https://github.com/megalinter/megalinter/issues/1154))
 - Fix issue of --files argument format when calling npm-groovy-lint ([#1176](https://github.com/megalinter/megalinter/issues/1176))
@@ -58,7 +63,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.4.9 to **1.5.0** on 2022-01-22
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.3 to **1.1.4** on 2022-01-22
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.20 to **0.36.0** on 2022-01-22
-<!-- linter-versions-end -->
 
 ## [v5.5.0] - 2022-01-03
 
