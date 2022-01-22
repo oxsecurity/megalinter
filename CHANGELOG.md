@@ -12,6 +12,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix issue when config vars are both from ENV and from config file ([#1154](https://github.com/megalinter/megalinter/issues/1154))
 - Fix issue of --files argument format when calling npm-groovy-lint ([#1176](https://github.com/megalinter/megalinter/issues/1176))
 - Fix wrong status in reports when DISABLE_ERRORS is used
+- Increase memory size for node.js-based linters ([#1149](https://github.com/megalinter/megalinter/pull/1149))
+- Make python linters play nice with each other ([#1182](https://github.com/megalinter/megalinter/pull/1182))
 
 - Linter versions upgrades
   - [coffeelint](http://www.coffeelint.org) from 5.2.2 to **5.2.3** on 2022-01-09
