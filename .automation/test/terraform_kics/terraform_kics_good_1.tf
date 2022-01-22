@@ -1,17 +1,10 @@
-resource "aws_ami" "good_example" {
-  name                = "terraform-example"
-  virtualization_type = "hvm"
-  root_device_name    = "/dev/xvda2"
+resource "aws_organizations_organization" "example" {
+  aws_service_access_principals = ["access-analyzer.amazonaws.com"]
+}
 
-  ebs_block_device {
-    device_name = "/dev/xvda2"
-    snapshot_id = "snap-xxxxxxxx"
-    volume_size = 8
-	  encrypted   = true
-  }
+resource "aws_accessanalyzer_analyzer" "example" {
+  depends_on = [aws_organizations_organization.example]
 
-  tags = {
-    Name = "test-ami-good-example"
-    MyTag = "test-tag"
-  }
+  analyzer_name = "example"
+  type          = "ORGANIZATION"
 }
