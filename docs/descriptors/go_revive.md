@@ -91,6 +91,8 @@ Usage of revive:
       list of globs which specify files to be excluded (i.e. -exclude foo/...)
   -formatter string
       formatter to be used for the output (i.e. -formatter stylish)
+  -set_exit_status
+      set exit status to 1 if any issues are found, overwrites errorCode and warningCode in config
   -version
       get revive version
 ```

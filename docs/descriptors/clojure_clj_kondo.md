@@ -9,7 +9,7 @@
 
 ## clj-kondo documentation
 
-- Version in MegaLinter: **2022.01.13**
+- Version in MegaLinter: **2022.01.15**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used
@@ -83,7 +83,7 @@ clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 ### Help content
 
 ```shell
-clj-kondo v2022.01.13
+clj-kondo v2022.01.15
 
 
 Options:
@@ -106,7 +106,7 @@ Options:
   nearest `.clj-kondo` directory in the current and parent directories.
 
   --config <config>: config may be a file or an EDN expression. See
-    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.01.13/doc/configuration
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.01.15/doc/configuration
 
   --config-dir <config-dir>: use this config directory instead of auto-detected
     .clj-kondo dir.
