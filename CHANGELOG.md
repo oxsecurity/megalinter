@@ -52,6 +52,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck
     - remove CREDENTIALS and GIT descriptors
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
 ## [v5.6.0] - 2022-01-22
 
 - Add linters licenses to online documentation
