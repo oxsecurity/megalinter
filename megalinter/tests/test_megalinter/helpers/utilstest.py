@@ -42,6 +42,7 @@ def linter_test_setup(params=None):
         "SHOW_ELAPSED_TIME",
         "MEGALINTER_FLAVOR",
         "FLAVOR_SUGGESTIONS",
+        "DISABLE_ERRORS"
     ]:
         if key in os.environ:
             del os.environ[key]
