@@ -11,6 +11,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix v5 doc deployment when there is a new release ([1190](https://github.com/megalinter/megalinter/issues/1190))
 
 - Linter versions upgrades
+  - [stylelint](https://stylelint.io) from 14.2.0 to **14.3.0** on 2022-01-23
+  - [htmlhint](https://htmlhint.com/) from 1.1.0 to **1.1.1** on 2022-01-23
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.0.0 to **1.14.3.0** on 2022-01-23
+  - [checkov](https://www.checkov.io/) from 2.0.744 to **2.0.745** on 2022-01-23
 <!-- linter-versions-end -->
 
 ## [v5.6.0] - 2022-01-22
