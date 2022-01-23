@@ -43,17 +43,19 @@ linters:
     linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_rules_configuration_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_banner_image_url: https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
+      - "d"
+      - "."
       - "-i"
       - "terraform"
       - "-t"
       - "all"
+      - "-v" 
     cli_sarif_args:
       - -o
       - sarif
-    cli_lint_extra_args_after:
-      - "-f"
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
