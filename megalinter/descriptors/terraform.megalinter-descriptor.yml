@@ -46,6 +46,8 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
+      - "d"
+      - "."
       - "-i"
       - "terraform"
       - "-t"
