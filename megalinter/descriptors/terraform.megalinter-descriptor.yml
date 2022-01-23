@@ -50,6 +50,7 @@ linters:
       - "terraform"
       - "-t"
       - "all"
+      - "-v"
     cli_sarif_args:
       - -o
       - sarif
