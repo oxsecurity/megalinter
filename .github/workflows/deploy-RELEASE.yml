@@ -157,6 +157,8 @@ jobs:
       - name: Mike deploy current version
         run: |
           mike delete latest
+          mike delete v5 || true
+          mike deploy v5
           mike deploy --push latest ${{ steps.version.outputs.cversion }}
 
   git-sync:
