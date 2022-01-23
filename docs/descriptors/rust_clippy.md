@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.57**
+- Version in MegaLinter: **0.1.58**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -81,7 +81,7 @@ OPTIONS:
         --list                     List installed commands
         --explain <CODE>           Run `rustc --explain CODE`
     -v, --verbose                  Use verbose output (-vv very verbose/build.rs output)
-    -q, --quiet                    No output printed to stdout
+    -q, --quiet                    Do not print cargo log messages
         --color <WHEN>             Coloring: auto, always, never
         --frozen                   Require Cargo.lock and cache are up to date
         --locked                   Require Cargo.lock is up to date

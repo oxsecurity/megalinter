@@ -102,6 +102,7 @@ RUN pip3 install --no-cache-dir --upgrade \
 RUN npm install npm@latest-6 -g
 # Disable package-lock.json to avoid sudden crash. Try to remove later if possible
 RUN echo 'package-lock=false' >> .npmrc 
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 sfdx-cli \

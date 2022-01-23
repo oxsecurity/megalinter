@@ -12,7 +12,9 @@ fi
 # Prettify markdown tables
 echo "Formatting markdown tables..."
 # shellcheck disable=SC2086
-MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*") && npx markdown-table-formatter $MD_FILES
+MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*" -not -path "*/licenses/*") && npx markdown-table-formatter $MD_FILES
+# shellcheck disable=SC2086
+MD_FILES_2=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*" -path "*/licenses/*") && npx markdown-table-formatter $MD_FILES_2
 
 # Build online documentation
 if type python3 >/dev/null 2>/dev/null; then

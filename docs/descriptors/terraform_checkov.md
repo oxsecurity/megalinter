@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.702**
+- Version in MegaLinter: **2.0.744**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -79,8 +79,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-bc-ids] [--no-guide] [--quiet] [--compact]
-               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} ...]]
-               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} ...]]
+               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]]
+               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [--bc-api-key BC_API_KEY]
                [--docker-image DOCKER_IMAGE]
@@ -132,21 +132,21 @@ optional arguments:
                         in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} ...]
+  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} ...]
+  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
   -c CHECK, --check CHECK
                         filter scan to run only on a specific check
                         identifier(allowlist), You can specify multiple checks
-                        separated by comma delimiter
+                        separated by comma delimiter [env var: CKV_CHECK]
   --skip-check SKIP_CHECK
                         filter scan to run on all check but a specific check
                         identifier(denylist), You can specify multiple checks
-                        separated by comma delimiter
+                        separated by comma delimiter [env var: CKV_SKIP_CHECK]
   --run-all-external-checks
                         Run all external checks (loaded via --external-checks
                         options) even if the checks are not present in the

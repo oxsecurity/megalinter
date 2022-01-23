@@ -53,7 +53,7 @@ jobs:
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v2.4.1
+      - uses: actions/setup-node@v2.5.1
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
@@ -155,8 +155,11 @@ jobs:
         run: |
           git checkout ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
+        #todov6 : replace v5 by v6
         run: |
           mike delete latest
+          mike delete v5 || true
+          mike deploy v5 || true
           mike deploy --push latest ${{ steps.version.outputs.cversion }}
 
   git-sync:

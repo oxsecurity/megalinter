@@ -25,6 +25,7 @@
     "**/megalinter/tests/test_megalinter/helpers/utilstest.py",
     "**/*.test.js",
     "**/CHANGELOG.md",
-    "**/mega-linter-runner/README.md"
+    "**/mega-linter-runner/README.md",
+    "**/licenses/*.md"
   ]
 }
