@@ -87,7 +87,7 @@ def build_markdown_summary(reporter_self, action_run_url):
     if action_run_url != "":
         p_r_msg += (
             "See errors details in [**artifact Mega-Linter reports** on "
-            f"CI Action page]({action_run_url})" + os.linesep
+            f"CI Job page]({action_run_url})" + os.linesep
         )
     else:
         p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
