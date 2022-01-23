@@ -5,7 +5,7 @@ Posts Mega-Linter results summary in the comments of the related merge request (
 
 ## Usage
 
-Click on hyperlinks to access detailed logs
+Click on hyperlinks to access detailed logs (click on **Download** in **Artifacts section** at the left of a CI job page)
 
 ![Screenshot](../assets/images/GitlabCommentReporter.jpg)
 
