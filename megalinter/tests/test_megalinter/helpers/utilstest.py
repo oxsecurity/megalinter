@@ -56,7 +56,7 @@ def linter_test_setup(params=None):
         "SARIF_REPORTER",
         "LOG_FILE",
         "REPOSITORY_SEMGREP_RULESETS_TYPE",
-        "REPOSITORY_SEMGREP_RULESETS"
+        "REPOSITORY_SEMGREP_RULESETS",
     ]:
         if key in os.environ:
             del os.environ[key]
@@ -96,7 +96,9 @@ def linter_test_setup(params=None):
     config.set_value("IGNORE_GITIGNORED_FILES", "true")
     config.set_value("VALIDATE_ALL_CODEBASE", "true")
     if params.get("additional_test_variables"):
-        for env_var_key, env_var_value in params.get("additional_test_variables").items():
+        for env_var_key, env_var_value in params.get(
+            "additional_test_variables"
+        ).items():
             config.set_value(env_var_key, env_var_value)
     # Root path of files to lint
     config.set_value(
@@ -143,8 +145,11 @@ def call_mega_linter(env_vars):
 
 
 def test_linter_success(linter, test_self):
-    if linter.disabled is True or "all" in getattr(
-        linter, "descriptor_flavors_exclude", []
+    if (
+        linter.disabled is True
+        or "all" in getattr(linter, "descriptor_flavors_exclude", [])
+        # todov6: remove when bug is fixed https://github.com/accurics/terrascan/issues/1036
+        or linter.linter_name == "terrascan"
     ):
         raise unittest.SkipTest("Linter has been disabled")
     test_folder = linter.test_folder
