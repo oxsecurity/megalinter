@@ -47,12 +47,21 @@ class GitlabCommentReporter(Reporter):
             p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Post comment on merge request if found
-            gl = gitlab.Gitlab(gitlab_server_url, job_token=os.environ["CI_JOB_TOKEN"])
+            if config.get("MEGALINTER_ACCESS_TOKEN", "") != "":
+                gl = gitlab.Gitlab(
+                    gitlab_server_url,
+                    private_token=config.get("MEGALINTER_ACCESS_TOKEN"),
+                )
+            else:
+                gl = gitlab.Gitlab(
+                    gitlab_server_url, job_token=config.get("CI_JOB_TOKEN")
+                )
             logging.info("NICO: gitlab_project_id: " + gitlab_project_id)
             logging.info("NICO: gl: " + str(gl))
             project = gl.projects.get(gitlab_project_id)
-
+            logging.info("NICO: project: " + str(project))
             mr = project.mergerequests.get(gitlab_merge_request_id)
+            logging.info("NICO: mr: " + str(mr))
             if mr is None:
                 logging.info(
                     "[Gitlab Comment Reporter] No merge request has been found, so no comment has been posted"
@@ -63,15 +72,33 @@ class GitlabCommentReporter(Reporter):
             if mr.state == "merged":
                 return
 
-            # Check if there is already a comment from Mega-Linter
+            # List comments on merge request
             existing_comment = None
-            existing_comments = mr.notes.list()
+            try:
+                existing_comments = mr.notes.list()
+            except gitlab.GitlabAuthenticationError as e:
+                logging.error(
+                    "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
+                    "MEGALINTER_ACCESS_TOKEN containing a personal token with api access\n"
+                    + str(e)
+                )
+                return
+            except Exception as e:
+                logging.error(
+                    "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
+                    "MEGALINTER_ACCESS_TOKEN containing a personal token with api access\n"
+                    + str(e)
+                )
+                return
+
+            # Check if there is already a MegaLinter comment
             for comment in existing_comments:
                 if (
                     "See errors details in [**artifact Mega-Linter reports** on"
                     in comment.body
                 ):
                     existing_comment = comment
+
             # Process comment
             try:
                 # Edit if there is already a Mega-Linter comment
@@ -80,7 +107,7 @@ class GitlabCommentReporter(Reporter):
                     existing_comment.save()
                 # Or create a new PR comment
                 else:
-                    mr.notes.create({"body": "note content"})
+                    mr.notes.create({"body": p_r_msg})
                 logging.debug(f"Posted Gitlab comment: {p_r_msg}")
                 logging.info(
                     f"[Gitlab Comment Reporter] Posted summary as comment on {gitlab_repo} #MR{mr.id}"
