@@ -47,10 +47,10 @@ class GitlabCommentReporter(Reporter):
             p_r_msg = build_markdown_summary(self, action_run_url)
 
             # Post comment on merge request if found
-            if config.get("MEGALINTER_ACCESS_TOKEN", "") != "":
+            if config.get("GITLAB_ACCESS_TOKEN_MEGALINTER", "") != "":
                 gl = gitlab.Gitlab(
                     gitlab_server_url,
-                    private_token=config.get("MEGALINTER_ACCESS_TOKEN"),
+                    private_token=config.get("GITLAB_ACCESS_TOKEN_MEGALINTER"),
                 )
             else:
                 gl = gitlab.Gitlab(
@@ -79,14 +79,14 @@ class GitlabCommentReporter(Reporter):
             except gitlab.GitlabAuthenticationError as e:
                 logging.error(
                     "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
-                    "MEGALINTER_ACCESS_TOKEN containing a personal token with api access\n"
+                    "GITLAB_ACCESS_TOKEN_MEGALINTER containing a personal token with api access\n"
                     + str(e)
                 )
                 return
             except Exception as e:
                 logging.error(
                     "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
-                    "MEGALINTER_ACCESS_TOKEN containing a personal token with api access\n"
+                    "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
                     + str(e)
                 )
                 return
