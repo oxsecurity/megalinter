@@ -503,9 +503,7 @@ class Megalinter:
             auth_bearer = "Authorization: Bearer " + config.get(
                 "GIT_AUTHORIZATION_BEARER"
             )
-            repo.config_writer().set_value(
-                "http", "extraheader", auth_bearer
-            ).release()
+            repo.config_writer().set_value("http", "extraheader", auth_bearer).release()
         # Fetch base branch content
         default_branch = config.get("DEFAULT_BRANCH", "HEAD")
         default_branch_remote = f"origin/{default_branch}"
