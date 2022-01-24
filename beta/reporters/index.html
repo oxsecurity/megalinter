@@ -4613,8 +4613,8 @@
   
   
     <li class="md-nav__item">
-      <a href="UpdatedSourcesReporter/" class="md-nav__link">
-        Updated sources
+      <a href="GitHubCommentReporter/" class="md-nav__link">
+        GitHub Pull Request comments
       </a>
     </li>
   
@@ -4627,8 +4627,36 @@
   
   
     <li class="md-nav__item">
-      <a href="ConfigReporter/" class="md-nav__link">
-        IDE Configuration
+      <a href="GitlabCommentReporter/" class="md-nav__link">
+        Gitlab Merge Request comments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="GitHubStatusReporter/" class="md-nav__link">
+        GitHub Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UpdatedSourcesReporter/" class="md-nav__link">
+        Updated sources
       </a>
     </li>
   
@@ -4669,22 +4697,8 @@
   
   
     <li class="md-nav__item">
-      <a href="GitHubCommentReporter/" class="md-nav__link">
-        Pull Request comments
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="GitHubStatusReporter/" class="md-nav__link">
-        GitHub Status
+      <a href="ConfigReporter/" class="md-nav__link">
+        IDE Configuration
       </a>
     </li>
   
@@ -5279,9 +5293,14 @@
 <td>Active</td>
 </tr>
 <tr>
-<td><a href="GitHubCommentReporter/">Pull Request comments</a></td>
+<td><a href="GitHubCommentReporter/">GitHub Pull Request comments</a></td>
 <td>MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs</td>
 <td>Active if GitHub Action</td>
+</tr>
+<tr>
+<td><a href="GitlabCommentReporter/">Gitlab Merge Request comments</a></td>
+<td>Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs</td>
+<td>Active if in Gitlab CI</td>
 </tr>
 <tr>
 <td><a href="UpdatedSourcesReporter/">Updated sources</a></td>

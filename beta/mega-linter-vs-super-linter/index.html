@@ -4601,8 +4601,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/UpdatedSourcesReporter/" class="md-nav__link">
-        Updated sources
+      <a href="../reporters/GitHubCommentReporter/" class="md-nav__link">
+        GitHub Pull Request comments
       </a>
     </li>
   
@@ -4615,8 +4615,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/ConfigReporter/" class="md-nav__link">
-        IDE Configuration
+      <a href="../reporters/GitlabCommentReporter/" class="md-nav__link">
+        Gitlab Merge Request comments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
+        GitHub Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/UpdatedSourcesReporter/" class="md-nav__link">
+        Updated sources
       </a>
     </li>
   
@@ -4657,22 +4685,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/GitHubCommentReporter/" class="md-nav__link">
-        Pull Request comments
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
-        GitHub Status
+      <a href="../reporters/ConfigReporter/" class="md-nav__link">
+        IDE Configuration
       </a>
     </li>
   
@@ -5482,7 +5496,7 @@
 </ul>
 <h2 id="more-languages-and-formats-linted">More languages and formats linted</h2>
 <ul>
-<li><strong>C</strong>, <strong>C++</strong>, <strong>Copy-Paste detection</strong>, <strong>GraphQL</strong>, <strong>JSON &amp; YAML with JSON schemas</strong>, <strong>Markdown tables formatting</strong>, <strong>Puppet</strong>, <strong>reStructuredText</strong>, <strong>Rust</strong>, <strong>Scala</strong>, <strong>Spell checker</strong>, <strong>Swift</strong>, <strong>Visual Basic .NET</strong> ...</li>
+<li><strong>C</strong>, <strong>C++</strong>, <strong>Copy-Paste detection</strong>, <strong>Credentials</strong>, <strong>GraphQL</strong>, <strong>JSON &amp; YAML with JSON schemas</strong>, <strong>Markdown tables formatting</strong>, <strong>Puppet</strong>, <strong>reStructuredText</strong>, <strong>Rust</strong>, <strong>Scala</strong>, <strong>Spell checker</strong>, <strong>Swift</strong>, <strong>Visual Basic .NET</strong> ...</li>
 </ul>
 <h2 id="automatically-apply-formatting-and-fixes">Automatically apply formatting and fixes</h2>
 <p>MegaLinter can <a href="../configuration/#apply-fixes"><strong>automatically apply fixes performed by linters</strong></a>, and <strong>push them to the same branch</strong>, or <strong>create a Pull Request</strong> that you can validate</p>
@@ -5507,9 +5521,13 @@
 <p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></p>
 <ul>
 <li><a href="../reporters/TextReporter/">Text files</a></li>
-<li><a href="../reporters/GitHubCommentReporter/">Pull Request comments</a></li>
+<li><a href="../reporters/GitHubCommentReporter/">GitHub Pull Request comments</a></li>
 </ul>
 <p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true&gt;" /></p>
+<ul>
+<li><a href="../reporters/GitlabCommentReporter/">Gitlab Merge Request comments</a></li>
+</ul>
+<p><img alt="Screenshot" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true&gt;" /></p>
 <ul>
 <li><a href="../reporters/UpdatedSourcesReporter/">Updated sources</a></li>
 <li><a href="../reporters/EmailReporter/">Email</a></li>

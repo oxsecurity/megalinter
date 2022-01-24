@@ -4601,8 +4601,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/UpdatedSourcesReporter/" class="md-nav__link">
-        Updated sources
+      <a href="../reporters/GitHubCommentReporter/" class="md-nav__link">
+        GitHub Pull Request comments
       </a>
     </li>
   
@@ -4615,8 +4615,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/ConfigReporter/" class="md-nav__link">
-        IDE Configuration
+      <a href="../reporters/GitlabCommentReporter/" class="md-nav__link">
+        Gitlab Merge Request comments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
+        GitHub Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/UpdatedSourcesReporter/" class="md-nav__link">
+        Updated sources
       </a>
     </li>
   
@@ -4657,22 +4685,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/GitHubCommentReporter/" class="md-nav__link">
-        Pull Request comments
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
-        GitHub Status
+      <a href="../reporters/ConfigReporter/" class="md-nav__link">
+        IDE Configuration
       </a>
     </li>
   
@@ -6274,6 +6288,7 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
+<li>New reporter <strong>GITLAB_COMMENT_REPORTER</strong> allowing to post MegaLinter results as comments on Gitlab merge requests</li>
 <li>Fix v5 doc deployment when there is a new release (<a href="https://github.com/megalinter/megalinter/issues/1190">1190</a>)</li>
 </ul>
 <ul>
