@@ -1,7 +1,7 @@
 import logging
 import os
 import urllib
-from pytablewriter import MarkdownTableWriter
+
 from megalinter import config
 from megalinter.constants import (
     ML_DOC_URL,
@@ -9,6 +9,7 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_ISSUES_URL,
 )
+from pytablewriter import MarkdownTableWriter
 
 mega_linter_version = config.get("BUILD_VERSION", "latest")
 DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"
