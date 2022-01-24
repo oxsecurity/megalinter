@@ -54,10 +54,13 @@ class GitlabCommentReporter(Reporter):
                     gitlab_server_url, job_token=config.get("CI_JOB_TOKEN")
                 )
             project = gl.projects.get(gitlab_project_id)
-            mr = project.mergerequests.get(gitlab_merge_request_id)
-            if mr is None:
-                logging.info(
-                    "[Gitlab Comment Reporter] No merge request has been found, so no comment has been posted"
+            try:
+                mr = project.mergerequests.get(gitlab_merge_request_id)
+            except gitlab.GitlabGetError as e:
+                logging.warning(
+                    "[Gitlab Comment Reporter] No merge request has been found with "
+                    f"id {gitlab_merge_request_id}, so no comment has been posted\n"
+                    + str(e)
                 )
                 return
 
