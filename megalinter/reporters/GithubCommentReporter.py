@@ -10,7 +10,6 @@ import re
 import github
 from megalinter import Reporter, config
 from megalinter.constants import ML_DOC_URL, ML_REPO_URL
-from pytablewriter import MarkdownTableWriter
 
 mega_linter_version = config.get("BUILD_VERSION", "latest")
 DOCS_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/{mega_linter_version}/descriptors"

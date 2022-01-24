@@ -5,7 +5,6 @@ Post a GitHub status for each linter
 """
 import logging
 from megalinter.utils_reporter import build_markdown_summary
-import os
 
 import gitlab
 from megalinter import Reporter, config
