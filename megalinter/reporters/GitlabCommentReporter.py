@@ -87,7 +87,7 @@ class GitlabCommentReporter(Reporter):
             # Check if there is already a MegaLinter comment
             for comment in existing_comments:
                 if (
-                    "See errors details in [**artifact Mega-Linter reports** on"
+                    "See errors details in [**artifact MegaLinter reports** on"
                     in comment.body
                 ):
                     existing_comment = comment

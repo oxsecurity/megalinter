@@ -80,18 +80,18 @@ def build_markdown_summary(reporter_self, action_run_url):
         + log_link(f"**{reporter_self.master.status.upper()}**", action_run_url)
     )
     p_r_msg = (
-        f"## [Mega-Linter]({ML_DOC_URL}) status: {status_with_href}"
+        f"## [MegaLinter]({ML_DOC_URL}) status: {status_with_href}"
         + os.linesep
         + os.linesep
     )
     p_r_msg += table_content + os.linesep
     if action_run_url != "":
         p_r_msg += (
-            "See errors details in [**artifact Mega-Linter reports** on "
+            "See errors details in [**artifact MegaLinter reports** on "
             f"CI Job page]({action_run_url})" + os.linesep
         )
     else:
-        p_r_msg += "See errors details in Mega-Linter reports" + os.linesep
+        p_r_msg += "See errors details in MegaLinter reports" + os.linesep
     if reporter_self.master.validate_all_code_base is False:
         p_r_msg += (
             "_Set `VALIDATE_ALL_CODEBASE: true` in mega-linter.yml to validate "
@@ -103,16 +103,16 @@ def build_markdown_summary(reporter_self, action_run_url):
             p_r_msg += (
                 os.linesep
                 + "You could have same capabilities but better runtime performances"
-                " if you request a new Mega-Linter flavor.\n"
+                " if you request a new MegaLinter flavor.\n"
             )
             body = (
-                "Mega-Linter would run faster on my project if I had a flavor containing the following "
+                "MegaLinter would run faster on my project if I had a flavor containing the following "
                 "list of linters: \n\n - Add languages/linters list here\n\n"
                 "Would it be possible to create one ? Thanks :relaxed:"
             )
             new_flavor_url = (
                 f"{ML_REPO_ISSUES_URL}/new?assignees=&labels=enhancement&template=feature_request.md"
-                f"&title={urllib.parse.quote('Request new Mega-Linter flavor')}"
+                f"&title={urllib.parse.quote('Request new MegaLinter flavor')}"
                 f"&body={urllib.parse.quote(body)}"
             )
             p_r_msg += f"- [**Click here to request the new flavor**]({new_flavor_url})"
@@ -120,7 +120,7 @@ def build_markdown_summary(reporter_self, action_run_url):
             p_r_msg += (
                 os.linesep
                 + "You could have the same capabilities but better runtime performances"
-                " if you use a Mega-Linter flavor:" + os.linesep
+                " if you use a MegaLinter flavor:" + os.linesep
             )
             for suggestion in reporter_self.master.flavor_suggestions:
                 build_version = os.environ.get("BUILD_VERSION", "v5")
