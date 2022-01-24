@@ -4,10 +4,10 @@ GitHub Status reporter
 Post a GitHub status for each linter
 """
 import logging
-from megalinter.utils_reporter import build_markdown_summary
 
 import gitlab
 from megalinter import Reporter, config
+from megalinter.utils_reporter import build_markdown_summary
 
 
 class GitlabCommentReporter(Reporter):
@@ -87,7 +87,7 @@ class GitlabCommentReporter(Reporter):
             # Check if there is already a MegaLinter comment
             for comment in existing_comments:
                 if (
-                    "See errors details in [**artifact Mega-Linter reports** on"
+                    "See errors details in [**artifact MegaLinter reports** on"
                     in comment.body
                 ):
                     existing_comment = comment
