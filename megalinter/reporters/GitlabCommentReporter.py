@@ -56,7 +56,7 @@ class GitlabCommentReporter(Reporter):
             project = gl.projects.get(gitlab_project_id)
             try:
                 mr = project.mergerequests.get(gitlab_merge_request_id)
-            except gitlab.GitlabGetError as e:
+            except gitlab.GitlabGetError:
                 gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_IID", "none")
                 try:
                     mr = project.mergerequests.get(gitlab_merge_request_id)
