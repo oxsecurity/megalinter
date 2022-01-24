@@ -19,6 +19,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.745 to **2.0.746** on 2022-01-24
 <!-- linter-versions-end -->
 
+weshgroooooo
+
 ## [v5.6.0] - 2022-01-22
 
 - Add linters licenses to online documentation
