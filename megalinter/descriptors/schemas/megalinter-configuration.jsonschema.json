@@ -10423,7 +10423,7 @@
     },
     "SQL_SQLFLUFF_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQLFLUFF_CONFIG_FILE",
-      "default": ".sqlfluffini",
+      "default": ".sqlfluff",
       "description": "SQL_SQLFLUFF: User custom config file name if different from default",
       "title": "SQL_SQLFLUFF: Custom config file name",
       "type": "string"
