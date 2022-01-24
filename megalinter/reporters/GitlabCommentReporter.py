@@ -57,12 +57,16 @@ class GitlabCommentReporter(Reporter):
             try:
                 mr = project.mergerequests.get(gitlab_merge_request_id)
             except gitlab.GitlabGetError as e:
-                logging.warning(
-                    "[Gitlab Comment Reporter] No merge request has been found with "
-                    f"id {gitlab_merge_request_id}, so no comment has been posted\n"
-                    + str(e)
-                )
-                return
+                gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_IID", "none")
+                try:
+                    mr = project.mergerequests.get(gitlab_merge_request_id)
+                except gitlab.GitlabGetError as e:
+                    logging.warning(
+                        "[Gitlab Comment Reporter] No merge request has been found with "
+                        f"id {gitlab_merge_request_id}, so no comment has been posted\n"
+                        + str(e)
+                    )
+                    return
 
             # Ignore if PR is already merged
             if mr.state == "merged":
