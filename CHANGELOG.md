@@ -17,6 +17,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.0.0 to **1.14.3.0** on 2022-01-23
   - [checkov](https://www.checkov.io/) from 2.0.744 to **2.0.745** on 2022-01-23
   - [checkov](https://www.checkov.io/) from 2.0.745 to **2.0.746** on 2022-01-24
+  - [checkov](https://www.checkov.io/) from 2.0.746 to **2.0.749** on 2022-01-24
 <!-- linter-versions-end -->
 
 ## [v5.6.0] - 2022-01-22
