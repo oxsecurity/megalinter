@@ -31,7 +31,6 @@ linters:
     linter_rules_url: https://docs.sqlfluff.com/en/stable/rules.html
     linter_rules_configuration_url: https://docs.sqlfluff.com/en/stable/configuration.html
     config_file_name: .sqlfluff
-    config_file_name: setup.cfg
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - lint
