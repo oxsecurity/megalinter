@@ -14,7 +14,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ## More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
+- **C**, **C++**, **Copy-Paste detection**, **Credentials**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
 
 ## Automatically apply formatting and fixes
 
@@ -43,9 +43,13 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 - [Text files](reporters/TextReporter.md)
-- [Pull Request comments](reporters/GitHubCommentReporter.md)
+- [GitHub Pull Request comments](reporters/GitHubCommentReporter.md)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
+- [Gitlab Merge Request comments](reporters/GitlabCommentReporter.md)
+
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
 
 - [Updated sources](reporters/UpdatedSourcesReporter.md)
 - [Email](reporters/EmailReporter.md)
