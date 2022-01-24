@@ -10,6 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
 - Fix v5 doc deployment when there is a new release ([1190](https://github.com/megalinter/megalinter/issues/1190))
+- Fix issue when using `VALIDATE_ALL_CODEBASE: false` on Azure Pipelines by defining auth header in CI env variable GIT_AUTHORIZATION_BEARER ([#1125](https://github.com/megalinter/megalinter/issues/1125))
 
 - Linter versions upgrades
   - [stylelint](https://stylelint.io) from 14.2.0 to **14.3.0** on 2022-01-23
