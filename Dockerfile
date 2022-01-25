@@ -149,7 +149,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'rstfmt' \
           'snakemake' \
           'snakefmt' \
-          'sqlfluff' \
+          'sqlfluff==0.9.1' \
           'yamllint'
 #PIP__END
 

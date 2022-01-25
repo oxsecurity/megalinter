@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.746**
+- Version in MegaLinter: **2.0.754**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -79,8 +79,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-bc-ids] [--no-guide] [--quiet] [--compact]
-               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]]
-               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]]
+               [--framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [--bc-api-key BC_API_KEY]
                [--docker-image DOCKER_IMAGE]
@@ -132,10 +132,10 @@ optional arguments:
                         in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]
+  --framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]
+  --skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
@@ -210,7 +210,7 @@ optional arguments:
                         the same noise. Works only with `--directory` flag
   --baseline BASELINE   Use a .checkov.baseline file to compare current
                         results with a known baseline. Report will include
-                        only failed checks that are newwith respect to the
+                        only failed checks that are new with respect to the
                         provided baseline
   -s, --soft-fail       Runs checks but suppresses error code
   --soft-fail-on SOFT_FAIL_ON
