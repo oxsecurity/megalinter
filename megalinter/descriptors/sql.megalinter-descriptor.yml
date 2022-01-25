@@ -39,9 +39,10 @@ linters:
     cli_version_arg_name: "--version"
     examples:
       - "sqlfluff myfile.sql"
+    downgraded_version: true
     install:
       pip:
-        - sqlfluff
+        - sqlfluff==0.9.1
   # TSQL
   - linter_name: tsqllint
     descriptor_flavors:
