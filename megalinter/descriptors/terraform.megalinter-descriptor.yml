@@ -6,16 +6,14 @@ file_extensions:
   - ".tf"
 linters:
   # TFLINT
-  - linter_name: tflint
+  - class: TfLintLinter
+    linter_name: tflint
     name: TERRAFORM_TFLINT
     linter_url: https://github.com/terraform-linters/tflint
     linter_rules_url: https://github.com/terraform-linters/tflint/tree/master/docs/rules#rules
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     config_file_name: .tflint.hcl
-    pre_commands:
-      - command: tflint --init
-        cwd: workspace
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
