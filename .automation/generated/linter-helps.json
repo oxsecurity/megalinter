@@ -6670,7 +6670,7 @@
         "  -h, --help             display help for command"
     ],
     "sqlfluff": [
-        "Usage: sqlfluff [OPTIONS] COMMAND [ARGS]...",
+        "Usage: python -m sqlfluff [OPTIONS] COMMAND [ARGS]...",
         "",
         "  Sqlfluff is a modular sql linter for humans.",
         "",

@@ -9,7 +9,7 @@
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **0.9.2**
+- Version in MegaLinter: **0.9.1**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
 - See [Index of problems detected by sqlfluff](https://docs.sqlfluff.com/en/stable/rules.html){target=_blank}
@@ -80,7 +80,7 @@ sqlfluff myfile.sql
 ### Help content
 
 ```shell
-Usage: sqlfluff [OPTIONS] COMMAND [ARGS]...
+Usage: python -m sqlfluff [OPTIONS] COMMAND [ARGS]...
 
   Sqlfluff is a modular sql linter for humans.
 
@@ -100,4 +100,4 @@ Commands:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [sqlfluff](https://pypi.org/project/sqlfluff)
+  - [sqlfluff==0.9.1](https://pypi.org/project/sqlfluff==0.9.1)

@@ -19,7 +19,6 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.745 to **2.0.746** on 2022-01-24
   - [checkov](https://www.checkov.io/) from 2.0.746 to **2.0.749** on 2022-01-24
   - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.1 to **3.2.0** on 2022-01-24
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.1 to **0.9.2** on 2022-01-24
   - [checkov](https://www.checkov.io/) from 2.0.749 to **2.0.754** on 2022-01-24
 <!-- linter-versions-end -->
 
