@@ -10,6 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
 - Fix v5 doc deployment when there is a new release ([#1190](https://github.com/megalinter/megalinter/issues/1190))
+- Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
 - Fix tflint initialization so it uses configuration file when defined ([#1134](https://github.com/megalinter/megalinter/issues/1134))
 
 - Linter versions upgrades
