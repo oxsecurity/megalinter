@@ -498,6 +498,13 @@ class Megalinter:
             "Listing updated files in [" + self.github_workspace + "] using git diff."
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
+        # Add auth header if necessary
+        if config.get("GIT_AUTHORIZATION_BEARER", "") != "":
+            auth_bearer = "Authorization: Bearer " + config.get(
+                "GIT_AUTHORIZATION_BEARER"
+            )
+            repo.config_writer().set_value("http", "extraheader", auth_bearer).release()
+        # Fetch base branch content
         default_branch = config.get("DEFAULT_BRANCH", "HEAD")
         default_branch_remote = f"origin/{default_branch}"
         if default_branch_remote not in [ref.name for ref in repo.refs]:
@@ -507,7 +514,7 @@ class Megalinter:
             local_ref = f"refs/remotes/{default_branch_remote}"
             # Try to fetch default_branch from origin, because it isn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
-
+        # Make git diff to list files
         diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
