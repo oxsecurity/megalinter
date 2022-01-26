@@ -5,6 +5,7 @@ https://github.com/secretlint/secretlint
 """
 
 import os
+
 from megalinter import Linter
 
 
