@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.754**
+- Version in MegaLinter: **2.0.763**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -94,6 +94,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
+               [--min-cve-severity {critical,high,medium,low,none}]
+               [--skip-cve-package SKIP_CVE_PACKAGE]
                [-s | --soft-fail-on SOFT_FAIL_ON | --hard-fail-on HARD_FAIL_ON]
 
 Infrastructure as code static analysis
@@ -212,6 +214,13 @@ optional arguments:
                         results with a known baseline. Report will include
                         only failed checks that are new with respect to the
                         provided baseline
+  --min-cve-severity {critical,high,medium,low,none}
+                        Set minimum severity that will cause returning non-
+                        zero exit code
+  --skip-cve-package SKIP_CVE_PACKAGE
+                        filter scan to run on all packages but a specific
+                        package identifier (denylist), You can specify this
+                        argument multiple times to skip multiple packages
   -s, --soft-fail       Runs checks but suppresses error code
   --soft-fail-on SOFT_FAIL_ON
                         Exits with a 0 exit code for specified checks. You can

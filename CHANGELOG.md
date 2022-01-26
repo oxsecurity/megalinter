@@ -21,6 +21,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.746 to **2.0.749** on 2022-01-24
   - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.1 to **3.2.0** on 2022-01-24
   - [checkov](https://www.checkov.io/) from 2.0.749 to **2.0.754** on 2022-01-24
+  - [golangci-lint](https://golangci-lint.run/) from 1.43.0 to **1.44.0** on 2022-01-26
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.1 to **1.7.2** on 2022-01-26
+  - [checkov](https://www.checkov.io/) from 2.0.754 to **2.0.763** on 2022-01-26
 <!-- linter-versions-end -->
 
 ## [v5.6.0] - 2022-01-22
