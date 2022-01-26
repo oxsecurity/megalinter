@@ -40,10 +40,9 @@ linters:
     examples:
       - "sqlfluff myfile.sql"
       - "sqlfluff --config .sqlfluff myfile.sql myfile2.sql"
-    downgraded_version: true
     install:
       pip:
-        - sqlfluff==0.9.1
+        - sqlfluff
   # TSQL
   - linter_name: tsqllint
     descriptor_flavors:

@@ -96,7 +96,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'cpplint' \
           'snakemake' \
           'snakefmt' \
-          'sqlfluff==0.9.1' \
+          'sqlfluff' \
           'yamllint'
 #PIP__END
 
