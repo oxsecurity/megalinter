@@ -12,6 +12,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Fix v5 doc deployment when there is a new release ([#1190](https://github.com/megalinter/megalinter/issues/1190))
 - Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
 - Fix tflint initialization so it uses configuration file when defined ([#1134](https://github.com/megalinter/megalinter/issues/1134))
+- Fix issue when using `VALIDATE_ALL_CODEBASE: false` on Azure Pipelines by defining auth header in CI env variable GIT_AUTHORIZATION_BEARER ([#1125](https://github.com/megalinter/megalinter/issues/1125))
 
 - Linter versions upgrades
   - [stylelint](https://stylelint.io) from 14.2.0 to **14.3.0** on 2022-01-23
@@ -22,6 +23,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.746 to **2.0.749** on 2022-01-24
   - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.1 to **3.2.0** on 2022-01-24
   - [checkov](https://www.checkov.io/) from 2.0.749 to **2.0.754** on 2022-01-24
+  - [golangci-lint](https://golangci-lint.run/) from 1.43.0 to **1.44.0** on 2022-01-26
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.1 to **1.7.2** on 2022-01-26
+  - [checkov](https://www.checkov.io/) from 2.0.754 to **2.0.763** on 2022-01-26
 <!-- linter-versions-end -->
 
 ## [v5.6.0] - 2022-01-22

@@ -430,8 +430,8 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
     steps:
     - script: |
         docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
-      displayName: 'Code Scan using MegaLinter'
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+      displayName: 'MegaLinter analysis'
 ```
 
 ### Jenkins
