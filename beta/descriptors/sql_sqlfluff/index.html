@@ -5447,7 +5447,7 @@
 
 <div align="center">
   <a href="https://www.sqlfluff.com/" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/sqlfluff/sqlfluff/master/images/sqlfluff-wide.png" alt="sqlfluff" height="150px" class="megalinter-banner">
+    <img src="https://raw.githubusercontent.com/sqlfluff/sqlfluff/main/images/sqlfluff-wide.png" alt="sqlfluff" height="150px" class="megalinter-banner">
   </a>
 </div>
 
@@ -5455,7 +5455,10 @@
 <ul>
 <li>Version in MegaLinter: <strong>0.9.1</strong></li>
 <li>Visit <a href="https://www.sqlfluff.com/" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://docs.sqlfluff.com/en/stable/configuration.html" target="_blank">How to configure sqlfluff rules</a></li>
+<li>See <a href="https://docs.sqlfluff.com/en/stable/configuration.html" target="_blank">How to configure sqlfluff rules</a><ul>
+<li>If custom <code>.sqlfluff</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.sqlfluff" target="_blank">.sqlfluff</a> will be used</li>
+</ul>
+</li>
 <li>See <a href="https://docs.sqlfluff.com/en/stable/rules.html" target="_blank">Index of problems detected by sqlfluff</a></li>
 </ul>
 <p><a href="https://github.com/sqlfluff/sqlfluff" target="_blank"><img alt="sqlfluff - GitHub" src="https://gh-card.dev/repos/sqlfluff/sqlfluff.svg?fullname=" /></a></p>
@@ -5516,7 +5519,7 @@
 <tr>
 <td>SQL_SQLFLUFF_CONFIG_FILE</td>
 <td>sqlfluff configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>setup.cfg</code></td>
+<td><code>.sqlfluff</code></td>
 </tr>
 <tr>
 <td>SQL_SQLFLUFF_RULES_PATH</td>
@@ -5669,8 +5672,10 @@
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">sqlfluff myfile.sql
 </code></pre>
+<pre><code class="language-shell">sqlfluff --config .sqlfluff myfile.sql myfile2.sql
+</code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">Usage: python -m sqlfluff [OPTIONS] COMMAND [ARGS]...
+<pre><code class="language-shell">Usage: sqlfluff [OPTIONS] COMMAND [ARGS]...
 
   Sqlfluff is a modular sql linter for humans.
 

@@ -5610,8 +5610,8 @@ jobs:
     steps:
     - script: |
         docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
-      displayName: 'Code Scan using MegaLinter'
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+      displayName: 'MegaLinter analysis'
 </code></pre>
 <h2 id="jenkins">Jenkins</h2>
 <p>Add the following stage in your Jenkinsfile</p>
