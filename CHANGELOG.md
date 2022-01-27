@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
+- secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
 - Fix v5 doc deployment when there is a new release ([1190](https://github.com/megalinter/megalinter/issues/1190))
 - Fix issue when using `VALIDATE_ALL_CODEBASE: false` on Azure Pipelines by defining auth header in CI env variable GIT_AUTHORIZATION_BEARER ([#1125](https://github.com/megalinter/megalinter/issues/1125))
 
