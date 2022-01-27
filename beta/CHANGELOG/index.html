@@ -6289,6 +6289,7 @@
 <p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
 <li>New reporter <strong>GITLAB_COMMENT_REPORTER</strong> allowing to post MegaLinter results as comments on Gitlab merge requests</li>
+<li>secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found (<a href="https://github.com/megalinter/megalinter/issues/1207">#1207</a>)</li>
 <li>Fix v5 doc deployment when there is a new release (<a href="https://github.com/megalinter/megalinter/issues/1190">1190</a>)</li>
 <li>Fix issue when using <code>VALIDATE_ALL_CODEBASE: false</code> on Azure Pipelines by defining auth header in CI env variable GIT_AUTHORIZATION_BEARER (<a href="https://github.com/megalinter/megalinter/issues/1125">#1125</a>)</li>
 </ul>
