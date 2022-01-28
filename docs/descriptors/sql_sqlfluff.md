@@ -9,7 +9,7 @@
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **0.9.1**
+- Version in MegaLinter: **0.9.3**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
   - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -105,4 +105,4 @@ Commands:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [sqlfluff==0.9.1](https://pypi.org/project/sqlfluff==0.9.1)
+  - [sqlfluff](https://pypi.org/project/sqlfluff)
