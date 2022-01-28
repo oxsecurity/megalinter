@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.763**
+- Version in MegaLinter: **2.0.769**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -124,7 +124,8 @@ optional arguments:
                         be used together with --external-checks-dir
   -l, --list            List checks
   -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
-                        Report output format. Can be repeated
+                        Report output format. Add multiple outputs by using
+                        the flag multiple times (-o sarif -o cli)
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
                         platform
@@ -195,7 +196,8 @@ optional arguments:
   --evaluate-variables EVALUATE_VARIABLES
                         evaluate the values of variables and locals
   -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
-                        custom CA (bundle) file [env var: CA_CERTIFICATE]
+                        Custom CA certificate (bundle) file [env var:
+                        BC_CA_BUNDLE]
   --repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT
                         Directory containing the hcl code used to generate a
                         given plan file. Use with -f.
