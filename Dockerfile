@@ -231,11 +231,11 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
           puppet-lint \
-          rubocop:0.82.0 \
-          rubocop-github:0.16.0 \
-          rubocop-performance:1.7.1 \
-          rubocop-rails:2.5 \
-          rubocop-rspec:1.41.0
+          rubocop \
+          rubocop-github \
+          rubocop-performance \
+          rubocop-rails \
+          rubocop-rspec
 #GEM__END
 
 #############################################################################################
