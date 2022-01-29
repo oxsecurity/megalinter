@@ -40,6 +40,12 @@ Fixes:
   - [sqlfluff](https://www.sqlfluff.com/) from 0.9.1 to **0.9.3** on 2022-01-28
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.0 to **0.46.2** on 2022-01-28
   - [checkov](https://www.checkov.io/) from 2.0.763 to **2.0.769** on 2022-01-28
+  - [eslint](https://eslint.org) from 8.7.0 to **8.8.0** on 2022-01-29
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.9.2 to **3.9.3** on 2022-01-29
+  - [phpstan](https://phpstan.org/) from 1.4.2 to **1.4.3** on 2022-01-29
+  - [rubocop](https://rubocop.org/) from 0.82.0 to **1.25.0** on 2022-01-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.14.0 to **6.15.0** on 2022-01-29
+  - [checkov](https://www.checkov.io/) from 2.0.769 to **2.0.772** on 2022-01-29
 <!-- linter-versions-end -->
 
 ## [v5.6.0] - 2022-01-22
