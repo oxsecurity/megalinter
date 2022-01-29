@@ -8,16 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-Linter updates:
-
-- New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
-- Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
-- secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
-- htmlhint: Display correct number of errors in logs
-
 Core:
 
+- New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
 - CI: Update test method to check that the number of errors is correctly calculated
+
+Linter updates:
+
+- Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
+- secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
+- htmlhint: Use list_of_files mode to improve performances + display correct number of errors in logs
 
 Fixes:
 
