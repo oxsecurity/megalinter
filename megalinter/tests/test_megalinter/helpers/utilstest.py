@@ -248,7 +248,9 @@ def test_linter_failure(linter, test_self):
     if mega_linter.linters[0].cli_lint_errors_count is not None:
         test_self.assertTrue(
             mega_linter.linters[0].total_number_errors > 1,
-            "Unable to count number of errors from logs",
+            "Unable to count number of errors from logs with count method "
+            + f"{mega_linter.linters[0].cli_lint_errors_count} and "
+            + f"regex {mega_linter.linters[0].cli_lint_errors_regex}",
         )
 
     # Copy error logs in documentation
