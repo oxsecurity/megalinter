@@ -22,7 +22,7 @@ linters:
     linter_rules_configuration_url: https://metacpan.org/pod/Perl::Critic#CONFIGURATION
     linter_rules_inline_disable_url: https://metacpan.org/pod/Perl::Critic#BENDING-THE-RULES
     cli_help_arg_name: "--help"
-    cli_lint_errors_count: regex_sum
+    cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "\\(Severity: [0-9]+\\)"
     help_command_return_code: 2
     examples:
