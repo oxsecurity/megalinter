@@ -60,7 +60,8 @@ def init_config(workspace=None):
             if config_data is None:  # .mega-linter.yml existing but empty
                 runtime_config = env
             else:
-                runtime_config = {**config_data, **env}  # .mega-linter.yml not empty
+                # append config file variables to env variables, with priority to env variables
+                runtime_config = config_data | env
             CONFIG_SOURCE = f"{config_file} + Environment variables"
     else:
         runtime_config = env

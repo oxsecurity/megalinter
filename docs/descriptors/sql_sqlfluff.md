@@ -3,15 +3,16 @@
 
 <div align="center">
   <a href="https://www.sqlfluff.com/" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/sqlfluff/sqlfluff/master/images/sqlfluff-wide.png" alt="sqlfluff" height="150px" class="megalinter-banner">
+    <img src="https://raw.githubusercontent.com/sqlfluff/sqlfluff/main/images/sqlfluff-wide.png" alt="sqlfluff" height="150px" class="megalinter-banner">
   </a>
 </div>
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **0.9.0**
+- Version in MegaLinter: **0.9.3**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
+  - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
 - See [Index of problems detected by sqlfluff](https://docs.sqlfluff.com/en/stable/rules.html){target=_blank}
 
 [![sqlfluff - GitHub](https://gh-card.dev/repos/sqlfluff/sqlfluff.svg?fullname=)](https://github.com/sqlfluff/sqlfluff){target=_blank}
@@ -31,7 +32,7 @@
 | SQL_SQLFLUFF_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
 | SQL_SQLFLUFF_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | SQL_SQLFLUFF_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| SQL_SQLFLUFF_CONFIG_FILE                 | sqlfluff configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `setup.cfg`                                     |
+| SQL_SQLFLUFF_CONFIG_FILE                 | sqlfluff configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.sqlfluff`                                     |
 | SQL_SQLFLUFF_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | SQL_SQLFLUFF_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | SQL_SQLFLUFF_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -74,6 +75,10 @@ This linter is available in the following flavours
 
 ```shell
 sqlfluff myfile.sql
+```
+
+```shell
+sqlfluff --config .sqlfluff myfile.sql myfile2.sql
 ```
 
 

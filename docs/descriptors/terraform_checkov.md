@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.690**
+- Version in MegaLinter: **2.0.769**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -79,8 +79,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-bc-ids] [--no-guide] [--quiet] [--compact]
-               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} ...]]
-               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} ...]]
+               [--framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [--bc-api-key BC_API_KEY]
                [--docker-image DOCKER_IMAGE]
@@ -94,6 +94,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
+               [--min-cve-severity {critical,high,medium,low,none}]
+               [--skip-cve-package SKIP_CVE_PACKAGE]
                [-s | --soft-fail-on SOFT_FAIL_ON | --hard-fail-on HARD_FAIL_ON]
 
 Infrastructure as code static analysis
@@ -122,7 +124,8 @@ optional arguments:
                         be used together with --external-checks-dir
   -l, --list            List checks
   -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
-                        Report output format. Can be repeated
+                        Report output format. Add multiple outputs by using
+                        the flag multiple times (-o sarif -o cli)
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
                         platform
@@ -132,21 +135,21 @@ optional arguments:
                         in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,all} ...]
+  --framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json} ...]
+  --skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,helm,json,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
   -c CHECK, --check CHECK
                         filter scan to run only on a specific check
                         identifier(allowlist), You can specify multiple checks
-                        separated by comma delimiter
+                        separated by comma delimiter [env var: CKV_CHECK]
   --skip-check SKIP_CHECK
                         filter scan to run on all check but a specific check
                         identifier(denylist), You can specify multiple checks
-                        separated by comma delimiter
+                        separated by comma delimiter [env var: CKV_SKIP_CHECK]
   --run-all-external-checks
                         Run all external checks (loaded via --external-checks
                         options) even if the checks are not present in the
@@ -185,15 +188,16 @@ optional arguments:
                         files (see https://www.terraform.io/docs/language/valu
                         es/variables.html#variable-definitions-tfvars-
                         files).Currently only supported for source Terraform
-                        (.tf file) scans. Requires using --directory, not
-                        --file.
+                        (.tf file), and Helm chart scans.Requires using
+                        --directory, not --file.
   --external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH
                         set the path for the download external terraform
                         modules [env var: EXTERNAL_MODULES_DIR]
   --evaluate-variables EVALUATE_VARIABLES
                         evaluate the values of variables and locals
   -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
-                        custom CA (bundle) file [env var: CA_CERTIFICATE]
+                        Custom CA certificate (bundle) file [env var:
+                        BC_CA_BUNDLE]
   --repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT
                         Directory containing the hcl code used to generate a
                         given plan file. Use with -f.
@@ -210,8 +214,15 @@ optional arguments:
                         the same noise. Works only with `--directory` flag
   --baseline BASELINE   Use a .checkov.baseline file to compare current
                         results with a known baseline. Report will include
-                        only failed checks that are newwith respect to the
+                        only failed checks that are new with respect to the
                         provided baseline
+  --min-cve-severity {critical,high,medium,low,none}
+                        Set minimum severity that will cause returning non-
+                        zero exit code
+  --skip-cve-package SKIP_CVE_PACKAGE
+                        filter scan to run on all packages but a specific
+                        package identifier (denylist), You can specify this
+                        argument multiple times to skip multiple packages
   -s, --soft-fail       Runs checks but suppresses error code
   --soft-fail-on SOFT_FAIL_ON
                         Exits with a 0 exit code for specified checks. You can

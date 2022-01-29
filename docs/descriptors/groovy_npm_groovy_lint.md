@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **9.2.0**
+- Version in MegaLinter: **9.4.1**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -113,7 +113,7 @@ Note: command-line arguments have priority on config file properties - default: 
   -i, --ignorepattern String   Comma-separated list of Ant-style file patterns specifying files that must be ignored. Default: none
   -r, --rulesets String        RuleSet file(s) to use for linting. If it is a directory, all rulesets will be used. RuleSet file definition: http://codenarc.github.io/CodeNarc/codenarc-creating-ruleset.html. If not specified, npm-groovy-script default one will be used. Can also be a list of rule identifiers with parameters
   --rulesetsoverridetype String  If list of rules sent in rulesets option, defines if they replace rules defined in .groovylintrc.json, or if they are appended - either: replaceConfig or appendConfig - default: replaceConfig
-  -o, --output String          Output format (txt,json,html,xml), or path to a file with one of these extensions - default: txt
+  -o, --output String          Output format (txt,json,sarif,html,xml), or path to a file with one of these extensions - default: txt
   -l, --loglevel String        Log level (error,warning,info) - either: error, warning, or info - default: info
   --verbose                    More outputs in console, including performed fixes
   --failon String              Defines the error level where CLI will fail (return code = 1). error,warning,info or none. Every failure level includes the more critical ones. - either: error, warning, info, or none - default: none

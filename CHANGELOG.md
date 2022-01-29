@@ -8,6 +8,95 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+Linter updates:
+
+- New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
+- Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
+- secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
+
+Fixes:
+
+- Fix v5 doc deployment when there is a new release ([#1190](https://github.com/megalinter/megalinter/issues/1190))
+- Fix issue when using `VALIDATE_ALL_CODEBASE: false` on Azure Pipelines by defining auth header in CI env variable GIT_AUTHORIZATION_BEARER ([#1125](https://github.com/megalinter/megalinter/issues/1125))
+- Fix tflint initialization so it uses configuration file when defined ([#1134](https://github.com/megalinter/megalinter/issues/1134))
+
+- Linter versions upgrades
+  - [stylelint](https://stylelint.io) from 14.2.0 to **14.3.0** on 2022-01-23
+  - [htmlhint](https://htmlhint.com/) from 1.1.0 to **1.1.1** on 2022-01-23
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.0.0 to **1.14.3.0** on 2022-01-23
+  - [checkov](https://www.checkov.io/) from 2.0.744 to **2.0.745** on 2022-01-23
+  - [checkov](https://www.checkov.io/) from 2.0.745 to **2.0.746** on 2022-01-24
+  - [checkov](https://www.checkov.io/) from 2.0.746 to **2.0.749** on 2022-01-24
+  - [dotenv-linter](https://dotenv-linter.github.io/) from 3.1.1 to **3.2.0** on 2022-01-24
+  - [checkov](https://www.checkov.io/) from 2.0.749 to **2.0.754** on 2022-01-24
+  - [golangci-lint](https://golangci-lint.run/) from 1.43.0 to **1.44.0** on 2022-01-26
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.1 to **1.7.2** on 2022-01-26
+  - [checkov](https://www.checkov.io/) from 2.0.754 to **2.0.763** on 2022-01-26
+  - [coffeelint](http://www.coffeelint.org) from 5.2.3 to **5.2.4** on 2022-01-28
+  - [htmlhint](https://htmlhint.com/) from 1.1.1 to **1.1.2** on 2022-01-28
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.0.0 to **2.1.0** on 2022-01-28
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.13.1 to **6.14.0** on 2022-01-28
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.16.0 to **5.17.0** on 2022-01-28
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.1 to **0.9.3** on 2022-01-28
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.0 to **0.46.2** on 2022-01-28
+  - [checkov](https://www.checkov.io/) from 2.0.763 to **2.0.769** on 2022-01-28
+<!-- linter-versions-end -->
+
+## [v5.6.0] - 2022-01-22
+
+- Add linters licenses to online documentation
+- Fix issue when config vars are both from ENV and from config file ([#1154](https://github.com/megalinter/megalinter/issues/1154))
+- Fix issue of --files argument format when calling npm-groovy-lint ([#1176](https://github.com/megalinter/megalinter/issues/1176))
+- Fix wrong status in reports when DISABLE_ERRORS is used
+- Increase memory size for node.js-based linters ([#1149](https://github.com/megalinter/megalinter/pull/1149))
+- Make python linters play nice with each other ([#1182](https://github.com/megalinter/megalinter/pull/1182))
+
+- Linter versions upgrades
+  - [coffeelint](http://www.coffeelint.org) from 5.2.2 to **5.2.3** on 2022-01-09
+  - [phpstan](https://phpstan.org/) from 1.3.0 to **1.3.3** on 2022-01-09
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.930 to **0.931** on 2022-01-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.14.0 to **5.15.1** on 2022-01-09
+  - [checkov](https://www.checkov.io/) from 2.0.702 to **2.0.708** on 2022-01-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.2 to **1.1.3** on 2022-01-09
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.12.0 to **1.13.0** on 2022-01-09
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.3.0 to **9.3.2** on 2022-01-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.0 to **0.9.1** on 2022-01-09
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.3 to **0.56.4** on 2022-01-11
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.3.2 to **9.4.0** on 2022-01-11
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.12.3 to **6.13.0** on 2022-01-11
+  - [checkov](https://www.checkov.io/) from 2.0.708 to **2.0.709** on 2022-01-11
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.33 to **0.9.34** on 2022-01-12
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.13.0 to **6.13.1** on 2022-01-12
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.15.1 to **5.15.2** on 2022-01-12
+  - [checkov](https://www.checkov.io/) from 2.0.709 to **2.0.710** on 2022-01-12
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.4.0 to **9.4.1** on 2022-01-13
+  - [checkov](https://www.checkov.io/) from 2.0.710 to **2.0.712** on 2022-01-13
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.16 to **0.35.18** on 2022-01-13
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.12.19 to **2022.01.13** on 2022-01-14
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.57 to **0.1.58** on 2022-01-14
+  - [checkov](https://www.checkov.io/) from 2.0.712 to **2.0.717** on 2022-01-14
+  - [phpstan](https://phpstan.org/) from 1.3.3 to **1.4.0** on 2022-01-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.18 to **0.35.19** on 2022-01-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.19 to **0.35.20** on 2022-01-15
+  - [checkov](https://www.checkov.io/) from 2.0.717 to **2.0.718** on 2022-01-16
+  - [eslint](https://eslint.org) from 8.6.0 to **8.7.0** on 2022-01-17
+  - [checkov](https://www.checkov.io/) from 2.0.718 to **2.0.720** on 2022-01-17
+  - [phpstan](https://phpstan.org/) from 1.4.0 to **1.4.1** on 2022-01-18
+  - [checkov](https://www.checkov.io/) from 2.0.720 to **2.0.727** on 2022-01-18
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.01.13 to **2022.01.15** on 2022-01-22
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.56.4 to **0.57.0** on 2022-01-22
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.9.0 to **3.9.2** on 2022-01-22
+  - [phpstan](https://phpstan.org/) from 1.4.1 to **1.4.2** on 2022-01-22
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.35.2 to **0.36.0** on 2022-01-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.15.2 to **5.16.0** on 2022-01-22
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.45.1 to **0.46.0** on 2022-01-22
+  - [checkov](https://www.checkov.io/) from 2.0.727 to **2.0.744** on 2022-01-22
+  - [kics](https://www.kics.io) from 1.4.9 to **1.5.0** on 2022-01-22
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.3 to **1.1.4** on 2022-01-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.35.20 to **0.36.0** on 2022-01-22
+
+## [v5.5.0] - 2022-01-03
+
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.680 to **2.0.681** on 2021-12-21
   - [stylelint](https://stylelint.io) from 14.1.0 to **14.2.0** on 2021-12-23
@@ -16,9 +105,16 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.1.0 to **9.2.0** on 2021-12-23
   - [checkov](https://www.checkov.io/) from 2.0.687 to **2.0.690** on 2021-12-23
   - [tflint](https://github.com/terraform-linters/tflint) from 0.34.0 to **0.34.1** on 2021-12-26
-  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.06.18 to **2021.12.19** on 2021-12-23
-
-<!-- linter-versions-end -->
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2021.06.18 to **2021.12.19** on 2021-12-29
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.2.0 to **9.3.0** on 2021-12-29
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.2 to **9.2.1** on 2021-12-29
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.13.4 to **5.14.0** on 2021-12-29
+  - [checkov](https://www.checkov.io/) from 2.0.690 to **2.0.695** on 2021-12-29
+  - [phpstan](https://phpstan.org/) from 1.2.0 to **1.3.0** on 2021-12-29
+  - [checkov](https://www.checkov.io/) from 2.0.695 to **2.0.701** on 2021-12-31
+  - [htmlhint](https://htmlhint.com/) from 1.0.0 to **1.1.0** on 2022-01-01
+  - [eslint](https://eslint.org) from 8.5.0 to **8.6.0** on 2022-01-01
+  - [checkov](https://www.checkov.io/) from 2.0.701 to **2.0.702** on 2022-01-03
 
 ## [v5.4.0] - 2021-12-21
 

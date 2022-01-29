@@ -4,7 +4,7 @@
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.45.1**
+- Version in MegaLinter: **0.46.2**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`

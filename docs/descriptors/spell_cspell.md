@@ -7,7 +7,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ## cspell documentation
 
-- Version in MegaLinter: **5.13.4**
+- Version in MegaLinter: **5.17.0**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -95,18 +95,20 @@ Usage: cspell [options] [command]
 Spelling Checker for Code
 
 Options:
-  -V, --version               output the version number
-  -h, --help                  display help for command
+  -V, --version                         output the version number
+  -h, --help                            display help for command
 
 Commands:
-  lint [options] [files...]   Check spelling
-  trace [options] <words...>  Trace words
-    Search for words in the configuration and dictionaries.
-  check [options] <files...>  Spell check file(s) and display the result. The
-                              full file is displayed in color.
-  link                        Link dictionaries any other settings to the
-                              cspell global config.
-  help [command]              display help for command
+  lint [options] [globs...]             Check spelling
+  trace [options] [words...]            Trace words -- Search for words in the
+                                        configuration and dictionaries.
+  check [options] <files...>            Spell check file(s) and display the
+                                        result. The full file is displayed in
+                                        color.
+  link                                  Link dictionaries and other settings to
+                                        the cspell global config.
+  suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  help [command]                        display help for command
 ```
 
 ### Installation on mega-linter Docker image

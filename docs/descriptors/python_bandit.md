@@ -13,7 +13,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.7.1**
+- Version in MegaLinter: **1.7.2**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file is not found, [.bandit.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -242,6 +242,8 @@ The following tests were discovered and loaded:
   B505  weak_cryptographic_key
   B506  yaml_load
   B507  ssh_no_host_key_verification
+  B508  snmp_insecure_version
+  B509  snmp_weak_cryptography
   B601  paramiko_calls
   B602  subprocess_popen_with_shell_equals_true
   B603  subprocess_without_shell_equals_true

@@ -14,7 +14,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-2.9M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.0M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
@@ -430,8 +430,8 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
     steps:
     - script: |
         docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
-      displayName: 'Code Scan using MegaLinter'
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+      displayName: 'MegaLinter analysis'
 ```
 
 ### Jenkins
@@ -762,18 +762,19 @@ POST_COMMANDS:
 
 MegaLinter can generate various reports that you can activate / deactivate and customize
 
-| Reporter                                                                                                            | Description                                                                                                   | Default                 |
-|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
-| [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)                     | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
-| [Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md) | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
-| [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
-| [IDE Configuration](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConfigReporter.md)            | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
-| [GitHub Status](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)          | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
-| [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)                      | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
-| [JSON](https://github.com/megalinter/megalinter/tree/main/docs/reporters/JsonReporter.md)                           | Generates a JSON output report file                                                                           | Inactive                |
-| [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)                         | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
-| [TAP files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TapReporter.md)                       | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
-| [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                     | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
+| Reporter                                                                                                                    | Description                                                                                                   | Default                 |
+|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
+| [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)                             | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
+| [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)  | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
+| [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI  |
+| [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)              | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
+| [IDE Configuration](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConfigReporter.md)                    | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
+| [GitHub Status](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                  | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
+| [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)                              | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
+| [JSON](https://github.com/megalinter/megalinter/tree/main/docs/reporters/JsonReporter.md)                                   | Generates a JSON output report file                                                                           | Inactive                |
+| [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)                                 | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
+| [TAP files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TapReporter.md)                               | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
+| [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                             | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
@@ -1023,7 +1024,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ### More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
+- **C**, **C++**, **Copy-Paste detection**, **Credentials**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
 
 ### Automatically apply formatting and fixes
 
@@ -1052,9 +1053,13 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 - [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)
-- [Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
+- [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
+- [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
+
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
 
 - [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)

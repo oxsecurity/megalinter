@@ -91,6 +91,22 @@ jobs:
           docker build --build-arg "BUILD_DATE=${BUILD_DATE}" --build-arg "BUILD_REVISION=${GITHUB_SHA}" --build-arg "BUILD_VERSION=${GITHUB_SHA}" --build-arg "MEGALINTER_BASE_IMAGE=${MEGA_LINTER_BASE_IMAGE}" --no-cache -f "Dockerfile-quick" -t megalinter/megalinter:${{steps.image_tag.outputs.tag}} . | while read line ; do echo "$(date +'%H:%M:%S')| $line"; done;
         timeout-minutes: 60
 
+      ##########################
+      # Push quick build image #
+      ##########################
+      - name: Push quickly built image
+        if: "contains(github.event.head_commit.message, 'quick build push')"
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: megalinter/megalinter
+          IMAGE_VERSION: ${{steps.image_tag.outputs.tag}}
+          DOCKERFILE_PATH: Dockerfile-quick
+          REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh || true
+
       #######################################
       # Build image (full for forked repos) #
       #######################################
@@ -177,7 +193,7 @@ jobs:
       # Test mega-linter-runner with newly created image
       - name: Setup Node
         if: ${{ steps.docker_build.outcome }} == 'success' && (${{ success() }} || ${{ failure() }}) && !contains(github.event.head_commit.message, 'quick build')
-        uses: actions/setup-node@v2.4.1
+        uses: actions/setup-node@v2.5.1
         with:
           node-version: "12"
       - name: Install NPM dependencies

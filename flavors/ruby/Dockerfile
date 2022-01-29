@@ -105,6 +105,7 @@ RUN pip3 install --no-cache-dir --upgrade \
 RUN npm install npm@latest-6 -g
 # Disable package-lock.json to avoid sudden crash. Try to remove later if possible
 RUN echo 'package-lock=false' >> .npmrc 
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
                 jscpd@3.3.26 \
@@ -148,11 +149,11 @@ ENV PATH="/node_modules/.bin:${PATH}"
 RUN echo 'gem: --no-document' >> ~/.gemrc && \
     gem install \
           scss_lint \
-          rubocop:0.82.0 \
-          rubocop-github:0.16.0 \
-          rubocop-performance:1.7.1 \
-          rubocop-rails:2.5 \
-          rubocop-rspec:1.41.0
+          rubocop \
+          rubocop-github \
+          rubocop-performance \
+          rubocop-rails \
+          rubocop-rspec
 #GEM__END
 
 #############################################################################################

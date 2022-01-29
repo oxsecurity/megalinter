@@ -9,7 +9,7 @@
 
 ## dotenv-linter documentation
 
-- Version in MegaLinter: **3.1.1**
+- Version in MegaLinter: **3.2.0**
 - Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
 - See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 
@@ -84,7 +84,7 @@ dotenv-linter fix myfile.env
 ### Help content
 
 ```shell
-dotenv-linter 3.1.1
+dotenv-linter 3.2.0
 Mikhail Grachev <work@mgrachev.com>
 Lightning-fast linter for .env files
 
@@ -92,11 +92,12 @@ USAGE:
     dotenv-linter [FLAGS] [OPTIONS] <input>... [SUBCOMMAND]
 
 FLAGS:
-    -h, --help         Prints help information
-        --no-color     Turns off the colored output
-    -q, --quiet        Doesn't display additional information
-    -r, --recursive    Recursively searches and checks .env files
-    -v, --version      Prints version information
+    -h, --help                 Prints help information
+        --no-color             Turns off the colored output
+        --not-check-updates    Doesn't check for updates
+    -q, --quiet                Doesn't display additional information
+    -r, --recursive            Recursively searches and checks .env files
+    -v, --version              Prints version information
 
 OPTIONS:
     -e, --exclude <FILE_NAME>...    Excludes files from check
