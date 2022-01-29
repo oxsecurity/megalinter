@@ -243,6 +243,15 @@ def test_linter_failure(linter, test_self):
         os.path.isfile(text_report_file),
         f"Unable to find text report {text_report_file}",
     )
+
+    # Check if number of errors is correctly generated
+    if mega_linter.linters[0].cli_lint_errors_count is not None:
+        test_self.assertTrue(
+            mega_linter.linters[0].total_number_errors > 1,
+            f"Unable to count number of errors from logs",
+        )
+
+    # Copy error logs in documentation
     copy_logs_for_doc(text_report_file, test_folder, report_file_name)
 
 

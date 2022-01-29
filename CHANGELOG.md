@@ -13,6 +13,11 @@ Linter updates:
 - New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
 - Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
 - secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
+- htmlhint: Display correct number of errors in logs
+
+Core:
+
+- CI: Update test method to check that the number of errors is correctly calculated
 
 Fixes:
 
