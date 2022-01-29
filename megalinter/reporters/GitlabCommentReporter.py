@@ -123,12 +123,12 @@ class GitlabCommentReporter(Reporter):
                 )
             except gitlab.GitlabError as e:
                 logging.warning(
-                    f"[GitHub Comment Reporter] Unable to post merge request comment"
+                    "[GitHub Comment Reporter] Unable to post merge request comment"
                 )
                 self.display_auth_error(e)
             except Exception as e:
                 logging.warning(
-                    f"[Gitlab Comment Reporter] Error while posting comment"
+                    "[Gitlab Comment Reporter] Error while posting comment"
                 )
                 self.display_auth_error(e)
         # Not in gitlab context
