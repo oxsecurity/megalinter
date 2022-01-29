@@ -17,6 +17,7 @@ Linter updates:
 
 - Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
 - secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
+- cpplint: Display correct number of errors in logs
 - htmlhint: Use list_of_files mode to improve performances + display correct number of errors in logs
 - shellcheck: Use list_of_files mode to improve performances + display correct number of errors in logs
 - shfmt: Use list_of_files mode to improve performances + display correct number of errors in logs
