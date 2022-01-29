@@ -62,10 +62,10 @@ class GitlabCommentReporter(Reporter):
                     f"id {gitlab_project_id}, so no comment has been posted\n"
                 )
                 self.display_auth_error(e)
-                return     
+                return
             except Exception as e:
                 self.display_auth_error(e)
-                return           
+                return
 
             # Get merge request
             try:
@@ -127,9 +127,7 @@ class GitlabCommentReporter(Reporter):
                 )
                 self.display_auth_error(e)
             except Exception as e:
-                logging.warning(
-                    "[Gitlab Comment Reporter] Error while posting comment"
-                )
+                logging.warning("[Gitlab Comment Reporter] Error while posting comment")
                 self.display_auth_error(e)
         # Not in gitlab context
         else:
@@ -137,9 +135,9 @@ class GitlabCommentReporter(Reporter):
                 "[Gitlab Comment Reporter] No Gitlab Token found, so skipped post of MR comment"
             )
 
-    def display_auth_error(self,e):
-            logging.error(
-                "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
-                "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
-                + str(e)
-            )
+    def display_auth_error(self, e):
+        logging.error(
+            "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
+            "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
+            + str(e)
+        )
