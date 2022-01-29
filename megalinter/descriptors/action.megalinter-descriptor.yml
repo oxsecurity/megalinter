@@ -18,6 +18,8 @@ linters:
     cli_lint_mode: list_of_files
     cli_config_arg_name: "-config-file"
     cli_version_arg_name: "-version"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "([0-9]+) \\|"
     examples:
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
     install:
