@@ -19,6 +19,7 @@ Linter updates:
 - secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
 - Display correct number of errors in logs
   - actionlint
+  - chktex
   - cpplint
   - htmlhint
   - perlcritic
