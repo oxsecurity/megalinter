@@ -207,7 +207,7 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
 
 # shfmt installation
 ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
+RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 # dotnet-format installation
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
