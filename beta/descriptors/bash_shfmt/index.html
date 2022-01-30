@@ -5532,7 +5532,7 @@
 <tr>
 <td>BASH_SHFMT_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>BASH_SHFMT_FILE_EXTENSIONS</td>
@@ -5751,7 +5751,7 @@
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
 <ul>
-<li>shfmt is called one time by identified file</li>
+<li>shfmt is called once with the list of files as arguments</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">shfmt -d myfile.sh
@@ -5800,7 +5800,7 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 <li>Dockerfile commands :</li>
 </ul>
 <pre><code class="language-dockerfile">ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
+RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
 </code></pre>
 <h3 id="example-success-log">Example success log</h3>
 <pre><code class="language-shell">Results of shfmt linter (version 3.2.1)

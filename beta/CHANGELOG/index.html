@@ -6287,11 +6287,33 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
-<p>Linter updates:</p>
+<p>Core:</p>
 <ul>
 <li>New reporter <strong>GITLAB_COMMENT_REPORTER</strong> allowing to post MegaLinter results as comments on Gitlab merge requests</li>
+<li>CI: Update test method to check that the number of errors is correctly calculated (+ fix linter test cases)</li>
+</ul>
+<p>Linter updates:</p>
+<ul>
 <li>Add configuration file option for SQLFluff (<a href="https://github.com/megalinter/megalinter/pull/1200">#1200</a>)</li>
 <li>secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found (<a href="https://github.com/megalinter/megalinter/issues/1207">#1207</a>)</li>
+<li>Update bash-exec documentation</li>
+<li>Display correct number of errors in logs<ul>
+<li>actionlint</li>
+<li>chktex</li>
+<li>cpplint</li>
+<li>htmlhint</li>
+<li>perlcritic</li>
+<li>sfdx-scanner</li>
+<li>shellcheck</li>
+<li>shfmt</li>
+</ul>
+</li>
+<li>Use list_of_files mode to improve performances<ul>
+<li>htmlhint</li>
+<li>shellcheck</li>
+<li>shfmt</li>
+</ul>
+</li>
 </ul>
 <p>Fixes:</p>
 <ul>
@@ -6320,6 +6342,12 @@
 <li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 0.9.1 to <strong>0.9.3</strong> on 2022-01-28</li>
 <li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.46.0 to <strong>0.46.2</strong> on 2022-01-28</li>
 <li><a href="https://www.checkov.io/">checkov</a> from 2.0.763 to <strong>2.0.769</strong> on 2022-01-28</li>
+<li><a href="https://eslint.org">eslint</a> from 8.7.0 to <strong>8.8.0</strong> on 2022-01-29</li>
+<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.9.2 to <strong>3.9.3</strong> on 2022-01-29</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.2 to <strong>1.4.3</strong> on 2022-01-29</li>
+<li><a href="https://rubocop.org/">rubocop</a> from 0.82.0 to <strong>1.25.0</strong> on 2022-01-29</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.14.0 to <strong>6.15.0</strong> on 2022-01-29</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.769 to <strong>2.0.772</strong> on 2022-01-29</li>
 </ul>
 </li>
 </ul>
