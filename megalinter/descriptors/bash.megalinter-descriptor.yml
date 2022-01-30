@@ -97,8 +97,9 @@ linters:
       - "shfmt -d myfile.sh"
       - "shfmt -w myfile.sh" # Fix
     install:
-      apk:
-        - shfmt
+      dockerfile:
+        - FROM mvdan/shfmt:latest-alpine as shfmt
+        - COPY --from=shfmt /bin/shfmt /usr/bin/
     ide:
       atom:
         - name: format-shell

@@ -66,6 +66,7 @@ Fixes:
   - [checkov](https://www.checkov.io/) from 2.0.769 to **2.0.772** on 2022-01-29
   - [shfmt](https://github.com/mvdan/sh) from 3.3.1 to **3.2.1** on 2022-01-30
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.0 to **6.13.1** on 2022-01-30
+  - [shfmt](https://github.com/mvdan/sh) from 3.2.1 to **3.4.2** on 2022-01-30
 <!-- linter-versions-end -->
 
 ## [v5.6.0] - 2022-01-22
