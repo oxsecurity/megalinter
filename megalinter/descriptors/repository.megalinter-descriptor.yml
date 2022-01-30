@@ -225,11 +225,12 @@ linters:
     cli_lint_mode: project
     config_file_name: .syft.yaml
     cli_config_arg_name: --config
+    cli_lint_extra_args:
+      - packages
+      - "{{WORKSPACE}}"
     cli_sarif_args:
       - -o
       - json={{SARIF_OUTPUT_FILE}}.syft.json
-    cli_lint_extra_args_after:
-      - "{{WORKSPACE}}"
     test_folder: repository_syft
     examples:
       - "syft /tmp/lint"
