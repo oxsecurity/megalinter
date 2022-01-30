@@ -5493,7 +5493,7 @@
 <h1 id="shfmt">shfmt</h1>
 <h2 id="shfmt-documentation">shfmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.2.1</strong></li>
+<li>Version in MegaLinter: <strong>3.5.0</strong></li>
 <li>Visit <a href="https://github.com/mvdan/sh#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/mvdan/sh" target="_blank"><img alt="sh - GitHub" src="https://gh-card.dev/repos/mvdan/sh.svg?fullname=" /></a></p>
@@ -5775,7 +5775,7 @@ directory, all shell scripts found under that directory will be used.
 
 Parser options:
 
-  -ln str        language variant to parse (bash/posix/mksh/bats, default &quot;bash&quot;)
+  -ln str        language dialect (bash/posix/mksh/bats, default &quot;auto&quot;)
   -p             shorthand for -ln=posix
   -filename str  provide a name for the standard input file
 
@@ -5797,11 +5797,11 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>APK packages (Linux):<ul>
-<li><a href="https://pkgs.alpinelinux.org/packages?branch=edge&amp;name=shfmt">shfmt</a></li>
+<li>Dockerfile commands :</li>
 </ul>
-</li>
-</ul>
+<pre><code class="language-dockerfile">FROM mvdan/shfmt:latest-alpine as shfmt
+COPY --from=shfmt /bin/shfmt /usr/bin/
+</code></pre>
 <h3 id="example-success-log">Example success log</h3>
 <pre><code class="language-shell">Results of shfmt linter (version 3.2.1)
 See documentation on https://megalinter.github.io/descriptors/bash_shfmt/
