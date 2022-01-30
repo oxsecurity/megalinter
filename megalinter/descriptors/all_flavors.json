@@ -723,6 +723,7 @@
             "REPOSITORY_GITLEAKS",
             "REPOSITORY_SECRETLINT",
             "REPOSITORY_SEMGREP",
+            "REPOSITORY_SYFT",
             "REPOSITORY_TRIVY",
             "TERRAFORM_TFLINT",
             "TERRAFORM_TERRASCAN",
