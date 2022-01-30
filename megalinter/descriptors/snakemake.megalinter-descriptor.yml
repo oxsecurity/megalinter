@@ -18,9 +18,10 @@ linters:
       - "-s"
     examples:
       - "snakemake --lint -s Snakefile"
+    downgraded_version: true
     install:
       pip:
-        - snakemake
+        - snakemake==6.14.0
     ide:
       idea:
         - name: SnakeCharm

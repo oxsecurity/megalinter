@@ -96,7 +96,6 @@ linters:
     examples:
       - "shfmt -d myfile.sh"
       - "shfmt -w myfile.sh" # Fix
-    downgraded_version: true
     install:
       apk:
         - shfmt
