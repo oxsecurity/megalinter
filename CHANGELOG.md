@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter updates:
+  - cspell: Update .cspell default config with `"version: "2.0", "noConfigSearch": true`
+
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
