@@ -11,18 +11,20 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 Core:
 
 - New reporter **GITLAB_COMMENT_REPORTER** allowing to post MegaLinter results as comments on Gitlab merge requests
-- CI: Update test method to check that the number of errors is correctly calculated
+- CI: Update test method to check that the number of errors is correctly calculated (+ fix linter test cases)
 
 Linter updates:
 
 - Add configuration file option for SQLFluff ([#1200](https://github.com/megalinter/megalinter/pull/1200))
 - secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found ([#1207](https://github.com/megalinter/megalinter/issues/1207))
+- Update bash-exec documentation
 - Display correct number of errors in logs
   - actionlint
   - chktex
   - cpplint
   - htmlhint
   - perlcritic
+  - sfdx-scanner
   - shellcheck
   - shfmt
 - Use list_of_files mode to improve performances
