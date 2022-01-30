@@ -124,7 +124,7 @@ linters:
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "\"[0-9]+\","
+    cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx scanner:run"
     install:
@@ -179,7 +179,7 @@ linters:
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
     cli_lint_errors_count: regex_count
-    cli_lint_errors_regex: "\"[0-9]+\","
+    cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx scanner:run"
     install:
