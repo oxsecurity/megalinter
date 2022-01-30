@@ -67,6 +67,7 @@ jobs:
             "repository_devskim",
             "repository_gitleaks",
             "repository_semgrep",
+            "repository_syft",
             "repository_trivy",
             "terraform_tflint",
             "terraform_terrascan",

@@ -419,6 +419,11 @@
     "image": "https://avatars3.githubusercontent.com/u/7575099?s=400&v=4",
     "title": "realm/SwiftLint"
   },
+  "syft": {
+    "description": "CLI tool and library for generating a Software Bill of Materials from container images and filesystems - GitHub - anchore/syft: CLI tool and library for generating a Software Bill of Materials from...",
+    "image": "https://repository-images.githubusercontent.com/262126497/7821d6d6-735d-4290-a708-d0801649b6e3",
+    "title": "GitHub - anchore/syft: CLI tool and library for generating a Software Bill of Materials from container images and filesystems"
+  },
   "tekton-lint": {
     "description": "Linter for Tekton definitions. Contribute to IBM/tekton-lint development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/1459110?s=400&v=4",

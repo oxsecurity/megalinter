@@ -211,6 +211,32 @@ linters:
         - name: VsCode SemGrep
           url: https://marketplace.visualstudio.com/items?itemName=semgrep.semgrep
 
+  # SYFT
+  - class: SyftLinter
+    linter_name: syft
+    can_output_sarif: true
+    descriptor_flavors:
+      - security
+    linter_url: https://github.com/anchore/syft
+    linter_repo: https://github.com/anchore/syft
+    linter_text: |
+      Builds a SBOM (Software Build Of Materials) from your repository
+    linter_banner_image_url: https://raw.githubusercontent.com/returntocorp/semgrep/develop/semgrep.svg
+    cli_lint_mode: project
+    config_file_name: .syft.yaml
+    cli_config_arg_name: --config
+    cli_sarif_args:
+      - -o
+      - json={{SARIF_OUTPUT_FILE}}.syft.json
+    cli_lint_extra_args_after:
+      - "{{WORKSPACE}}"
+    test_folder: repository_syft
+    examples:
+      - "syft /tmp/lint"
+    install:
+      dockerfile:
+        - RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+
   # TRIVY
   - linter_name: trivy
     can_output_sarif: true
