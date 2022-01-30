@@ -96,7 +96,7 @@ RUN pip3 install --no-cache-dir --upgrade \
           'rstcheck' \
           'sphinx<4.0' \
           'rstfmt' \
-          'snakemake' \
+          'snakemake==6.13.1' \
           'snakefmt' \
           'sqlfluff' \
           'yamllint'

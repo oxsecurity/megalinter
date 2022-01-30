@@ -95,7 +95,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #PIP__START
 RUN pip3 install --no-cache-dir --upgrade \
           'cpplint' \
-          'snakemake' \
+          'snakemake==6.13.1' \
           'snakefmt' \
           'sqlfluff' \
           'yamllint'
