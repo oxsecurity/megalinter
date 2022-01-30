@@ -21,7 +21,7 @@ linters:
     downgraded_version: true
     install:
       pip:
-        - snakemake==6.14.0
+        - snakemake==6.13.1
     ide:
       idea:
         - name: SnakeCharm
@@ -48,6 +48,7 @@ linters:
       - "snakefmt --check --compact-diff Snakefile"
       - "snakefmt --check --compact-diff --config .snakefmt.toml Snakefile"
       - "snakefmt --config .snakefmt.toml Snakefile" # Fix
+    downgraded_version: true
     install:
       pip:
-        - snakefmt
+        - snakefmt==0.4.4
