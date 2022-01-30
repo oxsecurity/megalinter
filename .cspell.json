@@ -11,7 +11,8 @@
         ".vscode"
     ],
     "language": "en",
-    "version": "0.1",
+    "noConfigSearch": true,
+    "version": "0.2",
     "words": [
         "ACTIONLINT",
         "ADDITIONAL",
