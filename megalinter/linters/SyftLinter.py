@@ -34,16 +34,16 @@ class SyftLinter(Linter):
                                 "driver": {
                                     "informationUri": "https://github.com/anchore/syft",
                                     "name": "syft",
-                                },
-                                "rules": [
-                                    {
-                                        "id": "SYFT_SBOM",
-                                        "name": "sbom_generation",
-                                        "shortDescription": {
-                                            "text": "Generate Software Bill Of Materials"
+                                    "rules": [
+                                        {
+                                            "id": "SYFT_SBOM",
+                                            "name": "sbom_generation",
+                                            "shortDescription": {
+                                                "text": "Generate Software Bill Of Materials"
+                                            },
                                         },
-                                    },
-                                ],
+                                    ],
+                                }
                             },
                             "results": [
                                 {
