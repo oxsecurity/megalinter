@@ -108,7 +108,7 @@ jobs:
       # Check Docker image security with Trivy #
       ##############################################
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.0.18
+        uses: aquasecurity/trivy-action@0.2.1
         with:
           image-ref: 'docker.io/megalinter/megalinter-${{ matrix.flavor }}:beta'
           format: 'table'
