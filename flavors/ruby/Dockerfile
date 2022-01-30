@@ -69,6 +69,7 @@ RUN apk add --update --no-cache \
                 ruby-rdoc \
                 ansible \
                 ansible-lint \
+                shfmt \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -177,10 +178,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
     && cp "shellcheck-stable/shellcheck" /usr/bin/ \
     && shellcheck --version
 
-
-# shfmt installation
-ENV GO111MODULE=on
-RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint

@@ -130,12 +130,8 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 
 ### Installation on mega-linter Docker image
 
-- Dockerfile commands :
-```dockerfile
-ENV GO111MODULE=on
-RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
-```
-
+- APK packages (Linux):
+  - [shfmt](https://pkgs.alpinelinux.org/packages?branch=edge&name=shfmt)
 
 ### Example success log
 

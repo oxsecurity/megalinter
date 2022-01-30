@@ -66,6 +66,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 ansible \
                 ansible-lint \
+                shfmt \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -169,10 +170,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
     && cp "shellcheck-stable/shellcheck" /usr/bin/ \
     && shellcheck --version
 
-
-# shfmt installation
-ENV GO111MODULE=on
-RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 # dartanalyzer installation
 RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \

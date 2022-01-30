@@ -73,6 +73,7 @@ RUN apk add --update --no-cache \
                 zlib-dev \
                 ansible \
                 ansible-lint \
+                shfmt \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -204,10 +205,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
     && cp "shellcheck-stable/shellcheck" /usr/bin/ \
     && shellcheck --version
 
-
-# shfmt installation
-ENV GO111MODULE=on
-RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 # dotnet-format installation
 RUN /usr/share/dotnet/dotnet tool install -g dotnet-format

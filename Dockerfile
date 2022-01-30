@@ -112,6 +112,7 @@ RUN apk add --update --no-cache \
                 ruby-rdoc \
                 ansible \
                 ansible-lint \
+                shfmt \
                 R \
                 R-dev \
                 R-doc \
@@ -321,10 +322,6 @@ RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/s
     && cp "shellcheck-stable/shellcheck" /usr/bin/ \
     && shellcheck --version
 
-
-# shfmt installation
-ENV GO111MODULE=on
-RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 # clj-kondo installation
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/

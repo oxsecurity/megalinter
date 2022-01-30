@@ -98,9 +98,8 @@ linters:
       - "shfmt -w myfile.sh" # Fix
     downgraded_version: true
     install:
-      dockerfile:
-        - ENV GO111MODULE=on
-        - RUN go install mvdan.cc/sh/v3/cmd/shfmt@latest
+      apk:
+        - shfmt
     ide:
       atom:
         - name: format-shell
