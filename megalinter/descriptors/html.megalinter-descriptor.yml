@@ -15,8 +15,11 @@ linters:
     linter_rules_configuration_url: https://htmlhint.com/docs/user-guide/configuration
     linter_rules_inline_disable_url: https://htmlhint.com/docs/user-guide/configuration
     linter_megalinter_ref_url: https://htmlhint.com/docs/user-guide/integrations/task-runner
+    cli_lint_mode: list_of_files
     config_file_name: .htmlhintrc
     cli_config_arg_name: "--config"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "found ([0-9]+) errors in"
     examples:
       - "htmlhint myfile.html"
       - "htmlhint --config .htmlhintrc myfile.html"

@@ -4,7 +4,7 @@
 
 # Quick Start
 
-- Run `npx mega-linter-runner --install` to generate configuration files
+- Run `npx mega-linter-runner --install` to generate configuration files (you need [node.js](https://nodejs.org/en/) to be installed)
 - Commit, push, and create a pull request
 - Watch !
 
