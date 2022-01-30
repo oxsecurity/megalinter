@@ -227,10 +227,12 @@ linters:
     cli_config_arg_name: --config
     cli_lint_extra_args:
       - packages
-      - "{{WORKSPACE}}"
+      - .
     cli_sarif_args:
-      - -o
-      - json={{SARIF_OUTPUT_FILE}}.syft.json
+      - --output
+      - json
+      - --file
+      - "{{SARIF_OUTPUT_FILE}}.syft.json"
     test_folder: repository_syft
     examples:
       - "syft /tmp/lint"
