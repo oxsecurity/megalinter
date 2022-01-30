@@ -4,7 +4,7 @@
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.2.1**
+- Version in MegaLinter: **3.5.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
@@ -107,7 +107,7 @@ directory, all shell scripts found under that directory will be used.
 
 Parser options:
 
-  -ln str        language variant to parse (bash/posix/mksh/bats, default "bash")
+  -ln str        language dialect (bash/posix/mksh/bats, default "auto")
   -p             shorthand for -ln=posix
   -filename str  provide a name for the standard input file
 
@@ -130,8 +130,12 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 
 ### Installation on mega-linter Docker image
 
-- APK packages (Linux):
-  - [shfmt](https://pkgs.alpinelinux.org/packages?branch=edge&name=shfmt)
+- Dockerfile commands :
+```dockerfile
+FROM mvdan/shfmt:latest-alpine as shfmt
+COPY --from=shfmt /bin/shfmt /usr/bin/
+```
+
 
 ### Example success log
 
