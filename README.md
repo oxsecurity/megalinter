@@ -143,7 +143,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- quick-start-section-start -->
 ## Quick Start
 
-- Run `npx mega-linter-runner --install` to generate configuration files
+- Run `npx mega-linter-runner --install` to generate configuration files (you need [node.js](https://nodejs.org/en/) to be installed)
 - Commit, push, and create a pull request
 - Watch !
 
