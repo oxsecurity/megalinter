@@ -13,7 +13,7 @@ from megalinter import Linter, config
 class SyftLinter(Linter):
 
     # To execute before linting files
-    def manage_sarif_output(self):
+    def manage_sarif_output(self, _return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:
             json_output_file = f"{self.sarif_output_file}.syft.json"
             if os.path.isfile(json_output_file):
