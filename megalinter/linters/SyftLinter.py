@@ -7,17 +7,19 @@ import json
 import logging
 import os
 
-from megalinter import Linter, config
+from megalinter import Linter
 
 
 class SyftLinter(Linter):
 
-    # To execute before linting files
+    # Get snyk json output and build SARIF output from it
     def manage_sarif_output(self, _return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:
             json_output_file = f"{self.sarif_output_file}.syft.json"
             if os.path.isfile(json_output_file):
                 with open(json_output_file, "r", encoding="utf-8") as json_file:
+                    if logging.getLogger().isEnabledFor(logging.DEBUG):
+                        logging.debug(json_file.read())
                     syft_result_sbom = json.load(json_file)
                 sarif_obj = {
                     "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
