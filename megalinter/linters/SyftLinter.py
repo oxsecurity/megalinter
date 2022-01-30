@@ -18,9 +18,10 @@ class SyftLinter(Linter):
             json_output_file = f"{self.sarif_output_file}.syft.json"
             if os.path.isfile(json_output_file):
                 with open(json_output_file, "r", encoding="utf-8") as json_file:
+                    json_file_str = json_file.read()
                     if logging.getLogger().isEnabledFor(logging.DEBUG):
-                        logging.debug("SYFT initial output file: "+json_file.read())
-                    syft_result_sbom = json.load(json_file)
+                        logging.debug("SYFT initial output file: " + json_file_str)
+                    syft_result_sbom = json.loads(json_file_str)
                 sarif_obj = {
                     "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
                     "properties": {
