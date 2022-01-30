@@ -27,6 +27,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
   - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
   - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
+  - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
   - Add [trivy](https://github.com/aquasecurity/trivy) security linter
   - Remove **dockerfilelint**, as it is not maintained anymore and hadolint contains all its rules
   - SARIF management for:

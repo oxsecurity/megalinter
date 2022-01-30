@@ -12,14 +12,14 @@ from megalinter import Linter
 
 class SyftLinter(Linter):
 
-    # Get snyk json output and build SARIF output from it
+    # Get syft json output and build SARIF output from it
     def manage_sarif_output(self, _return_stdout):
         if self.can_output_sarif is True and self.output_sarif is True:
             json_output_file = f"{self.sarif_output_file}.syft.json"
             if os.path.isfile(json_output_file):
                 with open(json_output_file, "r", encoding="utf-8") as json_file:
                     if logging.getLogger().isEnabledFor(logging.DEBUG):
-                        logging.debug("SNYK initial output file: "+json_file.read())
+                        logging.debug("SYFT initial output file: "+json_file.read())
                     syft_result_sbom = json.load(json_file)
                 sarif_obj = {
                     "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
@@ -36,7 +36,7 @@ class SyftLinter(Linter):
                                 },
                                 "rules": [
                                     {
-                                        "id": "SNYK_SBOM",
+                                        "id": "SYFT_SBOM",
                                         "name": "sbom_generation",
                                         "shortDescription": {
                                             "text": "Generate Software Bill Of Materials"
@@ -49,7 +49,7 @@ class SyftLinter(Linter):
                                     "level": "note",
                                     "properties": {"sbom": syft_result_sbom},
                                     "message": {"text": "Generated SBOM"},
-                                    "ruleId": "SNYK_SBOM",
+                                    "ruleId": "SYFT_SBOM",
                                 }
                             ],
                         }
