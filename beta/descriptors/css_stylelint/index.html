@@ -5540,7 +5540,7 @@
 <tr>
 <td>CSS_STYLELINT_CLI_LINT_MODE</td>
 <td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
+<td><code>list_of_files</code></td>
 </tr>
 <tr>
 <td>CSS_STYLELINT_FILE_EXTENSIONS</td>
@@ -5763,14 +5763,14 @@
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
 <ul>
-<li>stylelint is called one time by identified file</li>
+<li>stylelint is called once with the list of files as arguments</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">stylelint myfile.css
 </code></pre>
-<pre><code class="language-shell">stylelint --config .stylelintrc.json myfile.css
+<pre><code class="language-shell">stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 </code></pre>
-<pre><code class="language-shell">stylelint --fix --config .stylelintrc.json myfile.css
+<pre><code class="language-shell">stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">
