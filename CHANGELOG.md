@@ -10,6 +10,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linter updates:
   - cspell: Update .cspell default config with `"version: "2.0", "noConfigSearch": true`
+  - Use list_of_files mode to improve performances
+    - markdown-link-check
+    - standard
+    - stylelint
 
 - Linter versions upgrades
 <!-- linter-versions-end -->

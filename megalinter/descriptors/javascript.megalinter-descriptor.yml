@@ -95,6 +95,7 @@ linters:
     linter_rules_url: https://standardjs.com/rules.html
     linter_banner_image_url: https://github.com/standard/standard/raw/master/sticker.png
     name: JAVASCRIPT_STANDARD
+    cli_lint_mode: list_of_files
     cli_lint_fix_arg_name: "--fix"
     examples:
       - "standard myfile.js"
