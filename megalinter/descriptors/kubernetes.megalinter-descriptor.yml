@@ -25,6 +25,8 @@ linters:
     install:
       dockerfile:
         - |
-          RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-              && tar xf kubeval-linux-amd64.tar.gz \
-              && cp kubeval /usr/local/bin
+          RUN MLDL=/downloads/kubeval && mkdir -p ${MLDL} \
+              && wget -P ${MLDL} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+              && tar xf ${MLDL}/kubeval-linux-amd64.tar.gz -C /downloads/kubeval \
+              && mv ${MLDL}/kubeval /usr/local/bin \
+              && find ${MLDL} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete

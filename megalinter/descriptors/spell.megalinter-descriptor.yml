@@ -23,8 +23,11 @@ linters:
     install:
       dockerfile:
         - |
-          RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
-              && sh ./install-misspell.sh
+          RUN MLDL=/downloads/misspell && mkdir -p ${MLDL} \
+              && curl -L -o ${MLDL}/install-misspell.sh https://git.io/misspell \
+              && sh .${MLDL}/install-misspell.sh \
+              && find ${MLDL} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+              && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
   # CSPELL
   - class: CSpellLinter
     linter_name: cspell

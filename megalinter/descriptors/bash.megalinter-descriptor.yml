@@ -52,8 +52,10 @@ linters:
     install:
       dockerfile:
         - |
-          RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
-              && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+          RUN MLDL=/downloads/shellcheck && mkdir -p ${MLDL} \
+              && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv -C ${MLDL} \
+              && mv "${MLDL}/shellcheck-stable/shellcheck" /usr/bin/ \
+              && find ${MLDL} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
               && shellcheck --version
     ide:
       atom:
