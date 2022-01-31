@@ -89,6 +89,7 @@ class Megalinter:
         self.file_names_regex = []
         self.status = "success"
         self.return_code = 0
+        self.has_git_extraheader = False
         self.has_updated_sources = 0
         self.flavor_suggestions = None
         # Initialize plugins
@@ -169,10 +170,10 @@ class Megalinter:
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
+        # Process commmands before closing MegaLinter
+        self.before_exit()
         # Manage return code
         self.check_results()
-        # Display upgrade recommendation if necessary
-        self.manage_upgrade_message()
 
     # noinspection PyMethodMayBeStatic
     def process_linters_serial(self, active_linters, _linters_do_fixes):
@@ -504,6 +505,7 @@ class Megalinter:
                 "GIT_AUTHORIZATION_BEARER"
             )
             repo.config_writer().set_value("http", "extraheader", auth_bearer).release()
+            self.has_git_extraheader = True
         # Fetch base branch content
         default_branch = config.get("DEFAULT_BRANCH", "HEAD")
         default_branch_remote = f"origin/{default_branch}"
@@ -648,6 +650,19 @@ class Megalinter:
                     sys.exit(self.return_code)
             config.delete()
 
+    def before_exit(self):
+        # Clean git repository
+        self.manage_clean_git_repo()
+        # Display upgrade recommendation if necessary
+        self.manage_upgrade_message()
+
+    def manage_clean_git_repo(self):
+        # Add auth header if necessary
+        if self.has_git_extraheader is True:
+            repo = git.Repo(os.path.realpath(self.github_workspace))
+            repo.config_writer().set_value("http", "extraheader", "").release()
+
+    # Propose legacy versions users to upgrade
     def manage_upgrade_message(self):
         mega_linter_version = config.get("BUILD_VERSION", "No docker image")
         if "insiders" in mega_linter_version or "v4" in mega_linter_version:
