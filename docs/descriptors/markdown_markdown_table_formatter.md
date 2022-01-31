@@ -6,7 +6,7 @@ markdown-table-formatter detects wrongly formatted markdown tables and can autom
 
 ## markdown-table-formatter documentation
 
-- Version in MegaLinter: **1.2.0**
+- Version in MegaLinter: **1.3.0**
 - Visit [Official Web Site](https://www.npmjs.com/package/markdown-table-formatter){target=_blank}
 
 [![markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
@@ -93,9 +93,10 @@ markdown-table-formatter myfile.md myfile2.md myfile3.md
 ```shell
 markdown-table-formatter [options]
 
-  -c, --check    Check only (exits 1 if wrongly formatted markdown tables are found)
-  -h, --help     Show help
-  -v, --version  Show version
+  -c, --check              Check only (exits 1 if wrongly formatted markdown tables are found)
+  -p, --columnpadding Int  Override table columns padding number of spaces
+  -h, --help               Show help
+  -v, --version            Show version
 ```
 
 ### Installation on mega-linter Docker image

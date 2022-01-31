@@ -13,6 +13,6 @@ env:
   es6: true
   jest: true
 
-Here: there
+Here: there # good comment
 
 something: "For Nothing"

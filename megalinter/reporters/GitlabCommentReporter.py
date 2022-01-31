@@ -53,7 +53,21 @@ class GitlabCommentReporter(Reporter):
                 gl = gitlab.Gitlab(
                     gitlab_server_url, job_token=config.get("CI_JOB_TOKEN")
                 )
-            project = gl.projects.get(gitlab_project_id)
+            # Get gitlab project
+            try:
+                project = gl.projects.get(gitlab_project_id)
+            except gitlab.GitlabGetError as e:
+                logging.warning(
+                    "[Gitlab Comment Reporter] No project has been found with "
+                    f"id {gitlab_project_id}, so no comment has been posted\n"
+                )
+                self.display_auth_error(e)
+                return
+            except Exception as e:
+                self.display_auth_error(e)
+                return
+
+            # Get merge request
             try:
                 mr = project.mergerequests.get(gitlab_merge_request_id)
             except gitlab.GitlabGetError:
@@ -64,8 +78,11 @@ class GitlabCommentReporter(Reporter):
                     logging.warning(
                         "[Gitlab Comment Reporter] No merge request has been found with "
                         f"id {gitlab_merge_request_id}, so no comment has been posted\n"
-                        + str(e)
                     )
+                    self.display_auth_error(e)
+                    return
+                except Exception as e:
+                    self.display_auth_error(e)
                     return
 
             # Ignore if PR is already merged
@@ -77,18 +94,10 @@ class GitlabCommentReporter(Reporter):
             try:
                 existing_comments = mr.notes.list()
             except gitlab.GitlabAuthenticationError as e:
-                logging.error(
-                    "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
-                    "GITLAB_ACCESS_TOKEN_MEGALINTER containing a personal token with api access\n"
-                    + str(e)
-                )
+                self.display_auth_error(e)
                 return
             except Exception as e:
-                logging.error(
-                    "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
-                    "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
-                    + str(e)
-                )
+                self.display_auth_error(e)
                 return
 
             # Check if there is already a MegaLinter comment
@@ -114,14 +123,21 @@ class GitlabCommentReporter(Reporter):
                 )
             except gitlab.GitlabError as e:
                 logging.warning(
-                    f"[GitHub Comment Reporter] Unable to post merge request comment: {str(e)}"
+                    "[GitHub Comment Reporter] Unable to post merge request comment"
                 )
+                self.display_auth_error(e)
             except Exception as e:
-                logging.warning(
-                    f"[Gitlab Comment Reporter] Error while posting comment: \n{str(e)}"
-                )
+                logging.warning("[Gitlab Comment Reporter] Error while posting comment")
+                self.display_auth_error(e)
         # Not in gitlab context
         else:
             logging.debug(
                 "[Gitlab Comment Reporter] No Gitlab Token found, so skipped post of MR comment"
             )
+
+    def display_auth_error(self, e):
+        logging.error(
+            "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
+            "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
+            + str(e)
+        )

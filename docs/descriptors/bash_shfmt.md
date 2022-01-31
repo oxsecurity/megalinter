@@ -4,7 +4,7 @@
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.3.1**
+- Version in MegaLinter: **3.5.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
@@ -21,7 +21,7 @@
 | BASH_SHFMT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                     |
 | BASH_SHFMT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                  |
 | BASH_SHFMT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                     |
-| BASH_SHFMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`                              |
+| BASH_SHFMT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `list_of_files`                     |
 | BASH_SHFMT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".sh", ".bash", ".dash", ".ksh"]` |
 | BASH_SHFMT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                  |
 | BASH_SHFMT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                |
@@ -75,7 +75,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- shfmt is called one time by identified file
+- shfmt is called once with the list of files as arguments
 
 ### Example calls
 
@@ -107,7 +107,7 @@ directory, all shell scripts found under that directory will be used.
 
 Parser options:
 
-  -ln str        language variant to parse (bash/posix/mksh/bats, default "bash")
+  -ln str        language dialect (bash/posix/mksh/bats, default "auto")
   -p             shorthand for -ln=posix
   -filename str  provide a name for the standard input file
 
@@ -132,8 +132,8 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 
 - Dockerfile commands :
 ```dockerfile
-ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
+FROM mvdan/shfmt:latest-alpine as shfmt
+COPY --from=shfmt /bin/shfmt /usr/bin/
 ```
 
 

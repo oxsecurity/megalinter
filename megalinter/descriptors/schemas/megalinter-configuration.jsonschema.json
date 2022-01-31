@@ -792,7 +792,7 @@
     },
     "BASH_SHELLCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_SHELLCHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -899,7 +899,7 @@
     },
     "BASH_SHFMT_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_SHFMT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -2033,7 +2033,7 @@
     },
     "CSS_STYLELINT_CLI_LINT_MODE": {
       "$id": "#/properties/CSS_STYLELINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -3976,7 +3976,7 @@
     },
     "HTML_HTMLHINT_CLI_LINT_MODE": {
       "$id": "#/properties/HTML_HTMLHINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -4386,7 +4386,7 @@
     },
     "JAVASCRIPT_STANDARD_CLI_LINT_MODE": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -5942,7 +5942,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -12153,7 +12153,7 @@
     },
     "TYPESCRIPT_STANDARD_CLI_LINT_MODE": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",

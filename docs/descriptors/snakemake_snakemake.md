@@ -993,7 +993,7 @@ override environment variables which override defaults.
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [snakemake](https://pypi.org/project/snakemake)
+  - [snakemake==6.13.1](https://pypi.org/project/snakemake==6.13.1)
 
 ### Example success log
 

@@ -29,7 +29,7 @@ class CSpellLinter(Linter):
         whitelisted_words_clean = sorted(set(whitelisted_words))
         # Generate possible .cspell.json file
         cspell_example = {
-            "version": "0.1",
+            "version": "0.2",
             "language": "en",
             "ignorePaths": [
                 "**/node_modules/**",
