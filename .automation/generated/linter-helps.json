@@ -1397,8 +1397,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['E226', 'E123', 'E126', 'E704', 'W504',",
-        "                        'W503', 'E24', 'E121'])",
+        "                        (Default: ['E24', 'W503', 'E121', 'E704', 'E123',",
+        "                        'E126', 'E226', 'W504'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
@@ -2422,9 +2422,10 @@
     "markdown-table-formatter": [
         "markdown-table-formatter [options]",
         "",
-        "  -c, --check    Check only (exits 1 if wrongly formatted markdown tables are found)",
-        "  -h, --help     Show help",
-        "  -v, --version  Show version"
+        "  -c, --check              Check only (exits 1 if wrongly formatted markdown tables are found)",
+        "  -p, --columnpadding Int  Override table columns padding number of spaces",
+        "  -h, --help               Show help",
+        "  -v, --version            Show version"
     ],
     "markdownlint": [
         "Usage: markdownlint [options] <files|directories|globs>",
