@@ -22,6 +22,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.2.0 to **1.3.0** on 2022-01-31
   - [checkov](https://www.checkov.io/) from 2.0.775 to **2.0.777** on 2022-01-31
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.17.0 to **5.18.0** on 2022-01-31
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.57.0 to **0.58.0** on 2022-02-01
+  - [phpstan](https://phpstan.org/) from 1.4.3 to **1.4.4** on 2022-02-01
+  - [checkov](https://www.checkov.io/) from 2.0.777 to **2.0.778** on 2022-02-01
 <!-- linter-versions-end -->
 
 ## [v5.7.0] - 2022-01-30
