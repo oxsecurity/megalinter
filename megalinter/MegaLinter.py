@@ -364,10 +364,16 @@ class Megalinter:
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
+        # Remove inactive or disabled linters
         for linter in all_linters:
             linter.master = self
             if linter.is_active is False or linter.disabled is True:
                 skipped_linters += [linter.name]
+                if linter.disabled is True:
+                    logging.warning(
+                        f"{linter.name} has been temporary disabled in MegaLinter, please use a "
+                        "previous MegaLinter version or wait for the next one !"
+                    )
                 continue
             self.linters += [linter]
         # Display skipped linters in log

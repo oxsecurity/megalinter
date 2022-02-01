@@ -31,6 +31,7 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
   # Snake Fmt
   - linter_name: snakefmt
+    disabled: true
     is_formatter: true
     name: SNAKEMAKE_SNAKEFMT
     linter_url: https://github.com/snakemake/snakefmt
