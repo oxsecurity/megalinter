@@ -13,7 +13,6 @@ from datetime import date, datetime
 from shutil import copyfile
 from typing import Any
 from urllib import parse as parse_urllib
-from attr import has
 
 import git
 import jsonschema
