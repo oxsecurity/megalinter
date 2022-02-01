@@ -90,8 +90,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 #############################################################################################
 #PIP__START
 RUN pip3 install --upgrade pip && pip3 install --no-cache-dir --upgrade \
-          'snakemake==6.13.1' \
-          'snakefmt==0.4.4' \
+          'snakemake' \
           'sqlfluff' \
           'yamllint'
 #PIP__END

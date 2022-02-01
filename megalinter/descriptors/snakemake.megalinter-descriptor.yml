@@ -21,7 +21,7 @@ linters:
     downgraded_version: true
     install:
       pip:
-        - snakemake==6.13.1
+        - snakemake
     ide:
       idea:
         - name: SnakeCharm
