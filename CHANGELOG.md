@@ -18,6 +18,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Remove extraheader in git repo when using Azure Pipelines ([#1125](https://github.com/megalinter/megalinter/issues/1125))
+  - Fix gitlab token error message ([#1228](https://github.com/megalinter/megalinter/issues/1228))
 
 - Linter versions upgrades
   - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.2.0 to **1.3.0** on 2022-01-31
