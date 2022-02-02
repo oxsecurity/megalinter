@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.7.1] - 2022-02-02
+
 - Linter updates:
   - temporary disable snakefmt to allow latest versions of black and sqlfluff
   - cspell: Update .cspell default config with `"version: "2.0", "noConfigSearch": true`
@@ -21,21 +26,20 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Fix gitlab token error message ([#1228](https://github.com/megalinter/megalinter/issues/1228))
 
 - Linter versions upgrades
-  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.2.0 to **1.3.0** on 2022-01-31
-  - [checkov](https://www.checkov.io/) from 2.0.775 to **2.0.777** on 2022-01-31
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.17.0 to **5.18.0** on 2022-01-31
-  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.57.0 to **0.58.0** on 2022-02-01
-  - [phpstan](https://phpstan.org/) from 1.4.3 to **1.4.4** on 2022-02-01
-  - [checkov](https://www.checkov.io/) from 2.0.777 to **2.0.778** on 2022-02-01
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.0 to **0.36.1** on 2022-02-01
-  - [checkov](https://www.checkov.io/) from 2.0.778 to **2.0.780** on 2022-02-02
-  - [phpstan](https://phpstan.org/) from 1.4.4 to **1.4.5** on 2022-02-02
   - [black](https://black.readthedocs.io/en/stable/) from 21.12 to **22.1.0** on 2022-02-02
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.57.0 to **0.58.0** on 2022-02-01
+  - [checkov](https://www.checkov.io/) from 2.0.775 to **2.0.777** on 2022-01-31
+  - [checkov](https://www.checkov.io/) from 2.0.777 to **2.0.778** on 2022-02-01
+  - [checkov](https://www.checkov.io/) from 2.0.778 to **2.0.780** on 2022-02-02
+  - [checkov](https://www.checkov.io/) from 2.0.780 to **2.0.782** on 2022-02-02
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.17.0 to **5.18.0** on 2022-01-31
+  - [kics](https://www.kics.io) from 1.5.0 to **1.5.1** on 2022-02-02
+  - [markdown-table-formatter](https://www.npmjs.com/package/markdown-table-formatter) from 1.2.0 to **1.3.0** on 2022-01-31
+  - [phpstan](https://phpstan.org/) from 1.4.3 to **1.4.4** on 2022-02-01
+  - [phpstan](https://phpstan.org/) from 1.4.4 to **1.4.5** on 2022-02-02
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.13.1 to **6.15.1** on 2022-02-02
   - [sqlfluff](https://www.sqlfluff.com/) from 0.9.3 to **0.9.4** on 2022-02-02
-  - [checkov](https://www.checkov.io/) from 2.0.780 to **2.0.782** on 2022-02-02
-  - [kics](https://www.kics.io) from 1.5.0 to **1.5.1** on 2022-02-02
-<!-- linter-versions-end -->
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.0 to **0.36.1** on 2022-02-01
 
 ## [v5.7.0] - 2022-01-30
 
