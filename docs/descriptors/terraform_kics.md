@@ -9,7 +9,7 @@
 
 ## kics documentation
 
-- Version in MegaLinter: **1.5.0**
+- Version in MegaLinter: **1.5.1**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
 - See [Index of problems detected by kics](https://docs.kics.io/latest/queries/all-queries/){target=_blank}

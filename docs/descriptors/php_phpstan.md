@@ -4,7 +4,7 @@
 
 ## phpstan documentation
 
-- Version in MegaLinter: **1.4.4**
+- Version in MegaLinter: **1.4.5**
 - Visit [Official Web Site](https://phpstan.org/){target=_blank}
 - See [How to configure phpstan rules](https://phpstan.org/config-reference#neon-format){target=_blank}
   - If custom `phpstan.neon.dist` config file is not found, [phpstan.neon.dist](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/phpstan.neon.dist){target=_blank} will be used
@@ -101,7 +101,7 @@ Options:
       --debug                                  Show debug information - which file is analysed, do not catch internal errors
   -a, --autoload-file=AUTOLOAD-FILE            Project's additional autoload file path
       --error-format=ERROR-FORMAT              Format in which to print the result of the analysis
-      --generate-baseline[=GENERATE-BASELINE]  Path to a file where the baseline should be saved [default: false]
+  -b, --generate-baseline[=GENERATE-BASELINE]  Path to a file where the baseline should be saved [default: false]
       --allow-empty-baseline                   Do not error out when the generated baseline is empty
       --memory-limit=MEMORY-LIMIT              Memory limit for analysis
       --xdebug                                 Allow running with XDebug for debugging purposes

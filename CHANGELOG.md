@@ -29,6 +29,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.777 to **2.0.778** on 2022-02-01
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.0 to **0.36.1** on 2022-02-01
   - [checkov](https://www.checkov.io/) from 2.0.778 to **2.0.780** on 2022-02-02
+  - [phpstan](https://phpstan.org/) from 1.4.4 to **1.4.5** on 2022-02-02
+  - [black](https://black.readthedocs.io/en/stable/) from 21.12 to **22.1.0** on 2022-02-02
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.13.1 to **6.15.1** on 2022-02-02
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.3 to **0.9.4** on 2022-02-02
+  - [checkov](https://www.checkov.io/) from 2.0.780 to **2.0.782** on 2022-02-02
+  - [kics](https://www.kics.io) from 1.5.0 to **1.5.1** on 2022-02-02
 <!-- linter-versions-end -->
 
 ## [v5.7.0] - 2022-01-30
