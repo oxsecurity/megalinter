@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in MegaLinter: **21.12**
+- Version in MegaLinter: **22.1.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -99,7 +99,7 @@ Options:
   -c, --code TEXT                 Format the code passed in as a string.
   -l, --line-length INTEGER       How many characters per line to allow.
                                   [default: 88]
-  -t, --target-version [py27|py33|py34|py35|py36|py37|py38|py39|py310]
+  -t, --target-version [py33|py34|py35|py36|py37|py38|py39|py310]
                                   Python versions that should be supported by
                                   Black's output. [default: per-file auto-
                                   detection]
@@ -110,11 +110,19 @@ Options:
                                   Notebooks regardless of file extension
                                   (useful when piping source on standard
                                   input).
+  --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
+                                  given magic to the list of known python-
+                                  magics (python3, pypy, timeit, python, time,
+                                  capture, prun). Useful for formatting cells
+                                  with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
   -C, --skip-magic-trailing-comma
                                   Don't use trailing commas as a reason to
                                   split lines.
+  --preview                       Enable potentially disruptive style changes
+                                  that will be added to Black's main
+                                  functionality in the next major release.
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
                                   change. Return code 1 means some files would
