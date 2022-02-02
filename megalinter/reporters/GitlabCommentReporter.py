@@ -123,7 +123,7 @@ class GitlabCommentReporter(Reporter):
                 )
             except gitlab.GitlabError as e:
                 logging.warning(
-                    "[GitHub Comment Reporter] Unable to post merge request comment"
+                    "[Gitlab Comment Reporter] Unable to post merge request comment"
                 )
                 self.display_auth_error(e)
             except Exception as e:
@@ -139,5 +139,5 @@ class GitlabCommentReporter(Reporter):
         logging.error(
             "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
             "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
-            + str(e)
+            "(if already defined, your token is probably invalid)" + str(e)
         )
