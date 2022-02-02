@@ -6303,6 +6303,7 @@
 <p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
 <li>Linter updates:<ul>
+<li>temporary disable snakefmt to allow latest versions of black and sqlfluff</li>
 <li>cspell: Update .cspell default config with <code>"version: "2.0", "noConfigSearch": true</code></li>
 <li>Use list_of_files mode to improve performances<ul>
 <li>markdown-link-check</li>
@@ -6316,6 +6317,7 @@
 <ul>
 <li>Fixes<ul>
 <li>Remove extraheader in git repo when using Azure Pipelines (<a href="https://github.com/megalinter/megalinter/issues/1125">#1125</a>)</li>
+<li>Fix gitlab token error message (<a href="https://github.com/megalinter/megalinter/issues/1228">#1228</a>)</li>
 </ul>
 </li>
 </ul>
