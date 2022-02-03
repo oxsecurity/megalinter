@@ -6,7 +6,7 @@
     "bash-exec": "5.1.0",
     "black": "22.1.0",
     "cfn-lint": "0.58.0",
-    "checkov": "2.0.783",
+    "checkov": "2.0.786",
     "checkstyle": "9.3",
     "chktex": "1.7.6",
     "clippy": "0.1.58",
