@@ -124,8 +124,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['W503', 'W504', 'E704', 'E24', 'E126',
-                        'E121', 'E226', 'E123'])
+                        (Default: ['E126', 'W504', 'E226', 'E704', 'E121',
+                        'E24', 'E123', 'W503'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-
