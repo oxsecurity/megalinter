@@ -147,7 +147,7 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 - Commit, push, and create a pull request
 - Watch !
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 **Notes**:
 
@@ -290,7 +290,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 ### Upgrade from MegaLinter v4
 
@@ -1073,7 +1073,7 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 ![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
