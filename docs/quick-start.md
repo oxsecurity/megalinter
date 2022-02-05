@@ -8,7 +8,7 @@
 - Commit, push, and create a pull request
 - Watch !
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 **Notes**:
 

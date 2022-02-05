@@ -59,9 +59,9 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`

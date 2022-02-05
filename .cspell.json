@@ -392,6 +392,7 @@
         "columnsep",
         "columnseprule",
         "commandline",
+        "commmands",
         "compat",
         "compojure",
         "cond",
