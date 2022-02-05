@@ -13,6 +13,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.25.0 to **1.25.1** on 2022-02-03
   - [checkov](https://www.checkov.io/) from 2.0.782 to **2.0.783** on 2022-02-03
   - [checkov](https://www.checkov.io/) from 2.0.783 to **2.0.786** on 2022-02-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.0 to **5.18.3** on 2022-02-05
+  - [checkov](https://www.checkov.io/) from 2.0.786 to **2.0.791** on 2022-02-05
 <!-- linter-versions-end -->
 
 ## [v5.7.1] - 2022-02-02
