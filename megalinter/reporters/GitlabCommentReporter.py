@@ -65,7 +65,7 @@ class GitlabCommentReporter(Reporter):
                     self.master,
                 )
                 gitlab_options.ssl_verify = config.get("GITLAB_CERTIFICATE_PATH")
-            # Create gitlab connexion
+            # Create gitlab connection
             gl = gitlab.Gitlab(gitlab_server_url, gitlab_options)
             # Get gitlab project
             try:
