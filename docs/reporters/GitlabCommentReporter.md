@@ -22,3 +22,6 @@ Click on hyperlinks to access detailed logs (click on **Download** in **Artifact
 | GITLAB_API_URL                 | URL where the github API can be reached<br/>May be overridden if using self-hosted Gitlab | `https://api.gitlab.com` |
 | GITLAB_SERVER_URL              | URL of the Gitlab instance<br/>May be overridden if using self-hosted Gitlab              | `https://gitlab.com`     |
 | GITLAB_ACCESS_TOKEN_MEGALINTER | Must contain a Gitlab private access token defined with api access                        | <!-- -->                 |
+| GITLAB_CERTIFICATE_PATH | Path to SSL certificate to connect to gitlab                        | <!-- -->                 |
+
+

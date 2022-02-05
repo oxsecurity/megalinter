@@ -7,6 +7,7 @@ import logging
 
 import gitlab
 from megalinter import Reporter, config
+from megalinter.pre_post_factory import run_command
 from megalinter.utils_reporter import build_markdown_summary
 
 
@@ -47,16 +48,25 @@ class GitlabCommentReporter(Reporter):
             action_run_url = config.get("CI_JOB_URL", "")
             p_r_msg = build_markdown_summary(self, action_run_url)
 
-            # Post comment on merge request if found
+            # Build gitlab options
+            gitlab_options = {}
+            # auth token
             if config.get("GITLAB_ACCESS_TOKEN_MEGALINTER", "") != "":
-                gl = gitlab.Gitlab(
-                    gitlab_server_url,
-                    private_token=config.get("GITLAB_ACCESS_TOKEN_MEGALINTER"),
+                gitlab_options.private_token = config.get(
+                    "GITLAB_ACCESS_TOKEN_MEGALINTER"
                 )
             else:
-                gl = gitlab.Gitlab(
-                    gitlab_server_url, job_token=config.get("CI_JOB_TOKEN")
+                gitlab_options.job_token = config.get("CI_JOB_TOKEN")
+            # certificate management
+            if config.get("GITLAB_CERTIFICATE_PATH", "") != "":
+                run_command(
+                    {"cwd": "root", "command": "update-ca-certificates"},
+                    "GitlabCommentReporter",
+                    self.master,
                 )
+                gitlab_options.ssl_verify = config.get("GITLAB_CERTIFICATE_PATH")
+            # Create gitlab connexion
+            gl = gitlab.Gitlab(gitlab_server_url, gitlab_options)
             # Get gitlab project
             try:
                 project = gl.projects.get(gitlab_project_id)
@@ -143,5 +153,7 @@ class GitlabCommentReporter(Reporter):
         logging.error(
             "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
             "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
-            "(if already defined, your token is probably invalid)" + str(e)
+            "(if already defined, your token is probably invalid)\n"
+            "If you are using local certificate, you also may need to define GITLAB_CERTIFICATE_PATH"
+            + str(e)
         )
