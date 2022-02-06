@@ -168,6 +168,7 @@ class GitlabCommentReporter(Reporter):
             "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
             "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
             "(if already defined, your token is probably invalid)\n"
-            "If you are using local certificate, you also may need to define GITLAB_CERTIFICATE_PATH"
+            "If you are using local certificate, you also may need to define variables "
+            "GITLAB_CUSTOM_CERTIFICATE or GITLAB_CERTIFICATE_PATH"
             + str(e)
         )
