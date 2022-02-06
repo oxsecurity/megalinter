@@ -3317,8 +3317,8 @@
     "GITLAB_ACCESS_TOKEN_MEGALINTER": {
       "$id": "#/properties/GITLAB_ACCESS_TOKEN_MEGALINTER",
       "default": true,
-      "description": "Gitlab access token with API access",
-      "title": "Gitlab SSL Certificate path",
+      "description": "Gitlab access token with API access (can be user or project Access token)",
+      "title": "Gitlab Access Token",
       "type": "string"
     },
     "GITLAB_CERTIFICATE_PATH": {
@@ -3334,6 +3334,13 @@
       "description": "Posts Mega-Linter results summary in the comments of the related merge request (if existing)",
       "title": "Activate Gitlab MR Comments reporter",
       "type": "boolean"
+    },
+    "GITLAB_CUSTOM_CERTIFICATE": {
+      "$id": "#/properties/GITLAB_CUSTOM_CERTIFICATE",
+      "default": true,
+      "description": "Store your SSL certificate string value in a CI env variable named GITLAB_CUSTOM_CERTIFICATE if you want it to be copied by MegaLinter in a local certificate file that will be used by python gitlab lib",
+      "title": "Gitlab SSL Certificate value",
+      "type": "string"
     },
     "GIT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GIT_FILTER_REGEX_EXCLUDE",
