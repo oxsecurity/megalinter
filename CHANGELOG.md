@@ -8,7 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-- Doc: update images with screen records gifs
+- Doc
+  - Update images with screen records gifs
+  - Add publish artifact task in azure pipelines doc
 
 - Linter versions upgrades
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.4 to **1.1.5** on 2022-02-03
