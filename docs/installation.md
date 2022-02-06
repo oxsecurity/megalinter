@@ -141,6 +141,7 @@ Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```yaml
+  # Run MegaLinter to detect linting and security issues
   - job: megalinter
     displayName: MegaLinter
     pool:
@@ -150,6 +151,14 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
         docker pull megalinter/megalinter:v5
         docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
       displayName: 'MegaLinter analysis'
+
+    # Publish the Anchore report as an artifact to Azure Pipelines
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: MegaLinter Report'
+      condition: succeededOrFailed()
+      inputs:
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/report/'
+        ArtifactName: MegaLinterReport
 ```
 
 ## Jenkins
