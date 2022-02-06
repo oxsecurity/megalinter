@@ -28,6 +28,5 @@ linters:
       - "ansible-lint -v"
       - "ansible-lint -v -c .ansible-lint"
     install:
-      apk:
-        - ansible
-        - ansible-lint
+      pip:
+        - ansible-lint[community,yamllint]
