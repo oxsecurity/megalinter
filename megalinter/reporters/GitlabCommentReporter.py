@@ -169,6 +169,5 @@ class GitlabCommentReporter(Reporter):
             "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
             "(if already defined, your token is probably invalid)\n"
             "If you are using local certificate, you also may need to define variables "
-            "GITLAB_CUSTOM_CERTIFICATE or GITLAB_CERTIFICATE_PATH"
-            + str(e)
+            "GITLAB_CUSTOM_CERTIFICATE or GITLAB_CERTIFICATE_PATH" + str(e)
         )
