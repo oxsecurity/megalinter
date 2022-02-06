@@ -8,8 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
-- Doc: update images with screen records gifs
-- Allow to check prop existence in active_only_if_file_found and apply to eslint descriptors ([#1205](https://github.com/megalinter/megalinter/issues/1205))
+- Core
+  - Allow to check prop existence in active_only_if_file_found and apply to eslint descriptors ([#1205](https://github.com/megalinter/megalinter/issues/1205))
+
+- Doc
+  - Update images with screen records gifs
+  - Add publish artifact task in azure pipelines doc
 
 - Linter versions upgrades
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.4 to **1.1.5** on 2022-02-03
@@ -18,6 +22,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.783 to **2.0.786** on 2022-02-03
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.0 to **5.18.3** on 2022-02-05
   - [checkov](https://www.checkov.io/) from 2.0.786 to **2.0.791** on 2022-02-05
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.30.0 to **0.31.0** on 2022-02-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.1 to **6.15.2** on 2022-02-06
+  - [checkov](https://www.checkov.io/) from 2.0.791 to **2.0.793** on 2022-02-06
 <!-- linter-versions-end -->
 
 ## [v5.7.1] - 2022-02-02
