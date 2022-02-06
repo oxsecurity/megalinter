@@ -52,11 +52,11 @@ class GitlabCommentReporter(Reporter):
             gitlab_options = {}
             # auth token
             if config.get("GITLAB_ACCESS_TOKEN_MEGALINTER", "") != "":
-                gitlab_options.private_token = config.get(
+                gitlab_options["private_token"] = config.get(
                     "GITLAB_ACCESS_TOKEN_MEGALINTER"
                 )
             else:
-                gitlab_options.job_token = config.get("CI_JOB_TOKEN")
+                gitlab_options["job_token"] = config.get("CI_JOB_TOKEN")
             # Certificate management
             gitlab_certificate_path = config.get("GITLAB_CERTIFICATE_PATH", "")
             if config.get("GITLAB_CUSTOM_CERTIFICATE", "") != "":
@@ -75,12 +75,12 @@ class GitlabCommentReporter(Reporter):
                     "GitlabCommentReporter",
                     self.master,
                 )
-                gitlab_options.ssl_verify = gitlab_certificate_path
+                gitlab_options["ssl_verify"] = gitlab_certificate_path
             # Create gitlab connection
             logging.debug(
                 f"[GitlabCommentReporter] Logging to {gitlab_server_url} with {str(gitlab_options)}"
             )
-            gl = gitlab.Gitlab(gitlab_server_url, gitlab_options)
+            gl = gitlab.Gitlab(gitlab_server_url, **gitlab_options)
             # Get gitlab project
             try:
                 project = gl.projects.get(gitlab_project_id)
