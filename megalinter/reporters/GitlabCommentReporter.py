@@ -57,15 +57,29 @@ class GitlabCommentReporter(Reporter):
                 )
             else:
                 gitlab_options.job_token = config.get("CI_JOB_TOKEN")
-            # certificate management
-            if config.get("GITLAB_CERTIFICATE_PATH", "") != "":
+            # Certificate management
+            gitlab_certificate_path = config.get("GITLAB_CERTIFICATE_PATH", "")
+            if config.get("GITLAB_CUSTOM_CERTIFICATE", "") != "":
+                # Certificate value defined in an ENV variable
+                cert_value = config.get("GITLAB_CUSTOM_CERTIFICATE")
+                gitlab_certificate_path = "/etc/ssl/certs/gitlab-cert.crt"
+                with open(gitlab_certificate_path, "w", encoding="utf-8") as cert_file:
+                    cert_file.write(cert_value)
+                    logging.debug(
+                        f"Updated {gitlab_certificate_path} with certificate value {cert_value}"
+                    )
+            if gitlab_certificate_path != "":
+                # Update certificates and set cert path in gitlab options
                 run_command(
                     {"cwd": "root", "command": "update-ca-certificates"},
                     "GitlabCommentReporter",
                     self.master,
                 )
-                gitlab_options.ssl_verify = config.get("GITLAB_CERTIFICATE_PATH")
+                gitlab_options.ssl_verify = gitlab_certificate_path
             # Create gitlab connection
+            logging.debug(
+                f"[GitlabCommentReporter] Logging to {gitlab_server_url} with {str(gitlab_options)}"
+            )
             gl = gitlab.Gitlab(gitlab_server_url, gitlab_options)
             # Get gitlab project
             try:
