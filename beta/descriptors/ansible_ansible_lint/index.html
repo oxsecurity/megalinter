@@ -3540,20 +3540,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5438,20 +5424,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#example-success-log" class="md-nav__link">
-    Example success log
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-error-log" class="md-nav__link">
-    Example error log
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5480,10 +5452,7 @@
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/en/latest/" target="_blank">Official Web Site</a></li>
-<li>See <a href="https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file" target="_blank">How to configure ansible-lint rules</a><ul>
-<li>If custom <code>.ansible-lint.yml</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ansible-lint.yml" target="_blank">.ansible-lint.yml</a> will be used</li>
-</ul>
-</li>
+<li>See <a href="https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file" target="_blank">How to configure ansible-lint rules</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules" target="_blank">How to disable ansible-lint rules in files</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/en/latest/default_rules.html" target="_blank">Index of problems detected by ansible-lint</a></li>
 </ul>
@@ -5508,21 +5477,6 @@
 <td></td>
 </tr>
 <tr>
-<td>ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
-</tr>
-<tr>
-<td>ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
-</tr>
-<tr>
 <td>ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
 <td><code>[".yml", ".yaml"]</code></td>
@@ -5545,7 +5499,7 @@
 <tr>
 <td>ANSIBLE_ANSIBLE_LINT_CONFIG_FILE</td>
 <td>ansible-lint configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
-<td><code>.ansible-lint.yml</code></td>
+<td><code>.ansible-lint</code></td>
 </tr>
 <tr>
 <td>ANSIBLE_ANSIBLE_LINT_RULES_PATH</td>
@@ -5699,13 +5653,15 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>ansible-lint is called once on the whole project directory</p>
 <ul>
-<li>ansible-lint is called one time by identified file</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using ansible-lint configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> does not make ansible-lint analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
-<pre><code class="language-shell">ansible-lint -v myfile.yml
+<pre><code class="language-shell">ansible-lint -v
 </code></pre>
-<pre><code class="language-shell">ansible-lint -v -c .ansible-lint.yml myfile.yml
+<pre><code class="language-shell">ansible-lint -v -c .ansible-lint
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">usage: ansible-lint [-h] [-L] [-f {rich,plain,rst}] [-q] [-p]
@@ -5758,55 +5714,6 @@ optional arguments:
 </ul>
 </li>
 </ul>
-<h3 id="example-success-log">Example success log</h3>
-<pre><code class="language-shell">Results of ansible-lint linter (version 4.2.0)
-See documentation on https://megalinter.github.io/descriptors/ansible_ansible_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/ansible/ansible/ansible_good_1.yml
-    Examining .automation/test/ansible/ansible/ansible_good_1.yml of type playbook
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-api-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
-
-</code></pre>
-<h3 id="example-error-log">Example error log</h3>
-<pre><code class="language-shell">Results of ansible-lint linter (version 4.2.0)
-See documentation on https://megalinter.github.io/descriptors/ansible_ansible_lint/
------------------------------------------------
-
-[ERROR] .automation/test/ansible/ansible/ansible_bad_1.yml
-    Traceback (most recent call last):
-      File &quot;/usr/bin/ansible-lint&quot;, line 11, in &lt;module&gt;
-        load_entry_point('ansible-lint==4.2.0', 'console_scripts', 'ansible-lint')()
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/__main__.py&quot;, line 187, in main
-        matches.extend(runner.run())
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/__init__.py&quot;, line 267, in run
-        for child in ansiblelint.utils.find_children(arg, self.playbook_dir):
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/utils.py&quot;, line 163, in find_children
-        for child in play_children(basedir, item, playbook[1], playbook_dir):
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/utils.py&quot;, line 215, in play_children
-        return delegate_map[k](basedir, k, v, parent_type)
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/utils.py&quot;, line 246, in _taskshandlers_children
-        results.extend(_roles_children(basedir, k, [th['action'].get('name')],
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/utils.py&quot;, line 285, in _roles_children
-        results.extend(_look_for_role_files(basedir, role, main=main))
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/utils.py&quot;, line 330, in _look_for_role_files
-        role_path = _rolepath(basedir, role)
-      File &quot;/usr/lib/python3.8/site-packages/ansiblelint/utils.py&quot;, line 299, in _rolepath
-        path_dwim(basedir, os.path.join('roles', role)),
-      File &quot;/usr/lib/python3.8/posixpath.py&quot;, line 90, in join
-        genericpath._check_arg_types('join', a, *p)
-      File &quot;/usr/lib/python3.8/genericpath.py&quot;, line 152, in _check_arg_types
-        raise TypeError(f'{funcname}() argument must be str, bytes, or '
-    TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
-
-</code></pre>
 
               
             </article>
