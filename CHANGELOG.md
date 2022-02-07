@@ -31,6 +31,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.30.0 to **0.31.0** on 2022-02-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.1 to **6.15.2** on 2022-02-06
   - [checkov](https://www.checkov.io/) from 2.0.791 to **2.0.793** on 2022-02-06
+  - [phpstan](https://phpstan.org/) from 1.4.5 to **1.4.6** on 2022-02-06
+  - [checkov](https://www.checkov.io/) from 2.0.793 to **2.0.795** on 2022-02-06
 <!-- linter-versions-end -->
 
 ## [v5.7.1] - 2022-02-02
