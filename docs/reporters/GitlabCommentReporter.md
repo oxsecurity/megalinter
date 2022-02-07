@@ -24,3 +24,7 @@ Click on hyperlinks to access detailed logs (click on **Download** in **Artifact
 | GITLAB_ACCESS_TOKEN_MEGALINTER | Must contain a Gitlab private access token defined with api access                                     | <!-- -->                 |
 | GITLAB_CUSTOM_CERTIFICATE      | SSL certificate value to connect to Gitlab                                                             | <!-- -->                 |
 | GITLAB_CERTIFICATE_PATH        | Path to SSL certificate to connect to Gitlab (if SSL cert has been manually defined with PRE_COMMANDS) | <!-- -->                 |
+
+## Special Thanks
+
+- Special thanks to [John Berkers](https://github.com/jberkers42) for his assistance in making Gitlab reporter work with self-hosted gitlab instances secured by certificates :) 
