@@ -34,6 +34,8 @@ skip_list:
   - "303" # Allow git commands for push add, etc...
   - "305" # Allow use of shell when you want
   - "503" # Allow step to run like handler
+  - "command-instead-of-module"
+  - "yaml"
 
 ##################
 # Tags to follow #
@@ -49,7 +51,3 @@ use_default_rules: true
 # Set verbosity #
 #################
 verbosity: 1
-
-warn_list:  # or 'skip_list' to silence them completely
-  - command-instead-of-module  # Using command rather than module
-  - yaml  # Violations reported by yamllint

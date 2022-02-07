@@ -23,6 +23,8 @@ linters:
     cli_lint_mode: project
     cli_config_extra_args:
       - "-v"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Finished with ([0-9]+) failure\\(s\\), .* warning\\(s\\) on .* files"
     cli_version_arg_name: "--version"
     examples:
       - "ansible-lint -v"
