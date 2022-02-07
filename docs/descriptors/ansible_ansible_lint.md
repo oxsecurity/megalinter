@@ -6,7 +6,6 @@
 
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
-  - If custom `.ansible-lint.yml` config file is not found, [.ansible-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
 - See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html){target=_blank}
 
@@ -17,21 +16,18 @@
 - Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 - Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
-| Variable                                         | Description                                                                                                                                                                                                         | Default value                                   |
-|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| ANSIBLE_ANSIBLE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`                                          |
-| ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".yml", ".yaml"]`                             |
-| ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| ANSIBLE_ANSIBLE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| ANSIBLE_ANSIBLE_LINT_CONFIG_FILE                 | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                             | `.ansible-lint.yml`                             |
-| ANSIBLE_ANSIBLE_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files                                                                                                                                                                                  | `ansible`                                       |
+| Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
+|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| ANSIBLE_ANSIBLE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".yml", ".yaml"]`                             |
+| ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
+| ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
+| ANSIBLE_ANSIBLE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| ANSIBLE_ANSIBLE_LINT_CONFIG_FILE                 | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                      | `.ansible-lint`                                 |
+| ANSIBLE_ANSIBLE_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
+| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
+| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files                                                                                                                                                           | `ansible`                                       |
 
 ## MegaLinter Flavours
 
@@ -67,16 +63,19 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- ansible-lint is called one time by identified file
+ansible-lint is called once on the whole project directory
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using ansible-lint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` does not make ansible-lint analyze only updated files
 
 ### Example calls
 
 ```shell
-ansible-lint -v myfile.yml
+ansible-lint -v
 ```
 
 ```shell
-ansible-lint -v -c .ansible-lint.yml myfile.yml
+ansible-lint -v -c .ansible-lint
 ```
 
 
@@ -131,58 +130,3 @@ optional arguments:
 - APK packages (Linux):
   - [ansible](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible)
   - [ansible-lint](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible-lint)
-
-### Example success log
-
-```shell
-Results of ansible-lint linter (version 4.2.0)
-See documentation on https://megalinter.github.io/descriptors/ansible_ansible_lint/
------------------------------------------------
-
-[SUCCESS] .automation/test/ansible/ansible/ansible_good_1.yml
-    Examining .automation/test/ansible/ansible/ansible_good_1.yml of type playbook
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-api-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-config-apply.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/collectd-settings.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-ldap-configuration.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/splunk-settings.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/main.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/tasks/ghe-initial-configuration.yml of type tasks
-    Examining .automation/test/ansible/ansible/ghe-initialize/handlers/main.yml of type handlers
-
-```
-
-### Example error log
-
-```shell
-Results of ansible-lint linter (version 4.2.0)
-See documentation on https://megalinter.github.io/descriptors/ansible_ansible_lint/
------------------------------------------------
-
-[ERROR] .automation/test/ansible/ansible/ansible_bad_1.yml
-    Traceback (most recent call last):
-      File "/usr/bin/ansible-lint", line 11, in <module>
-        load_entry_point('ansible-lint==4.2.0', 'console_scripts', 'ansible-lint')()
-      File "/usr/lib/python3.8/site-packages/ansiblelint/__main__.py", line 187, in main
-        matches.extend(runner.run())
-      File "/usr/lib/python3.8/site-packages/ansiblelint/__init__.py", line 267, in run
-        for child in ansiblelint.utils.find_children(arg, self.playbook_dir):
-      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 163, in find_children
-        for child in play_children(basedir, item, playbook[1], playbook_dir):
-      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 215, in play_children
-        return delegate_map[k](basedir, k, v, parent_type)
-      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 246, in _taskshandlers_children
-        results.extend(_roles_children(basedir, k, [th['action'].get('name')],
-      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 285, in _roles_children
-        results.extend(_look_for_role_files(basedir, role, main=main))
-      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 330, in _look_for_role_files
-        role_path = _rolepath(basedir, role)
-      File "/usr/lib/python3.8/site-packages/ansiblelint/utils.py", line 299, in _rolepath
-        path_dwim(basedir, os.path.join('roles', role)),
-      File "/usr/lib/python3.8/posixpath.py", line 90, in join
-        genericpath._check_arg_types('join', a, *p)
-      File "/usr/lib/python3.8/genericpath.py", line 152, in _check_arg_types
-        raise TypeError(f'{funcname}() argument must be str, bytes, or '
-    TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
-
-```

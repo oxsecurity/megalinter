@@ -27,4 +27,4 @@ Click on hyperlinks to access detailed logs (click on **Download** in **Artifact
 
 ## Special Thanks
 
-- Special thanks to [John Berkers](https://github.com/jberkers42) for his assistance in making Gitlab reporter work with self-hosted gitlab instances secured by certificates :) 
+- Special thanks to [John Berkers](https://github.com/jberkers42) for his assistance in making Gitlab reporter work with self-hosted gitlab instances secured by certificates :)

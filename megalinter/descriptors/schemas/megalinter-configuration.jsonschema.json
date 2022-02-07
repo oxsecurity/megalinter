@@ -369,20 +369,9 @@
         "string"
       ]
     },
-    "ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE",
-      "default": "file",
-      "enum": [
-        "file",
-        "list_of_files",
-        "project"
-      ],
-      "title": "ANSIBLE_ANSIBLE_LINT: Override default cli lint mode",
-      "type": "string"
-    },
     "ANSIBLE_ANSIBLE_LINT_CONFIG_FILE": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CONFIG_FILE",
-      "default": ".ansible-lint.yml",
+      "default": ".ansible-lint",
       "description": "ANSIBLE_ANSIBLE_LINT: User custom config file name if different from default",
       "title": "ANSIBLE_ANSIBLE_LINT: Custom config file name",
       "type": "string"
@@ -435,16 +424,6 @@
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE",
-      "title": "ANSIBLE_ANSIBLE_LINT: Excluding Regex",
-      "type": "string"
-    },
-    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE",
-      "title": "ANSIBLE_ANSIBLE_LINT: Including Regex",
-      "type": "string"
     },
     "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_POST_COMMANDS",
