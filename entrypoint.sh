@@ -80,7 +80,7 @@ else
     fi
     # SSH startup
     echo "[MegaLinter init] SSH"
-    tmux new -s main -d
+    export -p > /var/ml-env-vars  # save all environment variables configured during Dockerfile creation
     /usr/sbin/sshd -D
   else
     # Normal  (run megalinter)

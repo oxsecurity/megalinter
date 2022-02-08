@@ -38,8 +38,7 @@ RUN apk add --update --no-cache \
         libffi-dev \
         make \
         musl-dev \
-        openssh \
-        tmux && \
+        openssh && \
     git config --global core.autocrlf true
 
 #############################################################################################
@@ -170,12 +169,12 @@ RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
 EXPOSE 22
 COPY entrypoint.sh /entrypoint.sh
 COPY sh /usr/bin/megalinter-sh
-COPY sh/megalinter_tmux /usr/bin/megalinter_tmux
+COPY sh/megalinter_exec /usr/bin/megalinter_exec
 COPY sh/motd /etc/motd
 RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
     chmod +x entrypoint.sh && \
-    chmod +x /usr/bin/megalinter_tmux && \
+    chmod +x /usr/bin/megalinter_exec && \
     echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
-    echo "alias tmux_exec='/usr/bin/megalinter-sh/tmux_exec.sh'" >> ~/.bashrc && source ~/.bashrc
+    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 #EXTRA_DOCKERFILE_LINES__END
