@@ -18,7 +18,7 @@ You can run the following commands:
     - python -m megalinter.run --input demo-megalinter-security-flavor --output myfile.sarif"                       (Will generate myfile.sarif in repo megalinter-reports folder)
     - DEFAULT_WORKSPACE=/tmp/lint/demo-megalinter-security-flavor python -m megalinter.run"                         (working !)
 
-- alternatively, you could perform the operation in one command using megalinger_exec alias (also works through the SSH command)
+- alternatively, you could perform the operation in one command using megalinter_exec alias (also works through the SSH command)
 
     - megalinter_exec --input myrepository --output myoutputfile.sarif                                                   (from inside the container in an interactive bash shell)
     - ssh@megalinter-container "/bin/bash --login -c 'megalinter_exec --input myrepository --output myoutputfile.sarif'" (from outside the container, using ssh to run a command in the container)
