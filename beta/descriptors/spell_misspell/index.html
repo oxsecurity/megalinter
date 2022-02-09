@@ -5715,8 +5715,12 @@
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
-    &amp;&amp; sh ./install-misspell.sh
+<pre><code class="language-dockerfile">RUN ML_THIRD_PARTY_DIR=&quot;/third-party/misspell&quot; \
+    &amp;&amp; mkdir -p ${ML_THIRD_PARTY_DIR} \
+    &amp;&amp; curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+    &amp;&amp; sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
+    &amp;&amp; find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    &amp;&amp; find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
 
 </code></pre>
 <h3 id="example-success-log">Example success log</h3>

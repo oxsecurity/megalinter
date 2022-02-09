@@ -5722,9 +5722,12 @@ Flags:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    &amp;&amp; tar xf kubeval-linux-amd64.tar.gz \
-    &amp;&amp; cp kubeval /usr/local/bin
+<pre><code class="language-dockerfile">RUN ML_THIRD_PARTY_DIR=&quot;/third-party/kubeval&quot; \
+    &amp;&amp; mkdir -p ${ML_THIRD_PARTY_DIR} \
+    &amp;&amp; wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+    &amp;&amp; tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    &amp;&amp; mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+    &amp;&amp; find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 </code></pre>
 <h3 id="example-success-log">Example success log</h3>
