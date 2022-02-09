@@ -102,7 +102,7 @@ jobs:
 
       - name: Build unique image name for ${{ env.BRANCH_NAME }}
         shell: bash
-        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo ${{ env.BRANCH_NAME }}$(date '+%Y%m%d%H%M'))" >> $GITHUB_ENV
+        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo ${{ env.BRANCH_NAME }}_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
 
       #####################
       # Run Deploy script #
@@ -119,7 +119,7 @@ jobs:
         shell: bash
         run: .automation/upload-docker.sh
 
-      - name: Deploy ${{ env.BRANCH_NAME }} image to DockerHub
+      - name: Deploy ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
