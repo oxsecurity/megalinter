@@ -54,7 +54,7 @@ This linter is available in the following flavours
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                      | Embedded linters |                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:---------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor        |        96        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
+|         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)       | Optimized for PHP based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
 
 ## Behind the scenes
 
@@ -169,8 +169,8 @@ Output:
 
     --output-format=console
         Changes the output format.
-        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube, github,
-                           phpstorm, codeclimate
+        Available formats: compact, console, text, emacs, json, pylint, xml, checkstyle, junit, sonarqube,
+                           github, phpstorm, codeclimate
 
     --no-progress
         Disable the progress indicator

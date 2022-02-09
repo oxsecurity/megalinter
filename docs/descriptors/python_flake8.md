@@ -50,7 +50,7 @@ This linter is available in the following flavours
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        96        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        48        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -124,8 +124,8 @@ optional arguments:
                         of opening bracket's line.
   --ignore errors       Comma-separated list of errors and warnings to ignore
                         (or skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: ['E123', 'E226', 'W503', 'E704', 'E126',
-                        'W504', 'E24', 'E121'])
+                        (Default: ['W503', 'E121', 'W504', 'E126', 'E123',
+                        'E704', 'E24', 'E226'])
   --extend-ignore errors
                         Comma-separated list of errors and warnings to add to
                         the list of ignored ones. For example, ``--extend-

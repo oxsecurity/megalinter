@@ -7,6 +7,7 @@ import logging
 
 import gitlab
 from megalinter import Reporter, config
+from megalinter.pre_post_factory import run_command
 from megalinter.utils_reporter import build_markdown_summary
 
 
@@ -30,30 +31,71 @@ class GitlabCommentReporter(Reporter):
             gitlab_repo = config.get("CI_PROJECT_NAME")
             gitlab_project_id = config.get("CI_PROJECT_ID")
             gitlab_merge_request_id = config.get("CI_MERGE_REQUEST_ID", "")
-            if (
-                gitlab_merge_request_id == ""
-                and config.get("CI_OPEN_MERGE_REQUESTS", "") != ""
-            ):
-                gitlab_merge_request_id = (
-                    config.get("CI_OPEN_MERGE_REQUESTS", "missing!missing")
-                    .split(",")[0]
-                    .split("!")[1]
-                )
+            if gitlab_merge_request_id == "":
+                if config.get("CI_OPEN_MERGE_REQUESTS", "") != "":
+                    gitlab_merge_request_id = (
+                        config.get("CI_OPEN_MERGE_REQUESTS", "missing!missing")
+                        .split(",")[0]
+                        .split("!")[1]
+                    )
+                else:
+                    logging.info(
+                        "[Gitlab Comment Reporter] No merge request has been found, so no comment has been posted"
+                    )
+                    return
+
             gitlab_server_url = config.get("CI_SERVER_URL", self.gitlab_server_url)
             action_run_url = config.get("CI_JOB_URL", "")
             p_r_msg = build_markdown_summary(self, action_run_url)
 
-            # Post comment on merge request if found
+            # Build gitlab options
+            gitlab_options = {}
+            # auth token
             if config.get("GITLAB_ACCESS_TOKEN_MEGALINTER", "") != "":
-                gl = gitlab.Gitlab(
-                    gitlab_server_url,
-                    private_token=config.get("GITLAB_ACCESS_TOKEN_MEGALINTER"),
+                gitlab_options["private_token"] = config.get(
+                    "GITLAB_ACCESS_TOKEN_MEGALINTER"
                 )
             else:
-                gl = gitlab.Gitlab(
-                    gitlab_server_url, job_token=config.get("CI_JOB_TOKEN")
+                gitlab_options["job_token"] = config.get("CI_JOB_TOKEN")
+            # Certificate management
+            gitlab_certificate_path = config.get("GITLAB_CERTIFICATE_PATH", "")
+            if config.get("GITLAB_CUSTOM_CERTIFICATE", "") != "":
+                # Certificate value defined in an ENV variable
+                cert_value = config.get("GITLAB_CUSTOM_CERTIFICATE")
+                gitlab_certificate_path = "/etc/ssl/certs/gitlab-cert.crt"
+                with open(gitlab_certificate_path, "w", encoding="utf-8") as cert_file:
+                    cert_file.write(cert_value)
+                    logging.debug(
+                        f"Updated {gitlab_certificate_path} with certificate value {cert_value}"
+                    )
+            if gitlab_certificate_path != "":
+                # Update certificates and set cert path in gitlab options
+                run_command(
+                    {"cwd": "root", "command": "update-ca-certificates"},
+                    "GitlabCommentReporter",
+                    self.master,
                 )
-            project = gl.projects.get(gitlab_project_id)
+                gitlab_options["ssl_verify"] = gitlab_certificate_path
+            # Create gitlab connection
+            logging.debug(
+                f"[GitlabCommentReporter] Logging to {gitlab_server_url} with {str(gitlab_options)}"
+            )
+            gl = gitlab.Gitlab(gitlab_server_url, **gitlab_options)
+            # Get gitlab project
+            try:
+                project = gl.projects.get(gitlab_project_id)
+            except gitlab.GitlabGetError as e:
+                logging.warning(
+                    "[Gitlab Comment Reporter] No project has been found with "
+                    f"id {gitlab_project_id}, so no comment has been posted\n"
+                )
+                self.display_auth_error(e)
+                return
+            except Exception as e:
+                self.display_auth_error(e)
+                return
+
+            # Get merge request
             try:
                 mr = project.mergerequests.get(gitlab_merge_request_id)
             except gitlab.GitlabGetError:
@@ -64,8 +106,11 @@ class GitlabCommentReporter(Reporter):
                     logging.warning(
                         "[Gitlab Comment Reporter] No merge request has been found with "
                         f"id {gitlab_merge_request_id}, so no comment has been posted\n"
-                        + str(e)
                     )
+                    self.display_auth_error(e)
+                    return
+                except Exception as e:
+                    self.display_auth_error(e)
                     return
 
             # Ignore if PR is already merged
@@ -77,18 +122,10 @@ class GitlabCommentReporter(Reporter):
             try:
                 existing_comments = mr.notes.list()
             except gitlab.GitlabAuthenticationError as e:
-                logging.error(
-                    "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
-                    "GITLAB_ACCESS_TOKEN_MEGALINTER containing a personal token with api access\n"
-                    + str(e)
-                )
+                self.display_auth_error(e)
                 return
             except Exception as e:
-                logging.error(
-                    "[Gitlab Comment Reporter] You need to define a masked Gitlab CI/CD variable "
-                    "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
-                    + str(e)
-                )
+                self.display_auth_error(e)
                 return
 
             # Check if there is already a MegaLinter comment
@@ -114,14 +151,23 @@ class GitlabCommentReporter(Reporter):
                 )
             except gitlab.GitlabError as e:
                 logging.warning(
-                    f"[GitHub Comment Reporter] Unable to post merge request comment: {str(e)}"
+                    "[Gitlab Comment Reporter] Unable to post merge request comment"
                 )
+                self.display_auth_error(e)
             except Exception as e:
-                logging.warning(
-                    f"[Gitlab Comment Reporter] Error while posting comment: \n{str(e)}"
-                )
+                logging.warning("[Gitlab Comment Reporter] Error while posting comment")
+                self.display_auth_error(e)
         # Not in gitlab context
         else:
             logging.debug(
                 "[Gitlab Comment Reporter] No Gitlab Token found, so skipped post of MR comment"
             )
+
+    def display_auth_error(self, e):
+        logging.error(
+            "[Gitlab Comment Reporter] You may need to define a masked Gitlab CI/CD variable "
+            "MEGALINTER_ACCESS_TOKEN containing a personal token with scope 'api'\n"
+            "(if already defined, your token is probably invalid)\n"
+            "If you are using local certificate, you also may need to define variables "
+            "GITLAB_CUSTOM_CERTIFICATE or GITLAB_CERTIFICATE_PATH" + str(e)
+        )
