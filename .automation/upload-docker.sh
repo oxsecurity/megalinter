@@ -615,8 +615,11 @@ ValidateInput
 ###############################
 # Find Image if already built #
 ###############################
-if [ "$ALWAYS_BUILD" != "true" ]; then
+if [ "$ALWAYS_BUILD" != "force" ]; then
   FindBuiltImage
+else
+  FOUND_IMAGE=0
+  echo "skip find build image as ALWAYS_BUILD is force"
 fi
 
 ###################

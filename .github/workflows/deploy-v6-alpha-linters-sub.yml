@@ -128,7 +128,7 @@ jobs:
           IMAGE_VERSION: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
-          ALWAYS_BUILD: "true"
+          ALWAYS_BUILD: force
         shell: bash
         run: .automation/upload-docker.sh
 
