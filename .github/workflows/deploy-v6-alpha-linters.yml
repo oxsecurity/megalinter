@@ -41,7 +41,20 @@ concurrency:
 
 jobs:
 
+  prepare:
+    name: Prepare matrix
+    runs-on: ubuntu-latest  
+    steps:
+
+    - name: Build unique image name for v6_alpha
+      shell: bash
+      run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo v6_alpha_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
+
+    outputs:
+      unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"  
+
   build:
+    needs: prepare
     # Name the Job
     name: Deploy Docker Image - v6-alpha - Linters
     # Set the agent to run on
@@ -90,10 +103,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build unique image name for v6-alpha
-        shell: bash
-        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo v6-alpha_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
-
       #####################
       # Run Deploy script #
       #####################
@@ -109,13 +118,13 @@ jobs:
         shell: bash
         run: .automation/upload-docker.sh
 
-      - name: Deploy ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} image to DockerHub
+      - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
+          IMAGE_VERSION: "${{ needs.prepare.outputs.unique_docker_image_name }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
           ALWAYS_BUILD: force

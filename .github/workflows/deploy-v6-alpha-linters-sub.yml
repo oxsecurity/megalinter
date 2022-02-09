@@ -41,7 +41,30 @@ concurrency:
 
 jobs:
 
+  prepare:
+    name: Prepare matrix
+    runs-on: ubuntu-latest  
+    steps:
+    - name: Get branch name (merge)
+      if: github.event_name != 'pull_request'
+      shell: bash
+      run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+
+    - name: Get branch name (pull request)
+      if: github.event_name == 'pull_request'
+      shell: bash
+      run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+
+    - name: Build unique image name for ${{ env.BRANCH_NAME }}
+      shell: bash
+      run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo ${{ env.BRANCH_NAME }}_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
+
+    outputs:
+      branch_name: "${{ env.BRANCH_NAME }}"
+      unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"   
+
   build:
+    needs: prepare
     # Name the Job
     name: Deploy Docker Image - curent branch name - Linters
     # Set the agent to run on
@@ -90,42 +113,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get branch name (merge)
-        if: github.event_name != 'pull_request'
-        shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
-
-      - name: Get branch name (pull request)
-        if: github.event_name == 'pull_request'
-        shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
-
-      - name: Build unique image name for ${{ env.BRANCH_NAME }}
-        shell: bash
-        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo ${{ env.BRANCH_NAME }}_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
-
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy ${{ env.BRANCH_NAME }} image to DockerHub
+      - name: Deploy ${{ needs.prepare.outputs.branch_name }} image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ env.BRANCH_NAME }}"
+          IMAGE_VERSION: "${{ needs.prepare.outputs.branch_name }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
         shell: bash
         run: .automation/upload-docker.sh
 
-      - name: Deploy ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} image to DockerHub
+      - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to DockerHub
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
+          IMAGE_VERSION: "${{ needs.prepare.outputs.unique_docker_image_name }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
           ALWAYS_BUILD: force
@@ -140,7 +149,7 @@ jobs:
         run: |
           TEST_KEYWORDS_TO_USE_UPPER="${{ matrix.linter }}"
           TEST_KEYWORDS_TO_USE="${TEST_KEYWORDS_TO_USE_UPPER,,}"
-          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter-only-${{ matrix.linter }}:${{ env.BRANCH_NAME }}
+          docker run -e TEST_CASE_RUN=true -e OUTPUT_FORMAT=text -e OUTPUT_FOLDER=${GITHUB_SHA} -e OUTPUT_DETAILS=detailed -e GITHUB_SHA=${GITHUB_SHA} -e PAT="${{secrets.PAT}}" -e TEST_KEYWORDS="${TEST_KEYWORDS_TO_USE}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v ${GITHUB_WORKSPACE}:/tmp/lint megalinter/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.branch_name }}
         timeout-minutes: 30
 
       ##############################################
@@ -149,7 +158,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.18
         with:
-          image-ref: 'docker.io/megalinter/megalinter-only-${{ matrix.linter }}:${{ env.BRANCH_NAME }}'
+          image-ref: 'docker.io/megalinter/megalinter-only-${{ matrix.linter }}:${{ needs.prepare.outputs.branch_name }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
