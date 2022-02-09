@@ -618,7 +618,7 @@ ValidateInput
 if [ "$ALWAYS_BUILD" != "force" ]; then
   FindBuiltImage
 else
-  FOUND_IMAGE=0
+  FOUND_IMAGE=1
   echo "skip find build image as ALWAYS_BUILD is force"
 fi
 
