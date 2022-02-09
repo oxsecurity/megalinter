@@ -381,6 +381,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
     && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
+
 # chktex installation
 COPY --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc

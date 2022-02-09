@@ -111,8 +111,11 @@ Usage: shellcheck [OPTIONS...] FILES...
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
-    && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+    && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && shellcheck --version
 
 ```
