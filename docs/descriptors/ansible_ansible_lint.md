@@ -4,6 +4,7 @@
 
 ## ansible-lint documentation
 
+- Version in MegaLinter: **5.3.2**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
@@ -82,51 +83,59 @@ ansible-lint -v -c .ansible-lint
 ### Help content
 
 ```shell
-usage: ansible-lint [-h] [-L] [-f {rich,plain,rst}] [-q] [-p]
-                    [--parseable-severity] [--progressive] [-r RULESDIR] [-R]
+usage: ansible-lint [-h] [-L] [-f {rich,plain,rst,codeclimate,quiet,pep8}]
+                    [-q] [-p] [--parseable-severity] [--progressive]
+                    [--project-dir PROJECT_DIR] [-r RULESDIR] [-R]
                     [--show-relpath] [-t TAGS] [-T] [-v] [-x SKIP_LIST]
-                    [-w WARN_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--version]
-                    [playbook [playbook ...]]
+                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
+                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
+                    [--offline] [--version]
+                    [lintables ...]
 
 positional arguments:
-  playbook              One or more files or paths. When missing it will
+  lintables             One or more files or paths. When missing it will
                         enable auto-detection mode.
 
 optional arguments:
   -h, --help            show this help message and exit
   -L                    list all the rules
-  -f {rich,plain,rst}   Format used rules output, (default: rich)
-  -q                    quieter, although not silent output
-  -p                    parseable output in the format of pep8
+  -f {rich,plain,rst,codeclimate,quiet,pep8}
+                        Format used rules output, (default: rich)
+  -q                    quieter, reduce verbosity, can be specified twice.
+  -p                    parseable output, same as '-f pep8'
   --parseable-severity  parseable output including severity of rule
   --progressive         Return success if it detects a reduction in number of
                         violations compared with previous git commit. This
                         feature works only in git repositories.
+  --project-dir PROJECT_DIR
+                        Location of project/repository, autodetected based on
+                        location of configuration file.
   -r RULESDIR           Specify custom rule directories. Add -R to keep using
-                        embedded rules from /usr/lib/python3.8/site-
+                        embedded rules from /usr/local/lib/python3.9/site-
                         packages/ansiblelint/rules
   -R                    Keep default rules when using -r
   --show-relpath        Display path relative to CWD
   -t TAGS               only check rules whose id/tags match these values
   -T                    list all the tags
-  -v                    Increase verbosity level
+  -v                    Increase verbosity level (-vv for more)
   -x SKIP_LIST          only check rules whose id/tags do not match these
                         values
   -w WARN_LIST          only warn about these rules, unless overridden in
                         config file defaults to 'experimental'
-  --nocolor             disable colored output
-  --force-color         Try force colored output (relying on ansible's code)
+  --enable-list ENABLE_LIST
+                        activate optional rules by their tag name
+  --nocolor             disable colored output, same as NO_COLOR=1
+  --force-color         Force colored output, same as FORCE_COLOR=1
   --exclude EXCLUDE_PATHS
                         path to directories or files to skip. This option is
                         repeatable.
   -c CONFIG_FILE        Specify configuration file to use. Defaults to
                         ".ansible-lint"
-  --version             show program's version number and exit
+  --offline             Disable installation of requirements.yml
+  --version
 ```
 
 ### Installation on mega-linter Docker image
 
-- APK packages (Linux):
-  - [ansible](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible)
-  - [ansible-lint](https://pkgs.alpinelinux.org/packages?branch=edge&name=ansible-lint)
+- PIP packages (Python):
+  - [ansible-lint[community,yamllint]](https://pypi.org/project/ansible-lint[community,yamllint])

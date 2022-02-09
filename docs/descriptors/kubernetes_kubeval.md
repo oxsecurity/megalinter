@@ -106,9 +106,12 @@ Flags:
 
 - Dockerfile commands :
 ```dockerfile
-RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    && tar xf kubeval-linux-amd64.tar.gz \
-    && cp kubeval /usr/local/bin
+RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+    && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 ```
 

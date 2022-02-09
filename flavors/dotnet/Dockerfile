@@ -234,6 +234,7 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
     && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
+
 # powershell installation
 RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force'
 
