@@ -102,7 +102,7 @@ jobs:
 
       - name: Build unique image name for ${{ env.BRANCH_NAME }}
         shell: bash
-        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo "${{ env.BRANCH_NAME }}$(date '+%Y%m%d%H%M')" | tr / -)" >> $GITHUB_ENV
+        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo ${{ env.BRANCH_NAME }}$(date '+%Y%m%d%H%M'))" >> $GITHUB_ENV
 
       #####################
       # Run Deploy script #
