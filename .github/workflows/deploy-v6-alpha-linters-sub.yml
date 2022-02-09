@@ -107,18 +107,6 @@ jobs:
       #####################
       # Run Deploy script #
       #####################
-      - name: Deploy ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} image to DockerHub
-        env:
-          # Set the Env Vars
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
-          IMAGE_VERSION: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
-          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
-          REGISTRY: Docker
-        shell: bash
-        run: .automation/upload-docker.sh
-
       - name: Deploy ${{ env.BRANCH_NAME }} image to DockerHub
         env:
           # Set the Env Vars
@@ -128,6 +116,19 @@ jobs:
           IMAGE_VERSION: "${{ env.BRANCH_NAME }}"
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      - name: Deploy ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
+          IMAGE_VERSION: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
+          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
+          REGISTRY: Docker
+          ALWAYS_BUILD: "true"
         shell: bash
         run: .automation/upload-docker.sh
 
