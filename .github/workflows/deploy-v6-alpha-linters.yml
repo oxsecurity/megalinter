@@ -90,6 +90,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Build unique image name for v6-alpha
+        shell: bash
+        run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo v6-alpha_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
+
       #####################
       # Run Deploy script #
       #####################
@@ -102,6 +106,19 @@ jobs:
           IMAGE_VERSION: v6-alpha
           DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
           REGISTRY: Docker
+        shell: bash
+        run: .automation/upload-docker.sh
+
+      - name: Deploy ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} image to DockerHub
+        env:
+          # Set the Env Vars
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_REPO: megalinter/megalinter-only-${{ matrix.linter }}
+          IMAGE_VERSION: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"
+          DOCKERFILE_PATH: linters/${{ matrix.linter }}/Dockerfile
+          REGISTRY: Docker
+          ALWAYS_BUILD: force
         shell: bash
         run: .automation/upload-docker.sh
 

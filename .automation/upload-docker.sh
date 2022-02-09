@@ -26,6 +26,7 @@ GCR_TOKEN="${GCR_TOKEN}"                 # Password to login to GitHub package r
 REGISTRY="${REGISTRY}"                   # What registry to upload | <GCR> or <Docker>
 IMAGE_REPO="${IMAGE_REPO}"               # Image repo to upload the image
 IMAGE_VERSION="${IMAGE_VERSION}"         # Version to tag the image
+ALWAYS_BUILD="${ALWAYS_BUILD}"           # Always build image even if another has been found
 DOCKERFILE_PATH="${DOCKERFILE_PATH}"     # Path to the Dockerfile to be uploaded
 MAJOR_TAG=''                             # Major tag version if we need to update it
 UPDATE_MAJOR_TAG=0                       # Flag to deploy the major tag version as well
@@ -614,7 +615,12 @@ ValidateInput
 ###############################
 # Find Image if already built #
 ###############################
-FindBuiltImage
+if [ "$ALWAYS_BUILD" != "force" ]; then
+  FindBuiltImage
+else
+  FOUND_IMAGE=1
+  echo "skip find build image as ALWAYS_BUILD is force"
+fi
 
 ###################
 # Build the image #
