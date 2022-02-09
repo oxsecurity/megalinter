@@ -100,8 +100,7 @@ jobs:
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
-      - name: Get unique image name
-        if: github.event_name == 'pull_request'
+      - name: Build unique image name for ${{ env.BRANCH_NAME }}
         shell: bash
         run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo "${{ env.BRANCH_NAME }}$(date '+%Y%m%d%H%M')" | tr / -)" >> $GITHUB_ENV
 
