@@ -59,6 +59,10 @@ jobs:
       shell: bash
       run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo ${{ env.BRANCH_NAME }}_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
 
+    - name: Prepare result is ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
+      shell: bash
+      run: echo ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}    
+
     outputs:
       branch_name: "${{ env.BRANCH_NAME }}"
       unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"   
@@ -66,7 +70,7 @@ jobs:
   build:
     needs: prepare
     # Name the Job
-    name: Deploy Docker Image - curent branch name - Linters
+    name: Deploy Docker Image - unique tag - Linters
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:

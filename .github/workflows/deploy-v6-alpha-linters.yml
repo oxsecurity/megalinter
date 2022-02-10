@@ -50,6 +50,10 @@ jobs:
       shell: bash
       run: echo "UNIQUE_DOCKER_IMAGE_NAME=$(echo v6_alpha_$(date '+%Y%m%d-%H%M'))" >> $GITHUB_ENV
 
+    - name: Prepare result is ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}
+      shell: bash
+      run: echo ${{ env.UNIQUE_DOCKER_IMAGE_NAME }}  
+
     outputs:
       unique_docker_image_name: "${{ env.UNIQUE_DOCKER_IMAGE_NAME }}"  
 
