@@ -70,7 +70,7 @@ jobs:
   build:
     needs: prepare
     # Name the Job
-    name: Deploy Docker Image - ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} - Linters
+    name: Deploy Docker Image - unique tag - Linters
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:

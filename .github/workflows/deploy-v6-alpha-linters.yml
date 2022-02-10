@@ -60,7 +60,7 @@ jobs:
   build:
     needs: prepare
     # Name the Job
-    name: Deploy Docker Image - v6-alpha and ${{ env.UNIQUE_DOCKER_IMAGE_NAME }} - Linters
+    name: Deploy Docker Image - v6-alpha - Linters
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     strategy:
