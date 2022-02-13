@@ -38,7 +38,7 @@ extra:
     provider: mike
     default: latest
   social:
-    - icon: fontawesome/regular/question-circle
+    - icon: fontawesome/regular/circle-question
       link: https://github.com/megalinter/megalinter/issues
       title: Need help ? Post an issue :)
     - icon: fontawesome/brands/github
