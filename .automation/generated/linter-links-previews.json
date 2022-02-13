@@ -99,6 +99,11 @@
     "image": "https://avatars0.githubusercontent.com/u/9141961?s=400&v=4",
     "title": "dotnet/format"
   },
+  "dustilock": {
+    "description": "DustiLock is a tool to find which of your dependencies is susceptible to a Dependency Confusion attack. - GitHub - Checkmarx/dustilock: DustiLock is a tool to find which of your dependencies is sus...",
+    "image": "https://repository-images.githubusercontent.com/338069320/e23e3b0b-48e4-4bf3-a662-9deddcddfbd4",
+    "title": "GitHub - Checkmarx/dustilock: DustiLock is a tool to find which of your dependencies is susceptible to a Dependency Confusion attack."
+  },
   "editorconfig-checker": {
     "description": "A tool to verify that your files are in harmony with your .editorconfig - editorconfig-checker/editorconfig-checker",
     "image": "https://avatars0.githubusercontent.com/u/26415196?s=400&v=4",

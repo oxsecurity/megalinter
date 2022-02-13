@@ -92,6 +92,7 @@ jobs:
             "php_psalm",
             "python_bandit",
             "repository_devskim",
+            "repository_dustilock",
             "repository_gitleaks",
             "repository_semgrep",
             "repository_syft",

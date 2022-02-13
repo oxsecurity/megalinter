@@ -720,6 +720,7 @@
             "KUBERNETES_KUBEVAL",
             "PYTHON_BANDIT",
             "REPOSITORY_DEVSKIM",
+            "REPOSITORY_DUSTILOCK",
             "REPOSITORY_GITLEAKS",
             "REPOSITORY_SECRETLINT",
             "REPOSITORY_SEMGREP",

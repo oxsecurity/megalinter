@@ -14,6 +14,7 @@
 | PHP_PSALM                | megalinter/megalinter-only-php_psalm:v6-alpha                |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-php_psalm/v6-alpha)         |
 | PYTHON_BANDIT            | megalinter/megalinter-only-python_bandit:v6-alpha            |      ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-python_bandit/v6-alpha)       |
 | REPOSITORY_DEVSKIM       | megalinter/megalinter-only-repository_devskim:v6-alpha       |    ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_devskim/v6-alpha)    |
+| REPOSITORY_DUSTILOCK     | megalinter/megalinter-only-repository_dustilock:v6-alpha     |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_dustilock/v6-alpha)   |
 | REPOSITORY_GITLEAKS      | megalinter/megalinter-only-repository_gitleaks:v6-alpha      |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_gitleaks/v6-alpha)    |
 | REPOSITORY_SEMGREP       | megalinter/megalinter-only-repository_semgrep:v6-alpha       |    ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_semgrep/v6-alpha)    |
 | REPOSITORY_SYFT          | megalinter/megalinter-only-repository_syft:v6-alpha          |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_syft/v6-alpha)      |

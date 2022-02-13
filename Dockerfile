@@ -466,6 +466,18 @@ ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$
 # ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN dotnet tool install --global Microsoft.CST.DevSkim.CLI
 
+# dustilock installation
+RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
+    mkdir -p ${ML_THIRD_PARTY_DIR} && \
+    git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
+    cd ${ML_THIRD_PARTY_DIR} && \
+    go build && \
+    chmod +x dustilock && \
+    mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
+    find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+    
+
+
 # gitleaks installation
 COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
