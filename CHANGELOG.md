@@ -24,6 +24,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linters:
   - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
   - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
+  - Add [dustilock](https://github.com/Checkmarx/dustilock) to check for dependency confusion attacks with node and python packages
   - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
   - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
   - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
