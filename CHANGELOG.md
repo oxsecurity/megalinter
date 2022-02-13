@@ -46,6 +46,13 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.812 to **2.0.813** on 2022-02-09
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.4 to **6.15.5** on 2022-02-10
   - [checkov](https://www.checkov.io/) from 2.0.813 to **2.0.817** on 2022-02-10
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.3.2 to **5.4.0** on 2022-02-13
+  - [stylelint](https://stylelint.io) from 14.4.0 to **14.5.0** on 2022-02-13
+  - [eslint](https://eslint.org) from 8.8.0 to **8.9.0** on 2022-02-13
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.36.0 to **0.37.0** on 2022-02-13
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.4 to **0.10.0** on 2022-02-13
+  - [checkov](https://www.checkov.io/) from 2.0.817 to **2.0.830** on 2022-02-13
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.0 to **1.13.1** on 2022-02-13
 <!-- linter-versions-end -->
 
 ## [v5.7.1] - 2022-02-02
