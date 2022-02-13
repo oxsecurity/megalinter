@@ -15,6 +15,7 @@
     "dockerfilelint": "MIT",
     "dotenv-linter": "MIT",
     "dotnet-format": "MIT",
+    "dustilock": "Apache-2.0",
     "editorconfig-checker": "MIT",
     "eslint": "MIT",
     "eslint-plugin-jsonc": "MIT",

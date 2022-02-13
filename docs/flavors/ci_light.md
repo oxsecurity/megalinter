@@ -19,7 +19,7 @@ Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML
 
 | <!-- --> | Language | Linter | Configuration key | Additional  |
 | :---: | ----------------- | -------------- | ------------ | :-----:  |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/groovy.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GROOVY**](https://megalinter.github.io/v6-alpha/descriptors/groovy/) | [npm-groovy-lint](https://megalinter.github.io/v6-alpha/descriptors/groovy_npm_groovy_lint/)| [GROOVY_NPM_GROOVY_LINT](https://megalinter.github.io/v6-alpha/descriptors/groovy_npm_groovy_lint/)| [![GitHub stars](https://img.shields.io/github/stars/nvuillam/npm-groovy-lint?cacheSeconds=3600)](https://github.com/nvuillam/npm-groovy-lint) ![autofix](https://shields.io/badge/-autofix-green)
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/groovy.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GROOVY**](https://megalinter.github.io/v6-alpha/descriptors/groovy/) | [npm-groovy-lint](https://megalinter.github.io/v6-alpha/descriptors/groovy_npm_groovy_lint/)| [GROOVY_NPM_GROOVY_LINT](https://megalinter.github.io/v6-alpha/descriptors/groovy_npm_groovy_lint/)| [![GitHub stars](https://img.shields.io/github/stars/nvuillam/npm-groovy-lint?cacheSeconds=3600)](https://github.com/nvuillam/npm-groovy-lint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange)
 
 ### Formats
 

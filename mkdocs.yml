@@ -271,11 +271,13 @@ nav:
           - "REPOSITORY":
               - "All REPOSITORY linters": "descriptors/repository.md"
               - "devskim": "descriptors/repository_devskim.md"
+              - "dustilock": "descriptors/repository_dustilock.md"
               - "git_diff": "descriptors/repository_git_diff.md"
               - "gitleaks": "descriptors/repository_gitleaks.md"
               - "goodcheck": "descriptors/repository_goodcheck.md"
               - "secretlint": "descriptors/repository_secretlint.md"
               - "semgrep": "descriptors/repository_semgrep.md"
+              - "syft": "descriptors/repository_syft.md"
               - "trivy": "descriptors/repository_trivy.md"
           - "SPELL":
               - "All SPELL linters": "descriptors/spell.md"
