@@ -134,6 +134,7 @@ jobs:
         run: .automation/upload-docker.sh
 
       - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to DockerHub
+        if: ${{ secrets.BUILD_BRANCH_UNIQUE_DOCKER_IMAGE }} == 'true'
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
