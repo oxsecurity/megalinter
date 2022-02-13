@@ -8,7 +8,7 @@ import logging
 import os
 
 from megalinter import Reporter, config
-from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME, DEFAULT_SARIF_SCHEMA_URI, ML_DOC_URL
+from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME, DEFAULT_SARIF_SCHEMA_URI, DEFAULT_SARIF_VERSION, ML_DOC_URL
 
 
 class SarifReporter(Reporter):
