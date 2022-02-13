@@ -52,6 +52,39 @@ linters:
         - name: VsCode DevSkim
           url: https://marketplace.visualstudio.com/items?itemName=MS-CST-E.vscode-devskim
 
+  # DUSTILOCK
+  - class: DustilockLinter
+    linter_name: dustilock
+    can_output_sarif: true
+    descriptor_flavors:
+      - all
+      - security
+    linter_url: https://github.com/Checkmarx/dustilock
+    linter_repo: https://github.com/Checkmarx/dustilock
+    linter_banner_image_url: https://user-images.githubusercontent.com/1287098/142776854-83abf265-a1ba-485f-a8b6-995da7f7ef8b.png
+    cli_lint_mode: project
+    cli_lint_extra_args:
+      - --recursive
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "(error )"
+    linter_version_cache: "0.0.0"
+    test_folder: dustilock
+    examples:
+      - "dustilock"
+    install:
+      apk:
+        - go
+      dockerfile:
+        - |
+          RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
+              mkdir -p ${ML_THIRD_PARTY_DIR} && \
+              git clone https://github.com/Checkmarx/dustilock.git ${ML_THIRD_PARTY_DIR} && \
+              cd ${ML_THIRD_PARTY_DIR} && \
+              go build && \
+              chmod +x dustilock && \
+              mv "${ML_THIRD_PARTY_DIR}/dustilock" /usr/bin/ && \
+              find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+              
   # GIT_DIFF
   - linter_name: git_diff
     lint_all_files: true

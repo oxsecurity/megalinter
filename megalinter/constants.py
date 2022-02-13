@@ -12,4 +12,6 @@ ML_DOCKER_IMAGE_LEGACY = "nvuillam/mega-linter"
 DEFAULT_DOCKER_WORKSPACE_DIR = "/tmp/lint"
 DEFAULT_REPORT_FOLDER_NAME = "megalinter-reports"
 DEFAULT_SARIF_REPORT_FILE_NAME = "megalinter-report.sarif"
+DEFAULT_SARIF_SCHEMA_URI = "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json"
+DEFAULT_SARIF_VERSION = "2.1.0"
 DEFAULT_RELEASE = "v6-alpha"  # TODOv6 : replace with v6

@@ -160,6 +160,7 @@
         "R_LINTR",
         "RAKU_RAKU",
         "REPOSITORY_DEVSKIM",
+        "REPOSITORY_DUSTILOCK",
         "REPOSITORY_GIT_DIFF",
         "REPOSITORY_GITLEAKS",
         "REPOSITORY_GOODCHECK",
@@ -8687,6 +8688,92 @@
       "title": "REPOSITORY_DEVSKIM: Define or override a list of bash commands to run before the linter",
       "type": "array"
     },
+    "REPOSITORY_DUSTILOCK_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_ARGUMENTS",
+      "description": "REPOSITORY_DUSTILOCK: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DUSTILOCK: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_DUSTILOCK_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_DUSTILOCK: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_DUSTILOCK: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_DUSTILOCK_FILE_EXTENSIONS": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DUSTILOCK: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "REPOSITORY_DUSTILOCK_FILE_NAMES_REGEX": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_DUSTILOCK: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "REPOSITORY_DUSTILOCK_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_DUSTILOCK: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_DUSTILOCK_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_DUSTILOCK_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_DUSTILOCK: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
     "REPOSITORY_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/REPOSITORY_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for REPOSITORY descriptor",
@@ -9165,6 +9252,105 @@
       },
       "title": "REPOSITORY_SEMGREP: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "REPOSITORY_SYFT_ARGUMENTS": {
+      "$id": "#/properties/REPOSITORY_SYFT_ARGUMENTS",
+      "description": "REPOSITORY_SYFT: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SYFT: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "REPOSITORY_SYFT_CONFIG_FILE": {
+      "$id": "#/properties/REPOSITORY_SYFT_CONFIG_FILE",
+      "default": ".syft.yaml",
+      "description": "REPOSITORY_SYFT: User custom config file name if different from default",
+      "title": "REPOSITORY_SYFT: Custom config file name",
+      "type": "string"
+    },
+    "REPOSITORY_SYFT_DISABLE_ERRORS": {
+      "$id": "#/properties/REPOSITORY_SYFT_DISABLE_ERRORS",
+      "default": false,
+      "title": "REPOSITORY_SYFT: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/REPOSITORY_SYFT_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "REPOSITORY_SYFT: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "REPOSITORY_SYFT_FILE_EXTENSIONS": {
+      "$id": "#/properties/REPOSITORY_SYFT_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SYFT: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "REPOSITORY_SYFT_FILE_NAMES_REGEX": {
+      "$id": "#/properties/REPOSITORY_SYFT_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "REPOSITORY_SYFT: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "REPOSITORY_SYFT_POST_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_SYFT_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_SYFT: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "REPOSITORY_SYFT_PRE_COMMANDS": {
+      "$id": "#/properties/REPOSITORY_SYFT_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "REPOSITORY_SYFT: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
+    "REPOSITORY_SYFT_RULES_PATH": {
+      "$id": "#/properties/REPOSITORY_SYFT_RULES_PATH",
+      "description": "REPOSITORY_SYFT: Path where to find linter configuration file",
+      "title": "REPOSITORY_SYFT: Custom config file path",
+      "type": "string"
     },
     "REPOSITORY_TRIVY_ARGUMENTS": {
       "$id": "#/properties/REPOSITORY_TRIVY_ARGUMENTS",
@@ -12142,17 +12328,6 @@
         "string"
       ]
     },
-    "TERRAFORM_TERRASCAN_CLI_LINT_MODE": {
-      "$id": "#/properties/TERRAFORM_TERRASCAN_CLI_LINT_MODE",
-      "default": "file",
-      "enum": [
-        "file",
-        "list_of_files",
-        "project"
-      ],
-      "title": "TERRAFORM_TERRASCAN: Override default cli lint mode",
-      "type": "string"
-    },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
@@ -12188,16 +12363,6 @@
       },
       "title": "TERRAFORM_TERRASCAN: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE",
-      "title": "TERRAFORM_TERRASCAN: Excluding Regex",
-      "type": "string"
-    },
-    "TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE",
-      "title": "TERRAFORM_TERRASCAN: Including Regex",
-      "type": "string"
     },
     "TERRAFORM_TERRASCAN_POST_COMMANDS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_POST_COMMANDS",

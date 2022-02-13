@@ -92,6 +92,7 @@ jobs:
             "php_psalm",
             "python_bandit",
             "repository_devskim",
+            "repository_dustilock",
             "repository_gitleaks",
             "repository_semgrep",
             "repository_syft",
@@ -133,6 +134,7 @@ jobs:
         run: .automation/upload-docker.sh
 
       - name: Deploy ${{ needs.prepare.outputs.unique_docker_image_name }} image to DockerHub
+        if: env.BUILD_BRANCH_UNIQUE_DOCKER_IMAGE == 'true'
         env:
           # Set the Env Vars
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
