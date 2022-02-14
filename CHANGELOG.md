@@ -53,6 +53,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 0.9.4 to **0.10.0** on 2022-02-13
   - [checkov](https://www.checkov.io/) from 2.0.817 to **2.0.830** on 2022-02-13
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.0 to **1.13.1** on 2022-02-13
+  - [checkov](https://www.checkov.io/) from 2.0.830 to **2.0.833** on 2022-02-14
 <!-- linter-versions-end -->
 
 ## [v5.7.1] - 2022-02-02
