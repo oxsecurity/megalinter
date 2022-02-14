@@ -6,20 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (beta, main branch content)
 
+Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
+
 - Linters
   - Improve ansible-lint performances by linting all project in one call, and count number of errors
+  - Use project cli_lint_mode to improve performances
+    - terrascan
 
 - Fixes
   - Manage to use local certificate with Gitlab comments reporter using GITLAB_SSL_CERTIFICATE_PATH ([#1239](https://github.com/megalinter/megalinter/issues/1239))
   - Fix GITLAB_ACCESS_TOKEN_MEGALINTER suggestion when trying to push comments to gitlab merge request
-
-Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
+  - Gitlab Comments Reporter: allow to use certificates with variable GITLAB_CUSTOM_CERTIFICATE (or GITLAB_CERTIFICATE_PATH only if [PRE_COMMANDS](https://megalinter.github.io/configuration/#pre-commands) are used) ([#1239](https://github.com/megalinter/megalinter/issues/1239))
 
 - Core
   - Allow to check prop existence in active_only_if_file_found and apply to eslint descriptors ([#1205](https://github.com/megalinter/megalinter/issues/1205))
-
-- Fixes
-  - Gitlab Comments Reporter: allow to use certificates with variable GITLAB_CUSTOM_CERTIFICATE (or GITLAB_CERTIFICATE_PATH only if [PRE_COMMANDS](https://megalinter.github.io/configuration/#pre-commands) are used) ([#1239](https://github.com/megalinter/megalinter/issues/1239))
 
 - Doc
   - Update images with screen records gifs
