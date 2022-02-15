@@ -6314,9 +6314,14 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
+<p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
 <li>Linters<ul>
 <li>Improve ansible-lint performances by linting all project in one call, and count number of errors</li>
+<li>Use project cli_lint_mode to improve performances<ul>
+<li>terrascan</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -6324,19 +6329,13 @@
 <li>Fixes<ul>
 <li>Manage to use local certificate with Gitlab comments reporter using GITLAB_SSL_CERTIFICATE_PATH (<a href="https://github.com/megalinter/megalinter/issues/1239">#1239</a>)</li>
 <li>Fix GITLAB_ACCESS_TOKEN_MEGALINTER suggestion when trying to push comments to gitlab merge request</li>
+<li>Gitlab Comments Reporter: allow to use certificates with variable GITLAB_CUSTOM_CERTIFICATE (or GITLAB_CERTIFICATE_PATH only if <a href="https://megalinter.github.io/configuration/#pre-commands">PRE_COMMANDS</a> are used) (<a href="https://github.com/megalinter/megalinter/issues/1239">#1239</a>)</li>
 </ul>
 </li>
 </ul>
-<p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
 <li>Core<ul>
 <li>Allow to check prop existence in active_only_if_file_found and apply to eslint descriptors (<a href="https://github.com/megalinter/megalinter/issues/1205">#1205</a>)</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Fixes<ul>
-<li>Gitlab Comments Reporter: allow to use certificates with variable GITLAB_CUSTOM_CERTIFICATE (or GITLAB_CERTIFICATE_PATH only if <a href="https://megalinter.github.io/configuration/#pre-commands">PRE_COMMANDS</a> are used) (<a href="https://github.com/megalinter/megalinter/issues/1239">#1239</a>)</li>
 </ul>
 </li>
 </ul>
