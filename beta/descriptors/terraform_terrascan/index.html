@@ -5507,21 +5507,6 @@
 <td></td>
 </tr>
 <tr>
-<td>TERRAFORM_TERRASCAN_FILTER_REGEX_INCLUDE</td>
-<td>Custom regex including filter<br/>Ex: <code>(src\|lib)</code></td>
-<td>Include every file</td>
-</tr>
-<tr>
-<td>TERRAFORM_TERRASCAN_FILTER_REGEX_EXCLUDE</td>
-<td>Custom regex excluding filter<br/>Ex: <code>(test\|examples)</code></td>
-<td>Exclude no file</td>
-</tr>
-<tr>
-<td>TERRAFORM_TERRASCAN_CLI_LINT_MODE</td>
-<td>Override default CLI lint mode<br/>- <code>file</code>: Calls the linter for each file<br/>- <code>list_of_files</code>: Call the linter with the list of files as argument<br/>- <code>project</code>: Call the linter from the root of the project</td>
-<td><code>file</code></td>
-</tr>
-<tr>
 <td>TERRAFORM_TERRASCAN_FILE_EXTENSIONS</td>
 <td>Allowed file extensions. <code>"*"</code> matches any extension, <code>""</code> matches empty extension. Empty list excludes all files<br/>Ex: <code>[".py", ""]</code></td>
 <td><code>[".tf"]</code></td>
@@ -5540,6 +5525,16 @@
 <td>TERRAFORM_TERRASCAN_POST_COMMANDS</td>
 <td>List of bash commands to run after the linter</td>
 <td>None</td>
+</tr>
+<tr>
+<td>TERRAFORM_TERRASCAN_CONFIG_FILE</td>
+<td>terrascan configuration file name</br>Use <code>LINTER_DEFAULT</code> to let the linter find it</td>
+<td><code>terrascan-config.toml</code></td>
+</tr>
+<tr>
+<td>TERRAFORM_TERRASCAN_RULES_PATH</td>
+<td>Path where to find linter configuration file</td>
+<td>Workspace folder, then MegaLinter default rules</td>
 </tr>
 <tr>
 <td>TERRAFORM_TERRASCAN_DISABLE_ERRORS</td>
@@ -5590,8 +5585,10 @@
 <!-- markdownlint-disable -->
 <!-- /* cSpell:disable */ -->
 <h3 id="how-the-linting-is-performed">How the linting is performed</h3>
+<p>terrascan is called once on the whole project directory</p>
 <ul>
-<li>terrascan is called one time by identified file</li>
+<li>filtering can not be done using MegaLinter configuration variables,it must be done using terrascan configuration or ignore file (if existing)</li>
+<li><code>VALIDATE_ALL_CODEBASE: false</code> does not make terrascan analyze only updated files</li>
 </ul>
 <h3 id="example-calls">Example calls</h3>
 <pre><code class="language-shell">terrascan scan -i terraform -t all -f myfile.tf
