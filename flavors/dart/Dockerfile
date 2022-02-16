@@ -33,6 +33,8 @@ ARG GLIBC_VERSION='2.31-r0'
 # Run APK installs #
 ####################
 
+WORKDIR .
+
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
     bash \
@@ -99,9 +101,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 #############################################################################################
 
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
-RUN npm install npm@latest-6 -g
-# Disable package-lock.json to avoid sudden crash. Try to remove later if possible
-RUN echo 'package-lock=false' >> .npmrc 
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
