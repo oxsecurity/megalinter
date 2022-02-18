@@ -57,6 +57,13 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [ktlint](https://ktlint.github.io) from 0.43.2 to **0.44.0** on 2022-02-16
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.4 to **5.18.5** on 2022-02-16
   - [checkov](https://www.checkov.io/) from 2.0.833 to **2.0.853** on 2022-02-16
+  - [stylelint](https://stylelint.io) from 14.5.0 to **14.5.1** on 2022-02-18
+  - [golangci-lint](https://golangci-lint.run/) from 1.44.0 to **1.44.2** on 2022-02-18
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.1.0 to **2.2.1** on 2022-02-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.10.0 to **0.10.1** on 2022-02-18
+  - [checkov](https://www.checkov.io/) from 2.0.853 to **2.0.866** on 2022-02-18
+  - [kics](https://www.kics.io) from 1.5.1 to **1.5.2** on 2022-02-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.5 to **1.1.6** on 2022-02-18
 <!-- linter-versions-end -->
 
 ## [v5.7.1] - 2022-02-02
