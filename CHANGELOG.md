@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.8.0] - 2022-02-18
+
 - Linters
   - Improve ansible-lint performances by linting all project in one call, and count number of errors
   - Use project cli_lint_mode to improve performances
@@ -26,46 +31,45 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Add publish artifact task in azure pipelines doc
 
 - Linter versions upgrades
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.4 to **1.1.5** on 2022-02-03
-  - [rubocop](https://rubocop.org/) from 1.25.0 to **1.25.1** on 2022-02-03
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.3.2 to **5.4.0** on 2022-02-13
   - [checkov](https://www.checkov.io/) from 2.0.782 to **2.0.783** on 2022-02-03
   - [checkov](https://www.checkov.io/) from 2.0.783 to **2.0.786** on 2022-02-03
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.0 to **5.18.3** on 2022-02-05
   - [checkov](https://www.checkov.io/) from 2.0.786 to **2.0.791** on 2022-02-05
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.30.0 to **0.31.0** on 2022-02-06
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.1 to **6.15.2** on 2022-02-06
   - [checkov](https://www.checkov.io/) from 2.0.791 to **2.0.793** on 2022-02-06
-  - [phpstan](https://phpstan.org/) from 1.4.5 to **1.4.6** on 2022-02-06
   - [checkov](https://www.checkov.io/) from 2.0.793 to **2.0.795** on 2022-02-06
-  - [stylelint](https://stylelint.io) from 14.3.0 to **14.4.0** on 2022-02-09
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.2 to **6.15.3** on 2022-02-09
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.3 to **5.18.4** on 2022-02-09
   - [checkov](https://www.checkov.io/) from 2.0.795 to **2.0.812** on 2022-02-09
-  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.0 to **0.31.1** on 2022-02-09
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.3 to **6.15.4** on 2022-02-09
   - [checkov](https://www.checkov.io/) from 2.0.812 to **2.0.813** on 2022-02-09
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.4 to **6.15.5** on 2022-02-10
   - [checkov](https://www.checkov.io/) from 2.0.813 to **2.0.817** on 2022-02-10
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.3.2 to **5.4.0** on 2022-02-13
-  - [stylelint](https://stylelint.io) from 14.4.0 to **14.5.0** on 2022-02-13
-  - [eslint](https://eslint.org) from 8.8.0 to **8.9.0** on 2022-02-13
-  - [protolint](https://github.com/yoheimuta/protolint) from 0.36.0 to **0.37.0** on 2022-02-13
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.4 to **0.10.0** on 2022-02-13
   - [checkov](https://www.checkov.io/) from 2.0.817 to **2.0.830** on 2022-02-13
-  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.0 to **1.13.1** on 2022-02-13
   - [checkov](https://www.checkov.io/) from 2.0.830 to **2.0.833** on 2022-02-14
-  - [ktlint](https://ktlint.github.io) from 0.43.2 to **0.44.0** on 2022-02-16
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.4 to **5.18.5** on 2022-02-16
   - [checkov](https://www.checkov.io/) from 2.0.833 to **2.0.853** on 2022-02-16
-  - [stylelint](https://stylelint.io) from 14.5.0 to **14.5.1** on 2022-02-18
-  - [golangci-lint](https://golangci-lint.run/) from 1.44.0 to **1.44.2** on 2022-02-18
-  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.1.0 to **2.2.1** on 2022-02-18
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.10.0 to **0.10.1** on 2022-02-18
   - [checkov](https://www.checkov.io/) from 2.0.853 to **2.0.866** on 2022-02-18
-  - [kics](https://www.kics.io) from 1.5.1 to **1.5.2** on 2022-02-18
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.5 to **1.1.6** on 2022-02-18
   - [checkov](https://www.checkov.io/) from 2.0.866 to **2.0.873** on 2022-02-18
-<!-- linter-versions-end -->
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.0 to **5.18.3** on 2022-02-05
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.3 to **5.18.4** on 2022-02-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.4 to **5.18.5** on 2022-02-16
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.1.0 to **2.2.1** on 2022-02-18
+  - [eslint](https://eslint.org) from 8.8.0 to **8.9.0** on 2022-02-13
+  - [golangci-lint](https://golangci-lint.run/) from 1.44.0 to **1.44.2** on 2022-02-18
+  - [kics](https://www.kics.io) from 1.5.1 to **1.5.2** on 2022-02-18
+  - [ktlint](https://ktlint.github.io) from 0.43.2 to **0.44.0** on 2022-02-16
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.30.0 to **0.31.0** on 2022-02-06
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.31.0 to **0.31.1** on 2022-02-09
+  - [phpstan](https://phpstan.org/) from 1.4.5 to **1.4.6** on 2022-02-06
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.36.0 to **0.37.0** on 2022-02-13
+  - [rubocop](https://rubocop.org/) from 1.25.0 to **1.25.1** on 2022-02-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.1 to **6.15.2** on 2022-02-06
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.2 to **6.15.3** on 2022-02-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.3 to **6.15.4** on 2022-02-09
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.4 to **6.15.5** on 2022-02-10
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.10.0 to **0.10.1** on 2022-02-18
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.9.4 to **0.10.0** on 2022-02-13
+  - [stylelint](https://stylelint.io) from 14.3.0 to **14.4.0** on 2022-02-09
+  - [stylelint](https://stylelint.io) from 14.4.0 to **14.5.0** on 2022-02-13
+  - [stylelint](https://stylelint.io) from 14.5.0 to **14.5.1** on 2022-02-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.4 to **1.1.5** on 2022-02-03
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.5 to **1.1.6** on 2022-02-18
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.0 to **1.13.1** on 2022-02-13
 
 ## [v5.7.1] - 2022-02-02
 
