@@ -115,7 +115,6 @@ USAGE:
   -v  print debugging information
   -verbose
       print debugging information
-
   -version
       print the version number
 
