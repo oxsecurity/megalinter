@@ -33,7 +33,7 @@ FROM python:3.9.7-alpine3.13
 # Run APK installs #
 ####################
 
-WORKDIR .
+WORKDIR /
 
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \

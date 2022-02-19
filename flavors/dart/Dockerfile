@@ -33,7 +33,7 @@ ARG GLIBC_VERSION='2.31-r0'
 # Run APK installs #
 ####################
 
-WORKDIR .
+WORKDIR /
 
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \

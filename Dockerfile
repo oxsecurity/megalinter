@@ -45,7 +45,7 @@ ARG PSSA_VERSION='latest'
 # Run APK installs #
 ####################
 
-WORKDIR .
+WORKDIR /
 
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
