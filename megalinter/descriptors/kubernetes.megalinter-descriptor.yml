@@ -43,8 +43,8 @@ linters:
       - -cache
       - /tmp/
     cli_lint_mode: list_of_files
-    cli_lint_errors_count: regex_number
-    cli_lint_errors_regex: "Errors: (\\d+),"
+    cli_lint_errors_count: regex_sum
+    cli_lint_errors_regex: "Invalid: ([0-9]+)|Errors: ([0-9]+)"
     linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
     linter_text: |
       `kubeconform` is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than `kubeval`.
