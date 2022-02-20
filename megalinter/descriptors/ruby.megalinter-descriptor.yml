@@ -21,8 +21,6 @@ linters:
     linter_rules_inline_disable_url: https://docs.rubocop.org/rubocop/0.92/configuration.html#disabling-cops-within-source-code
     linter_megalinter_ref_url: https://docs.rubocop.org/rubocop/integration_with_other_tools.html#mega-linter-integration
     config_file_name: .ruby-lint.yml
-    cli_lint_extra_args:
-      - "--force-exclusion"
     cli_lint_fix_arg_name: "--safe-auto-correct"
     examples:
       - "rubocop --force-exclusion myfile.rb"
