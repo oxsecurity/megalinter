@@ -140,6 +140,7 @@
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
+        "KUBERNETES_KUBECONFORM",
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "MARKDOWN_MARKDOWNLINT",

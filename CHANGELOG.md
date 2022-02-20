@@ -11,6 +11,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Linter versions upgrades
 <!-- linter-versions-end -->
 
+- New linter `kubeconform` to validate Kubernetes manifests with updated schemas
+
 ## [v5.8.0] - 2022-02-18
 
 - Linters
