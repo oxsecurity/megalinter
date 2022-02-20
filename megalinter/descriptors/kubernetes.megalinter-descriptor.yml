@@ -38,8 +38,10 @@ linters:
     linter_url: https://github.com/yannh/kubeconform
     linter_version_cache: v0.4.12
     cli_help_arg_name: "-h"
-    cli_config_extra_args:
-      - "-summary -cache /tmp/"
+    cli_lint_extra_args:
+      - -summary
+      - -cache
+      - /tmp/
     cli_lint_mode: list_of_files
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Errors: (\\d+),"

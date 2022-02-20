@@ -640,6 +640,7 @@
         "ktlint",
         "kubernetes",
         "kubeval",
+        "kubeconform",
         "kucherenko",
         "kuhyenmk",
         "kustomize",
