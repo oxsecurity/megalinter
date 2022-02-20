@@ -17,12 +17,12 @@ MD_FILES=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path 
 MD_FILES_2=$(find . -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.automation/*" -path "*/licenses/*") && npx markdown-table-formatter $MD_FILES_2
 
 # Format JSON schema HTML documentation if --doc is set
-for i in "$@" ; do
-    if [[ $i == "--doc" ]] ; then
-        echo "Generating JSON Schema HTML documentation"
-        cd .automation && bash build_schemas_doc.sh && cd ..
-        break
-    fi
+for i in "$@"; do
+  if [[ $i == "--doc" ]]; then
+    echo "Generating JSON Schema HTML documentation"
+    cd .automation && bash build_schemas_doc.sh && cd ..
+    break
+  fi
 done
 
 # Build online documentation
