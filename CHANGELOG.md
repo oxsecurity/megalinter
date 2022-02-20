@@ -10,6 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Fixes
   - Use latest version of npm
+  - Generate JSON Schema HTML Documentation when building documentation ([#1287](https://github.com/megalinter/megalinter/issues/1287))
 
 - Linter versions upgrades
   - [cpplint](https://github.com/cpplint/cpplint) from 1.5.5 to **1.6.0** on 2022-02-20
