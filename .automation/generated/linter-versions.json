@@ -12,7 +12,7 @@
     "clippy": "0.1.58",
     "clj-kondo": "2022.01.15",
     "coffeelint": "5.2.4",
-    "cpplint": "1.5.5",
+    "cpplint": "1.6.0",
     "cspell": "5.18.5",
     "dartanalyzer": "0.0.0",
     "dockerfilelint": "1.8.0",
