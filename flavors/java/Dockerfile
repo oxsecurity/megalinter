@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.01.15-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
 FROM hadolint/hadolint:v2.7.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 #FROM__END
