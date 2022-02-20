@@ -4,7 +4,7 @@
 
 ## cpplint documentation
 
-- Version in MegaLinter: **1.5.5**
+- Version in MegaLinter: **1.6.0**
 - Visit [Official Web Site](https://github.com/cpplint/cpplint#readme){target=_blank}
 - See [Index of problems detected by cpplint](https://google.github.io/styleguide/cppguide.html){target=_blank}
 
