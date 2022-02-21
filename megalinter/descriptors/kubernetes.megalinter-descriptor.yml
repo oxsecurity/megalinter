@@ -44,6 +44,7 @@ linters:
       - -cache
       - /tmp/
     cli_lint_mode: list_of_files
+    # Count errors when either file is invalid, or an error occurred (e.g. couldn't find schema for this object)
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: '(?:Invalid|Errors): ([0-9]+)'
     linter_banner_image_url: https://user-images.githubusercontent.com/19731161/142411871-f695e40c-bfa8-43ca-97c0-94c256749732.png
