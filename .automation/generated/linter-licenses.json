@@ -20,6 +20,7 @@
     "jscpd": "MIT",
     "kics": "Apache-2.0",
     "ktlint": "MIT",
+    "kubeconform": "Other",
     "kubeval": "Other",
     "luacheck": "MIT",
     "markdown-table-formatter": "MIT",

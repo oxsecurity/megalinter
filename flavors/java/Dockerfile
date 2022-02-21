@@ -213,6 +213,16 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 
+# kubeconform installation
+RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
+    && KUBECONFORM_VERSION=v0.4.12 \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
+    && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
+
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
 

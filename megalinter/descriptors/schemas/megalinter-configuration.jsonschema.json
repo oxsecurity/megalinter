@@ -140,6 +140,7 @@
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
+        "KUBERNETES_KUBECONFORM",
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "MARKDOWN_MARKDOWNLINT",
@@ -5358,6 +5359,119 @@
       "$id": "#/properties/KUBERNETES_FILTER_REGEX_INCLUDE",
       "title": "Including regex filter for KUBERNETES descriptor",
       "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_ARGUMENTS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_ARGUMENTS",
+      "description": "KUBERNETES_KUBECONFORM: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KUBERNETES_KUBECONFORM_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_KUBECONFORM: Override default cli lint mode",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_DIRECTORY",
+      "default": "kubernetes",
+      "title": "KUBERNETES_KUBECONFORM: Directory containing KUBERNETES files",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_DISABLE_ERRORS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_DISABLE_ERRORS",
+      "default": false,
+      "title": "KUBERNETES_KUBECONFORM: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "KUBERNETES_KUBECONFORM_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KUBERNETES_KUBECONFORM: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "KUBERNETES_KUBECONFORM_FILE_EXTENSIONS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE",
+      "title": "KUBERNETES_KUBECONFORM: Excluding Regex",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE",
+      "title": "KUBERNETES_KUBECONFORM: Including Regex",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KUBERNETES_KUBECONFORM_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Define or override a list of bash commands to run before the linter",
+      "type": "array"
     },
     "KUBERNETES_KUBEVAL_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_ARGUMENTS",
