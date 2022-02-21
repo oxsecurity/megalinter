@@ -101,6 +101,12 @@
         },
         {
             "repo_url": "https://github.com/onedr0p/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/joeygoksu/prime-nestjs"
+        },
+        {
+            "repo_url": "https://github.com/GrandMoff100/HomeAssistantAPI"
         }        
     ]
 }
