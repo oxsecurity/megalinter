@@ -5,6 +5,9 @@ Post a GitHub status for each linter
 """
 import logging
 
+import github
+import os
+import re
 import requests
 from megalinter import Reporter, config
 
@@ -37,7 +40,7 @@ class GithubStatusReporter(Reporter):
             github_repo = config.get("GITHUB_REPOSITORY")
             github_server_url = config.get("GITHUB_SERVER_URL", self.github_server_url)
             github_api_url = config.get("GITHUB_API_URL", self.github_api_url)
-            sha = config.get("GITHUB_SHA")
+            sha = self._get_head_sha(github_repo, github_api_url)
             run_id = config.get("GITHUB_RUN_ID")
             success_msg = "No errors were found in the linting process"
             error_not_blocking = "Errors were detected but are considered not blocking"
@@ -94,3 +97,34 @@ class GithubStatusReporter(Reporter):
             logging.debug(
                 f"Skipped post of Github Status for {self.master.descriptor_id} with {self.master.linter_name}"
             )
+
+    def _get_head_sha(self, github_repo, github_api_url):
+        sha = config.get("GITHUB_SHA")
+        if os.environ.get("GITHUB_EVENT_NAME", "") == "pull_request":
+            logging.info(f"[GitHub Status Reporter] The event is Github PR")
+            github_auth = (
+                    config.get("PAT")
+                    if config.get("PAT", "") != ""
+                    else config.get("GITHUB_TOKEN")
+                )
+
+            g = github.Github(base_url=github_api_url, login_or_token=github_auth)
+            repo = g.get_repo(github_repo)
+            ref = os.environ.get("GITHUB_REF", "")
+            m = re.compile("refs/pull/(\\d+)/merge").match(ref)
+
+            if m is not None:
+                pr_id = m.group(1)
+                logging.info(f"[GitHub Status Reporter] Identified PR#{pr_id} from environment")
+                try:
+                    pr = repo.get_pull(int(pr_id))
+                    sha = pr.head.sha
+                    logging.info(f"[GitHub Status Reporter] Status will be posted to PR#{pr_id} HEAD commit {sha}")
+                except Exception as e:
+                    logging.warning(f"[GitHub Status Reporter] Could not fetch PR#{pr_id}: {e}")
+            else:
+                logging.info(
+                        f"[GitHub Status Reporter] No pull request has been found with GITHUB_REF={ref}, so posting status to GITHUB_SHA {sha} "
+                    )
+
+        return sha
