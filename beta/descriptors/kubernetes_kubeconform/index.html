@@ -3917,6 +3917,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5412,6 +5419,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#help-content" class="md-nav__link">
+    Help content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#installation-on-mega-linter-docker-image" class="md-nav__link">
     Installation on mega-linter Docker image
   </a>
@@ -5455,6 +5469,7 @@
 <p><code>kubeconform</code> is a schema-aware Kubernetes manifest validation tool, that tends to have more up-to-date schema definitions than <code>kubeval</code>.</p>
 <h2 id="kubeconform-documentation">kubeconform documentation</h2>
 <ul>
+<li>Version in MegaLinter: <strong>0.4.12</strong></li>
 <li>Visit <a href="https://github.com/yannh/kubeconform#readme" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/yannh/kubeconform" target="_blank"><img alt="kubeconform - GitHub" src="https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=" /></a></p>
@@ -5666,6 +5681,40 @@
 <pre><code class="language-shell">kubeconform myfile.yml
 </code></pre>
 <pre><code class="language-shell">kubeconform -ignore-missing-schemas -skip SomeCRD,AnotherCRD -kubernetes-version '1.18.0' -strict myfile.yml
+</code></pre>
+<h3 id="help-content">Help content</h3>
+<pre><code class="language-shell">Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
+  -cache string
+      cache schemas downloaded via HTTP to this folder
+  -cpu-prof string
+      debug - log CPU profiling to file
+  -exit-on-error
+      immediately stop execution when the first error is encountered
+  -h  show help information
+  -ignore-filename-pattern value
+      regular expression specifying paths to ignore (can be specified multiple times)
+  -ignore-missing-schemas
+      skip files with missing schemas instead of failing
+  -insecure-skip-tls-verify
+      disable verification of the server's SSL certificate. This will make your HTTPS connections insecure
+  -kubernetes-version string
+      version of Kubernetes to validate against, e.g.: 1.18.0 (default &quot;master&quot;)
+  -n int
+      number of goroutines to run concurrently (default 4)
+  -output string
+      output format - json, junit, tap, text (default &quot;text&quot;)
+  -reject string
+      comma-separated list of kinds to reject
+  -schema-location value
+      override schemas location search path (can be specified multiple times)
+  -skip string
+      comma-separated list of kinds to ignore
+  -strict
+      disallow additional properties not in schema
+  -summary
+      print a summary at the end (ignored for junit output)
+  -verbose
+      print results for all resources (ignored for tap and junit output)
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
