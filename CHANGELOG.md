@@ -17,6 +17,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cpplint](https://github.com/cpplint/cpplint) from 1.5.5 to **1.6.0** on 2022-02-20
 <!-- linter-versions-end -->
 
+- New linter `kubeconform` to validate Kubernetes manifests with updated schemas
+
 ## [v5.8.0] - 2022-02-18
 
 - Linters

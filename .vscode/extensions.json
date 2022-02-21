@@ -8,6 +8,8 @@
         "streetsidesoftware.code-spell-checker",
         "esbenp.prettier-vscode",
         "exiasr.hadolint",
-        "timonwong.shellcheck"
+        "timonwong.shellcheck",
+        "hbenl.vscode-test-explorer",
+        "LittleFoxTeam.vscode-python-test-adapter"
     ]
 } 

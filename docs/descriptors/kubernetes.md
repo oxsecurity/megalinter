@@ -5,9 +5,10 @@
 
 ## Linters
 
-| Linter                           | Configuration key                           |
-|----------------------------------|---------------------------------------------|
-| [kubeval](kubernetes_kubeval.md) | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md) |
+| Linter                                   | Configuration key                                   |
+|------------------------------------------|-----------------------------------------------------|
+| [kubeval](kubernetes_kubeval.md)         | [KUBERNETES_KUBEVAL](kubernetes_kubeval.md)         |
+| [kubeconform](kubernetes_kubeconform.md) | [KUBERNETES_KUBECONFORM](kubernetes_kubeconform.md) |
 
 ## Linted files
 
