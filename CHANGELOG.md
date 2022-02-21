@@ -15,6 +15,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [cpplint](https://github.com/cpplint/cpplint) from 1.5.5 to **1.6.0** on 2022-02-20
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.01.15 to **2022.02.09** on 2022-02-21
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.0 to **0.58.1** on 2022-02-21
+  - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.3.0 to **1.14.5.0** on 2022-02-21
+  - [checkov](https://www.checkov.io/) from 2.0.873 to **2.0.885** on 2022-02-21
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
