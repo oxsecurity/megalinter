@@ -4,7 +4,7 @@
 
 ## rst-lint documentation
 
-- Version in MegaLinter: **1.3.2**
+- Version in MegaLinter: **1.4.0**
 - Visit [Official Web Site](https://github.com/twolfson/restructuredtext-lint#readme){target=_blank}
 
 [![restructuredtext-lint - GitHub](https://gh-card.dev/repos/twolfson/restructuredtext-lint.svg?fullname=)](https://github.com/twolfson/restructuredtext-lint){target=_blank}
