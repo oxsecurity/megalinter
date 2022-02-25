@@ -19,6 +19,17 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.0 to **0.58.1** on 2022-02-21
   - [tsqllint](https://github.com/tsqllint/tsqllint) from 1.14.3.0 to **1.14.5.0** on 2022-02-21
   - [checkov](https://www.checkov.io/) from 2.0.873 to **2.0.885** on 2022-02-21
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.8 to **1.6.9** on 2022-02-25
+  - [stylelint](https://stylelint.io) from 14.5.1 to **14.5.3** on 2022-02-25
+  - [rst-lint](https://github.com/twolfson/restructuredtext-lint) from 1.3.2 to **1.4.0** on 2022-02-25
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.58 to **0.1.59** on 2022-02-25
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.12.0 to **2.13.0** on 2022-02-25
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.12.0 to **2.13.0** on 2022-02-25
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.12.0 to **2.13.0** on 2022-02-25
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 6.15.5 to **7.0.0** on 2022-02-25
+  - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.2 to **0.46.3** on 2022-02-25
+  - [checkov](https://www.checkov.io/) from 2.0.885 to **2.0.901** on 2022-02-25
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.1 to **1.13.2** on 2022-02-25
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
