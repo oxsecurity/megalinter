@@ -33,6 +33,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [swiftlint](https://github.com/realm/SwiftLint) from 0.46.2 to **0.46.3** on 2022-02-25
   - [checkov](https://www.checkov.io/) from 2.0.885 to **2.0.901** on 2022-02-25
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.1 to **1.13.2** on 2022-02-25
+  - [checkov](https://www.checkov.io/) from 2.0.901 to **2.0.902** on 2022-02-25
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.1 to **0.36.2** on 2022-02-25
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
