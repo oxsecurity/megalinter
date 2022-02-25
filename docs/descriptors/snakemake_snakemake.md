@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **6.15.5**
+- Version in MegaLinter: **7.0.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -131,6 +131,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
+                 [--local-groupid LOCAL_GROUPID]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
                  [-T RESTART_TIMES] [--attempt ATTEMPT]
@@ -145,7 +146,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--cluster CMD | --cluster-sync CMD | --drmaa [ARGS]]
                  [--cluster-config FILE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
-                 [--cluster-status CLUSTER_STATUS] [--drmaa-log-dir DIR]
+                 [--cluster-status CLUSTER_STATUS]
+                 [--cluster-cancel CLUSTER_CANCEL]
+                 [--cluster-cancel-nargs CLUSTER_CANCEL_NARGS]
+                 [--cluster-sidecar CLUSTER_SIDECAR] [--drmaa-log-dir DIR]
                  [--kubernetes [NAMESPACE]] [--container-image IMAGE]
                  [--tibanna] [--tibanna-sfn TIBANNA_SFN]
                  [--precommand PRECOMMAND]
@@ -690,6 +694,9 @@ BEHAVIOR:
                         Snakefile are used. Note that this is intended
                         primarily for internal use and may lead to unexpected
                         results otherwise. (default: None)
+  --local-groupid LOCAL_GROUPID
+                        Name for local groupid, meant for internal use only.
+                        (default: local)
   --max-jobs-per-second MAX_JOBS_PER_SECOND
                         Maximal number of cluster/drmaa jobs per second,
                         default is 10, fractions allowed. (default: 10)
@@ -827,6 +834,18 @@ CLUSTER:
                         job id. Snakemake expects it to return 'success' if
                         the job was successfull, 'failed' if the job failed
                         and 'running' if the job still runs. (default: None)
+  --cluster-cancel CLUSTER_CANCEL
+                        Specify a command that allows to stop currently
+                        running jobs. The command will be passed a single
+                        argument, the job id. (default: None)
+  --cluster-cancel-nargs CLUSTER_CANCEL_NARGS
+                        Specify maximal number of job ids to pass to
+                        --cluster-cancel command, defaults to 1000. (default:
+                        1000)
+  --cluster-sidecar CLUSTER_SIDECAR
+                        Optional command to start a sidecar process during
+                        cluster execution. Only active when --cluster is given
+                        as well. (default: None)
   --drmaa-log-dir DIR   Specify a directory in which stdout and stderr files
                         of DRMAA jobs will be written. The value may be given
                         as a relative path, in which case Snakemake will use
