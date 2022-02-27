@@ -9,7 +9,7 @@
 
 ## cfn-lint documentation
 
-- Version in MegaLinter: **0.58.1**
+- Version in MegaLinter: **0.58.2**
 - Visit [Official Web Site](https://github.com/martysweet/cfn-lint#readme){target=_blank}
   - If custom `.cfnlintrc.yml` config file is not found, [.cfnlintrc.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.cfnlintrc.yml){target=_blank} will be used
 - See [Index of problems detected by cfn-lint](https://github.com/martysweet/cfn-lint#what-can-cfn-lint-do){target=_blank}

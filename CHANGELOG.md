@@ -35,6 +35,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.1 to **1.13.2** on 2022-02-25
   - [checkov](https://www.checkov.io/) from 2.0.901 to **2.0.902** on 2022-02-25
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.1 to **0.36.2** on 2022-02-25
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.1 to **0.58.2** on 2022-02-27
+  - [eslint](https://eslint.org) from 8.9.0 to **8.10.0** on 2022-02-27
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.37.0 to **0.37.1** on 2022-02-27
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.0.0 to **7.0.1** on 2022-02-27
+  - [checkov](https://www.checkov.io/) from 2.0.902 to **2.0.903** on 2022-02-27
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
