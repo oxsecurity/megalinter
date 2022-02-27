@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.0.0**
+- Version in MegaLinter: **7.0.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -811,7 +811,8 @@ CLUSTER:
                         {dependencies}. Assuming that your submit script (here
                         sbatch) outputs the generated job id to the first
                         stdout line, {dependencies} will be filled with space
-                        separated job ids this job depends on. (default:
+                        separated job ids this job depends on. Does not work
+                        for workflows that contain checkpoint rules. (default:
                         False)
   --jobscript SCRIPT, --js SCRIPT
                         Provide a custom job script for submission to the
