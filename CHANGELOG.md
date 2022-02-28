@@ -40,6 +40,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.37.0 to **0.37.1** on 2022-02-27
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.0.0 to **7.0.1** on 2022-02-27
   - [checkov](https://www.checkov.io/) from 2.0.902 to **2.0.903** on 2022-02-27
+  - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.2 to **1.7.3** on 2022-02-28
+  - [checkov](https://www.checkov.io/) from 2.0.903 to **2.0.906** on 2022-02-28
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
