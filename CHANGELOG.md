@@ -4,6 +4,52 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!-- unreleased-content-marker -->
+
+## [v6-alpha] (v6-alpha, v6_dev branch content)
+
+- Core architecture
+  - New reporter **SARIF_REPORTER** that aggregates all SARIF output files into a single one
+    - Correct SARIF files for known format errors
+  - Manage offline run of `bash build.sh` for those who want to code in planes :)
+  - Automate update of CHANGELOG.md after release (pilot)
+  - Rename default report folder from `report` to `megalinter-reports`
+  - Accelerate internal CI testing performances
+  - Display GitHub stars in linters summary table in documentation 
+
+- Linters:
+  - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
+  - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
+  - Add [dustilock](https://github.com/Checkmarx/dustilock) to check for dependency confusion attacks with node and python packages
+  - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
+  - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+  - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
+  - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
+  - Add [trivy](https://github.com/aquasecurity/trivy) security linter
+  - Remove **dockerfilelint**, as it is not maintained anymore and hadolint contains all its rules
+  - SARIF management for:
+    - bandit
+    - checkov
+    - checkstyle
+    - cfn-lint
+    - devskim
+    - eslint
+    - gitleaks
+    - hadolint
+    - ktlint
+    - npm-groovy-lint
+    - psalm
+    - semgrep
+    - revive
+    - terrascan
+    - tflint
+    - trivy
+
+- Descriptors:
+  - New flavor **Security**
+  - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck
+    - remove CREDENTIALS and GIT descriptors
+
 ## [Unreleased] (beta, main branch content)
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
