@@ -6,8 +6,8 @@ file_extensions:
   - ".tf"
 linters:
   # TFLINT
-  - linter_name: tflint
-    can_output_sarif: true
+  - class: TfLintLinter
+    linter_name: tflint
     name: TERRAFORM_TFLINT
     descriptor_flavors:
       - terraform
@@ -18,9 +18,6 @@ linters:
     linter_rules_configuration_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/config.md
     linter_rules_inline_disable_url: https://github.com/terraform-linters/tflint/blob/master/docs/guides/annotations.md
     config_file_name: .tflint.hcl
-    pre_commands:
-      - command: tflint --init
-        cwd: workspace
     cli_sarif_args:
       - --format
       - sarif
@@ -43,6 +40,8 @@ linters:
     linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_rules_configuration_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_banner_image_url: https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png
+    config_file_name: terrascan-config.toml
+    cli_config_arg_name: --config-path
     cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"

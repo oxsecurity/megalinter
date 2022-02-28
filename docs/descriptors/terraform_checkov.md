@@ -83,11 +83,12 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]]
                [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
-               [--run-all-external-checks] [--bc-api-key BC_API_KEY]
-               [--docker-image DOCKER_IMAGE]
+               [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
+               [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
+               [--prisma-api-url PRISMA_API_URL] [--docker-image DOCKER_IMAGE]
                [--dockerfile-path DOCKERFILE_PATH] [--repo-id REPO_ID]
-               [-b BRANCH] [--skip-fixes] [--skip-suppressions]
-               [--skip-policy-download]
+               [-b BRANCH] [--skip-download] [--no-guide]
+               [--skip-suppressions] [--skip-policy-download] [--skip-fixes]
                [--download-external-modules DOWNLOAD_EXTERNAL_MODULES]
                [--var-file VAR_FILE]
                [--external-modules-download-path EXTERNAL_MODULES_DOWNLOAD_PATH]
@@ -95,7 +96,7 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
-               [-s | --soft-fail-on SOFT_FAIL_ON | --hard-fail-on HARD_FAIL_ON]
+               [--skip-cve-package SKIP_CVE_PACKAGE]
 
 Infrastructure as code static analysis
 
@@ -123,14 +124,15 @@ optional arguments:
                         be used together with --external-checks-dir
   -l, --list            List checks
   -o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}, --output {cli,cyclonedx,json,junitxml,github_failed_only,sarif}
-                        Report output format. Can be repeated
+                        Report output format. Add multiple outputs by using
+                        the flag multiple times (-o sarif -o cli)
+  --output-file-path OUTPUT_FILE_PATH
+                        Name for output file. The first selected output via
+                        output flag will be saved to the file (default output
+                        is cli)
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
                         platform
-  --no-guide            Do not fetch Bridgecrew platform IDs and guidelines
-                        for the checkov output report. Note: this prevents
-                        Bridgecrew platform check IDs from being used anywhere
-                        in the CLI.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
   --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]
@@ -155,8 +157,47 @@ optional arguments:
                         new checks present in the external source are used. If
                         an external check is included in --skip-check, it will
                         still be skipped.
+  -s, --soft-fail       Runs checks but always returns a 0 exit code. Using
+                        either --soft-fail-on and / or --hard-fail-on
+                        overrides this option, except for the case when a
+                        result does not match either of the soft fail or hard
+                        fail criteria, in which case this flag determines the
+                        result.
+  --soft-fail-on SOFT_FAIL_ON
+                        Exits with a 0 exit code if only the specified items
+                        fail. Enter one or more items separated by commas.
+                        Each item may be either a Checkov check ID
+                        (CKV_AWS_123), a BC check ID (BC_AWS_GENERAL_123), or
+                        a severity (LOW, MEDIUM, HIGH, CRITICAL). If you use a
+                        severity, then any severity equal to or less than the
+                        highest severity in the list will result in a soft
+                        fail. This option may be used with --hard-fail-on,
+                        using the same priority logic described in --check and
+                        --skip-check options above, with --hard-fail-on taking
+                        precedence in a tie. If a given result does not meet
+                        the --soft-fail-on nor the --hard-fail-on criteria,
+                        then the default is to hard fail
+  --hard-fail-on HARD_FAIL_ON
+                        Exits with a non-zero exit code for specified checks.
+                        Enter one or more items separated by commas. Each item
+                        may be either a Checkov check ID (CKV_AWS_123), a BC
+                        check ID (BC_AWS_GENERAL_123), or a severity (LOW,
+                        MEDIUM, HIGH, CRITICAL). If you use a severity, then
+                        any severity equal to or greater than the lowest
+                        severity in the list will result in a hard fail. This
+                        option can be used with --soft-fail-on, using the same
+                        priority logic described in --check and --skip-check
+                        options above, with --hard-fail-on taking precedence
+                        in a tie.
   --bc-api-key BC_API_KEY
-                        Bridgecrew API key [env var: BC_API_KEY]
+                        Bridgecrew API key or Prisma Cloud Access Key (see
+                        --prisma-api-url) [env var: BC_API_KEY]
+  --prisma-api-url PRISMA_API_URL
+                        The Prisma Cloud API URL (see:
+                        https://prisma.pan.dev/api/cloud/api-urls). Requires
+                        --bc-api-key to be a Prisma Cloud Access Key in the
+                        following format: <access_key_id>::<secret_key> [env
+                        var: PRISMA_API_URL]
   --docker-image DOCKER_IMAGE
                         Scan docker images by name or ID. Only works with
                         --bc-api-key flag
@@ -167,17 +208,17 @@ optional arguments:
   -b BRANCH, --branch BRANCH
                         Selected branch of the persisted repository. Only has
                         effect when using the --bc-api-key flag
-  --skip-fixes          Do not download fixed resource templates from
-                        Bridgecrew. Only has effect when using the --bc-api-
-                        key flag
-  --skip-suppressions   Do not download preconfigured suppressions from the
-                        Bridgecrew platform. Code comment suppressions will
-                        still be honored. Only has effect when using the --bc-
-                        api-key flag
+  --skip-download       Do not download any data from Bridgecrew. This will
+                        omit doc links, severities, etc., as well as custom
+                        policies and suppressions if using an API token. Note:
+                        it will prevent BC platform IDs from being available
+                        in Checkov.
+  --no-guide            Deprecated - use --skip-download
+  --skip-suppressions   Deprecated - use --skip-download
   --skip-policy-download
-                        Do not download custom policies configured in the
-                        Bridgecrew platform. Only has effect when using the
-                        --bc-api-key flag
+                        Deprecated - use --skip-download
+  --skip-fixes          Do not download fixed resource templates from
+                        Bridgecrew. Only has effect when using the API key.
   --download-external-modules DOWNLOAD_EXTERNAL_MODULES
                         download external terraform modules from public git
                         repositories and terraform registry [env var:
@@ -194,7 +235,8 @@ optional arguments:
   --evaluate-variables EVALUATE_VARIABLES
                         evaluate the values of variables and locals
   -ca CA_CERTIFICATE, --ca-certificate CA_CERTIFICATE
-                        custom CA (bundle) file [env var: CA_CERTIFICATE]
+                        Custom CA certificate (bundle) file [env var:
+                        BC_CA_BUNDLE]
   --repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT
                         Directory containing the hcl code used to generate a
                         given plan file. Use with -f.
@@ -211,16 +253,12 @@ optional arguments:
                         the same noise. Works only with `--directory` flag
   --baseline BASELINE   Use a .checkov.baseline file to compare current
                         results with a known baseline. Report will include
-                        only failed checks that are newwith respect to the
+                        only failed checks that are new with respect to the
                         provided baseline
-  -s, --soft-fail       Runs checks but suppresses error code
-  --soft-fail-on SOFT_FAIL_ON
-                        Exits with a 0 exit code for specified checks. You can
-                        specify multiple checks separated by comma delimiter
-  --hard-fail-on HARD_FAIL_ON
-                        Exits with a non-zero exit code for specified checks.
-                        You can specify multiple checks separated by comma
-                        delimiter
+  --skip-cve-package SKIP_CVE_PACKAGE
+                        filter scan to run on all packages but a specific
+                        package identifier (denylist), You can specify this
+                        argument multiple times to skip multiple packages
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml

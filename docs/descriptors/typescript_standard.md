@@ -70,7 +70,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- standard is called one time by identified file
+- standard is called once with the list of files as arguments
 
 ### Example calls
 

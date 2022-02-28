@@ -4,7 +4,7 @@
 
 ## shfmt documentation
 
-- Version in MegaLinter: **3.3.1**
+- Version in MegaLinter: **3.5.0**
 - Visit [Official Web Site](https://github.com/mvdan/sh#readme){target=_blank}
 
 [![sh - GitHub](https://gh-card.dev/repos/mvdan/sh.svg?fullname=)](https://github.com/mvdan/sh){target=_blank}
@@ -75,7 +75,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- shfmt is called one time by identified file
+- shfmt is called once with the list of files as arguments
 
 ### Example calls
 
@@ -107,7 +107,7 @@ directory, all shell scripts found under that directory will be used.
 
 Parser options:
 
-  -ln str        language variant to parse (bash/posix/mksh/bats, default "bash")
+  -ln str        language dialect (bash/posix/mksh/bats, default "auto")
   -p             shorthand for -ln=posix
   -filename str  provide a name for the standard input file
 
@@ -132,8 +132,8 @@ For more information, see 'man shfmt' and https://github.com/mvdan/sh.
 
 - Dockerfile commands :
 ```dockerfile
-ENV GO111MODULE=on
-RUN go get mvdan.cc/sh/v3/cmd/shfmt@v3.3.1
+FROM mvdan/shfmt:latest-alpine as shfmt
+COPY --from=shfmt /bin/shfmt /usr/bin/
 ```
 
 - APK packages (Linux):

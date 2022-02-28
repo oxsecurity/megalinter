@@ -12,7 +12,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 - VsCode: You need a VsCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
 ## Common variables
 

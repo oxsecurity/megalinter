@@ -1,5 +1,5 @@
 {
-  "$id": "http://github.com/nvuillam/megalinter-descriptor.json",
+  "$id": "http://github.com/megalinter/megalinter-descriptor.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {

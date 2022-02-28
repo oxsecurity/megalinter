@@ -85,7 +85,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- stylelint is called one time by identified file
+- stylelint is called once with the list of files as arguments
 
 ### Example calls
 
@@ -94,11 +94,11 @@ stylelint myfile.css
 ```
 
 ```shell
-stylelint --config .stylelintrc.json myfile.css
+stylelint --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 ```
 
 ```shell
-stylelint --fix --config .stylelintrc.json myfile.css
+stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 ```
 
 

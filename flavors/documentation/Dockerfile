@@ -32,6 +32,8 @@ FROM python:3.9.7-alpine3.13
 # Run APK installs #
 ####################
 
+WORKDIR /
+
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         bash \
@@ -83,7 +85,6 @@ RUN pip3 install --no-cache-dir --upgrade \
           'ansible-lint[yamllint]' \
           'semgrep' \
           'snakemake' \
-          'snakefmt' \
           'sqlfluff' \
           'yamllint'
 #PIP__END
@@ -159,8 +160,11 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 
 
 # shellcheck installation
-RUN wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv \
-    && cp "shellcheck-stable/shellcheck" /usr/bin/ \
+RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+    && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && shellcheck --version
 
 
@@ -182,9 +186,22 @@ RUN curl --retry 5 --retry-delay 5 -sSLO https://github.com/pinterest/ktlint/rel
 
 
 # kubeval installation
-RUN wget -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
-    && tar xf kubeval-linux-amd64.tar.gz \
-    && cp kubeval /usr/local/bin
+RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
+    && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
+
+# kubeconform installation
+RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
+    && KUBECONFORM_VERSION=v0.4.12 \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
+    && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 
 # protolint installation
@@ -200,8 +217,12 @@ RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/
 
 
 # misspell installation
-RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
-    && sh ./install-misspell.sh
+RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+    && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
 
 
 #OTHER__END

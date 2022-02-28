@@ -9,7 +9,7 @@
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.43.0**
+- Version in MegaLinter: **1.44.2**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -95,7 +95,7 @@ Usage:
 
 Available Commands:
   cache       Cache control and information
-  completion  generate the autocompletion script for the specified shell
+  completion  Generate the autocompletion script for the specified shell
   config      Config
   help        Help
   linters     List current linters configuration

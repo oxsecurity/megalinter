@@ -64,7 +64,7 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- markdown-link-check is called one time by identified file
+- markdown-link-check is called once with the list of files as arguments
 
 ### Example calls
 

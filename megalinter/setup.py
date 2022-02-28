@@ -18,7 +18,7 @@ setup(
         "commentjson",
         "pytablewriter",
         "pyyaml",
-        "requests==2.24.0",
+        "requests",
         "terminaltables",
         "importlib-metadata>=3.10"
         # "flask-restful"

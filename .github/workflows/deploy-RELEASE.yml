@@ -155,8 +155,11 @@ jobs:
         run: |
           git checkout ${{ steps.version.outputs.ctag }}
       - name: Mike deploy current version
+        #todov6 : replace v5 by v6
         run: |
           mike delete latest
+          mike delete v5 || true
+          mike deploy v5 || true
           mike deploy --push latest ${{ steps.version.outputs.cversion }}
 
   git-sync:

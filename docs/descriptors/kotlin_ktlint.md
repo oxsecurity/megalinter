@@ -9,7 +9,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.43.2**
+- Version in MegaLinter: **0.44.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -129,33 +129,37 @@ and its subdirectories:
 output=my-custom-report.csv
 Flags:
 
-  -a, --android              Turn on Android Kotlin Style Guide compatibility
-      --color                Make output colorful
+  -a, --android         Turn on Android Kotlin Style Guide compatibility
+      --color           Make output colorful
       --color-name=<colorName>
-                             Customize the output color
-      --debug                Turn on debug output
+                        Customize the output color
+      --debug           Turn on debug output
+      --trace           Turn on trace output
       --disabled_rules=<disabledRules>
-                             Comma-separated list of rules to globally disable. To
-                               disable standard ktlint rule-set use
-                               --disabled_rules=standard
-  -F, --format               Fix any deviations from the code style
-      --limit=<limit>        Maximum number of errors to show (default: show all)
-      --relative             Print files relative to the working directory (e.g.
-                               dir/file.kt instead of /home/user/project/dir/file.kt)
-      --reporter=<reporters> A reporter to use (built-in: plain (default), plain?
-                               group_by_file, json, sarif, checkstyle, html). To use
-                               a third-party reporter specify a path to a JAR file
-                               on the filesystem via ',artifact=' option. To
-                               override reporter output, use ',output=' option.
-  -R, --ruleset=<rulesets>   A path to a JAR file containing additional ruleset(s)
-      --stdin                Read file from stdin
-  -v, --verbose              Show error codes
+                        Comma-separated list of rules to globally disable. To
+                          disable standard ktlint rule-set use
+                          --disabled_rules=standard
+  -F, --format          Fix any deviations from the code style
+      --limit=<limit>   Maximum number of errors to show (default: show all)
+      --relative        Print files relative to the working directory (e.g. dir/file.
+                          kt instead of /home/user/project/dir/file.kt)
+      --reporter=<reporters>
+                        A reporter to use (built-in: plain (default), plain?
+                          group_by_file, json, sarif, checkstyle, html). To use a
+                          third-party reporter specify a path to a JAR file on the
+                          filesystem via ',artifact=' option. To override reporter
+                          output, use ',output=' option.
+  -R, --ruleset=<rulesetJarFiles>
+                        A path to a JAR file containing additional ruleset(s)
+      --stdin           Read file from stdin
+  -v, --verbose         Show error codes
       --editorconfig=<editorConfigPath>
-                             Path to .editorconfig
-      --experimental         Enabled experimental rules (ktlint-ruleset-experimental)
-      --baseline=<baseline>  Defines a baseline file to check against
-  -h, --help                 Show this help message and exit.
-  -V, --version              Print version information and exit.
+                        Path to .editorconfig
+      --experimental    Enabled experimental rules (ktlint-ruleset-experimental)
+      --baseline=<baseline>
+                        Defines a baseline file to check against
+  -h, --help            Show this help message and exit.
+  -V, --version         Print version information and exit.
 Commands:
   installGitPreCommitHook, --install-git-pre-commit-hook  Install git hook to
                                                             automatically check

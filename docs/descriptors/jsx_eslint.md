@@ -71,7 +71,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
-- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs`
+- Activated only if one of these files is found: `.eslintrc.json, .eslintrc.yml, .eslintrc.yaml, .eslintrc.js, .eslintrc.cjs, package.json:eslintConfig`
 - File extensions: `.jsx`
 
 <!-- markdownlint-disable -->
