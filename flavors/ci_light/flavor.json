@@ -1,7 +1,10 @@
 {
-    "descriptors": [],
+    "descriptors": [
+        "BASH"
+    ],
     "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
     "linters": [
+        "BASH_SHFMT",
         "DOCKERFILE_HADOLINT",
         "ENV_DOTENV_LINTER",
         "GROOVY_NPM_GROOVY_LINT",

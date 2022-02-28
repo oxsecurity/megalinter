@@ -9,7 +9,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.25.1**
+- Version in MegaLinter: **0.82.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -62,7 +62,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                          | Description                       | Embedded linters |                                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       101        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       102        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/v6-alpha/flavors/ruby/)     | Optimized for RUBY based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 
 ## Behind the scenes
@@ -226,8 +226,8 @@ General Options:
 ### Installation on mega-linter Docker image
 
 - GEM packages (Ruby) :
-  - [rubocop:0.82.0](https://rubygems.org/gems/rubocop)
-  - [rubocop-github:0.16.0](https://rubygems.org/gems/rubocop-github)
-  - [rubocop-performance:1.7.1](https://rubygems.org/gems/rubocop-performance)
-  - [rubocop-rails:2.5](https://rubygems.org/gems/rubocop-rails)
-  - [rubocop-rspec:1.41.0](https://rubygems.org/gems/rubocop-rspec)
+  - [rubocop](https://rubygems.org/gems/rubocop)
+  - [rubocop-github](https://rubygems.org/gems/rubocop-github)
+  - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
+  - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
+  - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)

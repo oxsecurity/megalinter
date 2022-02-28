@@ -1,8 +1,11 @@
 {
     "ci_light": {
-        "descriptors": [],
+        "descriptors": [
+            "BASH"
+        ],
         "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
         "linters": [
+            "BASH_SHFMT",
             "DOCKERFILE_HADOLINT",
             "ENV_DOTENV_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -718,6 +721,7 @@
             "CLOUDFORMATION_CFN_LINT",
             "DOCKERFILE_HADOLINT",
             "KUBERNETES_KUBEVAL",
+            "KUBERNETES_KUBECONFORM",
             "PYTHON_BANDIT",
             "REPOSITORY_DEVSKIM",
             "REPOSITORY_DUSTILOCK",

@@ -48,8 +48,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                | Description                            | Embedded linters |                                                                                                                                                                                               Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)       | Default MegaLinter Flavor              |       101        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)   | Optimized for security                 |        19        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)       | Default MegaLinter Flavor              |       102        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/v6-alpha/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
@@ -79,9 +79,10 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
-               [--output-bc-ids] [--no-guide] [--quiet] [--compact]
-               [--framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]]
-               [--skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]]
+               [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
+               [--quiet] [--compact]
+               [--framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -135,21 +136,45 @@ optional arguments:
                         platform
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration,all} ...]
+  --framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} [{cloudformation,terraform,kubernetes,serverless,arm,terraform_plan,helm,dockerfile,secrets,json,github_configuration,gitlab_configuration} ...]
+  --skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
   -c CHECK, --check CHECK
-                        filter scan to run only on a specific check
-                        identifier(allowlist), You can specify multiple checks
-                        separated by comma delimiter [env var: CKV_CHECK]
+                        Checks to run; any other checks will be skipped. Enter
+                        one or more items separated by commas. Each item may
+                        be either a Checkov check ID (CKV_AWS_123), a BC check
+                        ID (BC_AWS_GENERAL_123), or a severity (LOW, MEDIUM,
+                        HIGH, CRITICAL). If you use a severity, then all
+                        checks equal to or above the lowest severity in the
+                        list will be included. This option can be combined
+                        with --skip-check. If it is, priority is given to
+                        checks explicitly listed by ID or wildcard over checks
+                        listed by severity. For example, if you use --check
+                        CKV_123 and --skip-check LOW, then CKV_123 will run
+                        even if it is a LOW severity. In the case of a tie
+                        (e.g., --check MEDIUM and --skip-check HIGH for a
+                        medium severity check), then the check will be
+                        skipped. [env var: CKV_CHECK]
   --skip-check SKIP_CHECK
-                        filter scan to run on all check but a specific check
-                        identifier(denylist), You can specify multiple checks
-                        separated by comma delimiter [env var: CKV_SKIP_CHECK]
+                        Checks to skip; any other checks will not be run.
+                        Enter one or more items separated by commas. Each item
+                        may be either a Checkov check ID (CKV_AWS_123), a BC
+                        check ID (BC_AWS_GENERAL_123), or a severity (LOW,
+                        MEDIUM, HIGH, CRITICAL). If you use a severity, then
+                        all checks equal to or below the highest severity in
+                        the list will be skipped. This option can be combined
+                        with --check. If it is, priority is given to checks
+                        explicitly listed by ID or wildcard over checks listed
+                        by severity. For example, if you use --skip-check
+                        CKV_123 and --check HIGH, then CKV_123 will be skipped
+                        even if it is a HIGH severity. In the case of a tie
+                        (e.g., --check MEDIUM and --skip-check HIGH for a
+                        medium severity check), then the check will be
+                        skipped. [env var: CKV_SKIP_CHECK]
   --run-all-external-checks
                         Run all external checks (loaded via --external-checks
                         options) even if the checks are not present in the

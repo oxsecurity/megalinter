@@ -19,7 +19,6 @@
 | REPOSITORY_SEMGREP       | megalinter/megalinter-only-repository_semgrep:v6-alpha       |    ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_semgrep/v6-alpha)    |
 | REPOSITORY_SYFT          | megalinter/megalinter-only-repository_syft:v6-alpha          |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_syft/v6-alpha)      |
 | REPOSITORY_TRIVY         | megalinter/megalinter-only-repository_trivy:v6-alpha         |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-repository_trivy/v6-alpha)     |
-| TERRAFORM_TFLINT         | megalinter/megalinter-only-terraform_tflint:v6-alpha         |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-terraform_tflint/v6-alpha)     |
 | TERRAFORM_TERRASCAN      | megalinter/megalinter-only-terraform_terrascan:v6-alpha      |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-terraform_terrascan/v6-alpha)    |
 | TERRAFORM_CHECKOV        | megalinter/megalinter-only-terraform_checkov:v6-alpha        |    ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-terraform_checkov/v6-alpha)     |
 | TSX_ESLINT               | megalinter/megalinter-only-tsx_eslint:v6-alpha               |        ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-only-tsx_eslint/v6-alpha)        |
