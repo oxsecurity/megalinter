@@ -15,6 +15,7 @@ setup(
         "multiprocessing_logging",
         "pychalk",
         "pygithub",
+        "python-gitlab",
         "commentjson",
         "pytablewriter",
         "pyyaml",
