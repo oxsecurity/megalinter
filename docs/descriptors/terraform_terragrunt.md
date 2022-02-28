@@ -4,7 +4,7 @@
 
 ## terragrunt documentation
 
-- Version in MegaLinter: **0.36.0**
+- Version in MegaLinter: **0.36.2**
 - Visit [Official Web Site](https://terragrunt.gruntwork.io){target=_blank}
 - See [How to configure terragrunt rules](https://terragrunt.gruntwork.io/docs/getting-started/configuration/#terragrunt-configuration-file){target=_blank}
 

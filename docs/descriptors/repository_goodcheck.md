@@ -4,7 +4,6 @@
 
 ## goodcheck documentation
 
-- Version in MegaLinter: **3.1.0**
 - Visit [Official Web Site](https://sider.github.io/goodcheck/){target=_blank}
 - See [How to configure goodcheck rules](https://sider.github.io/goodcheck/docs/configuration){target=_blank}
   - If custom `goodcheck.yml` config file is not found, [goodcheck.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/goodcheck.yml){target=_blank} will be used

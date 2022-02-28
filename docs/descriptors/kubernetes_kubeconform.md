@@ -11,6 +11,7 @@
 
 ## kubeconform documentation
 
+- Version in MegaLinter: **0.4.12**
 - Visit [Official Web Site](https://github.com/yannh/kubeconform#readme){target=_blank}
 
 [![kubeconform - GitHub](https://gh-card.dev/repos/yannh/kubeconform.svg?fullname=)](https://github.com/yannh/kubeconform){target=_blank}

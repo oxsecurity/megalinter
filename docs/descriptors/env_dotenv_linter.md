@@ -9,7 +9,7 @@
 
 ## dotenv-linter documentation
 
-- Version in MegaLinter: **3.1.1**
+- Version in MegaLinter: **3.2.0**
 - Visit [Official Web Site](https://dotenv-linter.github.io/){target=_blank}
 - See [Index of problems detected by dotenv-linter](https://dotenv-linter.github.io/#/?id=dotenv-linter){target=_blank}
 

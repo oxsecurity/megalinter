@@ -9,7 +9,7 @@
 
 ## clj-kondo documentation
 
-- Version in MegaLinter: **2022.01.15**
+- Version in MegaLinter: **2022.02.09**
 - Visit [Official Web Site](https://github.com/borkdude/clj-kondo#readme){target=_blank}
 - See [How to configure clj-kondo rules](https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration){target=_blank}
   - If custom `.clj-kondo/config.edn` config file is not found, [.clj-kondo/config.edn](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn){target=_blank} will be used

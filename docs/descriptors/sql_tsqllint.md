@@ -4,7 +4,7 @@
 
 ## tsqllint documentation
 
-- Version in MegaLinter: **1.14.0.0**
+- Version in MegaLinter: **1.14.5.0**
 - Visit [Official Web Site](https://github.com/tsqllint/tsqllint#readme){target=_blank}
 - See [How to configure tsqllint rules](https://github.com/tsqllint/tsqllint#rule-configuration){target=_blank}
 - See [How to disable tsqllint rules in files](https://github.com/tsqllint/tsqllint#disabling-rules-with-inline-comments){target=_blank}

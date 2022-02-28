@@ -4,7 +4,7 @@
 
 ## htmlhint documentation
 
-- Version in MegaLinter: **1.1.0**
+- Version in MegaLinter: **1.1.2**
 - Visit [Official Web Site](https://htmlhint.com/){target=_blank}
 - See [How to configure htmlhint rules](https://htmlhint.com/docs/user-guide/configuration){target=_blank}
   - If custom `.htmlhintrc` config file is not found, [.htmlhintrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.htmlhintrc){target=_blank} will be used
