@@ -42,6 +42,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.902 to **2.0.903** on 2022-02-27
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.2 to **1.7.3** on 2022-02-28
   - [checkov](https://www.checkov.io/) from 2.0.903 to **2.0.906** on 2022-02-28
+  - [checkov](https://www.checkov.io/) from 2.0.906 to **2.0.908** on 2022-03-01
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
