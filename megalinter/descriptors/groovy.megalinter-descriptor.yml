@@ -37,7 +37,7 @@ linters:
       - "npm-groovy-lint --path . --files myfile.groovy -c .groovylintrc.json --fix"
     install:
       apk:
-        - openjdk8
+        - openjdk11
       npm:
         - npm-groovy-lint
     ide:

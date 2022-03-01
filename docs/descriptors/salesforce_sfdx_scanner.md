@@ -390,7 +390,7 @@ use-isnan                                          typescript   Possible Errors 
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN sfdx plugins:install @salesforce/sfdx-scanner

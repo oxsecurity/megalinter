@@ -6,7 +6,7 @@ file_extensions:
   - ".scala"
 install:
   apk:
-    - openjdk8
+    - openjdk11
   dockerfile:
     - |
       RUN curl -fLo coursier https://git.io/coursier-cli && \

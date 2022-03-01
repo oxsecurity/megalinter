@@ -137,6 +137,6 @@ Note: command-line arguments have priority on config file properties - default: 
 ### Installation on mega-linter Docker image
 
 - APK packages (Linux):
-  - [openjdk8](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk8)
+  - [openjdk11](https://pkgs.alpinelinux.org/packages?branch=edge&name=openjdk11)
 - NPM packages (node.js):
   - [npm-groovy-lint](https://www.npmjs.com/package/npm-groovy-lint)

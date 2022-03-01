@@ -49,7 +49,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                openjdk8
+                openjdk11
 #APK__END
 
 # PATH for golang
@@ -98,7 +98,7 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #############################################################################################
 #OTHER__START
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkstyle installation

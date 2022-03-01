@@ -59,7 +59,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 go \
                 bash \
-                openjdk8 \
+                openjdk11 \
                 nodejs \
                 npm \
                 yarn \

@@ -68,7 +68,7 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
-                openjdk8 \
+                openjdk11 \
                 nodejs \
                 npm \
                 yarn \

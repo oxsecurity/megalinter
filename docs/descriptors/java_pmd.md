@@ -74,7 +74,7 @@ pmd -rulesets java-pmd-ruleset.xml -dir /path/to/sources
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 ARG PMD_VERSION=6.40.0 && \

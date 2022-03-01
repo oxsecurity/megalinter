@@ -54,7 +54,7 @@ RUN apk add --update --no-cache \
 RUN apk add --update --no-cache \
                 bash \
                 go \
-                openjdk8 \
+                openjdk11 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \

@@ -242,7 +242,7 @@
         },
         {
           "dockerfile": [
-            "ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk",
+            "ENV JAVA_HOME=/usr/lib/jvm/java\u201111\u2011openjdk",
             "ENV PATH=\"$JAVA_HOME/bin:${PATH}\""
           ]
         },
@@ -273,7 +273,7 @@
           "description": "Will be automatically integrated in generated Dockerfile",
           "examples": [
             [
-              "ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk",
+              "ENV JAVA_HOME=/usr/lib/jvm/java\u201111\u2011openjdk",
               "ENV PATH=\"$JAVA_HOME/bin:${PATH}\""
             ]
           ],

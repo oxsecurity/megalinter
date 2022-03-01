@@ -7,7 +7,7 @@ file_extensions:
   - ".kts"
 install:
   apk:
-    - openjdk8
+    - openjdk11
 linters:
   # KTLINT
   - linter_name: ktlint
