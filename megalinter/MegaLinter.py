@@ -96,6 +96,7 @@ class Megalinter:
         self.file_names_regex = []
         self.status = "success"
         self.return_code = 0
+        self.has_git_extraheader = False
         self.has_updated_sources = 0
         self.flavor_suggestions = None
         # Initialize plugins
@@ -176,10 +177,10 @@ class Megalinter:
         # Generate reports
         for reporter in self.reporters:
             reporter.produce_report()
+        # Process commmands before closing MegaLinter
+        self.before_exit()
         # Manage return code
         self.check_results()
-        # Display upgrade recommendation if necessary
-        self.manage_upgrade_message()
 
     # noinspection PyMethodMayBeStatic
     def process_linters_serial(self, active_linters, _linters_do_fixes):
@@ -420,10 +421,16 @@ class Megalinter:
             all_linters = linter_factory.list_all_linters(linter_init_params)
 
         skipped_linters = []
+        # Remove inactive or disabled linters
         for linter in all_linters:
             linter.master = self
             if linter.is_active is False or linter.disabled is True:
                 skipped_linters += [linter.name]
+                if linter.disabled is True:
+                    logging.warning(
+                        f"{linter.name} has been temporary disabled in MegaLinter, please use a "
+                        "previous MegaLinter version or wait for the next one !"
+                    )
                 continue
             self.linters += [linter]
         # Display skipped linters in log
@@ -555,6 +562,14 @@ class Megalinter:
             "Listing updated files in [" + self.github_workspace + "] using git diff."
         )
         repo = git.Repo(os.path.realpath(self.github_workspace))
+        # Add auth header if necessary
+        if config.get("GIT_AUTHORIZATION_BEARER", "") != "":
+            auth_bearer = "Authorization: Bearer " + config.get(
+                "GIT_AUTHORIZATION_BEARER"
+            )
+            repo.config_writer().set_value("http", "extraheader", auth_bearer).release()
+            self.has_git_extraheader = True
+        # Fetch base branch content
         default_branch = config.get("DEFAULT_BRANCH", "HEAD")
         default_branch_remote = f"origin/{default_branch}"
         if default_branch_remote not in [ref.name for ref in repo.refs]:
@@ -564,7 +579,7 @@ class Megalinter:
             local_ref = f"refs/remotes/{default_branch_remote}"
             # Try to fetch default_branch from origin, because it isn't cached locally.
             repo.git.fetch("origin", f"{remote_ref}:{local_ref}")
-
+        # Make git diff to list files
         diff = repo.git.diff(default_branch_remote, name_only=True)
         logging.info(f"Modified files:\n{diff}")
         all_files = list()
@@ -737,6 +752,19 @@ class Megalinter:
                     sys.exit(self.return_code)
             config.delete()
 
+    def before_exit(self):
+        # Clean git repository
+        self.manage_clean_git_repo()
+        # Display upgrade recommendation if necessary
+        self.manage_upgrade_message()
+
+    def manage_clean_git_repo(self):
+        # Add auth header if necessary
+        if self.has_git_extraheader is True:
+            repo = git.Repo(os.path.realpath(self.github_workspace))
+            repo.config_writer().set_value("http", "extraheader", "").release()
+
+    # Propose legacy versions users to upgrade
     def manage_upgrade_message(self):
         mega_linter_version = config.get("BUILD_VERSION", "No docker image")
         if "insiders" in mega_linter_version or "v4" in mega_linter_version:

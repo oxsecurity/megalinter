@@ -15,10 +15,11 @@ setup(
         "multiprocessing_logging",
         "pychalk",
         "pygithub",
+        "python-gitlab",
         "commentjson",
         "pytablewriter",
         "pyyaml",
-        "requests==2.24.0",
+        "requests",
         "terminaltables",
         "importlib-metadata>=3.10"
         # "flask-restful"

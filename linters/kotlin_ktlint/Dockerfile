@@ -29,9 +29,12 @@ FROM python:3.9.7-alpine3.13
 # Run APK installs #
 ####################
 
+WORKDIR /
+
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         bash \
+        ca-certificates \
         curl \
         gcc \
         git \
@@ -46,7 +49,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                openjdk8
+                openjdk11
 #APK__END
 
 # PATH for golang
@@ -72,9 +75,6 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
-RUN npm install npm@latest-6 -g || true
-# Disable package-lock.json to avoid sudden crash. Try to remove later if possible
-RUN echo 'package-lock=false' >> .npmrc || true
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 

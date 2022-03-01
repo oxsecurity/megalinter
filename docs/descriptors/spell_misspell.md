@@ -37,7 +37,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                        | Description                                           | Embedded linters |                                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/v6-alpha/flavors/dart/)                   | Optimized for DART based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/v6-alpha/flavors/documentation/) | MegaLinter for documentation projects                 |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
@@ -104,8 +104,12 @@ Usage of misspell:
 
 - Dockerfile commands :
 ```dockerfile
-RUN curl -L -o ./install-misspell.sh https://git.io/misspell \
-    && sh ./install-misspell.sh
+RUN ML_THIRD_PARTY_DIR="/third-party/misspell" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && curl -L -o ${ML_THIRD_PARTY_DIR}/install-misspell.sh https://git.io/misspell \
+    && sh .${ML_THIRD_PARTY_DIR}/install-misspell.sh \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && find /tmp -path '/tmp/tmp.*' -type f -name 'misspell*' -delete -o -type d -empty -delete
 
 ```
 

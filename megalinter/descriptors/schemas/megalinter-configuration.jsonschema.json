@@ -1,5 +1,5 @@
 {
-  "$id": "http://github.com/nvuillam/megalinter-configuration.json",
+  "$id": "http://github.com/megalinter/megalinter-configuration.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "additionalProperties": false,
   "definitions": {
@@ -136,6 +136,7 @@
         "JSX_ESLINT",
         "KOTLIN_KTLINT",
         "KUBERNETES_KUBEVAL",
+        "KUBERNETES_KUBECONFORM",
         "LATEX_CHKTEX",
         "LUA_LUACHECK",
         "MARKDOWN_MARKDOWNLINT",
@@ -373,20 +374,9 @@
         "string"
       ]
     },
-    "ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE",
-      "default": "file",
-      "enum": [
-        "file",
-        "list_of_files",
-        "project"
-      ],
-      "title": "ANSIBLE_ANSIBLE_LINT: Override default cli lint mode",
-      "type": "string"
-    },
     "ANSIBLE_ANSIBLE_LINT_CONFIG_FILE": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_CONFIG_FILE",
-      "default": ".ansible-lint.yml",
+      "default": ".ansible-lint",
       "description": "ANSIBLE_ANSIBLE_LINT: User custom config file name if different from default",
       "title": "ANSIBLE_ANSIBLE_LINT: Custom config file name",
       "type": "string"
@@ -439,16 +429,6 @@
       },
       "title": "ANSIBLE_ANSIBLE_LINT: Override descriptor/linter matching file name regex",
       "type": "array"
-    },
-    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE",
-      "title": "ANSIBLE_ANSIBLE_LINT: Excluding Regex",
-      "type": "string"
-    },
-    "ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE": {
-      "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE",
-      "title": "ANSIBLE_ANSIBLE_LINT: Including Regex",
-      "type": "string"
     },
     "ANSIBLE_ANSIBLE_LINT_POST_COMMANDS": {
       "$id": "#/properties/ANSIBLE_ANSIBLE_LINT_POST_COMMANDS",
@@ -796,7 +776,7 @@
     },
     "BASH_SHELLCHECK_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_SHELLCHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -903,7 +883,7 @@
     },
     "BASH_SHFMT_CLI_LINT_MODE": {
       "$id": "#/properties/BASH_SHFMT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -2037,7 +2017,7 @@
     },
     "CSS_STYLELINT_CLI_LINT_MODE": {
       "$id": "#/properties/CSS_STYLELINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -3318,6 +3298,34 @@
       "title": "GitHub Workspace",
       "type": "string"
     },
+    "GITLAB_ACCESS_TOKEN_MEGALINTER": {
+      "$id": "#/properties/GITLAB_ACCESS_TOKEN_MEGALINTER",
+      "default": true,
+      "description": "Gitlab access token with API access (can be user or project Access token)",
+      "title": "Gitlab Access Token",
+      "type": "string"
+    },
+    "GITLAB_CERTIFICATE_PATH": {
+      "$id": "#/properties/GITLAB_CERTIFICATE_PATH",
+      "default": true,
+      "description": "Path to SSL certificate if necessary",
+      "title": "Gitlab SSL Certificate path",
+      "type": "string"
+    },
+    "GITLAB_COMMENT_REPORTER": {
+      "$id": "#/properties/GITLAB_COMMENT_REPORTER",
+      "default": true,
+      "description": "Posts Mega-Linter results summary in the comments of the related merge request (if existing)",
+      "title": "Activate Gitlab MR Comments reporter",
+      "type": "boolean"
+    },
+    "GITLAB_CUSTOM_CERTIFICATE": {
+      "$id": "#/properties/GITLAB_CUSTOM_CERTIFICATE",
+      "default": true,
+      "description": "Store your SSL certificate string value in a CI env variable named GITLAB_CUSTOM_CERTIFICATE if you want it to be copied by MegaLinter in a local certificate file that will be used by python gitlab lib",
+      "title": "Gitlab SSL Certificate value",
+      "type": "string"
+    },
     "GIT_FILTER_REGEX_EXCLUDE": {
       "$id": "#/properties/GIT_FILTER_REGEX_EXCLUDE",
       "title": "Excluding regex filter for GIT descriptor",
@@ -3973,7 +3981,7 @@
     },
     "HTML_HTMLHINT_CLI_LINT_MODE": {
       "$id": "#/properties/HTML_HTMLHINT_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -4383,7 +4391,7 @@
     },
     "JAVASCRIPT_STANDARD_CLI_LINT_MODE": {
       "$id": "#/properties/JAVASCRIPT_STANDARD_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -5356,6 +5364,119 @@
       "title": "Including regex filter for KUBERNETES descriptor",
       "type": "string"
     },
+    "KUBERNETES_KUBECONFORM_ARGUMENTS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_ARGUMENTS",
+      "description": "KUBERNETES_KUBECONFORM: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "KUBERNETES_KUBECONFORM_CLI_LINT_MODE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_CLI_LINT_MODE",
+      "default": "list_of_files",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "title": "KUBERNETES_KUBECONFORM: Override default cli lint mode",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_DIRECTORY": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_DIRECTORY",
+      "default": "kubernetes",
+      "title": "KUBERNETES_KUBECONFORM: Directory containing KUBERNETES files",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_DISABLE_ERRORS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_DISABLE_ERRORS",
+      "default": false,
+      "title": "KUBERNETES_KUBECONFORM: Linter does not make MegaLinter fail even if errors are found",
+      "type": "boolean"
+    },
+    "KUBERNETES_KUBECONFORM_DISABLE_ERRORS_IF_LESS_THAN": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_DISABLE_ERRORS_IF_LESS_THAN",
+      "default": 0,
+      "title": "KUBERNETES_KUBECONFORM: Maximum number of errors allowed",
+      "type": "number"
+    },
+    "KUBERNETES_KUBECONFORM_FILE_EXTENSIONS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILE_EXTENSIONS",
+      "examples:": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Override descriptor/linter matching files extensions",
+      "type": "array"
+    },
+    "KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILE_NAMES_REGEX",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Override descriptor/linter matching file name regex",
+      "type": "array"
+    },
+    "KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILTER_REGEX_EXCLUDE",
+      "title": "KUBERNETES_KUBECONFORM: Excluding Regex",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_FILTER_REGEX_INCLUDE",
+      "title": "KUBERNETES_KUBECONFORM: Including Regex",
+      "type": "string"
+    },
+    "KUBERNETES_KUBECONFORM_POST_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_POST_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Define or override a list of bash commands to run after the linter",
+      "type": "array"
+    },
+    "KUBERNETES_KUBECONFORM_PRE_COMMANDS": {
+      "$id": "#/properties/KUBERNETES_KUBECONFORM_PRE_COMMANDS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "KUBERNETES_KUBECONFORM: Define or override a list of bash commands to run before the linter",
+      "type": "array"
+    },
     "KUBERNETES_KUBEVAL_ARGUMENTS": {
       "$id": "#/properties/KUBERNETES_KUBEVAL_ARGUMENTS",
       "description": "KUBERNETES_KUBEVAL: User custom arguments to add in linter CLI call",
@@ -5939,7 +6060,7 @@
     },
     "MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE": {
       "$id": "#/properties/MARKDOWN_MARKDOWN_LINK_CHECK_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",
@@ -11256,7 +11377,7 @@
     },
     "SQL_SQLFLUFF_CONFIG_FILE": {
       "$id": "#/properties/SQL_SQLFLUFF_CONFIG_FILE",
-      "default": "setup.cfg",
+      "default": ".sqlfluff",
       "description": "SQL_SQLFLUFF: User custom config file name if different from default",
       "title": "SQL_SQLFLUFF: Custom config file name",
       "type": "string"
@@ -12328,6 +12449,13 @@
         "string"
       ]
     },
+    "TERRAFORM_TERRASCAN_CONFIG_FILE": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_CONFIG_FILE",
+      "default": "terrascan-config.toml",
+      "description": "TERRAFORM_TERRASCAN: User custom config file name if different from default",
+      "title": "TERRAFORM_TERRASCAN: Custom config file name",
+      "type": "string"
+    },
     "TERRAFORM_TERRASCAN_DISABLE_ERRORS": {
       "$id": "#/properties/TERRAFORM_TERRASCAN_DISABLE_ERRORS",
       "default": false,
@@ -12397,6 +12525,12 @@
       },
       "title": "TERRAFORM_TERRASCAN: Define or override a list of bash commands to run before the linter",
       "type": "array"
+    },
+    "TERRAFORM_TERRASCAN_RULES_PATH": {
+      "$id": "#/properties/TERRAFORM_TERRASCAN_RULES_PATH",
+      "description": "TERRAFORM_TERRASCAN: Path where to find linter configuration file",
+      "title": "TERRAFORM_TERRASCAN: Custom config file path",
+      "type": "string"
     },
     "TERRAFORM_TFLINT_ARGUMENTS": {
       "$id": "#/properties/TERRAFORM_TFLINT_ARGUMENTS",
@@ -12965,7 +13099,7 @@
     },
     "TYPESCRIPT_STANDARD_CLI_LINT_MODE": {
       "$id": "#/properties/TYPESCRIPT_STANDARD_CLI_LINT_MODE",
-      "default": "file",
+      "default": "list_of_files",
       "enum": [
         "file",
         "list_of_files",

@@ -6,7 +6,7 @@ markdown-table-formatter detects wrongly formatted markdown tables and can autom
 
 ## markdown-table-formatter documentation
 
-- Version in MegaLinter: **1.2.0**
+- Version in MegaLinter: **1.3.0**
 - Visit [Official Web Site](https://www.npmjs.com/package/markdown-table-formatter){target=_blank}
 
 [![markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
@@ -45,7 +45,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                        | Description                                           | Embedded linters |                                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/v6-alpha/flavors/dart/)                   | Optimized for DART based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/v6-alpha/flavors/documentation/) | MegaLinter for documentation projects                 |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
@@ -93,9 +93,10 @@ markdown-table-formatter myfile.md myfile2.md myfile3.md
 ```shell
 markdown-table-formatter [options]
 
-  -c, --check    Check only (exits 1 if wrongly formatted markdown tables are found)
-  -h, --help     Show help
-  -v, --version  Show version
+  -c, --check              Check only (exits 1 if wrongly formatted markdown tables are found)
+  -p, --columnpadding Int  Override table columns padding number of spaces
+  -h, --help               Show help
+  -v, --version            Show version
 ```
 
 ### Installation on mega-linter Docker image

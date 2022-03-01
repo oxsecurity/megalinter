@@ -7,7 +7,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 
 ## cspell documentation
 
-- Version in MegaLinter: **5.16.0**
+- Version in MegaLinter: **5.18.5**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -48,7 +48,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                        | Description                                           | Embedded linters |                                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/v6-alpha/flavors/dart/)                   | Optimized for DART based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/v6-alpha/flavors/documentation/) | MegaLinter for documentation projects                 |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
@@ -96,18 +96,20 @@ Usage: cspell [options] [command]
 Spelling Checker for Code
 
 Options:
-  -V, --version               output the version number
-  -h, --help                  display help for command
+  -V, --version                         output the version number
+  -h, --help                            display help for command
 
 Commands:
-  lint [options] [globs...]   Check spelling
-  trace [options] <words...>  Trace words
-    Search for words in the configuration and dictionaries.
-  check [options] <files...>  Spell check file(s) and display the result. The
-                              full file is displayed in color.
-  link                        Link dictionaries any other settings to the
-                              cspell global config.
-  help [command]              display help for command
+  lint [options] [globs...]             Check spelling
+  trace [options] [words...]            Trace words -- Search for words in the
+                                        configuration and dictionaries.
+  check [options] <files...>            Spell check file(s) and display the
+                                        result. The full file is displayed in
+                                        color.
+  link                                  Link dictionaries and other settings to
+                                        the cspell global config.
+  suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  help [command]                        display help for command
 ```
 
 ### Installation on mega-linter Docker image

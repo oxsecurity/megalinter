@@ -6,9 +6,9 @@ lint_all_files: true
 install:
   # Java, because Apex is Java-based, so are related tools like PMD which is embedded in sfdx-scanner
   apk:
-    - openjdk8
+    - openjdk11
   dockerfile:
-    - ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+    - ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
     - RUN echo y|sfdx plugins:install sfdx-hardis
   # Salesforce DX
@@ -110,7 +110,8 @@ linters:
       - "eslint"
       - "--target"
       - "**/aura/**/*.js"
-      - "--violations-cause-error"
+      - "--severity-threshold"
+      - "2"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -122,8 +123,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "found ([0-9]+) violation"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx scanner:run"
     install:
@@ -164,7 +165,8 @@ linters:
       - "eslint-lwc"
       - "--target"
       - "**/lwc/**/*.js"
-      - "--violations-cause-error"
+      - "--severity-threshold"
+      - "2"
       - "--format"
       - "csv"
     cli_lint_mode: project
@@ -176,8 +178,8 @@ linters:
       - "plugins"
     cli_version_arg_name: ""
     version_extract_regex: "(?<=@salesforce/sfdx-scanner )\\d+(\\.\\d+)+"
-    cli_lint_errors_count: regex_sum
-    cli_lint_errors_regex: "found ([0-9]+) violation"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: '"[0-9]+",'
     examples:
       - "sfdx scanner:run"
     install:

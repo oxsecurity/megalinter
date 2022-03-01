@@ -9,7 +9,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **0.82.0**
+- Version in MegaLinter: **1.25.1**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -62,7 +62,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                          | Description                       | Embedded linters |                                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       101        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       102        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/v6-alpha/flavors/ruby/)     | Optimized for RUBY based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 
 ## Behind the scenes
@@ -96,104 +96,138 @@ rubocop --force-exclusion --safe-auto-correct -c .ruby-lint.yml myfile.rb
 
 ```shell
 Usage: rubocop [options] [file1, file2, ...]
-    -L, --list-target-files          List all files RuboCop will inspect.
-        --except [COP1,COP2,...]     Disable the given cop(s).
+
+Basic Options:
+    -l, --lint                       Run only lint cops.
+    -x, --fix-layout                 Run only layout cops, with auto-correct on.
+        --safe                       Run only safe cops.
+        --except [COP1,COP2,...]     Exclude the given cop(s).
         --only [COP1,COP2,...]       Run only the given cop(s).
         --only-guide-cops            Run only cops for rules that link to a
                                      style guide.
-    -c, --config FILE                Specify configuration file.
-        --force-exclusion            Force excluding files specified in the
-                                     configuration `Exclude` even if they are
-                                     explicitly passed as arguments.
-        --ignore-parent-exclusion    Prevent from inheriting AllCops/Exclude from
+    -F, --fail-fast                  Inspect files in order of modification
+                                     time and stop after the first file
+                                     containing offenses.
+        --disable-pending-cops       Run without pending cops.
+        --enable-pending-cops        Run with pending cops.
+        --ignore-disable-comments    Run cops even when they are disabled locally
+                                     by a `rubocop:disable` directive.
+        --force-exclusion            Any files excluded by `Exclude` in configuration
+                                     files will be excluded, even if given explicitly
+                                     as arguments.
+        --only-recognized-file-types Inspect files given on the command line only if
+                                     they are listed in `AllCops/Include` parameters
+                                     of user configuration or default configuration.
+        --ignore-parent-exclusion    Prevent from inheriting `AllCops/Exclude` from
                                      parent folders.
         --force-default-config       Use default configuration even if configuration
                                      files are present in the directory tree.
-        --auto-gen-config            Generate a configuration file acting as a
-                                     TODO list.
-        --exclude-limit COUNT        Used together with --auto-gen-config to
-                                     set the limit for how many Exclude
-                                     properties to generate. Default is 15.
-        --disable-uncorrectable      Used with --auto-correct to annotate any
-                                     offenses that do not support autocorrect
-                                     with `rubocop:todo` comments.
-        --no-offense-counts          Do not include offense counts in configuration
-                                     file generated by --auto-gen-config.
-        --auto-gen-only-exclude      Generate only Exclude parameters and not Max
-                                     when running --auto-gen-config, except if the
-                                     number of files with offenses is bigger than
-                                     exclude-limit.
-        --no-auto-gen-timestamp      Do not include the date and time when
-                                     the --auto-gen-config was run in the file it
-                                     generates.
-        --init                       Generate a .rubocop.yml file in the current directory.
+    -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense
+                                     reports. This is useful for editor integration.
+    -P, --[no-]parallel              Use available CPUs to execute inspection in
+                                     parallel. Default is true.
+        --fail-level SEVERITY        Minimum severity (A/I/R/C/W/E/F) for exit
+                                     with error code.
+
+Caching:
+    -C, --cache FLAG                 Use result caching (FLAG=true) or don't
+                                     (FLAG=false), default determined by
+                                     configuration parameter AllCops: UseCache.
+        --cache-root DIR             Set the cache root directory.
+                                     Takes precedence over the configuration
+                                     parameter AllCops: CacheRootDirectory and
+                                     the $RUBOCOP_CACHE_ROOT environment variable.
+
+Output Options:
     -f, --format FORMATTER           Choose an output formatter. This option
                                      can be specified multiple times to enable
                                      multiple formatters at the same time.
-                                     [p]rogress is used by default
                                        [a]utogenconf
                                        [c]lang
                                        [e]macs
                                        [fi]les
                                        [fu]ubar
+                                       [g]ithub
                                        [h]tml
                                        [j]son
                                        [ju]nit
                                        [o]ffenses
                                        [pa]cman
-                                       [p]rogress
+                                       [p]rogress (default)
                                        [q]uiet
                                        [s]imple
                                        [t]ap
                                        [w]orst
                                        custom formatter class name
-    -o, --out FILE                   Write output to a file instead of STDOUT.
-                                     This option applies to the previously
-                                     specified --format, or the default format
-                                     if no format is specified.
-    -r, --require FILE               Require Ruby file.
-        --fail-level SEVERITY        Minimum severity (A/R/C/W/E/F) for exit
-                                     with error code.
-        --display-only-fail-level-offenses
-                                     Only output offense messages at
-                                     the specified --fail-level or above
-        --show-cops [COP1,COP2,...]  Shows the given cops, or all cops by
-                                     default, and their configurations for the
-                                     current directory.
-    -F, --fail-fast                  Inspect files in order of modification
-                                     time and stop after the first file
-                                     containing offenses.
-    -C, --cache FLAG                 Use result caching (FLAG=true) or don't
-                                     (FLAG=false), default determined by
-                                     configuration parameter AllCops: UseCache.
-    -d, --debug                      Display debug info.
     -D, --[no-]display-cop-names     Display cop names in offense messages.
                                      Default is true.
     -E, --extra-details              Display extra details in offense messages.
     -S, --display-style-guide        Display style guide URLs in offense messages.
-    -a, --auto-correct               Auto-correct offenses.
-        --disable-pending-cops       Run without pending cops.
-        --enable-pending-cops        Run with pending cops.
-        --ignore-disable-comments    Run cops even when they are disabled locally
-                                     with a comment.
-        --safe                       Run only safe cops.
+    -o, --out FILE                   Write output to a file instead of STDOUT.
+                                     This option applies to the previously
+                                     specified --format, or the default format
+                                     if no format is specified.
+        --stderr                     Write all output to stderr except for the
+                                     autocorrected source. This is especially useful
+                                     when combined with --auto-correct and --stdin.
+        --display-time               Display elapsed time in seconds.
+        --display-only-failed        Only output offense messages. Omit passing
+                                     cops. Only valid for --format junit.
+        --display-only-fail-level-offenses
+                                     Only output offense messages at
+                                     the specified --fail-level or above
+
+Auto-correction:
+    -a, --auto-correct               Auto-correct offenses (only when it's safe).
+        --safe-auto-correct          (same, deprecated)
+    -A, --auto-correct-all           Auto-correct offenses (safe and unsafe)
+        --disable-uncorrectable      Used with --auto-correct to annotate any
+                                     offenses that do not support autocorrect
+                                     with `rubocop:todo` comments.
+
+Config Generation:
+        --auto-gen-config            Generate a configuration file acting as a
+                                     TODO list.
+        --regenerate-todo            Regenerate the TODO configuration file using
+                                     the last configuration. If there is no existing
+                                     TODO file, acts like --auto-gen-config.
+        --exclude-limit COUNT        Set the limit for how many files to explicitly exclude.
+                                     If there are more files than the limit, the cop will
+                                     be disabled instead. Default is 15.
+        --[no-]offense-counts        Include offense counts in configuration
+                                     file generated by --auto-gen-config.
+                                     Default is true.
+        --[no-]auto-gen-only-exclude Generate only Exclude parameters and not Max
+                                     when running --auto-gen-config, except if the
+                                     number of files with offenses is bigger than
+                                     exclude-limit. Default is false.
+        --[no-]auto-gen-timestamp    Include the date and time when the --auto-gen-config
+                                     was run in the file it generates. Default is true.
+
+Additional Modes:
+    -L, --list-target-files          List all files RuboCop will inspect.
+        --show-cops [COP1,COP2,...]  Shows the given cops, or all cops by
+                                     default, and their configurations for the
+                                     current directory.
+        --show-docs-url [COP1,COP2,...]
+                                     Display url to documentation for the given
+                                     cops, or base url by default.
+
+General Options:
+        --init                       Generate a .rubocop.yml file in the current directory.
+    -c, --config FILE                Specify configuration file.
+    -d, --debug                      Display debug info.
+    -r, --require FILE               Require Ruby file.
         --[no-]color                 Force color output on or off.
     -v, --version                    Display version.
     -V, --verbose-version            Display verbose version.
-    -P, --parallel                   Use available CPUs to execute inspection in
-                                     parallel.
-    -l, --lint                       Run only lint cops.
-    -x, --fix-layout                 Run only layout cops, with auto-correct on.
-        --safe-auto-correct          Run auto-correct only when it's safe.
-    -s, --stdin FILE                 Pipe source from STDIN, using FILE in offense
-                                     reports. This is useful for editor integration.
 ```
 
 ### Installation on mega-linter Docker image
 
 - GEM packages (Ruby) :
-  - [rubocop:0.82.0](https://rubygems.org/gems/rubocop)
-  - [rubocop-github:0.16.0](https://rubygems.org/gems/rubocop-github)
-  - [rubocop-performance:1.7.1](https://rubygems.org/gems/rubocop-performance)
-  - [rubocop-rails:2.5](https://rubygems.org/gems/rubocop-rails)
-  - [rubocop-rspec:1.41.0](https://rubygems.org/gems/rubocop-rspec)
+  - [rubocop](https://rubygems.org/gems/rubocop)
+  - [rubocop-github](https://rubygems.org/gems/rubocop-github)
+  - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
+  - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
+  - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)

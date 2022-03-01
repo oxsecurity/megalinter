@@ -4,7 +4,7 @@
 
 ## swiftlint documentation
 
-- Version in MegaLinter: **0.46.0**
+- Version in MegaLinter: **0.46.3**
 - Visit [Official Web Site](https://github.com/realm/SwiftLint#readme){target=_blank}
 - Docker image: [norionomura/swiftlint:latest](https://hub.docker.com/r/norionomura/swiftlint){target=_blank}
   - arguments: `-v {{WORKSPACE}}:/tmp/lint:rw`
@@ -50,7 +50,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                          | Description                        | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:-----------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor          |       101        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor          |       102        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.github.io/v6-alpha/flavors/swift/)   | Optimized for SWIFT based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
 
 ## Behind the scenes

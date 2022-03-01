@@ -1,6 +1,6 @@
 {
     "actionlint": "MIT",
-    "ansible-lint": "MIT",
+    "ansible-lint": "GPL-3.0",
     "bandit": "Apache-2.0",
     "black": "MIT",
     "cfn-lint": "MIT-0",
@@ -32,6 +32,7 @@
     "jscpd": "MIT",
     "kics": "Apache-2.0",
     "ktlint": "MIT",
+    "kubeconform": "Other",
     "kubeval": "Other",
     "luacheck": "MIT",
     "markdown-table-formatter": "MIT",

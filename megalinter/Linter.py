@@ -4,7 +4,7 @@ Template class for custom linters: any linter class in /linters folder must inhe
 The following list of items can/must be overridden on custom linter local class:
 - field descriptor_id (required) ex: "JAVASCRIPT"
 - field name (optional) ex: "JAVASCRIPT_ES". If not set, language value is used
-- field linter_name (required) ex: "eslint"
+- field linter_name (required) ex: "eslint" 
 - field linter_url (required) ex: "https://eslint.org/"
 - field test_folder (optional) ex: "docker". If not set, language.lowercase() value is used
 - field config_file_name (optional) ex: ".eslintrc.yml". If not set, no default config file will be searched
@@ -19,6 +19,7 @@ The following list of items can/must be overridden on custom linter local class:
 
 """
 import errno
+import json
 import logging
 import os
 import re
@@ -267,14 +268,30 @@ class Linter:
             if len(self.active_only_if_file_found) > 0:
                 is_found = False
                 for file_to_check in self.active_only_if_file_found:
+                    found_file = None
+                    prop = None
+                    if ":" in file_to_check:
+                        file_to_check, prop = file_to_check.split(":")
                     if os.path.isfile(f"{self.workspace}{os.path.sep}{file_to_check}"):
-                        is_found = True
-                        break
+                        found_file = f"{self.workspace}{os.path.sep}{file_to_check}"
                     if os.path.isfile(
                         f"{self.workspace}{os.path.sep}{self.linter_rules_path}{os.path.sep}{file_to_check}"
                     ):
+                        found_file = (
+                            f"{self.workspace}{os.path.sep}{self.linter_rules_path}"
+                            + f"{os.path.sep}{file_to_check}"
+                        )
+                    # filename case
+                    if found_file is not None and prop is None:
                         is_found = True
                         break
+                    # filename + prop case
+                    if found_file is not None and prop is not None:
+                        with open(found_file, "r", encoding="utf-8") as json_file:
+                            found_file_content = json.load(json_file)
+                        if prop in found_file_content:
+                            is_found = True
+                            break
                 if is_found is False:
                     self.is_active = False
                     logging.info(

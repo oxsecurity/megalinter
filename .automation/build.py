@@ -325,7 +325,8 @@ def build_dockerfile(
     pip_install_command = ""
     if len(pip_packages) > 0:
         pip_install_command = (
-            "RUN pip3 install --no-cache-dir --upgrade \\\n          '"
+            "RUN pip3 install --no-cache-dir --upgrade pip &&"
+            + " pip3 install --no-cache-dir --upgrade \\\n          '"
             + "' \\\n          '".join(list(dict.fromkeys(pip_packages)))
             + "'"
         )
@@ -351,6 +352,8 @@ def build_dockerfile(
 
 def match_flavor(item, flavor, flavor_info):
     is_strict = "strict" in flavor_info and flavor_info["strict"] is True
+    if "disabled" in item and item["disabled"] is True:
+        return
     if (
         "descriptor_flavors_exclude" in item
         and flavor in item["descriptor_flavors_exclude"]
@@ -860,6 +863,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         # Text as title
         else:
             linter_doc_md += [f"# {linter.linter_name}"]
+
+        # Indicate that a linter is disabled in this version
+        if hasattr(linter, "disabled") and linter.disabled is True:
+            linter_doc_md += [""]
+            linter_doc_md += [
+                "_This linter has been temporary disabled in this version_"
+            ]
 
         # Linter text , if defined in YML descriptor
         if hasattr(linter, "linter_text") and linter.linter_text:

@@ -9,7 +9,7 @@
 
 ## kics documentation
 
-- Version in MegaLinter: **1.5.0**
+- Version in MegaLinter: **1.5.2**
 - Visit [Official Web Site](https://www.kics.io){target=_blank}
 - See [How to disable kics rules in files](https://docs.kics.io/latest/running-kics/#using_commands_on_scanned_files_as_comments){target=_blank}
 - See [Index of problems detected by kics](https://docs.kics.io/latest/queries/all-queries/){target=_blank}
@@ -40,8 +40,8 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                | Description                            | Embedded linters |                                                                                                                                                                                               Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)       | Default MegaLinter Flavor              |       101        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)   | Optimized for security                 |        19        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)       | Default MegaLinter Flavor              |       102        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/v6-alpha/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes

@@ -3,6 +3,8 @@ ML_REPO_NAME = "megalinter"
 ML_REPO = f"{ML_REPO_OWNER}/{ML_REPO_NAME}"
 ML_REPO_URL = f"https://github.com/{ML_REPO_OWNER}/{ML_REPO_NAME}"
 ML_DOC_URL = "https://megalinter.github.io/v6-alpha"  # TODOv6: remove v6-alpha, replace by latest
+ML_REPO_ISSUES_URL = f"https://github.com/{ML_REPO_OWNER}/{ML_REPO_NAME}/issues"
+ML_DOC_URL_DESCRIPTORS_ROOT = f"{ML_DOC_URL}/descriptors"
 
 ML_DOCKER_OWNER = "megalinter"
 ML_DOCKER_NAME = "megalinter"

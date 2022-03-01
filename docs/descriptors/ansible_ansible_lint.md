@@ -4,9 +4,9 @@
 
 ## ansible-lint documentation
 
+- Version in MegaLinter: **5.4.0**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
-  - If custom `.ansible-lint.yml` config file is not found, [.ansible-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ansible-lint.yml){target=_blank} will be used
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
 - See [Index of problems detected by ansible-lint](https://ansible-lint.readthedocs.io/en/latest/default_rules.html){target=_blank}
 
@@ -17,21 +17,18 @@
 - Enable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [ENABLE_LINTERS variable](https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation)
 - Disable ansible-lint by adding `ANSIBLE_ANSIBLE_LINT` in [DISABLE_LINTERS variable](https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation)
 
-| Variable                                         | Description                                                                                                                                                                                                         | Default value                                   |
-|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| ANSIBLE_ANSIBLE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                 |
-| ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Include every file                              |
-| ANSIBLE_ANSIBLE_LINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                 |
-| ANSIBLE_ANSIBLE_LINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument<br/>- `project`: Call the linter from the root of the project | `file`                                          |
-| ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".yml", ".yaml"]`                             |
-| ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file                              |
-| ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
-| ANSIBLE_ANSIBLE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| ANSIBLE_ANSIBLE_LINT_CONFIG_FILE                 | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                             | `.ansible-lint.yml`                             |
-| ANSIBLE_ANSIBLE_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
-| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
-| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
-| ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files                                                                                                                                                                                  | `ansible`                                       |
+| Variable                                         | Description                                                                                                                                                                                  | Default value                                   |
+|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| ANSIBLE_ANSIBLE_LINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                     |                                                 |
+| ANSIBLE_ANSIBLE_LINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                      | `[".yml", ".yaml"]`                             |
+| ANSIBLE_ANSIBLE_LINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file                              |
+| ANSIBLE_ANSIBLE_LINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                               | None                                            |
+| ANSIBLE_ANSIBLE_LINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                | None                                            |
+| ANSIBLE_ANSIBLE_LINT_CONFIG_FILE                 | ansible-lint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                      | `.ansible-lint`                                 |
+| ANSIBLE_ANSIBLE_LINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                 | Workspace folder, then MegaLinter default rules |
+| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                   | `false`                                         |
+| ANSIBLE_ANSIBLE_LINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                             | `0`                                             |
+| ANSIBLE_DIRECTORY                                | Directory containing ANSIBLE files                                                                                                                                                           | `ansible`                                       |
 
 ## MegaLinter Flavours
 
@@ -39,7 +36,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                        | Description                                           | Embedded linters |                                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/v6-alpha/flavors/dart/)                   | Optimized for DART based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/v6-alpha/flavors/documentation/) | MegaLinter for documentation projects                 |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
@@ -52,7 +49,7 @@ This linter is available in the following flavours
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/v6-alpha/flavors/rust/)                   | Optimized for RUST based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/v6-alpha/flavors/salesforce/)       | Optimized for Salesforce based projects               |        46        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://megalinter.github.io/v6-alpha/flavors/scala/)                 | Optimized for SCALA based projects                    |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)           | Optimized for security                                |        19        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)           | Optimized for security                                |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.github.io/v6-alpha/flavors/swift/)                 | Optimized for SWIFT based projects                    |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/v6-alpha/flavors/terraform/)         | Optimized for TERRAFORM based projects                |        49        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
@@ -68,67 +65,78 @@ This linter is available in the following flavours
 <!-- /* cSpell:disable */ -->
 ### How the linting is performed
 
-- ansible-lint is called one time by identified file
+ansible-lint is called once on the whole project directory
+
+- filtering can not be done using MegaLinter configuration variables,it must be done using ansible-lint configuration or ignore file (if existing)
+- `VALIDATE_ALL_CODEBASE: false` does not make ansible-lint analyze only updated files
 
 ### Example calls
 
 ```shell
-ansible-lint -v myfile.yml
+ansible-lint -v
 ```
 
 ```shell
-ansible-lint -v -c .ansible-lint.yml myfile.yml
+ansible-lint -v -c .ansible-lint
 ```
 
 
 ### Help content
 
 ```shell
-usage: ansible-lint [-h] [-L] [-f {rich,plain,rst}] [-q] [-p]
-                    [--parseable-severity] [--progressive] [-r RULESDIR] [-R]
+usage: ansible-lint [-h] [-L] [-f {rich,plain,rst,codeclimate,quiet,pep8}]
+                    [-q] [-p] [--parseable-severity] [--progressive]
+                    [--project-dir PROJECT_DIR] [-r RULESDIR] [-R]
                     [--show-relpath] [-t TAGS] [-T] [-v] [-x SKIP_LIST]
-                    [-w WARN_LIST] [--nocolor] [--force-color]
-                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--version]
-                    [playbook [playbook ...]]
+                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
+                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
+                    [--offline] [--version]
+                    [lintables ...]
 
 positional arguments:
-  playbook              One or more files or paths. When missing it will
+  lintables             One or more files or paths. When missing it will
                         enable auto-detection mode.
 
 optional arguments:
   -h, --help            show this help message and exit
   -L                    list all the rules
-  -f {rich,plain,rst}   Format used rules output, (default: rich)
-  -q                    quieter, although not silent output
-  -p                    parseable output in the format of pep8
+  -f {rich,plain,rst,codeclimate,quiet,pep8}
+                        Format used rules output, (default: rich)
+  -q                    quieter, reduce verbosity, can be specified twice.
+  -p                    parseable output, same as '-f pep8'
   --parseable-severity  parseable output including severity of rule
   --progressive         Return success if it detects a reduction in number of
                         violations compared with previous git commit. This
                         feature works only in git repositories.
+  --project-dir PROJECT_DIR
+                        Location of project/repository, autodetected based on
+                        location of configuration file.
   -r RULESDIR           Specify custom rule directories. Add -R to keep using
-                        embedded rules from /usr/lib/python3.8/site-
+                        embedded rules from /usr/local/lib/python3.9/site-
                         packages/ansiblelint/rules
   -R                    Keep default rules when using -r
   --show-relpath        Display path relative to CWD
   -t TAGS               only check rules whose id/tags match these values
   -T                    list all the tags
-  -v                    Increase verbosity level
+  -v                    Increase verbosity level (-vv for more)
   -x SKIP_LIST          only check rules whose id/tags do not match these
                         values
   -w WARN_LIST          only warn about these rules, unless overridden in
                         config file defaults to 'experimental'
-  --nocolor             disable colored output
-  --force-color         Try force colored output (relying on ansible's code)
+  --enable-list ENABLE_LIST
+                        activate optional rules by their tag name
+  --nocolor             disable colored output, same as NO_COLOR=1
+  --force-color         Force colored output, same as FORCE_COLOR=1
   --exclude EXCLUDE_PATHS
                         path to directories or files to skip. This option is
                         repeatable.
   -c CONFIG_FILE        Specify configuration file to use. Defaults to
                         ".ansible-lint"
-  --version             show program's version number and exit
+  --offline             Disable installation of requirements.yml
+  --version
 ```
 
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [ansible](https://pypi.org/project/ansible)
-  - [ansible-lint[yamllint]](https://pypi.org/project/ansible-lint[yamllint])
+  - [ansible-lint[community,yamllint]](https://pypi.org/project/ansible-lint[community,yamllint])

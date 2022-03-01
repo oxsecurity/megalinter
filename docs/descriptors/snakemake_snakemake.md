@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **6.13.1**
+- Version in MegaLinter: **7.0.1**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -47,7 +47,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                        | Description                                           | Embedded linters |                                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)               | Default MegaLinter Flavor                             |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://megalinter.github.io/v6-alpha/flavors/dart/)                   | Optimized for DART based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.github.io/v6-alpha/flavors/documentation/) | MegaLinter for documentation projects                 |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.github.io/v6-alpha/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects         |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
@@ -131,6 +131,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
                  [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]
+                 [--local-groupid LOCAL_GROUPID]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
                  [-T RESTART_TIMES] [--attempt ATTEMPT]
@@ -145,7 +146,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--cluster CMD | --cluster-sync CMD | --drmaa [ARGS]]
                  [--cluster-config FILE] [--immediate-submit]
                  [--jobscript SCRIPT] [--jobname NAME]
-                 [--cluster-status CLUSTER_STATUS] [--drmaa-log-dir DIR]
+                 [--cluster-status CLUSTER_STATUS]
+                 [--cluster-cancel CLUSTER_CANCEL]
+                 [--cluster-cancel-nargs CLUSTER_CANCEL_NARGS]
+                 [--cluster-sidecar CLUSTER_SIDECAR] [--drmaa-log-dir DIR]
                  [--kubernetes [NAMESPACE]] [--container-image IMAGE]
                  [--tibanna] [--tibanna-sfn TIBANNA_SFN]
                  [--precommand PRECOMMAND]
@@ -690,6 +694,9 @@ BEHAVIOR:
                         Snakefile are used. Note that this is intended
                         primarily for internal use and may lead to unexpected
                         results otherwise. (default: None)
+  --local-groupid LOCAL_GROUPID
+                        Name for local groupid, meant for internal use only.
+                        (default: local)
   --max-jobs-per-second MAX_JOBS_PER_SECOND
                         Maximal number of cluster/drmaa jobs per second,
                         default is 10, fractions allowed. (default: 10)
@@ -804,7 +811,8 @@ CLUSTER:
                         {dependencies}. Assuming that your submit script (here
                         sbatch) outputs the generated job id to the first
                         stdout line, {dependencies} will be filled with space
-                        separated job ids this job depends on. (default:
+                        separated job ids this job depends on. Does not work
+                        for workflows that contain checkpoint rules. (default:
                         False)
   --jobscript SCRIPT, --js SCRIPT
                         Provide a custom job script for submission to the
@@ -827,6 +835,18 @@ CLUSTER:
                         job id. Snakemake expects it to return 'success' if
                         the job was successfull, 'failed' if the job failed
                         and 'running' if the job still runs. (default: None)
+  --cluster-cancel CLUSTER_CANCEL
+                        Specify a command that allows to stop currently
+                        running jobs. The command will be passed a single
+                        argument, the job id. (default: None)
+  --cluster-cancel-nargs CLUSTER_CANCEL_NARGS
+                        Specify maximal number of job ids to pass to
+                        --cluster-cancel command, defaults to 1000. (default:
+                        1000)
+  --cluster-sidecar CLUSTER_SIDECAR
+                        Optional command to start a sidecar process during
+                        cluster execution. Only active when --cluster is given
+                        as well. (default: None)
   --drmaa-log-dir DIR   Specify a directory in which stdout and stderr files
                         of DRMAA jobs will be written. The value may be given
                         as a relative path, in which case Snakemake will use

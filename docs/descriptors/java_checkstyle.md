@@ -9,7 +9,7 @@
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **9.2.1**
+- Version in MegaLinter: **9.3**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file is not found, [sun_checks.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -54,7 +54,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                          | Description                       | Embedded linters |                                                                                                                                                                                     Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       101        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       102        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/v6-alpha/flavors/java/)     | Optimized for JAVA based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 
 ## Behind the scenes
@@ -142,7 +142,7 @@ See http://www.oracle.com/technetwork/java/javase/documentation/index.html for m
 - Dockerfile commands :
 ```dockerfile
 # Parent descriptor install
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \

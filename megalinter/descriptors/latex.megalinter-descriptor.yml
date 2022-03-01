@@ -11,6 +11,8 @@ linters:
     cli_lint_extra_args:
       - "-q"
     cli_config_arg_name: "-l"
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "[0-9]+ in .* line [0-9]+:"
     help_command_return_code: 1
     examples:
       - "chktex -q myfile.tex"

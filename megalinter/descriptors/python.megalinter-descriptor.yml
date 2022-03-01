@@ -226,6 +226,7 @@ linters:
     linter_banner_image_url: http://mypy-lang.org/static/mypy_light.svg
     linter_rules_configuration_url: https://mypy.readthedocs.io/en/stable/config_file.html
     linter_rules_inline_disable_url: https://mypy.readthedocs.io/en/stable/inline_config.html#inline-config
+    linter_megalinter_ref_url: never
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--install-types"

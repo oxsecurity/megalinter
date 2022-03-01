@@ -8,7 +8,7 @@
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 ## Upgrade from MegaLinter v4
 
@@ -141,6 +141,7 @@ Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```yaml
+  # Run MegaLinter to detect linting and security issues
   - job: megalinter
     displayName: MegaLinter
     pool:
@@ -148,8 +149,16 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
     steps:
     - script: |
         docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
-      displayName: 'Code Scan using MegaLinter'
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+      displayName: 'MegaLinter analysis'
+
+    # Publish the Anchore report as an artifact to Azure Pipelines
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: MegaLinter Report'
+      condition: succeededOrFailed()
+      inputs:
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/report/'
+        ArtifactName: MegaLinterReport
 ```
 
 ## Jenkins
@@ -199,6 +208,10 @@ mega-linter:
       - report
     expire_in: 1 week
 ```
+
+Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
+
+![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 

@@ -1,0 +1,112 @@
+{
+    "repositories": [
+        {
+            "repo_url": "https://github.com/oasisprotocol/oasis-wallet-web"
+        },
+        {
+            "repo_url": "https://github.com/stepancheg/rust-protobuf"
+        },
+        {
+            "repo_url": "https://github.com/MythicDrops/MythicDrops"
+        },
+        {
+            "repo_url": "https://github.com/nektos/act"
+        },
+        {
+            "repo_url": "https://github.com/GSA/usagov-benefits-eligibility"
+        },
+        {
+            "repo_url": "https://github.com/newrelic/newrelic-python-agent"
+        },
+        {
+            "repo_url": "https://github.com/llaville/php-compatinfo"
+        },
+        {
+            "repo_url": "https://github.com/llaville/umlwriter"
+        },
+        {
+            "repo_url": "https://github.com/practicalli/spacemacs"
+        },
+        {
+            "repo_url": "https://github.com/AlbanAndrieu/jenkins-pipeline-scripts"
+        },
+        {
+            "repo_url": "https://github.com/flosse/sloc"
+        },
+        {
+            "repo_url": "https://github.com/Neragin/cx-bot"
+        },
+        {
+            "repo_url": "https://github.com/AlbanAndrieu/ansible-windows"
+        },
+        {
+            "repo_url": "https://github.com/mundialis/actinia-stac-plugin"
+        },
+        {
+            "repo_url": "https://github.com/philips-software/embeddedinfralib"
+        },
+        {
+            "repo_url": "https://github.com/cbg-ethz/SARS-CoV-2_Analysis"
+        },
+        {
+            "repo_url": "https://github.com/hardisgroupcom/sfdx-hardis"
+        },
+        {
+            "repo_url": "https://github.com/tonic-team/tonic.site"
+        },
+        {
+            "repo_url": "https://github.com/quackduck/secret"
+        },
+        {
+            "repo_url": "https://github.com/epleypa/Home-AssistantConfig"
+        },
+        {
+            "repo_url": "https://github.com/hardisgroupcom/vscode-sfdx-hardis"
+        },
+        {
+            "repo_url": "https://github.com/wareismymind/peer"
+        },
+        {
+            "repo_url": "https://github.com/nvuillam/sfdx-essentials"
+        },
+        {
+            "repo_url": "https://github.com/quackduck/ncis"
+        },
+        {
+            "repo_url": "https://github.com/KelvinTegelaar/CIPP"
+        },
+        {
+            "repo_url": "https://github.com/r-spacex/submanager"
+        },
+        {
+            "repo_url": "https://github.com/ewencluley/final-curtain"
+        },
+        {
+            "repo_url": "https://github.com/nvuillam/npm-groovy-lint"
+        },
+        {
+            "repo_url": "https://github.com/ScribeMD/rootless-docker"
+        },
+        {
+            "repo_url": "https://github.com/ScribeMD/slack-templates"
+        },
+        {
+            "repo_url": "https://github.com/lpmatos/docker-crypto-miner"
+        },
+        {
+            "repo_url": "https://github.com/rasa/scoops"
+        },
+        {
+            "repo_url": "https://github.com/bjw-s/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/onedr0p/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/joeygoksu/prime-nestjs"
+        },
+        {
+            "repo_url": "https://github.com/GrandMoff100/HomeAssistantAPI"
+        }        
+    ]
+}

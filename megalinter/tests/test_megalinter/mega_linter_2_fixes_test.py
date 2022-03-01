@@ -65,7 +65,7 @@ class mega_linter_2_fixes_test(unittest.TestCase):
             "ruby_for_fixes_1.rb",
             "spell_for_fixes_1.js",
             # "scala_for_fixes_1.scala",
-            "snakemake_for_fixes_1.smk",
+            # "snakemake_for_fixes_1.smk",
             "vbdotnet_for_fixes_1.vb",
             "yaml_for_fixes_1.yml",
         ]

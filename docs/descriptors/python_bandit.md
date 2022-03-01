@@ -13,7 +13,7 @@ If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in
 
 ## bandit documentation
 
-- Version in MegaLinter: **1.7.1**
+- Version in MegaLinter: **1.7.3**
 - Visit [Official Web Site](https://bandit.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure bandit rules](https://bandit.readthedocs.io/en/latest/config.html#){target=_blank}
   - If custom `.bandit.yml` config file is not found, [.bandit.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.bandit.yml){target=_blank} will be used
@@ -58,9 +58,9 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                              | Description                         | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------|:------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)     | Default MegaLinter Flavor           |       101        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)     | Default MegaLinter Flavor           |       102        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/v6-alpha/flavors/python/)     | Optimized for PYTHON based projects |        52        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/) | Optimized for security              |        19        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/) | Optimized for security              |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
 
 ## Behind the scenes
 
@@ -221,7 +221,7 @@ The following tests were discovered and loaded:
   B320  xml_bad_etree
   B321  ftplib
   B323  unverified_context
-  B324  hashlib_new_insecure_functions
+  B324  hashlib_insecure_functions
   B325  tempnam
   B401  import_telnetlib
   B402  import_ftplib
@@ -236,6 +236,7 @@ The following tests were discovered and loaded:
   B411  import_xmlrpclib
   B412  import_httpoxy
   B413  import_pycrypto
+  B415  import_pyghmi
   B501  request_with_no_cert_validation
   B502  ssl_with_bad_version
   B503  ssl_with_bad_defaults
@@ -243,6 +244,8 @@ The following tests were discovered and loaded:
   B505  weak_cryptographic_key
   B506  yaml_load
   B507  ssh_no_host_key_verification
+  B508  snmp_insecure_version
+  B509  snmp_weak_cryptography
   B601  paramiko_calls
   B602  subprocess_popen_with_shell_equals_true
   B603  subprocess_without_shell_equals_true

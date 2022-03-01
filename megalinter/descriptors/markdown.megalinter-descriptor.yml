@@ -94,6 +94,7 @@ linters:
     linter_rules_configuration_url: https://github.com/tcort/markdown-link-check#config-file-format
     linter_rules_inline_disable_url: https://github.com/tcort/markdown-link-check#disable-comments
     linter_megalinter_ref_url: https://github.com/tcort/markdown-link-check#run-in-other-tools
+    cli_lint_mode: list_of_files
     config_file_name: .markdown-link-check.json
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "ERROR: ([0-9]+) dead links found"

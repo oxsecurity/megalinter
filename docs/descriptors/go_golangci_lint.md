@@ -9,7 +9,7 @@
 
 ## golangci-lint documentation
 
-- Version in MegaLinter: **1.43.0**
+- Version in MegaLinter: **1.44.2**
 - Visit [Official Web Site](https://golangci-lint.run/){target=_blank}
 - See [How to configure golangci-lint rules](https://golangci-lint.run/usage/configuration/#config-file){target=_blank}
   - If custom `.golangci.yml` config file is not found, [.golangci.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.golangci.yml){target=_blank} will be used
@@ -58,7 +58,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                          | Description                     | Embedded linters |                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:--------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor       |       101        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor       |       102        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.github.io/v6-alpha/flavors/go/)         | Optimized for GO based projects |        45        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-go/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-go) |
 
 ## Behind the scenes
@@ -95,7 +95,7 @@ Usage:
 
 Available Commands:
   cache       Cache control and information
-  completion  generate the autocompletion script for the specified shell
+  completion  Generate the autocompletion script for the specified shell
   config      Config
   help        Help
   linters     List current linters configuration

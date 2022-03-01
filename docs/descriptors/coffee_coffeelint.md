@@ -4,7 +4,7 @@
 
 ## coffeelint documentation
 
-- Version in MegaLinter: **5.2.3**
+- Version in MegaLinter: **5.2.4**
 - Visit [Official Web Site](http://www.coffeelint.org){target=_blank}
 - See [How to configure coffeelint rules](http://www.coffeelint.org/#options){target=_blank}
   - If custom `.coffee-lint.json` config file is not found, [.coffee-lint.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.coffee-lint.json){target=_blank} will be used
@@ -48,7 +48,7 @@ This linter is available in the following flavours
 
 |                                                                         <!-- -->                                                                         | Flavor                                                                  | Description                                           | Embedded linters |                                                                                                                                                                                                 Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------|:------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)         | Default MegaLinter Flavor                             |       101        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)         | Default MegaLinter Flavor                             |       102        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/v6-alpha/flavors/javascript/) | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 
 ## Behind the scenes

@@ -14,7 +14,7 @@
 <!-- mega-linter-title-end -->
 
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.0M-blue)](https://megalinter.github.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.1M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600)](https://github.com/megalinter/megalinter/stargazers/)
 [![MegaLinter](https://github.com/megalinter/megalinter/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/megalinter/megalinter/actions?query=workflow%3AMegaLinter+branch%3Amain)
@@ -26,7 +26,7 @@
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](#languages), [**22** formats](#formats), [**19** tooling formats](#tooling-formats) , [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**48** languages](#languages), [**22** formats](#formats), [**20** tooling formats](#tooling-formats) , [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
 
 Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, [**highly configurable**](#configuration) and **free for all uses**
 
@@ -143,11 +143,11 @@ By using **MegaLinter**, you'll enjoy the following benefits for you and your te
 <!-- quick-start-section-start -->
 ## Quick Start
 
-- Run `npx mega-linter-runner --install` to generate configuration files
+- Run `npx mega-linter-runner --install` to generate configuration files (you need [node.js](https://nodejs.org/en/) to be installed)
 - Commit, push, and create a pull request
 - Watch !
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 **Notes**:
 
@@ -256,12 +256,13 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/editorconfig.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**EDITORCONFIG**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/editorconfig.md#readme) | [editorconfig-checker](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/editorconfig_editorconfig_checker.md#readme)| [EDITORCONFIG_EDITORCONFIG_CHECKER](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/editorconfig_editorconfig_checker.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/editorconfig-checker/editorconfig-checker?cacheSeconds=3600)](https://github.com/editorconfig-checker/editorconfig-checker)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/gherkin.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**GHERKIN**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/gherkin.md#readme) | [gherkin-lint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/gherkin_gherkin_lint.md#readme)| [GHERKIN_GHERKIN_LINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/gherkin_gherkin_lint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/vsiakka/gherkin-lint?cacheSeconds=3600)](https://github.com/vsiakka/gherkin-lint)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/kubernetes.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**KUBERNETES**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/kubernetes.md#readme) | [kubeval](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/kubernetes_kubeval.md#readme)| [KUBERNETES_KUBEVAL](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/kubernetes_kubeval.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/instrumenta/kubeval?cacheSeconds=3600)](https://github.com/instrumenta/kubeval)
+| <!-- --> <!-- linter-icon --> |  | [kubeconform](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/kubernetes_kubeconform.md#readme)| [KUBERNETES_KUBECONFORM](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/kubernetes_kubeconform.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/yannh/kubeconform?cacheSeconds=3600)](https://github.com/yannh/kubeconform)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/openapi.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**OPENAPI**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/openapi.md#readme) | [spectral](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/openapi_spectral.md#readme)| [OPENAPI_SPECTRAL](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/openapi_spectral.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/stoplightio/spectral?cacheSeconds=3600)](https://github.com/stoplightio/spectral)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/puppet.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**PUPPET**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/puppet.md#readme) | [puppet-lint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/puppet_puppet_lint.md#readme)| [PUPPET_PUPPET_LINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/puppet_puppet_lint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/rodjek/puppet-lint?cacheSeconds=3600)](https://github.com/rodjek/puppet-lint) ![autofix](https://shields.io/badge/-autofix-green)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/snakemake.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**SNAKEMAKE**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/snakemake.md#readme) | [snakemake](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/snakemake_snakemake.md#readme)| [SNAKEMAKE_LINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/snakemake_snakemake.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake)
 | <!-- --> <!-- linter-icon --> |  | [snakefmt](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/snakemake_snakefmt.md#readme)| [SNAKEMAKE_SNAKEFMT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/snakemake_snakefmt.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/snakemake/snakefmt?cacheSeconds=3600)](https://github.com/snakemake/snakefmt) ![formatter](https://shields.io/badge/-format-yellow)
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/tekton.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TEKTON**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/tekton.md#readme) | [tekton-lint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/tekton_tekton_lint.md#readme)| [TEKTON_TEKTON_LINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/tekton_tekton_lint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/IBM/tekton-lint?cacheSeconds=3600)](https://github.com/IBM/tekton-lint)
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TERRAFORM**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform.md#readme) | [tflint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_tflint.md#readme)| [TERRAFORM_TFLINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_tflint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600)](https://github.com/terraform-linters/tflint) ![sarif](https://shields.io/badge/-SARIF-orange)
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a> <!-- linter-icon --> | [**TERRAFORM**](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform.md#readme) | [tflint](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_tflint.md#readme)| [TERRAFORM_TFLINT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_tflint.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/terraform-linters/tflint?cacheSeconds=3600)](https://github.com/terraform-linters/tflint)
 | <!-- --> <!-- linter-icon --> |  | [terrascan](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_terrascan.md#readme)| [TERRAFORM_TERRASCAN](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_terrascan.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/accurics/terrascan?cacheSeconds=3600)](https://github.com/accurics/terrascan) ![sarif](https://shields.io/badge/-SARIF-orange)
 | <!-- --> <!-- linter-icon --> |  | [terragrunt](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_terragrunt.md#readme)| [TERRAFORM_TERRAGRUNT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_terragrunt.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/gruntwork-io/terragrunt?cacheSeconds=3600)](https://github.com/gruntwork-io/terragrunt) ![autofix](https://shields.io/badge/-autofix-green)
 | <!-- --> <!-- linter-icon --> |  | [terraform-fmt](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_terraform_fmt.md#readme)| [TERRAFORM_TERRAFORM_FMT](https://github.com/megalinter/megalinter/tree/main/docs/descriptors/terraform_terraform_fmt.md#readme)| [![GitHub stars](https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600)](https://github.com/hashicorp/terraform) ![formatter](https://shields.io/badge/-format-yellow)
@@ -295,7 +296,7 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 
 Just run `npx mega-linter-runner --install` at the root of your repository and answer questions, it will generate ready to use configuration files for MegaLinter :)
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
 ### Upgrade from MegaLinter v4
 
@@ -428,6 +429,7 @@ Use the following Azure Pipelines [YAML template](https://docs.microsoft.com/en-
 You may activate [File.io reporter](https://megalinter.github.io/reporters/FileIoReporter/) or [E-mail reporter](https://megalinter.github.io/reporters/EmailReporter/) to access detailed logs and fixed source
 
 ```yaml
+  # Run MegaLinter to detect linting and security issues
   - job: megalinter
     displayName: MegaLinter
     pool:
@@ -435,8 +437,16 @@ You may activate [File.io reporter](https://megalinter.github.io/reporters/FileI
     steps:
     - script: |
         docker pull megalinter/megalinter:v5
-        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
-      displayName: 'Code Scan using MegaLinter'
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) megalinter/megalinter:v5
+      displayName: 'MegaLinter analysis'
+
+    # Publish the Anchore report as an artifact to Azure Pipelines
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: MegaLinter Report'
+      condition: succeededOrFailed()
+      inputs:
+        PathtoPublish: '$(System.DefaultWorkingDirectory)/report/'
+        ArtifactName: MegaLinterReport
 ```
 
 ### Jenkins
@@ -486,6 +496,10 @@ mega-linter:
       - report
     expire_in: 1 week
 ```
+
+Create a Gitlab access token and define it in a variable **GITLAB_ACCESS_TOKEN_MEGALINTER** in the project CI/CD masked variables
+
+![config-gitlab-access-token](https://user-images.githubusercontent.com/17500430/151674446-1bcb1420-d9aa-4ae1-aaae-dcf51afb36ab.gif)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/TextReporter_gitlab_1.jpg?raw=true>)
 
@@ -620,7 +634,7 @@ Configuration is assisted with auto-completion and validation in most commonly u
 - VsCode: You need a VsCode extension like [Red Hat YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - IDEA family: Auto-completion natively supported
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
 ### Common variables
 
@@ -767,18 +781,19 @@ POST_COMMANDS:
 
 MegaLinter can generate various reports that you can activate / deactivate and customize
 
-| Reporter                                                                                                            | Description                                                                                                   | Default                 |
-|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
-| [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)                     | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
-| [Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md) | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
-| [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)      | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
-| [IDE Configuration](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConfigReporter.md)            | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
-| [GitHub Status](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)          | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
-| [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)                      | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
-| [JSON](https://github.com/megalinter/megalinter/tree/main/docs/reporters/JsonReporter.md)                           | Generates a JSON output report file                                                                           | Inactive                |
-| [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)                         | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
-| [TAP files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TapReporter.md)                       | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
-| [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                     | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
+| Reporter                                                                                                                    | Description                                                                                                   | Default                 |
+|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------------|
+| [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)                             | Generates **One log file by linter** + suggestions for fixes that can not be automated                        | Active                  |
+| [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)  | MegaLinter posts a comment on the PR with a summary of lint results, and links to detailed logs               | Active if GitHub Action |
+| [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md) | Mega-Linter posts a comment on the MR with a summary of lint results, and links to detailed logs              | Active if in Gitlab CI  |
+| [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)              | Zip containing **all formatted and auto-fixed sources** so you can extract them in your repository            | Active                  |
+| [IDE Configuration](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConfigReporter.md)                    | Apply MegaLinter configuration in your local IDE with linter config files and IDE extensions                  | Active                  |
+| [GitHub Status](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubStatusReporter.md)                  | One GitHub status by linter on the PR, with links to detailed logs                                            | Active if GitHub Action |
+| [File.io](https://github.com/megalinter/megalinter/tree/main/docs/reporters/FileIoReporter.md)                              | **Send reports on file.io** so you can access them with a simple hyperlink provided at the end of console log | Inactive                |
+| [JSON](https://github.com/megalinter/megalinter/tree/main/docs/reporters/JsonReporter.md)                                   | Generates a JSON output report file                                                                           | Inactive                |
+| [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)                                 | Receive **all reports on your e-mail**, if you can not use artifacts                                          | Active                  |
+| [TAP files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TapReporter.md)                               | One file by linter following [**Test Anything Protocol**](https://testanything.org/) format                   | Active                  |
+| [Console](https://github.com/megalinter/megalinter/tree/main/docs/reporters/ConsoleReporter.md)                             | **Execution logs** visible in **console** with **summary table** and **links to other reports** at the end    | Active                  |
 <!-- reporters-section-end -->
 
 <!-- flavors-section-start -->
@@ -794,8 +809,8 @@ _The following table does not display docker pulls from [MegaLinter v4 images](h
 <!-- flavors-table-start -->
 |                                                                         <!-- -->                                                                         | Flavor                                                                                                   | Description                                                            | Embedded linters |                                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)                                          | Default MegaLinter Flavor                                              |       101        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/megalinter/megalinter/tree/main/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        16        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)                                          | Default MegaLinter Flavor                                              |       102        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ci_light.ico" alt="" height="32px" class="megalinter-icon"></a>       | [ci_light](https://github.com/megalinter/megalinter/tree/main/docs/flavors/ci_light.md#readme)           | Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML |        17        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ci_light/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ci_light) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dart.ico" alt="" height="32px" class="megalinter-icon"></a>         | [dart](https://github.com/megalinter/megalinter/tree/main/docs/flavors/dart.md#readme)                   | Optimized for DART based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dart/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dart) |
 |    <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://github.com/megalinter/megalinter/tree/main/docs/flavors/documentation.md#readme) | MegaLinter for documentation projects                                  |        43        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-documentation/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-documentation) |
 |       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://github.com/megalinter/megalinter/tree/main/docs/flavors/dotnet.md#readme)               | Optimized for C, C++, C# or VB based projects                          |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-dotnet/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-dotnet) |
@@ -808,7 +823,7 @@ _The following table does not display docker pulls from [MegaLinter v4 images](h
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://github.com/megalinter/megalinter/tree/main/docs/flavors/rust.md#readme)                   | Optimized for RUST based projects                                      |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://github.com/megalinter/megalinter/tree/main/docs/flavors/salesforce.md#readme)       | Optimized for Salesforce based projects                                |        46        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/scala.ico" alt="" height="32px" class="megalinter-icon"></a>        | [scala](https://github.com/megalinter/megalinter/tree/main/docs/flavors/scala.md#readme)                 | Optimized for SCALA based projects                                     |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-scala/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-scala) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://github.com/megalinter/megalinter/tree/main/docs/flavors/security.md#readme)           | Optimized for security                                                 |        19        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://github.com/megalinter/megalinter/tree/main/docs/flavors/security.md#readme)           | Optimized for security                                                 |        20        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://github.com/megalinter/megalinter/tree/main/docs/flavors/swift.md#readme)                 | Optimized for SWIFT based projects                                     |        44        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-swift/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-swift) |
 |      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://github.com/megalinter/megalinter/tree/main/docs/flavors/terraform.md#readme)         | Optimized for TERRAFORM based projects                                 |        49        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 <!-- flavors-table-end -->
@@ -1029,7 +1044,7 @@ The hard-fork of Super-Linter to be rewritten in Python is not just a language s
 
 ### More languages and formats linted
 
-- **C**, **C++**, **Copy-Paste detection**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
+- **C**, **C++**, **Copy-Paste detection**, **Credentials**, **GraphQL**, **JSON & YAML with JSON schemas**, **Markdown tables formatting**, **Puppet**, **reStructuredText**, **Rust**, **Scala**, **Spell checker**, **Swift**, **Visual Basic .NET** ...
 
 ### Automatically apply formatting and fixes
 
@@ -1058,9 +1073,13 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true>)
 
 - [Text files](https://github.com/megalinter/megalinter/tree/main/docs/reporters/TextReporter.md)
-- [Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
+- [GitHub Pull Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitHubCommentReporter.md)
 
 ![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitHubCommentReporter.jpg?raw=true>)
+
+- [Gitlab Merge Request comments](https://github.com/megalinter/megalinter/tree/main/docs/reporters/GitlabCommentReporter.md)
+
+![Screenshot](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/GitlabCommentReporter.jpg?raw=true>)
 
 - [Updated sources](https://github.com/megalinter/megalinter/tree/main/docs/reporters/UpdatedSourcesReporter.md)
 - [Email](https://github.com/megalinter/megalinter/tree/main/docs/reporters/EmailReporter.md)
@@ -1070,9 +1089,9 @@ MegaLinter can be run locally thanks to [mega-linter-runner](https://megalinter.
 
 - **Assisted installation and configuration** using a yeoman generator and JSON schemas for configuration file
 
-![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.jpg?raw=true)
+![Runner Install](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true)
 
-![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.jpg)
+![Assisted configuration](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/assisted-configuration.gif)
 
 - Configure **include and exclude regexes** for a **single language or linter**: ex: `JAVASCRIPT_FILTER_REGEX_INCLUDE (src)`
 - Configure **additional CLI arguments** for a linter: ex: `JAVASCRIPT_ES_ARGUMENTS "--debug --env-info"`
