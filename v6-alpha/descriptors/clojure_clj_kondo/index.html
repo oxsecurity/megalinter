@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 19 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
+        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/v6-alpha/descriptors/clojure_clj_kondo/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.3">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50e68009.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e8d9bf0c.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -39,7 +39,7 @@
       
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -3909,6 +3909,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes_kubeconform/" class="md-nav__link">
+        kubeconform
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -4736,8 +4750,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reporters/UpdatedSourcesReporter/" class="md-nav__link">
-        Updated sources
+      <a href="../../reporters/GitHubCommentReporter/" class="md-nav__link">
+        GitHub Pull Request comments
       </a>
     </li>
   
@@ -4750,8 +4764,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reporters/ConfigReporter/" class="md-nav__link">
-        IDE Configuration
+      <a href="../../reporters/GitlabCommentReporter/" class="md-nav__link">
+        Gitlab Merge Request comments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reporters/GitHubStatusReporter/" class="md-nav__link">
+        GitHub Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reporters/UpdatedSourcesReporter/" class="md-nav__link">
+        Updated sources
       </a>
     </li>
   
@@ -4792,22 +4834,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reporters/GitHubCommentReporter/" class="md-nav__link">
-        Pull Request comments
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../reporters/GitHubStatusReporter/" class="md-nav__link">
-        GitHub Status
+      <a href="../../reporters/ConfigReporter/" class="md-nav__link">
+        IDE Configuration
       </a>
     </li>
   
@@ -5477,6 +5505,7 @@
 </a>
 
 
+
   <h1>clj-kondo</h1>
 
 <!-- markdownlint-disable MD033 MD041 -->
@@ -5490,7 +5519,7 @@
 
 <h2 id="clj-kondo-documentation">clj-kondo documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2022.01.15</strong></li>
+<li>Version in MegaLinter: <strong>2022.02.09</strong></li>
 <li>Visit <a href="https://github.com/borkdude/clj-kondo#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration" target="_blank">How to configure clj-kondo rules</a><ul>
 <li>If custom <code>.clj-kondo/config.edn</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.clj-kondo/config.edn" target="_blank">.clj-kondo/config.edn</a> will be used</li>
@@ -5630,7 +5659,7 @@
 <td align="center"><img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></td>
 <td align="left"><a href="https://megalinter.github.io/v6-alpha/supported-linters/">all</a></td>
 <td align="left">Default MegaLinter Flavor</td>
-<td align="center">101</td>
+<td align="center">102</td>
 <td align="right"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha" /> <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/megalinter/megalinter" /></td>
 </tr>
 <tr>
@@ -5659,7 +5688,7 @@
 <pre><code class="language-shell">clj-kondo --lint --config .clj-kondo/config.edn myfile.clj
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">clj-kondo v2022.01.15
+<pre><code class="language-shell">clj-kondo v2022.02.09
 
 
 Options:
@@ -5682,7 +5711,7 @@ Options:
   nearest `.clj-kondo` directory in the current and parent directories.
 
   --config &lt;config&gt;: config may be a file or an EDN expression. See
-    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.01.15/doc/configuration
+    https://cljdoc.org/d/clj-kondo/clj-kondo/2022.02.09/doc/configuration
 
   --config-dir &lt;config-dir&gt;: use this config directory instead of auto-detected
     .clj-kondo dir.
@@ -5703,7 +5732,7 @@ Options:
 <ul>
 <li>Dockerfile commands :</li>
 </ul>
-<pre><code class="language-dockerfile">FROM cljkondo/clj-kondo:2022.01.15-alpine as clj-kondo
+<pre><code class="language-dockerfile">FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
 COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 </code></pre>
 
@@ -5810,10 +5839,10 @@ COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.092fa1f6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5a9542cf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b88e97c5.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

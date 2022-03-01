@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 19 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
+        <meta name="description" content="MegaLinter is an 100% Open-Source tool for CI/CD workflows that analyzes consistency and quality of 48 languages, 22 formats, 20 tooling formats , excessive copy-pastes and spelling mistakes in your repository sources, generates various reports, and can even apply formatting and auto-fixes, to ensure all your projects sources are clean, whatever IDE/toolbox are used by their developers.Ready to use out of the box as a GitHub Action or any CI system, highly configurable and free for all uses">
       
       
         <meta name="author" content="Nicolas Vuillamy">
@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/v6-alpha/CHANGELOG/">
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.3">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.50e68009.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.e8d9bf0c.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -39,7 +39,7 @@
       
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -3797,6 +3797,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/kubernetes_kubeconform/" class="md-nav__link">
+        kubeconform
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -4624,8 +4638,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/UpdatedSourcesReporter/" class="md-nav__link">
-        Updated sources
+      <a href="../reporters/GitHubCommentReporter/" class="md-nav__link">
+        GitHub Pull Request comments
       </a>
     </li>
   
@@ -4638,8 +4652,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/ConfigReporter/" class="md-nav__link">
-        IDE Configuration
+      <a href="../reporters/GitlabCommentReporter/" class="md-nav__link">
+        Gitlab Merge Request comments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
+        GitHub Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/UpdatedSourcesReporter/" class="md-nav__link">
+        Updated sources
       </a>
     </li>
   
@@ -4680,22 +4722,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reporters/GitHubCommentReporter/" class="md-nav__link">
-        Pull Request comments
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reporters/GitHubStatusReporter/" class="md-nav__link">
-        GitHub Status
+      <a href="../reporters/ConfigReporter/" class="md-nav__link">
+        IDE Configuration
       </a>
     </li>
   
@@ -5275,6 +5303,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v6-alpha-v6-alpha-v6_dev-branch-content" class="md-nav__link">
+    [v6-alpha] (v6-alpha, v6_dev branch content)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unreleased-beta-main-branch-content" class="md-nav__link">
     [Unreleased] (beta, main branch content)
   </a>
@@ -5282,8 +5317,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#v6-alpha-v6-alpha-v6_dev-branch-content" class="md-nav__link">
-    [v6-alpha] (v6-alpha, v6_dev branch content)
+  <a href="#v580-2022-02-18" class="md-nav__link">
+    [v5.8.0] - 2022-02-18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v571-2022-02-02" class="md-nav__link">
+    [v5.7.1] - 2022-02-02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v570-2022-01-30" class="md-nav__link">
+    [v5.7.0] - 2022-01-30
   </a>
   
 </li>
@@ -5806,6 +5855,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v6-alpha-v6-alpha-v6_dev-branch-content" class="md-nav__link">
+    [v6-alpha] (v6-alpha, v6_dev branch content)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unreleased-beta-main-branch-content" class="md-nav__link">
     [Unreleased] (beta, main branch content)
   </a>
@@ -5813,8 +5869,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#v6-alpha-v6-alpha-v6_dev-branch-content" class="md-nav__link">
-    [v6-alpha] (v6-alpha, v6_dev branch content)
+  <a href="#v580-2022-02-18" class="md-nav__link">
+    [v5.8.0] - 2022-02-18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v571-2022-02-02" class="md-nav__link">
+    [v5.7.1] - 2022-02-02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v570-2022-01-30" class="md-nav__link">
+    [v5.7.0] - 2022-01-30
   </a>
   
 </li>
@@ -6319,11 +6389,10 @@
 </a>
 
 
+
 <h1 id="changelog">Changelog</h1>
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
-<p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <!-- unreleased-content-marker -->
 
 <h2 id="v6-alpha-v6-alpha-v6_dev-branch-content">[v6-alpha] (v6-alpha, v6_dev branch content)</h2>
@@ -6384,11 +6453,249 @@
 </ul>
 </li>
 </ul>
+<h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
+<p>Note: Can be used with <code>megalinter/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>megalinter/megalinter:beta</code> docker image</p>
 <ul>
-<li>Linter versions upgrades</li>
+<li>Flavors<ul>
+<li>Add shell linters to ci_light flavor (<a href="https://github.com/megalinter/megalinter/issues/1298">#1298</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Fixes<ul>
+<li>Use latest version of npm</li>
+<li>Generate JSON Schema HTML Documentation when building documentation (<a href="https://github.com/megalinter/megalinter/issues/1287">#1287</a>)</li>
+<li>rubocop: remove <code>--force-exclusion</code> from auto-added parameters (<a href="https://github.com/megalinter/megalinter/issues/302">#302</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://github.com/cpplint/cpplint">cpplint</a> from 1.5.5 to <strong>1.6.0</strong> on 2022-02-20</li>
+<li><a href="https://github.com/borkdude/clj-kondo">clj-kondo</a> from 2022.01.15 to <strong>2022.02.09</strong> on 2022-02-21</li>
+<li><a href="https://github.com/martysweet/cfn-lint">cfn-lint</a> from 0.58.0 to <strong>0.58.1</strong> on 2022-02-21</li>
+<li><a href="https://github.com/tsqllint/tsqllint">tsqllint</a> from 1.14.3.0 to <strong>1.14.5.0</strong> on 2022-02-21</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.873 to <strong>2.0.885</strong> on 2022-02-21</li>
+<li><a href="https://rhysd.github.io/actionlint/">actionlint</a> from 1.6.8 to <strong>1.6.9</strong> on 2022-02-25</li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.5.1 to <strong>14.5.3</strong> on 2022-02-25</li>
+<li><a href="https://github.com/twolfson/restructuredtext-lint">rst-lint</a> from 1.3.2 to <strong>1.4.0</strong> on 2022-02-25</li>
+<li><a href="https://github.com/rust-lang/rust-clippy">clippy</a> from 0.1.58 to <strong>0.1.59</strong> on 2022-02-25</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-apex</a> from 2.12.0 to <strong>2.13.0</strong> on 2022-02-25</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-aura</a> from 2.12.0 to <strong>2.13.0</strong> on 2022-02-25</li>
+<li><a href="https://forcedotcom.github.io/sfdx-scanner/">sfdx-scanner-lwc</a> from 2.12.0 to <strong>2.13.0</strong> on 2022-02-25</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.15.5 to <strong>7.0.0</strong> on 2022-02-25</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.46.2 to <strong>0.46.3</strong> on 2022-02-25</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.885 to <strong>2.0.901</strong> on 2022-02-25</li>
+<li><a href="https://www.accurics.com/products/terrascan/">terrascan</a> from 1.13.1 to <strong>1.13.2</strong> on 2022-02-25</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.901 to <strong>2.0.902</strong> on 2022-02-25</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.36.1 to <strong>0.36.2</strong> on 2022-02-25</li>
+<li><a href="https://github.com/martysweet/cfn-lint">cfn-lint</a> from 0.58.1 to <strong>0.58.2</strong> on 2022-02-27</li>
+<li><a href="https://eslint.org">eslint</a> from 8.9.0 to <strong>8.10.0</strong> on 2022-02-27</li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.37.0 to <strong>0.37.1</strong> on 2022-02-27</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 7.0.0 to <strong>7.0.1</strong> on 2022-02-27</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.902 to <strong>2.0.903</strong> on 2022-02-27</li>
+<li><a href="https://bandit.readthedocs.io/en/latest/">bandit</a> from 1.7.2 to <strong>1.7.3</strong> on 2022-02-28</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.903 to <strong>2.0.906</strong> on 2022-02-28</li>
+</ul>
+</li>
 </ul>
 <!-- linter-versions-end -->
 
+<ul>
+<li>New linter <code>kubeconform</code> to validate Kubernetes manifests with updated schemas</li>
+</ul>
+<h2 id="v580-2022-02-18">[v5.8.0] - 2022-02-18</h2>
+<ul>
+<li>Linters<ul>
+<li>Improve ansible-lint performances by linting all project in one call, and count number of errors</li>
+<li>Use project cli_lint_mode to improve performances<ul>
+<li>terrascan</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Fixes<ul>
+<li>Manage to use local certificate with Gitlab comments reporter using GITLAB_SSL_CERTIFICATE_PATH (<a href="https://github.com/megalinter/megalinter/issues/1239">#1239</a>)</li>
+<li>Fix GITLAB_ACCESS_TOKEN_MEGALINTER suggestion when trying to push comments to gitlab merge request</li>
+<li>Gitlab Comments Reporter: allow to use certificates with variable GITLAB_CUSTOM_CERTIFICATE (or GITLAB_CERTIFICATE_PATH only if <a href="https://megalinter.github.io/configuration/#pre-commands">PRE_COMMANDS</a> are used) (<a href="https://github.com/megalinter/megalinter/issues/1239">#1239</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Core<ul>
+<li>Allow to check prop existence in active_only_if_file_found and apply to eslint descriptors (<a href="https://github.com/megalinter/megalinter/issues/1205">#1205</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Doc<ul>
+<li>Update images with screen records gifs</li>
+<li>Add publish artifact task in azure pipelines doc</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://ansible-lint.readthedocs.io/en/latest/">ansible-lint</a> from 5.3.2 to <strong>5.4.0</strong> on 2022-02-13</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.782 to <strong>2.0.783</strong> on 2022-02-03</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.783 to <strong>2.0.786</strong> on 2022-02-03</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.786 to <strong>2.0.791</strong> on 2022-02-05</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.791 to <strong>2.0.793</strong> on 2022-02-06</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.793 to <strong>2.0.795</strong> on 2022-02-06</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.795 to <strong>2.0.812</strong> on 2022-02-09</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.812 to <strong>2.0.813</strong> on 2022-02-09</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.813 to <strong>2.0.817</strong> on 2022-02-10</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.817 to <strong>2.0.830</strong> on 2022-02-13</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.830 to <strong>2.0.833</strong> on 2022-02-14</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.833 to <strong>2.0.853</strong> on 2022-02-16</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.853 to <strong>2.0.866</strong> on 2022-02-18</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.866 to <strong>2.0.873</strong> on 2022-02-18</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.18.0 to <strong>5.18.3</strong> on 2022-02-05</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.18.3 to <strong>5.18.4</strong> on 2022-02-09</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.18.4 to <strong>5.18.5</strong> on 2022-02-16</li>
+<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.1.0 to <strong>2.2.1</strong> on 2022-02-18</li>
+<li><a href="https://eslint.org">eslint</a> from 8.8.0 to <strong>8.9.0</strong> on 2022-02-13</li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.44.0 to <strong>1.44.2</strong> on 2022-02-18</li>
+<li><a href="https://www.kics.io">kics</a> from 1.5.1 to <strong>1.5.2</strong> on 2022-02-18</li>
+<li><a href="https://ktlint.github.io">ktlint</a> from 0.43.2 to <strong>0.44.0</strong> on 2022-02-16</li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.30.0 to <strong>0.31.0</strong> on 2022-02-06</li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.31.0 to <strong>0.31.1</strong> on 2022-02-09</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.5 to <strong>1.4.6</strong> on 2022-02-06</li>
+<li><a href="https://github.com/yoheimuta/protolint">protolint</a> from 0.36.0 to <strong>0.37.0</strong> on 2022-02-13</li>
+<li><a href="https://rubocop.org/">rubocop</a> from 1.25.0 to <strong>1.25.1</strong> on 2022-02-03</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.15.1 to <strong>6.15.2</strong> on 2022-02-06</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.15.2 to <strong>6.15.3</strong> on 2022-02-09</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.15.3 to <strong>6.15.4</strong> on 2022-02-09</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.15.4 to <strong>6.15.5</strong> on 2022-02-10</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 0.10.0 to <strong>0.10.1</strong> on 2022-02-18</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 0.9.4 to <strong>0.10.0</strong> on 2022-02-13</li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.3.0 to <strong>14.4.0</strong> on 2022-02-09</li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.4.0 to <strong>14.5.0</strong> on 2022-02-13</li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.5.0 to <strong>14.5.1</strong> on 2022-02-18</li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.1.4 to <strong>1.1.5</strong> on 2022-02-03</li>
+<li><a href="https://www.terraform.io/docs/cli/commands/fmt.html">terraform-fmt</a> from 1.1.5 to <strong>1.1.6</strong> on 2022-02-18</li>
+<li><a href="https://www.accurics.com/products/terrascan/">terrascan</a> from 1.13.0 to <strong>1.13.1</strong> on 2022-02-13</li>
+</ul>
+</li>
+</ul>
+<h2 id="v571-2022-02-02">[v5.7.1] - 2022-02-02</h2>
+<ul>
+<li>Linter updates:<ul>
+<li>temporary disable snakefmt to allow latest versions of black and sqlfluff</li>
+<li>cspell: Update .cspell default config with <code>"version: "2.0", "noConfigSearch": true</code></li>
+<li>Use list_of_files mode to improve performances<ul>
+<li>markdown-link-check</li>
+<li>standard</li>
+<li>stylelint</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Fixes<ul>
+<li>Remove extraheader in git repo when using Azure Pipelines (<a href="https://github.com/megalinter/megalinter/issues/1125">#1125</a>)</li>
+<li>Fix gitlab token error message (<a href="https://github.com/megalinter/megalinter/issues/1228">#1228</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://black.readthedocs.io/en/stable/">black</a> from 21.12 to <strong>22.1.0</strong> on 2022-02-02</li>
+<li><a href="https://github.com/martysweet/cfn-lint">cfn-lint</a> from 0.57.0 to <strong>0.58.0</strong> on 2022-02-01</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.775 to <strong>2.0.777</strong> on 2022-01-31</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.777 to <strong>2.0.778</strong> on 2022-02-01</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.778 to <strong>2.0.780</strong> on 2022-02-02</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.780 to <strong>2.0.782</strong> on 2022-02-02</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.17.0 to <strong>5.18.0</strong> on 2022-01-31</li>
+<li><a href="https://www.kics.io">kics</a> from 1.5.0 to <strong>1.5.1</strong> on 2022-02-02</li>
+<li><a href="https://www.npmjs.com/package/markdown-table-formatter">markdown-table-formatter</a> from 1.2.0 to <strong>1.3.0</strong> on 2022-01-31</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.3 to <strong>1.4.4</strong> on 2022-02-01</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.4 to <strong>1.4.5</strong> on 2022-02-02</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.13.1 to <strong>6.15.1</strong> on 2022-02-02</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 0.9.3 to <strong>0.9.4</strong> on 2022-02-02</li>
+<li><a href="https://terragrunt.gruntwork.io">terragrunt</a> from 0.36.0 to <strong>0.36.1</strong> on 2022-02-01</li>
+</ul>
+</li>
+</ul>
+<h2 id="v570-2022-01-30">[v5.7.0] - 2022-01-30</h2>
+<ul>
+<li>Core:<ul>
+<li>New reporter <a href="https://megalinter.github.io/reporters/GitlabCommentReporter/"><strong>GITLAB_COMMENT_REPORTER</strong></a> allowing to post MegaLinter results as comments on Gitlab merge requests</li>
+<li>CI: Update test method to check that the number of errors is correctly calculated (+ fix linter test cases)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter updates:<ul>
+<li>Add configuration file option for SQLFluff (<a href="https://github.com/megalinter/megalinter/pull/1200">#1200</a>)</li>
+<li>secretlint: Use .gitignore as .secretlintignore if --secretlintignore is not defined and .secretlintignore not found (<a href="https://github.com/megalinter/megalinter/issues/1207">#1207</a>)</li>
+<li>Update bash-exec documentation</li>
+<li>Display correct number of errors in logs<ul>
+<li>actionlint</li>
+<li>chktex</li>
+<li>cpplint</li>
+<li>htmlhint</li>
+<li>perlcritic</li>
+<li>sfdx-scanner</li>
+<li>shellcheck</li>
+<li>shfmt</li>
+</ul>
+</li>
+<li>Use list_of_files mode to improve performances<ul>
+<li>htmlhint</li>
+<li>shellcheck</li>
+<li>shfmt</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Fixes:<ul>
+<li>Fix v5 doc deployment when there is a new release (<a href="https://github.com/megalinter/megalinter/issues/1190">#1190</a>)</li>
+<li>Fix issue when using <code>VALIDATE_ALL_CODEBASE: false</code> on Azure Pipelines by defining auth header in CI env variable GIT_AUTHORIZATION_BEARER (<a href="https://github.com/megalinter/megalinter/issues/1125">#1125</a>)</li>
+<li>Fix tflint initialization so it uses configuration file when defined (<a href="https://github.com/megalinter/megalinter/issues/1134">#1134</a>)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Linter versions upgrades<ul>
+<li><a href="https://bandit.readthedocs.io/en/latest/">bandit</a> from 1.7.1 to <strong>1.7.2</strong> on 2022-01-26</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.744 to <strong>2.0.745</strong> on 2022-01-23</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.745 to <strong>2.0.746</strong> on 2022-01-24</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.746 to <strong>2.0.749</strong> on 2022-01-24</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.749 to <strong>2.0.754</strong> on 2022-01-24</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.754 to <strong>2.0.763</strong> on 2022-01-26</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.763 to <strong>2.0.769</strong> on 2022-01-28</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.769 to <strong>2.0.772</strong> on 2022-01-29</li>
+<li><a href="https://www.checkov.io/">checkov</a> from 2.0.772 to <strong>2.0.775</strong> on 2022-01-30</li>
+<li><a href="https://checkstyle.sourceforge.io">checkstyle</a> from 9.2.1 to <strong>9.3</strong> on 2022-01-30</li>
+<li><a href="http://www.coffeelint.org">coffeelint</a> from 5.2.3 to <strong>5.2.4</strong> on 2022-01-28</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 5.16.0 to <strong>5.17.0</strong> on 2022-01-28</li>
+<li><a href="https://dotenv-linter.github.io/">dotenv-linter</a> from 3.1.1 to <strong>3.2.0</strong> on 2022-01-24</li>
+<li><a href="https://ota-meshi.github.io/eslint-plugin-jsonc/">eslint-plugin-jsonc</a> from 2.0.0 to <strong>2.1.0</strong> on 2022-01-28</li>
+<li><a href="https://eslint.org">eslint</a> from 8.7.0 to <strong>8.8.0</strong> on 2022-01-29</li>
+<li><a href="https://golangci-lint.run/">golangci-lint</a> from 1.43.0 to <strong>1.44.0</strong> on 2022-01-26</li>
+<li><a href="https://htmlhint.com/">htmlhint</a> from 1.1.0 to <strong>1.1.1</strong> on 2022-01-23</li>
+<li><a href="https://htmlhint.com/">htmlhint</a> from 1.1.1 to <strong>1.1.2</strong> on 2022-01-28</li>
+<li><a href="https://github.com/tcort/markdown-link-check">markdown-link-check</a> from 3.9.2 to <strong>3.9.3</strong> on 2022-01-29</li>
+<li><a href="https://phpstan.org/">phpstan</a> from 1.4.2 to <strong>1.4.3</strong> on 2022-01-29</li>
+<li><a href="https://rubocop.org/">rubocop</a> from 0.82.0 to <strong>1.25.0</strong> on 2022-01-29</li>
+<li><a href="https://github.com/mvdan/sh">shfmt</a> from 3.2.1 to <strong>3.5.0</strong> on 2022-01-30</li>
+<li><a href="https://github.com/mvdan/sh">shfmt</a> from 3.3.1 to <strong>3.2.1</strong> on 2022-01-30</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.13.1 to <strong>6.14.0</strong> on 2022-01-28</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.14.0 to <strong>6.15.0</strong> on 2022-01-29</li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a> from 6.15.0 to <strong>6.13.1</strong> on 2022-01-30</li>
+<li><a href="https://www.sqlfluff.com/">sqlfluff</a> from 0.9.1 to <strong>0.9.3</strong> on 2022-01-28</li>
+<li><a href="https://stylelint.io">stylelint</a> from 14.2.0 to <strong>14.3.0</strong> on 2022-01-23</li>
+<li><a href="https://github.com/realm/SwiftLint">swiftlint</a> from 0.46.0 to <strong>0.46.2</strong> on 2022-01-28</li>
+<li><a href="https://github.com/tsqllint/tsqllint">tsqllint</a> from 1.14.0.0 to <strong>1.14.3.0</strong> on 2022-01-23</li>
+</ul>
+</li>
+</ul>
 <h2 id="v560-2022-01-22">[v5.6.0] - 2022-01-22</h2>
 <ul>
 <li>Add linters licenses to online documentation</li>
@@ -8247,10 +8554,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.bd0b6b67.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5a9542cf.min.js"></script>
+      <script src="../assets/javascripts/bundle.b88e97c5.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
