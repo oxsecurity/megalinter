@@ -37,7 +37,7 @@ WORKDIR /
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         bash \
-        ca_certificates \
+        ca-certificates \
         curl \
         gcc \
         git \
