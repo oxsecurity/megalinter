@@ -52,7 +52,7 @@ RUN apk add --update --no-cache \
     linux-headers \
     make \
     musl-dev \
-    openjdk8 \
+    openjdk11 \
     openssh \
     npm \
     nodejs \

@@ -236,12 +236,12 @@
       "examples": [
         {
           "apk": [
-            "openjdk8"
+            "openjdk11"
           ]
         },
         {
           "dockerfile": [
-            "ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk",
+            "ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk",
             "ENV PATH=\"$JAVA_HOME/bin:${PATH}\""
           ]
         },
@@ -257,7 +257,7 @@
           "description": "APK packages identifiers (with or without version)",
           "examples": [
             [
-              "openjdk8"
+              "openjdk11"
             ]
           ],
           "items": {
@@ -272,7 +272,7 @@
           "description": "Will be automatically integrated in generated Dockerfile",
           "examples": [
             [
-              "ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk",
+              "ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk",
               "ENV PATH=\"$JAVA_HOME/bin:${PATH}\""
             ]
           ],

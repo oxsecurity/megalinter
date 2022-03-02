@@ -52,7 +52,7 @@ RUN apk add --update --no-cache \
     linux-headers \
     make \
     musl-dev \
-    openjdk8 \
+    openjdk11 \
     openssh \
     npm \
     nodejs \
@@ -67,7 +67,7 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                openjdk8 \
+                openjdk11 \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -156,7 +156,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 RUN git config --global core.autocrlf true
 
 # SALESFORCE installation
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis
 
