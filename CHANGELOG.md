@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Core
+  - Switch from JDK 8 to JDK 11
+
 - Flavors
   - Add shell linters to ci_light flavor ([#1298](https://github.com/megalinter/megalinter/issues/1298))
 

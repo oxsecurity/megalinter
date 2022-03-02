@@ -65,7 +65,7 @@ RUN apk add --update --no-cache \
     linux-headers \
     make \
     musl-dev \
-    openjdk8 \
+    openjdk11 \
     openssh \
     npm \
     nodejs \
@@ -86,7 +86,7 @@ RUN apk add --update --no-cache \
                 zlib \
                 zlib-dev \
                 go \
-                openjdk8 \
+                openjdk11 \
                 perl \
                 perl-dev \
                 php7 \
@@ -253,7 +253,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 RUN git config --global core.autocrlf true
 
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
@@ -288,7 +288,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # SALESFORCE installation
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis
 
