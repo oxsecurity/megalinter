@@ -226,7 +226,6 @@ COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
 # terrascan installation
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/
