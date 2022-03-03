@@ -96,7 +96,6 @@ Use "terrascan [command] --help" for more information about a command.
 ```dockerfile
 FROM accurics/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 ```
 
 

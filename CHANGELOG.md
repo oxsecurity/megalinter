@@ -51,6 +51,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.0.1 to **7.0.3** on 2022-03-03
   - [checkov](https://www.checkov.io/) from 2.0.906 to **2.0.914** on 2022-03-03
   - [kics](https://www.kics.io) from 1.5.2 to **1.5.3** on 2022-03-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.0.3 to **7.0.4** on 2022-03-03
+  - [checkov](https://www.checkov.io/) from 2.0.914 to **2.0.917** on 2022-03-03
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.6 to **1.1.7** on 2022-03-03
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
