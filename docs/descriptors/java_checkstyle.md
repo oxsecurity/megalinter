@@ -9,7 +9,7 @@
 
 ## checkstyle documentation
 
-- Version in MegaLinter: **9.3**
+- Version in MegaLinter: **10.0**
 - Visit [Official Web Site](https://checkstyle.sourceforge.io){target=_blank}
 - See [How to configure checkstyle rules](https://checkstyle.sourceforge.io/config.html#Overview){target=_blank}
   - If custom `sun_checks.xml` config file is not found, [sun_checks.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/sun_checks.xml){target=_blank} will be used
@@ -83,38 +83,67 @@ java -jar /usr/bin/checkstyle -c sun_checks.xml myfile.java
 ### Help content
 
 ```shell
-Usage: java [-options] class [args...]
+Usage: java [options] <mainclass> [args...]
            (to execute a class)
-   or  java [-options] -jar jarfile [args...]
+   or  java [options] -jar <jarfile> [args...]
            (to execute a jar file)
-where options include:
-    -d32    use a 32-bit data model if available
-    -d64    use a 64-bit data model if available
-    -server    to select the "server" VM
-                  The default VM is server,
-                  because you are running on a server-class machine.
+   or  java [options] -m <module>[/<mainclass>] [args...]
+       java [options] --module <module>[/<mainclass>] [args...]
+           (to execute the main class in a module)
+   or  java [options] <sourcefile> [args]
+           (to execute a single source-file program)
 
+ Arguments following the main class, source file, -jar <jarfile>,
+ -m or --module <module>/<mainclass> are passed as the arguments to
+ main class.
+
+ where options include:
 
     -cp <class search path of directories and zip/jar files>
     -classpath <class search path of directories and zip/jar files>
+    --class-path <class search path of directories and zip/jar files>
                   A : separated list of directories, JAR archives,
                   and ZIP archives to search for class files.
+    -p <module path>
+    --module-path <module path>...
+                  A : separated list of directories, each directory
+                  is a directory of modules.
+    --upgrade-module-path <module path>...
+                  A : separated list of directories, each directory
+                  is a directory of modules that replace upgradeable
+                  modules in the runtime image
+    --add-modules <module name>[,<module name>...]
+                  root modules to resolve in addition to the initial module.
+                  <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
+                  ALL-MODULE-PATH.
+    --list-modules
+                  list observable modules and exit
+    -d <module name>
+    --describe-module <module name>
+                  describe a module and exit
+    --dry-run     create VM and load main class but do not execute main method.
+                  The --dry-run option may be useful for validating the
+                  command-line options such as the module system configuration.
+    --validate-modules
+                  validate all modules and exit
+                  The --validate-modules option may be useful for finding
+                  conflicts and other errors with modules on the module path.
     -D<name>=<value>
                   set a system property
-    -verbose:[class|gc|jni]
+    -verbose:[class|module|gc|jni]
                   enable verbose output
-    -version      print product version and exit
-    -version:<value>
-                  Warning: this feature is deprecated and will be removed
-                  in a future release.
-                  require the specified version to run
-    -showversion  print product version and continue
-    -jre-restrict-search | -no-jre-restrict-search
-                  Warning: this feature is deprecated and will be removed
-                  in a future release.
-                  include/exclude user private JREs in the version search
-    -? -help      print this help message
-    -X            print help on non-standard options
+    -version      print product version to the error stream and exit
+    --version     print product version to the output stream and exit
+    -showversion  print product version to the error stream and continue
+    --show-version
+                  print product version to the output stream and continue
+    --show-module-resolution
+                  show module resolution output during startup
+    -? -h -help
+                  print this help message to the error stream
+    --help        print this help message to the output stream
+    -X            print help on extra options to the error stream
+    --help-extra  print help on extra options to the output stream
     -ea[:<packagename>...|:<classname>]
     -enableassertions[:<packagename>...|:<classname>]
                   enable assertions with specified granularity
@@ -126,15 +155,29 @@ where options include:
     -dsa | -disablesystemassertions
                   disable system assertions
     -agentlib:<libname>[=<options>]
-                  load native agent library <libname>, e.g. -agentlib:hprof
-                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+                  load native agent library <libname>, e.g. -agentlib:jdwp
+                  see also -agentlib:jdwp=help
     -agentpath:<pathname>[=<options>]
                   load native agent library by full pathname
     -javaagent:<jarpath>[=<options>]
                   load Java programming language agent, see java.lang.instrument
     -splash:<imagepath>
                   show splash screen with specified image
-See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+                  HiDPI scaled images are automatically supported and used
+                  if available. The unscaled image filename, e.g. image.ext,
+                  should always be passed as the argument to the -splash option.
+                  The most appropriate scaled image provided will be picked up
+                  automatically.
+                  See the SplashScreen API documentation for more information
+    @argument files
+                  one or more argument files containing options
+    -disable-@files
+                  prevent further argument file expansion
+    --enable-preview
+                  allow classes to depend on preview features of this release
+To specify an argument for a long option, you can use --<name>=<value> or
+--<name> <value>.
+
 ```
 
 ### Installation on mega-linter Docker image
