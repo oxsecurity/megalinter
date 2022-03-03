@@ -89,6 +89,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
           'ansible-lint[community,yamllint]' \
           'snakemake' \
+          'snakefmt' \
           'sqlfluff' \
           'yamllint'
 #PIP__END

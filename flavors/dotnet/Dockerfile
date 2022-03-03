@@ -98,6 +98,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'ansible-lint[community,yamllint]' \
           'cpplint' \
           'snakemake' \
+          'snakefmt' \
           'sqlfluff' \
           'yamllint'
 #PIP__END
