@@ -10,14 +10,15 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Core
   - Switch from JDK 8 to JDK 11
+  - Use latest version of npm
 
 - Flavors
   - Add shell linters to ci_light flavor ([#1298](https://github.com/megalinter/megalinter/issues/1298))
 
 - Fixes
-  - Use latest version of npm
   - Generate JSON Schema HTML Documentation when building documentation ([#1287](https://github.com/megalinter/megalinter/issues/1287))
   - rubocop: remove `--force-exclusion` from auto-added parameters ([#302](https://github.com/megalinter/megalinter/issues/302))
+  - terrascan: call `terrascan init` as a pre-command
 
 - Linter versions upgrades
   - [cpplint](https://github.com/cpplint/cpplint) from 1.5.5 to **1.6.0** on 2022-02-20
@@ -45,6 +46,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.902 to **2.0.903** on 2022-02-27
   - [bandit](https://bandit.readthedocs.io/en/latest/) from 1.7.2 to **1.7.3** on 2022-02-28
   - [checkov](https://www.checkov.io/) from 2.0.903 to **2.0.906** on 2022-02-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 9.3 to **10.0** on 2022-03-03
+  - [phpstan](https://phpstan.org/) from 1.4.6 to **1.4.7** on 2022-03-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.0.1 to **7.0.3** on 2022-03-03
+  - [checkov](https://www.checkov.io/) from 2.0.906 to **2.0.914** on 2022-03-03
+  - [kics](https://www.kics.io) from 1.5.2 to **1.5.3** on 2022-03-03
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
