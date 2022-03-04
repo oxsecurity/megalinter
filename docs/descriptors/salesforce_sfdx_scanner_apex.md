@@ -229,11 +229,11 @@ VfCsrf                                             visualforce  Security        
 VfHtmlStyleTagXss                                  visualforce  Security                                                            pmd
 VfUnescapeEl                                       visualforce  Security          Basic VF                                          pmd
 ApexAssertionsShouldIncludeMessage                 apex         Best Practices                                                      pmd
-ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    Default ruleset...,quickstart,ApexUnit            pmd
+ApexUnitTestClassShouldHaveAsserts                 apex         Best Practices    Default ruleset...,ApexUnit,quickstart            pmd
 ApexUnitTestMethodShouldHaveIsTestAnnotation       apex         Best Practices                                                      pmd
-ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    Default ruleset...,quickstart,ApexUnit            pmd
-AvoidGlobalModifier                                apex         Best Practices    Default ruleset...,quickstart,Style               pmd
-AvoidLogicInTrigger                                apex         Best Practices    Default ruleset...,quickstart,Style               pmd
+ApexUnitTestShouldNotUseSeeAllDataTrue             apex         Best Practices    Default ruleset...,ApexUnit,quickstart            pmd
+AvoidGlobalModifier                                apex         Best Practices    Style,Default ruleset...,quickstart               pmd
+AvoidLogicInTrigger                                apex         Best Practices    Style,Default ruleset...,quickstart               pmd
 DebugsShouldUseLoggingLevel                        apex         Best Practices    quickstart                                        pmd
 UnusedLocalVariable                                apex         Best Practices                                                      pmd
 AvoidDebugStatements                               apex         Performance                                                         pmd
@@ -242,18 +242,18 @@ AvoidSoqlInLoops                                   apex         Performance     
 AvoidSoslInLoops                                   apex         Performance       Performance,Default ruleset...                    pmd
 EagerlyLoadedDescribeSObjectResult                 apex         Performance                                                         pmd
 OperationWithLimitsInLoop                          apex         Performance       quickstart                                        pmd
-ApexBadCrypto                                      apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexCRUDViolation                                  apex         Security          Default ruleset...,quickstart,Security            pmd
+ApexBadCrypto                                      apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexCRUDViolation                                  apex         Security          Security,Default ruleset...,quickstart            pmd
 ApexCSRF                                           apex         Security          Security                                          pmd
-ApexDangerousMethods                               apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexInsecureEndpoint                               apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexOpenRedirect                                   apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexSharingViolations                              apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexSOQLInjection                                  apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexSuggestUsingNamedCred                          apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexXSSFromEscapeFalse                             apex         Security          Default ruleset...,quickstart,Security            pmd
-ApexXSSFromURLParam                                apex         Security          Default ruleset...,quickstart,Security            pmd
-ClassNamingConventions                             apex         Code Style        Default ruleset...,quickstart,Style               pmd
+ApexDangerousMethods                               apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexInsecureEndpoint                               apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexOpenRedirect                                   apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexSharingViolations                              apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexSOQLInjection                                  apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexSuggestUsingNamedCred                          apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexXSSFromEscapeFalse                             apex         Security          Security,Default ruleset...,quickstart            pmd
+ApexXSSFromURLParam                                apex         Security          Security,Default ruleset...,quickstart            pmd
+ClassNamingConventions                             apex         Code Style        Style,Default ruleset...,quickstart               pmd
 IfElseStmtsMustUseBraces                           apex         Code Style        Default ruleset...,quickstart,Braces              pmd
 IfStmtsMustUseBraces                               apex         Code Style        Default ruleset...,quickstart,Braces              pmd
 FieldDeclarationsShouldBeAtStart                   apex         Code Style                                                          pmd
@@ -261,26 +261,26 @@ FieldNamingConventions                             apex         Code Style      
 ForLoopsMustUseBraces                              apex         Code Style        Default ruleset...,quickstart,Braces              pmd
 FormalParameterNamingConventions                   apex         Code Style        quickstart                                        pmd
 LocalVariableNamingConventions                     apex         Code Style        quickstart                                        pmd
-MethodNamingConventions                            apex         Code Style        Default ruleset...,quickstart,Style               pmd
+MethodNamingConventions                            apex         Code Style        Style,Default ruleset...,quickstart               pmd
 OneDeclarationPerLine                              apex         Code Style        Default ruleset...,quickstart                     pmd
 PropertyNamingConventions                          apex         Code Style        quickstart                                        pmd
-VariableNamingConventions                          apex         Code Style        Default ruleset...,Style                          pmd
+VariableNamingConventions                          apex         Code Style        Style,Default ruleset...                          pmd
 WhileLoopsMustUseBraces                            apex         Code Style        Default ruleset...,quickstart,Braces              pmd
-AvoidDeeplyNestedIfStmts                           apex         Design            Default ruleset...,quickstart,Complexity          pmd
-CyclomaticComplexity                               apex         Design            Default ruleset...,quickstart,Metrics tempora...  pmd
+AvoidDeeplyNestedIfStmts                           apex         Design            Default ruleset...,Complexity,quickstart          pmd
+CyclomaticComplexity                               apex         Design            Metrics tempora...,Default ruleset...,quickstart  pmd
 CognitiveComplexity                                apex         Design                                                              pmd
-ExcessiveClassLength                               apex         Design            Default ruleset...,quickstart,Complexity          pmd
-ExcessiveParameterList                             apex         Design            Default ruleset...,quickstart,Complexity          pmd
-ExcessivePublicCount                               apex         Design            Default ruleset...,quickstart,Complexity          pmd
-NcssConstructorCount                               apex         Design            Default ruleset...,quickstart,Complexity          pmd
-NcssMethodCount                                    apex         Design            Default ruleset...,quickstart,Complexity          pmd
-NcssTypeCount                                      apex         Design            Default ruleset...,quickstart,Complexity          pmd
-StdCyclomaticComplexity                            apex         Design            Default ruleset...,quickstart,Complexity          pmd
-TooManyFields                                      apex         Design            Default ruleset...,quickstart,Complexity          pmd
+ExcessiveClassLength                               apex         Design            Default ruleset...,Complexity,quickstart          pmd
+ExcessiveParameterList                             apex         Design            Default ruleset...,Complexity,quickstart          pmd
+ExcessivePublicCount                               apex         Design            Default ruleset...,Complexity,quickstart          pmd
+NcssConstructorCount                               apex         Design            Default ruleset...,Complexity,quickstart          pmd
+NcssMethodCount                                    apex         Design            Default ruleset...,Complexity,quickstart          pmd
+NcssTypeCount                                      apex         Design            Default ruleset...,Complexity,quickstart          pmd
+StdCyclomaticComplexity                            apex         Design            Default ruleset...,Complexity,quickstart          pmd
+TooManyFields                                      apex         Design            Default ruleset...,Complexity,quickstart          pmd
 ApexDoc                                            apex         Documentation     Default ruleset...,quickstart                     pmd
 ApexCSRF                                           apex         Error Prone       Default ruleset...,quickstart                     pmd
-AvoidDirectAccessTriggerMap                        apex         Error Prone       Default ruleset...,quickstart,Style               pmd
-AvoidHardcodingId                                  apex         Error Prone       Default ruleset...,quickstart,Style               pmd
+AvoidDirectAccessTriggerMap                        apex         Error Prone       Style,Default ruleset...,quickstart               pmd
+AvoidHardcodingId                                  apex         Error Prone       Style,Default ruleset...,quickstart               pmd
 AvoidNonExistentAnnotations                        apex         Error Prone       Default ruleset...,quickstart                     pmd
 EmptyCatchBlock                                    apex         Error Prone       Default ruleset...,quickstart,Empty Code          pmd
 EmptyIfStmt                                        apex         Error Prone       Default ruleset...,quickstart,Empty Code          pmd
@@ -288,7 +288,7 @@ EmptyStatementBlock                                apex         Error Prone     
 EmptyTryOrFinallyBlock                             apex         Error Prone       Default ruleset...,quickstart,Empty Code          pmd
 EmptyWhileStmt                                     apex         Error Prone       Default ruleset...,quickstart,Empty Code          pmd
 InaccessibleAuraEnabledGetter                      apex         Error Prone                                                         pmd
-MethodWithSameNameAsEnclosingClass                 apex         Error Prone       Default ruleset...,quickstart,Style               pmd
+MethodWithSameNameAsEnclosingClass                 apex         Error Prone       Style,Default ruleset...,quickstart               pmd
 OverrideBothEqualsAndHashcode                      apex         Error Prone                                                         pmd
 TestMethodsMustBeInTestClasses                     apex         Error Prone                                                         pmd
 constructor-super                                  javascript   ECMAScript 6      ECMAScript 6                                      eslint
