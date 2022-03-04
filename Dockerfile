@@ -151,6 +151,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'sphinx<4.0' \
           'rstfmt' \
           'snakemake' \
+          'snakefmt' \
           'sqlfluff' \
           'yamllint'
 #PIP__END

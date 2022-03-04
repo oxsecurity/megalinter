@@ -31,7 +31,6 @@ linters:
           url: https://marketplace.visualstudio.com/items?itemName=alping.vscode-snakemake
   # Snake Fmt
   - linter_name: snakefmt
-    disabled: true
     is_formatter: true
     name: SNAKEMAKE_SNAKEFMT
     linter_url: https://github.com/snakemake/snakefmt
@@ -49,7 +48,6 @@ linters:
       - "snakefmt --check --compact-diff Snakefile"
       - "snakefmt --check --compact-diff --config .snakefmt.toml Snakefile"
       - "snakefmt --config .snakefmt.toml Snakefile" # Fix
-    downgraded_version: true
     install:
       pip:
-        - snakefmt==0.4.4
+        - snakefmt
