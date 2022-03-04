@@ -5638,7 +5638,6 @@ Use &quot;terrascan [command] --help&quot; for more information about a command.
 </ul>
 <pre><code class="language-dockerfile">FROM accurics/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 </code></pre>
 <h3 id="example-success-log">Example success log</h3>
 <pre><code class="language-shell">Results of terrascan linter (version 1.2.0)
