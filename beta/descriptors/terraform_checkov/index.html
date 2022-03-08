@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/beta/descriptors/terraform_checkov/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
@@ -5483,7 +5483,7 @@
 
 <h2 id="checkov-documentation">checkov documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.0.918</strong></li>
+<li>Version in MegaLinter: <strong>2.0.923</strong></li>
 <li>Visit <a href="https://www.checkov.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html" target="_blank">How to disable checkov rules in files</a></li>
 <li>See <a href="https://www.checkov.io/5.Policy%20Index/all.html" target="_blank">Index of problems detected by checkov</a></li>
@@ -5626,8 +5626,8 @@
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--quiet] [--compact]
-               [--framework {arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
-               [--skip-framework {arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
+               [--framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -5681,10 +5681,10 @@ optional arguments:
                         platform
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
+  --framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
+  --skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
@@ -5953,7 +5953,7 @@ override config file values which override defaults.
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
