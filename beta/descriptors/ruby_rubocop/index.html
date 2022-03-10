@@ -5511,7 +5511,7 @@
 
 <h2 id="rubocop-documentation">rubocop documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.25.1</strong></li>
+<li>Version in MegaLinter: <strong>1.26.0</strong></li>
 <li>Visit <a href="https://rubocop.org/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.rubocop.org/rubocop/0.92/configuration.html" target="_blank">How to configure rubocop rules</a><ul>
 <li>If custom <code>.ruby-lint.yml</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml" target="_blank">.ruby-lint.yml</a> will be used</li>
@@ -5747,8 +5747,14 @@ Basic Options:
                                      reports. This is useful for editor integration.
     -P, --[no-]parallel              Use available CPUs to execute inspection in
                                      parallel. Default is true.
-        --fail-level SEVERITY        Minimum severity (A/I/R/C/W/E/F) for exit
-                                     with error code.
+        --fail-level SEVERITY        Minimum severity for exit with error code.
+                                       [A] autocorrect
+                                       [I] info
+                                       [R] refactor
+                                       [C] convention
+                                       [W] warning
+                                       [E] error
+                                       [F] fatal
 
 Caching:
     -C, --cache FLAG                 Use result caching (FLAG=true) or don't
