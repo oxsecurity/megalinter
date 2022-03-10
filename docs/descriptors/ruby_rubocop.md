@@ -9,7 +9,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.25.1**
+- Version in MegaLinter: **1.26.0**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -126,8 +126,14 @@ Basic Options:
                                      reports. This is useful for editor integration.
     -P, --[no-]parallel              Use available CPUs to execute inspection in
                                      parallel. Default is true.
-        --fail-level SEVERITY        Minimum severity (A/I/R/C/W/E/F) for exit
-                                     with error code.
+        --fail-level SEVERITY        Minimum severity for exit with error code.
+                                       [A] autocorrect
+                                       [I] info
+                                       [R] refactor
+                                       [C] convention
+                                       [W] warning
+                                       [E] error
+                                       [F] fatal
 
 Caching:
     -C, --cache FLAG                 Use result caching (FLAG=true) or don't
