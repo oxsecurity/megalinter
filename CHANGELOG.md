@@ -70,6 +70,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.924 to **2.0.927** on 2022-03-09
   - [rubocop](https://rubocop.org/) from 1.25.1 to **1.26.0** on 2022-03-10
   - [checkov](https://www.checkov.io/) from 2.0.927 to **2.0.931** on 2022-03-10
+  - [phpstan](https://phpstan.org/) from 1.4.8 to **1.4.9** on 2022-03-11
+  - [checkov](https://www.checkov.io/) from 2.0.931 to **2.0.935** on 2022-03-11
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
