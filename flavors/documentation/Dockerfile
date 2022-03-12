@@ -32,6 +32,8 @@ FROM python:3.9.7-alpine3.13
 # Run APK installs #
 ####################
 
+WORKDIR /
+
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
     bash \
@@ -50,7 +52,7 @@ RUN apk add --update --no-cache \
     linux-headers \
     make \
     musl-dev \
-    openjdk8 \
+    openjdk11 \
     openssh \
     npm \
     nodejs \
@@ -87,6 +89,7 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --upgrade \
           'ansible-lint[community,yamllint]' \
           'snakemake' \
+          'snakefmt' \
           'sqlfluff' \
           'yamllint'
 #PIP__END
@@ -98,9 +101,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 #############################################################################################
 
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
-RUN npm install npm@latest-6 -g
-# Disable package-lock.json to avoid sudden crash. Try to remove later if possible
-RUN echo 'package-lock=false' >> .npmrc 
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
@@ -193,6 +193,16 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeval" \
     && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz \
     && tar xf ${ML_THIRD_PARTY_DIR}/kubeval-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
     && mv ${ML_THIRD_PARTY_DIR}/kubeval /usr/local/bin \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
+
+
+# kubeconform installation
+RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
+    && KUBECONFORM_VERSION=v0.4.12 \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -P ${ML_THIRD_PARTY_DIR} -q https://github.com/yannh/kubeconform/releases/download/$KUBECONFORM_VERSION/kubeconform-linux-amd64.tar.gz \
+    && tar xf ${ML_THIRD_PARTY_DIR}/kubeconform-linux-amd64.tar.gz --directory ${ML_THIRD_PARTY_DIR} \
+    && mv ${ML_THIRD_PARTY_DIR}/kubeconform /usr/local/bin \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
 
 

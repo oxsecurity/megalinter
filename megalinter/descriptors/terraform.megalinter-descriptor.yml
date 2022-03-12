@@ -22,20 +22,23 @@ linters:
         - FROM ghcr.io/terraform-linters/tflint:latest as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
-  - linter_name: terrascan
+  - class: TerrascanLinter
+    linter_name: terrascan
     name: TERRAFORM_TERRASCAN
     linter_url: https://www.accurics.com/products/terrascan/
     linter_repo: https://github.com/accurics/terrascan
     linter_rules_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_rules_configuration_url: https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/
     linter_banner_image_url: https://www.accurics.com/wp-content/uploads/elementor/thumbs/Terrascan_By_Accurics_Logo_38B34A-F2F2F2_600px-ousqq3op24fn35s67j5dzk3akvuupafmt2sq5dygka.png
+    config_file_name: terrascan-config.toml
+    cli_config_arg_name: --config-path
+    cli_lint_mode: project
     cli_lint_extra_args:
       - "scan"
       - "-i"
       - "terraform"
       - "-t"
       - "all"
-      - "-f"
     cli_version_arg_name: "version"
     test_folder: terraform_terrascan
     examples:
@@ -44,7 +47,6 @@ linters:
       dockerfile:
         - FROM accurics/terrascan:latest as terrascan
         - COPY --from=terrascan /go/bin/terrascan /usr/bin/
-        - RUN terrascan init
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT

@@ -92,6 +92,21 @@
         },
         {
             "repo_url": "https://github.com/lpmatos/docker-crypto-miner"
-        }
+        },
+        {
+            "repo_url": "https://github.com/rasa/scoops"
+        },
+        {
+            "repo_url": "https://github.com/bjw-s/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/onedr0p/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/joeygoksu/prime-nestjs"
+        },
+        {
+            "repo_url": "https://github.com/GrandMoff100/HomeAssistantAPI"
+        }        
     ]
 }

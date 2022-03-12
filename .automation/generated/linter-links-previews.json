@@ -169,6 +169,11 @@
     "image": null,
     "title": "ktlint"
   },
+  "kubeconform": {
+    "description": "A FAST Kubernetes manifests validator, with support for Custom Resources! - GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources!",
+    "image": "https://opengraph.githubassets.com/b990bb1574e3f44a352a20ca20657b21cc9f52eb1738f5551195458f99aa596d/yannh/kubeconform",
+    "title": "GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources!"
+  },
   "kubeval": {
     "description": "Validate your Kubernetes configuration files, supports multiple Kubernetes versions - instrumenta/kubeval",
     "image": "https://avatars2.githubusercontent.com/u/49038473?s=400&v=4",
