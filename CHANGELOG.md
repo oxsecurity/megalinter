@@ -72,6 +72,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.927 to **2.0.931** on 2022-03-10
   - [phpstan](https://phpstan.org/) from 1.4.8 to **1.4.9** on 2022-03-11
   - [checkov](https://www.checkov.io/) from 2.0.931 to **2.0.935** on 2022-03-11
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.9 to **1.6.10** on 2022-03-12
+  - [eslint](https://eslint.org) from 8.10.0 to **8.11.0** on 2022-03-12
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.931 to **0.940** on 2022-03-12
+  - [checkov](https://www.checkov.io/) from 2.0.935 to **2.0.938** on 2022-03-12
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 20912 to **20913** on 2022-03-12
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas

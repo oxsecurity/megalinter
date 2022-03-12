@@ -339,9 +339,9 @@
         "                                  input).",
         "  --python-cell-magics TEXT       When processing Jupyter Notebooks, add the",
         "                                  given magic to the list of known python-",
-        "                                  magics (capture, time, pypy, timeit, python,",
-        "                                  prun, python3). Useful for formatting cells",
-        "                                  with custom python magics.",
+        "                                  magics (python, pypy, prun, time, timeit,",
+        "                                  python3, capture). Useful for formatting",
+        "                                  cells with custom python magics.",
         "  -S, --skip-string-normalization",
         "                                  Don't normalize string quotes or prefixes.",
         "  -C, --skip-magic-trailing-comma",
@@ -1510,8 +1510,8 @@
         "                        of opening bracket's line.",
         "  --ignore errors       Comma-separated list of errors and warnings to ignore",
         "                        (or skip). For example, ``--ignore=E4,E51,W234``.",
-        "                        (Default: ['E226', 'E121', 'W504', 'E123', 'E704',",
-        "                        'E24', 'W503', 'E126'])",
+        "                        (Default: ['E121', 'E704', 'E123', 'E126', 'W503',",
+        "                        'E24', 'E226', 'W504'])",
         "  --extend-ignore errors",
         "                        Comma-separated list of errors and warnings to add to",
         "                        the list of ignored ones. For example, ``--extend-",
@@ -7418,8 +7418,7 @@
         "  --oldxml10: use XML-1.0 parsing rules before the 5th edition",
         "  --xpath expr: evaluate the XPath expression, imply --noout",
         "",
-        "Libxml project home page: http://xmlsoft.org/",
-        "To report bugs or get some help check: http://xmlsoft.org/bugs.html"
+        "Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2"
     ],
     "yamllint": [
         "usage: yamllint [-h] [-] [-c CONFIG_FILE | -d CONFIG_DATA]",
