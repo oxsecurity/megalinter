@@ -4,7 +4,7 @@
 
 ## xmllint documentation
 
-- Version in MegaLinter: **20912**
+- Version in MegaLinter: **20913**
 - Visit [Official Web Site](http://xmlsoft.org/xmllint.html){target=_blank}
 - See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics){target=_blank}
 
@@ -144,8 +144,7 @@ Usage : xmllint [options] XMLfiles ...
   --oldxml10: use XML-1.0 parsing rules before the 5th edition
   --xpath expr: evaluate the XPath expression, imply --noout
 
-Libxml project home page: http://xmlsoft.org/
-To report bugs or get some help check: http://xmlsoft.org/bugs.html
+Libxml project home page: https://gitlab.gnome.org/GNOME/libxml2
 ```
 
 ### Installation on mega-linter Docker image
