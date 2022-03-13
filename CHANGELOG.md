@@ -77,6 +77,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.931 to **0.940** on 2022-03-12
   - [checkov](https://www.checkov.io/) from 2.0.935 to **2.0.938** on 2022-03-12
   - [xmllint](http://xmlsoft.org/xmllint.html) from 20912 to **20913** on 2022-03-12
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.18.5 to **5.19.0** on 2022-03-13
 <!-- linter-versions-end -->
 
 - New linter `kubeconform` to validate Kubernetes manifests with updated schemas
