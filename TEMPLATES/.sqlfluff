@@ -112,7 +112,7 @@
 #
 [sqlfluff:rules:L030]
 ## Function names
-#capitalisation_policy = consistent
+#extended_capitalisation_policy = consistent
 #
 [sqlfluff:rules:L038]
 ## Trailing commas
