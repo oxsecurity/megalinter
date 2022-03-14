@@ -31,7 +31,11 @@
 #output_line_length = 80
 ## Number of passes to run before admitting defeat
 #runaway_limit = 10
-## Ignore linting errors in templated sections
+## Ignore errors by category (one or more of the following, separated by commas: lexing,linting,parsing,templating)
+#ignore = None
+## Ignore linting errors found within sections of code coming directly from
+## templated code (e.g. from within Jinja curly braces. Note that it does not
+## ignore errors from literal code found within template loops.
 #ignore_templated_areas = True
 ## can either be autodetect or a valid encoding e.g. utf-8, utf-8-sig
 #encoding = autodetect
@@ -40,10 +44,14 @@
 ## Comma separated list of file extensions to lint
 ## NB: This config will only apply in the root folder
 #sql_file_exts = .sql,.sql.j2,.dml,.ddl
+## Allow fix to run on files, even if they contain parsing errors
+## Note altering this is NOT RECOMMENDED as can corrupt SQL
+#fix_even_unparsable = False
 #
 [sqlfluff:indentation]
 ## See https://docs.sqlfluff.com/en/stable/indentation.html
 #indented_joins = False
+#indented_ctes = False
 #indented_using_on = True
 #template_blocks_indent = True
 #
@@ -78,6 +86,8 @@
 [sqlfluff:rules:L010]
 ## Keywords
 #capitalisation_policy = consistent
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
 #
 [sqlfluff:rules:L011]
 ## Aliasing preference for tables
@@ -90,10 +100,13 @@
 [sqlfluff:rules:L014]
 ## Unquoted identifiers
 #extended_capitalisation_policy = consistent
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
 #
 [sqlfluff:rules:L016]
 ## Line length
 #ignore_comment_lines = False
+#ignore_comment_clauses = False
 #
 [sqlfluff:rules:L026]
 ## References must be in FROM clause
@@ -109,10 +122,14 @@
 ## Keywords should not be used as identifiers.
 #unquoted_identifiers_policy = aliases
 #quoted_identifiers_policy = none
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
 #
 [sqlfluff:rules:L030]
 ## Function names
-#capitalisation_policy = consistent
+#extended_capitalisation_policy = consistent
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
 #
 [sqlfluff:rules:L038]
 ## Trailing commas
@@ -121,6 +138,8 @@
 [sqlfluff:rules:L040]
 ## Null & Boolean Literals
 #capitalisation_policy = consistent
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
 #
 [sqlfluff:rules:L042]
 ## By default, allow subqueries in from clauses, but not join clauses
@@ -130,6 +149,11 @@
 ## Consistent syntax to count all rows
 #prefer_count_1 = False
 #prefer_count_0 = False
+#
+[sqlfluff:rules:L051]
+## Fully qualify JOIN clause
+#fully_qualify_join_types = inner
+#
 #
 [sqlfluff:rules:L052]
 ## Semi-colon formatting approach
@@ -146,3 +170,18 @@
 #quoted_identifiers_policy = all
 #allow_space_in_identifier = False
 #additional_allowed_characters = ""
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
+[sqlfluff:rules:L058]
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
+#
+[sqlfluff:rules:L059]
+## Policy on quoted and unquoted identifiers
+#prefer_quoted_identifiers = False
+## Comma separated list of words to ignore for this rule
+#ignore_words = None
+#
+[sqlfluff:rules:L062]
+## Comma separated list of blocked words that should not be used
+#blocked_words = None
