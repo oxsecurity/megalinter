@@ -15,6 +15,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.0 to **7.2.1** on 2022-03-14
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.1 to **5.19.2** on 2022-03-14
   - [checkov](https://www.checkov.io/) from 2.0.940 to **2.0.943** on 2022-03-14
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.940 to **0.941** on 2022-03-15
+  - [checkov](https://www.checkov.io/) from 2.0.943 to **2.0.949** on 2022-03-15
 <!-- linter-versions-end -->
 
 ## [v5.9.0] - 2022-03-13
