@@ -17,6 +17,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.940 to **2.0.943** on 2022-03-14
   - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.940 to **0.941** on 2022-03-15
   - [checkov](https://www.checkov.io/) from 2.0.943 to **2.0.949** on 2022-03-15
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.4.0 to **6.0.0** on 2022-03-16
+  - [checkov](https://www.checkov.io/) from 2.0.949 to **2.0.962** on 2022-03-16
 <!-- linter-versions-end -->
 
 ## [v5.9.0] - 2022-03-13
