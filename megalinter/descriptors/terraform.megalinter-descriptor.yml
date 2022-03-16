@@ -7,6 +7,7 @@ file_extensions:
 linters:
   # TFLINT
   - class: TfLintLinter
+    can_output_sarif: true
     linter_name: tflint
     name: TERRAFORM_TFLINT
     descriptor_flavors:

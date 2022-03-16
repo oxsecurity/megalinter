@@ -87,6 +87,7 @@ jobs:
             "repository_semgrep",
             "repository_syft",
             "repository_trivy",
+            "terraform_tflint",
             "terraform_terrascan",
             "terraform_checkov",
             "tsx_eslint",

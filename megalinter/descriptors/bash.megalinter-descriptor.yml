@@ -26,7 +26,6 @@ linters:
     descriptor_flavors:
       - all_flavors
       - security
-    linter_megalinter_ref_url: never
     cli_executable_help: bash
     cli_executable_version: bash
     cli_help_arg_name: "--help"

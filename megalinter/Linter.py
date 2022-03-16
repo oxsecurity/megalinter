@@ -4,7 +4,7 @@ Template class for custom linters: any linter class in /linters folder must inhe
 The following list of items can/must be overridden on custom linter local class:
 - field descriptor_id (required) ex: "JAVASCRIPT"
 - field name (optional) ex: "JAVASCRIPT_ES". If not set, language value is used
-- field linter_name (required) ex: "eslint" 
+- field linter_name (required) ex: "eslint"
 - field linter_url (required) ex: "https://eslint.org/"
 - field test_folder (optional) ex: "docker". If not set, language.lowercase() value is used
 - field config_file_name (optional) ex: ".eslintrc.yml". If not set, no default config file will be searched
