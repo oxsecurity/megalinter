@@ -110,6 +110,9 @@
         },
         {
             "repo_url": "https://github.com/unixorn/tumult.plugin.zsh"
+        },
+        {
+            "repo_url": "https://github.com/unixorn/lima-xbar-plugin"
         }        
     ]
 }
