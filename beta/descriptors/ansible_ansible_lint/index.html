@@ -5467,7 +5467,7 @@
 <h1 id="ansible-lint">ansible-lint</h1>
 <h2 id="ansible-lint-documentation">ansible-lint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>5.4.0</strong></li>
+<li>Version in MegaLinter: <strong>6.0.0</strong></li>
 <li>Visit <a href="https://ansible-lint.readthedocs.io/en/latest/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file" target="_blank">How to configure ansible-lint rules</a></li>
 <li>See <a href="https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules" target="_blank">How to disable ansible-lint rules in files</a></li>
@@ -5681,13 +5681,14 @@
 <pre><code class="language-shell">ansible-lint -v -c .ansible-lint
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">usage: ansible-lint [-h] [-L] [-f {rich,plain,rst,codeclimate,quiet,pep8}]
-                    [-q] [-p] [--parseable-severity] [--progressive]
-                    [--project-dir PROJECT_DIR] [-r RULESDIR] [-R]
-                    [--show-relpath] [-t TAGS] [-T] [-v] [-x SKIP_LIST]
-                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
-                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [--offline] [--version]
+<pre><code class="language-shell">usage: ansible-lint [-h] [-L]
+                    [-f {rich,plain,rst,json,codeclimate,quiet,pep8}] [-q]
+                    [-p] [--progressive] [--project-dir PROJECT_DIR]
+                    [-r RULESDIR] [-R] [--write] [--show-relpath] [-t TAGS]
+                    [-T] [-v] [-x SKIP_LIST] [-w WARN_LIST]
+                    [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
+                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
+                    [--version]
                     [lintables ...]
 
 positional arguments:
@@ -5697,11 +5698,11 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -L                    list all the rules
-  -f {rich,plain,rst,codeclimate,quiet,pep8}
-                        Format used rules output, (default: rich)
+  -f {rich,plain,rst,json,codeclimate,quiet,pep8}
+                        stdout formatting, json being an alias for
+                        codeclimate. (default: rich)
   -q                    quieter, reduce verbosity, can be specified twice.
   -p                    parseable output, same as '-f pep8'
-  --parseable-severity  parseable output including severity of rule
   --progressive         Return success if it detects a reduction in number of
                         violations compared with previous git commit. This
                         feature works only in git repositories.
@@ -5712,6 +5713,9 @@ optional arguments:
                         embedded rules from /usr/local/lib/python3.9/site-
                         packages/ansiblelint/rules
   -R                    Keep default rules when using -r
+  --write               Reformat YAML files to standardize spacing, quotes,
+                        etc. Future versions will expand this option so it
+                        fixes more issues.
   --show-relpath        Display path relative to CWD
   -t TAGS               only check rules whose id/tags match these values
   -T                    list all the tags
@@ -5727,8 +5731,8 @@ optional arguments:
   --exclude EXCLUDE_PATHS
                         path to directories or files to skip. This option is
                         repeatable.
-  -c CONFIG_FILE        Specify configuration file to use. Defaults to
-                        &quot;.ansible-lint&quot;
+  -c CONFIG_FILE        Specify configuration file to use. By default it will
+                        look for '.ansible-lint' or '.config/ansible-lint.yml'
   --offline             Disable installation of requirements.yml
   --version
 </code></pre>
