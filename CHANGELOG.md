@@ -19,6 +19,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.943 to **2.0.949** on 2022-03-15
   - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.4.0 to **6.0.0** on 2022-03-16
   - [checkov](https://www.checkov.io/) from 2.0.949 to **2.0.962** on 2022-03-16
+  - [stylelint](https://stylelint.io) from 14.5.3 to **14.6.0** on 2022-03-17
+  - [prettier](https://prettier.io/) from 2.5.1 to **2.6.0** on 2022-03-17
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.1 to **7.2.2** on 2022-03-17
+  - [checkov](https://www.checkov.io/) from 2.0.962 to **2.0.969** on 2022-03-17
+  - [kics](https://www.kics.io) from 1.5.3 to **1.5.4** on 2022-03-17
 <!-- linter-versions-end -->
 
 ## [v5.9.0] - 2022-03-13

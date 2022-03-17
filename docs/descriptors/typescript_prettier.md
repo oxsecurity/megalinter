@@ -9,7 +9,7 @@
 
 ## prettier documentation
 
-- Version in MegaLinter: **2.5.1**
+- Version in MegaLinter: **2.6.0**
 - Visit [Official Web Site](https://prettier.io/){target=_blank}
 - See [How to configure prettier rules](https://prettier.io/docs/en/configuration.html){target=_blank}
 - See [How to disable prettier rules in files](https://prettier.io/docs/en/ignore.html#javascript){target=_blank}
@@ -128,7 +128,7 @@ Format options:
                            Defaults to css.
   --jsx-single-quote       Use single quotes in JSX.
                            Defaults to false.
-  --parser <flow|babel|babel-flow|babel-ts|typescript|espree|meriyah|css|less|scss|json|json5|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
+  --parser <flow|babel|babel-flow|babel-ts|typescript|acorn|espree|meriyah|css|less|scss|json|json5|json-stringify|graphql|markdown|mdx|vue|yaml|glimmer|html|angular|lwc>
                            Which parser to use.
   --print-width <int>      The line length where Prettier will try wrap.
                            Defaults to 80.
@@ -139,6 +139,9 @@ Format options:
                            Change when properties in objects are quoted.
                            Defaults to as-needed.
   --no-semi                Do not print semicolons, except at the beginning of lines which may need them.
+  --single-attribute-per-line
+                           Enforce single attribute per line in HTML, Vue and JSX.
+                           Defaults to false.
   --single-quote           Use single quotes instead of double quotes.
                            Defaults to false.
   --tab-width <int>        Number of spaces per indentation level.
@@ -203,6 +206,7 @@ Other options:
   --loglevel <silent|error|warn|log|debug>
                            What level of logs to report.
                            Defaults to log.
+  --no-plugin-search       Disable plugin autoloading.
   --require-pragma         Require either '@prettier' or '@format' to be present in the file's first docblock comment
                            in order for it to be formatted.
                            Defaults to false.
