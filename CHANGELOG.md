@@ -24,6 +24,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.1 to **7.2.2** on 2022-03-17
   - [checkov](https://www.checkov.io/) from 2.0.962 to **2.0.969** on 2022-03-17
   - [kics](https://www.kics.io) from 1.5.3 to **1.5.4** on 2022-03-17
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.11.0 to **0.11.1** on 2022-03-17
+  - [checkov](https://www.checkov.io/) from 2.0.969 to **2.0.970** on 2022-03-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.3 to **0.36.5** on 2022-03-17
 <!-- linter-versions-end -->
 
 ## [v5.9.0] - 2022-03-13
