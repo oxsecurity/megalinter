@@ -27,6 +27,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 0.11.0 to **0.11.1** on 2022-03-17
   - [checkov](https://www.checkov.io/) from 2.0.969 to **2.0.970** on 2022-03-17
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.3 to **0.36.5** on 2022-03-17
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.0 to **6.0.1** on 2022-03-19
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.7.0 to **2.9.1** on 2022-03-19
+  - [golangci-lint](https://golangci-lint.run/) from 1.44.2 to **1.45.0** on 2022-03-19
+  - [ktlint](https://ktlint.github.io) from 0.44.0 to **0.45.0** on 2022-03-19
+  - [checkov](https://www.checkov.io/) from 2.0.970 to **2.0.975** on 2022-03-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.5 to **0.36.6** on 2022-03-19
 <!-- linter-versions-end -->
 
 ## [v5.9.0] - 2022-03-13

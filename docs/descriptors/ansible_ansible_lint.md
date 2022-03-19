@@ -4,7 +4,7 @@
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **6.0.0**
+- Version in MegaLinter: **6.0.1**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
