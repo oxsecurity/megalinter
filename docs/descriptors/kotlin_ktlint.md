@@ -9,7 +9,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.44.0**
+- Version in MegaLinter: **0.45.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
