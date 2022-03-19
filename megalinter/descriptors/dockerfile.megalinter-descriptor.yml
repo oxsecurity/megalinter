@@ -30,14 +30,14 @@ linters:
     linter_rules_inline_disable_url: https://github.com/hadolint/hadolint#inline-ignores
     linter_megalinter_ref_url: https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#mega-linter
     cli_config_arg_name: "--config"
-    config_file_name: .hadolint.yml
+    config_file_name: .hadolint.yaml
     examples:
       - "hadolint Dockerfile"
       - "hadolint --config .hadolint.yml Dockerfile"
     downgraded_version: true
     install:
       dockerfile:
-        - FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+        - FROM hadolint/hadolint:v2.9.1-alpine as hadolint
         - COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
     ide:
       atom:
