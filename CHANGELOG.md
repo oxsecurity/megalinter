@@ -9,32 +9,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.0 to **5.19.1** on 2022-03-13
-  - [checkov](https://www.checkov.io/) from 2.0.939 to **2.0.940** on 2022-03-13
-  - [phpstan](https://phpstan.org/) from 1.4.9 to **1.4.10** on 2022-03-14
-  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.0 to **7.2.1** on 2022-03-14
-  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.1 to **5.19.2** on 2022-03-14
-  - [checkov](https://www.checkov.io/) from 2.0.940 to **2.0.943** on 2022-03-14
-  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.940 to **0.941** on 2022-03-15
-  - [checkov](https://www.checkov.io/) from 2.0.943 to **2.0.949** on 2022-03-15
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.4.0 to **6.0.0** on 2022-03-16
-  - [checkov](https://www.checkov.io/) from 2.0.949 to **2.0.962** on 2022-03-16
-  - [stylelint](https://stylelint.io) from 14.5.3 to **14.6.0** on 2022-03-17
-  - [prettier](https://prettier.io/) from 2.5.1 to **2.6.0** on 2022-03-17
-  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.1 to **7.2.2** on 2022-03-17
-  - [checkov](https://www.checkov.io/) from 2.0.962 to **2.0.969** on 2022-03-17
-  - [kics](https://www.kics.io) from 1.5.3 to **1.5.4** on 2022-03-17
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.11.0 to **0.11.1** on 2022-03-17
-  - [checkov](https://www.checkov.io/) from 2.0.969 to **2.0.970** on 2022-03-17
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.3 to **0.36.5** on 2022-03-17
-  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.0 to **6.0.1** on 2022-03-19
-  - [hadolint](https://github.com/hadolint/hadolint) from 2.7.0 to **2.9.1** on 2022-03-19
-  - [golangci-lint](https://golangci-lint.run/) from 1.44.2 to **1.45.0** on 2022-03-19
-  - [ktlint](https://ktlint.github.io) from 0.44.0 to **0.45.0** on 2022-03-19
-  - [checkov](https://www.checkov.io/) from 2.0.970 to **2.0.975** on 2022-03-19
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.5 to **0.36.6** on 2022-03-19
-  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.9.3 to **3.10.0** on 2022-03-20
 <!-- linter-versions-end -->
+
+## [v5.10.0] - 2022-03-20
+
+- Linter versions upgrades
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 5.4.0 to **6.0.0** on 2022-03-16
+  - [ansible-lint](https://ansible-lint.readthedocs.io/en/latest/) from 6.0.0 to **6.0.1** on 2022-03-19
+  - [checkov](https://www.checkov.io/) from 2.0.939 to **2.0.940** on 2022-03-13
+  - [checkov](https://www.checkov.io/) from 2.0.940 to **2.0.943** on 2022-03-14
+  - [checkov](https://www.checkov.io/) from 2.0.943 to **2.0.949** on 2022-03-15
+  - [checkov](https://www.checkov.io/) from 2.0.949 to **2.0.962** on 2022-03-16
+  - [checkov](https://www.checkov.io/) from 2.0.962 to **2.0.969** on 2022-03-17
+  - [checkov](https://www.checkov.io/) from 2.0.969 to **2.0.970** on 2022-03-17
+  - [checkov](https://www.checkov.io/) from 2.0.970 to **2.0.975** on 2022-03-19
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.0 to **5.19.1** on 2022-03-13
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.1 to **5.19.2** on 2022-03-14
+  - [golangci-lint](https://golangci-lint.run/) from 1.44.2 to **1.45.0** on 2022-03-19
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.7.0 to **2.9.1** on 2022-03-19
+  - [kics](https://www.kics.io) from 1.5.3 to **1.5.4** on 2022-03-17
+  - [ktlint](https://ktlint.github.io) from 0.44.0 to **0.45.0** on 2022-03-19
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.9.3 to **3.10.0** on 2022-03-20
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.940 to **0.941** on 2022-03-15
+  - [phpstan](https://phpstan.org/) from 1.4.9 to **1.4.10** on 2022-03-14
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.1 to **7.2.2** on 2022-03-17
+  - [prettier](https://prettier.io/) from 2.5.1 to **2.6.0** on 2022-03-17
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.0 to **7.2.1** on 2022-03-14
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.11.0 to **0.11.1** on 2022-03-17
+  - [stylelint](https://stylelint.io) from 14.5.3 to **14.6.0** on 2022-03-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.3 to **0.36.5** on 2022-03-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.5 to **0.36.6** on 2022-03-19
 
 ## [v5.9.0] - 2022-03-13
 
