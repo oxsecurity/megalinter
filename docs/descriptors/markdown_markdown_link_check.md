@@ -4,7 +4,7 @@
 
 ## markdown-link-check documentation
 
-- Version in MegaLinter: **3.9.3**
+- Version in MegaLinter: **3.10.0**
 - Visit [Official Web Site](https://github.com/tcort/markdown-link-check#readme){target=_blank}
 - See [How to configure markdown-link-check rules](https://github.com/tcort/markdown-link-check#config-file-format){target=_blank}
   - If custom `.markdown-link-check.json` config file is not found, [.markdown-link-check.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.markdown-link-check.json){target=_blank} will be used

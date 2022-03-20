@@ -37,7 +37,7 @@
     "kubeval": "0.16.1",
     "lintr": "0.0.0",
     "luacheck": "0.25.0",
-    "markdown-link-check": "3.9.3",
+    "markdown-link-check": "3.10.0",
     "markdown-table-formatter": "1.3.0",
     "markdownlint": "0.31.1",
     "misspell": "0.3.4",

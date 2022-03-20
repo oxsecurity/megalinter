@@ -33,6 +33,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [ktlint](https://ktlint.github.io) from 0.44.0 to **0.45.0** on 2022-03-19
   - [checkov](https://www.checkov.io/) from 2.0.970 to **2.0.975** on 2022-03-19
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.5 to **0.36.6** on 2022-03-19
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.9.3 to **3.10.0** on 2022-03-20
 <!-- linter-versions-end -->
 
 ## [v5.9.0] - 2022-03-13
