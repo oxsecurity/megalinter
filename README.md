@@ -38,6 +38,12 @@ See [**Online Documentation Web Site which has a much easier user navigation tha
 
 ________
 
+[_**See Article on Medium**_](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
+
+![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true>)
+
+________
+
 _Process_
 
 ![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)

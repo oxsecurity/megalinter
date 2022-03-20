@@ -37,6 +37,12 @@ Ready to use [out of the box](installation.md) as a **GitHub Action** or **any C
 
 ________
 
+[_**See Article on Medium**_](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
+
+![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true>)
+
+________
+
 _Process_
 
 ![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/archi.png?raw=true>)
