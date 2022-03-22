@@ -10,6 +10,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.975 to **2.0.977** on 2022-03-21
+  - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **5.1.16** on 2022-03-22
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.3 to **0.58.4** on 2022-03-22
+  - [coffeelint](http://www.coffeelint.org) from 5.2.4 to **5.2.5** on 2022-03-22
+  - [ktlint](https://ktlint.github.io) from 0.45.0 to **0.45.1** on 2022-03-22
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.1 to **7.3.0** on 2022-03-22
+  - [checkov](https://www.checkov.io/) from 2.0.977 to **2.0.980** on 2022-03-22
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
