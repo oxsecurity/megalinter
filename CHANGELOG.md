@@ -16,6 +16,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [ktlint](https://ktlint.github.io) from 0.45.0 to **0.45.1** on 2022-03-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.2.1 to **7.3.0** on 2022-03-22
   - [checkov](https://www.checkov.io/) from 2.0.977 to **2.0.980** on 2022-03-22
+  - [rubocop](https://rubocop.org/) from 1.26.0 to **1.26.1** on 2022-03-23
+  - [checkov](https://www.checkov.io/) from 2.0.980 to **2.0.983** on 2022-03-23
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
