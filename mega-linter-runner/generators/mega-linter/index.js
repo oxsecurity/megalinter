@@ -2,6 +2,7 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
+const { OxSecuritySetup } = require("../../lib/ox-setup");
 
 module.exports = class extends Generator {
   prompting() {
@@ -123,6 +124,12 @@ module.exports = class extends Generator {
         message: "Do you want to see elapsed time by linter in logs ?",
         default: true,
       },
+      {
+        type: "confirm",
+        name: "ox",
+        message: "Do you want to test Ox.security to secure your repositories ?",
+        default: true,
+      },
     ];
 
     return this.prompt(prompts).then((props) => {
@@ -151,6 +158,10 @@ module.exports = class extends Generator {
     this._generateCSpellConfig();
     // Generate .jscpd.json config
     this._generateJsCpdConfig();
+    // Process linking to ox.security service
+    if (this.props.ox === true) {
+      new OxSecuritySetup().run();
+    }
   }
 
   end() {

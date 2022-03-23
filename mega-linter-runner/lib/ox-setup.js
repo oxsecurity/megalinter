@@ -1,0 +1,41 @@
+const uuid = require('uuid');
+const fs = require("fs-extra");
+const path = require("path");
+const { OX_LOGIN_URL, OX_REPO_LOCAL_CONFIG_FILE } = require('./config');
+const open = require("open");
+
+// Class to setup Ox security on the repository
+class OxSecuritySetup {
+    
+    // Open Ox registration page
+    // Once SSO (managed internally by Ox app) is performed, we'll receive an ox token in response
+    async run() {
+        this.clientToken = uuid.v4(); // generate a random key
+        const registerUrl = OX_LOGIN_URL + '?token=' + this.clientToken ;
+        console.log(`Waiting for response from Ox.security app...`);
+        open(registerUrl);
+    }
+
+    // Handle response from ox server
+    async handleResponse(body) {
+        // Check if the response contains the sent clientToken
+        if (body.clientToken !== this.clientToken) {
+            throw new Error("Client token error");
+        }
+        if (body.oxToken) {
+            await this.storeOxToken(body.oxToken);
+        }
+    }
+
+    // Store ox token in local config file
+    async storeOxToken(oxToken) {
+        const oxAuthInfo = (fs.existsSync(OX_REPO_LOCAL_CONFIG_FILE)) ? fs.readJSONSync(OX_REPO_LOCAL_CONFIG_FILE) : {};
+        oxAuthInfo.oxToken = oxToken;
+        // Make sure ox directory is not existing
+        fs.ensureDir(path.dirname(OX_REPO_LOCAL_CONFIG_FILE));
+        await fs.writeJSON(OX_REPO_LOCAL_CONFIG_FILE,oxAuthInfo);
+        console.log(`Written Ox token in ${OX_REPO_LOCAL_CONFIG_FILE}`);
+    }
+}
+
+module.exports = { OxSecuritySetup }

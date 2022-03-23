@@ -50,6 +50,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - New descriptor **repository**: contains secretlint, git_diff, gitleaks and goodcheck
     - remove CREDENTIALS and GIT descriptors
 
+- mega-linter-runner
+  - Propose to test ox.security service
+
 ## [Unreleased] (beta, main branch content)
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
