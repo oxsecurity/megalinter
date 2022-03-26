@@ -2156,6 +2156,24 @@ def generate_documentation_all_linters():
             outfile.write("| %s |\n" % " | ".join(md_table_line))
 
 
+# Generate page of MegaLinter public repositories users
+def generate_documentation_all_users():
+    with open(USERS_FILE, "r", encoding="utf-8") as json_file:
+        megalinter_users = json.load(json_file)
+    repositories = megalinter_users["repositories"]
+    linter_doc_md = ["# They use MegaLinter",""]
+    for repo in repositories:
+        if "info" in repo:
+            repo_full = repo["info"]["full_name"]
+            # pylint: disable=no-member
+            linter_doc_md += [
+                f"[![{repo_full} - GitHub](https://gh-card.dev/repos/{repo_full}.svg?fullname=)]"
+                f"(https://github.com/{repo_full}){{target=_blank}}",
+            ]
+            # pylint: enable=no-member
+    with open(f"{REPO_HOME}/docs/all_users.md", "w", encoding="utf-8") as file:
+        file.write("\n".join(linter_doc_md)+"\n")
+
 # get github repo info using api
 def get_github_repo_info(repo):
     api_github_url = f"https://api.github.com/repos/{repo}"
@@ -2185,7 +2203,6 @@ def refresh_users_info():
         if repo_item["repo_url"] and repo_item["repo_url"].startswith("https://github.com"):
             repo = repo_item["repo_url"].split("https://github.com/", 1)[1]
             resp = get_github_repo_info(repo)
-            logging.info(resp)
             if "stargazers_count" in resp:
                 repo_item["stargazers"] = resp["stargazers_count"]
                 repo_item["info"] = resp
@@ -2245,16 +2262,16 @@ if __name__ == "__main__":
         )
 
     # noinspection PyTypeChecker
-    refresh_users_info()
-    exit()
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()
     generate_all_flavors()
     generate_linter_test_classes()
     if UPDATE_DOC is True:
+        refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()
+        generate_documentation_all_users()
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()
