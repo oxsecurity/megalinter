@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Fixes
+  - Github Comment Reporter: switch to using a hidden HTML comment to mark the comment, with the current workflow and jobid. This is more robust than the old method. ([[#1355](https://github.com/megalinter/megalinter/issues/1355))
+
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.975 to **2.0.977** on 2022-03-21
   - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **5.1.16** on 2022-03-22
