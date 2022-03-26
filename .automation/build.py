@@ -56,6 +56,7 @@ REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 LICENSES_FILE = REPO_HOME + "/.automation/generated/linter-licenses.json"
+USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
@@ -2155,6 +2156,47 @@ def generate_documentation_all_linters():
             outfile.write("| %s |\n" % " | ".join(md_table_line))
 
 
+# get github repo info using api
+def get_github_repo_info(repo):
+    api_github_url = f"https://api.github.com/repos/{repo}"
+    api_github_headers = {"content-type": "application/json"}
+    if "GITHUB_TOKEN" in os.environ:
+        github_token = os.environ["GITHUB_TOKEN"]
+        api_github_headers["authorization"] = f"Bearer {github_token}"
+    logging.info(f"Getting repo info for {api_github_url}")
+    session = requests_retry_session()
+    r = session.get(api_github_url, headers=api_github_headers)
+    if r is not None:
+        # Update license key for licenses file
+        resp = r.json()
+        if resp is not None and not isinstance(resp, type(None)):
+            return resp
+    return {}
+
+
+# Refresh github users info
+def refresh_users_info():
+    with open(USERS_FILE, "r", encoding="utf-8") as json_file:
+        megalinter_users = json.load(json_file)
+    repositories = megalinter_users["repositories"]
+    updated_repositories = []
+    for repo_item in repositories:
+        # get stargazers from github api
+        if repo_item["repo_url"] and repo_item["repo_url"].startswith("https://github.com"):
+            repo = repo_item["repo_url"].split("https://github.com/", 1)[1]
+            resp = get_github_repo_info(repo)
+            logging.info(resp)
+            if "stargazers_count" in resp:
+                repo_item["stargazers"] = resp["stargazers_count"]
+                repo_item["info"] = resp
+        updated_repositories += [repo_item]
+    updated_repositories.sort(key=lambda x: x["stargazers"], reverse=True)
+    megalinter_users["repositories"] = updated_repositories
+    with open(USERS_FILE, "w", encoding="utf-8") as outfile:
+        json.dump(megalinter_users, outfile, indent=4, sort_keys=True)
+        outfile.write("\n")
+
+
 def manage_output_variables():
     if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":
         updated_files = megalinter.utils.list_updated_files("..")
@@ -2203,6 +2245,8 @@ if __name__ == "__main__":
         )
 
     # noinspection PyTypeChecker
+    refresh_users_info()
+    exit()
     collect_linter_previews()
     generate_json_schema_enums()
     validate_descriptors()

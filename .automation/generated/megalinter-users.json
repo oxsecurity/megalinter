@@ -1,118 +1,160 @@
 {
     "repositories": [
         {
-            "repo_url": "https://github.com/oasisprotocol/oasis-wallet-web"
+            "repo_url": "https://github.com/oasisprotocol/oasis-wallet-web",
+            "stargazers": 63
         },
         {
-            "repo_url": "https://github.com/stepancheg/rust-protobuf"
+            "repo_url": "https://github.com/stepancheg/rust-protobuf",
+            "stargazers": 1958
         },
         {
-            "repo_url": "https://github.com/MythicDrops/MythicDrops"
+            "repo_url": "https://github.com/MythicDrops/MythicDrops",
+            "stargazers": 28
         },
         {
-            "repo_url": "https://github.com/nektos/act"
+            "repo_url": "https://github.com/nektos/act",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/GSA/usagov-benefits-eligibility"
+            "repo_url": "https://github.com/GSA/usagov-benefits-eligibility",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/newrelic/newrelic-python-agent"
+            "repo_url": "https://github.com/newrelic/newrelic-python-agent",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/llaville/php-compatinfo"
+            "repo_url": "https://github.com/llaville/php-compatinfo",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/llaville/umlwriter"
+            "repo_url": "https://github.com/llaville/umlwriter",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/practicalli/spacemacs"
+            "repo_url": "https://github.com/practicalli/spacemacs",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/AlbanAndrieu/jenkins-pipeline-scripts"
+            "repo_url": "https://github.com/AlbanAndrieu/jenkins-pipeline-scripts",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/flosse/sloc"
+            "repo_url": "https://github.com/flosse/sloc",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/Neragin/cx-bot"
+            "repo_url": "https://github.com/Neragin/cx-bot",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/AlbanAndrieu/ansible-windows"
+            "repo_url": "https://github.com/AlbanAndrieu/ansible-windows",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/mundialis/actinia-stac-plugin"
+            "repo_url": "https://github.com/mundialis/actinia-stac-plugin",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/philips-software/embeddedinfralib"
+            "repo_url": "https://github.com/philips-software/embeddedinfralib",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/cbg-ethz/SARS-CoV-2_Analysis"
+            "repo_url": "https://github.com/cbg-ethz/SARS-CoV-2_Analysis",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/hardisgroupcom/sfdx-hardis"
+            "repo_url": "https://github.com/hardisgroupcom/sfdx-hardis",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/tonic-team/tonic.site"
+            "repo_url": "https://github.com/tonic-team/tonic.site",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/quackduck/secret"
+            "repo_url": "https://github.com/quackduck/secret",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/epleypa/Home-AssistantConfig"
+            "repo_url": "https://github.com/epleypa/Home-AssistantConfig",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/hardisgroupcom/vscode-sfdx-hardis"
+            "repo_url": "https://github.com/hardisgroupcom/vscode-sfdx-hardis",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/wareismymind/peer"
+            "repo_url": "https://github.com/wareismymind/peer",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/nvuillam/sfdx-essentials"
+            "repo_url": "https://github.com/nvuillam/sfdx-essentials",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/quackduck/ncis"
+            "repo_url": "https://github.com/quackduck/ncis",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/KelvinTegelaar/CIPP"
+            "repo_url": "https://github.com/KelvinTegelaar/CIPP",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/r-spacex/submanager"
+            "repo_url": "https://github.com/r-spacex/submanager",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/ewencluley/final-curtain"
+            "repo_url": "https://github.com/ewencluley/final-curtain",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/nvuillam/npm-groovy-lint"
+            "repo_url": "https://github.com/nvuillam/npm-groovy-lint",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/ScribeMD/rootless-docker"
+            "repo_url": "https://github.com/ScribeMD/rootless-docker",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/ScribeMD/slack-templates"
+            "repo_url": "https://github.com/ScribeMD/slack-templates",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/lpmatos/docker-crypto-miner"
+            "repo_url": "https://github.com/lpmatos/docker-crypto-miner",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/rasa/scoops"
+            "repo_url": "https://github.com/rasa/scoops",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/bjw-s/home-ops"
+            "repo_url": "https://github.com/bjw-s/home-ops",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/onedr0p/home-ops"
+            "repo_url": "https://github.com/onedr0p/home-ops",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/joeygoksu/prime-nestjs"
+            "repo_url": "https://github.com/joeygoksu/prime-nestjs",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/GrandMoff100/HomeAssistantAPI"
+            "repo_url": "https://github.com/GrandMoff100/HomeAssistantAPI",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/unixorn/tumult.plugin.zsh"
+            "repo_url": "https://github.com/unixorn/tumult.plugin.zsh",
+            "stargazers": 0
         },
         {
-            "repo_url": "https://github.com/unixorn/lima-xbar-plugin"
-        }        
+            "repo_url": "https://github.com/unixorn/lima-xbar-plugin",
+            "stargazers": 0
+        },
+        {
+            "repo_url": "https://github.com/unixorn/zsh-quickstart-kit",
+            "stargazers": 0
+        }
     ]
 }
