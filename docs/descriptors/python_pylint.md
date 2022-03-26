@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.12.2**
+- Version in MegaLinter: **2.13.1**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-lint){target=_blank} will be used
@@ -108,7 +108,8 @@ Options:
     --ignore-patterns=<pattern>[,<pattern>...]
                         Files or directories matching the regex patterns are
                         skipped. The regex matches against base names, not
-                        paths. [current: none]
+                        paths. The default value ignores emacs file locks
+                        [current: ^\.#]
     --ignore-paths=<pattern>[,<pattern>...]
                         Add files or directories matching the regex patterns
                         to the ignore-list. The regex matches against paths
@@ -159,6 +160,8 @@ Options:
                         continuous integration scripts.
     --from-stdin        Interpret the stdin as a python script, whose filename
                         needs to be passed as the module_or_package argument.
+    --recursive=<yn>    Discover python modules and packages in the file
+                        system subtree. [current: no]
     --py-version=<py_version>
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
@@ -190,8 +193,8 @@ Options:
     --confidence=<levels>
                         Only show warnings with the listed confidence levels.
                         Leave empty to show all. Valid levels: HIGH,
-                        INFERENCE, INFERENCE_FAILURE, UNDEFINED. [current:
-                        none]
+                        CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE, UNDEFINED.
+                        [current: none]
     -e <msg ids>, --enable=<msg ids>
                         Enable the message, report, category or checker with
                         the given id(s). You can either give multiple
@@ -206,7 +209,7 @@ Options:
                         multiple times (only on the command line, not in the
                         configuration file where it should appear only once).
                         You can also use "--disable=all" to disable everything
-                        first and then reenable specific checks. For example,
+                        first and then re-enable specific checks. For example,
                         if you want to run only the similarities checker, you
                         can use "--disable=all --enable=similarities". If you
                         want to run only the classes checker, but have no
@@ -225,13 +228,14 @@ Options:
     --evaluation=<python_expression>
                         Python expression which should return a score less
                         than or equal to 10. You have access to the variables
-                        'error', 'warning', 'refactor', and 'convention' which
-                        contain the number of messages in each category, as
-                        well as 'statement' which is the total number of
-                        statements analyzed. This score is used by the global
-                        evaluation report (RP0004). [current: 10.0 - ((float(5
-                        * error + warning + refactor + convention) /
-                        statement) * 10)]
+                        'fatal', 'error', 'warning', 'refactor', 'convention',
+                        and 'info' which contain the number of messages in
+                        each category, as well as 'statement' which is the
+                        total number of statements analyzed. This score is
+                        used by the global evaluation report (RP0004).
+                        [current: max(0, 0 if fatal else 10.0 - ((float(5 *
+                        error + warning + refactor + convention) / statement)
+                        * 10))]
     -s <y or n>, --score=<y or n>
                         Activate the evaluation score. [current: yes]
     --msg-template=<template>

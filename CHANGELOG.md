@@ -23,6 +23,18 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.0 to **2.13.1** on 2022-03-24
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.0 to **2.13.1** on 2022-03-24
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.0 to **7.3.1** on 2022-03-24
+  - [stylelint](https://stylelint.io) from 14.6.0 to **14.6.1** on 2022-03-26
+  - [golangci-lint](https://golangci-lint.run/) from 1.45.0 to **1.45.2** on 2022-03-26
+  - [eslint](https://eslint.org) from 8.11.0 to **8.12.0** on 2022-03-26
+  - [prettier](https://prettier.io/) from 2.6.0 to **2.6.1** on 2022-03-26
+  - [luacheck](https://luacheck.readthedocs.io) from 0.25.0 to **0.26.0** on 2022-03-26
+  - [phpstan](https://phpstan.org/) from 1.4.10 to **1.5.0** on 2022-03-26
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.941 to **0.942** on 2022-03-26
+  - [pylint](https://www.pylint.org) from 2.12.2 to **2.13.1** on 2022-03-26
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.1 to **7.3.2** on 2022-03-26
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.2 to **5.19.3** on 2022-03-26
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.11.1 to **0.11.2** on 2022-03-26
+  - [checkov](https://www.checkov.io/) from 2.0.983 to **2.0.995** on 2022-03-26
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
