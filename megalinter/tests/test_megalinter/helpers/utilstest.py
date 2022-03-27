@@ -384,8 +384,8 @@ def test_get_linter_help(linter, test_self):
             .replace("\t", "  ")
             .replace("\\r", "")
             .replace("\r", "")
-            .replace(r"(\[..m)", "")
-            .replace(r"(\[.m)", "")
+            .replace(r"(\[..m)", "") # pylint: disable=invalid-character-esc
+            .replace(r"(\[.m)", "")  # pylint: disable=invalid-character-esc
             .rstrip()
         )
         help_lines_clean += [line_clean]

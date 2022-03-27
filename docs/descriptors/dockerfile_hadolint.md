@@ -4,10 +4,9 @@
 
 ## hadolint documentation
 
-- Version in MegaLinter: **2.7.0**
+- Version in MegaLinter: **2.9.1**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
-  - If custom `.hadolint.yml` config file is not found, [.hadolint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.hadolint.yml){target=_blank} will be used
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
 - See [Index of problems detected by hadolint](https://github.com/hadolint/hadolint#rules){target=_blank}
 
@@ -28,7 +27,7 @@
 | DOCKERFILE_HADOLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["Dockerfile"]`                                |
 | DOCKERFILE_HADOLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                            |
 | DOCKERFILE_HADOLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                            |
-| DOCKERFILE_HADOLINT_CONFIG_FILE                 | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.hadolint.yml`                                 |
+| DOCKERFILE_HADOLINT_CONFIG_FILE                 | hadolint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.hadolint.yaml`                                |
 | DOCKERFILE_HADOLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder, then MegaLinter default rules |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                         |
 | DOCKERFILE_HADOLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                             |
@@ -57,7 +56,7 @@ This linter is available in the following flavours
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/flavors/java/)                   | Optimized for JAVA based projects                                      |        43        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects                  |        50        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/flavors/php/)                     | Optimized for PHP based projects                                       |        46        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                                    |        50        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/)               | Optimized for PYTHON based projects                                    |        49        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)                   | Optimized for RUBY based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)                   | Optimized for RUST based projects                                      |        42        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/flavors/salesforce/)       | Optimized for Salesforce based projects                                |        44        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
@@ -93,28 +92,34 @@ hadolint --config .hadolint.yml Dockerfile
 ```shell
 hadolint - Dockerfile Linter written in Haskell
 
-Usage: hadolint [-v|--version] [--no-fail] [--no-color] [-c|--config FILENAME]
-                [-V|--verbose] [-f|--format ARG] [DOCKERFILE...]
-                [--error RULECODE] [--warning RULECODE] [--info RULECODE]
-                [--style RULECODE] [--ignore RULECODE]
+Usage: hadolint [-v|--version] [-c|--config FILENAME] [DOCKERFILE...]
+                [--file-path-in-report FILEPATHINREPORT] [--no-fail]
+                [--no-color] [-V|--verbose] [-f|--format ARG] [--error RULECODE]
+                [--warning RULECODE] [--info RULECODE] [--style RULECODE]
+                [--ignore RULECODE]
                 [--trusted-registry REGISTRY (e.g. docker.io)]
                 [--require-label LABELSCHEMA (e.g. maintainer:text)]
-                [--strict-labels] [-t|--failure-threshold THRESHOLD]
-                [--file-path-in-report FILEPATHINREPORT]
+                [--strict-labels] [--disable-ignore-pragma]
+                [-t|--failure-threshold THRESHOLD]
   Lint Dockerfile for errors and best practices
 
 Available options:
   -h,--help                Show this help text
   -v,--version             Show version
+  -c,--config FILENAME     Path to the configuration file
+  --file-path-in-report FILEPATHINREPORT
+                           The file path referenced in the generated report.
+                           This only applies for the 'checkstyle' format and is
+                           useful when running Hadolint with Docker to set the
+                           correct file path.
   --no-fail                Don't exit with a failure status code when any rule
                            is violated
   --no-color               Don't colorize output
-  -c,--config FILENAME     Path to the configuration file
   -V,--verbose             Enables verbose logging of hadolint's output to
                            stderr
   -f,--format ARG          The output format for the results [tty | json |
                            checkstyle | codeclimate | gitlab_codeclimate |
-                           codacy | sonarqube] (default: tty)
+                           codacy | sonarqube | sarif] (default: tty)
   --error RULECODE         Make the rule `RULECODE` have the level `error`
   --warning RULECODE       Make the rule `RULECODE` have the level `warning`
   --info RULECODE          Make the rule `RULECODE` have the level `info`
@@ -130,23 +135,20 @@ Available options:
                            format requirement `format`
   --strict-labels          Do not permit labels other than specified in
                            `label-schema`
+  --disable-ignore-pragma  Disable inline ignore pragmas `# hadolint
+                           ignore=DLxxxx`
   -t,--failure-threshold THRESHOLD
                            Exit with failure code only when rules with a
                            severity equal to or above THRESHOLD are violated.
                            Accepted values: [error | warning | info | style |
                            ignore | none] (default: info)
-  --file-path-in-report FILEPATHINREPORT
-                           The file path referenced in the generated report.
-                           This only applies for the 'checkstyle' format and is
-                           useful when running Hadolint with Docker to set the
-                           correct file path.
 ```
 
 ### Installation on mega-linter Docker image
 
 - Dockerfile commands :
 ```dockerfile
-FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+FROM hadolint/hadolint:v2.9.1-alpine as hadolint
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 

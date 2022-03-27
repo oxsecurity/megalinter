@@ -32,6 +32,19 @@ class GithubCommentReporter(Reporter):
         ):  # Legacy - true by default
             self.is_active = True
 
+    @property
+    def comment_marker(self):
+        """Generate the comment marker
+
+        This marker is used to find the same comment again so it can be updated.
+
+        """
+        workflow = os.getenv("GITHUB_WORKFLOW", "")
+        jobid = os.getenv("GITHUB_JOB", "")
+        identifier = "".join(filter(None, (workflow, jobid)))
+        identifier_with_padding = identifier and f" {identifier}"
+        return f"<!-- megalinter: github-comment-reporter{identifier_with_padding} -->"
+
     def produce_report(self):
         # Post comment on GitHub pull request
         if config.get("GITHUB_TOKEN", "") != "":
@@ -47,7 +60,12 @@ class GithubCommentReporter(Reporter):
                 )
             else:
                 action_run_url = ""
-            p_r_msg = build_markdown_summary(self, action_run_url)
+
+            # add comment marker, with extra newlines in between.
+            marker = self.comment_marker
+            p_r_msg = "\n".join(
+                [build_markdown_summary(self, action_run_url), "", marker, ""]
+            )
 
             # Post comment on pull request if found
             github_auth = (
@@ -83,14 +101,12 @@ class GithubCommentReporter(Reporter):
                 if pr.is_merged():
                     continue
                 # Check if there is already a comment from MegaLinter
+                # start searching from the most recent comment, backwards.
                 existing_comment = None
-                existing_comments = pr.get_issue_comments()
-                for comment in existing_comments:
-                    if (
-                        "See errors details in [**artifact MegaLinter reports** on"
-                        in comment.body
-                    ):
+                for comment in pr.get_issue_comments().reversed:
+                    if marker in comment.body:
                         existing_comment = comment
+                        break
                 # Process comment
                 try:
                     # Edit if there is already a MegaLinter comment

@@ -4,7 +4,7 @@
 
 ## luacheck documentation
 
-- Version in MegaLinter: **0.25.0**
+- Version in MegaLinter: **0.26.0**
 - Visit [Official Web Site](https://luacheck.readthedocs.io){target=_blank}
 - See [How to configure luacheck rules](https://luacheck.readthedocs.io/en/stable/config.html){target=_blank}
   - If custom `.luacheckrc` config file is not found, [.luacheckrc](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.luacheckrc){target=_blank} will be used
@@ -101,7 +101,7 @@ Usage: luacheck ([--config <config>] | [--no-config])
        [--exclude-files <glob> [<glob>] ...]
        [--include-files <glob> [<glob>] ...]
 
-luacheck 0.25.0, a linter and a static analyzer for Lua.
+luacheck 0.26.0, a linter and a static analyzer for Lua.
 
 Arguments:
    files                 List of files, directories and rockspecs to check. Pass
@@ -259,7 +259,7 @@ Other options:
 
 Links:
 
-   Luacheck on GitHub: https://github.com/luarocks/luacheck
+   Luacheck on GitHub: https://github.com/lunarmodules/luacheck
    Luacheck documentation: https://luacheck.readthedocs.org
 ```
 

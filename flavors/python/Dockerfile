@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+FROM hadolint/hadolint:v2.9.1-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 #FROM__END
 
@@ -96,8 +96,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'mypy' \
           'restructuredtext_lint' \
           'rstcheck' \
-          'sphinx<4.0' \
-          'rstfmt' \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \

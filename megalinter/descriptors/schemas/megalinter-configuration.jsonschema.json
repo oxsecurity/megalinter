@@ -2598,7 +2598,7 @@
     },
     "DOCKERFILE_HADOLINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CONFIG_FILE",
-      "default": ".hadolint.yml",
+      "default": ".hadolint.yaml",
       "description": "DOCKERFILE_HADOLINT: User custom config file name if different from default",
       "title": "DOCKERFILE_HADOLINT: Custom config file name",
       "type": "string"

@@ -12,7 +12,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
-FROM hadolint/hadolint:v2.7.0-alpine as hadolint
+FROM hadolint/hadolint:v2.9.1-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
@@ -148,8 +148,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'mypy' \
           'restructuredtext_lint' \
           'rstcheck' \
-          'sphinx<4.0' \
-          'rstfmt' \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
