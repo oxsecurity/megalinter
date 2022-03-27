@@ -148,8 +148,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'mypy' \
           'restructuredtext_lint' \
           'rstcheck' \
-          'sphinx<4.0' \
-          'rstfmt' \
           'snakemake' \
           'snakefmt' \
           'sqlfluff' \
