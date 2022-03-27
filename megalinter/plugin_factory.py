@@ -3,9 +3,9 @@ import logging
 import shutil
 import subprocess
 import sys
-import yaml
 
 import requests
+import yaml
 from megalinter import config, linter_factory, utils
 
 
@@ -40,7 +40,7 @@ def load_plugin(plugin):
             r = requests.get(plugin, allow_redirects=True)
             plugin_descriptor = yaml.safe_load(r.content)
             plugin_descriptor["is_plugin"] = True
-            with open(descriptor_file, 'w') as outfile:
+            with open(descriptor_file, "w") as outfile:
                 yaml.dump(plugin_descriptor, outfile)
             logging.info(
                 f"[Plugins] Loaded plugin descriptor {descriptor_file} from {plugin}"
