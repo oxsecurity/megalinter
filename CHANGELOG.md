@@ -17,6 +17,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Display plugin URL in MegaLinter output logs ([[#1340](https://github.com/megalinter/megalinter/issues/1340))
   - Fix public glibc public key download
 
+- Doc
+  - Add instructions to upload artifacts when using MegaLinter with Jenkins
+
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.975 to **2.0.977** on 2022-03-21
   - [bash-exec](https://tiswww.case.edu/php/chet/bash/bashtop.html) from 5.1.0 to **5.1.16** on 2022-03-22
