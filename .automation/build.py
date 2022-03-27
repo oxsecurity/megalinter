@@ -1764,6 +1764,7 @@ def finalize_doc_build():
         "flavors",
         "badge",
         "plugins",
+        "articles",
         "frequently-asked-questions",
         "how-to-contribute",
         "special-thanks",

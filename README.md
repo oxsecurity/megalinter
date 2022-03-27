@@ -101,13 +101,13 @@ _Github PR reporter_
       - [Example](#example)
     - [Create plugins](#create-plugins)
       - [Limitations](#limitations)
+  - [Articles](#articles)
   - [Frequently Asked Questions](#frequently-asked-questions)
   - [How to contribute](#how-to-contribute)
   - [Special thanks](#special-thanks)
     - [Contributors](#contributors)
     - [Sites referring to MegaLinter](#sites-referring-to-megalinter)
       - [Global](#global)
-      - [Articles](#articles)
       - [Linters](#linters)
     - [Open-source teams](#open-source-teams)
     - [Super-Linter team](#super-linter-team)
@@ -912,6 +912,15 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 - For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
 <!-- plugins-section-end -->
 
+<!-- articles-section-start -->
+## Articles
+
+- [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1), by [Nicolas Vuillamy](https://nvuillam.github.io)
+- [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
+- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
+- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
+<!-- articles-section-end -->
+
 <!-- frequently-asked-questions-section-start -->
 ## Frequently Asked Questions
 
@@ -983,13 +992,6 @@ To help, you can also:
 - [awesome-linters](https://github.com/caramelomartins/awesome-linters#language-agnostic){target=_blank}
 - [schemastore.org](https://www.schemastore.org/json/){target=_blank}
 - [r2devops.io](https://r2devops.io/jobs/static_tests/mega_linter/){target=_blank}
-
-#### Articles
-
-- [Limit your technical debt and secure your code base using MegaLinter](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
-- [Linting a Jekyll blog with MegaLinter](https://www.ayyjohn.com/posts/linting-a-jekyll-blog-with-mega-linter), by [Alec Johnson](https://www.linkedin.com/in/ayyjohn/){target=_blank}
-- [Open-source linters landscape in 2021](https://promyze.com/open-source-linters-2021/), by [Cédric Teyton](https://www.linkedin.com/in/cedricteyton/){target=_blank}
-- [How to linter basic things like trailing whitespaces and newlines](https://nklya.medium.com/hot-to-linter-basic-things-like-trailing-whitespaces-and-newlines-7b40da8f688d){target=_blank}, by [Nicolai Antiferov](https://nklya.medium.com/){target=_blank}
 
 #### Linters
 

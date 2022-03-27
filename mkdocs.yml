@@ -320,6 +320,7 @@ nav:
   - "List of linters": "all_linters.md"
   - "FAQ": "frequently-asked-questions.md"
   - "Plugins": "plugins.md"
+  - "Articles": "articles.md"
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
   - "MegaLinter vs Super-Linter": "mega-linter-vs-super-linter.md"
