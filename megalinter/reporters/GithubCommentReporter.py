@@ -38,12 +38,21 @@ class GithubCommentReporter(Reporter):
 
         This marker is used to find the same comment again so it can be updated.
 
+        The marker includes the workflow name and jobid if available (via the
+        GITHUB_WORKFLOW and GITHUB_JOB environment variables) to avoid clashes
+        between multiple Mega-Linter jobs operating on the same PR:
+
+          <!-- megalinter: github-comment-reporter workflow='...' jobid='...' -->
+
         """
-        workflow = os.getenv("GITHUB_WORKFLOW", "")
-        jobid = os.getenv("GITHUB_JOB", "")
-        identifier = "".join(filter(None, (workflow, jobid)))
-        identifier_with_padding = identifier and f" {identifier}"
-        return f"<!-- megalinter: github-comment-reporter{identifier_with_padding} -->"
+        workflow = os.getenv("GITHUB_WORKFLOW")
+        jobid = os.getenv("GITHUB_JOB")
+        workflow = workflow and f"workflow={workflow!r}"
+        jobid = jobid and f"jobid={jobid!r}"
+        identifier = " ".join(
+            ["github-comment-reporter", *filter(None, (workflow, jobid))]
+        )
+        return f"<!-- megalinter: {identifier} -->"
 
     def produce_report(self):
         # Post comment on GitHub pull request
