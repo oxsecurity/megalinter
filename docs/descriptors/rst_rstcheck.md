@@ -80,7 +80,7 @@ usage: rstcheck [-h] [-r] [--report level] [--ignore-language language]
                 [--debug] [--version]
                 files [files ...]
 
-Checks code blocks in reStructuredText. Sphinx is enabled.
+Checks code blocks in reStructuredText.
 
 positional arguments:
   files                 files to check
