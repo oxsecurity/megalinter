@@ -55,7 +55,7 @@ class GithubCommentReporter(Reporter):
             sha = config.get("GITHUB_SHA")
 
             if config.get("CI_ACTION_RUN_URL", "") != "":
-                action_run_url = config.get("CI_ACTION_RUN_URL","")
+                action_run_url = config.get("CI_ACTION_RUN_URL", "")
             elif run_id is not None:
                 action_run_url = (
                     f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
