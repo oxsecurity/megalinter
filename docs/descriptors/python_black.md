@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in MegaLinter: **22.1.0**
+- Version in MegaLinter: **22.3.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -112,8 +112,8 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (python, prun, pypy, timeit, python3,
-                                  capture, time). Useful for formatting cells
+                                  magics (python, time, prun, timeit, capture,
+                                  python3, pypy). Useful for formatting cells
                                   with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
@@ -121,7 +121,7 @@ Options:
                                   Don't use trailing commas as a reason to
                                   split lines.
   --preview                       Enable potentially disruptive style changes
-                                  that will be added to Black's main
+                                  that may be added to Black's main
                                   functionality in the next major release.
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
@@ -137,7 +137,8 @@ Options:
   --required-version TEXT         Require a specific version of Black to be
                                   running (useful for unifying results across
                                   many environments e.g. with a pyproject.toml
-                                  file).
+                                  file). It can be either a major version
+                                  number or an exact version.
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
                                   recursive searches. An empty value means all
@@ -154,7 +155,8 @@ Options:
                                   Exclusions are calculated first, inclusions
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
                                   g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
-                                  |_build|buck-out|build|dist)/]
+                                  |_build|buck-
+                                  out|build|dist|__pypackages__)/]
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
                                   (Useful if you simply want to add to the

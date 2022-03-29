@@ -50,6 +50,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.0 to **10.1** on 2022-03-27
   - [pylint](https://www.pylint.org) from 2.13.1 to **2.13.2** on 2022-03-27
   - [checkov](https://www.checkov.io/) from 2.0.995 to **2.0.999** on 2022-03-27
+  - [htmlhint](https://htmlhint.com/) from 1.1.2 to **1.1.3** on 2022-03-29
+  - [phpstan](https://phpstan.org/) from 1.5.0 to **1.5.1** on 2022-03-29
+  - [black](https://black.readthedocs.io/en/stable/) from 22.1.0 to **22.3.0** on 2022-03-29
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.2 to **7.3.3** on 2022-03-29
+  - [checkov](https://www.checkov.io/) from 2.0.999 to **2.0.1005** on 2022-03-29
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
