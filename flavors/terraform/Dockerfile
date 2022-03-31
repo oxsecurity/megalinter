@@ -15,7 +15,7 @@ FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.8.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:latest as gitleaks
-FROM ghcr.io/terraform-linters/tflint:latest as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.34.1 as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
