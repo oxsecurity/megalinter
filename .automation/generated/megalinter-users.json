@@ -4943,6 +4943,18 @@
         },
         {
             "repo_url": "https://github.com/jr0dd/home-ops"
+        },
+        {
+            "repo_url": "https://github.com/rwaltr/infra/issues"
+        },
+        {
+            "repo_url": "https://github.com/ADFC-Hamburg/adfc-ansible/issues"
+        },
+        {
+            "repo_url": "https://github.com/bsrodrigs/terraform-aws-fully-connected-vpn/issues"
+        },
+        {
+            "repo_url": "https://github.com/MTUCI-VR/shooter-project/issues"
         }
     ]
 }
