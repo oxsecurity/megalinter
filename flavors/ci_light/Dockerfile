@@ -102,8 +102,9 @@ RUN npm install --no-cache --ignore-scripts \
                 @microsoft/eslint-formatter-sarif \
                 v8r@0.6.1 \
                 prettier \
-                secretlint@4.1.0 \
-                @secretlint/secretlint-rule-preset-recommend@4.1.0
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
+                @secretlint/secretlint-formatter-sarif
 #NPM__END
 
 # Add node packages to path #

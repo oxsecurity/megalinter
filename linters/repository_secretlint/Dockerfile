@@ -29,9 +29,12 @@ FROM python:3.9.7-alpine3.13
 # Run APK installs #
 ####################
 
+WORKDIR /
+
 # APK Packages used by mega-linter core architecture
 RUN apk add --update --no-cache \
         bash \
+        ca-certificates \
         curl \
         gcc \
         git \
@@ -74,14 +77,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 #############################################################################################
 
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
-RUN npm install npm@latest-6 -g || true && \
-    # Disable package-lock.json to avoid sudden crash. Try to remove later if possible
-    echo 'package-lock=false' >> .npmrc || true
-
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                secretlint@4.1.0 \
-                @secretlint/secretlint-rule-preset-recommend@4.1.0
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
+                @secretlint/secretlint-formatter-sarif
 #NPM__END
 
 # Add node packages to path #
@@ -103,13 +104,6 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #OTHER__START
 
 #OTHER__END
-
-######################
-# Set the entrypoint #
-######################
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 ################################
 # Installs python dependencies #
@@ -143,22 +137,6 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=none
 #FLAVOR__END
 
-#EXTRA_DOCKERFILE_LINES__START
-ENV ENABLE_LINTERS=REPOSITORY_SECRETLINT \
-    FLAVOR_SUGGESTIONS=false \
-    SINGLE_LINTER=REPOSITORY_SECRETLINT \
-    PRINT_ALPACA=false \
-    LOG_FILE=none \
-    SARIF_REPORTER=true \
-    TEXT_REPORTER=false \
-    UPDATED_SOURCES_REPORTER=false \
-    GITHUB_STATUS_REPORTER=false \
-    GITHUB_COMMENT_REPORTER=false \
-    EMAIL_REPORTER=false \
-    FILEIO_REPORTER=false \
-    CONFIG_REPORTER=false
-#EXTRA_DOCKERFILE_LINES__END
-
 #########################################
 # Label the instance and set maintainer #
 #########################################
@@ -176,3 +154,32 @@ LABEL com.github.actions.name="MegaLinter" \
       org.opencontainers.image.documentation="https://megalinter.github.io" \
       org.opencontainers.image.vendor="Nicolas Vuillamy" \
       org.opencontainers.image.description="Lint your code base with GitHub Actions"
+
+#EXTRA_DOCKERFILE_LINES__START
+ENV ENABLE_LINTERS=REPOSITORY_SECRETLINT \
+    FLAVOR_SUGGESTIONS=false \
+    SINGLE_LINTER=REPOSITORY_SECRETLINT \
+    PRINT_ALPACA=false \
+    LOG_FILE=none \
+    SARIF_REPORTER=true \
+    TEXT_REPORTER=false \
+    UPDATED_SOURCES_REPORTER=false \
+    GITHUB_STATUS_REPORTER=false \
+    GITHUB_COMMENT_REPORTER=false \
+    EMAIL_REPORTER=false \
+    FILEIO_REPORTER=false \
+    CONFIG_REPORTER=false
+
+RUN mkdir /root/docker_ssh && mkdir /usr/bin/megalinter-sh
+EXPOSE 22
+COPY entrypoint.sh /entrypoint.sh
+COPY sh /usr/bin/megalinter-sh
+COPY sh/megalinter_exec /usr/bin/megalinter_exec
+COPY sh/motd /etc/motd
+RUN find /usr/bin/megalinter-sh/ -type f -iname "*.sh" -exec chmod +x {} \; && \
+    chmod +x entrypoint.sh && \
+    chmod +x /usr/bin/megalinter_exec && \
+    echo "alias megalinter='python -m megalinter.run'" >> ~/.bashrc && source ~/.bashrc && \
+    echo "alias megalinter_exec='/usr/bin/megalinter_exec'" >> ~/.bashrc && source ~/.bashrc
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+#EXTRA_DOCKERFILE_LINES__END

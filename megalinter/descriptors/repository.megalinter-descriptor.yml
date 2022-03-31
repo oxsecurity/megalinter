@@ -170,6 +170,7 @@ linters:
 
   # SECRETLINT
   - linter_name: secretlint
+    can_output_sarif: true
     descriptor_flavors:
       - all_flavors # Applicable to CI in any language project
       - ci_light
@@ -185,16 +186,19 @@ linters:
     cli_lint_mode: project
     cli_lint_extra_args_after:
       - "**/*"
+    cli_sarif_args:
+      - --format
+      - "@secretlint/secretlint-formatter-sarif"
     cli_help_arg_name: "--help"
     test_folder: credentials
     examples:
       - 'secretlint "*/**"'
       - 'secretlint --secretlintrc .secretlintrc.json "**/*"'
-    downgraded_version: true
     install:
       npm:
-        - secretlint@4.1.0
-        - "@secretlint/secretlint-rule-preset-recommend@4.1.0"
+        - secretlint
+        - "@secretlint/secretlint-rule-preset-recommend"
+        - "@secretlint/secretlint-formatter-sarif"
 
   # SEMGREP
   - class: SemgrepLinter

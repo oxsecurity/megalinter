@@ -25,9 +25,10 @@ linters:
     examples:
       - "tflint myfile.tf"
       - "tflint -c .tflint.hcl myfile.tf"
+    downgraded_version: true
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:latest as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.34.1 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
   - linter_name: terrascan
