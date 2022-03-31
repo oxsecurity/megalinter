@@ -10,6 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linters
   - Disable rstfmt as it is neither stable or maintained
+  - markdown-links-check: allow 203 as valid return code
 
 - Fixes
   - Github Comment Reporter: switch to using a hidden HTML comment to mark the comment, with the current workflow and jobid. This is more robust than the old method. ([[#1355](https://github.com/megalinter/megalinter/issues/1355))
