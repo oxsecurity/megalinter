@@ -100,8 +100,9 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
 RUN npm install --no-cache --ignore-scripts \
-                secretlint@4.1.0 \
-                @secretlint/secretlint-rule-preset-recommend@4.1.0
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
+                @secretlint/secretlint-formatter-sarif
 #NPM__END
 
 # Add node packages to path #

@@ -132,8 +132,9 @@ RUN npm install --no-cache --ignore-scripts \
                 markdown-link-check \
                 markdown-table-formatter \
                 @stoplight/spectral@5.6.0 \
-                secretlint@4.1.0 \
-                @secretlint/secretlint-rule-preset-recommend@4.1.0 \
+                secretlint \
+                @secretlint/secretlint-rule-preset-recommend \
+                @secretlint/secretlint-formatter-sarif \
                 cspell \
                 sql-lint \
                 tekton-lint
