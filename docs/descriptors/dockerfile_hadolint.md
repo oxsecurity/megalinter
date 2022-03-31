@@ -4,7 +4,7 @@
 
 ## hadolint documentation
 
-- Version in MegaLinter: **2.9.1**
+- Version in MegaLinter: **2.9.3**
 - Visit [Official Web Site](https://github.com/hadolint/hadolint#readme){target=_blank}
 - See [How to configure hadolint rules](https://github.com/hadolint/hadolint#configure){target=_blank}
 - See [How to disable hadolint rules in files](https://github.com/hadolint/hadolint#inline-ignores){target=_blank}
@@ -118,7 +118,7 @@ Available options:
   -V,--verbose             Enables verbose logging of hadolint's output to
                            stderr
   -f,--format ARG          The output format for the results [tty | json |
-                           checkstyle | codeclimate | gitlab_codeclimate |
+                           checkstyle | codeclimate | gitlab_codeclimate | gnu |
                            codacy | sonarqube | sarif] (default: tty)
   --error RULECODE         Make the rule `RULECODE` have the level `error`
   --warning RULECODE       Make the rule `RULECODE` have the level `warning`
@@ -148,7 +148,7 @@ Available options:
 
 - Dockerfile commands :
 ```dockerfile
-FROM hadolint/hadolint:v2.9.1-alpine as hadolint
+FROM hadolint/hadolint:v2.9.3-alpine as hadolint
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 ```
 

@@ -57,6 +57,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://www.pylint.org) from 2.13.2 to **2.13.3** on 2022-03-30
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.2 to **7.3.3** on 2022-03-30
   - [checkov](https://www.checkov.io/) from 2.0.999 to **2.0.1008** on 2022-03-30
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.9.1 to **2.9.3** on 2022-03-31
+  - [phpstan](https://phpstan.org/) from 1.5.2 to **1.5.3** on 2022-03-31
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.3 to **7.3.4** on 2022-03-31
+  - [checkov](https://www.checkov.io/) from 2.0.1008 to **2.0.1016** on 2022-03-31
+  - [kics](https://www.kics.io) from 1.5.4 to **1.5.5** on 2022-03-31
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
