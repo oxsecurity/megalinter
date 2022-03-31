@@ -2162,18 +2162,24 @@ def generate_documentation_all_users():
     with open(USERS_FILE, "r", encoding="utf-8") as json_file:
         megalinter_users = json.load(json_file)
     repositories = megalinter_users["repositories"]
-    linter_doc_md = ["# They use MegaLinter",""]
+    linter_doc_md = ["# They use MegaLinter", ""]
     for repo in repositories:
         if "info" in repo:
             repo_full = repo["info"]["full_name"]
-            # pylint: disable=no-member
-            linter_doc_md += [
-                f"[![{repo_full} - GitHub](https://gh-card.dev/repos/{repo_full}.svg?fullname=)]"
-                f"(https://github.com/{repo_full}){{target=_blank}}",
-            ]
-            # pylint: enable=no-member
+        elif "repo_url" in repo and "https://github.com/" in repo["repo_url"]:
+            repo_full = repo["repo_url"].replace("https://github.com/", "")
+        else:
+            continue
+        # pylint: disable=no-member
+        linter_doc_md += [
+            f"[![{repo_full} - GitHub](https://gh-card.dev/repos/{repo_full}.svg?fullname=)]"
+            f"(https://github.com/{repo_full}){{target=_blank}}",
+        ]
+        # pylint: enable=no-member
     with open(f"{REPO_HOME}/docs/all_users.md", "w", encoding="utf-8") as file:
-        file.write("\n".join(linter_doc_md)+"\n")
+        file.write("\n".join(linter_doc_md) + "\n")
+    logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
+
 
 # get github repo info using api
 def get_github_repo_info(repo):
@@ -2201,14 +2207,18 @@ def refresh_users_info():
     updated_repositories = []
     for repo_item in repositories:
         # get stargazers from github api
-        if repo_item["repo_url"] and repo_item["repo_url"].startswith("https://github.com"):
+        if repo_item["repo_url"] and repo_item["repo_url"].startswith(
+            "https://github.com"
+        ):
             repo = repo_item["repo_url"].split("https://github.com/", 1)[1]
             resp = get_github_repo_info(repo)
             if "stargazers_count" in resp:
                 repo_item["stargazers"] = resp["stargazers_count"]
                 repo_item["info"] = resp
         updated_repositories += [repo_item]
-    updated_repositories.sort(key=lambda x: x["stargazers"], reverse=True)
+    updated_repositories.sort(
+        key=lambda x: x["stargazers"] if "stargazers" in x else 0, reverse=True
+    )
     megalinter_users["repositories"] = updated_repositories
     with open(USERS_FILE, "w", encoding="utf-8") as outfile:
         json.dump(megalinter_users, outfile, indent=4, sort_keys=True)

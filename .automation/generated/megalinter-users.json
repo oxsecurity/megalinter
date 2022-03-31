@@ -4871,6 +4871,78 @@
             },
             "repo_url": "https://github.com/ewencluley/final-curtain",
             "stargazers": 0
+        },
+        {
+            "repo_url": "https://github.com/jokay/docker-ccu-historian"
+        },
+        {
+            "repo_url": "https://github.com/jokay/docker-prune"
+        },
+        {
+            "repo_url": "https://github.com/Eknah/Forradia"
+        },
+        {
+            "repo_url": "https://github.com/QuantumPL/bib"
+        },
+        {
+            "repo_url": "https://github.com/tusharshahrs/pulumi-home"
+        },
+        {
+            "repo_url": "https://github.com/AErmie/DevSecOps"
+        },
+        {
+            "repo_url": "https://github.com/cure-dao/docs"
+        },
+        {
+            "repo_url": "https://github.com/catthehacker/docker_images"
+        },
+        {
+            "repo_url": "https://github.com/iggy/terrarific"
+        },
+        {
+            "repo_url": "https://github.com/practicalli/clojure-deps-edn"
+        },
+        {
+            "repo_url": "https://github.com/practicalli/spacemacs"
+        },
+        {
+            "repo_url": "https://github.com/practicalli/clojurescript"
+        },
+        {
+            "repo_url": "https://github.com/practicalli/clojure-web-services"
+        },
+        {
+            "repo_url": "https://github.com/practicalli/clojure"
+        },
+        {
+            "repo_url": "https://github.com/nvuillam/njre"
+        },
+        {
+            "repo_url": "https://github.com/GSA/site-scanning-engine"
+        },
+        {
+            "repo_url": "https://github.com/nvuillam/markdown-table-formatter"
+        },
+        {
+            "repo_url": "https://github.com/megalinter/megalinter"
+        },
+        {
+            "repo_url": "https://github.com/nvuillam/node-sarif-builder"
+        },
+        {
+            "repo_url": "https://github.com/llaville/php-compatinfo-db"
+        },
+        {
+            "repo_url": "https://github.com/dochang/bumplus"
+        },
+        {
+            "repo_url": "https://github.com/thomaseolsen/archaeology_rust_api"
+        },
+        {
+            "repo_url": "https://github.com/0dragosh/homelab-k3s"
+        },
+        {
+            "repo_url": "https://github.com/jr0dd/home-ops"
         }
     ]
 }
