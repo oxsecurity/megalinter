@@ -23,8 +23,8 @@
                 "downloads_url": "https://api.github.com/repos/nektos/act/downloads",
                 "events_url": "https://api.github.com/repos/nektos/act/events",
                 "fork": false,
-                "forks": 593,
-                "forks_count": 593,
+                "forks": 598,
+                "forks_count": 598,
                 "forks_url": "https://api.github.com/repos/nektos/act/forks",
                 "full_name": "nektos/act",
                 "git_commits_url": "https://api.github.com/repos/nektos/act/git/commits{/sha}",
@@ -59,7 +59,7 @@
                 "milestones_url": "https://api.github.com/repos/nektos/act/milestones{/number}",
                 "mirror_url": null,
                 "name": "act",
-                "network_count": 593,
+                "network_count": 598,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxNjM4ODMyNzk=",
                 "notifications_url": "https://api.github.com/repos/nektos/act/notifications{?since,all,participating}",
                 "open_issues": 72,
@@ -104,29 +104,22 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/nektos"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nektos/act/pulls{/number}",
-                "pushed_at": "2022-03-25T21:43:28Z",
+                "pushed_at": "2022-03-31T18:08:28Z",
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
-                "size": 5849,
+                "size": 6222,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 22618,
+                "stargazers_count": 22801,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
-                "subscribers_count": 107,
+                "subscribers_count": 106,
                 "subscribers_url": "https://api.github.com/repos/nektos/act/subscribers",
                 "subscription_url": "https://api.github.com/repos/nektos/act/subscription",
                 "svn_url": "https://github.com/nektos/act",
                 "tags_url": "https://api.github.com/repos/nektos/act/tags",
                 "teams_url": "https://api.github.com/repos/nektos/act/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ci",
                     "devops",
@@ -134,14 +127,14 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-03-26T20:32:29Z",
+                "updated_at": "2022-03-31T21:58:50Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 22618,
-                "watchers_count": 22618
+                "watchers": 22801,
+                "watchers_count": 22801
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 22618
+            "stargazers": 22801
         },
         {
             "info": {
@@ -166,8 +159,8 @@
                 "downloads_url": "https://api.github.com/repos/stepancheg/rust-protobuf/downloads",
                 "events_url": "https://api.github.com/repos/stepancheg/rust-protobuf/events",
                 "fork": false,
-                "forks": 294,
-                "forks_count": 294,
+                "forks": 295,
+                "forks_count": 295,
                 "forks_url": "https://api.github.com/repos/stepancheg/rust-protobuf/forks",
                 "full_name": "stepancheg/rust-protobuf",
                 "git_commits_url": "https://api.github.com/repos/stepancheg/rust-protobuf/git/commits{/sha}",
@@ -202,7 +195,7 @@
                 "milestones_url": "https://api.github.com/repos/stepancheg/rust-protobuf/milestones{/number}",
                 "mirror_url": null,
                 "name": "rust-protobuf",
-                "network_count": 294,
+                "network_count": 295,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxMTcyNjYxNg==",
                 "notifications_url": "https://api.github.com/repos/stepancheg/rust-protobuf/notifications{?since,all,participating}",
                 "open_issues": 21,
@@ -227,20 +220,13 @@
                     "type": "User",
                     "url": "https://api.github.com/users/stepancheg"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/stepancheg/rust-protobuf/pulls{/number}",
                 "pushed_at": "2022-03-05T08:01:10Z",
                 "releases_url": "https://api.github.com/repos/stepancheg/rust-protobuf/releases{/id}",
                 "size": 56196,
                 "ssh_url": "git@github.com:stepancheg/rust-protobuf.git",
-                "stargazers_count": 1958,
+                "stargazers_count": 1961,
                 "stargazers_url": "https://api.github.com/repos/stepancheg/rust-protobuf/stargazers",
                 "statuses_url": "https://api.github.com/repos/stepancheg/rust-protobuf/statuses/{sha}",
                 "subscribers_count": 19,
@@ -249,21 +235,21 @@
                 "svn_url": "https://github.com/stepancheg/rust-protobuf",
                 "tags_url": "https://api.github.com/repos/stepancheg/rust-protobuf/tags",
                 "teams_url": "https://api.github.com/repos/stepancheg/rust-protobuf/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "protobuf",
                     "rust",
                     "serialization"
                 ],
                 "trees_url": "https://api.github.com/repos/stepancheg/rust-protobuf/git/trees{/sha}",
-                "updated_at": "2022-03-26T17:02:41Z",
+                "updated_at": "2022-03-31T12:28:44Z",
                 "url": "https://api.github.com/repos/stepancheg/rust-protobuf",
                 "visibility": "public",
-                "watchers": 1958,
-                "watchers_count": 1958
+                "watchers": 1961,
+                "watchers_count": 1961
             },
             "repo_url": "https://github.com/stepancheg/rust-protobuf",
-            "stargazers": 1958
+            "stargazers": 1961
         },
         {
             "info": {
@@ -349,13 +335,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/flosse"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/flosse/sloc/pulls{/number}",
                 "pushed_at": "2021-12-18T23:32:10Z",
@@ -371,7 +350,7 @@
                 "svn_url": "https://github.com/flosse/sloc",
                 "tags_url": "https://api.github.com/repos/flosse/sloc/tags",
                 "teams_url": "https://api.github.com/repos/flosse/sloc/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "count",
                     "javascript",
@@ -474,20 +453,13 @@
                     "type": "User",
                     "url": "https://api.github.com/users/unixorn"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/pulls{/number}",
                 "pushed_at": "2022-03-24T01:54:24Z",
                 "releases_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/releases{/id}",
                 "size": 428,
                 "ssh_url": "git@github.com:unixorn/zsh-quickstart-kit.git",
-                "stargazers_count": 517,
+                "stargazers_count": 519,
                 "stargazers_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/stargazers",
                 "statuses_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/statuses/{sha}",
                 "subscribers_count": 13,
@@ -496,7 +468,7 @@
                 "svn_url": "https://github.com/unixorn/zsh-quickstart-kit",
                 "tags_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/tags",
                 "teams_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "dotfiles",
                     "hacktoberfest",
@@ -514,14 +486,14 @@
                     "zshrc-enhancements"
                 ],
                 "trees_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/git/trees{/sha}",
-                "updated_at": "2022-03-26T21:54:59Z",
+                "updated_at": "2022-03-31T17:30:43Z",
                 "url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit",
                 "visibility": "public",
-                "watchers": 517,
-                "watchers_count": 517
+                "watchers": 519,
+                "watchers_count": 519
             },
             "repo_url": "https://github.com/unixorn/zsh-quickstart-kit",
-            "stargazers": 517
+            "stargazers": 519
         },
         {
             "info": {
@@ -546,8 +518,8 @@
                 "downloads_url": "https://api.github.com/repos/onedr0p/home-ops/downloads",
                 "events_url": "https://api.github.com/repos/onedr0p/home-ops/events",
                 "fork": false,
-                "forks": 78,
-                "forks_count": 78,
+                "forks": 75,
+                "forks_count": 75,
                 "forks_url": "https://api.github.com/repos/onedr0p/home-ops/forks",
                 "full_name": "onedr0p/home-ops",
                 "git_commits_url": "https://api.github.com/repos/onedr0p/home-ops/git/commits{/sha}",
@@ -582,11 +554,11 @@
                 "milestones_url": "https://api.github.com/repos/onedr0p/home-ops/milestones{/number}",
                 "mirror_url": null,
                 "name": "home-ops",
-                "network_count": 78,
+                "network_count": 75,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyMzA5OTk4MjY=",
                 "notifications_url": "https://api.github.com/repos/onedr0p/home-ops/notifications{?since,all,participating}",
-                "open_issues": 12,
-                "open_issues_count": 12,
+                "open_issues": 8,
+                "open_issues_count": 8,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/213795?v=4",
                     "events_url": "https://api.github.com/users/onedr0p/events{/privacy}",
@@ -607,29 +579,22 @@
                     "type": "User",
                     "url": "https://api.github.com/users/onedr0p"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
-                "pushed_at": "2022-03-26T16:04:44Z",
+                "pushed_at": "2022-03-31T22:24:04Z",
                 "releases_url": "https://api.github.com/repos/onedr0p/home-ops/releases{/id}",
-                "size": 22384,
+                "size": 22512,
                 "ssh_url": "git@github.com:onedr0p/home-ops.git",
-                "stargazers_count": 456,
+                "stargazers_count": 466,
                 "stargazers_url": "https://api.github.com/repos/onedr0p/home-ops/stargazers",
                 "statuses_url": "https://api.github.com/repos/onedr0p/home-ops/statuses/{sha}",
-                "subscribers_count": 10,
+                "subscribers_count": 11,
                 "subscribers_url": "https://api.github.com/repos/onedr0p/home-ops/subscribers",
                 "subscription_url": "https://api.github.com/repos/onedr0p/home-ops/subscription",
                 "svn_url": "https://github.com/onedr0p/home-ops",
                 "tags_url": "https://api.github.com/repos/onedr0p/home-ops/tags",
                 "teams_url": "https://api.github.com/repos/onedr0p/home-ops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ansible",
                     "flux",
@@ -642,14 +607,14 @@
                     "terraform"
                 ],
                 "trees_url": "https://api.github.com/repos/onedr0p/home-ops/git/trees{/sha}",
-                "updated_at": "2022-03-22T19:24:35Z",
+                "updated_at": "2022-03-31T10:58:14Z",
                 "url": "https://api.github.com/repos/onedr0p/home-ops",
                 "visibility": "public",
-                "watchers": 456,
-                "watchers_count": 456
+                "watchers": 466,
+                "watchers_count": 466
             },
             "repo_url": "https://github.com/onedr0p/home-ops",
-            "stargazers": 456
+            "stargazers": 466
         },
         {
             "info": {
@@ -735,20 +700,13 @@
                     "type": "User",
                     "url": "https://api.github.com/users/llaville"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/llaville/php-compatinfo/pulls{/number}",
-                "pushed_at": "2022-03-25T08:38:30Z",
+                "pushed_at": "2022-03-31T13:07:56Z",
                 "releases_url": "https://api.github.com/repos/llaville/php-compatinfo/releases{/id}",
-                "size": 11040,
+                "size": 11073,
                 "ssh_url": "git@github.com:llaville/php-compatinfo.git",
-                "stargazers_count": 351,
+                "stargazers_count": 352,
                 "stargazers_url": "https://api.github.com/repos/llaville/php-compatinfo/stargazers",
                 "statuses_url": "https://api.github.com/repos/llaville/php-compatinfo/statuses/{sha}",
                 "subscribers_count": 15,
@@ -757,20 +715,20 @@
                 "svn_url": "https://github.com/llaville/php-compatinfo",
                 "tags_url": "https://api.github.com/repos/llaville/php-compatinfo/tags",
                 "teams_url": "https://api.github.com/repos/llaville/php-compatinfo/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "compatibility",
                     "php"
                 ],
                 "trees_url": "https://api.github.com/repos/llaville/php-compatinfo/git/trees{/sha}",
-                "updated_at": "2022-03-06T11:03:24Z",
+                "updated_at": "2022-03-31T09:14:31Z",
                 "url": "https://api.github.com/repos/llaville/php-compatinfo",
                 "visibility": "public",
-                "watchers": 351,
-                "watchers_count": 351
+                "watchers": 352,
+                "watchers_count": 352
             },
             "repo_url": "https://github.com/llaville/php-compatinfo",
-            "stargazers": 351
+            "stargazers": 352
         },
         {
             "info": {
@@ -795,8 +753,8 @@
                 "downloads_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/downloads",
                 "events_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/events",
                 "fork": false,
-                "forks": 737,
-                "forks_count": 737,
+                "forks": 747,
+                "forks_count": 747,
                 "forks_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/forks",
                 "full_name": "KelvinTegelaar/CIPP",
                 "git_commits_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/git/commits{/sha}",
@@ -831,11 +789,11 @@
                 "milestones_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/milestones{/number}",
                 "mirror_url": null,
                 "name": "CIPP",
-                "network_count": 737,
+                "network_count": 747,
                 "node_id": "R_kgDOGNiHEA",
                 "notifications_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/notifications{?since,all,participating}",
-                "open_issues": 5,
-                "open_issues_count": 5,
+                "open_issues": 8,
+                "open_issues_count": 8,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/49186168?v=4",
                     "events_url": "https://api.github.com/users/KelvinTegelaar/events{/privacy}",
@@ -856,39 +814,32 @@
                     "type": "User",
                     "url": "https://api.github.com/users/KelvinTegelaar"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/pulls{/number}",
-                "pushed_at": "2022-03-26T16:07:14Z",
+                "pushed_at": "2022-03-31T18:56:31Z",
                 "releases_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/releases{/id}",
-                "size": 42725,
+                "size": 44464,
                 "ssh_url": "git@github.com:KelvinTegelaar/CIPP.git",
-                "stargazers_count": 311,
+                "stargazers_count": 314,
                 "stargazers_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/stargazers",
                 "statuses_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/statuses/{sha}",
-                "subscribers_count": 17,
+                "subscribers_count": 18,
                 "subscribers_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/subscribers",
                 "subscription_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/subscription",
                 "svn_url": "https://github.com/KelvinTegelaar/CIPP",
                 "tags_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/tags",
                 "teams_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/git/trees{/sha}",
-                "updated_at": "2022-03-24T06:06:03Z",
+                "updated_at": "2022-03-30T20:41:43Z",
                 "url": "https://api.github.com/repos/KelvinTegelaar/CIPP",
                 "visibility": "public",
-                "watchers": 311,
-                "watchers_count": 311
+                "watchers": 314,
+                "watchers_count": 314
             },
             "repo_url": "https://github.com/KelvinTegelaar/CIPP",
-            "stargazers": 311
+            "stargazers": 314
         },
         {
             "info": {
@@ -952,8 +903,8 @@
                 "network_count": 17,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyODc1MDA0NTY=",
                 "notifications_url": "https://api.github.com/repos/bjw-s/home-ops/notifications{?since,all,participating}",
-                "open_issues": 4,
-                "open_issues_count": 4,
+                "open_issues": 5,
+                "open_issues_count": 5,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/6213398?v=4",
                     "events_url": "https://api.github.com/users/bjw-s/events{/privacy}",
@@ -974,18 +925,11 @@
                     "type": "User",
                     "url": "https://api.github.com/users/bjw-s"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-03-26T21:13:32Z",
+                "pushed_at": "2022-03-31T22:06:38Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 28915,
+                "size": 28993,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 122,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -996,7 +940,7 @@
                 "svn_url": "https://github.com/bjw-s/home-ops",
                 "tags_url": "https://api.github.com/repos/bjw-s/home-ops/tags",
                 "teams_url": "https://api.github.com/repos/bjw-s/home-ops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "flux",
                     "gitops",
@@ -1099,18 +1043,11 @@
                     "type": "User",
                     "url": "https://api.github.com/users/unixorn"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/pulls{/number}",
-                "pushed_at": "2022-03-03T16:40:16Z",
+                "pushed_at": "2022-03-27T17:13:51Z",
                 "releases_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/releases{/id}",
-                "size": 302,
+                "size": 314,
                 "ssh_url": "git@github.com:unixorn/tumult.plugin.zsh.git",
                 "stargazers_count": 121,
                 "stargazers_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/stargazers",
@@ -1121,7 +1058,7 @@
                 "svn_url": "https://github.com/unixorn/tumult.plugin.zsh",
                 "tags_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/tags",
                 "teams_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "antigen",
                     "hacktoberfest",
@@ -1206,8 +1143,8 @@
                 "network_count": 56,
                 "node_id": "MDEwOlJlcG9zaXRvcnk0NjEyMjQ2MA==",
                 "notifications_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/notifications{?since,all,participating}",
-                "open_issues": 25,
-                "open_issues_count": 25,
+                "open_issues": 29,
+                "open_issues_count": 29,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/31739?v=4",
                     "events_url": "https://api.github.com/users/newrelic/events{/privacy}",
@@ -1248,18 +1185,11 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/newrelic"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/pulls{/number}",
-                "pushed_at": "2022-03-24T22:28:23Z",
+                "pushed_at": "2022-03-31T20:46:20Z",
                 "releases_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/releases{/id}",
-                "size": 16392,
+                "size": 16465,
                 "ssh_url": "git@github.com:newrelic/newrelic-python-agent.git",
                 "stargazers_count": 108,
                 "stargazers_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/stargazers",
@@ -1270,7 +1200,7 @@
                 "svn_url": "https://github.com/newrelic/newrelic-python-agent",
                 "tags_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/tags",
                 "teams_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "agent",
                     "newrelic",
@@ -1370,20 +1300,13 @@
                     "type": "User",
                     "url": "https://api.github.com/users/nvuillam"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/pulls{/number}",
                 "pushed_at": "2022-03-26T04:47:50Z",
                 "releases_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/releases{/id}",
                 "size": 73705,
                 "ssh_url": "git@github.com:nvuillam/npm-groovy-lint.git",
-                "stargazers_count": 95,
+                "stargazers_count": 96,
                 "stargazers_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/stargazers",
                 "statuses_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/statuses/{sha}",
                 "subscribers_count": 2,
@@ -1392,7 +1315,7 @@
                 "svn_url": "https://github.com/nvuillam/npm-groovy-lint",
                 "tags_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/tags",
                 "teams_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ci",
                     "code-quality-analyzer",
@@ -1403,14 +1326,14 @@
                     "linter"
                 ],
                 "trees_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/git/trees{/sha}",
-                "updated_at": "2022-03-25T08:03:57Z",
+                "updated_at": "2022-03-28T10:25:15Z",
                 "url": "https://api.github.com/repos/nvuillam/npm-groovy-lint",
                 "visibility": "public",
-                "watchers": 95,
-                "watchers_count": 95
+                "watchers": 96,
+                "watchers_count": 96
             },
             "repo_url": "https://github.com/nvuillam/npm-groovy-lint",
-            "stargazers": 95
+            "stargazers": 96
         },
         {
             "info": {
@@ -1510,13 +1433,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/spacemacs/pulls{/number}",
                 "pushed_at": "2022-03-26T18:50:34Z",
@@ -1532,7 +1448,7 @@
                 "svn_url": "https://github.com/practicalli/spacemacs",
                 "tags_url": "https://api.github.com/repos/practicalli/spacemacs/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/spacemacs/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cider",
                     "clojure",
@@ -1572,8 +1488,8 @@
                 "downloads_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/downloads",
                 "events_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/events",
                 "fork": false,
-                "forks": 23,
-                "forks_count": 23,
+                "forks": 24,
+                "forks_count": 24,
                 "forks_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/forks",
                 "full_name": "oasisprotocol/oasis-wallet-web",
                 "git_commits_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/git/commits{/sha}",
@@ -1608,11 +1524,11 @@
                 "milestones_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/milestones{/number}",
                 "mirror_url": null,
                 "name": "oasis-wallet-web",
-                "network_count": 23,
+                "network_count": 24,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzNTk2MzQzNzc=",
                 "notifications_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/notifications{?since,all,participating}",
-                "open_issues": 193,
-                "open_issues_count": 193,
+                "open_issues": 53,
+                "open_issues_count": 53,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/52803776?v=4",
                     "events_url": "https://api.github.com/users/oasisprotocol/events{/privacy}",
@@ -1653,29 +1569,22 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/oasisprotocol"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/pulls{/number}",
-                "pushed_at": "2022-03-25T21:03:18Z",
+                "pushed_at": "2022-03-31T20:52:56Z",
                 "releases_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/releases{/id}",
-                "size": 5507,
+                "size": 6590,
                 "ssh_url": "git@github.com:oasisprotocol/oasis-wallet-web.git",
-                "stargazers_count": 63,
+                "stargazers_count": 66,
                 "stargazers_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/stargazers",
                 "statuses_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/statuses/{sha}",
-                "subscribers_count": 15,
+                "subscribers_count": 16,
                 "subscribers_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/subscribers",
                 "subscription_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/subscription",
                 "svn_url": "https://github.com/oasisprotocol/oasis-wallet-web",
                 "tags_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/tags",
                 "teams_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "blockchain",
                     "crypto",
@@ -1690,14 +1599,14 @@
                     "web"
                 ],
                 "trees_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/git/trees{/sha}",
-                "updated_at": "2022-03-25T07:57:55Z",
+                "updated_at": "2022-03-31T06:47:00Z",
                 "url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web",
                 "visibility": "public",
-                "watchers": 63,
-                "watchers_count": 63
+                "watchers": 66,
+                "watchers_count": 66
             },
             "repo_url": "https://github.com/oasisprotocol/oasis-wallet-web",
-            "stargazers": 63
+            "stargazers": 66
         },
         {
             "info": {
@@ -1761,8 +1670,8 @@
                 "network_count": 14,
                 "node_id": "MDEwOlJlcG9zaXRvcnk3NTAwMDQ0Ng==",
                 "notifications_url": "https://api.github.com/repos/rasa/scoops/notifications{?since,all,participating}",
-                "open_issues": 8,
-                "open_issues_count": 8,
+                "open_issues": 6,
+                "open_issues_count": 6,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/220772?v=4",
                     "events_url": "https://api.github.com/users/rasa/events{/privacy}",
@@ -1783,18 +1692,11 @@
                     "type": "User",
                     "url": "https://api.github.com/users/rasa"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/rasa/scoops/pulls{/number}",
-                "pushed_at": "2022-03-26T10:41:23Z",
+                "pushed_at": "2022-03-30T13:08:07Z",
                 "releases_url": "https://api.github.com/repos/rasa/scoops/releases{/id}",
-                "size": 1018,
+                "size": 1025,
                 "ssh_url": "git@github.com:rasa/scoops.git",
                 "stargazers_count": 58,
                 "stargazers_url": "https://api.github.com/repos/rasa/scoops/stargazers",
@@ -1805,7 +1707,7 @@
                 "svn_url": "https://github.com/rasa/scoops",
                 "tags_url": "https://api.github.com/repos/rasa/scoops/tags",
                 "teams_url": "https://api.github.com/repos/rasa/scoops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bucket",
                     "installer",
@@ -1928,16 +1830,9 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/philips-software"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/philips-software/embeddedinfralib/pulls{/number}",
-                "pushed_at": "2022-03-22T09:29:53Z",
+                "pushed_at": "2022-03-28T09:04:59Z",
                 "releases_url": "https://api.github.com/repos/philips-software/embeddedinfralib/releases{/id}",
                 "size": 39206,
                 "ssh_url": "git@github.com:philips-software/embeddedinfralib.git",
@@ -1950,7 +1845,7 @@
                 "svn_url": "https://github.com/philips-software/embeddedinfralib",
                 "tags_url": "https://api.github.com/repos/philips-software/embeddedinfralib/tags",
                 "teams_url": "https://api.github.com/repos/philips-software/embeddedinfralib/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "c-plus-plus",
                     "cpp",
@@ -2057,20 +1952,13 @@
                     "type": "User",
                     "url": "https://api.github.com/users/joeygoksu"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/pulls{/number}",
                 "pushed_at": "2022-02-17T21:27:02Z",
                 "releases_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/releases{/id}",
                 "size": 805,
                 "ssh_url": "git@github.com:joeygoksu/prime-nestjs.git",
-                "stargazers_count": 44,
+                "stargazers_count": 45,
                 "stargazers_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/stargazers",
                 "statuses_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/statuses/{sha}",
                 "subscribers_count": 5,
@@ -2079,7 +1967,7 @@
                 "svn_url": "https://github.com/joeygoksu/prime-nestjs",
                 "tags_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/tags",
                 "teams_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "nestjs",
                     "nestjs-backend",
@@ -2091,14 +1979,14 @@
                     "typescript"
                 ],
                 "trees_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/git/trees{/sha}",
-                "updated_at": "2022-03-25T06:53:17Z",
+                "updated_at": "2022-03-30T12:33:53Z",
                 "url": "https://api.github.com/repos/joeygoksu/prime-nestjs",
                 "visibility": "public",
-                "watchers": 44,
-                "watchers_count": 44
+                "watchers": 45,
+                "watchers_count": 45
             },
             "repo_url": "https://github.com/joeygoksu/prime-nestjs",
-            "stargazers": 44
+            "stargazers": 45
         },
         {
             "info": {
@@ -2184,13 +2072,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/llaville"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/llaville/umlwriter/pulls{/number}",
                 "pushed_at": "2022-03-25T08:40:48Z",
@@ -2206,7 +2087,7 @@
                 "svn_url": "https://github.com/llaville/umlwriter",
                 "tags_url": "https://api.github.com/repos/llaville/umlwriter/tags",
                 "teams_url": "https://api.github.com/repos/llaville/umlwriter/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "php",
                     "uml-class-diagram"
@@ -2219,6 +2100,126 @@
                 "watchers_count": 42
             },
             "repo_url": "https://github.com/llaville/umlwriter",
+            "stargazers": 42
+        },
+        {
+            "info": {
+                "allow_forking": true,
+                "archive_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/{archive_format}{/ref}",
+                "archived": false,
+                "assignees_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/assignees{/user}",
+                "blobs_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/blobs{/sha}",
+                "branches_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/branches{/branch}",
+                "clone_url": "https://github.com/unixorn/lima-xbar-plugin.git",
+                "collaborators_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/collaborators{/collaborator}",
+                "comments_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/comments{/number}",
+                "commits_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/commits{/sha}",
+                "compare_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/compare/{base}...{head}",
+                "contents_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/contents/{+path}",
+                "contributors_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/contributors",
+                "created_at": "2021-09-15T05:00:40Z",
+                "default_branch": "main",
+                "deployments_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/deployments",
+                "description": "xbar/Swiftbar plugin to control lima-vm",
+                "disabled": false,
+                "downloads_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/downloads",
+                "events_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/events",
+                "fork": false,
+                "forks": 4,
+                "forks_count": 4,
+                "forks_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/forks",
+                "full_name": "unixorn/lima-xbar-plugin",
+                "git_commits_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/commits{/sha}",
+                "git_refs_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/refs{/sha}",
+                "git_tags_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/tags{/sha}",
+                "git_url": "git://github.com/unixorn/lima-xbar-plugin.git",
+                "has_downloads": true,
+                "has_issues": true,
+                "has_pages": false,
+                "has_projects": true,
+                "has_wiki": false,
+                "homepage": "",
+                "hooks_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/hooks",
+                "html_url": "https://github.com/unixorn/lima-xbar-plugin",
+                "id": 406619665,
+                "is_template": false,
+                "issue_comment_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/issues/comments{/number}",
+                "issue_events_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/issues/events{/number}",
+                "issues_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/issues{/number}",
+                "keys_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/keys{/key_id}",
+                "labels_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/labels{/name}",
+                "language": "Python",
+                "languages_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/languages",
+                "license": {
+                    "key": "apache-2.0",
+                    "name": "Apache License 2.0",
+                    "node_id": "MDc6TGljZW5zZTI=",
+                    "spdx_id": "Apache-2.0",
+                    "url": "https://api.github.com/licenses/apache-2.0"
+                },
+                "merges_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/merges",
+                "milestones_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/milestones{/number}",
+                "mirror_url": null,
+                "name": "lima-xbar-plugin",
+                "network_count": 4,
+                "node_id": "MDEwOlJlcG9zaXRvcnk0MDY2MTk2NjU=",
+                "notifications_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/notifications{?since,all,participating}",
+                "open_issues": 1,
+                "open_issues_count": 1,
+                "owner": {
+                    "avatar_url": "https://avatars.githubusercontent.com/u/23920?v=4",
+                    "events_url": "https://api.github.com/users/unixorn/events{/privacy}",
+                    "followers_url": "https://api.github.com/users/unixorn/followers",
+                    "following_url": "https://api.github.com/users/unixorn/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/unixorn/gists{/gist_id}",
+                    "gravatar_id": "",
+                    "html_url": "https://github.com/unixorn",
+                    "id": 23920,
+                    "login": "unixorn",
+                    "node_id": "MDQ6VXNlcjIzOTIw",
+                    "organizations_url": "https://api.github.com/users/unixorn/orgs",
+                    "received_events_url": "https://api.github.com/users/unixorn/received_events",
+                    "repos_url": "https://api.github.com/users/unixorn/repos",
+                    "site_admin": false,
+                    "starred_url": "https://api.github.com/users/unixorn/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/unixorn/subscriptions",
+                    "type": "User",
+                    "url": "https://api.github.com/users/unixorn"
+                },
+                "private": false,
+                "pulls_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/pulls{/number}",
+                "pushed_at": "2022-02-27T23:00:36Z",
+                "releases_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/releases{/id}",
+                "size": 289,
+                "ssh_url": "git@github.com:unixorn/lima-xbar-plugin.git",
+                "stargazers_count": 42,
+                "stargazers_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/stargazers",
+                "statuses_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/statuses/{sha}",
+                "subscribers_count": 2,
+                "subscribers_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/subscribers",
+                "subscription_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/subscription",
+                "svn_url": "https://github.com/unixorn/lima-xbar-plugin",
+                "tags_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/tags",
+                "teams_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/teams",
+                "temp_clone_token": null,
+                "topics": [
+                    "bitbar-plugins",
+                    "hacktoberfest",
+                    "lima",
+                    "lima-vm",
+                    "swiftbar",
+                    "swiftbar-plugins",
+                    "xbar",
+                    "xbar-plugin"
+                ],
+                "trees_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/trees{/sha}",
+                "updated_at": "2022-03-31T15:56:39Z",
+                "url": "https://api.github.com/repos/unixorn/lima-xbar-plugin",
+                "visibility": "public",
+                "watchers": 42,
+                "watchers_count": 42
+            },
+            "repo_url": "https://github.com/unixorn/lima-xbar-plugin",
             "stargazers": 42
         },
         {
@@ -2305,13 +2306,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/nvuillam"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nvuillam/sfdx-essentials/pulls{/number}",
                 "pushed_at": "2022-03-24T04:07:53Z",
@@ -2327,7 +2321,7 @@
                 "svn_url": "https://github.com/nvuillam/sfdx-essentials",
                 "tags_url": "https://api.github.com/repos/nvuillam/sfdx-essentials/tags",
                 "teams_url": "https://api.github.com/repos/nvuillam/sfdx-essentials/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "essentials",
                     "plugin",
@@ -2342,133 +2336,6 @@
                 "watchers_count": 40
             },
             "repo_url": "https://github.com/nvuillam/sfdx-essentials",
-            "stargazers": 40
-        },
-        {
-            "info": {
-                "allow_forking": true,
-                "archive_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/{archive_format}{/ref}",
-                "archived": false,
-                "assignees_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/assignees{/user}",
-                "blobs_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/blobs{/sha}",
-                "branches_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/branches{/branch}",
-                "clone_url": "https://github.com/unixorn/lima-xbar-plugin.git",
-                "collaborators_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/collaborators{/collaborator}",
-                "comments_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/comments{/number}",
-                "commits_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/commits{/sha}",
-                "compare_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/compare/{base}...{head}",
-                "contents_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/contents/{+path}",
-                "contributors_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/contributors",
-                "created_at": "2021-09-15T05:00:40Z",
-                "default_branch": "main",
-                "deployments_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/deployments",
-                "description": "xbar/Swiftbar plugin to control lima-vm",
-                "disabled": false,
-                "downloads_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/downloads",
-                "events_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/events",
-                "fork": false,
-                "forks": 4,
-                "forks_count": 4,
-                "forks_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/forks",
-                "full_name": "unixorn/lima-xbar-plugin",
-                "git_commits_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/commits{/sha}",
-                "git_refs_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/refs{/sha}",
-                "git_tags_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/tags{/sha}",
-                "git_url": "git://github.com/unixorn/lima-xbar-plugin.git",
-                "has_downloads": true,
-                "has_issues": true,
-                "has_pages": false,
-                "has_projects": true,
-                "has_wiki": false,
-                "homepage": "",
-                "hooks_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/hooks",
-                "html_url": "https://github.com/unixorn/lima-xbar-plugin",
-                "id": 406619665,
-                "is_template": false,
-                "issue_comment_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/issues/comments{/number}",
-                "issue_events_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/issues/events{/number}",
-                "issues_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/issues{/number}",
-                "keys_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/keys{/key_id}",
-                "labels_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/labels{/name}",
-                "language": "Python",
-                "languages_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/languages",
-                "license": {
-                    "key": "apache-2.0",
-                    "name": "Apache License 2.0",
-                    "node_id": "MDc6TGljZW5zZTI=",
-                    "spdx_id": "Apache-2.0",
-                    "url": "https://api.github.com/licenses/apache-2.0"
-                },
-                "merges_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/merges",
-                "milestones_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/milestones{/number}",
-                "mirror_url": null,
-                "name": "lima-xbar-plugin",
-                "network_count": 4,
-                "node_id": "MDEwOlJlcG9zaXRvcnk0MDY2MTk2NjU=",
-                "notifications_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/notifications{?since,all,participating}",
-                "open_issues": 1,
-                "open_issues_count": 1,
-                "owner": {
-                    "avatar_url": "https://avatars.githubusercontent.com/u/23920?v=4",
-                    "events_url": "https://api.github.com/users/unixorn/events{/privacy}",
-                    "followers_url": "https://api.github.com/users/unixorn/followers",
-                    "following_url": "https://api.github.com/users/unixorn/following{/other_user}",
-                    "gists_url": "https://api.github.com/users/unixorn/gists{/gist_id}",
-                    "gravatar_id": "",
-                    "html_url": "https://github.com/unixorn",
-                    "id": 23920,
-                    "login": "unixorn",
-                    "node_id": "MDQ6VXNlcjIzOTIw",
-                    "organizations_url": "https://api.github.com/users/unixorn/orgs",
-                    "received_events_url": "https://api.github.com/users/unixorn/received_events",
-                    "repos_url": "https://api.github.com/users/unixorn/repos",
-                    "site_admin": false,
-                    "starred_url": "https://api.github.com/users/unixorn/starred{/owner}{/repo}",
-                    "subscriptions_url": "https://api.github.com/users/unixorn/subscriptions",
-                    "type": "User",
-                    "url": "https://api.github.com/users/unixorn"
-                },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
-                "private": false,
-                "pulls_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/pulls{/number}",
-                "pushed_at": "2022-02-27T23:00:36Z",
-                "releases_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/releases{/id}",
-                "size": 289,
-                "ssh_url": "git@github.com:unixorn/lima-xbar-plugin.git",
-                "stargazers_count": 40,
-                "stargazers_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/stargazers",
-                "statuses_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/statuses/{sha}",
-                "subscribers_count": 2,
-                "subscribers_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/subscribers",
-                "subscription_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/subscription",
-                "svn_url": "https://github.com/unixorn/lima-xbar-plugin",
-                "tags_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/tags",
-                "teams_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/teams",
-                "temp_clone_token": "",
-                "topics": [
-                    "bitbar-plugins",
-                    "hacktoberfest",
-                    "lima",
-                    "lima-vm",
-                    "swiftbar",
-                    "swiftbar-plugins",
-                    "xbar",
-                    "xbar-plugin"
-                ],
-                "trees_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/git/trees{/sha}",
-                "updated_at": "2022-03-26T18:05:37Z",
-                "url": "https://api.github.com/repos/unixorn/lima-xbar-plugin",
-                "visibility": "public",
-                "watchers": 40,
-                "watchers_count": 40
-            },
-            "repo_url": "https://github.com/unixorn/lima-xbar-plugin",
             "stargazers": 40
         },
         {
@@ -2555,13 +2422,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/AlbanAndrieu"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/pulls{/number}",
                 "pushed_at": "2022-01-05T16:17:23Z",
@@ -2577,7 +2437,7 @@
                 "svn_url": "https://github.com/AlbanAndrieu/ansible-windows",
                 "tags_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/tags",
                 "teams_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/git/trees{/sha}",
                 "updated_at": "2022-01-31T19:41:27Z",
@@ -2673,13 +2533,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/quackduck"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/quackduck/secret/pulls{/number}",
                 "pushed_at": "2021-12-20T21:33:47Z",
@@ -2695,7 +2548,7 @@
                 "svn_url": "https://github.com/quackduck/secret",
                 "tags_url": "https://api.github.com/repos/quackduck/secret/tags",
                 "teams_url": "https://api.github.com/repos/quackduck/secret/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/quackduck/secret/git/trees{/sha}",
                 "updated_at": "2022-01-31T19:50:16Z",
@@ -2769,8 +2622,8 @@
                 "network_count": 40,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxMDAyMTQ2Nw==",
                 "notifications_url": "https://api.github.com/repos/MythicDrops/MythicDrops/notifications{?since,all,participating}",
-                "open_issues": 56,
-                "open_issues_count": 56,
+                "open_issues": 58,
+                "open_issues_count": 58,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/78941662?v=4",
                     "events_url": "https://api.github.com/users/MythicDrops/events{/privacy}",
@@ -2811,18 +2664,11 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/MythicDrops"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/MythicDrops/MythicDrops/pulls{/number}",
-                "pushed_at": "2022-03-26T00:06:09Z",
+                "pushed_at": "2022-03-29T01:53:43Z",
                 "releases_url": "https://api.github.com/repos/MythicDrops/MythicDrops/releases{/id}",
-                "size": 14388,
+                "size": 14635,
                 "ssh_url": "git@github.com:MythicDrops/MythicDrops.git",
                 "stargazers_count": 28,
                 "stargazers_url": "https://api.github.com/repos/MythicDrops/MythicDrops/stargazers",
@@ -2833,7 +2679,7 @@
                 "svn_url": "https://github.com/MythicDrops/MythicDrops",
                 "tags_url": "https://api.github.com/repos/MythicDrops/MythicDrops/tags",
                 "teams_url": "https://api.github.com/repos/MythicDrops/MythicDrops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bukkit",
                     "bukkit-plugin",
@@ -2956,18 +2802,11 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/hardisgroupcom"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/pulls{/number}",
-                "pushed_at": "2022-03-26T10:10:15Z",
+                "pushed_at": "2022-03-29T14:17:49Z",
                 "releases_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/releases{/id}",
-                "size": 6115,
+                "size": 6179,
                 "ssh_url": "git@github.com:hardisgroupcom/sfdx-hardis.git",
                 "stargazers_count": 20,
                 "stargazers_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/stargazers",
@@ -2978,7 +2817,7 @@
                 "svn_url": "https://github.com/hardisgroupcom/sfdx-hardis",
                 "tags_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/tags",
                 "teams_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cicd",
                     "devops",
@@ -3083,13 +2922,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/GrandMoff100"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/GrandMoff100/HomeAssistantAPI/pulls{/number}",
                 "pushed_at": "2022-03-22T12:01:44Z",
@@ -3105,7 +2937,7 @@
                 "svn_url": "https://github.com/GrandMoff100/HomeAssistantAPI",
                 "tags_url": "https://api.github.com/repos/GrandMoff100/HomeAssistantAPI/tags",
                 "teams_url": "https://api.github.com/repos/GrandMoff100/HomeAssistantAPI/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "api",
                     "hacktoberfest",
@@ -3230,13 +3062,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/hardisgroupcom"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/hardisgroupcom/vscode-sfdx-hardis/pulls{/number}",
                 "pushed_at": "2022-03-15T22:09:12Z",
@@ -3252,7 +3077,7 @@
                 "svn_url": "https://github.com/hardisgroupcom/vscode-sfdx-hardis",
                 "tags_url": "https://api.github.com/repos/hardisgroupcom/vscode-sfdx-hardis/tags",
                 "teams_url": "https://api.github.com/repos/hardisgroupcom/vscode-sfdx-hardis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cicd",
                     "extension",
@@ -3334,8 +3159,8 @@
                 "network_count": 4,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzNjM5OTQ2ODM=",
                 "notifications_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/notifications{?since,all,participating}",
-                "open_issues": 59,
-                "open_issues_count": 59,
+                "open_issues": 61,
+                "open_issues_count": 61,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/643070?v=4",
                     "events_url": "https://api.github.com/users/GSA/events{/privacy}",
@@ -3376,29 +3201,22 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/GSA"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/pulls{/number}",
-                "pushed_at": "2022-03-25T17:42:21Z",
+                "pushed_at": "2022-03-31T22:20:56Z",
                 "releases_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/releases{/id}",
-                "size": 5757,
+                "size": 6750,
                 "ssh_url": "git@github.com:GSA/usagov-benefits-eligibility.git",
                 "stargazers_count": 12,
                 "stargazers_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/stargazers",
                 "statuses_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/statuses/{sha}",
-                "subscribers_count": 4,
+                "subscribers_count": 3,
                 "subscribers_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/subscribers",
                 "subscription_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/subscription",
                 "svn_url": "https://github.com/GSA/usagov-benefits-eligibility",
                 "tags_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/tags",
                 "teams_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/git/trees{/sha}",
                 "updated_at": "2022-03-17T20:42:38Z",
@@ -3494,13 +3312,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/quackduck"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/quackduck/ncis/pulls{/number}",
                 "pushed_at": "2022-01-02T02:03:43Z",
@@ -3516,7 +3327,7 @@
                 "svn_url": "https://github.com/quackduck/ncis",
                 "tags_url": "https://api.github.com/repos/quackduck/ncis/tags",
                 "teams_url": "https://api.github.com/repos/quackduck/ncis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "brute-force",
                     "pentest-tool",
@@ -3596,8 +3407,8 @@
                 "network_count": 3,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzODM5MDY1NTk=",
                 "notifications_url": "https://api.github.com/repos/wareismymind/peer/notifications{?since,all,participating}",
-                "open_issues": 24,
-                "open_issues_count": 24,
+                "open_issues": 23,
+                "open_issues_count": 23,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/28851143?v=4",
                     "events_url": "https://api.github.com/users/wareismymind/events{/privacy}",
@@ -3638,18 +3449,11 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/wareismymind"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/wareismymind/peer/pulls{/number}",
-                "pushed_at": "2022-02-14T20:19:37Z",
+                "pushed_at": "2022-03-30T18:03:15Z",
                 "releases_url": "https://api.github.com/repos/wareismymind/peer/releases{/id}",
-                "size": 218,
+                "size": 224,
                 "ssh_url": "git@github.com:wareismymind/peer.git",
                 "stargazers_count": 9,
                 "stargazers_url": "https://api.github.com/repos/wareismymind/peer/stargazers",
@@ -3660,7 +3464,7 @@
                 "svn_url": "https://github.com/wareismymind/peer",
                 "tags_url": "https://api.github.com/repos/wareismymind/peer/tags",
                 "teams_url": "https://api.github.com/repos/wareismymind/peer/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cli-app",
                     "github",
@@ -3781,13 +3585,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/ScribeMD"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ScribeMD/rootless-docker/pulls{/number}",
                 "pushed_at": "2021-11-18T04:21:54Z",
@@ -3803,7 +3600,7 @@
                 "svn_url": "https://github.com/ScribeMD/rootless-docker",
                 "tags_url": "https://api.github.com/repos/ScribeMD/rootless-docker/tags",
                 "teams_url": "https://api.github.com/repos/ScribeMD/rootless-docker/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "composite-action",
                     "docker",
@@ -3889,8 +3686,8 @@
                 "network_count": 1,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxNTIyNDk0ODE=",
                 "notifications_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/notifications{?since,all,participating}",
-                "open_issues": 20,
-                "open_issues_count": 20,
+                "open_issues": 21,
+                "open_issues_count": 21,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/7859836?v=4",
                     "events_url": "https://api.github.com/users/AlbanAndrieu/events{/privacy}",
@@ -3911,18 +3708,11 @@
                     "type": "User",
                     "url": "https://api.github.com/users/AlbanAndrieu"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/pulls{/number}",
-                "pushed_at": "2022-03-24T06:26:35Z",
+                "pushed_at": "2022-03-31T10:43:58Z",
                 "releases_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/releases{/id}",
-                "size": 1783,
+                "size": 1892,
                 "ssh_url": "git@github.com:AlbanAndrieu/jenkins-pipeline-scripts.git",
                 "stargazers_count": 5,
                 "stargazers_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/stargazers",
@@ -3933,7 +3723,7 @@
                 "svn_url": "https://github.com/AlbanAndrieu/jenkins-pipeline-scripts",
                 "tags_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/tags",
                 "teams_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/git/trees{/sha}",
                 "updated_at": "2022-02-11T07:34:41Z",
@@ -4049,13 +3839,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/ScribeMD"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ScribeMD/slack-templates/pulls{/number}",
                 "pushed_at": "2021-11-09T23:06:14Z",
@@ -4071,7 +3854,7 @@
                 "svn_url": "https://github.com/ScribeMD/slack-templates",
                 "tags_url": "https://api.github.com/repos/ScribeMD/slack-templates/tags",
                 "teams_url": "https://api.github.com/repos/ScribeMD/slack-templates/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "alerts",
                     "chat",
@@ -4182,18 +3965,11 @@
                     "type": "User",
                     "url": "https://api.github.com/users/Neragin"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/Neragin/cx-bot/pulls{/number}",
-                "pushed_at": "2022-03-23T09:21:33Z",
+                "pushed_at": "2022-03-31T20:43:44Z",
                 "releases_url": "https://api.github.com/repos/Neragin/cx-bot/releases{/id}",
-                "size": 900,
+                "size": 902,
                 "ssh_url": "git@github.com:Neragin/cx-bot.git",
                 "stargazers_count": 3,
                 "stargazers_url": "https://api.github.com/repos/Neragin/cx-bot/stargazers",
@@ -4204,7 +3980,7 @@
                 "svn_url": "https://github.com/Neragin/cx-bot",
                 "tags_url": "https://api.github.com/repos/Neragin/cx-bot/tags",
                 "teams_url": "https://api.github.com/repos/Neragin/cx-bot/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "discord",
                     "discord-bot",
@@ -4319,13 +4095,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/cbg-ethz"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/cbg-ethz/SARS-CoV-2_Analysis/pulls{/number}",
                 "pushed_at": "2022-03-23T09:21:17Z",
@@ -4341,7 +4110,7 @@
                 "svn_url": "https://github.com/cbg-ethz/SARS-CoV-2_Analysis",
                 "tags_url": "https://api.github.com/repos/cbg-ethz/SARS-CoV-2_Analysis/tags",
                 "teams_url": "https://api.github.com/repos/cbg-ethz/SARS-CoV-2_Analysis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "sars-cov-2",
                     "snakemake"
@@ -4418,8 +4187,8 @@
                 "network_count": 2,
                 "node_id": "R_kgDOGFzgkg",
                 "notifications_url": "https://api.github.com/repos/mundialis/actinia-stac-plugin/notifications{?since,all,participating}",
-                "open_issues": 8,
-                "open_issues_count": 8,
+                "open_issues": 7,
+                "open_issues_count": 7,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/16286583?v=4",
                     "events_url": "https://api.github.com/users/mundialis/events{/privacy}",
@@ -4460,16 +4229,9 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/mundialis"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/mundialis/actinia-stac-plugin/pulls{/number}",
-                "pushed_at": "2022-03-25T09:27:14Z",
+                "pushed_at": "2022-03-31T14:19:05Z",
                 "releases_url": "https://api.github.com/repos/mundialis/actinia-stac-plugin/releases{/id}",
                 "size": 722,
                 "ssh_url": "git@github.com:mundialis/actinia-stac-plugin.git",
@@ -4482,13 +4244,13 @@
                 "svn_url": "https://github.com/mundialis/actinia-stac-plugin",
                 "tags_url": "https://api.github.com/repos/mundialis/actinia-stac-plugin/tags",
                 "teams_url": "https://api.github.com/repos/mundialis/actinia-stac-plugin/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "actinia",
                     "hacktoberfest"
                 ],
                 "trees_url": "https://api.github.com/repos/mundialis/actinia-stac-plugin/git/trees{/sha}",
-                "updated_at": "2022-02-16T10:18:17Z",
+                "updated_at": "2022-03-28T07:13:47Z",
                 "url": "https://api.github.com/repos/mundialis/actinia-stac-plugin",
                 "visibility": "public",
                 "watchers": 2,
@@ -4601,13 +4363,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/r-spacex"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/r-spacex/submanager/pulls{/number}",
                 "pushed_at": "2021-12-02T22:07:16Z",
@@ -4623,7 +4378,7 @@
                 "svn_url": "https://github.com/r-spacex/submanager",
                 "tags_url": "https://api.github.com/repos/r-spacex/submanager/tags",
                 "teams_url": "https://api.github.com/repos/r-spacex/submanager/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bot-framework",
                     "praw",
@@ -4706,8 +4461,8 @@
                 "network_count": 0,
                 "node_id": "R_kgDOGSz2AQ",
                 "notifications_url": "https://api.github.com/repos/lpmatos/docker-crypto-miner/notifications{?since,all,participating}",
-                "open_issues": 17,
-                "open_issues_count": 17,
+                "open_issues": 16,
+                "open_issues_count": 16,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/58797390?v=4",
                     "events_url": "https://api.github.com/users/lpmatos/events{/privacy}",
@@ -4728,18 +4483,11 @@
                     "type": "User",
                     "url": "https://api.github.com/users/lpmatos"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/lpmatos/docker-crypto-miner/pulls{/number}",
-                "pushed_at": "2022-03-26T12:18:14Z",
+                "pushed_at": "2022-03-27T02:02:59Z",
                 "releases_url": "https://api.github.com/repos/lpmatos/docker-crypto-miner/releases{/id}",
-                "size": 192,
+                "size": 191,
                 "ssh_url": "git@github.com:lpmatos/docker-crypto-miner.git",
                 "stargazers_count": 1,
                 "stargazers_url": "https://api.github.com/repos/lpmatos/docker-crypto-miner/stargazers",
@@ -4750,7 +4498,7 @@
                 "svn_url": "https://github.com/lpmatos/docker-crypto-miner",
                 "tags_url": "https://api.github.com/repos/lpmatos/docker-crypto-miner/tags",
                 "teams_url": "https://api.github.com/repos/lpmatos/docker-crypto-miner/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "alpine",
                     "container",
@@ -4882,13 +4630,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/tonic-team"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/tonic-team/tonic.site/pulls{/number}",
                 "pushed_at": "2022-03-25T11:01:20Z",
@@ -4904,7 +4645,7 @@
                 "svn_url": "https://github.com/tonic-team/tonic.site",
                 "tags_url": "https://api.github.com/repos/tonic-team/tonic.site/tags",
                 "teams_url": "https://api.github.com/repos/tonic-team/tonic.site/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/tonic-team/tonic.site/git/trees{/sha}",
                 "updated_at": "2021-06-29T09:28:58Z",
@@ -4994,13 +4735,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/epleypa"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/epleypa/Home-AssistantConfig/pulls{/number}",
                 "pushed_at": "2022-03-23T06:29:54Z",
@@ -5016,7 +4750,7 @@
                 "svn_url": "https://github.com/epleypa/Home-AssistantConfig",
                 "tags_url": "https://api.github.com/repos/epleypa/Home-AssistantConfig/tags",
                 "teams_url": "https://api.github.com/repos/epleypa/Home-AssistantConfig/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "hacktoberfest",
                     "home-assistant",
@@ -5111,13 +4845,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/ewencluley"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ewencluley/final-curtain/pulls{/number}",
                 "pushed_at": "2021-04-17T09:00:56Z",
@@ -5133,7 +4860,7 @@
                 "svn_url": "https://github.com/ewencluley/final-curtain",
                 "tags_url": "https://api.github.com/repos/ewencluley/final-curtain/tags",
                 "teams_url": "https://api.github.com/repos/ewencluley/final-curtain/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/ewencluley/final-curtain/git/trees{/sha}",
                 "updated_at": "2021-04-17T08:50:52Z",
