@@ -5,6 +5,7 @@ import subprocess
 import sys
 
 import requests
+import yaml
 from megalinter import config, linter_factory, utils
 
 
@@ -37,7 +38,10 @@ def load_plugin(plugin):
         # Download plugin and write it in megalinter
         try:
             r = requests.get(plugin, allow_redirects=True)
-            open(descriptor_file, "wb").write(r.content)
+            plugin_descriptor = yaml.safe_load(r.content)
+            plugin_descriptor["is_plugin"] = True
+            with open(descriptor_file, "w") as outfile:
+                yaml.dump(plugin_descriptor, outfile)
             logging.info(
                 f"[Plugins] Loaded plugin descriptor {descriptor_file} from {plugin}"
             )

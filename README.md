@@ -469,6 +469,11 @@ stage('MegaLinter') {
     steps {
         sh '/entrypoint.sh'
     }
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'mega-linter.log,report/**/*', defaultExcludes: false, followSymlinks: false  
+        }
+    }
 }
 ```
 

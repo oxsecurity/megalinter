@@ -10,6 +10,16 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linters
   - Disable rstfmt as it is neither stable or maintained
+  - markdown-links-check: allow 203 as valid return code
+
+- Fixes
+  - Github Comment Reporter: switch to using a hidden HTML comment to mark the comment, with the current workflow and jobid. This is more robust than the old method. ([[#1355](https://github.com/megalinter/megalinter/issues/1355))
+  - Allow to provide CI_ACTION_RUN_URL to build hlink for GitHub Comments reporter messages ([[#1341](https://github.com/megalinter/megalinter/issues/1341))
+  - Display plugin URL in MegaLinter output logs ([[#1340](https://github.com/megalinter/megalinter/issues/1340))
+  - Fix public glibc public key download
+
+- Doc
+  - Add instructions to upload artifacts when using MegaLinter with Jenkins
 
 - Linter versions upgrades
   - [checkov](https://www.checkov.io/) from 2.0.975 to **2.0.977** on 2022-03-21
@@ -38,6 +48,23 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.2 to **5.19.3** on 2022-03-26
   - [sqlfluff](https://www.sqlfluff.com/) from 0.11.1 to **0.11.2** on 2022-03-26
   - [checkov](https://www.checkov.io/) from 2.0.983 to **2.0.995** on 2022-03-26
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.0 to **10.1** on 2022-03-27
+  - [pylint](https://www.pylint.org) from 2.13.1 to **2.13.2** on 2022-03-27
+  - [checkov](https://www.checkov.io/) from 2.0.995 to **2.0.999** on 2022-03-27
+  - [htmlhint](https://htmlhint.com/) from 1.1.2 to **1.1.3** on 2022-03-30
+  - [phpstan](https://phpstan.org/) from 1.5.0 to **1.5.2** on 2022-03-30
+  - [black](https://black.readthedocs.io/en/stable/) from 22.1.0 to **22.3.0** on 2022-03-30
+  - [pylint](https://www.pylint.org) from 2.13.2 to **2.13.3** on 2022-03-30
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.2 to **7.3.3** on 2022-03-30
+  - [checkov](https://www.checkov.io/) from 2.0.999 to **2.0.1008** on 2022-03-30
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.9.1 to **2.9.3** on 2022-03-31
+  - [phpstan](https://phpstan.org/) from 1.5.2 to **1.5.3** on 2022-03-31
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.3 to **7.3.4** on 2022-03-31
+  - [checkov](https://www.checkov.io/) from 2.0.1008 to **2.0.1016** on 2022-03-31
+  - [kics](https://www.kics.io) from 1.5.4 to **1.5.5** on 2022-03-31
+  - [pylint](https://www.pylint.org) from 2.13.3 to **2.13.4** on 2022-03-31
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.4 to **7.3.5** on 2022-03-31
+  - [checkov](https://www.checkov.io/) from 2.0.1016 to **2.0.1021** on 2022-03-31
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
