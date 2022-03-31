@@ -9,10 +9,10 @@ from megalinter.utils import is_git_repo
 
 class GitleaksLinter(Linter):
 
-    # Manage case when we want semgrep rulesets to be selected related to security
+    # Remove --no-git if present
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
         if '--no-git' in cmd and is_git_repo(self.workspace):
-            cmd.remove("--no-git")
+            cmd = list(filter(lambda a: a != "--no-git", cmd))
         return cmd
 
