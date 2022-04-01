@@ -236,6 +236,10 @@ All linters are integrated in the [MegaLinter docker image](https://hub.docker.c
 
 <!-- plugins-section-end -->
 
+<!-- articles-section-start -->
+
+<!-- articles-section-end -->
+
 <!-- frequently-asked-questions-section-start -->
 
 <!-- frequently-asked-questions-section-end -->
