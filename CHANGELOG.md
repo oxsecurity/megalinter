@@ -65,6 +65,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://www.pylint.org) from 2.13.3 to **2.13.4** on 2022-03-31
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.4 to **7.3.5** on 2022-03-31
   - [checkov](https://www.checkov.io/) from 2.0.1016 to **2.0.1021** on 2022-03-31
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.3 to **5.19.4** on 2022-04-01
+  - [checkov](https://www.checkov.io/) from 2.0.1021 to **2.0.1024** on 2022-04-01
+  - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.2 to **1.14.0** on 2022-04-01
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
