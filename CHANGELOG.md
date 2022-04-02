@@ -68,6 +68,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.3 to **5.19.4** on 2022-04-01
   - [checkov](https://www.checkov.io/) from 2.0.1021 to **2.0.1024** on 2022-04-01
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.2 to **1.14.0** on 2022-04-01
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.4 to **5.19.5** on 2022-04-02
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20

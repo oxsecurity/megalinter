@@ -104,20 +104,13 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/nektos"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nektos/act/pulls{/number}",
                 "pushed_at": "2022-04-01T09:26:52Z",
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6246,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 22851,
+                "stargazers_count": 22852,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 106,
@@ -126,7 +119,7 @@
                 "svn_url": "https://github.com/nektos/act",
                 "tags_url": "https://api.github.com/repos/nektos/act/tags",
                 "teams_url": "https://api.github.com/repos/nektos/act/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ci",
                     "devops",
@@ -134,14 +127,14 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-04-01T23:34:48Z",
+                "updated_at": "2022-04-02T01:06:39Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 22851,
-                "watchers_count": 22851
+                "watchers": 22852,
+                "watchers_count": 22852
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 22851
+            "stargazers": 22852
         },
         {
             "info": {
@@ -227,13 +220,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/stepancheg"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/stepancheg/rust-protobuf/pulls{/number}",
                 "pushed_at": "2022-03-05T08:01:10Z",
@@ -249,7 +235,7 @@
                 "svn_url": "https://github.com/stepancheg/rust-protobuf",
                 "tags_url": "https://api.github.com/repos/stepancheg/rust-protobuf/tags",
                 "teams_url": "https://api.github.com/repos/stepancheg/rust-protobuf/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "protobuf",
                     "rust",
@@ -349,13 +335,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/flosse"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/flosse/sloc/pulls{/number}",
                 "pushed_at": "2021-12-18T23:32:10Z",
@@ -371,7 +350,7 @@
                 "svn_url": "https://github.com/flosse/sloc",
                 "tags_url": "https://api.github.com/repos/flosse/sloc/tags",
                 "teams_url": "https://api.github.com/repos/flosse/sloc/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "count",
                     "javascript",
@@ -452,8 +431,8 @@
                 "network_count": 85,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/megalinter/megalinter/notifications{?since,all,participating}",
-                "open_issues": 33,
-                "open_issues_count": 33,
+                "open_issues": 34,
+                "open_issues_count": 34,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/76904213?v=4",
                     "events_url": "https://api.github.com/users/megalinter/events{/privacy}",
@@ -494,18 +473,11 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/megalinter"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/megalinter/megalinter/pulls{/number}",
-                "pushed_at": "2022-04-02T00:09:01Z",
+                "pushed_at": "2022-04-02T00:58:54Z",
                 "releases_url": "https://api.github.com/repos/megalinter/megalinter/releases{/id}",
-                "size": 121511,
+                "size": 121800,
                 "ssh_url": "git@github.com:megalinter/megalinter.git",
                 "stargazers_count": 561,
                 "stargazers_url": "https://api.github.com/repos/megalinter/megalinter/stargazers",
@@ -516,7 +488,7 @@
                 "svn_url": "https://github.com/megalinter/megalinter",
                 "tags_url": "https://api.github.com/repos/megalinter/megalinter/tags",
                 "teams_url": "https://api.github.com/repos/megalinter/megalinter/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ci",
                     "code-quality",
@@ -632,13 +604,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/unixorn"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/pulls{/number}",
                 "pushed_at": "2022-03-24T01:54:24Z",
@@ -654,7 +619,7 @@
                 "svn_url": "https://github.com/unixorn/zsh-quickstart-kit",
                 "tags_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/tags",
                 "teams_url": "https://api.github.com/repos/unixorn/zsh-quickstart-kit/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "dotfiles",
                     "hacktoberfest",
@@ -765,13 +730,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/onedr0p"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
                 "pushed_at": "2022-04-01T21:22:42Z",
@@ -787,7 +745,7 @@
                 "svn_url": "https://github.com/onedr0p/home-ops",
                 "tags_url": "https://api.github.com/repos/onedr0p/home-ops/tags",
                 "teams_url": "https://api.github.com/repos/onedr0p/home-ops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ansible",
                     "flux",
@@ -907,13 +865,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/clojure-deps-edn/pulls{/number}",
                 "pushed_at": "2022-03-25T11:58:41Z",
@@ -929,7 +880,7 @@
                 "svn_url": "https://github.com/practicalli/clojure-deps-edn",
                 "tags_url": "https://api.github.com/repos/practicalli/clojure-deps-edn/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/clojure-deps-edn/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "clojure",
                     "clojure-cli",
@@ -1029,13 +980,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/llaville"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/llaville/php-compatinfo/pulls{/number}",
                 "pushed_at": "2022-03-31T13:07:56Z",
@@ -1051,7 +995,7 @@
                 "svn_url": "https://github.com/llaville/php-compatinfo",
                 "tags_url": "https://api.github.com/repos/llaville/php-compatinfo/tags",
                 "teams_url": "https://api.github.com/repos/llaville/php-compatinfo/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "compatibility",
                     "php"
@@ -1150,13 +1094,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/KelvinTegelaar"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/pulls{/number}",
                 "pushed_at": "2022-04-01T09:43:09Z",
@@ -1172,7 +1109,7 @@
                 "svn_url": "https://github.com/KelvinTegelaar/CIPP",
                 "tags_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/tags",
                 "teams_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/KelvinTegelaar/CIPP/git/trees{/sha}",
                 "updated_at": "2022-03-30T20:41:43Z",
@@ -1268,13 +1205,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/bjw-s"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
                 "pushed_at": "2022-04-01T19:13:55Z",
@@ -1290,7 +1220,7 @@
                 "svn_url": "https://github.com/bjw-s/home-ops",
                 "tags_url": "https://api.github.com/repos/bjw-s/home-ops/tags",
                 "teams_url": "https://api.github.com/repos/bjw-s/home-ops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "flux",
                     "gitops",
@@ -1393,13 +1323,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/unixorn"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/pulls{/number}",
                 "pushed_at": "2022-04-01T21:31:11Z",
@@ -1415,7 +1338,7 @@
                 "svn_url": "https://github.com/unixorn/tumult.plugin.zsh",
                 "tags_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/tags",
                 "teams_url": "https://api.github.com/repos/unixorn/tumult.plugin.zsh/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "antigen",
                     "hacktoberfest",
@@ -1542,13 +1465,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/newrelic"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/pulls{/number}",
                 "pushed_at": "2022-03-31T20:46:20Z",
@@ -1564,7 +1480,7 @@
                 "svn_url": "https://github.com/newrelic/newrelic-python-agent",
                 "tags_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/tags",
                 "teams_url": "https://api.github.com/repos/newrelic/newrelic-python-agent/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "agent",
                     "newrelic",
@@ -1664,13 +1580,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/nvuillam"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/pulls{/number}",
                 "pushed_at": "2022-03-26T04:47:50Z",
@@ -1686,7 +1595,7 @@
                 "svn_url": "https://github.com/nvuillam/npm-groovy-lint",
                 "tags_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/tags",
                 "teams_url": "https://api.github.com/repos/nvuillam/npm-groovy-lint/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ci",
                     "code-quality-analyzer",
@@ -1804,13 +1713,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/spacemacs/pulls{/number}",
                 "pushed_at": "2022-03-26T18:50:34Z",
@@ -1826,7 +1728,7 @@
                 "svn_url": "https://github.com/practicalli/spacemacs",
                 "tags_url": "https://api.github.com/repos/practicalli/spacemacs/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/spacemacs/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cider",
                     "clojure",
@@ -1941,13 +1843,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/spacemacs/pulls{/number}",
                 "pushed_at": "2022-03-26T18:50:34Z",
@@ -1963,7 +1858,7 @@
                 "svn_url": "https://github.com/practicalli/spacemacs",
                 "tags_url": "https://api.github.com/repos/practicalli/spacemacs/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/spacemacs/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cider",
                     "clojure",
@@ -2084,13 +1979,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/oasisprotocol"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/pulls{/number}",
                 "pushed_at": "2022-04-01T14:40:15Z",
@@ -2106,7 +1994,7 @@
                 "svn_url": "https://github.com/oasisprotocol/oasis-wallet-web",
                 "tags_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/tags",
                 "teams_url": "https://api.github.com/repos/oasisprotocol/oasis-wallet-web/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "blockchain",
                     "crypto",
@@ -2214,13 +2102,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/rasa"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/rasa/scoops/pulls{/number}",
                 "pushed_at": "2022-03-30T13:08:07Z",
@@ -2236,7 +2117,7 @@
                 "svn_url": "https://github.com/rasa/scoops",
                 "tags_url": "https://api.github.com/repos/rasa/scoops/tags",
                 "teams_url": "https://api.github.com/repos/rasa/scoops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bucket",
                     "installer",
@@ -2359,13 +2240,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/philips-software"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/philips-software/embeddedinfralib/pulls{/number}",
                 "pushed_at": "2022-03-28T09:04:59Z",
@@ -2381,7 +2255,7 @@
                 "svn_url": "https://github.com/philips-software/embeddedinfralib",
                 "tags_url": "https://api.github.com/repos/philips-software/embeddedinfralib/tags",
                 "teams_url": "https://api.github.com/repos/philips-software/embeddedinfralib/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "c-plus-plus",
                     "cpp",
@@ -2488,13 +2362,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/joeygoksu"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/pulls{/number}",
                 "pushed_at": "2022-02-17T21:27:02Z",
@@ -2510,7 +2377,7 @@
                 "svn_url": "https://github.com/joeygoksu/prime-nestjs",
                 "tags_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/tags",
                 "teams_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "nestjs",
                     "nestjs-backend",
@@ -2615,13 +2482,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/llaville"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/llaville/umlwriter/pulls{/number}",
                 "pushed_at": "2022-03-25T08:40:48Z",
@@ -2637,7 +2497,7 @@
                 "svn_url": "https://github.com/llaville/umlwriter",
                 "tags_url": "https://api.github.com/repos/llaville/umlwriter/tags",
                 "teams_url": "https://api.github.com/repos/llaville/umlwriter/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "php",
                     "uml-class-diagram"
@@ -2736,13 +2596,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/unixorn"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/pulls{/number}",
                 "pushed_at": "2022-02-27T23:00:36Z",
@@ -2758,7 +2611,7 @@
                 "svn_url": "https://github.com/unixorn/lima-xbar-plugin",
                 "tags_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/tags",
                 "teams_url": "https://api.github.com/repos/unixorn/lima-xbar-plugin/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bitbar-plugins",
                     "hacktoberfest",
@@ -2863,13 +2716,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/nvuillam"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nvuillam/sfdx-essentials/pulls{/number}",
                 "pushed_at": "2022-03-24T04:07:53Z",
@@ -2885,7 +2731,7 @@
                 "svn_url": "https://github.com/nvuillam/sfdx-essentials",
                 "tags_url": "https://api.github.com/repos/nvuillam/sfdx-essentials/tags",
                 "teams_url": "https://api.github.com/repos/nvuillam/sfdx-essentials/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "essentials",
                     "plugin",
@@ -3000,13 +2846,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/clojure/pulls{/number}",
                 "pushed_at": "2022-03-26T14:28:19Z",
@@ -3022,7 +2861,7 @@
                 "svn_url": "https://github.com/practicalli/clojure",
                 "tags_url": "https://api.github.com/repos/practicalli/clojure/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/clojure/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "clojure",
                     "gitbook",
@@ -3124,13 +2963,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/AlbanAndrieu"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/pulls{/number}",
                 "pushed_at": "2022-01-05T16:17:23Z",
@@ -3146,7 +2978,7 @@
                 "svn_url": "https://github.com/AlbanAndrieu/ansible-windows",
                 "tags_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/tags",
                 "teams_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/AlbanAndrieu/ansible-windows/git/trees{/sha}",
                 "updated_at": "2022-01-31T19:41:27Z",
@@ -3242,13 +3074,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/quackduck"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/quackduck/secret/pulls{/number}",
                 "pushed_at": "2021-12-20T21:33:47Z",
@@ -3264,7 +3089,7 @@
                 "svn_url": "https://github.com/quackduck/secret",
                 "tags_url": "https://api.github.com/repos/quackduck/secret/tags",
                 "teams_url": "https://api.github.com/repos/quackduck/secret/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/quackduck/secret/git/trees{/sha}",
                 "updated_at": "2022-01-31T19:50:16Z",
@@ -3360,13 +3185,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/catthehacker"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/catthehacker/docker_images/pulls{/number}",
                 "pushed_at": "2022-04-01T10:47:02Z",
@@ -3382,7 +3200,7 @@
                 "svn_url": "https://github.com/catthehacker/docker_images",
                 "tags_url": "https://api.github.com/repos/catthehacker/docker_images/tags",
                 "teams_url": "https://api.github.com/repos/catthehacker/docker_images/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/catthehacker/docker_images/git/trees{/sha}",
                 "updated_at": "2022-04-01T10:55:58Z",
@@ -3498,13 +3316,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/MythicDrops"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/MythicDrops/MythicDrops/pulls{/number}",
                 "pushed_at": "2022-03-29T01:53:43Z",
@@ -3520,7 +3331,7 @@
                 "svn_url": "https://github.com/MythicDrops/MythicDrops",
                 "tags_url": "https://api.github.com/repos/MythicDrops/MythicDrops/tags",
                 "teams_url": "https://api.github.com/repos/MythicDrops/MythicDrops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bukkit",
                     "bukkit-plugin",
@@ -3643,13 +3454,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/hardisgroupcom"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/pulls{/number}",
                 "pushed_at": "2022-04-01T15:17:06Z",
@@ -3665,7 +3469,7 @@
                 "svn_url": "https://github.com/hardisgroupcom/sfdx-hardis",
                 "tags_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/tags",
                 "teams_url": "https://api.github.com/repos/hardisgroupcom/sfdx-hardis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cicd",
                     "devops",
@@ -3770,13 +3574,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/GrandMoff100"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/GrandMoff100/HomeAssistantAPI/pulls{/number}",
                 "pushed_at": "2022-03-22T12:01:44Z",
@@ -3792,7 +3589,7 @@
                 "svn_url": "https://github.com/GrandMoff100/HomeAssistantAPI",
                 "tags_url": "https://api.github.com/repos/GrandMoff100/HomeAssistantAPI/tags",
                 "teams_url": "https://api.github.com/repos/GrandMoff100/HomeAssistantAPI/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "api",
                     "hacktoberfest",
@@ -3897,13 +3694,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/jr0dd"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jr0dd/home-ops/pulls{/number}",
                 "pushed_at": "2022-04-01T22:16:12Z",
@@ -3919,7 +3709,7 @@
                 "svn_url": "https://github.com/jr0dd/home-ops",
                 "tags_url": "https://api.github.com/repos/jr0dd/home-ops/tags",
                 "teams_url": "https://api.github.com/repos/jr0dd/home-ops/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ansible",
                     "fluxcd",
@@ -4018,13 +3808,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/rwaltr"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/rwaltr/infra/pulls{/number}",
                 "pushed_at": "2022-03-31T21:14:51Z",
@@ -4040,7 +3823,7 @@
                 "svn_url": "https://github.com/rwaltr/infra",
                 "tags_url": "https://api.github.com/repos/rwaltr/infra/tags",
                 "teams_url": "https://api.github.com/repos/rwaltr/infra/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "argocd",
                     "cloudflare",
@@ -4165,13 +3948,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/hardisgroupcom"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/hardisgroupcom/vscode-sfdx-hardis/pulls{/number}",
                 "pushed_at": "2022-03-15T22:09:12Z",
@@ -4187,7 +3963,7 @@
                 "svn_url": "https://github.com/hardisgroupcom/vscode-sfdx-hardis",
                 "tags_url": "https://api.github.com/repos/hardisgroupcom/vscode-sfdx-hardis/tags",
                 "teams_url": "https://api.github.com/repos/hardisgroupcom/vscode-sfdx-hardis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cicd",
                     "extension",
@@ -4311,13 +4087,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/GSA"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/pulls{/number}",
                 "pushed_at": "2022-04-01T22:25:22Z",
@@ -4333,7 +4102,7 @@
                 "svn_url": "https://github.com/GSA/usagov-benefits-eligibility",
                 "tags_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/tags",
                 "teams_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/GSA/usagov-benefits-eligibility/git/trees{/sha}",
                 "updated_at": "2022-03-17T20:42:38Z",
@@ -4429,13 +4198,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/quackduck"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/quackduck/ncis/pulls{/number}",
                 "pushed_at": "2022-01-02T02:03:43Z",
@@ -4451,7 +4213,7 @@
                 "svn_url": "https://github.com/quackduck/ncis",
                 "tags_url": "https://api.github.com/repos/quackduck/ncis/tags",
                 "teams_url": "https://api.github.com/repos/quackduck/ncis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "brute-force",
                     "pentest-tool",
@@ -4567,13 +4329,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/clojurescript/pulls{/number}",
                 "pushed_at": "2022-04-01T01:13:24Z",
@@ -4589,7 +4344,7 @@
                 "svn_url": "https://github.com/practicalli/clojurescript",
                 "tags_url": "https://api.github.com/repos/practicalli/clojurescript/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/clojurescript/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/practicalli/clojurescript/git/trees{/sha}",
                 "updated_at": "2022-03-07T16:34:13Z",
@@ -4685,13 +4440,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/jokay"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jokay/docker-ccu-historian/pulls{/number}",
                 "pushed_at": "2022-03-30T14:35:39Z",
@@ -4707,7 +4455,7 @@
                 "svn_url": "https://github.com/jokay/docker-ccu-historian",
                 "tags_url": "https://api.github.com/repos/jokay/docker-ccu-historian/tags",
                 "teams_url": "https://api.github.com/repos/jokay/docker-ccu-historian/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "ccu",
                     "ccu-historian",
@@ -4813,13 +4561,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/llaville"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/llaville/php-compatinfo-db/pulls{/number}",
                 "pushed_at": "2022-03-29T08:12:29Z",
@@ -4835,7 +4576,7 @@
                 "svn_url": "https://github.com/llaville/php-compatinfo-db",
                 "tags_url": "https://api.github.com/repos/llaville/php-compatinfo-db/tags",
                 "teams_url": "https://api.github.com/repos/llaville/php-compatinfo-db/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "compatibility",
                     "database",
@@ -4929,13 +4670,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/0dragosh"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/0dragosh/homelab-k3s/pulls{/number}",
                 "pushed_at": "2022-04-01T18:42:18Z",
@@ -4951,7 +4685,7 @@
                 "svn_url": "https://github.com/0dragosh/homelab-k3s",
                 "tags_url": "https://api.github.com/repos/0dragosh/homelab-k3s/tags",
                 "teams_url": "https://api.github.com/repos/0dragosh/homelab-k3s/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cloudflare-access",
                     "fluxcd",
@@ -5080,13 +4814,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/wareismymind"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/wareismymind/peer/pulls{/number}",
                 "pushed_at": "2022-03-30T18:03:15Z",
@@ -5102,7 +4829,7 @@
                 "svn_url": "https://github.com/wareismymind/peer",
                 "tags_url": "https://api.github.com/repos/wareismymind/peer/tags",
                 "teams_url": "https://api.github.com/repos/wareismymind/peer/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cli-app",
                     "github",
@@ -5223,13 +4950,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/ScribeMD"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ScribeMD/rootless-docker/pulls{/number}",
                 "pushed_at": "2021-11-18T04:21:54Z",
@@ -5245,7 +4965,7 @@
                 "svn_url": "https://github.com/ScribeMD/rootless-docker",
                 "tags_url": "https://api.github.com/repos/ScribeMD/rootless-docker/tags",
                 "teams_url": "https://api.github.com/repos/ScribeMD/rootless-docker/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "composite-action",
                     "docker",
@@ -5373,13 +5093,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/cure-dao"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/cure-dao/docs/pulls{/number}",
                 "pushed_at": "2022-03-27T10:29:24Z",
@@ -5395,7 +5108,7 @@
                 "svn_url": "https://github.com/cure-dao/docs",
                 "tags_url": "https://api.github.com/repos/cure-dao/docs/tags",
                 "teams_url": "https://api.github.com/repos/cure-dao/docs/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "dao",
                     "health",
@@ -5510,13 +5223,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/practicalli"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/practicalli/clojure-web-services/pulls{/number}",
                 "pushed_at": "2022-03-28T14:18:42Z",
@@ -5532,7 +5238,7 @@
                 "svn_url": "https://github.com/practicalli/clojure-web-services",
                 "tags_url": "https://api.github.com/repos/practicalli/clojure-web-services/tags",
                 "teams_url": "https://api.github.com/repos/practicalli/clojure-web-services/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "aero",
                     "clojure",
@@ -5635,13 +5341,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/nvuillam"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nvuillam/njre/pulls{/number}",
                 "pushed_at": "2022-03-20T10:00:09Z",
@@ -5657,7 +5356,7 @@
                 "svn_url": "https://github.com/nvuillam/njre",
                 "tags_url": "https://api.github.com/repos/nvuillam/njre/tags",
                 "teams_url": "https://api.github.com/repos/nvuillam/njre/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "adoptopenjdk",
                     "java",
@@ -5774,13 +5473,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/GSA"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/GSA/site-scanning-engine/pulls{/number}",
                 "pushed_at": "2022-03-25T14:58:30Z",
@@ -5796,7 +5488,7 @@
                 "svn_url": "https://github.com/GSA/site-scanning-engine",
                 "tags_url": "https://api.github.com/repos/GSA/site-scanning-engine/tags",
                 "teams_url": "https://api.github.com/repos/GSA/site-scanning-engine/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/GSA/site-scanning-engine/git/trees{/sha}",
                 "updated_at": "2022-03-24T16:42:50Z",
@@ -5912,13 +5604,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/QuantumPL"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/QuantumPL/bib/pulls{/number}",
                 "pushed_at": "2022-03-29T16:33:09Z",
@@ -5934,7 +5619,7 @@
                 "svn_url": "https://github.com/QuantumPL/bib",
                 "tags_url": "https://api.github.com/repos/QuantumPL/bib/tags",
                 "teams_url": "https://api.github.com/repos/QuantumPL/bib/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "bibliography",
                     "bibtex",
@@ -6036,13 +5721,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/dochang"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/dochang/bumplus/pulls{/number}",
                 "pushed_at": "2022-02-04T04:19:10Z",
@@ -6058,7 +5736,7 @@
                 "svn_url": "https://github.com/dochang/bumplus",
                 "tags_url": "https://api.github.com/repos/dochang/bumplus/tags",
                 "teams_url": "https://api.github.com/repos/dochang/bumplus/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/dochang/bumplus/git/trees{/sha}",
                 "updated_at": "2022-02-01T23:19:56Z",
@@ -6168,13 +5846,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/ADFC-Hamburg"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ADFC-Hamburg/adfc-ansible/pulls{/number}",
                 "pushed_at": "2022-03-18T18:23:38Z",
@@ -6190,7 +5861,7 @@
                 "svn_url": "https://github.com/ADFC-Hamburg/adfc-ansible",
                 "tags_url": "https://api.github.com/repos/ADFC-Hamburg/adfc-ansible/tags",
                 "teams_url": "https://api.github.com/repos/ADFC-Hamburg/adfc-ansible/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/ADFC-Hamburg/adfc-ansible/git/trees{/sha}",
                 "updated_at": "2022-02-09T23:09:21Z",
@@ -6286,13 +5957,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/AlbanAndrieu"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/pulls{/number}",
                 "pushed_at": "2022-04-01T06:30:34Z",
@@ -6308,7 +5972,7 @@
                 "svn_url": "https://github.com/AlbanAndrieu/jenkins-pipeline-scripts",
                 "tags_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/tags",
                 "teams_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/AlbanAndrieu/jenkins-pipeline-scripts/git/trees{/sha}",
                 "updated_at": "2022-02-11T07:34:41Z",
@@ -6424,13 +6088,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/ScribeMD"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/ScribeMD/slack-templates/pulls{/number}",
                 "pushed_at": "2021-11-09T23:06:14Z",
@@ -6446,7 +6103,7 @@
                 "svn_url": "https://github.com/ScribeMD/slack-templates",
                 "tags_url": "https://api.github.com/repos/ScribeMD/slack-templates/tags",
                 "teams_url": "https://api.github.com/repos/ScribeMD/slack-templates/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "alerts",
                     "chat",
@@ -6557,13 +6214,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/jokay"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jokay/docker-prune/pulls{/number}",
                 "pushed_at": "2022-03-30T14:35:31Z",
@@ -6579,7 +6229,7 @@
                 "svn_url": "https://github.com/jokay/docker-prune",
                 "tags_url": "https://api.github.com/repos/jokay/docker-prune/tags",
                 "teams_url": "https://api.github.com/repos/jokay/docker-prune/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "docker",
                     "docker-container",
@@ -6681,13 +6331,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/tusharshahrs"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/tusharshahrs/pulumi-home/pulls{/number}",
                 "pushed_at": "2022-03-30T13:27:37Z",
@@ -6703,7 +6346,7 @@
                 "svn_url": "https://github.com/tusharshahrs/pulumi-home",
                 "tags_url": "https://api.github.com/repos/tusharshahrs/pulumi-home/tags",
                 "teams_url": "https://api.github.com/repos/tusharshahrs/pulumi-home/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "aws",
                     "azure",
@@ -6806,13 +6449,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/AErmie"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AErmie/DevSecOps/pulls{/number}",
                 "pushed_at": "2022-03-09T12:42:53Z",
@@ -6828,7 +6464,7 @@
                 "svn_url": "https://github.com/AErmie/DevSecOps",
                 "tags_url": "https://api.github.com/repos/AErmie/DevSecOps/tags",
                 "teams_url": "https://api.github.com/repos/AErmie/DevSecOps/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/AErmie/DevSecOps/git/trees{/sha}",
                 "updated_at": "2022-03-16T18:07:33Z",
@@ -6924,13 +6560,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/nvuillam"
                 },
-                "permissions": {
-                    "admin": true,
-                    "maintain": true,
-                    "pull": true,
-                    "push": true,
-                    "triage": true
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/nvuillam/markdown-table-formatter/pulls{/number}",
                 "pushed_at": "2022-01-31T00:00:16Z",
@@ -6946,7 +6575,7 @@
                 "svn_url": "https://github.com/nvuillam/markdown-table-formatter",
                 "tags_url": "https://api.github.com/repos/nvuillam/markdown-table-formatter/tags",
                 "teams_url": "https://api.github.com/repos/nvuillam/markdown-table-formatter/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [],
                 "trees_url": "https://api.github.com/repos/nvuillam/markdown-table-formatter/git/trees{/sha}",
                 "updated_at": "2022-02-23T16:29:24Z",
@@ -7042,13 +6671,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/iggy"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/iggy/terrarific/pulls{/number}",
                 "pushed_at": "2022-03-28T05:01:38Z",
@@ -7064,7 +6686,7 @@
                 "svn_url": "https://github.com/iggy/terrarific",
                 "tags_url": "https://api.github.com/repos/iggy/terrarific/tags",
                 "teams_url": "https://api.github.com/repos/iggy/terrarific/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "cli",
                     "golang",
@@ -7166,13 +6788,6 @@
                     "type": "User",
                     "url": "https://api.github.com/users/Neragin"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/Neragin/cx-bot/pulls{/number}",
                 "pushed_at": "2022-04-01T10:06:44Z",
@@ -7188,7 +6803,7 @@
                 "svn_url": "https://github.com/Neragin/cx-bot",
                 "tags_url": "https://api.github.com/repos/Neragin/cx-bot/tags",
                 "teams_url": "https://api.github.com/repos/Neragin/cx-bot/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "discord",
                     "discord-bot",
@@ -7303,13 +6918,6 @@
                     "type": "Organization",
                     "url": "https://api.github.com/users/cbg-ethz"
                 },
-                "permissions": {
-                    "admin": false,
-                    "maintain": false,
-                    "pull": true,
-                    "push": false,
-                    "triage": false
-                },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/cbg-ethz/SARS-CoV-2_Analysis/pulls{/number}",
                 "pushed_at": "2022-03-23T09:21:17Z",
@@ -7325,7 +6933,7 @@
                 "svn_url": "https://github.com/cbg-ethz/SARS-CoV-2_Analysis",
                 "tags_url": "https://api.github.com/repos/cbg-ethz/SARS-CoV-2_Analysis/tags",
                 "teams_url": "https://api.github.com/repos/cbg-ethz/SARS-CoV-2_Analysis/teams",
-                "temp_clone_token": "",
+                "temp_clone_token": null,
                 "topics": [
                     "sars-cov-2",
                     "snakemake"
