@@ -17,6 +17,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Allow to provide CI_ACTION_RUN_URL to build hlink for GitHub Comments reporter messages ([[#1341](https://github.com/megalinter/megalinter/issues/1341))
   - Display plugin URL in MegaLinter output logs ([[#1340](https://github.com/megalinter/megalinter/issues/1340))
   - Fix public glibc public key download
+  - Fix `no override and no default toolchain set` when lint rust with clippy via github-action ([#975](https://github.com/megalinter/megalinter/issues/975))
 
 - Doc
   - Add instructions to upload artifacts when using MegaLinter with Jenkins
