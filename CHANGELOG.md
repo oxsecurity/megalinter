@@ -69,6 +69,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.1021 to **2.0.1024** on 2022-04-01
   - [terrascan](https://www.accurics.com/products/terrascan/) from 1.13.2 to **1.14.0** on 2022-04-01
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.4 to **5.19.5** on 2022-04-02
+  - [prettier](https://prettier.io/) from 2.6.1 to **2.6.2** on 2022-04-04
+  - [phpstan](https://phpstan.org/) from 1.5.3 to **1.5.4** on 2022-04-04
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.9.34 to **0.10.0** on 2022-04-04
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.5 to **7.3.6** on 2022-04-04
+  - [checkov](https://www.checkov.io/) from 2.0.1024 to **2.0.1030** on 2022-04-04
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
