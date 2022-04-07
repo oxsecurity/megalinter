@@ -78,6 +78,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.10 to **1.6.11** on 2022-04-06
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.6 to **7.3.7** on 2022-04-06
   - [checkov](https://www.checkov.io/) from 2.0.1030 to **2.0.1037** on 2022-04-06
+  - [ktlint](https://ktlint.github.io) from 0.45.1 to **0.45.2** on 2022-04-07
+  - [pylint](https://www.pylint.org) from 2.13.4 to **2.13.5** on 2022-04-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.7 to **7.3.8** on 2022-04-07
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
