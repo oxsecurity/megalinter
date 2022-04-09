@@ -1,3 +1,4 @@
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns foo
   (:require
    [clojure.string :as str]))
@@ -20,6 +21,7 @@
 (Thread/sleep 1000 1)
 
 ;; Here we switch to another namespace and require the previous:
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns bar (:require [foo :as f]))
 
 (f/foo-fn 1)
@@ -28,6 +30,7 @@
 #{1 2}
 {:a 1 :b 2}
 
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns bar-test (:require [clojure.test :as t]))
 
 (t/deftest my-tests

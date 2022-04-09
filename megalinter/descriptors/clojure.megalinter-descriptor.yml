@@ -14,6 +14,7 @@ linters:
     linter_rules_url: https://github.com/borkdude/clj-kondo#features
     linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
     linter_rules_configuration_url: https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration
+    linter_rules_inline_disable_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression
     linter_megalinter_ref_url: https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github
     config_file_name: .clj-kondo/config.edn
     cli_config_arg_name: "--config"
