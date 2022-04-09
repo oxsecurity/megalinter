@@ -11,7 +11,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
+FROM cljkondo/clj-kondo:2022.04.08-alpine as clj-kondo
 FROM hadolint/hadolint:v2.9.3-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
