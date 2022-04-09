@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM hadolint/hadolint:v2.9.3-alpine as hadolint
+FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/terraform-linters/tflint:v0.34.1 as tflint
 FROM accurics/terrascan:latest as terrascan

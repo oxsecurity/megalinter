@@ -12,8 +12,8 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
-FROM hadolint/hadolint:v2.9.3-alpine as hadolint
+FROM cljkondo/clj-kondo:2022.04.08-alpine as clj-kondo
+FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 #FROM__END
 

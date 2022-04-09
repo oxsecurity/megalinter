@@ -81,6 +81,13 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [ktlint](https://ktlint.github.io) from 0.45.1 to **0.45.2** on 2022-04-07
   - [pylint](https://www.pylint.org) from 2.13.4 to **2.13.5** on 2022-04-07
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.7 to **7.3.8** on 2022-04-07
+  - [eslint](https://eslint.org) from 8.12.0 to **8.13.0** on 2022-04-09
+  - [rubocop](https://rubocop.org/) from 1.26.1 to **1.27.0** on 2022-04-09
+  - [clippy](https://github.com/rust-lang/rust-clippy) from 0.1.59 to **0.1.60** on 2022-04-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.5 to **5.19.6** on 2022-04-09
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.11.2 to **0.12.0** on 2022-04-09
+  - [checkov](https://www.checkov.io/) from 2.0.1037 to **2.0.1045** on 2022-04-09
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.7 to **1.1.8** on 2022-04-09
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
