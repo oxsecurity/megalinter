@@ -88,6 +88,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sqlfluff](https://www.sqlfluff.com/) from 0.11.2 to **0.12.0** on 2022-04-09
   - [checkov](https://www.checkov.io/) from 2.0.1037 to **2.0.1045** on 2022-04-09
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.7 to **1.1.8** on 2022-04-09
+  - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.02.09 to **2022.04.08** on 2022-04-10
+  - [hadolint](https://github.com/hadolint/hadolint) from 2.9.3 to **2.10.0** on 2022-04-10
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.6 to **5.19.7** on 2022-04-10
 <!-- linter-versions-end -->
 
 ## [v5.10.0] - 2022-03-20
