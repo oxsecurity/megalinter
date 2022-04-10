@@ -18,6 +18,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - Display plugin URL in MegaLinter output logs ([[#1340](https://github.com/megalinter/megalinter/issues/1340))
   - Fix public glibc public key download
   - Fix `no override and no default toolchain set` when lint rust with clippy via github-action ([#975](https://github.com/megalinter/megalinter/issues/975))
+  - Fix cspell FileNotFound error by creating subdirectories under `report` as required ([#1397](https://github.com/megalinter/megalinter/issues/1397]))
 
 - Doc
   - Add instructions to upload artifacts when using MegaLinter with Jenkins
