@@ -63,6 +63,7 @@ This linter is available in the following flavours
 
 ### How are identified applicable files
 
+- Activated only if one of these files is found: `.sqlfluff`
 - File extensions: `.sql`
 
 <!-- markdownlint-disable -->
