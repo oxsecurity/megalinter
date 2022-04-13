@@ -91,6 +91,9 @@ class Megalinter:
         self.return_code = 0
         self.has_git_extraheader = False
         self.has_updated_sources = 0
+        self.fail_if_updated_sources = (
+            config.get("FAIL_IF_UPDATED_SOURCES", "false") == "true"
+        )
         self.flavor_suggestions = None
         # Initialize plugins
         plugin_factory.initialize_plugins()
@@ -635,11 +638,13 @@ class Megalinter:
         if self.status == "success":
             logging.info(c.green("✅ Successfully linted all files without errors"))
             config.delete()
+            self.check_updated_sources_failure()
         elif self.status == "warning":
             logging.warning(
                 c.yellow("◬ Successfully linted all files, but with ignored errors")
             )
             config.delete()
+            self.check_updated_sources_failure()
         else:
             logging.error(c.red("❌ Error(s) have been found during linting"))
             logging.warning(
@@ -655,6 +660,11 @@ class Megalinter:
                     config.delete()
                     sys.exit(self.return_code)
             config.delete()
+
+    def check_updated_sources_failure(self):
+        if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
+            logging.error(c.red("❌ Sources has been updated by linter auto-fixes, and FAIL_IF_UPDATED_SOURCES has been set to true"))
+            sys.exit(1)
 
     def before_exit(self):
         # Clean git repository
