@@ -663,7 +663,11 @@ class Megalinter:
 
     def check_updated_sources_failure(self):
         if self.has_updated_sources > 0 and self.fail_if_updated_sources is True:
-            logging.error(c.red("❌ Sources has been updated by linter auto-fixes, and FAIL_IF_UPDATED_SOURCES has been set to true"))
+            logging.error(
+                c.red(
+                    "❌ Sources has been updated by linter auto-fixes, and FAIL_IF_UPDATED_SOURCES has been set to true"
+                )
+            )
             sys.exit(1)
 
     def before_exit(self):
