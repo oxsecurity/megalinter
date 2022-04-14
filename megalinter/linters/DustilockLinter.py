@@ -9,7 +9,7 @@ import logging
 
 from megalinter import Linter
 from megalinter.constants import DEFAULT_SARIF_SCHEMA_URI, DEFAULT_SARIF_VERSION, ML_DOC_URL
-
+ 
 
 class DustilockLinter(Linter):
 
