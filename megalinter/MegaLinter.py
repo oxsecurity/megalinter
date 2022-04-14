@@ -561,7 +561,7 @@ class Megalinter:
         logging.info(
             "Listing updated files in [" + self.github_workspace + "] using git diff."
         )
-        repo = git.Repo(os.path.realpath(self.github_workspace))
+        repo = utils.getGitRepo(os.path.realpath(self.github_workspace))
         # Add auth header if necessary
         if config.get("GIT_AUTHORIZATION_BEARER", "") != "":
             auth_bearer = "Authorization: Bearer " + config.get(
@@ -608,7 +608,7 @@ class Megalinter:
 
     def list_git_ignored_files(self):
         dirpath = os.path.realpath(self.github_workspace)
-        repo = git.Repo(dirpath)
+        repo = utils.getGitRepo(dirpath)
         ignored_files = repo.git.execute(
             [
                 "git",
@@ -761,7 +761,7 @@ class Megalinter:
     def manage_clean_git_repo(self):
         # Add auth header if necessary
         if self.has_git_extraheader is True:
-            repo = git.Repo(os.path.realpath(self.github_workspace))
+            repo = utils.getGitRepo(os.path.realpath(self.github_workspace))
             repo.config_writer().set_value("http", "extraheader", "").release()
 
     # Propose legacy versions users to upgrade

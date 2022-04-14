@@ -5,6 +5,7 @@ import logging
 import os
 import re
 from fnmatch import fnmatch
+import subprocess
 from typing import Any, Optional, Pattern, Sequence
 
 import git
@@ -218,22 +219,52 @@ def decode_utf8(stdout):
     return res
 
 
+SAFE_DIRS = []
+
+
+def getGitRepo(repo_home) -> git.Repo:
+    if repo_home == "..":
+        repo_home = os.path.abspath("..")
+    if repo_home not in SAFE_DIRS:
+        safe_dir_command = [
+            "git",
+            "config",
+            "--global",
+            "--add",
+            "safe.directory",
+            repo_home,
+        ]
+        subprocess.run(
+            safe_dir_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            cwd=os.getcwd(),
+            shell=True
+        )
+        SAFE_DIRS.append(repo_home)
+    return git.Repo(repo_home)
+
+
 def list_updated_files(repo_home):
     try:
-        repo = git.Repo(repo_home)
+        repo = getGitRepo(repo_home)
     except git.InvalidGitRepositoryError:
         try:
-            repo = git.Repo(REPO_HOME_DEFAULT)
+            repo = getGitRepo(REPO_HOME_DEFAULT)
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
             return []
-    changed_files = [item.a_path for item in repo.index.diff(None)]
+    try:
+        changed_files = [item.a_path for item in repo.index.diff(None)]
+    except Exception as error:
+        logging.error("Git error. Repo home was " + repo_home)
+        raise error
     return changed_files
 
 
 def is_git_repo(path):
     try:
-        _ = git.Repo(path).git_dir
+        _ = getGitRepo(path).git_dir
         return True
     except git.InvalidGitRepositoryError:
         return False

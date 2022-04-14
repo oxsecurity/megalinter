@@ -14,7 +14,6 @@ from shutil import copyfile
 from typing import Any
 from urllib import parse as parse_urllib
 
-import git
 import jsonschema
 import markdown
 import megalinter
@@ -34,6 +33,7 @@ from megalinter.constants import (
     ML_REPO_URL,
 )
 from requests.adapters import HTTPAdapter
+from megalinter.utils import getGitRepo
 from requests.packages.urllib3.util.retry import Retry
 from webpreview import web_preview
 
@@ -2442,7 +2442,7 @@ def generate_version():
         file.write(changelog_content)
 
     # git add , commit & tag
-    repo = git.Repo(os.getcwd())
+    repo = getGitRepo(os.getcwd())
     repo.git.add(update=True)
     repo.git.commit("-m", "Release MegaLinter " + RELEASE_TAG)
     repo.create_tag(RELEASE_TAG)

@@ -12,7 +12,6 @@ import uuid
 from datetime import datetime
 from distutils.dir_util import copy_tree
 
-from git import Repo
 from megalinter import Megalinter, config, utils
 from megalinter.constants import (
     DEFAULT_REPORT_FOLDER_NAME,
@@ -572,8 +571,7 @@ def assert_is_skipped(skipped_item, output, test_self):
 
 
 def assert_file_has_been_updated(file_name, bool_val, test_self):
-    repo = Repo(REPO_HOME)
-    changed_files = [item.a_path for item in repo.index.diff(None)]
+    changed_files = utils.list_updated_files(REPO_HOME)
     logging.info("Updated files (git):\n" + "\n".join(changed_files))
     updated = False
     for changed_file in changed_files:
