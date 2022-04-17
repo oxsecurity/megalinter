@@ -219,12 +219,17 @@ def decode_utf8(stdout):
     return res
 
 
-SAFE_DIRS = []
-
-
 def getGitRepo(repo_home) -> git.Repo:
     if repo_home == "..":
         repo_home = os.path.abspath("..")
+    set_git_safe_dir(repo_home)
+    return git.Repo(repo_home)
+
+
+SAFE_DIRS = []
+
+
+def set_git_safe_dir(repo_home):
     if repo_home not in SAFE_DIRS:
         safe_dir_command = [
             "git",
@@ -234,15 +239,18 @@ def getGitRepo(repo_home) -> git.Repo:
             "safe.directory",
             repo_home,
         ]
-        subprocess.run(
+        process = subprocess.run(
             safe_dir_command,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             cwd=os.getcwd(),
-            shell=True
+            shell=True,
+        )
+        logging.info(
+            f"Set {repo_home} as git safe directory. returncode:{process.returncode}"
+            f" stdout:{process.stdout}, stderr:{process.stderr}"
         )
         SAFE_DIRS.append(repo_home)
-    return git.Repo(repo_home)
 
 
 def list_updated_files(repo_home):
