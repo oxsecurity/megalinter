@@ -222,8 +222,8 @@ def decode_utf8(stdout):
 def getGitRepo(repo_home) -> git.Repo:
     if repo_home == "..":
         repo_home = os.path.abspath("..")
-    set_git_safe_dir(repo_home)
     set_git_safe_dir(DEFAULT_DOCKER_WORKSPACE_DIR)
+    set_git_safe_dir(repo_home)
     return git.Repo(repo_home)
 
 
@@ -248,7 +248,7 @@ def set_git_safe_dir(repo_home):
             shell=True,
         )
         logging.info(
-            f"Set {repo_home} as git safe directory. returncode:{process.returncode}"
+            f"Setting {repo_home} as git safe directory. returncode:{process.returncode}\n"
             f" stdout:{process.stdout}, stderr:{process.stderr}"
         )
         SAFE_DIRS.append(repo_home)
