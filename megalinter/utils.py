@@ -240,7 +240,7 @@ def set_git_safe_dir(repo_home):
             "--global",
             "--add",
             "safe.directory",
-            repo_home,
+            os.path.abspath(repo_home),
         ]
         process = subprocess.run(
             safe_dir_command,
