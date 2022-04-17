@@ -3,6 +3,8 @@
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
+git config --global --add safe.directory /github/workspace
+
 # Manage debug mode
 LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
 if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
