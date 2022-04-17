@@ -224,7 +224,9 @@ def getGitRepo(repo_home) -> git.Repo:
         repo_home = os.path.abspath("..")
     set_git_safe_dir(DEFAULT_DOCKER_WORKSPACE_DIR)
     set_git_safe_dir(repo_home)
-    return git.Repo(repo_home)
+    repo = git.Repo(repo_home, search_parent_directories=True)
+    set_git_safe_dir(repo.working_tree_dir)
+    return repo
 
 
 SAFE_DIRS = []
@@ -266,8 +268,9 @@ def list_updated_files(repo_home):
     try:
         changed_files = [item.a_path for item in repo.index.diff(None)]
     except Exception as error:
+        error_msg = f"Git error. Repo home was {repo_home}\n{str(error)}"
         logging.error("Git error. Repo home was " + repo_home)
-        raise error
+        raise Exception(error_msg)
     return changed_files
 
 
