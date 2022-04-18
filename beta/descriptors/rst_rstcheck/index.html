@@ -5524,7 +5524,7 @@
 <h1 id="rstcheck">rstcheck</h1>
 <h2 id="rstcheck-documentation">rstcheck documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>3.3.1</strong></li>
+<li>Version in MegaLinter: <strong>5.0.0</strong></li>
 <li>Visit <a href="https://github.com/myint/rstcheck#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/myint/rstcheck#configuration-file" target="_blank">How to configure rstcheck rules</a></li>
 <li>See <a href="https://github.com/myint/rstcheck#ignore-specific-errors" target="_blank">How to disable rstcheck rules in files</a></li>
@@ -5672,8 +5672,9 @@
 <pre><code class="language-shell">rstcheck -c .rstcheck.cfg myfile.rst
 </code></pre>
 <h3 id="help-content">Help content</h3>
-<pre><code class="language-shell">usage: rstcheck [-h] [-r] [--report level] [--ignore-language language]
-                [--ignore-messages messages] [--ignore-directives directives]
+<pre><code class="language-shell">usage: rstcheck [-h] [--config CONFIG] [-r] [--report level]
+                [--ignore-language language] [--ignore-messages messages]
+                [--ignore-directives directives]
                 [--ignore-substitutions substitutions] [--ignore-roles roles]
                 [--debug] [--version]
                 files [files ...]
@@ -5685,6 +5686,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  --config CONFIG       location of config file
   -r, --recursive       run recursively over directories
   --report level        report system messages at or higher than level; info,
                         warning, error, severe, none (default: info)

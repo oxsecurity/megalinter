@@ -5515,6 +5515,11 @@ You can see an example config file in this repo: <a href="https://github.com/meg
 <td>If set to <code>true</code>, MegaLinter fails if a linter is missing in the selected flavor</td>
 </tr>
 <tr>
+<td><strong>FAIL_IF_UPDATED_SOURCES</strong></td>
+<td><code>false</code></td>
+<td>If set to <code>true</code>, MegaLinter fails if a linter or formatter has auto-fixed sources, even if there are no errors</td>
+</tr>
+<tr>
 <td><a href="#filter-linted-files"><strong>FILTER_REGEX_EXCLUDE</strong></a></td>
 <td><code>none</code></td>
 <td>Regular expression defining which files will be excluded from linting <a href="#filter-linted-files">(more info)</a> .ex: <code>.*src/test.*</code>)</td>
