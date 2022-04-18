@@ -31,6 +31,9 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: Git rights management
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       # MegaLinter
       - name: MegaLinter
         id: ml
