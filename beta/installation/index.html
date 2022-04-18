@@ -5604,7 +5604,7 @@ jobs:
       - name: Create Pull Request with applied fixes
         id: cpr
         if: steps.ml.outputs.has_updated_sources == 1 &amp;&amp; (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) &amp;&amp; env.APPLY_FIXES_MODE == 'pull_request' &amp;&amp; (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) &amp;&amp; !contains(github.event.head_commit.message, 'skip fix')
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: &quot;[MegaLinter] Apply linters automatic fixes&quot;
