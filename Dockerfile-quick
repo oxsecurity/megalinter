@@ -10,6 +10,13 @@
 ARG MEGALINTER_BASE_IMAGE=megalinter/megalinter:latest
 FROM $MEGALINTER_BASE_IMAGE
 
+######################
+# Set the entrypoint #
+######################
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+
 ################################
 # Installs python dependencies #
 ################################
