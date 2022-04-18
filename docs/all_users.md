@@ -37,8 +37,8 @@
 [![quackduck/ncis - GitHub](https://gh-card.dev/repos/quackduck/ncis.svg?fullname=)](https://github.com/quackduck/ncis){target=_blank}
 [![llaville/php-compatinfo-db - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo-db.svg?fullname=)](https://github.com/llaville/php-compatinfo-db){target=_blank}
 [![0dragosh/homelab-k3s - GitHub](https://gh-card.dev/repos/0dragosh/homelab-k3s.svg?fullname=)](https://github.com/0dragosh/homelab-k3s){target=_blank}
-[![jokay/docker-ccu-historian - GitHub](https://gh-card.dev/repos/jokay/docker-ccu-historian.svg?fullname=)](https://github.com/jokay/docker-ccu-historian){target=_blank}
 [![wareismymind/peer - GitHub](https://gh-card.dev/repos/wareismymind/peer.svg?fullname=)](https://github.com/wareismymind/peer){target=_blank}
+[![jokay/docker-ccu-historian - GitHub](https://gh-card.dev/repos/jokay/docker-ccu-historian.svg?fullname=)](https://github.com/jokay/docker-ccu-historian){target=_blank}
 [![GSA/site-scanning-engine - GitHub](https://gh-card.dev/repos/GSA/site-scanning-engine.svg?fullname=)](https://github.com/GSA/site-scanning-engine){target=_blank}
 [![ScribeMD/rootless-docker - GitHub](https://gh-card.dev/repos/ScribeMD/rootless-docker.svg?fullname=)](https://github.com/ScribeMD/rootless-docker){target=_blank}
 [![cure-dao/docs - GitHub](https://gh-card.dev/repos/cure-dao/docs.svg?fullname=)](https://github.com/cure-dao/docs){target=_blank}
