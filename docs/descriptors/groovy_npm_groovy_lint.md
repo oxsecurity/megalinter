@@ -4,7 +4,7 @@
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **9.4.1**
+- Version in MegaLinter: **9.5.0**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file is not found, [.groovylintrc.json](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -129,7 +129,7 @@ Note: command-line arguments have priority on config file properties - default: 
   --killserver                 Terminate the CodeNarcServer if running
   --nolintafter                Do not lint again after format and fix options (useful for client calling Npm Groovy Lint)
   --returnrules                Return rule descriptions and url if this argument is set
-  --insight                    npm-groovy-lint collects anonymous usage statistics using package https://www.npmjs.com/package/insight. If you do not want to share them, use --no-insight option
+  --insight                    npm-groovy-lint collects anonymous usage statistics using package https://www.npmjs.com/package/insight. If you want to enable them, use --insight option
   -h, --help                   Show help (npm-groovy-lint -help OPTIONNAME to see option detail)
   -v, --version                Show version
 ```

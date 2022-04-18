@@ -16,6 +16,15 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [coffeelint](http://www.coffeelint.org) from 5.2.5 to **5.2.6** on 2022-04-11
   - [htmlhint](https://htmlhint.com/) from 1.1.3 to **1.1.4** on 2022-04-11
   - [checkov](https://www.checkov.io/) from 2.0.1047 to **2.0.1050** on 2022-04-11
+  - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.11 to **1.6.12** on 2022-04-18
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.4 to **0.59.0** on 2022-04-18
+  - [stylelint](https://stylelint.io) from 14.6.1 to **14.7.1** on 2022-04-18
+  - [git_diff](https://git-scm.com) from 2.30.2 to **2.30.3** on 2022-04-18
+  - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.4.1 to **9.5.0** on 2022-04-18
+  - [phpstan](https://phpstan.org/) from 1.5.4 to **1.5.6** on 2022-04-18
+  - [rstcheck](https://github.com/myint/rstcheck) from 3.3.1 to **5.0.0** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1050 to **2.0.1067** on 2022-04-18
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.6 to **0.36.7** on 2022-04-18
 <!-- linter-versions-end -->
 
 ## [v5.11.0] - 2022-04-11
