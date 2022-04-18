@@ -3,11 +3,18 @@
 PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
-if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
-  # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
-  echo "Setting git safe.directory to /tmp/lint ..."
-  git config --global --add safe.directory /tmp/lint
+# Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
+if [ -z ${GITHUB_WORKSPACE+x} ]; then
+  echo "Setting git safe.directory default: /github/workspace ..."
+  git config --global --add safe.directory /github/workspace
+else
+  echo "Setting git safe.directory GITHUB_WORKSPACE: $GITHUB_WORKSPACE ..."
+  git config --global --add safe.directory "$GITHUB_WORKSPACE"
+fi
+echo "Setting git safe.directory to /tmp/lint ..."
+git config --global --add safe.directory /tmp/lint
 
+if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "UPGRADING LINTER VERSION"
   # Run only get_linter_version test methods
   pytest -v --durations=0 -k _get_linter_version megalinter/
@@ -22,10 +29,6 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
 fi
 
 if [ "${TEST_CASE_RUN}" == "true" ]; then
-  # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
-  echo "Setting git safe.directory to /tmp/lint ..."
-  git config --global --add safe.directory /tmp/lint
-
   # Run test cases with pytest
   echo "RUNNING TEST CASES"
   if [ -z "${TEST_KEYWORDS}" ]; then
@@ -47,15 +50,6 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
 
 else
   # Normal run
-  # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
-  if [ -z ${GITHUB_WORKSPACE+x} ]; then
-    echo "Setting git safe.directory default: /github/workspace ..."
-    git config --global --add safe.directory /github/workspace
-  else
-    echo "Setting git safe.directory GITHUB_WORKSPACE: $GITHUB_WORKSPACE ..."
-    git config --global --add safe.directory "$GITHUB_WORKSPACE"
-  fi
-
   LOG_LEVEL="${LOG_LEVEL:-INFO}" # Default log level (VERBOSE, DEBUG, TRACE)
   if [[ ${LOG_LEVEL} == "DEBUG" ]]; then
     printenv

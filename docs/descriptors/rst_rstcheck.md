@@ -4,7 +4,7 @@
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **3.3.1**
+- Version in MegaLinter: **5.0.0**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -74,8 +74,9 @@ rstcheck -c .rstcheck.cfg myfile.rst
 ### Help content
 
 ```shell
-usage: rstcheck [-h] [-r] [--report level] [--ignore-language language]
-                [--ignore-messages messages] [--ignore-directives directives]
+usage: rstcheck [-h] [--config CONFIG] [-r] [--report level]
+                [--ignore-language language] [--ignore-messages messages]
+                [--ignore-directives directives]
                 [--ignore-substitutions substitutions] [--ignore-roles roles]
                 [--debug] [--version]
                 files [files ...]
@@ -87,6 +88,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  --config CONFIG       location of config file
   -r, --recursive       run recursively over directories
   --report level        report system messages at or higher than level; info,
                         warning, error, severe, none (default: info)
