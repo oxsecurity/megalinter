@@ -23,6 +23,7 @@ on:
       - "megalinter/**"
       - "flavors/**"
       - "**/linter-versions.json"
+      - "**/.sh"
 
 ###############
 # Set the Job #

@@ -24,6 +24,7 @@ on:
       - "mega-linter-runner/**"
       - "flavors/**"
       - "**/linter-versions.json"
+      - "**/.sh"
 
 ###############
 # Set the Job #

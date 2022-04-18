@@ -28,6 +28,7 @@ on:
       - "**/linter-versions.json"
       - "TEMPLATES/**"
       - "**/*.py"
+      - "**/.sh"
 
 ###############
 # Set the Job #
