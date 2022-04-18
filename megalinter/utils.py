@@ -221,12 +221,14 @@ def decode_utf8(stdout):
     return res
 
 
-def list_updated_files(repo_home: str, megalinter = None):
+def list_updated_files(repo_home: str):
     # Get repo
     try:
+        handle_git_safe_dir_error(repo_home)
         repo = git.Repo(repo_home)
     except git.InvalidGitRepositoryError:
         try:
+            handle_git_safe_dir_error(REPO_HOME_DEFAULT)
             repo = git.Repo(REPO_HOME_DEFAULT)
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
@@ -236,29 +238,20 @@ def list_updated_files(repo_home: str, megalinter = None):
     except Exception as e:
         raise e
     # List files
-    try:
-        changed_files = [item.a_path for item in repo.index.diff(None)]
-    except git.exc.GitCommandError as e:
-        # handle safe.directory error
-        if "exit code(129)" in str(e) and megalinter is not None:
-            return handle_git_safe_dir_error(e, repo_home, megalinter)
-        else:
-            raise e
+    changed_files = [item.a_path for item in repo.index.diff(None)]
     return changed_files
 
 
-GIT_SAFE_DIR_ERR_HANDLED = False
-
 # Try to handle git safe directory error
-def handle_git_safe_dir_error(e: Exception, repo_home: str, megalinter):
-    logging.warning("Try to auto-handle git safe.directory error...")
+def handle_git_safe_dir_error(workspace):
+    logging.info("Try to auto-handle git safe.directory error...")
     # Run a simple git command to retrieve error
     process = subprocess.run(
         "git rev-parse --abbrev-ref HEAD",
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         shell=True,
-        cwd=os.path.realpath(megalinter.workspace),
+        cwd=os.path.realpath(workspace),
         executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
     )
     return_stdout = decode_utf8(process.stdout)
@@ -276,14 +269,7 @@ def handle_git_safe_dir_error(e: Exception, repo_home: str, megalinter):
         )
         return_code = process.returncode
         stdout = decode_utf8(process.stdout)
-        logging.debug(f"Setting git safe.directory result ({str(return_code)}): {stdout}")
-    # If it is the first time, try again to list updated files
-    global GIT_SAFE_DIR_ERR_HANDLED
-    if GIT_SAFE_DIR_ERR_HANDLED is False:
-        GIT_SAFE_DIR_ERR_HANDLED = True
-        return list_updated_files(repo_home, megalinter)
-    else:
-        raise e
+        logging.info(f"Setting git safe.directory result ({str(return_code)}): {stdout}")
 
 
 def is_git_repo(path):

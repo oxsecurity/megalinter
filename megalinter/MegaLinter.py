@@ -48,6 +48,7 @@ class Megalinter:
         self.load_cli_vars()
         self.workspace = self.get_workspace()
         config.init_config(self.workspace)  # Initialize runtime config
+        utils.handle_git_safe_dir_error(self.workspace)
         self.github_workspace = config.get("GITHUB_WORKSPACE", self.workspace)
         self.megalinter_flavor = config.get("MEGALINTER_FLAVOR", "all")
         self.initialize_output()

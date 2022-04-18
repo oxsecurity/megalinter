@@ -600,7 +600,7 @@ class Linter:
         self, linted_files, return_code, file_status, stdout, file_errors_number
     ):
         if self.try_fix is True:
-            updated_files = utils.list_updated_files(self.github_workspace, self.master)
+            updated_files = utils.list_updated_files(self.github_workspace)
         else:
             updated_files = []
         for file in linted_files:
