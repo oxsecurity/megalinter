@@ -4,8 +4,7 @@ PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONPATH
 
 # Manage newest git versions (related to CVE https://github.blog/2022-04-12-git-security-vulnerability-announced/)
-git config --global --add safe.directory /tmp/lint
-git config --global --add safe.directory "$GITHUB_WORKSPACE"
+git config --global --add safe.directory '*'
 
 if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   echo "UPGRADING LINTER VERSION"
