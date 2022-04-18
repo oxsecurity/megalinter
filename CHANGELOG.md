@@ -25,6 +25,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [rstcheck](https://github.com/myint/rstcheck) from 3.3.1 to **5.0.0** on 2022-04-18
   - [checkov](https://www.checkov.io/) from 2.0.1050 to **2.0.1067** on 2022-04-18
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.6 to **0.36.7** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1067 to **2.0.1068** on 2022-04-18
 <!-- linter-versions-end -->
 
 ## [v5.11.0] - 2022-04-11
