@@ -571,9 +571,8 @@ def assert_is_skipped(skipped_item, output, test_self):
     )
 
 
-def assert_file_has_been_updated(file_name, bool_val, test_self):
-    repo = Repo(REPO_HOME)
-    changed_files = [item.a_path for item in repo.index.diff(None)]
+def assert_file_has_been_updated(file_name, bool_val, test_self, mega_linter):
+    changed_files = utils.list_updated_files(REPO_HOME, mega_linter)
     logging.info("Updated files (git):\n" + "\n".join(changed_files))
     updated = False
     for changed_file in changed_files:

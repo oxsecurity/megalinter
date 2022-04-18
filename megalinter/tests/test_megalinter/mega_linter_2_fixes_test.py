@@ -33,8 +33,12 @@ class mega_linter_2_fixes_test(unittest.TestCase):
         )
         self.assertIn("### Processed [JAVASCRIPT] files", output)
         time.sleep(5)
-        utilstest.assert_file_has_been_updated("javascript_for_fixes_1.js", True, self)
-        utilstest.assert_file_has_been_updated("env_for_fixes_1.env", False, self)
+        utilstest.assert_file_has_been_updated(
+            "javascript_for_fixes_1.js", True, self, mega_linter
+        )
+        utilstest.assert_file_has_been_updated(
+            "env_for_fixes_1.env", False, self, mega_linter
+        )
 
     def test_2_apply_fixes_on_all_linters(self):
         mega_linter, output = utilstest.call_mega_linter(
@@ -73,7 +77,9 @@ class mega_linter_2_fixes_test(unittest.TestCase):
         # updated_sources_dir = f"{mega_linter.report_folder}{os.path.sep}{updated_dir}"
         for fixable_file in fixable_files:
             # Check linters applied updates
-            utilstest.assert_file_has_been_updated(fixable_file, True, self)
+            utilstest.assert_file_has_been_updated(
+                fixable_file, True, self, mega_linter
+            )
             # Check UpdatedSourcesReporter result
             # file_name = (
             #     updated_sources_dir

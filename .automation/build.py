@@ -2374,7 +2374,7 @@ def get_github_repo(linter):
 
 def manage_output_variables():
     if os.environ.get("UPGRADE_LINTERS_VERSION", "") == "true":
-        updated_files = megalinter.utils.list_updated_files("..")
+        updated_files = megalinter.utils.list_updated_files("..", None)
         updated_versions = 0
         for updated_file in updated_files:
             updated_file_clean = megalinter.utils.normalize_log_string(updated_file)

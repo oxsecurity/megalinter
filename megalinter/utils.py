@@ -5,6 +5,9 @@ import logging
 import os
 import re
 from fnmatch import fnmatch
+import shutil
+import subprocess
+import sys
 from typing import Any, Optional, Pattern, Sequence
 
 import git
@@ -218,7 +221,8 @@ def decode_utf8(stdout):
     return res
 
 
-def list_updated_files(repo_home):
+def list_updated_files(repo_home: str, megalinter = None):
+    # Get repo
     try:
         repo = git.Repo(repo_home)
     except git.InvalidGitRepositoryError:
@@ -227,8 +231,59 @@ def list_updated_files(repo_home):
         except git.InvalidGitRepositoryError:
             logging.warning("Unable to find git repository to list updated files")
             return []
-    changed_files = [item.a_path for item in repo.index.diff(None)]
+        except Exception as e:
+            raise e
+    except Exception as e:
+        raise e
+    # List files
+    try:
+        changed_files = [item.a_path for item in repo.index.diff(None)]
+    except git.exc.GitCommandError as e:
+        # handle safe.directory error
+        if "exit code(129)" in str(e) and megalinter is not None:
+            return handle_git_safe_dir_error(e, repo_home, megalinter)
+        else:
+            raise e
     return changed_files
+
+
+GIT_SAFE_DIR_ERR_HANDLED = False
+
+# Try to handle git safe directory error
+def handle_git_safe_dir_error(e: Exception, repo_home: str, megalinter):
+    logging.warning("Try to auto-handle git safe.directory error...")
+    # Run a simple git command to retrieve error
+    process = subprocess.run(
+        "git rev-parse --abbrev-ref HEAD",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        shell=True,
+        cwd=os.path.realpath(megalinter.workspace),
+        executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
+    )
+    return_stdout = decode_utf8(process.stdout)
+    m = re.match(r"git config --global --add safe\.directory (.*)'\)",return_stdout)
+    if m:
+        # If workaround instruction from git log, use it
+        safe_dir = m.group(1)
+        logging.info(f"Setting git safe.directory as {safe_dir}")
+        process = subprocess.run(
+            f"git config --global --add safe.directory {safe_dir}",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            shell=True,
+            executable=shutil.which("bash") if sys.platform == "win32" else "/bin/bash",
+        )
+        return_code = process.returncode
+        stdout = decode_utf8(process.stdout)
+        logging.debug(f"Setting git safe.directory result ({str(return_code)}): {stdout}")
+    # If it is the first time, try again to list updated files
+    global GIT_SAFE_DIR_ERR_HANDLED
+    if GIT_SAFE_DIR_ERR_HANDLED is False:
+        GIT_SAFE_DIR_ERR_HANDLED = True
+        return list_updated_files(repo_home, megalinter)
+    else:
+        raise e
 
 
 def is_git_repo(path):

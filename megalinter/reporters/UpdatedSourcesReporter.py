@@ -26,7 +26,9 @@ class UpdatedSourcesReporter(Reporter):
     def produce_report(self):
         logging.debug("Start updated Sources Reporter")
         # Copy updated files in report folder
-        updated_files = utils.list_updated_files(self.master.github_workspace)
+        updated_files = utils.list_updated_files(
+            self.master.github_workspace, self.master
+        )
         logging.debug("Updated files :\n" + "\n -".join(updated_files))
         updated_dir = config.get("UPDATED_SOURCES_REPORTER_DIR", "updated_sources")
         updated_sources_dir = f"{self.report_folder}{os.path.sep}{updated_dir}"
