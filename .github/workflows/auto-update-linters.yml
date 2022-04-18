@@ -6,6 +6,7 @@ on:
     branches:
       - "main"
       - "AutoUpdate"
+      - "bugs/git"
   # Automatically run every day at midnight
   schedule:
     - cron: "0 0 * * *"
