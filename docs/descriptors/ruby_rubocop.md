@@ -9,7 +9,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.27.0**
+- Version in MegaLinter: **1.28.1**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -182,6 +182,10 @@ Output Options:
         --display-only-fail-level-offenses
                                      Only output offense messages at
                                      the specified --fail-level or above
+        --display-only-correctable   Only output correctable offense messages.
+        --display-only-safe-correctable
+                                     Only output safe-correctable offense messages
+                                     when combined with --display-only-correctable.
 
 Auto-correction:
     -a, --auto-correct               Auto-correct offenses (only when it's safe).

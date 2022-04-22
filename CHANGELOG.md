@@ -28,6 +28,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.1067 to **2.0.1068** on 2022-04-18
   - [kics](https://www.kics.io) from 1.5.5 to **1.5.6** on 2022-04-18
   - [tflint](https://github.com/terraform-linters/tflint) from 0.34.1 to **0.35.0** on 2022-04-18
+  - [coffeelint](http://www.coffeelint.org) from 5.2.6 to **5.2.7** on 2022-04-22
+  - [phpstan](https://phpstan.org/) from 1.5.6 to **1.5.7** on 2022-04-22
+  - [pylint](https://www.pylint.org) from 2.13.5 to **2.13.7** on 2022-04-22
+  - [rubocop](https://rubocop.org/) from 1.27.0 to **1.28.1** on 2022-04-22
+  - [checkov](https://www.checkov.io/) from 2.0.1068 to **2.0.1076** on 2022-04-22
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.8 to **1.1.9** on 2022-04-22
 <!-- linter-versions-end -->
 
 ## [v5.11.0] - 2022-04-11
