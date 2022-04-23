@@ -36,6 +36,7 @@ skip_list:
   - "503" # Allow step to run like handler
   - "command-instead-of-module"
   - "yaml"
+  - "fqcn-builtins"
 
 ##################
 # Tags to follow #

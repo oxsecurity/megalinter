@@ -32,6 +32,28 @@ class GithubCommentReporter(Reporter):
         ):  # Legacy - true by default
             self.is_active = True
 
+    @property
+    def comment_marker(self):
+        """Generate the comment marker
+
+        This marker is used to find the same comment again so it can be updated.
+
+        The marker includes the workflow name and jobid if available (via the
+        GITHUB_WORKFLOW and GITHUB_JOB environment variables) to avoid clashes
+        between multiple Mega-Linter jobs operating on the same PR:
+
+          <!-- megalinter: github-comment-reporter workflow='...' jobid='...' -->
+
+        """
+        workflow = os.getenv("GITHUB_WORKFLOW")
+        jobid = os.getenv("GITHUB_JOB")
+        workflow = workflow and f"workflow={workflow!r}"
+        jobid = jobid and f"jobid={jobid!r}"
+        identifier = " ".join(
+            ["github-comment-reporter", *filter(None, (workflow, jobid))]
+        )
+        return f"<!-- megalinter: {identifier} -->"
+
     def produce_report(self):
         # Post comment on GitHub pull request
         if config.get("GITHUB_TOKEN", "") != "":
@@ -41,13 +63,20 @@ class GithubCommentReporter(Reporter):
             run_id = config.get("GITHUB_RUN_ID")
             sha = config.get("GITHUB_SHA")
 
-            if run_id is not None:
+            if config.get("CI_ACTION_RUN_URL", "") != "":
+                action_run_url = config.get("CI_ACTION_RUN_URL", "")
+            elif run_id is not None:
                 action_run_url = (
                     f"{github_server_url}/{github_repo}/actions/runs/{run_id}"
                 )
             else:
                 action_run_url = ""
-            p_r_msg = build_markdown_summary(self, action_run_url)
+
+            # add comment marker, with extra newlines in between.
+            marker = self.comment_marker
+            p_r_msg = "\n".join(
+                [build_markdown_summary(self, action_run_url), "", marker, ""]
+            )
 
             # Post comment on pull request if found
             github_auth = (
@@ -83,14 +112,12 @@ class GithubCommentReporter(Reporter):
                 if pr.is_merged():
                     continue
                 # Check if there is already a comment from MegaLinter
+                # start searching from the most recent comment, backwards.
                 existing_comment = None
-                existing_comments = pr.get_issue_comments()
-                for comment in existing_comments:
-                    if (
-                        "See errors details in [**artifact MegaLinter reports** on"
-                        in comment.body
-                    ):
+                for comment in pr.get_issue_comments().reversed:
+                    if marker in comment.body:
                         existing_comment = comment
+                        break
                 # Process comment
                 try:
                     # Edit if there is already a MegaLinter comment

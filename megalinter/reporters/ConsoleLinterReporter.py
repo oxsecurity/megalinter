@@ -33,10 +33,17 @@ class ConsoleLinterReporter(Reporter):
 
     def produce_report(self):
         linter_version = self.master.get_linter_version()
-        linter_doc_url = (
-            f"{DOCS_URL_DESCRIPTORS_ROOT}/{self.master.descriptor_id.lower()}_"
-            f"{self.master.linter_name.lower().replace('-', '_')}"
-        )
+        if self.master.is_plugin is True:
+            linter_doc_url = (
+                self.master.linter_url
+                or self.master.linter_repo
+                or "[linter_url should be defined on descriptor]"
+            )
+        else:
+            linter_doc_url = (
+                f"{DOCS_URL_DESCRIPTORS_ROOT}/{self.master.descriptor_id.lower()}_"
+                f"{self.master.linter_name.lower().replace('-', '_')}"
+            )
         # Linter header prints
         msg = [
             "",

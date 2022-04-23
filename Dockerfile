@@ -11,13 +11,13 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
-FROM hadolint/hadolint:v2.8.0-alpine as hadolint
+FROM cljkondo/clj-kondo:2022.04.08-alpine as clj-kondo
+FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
 FROM zricethezav/gitleaks:latest as gitleaks
-FROM ghcr.io/terraform-linters/tflint:v0.34.1 as tflint
+FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
 FROM checkmarx/kics:alpine as kics
@@ -149,8 +149,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'semgrep' \
           'restructuredtext_lint' \
           'rstcheck' \
-          'sphinx<4.0' \
-          'rstfmt' \
           'snakemake' \
           'sqlfluff' \
           'yamllint'
@@ -263,7 +261,7 @@ RUN wget --tries=5 -q -O dotnet-install.sh https://dot.net/v1/dotnet-install.sh 
 ENV PATH="${PATH}:/root/.dotnet/tools:/usr/share/dotnet"
 
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # PHP installation
@@ -299,7 +297,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 # SALESFORCE installation
 # Next line commented because already managed by another linter
-# ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
+# ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # Next line commented because already managed by another linter
 # ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis
@@ -544,7 +542,6 @@ COPY --from=tflint /usr/local/bin/tflint /usr/bin/
 
 # terrascan installation
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 
 # terragrunt installation
 COPY --from=terragrunt /usr/local/bin/terragrunt /usr/bin/

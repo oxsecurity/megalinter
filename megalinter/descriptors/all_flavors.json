@@ -5,6 +5,7 @@
         ],
         "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
         "linters": [
+            "BASH_SHELLCHECK",
             "BASH_SHFMT",
             "DOCKERFILE_HADOLINT",
             "ENV_DOTENV_LINTER",
@@ -477,7 +478,6 @@
             "REPOSITORY_TRIVY",
             "RST_RST_LINT",
             "RST_RSTCHECK",
-            "RST_RSTFMT",
             "SNAKEMAKE_LINT",
             "SPELL_MISSPELL",
             "SPELL_CSPELL",

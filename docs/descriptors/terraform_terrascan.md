@@ -9,7 +9,7 @@
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.13.2**
+- Version in MegaLinter: **1.14.0**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -87,6 +87,7 @@ Flags:
   -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
   -x, --log-type string      log output type (console, json) (default "console")
   -o, --output string        output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default "human")
+      --temp-dir string      temporary directory path to download remote repository,module and templates
 
 Use "terrascan [command] --help" for more information about a command.
 ```
@@ -97,6 +98,5 @@ Use "terrascan [command] --help" for more information about a command.
 ```dockerfile
 FROM accurics/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 ```
 

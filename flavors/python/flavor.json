@@ -47,7 +47,6 @@
         "REPOSITORY_TRIVY",
         "RST_RST_LINT",
         "RST_RSTCHECK",
-        "RST_RSTFMT",
         "SNAKEMAKE_LINT",
         "SPELL_MISSPELL",
         "SPELL_CSPELL",

@@ -6,6 +6,7 @@
         "**/.git/**",
         "**/package-lock.json",
         "**/licenses/*.md",
+        "**/all_users.md",
         "lib",
         "report",
         ".vscode"
@@ -626,6 +627,7 @@
         "hgblame",
         "hiqr",
         "hkps",
+        "hlink",
         "hobbys",
         "holdy",
         "hprof",

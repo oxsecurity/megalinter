@@ -12,7 +12,7 @@ class OxSecuritySetup {
     async run() {
         this.clientToken = uuid.v4(); // generate a random key
         const registerUrl = OX_LOGIN_URL + '?token=' + this.clientToken ;
-        console.log(`Waiting for response from Ox.security app...`);
+        // console.log(`Waiting for response from Ox.security app...`);
         open(registerUrl);
     }
 

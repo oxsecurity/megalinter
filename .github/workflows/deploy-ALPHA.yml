@@ -28,6 +28,7 @@ on:
       - "TEMPLATES/**"
       - ".trivyignore"
       - "**/*.py"
+      - "**/.sh"
 
 ###############
 # Set the Job #
@@ -55,7 +56,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.1
         with:
           fetch-depth: 0
 

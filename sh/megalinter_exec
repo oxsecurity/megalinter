@@ -102,6 +102,11 @@ if [ "${OUTPUT}" == "" ]; then
   printf 'ERROR: No output given (--output)\n' >&2
   exit 1
 fi
+
+echo "Setting git safe.directory to /tmp/lint and ${INPUT} ..."
+git config --global --add safe.directory /tmp/lint
+git config --global --add safe.directory "${INPUT}"
+
 MEGALINTER_SCAN_COMMAND="DEFAULT_WORKSPACE=${INPUT} python -m megalinter.run --output ${OUTPUT}"
 if [ "${CAPTURE_STD}" != "" ]; then
   MEGALINTER_SCAN_COMMAND="${MEGALINTER_SCAN_COMMAND} &> ${CAPTURE_STD}"

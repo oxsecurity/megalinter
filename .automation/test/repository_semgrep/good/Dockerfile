@@ -1,12 +1,14 @@
 FROM node:10
 
+USER demo
+
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
+RUN npm ci
 
 COPY server.js server.js
 EXPOSE 3002

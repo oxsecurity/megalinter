@@ -80,6 +80,7 @@ Of course, please correct real typos before :)
             + os.path.sep
             + reporter_self.master.config_file_name
         )
+        os.makedirs(os.path.dirname(proposed_cspell_config_file), exist_ok=True)
         with open(proposed_cspell_config_file, "w", encoding="utf-8") as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
         proposed_cspell_config_file = utils.normalize_log_string(

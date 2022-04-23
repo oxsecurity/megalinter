@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM hadolint/hadolint:v2.8.0-alpine as hadolint
+FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
@@ -94,8 +94,6 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
           'semgrep' \
           'restructuredtext_lint' \
           'rstcheck' \
-          'sphinx<4.0' \
-          'rstfmt' \
           'snakemake' \
           'sqlfluff' \
           'yamllint'

@@ -12,7 +12,7 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM hadolint/hadolint:v2.8.0-alpine as hadolint
+FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
@@ -151,7 +151,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 # SALESFORCE installation
-ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 RUN echo y|sfdx plugins:install sfdx-hardis
 

@@ -98,7 +98,7 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #############################################################################################
 #OTHER__START
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # checkstyle installation

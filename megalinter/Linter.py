@@ -76,6 +76,7 @@ class Linter:
         self.active_only_if_file_found = []
         self.lint_all_files = False
         self.lint_all_other_linters_files = False
+        self.is_plugin = False
         self.pre_commands = None
         self.post_commands = None
 

@@ -4,7 +4,7 @@
 
 ## ansible-lint documentation
 
-- Version in MegaLinter: **5.4.0**
+- Version in MegaLinter: **6.0.2**
 - Visit [Official Web Site](https://ansible-lint.readthedocs.io/en/latest/){target=_blank}
 - See [How to configure ansible-lint rules](https://ansible-lint.readthedocs.io/en/latest/configuring.html#configuration-file){target=_blank}
 - See [How to disable ansible-lint rules in files](https://ansible-lint.readthedocs.io/en/latest/rules.html#false-positives-skipping-rules){target=_blank}
@@ -44,7 +44,7 @@ This linter is available in the following flavours
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.github.io/v6-alpha/flavors/java/)                   | Optimized for JAVA based projects                     |        45        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-java/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-java) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.github.io/v6-alpha/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects |        52        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-javascript/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-javascript) |
 |         <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.github.io/v6-alpha/flavors/php/)                     | Optimized for PHP based projects                      |        47        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-php/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-php) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/v6-alpha/flavors/python/)               | Optimized for PYTHON based projects                   |        52        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/v6-alpha/flavors/python/)               | Optimized for PYTHON based projects                   |        51        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/v6-alpha/flavors/ruby/)                   | Optimized for RUBY based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 |        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/v6-alpha/flavors/rust/)                   | Optimized for RUST based projects                     |        44        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 |     <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.github.io/v6-alpha/flavors/salesforce/)       | Optimized for Salesforce based projects               |        46        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-salesforce/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-salesforce) |
@@ -84,13 +84,14 @@ ansible-lint -v -c .ansible-lint
 ### Help content
 
 ```shell
-usage: ansible-lint [-h] [-L] [-f {rich,plain,rst,codeclimate,quiet,pep8}]
-                    [-q] [-p] [--parseable-severity] [--progressive]
-                    [--project-dir PROJECT_DIR] [-r RULESDIR] [-R]
-                    [--show-relpath] [-t TAGS] [-T] [-v] [-x SKIP_LIST]
-                    [-w WARN_LIST] [--enable-list ENABLE_LIST] [--nocolor]
-                    [--force-color] [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE]
-                    [--offline] [--version]
+usage: ansible-lint [-h] [-L]
+                    [-f {rich,plain,rst,json,codeclimate,quiet,pep8}] [-q]
+                    [-p] [--progressive] [--project-dir PROJECT_DIR]
+                    [-r RULESDIR] [-R] [--write] [--show-relpath] [-t TAGS]
+                    [-T] [-v] [-x SKIP_LIST] [-w WARN_LIST]
+                    [--enable-list ENABLE_LIST] [--nocolor] [--force-color]
+                    [--exclude EXCLUDE_PATHS] [-c CONFIG_FILE] [--offline]
+                    [--version]
                     [lintables ...]
 
 positional arguments:
@@ -100,11 +101,11 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -L                    list all the rules
-  -f {rich,plain,rst,codeclimate,quiet,pep8}
-                        Format used rules output, (default: rich)
+  -f {rich,plain,rst,json,codeclimate,quiet,pep8}
+                        stdout formatting, json being an alias for
+                        codeclimate. (default: rich)
   -q                    quieter, reduce verbosity, can be specified twice.
   -p                    parseable output, same as '-f pep8'
-  --parseable-severity  parseable output including severity of rule
   --progressive         Return success if it detects a reduction in number of
                         violations compared with previous git commit. This
                         feature works only in git repositories.
@@ -115,6 +116,9 @@ optional arguments:
                         embedded rules from /usr/local/lib/python3.9/site-
                         packages/ansiblelint/rules
   -R                    Keep default rules when using -r
+  --write               Reformat YAML files to standardize spacing, quotes,
+                        etc. Future versions will expand this option so it
+                        fixes more issues.
   --show-relpath        Display path relative to CWD
   -t TAGS               only check rules whose id/tags match these values
   -T                    list all the tags
@@ -130,8 +134,8 @@ optional arguments:
   --exclude EXCLUDE_PATHS
                         path to directories or files to skip. This option is
                         repeatable.
-  -c CONFIG_FILE        Specify configuration file to use. Defaults to
-                        ".ansible-lint"
+  -c CONFIG_FILE        Specify configuration file to use. By default it will
+                        look for '.ansible-lint' or '.config/ansible-lint.yml'
   --offline             Disable installation of requirements.yml
   --version
 ```

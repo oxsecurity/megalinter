@@ -4,7 +4,7 @@
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **3.3.1**
+- Version in MegaLinter: **5.0.0**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -46,7 +46,7 @@ This linter is available in the following flavours
 |                                                                         <!-- -->                                                                         | Flavor                                                          | Description                         | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor           |       102        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/v6-alpha/flavors/python/) | Optimized for PYTHON based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/v6-alpha/flavors/python/) | Optimized for PYTHON based projects |        51        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -74,19 +74,21 @@ rstcheck -c .rstcheck.cfg myfile.rst
 ### Help content
 
 ```shell
-usage: rstcheck [-h] [-r] [--report level] [--ignore-language language]
-                [--ignore-messages messages] [--ignore-directives directives]
+usage: rstcheck [-h] [--config CONFIG] [-r] [--report level]
+                [--ignore-language language] [--ignore-messages messages]
+                [--ignore-directives directives]
                 [--ignore-substitutions substitutions] [--ignore-roles roles]
                 [--debug] [--version]
                 files [files ...]
 
-Checks code blocks in reStructuredText. Sphinx is enabled.
+Checks code blocks in reStructuredText.
 
 positional arguments:
   files                 files to check
 
 optional arguments:
   -h, --help            show this help message and exit
+  --config CONFIG       location of config file
   -r, --recursive       run recursively over directories
   --report level        report system messages at or higher than level; info,
                         warning, error, severe, none (default: info)

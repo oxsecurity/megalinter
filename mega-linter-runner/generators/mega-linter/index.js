@@ -1,6 +1,5 @@
 "use strict";
 const Generator = require("yeoman-generator");
-const chalk = require("chalk");
 const { OxSecuritySetup } = require("../../lib/ox-setup");
 
 module.exports = class extends Generator {
