@@ -27,6 +27,7 @@ on:
       - "**/linter-versions.json"
       - "TEMPLATES/**"
       - ".trivyignore"
+      - "**/.sh"
 
 ###############
 # Set the Job #
@@ -54,14 +55,14 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.1
         with:
           fetch-depth: 0
 
       ########################################################
       # Publish updated version of mega-linter-runner on NPM #
       ########################################################
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.1.1
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"

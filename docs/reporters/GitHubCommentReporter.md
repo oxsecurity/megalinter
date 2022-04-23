@@ -16,3 +16,4 @@ Click on hyperlinks to access detailed logs
 | GITHUB_COMMENT_REPORTER | Activates/deactivates reporter                                                            | true                     |
 | GITHUB_API_URL          | URL where the github API can be reached<br/>Must be overridden if using GitHub Enterprise | `https://api.github.com` |
 | GITHUB_SERVER_URL       | URL of the GitHub instance<br/>Must be overridden if using GitHub Enterprise              | `https://github.com`     |
+| CI_ACTION_RUN_URL       | URL of the CI job visualization page url (if using Github but not GitHub Actions)         | <!--  -->                |

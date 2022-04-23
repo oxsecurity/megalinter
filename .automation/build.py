@@ -59,6 +59,7 @@ REPO_IMAGES = REPO_HOME + "/docs/assets/images"
 
 VERSIONS_FILE = REPO_HOME + "/.automation/generated/linter-versions.json"
 LICENSES_FILE = REPO_HOME + "/.automation/generated/linter-licenses.json"
+USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 DOCKER_STATS_FILE = REPO_HOME + "/.automation/generated/flavors-stats.json"
@@ -352,6 +353,9 @@ def build_dockerfile(
 
 def match_flavor(item, flavor, flavor_info):
     is_strict = "strict" in flavor_info and flavor_info["strict"] is True
+    if "disabled" in item and item["disabled"] is True:
+        return
+def match_flavor(item, flavor):
     if "disabled" in item and item["disabled"] is True:
         return
     if (
@@ -1929,6 +1933,7 @@ def finalize_doc_build():
         "flavors",
         "badge",
         "plugins",
+        "articles",
         "frequently-asked-questions",
         "how-to-contribute",
         "special-thanks",
@@ -2361,6 +2366,74 @@ def generate_documentation_all_linters():
             outfile.write("| %s |\n" % " | ".join(md_table_line))
 
 
+# Generate page of MegaLinter public repositories users
+def generate_documentation_all_users():
+    with open(USERS_FILE, "r", encoding="utf-8") as json_file:
+        megalinter_users = json.load(json_file)
+    repositories = megalinter_users["repositories"]
+    linter_doc_md = ["# They use MegaLinter", ""]
+    for repo in repositories:
+        if "info" in repo:
+            repo_full = repo["info"]["full_name"]
+        elif "repo_url" in repo and "https://github.com/" in repo["repo_url"]:
+            repo_full = repo["repo_url"].replace("https://github.com/", "")
+        else:
+            continue
+        # pylint: disable=no-member
+        linter_doc_md += [
+            f"[![{repo_full} - GitHub](https://gh-card.dev/repos/{repo_full}.svg?fullname=)]"
+            f"(https://github.com/{repo_full}){{target=_blank}}",
+        ]
+        # pylint: enable=no-member
+    with open(f"{REPO_HOME}/docs/all_users.md", "w", encoding="utf-8") as file:
+        file.write("\n".join(linter_doc_md) + "\n")
+    logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
+
+
+# get github repo info using api
+def get_github_repo_info(repo):
+    api_github_url = f"https://api.github.com/repos/{repo}"
+    api_github_headers = {"content-type": "application/json"}
+    if "GITHUB_TOKEN" in os.environ:
+        github_token = os.environ["GITHUB_TOKEN"]
+        api_github_headers["authorization"] = f"Bearer {github_token}"
+    logging.info(f"Getting repo info for {api_github_url}")
+    session = requests_retry_session()
+    r = session.get(api_github_url, headers=api_github_headers)
+    if r is not None:
+        # Update license key for licenses file
+        resp = r.json()
+        if resp is not None and not isinstance(resp, type(None)):
+            return resp
+    return {}
+
+
+# Refresh github users info
+def refresh_users_info():
+    with open(USERS_FILE, "r", encoding="utf-8") as json_file:
+        megalinter_users = json.load(json_file)
+    repositories = megalinter_users["repositories"]
+    updated_repositories = []
+    for repo_item in repositories:
+        # get stargazers from github api
+        if repo_item["repo_url"] and repo_item["repo_url"].startswith(
+            "https://github.com"
+        ):
+            repo = repo_item["repo_url"].split("https://github.com/", 1)[1]
+            resp = get_github_repo_info(repo)
+            if "stargazers_count" in resp:
+                repo_item["stargazers"] = resp["stargazers_count"]
+                repo_item["info"] = resp
+        updated_repositories += [repo_item]
+    updated_repositories.sort(
+        key=lambda x: x["stargazers"] if "stargazers" in x else 0, reverse=True
+    )
+    megalinter_users["repositories"] = updated_repositories
+    with open(USERS_FILE, "w", encoding="utf-8") as outfile:
+        json.dump(megalinter_users, outfile, indent=4, sort_keys=True)
+        outfile.write("\n")
+
+
 def get_github_repo(linter):
     if (
         hasattr(linter, "linter_repo")
@@ -2471,8 +2544,10 @@ if __name__ == "__main__":
     generate_linter_dockerfiles()
     generate_linter_test_classes()
     if UPDATE_DOC is True:
+        refresh_users_info()
         generate_documentation()
         generate_documentation_all_linters()
+        generate_documentation_all_users()
         generate_mkdocs_yml()
     validate_own_megalinter_config()
     manage_output_variables()

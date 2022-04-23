@@ -9,7 +9,7 @@
 
 ## terrascan documentation
 
-- Version in MegaLinter: **1.13.2**
+- Version in MegaLinter: **1.14.0**
 - Visit [Official Web Site](https://www.accurics.com/products/terrascan/){target=_blank}
 - See [How to configure terrascan rules](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
 - See [Index of problems detected by terrascan](https://docs.accurics.com/projects/accurics-terrascan/en/latest/policies/){target=_blank}
@@ -18,8 +18,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation)
-- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation)
+- Enable terrascan by adding `TERRAFORM_TERRASCAN` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable terrascan by adding `TERRAFORM_TERRASCAN` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                        | Description                                                                                                                                                                                  | Default value                                   |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -37,11 +37,10 @@
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                | Description                            | Embedded linters |                                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)       | Default MegaLinter Flavor              |       102        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/v6-alpha/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        97        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -87,6 +86,7 @@ Flags:
   -l, --log-level string     log level (debug, info, warn, error, panic, fatal) (default "info")
   -x, --log-type string      log output type (console, json) (default "console")
   -o, --output string        output type (human, json, yaml, xml, junit-xml, sarif, github-sarif) (default "human")
+      --temp-dir string      temporary directory path to download remote repository,module and templates
 
 Use "terrascan [command] --help" for more information about a command.
 ```
@@ -97,6 +97,5 @@ Use "terrascan [command] --help" for more information about a command.
 ```dockerfile
 FROM accurics/terrascan:latest as terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 ```
 

@@ -1,4 +1,5 @@
 {
     "retryOn429": true,
-    "retryCount": 5
+    "retryCount": 5,
+    "aliveStatusCodes": [ 200, 203 ]
 }

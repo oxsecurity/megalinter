@@ -2601,7 +2601,7 @@
     },
     "DOCKERFILE_HADOLINT_CONFIG_FILE": {
       "$id": "#/properties/DOCKERFILE_HADOLINT_CONFIG_FILE",
-      "default": ".hadolint.yml",
+      "default": ".hadolint.yaml",
       "description": "DOCKERFILE_HADOLINT: User custom config file name if different from default",
       "title": "DOCKERFILE_HADOLINT: Custom config file name",
       "type": "string"
@@ -3074,8 +3074,15 @@
     "FAIL_IF_MISSING_LINTER_IN_FLAVOR": {
       "$id": "#/properties/FAIL_IF_MISSING_LINTER_IN_FLAVOR",
       "default": false,
-      "description": "MegaLinter fails if a linter is missing in the selected flavor",
+      "description": "If set to true, MegaLinter fails if a linter is missing in the selected flavor",
       "title": "Fail if missing linter",
+      "type": "boolean"
+    },
+    "FAIL_IF_UPDATED_SOURCES": {
+      "$id": "#/properties/FAIL_IF_UPDATED_SOURCES",
+      "default": false,
+      "description": "If set to true, MegaLinter fails if a linter or formatter has auto-fixed sources, even if there are no errors",
+      "title": "Fail if updated sources",
       "type": "boolean"
     },
     "FILEIO_REPORTER": {

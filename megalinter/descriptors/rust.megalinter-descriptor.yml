@@ -10,7 +10,8 @@ install:
     - ENV PATH="/root/.cargo/bin:${PATH}"
 linters:
   # CLIPPY
-  - linter_name: clippy
+  - class: ClippyLinter
+    linter_name: clippy
     linter_url: https://github.com/rust-lang/rust-clippy
     linter_repo: https://github.com/rust-lang/rust-clippy
     linter_rules_url: https://rust-lang.github.io/rust-clippy/stable/index.html

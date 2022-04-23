@@ -35,10 +35,17 @@ class TextReporter(Reporter):
 
     def produce_report(self):
         # Doc URL
-        lang_lower = self.master.descriptor_id.lower()
-        linter_name_lower = self.master.linter_name.lower().replace("-", "_")
-        doc_name = f"{lang_lower}_{linter_name_lower}"
-        doc_url = f"{ML_DOC_URL}/descriptors/{doc_name}/"
+        if self.master.is_plugin is True:
+            doc_url = (
+                self.master.linter_url
+                or self.master.linter_repo
+                or "[linter_url should be defined on descriptor]"
+            )
+        else:
+            lang_lower = self.master.descriptor_id.lower()
+            linter_name_lower = self.master.linter_name.lower().replace("-", "_")
+            doc_name = f"{lang_lower}_{linter_name_lower}"
+            doc_url = f"{ML_DOC_URL}/descriptors/{doc_name}/"
         # Header lines
         text_report_lines = [
             f"Results of {self.master.linter_name} linter (version {self.master.get_linter_version()})",

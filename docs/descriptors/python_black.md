@@ -9,7 +9,7 @@
 
 ## black documentation
 
-- Version in MegaLinter: **22.1.0**
+- Version in MegaLinter: **22.3.0**
 - Visit [Official Web Site](https://black.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure black rules](https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-format){target=_blank}
   - If custom `pyproject.toml` config file is not found, [pyproject.toml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/pyproject.toml){target=_blank} will be used
@@ -56,10 +56,10 @@ Use black in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                          | Description                         | Embedded linters |                                                                                                                                                                                         Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor           |       102        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/v6-alpha/flavors/python/) | Optimized for PYTHON based projects |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                         | Embedded linters |                                                                                                                                                                                   Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor           |        97        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|       <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.github.io/flavors/python/) | Optimized for PYTHON based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-python/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-python) |
 
 ## Behind the scenes
 
@@ -112,16 +112,16 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (timeit, time, pypy, capture,
-                                  python3, prun, python). Useful for
-                                  formatting cells with custom python magics.
+                                  magics (time, pypy, prun, python3, timeit,
+                                  capture, python). Useful for formatting
+                                  cells with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
   -C, --skip-magic-trailing-comma
                                   Don't use trailing commas as a reason to
                                   split lines.
   --preview                       Enable potentially disruptive style changes
-                                  that will be added to Black's main
+                                  that may be added to Black's main
                                   functionality in the next major release.
   --check                         Don't write the files back, just return the
                                   status. Return code 0 means nothing would
@@ -137,7 +137,8 @@ Options:
   --required-version TEXT         Require a specific version of Black to be
                                   running (useful for unifying results across
                                   many environments e.g. with a pyproject.toml
-                                  file).
+                                  file). It can be either a major version
+                                  number or an exact version.
   --include TEXT                  A regular expression that matches files and
                                   directories that should be included on
                                   recursive searches. An empty value means all
@@ -154,7 +155,8 @@ Options:
                                   Exclusions are calculated first, inclusions
                                   later. [default: /(\.direnv|\.eggs|\.git|\.h
                                   g|\.mypy_cache|\.nox|\.tox|\.venv|venv|\.svn
-                                  |_build|buck-out|build|dist)/]
+                                  |_build|buck-
+                                  out|build|dist|__pypackages__)/]
   --extend-exclude TEXT           Like --exclude, but adds additional files
                                   and directories on top of the excluded ones.
                                   (Useful if you simply want to add to the

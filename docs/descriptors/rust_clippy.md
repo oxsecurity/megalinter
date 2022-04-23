@@ -4,7 +4,7 @@
 
 ## clippy documentation
 
-- Version in MegaLinter: **0.1.59**
+- Version in MegaLinter: **0.1.60**
 - Visit [Official Web Site](https://github.com/rust-lang/rust-clippy#readme){target=_blank}
 - See [How to configure clippy rules](https://github.com/rust-lang/rust-clippy#configuration){target=_blank}
 - See [How to disable clippy rules in files](https://github.com/rust-lang/rust-clippy#allowingdenying-lints){target=_blank}
@@ -41,10 +41,10 @@ Use clippy in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                          | Description                       | Embedded linters |                                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       102        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/v6-alpha/flavors/rust/)     | Optimized for RUST based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        97        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.github.io/flavors/rust/)     | Optimized for RUST based projects |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-rust/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-rust) |
 
 ## Behind the scenes
 
@@ -77,18 +77,19 @@ USAGE:
     cargo [+toolchain] [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -V, --version                  Print version info and exit
-        --list                     List installed commands
-        --explain <CODE>           Run `rustc --explain CODE`
-    -v, --verbose                  Use verbose output (-vv very verbose/build.rs output)
-    -q, --quiet                    Do not print cargo log messages
-        --color <WHEN>             Coloring: auto, always, never
-        --frozen                   Require Cargo.lock and cache are up to date
-        --locked                   Require Cargo.lock is up to date
-        --offline                  Run without accessing the network
-        --config <KEY=VALUE>...    Override a configuration value (unstable)
-    -Z <FLAG>...                   Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for details
-    -h, --help                     Prints help information
+    -V, --version               Print version info and exit
+        --list                  List installed commands
+        --explain <CODE>        Run `rustc --explain CODE`
+    -v, --verbose               Use verbose output (-vv very verbose/build.rs output)
+    -q, --quiet                 Do not print cargo log messages
+        --color <WHEN>          Coloring: auto, always, never
+        --frozen                Require Cargo.lock and cache are up to date
+        --locked                Require Cargo.lock is up to date
+        --offline               Run without accessing the network
+        --config <KEY=VALUE>    Override a configuration value (unstable)
+    -Z <FLAG>                   Unstable (nightly-only) flags to Cargo, see 'cargo -Z help' for
+                                details
+    -h, --help                  Print help information
 
 Some common cargo commands are (see all commands with --list):
     build, b    Compile the current package

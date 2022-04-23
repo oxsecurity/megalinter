@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.906**
+- Version in MegaLinter: **2.0.1076**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -18,8 +18,8 @@
 
 ## Configuration in MegaLinter
 
-- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation)
-- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.github.io/v6-alpha/configuration/#activation-and-deactivation)
+- Enable checkov by adding `TERRAFORM_CHECKOV` in [ENABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
+- Disable checkov by adding `TERRAFORM_CHECKOV` in [DISABLE_LINTERS variable](https://megalinter.github.io/configuration/#activation-and-deactivation)
 
 | Variable                                      | Description                                                                                                                                                                                                         | Default value      |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -46,11 +46,10 @@ Use checkov in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                                | Description                            | Embedded linters |                                                                                                                                                                                               Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/)       | Default MegaLinter Flavor              |       102        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.github.io/v6-alpha/flavors/security/)   | Optimized for security                 |        20        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-security/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-security) |
-|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/v6-alpha/flavors/terraform/) | Optimized for TERRAFORM based projects |        49        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
+|                                                                         <!-- -->                                                                         | Flavor                                                       | Description                            | Embedded linters |                                                                                                                                                                                         Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:---------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/)       | Default MegaLinter Flavor              |        97        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|      <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.github.io/flavors/terraform/) | Optimized for TERRAFORM based projects |        47        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-terraform/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -80,9 +79,9 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--external-checks-git EXTERNAL_CHECKS_GIT] [-l]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
-               [--quiet] [--compact]
-               [--framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]]
-               [--skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]]
+               [--include-all-checkov-policies] [--quiet] [--compact]
+               [--framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -134,12 +133,24 @@ optional arguments:
   --output-bc-ids       Print Bridgecrew platform IDs (BC...) instead of
                         Checkov IDs (CKV...), if the check exists in the
                         platform
+  --include-all-checkov-policies
+                        When running with an API key, Checkov will omit any
+                        policies that do not exist in the Bridgecrew or Prisma
+                        Cloud platform, except for local custom policies
+                        loaded with the --external-check flags. Use this key
+                        to include policies that only exist in Checkov in the
+                        scan. Note that this will make the local CLI results
+                        different from the results you see in the platform.
+                        Has no effect if you are not using an API key. Use the
+                        --check option to explicitly include checks by ID even
+                        if they are not in the platform, without using this
+                        flag.
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
-  --framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan,all} ...]
+  --framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
                         filter scan to run only on specific infrastructure
                         code frameworks
-  --skip-framework {arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} [{arm,cloudformation,dockerfile,github_configuration,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,sca_package,secrets,serverless,terraform,terraform_plan} ...]
+  --skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
                         filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
@@ -158,7 +169,11 @@ optional arguments:
                         even if it is a LOW severity. In the case of a tie
                         (e.g., --check MEDIUM and --skip-check HIGH for a
                         medium severity check), then the check will be
-                        skipped. [env var: CKV_CHECK]
+                        skipped. If you use a check ID here along with an API
+                        key, and the check is not part of the BC / PC
+                        platform, then the check will still be run (see
+                        --include-all-checkov-policies for more info). [env
+                        var: CKV_CHECK]
   --skip-check SKIP_CHECK
                         Checks to skip; any other checks will not be run.
                         Enter one or more items separated by commas. Each item

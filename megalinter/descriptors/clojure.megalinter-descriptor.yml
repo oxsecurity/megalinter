@@ -15,6 +15,7 @@ linters:
     linter_rules_url: https://github.com/borkdude/clj-kondo#features
     linter_banner_image_url: https://github.com/borkdude/clj-kondo/raw/master/logo/logo-300dpi.png
     linter_rules_configuration_url: https://github.com/borkdude/clj-kondo/blob/master/doc/config.md#configuration
+    linter_rules_inline_disable_url: https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#ignore-warnings-in-an-expression
     linter_megalinter_ref_url: https://github.com/borkdude/clj-kondo/blob/master/doc/ci-integration.md#github
     config_file_name: .clj-kondo/config.edn
     cli_config_arg_name: "--config"
@@ -26,7 +27,7 @@ linters:
     downgraded_version: true
     install:
       dockerfile:
-        - FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
+        - FROM cljkondo/clj-kondo:2022.04.08-alpine as clj-kondo
         - COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
     ide:
       atom:

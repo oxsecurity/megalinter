@@ -28,10 +28,11 @@ linters:
     downgraded_version: true
     install:
       dockerfile:
-        - FROM ghcr.io/terraform-linters/tflint:v0.34.1 as tflint
+        - FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
         - COPY --from=tflint /usr/local/bin/tflint /usr/bin/
   # TERRASCAN
-  - linter_name: terrascan
+  - class: TerrascanLinter
+    linter_name: terrascan
     can_output_sarif: true
     name: TERRAFORM_TERRASCAN
     descriptor_flavors:
@@ -65,7 +66,6 @@ linters:
       dockerfile:
         - FROM accurics/terrascan:latest as terrascan
         - COPY --from=terrascan /go/bin/terrascan /usr/bin/
-        - RUN terrascan init
   # TERRAGRUNT
   - linter_name: terragrunt
     name: TERRAFORM_TERRAGRUNT

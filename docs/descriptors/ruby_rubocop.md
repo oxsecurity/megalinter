@@ -9,7 +9,7 @@
 
 ## rubocop documentation
 
-- Version in MegaLinter: **1.25.1**
+- Version in MegaLinter: **1.28.1**
 - Visit [Official Web Site](https://rubocop.org/){target=_blank}
 - See [How to configure rubocop rules](https://docs.rubocop.org/rubocop/0.92/configuration.html){target=_blank}
   - If custom `.ruby-lint.yml` config file is not found, [.ruby-lint.yml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.ruby-lint.yml){target=_blank} will be used
@@ -60,10 +60,10 @@ Use rubocop in your favorite IDE to catch errors before MegaLinter !
 
 This linter is available in the following flavours
 
-|                                                                         <!-- -->                                                                         | Flavor                                                          | Description                       | Embedded linters |                                                                                                                                                                                     Info |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/v6-alpha/supported-linters/) | Default MegaLinter Flavor         |       102        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
-|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/v6-alpha/flavors/ruby/)     | Optimized for RUBY based projects |        44        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v6-alpha) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
+|                                                                         <!-- -->                                                                         | Flavor                                                 | Description                       | Embedded linters |                                                                                                                                                                               Info |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:----------------------------------|:----------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.github.io/supported-linters/) | Default MegaLinter Flavor         |        97        |           ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter) |
+|        <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.github.io/flavors/ruby/)     | Optimized for RUBY based projects |        42        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/megalinter/megalinter-ruby/v5) ![Docker Pulls](https://img.shields.io/docker/pulls/megalinter/megalinter-ruby) |
 
 ## Behind the scenes
 
@@ -126,8 +126,14 @@ Basic Options:
                                      reports. This is useful for editor integration.
     -P, --[no-]parallel              Use available CPUs to execute inspection in
                                      parallel. Default is true.
-        --fail-level SEVERITY        Minimum severity (A/I/R/C/W/E/F) for exit
-                                     with error code.
+        --fail-level SEVERITY        Minimum severity for exit with error code.
+                                       [A] autocorrect
+                                       [I] info
+                                       [R] refactor
+                                       [C] convention
+                                       [W] warning
+                                       [E] error
+                                       [F] fatal
 
 Caching:
     -C, --cache FLAG                 Use result caching (FLAG=true) or don't
@@ -176,6 +182,10 @@ Output Options:
         --display-only-fail-level-offenses
                                      Only output offense messages at
                                      the specified --fail-level or above
+        --display-only-correctable   Only output correctable offense messages.
+        --display-only-safe-correctable
+                                     Only output safe-correctable offense messages
+                                     when combined with --display-only-correctable.
 
 Auto-correction:
     -a, --auto-correct               Auto-correct offenses (only when it's safe).
@@ -231,3 +241,52 @@ General Options:
   - [rubocop-performance](https://rubygems.org/gems/rubocop-performance)
   - [rubocop-rails](https://rubygems.org/gems/rubocop-rails)
   - [rubocop-rspec](https://rubygems.org/gems/rubocop-rspec)
+
+### Example success log
+
+```shell
+Results of rubocop linter (version 0.82.0)
+See documentation on https://megalinter.github.io/descriptors/ruby_rubocop/
+-----------------------------------------------
+
+[SUCCESS] .automation/test/ruby/ruby_good_1.rb
+    Inspecting 1 file
+    .
+    
+    1 file inspected, no offenses detected
+
+```
+
+### Example error log
+
+```shell
+Results of rubocop linter (version 0.82.0)
+See documentation on https://megalinter.github.io/descriptors/ruby_rubocop/
+-----------------------------------------------
+
+[ERROR] .automation/test/ruby/ruby_bad_1.rb
+    Inspecting 1 file
+    C
+    
+    Offenses:
+    
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:1:1: C: Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:11: C: Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+    File.open('/tmp/urls.txt', " w" ) do | file|
+              ^^^^^^^^^^^^^^^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:32: C: Layout/SpaceInsideParens: Space inside parentheses detected.
+    File.open('/tmp/urls.txt', " w" ) do | file|
+                                   ^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:11:39: C: Layout/SpaceAroundBlockParameters: Space before first block parameter detected.
+    File.open('/tmp/urls.txt', " w" ) do | file|
+                                          ^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:12:24: C: Layout/SpaceAroundBlockParameters: Space after last block parameter detected.
+      Hook.active.map do |h |
+                           ^
+    mp/lint/.automation/test/ruby/ruby_bad_1.rb:13:13: C: Layout/SpaceInsideArrayLiteralBrackets: Do not use space inside array brackets.
+        urls = [ ARRAY_OF_URLS_CALLING_INSTANCE]
+                ^
+    
+    1 file inspected, 6 offenses detected
+
+```
