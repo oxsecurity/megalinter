@@ -36,6 +36,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.8 to **1.1.9** on 2022-04-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.8 to **7.4.0** on 2022-04-22
   - [sqlfluff](https://www.sqlfluff.com/) from 0.12.0 to **0.13.0** on 2022-04-22
+  - [eslint](https://eslint.org) from 8.13.0 to **8.14.0** on 2022-04-23
 <!-- linter-versions-end -->
 
 ## [v5.11.0] - 2022-04-11

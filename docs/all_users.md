@@ -48,11 +48,11 @@
 [![dochang/bumplus - GitHub](https://gh-card.dev/repos/dochang/bumplus.svg?fullname=)](https://github.com/dochang/bumplus){target=_blank}
 [![ADFC-Hamburg/adfc-ansible - GitHub](https://gh-card.dev/repos/ADFC-Hamburg/adfc-ansible.svg?fullname=)](https://github.com/ADFC-Hamburg/adfc-ansible){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
+[![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 [![AlbanAndrieu/jenkins-pipeline-scripts - GitHub](https://gh-card.dev/repos/AlbanAndrieu/jenkins-pipeline-scripts.svg?fullname=)](https://github.com/AlbanAndrieu/jenkins-pipeline-scripts){target=_blank}
 [![jokay/docker-prune - GitHub](https://gh-card.dev/repos/jokay/docker-prune.svg?fullname=)](https://github.com/jokay/docker-prune){target=_blank}
 [![tusharshahrs/pulumi-home - GitHub](https://gh-card.dev/repos/tusharshahrs/pulumi-home.svg?fullname=)](https://github.com/tusharshahrs/pulumi-home){target=_blank}
 [![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
-[![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 [![iggy/terrarific - GitHub](https://gh-card.dev/repos/iggy/terrarific.svg?fullname=)](https://github.com/iggy/terrarific){target=_blank}
 [![Neragin/cx-bot - GitHub](https://gh-card.dev/repos/Neragin/cx-bot.svg?fullname=)](https://github.com/Neragin/cx-bot){target=_blank}
 [![cbg-ethz/SARS-CoV-2_Analysis - GitHub](https://gh-card.dev/repos/cbg-ethz/SARS-CoV-2_Analysis.svg?fullname=)](https://github.com/cbg-ethz/SARS-CoV-2_Analysis){target=_blank}
