@@ -355,9 +355,6 @@ def match_flavor(item, flavor, flavor_info):
     is_strict = "strict" in flavor_info and flavor_info["strict"] is True
     if "disabled" in item and item["disabled"] is True:
         return
-def match_flavor(item, flavor):
-    if "disabled" in item and item["disabled"] is True:
-        return
     if (
         "descriptor_flavors_exclude" in item
         and flavor in item["descriptor_flavors_exclude"]
@@ -826,7 +823,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
             f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
             f"| [{linter.name}]({doc_url(linter_doc_url)})"
-            f"| {md_extra}"
+            f"| {md_extra} |"
         ]
 
         # Build individual linter doc

@@ -12,8 +12,8 @@
 #############################################################################################
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
-FROM cljkondo/clj-kondo:2022.02.09-alpine as clj-kondo
-FROM hadolint/hadolint:v2.8.0-alpine as hadolint
+FROM cljkondo/clj-kondo:2022.04.08-alpine as clj-kondo
+FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM yoheimuta/protolint:latest as protolint
 FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
@@ -151,7 +151,7 @@ RUN echo 'gem: --no-document' >> ~/.gemrc && \
 #############################################################################################
 #OTHER__START
 # JAVA installation
-ENV JAVA_HOME=/usr/lib/jvm/java‑11‑openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # actionlint installation

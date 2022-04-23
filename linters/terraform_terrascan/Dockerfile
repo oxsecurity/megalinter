@@ -98,7 +98,6 @@ ENV PATH="/node_modules/.bin:${PATH}"
 #OTHER__START
 # terrascan installation
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
-RUN terrascan init
 
 #OTHER__END
 

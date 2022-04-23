@@ -45,6 +45,7 @@ linters:
     name: BASH_SHELLCHECK
     descriptor_flavors:
       - all_flavors
+      - ci_light
       - security
     linter_url: https://github.com/koalaman/shellcheck
     linter_repo: https://github.com/koalaman/shellcheck
