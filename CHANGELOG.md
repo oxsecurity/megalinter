@@ -18,11 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Display GitHub stars in linters summary table in documentation 
 
 - Linters:
-  - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
   - Add [DevSkim](https://github.com/microsoft/DevSkim) security linter by Microsoft
   - Add [dustilock](https://github.com/Checkmarx/dustilock) to check for dependency confusion attacks with node and python packages
   - Add [gitleaks](https://github.com/zricethezav/gitleaks) to lint git repository
   - Add [goodcheck](https://github.com/sider/goodcheck) as regex-based linter
+  - Add [PMD](https://pmd.github.io/) to lint java files (disabled for now)
   - Add [semgrep](https://github.com/returntocorp/semgrep) as regex-based linter with many community rules
   - Add [syft](https://github.com/anchore/syft) to generate SBOM (Software Bill Of Materials)
   - Add [trivy](https://github.com/aquasecurity/trivy) security linter
