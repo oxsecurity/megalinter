@@ -8,36 +8,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Linter versions upgrades
+<!-- linter-versions-end -->
+
+## [v5.12.0] - 2022-04-23
+
 - Core
   - Fix [git upgrade issue](https://github.blog/2022-04-12-git-security-vulnerability-announced/)
   - New option **FAIL_IF_UPDATED_SOURCES** ([#1389](https://github.com/megalinter/megalinter/issues/1389))
 
 - Linter versions upgrades
-  - [coffeelint](http://www.coffeelint.org) from 5.2.5 to **5.2.6** on 2022-04-11
-  - [htmlhint](https://htmlhint.com/) from 1.1.3 to **1.1.4** on 2022-04-11
-  - [checkov](https://www.checkov.io/) from 2.0.1047 to **2.0.1050** on 2022-04-11
   - [actionlint](https://rhysd.github.io/actionlint/) from 1.6.11 to **1.6.12** on 2022-04-18
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.58.4 to **0.59.0** on 2022-04-18
-  - [stylelint](https://stylelint.io) from 14.6.1 to **14.7.1** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1047 to **2.0.1050** on 2022-04-11
+  - [checkov](https://www.checkov.io/) from 2.0.1050 to **2.0.1067** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1067 to **2.0.1068** on 2022-04-18
+  - [checkov](https://www.checkov.io/) from 2.0.1068 to **2.0.1076** on 2022-04-22
+  - [coffeelint](http://www.coffeelint.org) from 5.2.5 to **5.2.6** on 2022-04-11
+  - [coffeelint](http://www.coffeelint.org) from 5.2.6 to **5.2.7** on 2022-04-22
+  - [eslint](https://eslint.org) from 8.13.0 to **8.14.0** on 2022-04-23
   - [git_diff](https://git-scm.com) from 2.30.2 to **2.30.3** on 2022-04-18
+  - [htmlhint](https://htmlhint.com/) from 1.1.3 to **1.1.4** on 2022-04-11
+  - [kics](https://www.kics.io) from 1.5.5 to **1.5.6** on 2022-04-18
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 9.4.1 to **9.5.0** on 2022-04-18
   - [phpstan](https://phpstan.org/) from 1.5.4 to **1.5.6** on 2022-04-18
-  - [rstcheck](https://github.com/myint/rstcheck) from 3.3.1 to **5.0.0** on 2022-04-18
-  - [checkov](https://www.checkov.io/) from 2.0.1050 to **2.0.1067** on 2022-04-18
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.6 to **0.36.7** on 2022-04-18
-  - [checkov](https://www.checkov.io/) from 2.0.1067 to **2.0.1068** on 2022-04-18
-  - [kics](https://www.kics.io) from 1.5.5 to **1.5.6** on 2022-04-18
-  - [tflint](https://github.com/terraform-linters/tflint) from 0.34.1 to **0.35.0** on 2022-04-18
-  - [coffeelint](http://www.coffeelint.org) from 5.2.6 to **5.2.7** on 2022-04-22
   - [phpstan](https://phpstan.org/) from 1.5.6 to **1.5.7** on 2022-04-22
   - [pylint](https://www.pylint.org) from 2.13.5 to **2.13.7** on 2022-04-22
+  - [rstcheck](https://github.com/myint/rstcheck) from 3.3.1 to **5.0.0** on 2022-04-18
   - [rubocop](https://rubocop.org/) from 1.27.0 to **1.28.1** on 2022-04-22
-  - [checkov](https://www.checkov.io/) from 2.0.1068 to **2.0.1076** on 2022-04-22
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.8 to **1.1.9** on 2022-04-22
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.3.8 to **7.4.0** on 2022-04-22
   - [sqlfluff](https://www.sqlfluff.com/) from 0.12.0 to **0.13.0** on 2022-04-22
-  - [eslint](https://eslint.org) from 8.13.0 to **8.14.0** on 2022-04-23
-<!-- linter-versions-end -->
+  - [stylelint](https://stylelint.io) from 14.6.1 to **14.7.1** on 2022-04-18
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.8 to **1.1.9** on 2022-04-22
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.6 to **0.36.7** on 2022-04-18
+  - [tflint](https://github.com/terraform-linters/tflint) from 0.34.1 to **0.35.0** on 2022-04-18
 
 ## [v5.11.0] - 2022-04-11
 
