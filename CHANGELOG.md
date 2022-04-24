@@ -12,6 +12,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Linter versions upgrades
   - [luacheck](https://luacheck.readthedocs.io) from 0.26.0 to **0.26.1** on 2022-04-24
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.1 to **10.2** on 2022-04-24
+  - [checkov](https://www.checkov.io/) from 2.0.1076 to **2.0.1079** on 2022-04-24
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
