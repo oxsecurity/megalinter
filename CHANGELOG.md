@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Add gherkin-lint in dotnet flavor ([#1435](https://github.com/megalinter/megalinter/issues/1435))
+
 - Linter versions upgrades
   - [luacheck](https://luacheck.readthedocs.io) from 0.26.0 to **0.26.1** on 2022-04-24
 <!-- linter-versions-end -->

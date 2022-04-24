@@ -122,6 +122,7 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-scss \
                 dockerfilelint \
                 editorconfig-checker \
+                gherkin-lint \
                 graphql-schema-linter \
                 npm-groovy-lint \
                 htmlhint \
