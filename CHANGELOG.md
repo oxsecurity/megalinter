@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
+  - [luacheck](https://luacheck.readthedocs.io) from 0.26.0 to **0.26.1** on 2022-04-24
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
