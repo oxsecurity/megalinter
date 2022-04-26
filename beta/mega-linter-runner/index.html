@@ -5105,6 +5105,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pre-commit-hook" class="md-nav__link">
+    Pre-commit hook
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5419,6 +5426,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pre-commit-hook" class="md-nav__link">
+    Pre-commit hook
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5501,6 +5515,17 @@
 <p>Example:</p>
 <pre><code class="language-shell">npx mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
+<h3 id="pre-commit-hook">Pre-commit hook</h3>
+<p>You can run mega-linter-runner as a <a href="https://pre-commit.com/">pre-commit</a> hook</p>
+<p>Sample <code>.pre-commit-config.yaml</code>:</p>
+<pre><code class="language-yaml">repos:
+  - repo: https://github.com/megalinter/megalinter
+    rev: v5.12.0 # Git tag specifying the hook, not mega-linter-runner, version
+    hooks:
+      - id: megalinter # Faster, less thorough, runs pre-commit by default
+      - id: megalinter-all # Slower, more thorough, runs pre-push by default
+</code></pre>
+<p>See <a href="../.pre-commit-hooks.yaml"><code>.pre-commit-hooks.yaml</code></a> for more details.</p>
 <h2 id="usage">Usage</h2>
 <pre><code class="language-shell">mega-linter-runner [OPTIONS]
 </code></pre>
@@ -5570,7 +5595,7 @@
 <pre><code class="language-shell">mega-linter-runner -r beta -e 'ENABLE=MARKDOWN,YAML' -e 'SHOW_ELAPSED_TIME=true'
 </code></pre>
 <h2 id="configuration">Configuration</h2>
-<p>You can define generate a ready to use <a href="https://megalinter.github.io/configuration/">.mega-linter.yml configuration file</a> by running <code>npx mega-linter-runner --install</code> at the root of your repository</p>
+<p>You can generate a ready-to-use <a href="https://megalinter.github.io/configuration/">.mega-linter.yml configuration file</a> by running <code>npx mega-linter-runner --install</code> at the root of your repository</p>
 <p><img alt="Runner Install" src="https://github.com/megalinter/megalinter/blob/main/docs/assets/images/mega-linter-runner-generator.gif?raw=true" /></p>
 <!-- linters-section-start -->
 
