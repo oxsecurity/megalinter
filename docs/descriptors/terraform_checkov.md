@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.1079**
+- Version in MegaLinter: **2.0.1084**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -107,7 +107,13 @@ optional arguments:
                         IaC root directory (can not be used together with
                         --file).
   --add-check           Generate a new check via CLI prompt
-  -f FILE, --file FILE  IaC file(can not be used together with --directory)
+  -f FILE, --file FILE  File to scan (can not be used together with
+                        --directory). With this option, Checkov will attempt
+                        to filter the runners based on the file type. For
+                        example, if you specify a ".tf" file, only the
+                        terraform and secrets frameworks will be included. You
+                        can further limit this (e.g., skip secrets) by using
+                        the --skip-framework argument.
   --skip-path SKIP_PATH
                         Path (file or directory) to skip, using regular
                         expression logic, relative to current working
@@ -148,10 +154,10 @@ optional arguments:
   --quiet               in case of CLI output, display only failed checks
   --compact             in case of CLI output, do not display code blocks
   --framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
-                        filter scan to run only on specific infrastructure
+                        Filter scan to run only on specific infrastructure
                         code frameworks
   --skip-framework {arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
-                        filter scan to skip specific infrastructure code
+                        Filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.
   -c CHECK, --check CHECK
