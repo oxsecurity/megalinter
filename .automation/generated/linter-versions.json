@@ -47,7 +47,7 @@
     "php": "7.4.26",
     "phpcs": "3.6.2",
     "phplint": "3.0",
-    "phpstan": "1.5.7",
+    "phpstan": "1.6.0",
     "powershell": "7.2.2",
     "prettier": "2.6.2",
     "protolint": "0.37.1",
