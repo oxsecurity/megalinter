@@ -13,7 +13,7 @@ If you don't use python static typing, you should disable this linter by adding 
 
 ## mypy documentation
 
-- Version in MegaLinter: **0.942**
+- Version in MegaLinter: **0.950**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file is not found, [.mypy.ini](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -237,6 +237,8 @@ Miscellaneous strictness flags:
   --strict-equality         Prohibit equality, identity, and container checks
                             for non-overlapping types (inverse: --no-strict-
                             equality)
+  --strict-concatenate      Make arguments prepended via Concatenate be truly
+                            positional-only (inverse: --no-strict-concatenate)
   --strict                  Strict mode; enables the following flags: --warn-
                             unused-configs, --disallow-any-generics,
                             --disallow-subclassing-any, --disallow-untyped-
@@ -245,7 +247,7 @@ Miscellaneous strictness flags:
                             untyped-decorators, --no-implicit-optional,
                             --warn-redundant-casts, --warn-unused-ignores,
                             --warn-return-any, --no-implicit-reexport,
-                            --strict-equality
+                            --strict-equality, --strict-concatenate
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
