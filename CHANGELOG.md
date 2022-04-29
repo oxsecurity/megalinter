@@ -26,6 +26,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.4.0 to **7.5.0** on 2022-04-28
   - [checkov](https://www.checkov.io/) from 2.0.1084 to **2.0.1088** on 2022-04-28
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.7 to **0.36.8** on 2022-04-28
+  - [phpstan](https://phpstan.org/) from 1.6.2 to **1.6.3** on 2022-04-29
+  - [checkov](https://www.checkov.io/) from 2.0.1088 to **2.0.1098** on 2022-04-29
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
