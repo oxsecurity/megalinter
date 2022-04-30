@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 5882,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 23738,
+                "stargazers_count": 23744,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 107,
@@ -127,14 +127,14 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-04-30T06:37:45Z",
+                "updated_at": "2022-04-30T11:20:58Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 23738,
-                "watchers_count": 23738
+                "watchers": 23744,
+                "watchers_count": 23744
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 23738
+            "stargazers": 23744
         },
         {
             "info": {
@@ -222,11 +222,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/stepancheg/rust-protobuf/pulls{/number}",
-                "pushed_at": "2022-04-30T07:16:07Z",
+                "pushed_at": "2022-04-30T07:52:37Z",
                 "releases_url": "https://api.github.com/repos/stepancheg/rust-protobuf/releases{/id}",
-                "size": 53268,
+                "size": 53325,
                 "ssh_url": "git@github.com:stepancheg/rust-protobuf.git",
-                "stargazers_count": 1991,
+                "stargazers_count": 1992,
                 "stargazers_url": "https://api.github.com/repos/stepancheg/rust-protobuf/stargazers",
                 "statuses_url": "https://api.github.com/repos/stepancheg/rust-protobuf/statuses/{sha}",
                 "subscribers_count": 19,
@@ -242,14 +242,14 @@
                     "serialization"
                 ],
                 "trees_url": "https://api.github.com/repos/stepancheg/rust-protobuf/git/trees{/sha}",
-                "updated_at": "2022-04-29T17:22:20Z",
+                "updated_at": "2022-04-30T11:07:31Z",
                 "url": "https://api.github.com/repos/stepancheg/rust-protobuf",
                 "visibility": "public",
-                "watchers": 1991,
-                "watchers_count": 1991
+                "watchers": 1992,
+                "watchers_count": 1992
             },
             "repo_url": "https://github.com/stepancheg/rust-protobuf",
-            "stargazers": 1991
+            "stargazers": 1992
         },
         {
             "info": {
@@ -341,7 +341,7 @@
                 "releases_url": "https://api.github.com/repos/flosse/sloc/releases{/id}",
                 "size": 265,
                 "ssh_url": "git@github.com:flosse/sloc.git",
-                "stargazers_count": 894,
+                "stargazers_count": 895,
                 "stargazers_url": "https://api.github.com/repos/flosse/sloc/stargazers",
                 "statuses_url": "https://api.github.com/repos/flosse/sloc/statuses/{sha}",
                 "subscribers_count": 20,
@@ -360,14 +360,14 @@
                     "unmaintained"
                 ],
                 "trees_url": "https://api.github.com/repos/flosse/sloc/git/trees{/sha}",
-                "updated_at": "2022-04-22T00:26:25Z",
+                "updated_at": "2022-04-30T08:33:37Z",
                 "url": "https://api.github.com/repos/flosse/sloc",
                 "visibility": "public",
-                "watchers": 894,
-                "watchers_count": 894
+                "watchers": 895,
+                "watchers_count": 895
             },
             "repo_url": "https://github.com/flosse/sloc",
-            "stargazers": 894
+            "stargazers": 895
         },
         {
             "info": {
@@ -431,8 +431,8 @@
                 "network_count": 88,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/megalinter/megalinter/notifications{?since,all,participating}",
-                "open_issues": 31,
-                "open_issues_count": 31,
+                "open_issues": 32,
+                "open_issues_count": 32,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/76904213?v=4",
                     "events_url": "https://api.github.com/users/megalinter/events{/privacy}",
@@ -475,11 +475,11 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/megalinter/megalinter/pulls{/number}",
-                "pushed_at": "2022-04-30T06:45:44Z",
+                "pushed_at": "2022-04-30T07:18:05Z",
                 "releases_url": "https://api.github.com/repos/megalinter/megalinter/releases{/id}",
-                "size": 127083,
+                "size": 127396,
                 "ssh_url": "git@github.com:megalinter/megalinter.git",
-                "stargazers_count": 602,
+                "stargazers_count": 603,
                 "stargazers_url": "https://api.github.com/repos/megalinter/megalinter/stargazers",
                 "statuses_url": "https://api.github.com/repos/megalinter/megalinter/statuses/{sha}",
                 "subscribers_count": 7,
@@ -511,14 +511,14 @@
                     "terraform"
                 ],
                 "trees_url": "https://api.github.com/repos/megalinter/megalinter/git/trees{/sha}",
-                "updated_at": "2022-04-29T15:32:38Z",
+                "updated_at": "2022-04-30T10:48:29Z",
                 "url": "https://api.github.com/repos/megalinter/megalinter",
                 "visibility": "public",
-                "watchers": 602,
-                "watchers_count": 602
+                "watchers": 603,
+                "watchers_count": 603
             },
             "repo_url": "https://github.com/megalinter/megalinter",
-            "stargazers": 602
+            "stargazers": 603
         },
         {
             "info": {
@@ -1183,8 +1183,8 @@
                 "network_count": 18,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyODc1MDA0NTY=",
                 "notifications_url": "https://api.github.com/repos/bjw-s/home-ops/notifications{?since,all,participating}",
-                "open_issues": 7,
-                "open_issues_count": 7,
+                "open_issues": 8,
+                "open_issues_count": 8,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/6213398?v=4",
                     "events_url": "https://api.github.com/users/bjw-s/events{/privacy}",
@@ -1207,9 +1207,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-04-30T06:07:43Z",
+                "pushed_at": "2022-04-30T11:06:47Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 29493,
+                "size": 29497,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 127,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -3575,7 +3575,7 @@
                 "pulls_url": "https://api.github.com/repos/jr0dd/home-ops/pulls{/number}",
                 "pushed_at": "2022-04-30T07:04:37Z",
                 "releases_url": "https://api.github.com/repos/jr0dd/home-ops/releases{/id}",
-                "size": 4087,
+                "size": 4090,
                 "ssh_url": "git@github.com:jr0dd/home-ops.git",
                 "stargazers_count": 19,
                 "stargazers_url": "https://api.github.com/repos/jr0dd/home-ops/stargazers",
@@ -4680,7 +4680,7 @@
                 "pulls_url": "https://api.github.com/repos/llaville/php-compatinfo-db/pulls{/number}",
                 "pushed_at": "2022-04-30T06:36:22Z",
                 "releases_url": "https://api.github.com/repos/llaville/php-compatinfo-db/releases{/id}",
-                "size": 15689,
+                "size": 14676,
                 "ssh_url": "git@github.com:llaville/php-compatinfo-db.git",
                 "stargazers_count": 10,
                 "stargazers_url": "https://api.github.com/repos/llaville/php-compatinfo-db/stargazers",
