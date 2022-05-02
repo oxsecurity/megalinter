@@ -32,6 +32,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.1098 to **2.0.1100** on 2022-04-30
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.8 to **0.36.9** on 2022-04-30
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.08 to **2022.04.25** on 2022-04-30
+  - [checkov](https://www.checkov.io/) from 2.0.1100 to **2.0.1102** on 2022-05-02
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
