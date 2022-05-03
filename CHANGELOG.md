@@ -39,6 +39,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.7 to **5.20.0** on 2022-05-03
   - [checkov](https://www.checkov.io/) from 2.0.1102 to **2.0.1108** on 2022-05-03
   - [kics](https://www.kics.io) from 1.5.6 to **1.5.7** on 2022-05-03
+  - [protolint](https://github.com/yoheimuta/protolint) from 0.37.1 to **0.38.1** on 2022-05-03
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.5.0 to **7.6.0** on 2022-05-03
+  - [checkov](https://www.checkov.io/) from 2.0.1108 to **2.0.1110** on 2022-05-03
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
