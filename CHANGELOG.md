@@ -33,6 +33,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.8 to **0.36.9** on 2022-04-30
   - [clj-kondo](https://github.com/borkdude/clj-kondo) from 2022.04.08 to **2022.04.25** on 2022-04-30
   - [checkov](https://www.checkov.io/) from 2.0.1100 to **2.0.1102** on 2022-05-02
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.59.0 to **0.59.1** on 2022-05-03
+  - [phpstan](https://phpstan.org/) from 1.6.3 to **1.6.4** on 2022-05-03
+  - [pylint](https://www.pylint.org) from 2.13.7 to **2.13.8** on 2022-05-03
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.19.7 to **5.20.0** on 2022-05-03
+  - [checkov](https://www.checkov.io/) from 2.0.1102 to **2.0.1108** on 2022-05-03
+  - [kics](https://www.kics.io) from 1.5.6 to **1.5.7** on 2022-05-03
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
