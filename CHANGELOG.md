@@ -42,6 +42,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [protolint](https://github.com/yoheimuta/protolint) from 0.37.1 to **0.38.1** on 2022-05-03
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.5.0 to **7.6.0** on 2022-05-03
   - [checkov](https://www.checkov.io/) from 2.0.1108 to **2.0.1110** on 2022-05-03
+  - [stylelint](https://stylelint.io) from 14.8.1 to **14.8.2** on 2022-05-04
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
