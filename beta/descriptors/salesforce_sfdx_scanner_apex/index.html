@@ -5501,7 +5501,7 @@
 <p><strong>Workaround: Restricted to PMD</strong></p>
 <h2 id="sfdx-scanner-apex-documentation">sfdx-scanner-apex documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.13.1</strong></li>
+<li>Version in MegaLinter: <strong>2.13.2</strong></li>
 <li>Visit <a href="https://forcedotcom.github.io/sfdx-scanner/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html" target="_blank">How to configure sfdx-scanner-apex rules</a><ul>
 <li>If custom <code>apex-pmd-ruleset.xml</code> config file is not found, <a href="https://github.com/megalinter/megalinter/tree/main/TEMPLATES/apex-pmd-ruleset.xml" target="_blank">apex-pmd-ruleset.xml</a> will be used</li>
@@ -5798,6 +5798,10 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target &quot;/some-project/&quot; --severity-threshold 2
 
 
+WARNING: As of April 27, 2022, v3.x of the Salesforce Code Analyzer is available as an open pilot.
+         To update to v3.x and try out our pilot features, run these commands:
+         &gt; sfdx plugins:uninstall @salesforce/sfdx-scanner
+         &gt; sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot
 NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE
 ─────────────────────────────────────────────────  ───────────  ────────────────  ────────────────────────────────────────────────  ─────────────────
 VfCsrf                                             visualforce  Security          Basic VF                                          pmd
