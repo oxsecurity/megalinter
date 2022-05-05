@@ -43,6 +43,13 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.5.0 to **7.6.0** on 2022-05-03
   - [checkov](https://www.checkov.io/) from 2.0.1108 to **2.0.1110** on 2022-05-03
   - [stylelint](https://stylelint.io) from 14.8.1 to **14.8.2** on 2022-05-04
+  - [markdown-link-check](https://github.com/tcort/markdown-link-check) from 3.10.0 to **3.10.2** on 2022-05-05
+  - [phpstan](https://phpstan.org/) from 1.6.4 to **1.6.7** on 2022-05-05
+  - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
+  - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
+  - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.0 to **7.6.1** on 2022-05-05
+  - [checkov](https://www.checkov.io/) from 2.0.1110 to **2.0.1113** on 2022-05-05
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23

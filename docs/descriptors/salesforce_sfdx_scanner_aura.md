@@ -14,7 +14,7 @@ See more details in [Help](#help-content)
 
 ## sfdx-scanner-aura documentation
 
-- Version in MegaLinter: **2.13.1**
+- Version in MegaLinter: **2.13.2**
 - Visit [Official Web Site](https://forcedotcom.github.io/sfdx-scanner/){target=_blank}
 - See [How to configure sfdx-scanner-aura rules](https://eslint.org/docs/user-guide/configuring){target=_blank}
 - See [How to disable sfdx-scanner-aura rules in files](https://eslint.org/docs/user-guide/configuring/rules#disabling-rules){target=_blank}
@@ -219,6 +219,10 @@ EXAMPLE
       E.g., $ sfdx scanner:run --target "/some-project/" --severity-threshold 2
 
 
+WARNING: As of April 27, 2022, v3.x of the Salesforce Code Analyzer is available as an open pilot.
+         To update to v3.x and try out our pilot features, run these commands:
+         > sfdx plugins:uninstall @salesforce/sfdx-scanner
+         > sfdx plugins:install @salesforce/sfdx-scanner@latest-pilot
 NAME                                               LANGUAGES    CATEGORIES        RULESETS [DEP]                                    ENGINE
 ─────────────────────────────────────────────────  ───────────  ────────────────  ────────────────────────────────────────────────  ─────────────────
 VfCsrf                                             visualforce  Security          Basic VF                                          pmd
