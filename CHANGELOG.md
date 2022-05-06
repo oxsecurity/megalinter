@@ -55,6 +55,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.9 to **0.36.10** on 2022-05-06
 <!-- linter-versions-end -->
 
+- Flavors
+  - Update sqlfluff descriptor properties to enable error count([#1460](https://github.com/megalinter/megalinter/issues/1460))
+
 ## [v5.12.0] - 2022-04-23
 
 - Core
