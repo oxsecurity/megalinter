@@ -50,6 +50,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.1 to **2.13.2** on 2022-05-05
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.0 to **7.6.1** on 2022-05-05
   - [checkov](https://www.checkov.io/) from 2.0.1110 to **2.0.1113** on 2022-05-05
+  - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 2.0.1 to **2.0.2** on 2022-05-06
+  - [checkov](https://www.checkov.io/) from 2.0.1113 to **2.0.1118** on 2022-05-06
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.9 to **0.36.10** on 2022-05-06
 <!-- linter-versions-end -->
 
 ## [v5.12.0] - 2022-04-23
