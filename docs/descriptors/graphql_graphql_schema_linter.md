@@ -4,7 +4,7 @@
 
 ## graphql-schema-linter documentation
 
-- Version in MegaLinter: **2.0.2**
+- Version in MegaLinter: **3.0.0**
 - Visit [Official Web Site](https://github.com/cjoudrey/graphql-schema-linter#readme){target=_blank}
 - See [How to configure graphql-schema-linter rules](https://github.com/cjoudrey/graphql-schema-linter#configuration-file){target=_blank}
 - See [How to disable graphql-schema-linter rules in files](https://github.com/cjoudrey/graphql-schema-linter#inline-rule-overrides){target=_blank}
@@ -97,6 +97,7 @@ Options:
 ### Installation on mega-linter Docker image
 
 - NPM packages (node.js):
+  - [graphql](https://www.npmjs.com/package/graphql)
   - [graphql-schema-linter](https://www.npmjs.com/package/graphql-schema-linter)
 
 ### Example success log
