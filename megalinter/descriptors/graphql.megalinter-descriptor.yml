@@ -19,4 +19,5 @@ linters:
       - "graphql-schema-linter myfile.graphql"
     install:
       npm:
+        - graphql
         - graphql-schema-linter
