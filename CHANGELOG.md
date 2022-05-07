@@ -53,6 +53,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 2.0.1 to **2.0.2** on 2022-05-06
   - [checkov](https://www.checkov.io/) from 2.0.1113 to **2.0.1118** on 2022-05-06
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.9 to **0.36.10** on 2022-05-06
+  - [eslint](https://eslint.org) from 8.14.0 to **8.15.0** on 2022-05-07
+  - [rubocop](https://rubocop.org/) from 1.28.2 to **1.29.0** on 2022-05-07
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.1 to **7.6.2** on 2022-05-07
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.0 to **0.13.1** on 2022-05-07
+  - [checkov](https://www.checkov.io/) from 2.0.1118 to **2.0.1119** on 2022-05-07
 <!-- linter-versions-end -->
 
 - Flavors
