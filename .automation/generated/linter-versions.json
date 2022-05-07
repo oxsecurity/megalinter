@@ -25,7 +25,7 @@
     "gherkin-lint": "0.0.0",
     "git_diff": "2.30.3",
     "golangci-lint": "1.45.2",
-    "graphql-schema-linter": "2.0.2",
+    "graphql-schema-linter": "3.0.0",
     "hadolint": "2.10.0",
     "htmlhint": "1.1.4",
     "isort": "5.10.1",
