@@ -61,6 +61,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 2.0.2 to **3.0.0** on 2022-05-07
 <!-- linter-versions-end -->
 
+- Flavors
+  - Update sqlfluff descriptor properties to enable error count([#1460](https://github.com/megalinter/megalinter/issues/1460))
+
 ## [v5.12.0] - 2022-04-23
 
 - Core
