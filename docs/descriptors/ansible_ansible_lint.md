@@ -142,4 +142,4 @@ optional arguments:
 ### Installation on mega-linter Docker image
 
 - PIP packages (Python):
-  - [ansible-lint[community,yamllint]](https://pypi.org/project/ansible-lint[community,yamllint])
+  - [ansible-lint==6.0.2](https://pypi.org/project/ansible-lint==6.0.2)
