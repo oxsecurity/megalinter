@@ -23,8 +23,6 @@ linters:
     examples:
       - "editorconfig-checker myfile.js"
     install:
-      apk:
-        - go
       dockerfile:
-        - ENV GO111MODULE=on
-        - RUN go get github.com/editorconfig-checker/editorconfig-checker
+        - FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
+        - COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker

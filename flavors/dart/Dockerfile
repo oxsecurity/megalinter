@@ -13,6 +13,7 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 #FROM__END
 
@@ -68,7 +69,6 @@ RUN apk add --update --no-cache \
 #############################################################################################
 #APK__START
 RUN apk add --update --no-cache \
-                go \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -191,8 +191,7 @@ RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sger
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # editorconfig-checker installation
-ENV GO111MODULE=on
-RUN go get github.com/editorconfig-checker/editorconfig-checker
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s

@@ -11,7 +11,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 - Add gherkin-lint in dotnet flavor ([#1435](https://github.com/megalinter/megalinter/issues/1435))
 - Define pre-commit hooks ([#569](https://github.com/megalinter/megalinter/issues/569)).
 - Pin ansible-lint to 6.0.2 to fix pip dependency conflict between jsonschema versions ([#1470](https://github.com/megalinter/megalinter/issues/1470)).
-- Use GO installer for editorconfig-checker
+- Use docker image for editorconfig-checker
 
 - Linter versions upgrades
   - [luacheck](https://luacheck.readthedocs.io) from 0.26.0 to **0.26.1** on 2022-04-24
