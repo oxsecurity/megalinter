@@ -10,6 +10,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 - Add gherkin-lint in dotnet flavor ([#1435](https://github.com/megalinter/megalinter/issues/1435))
 - Define pre-commit hooks ([#569](https://github.com/megalinter/megalinter/issues/569)).
+- Use GO installer for editorconfig-checker
 
 - Linter versions upgrades
   - [luacheck](https://luacheck.readthedocs.io) from 0.26.0 to **0.26.1** on 2022-04-24

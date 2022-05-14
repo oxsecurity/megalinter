@@ -23,5 +23,7 @@ linters:
     examples:
       - "editorconfig-checker myfile.js"
     install:
-      npm:
-        - editorconfig-checker
+      apk:
+        - go
+      dockerfile:
+        - RUN go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest

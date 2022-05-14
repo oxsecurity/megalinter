@@ -75,6 +75,7 @@ RUN apk add --update --no-cache \
                 lttng-ust-dev \
                 zlib \
                 zlib-dev \
+                go \
                 libc-dev \
                 libxml2-dev \
                 libxml2-utils \
@@ -121,7 +122,6 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
                 dockerfilelint \
-                editorconfig-checker \
                 gherkin-lint \
                 graphql \
                 graphql-schema-linter \
@@ -218,6 +218,9 @@ RUN /usr/share/dotnet/dotnet tool install -g dotnet-format
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+
+# editorconfig-checker installation
+RUN go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
