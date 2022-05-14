@@ -14,6 +14,7 @@
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
 #FROM__END
 
@@ -114,7 +115,6 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
                 dockerfilelint \
-                editorconfig-checker \
                 graphql \
                 graphql-schema-linter \
                 npm-groovy-lint \
@@ -187,6 +187,9 @@ COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+
+# editorconfig-checker installation
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s

@@ -13,6 +13,7 @@
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
+FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
@@ -176,7 +177,6 @@ RUN npm install --no-cache --ignore-scripts \
                 stylelint-config-sass-guidelines \
                 stylelint-scss \
                 dockerfilelint \
-                editorconfig-checker \
                 gherkin-lint \
                 graphql \
                 graphql-schema-linter \
@@ -345,6 +345,9 @@ RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sger
 
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
+
+# editorconfig-checker installation
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
