@@ -99,6 +99,7 @@ _Github PR reporter_
   - [Plugins](#plugins)
     - [Use plugins](#use-plugins)
       - [Example](#example)
+    - [Plugins Catalog](#plugins-catalog)    
     - [Create plugins](#create-plugins)
       - [Limitations](#limitations)
   - [Articles](#articles)
@@ -902,6 +903,8 @@ PLUGINS:
 ### Plugins Catalog
 
 * [jupyfmt](https://github.com/kpj/jupyfmt): The uncompromising Jupyter notebook formatter ([usage](https://github.com/kpj/jupyfmt#mega-linter-integration))
+* [nitpick](https://github.com/andreoliwa/nitpick): Command-line tool and flake8 plugin to enforce the same settings across multiple language-independent projects. ([usage](https://github.com/andreoliwa/nitpick#run-as-a-megalinter-plugin))
+
 
 Submit a PR if you want your plugin to appear here :)
 
