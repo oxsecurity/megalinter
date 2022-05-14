@@ -27,4 +27,4 @@ linters:
         - go
       dockerfile:
         - ENV GO111MODULE=on
-        - RUN go get github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
+        - RUN go get github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker
