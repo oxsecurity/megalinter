@@ -191,7 +191,8 @@ RUN wget --tries=5 -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sger
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # editorconfig-checker installation
-RUN go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
+ENV GO111MODULE=on
+RUN go get github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s

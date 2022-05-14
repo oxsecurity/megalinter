@@ -26,4 +26,5 @@ linters:
       apk:
         - go
       dockerfile:
-        - RUN go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
+        - ENV GO111MODULE=on
+        - RUN go get github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
