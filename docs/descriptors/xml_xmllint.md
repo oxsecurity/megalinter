@@ -4,7 +4,7 @@
 
 ## xmllint documentation
 
-- Version in MegaLinter: **20913**
+- Version in MegaLinter: **20914**
 - Visit [Official Web Site](http://xmlsoft.org/xmllint.html){target=_blank}
 - See [Index of problems detected by xmllint](http://xmlsoft.org/xmllint.html#diagnostics){target=_blank}
 

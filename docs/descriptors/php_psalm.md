@@ -9,7 +9,7 @@
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.4.x-dev@**
+- Version in MegaLinter: **Psalm.5.x-dev@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file is not found, [psalm.xml](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used

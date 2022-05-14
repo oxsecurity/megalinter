@@ -63,6 +63,16 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 2.0.2 to **3.0.0** on 2022-05-07
   - [checkov](https://www.checkov.io/) from 2.0.1119 to **2.0.1120** on 2022-05-08
   - [checkov](https://www.checkov.io/) from 2.0.1120 to **2.0.1121** on 2022-05-08
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.59.1 to **0.60.0** on 2022-05-14
+  - [golangci-lint](https://golangci-lint.run/) from 1.45.2 to **1.46.1** on 2022-05-14
+  - [phpstan](https://phpstan.org/) from 1.6.7 to **1.6.8** on 2022-05-14
+  - [psalm](https://psalm.dev) from Psalm.4.x-dev@ to **Psalm.5.x-dev@** on 2022-05-14
+  - [pylint](https://www.pylint.org) from 2.13.8 to **2.13.9** on 2022-05-14
+  - [rubocop](https://rubocop.org/) from 1.29.0 to **1.29.1** on 2022-05-14
+  - [checkov](https://www.checkov.io/) from 2.0.1121 to **2.0.1140** on 2022-05-14
+  - [kics](https://www.kics.io) from 1.5.7 to **1.5.8** on 2022-05-14
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.10 to **0.37.1** on 2022-05-14
+  - [xmllint](http://xmlsoft.org/xmllint.html) from 20913 to **20914** on 2022-05-14
 <!-- linter-versions-end -->
 
 - Flavors
