@@ -99,7 +99,7 @@ _Github PR reporter_
   - [Plugins](#plugins)
     - [Use plugins](#use-plugins)
       - [Example](#example)
-    - [Plugins Catalog](#plugins-catalog)    
+    - [Plugins Catalog](#plugins-catalog)
     - [Create plugins](#create-plugins)
       - [Limitations](#limitations)
   - [Articles](#articles)
