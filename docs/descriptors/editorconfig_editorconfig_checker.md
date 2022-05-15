@@ -9,7 +9,7 @@
 
 ## editorconfig-checker documentation
 
-- Version in MegaLinter: **2.3.5**
+- Version in MegaLinter: **2.4.0**
 - Visit [Official Web Site](https://editorconfig-checker.github.io/){target=_blank}
 - See [How to configure editorconfig-checker rules](https://github.com/editorconfig-checker/editorconfig-checker#configuration){target=_blank}
 - See [How to disable editorconfig-checker rules in files](https://github.com/editorconfig-checker/editorconfig-checker#excluding){target=_blank}
@@ -82,7 +82,6 @@ editorconfig-checker myfile.js
 
 ```shell
 USAGE:
-
   -config string
       config
   -debug
@@ -117,13 +116,16 @@ USAGE:
       print debugging information
   -version
       print the version number
-
 ```
 
 ### Installation on mega-linter Docker image
 
-- NPM packages (node.js):
-  - [editorconfig-checker](https://www.npmjs.com/package/editorconfig-checker)
+- Dockerfile commands :
+```dockerfile
+FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+```
+
 
 ### Example success log
 
