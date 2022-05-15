@@ -74,6 +74,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.36.10 to **0.37.1** on 2022-05-14
   - [xmllint](http://xmlsoft.org/xmllint.html) from 20913 to **20914** on 2022-05-14
   - [editorconfig-checker](https://editorconfig-checker.github.io/) from 2.3.5 to **2.4.0** on 2022-05-15
+  - [checkov](https://www.checkov.io/) from 2.0.1140 to **2.0.1141** on 2022-05-15
 <!-- linter-versions-end -->
 
 - Flavors
