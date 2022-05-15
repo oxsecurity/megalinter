@@ -18,7 +18,7 @@
     "dockerfilelint": "1.8.0",
     "dotenv-linter": "3.2.0",
     "dotnet-format": "000",
-    "editorconfig-checker": "2.3.5",
+    "editorconfig-checker": "2.4.0",
     "eslint": "8.15.0",
     "eslint-plugin-jsonc": "2.2.1",
     "flake8": "4.0.1",

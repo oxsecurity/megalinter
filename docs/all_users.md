@@ -6,6 +6,7 @@
 [![megalinter/megalinter - GitHub](https://gh-card.dev/repos/megalinter/megalinter.svg?fullname=)](https://github.com/megalinter/megalinter){target=_blank}
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![onedr0p/home-ops - GitHub](https://gh-card.dev/repos/onedr0p/home-ops.svg?fullname=)](https://github.com/onedr0p/home-ops){target=_blank}
+[![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
 [![practicalli/clojure-deps-edn - GitHub](https://gh-card.dev/repos/practicalli/clojure-deps-edn.svg?fullname=)](https://github.com/practicalli/clojure-deps-edn){target=_blank}
 [![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![KelvinTegelaar/CIPP - GitHub](https://gh-card.dev/repos/KelvinTegelaar/CIPP.svg?fullname=)](https://github.com/KelvinTegelaar/CIPP){target=_blank}
@@ -50,6 +51,7 @@
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
 [![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 [![jokay/docker-prune - GitHub](https://gh-card.dev/repos/jokay/docker-prune.svg?fullname=)](https://github.com/jokay/docker-prune){target=_blank}
+[![theodore-s-beers/muqawwim - GitHub](https://gh-card.dev/repos/theodore-s-beers/muqawwim.svg?fullname=)](https://github.com/theodore-s-beers/muqawwim){target=_blank}
 [![AlbanAndrieu/jenkins-pipeline-scripts - GitHub](https://gh-card.dev/repos/AlbanAndrieu/jenkins-pipeline-scripts.svg?fullname=)](https://github.com/AlbanAndrieu/jenkins-pipeline-scripts){target=_blank}
 [![tusharshahrs/pulumi-home - GitHub](https://gh-card.dev/repos/tusharshahrs/pulumi-home.svg?fullname=)](https://github.com/tusharshahrs/pulumi-home){target=_blank}
 [![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
@@ -67,4 +69,3 @@
 [![epleypa/Home-AssistantConfig - GitHub](https://gh-card.dev/repos/epleypa/Home-AssistantConfig.svg?fullname=)](https://github.com/epleypa/Home-AssistantConfig){target=_blank}
 [![ewencluley/final-curtain - GitHub](https://gh-card.dev/repos/ewencluley/final-curtain.svg?fullname=)](https://github.com/ewencluley/final-curtain){target=_blank}
 [![thomaseolsen/archaeology_rust_api - GitHub](https://gh-card.dev/repos/thomaseolsen/archaeology_rust_api.svg?fullname=)](https://github.com/thomaseolsen/archaeology_rust_api){target=_blank}
-[![theodore-s-beers/muqawwim - GitHub](https://gh-card.dev/repos/theodore-s-beers/muqawwim.svg?fullname=)](https://github.com/theodore-s-beers/muqawwim){target=_blank}
