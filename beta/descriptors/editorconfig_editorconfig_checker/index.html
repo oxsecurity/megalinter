@@ -5512,7 +5512,7 @@
 
 <h2 id="editorconfig-checker-documentation">editorconfig-checker documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>2.3.5</strong></li>
+<li>Version in MegaLinter: <strong>2.4.0</strong></li>
 <li>Visit <a href="https://editorconfig-checker.github.io/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#configuration" target="_blank">How to configure editorconfig-checker rules</a></li>
 <li>See <a href="https://github.com/editorconfig-checker/editorconfig-checker#excluding" target="_blank">How to disable editorconfig-checker rules in files</a></li>
@@ -5731,7 +5731,6 @@
 </code></pre>
 <h3 id="help-content">Help content</h3>
 <pre><code class="language-shell">USAGE:
-
   -config string
       config
   -debug
@@ -5766,15 +5765,14 @@
       print debugging information
   -version
       print the version number
-
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
-<li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/editorconfig-checker">editorconfig-checker</a></li>
+<li>Dockerfile commands :</li>
 </ul>
-</li>
-</ul>
+<pre><code class="language-dockerfile">FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+</code></pre>
 <h3 id="example-success-log">Example success log</h3>
 <pre><code class="language-shell">Results of editorconfig-checker linter (version 0.0.0)
 See documentation on https://megalinter.github.io/descriptors/editorconfig_editorconfig_checker/
