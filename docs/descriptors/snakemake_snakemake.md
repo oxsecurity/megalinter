@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.6.2**
+- Version in MegaLinter: **7.7.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -124,9 +124,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--delete-all-output] [--delete-temp-output]
                  [--bash-completion] [--keep-incomplete] [--drop-metadata]
                  [--version] [--reason] [--gui [PORT]] [--printshellcmds]
-                 [--debug-dag] [--stats FILE] [--nocolor] [--quiet]
-                 [--print-compilation] [--verbose] [--force-use-threads]
-                 [--allow-ambiguity] [--nolock] [--ignore-incomplete]
+                 [--debug-dag] [--stats FILE] [--nocolor]
+                 [--quiet [{progress,rules,all} ...]] [--print-compilation]
+                 [--verbose] [--force-use-threads] [--allow-ambiguity]
+                 [--nolock] [--ignore-incomplete]
                  [--max-inventory-time SECONDS] [--latency-wait SECONDS]
                  [--wait-for-files [FILE ...]] [--wait-for-files-file FILE]
                  [--notemp] [--all-temp] [--keep-remote] [--keep-target-files]
@@ -134,7 +135,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--local-groupid LOCAL_GROUPID]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND]
-                 [-T RESTART_TIMES] [--attempt ATTEMPT]
+                 [-T RETRIES] [--attempt ATTEMPT]
                  [--wrapper-prefix WRAPPER_PREFIX]
                  [--default-remote-provider {S3,GS,FTP,SFTP,S3Mocked,gfal,gridftp,iRODS,AzBlob,XRootD}]
                  [--default-remote-prefix DEFAULT_REMOTE_PREFIX]
@@ -634,8 +635,11 @@ OUTPUT:
   --stats FILE          Write stats about Snakefile execution in JSON format
                         to the given file. (default: None)
   --nocolor             Do not use a colored output. (default: False)
-  --quiet, -q           Do not output any progress or rule information.
-                        (default: False)
+  --quiet [{progress,rules,all} ...], -q [{progress,rules,all} ...]
+                        Do not output certain information. If used without
+                        arguments, do not output any progress or rule
+                        information. Defining 'all' results in no information
+                        being printed at all. (default: None)
   --print-compilation   Print the python representation of the workflow.
                         (default: False)
   --verbose             Print debugging output. (default: False)
@@ -703,7 +707,7 @@ BEHAVIOR:
   --max-status-checks-per-second MAX_STATUS_CHECKS_PER_SECOND
                         Maximal number of job status checks per second,
                         default is 10, fractions allowed. (default: 10)
-  -T RESTART_TIMES, --restart-times RESTART_TIMES
+  -T RETRIES, --retries RETRIES, --restart-times RETRIES
                         Number of times to restart failing jobs (defaults to
                         0). (default: 0)
   --attempt ATTEMPT     Internal use only: define the initial value of the
