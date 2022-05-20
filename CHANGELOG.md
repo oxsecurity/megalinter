@@ -13,6 +13,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.6.2 to **7.7.0** on 2022-05-17
   - [checkov](https://www.checkov.io/) from 2.0.1141 to **2.0.1143** on 2022-05-17
 <!-- linter-versions-end -->
+- Container no longer runs as root user by default
 
 ## [v5.13.0] - 2022-05-15
 
