@@ -279,6 +279,12 @@ ENV BUILD_DATE=$BUILD_DATE \
 ENV MEGALINTER_FLAVOR=salesforce
 #FLAVOR__END
 
+##########################
+# Run as a non-root user #
+##########################
+RUN adduser -D megalinter
+USER megalinter
+
 #########################################
 # Label the instance and set maintainer #
 #########################################
