@@ -21,7 +21,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.1143 to **2.0.1147** on 2022-05-20
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.9 to **1.2.0** on 2022-05-20
 <!-- linter-versions-end -->
-- Container no longer runs as root user by default
+- Container no longer runs as root user by default ([#1485](https://github.com/megalinter/megalinter/pull/1485))
 
 ## [v5.13.0] - 2022-05-15
 
