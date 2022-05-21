@@ -20,6 +20,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.20.0 to **5.21.0** on 2022-05-20
   - [checkov](https://www.checkov.io/) from 2.0.1143 to **2.0.1147** on 2022-05-20
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.1.9 to **1.2.0** on 2022-05-20
+  - [eslint](https://eslint.org) from 8.15.0 to **8.16.0** on 2022-05-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.21.0 to **5.21.1** on 2022-05-21
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.1 to **0.13.2** on 2022-05-21
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
