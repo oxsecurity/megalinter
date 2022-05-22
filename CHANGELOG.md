@@ -23,6 +23,11 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [eslint](https://eslint.org) from 8.15.0 to **8.16.0** on 2022-05-21
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.21.0 to **5.21.1** on 2022-05-21
   - [sqlfluff](https://www.sqlfluff.com/) from 0.13.1 to **0.13.2** on 2022-05-21
+  - [stylelint](https://stylelint.io) from 14.8.2 to **14.8.3** on 2022-05-22
+  - [graphql-schema-linter](https://github.com/cjoudrey/graphql-schema-linter) from 3.0.0 to **3.0.1** on 2022-05-22
+  - [phpstan](https://phpstan.org/) from 1.6.8 to **1.6.9** on 2022-05-22
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.21.1 to **6.0.0** on 2022-05-22
+  - [checkov](https://www.checkov.io/) from 2.0.1147 to **2.0.1150** on 2022-05-22
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
