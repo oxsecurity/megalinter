@@ -28,6 +28,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 1.6.8 to **1.6.9** on 2022-05-22
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 5.21.1 to **6.0.0** on 2022-05-22
   - [checkov](https://www.checkov.io/) from 2.0.1147 to **2.0.1150** on 2022-05-22
+  - [shfmt](https://github.com/mvdan/sh) from 3.5.0 to **3.6.0** on 2022-05-24
+  - [phpstan](https://phpstan.org/) from 1.6.9 to **1.7.0** on 2022-05-24
+  - [checkov](https://www.checkov.io/) from 2.0.1150 to **2.0.1158** on 2022-05-24
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
