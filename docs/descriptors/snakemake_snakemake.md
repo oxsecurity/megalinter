@@ -9,7 +9,7 @@
 
 ## snakemake documentation
 
-- Version in MegaLinter: **7.7.0**
+- Version in MegaLinter: **7.8.0**
 - Visit [Official Web Site](https://snakemake.readthedocs.io/en/stable/){target=_blank}
 
 [![snakemake - GitHub](https://gh-card.dev/repos/snakemake/snakemake.svg?fullname=)](https://github.com/snakemake/snakemake){target=_blank}
@@ -98,8 +98,10 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE] [--cache [RULE ...]]
                  [--preemptible-rules PREEMPTIBLE_RULES [PREEMPTIBLE_RULES ...]]
                  [--config [KEY=VALUE ...]] [--configfile FILE [FILE ...]]
                  [--envvars VARNAME [VARNAME ...]] [--directory DIR] [--touch]
-                 [--keep-going] [--force] [--forceall]
-                 [--forcerun [TARGET ...]] [--prioritize TARGET [TARGET ...]]
+                 [--keep-going]
+                 [--rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]]
+                 [--force] [--forceall] [--forcerun [TARGET ...]]
+                 [--prioritize TARGET [TARGET ...]]
                  [--batch RULE=BATCH/BATCHES] [--until TARGET [TARGET ...]]
                  [--omit-from TARGET [TARGET ...]] [--rerun-incomplete]
                  [--shadow-prefix DIR] [--scheduler [{ilp,greedy}]]
@@ -347,6 +349,14 @@ EXECUTION:
                         should be used only as a last resort. (default: False)
   --keep-going, -k      Go on with independent jobs if a job fails. (default:
                         False)
+  --rerun-triggers {mtime,params,input,software-env,code} [{mtime,params,input,software-env,code} ...]
+                        Define what triggers the rerunning of a job. By
+                        default, all triggers are used, which guarantees that
+                        results are consistent with the workflow code and
+                        configuration. If you rather prefer the traditional
+                        way of just considering file modification dates, use '
+                        --rerun-trigger mtime'. (default: ['mtime', 'params',
+                        'input', 'software-env', 'code'])
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
                         (default: False)
@@ -617,8 +627,8 @@ UTILITIES:
   --version, -v         show program's version number and exit
 
 OUTPUT:
-  --reason, -r          Print the reason for each executed rule. (default:
-                        False)
+  --reason, -r          Print the reason for each executed rule (deprecated,
+                        always true now). (default: False)
   --gui [PORT]          Serve an HTML based user interface to the given
                         network and port e.g. 168.129.10.15:8000. By default
                         Snakemake is only available in the local network
