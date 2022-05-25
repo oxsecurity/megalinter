@@ -35,6 +35,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.7.0 to **7.8.0** on 2022-05-24
   - [checkov](https://www.checkov.io/) from 2.0.1158 to **2.0.1159** on 2022-05-24
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.0 to **1.2.1** on 2022-05-24
+  - [stylelint](https://stylelint.io) from 14.8.3 to **14.8.4** on 2022-05-25
+  - [checkov](https://www.checkov.io/) from 2.0.1159 to **2.0.1161** on 2022-05-25
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
