@@ -46,6 +46,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sfdx-scanner-lwc](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.2 to **2.13.4** on 2022-05-27
   - [checkov](https://www.checkov.io/) from 2.0.1161 to **2.0.1162** on 2022-05-27
   - [kics](https://www.kics.io) from 1.5.8 to **1.5.9** on 2022-05-27
+  - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.2.1 to **2.3.0** on 2022-05-28
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
