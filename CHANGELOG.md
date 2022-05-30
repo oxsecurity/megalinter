@@ -47,6 +47,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkov](https://www.checkov.io/) from 2.0.1161 to **2.0.1162** on 2022-05-27
   - [kics](https://www.kics.io) from 1.5.8 to **1.5.9** on 2022-05-27
   - [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) from 2.2.1 to **2.3.0** on 2022-05-28
+  - [checkstyle](https://checkstyle.sourceforge.io) from 10.2 to **10.3** on 2022-05-30
+  - [phpstan](https://phpstan.org/) from 1.7.2 to **1.7.3** on 2022-05-30
+  - [checkov](https://www.checkov.io/) from 2.0.1162 to **2.0.1174** on 2022-05-30
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
