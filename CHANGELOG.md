@@ -50,6 +50,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [checkstyle](https://checkstyle.sourceforge.io) from 10.2 to **10.3** on 2022-05-30
   - [phpstan](https://phpstan.org/) from 1.7.2 to **1.7.3** on 2022-05-30
   - [checkov](https://www.checkov.io/) from 2.0.1162 to **2.0.1174** on 2022-05-30
+  - [phpstan](https://phpstan.org/) from 1.7.3 to **1.7.6** on 2022-05-31
+  - [checkov](https://www.checkov.io/) from 2.0.1174 to **2.0.1175** on 2022-05-31
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
