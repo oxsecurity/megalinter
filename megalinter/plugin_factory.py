@@ -1,9 +1,9 @@
 # Class to manage MegaLinter plugins
 import logging
+import os
 import shutil
 import subprocess
 import sys
-import os
 
 import requests
 import yaml
@@ -48,10 +48,14 @@ def load_plugin(plugin):
                 if not os.path.isfile(plugin_path):
                     plugin_path = "/tmp/lint/" + plugin_path
                     if not os.path.isfile(plugin_path):
-                        raise Exception(f"[Plugins] Local plugin descriptor {plugin} not found")
+                        raise Exception(
+                            f"[Plugins] Local plugin descriptor {plugin} not found"
+                        )
                 # Make sure plugin file is readable and not empty
                 if not os.access(plugin_path, os.R_OK):
-                    raise Exception(f"[Plugins] Local plugin descriptor {plugin} not readable")
+                    raise Exception(
+                        f"[Plugins] Local plugin descriptor {plugin} not readable"
+                    )
                 if os.stat(plugin_path).st_size == 0:
                     raise Exception(f"[Plugins] Plugin descriptor {plugin} is empty")
                 r = open(plugin_path, "r").read()
@@ -63,12 +67,15 @@ def load_plugin(plugin):
                 f"[Plugins] Loaded plugin descriptor {descriptor_file} from {plugin}"
             )
         except Exception as e:
-            raise Exception(f"[Plugins] Unable to load remote plugin {plugin}:\n{str(e)}")
+            raise Exception(
+                f"[Plugins] Unable to load remote plugin {plugin}:\n{str(e)}"
+            )
         return descriptor_file
     else:
         raise Exception(
             "[Plugins] Plugin descriptors must follow the format"
-            f" https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml or file://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml (wrong value {plugin})"
+            " https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml or"
+            f" file://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml (wrong value {plugin})"
         )
 
 

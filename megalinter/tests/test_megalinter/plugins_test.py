@@ -42,6 +42,22 @@ class plugins_test(unittest.TestCase):
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
 
+    def test_load_local_plugin_success(self):
+        mega_linter, output = utilstest.call_mega_linter(
+            {
+                "PLUGINS": ".automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
+                "LOG_LEVEL": "DEBUG",
+                "MULTI_STATUS": "false",
+                "GITHUB_COMMENT_REPORTER": "false",
+            }
+        )
+        self.assertTrue(
+            len(mega_linter.linters) > 0, "Linters have been created and run"
+        )
+        self.assertIn("### Processed [TEST] files", output)
+        self.assertIn("[Plugins] Loaded plugin descriptor", output)
+        self.assertIn("[Plugins] Successful initialization of TEST", output)
+
     def test_load_plugin_http_error(self):
         try:
             utilstest.call_mega_linter(
