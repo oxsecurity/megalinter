@@ -4,7 +4,7 @@
     "bandit": "Apache-2.0",
     "black": "MIT",
     "checkov": "Apache-2.0",
-    "checkstyle": "Other",
+    "checkstyle": "LGPL-2.1",
     "coffeelint": "Other",
     "cspell": "MIT",
     "dartanalyzer": "BSD-3-Clause",

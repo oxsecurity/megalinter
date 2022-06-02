@@ -33,6 +33,7 @@ JSON_REPORTER: true
 GITHUB_STATUS_REPORTER: false
 PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: echo "This is MegaLinter PRE_COMMAND on own MegaLinter ! :)"
     cwd: "root"

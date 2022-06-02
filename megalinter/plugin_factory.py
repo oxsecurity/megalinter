@@ -3,6 +3,7 @@ import logging
 import shutil
 import subprocess
 import sys
+import os
 
 import requests
 import yaml
@@ -24,8 +25,9 @@ def initialize_plugins():
 
 # Load plugin descriptor
 def load_plugin(plugin):
-    if plugin.startswith("https://"):
-        # Check validity of plugin URL
+    # Check if plugin is a URL or local path
+    if plugin.startswith("https://") or plugin.startswith("file://"):
+        # Check validity of plugin URL/path
         descriptor_file = "/megalinter-descriptors/" + plugin.rsplit("/", 1)[1]
         if "/mega-linter-plugin-" not in plugin:
             raise Exception(
@@ -35,10 +37,25 @@ def load_plugin(plugin):
             raise Exception(
                 "[Plugins] Plugin descriptor file must end with .megalinter-descriptor.yml"
             )
+
         # Download plugin and write it in megalinter
         try:
-            r = requests.get(plugin, allow_redirects=True)
-            plugin_descriptor = yaml.safe_load(r.content)
+            if plugin.startswith("https://"):
+                r = requests.get(plugin, allow_redirects=True).content
+            else:
+                # From file://<path>, test both <path> and /tmp/lint/<path>
+                plugin_path = plugin.split("file://")[1]
+                if not os.path.isfile(plugin_path):
+                    plugin_path = "/tmp/lint/" + plugin_path
+                    if not os.path.isfile(plugin_path):
+                        raise Exception(f"[Plugins] Local plugin descriptor {plugin} not found")
+                # Make sure plugin file is readable and not empty
+                if not os.access(plugin_path, os.R_OK):
+                    raise Exception(f"[Plugins] Local plugin descriptor {plugin} not readable")
+                if os.stat(plugin_path).st_size == 0:
+                    raise Exception(f"[Plugins] Plugin descriptor {plugin} is empty")
+                r = open(plugin_path, "r").read()
+            plugin_descriptor = yaml.safe_load(r)
             plugin_descriptor["is_plugin"] = True
             with open(descriptor_file, "w") as outfile:
                 yaml.dump(plugin_descriptor, outfile)
@@ -46,12 +63,12 @@ def load_plugin(plugin):
                 f"[Plugins] Loaded plugin descriptor {descriptor_file} from {plugin}"
             )
         except Exception as e:
-            raise Exception(f"[Plugins] Unable to load plugin {plugin}:\n{str(e)}")
+            raise Exception(f"[Plugins] Unable to load remote plugin {plugin}:\n{str(e)}")
         return descriptor_file
     else:
         raise Exception(
             "[Plugins] Plugin descriptors must follow the format"
-            f" https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml (wrong value {plugin})"
+            f" https://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml or file://**/mega-linter-plugin-**/**.mega-linter-descriptor.yml (wrong value {plugin})"
         )
 
 
