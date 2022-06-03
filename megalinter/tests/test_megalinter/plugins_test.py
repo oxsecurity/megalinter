@@ -45,7 +45,7 @@ class plugins_test(unittest.TestCase):
     def test_load_local_plugin_success(self):
         mega_linter, output = utilstest.call_mega_linter(
             {
-                "PLUGINS": ".automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
+                "PLUGINS": "file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml",
                 "LOG_LEVEL": "DEBUG",
                 "MULTI_STATUS": "false",
                 "GITHUB_COMMENT_REPORTER": "false",
@@ -57,6 +57,32 @@ class plugins_test(unittest.TestCase):
         self.assertIn("### Processed [TEST] files", output)
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
+
+    def test_load_local_plugin_fail(self):
+        try:
+            utilstest.call_mega_linter(
+                {
+                    "PLUGINS": "file://.automation/test/mega-linter-plugin-test/test-fake.megalinter-descriptor.yml",
+                    "LOG_LEVEL": "DEBUG",
+                    "MULTI_STATUS": "false",
+                    "GITHUB_COMMENT_REPORTER": "false",
+                }
+            )
+        except Exception as e:
+            self.assertIn("[Plugins] Local plugin descriptor not found or not readable", str(e))
+
+    def test_load_local_plugin_read_fail(self):
+        try:
+            utilstest.call_mega_linter(
+                {
+                    "PLUGINS": "file://.automation/test/mega-linter-plugin-test/test-empty.megalinter-descriptor.yml",
+                    "LOG_LEVEL": "DEBUG",
+                    "MULTI_STATUS": "false",
+                    "GITHUB_COMMENT_REPORTER": "false",
+                }
+            )
+        except Exception as e:
+            self.assertIn("[Plugins] Local plugin descriptor not found or not readable", str(e))
 
     def test_load_plugin_http_error(self):
         try:
@@ -70,7 +96,7 @@ class plugins_test(unittest.TestCase):
                 }
             )
         except Exception as e:
-            self.assertIn("[Plugins] Unable to load plugin", str(e))
+            self.assertIn("[Plugins] Unable to load remote plugin", str(e))
 
     def test_load_plugin_host_url_error_1(self):
         try:

@@ -45,17 +45,12 @@ def load_plugin(plugin):
             else:
                 # From file://<path>, test both <path> and /tmp/lint/<path>
                 plugin_path = plugin.split("file://")[1]
-                if not os.path.isfile(plugin_path):
-                    plugin_path = "/tmp/lint/" + plugin_path
-                    if not os.path.isfile(plugin_path):
-                        raise Exception(
-                            f"[Plugins] Local plugin descriptor {plugin} not found"
-                        )
-                # Make sure plugin file is readable and not empty
                 if not os.access(plugin_path, os.R_OK):
-                    raise Exception(
-                        f"[Plugins] Local plugin descriptor {plugin} not readable"
-                    )
+                    plugin_path = "/tmp/lint/" + plugin_path
+                    if not os.access(plugin_path, os.R_OK):
+                        raise Exception(
+                            f"[Plugins] Local plugin descriptor not found or not readable {plugin}"
+                        )
                 if os.stat(plugin_path).st_size == 0:
                     raise Exception(f"[Plugins] Plugin descriptor {plugin} is empty")
                 r = open(plugin_path, "r").read()
