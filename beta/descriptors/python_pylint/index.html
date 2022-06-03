@@ -5884,26 +5884,31 @@ Messages control:
                         Warning level messages displayed, use &quot;--disable=all
                         --enable=classes --disable=W&quot;.
 
-Classes:
-  Checker for class nodes.
+String:
+  Check string literals.
 
-  --defining-attr-methods &lt;method names&gt;
-                        List of method names used to declare (i.e. assign)
-                        instance attributes. (default: ('__init__', '__new__',
-                        'setUp', '__post_init__'))
-  --valid-classmethod-first-arg &lt;argument names&gt;
-                        List of valid names for the first argument in a class
-                        method. (default: ('cls',))
-  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
-                        List of valid names for the first argument in a
-                        metaclass class method. (default: ('cls',))
-  --exclude-protected &lt;protected access exclusions&gt;
-                        List of member names, which should be excluded from
-                        the protected access warning. (default: ('_asdict',
-                        '_fields', '_replace', '_source', '_make'))
-  --check-protected-access-in-special-methods &lt;y or n&gt;
-                        Warn about protected attribute access inside special
-                        methods (default: False)
+  --check-str-concat-over-line-jumps &lt;y or n&gt;
+                        This flag controls whether the implicit-str-concat
+                        should generate a warning on implicit string
+                        concatenation in sequences defined over several lines.
+                        (default: False)
+  --check-quote-consistency &lt;y or n&gt;
+                        This flag controls whether inconsistent-quotes
+                        generates a warning when the character used as a quote
+                        delimiter is used inconsistently within a module.
+                        (default: False)
+
+Logging:
+  Checks use of the logging module.
+
+  --logging-modules &lt;comma separated list&gt;
+                        Logging modules to check that the string format
+                        arguments are in logging function parameter format.
+                        (default: ('logging',))
+  --logging-format-style &lt;old (%) or new ({)&gt;
+                        The type of string formatting that logging methods do.
+                        `old` means using % formatting, `new` is for `{}`
+                        formatting. (default: old)
 
 Imports:
   BaseChecker for import statements.
@@ -5939,139 +5944,6 @@ Imports:
   --allow-wildcard-with-all &lt;y or n&gt;
                         Allow wildcard imports from modules that define
                         __all__. (default: False)
-
-Variables:
-  BaseChecker for variables.
-
-  --init-import &lt;y or n&gt;
-                        Tells whether we should check for unused import in
-                        __init__ files. (default: False)
-  --dummy-variables-rgx &lt;regexp&gt;
-                        A regular expression matching the name of dummy
-                        variables (i.e. expected to not be used). (default: _+
-                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unus
-                        ed_)
-  --additional-builtins &lt;comma separated list&gt;
-                        List of additional names supposed to be defined in
-                        builtins. Remember that you should avoid defining new
-                        builtins when possible. (default: ())
-  --callbacks &lt;callbacks&gt;
-                        List of strings which can identify a callback function
-                        by name. A callback name must start or end with one of
-                        those strings. (default: ('cb_', '_cb'))
-  --redefining-builtins-modules &lt;comma separated list&gt;
-                        List of qualified module names which can have objects
-                        that can redefine builtins. (default: ('six.moves',
-                        'past.builtins', 'future.builtins', 'builtins', 'io'))
-  --ignored-argument-names &lt;regexp&gt;
-                        Argument names that match this expression will be
-                        ignored. Default to name with leading underscore.
-                        (default: re.compile('_.*|^ignored_|^unused_'))
-  --allow-global-unused-variables &lt;y or n&gt;
-                        Tells whether unused global variables should be
-                        treated as a violation. (default: True)
-  --allowed-redefined-builtins &lt;comma separated list&gt;
-                        List of names allowed to shadow builtins (default: ())
-
-Logging:
-  Checks use of the logging module.
-
-  --logging-modules &lt;comma separated list&gt;
-                        Logging modules to check that the string format
-                        arguments are in logging function parameter format.
-                        (default: ('logging',))
-  --logging-format-style &lt;old (%) or new ({)&gt;
-                        The type of string formatting that logging methods do.
-                        `old` means using % formatting, `new` is for `{}`
-                        formatting. (default: old)
-
-Similarities:
-  Checks for similarities and duplicated code.
-
-  --min-similarity-lines &lt;int&gt;
-                        Minimum lines number of a similarity. (default: 4)
-  --ignore-comments &lt;y or n&gt;
-                        Comments are removed from the similarity computation
-                        (default: True)
-  --ignore-docstrings &lt;y or n&gt;
-                        Docstrings are removed from the similarity computation
-                        (default: True)
-  --ignore-imports &lt;y or n&gt;
-                        Imports are removed from the similarity computation
-                        (default: True)
-  --ignore-signatures &lt;y or n&gt;
-                        Signatures are removed from the similarity computation
-                        (default: True)
-
-Miscellaneous:
-  BaseChecker for encoding issues.
-
-  --notes &lt;comma separated values&gt;
-                        List of note tags to take in consideration, separated
-                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
-  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in
-                        consideration. (default: )
-
-Spelling:
-  Check spelling in comments and docstrings.
-
-  --spelling-dict &lt;dict name&gt;
-                        Spelling dictionary name. Available dictionaries:
-                        none. To make it work, install the 'python-enchant'
-                        package. (default: )
-  --spelling-ignore-words &lt;comma separated words&gt;
-                        List of comma separated words that should not be
-                        checked. (default: )
-  --spelling-private-dict-file &lt;path to file&gt;
-                        A path to a file that contains the private dictionary;
-                        one word per line. (default: )
-  --spelling-store-unknown-words &lt;y or n&gt;
-                        Tells whether to store unknown words to the private
-                        dictionary (see the --spelling-private-dict-file
-                        option) instead of raising a message. (default: n)
-  --max-spelling-suggestions N
-                        Limits count of emitted suggestions for spelling
-                        mistakes. (default: 4)
-  --spelling-ignore-comment-directives &lt;comma separated words&gt;
-                        List of comma separated words that should be
-                        considered directives if they appear at the beginning
-                        of a comment and should not be checked. (default: fmt:
-                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
-
-Format:
-  Formatting checker.
-
-  --max-line-length &lt;int&gt;
-                        Maximum number of characters on a single line.
-                        (default: 100)
-  --ignore-long-lines &lt;regexp&gt;
-                        Regexp for a line that is allowed to be longer than
-                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)
-  --single-line-if-stmt &lt;y or n&gt;
-                        Allow the body of an if to be on the same line as the
-                        test if there is no else. (default: False)
-  --single-line-class-stmt &lt;y or n&gt;
-                        Allow the body of a class to be on the same line as
-                        the declaration if body contains single statement.
-                        (default: False)
-  --max-module-lines &lt;int&gt;
-                        Maximum number of lines in a module. (default: 1000)
-  --indent-string &lt;string&gt;
-                        String used as indentation unit. This is usually &quot; &quot;
-                        (4 spaces) or &quot;  &quot; (1 tab). (default: )
-  --indent-after-paren &lt;int&gt;
-                        Number of spaces of indent required inside a hanging
-                        or continued line. (default: 4)
-  --expected-line-ending-format &lt;empty or LF or CRLF&gt;
-                        Expected format of line ending, e.g. empty (any line
-                        ending), LF or CRLF. (default: )
-
-Exceptions:
-  Exception related checks.
-
-  --overgeneral-exceptions &lt;comma-separated class names&gt;
-                        Exceptions that will emit a warning when caught.
-                        (default: ('BaseException', 'Exception'))
 
 Typecheck:
   Try to find bugs in the code using type inference.
@@ -6135,6 +6007,24 @@ Typecheck:
                         List of decorators that change the signature of a
                         decorated function. (default: [])
 
+Similarities:
+  Checks for similarities and duplicated code.
+
+  --min-similarity-lines &lt;int&gt;
+                        Minimum lines number of a similarity. (default: 4)
+  --ignore-comments &lt;y or n&gt;
+                        Comments are removed from the similarity computation
+                        (default: True)
+  --ignore-docstrings &lt;y or n&gt;
+                        Docstrings are removed from the similarity computation
+                        (default: True)
+  --ignore-imports &lt;y or n&gt;
+                        Imports are removed from the similarity computation
+                        (default: True)
+  --ignore-signatures &lt;y or n&gt;
+                        Signatures are removed from the similarity computation
+                        (default: True)
+
 Refactoring:
   Looks for code which can be refactored.
 
@@ -6148,6 +6038,95 @@ Refactoring:
                         considered as an explicit return statement and no
                         message will be printed. (default: ('sys.exit',
                         'argparse.parse_error'))
+
+Variables:
+  BaseChecker for variables.
+
+  --init-import &lt;y or n&gt;
+                        Tells whether we should check for unused import in
+                        __init__ files. (default: False)
+  --dummy-variables-rgx &lt;regexp&gt;
+                        A regular expression matching the name of dummy
+                        variables (i.e. expected to not be used). (default: _+
+                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unus
+                        ed_)
+  --additional-builtins &lt;comma separated list&gt;
+                        List of additional names supposed to be defined in
+                        builtins. Remember that you should avoid defining new
+                        builtins when possible. (default: ())
+  --callbacks &lt;callbacks&gt;
+                        List of strings which can identify a callback function
+                        by name. A callback name must start or end with one of
+                        those strings. (default: ('cb_', '_cb'))
+  --redefining-builtins-modules &lt;comma separated list&gt;
+                        List of qualified module names which can have objects
+                        that can redefine builtins. (default: ('six.moves',
+                        'past.builtins', 'future.builtins', 'builtins', 'io'))
+  --ignored-argument-names &lt;regexp&gt;
+                        Argument names that match this expression will be
+                        ignored. Default to name with leading underscore.
+                        (default: re.compile('_.*|^ignored_|^unused_'))
+  --allow-global-unused-variables &lt;y or n&gt;
+                        Tells whether unused global variables should be
+                        treated as a violation. (default: True)
+  --allowed-redefined-builtins &lt;comma separated list&gt;
+                        List of names allowed to shadow builtins (default: ())
+
+Format:
+  Formatting checker.
+
+  --max-line-length &lt;int&gt;
+                        Maximum number of characters on a single line.
+                        (default: 100)
+  --ignore-long-lines &lt;regexp&gt;
+                        Regexp for a line that is allowed to be longer than
+                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)
+  --single-line-if-stmt &lt;y or n&gt;
+                        Allow the body of an if to be on the same line as the
+                        test if there is no else. (default: False)
+  --single-line-class-stmt &lt;y or n&gt;
+                        Allow the body of a class to be on the same line as
+                        the declaration if body contains single statement.
+                        (default: False)
+  --max-module-lines &lt;int&gt;
+                        Maximum number of lines in a module. (default: 1000)
+  --indent-string &lt;string&gt;
+                        String used as indentation unit. This is usually &quot; &quot;
+                        (4 spaces) or &quot;  &quot; (1 tab). (default: )
+  --indent-after-paren &lt;int&gt;
+                        Number of spaces of indent required inside a hanging
+                        or continued line. (default: 4)
+  --expected-line-ending-format &lt;empty or LF or CRLF&gt;
+                        Expected format of line ending, e.g. empty (any line
+                        ending), LF or CRLF. (default: )
+
+Exceptions:
+  Exception related checks.
+
+  --overgeneral-exceptions &lt;comma-separated class names&gt;
+                        Exceptions that will emit a warning when caught.
+                        (default: ('BaseException', 'Exception'))
+
+Classes:
+  Checker for class nodes.
+
+  --defining-attr-methods &lt;method names&gt;
+                        List of method names used to declare (i.e. assign)
+                        instance attributes. (default: ('__init__', '__new__',
+                        'setUp', '__post_init__'))
+  --valid-classmethod-first-arg &lt;argument names&gt;
+                        List of valid names for the first argument in a class
+                        method. (default: ('cls',))
+  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
+                        List of valid names for the first argument in a
+                        metaclass class method. (default: ('cls',))
+  --exclude-protected &lt;protected access exclusions&gt;
+                        List of member names, which should be excluded from
+                        the protected access warning. (default: ('_asdict',
+                        '_fields', '_replace', '_source', '_make'))
+  --check-protected-access-in-special-methods &lt;y or n&gt;
+                        Warn about protected attribute access inside special
+                        methods (default: False)
 
 Basic:
   --good-names &lt;names&gt;  Good variable names which should always be accepted,
@@ -6274,6 +6253,15 @@ Basic:
                         Minimum line length for functions/classes that require
                         docstrings, shorter ones are exempt. (default: -1)
 
+Miscellaneous:
+  BaseChecker for encoding issues.
+
+  --notes &lt;comma separated values&gt;
+                        List of note tags to take in consideration, separated
+                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
+  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in
+                        consideration. (default: )
+
 Design:
   Checker of potential misdesigns.
 
@@ -6310,19 +6298,31 @@ Design:
                         ignore when counting public methods (see R0903)
                         (default: [])
 
-String:
-  Check string literals.
+Spelling:
+  Check spelling in comments and docstrings.
 
-  --check-str-concat-over-line-jumps &lt;y or n&gt;
-                        This flag controls whether the implicit-str-concat
-                        should generate a warning on implicit string
-                        concatenation in sequences defined over several lines.
-                        (default: False)
-  --check-quote-consistency &lt;y or n&gt;
-                        This flag controls whether inconsistent-quotes
-                        generates a warning when the character used as a quote
-                        delimiter is used inconsistently within a module.
-                        (default: False)
+  --spelling-dict &lt;dict name&gt;
+                        Spelling dictionary name. Available dictionaries:
+                        none. To make it work, install the 'python-enchant'
+                        package. (default: )
+  --spelling-ignore-words &lt;comma separated words&gt;
+                        List of comma separated words that should not be
+                        checked. (default: )
+  --spelling-private-dict-file &lt;path to file&gt;
+                        A path to a file that contains the private dictionary;
+                        one word per line. (default: )
+  --spelling-store-unknown-words &lt;y or n&gt;
+                        Tells whether to store unknown words to the private
+                        dictionary (see the --spelling-private-dict-file
+                        option) instead of raising a message. (default: n)
+  --max-spelling-suggestions N
+                        Limits count of emitted suggestions for spelling
+                        mistakes. (default: 4)
+  --spelling-ignore-comment-directives &lt;comma separated words&gt;
+                        List of comma separated words that should be
+                        considered directives if they appear at the beginning
+                        of a comment and should not be checked. (default: fmt:
+                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
