@@ -74,6 +74,7 @@ _Github PR reporter_
     - [Other](#other)
   - [Installation](#installation)
     - [Assisted installation](#assisted-installation)
+    - [Upgrade from MegaLinter v4](#upgrade-from-megalinter-v4)
     - [Manual installation](#manual-installation)
     - [GitHub Action](#github-action)
     - [Azure Pipelines](#azure-pipelines)
@@ -82,7 +83,7 @@ _Github PR reporter_
     - [Concourse](#concourse)
       - [Pipeline step](#pipeline-step)
       - [Use it as reusable task](#use-it-as-reusable-task)
-    - [Run MegaLinter locally](#run-mega-linter-locally)
+    - [Run MegaLinter locally](#run-megalinter-locally)
   - [Configuration](#configuration)
     - [Common variables](#common-variables)
     - [Activation and deactivation](#activation-and-deactivation)
@@ -126,7 +127,7 @@ _Github PR reporter_
     - [Plugins management](#plugins-management)
     - [Simplify architecture and evolutive maintenance](#simplify-architecture-and-evolutive-maintenance)
     - [Improve robustness & stability](#improve-robustness--stability)
-  - [v4 vs v5](#v4-vs-v5)
+  - [V4 versus V5](#v4-versus-v5)
 <!-- table-of-contents-end -->
 
 ## Why MegaLinter
