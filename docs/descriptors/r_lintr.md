@@ -4,12 +4,12 @@
 
 ## lintr documentation
 
-- Visit [Official Web Site](https://github.com/jimhester/lintr#readme){target=_blank}
-- See [How to configure lintr rules](https://github.com/jimhester/lintr#project-configuration){target=_blank}
+- Visit [Official Web Site](https://lintr.r-lib.org/){target=_blank}
+- See [How to configure lintr rules](https://lintr.r-lib.org/articles/lintr.html#configuring-linters){target=_blank}
   - If custom `.lintr` config file is not found, [.lintr](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.lintr){target=_blank} will be used
-- See [Index of problems detected by lintr](https://github.com/jimhester/lintr#available-linters){target=_blank}
+- See [Index of problems detected by lintr](https://lintr.r-lib.org/reference/index.html){target=_blank}
 
-[![lintr - GitHub](https://gh-card.dev/repos/jimhester/lintr.svg?fullname=)](https://github.com/jimhester/lintr){target=_blank}
+[![lintr - GitHub](https://gh-card.dev/repos/r-lib/lintr.svg?fullname=)](https://github.com/r-lib/lintr){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -42,7 +42,7 @@ Use lintr in your favorite IDE to catch errors before MegaLinter !
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/default.ico" alt="" height="32px" class="megalinter-icon"></a> | rstudio                                              | [Native Support](https://rstudio.com/)                                                   |                                                           [Visit Web Site](https://rstudio.com/){target=_blank}                                                           |
 | <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [SublimeLinter-contrib-lintr](https://github.com/jimhester/SublimeLinter-contrib-lintr)  |                                         [Visit Web Site](https://github.com/jimhester/SublimeLinter-contrib-lintr){target=_blank}                                         |
 |   <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                                             |                                                  [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}                                                   |
-| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode R LSP](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/REditorSupport.r-lsp){target=_blank} |
+| <img src="https://github.com/megalinter/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [VsCode R](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r) | [![Install in VsCode](https://github.com/megalinter/megalinter/raw/main/docs/assets/images/btn_install_vscode.png)](vscode:extension/REditorSupport.r){target=_blank} |
 
 ## MegaLinter Flavours
 

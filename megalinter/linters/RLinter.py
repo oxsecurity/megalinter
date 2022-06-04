@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Use lintr to lint R files
-https://github.com/jimhester/lintr
+https://github.com/r-lib/lintr
 """
 import os
 from shutil import copyfile
