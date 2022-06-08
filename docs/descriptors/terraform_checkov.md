@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.1188**
+- Version in MegaLinter: **2.0.1206**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -96,7 +96,9 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--repo-root-for-plan-enrichment REPO_ROOT_FOR_PLAN_ENRICHMENT]
                [--config-file CONFIG_FILE] [--create-config CREATE_CONFIG]
                [--show-config] [--create-baseline] [--baseline BASELINE]
+               [--output-baseline-as-skipped]
                [--skip-cve-package SKIP_CVE_PACKAGE]
+               [--policy-metadata-filter POLICY_METADATA_FILTER]
 
 Infrastructure as code static analysis
 
@@ -302,10 +304,19 @@ optional arguments:
                         results with a known baseline. Report will include
                         only failed checks that are new with respect to the
                         provided baseline
+  --output-baseline-as-skipped
+                        output checks that are skipped due to baseline file
+                        presence
   --skip-cve-package SKIP_CVE_PACKAGE
                         filter scan to run on all packages but a specific
                         package identifier (denylist), You can specify this
                         argument multiple times to skip multiple packages
+  --policy-metadata-filter POLICY_METADATA_FILTER
+                        comma separated key:value string to filter policies
+                        based on Prisma Cloud policy metadata. See https://pri
+                        sma.pan.dev/api/cloud/cspm/policy#operation/get-
+                        policy-filters-and-options for information on allowed
+                        filters. Format: policy.label=test,cloud.type=aws
 
 Args that start with '--' (eg. -v) can also be set in a config file
 (/.checkov.yaml or /.checkov.yml or /root/.checkov.yaml or /root/.checkov.yml
