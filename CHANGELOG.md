@@ -65,6 +65,14 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.0 to **6.1.1** on 2022-06-03
   - [checkov](https://www.checkov.io/) from 2.0.1185 to **2.0.1188** on 2022-06-03
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.1 to **1.2.2** on 2022-06-03
+  - [eslint](https://eslint.org) from 8.16.0 to **8.17.0** on 2022-06-08
+  - [phpstan](https://phpstan.org/) from 1.7.9 to **1.7.11** on 2022-06-08
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 0.960 to **0.961** on 2022-06-08
+  - [pylint](https://www.pylint.org) from 2.14.0 to **2.14.1** on 2022-06-08
+  - [rstcheck](https://github.com/myint/rstcheck) from 5.0.0 to **6.0.0** on 2022-06-08
+  - [rubocop](https://rubocop.org/) from 1.30.0 to **1.30.1** on 2022-06-08
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.1 to **7.8.2** on 2022-06-08
+  - [checkov](https://www.checkov.io/) from 2.0.1188 to **2.0.1206** on 2022-06-08
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
