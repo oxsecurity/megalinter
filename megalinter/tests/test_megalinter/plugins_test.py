@@ -20,11 +20,11 @@ class plugins_test(unittest.TestCase):
         )
 
     def test_load_plugin_success(self):
-        try:
-            local_repo = Repo(search_parent_directories=True)
-            local_branch = local_repo.active_branch.name
-        except:  # noqa: E722
-            local_branch = "master"
+        # {ML_REPO}/local_branch won't necessarily be valid on fork branches. 
+        # Temporary workaround: use megalinter/main branch to host the file.
+        # It's not a huge issue here because in theory this file will alays be available.
+        # TODO: don't just use the local branch name, but parse {ML_REPO} as well.
+        local_branch = "main"
         mega_linter, output = utilstest.call_mega_linter(
             {
                 "PLUGINS": f"https://raw.githubusercontent.com/{ML_REPO}/"
@@ -82,7 +82,7 @@ class plugins_test(unittest.TestCase):
                 }
             )
         except Exception as e:
-            self.assertIn("[Plugins] Local plugin descriptor not found or not readable", str(e))
+            self.assertIn("[Plugins] Plugin descriptor is empty:", str(e))
 
     def test_load_plugin_http_error(self):
         try:

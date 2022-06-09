@@ -52,7 +52,7 @@ def load_plugin(plugin):
                             f"[Plugins] Local plugin descriptor not found or not readable {plugin}"
                         )
                 if os.stat(plugin_path).st_size == 0:
-                    raise Exception(f"[Plugins] Plugin descriptor {plugin} is empty")
+                    raise Exception(f"[Plugins] Plugin descriptor is empty: {plugin}")
                 r = open(plugin_path, "r").read()
             plugin_descriptor = yaml.safe_load(r)
             plugin_descriptor["is_plugin"] = True
