@@ -99,6 +99,7 @@ Options:
   -V, --version                      Display this application version
       --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output
   -n, --no-interaction               Do not ask any interactive question
+  -nf, --no-files-exit-code          Throw error if no files processed.
   -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ```
 

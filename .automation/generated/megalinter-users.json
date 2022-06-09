@@ -1,6 +1,15 @@
 {
     "repositories": [
         {
+          "repo_url": "https://github.com/svt/open-source-project-template"
+        },
+        {
+          "repo_url": "https://github.com/AliceO2Group/O2Physics"
+        },
+        {
+          "repo_url": "https://github.com/Amplitude-Developer-Docs/amplitude-dev-center"
+        },
+        {
             "info": {
                 "allow_forking": true,
                 "archive_url": "https://api.github.com/repos/nektos/act/{archive_format}{/ref}",
@@ -23,8 +32,8 @@
                 "downloads_url": "https://api.github.com/repos/nektos/act/downloads",
                 "events_url": "https://api.github.com/repos/nektos/act/events",
                 "fork": false,
-                "forks": 661,
-                "forks_count": 661,
+                "forks": 662,
+                "forks_count": 662,
                 "forks_url": "https://api.github.com/repos/nektos/act/forks",
                 "full_name": "nektos/act",
                 "git_commits_url": "https://api.github.com/repos/nektos/act/git/commits{/sha}",
@@ -59,7 +68,7 @@
                 "milestones_url": "https://api.github.com/repos/nektos/act/milestones{/number}",
                 "mirror_url": null,
                 "name": "act",
-                "network_count": 661,
+                "network_count": 662,
                 "node_id": "MDEwOlJlcG9zaXRvcnkxNjM4ODMyNzk=",
                 "notifications_url": "https://api.github.com/repos/nektos/act/notifications{?since,all,participating}",
                 "open_issues": 80,
@@ -110,7 +119,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 5992,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 24898,
+                "stargazers_count": 24908,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 111,
@@ -127,14 +136,14 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-06-09T08:17:12Z",
+                "updated_at": "2022-06-09T13:20:25Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 24898,
-                "watchers_count": 24898
+                "watchers": 24908,
+                "watchers_count": 24908
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 24898
+            "stargazers": 24908
         },
         {
             "info": {
@@ -475,9 +484,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/megalinter/megalinter/pulls{/number}",
-                "pushed_at": "2022-06-09T07:57:09Z",
+                "pushed_at": "2022-06-09T12:58:16Z",
                 "releases_url": "https://api.github.com/repos/megalinter/megalinter/releases{/id}",
-                "size": 138733,
+                "size": 139033,
                 "ssh_url": "git@github.com:megalinter/megalinter.git",
                 "stargazers_count": 663,
                 "stargazers_url": "https://api.github.com/repos/megalinter/megalinter/stargazers",
@@ -790,8 +799,8 @@
                 "downloads_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/downloads",
                 "events_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/events",
                 "fork": false,
-                "forks": 100,
-                "forks_count": 100,
+                "forks": 101,
+                "forks_count": 101,
                 "forks_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/forks",
                 "full_name": "secureCodeBox/secureCodeBox",
                 "git_commits_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/git/commits{/sha}",
@@ -826,11 +835,11 @@
                 "milestones_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/milestones{/number}",
                 "mirror_url": null,
                 "name": "secureCodeBox",
-                "network_count": 100,
+                "network_count": 101,
                 "node_id": "MDEwOlJlcG9zaXRvcnk4MDcxMTkzMw==",
                 "notifications_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/notifications{?since,all,participating}",
-                "open_issues": 101,
-                "open_issues_count": 101,
+                "open_issues": 102,
+                "open_issues_count": 102,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/34573705?v=4",
                     "events_url": "https://api.github.com/users/secureCodeBox/events{/privacy}",
@@ -873,9 +882,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/pulls{/number}",
-                "pushed_at": "2022-06-08T11:33:36Z",
+                "pushed_at": "2022-06-09T12:02:15Z",
                 "releases_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/releases{/id}",
-                "size": 26741,
+                "size": 26743,
                 "ssh_url": "git@github.com:secureCodeBox/secureCodeBox.git",
                 "stargazers_count": 486,
                 "stargazers_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/stargazers",
@@ -1350,9 +1359,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-06-09T08:32:12Z",
+                "pushed_at": "2022-06-09T13:03:17Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 30217,
+                "size": 30231,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 139,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -6350,9 +6359,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jokay/docker-prune/pulls{/number}",
-                "pushed_at": "2022-06-07T17:22:34Z",
+                "pushed_at": "2022-06-09T09:22:11Z",
                 "releases_url": "https://api.github.com/repos/jokay/docker-prune/releases{/id}",
-                "size": 164,
+                "size": 168,
                 "ssh_url": "git@github.com:jokay/docker-prune.git",
                 "stargazers_count": 6,
                 "stargazers_url": "https://api.github.com/repos/jokay/docker-prune/stargazers",
