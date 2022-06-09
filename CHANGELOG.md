@@ -73,6 +73,10 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [rubocop](https://rubocop.org/) from 1.30.0 to **1.30.1** on 2022-06-08
   - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.1 to **7.8.2** on 2022-06-08
   - [checkov](https://www.checkov.io/) from 2.0.1188 to **2.0.1206** on 2022-06-08
+  - [stylelint](https://stylelint.io) from 14.8.5 to **14.9.0** on 2022-06-09
+  - [kics](https://www.kics.io) from 1.5.9 to **1.5.10** on 2022-06-09
+  - [checkov](https://www.checkov.io/) from 2.0.1206 to **2.0.1207** on 2022-06-09
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.1 to **0.37.2** on 2022-06-09
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
