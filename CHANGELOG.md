@@ -77,6 +77,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.5.9 to **1.5.10** on 2022-06-09
   - [checkov](https://www.checkov.io/) from 2.0.1206 to **2.0.1207** on 2022-06-09
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.1 to **0.37.2** on 2022-06-09
+  - [phpstan](https://phpstan.org/) from 1.7.11 to **1.7.12** on 2022-06-09
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.1 to **6.1.2** on 2022-06-09
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
