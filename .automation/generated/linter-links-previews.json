@@ -180,9 +180,9 @@
     "title": "instrumenta/kubeval"
   },
   "lintr": {
-    "description": "Static Code Analysis for R. Contribute to jimhester/lintr development by creating an account on GitHub.",
+    "description": "Static Code Analysis for R. Contribute to r-lib/lintr development by creating an account on GitHub.",
     "image": "https://avatars0.githubusercontent.com/u/205275?s=400&v=4",
-    "title": "jimhester/lintr"
+    "title": "r-lib/lintr"
   },
   "luacheck": {
     "description": " A tool for linting and static analysis of Lua code.  - luarocks/luacheck",
