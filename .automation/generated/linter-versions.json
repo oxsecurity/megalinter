@@ -76,7 +76,7 @@
     "sql-lint": "0.0.19",
     "sqlfluff": "0.13.2",
     "standard": "15.0.1",
-    "stylelint": "14.9.0",
+    "stylelint": "14.9.1",
     "swiftlint": "0.46.5",
     "tekton-lint": "0.6.0",
     "terraform-fmt": "1.2.2",
