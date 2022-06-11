@@ -81,6 +81,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 6.1.1 to **6.1.2** on 2022-06-09
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.0 to **0.10.1** on 2022-06-10
   - [checkov](https://www.checkov.io/) from 2.0.1207 to **2.0.1209** on 2022-06-10
+  - [stylelint](https://stylelint.io) from 14.9.0 to **14.9.1** on 2022-06-11
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
