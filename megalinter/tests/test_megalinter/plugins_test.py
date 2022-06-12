@@ -19,7 +19,7 @@ class plugins_test(unittest.TestCase):
         )
 
     def test_load_plugin_success(self):
-        # {ML_REPO}/local_branch won't necessarily be valid on fork branches. 
+        # {ML_REPO}/local_branch won't necessarily be valid on fork branches.
         # Temporary workaround: use megalinter/main branch to host the file.
         # It's not a huge issue here because in theory this file will always be available.
         # TODO: don't just use the local branch name, but parse {ML_REPO} as well.
@@ -68,7 +68,9 @@ class plugins_test(unittest.TestCase):
                 }
             )
         except Exception as e:
-            self.assertIn("[Plugins] Local plugin descriptor not found or not readable", str(e))
+            self.assertIn(
+                "[Plugins] Local plugin descriptor not found or not readable", str(e)
+            )
 
     def test_load_local_plugin_read_fail(self):
         try:
