@@ -5436,11 +5436,15 @@
 <p>For security reasons, we try to embed in MegaLinter only linters that are widely adopted by open-source community.</p>
 <p>But any linter can be callable within MegaLinter thanks to the plugin mechanism !</p>
 <h2 id="use-plugins">Use plugins</h2>
-<p>Just add plugin URLs in <code>PLUGINS</code> property of <code>.mega-linter.yml</code></p>
+<p>Add plugin URLs in <code>PLUGINS</code> property of <code>.mega-linter.yml</code>. URLs must either begin with "https://" or take the form of "file://\&lt;path>", where \&lt;path> points to a valid plugin descriptor file.</p>
+<blockquote>
+<p>Note: Both \&lt;path> and the default mount directory (/tmp/lint/\&lt;path>) will be checked for a valid descriptor.</p>
+</blockquote>
 <h3 id="example">Example</h3>
 <pre><code class="language-yaml">PLUGINS:
   - https://raw.githubusercontent.com/megalinter/megalinter/main/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
   - https://raw.githubusercontent.com/cookiejar/mega-linter-plugin-cookietemple/main/cookietemple.megalinter-descriptor.yml
+  - file://.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 </code></pre>
 <h2 id="plugins-catalog">Plugins Catalog</h2>
 <ul>
@@ -5451,9 +5455,10 @@
 <h2 id="create-plugins">Create plugins</h2>
 <p>You can implement your own descriptors and load them as plugins during MegaLinter runtime</p>
 <ul>
-<li>Plugins descriptor files must be named <strong>**.megalinter-descriptor.yml</strong> and respect <a href="https://github.com/megalinter/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json">MegaLinter Json Schema</a></li>
 <li>Descriptor format is exactly the same than <a href="https://github.com/megalinter/megalinter/tree/main/megalinter/descriptors">MegaLinter embedded ones</a> (<a href="https://megalinter.github.io/json-schemas/descriptor.html">see json schema documentation</a>)</li>
+<li>Plugins descriptor files must be named <strong>**.megalinter-descriptor.yml</strong> and respect <a href="https://github.com/megalinter/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json">MegaLinter Json Schema</a></li>
 <li>Plugins must be hosted in a url containing <strong>**/mega-linter-plugin-**/</strong></li>
+<li>File URLs must conform to the same directory and file naming criteria as defined above.</li>
 </ul>
 <h3 id="limitations">Limitations</h3>
 <ul>
