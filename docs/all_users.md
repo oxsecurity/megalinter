@@ -65,9 +65,9 @@
 [![cbg-ethz/SARS-CoV-2_Analysis - GitHub](https://gh-card.dev/repos/cbg-ethz/SARS-CoV-2_Analysis.svg?fullname=)](https://github.com/cbg-ethz/SARS-CoV-2_Analysis){target=_blank}
 [![mundialis/actinia-stac-plugin - GitHub](https://gh-card.dev/repos/mundialis/actinia-stac-plugin.svg?fullname=)](https://github.com/mundialis/actinia-stac-plugin){target=_blank}
 [![r-spacex/submanager - GitHub](https://gh-card.dev/repos/r-spacex/submanager.svg?fullname=)](https://github.com/r-spacex/submanager){target=_blank}
-[![bsrodrigs/terraform-aws-selfconfig-cgw - GitHub](https://gh-card.dev/repos/bsrodrigs/terraform-aws-selfconfig-cgw.svg?fullname=)](https://github.com/bsrodrigs/terraform-aws-selfconfig-cgw){target=_blank}
+[![bsrodrigs/terraform-aws-fully-connected-vpn - GitHub](https://gh-card.dev/repos/bsrodrigs/terraform-aws-fully-connected-vpn.svg?fullname=)](https://github.com/bsrodrigs/terraform-aws-fully-connected-vpn){target=_blank}
 [![MTUCI-VR/shooter-project - GitHub](https://gh-card.dev/repos/MTUCI-VR/shooter-project.svg?fullname=)](https://github.com/MTUCI-VR/shooter-project){target=_blank}
-[![ci-monk/docker-crypto-miner - GitHub](https://gh-card.dev/repos/ci-monk/docker-crypto-miner.svg?fullname=)](https://github.com/ci-monk/docker-crypto-miner){target=_blank}
+[![lpmatos/docker-crypto-miner - GitHub](https://gh-card.dev/repos/lpmatos/docker-crypto-miner.svg?fullname=)](https://github.com/lpmatos/docker-crypto-miner){target=_blank}
 [![tonic-team/tonic.site - GitHub](https://gh-card.dev/repos/tonic-team/tonic.site.svg?fullname=)](https://github.com/tonic-team/tonic.site){target=_blank}
 [![epleypa/Home-AssistantConfig - GitHub](https://gh-card.dev/repos/epleypa/Home-AssistantConfig.svg?fullname=)](https://github.com/epleypa/Home-AssistantConfig){target=_blank}
 [![ewencluley/final-curtain - GitHub](https://gh-card.dev/repos/ewencluley/final-curtain.svg?fullname=)](https://github.com/ewencluley/final-curtain){target=_blank}
