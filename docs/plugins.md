@@ -44,4 +44,5 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 
 - For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
 
+
 <!-- plugins-section-end -->

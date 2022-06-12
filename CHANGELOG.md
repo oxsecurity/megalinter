@@ -82,6 +82,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.10.0 to **0.10.1** on 2022-06-10
   - [checkov](https://www.checkov.io/) from 2.0.1207 to **2.0.1209** on 2022-06-10
   - [stylelint](https://stylelint.io) from 14.9.0 to **14.9.1** on 2022-06-11
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.2 to **0.37.3** on 2022-06-12
 <!-- linter-versions-end -->
 
 ## [v5.13.0] - 2022-05-15
