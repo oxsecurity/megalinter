@@ -32,4 +32,4 @@ linters:
       - "ansible-lint -v -c .ansible-lint"
     install:
       pip:
-        - ansible-lint[community,yamllint]
+        - ansible-lint==6.0.2

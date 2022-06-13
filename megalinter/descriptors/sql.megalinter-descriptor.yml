@@ -35,6 +35,8 @@ linters:
     active_only_if_file_found:
       - .sqlfluff
     cli_lint_mode: list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "L:(.*)P:(.*)"
     cli_lint_extra_args:
       - lint
     cli_config_arg_name: "--config"

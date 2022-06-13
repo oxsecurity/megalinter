@@ -181,6 +181,9 @@ COPY --from=clj-kondo /bin/clj-kondo /usr/bin/
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
+# editorconfig-checker installation
+COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
+
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
