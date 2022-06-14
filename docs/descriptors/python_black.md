@@ -112,8 +112,8 @@ Options:
                                   input).
   --python-cell-magics TEXT       When processing Jupyter Notebooks, add the
                                   given magic to the list of known python-
-                                  magics (capture, time, pypy, python3, prun,
-                                  timeit, python). Useful for formatting cells
+                                  magics (timeit, time, python3, prun, python,
+                                  pypy, capture). Useful for formatting cells
                                   with custom python magics.
   -S, --skip-string-normalization
                                   Don't normalize string quotes or prefixes.
