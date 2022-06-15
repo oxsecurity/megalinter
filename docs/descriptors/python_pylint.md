@@ -9,7 +9,7 @@
 
 ## pylint documentation
 
-- Version in MegaLinter: **2.14.1**
+- Version in MegaLinter: **2.14.2**
 - Visit [Official Web Site](https://www.pylint.org){target=_blank}
 - See [How to configure pylint rules](https://github.com/PyCQA/pylint/blob/master/pylintrc){target=_blank}
   - If custom `.python-lint` config file is not found, [.python-lint](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.python-lint){target=_blank} will be used
@@ -122,9 +122,10 @@ Main:
   --init-hook INIT_HOOK
                         Python code to execute, usually for sys.path
                         manipulation such as pygtk.require().
-  --errors-only, -E     In error mode, checkers without error messages are
-                        disabled and for others, only the ERROR messages are
-                        displayed, and no reports are done by default.
+  --errors-only, -E     In error mode, messages with a category besides ERROR
+                        or FATAL are suppressed, and no reports are done by
+                        default. Error mode is compatible with disabling
+                        specific errors.
   --verbose , -v        In verbose mode, extra non-checker-related info will
                         be displayed.
   --enable-all-extensions
