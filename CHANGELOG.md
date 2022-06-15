@@ -16,6 +16,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 2.6.2 to **2.7.0** on 2022-06-15
   - [phpstan](https://phpstan.org/) from 1.7.13 to **1.7.14** on 2022-06-15
   - [checkov](https://www.checkov.io/) from 2.0.1210 to **2.0.1212** on 2022-06-15
+  - [pylint](https://www.pylint.org) from 2.14.1 to **2.14.2** on 2022-06-15
+  - [checkov](https://www.checkov.io/) from 2.0.1212 to **2.0.1217** on 2022-06-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.3 to **0.37.4** on 2022-06-15
 <!-- linter-versions-end -->
 
 ## [v5.14.0] - 2022-06-12
