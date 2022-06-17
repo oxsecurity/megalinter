@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://megalinter.github.io/beta/descriptors/python_pylint/">
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.5">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
     
     
       
@@ -5885,6 +5885,39 @@ Messages control:
                         Warning level messages displayed, use &quot;--disable=all
                         --enable=classes --disable=W&quot;.
 
+Spelling:
+  Check spelling in comments and docstrings.
+
+  --spelling-dict &lt;dict name&gt;
+                        Spelling dictionary name. Available dictionaries:
+                        none. To make it work, install the 'python-enchant'
+                        package. (default: )
+  --spelling-ignore-words &lt;comma separated words&gt;
+                        List of comma separated words that should not be
+                        checked. (default: )
+  --spelling-private-dict-file &lt;path to file&gt;
+                        A path to a file that contains the private dictionary;
+                        one word per line. (default: )
+  --spelling-store-unknown-words &lt;y or n&gt;
+                        Tells whether to store unknown words to the private
+                        dictionary (see the --spelling-private-dict-file
+                        option) instead of raising a message. (default: n)
+  --max-spelling-suggestions N
+                        Limits count of emitted suggestions for spelling
+                        mistakes. (default: 4)
+  --spelling-ignore-comment-directives &lt;comma separated words&gt;
+                        List of comma separated words that should be
+                        considered directives if they appear at the beginning
+                        of a comment and should not be checked. (default: fmt:
+                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
+
+Exceptions:
+  Exception related checks.
+
+  --overgeneral-exceptions &lt;comma-separated class names&gt;
+                        Exceptions that will emit a warning when caught.
+                        (default: ('BaseException', 'Exception'))
+
 String:
   Check string literals.
 
@@ -5899,114 +5932,26 @@ String:
                         delimiter is used inconsistently within a module.
                         (default: False)
 
-Logging:
-  Checks use of the logging module.
+Classes:
+  Checker for class nodes.
 
-  --logging-modules &lt;comma separated list&gt;
-                        Logging modules to check that the string format
-                        arguments are in logging function parameter format.
-                        (default: ('logging',))
-  --logging-format-style &lt;old (%) or new ({)&gt;
-                        The type of string formatting that logging methods do.
-                        `old` means using % formatting, `new` is for `{}`
-                        formatting. (default: old)
-
-Imports:
-  BaseChecker for import statements.
-
-  --deprecated-modules &lt;modules&gt;
-                        Deprecated modules which should not be used, separated
-                        by a comma. (default: ())
-  --preferred-modules &lt;module:preferred-module&gt;
-                        Couples of modules and preferred modules, separated by
-                        a comma. (default: ())
-  --import-graph &lt;file.gv&gt;
-                        Output a graph (.gv or any supported image format) of
-                        all (i.e. internal and external) dependencies to the
-                        given file (report RP0402 must not be disabled).
-                        (default: )
-  --ext-import-graph &lt;file.gv&gt;
-                        Output a graph (.gv or any supported image format) of
-                        external dependencies to the given file (report RP0402
-                        must not be disabled). (default: )
-  --int-import-graph &lt;file.gv&gt;
-                        Output a graph (.gv or any supported image format) of
-                        internal dependencies to the given file (report RP0402
-                        must not be disabled). (default: )
-  --known-standard-library &lt;modules&gt;
-                        Force import order to recognize a module as part of
-                        the standard compatibility libraries. (default: ())
-  --known-third-party &lt;modules&gt;
-                        Force import order to recognize a module as part of a
-                        third party library. (default: ('enchant',))
-  --allow-any-import-level &lt;modules&gt;
-                        List of modules that can be imported at any level, not
-                        just the top level one. (default: ())
-  --allow-wildcard-with-all &lt;y or n&gt;
-                        Allow wildcard imports from modules that define
-                        __all__. (default: False)
-
-Typecheck:
-  Try to find bugs in the code using type inference.
-
-  --ignore-on-opaque-inference &lt;y or n&gt;
-                        This flag controls whether pylint should warn about
-                        no-member and similar checks whenever an opaque object
-                        is returned when inferring. The inference can return
-                        multiple potential results while evaluating a Python
-                        object, but some branches might not be evaluated,
-                        which results in partial inference. In that case, it
-                        might be useful to still emit no-member and other
-                        checks for the rest of the inferred objects. (default:
-                        True)
-  --mixin-class-rgx &lt;regexp&gt;
-                        Regex pattern to define which classes are considered
-                        mixins. (default: .*[Mm]ixin)
-  --ignore-mixin-members &lt;y or n&gt;
-                        Tells whether missing members accessed in mixin class
-                        should be ignored. A class is considered mixin if its
-                        name matches the mixin-class-rgx option. (default:
-                        True)
-  --ignored-checks-for-mixins &lt;list of messages names&gt;
-                        List of symbolic message names to ignore for Mixin
-                        members. (default: ['no-member', 'not-async-context-
-                        manager', 'not-context-manager', 'attribute-defined-
-                        outside-init'])
-  --ignore-none &lt;y or n&gt;
-                        Tells whether to warn about missing members when the
-                        owner of the attribute is inferred to be None.
-                        (default: True)
-  --ignored-classes &lt;members names&gt;
-                        List of class names for which member attributes should
-                        not be checked (useful for classes with dynamically
-                        set attributes). This supports the use of qualified
-                        names. (default: ('optparse.Values', 'thread._local',
-                        '_thread._local', 'argparse.Namespace'))
-  --generated-members &lt;members names&gt;
-                        List of members which are set dynamically and missed
-                        by pylint inference system, and so shouldn't trigger
-                        E1101 when accessed. Python regular expressions are
-                        accepted. (default: ())
-  --contextmanager-decorators &lt;decorator names&gt;
-                        List of decorators that produce context managers, such
-                        as contextlib.contextmanager. Add to this list to
-                        register other decorators that produce valid context
-                        managers. (default: ['contextlib.contextmanager'])
-  --missing-member-hint-distance &lt;member hint edit distance&gt;
-                        The minimum edit distance a name should have in order
-                        to be considered a similar match for a missing member
-                        name. (default: 1)
-  --missing-member-max-choices &lt;member hint max choices&gt;
-                        The total number of similar names that should be taken
-                        in consideration when showing a hint for a missing
-                        member. (default: 1)
-  --missing-member-hint &lt;missing member hint&gt;
-                        Show a hint with possible names when a member name was
-                        not found. The aspect of finding the hint is based on
-                        edit distance. (default: True)
-  --signature-mutators &lt;decorator names&gt;
-                        List of decorators that change the signature of a
-                        decorated function. (default: [])
+  --defining-attr-methods &lt;method names&gt;
+                        List of method names used to declare (i.e. assign)
+                        instance attributes. (default: ('__init__', '__new__',
+                        'setUp', '__post_init__'))
+  --valid-classmethod-first-arg &lt;argument names&gt;
+                        List of valid names for the first argument in a class
+                        method. (default: ('cls',))
+  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
+                        List of valid names for the first argument in a
+                        metaclass class method. (default: ('cls',))
+  --exclude-protected &lt;protected access exclusions&gt;
+                        List of member names, which should be excluded from
+                        the protected access warning. (default: ('_asdict',
+                        '_fields', '_replace', '_source', '_make'))
+  --check-protected-access-in-special-methods &lt;y or n&gt;
+                        Warn about protected attribute access inside special
+                        methods (default: False)
 
 Similarities:
   Checks for similarities and duplicated code.
@@ -6026,19 +5971,50 @@ Similarities:
                         Signatures are removed from the similarity computation
                         (default: True)
 
-Refactoring:
-  Looks for code which can be refactored.
+Design:
+  Checker of potential misdesigns.
 
-  --max-nested-blocks &lt;int&gt;
-                        Maximum number of nested blocks for function / method
-                        body (default: 5)
-  --never-returning-functions &lt;members names&gt;
-                        Complete name of functions that never returns. When
-                        checking for inconsistent-return-statements if a never
-                        returning function is called then it will be
-                        considered as an explicit return statement and no
-                        message will be printed. (default: ('sys.exit',
-                        'argparse.parse_error'))
+  --max-args &lt;int&gt;      Maximum number of arguments for function / method.
+                        (default: 5)
+  --max-locals &lt;int&gt;    Maximum number of locals for function / method body.
+                        (default: 15)
+  --max-returns &lt;int&gt;   Maximum number of return / yield for function / method
+                        body. (default: 6)
+  --max-branches &lt;int&gt;  Maximum number of branch for function / method body.
+                        (default: 12)
+  --max-statements &lt;int&gt;
+                        Maximum number of statements in function / method
+                        body. (default: 50)
+  --max-parents &lt;num&gt;   Maximum number of parents for a class (see R0901).
+                        (default: 7)
+  --ignored-parents &lt;comma separated list of class names&gt;
+                        List of qualified class names to ignore when counting
+                        class parents (see R0901) (default: ())
+  --max-attributes &lt;num&gt;
+                        Maximum number of attributes for a class (see R0902).
+                        (default: 7)
+  --min-public-methods &lt;num&gt;
+                        Minimum number of public methods for a class (see
+                        R0903). (default: 2)
+  --max-public-methods &lt;num&gt;
+                        Maximum number of public methods for a class (see
+                        R0904). (default: 20)
+  --max-bool-expr &lt;num&gt;
+                        Maximum number of boolean expressions in an if
+                        statement (see R0916). (default: 5)
+  --exclude-too-few-public-methods &lt;pattern&gt;[,&lt;pattern&gt;...]
+                        List of regular expressions of class ancestor names to
+                        ignore when counting public methods (see R0903)
+                        (default: [])
+
+Miscellaneous:
+  BaseChecker for encoding issues.
+
+  --notes &lt;comma separated values&gt;
+                        List of note tags to take in consideration, separated
+                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
+  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in
+                        consideration. (default: )
 
 Variables:
   BaseChecker for variables.
@@ -6072,62 +6048,6 @@ Variables:
                         treated as a violation. (default: True)
   --allowed-redefined-builtins &lt;comma separated list&gt;
                         List of names allowed to shadow builtins (default: ())
-
-Format:
-  Formatting checker.
-
-  --max-line-length &lt;int&gt;
-                        Maximum number of characters on a single line.
-                        (default: 100)
-  --ignore-long-lines &lt;regexp&gt;
-                        Regexp for a line that is allowed to be longer than
-                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)
-  --single-line-if-stmt &lt;y or n&gt;
-                        Allow the body of an if to be on the same line as the
-                        test if there is no else. (default: False)
-  --single-line-class-stmt &lt;y or n&gt;
-                        Allow the body of a class to be on the same line as
-                        the declaration if body contains single statement.
-                        (default: False)
-  --max-module-lines &lt;int&gt;
-                        Maximum number of lines in a module. (default: 1000)
-  --indent-string &lt;string&gt;
-                        String used as indentation unit. This is usually &quot; &quot;
-                        (4 spaces) or &quot;  &quot; (1 tab). (default: )
-  --indent-after-paren &lt;int&gt;
-                        Number of spaces of indent required inside a hanging
-                        or continued line. (default: 4)
-  --expected-line-ending-format &lt;empty or LF or CRLF&gt;
-                        Expected format of line ending, e.g. empty (any line
-                        ending), LF or CRLF. (default: )
-
-Exceptions:
-  Exception related checks.
-
-  --overgeneral-exceptions &lt;comma-separated class names&gt;
-                        Exceptions that will emit a warning when caught.
-                        (default: ('BaseException', 'Exception'))
-
-Classes:
-  Checker for class nodes.
-
-  --defining-attr-methods &lt;method names&gt;
-                        List of method names used to declare (i.e. assign)
-                        instance attributes. (default: ('__init__', '__new__',
-                        'setUp', '__post_init__'))
-  --valid-classmethod-first-arg &lt;argument names&gt;
-                        List of valid names for the first argument in a class
-                        method. (default: ('cls',))
-  --valid-metaclass-classmethod-first-arg &lt;argument names&gt;
-                        List of valid names for the first argument in a
-                        metaclass class method. (default: ('cls',))
-  --exclude-protected &lt;protected access exclusions&gt;
-                        List of member names, which should be excluded from
-                        the protected access warning. (default: ('_asdict',
-                        '_fields', '_replace', '_source', '_make'))
-  --check-protected-access-in-special-methods &lt;y or n&gt;
-                        Warn about protected attribute access inside special
-                        methods (default: False)
 
 Basic:
   --good-names &lt;names&gt;  Good variable names which should always be accepted,
@@ -6254,76 +6174,156 @@ Basic:
                         Minimum line length for functions/classes that require
                         docstrings, shorter ones are exempt. (default: -1)
 
-Miscellaneous:
-  BaseChecker for encoding issues.
+Refactoring:
+  Looks for code which can be refactored.
 
-  --notes &lt;comma separated values&gt;
-                        List of note tags to take in consideration, separated
-                        by a comma. (default: ('FIXME', 'XXX', 'TODO'))
-  --notes-rgx &lt;regexp&gt;  Regular expression of note tags to take in
-                        consideration. (default: )
+  --max-nested-blocks &lt;int&gt;
+                        Maximum number of nested blocks for function / method
+                        body (default: 5)
+  --never-returning-functions &lt;members names&gt;
+                        Complete name of functions that never returns. When
+                        checking for inconsistent-return-statements if a never
+                        returning function is called then it will be
+                        considered as an explicit return statement and no
+                        message will be printed. (default: ('sys.exit',
+                        'argparse.parse_error'))
 
-Design:
-  Checker of potential misdesigns.
+Logging:
+  Checks use of the logging module.
 
-  --max-args &lt;int&gt;      Maximum number of arguments for function / method.
-                        (default: 5)
-  --max-locals &lt;int&gt;    Maximum number of locals for function / method body.
-                        (default: 15)
-  --max-returns &lt;int&gt;   Maximum number of return / yield for function / method
-                        body. (default: 6)
-  --max-branches &lt;int&gt;  Maximum number of branch for function / method body.
-                        (default: 12)
-  --max-statements &lt;int&gt;
-                        Maximum number of statements in function / method
-                        body. (default: 50)
-  --max-parents &lt;num&gt;   Maximum number of parents for a class (see R0901).
-                        (default: 7)
-  --ignored-parents &lt;comma separated list of class names&gt;
-                        List of qualified class names to ignore when counting
-                        class parents (see R0901) (default: ())
-  --max-attributes &lt;num&gt;
-                        Maximum number of attributes for a class (see R0902).
-                        (default: 7)
-  --min-public-methods &lt;num&gt;
-                        Minimum number of public methods for a class (see
-                        R0903). (default: 2)
-  --max-public-methods &lt;num&gt;
-                        Maximum number of public methods for a class (see
-                        R0904). (default: 20)
-  --max-bool-expr &lt;num&gt;
-                        Maximum number of boolean expressions in an if
-                        statement (see R0916). (default: 5)
-  --exclude-too-few-public-methods &lt;pattern&gt;[,&lt;pattern&gt;...]
-                        List of regular expressions of class ancestor names to
-                        ignore when counting public methods (see R0903)
-                        (default: [])
+  --logging-modules &lt;comma separated list&gt;
+                        Logging modules to check that the string format
+                        arguments are in logging function parameter format.
+                        (default: ('logging',))
+  --logging-format-style &lt;old (%) or new ({)&gt;
+                        The type of string formatting that logging methods do.
+                        `old` means using % formatting, `new` is for `{}`
+                        formatting. (default: old)
 
-Spelling:
-  Check spelling in comments and docstrings.
+Typecheck:
+  Try to find bugs in the code using type inference.
 
-  --spelling-dict &lt;dict name&gt;
-                        Spelling dictionary name. Available dictionaries:
-                        none. To make it work, install the 'python-enchant'
-                        package. (default: )
-  --spelling-ignore-words &lt;comma separated words&gt;
-                        List of comma separated words that should not be
-                        checked. (default: )
-  --spelling-private-dict-file &lt;path to file&gt;
-                        A path to a file that contains the private dictionary;
-                        one word per line. (default: )
-  --spelling-store-unknown-words &lt;y or n&gt;
-                        Tells whether to store unknown words to the private
-                        dictionary (see the --spelling-private-dict-file
-                        option) instead of raising a message. (default: n)
-  --max-spelling-suggestions N
-                        Limits count of emitted suggestions for spelling
-                        mistakes. (default: 4)
-  --spelling-ignore-comment-directives &lt;comma separated words&gt;
-                        List of comma separated words that should be
-                        considered directives if they appear at the beginning
-                        of a comment and should not be checked. (default: fmt:
-                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)
+  --ignore-on-opaque-inference &lt;y or n&gt;
+                        This flag controls whether pylint should warn about
+                        no-member and similar checks whenever an opaque object
+                        is returned when inferring. The inference can return
+                        multiple potential results while evaluating a Python
+                        object, but some branches might not be evaluated,
+                        which results in partial inference. In that case, it
+                        might be useful to still emit no-member and other
+                        checks for the rest of the inferred objects. (default:
+                        True)
+  --mixin-class-rgx &lt;regexp&gt;
+                        Regex pattern to define which classes are considered
+                        mixins. (default: .*[Mm]ixin)
+  --ignore-mixin-members &lt;y or n&gt;
+                        Tells whether missing members accessed in mixin class
+                        should be ignored. A class is considered mixin if its
+                        name matches the mixin-class-rgx option. (default:
+                        True)
+  --ignored-checks-for-mixins &lt;list of messages names&gt;
+                        List of symbolic message names to ignore for Mixin
+                        members. (default: ['no-member', 'not-async-context-
+                        manager', 'not-context-manager', 'attribute-defined-
+                        outside-init'])
+  --ignore-none &lt;y or n&gt;
+                        Tells whether to warn about missing members when the
+                        owner of the attribute is inferred to be None.
+                        (default: True)
+  --ignored-classes &lt;members names&gt;
+                        List of class names for which member attributes should
+                        not be checked (useful for classes with dynamically
+                        set attributes). This supports the use of qualified
+                        names. (default: ('optparse.Values', 'thread._local',
+                        '_thread._local', 'argparse.Namespace'))
+  --generated-members &lt;members names&gt;
+                        List of members which are set dynamically and missed
+                        by pylint inference system, and so shouldn't trigger
+                        E1101 when accessed. Python regular expressions are
+                        accepted. (default: ())
+  --contextmanager-decorators &lt;decorator names&gt;
+                        List of decorators that produce context managers, such
+                        as contextlib.contextmanager. Add to this list to
+                        register other decorators that produce valid context
+                        managers. (default: ['contextlib.contextmanager'])
+  --missing-member-hint-distance &lt;member hint edit distance&gt;
+                        The minimum edit distance a name should have in order
+                        to be considered a similar match for a missing member
+                        name. (default: 1)
+  --missing-member-max-choices &lt;member hint max choices&gt;
+                        The total number of similar names that should be taken
+                        in consideration when showing a hint for a missing
+                        member. (default: 1)
+  --missing-member-hint &lt;missing member hint&gt;
+                        Show a hint with possible names when a member name was
+                        not found. The aspect of finding the hint is based on
+                        edit distance. (default: True)
+  --signature-mutators &lt;decorator names&gt;
+                        List of decorators that change the signature of a
+                        decorated function. (default: [])
+
+Format:
+  Formatting checker.
+
+  --max-line-length &lt;int&gt;
+                        Maximum number of characters on a single line.
+                        (default: 100)
+  --ignore-long-lines &lt;regexp&gt;
+                        Regexp for a line that is allowed to be longer than
+                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)
+  --single-line-if-stmt &lt;y or n&gt;
+                        Allow the body of an if to be on the same line as the
+                        test if there is no else. (default: False)
+  --single-line-class-stmt &lt;y or n&gt;
+                        Allow the body of a class to be on the same line as
+                        the declaration if body contains single statement.
+                        (default: False)
+  --max-module-lines &lt;int&gt;
+                        Maximum number of lines in a module. (default: 1000)
+  --indent-string &lt;string&gt;
+                        String used as indentation unit. This is usually &quot; &quot;
+                        (4 spaces) or &quot;  &quot; (1 tab). (default: )
+  --indent-after-paren &lt;int&gt;
+                        Number of spaces of indent required inside a hanging
+                        or continued line. (default: 4)
+  --expected-line-ending-format &lt;empty or LF or CRLF&gt;
+                        Expected format of line ending, e.g. empty (any line
+                        ending), LF or CRLF. (default: )
+
+Imports:
+  BaseChecker for import statements.
+
+  --deprecated-modules &lt;modules&gt;
+                        Deprecated modules which should not be used, separated
+                        by a comma. (default: ())
+  --preferred-modules &lt;module:preferred-module&gt;
+                        Couples of modules and preferred modules, separated by
+                        a comma. (default: ())
+  --import-graph &lt;file.gv&gt;
+                        Output a graph (.gv or any supported image format) of
+                        all (i.e. internal and external) dependencies to the
+                        given file (report RP0402 must not be disabled).
+                        (default: )
+  --ext-import-graph &lt;file.gv&gt;
+                        Output a graph (.gv or any supported image format) of
+                        external dependencies to the given file (report RP0402
+                        must not be disabled). (default: )
+  --int-import-graph &lt;file.gv&gt;
+                        Output a graph (.gv or any supported image format) of
+                        internal dependencies to the given file (report RP0402
+                        must not be disabled). (default: )
+  --known-standard-library &lt;modules&gt;
+                        Force import order to recognize a module as part of
+                        the standard compatibility libraries. (default: ())
+  --known-third-party &lt;modules&gt;
+                        Force import order to recognize a module as part of a
+                        third party library. (default: ('enchant',))
+  --allow-any-import-level &lt;modules&gt;
+                        List of modules that can be imported at any level, not
+                        just the top level one. (default: ())
+  --allow-wildcard-with-all &lt;y or n&gt;
+                        Allow wildcard imports from modules that define
+                        __all__. (default: False)
 </code></pre>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
@@ -6460,7 +6460,7 @@ See documentation on https://megalinter.github.io/descriptors/python_pylint/
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.431f3d41.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a877e258.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
