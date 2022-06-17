@@ -19,6 +19,9 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [pylint](https://www.pylint.org) from 2.14.1 to **2.14.2** on 2022-06-15
   - [checkov](https://www.checkov.io/) from 2.0.1212 to **2.0.1217** on 2022-06-15
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.3 to **0.37.4** on 2022-06-15
+  - [prettier](https://prettier.io/) from 2.7.0 to **2.7.1** on 2022-06-17
+  - [checkov](https://www.checkov.io/) from 2.0.1217 to **2.0.1218** on 2022-06-17
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.2 to **1.2.3** on 2022-06-17
 <!-- linter-versions-end -->
 
 ## [v5.14.0] - 2022-06-12
