@@ -6591,6 +6591,9 @@
     },
     "OUTPUT_DETAIL": {
       "$id": "#/properties/OUTPUT_DETAIL",
+      "enum": [
+        "detailed"
+      ],
       "title": "Output detail",
       "type": "string"
     },
