@@ -6589,6 +6589,20 @@
       "title": "OPENAPI_SPECTRAL: Custom config file path",
       "type": "string"
     },
+    "OUTPUT_DETAIL": {
+      "$id": "#/properties/OUTPUT_DETAIL",
+      "title": "Output detail",
+      "type": "string"
+    },
+    "OUTPUT_FORMAT": {
+      "$id": "#/properties/OUTPUT_FORMAT",
+      "enum": [
+        "tap",
+        "text"
+      ],
+      "title": "Output format",
+      "type": "string"
+    },
     "PARALLEL": {
       "$id": "#/properties/PARALLEL",
       "default": true,
