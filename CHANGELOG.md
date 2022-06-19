@@ -28,6 +28,8 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.19 to **0.0.20** on 2022-06-19
   - [sqlfluff](https://www.sqlfluff.com/) from 0.13.2 to **1.0.0** on 2022-06-19
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.4 to **0.38.0** on 2022-06-19
+  - [ktlint](https://ktlint.github.io) from 0.45.2 to **0.46.0** on 2022-06-19
+  - [checkov](https://www.checkov.io/) from 2.0.1218 to **2.0.1219** on 2022-06-19
 <!-- linter-versions-end -->
 
 ## [v5.14.0] - 2022-06-12

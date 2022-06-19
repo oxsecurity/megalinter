@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6105,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 25179,
+                "stargazers_count": 25180,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 113,
@@ -127,14 +127,14 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-06-19T02:14:11Z",
+                "updated_at": "2022-06-19T06:53:09Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 25179,
-                "watchers_count": 25179
+                "watchers": 25180,
+                "watchers_count": 25180
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 25179
+            "stargazers": 25180
         },
         {
             "info": {
@@ -475,9 +475,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/megalinter/megalinter/pulls{/number}",
-                "pushed_at": "2022-06-18T21:23:11Z",
+                "pushed_at": "2022-06-19T07:09:33Z",
                 "releases_url": "https://api.github.com/repos/megalinter/megalinter/releases{/id}",
-                "size": 145032,
+                "size": 145037,
                 "ssh_url": "git@github.com:megalinter/megalinter.git",
                 "stargazers_count": 671,
                 "stargazers_url": "https://api.github.com/repos/megalinter/megalinter/stargazers",
@@ -582,8 +582,8 @@
                 "network_count": 85,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyMzA5OTk4MjY=",
                 "notifications_url": "https://api.github.com/repos/onedr0p/home-ops/notifications{?since,all,participating}",
-                "open_issues": 10,
-                "open_issues_count": 10,
+                "open_issues": 12,
+                "open_issues_count": 12,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/213795?v=4",
                     "events_url": "https://api.github.com/users/onedr0p/events{/privacy}",
@@ -606,9 +606,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/onedr0p/home-ops/pulls{/number}",
-                "pushed_at": "2022-06-19T00:31:37Z",
+                "pushed_at": "2022-06-19T06:06:32Z",
                 "releases_url": "https://api.github.com/repos/onedr0p/home-ops/releases{/id}",
-                "size": 24158,
+                "size": 24168,
                 "ssh_url": "git@github.com:onedr0p/home-ops.git",
                 "stargazers_count": 551,
                 "stargazers_url": "https://api.github.com/repos/onedr0p/home-ops/stargazers",
@@ -1326,8 +1326,8 @@
                 "network_count": 19,
                 "node_id": "MDEwOlJlcG9zaXRvcnkyODc1MDA0NTY=",
                 "notifications_url": "https://api.github.com/repos/bjw-s/home-ops/notifications{?since,all,participating}",
-                "open_issues": 9,
-                "open_issues_count": 9,
+                "open_issues": 8,
+                "open_issues_count": 8,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/6213398?v=4",
                     "events_url": "https://api.github.com/users/bjw-s/events{/privacy}",
@@ -1350,9 +1350,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-06-18T22:07:34Z",
+                "pushed_at": "2022-06-19T05:45:27Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 30399,
+                "size": 30403,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 143,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -1859,7 +1859,7 @@
                 "releases_url": "https://api.github.com/repos/practicalli/spacemacs/releases{/id}",
                 "size": 63110,
                 "ssh_url": "git@github.com:practicalli/spacemacs.git",
-                "stargazers_count": 84,
+                "stargazers_count": 85,
                 "stargazers_url": "https://api.github.com/repos/practicalli/spacemacs/stargazers",
                 "statuses_url": "https://api.github.com/repos/practicalli/spacemacs/statuses/{sha}",
                 "subscribers_count": 5,
@@ -1876,14 +1876,14 @@
                     "spacemacs"
                 ],
                 "trees_url": "https://api.github.com/repos/practicalli/spacemacs/git/trees{/sha}",
-                "updated_at": "2022-06-16T17:16:51Z",
+                "updated_at": "2022-06-19T03:09:26Z",
                 "url": "https://api.github.com/repos/practicalli/spacemacs",
                 "visibility": "public",
-                "watchers": 84,
-                "watchers_count": 84
+                "watchers": 85,
+                "watchers_count": 85
             },
             "repo_url": "https://github.com/practicalli/spacemacs",
-            "stargazers": 84
+            "stargazers": 85
         },
         {
             "info": {
@@ -1989,7 +1989,7 @@
                 "releases_url": "https://api.github.com/repos/practicalli/spacemacs/releases{/id}",
                 "size": 63110,
                 "ssh_url": "git@github.com:practicalli/spacemacs.git",
-                "stargazers_count": 84,
+                "stargazers_count": 85,
                 "stargazers_url": "https://api.github.com/repos/practicalli/spacemacs/stargazers",
                 "statuses_url": "https://api.github.com/repos/practicalli/spacemacs/statuses/{sha}",
                 "subscribers_count": 5,
@@ -2006,14 +2006,14 @@
                     "spacemacs"
                 ],
                 "trees_url": "https://api.github.com/repos/practicalli/spacemacs/git/trees{/sha}",
-                "updated_at": "2022-06-16T17:16:51Z",
+                "updated_at": "2022-06-19T03:09:26Z",
                 "url": "https://api.github.com/repos/practicalli/spacemacs",
                 "visibility": "public",
-                "watchers": 84,
-                "watchers_count": 84
+                "watchers": 85,
+                "watchers_count": 85
             },
             "repo_url": "https://github.com/practicalli/spacemacs",
-            "stargazers": 84
+            "stargazers": 85
         },
         {
             "info": {
@@ -2992,7 +2992,7 @@
                 "releases_url": "https://api.github.com/repos/practicalli/clojure/releases{/id}",
                 "size": 47067,
                 "ssh_url": "git@github.com:practicalli/clojure.git",
-                "stargazers_count": 40,
+                "stargazers_count": 41,
                 "stargazers_url": "https://api.github.com/repos/practicalli/clojure/stargazers",
                 "statuses_url": "https://api.github.com/repos/practicalli/clojure/statuses/{sha}",
                 "subscribers_count": 3,
@@ -3010,14 +3010,14 @@
                     "workshop"
                 ],
                 "trees_url": "https://api.github.com/repos/practicalli/clojure/git/trees{/sha}",
-                "updated_at": "2022-04-22T19:44:25Z",
+                "updated_at": "2022-06-19T03:08:13Z",
                 "url": "https://api.github.com/repos/practicalli/clojure",
                 "visibility": "public",
-                "watchers": 40,
-                "watchers_count": 40
+                "watchers": 41,
+                "watchers_count": 41
             },
             "repo_url": "https://github.com/practicalli/clojure",
-            "stargazers": 40
+            "stargazers": 41
         },
         {
             "info": {
@@ -3716,9 +3716,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/jr0dd/home-ops/pulls{/number}",
-                "pushed_at": "2022-06-19T01:25:51Z",
+                "pushed_at": "2022-06-19T06:30:14Z",
                 "releases_url": "https://api.github.com/repos/jr0dd/home-ops/releases{/id}",
-                "size": 4591,
+                "size": 4627,
                 "ssh_url": "git@github.com:jr0dd/home-ops.git",
                 "stargazers_count": 24,
                 "stargazers_url": "https://api.github.com/repos/jr0dd/home-ops/stargazers",
@@ -4445,8 +4445,8 @@
                 "network_count": 0,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzODI4NjMyOTE=",
                 "notifications_url": "https://api.github.com/repos/0dragosh/homelab/notifications{?since,all,participating}",
-                "open_issues": 3,
-                "open_issues_count": 3,
+                "open_issues": 2,
+                "open_issues_count": 2,
                 "owner": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/39906742?v=4",
                     "events_url": "https://api.github.com/users/0dragosh/events{/privacy}",
@@ -4469,7 +4469,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/0dragosh/homelab/pulls{/number}",
-                "pushed_at": "2022-06-19T00:14:18Z",
+                "pushed_at": "2022-06-19T05:25:44Z",
                 "releases_url": "https://api.github.com/repos/0dragosh/homelab/releases{/id}",
                 "size": 3187,
                 "ssh_url": "git@github.com:0dragosh/homelab.git",
@@ -5641,7 +5641,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AliceO2Group/O2Physics/pulls{/number}",
-                "pushed_at": "2022-06-19T00:01:56Z",
+                "pushed_at": "2022-06-19T07:23:49Z",
                 "releases_url": "https://api.github.com/repos/AliceO2Group/O2Physics/releases{/id}",
                 "size": 6933,
                 "ssh_url": "git@github.com:AliceO2Group/O2Physics.git",
