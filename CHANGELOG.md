@@ -22,6 +22,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [prettier](https://prettier.io/) from 2.7.0 to **2.7.1** on 2022-06-17
   - [checkov](https://www.checkov.io/) from 2.0.1217 to **2.0.1218** on 2022-06-17
   - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.2 to **1.2.3** on 2022-06-17
+  - [eslint](https://eslint.org) from 8.17.0 to **8.18.0** on 2022-06-19
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.0 to **3.7.1** on 2022-06-19
+  - [pylint](https://www.pylint.org) from 2.14.2 to **2.14.3** on 2022-06-19
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.19 to **0.0.20** on 2022-06-19
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.2 to **1.0.0** on 2022-06-19
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.4 to **0.38.0** on 2022-06-19
 <!-- linter-versions-end -->
 
 ## [v5.14.0] - 2022-06-12
