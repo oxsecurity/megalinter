@@ -9,7 +9,7 @@
 
 ## ktlint documentation
 
-- Version in MegaLinter: **0.45.2**
+- Version in MegaLinter: **0.46.0**
 - Visit [Official Web Site](https://ktlint.github.io){target=_blank}
 - See [Index of problems detected by ktlint](https://ktlint.github.io/#rules){target=_blank}
 
@@ -141,14 +141,14 @@ Flags:
                           --disabled_rules=standard
   -F, --format          Fix any deviations from the code style
       --limit=<limit>   Maximum number of errors to show (default: show all)
-      --relative        Print files relative to the working directory (e.g. dir/file.
-                          kt instead of /home/user/project/dir/file.kt)
+      --relative        Print files relative to the working directory (e.g.
+                          dir/file.kt instead of /home/user/project/dir/file.kt)
       --reporter=<reporters>
                         A reporter to use (built-in: plain (default), plain?
-                          group_by_file, json, sarif, checkstyle, html). To use a
-                          third-party reporter specify a path to a JAR file on the
-                          filesystem via ',artifact=' option. To override reporter
-                          output, use ',output=' option.
+                          group_by_file, json, sarif, checkstyle, html). To use
+                          a third-party reporter specify a path to a JAR file
+                          on the filesystem via ',artifact=' option. To
+                          override reporter output, use ',output=' option.
   -R, --ruleset=<rulesetJarFiles>
                         A path to a JAR file containing additional ruleset(s)
       --stdin           Read file from stdin
