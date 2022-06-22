@@ -17,8 +17,8 @@
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
-[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
+[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
