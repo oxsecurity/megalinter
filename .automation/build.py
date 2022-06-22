@@ -395,9 +395,12 @@ def generate_documentation():
     )
     # Update welcome phrase
     welcome_phrase = (
-        "MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your "
-        +"code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects "
-        +"sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).\n\n"
+        "MegaLinter is an **Open-Source** tool for **CI/CD workflows** "
+        + "that analyzes the **consistency of your "
+        + "code**, **IAC**, **configuration**, and **scripts** in your repository "
+        + "sources, to **ensure all your projects "
+        + "sources are clean and formatted** whatever IDE/toolbox is used by "
+        + "their developers, powered by [**OX security**](https://www.ox.security/).\n\n"
         + f"Supporting [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
@@ -1788,9 +1791,9 @@ def finalize_doc_build():
         target_file,
         "<!-- header-intro-start -->",
         "<!-- header-intro-end -->",
-        "<h2>Verify your code consistency with an open-source tool.<br/>" +
-        "Powered by <a href=\"https://www.ox.security/\" target=\"_blank\">OX security</a>.</h2>",
-    )    
+        "<h2>Verify your code consistency with an open-source tool.<br/>"
+        + 'Powered by <a href="https://www.ox.security/" target="_blank">OX security</a>.</h2>',
+    )
     # Add header badges
     replace_in_file(
         target_file,
@@ -1802,8 +1805,8 @@ def finalize_doc_build():
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
 [![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
-        """
-    )    
+        """, # noqa: E501
+    )
 
     # Remove TOC in target file
     replace_in_file(
