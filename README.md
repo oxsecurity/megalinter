@@ -12,7 +12,7 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## MegaLinter by [OX Security](https://www.ox.security/)
+## MegaLinter, by [OX Security](https://www.ox.security/)
 
 <!-- mega-linter-title-end -->
 <!-- mega-linter-badges-start -->
