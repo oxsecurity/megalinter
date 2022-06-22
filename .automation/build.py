@@ -1805,7 +1805,7 @@ def finalize_doc_build():
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
 [![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
-        """, # noqa: E501
+        """,  # noqa: E501
     )
 
     # Remove TOC in target file
