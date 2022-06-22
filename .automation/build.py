@@ -395,18 +395,15 @@ def generate_documentation():
     )
     # Update welcome phrase
     welcome_phrase = (
-        "MegaLinter is an **100% Open-Source tool for CI/CD workflows** "
-        + f"that **analyzes consistency and quality** of [**{len(linters_by_type['language'])}** languages]"
+        "MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your "
+        +"code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects "
+        +"sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).\n\n"
+        + f"Supporting [**{len(linters_by_type['language'])}** languages]"
         + "(#languages), "
         + f"[**{len(linters_by_type['format'])}** formats](#formats), "
         + f"[**{len(linters_by_type['tooling_format'])}** tooling formats](#tooling-formats) "
-        + ", [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your "
-        + "repository sources, generates [**various reports**](#reporters), "
-        + "and can even [apply **formatting** and **auto-fixes**](#apply-fixes), "
-        + "to **ensure all your projects sources are clean**, whatever "
-        + "IDE/toolbox are used by their developers.\n\n"
-        + "Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, "
-        "[**highly configurable**](#configuration) and **free for all uses**\n"
+        + "and **ready to use out of the box**, as a GitHub action or any CI system "
+        + "**highly configurable** and **free for all uses**."
     )
     # Update README.md file
     replace_in_file(
