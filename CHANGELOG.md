@@ -30,6 +30,12 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.4 to **0.38.0** on 2022-06-19
   - [ktlint](https://ktlint.github.io) from 0.45.2 to **0.46.0** on 2022-06-19
   - [checkov](https://www.checkov.io/) from 2.0.1218 to **2.0.1219** on 2022-06-19
+  - [ktlint](https://ktlint.github.io) from 0.46.0 to **0.46.1** on 2022-06-22
+  - [phpstan](https://phpstan.org/) from 1.7.14 to **1.7.15** on 2022-06-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.4 to **7.2.5** on 2022-06-22
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.2 to **7.8.3** on 2022-06-22
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.20 to **1.0.0** on 2022-06-22
+  - [checkov](https://www.checkov.io/) from 2.0.1219 to **2.0.1226** on 2022-06-22
 <!-- linter-versions-end -->
 
 ## [v5.14.0] - 2022-06-12

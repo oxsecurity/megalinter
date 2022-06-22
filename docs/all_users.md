@@ -8,8 +8,8 @@
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
 [![practicalli/clojure-deps-edn - GitHub](https://gh-card.dev/repos/practicalli/clojure-deps-edn.svg?fullname=)](https://github.com/practicalli/clojure-deps-edn){target=_blank}
-[![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![KelvinTegelaar/CIPP - GitHub](https://gh-card.dev/repos/KelvinTegelaar/CIPP.svg?fullname=)](https://github.com/KelvinTegelaar/CIPP){target=_blank}
+[![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
