@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'megalinter/megalinter'
     steps:
-      - uses: actions/checkout@v3.0.1
+      - uses: actions/checkout@v3.0.2
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v3.1.2

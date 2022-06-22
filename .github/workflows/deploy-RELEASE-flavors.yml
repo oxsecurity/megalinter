@@ -68,7 +68,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3.0.2
         with:
           fetch-depth: 0
 
