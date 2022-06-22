@@ -13,6 +13,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
 
 ## [v5.15.0] - 2022-06-23
 
+- [OX Security](https://www.ox.security/) branding and [pre-announcement](https://github.com/megalinter/megalinter/issues/1549)
 - Linter versions upgrades
   - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.61.0 to **0.61.1** on 2022-06-22
   - [checkov](https://www.checkov.io/) from 2.0.1209 to **2.0.1210** on 2022-06-14
