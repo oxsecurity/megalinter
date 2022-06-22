@@ -1783,6 +1783,28 @@ def finalize_doc_build():
     # Replace hardcoded links into relative links
     replace_full_url_links(target_file, DOCS_URL_ROOT + "/", "")
     logging.info(f"Copied and updated {target_file}")
+    # Add header intro
+    replace_in_file(
+        target_file,
+        "<!-- header-intro-start -->",
+        "<!-- header-intro-end -->",
+        "<h2>Verify your code consistency with an open-source tool.<br/>" +
+        "Powered by <a href=\"https://www.ox.security/\" target=\"_blank\">OX security</a>.</h2>",
+    )    
+    # Add header badges
+    replace_in_file(
+        target_file,
+        "<!-- mega-linter-badges-start -->",
+        "<!-- mega-linter-badges-end -->",
+        """![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver&color=%23FD80CD)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue?color=%23FD80CD)](https://megalinter.github.io/flavors/)
+[![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
+[![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
+[![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
+        """
+    )    
+
     # Remove TOC in target file
     replace_in_file(
         target_file,
