@@ -33,6 +33,7 @@ extra_javascript:
   - javascripts/tables.js
   - javascripts/gtag.js
   - javascripts/version-mike.js
+  - javascripts/quickfixes.js
 extra_css:
   - stylesheets/extra.css
 extra:
