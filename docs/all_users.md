@@ -51,13 +51,13 @@
 [![nvuillam/njre - GitHub](https://gh-card.dev/repos/nvuillam/njre.svg?fullname=)](https://github.com/nvuillam/njre){target=_blank}
 [![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 [![QuantumPL/bib - GitHub](https://gh-card.dev/repos/QuantumPL/bib.svg?fullname=)](https://github.com/QuantumPL/bib){target=_blank}
+[![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![dochang/bumplus - GitHub](https://gh-card.dev/repos/dochang/bumplus.svg?fullname=)](https://github.com/dochang/bumplus){target=_blank}
 [![ADFC-Hamburg/adfc-ansible - GitHub](https://gh-card.dev/repos/ADFC-Hamburg/adfc-ansible.svg?fullname=)](https://github.com/ADFC-Hamburg/adfc-ansible){target=_blank}
 [![jokay/docker-prune - GitHub](https://gh-card.dev/repos/jokay/docker-prune.svg?fullname=)](https://github.com/jokay/docker-prune){target=_blank}
 [![theodore-s-beers/muqawwim - GitHub](https://gh-card.dev/repos/theodore-s-beers/muqawwim.svg?fullname=)](https://github.com/theodore-s-beers/muqawwim){target=_blank}
 [![AlbanAndrieu/jenkins-pipeline-scripts - GitHub](https://gh-card.dev/repos/AlbanAndrieu/jenkins-pipeline-scripts.svg?fullname=)](https://github.com/AlbanAndrieu/jenkins-pipeline-scripts){target=_blank}
 [![tusharshahrs/pulumi-home - GitHub](https://gh-card.dev/repos/tusharshahrs/pulumi-home.svg?fullname=)](https://github.com/tusharshahrs/pulumi-home){target=_blank}
-[![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![nvuillam/node-sarif-builder - GitHub](https://gh-card.dev/repos/nvuillam/node-sarif-builder.svg?fullname=)](https://github.com/nvuillam/node-sarif-builder){target=_blank}
 [![iggy/terrarific - GitHub](https://gh-card.dev/repos/iggy/terrarific.svg?fullname=)](https://github.com/iggy/terrarific){target=_blank}
 [![Eknah/Forradia - GitHub](https://gh-card.dev/repos/Eknah/Forradia.svg?fullname=)](https://github.com/Eknah/Forradia){target=_blank}
