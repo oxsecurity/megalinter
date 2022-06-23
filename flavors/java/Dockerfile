@@ -173,7 +173,7 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # shellcheck installation
 RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
     && mkdir -p ${ML_THIRD_PARTY_DIR} \
-    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.aarch64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
     && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
     && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
     && shellcheck --version
@@ -192,7 +192,7 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 COPY --from=editorconfig-checker /usr/bin/ec /usr/bin/editorconfig-checker
 
 # dotenv-linter installation
-RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
+#RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
 
 # checkstyle installation
 RUN CHECKSTYLE_LATEST=$(curl -s https://api.github.com/repos/checkstyle/checkstyle/releases/latest \
