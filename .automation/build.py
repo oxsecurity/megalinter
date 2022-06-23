@@ -1792,7 +1792,7 @@ def finalize_doc_build():
         "<!-- header-intro-start -->",
         "<!-- header-intro-end -->",
         "<h2>Verify your code consistency with an open-source tool.<br/>"
-        + 'Powered by <a href="https://www.ox.security/" target="_blank">OX security</a>.</h2>',
+        + 'Powered by <a href="https://www.ox.security/" target="_blank">OX Security</a>.</h2>',
     )
     # Add header badges
     replace_in_file(
@@ -1804,8 +1804,7 @@ def finalize_doc_build():
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
 [![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
-        """,  # noqa: E501
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)""",  # noqa: E501
     )
 
     # Remove TOC in target file
