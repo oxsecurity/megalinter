@@ -8,8 +8,8 @@
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
 [![practicalli/clojure-deps-edn - GitHub](https://gh-card.dev/repos/practicalli/clojure-deps-edn.svg?fullname=)](https://github.com/practicalli/clojure-deps-edn){target=_blank}
-[![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![KelvinTegelaar/CIPP - GitHub](https://gh-card.dev/repos/KelvinTegelaar/CIPP.svg?fullname=)](https://github.com/KelvinTegelaar/CIPP){target=_blank}
+[![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
@@ -17,8 +17,8 @@
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
-[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
+[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
@@ -51,13 +51,13 @@
 [![nvuillam/njre - GitHub](https://gh-card.dev/repos/nvuillam/njre.svg?fullname=)](https://github.com/nvuillam/njre){target=_blank}
 [![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}
 [![QuantumPL/bib - GitHub](https://gh-card.dev/repos/QuantumPL/bib.svg?fullname=)](https://github.com/QuantumPL/bib){target=_blank}
+[![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![dochang/bumplus - GitHub](https://gh-card.dev/repos/dochang/bumplus.svg?fullname=)](https://github.com/dochang/bumplus){target=_blank}
 [![ADFC-Hamburg/adfc-ansible - GitHub](https://gh-card.dev/repos/ADFC-Hamburg/adfc-ansible.svg?fullname=)](https://github.com/ADFC-Hamburg/adfc-ansible){target=_blank}
 [![jokay/docker-prune - GitHub](https://gh-card.dev/repos/jokay/docker-prune.svg?fullname=)](https://github.com/jokay/docker-prune){target=_blank}
 [![theodore-s-beers/muqawwim - GitHub](https://gh-card.dev/repos/theodore-s-beers/muqawwim.svg?fullname=)](https://github.com/theodore-s-beers/muqawwim){target=_blank}
 [![AlbanAndrieu/jenkins-pipeline-scripts - GitHub](https://gh-card.dev/repos/AlbanAndrieu/jenkins-pipeline-scripts.svg?fullname=)](https://github.com/AlbanAndrieu/jenkins-pipeline-scripts){target=_blank}
 [![tusharshahrs/pulumi-home - GitHub](https://gh-card.dev/repos/tusharshahrs/pulumi-home.svg?fullname=)](https://github.com/tusharshahrs/pulumi-home){target=_blank}
-[![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![nvuillam/node-sarif-builder - GitHub](https://gh-card.dev/repos/nvuillam/node-sarif-builder.svg?fullname=)](https://github.com/nvuillam/node-sarif-builder){target=_blank}
 [![iggy/terrarific - GitHub](https://gh-card.dev/repos/iggy/terrarific.svg?fullname=)](https://github.com/iggy/terrarific){target=_blank}
 [![Eknah/Forradia - GitHub](https://gh-card.dev/repos/Eknah/Forradia.svg?fullname=)](https://github.com/Eknah/Forradia){target=_blank}
