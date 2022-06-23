@@ -2,7 +2,7 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
 <!-- header-intro-start -->
-<h2>Verify your code consistency with an open-source tool.<br/>Powered by <a href="https://www.ox.security/" target="_blank">OX security</a>.</h2>
+<h2>Verify your code consistency with an open-source tool.<br/>Powered by <a href="https://www.ox.security/" target="_blank">OX Security</a>.</h2>
 <!-- header-intro-end -->
 
 <!-- header-logo-start -->
@@ -22,7 +22,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/megalinter/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/megalinter/megalinter/stargazers/)
 [![GitHub contributors](https://img.shields.io/github/contributors/megalinter/megalinter.svg?color=%23FD80CD)](https://github.com/megalinter/megalinter/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&color=%23FD80CD)](http://makeapullrequest.com)
-
+        
 <!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->

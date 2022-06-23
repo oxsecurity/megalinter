@@ -1792,7 +1792,7 @@ def finalize_doc_build():
         "<!-- header-intro-start -->",
         "<!-- header-intro-end -->",
         "<h2>Verify your code consistency with an open-source tool.<br/>"
-        + 'Powered by <a href="https://www.ox.security/" target="_blank">OX security</a>.</h2>',
+        + 'Powered by <a href="https://www.ox.security/" target="_blank">OX Security</a>.</h2>',
     )
     # Add header badges
     replace_in_file(
