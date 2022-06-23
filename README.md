@@ -1,5 +1,8 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
+<!-- header-intro-start -->
+<!-- header-intro-end -->
+
 <!-- header-logo-start -->
 <div align="center">
   <a href="https://megalinter.github.io" target="blank" title="Visit MegaLinter Web Site">
@@ -9,10 +12,10 @@
 <!-- header-logo-end -->
 <!-- mega-linter-title-start -->
 
-## MegaLinter
+## MegaLinter, by [OX Security](https://www.ox.security/)
 
 <!-- mega-linter-title-end -->
-
+<!-- mega-linter-badges-start -->
 ![GitHub release](https://img.shields.io/github/v/release/megalinter/megalinter?sort=semver)
 [![Docker Pulls](https://img.shields.io/badge/docker%20pulls-3.3M-blue)](https://megalinter.github.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg)](https://npmjs.org/package/mega-linter-runner)
@@ -24,12 +27,12 @@
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/nvuillam)](https://github.com/sponsors/nvuillam)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check+MegaLinter+to+say+goodbye+to+dirty+code+in+your+projects+%3A%29+100%25+free+and+open+source+for+all+uses&url=https://megalinter.github.io/&via=NicolasVuillamy&hashtags=linters,code,quality,ci,python,java,golang,c,dotnet,kotlin,rust,scala,salesforce,terraform)
+<!-- mega-linter-badges-end -->
 
 <!-- welcome-phrase-start -->
-MegaLinter is an **100% Open-Source tool for CI/CD workflows** that **analyzes consistency and quality** of [**49** languages](#languages), [**22** formats](#formats), [**21** tooling formats](#tooling-formats) , [**excessive copy-pastes**](#other) and [**spelling mistakes**](#other) in your repository sources, generates [**various reports**](#reporters), and can even [apply **formatting** and **auto-fixes**](#apply-fixes), to **ensure all your projects sources are clean**, whatever IDE/toolbox are used by their developers.
+MegaLinter is an **Open-Source** tool for **CI/CD workflows** that analyzes the **consistency of your code**, **IAC**, **configuration**, and **scripts** in your repository sources, to **ensure all your projects sources are clean and formatted** whatever IDE/toolbox is used by their developers, powered by [**OX security**](https://www.ox.security/).
 
-Ready to use [out of the box](#installation) as a **GitHub Action** or **any CI system**, [**highly configurable**](#configuration) and **free for all uses**
-
+Supporting [**49** languages](#languages), [**22** formats](#formats), [**21** tooling formats](#tooling-formats) and **ready to use out of the box**, as a GitHub action or any CI system **highly configurable** and **free for all uses**.
 <!-- welcome-phrase-end -->
 
 <!-- online-doc-start -->
@@ -40,7 +43,8 @@ ________
 
 [![_**See Article on Medium**_](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/megalinter-article.jpg?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
 
-[![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1)
+<!-- NV: remove for now until we have a branded archi table
+[![Archi](https://github.com/megalinter/megalinter/blob/main/docs/assets/images/compare-table.png?raw=true)](https://nicolas.vuillamy.fr/improve-uniformize-and-secure-your-code-base-with-megalinter-62ebab422c1) -->
 
 ________
 

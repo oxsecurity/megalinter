@@ -9,28 +9,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
 - Linter versions upgrades
-  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.2 to **3.7.0** on 2022-06-14
-  - [phpstan](https://phpstan.org/) from 1.7.12 to **1.7.13** on 2022-06-14
-  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.0 to **0.6.1** on 2022-06-14
-  - [checkov](https://www.checkov.io/) from 2.0.1209 to **2.0.1210** on 2022-06-14
-  - [prettier](https://prettier.io/) from 2.6.2 to **2.7.0** on 2022-06-15
-  - [phpstan](https://phpstan.org/) from 1.7.13 to **1.7.14** on 2022-06-15
-  - [checkov](https://www.checkov.io/) from 2.0.1210 to **2.0.1212** on 2022-06-15
-  - [pylint](https://www.pylint.org) from 2.14.1 to **2.14.2** on 2022-06-15
-  - [checkov](https://www.checkov.io/) from 2.0.1212 to **2.0.1217** on 2022-06-15
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.3 to **0.37.4** on 2022-06-15
-  - [prettier](https://prettier.io/) from 2.7.0 to **2.7.1** on 2022-06-17
-  - [checkov](https://www.checkov.io/) from 2.0.1217 to **2.0.1218** on 2022-06-17
-  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.2 to **1.2.3** on 2022-06-17
-  - [eslint](https://eslint.org) from 8.17.0 to **8.18.0** on 2022-06-19
-  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.0 to **3.7.1** on 2022-06-19
-  - [pylint](https://www.pylint.org) from 2.14.2 to **2.14.3** on 2022-06-19
-  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.19 to **0.0.20** on 2022-06-19
-  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.2 to **1.0.0** on 2022-06-19
-  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.4 to **0.38.0** on 2022-06-19
-  - [ktlint](https://ktlint.github.io) from 0.45.2 to **0.46.0** on 2022-06-19
-  - [checkov](https://www.checkov.io/) from 2.0.1218 to **2.0.1219** on 2022-06-19
 <!-- linter-versions-end -->
+
+## [v5.15.0] - 2022-06-23
+
+- [OX Security](https://www.ox.security/) branding and [pre-announcement](https://github.com/megalinter/megalinter/issues/1549)
+- Linter versions upgrades
+  - [cfn-lint](https://github.com/martysweet/cfn-lint) from 0.61.0 to **0.61.1** on 2022-06-22
+  - [checkov](https://www.checkov.io/) from 2.0.1209 to **2.0.1210** on 2022-06-14
+  - [checkov](https://www.checkov.io/) from 2.0.1210 to **2.0.1212** on 2022-06-15
+  - [checkov](https://www.checkov.io/) from 2.0.1212 to **2.0.1217** on 2022-06-15
+  - [checkov](https://www.checkov.io/) from 2.0.1217 to **2.0.1218** on 2022-06-17
+  - [checkov](https://www.checkov.io/) from 2.0.1218 to **2.0.1219** on 2022-06-19
+  - [checkov](https://www.checkov.io/) from 2.0.1219 to **2.0.1226** on 2022-06-22
+  - [checkov](https://www.checkov.io/) from 2.0.1226 to **2.0.1230** on 2022-06-22
+  - [eslint](https://eslint.org) from 8.17.0 to **8.18.0** on 2022-06-19
+  - [ktlint](https://ktlint.github.io) from 0.45.2 to **0.46.0** on 2022-06-19
+  - [ktlint](https://ktlint.github.io) from 0.46.0 to **0.46.1** on 2022-06-22
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.6.2 to **3.7.0** on 2022-06-14
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) from 3.7.0 to **3.7.1** on 2022-06-19
+  - [phpstan](https://phpstan.org/) from 1.7.12 to **1.7.13** on 2022-06-14
+  - [phpstan](https://phpstan.org/) from 1.7.13 to **1.7.14** on 2022-06-15
+  - [phpstan](https://phpstan.org/) from 1.7.14 to **1.7.15** on 2022-06-22
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.2.4 to **7.2.5** on 2022-06-22
+  - [prettier](https://prettier.io/) from 2.6.2 to **2.7.0** on 2022-06-15
+  - [prettier](https://prettier.io/) from 2.7.0 to **2.7.1** on 2022-06-17
+  - [pylint](https://www.pylint.org) from 2.14.1 to **2.14.2** on 2022-06-15
+  - [pylint](https://www.pylint.org) from 2.14.2 to **2.14.3** on 2022-06-19
+  - [snakefmt](https://github.com/snakemake/snakefmt) from 0.6.0 to **0.6.1** on 2022-06-14
+  - [snakemake](https://snakemake.readthedocs.io/en/stable/) from 7.8.2 to **7.8.3** on 2022-06-22
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.19 to **0.0.20** on 2022-06-19
+  - [sql-lint](https://github.com/joereynolds/sql-lint) from 0.0.20 to **1.0.0** on 2022-06-22
+  - [sqlfluff](https://www.sqlfluff.com/) from 0.13.2 to **1.0.0** on 2022-06-19
+  - [terraform-fmt](https://www.terraform.io/docs/cli/commands/fmt.html) from 1.2.2 to **1.2.3** on 2022-06-17
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.3 to **0.37.4** on 2022-06-15
+  - [terragrunt](https://terragrunt.gruntwork.io) from 0.37.4 to **0.38.0** on 2022-06-19
 
 ## [v5.14.0] - 2022-06-12
 
