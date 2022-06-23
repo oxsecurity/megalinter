@@ -110,7 +110,7 @@
                 "releases_url": "https://api.github.com/repos/nektos/act/releases{/id}",
                 "size": 6096,
                 "ssh_url": "git@github.com:nektos/act.git",
-                "stargazers_count": 25380,
+                "stargazers_count": 25381,
                 "stargazers_url": "https://api.github.com/repos/nektos/act/stargazers",
                 "statuses_url": "https://api.github.com/repos/nektos/act/statuses/{sha}",
                 "subscribers_count": 116,
@@ -127,14 +127,14 @@
                     "golang"
                 ],
                 "trees_url": "https://api.github.com/repos/nektos/act/git/trees{/sha}",
-                "updated_at": "2022-06-23T07:29:07Z",
+                "updated_at": "2022-06-23T08:00:52Z",
                 "url": "https://api.github.com/repos/nektos/act",
                 "visibility": "public",
-                "watchers": 25380,
-                "watchers_count": 25380
+                "watchers": 25381,
+                "watchers_count": 25381
             },
             "repo_url": "https://github.com/nektos/act",
-            "stargazers": 25380
+            "stargazers": 25381
         },
         {
             "info": {
@@ -431,8 +431,8 @@
                 "network_count": 101,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzMDQ4MzAyMjY=",
                 "notifications_url": "https://api.github.com/repos/megalinter/megalinter/notifications{?since,all,participating}",
-                "open_issues": 42,
-                "open_issues_count": 42,
+                "open_issues": 41,
+                "open_issues_count": 41,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/76904213?v=4",
                     "events_url": "https://api.github.com/users/megalinter/events{/privacy}",
@@ -475,9 +475,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/megalinter/megalinter/pulls{/number}",
-                "pushed_at": "2022-06-23T07:41:13Z",
+                "pushed_at": "2022-06-23T08:35:40Z",
                 "releases_url": "https://api.github.com/repos/megalinter/megalinter/releases{/id}",
-                "size": 149641,
+                "size": 149738,
                 "ssh_url": "git@github.com:megalinter/megalinter.git",
                 "stargazers_count": 676,
                 "stargazers_url": "https://api.github.com/repos/megalinter/megalinter/stargazers",
@@ -875,7 +875,7 @@
                 "pulls_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/pulls{/number}",
                 "pushed_at": "2022-06-23T07:09:23Z",
                 "releases_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/releases{/id}",
-                "size": 27183,
+                "size": 26725,
                 "ssh_url": "git@github.com:secureCodeBox/secureCodeBox.git",
                 "stargazers_count": 489,
                 "stargazers_url": "https://api.github.com/repos/secureCodeBox/secureCodeBox/stargazers",
@@ -1350,9 +1350,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/bjw-s/home-ops/pulls{/number}",
-                "pushed_at": "2022-06-23T07:37:17Z",
+                "pushed_at": "2022-06-23T09:05:01Z",
                 "releases_url": "https://api.github.com/repos/bjw-s/home-ops/releases{/id}",
-                "size": 30440,
+                "size": 30446,
                 "ssh_url": "git@github.com:bjw-s/home-ops.git",
                 "stargazers_count": 144,
                 "stargazers_url": "https://api.github.com/repos/bjw-s/home-ops/stargazers",
@@ -2248,7 +2248,7 @@
                 "releases_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/releases{/id}",
                 "size": 995,
                 "ssh_url": "git@github.com:joeygoksu/prime-nestjs.git",
-                "stargazers_count": 66,
+                "stargazers_count": 67,
                 "stargazers_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/stargazers",
                 "statuses_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/statuses/{sha}",
                 "subscribers_count": 5,
@@ -2269,14 +2269,14 @@
                     "typescript"
                 ],
                 "trees_url": "https://api.github.com/repos/joeygoksu/prime-nestjs/git/trees{/sha}",
-                "updated_at": "2022-06-22T08:51:27Z",
+                "updated_at": "2022-06-23T08:42:41Z",
                 "url": "https://api.github.com/repos/joeygoksu/prime-nestjs",
                 "visibility": "public",
-                "watchers": 66,
-                "watchers_count": 66
+                "watchers": 67,
+                "watchers_count": 67
             },
             "repo_url": "https://github.com/joeygoksu/prime-nestjs",
-            "stargazers": 66
+            "stargazers": 67
         },
         {
             "info": {
@@ -2502,7 +2502,7 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/philips-software/embeddedinfralib/pulls{/number}",
-                "pushed_at": "2022-06-22T18:51:01Z",
+                "pushed_at": "2022-06-23T08:56:49Z",
                 "releases_url": "https://api.github.com/repos/philips-software/embeddedinfralib/releases{/id}",
                 "size": 40147,
                 "ssh_url": "git@github.com:philips-software/embeddedinfralib.git",
@@ -5605,8 +5605,8 @@
                 "network_count": 149,
                 "node_id": "MDEwOlJlcG9zaXRvcnkzODU5NTg0MTY=",
                 "notifications_url": "https://api.github.com/repos/AliceO2Group/O2Physics/notifications{?since,all,participating}",
-                "open_issues": 9,
-                "open_issues_count": 9,
+                "open_issues": 8,
+                "open_issues_count": 8,
                 "organization": {
                     "avatar_url": "https://avatars.githubusercontent.com/u/9053140?v=4",
                     "events_url": "https://api.github.com/users/AliceO2Group/events{/privacy}",
@@ -5649,9 +5649,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/AliceO2Group/O2Physics/pulls{/number}",
-                "pushed_at": "2022-06-23T07:56:41Z",
+                "pushed_at": "2022-06-23T08:56:00Z",
                 "releases_url": "https://api.github.com/repos/AliceO2Group/O2Physics/releases{/id}",
-                "size": 6925,
+                "size": 6933,
                 "ssh_url": "git@github.com:AliceO2Group/O2Physics.git",
                 "stargazers_count": 8,
                 "stargazers_url": "https://api.github.com/repos/AliceO2Group/O2Physics/stargazers",
