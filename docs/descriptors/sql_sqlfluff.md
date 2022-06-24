@@ -9,7 +9,7 @@
 
 ## sqlfluff documentation
 
-- Version in MegaLinter: **0.13.2**
+- Version in MegaLinter: **1.0.0**
 - Visit [Official Web Site](https://www.sqlfluff.com/){target=_blank}
 - See [How to configure sqlfluff rules](https://docs.sqlfluff.com/en/stable/configuration.html){target=_blank}
   - If custom `.sqlfluff` config file is not found, [.sqlfluff](https://github.com/megalinter/megalinter/tree/main/TEMPLATES/.sqlfluff){target=_blank} will be used
@@ -88,7 +88,7 @@ sqlfluff --config .sqlfluff myfile.sql myfile2.sql
 ```shell
 Usage: sqlfluff [OPTIONS] COMMAND [ARGS]...
 
-  Sqlfluff is a modular sql linter for humans.
+  SQLFluff is a modular SQL linter for humans.
 
 Options:
   --version   Show the version and exit.
