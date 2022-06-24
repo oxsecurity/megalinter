@@ -134,6 +134,9 @@ ERROR: Docker engine has not been found on your system.
         commandArgs.push(...["-e", envVarEqualsValue]);
       }
     }
+    if (commandArgs.containername) {
+      commandArgs.push(...["--name", commandArgs.containername]);
+    }
     commandArgs.push(dockerImage);
 
     // Call docker run
