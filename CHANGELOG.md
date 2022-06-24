@@ -15,6 +15,7 @@ Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-l
   - [kics](https://www.kics.io) from 1.5.10 to **1.5.11** on 2022-06-23
   - [terragrunt](https://terragrunt.gruntwork.io) from 0.38.0 to **0.38.1** on 2022-06-23
   - [checkov](https://www.checkov.io/) from 2.0.1230 to **2.1.0** on 2022-06-23
+  - [checkov](https://www.checkov.io/) from 2.1.0 to **2.1.5** on 2022-06-24
 <!-- linter-versions-end -->
 
 ## [v5.15.0] - 2022-06-23
