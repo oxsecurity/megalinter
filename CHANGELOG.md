@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Can be used with `megalinter/megalinter@beta` in your GitHub Action mega-linter.yml file, or with `megalinter/megalinter:beta` docker image
 
+- Support for named Docker container.
+
 - Linter versions upgrades
   - [sfdx-scanner-apex](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
   - [sfdx-scanner-aura](https://forcedotcom.github.io/sfdx-scanner/) from 2.13.4 to **2.13.5** on 2022-06-23
