@@ -2211,7 +2211,7 @@ def generate_documentation_all_users():
 # https://shields.io/category/activity
 def get_repository_badge_url(linter):
     repo_url = None
-    print(linter)
+
     if hasattr(linter, 'get') and linter.get("linter_repo") is not None and "github" in linter.get("linter_repo"):
         repo_url = linter.get("linter_repo")
     elif hasattr(linter, 'get') and linter.get("linter_url") is not None and "github" in linter.get("linter_url"):
