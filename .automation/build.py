@@ -459,15 +459,17 @@ def generate_descriptor_documentation(descriptor):
     descriptor_md += [
         "## Linters",
         "",
-        "| Linter | Configuration key |",
-        "| ------ | ----------------- |",
+        "| Linter | Configuration key | Status |",
+        "| ------ | ----------------- | ------ |",
     ]
     for linter in descriptor.get("linters", []):
         linter_name_lower = linter.get("linter_name").lower().replace("-", "_")
         linter_doc_url = f"{lang_lower}_{linter_name_lower}.md"
+        badge = get_repository_badge_url(linter)
         descriptor_md += [
             f"| [{linter.get('linter_name')}]({doc_url(linter_doc_url)}) | "
             f"[{linter.get('name', descriptor.get('descriptor_id'))}]({doc_url(linter_doc_url)}) |"
+            f" {badge} |"
         ]
 
     # Criteria used by the descriptor to identify files to lint
@@ -611,8 +613,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
     linters_tables_md += [
         f"### {type_label}",
         "",
-        f"| <!-- --> | {col_header} | Linter | Configuration key | Format/Fix |",
-        "| :---: | ----------------- | -------------- | ------------ | :-----: |",
+        f"| <!-- --> | {col_header} | Linter | Configuration key | Format/Fix | Status |",
+        "| :---: | ----------------- | -------------- | ------------ | :-----: | :-----: |",
     ]
     descriptor_linters = linters_by_type[type1]
     prev_lang = ""
@@ -651,11 +653,13 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         linter_doc_url = (
             f"{DOCS_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}.md"
         )
+        badge = get_repository_badge_url(linter)
         linters_tables_md += [
             f"| {icon_html} <!-- linter-icon --> | {descriptor_id_cell} | "
             f"[{linter.linter_name}]({doc_url(linter_doc_url)})"
             f"| [{linter.name}]({doc_url(linter_doc_url)})"
-            f"| {fix_col} |"
+            f"| {fix_col}"
+            f"| {badge} |"
         ]
 
         # Build individual linter doc
@@ -2201,6 +2205,27 @@ def generate_documentation_all_users():
         file.write("\n".join(linter_doc_md) + "\n")
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
+# https://shields.io/category/activity
+def get_repository_badge_url(linter):
+    repo_url = None
+    print(linter)
+    if hasattr(linter, 'get') and linter.get("linter_repo") is not None and "github" in linter.get("linter_repo"):
+        repo_url = linter.get("linter_repo")
+    elif hasattr(linter, 'get') and linter.get("linter_url") is not None and "github" in linter.get("linter_url"):
+        repo_url = linter.get("linter_url")
+    elif hasattr(linter, 'linter_repo') and linter.linter_repo is not None and "github" in linter.linter_repo:
+        repo_url = linter.linter_repo
+    elif hasattr(linter, 'linter_url') and linter.linter_url is not None and "github" in linter.linter_url:
+        repo_url = linter.linter_url
+
+    badge = ""
+
+    if repo_url is not None:
+        match = re.search('https:\/\/github\.com\/(.*)\/(.*)', repo_url)
+
+        badge = f"[![GitHub last commit](https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)})]({repo_url}/commits)"
+
+    return badge
 
 # get github repo info using api
 def get_github_repo_info(repo):
