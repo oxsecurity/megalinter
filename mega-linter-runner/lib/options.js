@@ -119,8 +119,8 @@ module.exports = optionator({
     {
       option: "containername",
       type: "String",
-      description: "Specify MegaLinter container name"
-    }
+      description: "Specify MegaLinter container name",
+    },
   ],
   mutuallyExclusive: [
     ["help", "version", "install"],
