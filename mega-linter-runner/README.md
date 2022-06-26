@@ -101,6 +101,7 @@ The options are only related to mega-linter-runner. For MegaLinter options, plea
 | `-h` <br/> `--help`    | Show mega-linter-runner help                                                                                       | <!-- -->          |
 | `-v` <br/> `--version` | Show mega-linter-runner version                                                                                    | <!-- -->          |
 | `-i` <br/> `--install` | Generate MegaLinter configuration files                                                                            | <!-- -->          |
+| `--containername`      | Specify MegaLinter container name                                                                                  | <!-- -->          |
 
 _You can also use `npx mega-linter-runner` if you do not want to install the package_
 

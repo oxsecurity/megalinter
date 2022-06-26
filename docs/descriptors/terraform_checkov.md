@@ -9,7 +9,7 @@
 
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.1230**
+- Version in MegaLinter: **2.1.7**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -153,7 +153,8 @@ optional arguments:
                         --check option to explicitly include checks by ID even
                         if they are not in the platform, without using this
                         flag.
-  --quiet               in case of CLI output, display only failed checks
+  --quiet               in case of CLI output, display only failed checks.
+                        Also disables progress bars
   --compact             in case of CLI output, do not display code blocks
   --framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
                         Filter scan to run only on specific infrastructure
