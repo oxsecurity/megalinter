@@ -146,6 +146,7 @@ WORKDIR /
 
 # Add node packages to path #
 ENV PATH="/node-deps/node_modules/.bin:${PATH}"
+ENV NODE_PATH="/node-deps/node_modules
 
 ##############################
 # Installs ruby dependencies #
