@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                   | Configuration key      |
-|--------------------------|------------------------|
-| [clippy](rust_clippy.md) | [RUST](rust_clippy.md) |
+| Linter                   | Configuration key      | Status                                                                                                                                     |
+|--------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| [clippy](rust_clippy.md) | [RUST](rust_clippy.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rust-lang/rust-clippy)](https://github.com/rust-lang/rust-clippy/commits) |
 
 ## Linted files
 

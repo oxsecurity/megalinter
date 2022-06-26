@@ -125,7 +125,7 @@ module.exports = optionator({
       option: "removecontainer",
       type: "Boolean",
       description: "Remove MegaLinter Docker container when done"
-    }
+    },
   ],
   mutuallyExclusive: [
     ["help", "version", "install"],

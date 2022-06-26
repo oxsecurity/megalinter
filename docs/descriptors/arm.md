@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                    | Configuration key     |
-|---------------------------|-----------------------|
-| [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) |
+| Linter                    | Configuration key     | Status                                                                                                                     |
+|---------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------|
+| [arm-ttk](arm_arm_ttk.md) | [ARM](arm_arm_ttk.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/Azure/arm-ttk)](https://github.com/Azure/arm-ttk/commits) |
 
 ## Linted files
 

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter               | Configuration key    |
-|----------------------|----------------------|
-| [raku](raku_raku.md) | [RAKU](raku_raku.md) |
+| Linter               | Configuration key    | Status                                                                                                                     |
+|----------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------|
+| [raku](raku_raku.md) | [RAKU](raku_raku.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rakudo/rakudo)](https://github.com/rakudo/rakudo/commits) |
 
 ## Linted files
 

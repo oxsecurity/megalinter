@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/bandit)](https://github.com/PyCQA/bandit/commits)
+
 bandit checks for security risks
 
 If you find it too harsh, you may define `PYTHON_BANDIT_DISABLE_ERRORS: true` in your `.mega-linter.yml` config file

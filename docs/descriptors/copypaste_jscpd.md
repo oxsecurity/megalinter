@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits)
+
 JSCPD browses all files of your repository to detect excessive copy-pastes
 
 If you need to ignore folders,files or file extensions, use glob expressions `ignore` property of local `.jscpd.json` file

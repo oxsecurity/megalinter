@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits)
+
 ## ktlint documentation
 
 - Version in MegaLinter: **0.46.1**
