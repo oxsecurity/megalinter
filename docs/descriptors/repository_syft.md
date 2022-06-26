@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/anchore/syft)](https://github.com/anchore/syft/commits)
+
 Builds a SBOM (Software Build Of Materials) from your repository
 
 ## syft documentation

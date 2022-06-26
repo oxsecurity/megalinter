@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/aquasecurity/trivy)](https://github.com/aquasecurity/trivy/commits)
+
 ## trivy documentation
 
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}

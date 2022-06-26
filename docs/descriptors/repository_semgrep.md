@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/returntocorp/semgrep)](https://github.com/returntocorp/semgrep/commits)
+
 If you do not want to use default semgrep recommended rules, you can send them as arguments
 
 Example:  `REPOSITORY_SEMGREP_ARGUMENTS: ["--config","p/ruleset1","p/ruleset2"]`
