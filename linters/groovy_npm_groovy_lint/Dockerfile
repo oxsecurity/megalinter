@@ -80,8 +80,12 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
-RUN npm install --no-package-lock --ignore-scripts \
-                npm-groovy-lint
+WORKDIR /node-deps
+RUN npm install --ignore-scripts \
+                npm-groovy-lint && \
+    npm audit fix --audit-level=critical
+WORKDIR /
+
 #NPM__END
 
 # Add node packages to path #

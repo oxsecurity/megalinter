@@ -79,7 +79,8 @@ RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin || true && \
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
-RUN npm install --no-package-lock --ignore-scripts \
+WORKDIR /node-deps
+RUN npm install --ignore-scripts \
                 typescript \
                 eslint \
                 eslint-config-airbnb \
@@ -92,7 +93,10 @@ RUN npm install --no-package-lock --ignore-scripts \
                 prettyjson \
                 @typescript-eslint/eslint-plugin \
                 @typescript-eslint/parser \
-                @microsoft/eslint-formatter-sarif
+                @microsoft/eslint-formatter-sarif && \
+    npm audit fix --audit-level=critical
+WORKDIR /
+
 #NPM__END
 
 # Add node packages to path #

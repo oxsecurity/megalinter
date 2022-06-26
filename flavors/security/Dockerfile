@@ -99,10 +99,14 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
-RUN npm install --no-package-lock --ignore-scripts \
+WORKDIR /node-deps
+RUN npm install --ignore-scripts \
                 secretlint \
                 @secretlint/secretlint-rule-preset-recommend \
-                @secretlint/secretlint-formatter-sarif
+                @secretlint/secretlint-formatter-sarif && \
+    npm audit fix --audit-level=critical
+WORKDIR /
+
 #NPM__END
 
 # Add node packages to path #
