@@ -19,7 +19,7 @@
 name: "Build & Deploy - DEV"
 on:
   push:
-    branches-ignore: [main, alpha, v6_dev]
+    branches-ignore: [main]
   pull_request:
     branches-ignore: []
 
