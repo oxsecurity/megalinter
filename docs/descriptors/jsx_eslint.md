@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react)](https://github.com/yannickcr/eslint-plugin-react/commits)
+
 eslint requires a custom configuration file applicable to your project.
 You can create it by typing `npx eslint --init` in the root of your repository
 

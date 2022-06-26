@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits)
+
 ## psalm documentation
 
 - Version in MegaLinter: **Psalm.5.x-dev@**

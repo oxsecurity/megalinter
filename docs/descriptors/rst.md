@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                      | Configuration key      |
-|-----------------------------|------------------------|
-| [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) |
-| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) |
-| [rstfmt](rst_rstfmt.md)     | [RST](rst_rstfmt.md)   |
+| Linter                      | Configuration key      | Status                                                                                                                                                       |
+|-----------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [rst-lint](rst_rst_lint.md) | [RST](rst_rst_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/twolfson/restructuredtext-lint)](https://github.com/twolfson/restructuredtext-lint/commits) |
+| [rstcheck](rst_rstcheck.md) | [RST](rst_rstcheck.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/myint/rstcheck)](https://github.com/myint/rstcheck/commits)                                 |
+| [rstfmt](rst_rstfmt.md)     | [RST](rst_rstfmt.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/dzhu/rstfmt)](https://github.com/dzhu/rstfmt/commits)                                       |
 
 ## Linted files
 

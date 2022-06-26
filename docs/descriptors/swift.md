@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                          | Configuration key           |
-|---------------------------------|-----------------------------|
-| [swiftlint](swift_swiftlint.md) | [SWIFT](swift_swiftlint.md) |
+| Linter                          | Configuration key           | Status                                                                                                                         |
+|---------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| [swiftlint](swift_swiftlint.md) | [SWIFT](swift_swiftlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/realm/SwiftLint)](https://github.com/realm/SwiftLint/commits) |
 
 ## Linted files
 
