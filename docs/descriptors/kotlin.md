@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                     | Configuration key          |
-|----------------------------|----------------------------|
-| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) |
+| Linter                     | Configuration key          | Status                                                                                                                           |
+|----------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| [ktlint](kotlin_ktlint.md) | [KOTLIN](kotlin_ktlint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/pinterest/ktlint)](https://github.com/pinterest/ktlint/commits) |
 
 ## Linted files
 

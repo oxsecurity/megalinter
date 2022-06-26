@@ -5,10 +5,10 @@
 
 ## Linters
 
-| Linter                               | Configuration key         |
-|--------------------------------------|---------------------------|
-| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) |
-| [revive](go_revive.md)               | [GO](go_revive.md)        |
+| Linter                               | Configuration key         | Status                                                                                                                                       |
+|--------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| [golangci-lint](go_golangci_lint.md) | [GO](go_golangci_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits) |
+| [revive](go_revive.md)               | [GO](go_revive.md)        | [![GitHub last commit](https://img.shields.io/github/last-commit/mgechev/revive)](https://github.com/mgechev/revive/commits)                 |
 
 ## Linted files
 

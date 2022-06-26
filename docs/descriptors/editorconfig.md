@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                                       | Configuration key                                    |
-|--------------------------------------------------------------|------------------------------------------------------|
-| [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) |
+| Linter                                                       | Configuration key                                    | Status                                                                                                                                                                             |
+|--------------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [editorconfig-checker](editorconfig_editorconfig_checker.md) | [EDITORCONFIG](editorconfig_editorconfig_checker.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/commits) |
 
 ## Linted files
 

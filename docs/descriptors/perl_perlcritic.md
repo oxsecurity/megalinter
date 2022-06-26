@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/Perl-Critic/Perl-Critic)](https://github.com/Perl-Critic/Perl-Critic/commits)
+
 ## perlcritic documentation
 
 - Version in MegaLinter: **1.140**

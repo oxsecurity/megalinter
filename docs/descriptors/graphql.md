@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                                    | Configuration key                                                 |
-|-----------------------------------------------------------|-------------------------------------------------------------------|
-| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) |
+| Linter                                                    | Configuration key                                                 | Status                                                                                                                                                       |
+|-----------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [graphql-schema-linter](graphql_graphql_schema_linter.md) | [GRAPHQL_GRAPHQL_SCHEMA_LINTER](graphql_graphql_schema_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/cjoudrey/graphql-schema-linter)](https://github.com/cjoudrey/graphql-schema-linter/commits) |
 
 ## Linted files
 

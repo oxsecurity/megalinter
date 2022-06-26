@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits)
+
 ## isort documentation
 
 - Version in MegaLinter: **5.10.1**

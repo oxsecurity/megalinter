@@ -682,7 +682,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     "center",
                     150,
                 ),
-                "\n" + badge
+                "\n" + badge,
             ]
         # Text + image as title
         elif (
@@ -698,7 +698,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     100,
                 )
                 + linter.linter_name
-                + " " + badge
+                + " "
+                + badge
             ]
         # Text as title
         else:
@@ -2213,19 +2214,35 @@ def generate_documentation_all_users():
 def get_repository_badge_url(linter):
     repo_url = None
 
-    if hasattr(linter, 'get') and linter.get("linter_repo") is not None and "github" in linter.get("linter_repo"):
+    if (
+        hasattr(linter, "get")
+        and linter.get("linter_repo") is not None
+        and "github" in linter.get("linter_repo")
+    ):
         repo_url = linter.get("linter_repo")
-    elif hasattr(linter, 'get') and linter.get("linter_url") is not None and "github" in linter.get("linter_url"):
+    elif (
+        hasattr(linter, "get")
+        and linter.get("linter_url") is not None
+        and "github" in linter.get("linter_url")
+    ):
         repo_url = linter.get("linter_url")
-    elif hasattr(linter, 'linter_repo') and linter.linter_repo is not None and "github" in linter.linter_repo:
+    elif (
+        hasattr(linter, "linter_repo")
+        and linter.linter_repo is not None
+        and "github" in linter.linter_repo
+    ):
         repo_url = linter.linter_repo
-    elif hasattr(linter, 'linter_url') and linter.linter_url is not None and "github" in linter.linter_url:
+    elif (
+        hasattr(linter, "linter_url")
+        and linter.linter_url is not None
+        and "github" in linter.linter_url
+    ):
         repo_url = linter.linter_url
 
     badge = ""
 
     if repo_url is not None:
-        match = re.search(r'https://github\.com/(.*)/(.*)', repo_url)
+        match = re.search(r"https://github\.com/(.*)/(.*)", repo_url)
 
         badge_url = f"https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)}"
         badge = f"[![GitHub last commit]({badge_url})]({repo_url}/commits)"

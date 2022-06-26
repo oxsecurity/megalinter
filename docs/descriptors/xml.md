@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                    | Configuration key     |
-|---------------------------|-----------------------|
-| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |
+| Linter                    | Configuration key     | Status |
+|---------------------------|-----------------------|--------|
+| [xmllint](xml_xmllint.md) | [XML](xml_xmllint.md) |        |
 
 ## Linted files
 

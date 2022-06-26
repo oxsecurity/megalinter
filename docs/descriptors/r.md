@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter              | Configuration key |
-|---------------------|-------------------|
-| [lintr](r_lintr.md) | [R](r_lintr.md)   |
+| Linter              | Configuration key | Status |
+|---------------------|-------------------|--------|
+| [lintr](r_lintr.md) | [R](r_lintr.md)   |        |
 
 ## Linted files
 

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                               | Configuration key               |
-|--------------------------------------|---------------------------------|
-| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) |
+| Linter                               | Configuration key               | Status                                                                                                                               |
+|--------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| [puppet-lint](puppet_puppet_lint.md) | [PUPPET](puppet_puppet_lint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/rodjek/puppet-lint)](https://github.com/rodjek/puppet-lint/commits) |
 
 ## Linted files
 

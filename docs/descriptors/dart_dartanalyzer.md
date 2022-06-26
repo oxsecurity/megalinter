@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/dart-lang/sdk)](https://github.com/dart-lang/sdk/commits)
+
 ## dartanalyzer documentation
 
 - Visit [Official Web Site](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#readme){target=_blank}

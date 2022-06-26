@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/sqlfluff/sqlfluff)](https://github.com/sqlfluff/sqlfluff/commits)
+
 ## sqlfluff documentation
 
 - Version in MegaLinter: **1.0.0**

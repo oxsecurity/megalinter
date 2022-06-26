@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                             | Configuration key                 |
-|------------------------------------|-----------------------------------|
-| [protolint](protobuf_protolint.md) | [PROTOBUF](protobuf_protolint.md) |
+| Linter                             | Configuration key                 | Status                                                                                                                                 |
+|------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| [protolint](protobuf_protolint.md) | [PROTOBUF](protobuf_protolint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/yoheimuta/protolint)](https://github.com/yoheimuta/protolint/commits) |
 
 ## Linted files
 
