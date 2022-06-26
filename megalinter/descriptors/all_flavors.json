@@ -5,10 +5,8 @@
         ],
         "label": "Optimized for CI items (Dockerfile, Jenkinsfile, JSON/YAML schemas,XML",
         "linters": [
-            "BASH_EXEC",
             "BASH_SHELLCHECK",
             "BASH_SHFMT",
-            "DOCKERFILE_DOCKERFILELINT",
             "DOCKERFILE_HADOLINT",
             "ENV_DOTENV_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
@@ -162,7 +160,6 @@
             "EDITORCONFIG_EDITORCONFIG_CHECKER",
             "ENV_DOTENV_LINTER",
             "GHERKIN_GHERKIN_LINT",
-            "GIT_GIT_DIFF",
             "GRAPHQL_GRAPHQL_SCHEMA_LINTER",
             "GROOVY_NPM_GROOVY_LINT",
             "HTML_HTMLHINT",

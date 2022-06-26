@@ -5,10 +5,9 @@
 
 ## Linters
 
-| Linter                                         | Configuration key                                         | Status                                                                                                                                                 |
-|------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [dockerfilelint](dockerfile_dockerfilelint.md) | [DOCKERFILE_DOCKERFILELINT](dockerfile_dockerfilelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/replicatedhq/dockerfilelint)](https://github.com/replicatedhq/dockerfilelint/commits) |
-| [hadolint](dockerfile_hadolint.md)             | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md)             | [![GitHub last commit](https://img.shields.io/github/last-commit/hadolint/hadolint)](https://github.com/hadolint/hadolint/commits)                     |
+| Linter                             | Configuration key                             | Status                                                                                                                             |
+|------------------------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [hadolint](dockerfile_hadolint.md) | [DOCKERFILE_HADOLINT](dockerfile_hadolint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/hadolint/hadolint)](https://github.com/hadolint/hadolint/commits) |
 
 ## Linted files
 
