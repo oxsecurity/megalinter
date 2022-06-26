@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/rubocop-hq/rubocop)](https://github.com/rubocop-hq/rubocop/commits)
+
 ## rubocop documentation
 
 - Version in MegaLinter: **1.30.1**

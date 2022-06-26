@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits)
+
 ## stylelint documentation
 
 - Version in MegaLinter: **14.9.1**

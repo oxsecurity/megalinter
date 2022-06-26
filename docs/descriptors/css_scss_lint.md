@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/sds/scss-lint)](https://github.com/sds/scss-lint/commits)
+
 ## scss-lint documentation
 
 - Version in MegaLinter: **0.59.0**

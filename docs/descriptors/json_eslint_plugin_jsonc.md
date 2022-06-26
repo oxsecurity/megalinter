@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/ota-meshi/eslint-plugin-jsonc)](https://github.com/ota-meshi/eslint-plugin-jsonc/commits)
+
 **eslint-plugin-jsonc** uses eslint to lint [**json**](https://www.json.org/), [**jsonc**](https://github.com/microsoft/node-jsonc-parser) and [**json5**](https://json5.org/) (extended JSON with comments & more).
 
 - To override default configuration, create a `.eslintrc-json.json` [custom configuration file applicable to your project](https://github.com/ota-meshi/eslint-plugin-jsonc#configuration)

@@ -8,8 +8,8 @@
 [![unixorn/zsh-quickstart-kit - GitHub](https://gh-card.dev/repos/unixorn/zsh-quickstart-kit.svg?fullname=)](https://github.com/unixorn/zsh-quickstart-kit){target=_blank}
 [![secureCodeBox/secureCodeBox - GitHub](https://gh-card.dev/repos/secureCodeBox/secureCodeBox.svg?fullname=)](https://github.com/secureCodeBox/secureCodeBox){target=_blank}
 [![practicalli/clojure-deps-edn - GitHub](https://gh-card.dev/repos/practicalli/clojure-deps-edn.svg?fullname=)](https://github.com/practicalli/clojure-deps-edn){target=_blank}
-[![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![KelvinTegelaar/CIPP - GitHub](https://gh-card.dev/repos/KelvinTegelaar/CIPP.svg?fullname=)](https://github.com/KelvinTegelaar/CIPP){target=_blank}
+[![llaville/php-compatinfo - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo.svg?fullname=)](https://github.com/llaville/php-compatinfo){target=_blank}
 [![bjw-s/home-ops - GitHub](https://gh-card.dev/repos/bjw-s/home-ops.svg?fullname=)](https://github.com/bjw-s/home-ops){target=_blank}
 [![unixorn/tumult.plugin.zsh - GitHub](https://gh-card.dev/repos/unixorn/tumult.plugin.zsh.svg?fullname=)](https://github.com/unixorn/tumult.plugin.zsh){target=_blank}
 [![newrelic/newrelic-python-agent - GitHub](https://gh-card.dev/repos/newrelic/newrelic-python-agent.svg?fullname=)](https://github.com/newrelic/newrelic-python-agent){target=_blank}
@@ -17,8 +17,8 @@
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![practicalli/spacemacs - GitHub](https://gh-card.dev/repos/practicalli/spacemacs.svg?fullname=)](https://github.com/practicalli/spacemacs){target=_blank}
 [![oasisprotocol/oasis-wallet-web - GitHub](https://gh-card.dev/repos/oasisprotocol/oasis-wallet-web.svg?fullname=)](https://github.com/oasisprotocol/oasis-wallet-web){target=_blank}
-[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![joeygoksu/prime-nestjs - GitHub](https://gh-card.dev/repos/joeygoksu/prime-nestjs.svg?fullname=)](https://github.com/joeygoksu/prime-nestjs){target=_blank}
+[![rasa/scoops - GitHub](https://gh-card.dev/repos/rasa/scoops.svg?fullname=)](https://github.com/rasa/scoops){target=_blank}
 [![philips-software/embeddedinfralib - GitHub](https://gh-card.dev/repos/philips-software/embeddedinfralib.svg?fullname=)](https://github.com/philips-software/embeddedinfralib){target=_blank}
 [![unixorn/lima-xbar-plugin - GitHub](https://gh-card.dev/repos/unixorn/lima-xbar-plugin.svg?fullname=)](https://github.com/unixorn/lima-xbar-plugin){target=_blank}
 [![llaville/umlwriter - GitHub](https://gh-card.dev/repos/llaville/umlwriter.svg?fullname=)](https://github.com/llaville/umlwriter){target=_blank}
@@ -30,8 +30,8 @@
 [![MythicDrops/MythicDrops - GitHub](https://gh-card.dev/repos/MythicDrops/MythicDrops.svg?fullname=)](https://github.com/MythicDrops/MythicDrops){target=_blank}
 [![hardisgroupcom/sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/sfdx-hardis){target=_blank}
 [![jr0dd/home-ops - GitHub](https://gh-card.dev/repos/jr0dd/home-ops.svg?fullname=)](https://github.com/jr0dd/home-ops){target=_blank}
-[![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
 [![GrandMoff100/HomeAssistantAPI - GitHub](https://gh-card.dev/repos/GrandMoff100/HomeAssistantAPI.svg?fullname=)](https://github.com/GrandMoff100/HomeAssistantAPI){target=_blank}
+[![rwaltr/infra - GitHub](https://gh-card.dev/repos/rwaltr/infra.svg?fullname=)](https://github.com/rwaltr/infra){target=_blank}
 [![hardisgroupcom/vscode-sfdx-hardis - GitHub](https://gh-card.dev/repos/hardisgroupcom/vscode-sfdx-hardis.svg?fullname=)](https://github.com/hardisgroupcom/vscode-sfdx-hardis){target=_blank}
 [![svt/open-source-project-template - GitHub](https://gh-card.dev/repos/svt/open-source-project-template.svg?fullname=)](https://github.com/svt/open-source-project-template){target=_blank}
 [![GSA/usagov-benefits-eligibility - GitHub](https://gh-card.dev/repos/GSA/usagov-benefits-eligibility.svg?fullname=)](https://github.com/GSA/usagov-benefits-eligibility){target=_blank}
@@ -41,12 +41,13 @@
 [![jokay/docker-ccu-historian - GitHub](https://gh-card.dev/repos/jokay/docker-ccu-historian.svg?fullname=)](https://github.com/jokay/docker-ccu-historian){target=_blank}
 [![llaville/php-compatinfo-db - GitHub](https://gh-card.dev/repos/llaville/php-compatinfo-db.svg?fullname=)](https://github.com/llaville/php-compatinfo-db){target=_blank}
 [![wareismymind/peer - GitHub](https://gh-card.dev/repos/wareismymind/peer.svg?fullname=)](https://github.com/wareismymind/peer){target=_blank}
+[![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
 [![ScribeMD/rootless-docker - GitHub](https://gh-card.dev/repos/ScribeMD/rootless-docker.svg?fullname=)](https://github.com/ScribeMD/rootless-docker){target=_blank}
 [![ScribeMD/slack-templates - GitHub](https://gh-card.dev/repos/ScribeMD/slack-templates.svg?fullname=)](https://github.com/ScribeMD/slack-templates){target=_blank}
 [![AliceO2Group/O2Physics - GitHub](https://gh-card.dev/repos/AliceO2Group/O2Physics.svg?fullname=)](https://github.com/AliceO2Group/O2Physics){target=_blank}
-[![Amplitude-Developer-Docs/amplitude-dev-center - GitHub](https://gh-card.dev/repos/Amplitude-Developer-Docs/amplitude-dev-center.svg?fullname=)](https://github.com/Amplitude-Developer-Docs/amplitude-dev-center){target=_blank}
+[![AErmie/DevSecOps - GitHub](https://gh-card.dev/repos/AErmie/DevSecOps.svg?fullname=)](https://github.com/AErmie/DevSecOps){target=_blank}
 [![GSA/site-scanning-engine - GitHub](https://gh-card.dev/repos/GSA/site-scanning-engine.svg?fullname=)](https://github.com/GSA/site-scanning-engine){target=_blank}
-[![cure-dao/docs - GitHub](https://gh-card.dev/repos/cure-dao/docs.svg?fullname=)](https://github.com/cure-dao/docs){target=_blank}
+[![curedao/docs - GitHub](https://gh-card.dev/repos/curedao/docs.svg?fullname=)](https://github.com/curedao/docs){target=_blank}
 [![practicalli/clojure-web-services - GitHub](https://gh-card.dev/repos/practicalli/clojure-web-services.svg?fullname=)](https://github.com/practicalli/clojure-web-services){target=_blank}
 [![nvuillam/njre - GitHub](https://gh-card.dev/repos/nvuillam/njre.svg?fullname=)](https://github.com/nvuillam/njre){target=_blank}
 [![nvuillam/markdown-table-formatter - GitHub](https://gh-card.dev/repos/nvuillam/markdown-table-formatter.svg?fullname=)](https://github.com/nvuillam/markdown-table-formatter){target=_blank}

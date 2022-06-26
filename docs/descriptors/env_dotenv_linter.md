@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/commits)
+
 ## dotenv-linter documentation
 
 - Version in MegaLinter: **3.2.0**

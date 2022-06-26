@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                             | Configuration key              |
-|------------------------------------|--------------------------------|
-| [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) |
+| Linter                             | Configuration key              | Status                                                                                                                                   |
+|------------------------------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [coffeelint](coffee_coffeelint.md) | [COFFEE](coffee_coffeelint.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/clutchski/coffeelint)](https://github.com/clutchski/coffeelint/commits) |
 
 ## Linted files
 

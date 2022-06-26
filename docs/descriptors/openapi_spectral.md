@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/stoplightio/spectral)](https://github.com/stoplightio/spectral/commits)
+
 ## spectral documentation
 
 - Version in MegaLinter: **5.6.0**

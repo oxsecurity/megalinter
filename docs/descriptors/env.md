@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                | Configuration key           |
-|---------------------------------------|-----------------------------|
-| [dotenv-linter](env_dotenv_linter.md) | [ENV](env_dotenv_linter.md) |
+| Linter                                | Configuration key           | Status                                                                                                                                                 |
+|---------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [dotenv-linter](env_dotenv_linter.md) | [ENV](env_dotenv_linter.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotenv-linter/dotenv-linter)](https://github.com/dotenv-linter/dotenv-linter/commits) |
 
 ## Linted files
 

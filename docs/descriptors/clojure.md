@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                            | Configuration key               |
-|-----------------------------------|---------------------------------|
-| [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) |
+| Linter                            | Configuration key               | Status                                                                                                                               |
+|-----------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| [clj-kondo](clojure_clj_kondo.md) | [CLOJURE](clojure_clj_kondo.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits) |
 
 ## Linted files
 

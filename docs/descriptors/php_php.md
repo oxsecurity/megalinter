@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/php/php-src)](https://github.com/php/php-src/commits)
+
 ## php documentation
 
 - Version in MegaLinter: **7.4.26**

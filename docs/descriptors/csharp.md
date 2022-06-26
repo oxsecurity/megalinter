@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                                   | Configuration key                 |
-|------------------------------------------|-----------------------------------|
-| [dotnet-format](csharp_dotnet_format.md) | [CSHARP](csharp_dotnet_format.md) |
+| Linter                                   | Configuration key                 | Status                                                                                                                     |
+|------------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| [dotnet-format](csharp_dotnet_format.md) | [CSHARP](csharp_dotnet_format.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/dotnet/format)](https://github.com/dotnet/format/commits) |
 
 ## Linted files
 

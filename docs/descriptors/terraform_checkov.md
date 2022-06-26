@@ -7,9 +7,11 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/bridgecrewio/checkov)](https://github.com/bridgecrewio/checkov/commits)
+
 ## checkov documentation
 
-- Version in MegaLinter: **2.0.1209**
+- Version in MegaLinter: **3.9**
 - Visit [Official Web Site](https://www.checkov.io/){target=_blank}
 - See [How to disable checkov rules in files](https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html){target=_blank}
 - See [Index of problems detected by checkov](https://www.checkov.io/5.Policy%20Index/all.html){target=_blank}
@@ -74,6 +76,8 @@ checkov --file myfile.tf
 ### Help content
 
 ```shell
+/usr/local/lib/python3.9/site-packages/requests/__init__.py:109: RequestsDependencyWarning: urllib3 (1.26.9) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn(
 usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [--skip-path SKIP_PATH]
                [--external-checks-dir EXTERNAL_CHECKS_DIR]
@@ -81,8 +85,8 @@ usage: checkov [-h] [-v] [-d DIRECTORY] [--add-check] [-f FILE]
                [-o {cli,cyclonedx,json,junitxml,github_failed_only,sarif}]
                [--output-file-path OUTPUT_FILE_PATH] [--output-bc-ids]
                [--include-all-checkov-policies] [--quiet] [--compact]
-               [--framework {bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
-               [--skip-framework {bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
+               [--framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]]
+               [--skip-framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]]
                [-c CHECK] [--skip-check SKIP_CHECK]
                [--run-all-external-checks] [-s] [--soft-fail-on SOFT_FAIL_ON]
                [--hard-fail-on HARD_FAIL_ON] [--bc-api-key BC_API_KEY]
@@ -154,12 +158,13 @@ optional arguments:
                         --check option to explicitly include checks by ID even
                         if they are not in the platform, without using this
                         flag.
-  --quiet               in case of CLI output, display only failed checks
+  --quiet               in case of CLI output, display only failed checks.
+                        Also disables progress bars
   --compact             in case of CLI output, do not display code blocks
-  --framework {bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
+  --framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan,all} ...]
                         Filter scan to run only on specific infrastructure
                         code frameworks [env var: CKV_FRAMEWORK]
-  --skip-framework {bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
+  --skip-framework {bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} [{bitbucket_pipelines,argo_workflows,arm,bicep,cloudformation,dockerfile,github_configuration,github_actions,gitlab_configuration,gitlab_ci,bitbucket_configuration,helm,json,yaml,kubernetes,kustomize,openapi,sca_package,sca_image,secrets,serverless,terraform,terraform_plan} ...]
                         Filter scan to skip specific infrastructure code
                         frameworks. will be included automatically for some
                         frameworks if system dependencies are missing.

@@ -5,9 +5,9 @@
 
 ## Linters
 
-| Linter                      | Configuration key               |
-|-----------------------------|---------------------------------|
-| [jscpd](copypaste_jscpd.md) | [COPYPASTE](copypaste_jscpd.md) |
+| Linter                      | Configuration key               | Status                                                                                                                           |
+|-----------------------------|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| [jscpd](copypaste_jscpd.md) | [COPYPASTE](copypaste_jscpd.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/kucherenko/jscpd)](https://github.com/kucherenko/jscpd/commits) |
 
 ## Linted files
 

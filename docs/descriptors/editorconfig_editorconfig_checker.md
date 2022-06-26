@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/editorconfig-checker/editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker/commits)
+
 ## editorconfig-checker documentation
 
 - Version in MegaLinter: **2.4.0**

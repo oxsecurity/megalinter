@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/golangci/golangci-lint)](https://github.com/golangci/golangci-lint/commits)
+
 ## golangci-lint documentation
 
 - Version in MegaLinter: **1.46.2**

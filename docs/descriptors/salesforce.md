@@ -5,11 +5,11 @@
 
 ## Linters
 
-| Linter                                               | Configuration key                                               |
-|------------------------------------------------------|-----------------------------------------------------------------|
-| [sfdx-scanner-apex](salesforce_sfdx_scanner_apex.md) | [SALESFORCE_SFDX_SCANNER_APEX](salesforce_sfdx_scanner_apex.md) |
-| [sfdx-scanner-aura](salesforce_sfdx_scanner_aura.md) | [SALESFORCE_SFDX_SCANNER_AURA](salesforce_sfdx_scanner_aura.md) |
-| [sfdx-scanner-lwc](salesforce_sfdx_scanner_lwc.md)   | [SALESFORCE_SFDX_SCANNER_LWC](salesforce_sfdx_scanner_lwc.md)   |
+| Linter                                               | Configuration key                                               | Status                                                                                                                                           |
+|------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| [sfdx-scanner-apex](salesforce_sfdx_scanner_apex.md) | [SALESFORCE_SFDX_SCANNER_APEX](salesforce_sfdx_scanner_apex.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/forcedotcom/sfdx-scanner)](https://github.com/forcedotcom/sfdx-scanner/commits) |
+| [sfdx-scanner-aura](salesforce_sfdx_scanner_aura.md) | [SALESFORCE_SFDX_SCANNER_AURA](salesforce_sfdx_scanner_aura.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/forcedotcom/sfdx-scanner)](https://github.com/forcedotcom/sfdx-scanner/commits) |
+| [sfdx-scanner-lwc](salesforce_sfdx_scanner_lwc.md)   | [SALESFORCE_SFDX_SCANNER_LWC](salesforce_sfdx_scanner_lwc.md)   | [![GitHub last commit](https://img.shields.io/github/last-commit/forcedotcom/sfdx-scanner)](https://github.com/forcedotcom/sfdx-scanner/commits) |
 
 ## Linted files
 

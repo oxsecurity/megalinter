@@ -7,6 +7,8 @@
   </a>
 </div>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/borkdude/clj-kondo)](https://github.com/borkdude/clj-kondo/commits)
+
 ## clj-kondo documentation
 
 - Version in MegaLinter: **2022.04.25**
