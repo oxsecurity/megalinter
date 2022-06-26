@@ -2208,27 +2208,6 @@ def generate_documentation_all_users():
         file.write("\n".join(linter_doc_md) + "\n")
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
-# https://shields.io/category/activity
-def get_repository_badge_url(linter):
-    repo_url = None
-
-    if hasattr(linter, 'get') and linter.get("linter_repo") is not None and "github" in linter.get("linter_repo"):
-        repo_url = linter.get("linter_repo")
-    elif hasattr(linter, 'get') and linter.get("linter_url") is not None and "github" in linter.get("linter_url"):
-        repo_url = linter.get("linter_url")
-    elif hasattr(linter, 'linter_repo') and linter.linter_repo is not None and "github" in linter.linter_repo:
-        repo_url = linter.linter_repo
-    elif hasattr(linter, 'linter_url') and linter.linter_url is not None and "github" in linter.linter_url:
-        repo_url = linter.linter_url
-
-    badge = ""
-
-    if repo_url is not None:
-        match = re.search('https:\/\/github\.com\/(.*)\/(.*)', repo_url)
-
-        badge = f"[![GitHub last commit](https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)})]({repo_url}/commits)"
-
-    return badge
 
 # https://shields.io/category/activity
 def get_repository_badge_url(linter):
@@ -2246,7 +2225,7 @@ def get_repository_badge_url(linter):
     badge = ""
 
     if repo_url is not None:
-        match = re.search(r'https:\/\/github\.com\/(.*)\/(.*)', repo_url)
+        match = re.search(r'https://github\.com/(.*)/(.*)', repo_url)
 
         badge_url = f"https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)}"
         badge = f"[![GitHub last commit]({badge_url})]({repo_url}/commits)"
