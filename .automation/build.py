@@ -2208,6 +2208,7 @@ def generate_documentation_all_users():
         file.write("\n".join(linter_doc_md) + "\n")
     logging.info(f"Generated {REPO_HOME}/docs/all_users.md")
 
+
 # https://shields.io/category/activity
 def get_repository_badge_url(linter):
     repo_url = None
@@ -2224,11 +2225,13 @@ def get_repository_badge_url(linter):
     badge = ""
 
     if repo_url is not None:
-        match = re.search('https:\/\/github\.com\/(.*)\/(.*)', repo_url)
+        match = re.search(r'https://github\.com/(.*)/(.*)', repo_url)
 
-        badge = f"[![GitHub last commit](https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)})]({repo_url}/commits)"
+        badge_url = f"https://img.shields.io/github/last-commit/{match.group(1)}/{match.group(2)}"
+        badge = f"[![GitHub last commit]({badge_url})]({repo_url}/commits)"
 
     return badge
+
 
 # get github repo info using api
 def get_github_repo_info(repo):
