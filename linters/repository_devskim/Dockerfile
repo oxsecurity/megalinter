@@ -88,7 +88,7 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__END
 
 # Add node packages to path #
-ENV PATH="/node_modules/.bin:${PATH}"
+ENV PATH="/node-deps/node_modules/.bin:${PATH}"
 
 ##############################
 # Installs ruby dependencies #
