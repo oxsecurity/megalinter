@@ -66,9 +66,9 @@ When you don't know what option to select, please use default values`
         type: "list",
         name: "version",
         message: "Which MegaLinter version do you want to use ?",
-        default: "v5",
+        default: "v6",
         choices: [
-          { name: "v5 (Latest official release)", value: "v5" },
+          { name: "v6 (Latest official release)", value: "v6" },
           {
             name: "Beta (main branch of MegaLinter repository)",
             value: "beta",
@@ -141,7 +141,7 @@ When you don't know what option to select, please use default values`
     this._generateAzurePipelines();
     if (this.props.ci === "other") {
       this.log(
-        "Please follow manual instructions to define CI job at https://megalinter.github.io/installation/"
+        "Please follow manual instructions to define CI job at https://oxsecurity.github.io/megalinter/installation/"
       );
       this.log(
         "You may call `npx mega-linter-runner` to run MegaLinter from any system (requires node.js & docker)"
@@ -169,17 +169,17 @@ When you don't know what option to select, please use default values`
   _computeValues() {
     // Flavor
     if (this.props.flavor === "all") {
-      this.gitHubActionName = "megalinter/megalinter";
-      this.dockerImageName = "megalinter/megalinter";
+      this.gitHubActionName = "oxsecurity/megalinter";
+      this.dockerImageName = "oxsecurity/megalinter";
     } else {
       this.gitHubActionName =
-        "megalinter/megalinter/flavors/" + this.props.flavor;
-      this.dockerImageName = "megalinter/megalinter-" + this.props.flavor;
+        "oxsecurity/megalinter/flavors/" + this.props.flavor;
+      this.dockerImageName = "oxsecurity/megalinter-" + this.props.flavor;
     }
     // Version
-    if (this.props.version == "v5") {
-      this.gitHubActionVersion = "v5";
-      this.dockerImageVersion = "v5";
+    if (this.props.version == "v6") {
+      this.gitHubActionVersion = "v6";
+      this.dockerImageVersion = "v6";
     } else {
       this.gitHubActionVersion = "beta";
       this.dockerImageVersion = "beta";
@@ -233,7 +233,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#jenkins"
+      "Jenkinsfile config generation not implemented yet, please follow manual instructions at https://oxsecurity.github.io/megalinter/installation/#jenkins"
     );
   }
 
@@ -257,7 +257,7 @@ When you don't know what option to select, please use default values`
       return;
     }
     this.log(
-      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://megalinter.github.io/installation/#gitlab"
+      "Azure pipelines config generation not implemented yet, please follow manual instructions at https://oxsecurity.github.io/megalinter/installation/#gitlab"
     );
   }
 
