@@ -100,7 +100,7 @@ RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir --u
 # Downgrade npm because from npm@v7, npm install crashes when called from root directory within Dockerfile
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 #NPM__START
-RUN npm install --no-cache --ignore-scripts \
+RUN npm install --no-package-lock --ignore-scripts \
                 typescript \
                 @coffeelint/cli \
                 jscpd@3.3.26 \
