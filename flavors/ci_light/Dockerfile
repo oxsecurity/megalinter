@@ -13,7 +13,6 @@
 #FROM__START
 FROM mvdan/shfmt:latest-alpine as shfmt
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
 
 ##################
@@ -143,9 +142,6 @@ COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 
 # dotenv-linter installation
 RUN wget -q -O - https://raw.githubusercontent.com/dotenv-linter/dotenv-linter/master/install.sh | sh -s
-
-# gitleaks installation
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \

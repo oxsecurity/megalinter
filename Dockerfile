@@ -17,7 +17,6 @@ FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM ghcr.io/assignuser/chktex-alpine:latest as chktex
 FROM yoheimuta/protolint:latest as protolint
 FROM ghcr.io/assignuser/lintr-lib:0.2.0 as lintr-lib
-FROM zricethezav/gitleaks:latest as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -493,9 +492,6 @@ RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
     find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
     
 
-
-# gitleaks installation
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # syft installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin

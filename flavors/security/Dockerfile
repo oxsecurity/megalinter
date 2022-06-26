@@ -12,7 +12,6 @@
 #############################################################################################
 #FROM__START
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
-FROM zricethezav/gitleaks:latest as gitleaks
 FROM ghcr.io/terraform-linters/tflint:v0.35.0 as tflint
 FROM accurics/terrascan:latest as terrascan
 FROM alpine/terragrunt:latest as terragrunt
@@ -177,9 +176,6 @@ RUN ML_THIRD_PARTY_DIR=/download/dustilock && \
     find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete
     
 
-
-# gitleaks installation
-COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # syft installation
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
