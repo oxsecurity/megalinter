@@ -138,6 +138,23 @@ RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
 # shfmt installation
 COPY --from=shfmt /bin/shfmt /usr/bin/
 
+# bash-exec installation
+RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
+    && chmod +x /usr/bin/bash-exec
+
+
+# shellcheck installation
+RUN ML_THIRD_PARTY_DIR="/third-party/shellcheck" \
+    && mkdir -p ${ML_THIRD_PARTY_DIR} \
+    && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv --directory ${ML_THIRD_PARTY_DIR} \
+    && mv "${ML_THIRD_PARTY_DIR}/shellcheck-stable/shellcheck" /usr/bin/ \
+    && find ${ML_THIRD_PARTY_DIR} -type f -not -name 'LICENSE*' -delete -o -type d -empty -delete \
+    && shellcheck --version
+
+
+# shfmt installation
+COPY --from=shfmt /bin/shfmt /usr/bin/
+
 # hadolint installation
 COPY --from=hadolint /bin/hadolint /usr/bin/hadolint
 

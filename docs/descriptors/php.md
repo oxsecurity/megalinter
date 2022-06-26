@@ -7,6 +7,7 @@
 
 | Linter                    | Configuration key             | Status                                                                                                                                             |
 |---------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| [php](php_php.md)         | [PHP_BUILTIN](php_php.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/php/php-src)](https://github.com/php/php-src/commits)                             |
 | [phpcs](php_phpcs.md)     | [PHP_PHPCS](php_phpcs.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/squizlabs/PHP_CodeSniffer)](https://github.com/squizlabs/PHP_CodeSniffer/commits) |
 | [phpstan](php_phpstan.md) | [PHP_PHPSTAN](php_phpstan.md) | [![GitHub last commit](https://img.shields.io/github/last-commit/phpstan/phpstan)](https://github.com/phpstan/phpstan/commits)                     |
 | [psalm](php_psalm.md)     | [PHP_PSALM](php_psalm.md)     | [![GitHub last commit](https://img.shields.io/github/last-commit/vimeo/psalm)](https://github.com/vimeo/psalm/commits)                             |
