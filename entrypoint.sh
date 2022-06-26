@@ -41,9 +41,9 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   echo "[MegaLinter init] RUNNING TEST CASES"
   pip install pytest-cov pytest-timeout pytest-xdist
   if [ -z "${TEST_KEYWORDS}" ]; then
-    pytest -v -n 3 --timeout=120 --durations=0 --cov=megalinter --cov-report=xml megalinter/
+    pytest -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml megalinter/
   else
-    pytest -v -n 3 --timeout=120 --durations=0 -k "${TEST_KEYWORDS}" megalinter/
+    pytest -v --timeout=300 --durations=0 -k "${TEST_KEYWORDS}" megalinter/
   fi
   PYTEST_STATUS=$?
   echo Pytest exited $PYTEST_STATUS

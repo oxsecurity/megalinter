@@ -106,7 +106,6 @@ linters:
 
   # GITLEAKS
   - class: GitleaksLinter
-    disabled: true #Performance issues: disable for now. TODO: fix it !
     linter_name: gitleaks
     can_output_sarif: true
     descriptor_flavors:

@@ -16,6 +16,7 @@ FROM cljkondo/clj-kondo:2022.04.25-alpine as clj-kondo
 FROM hadolint/hadolint:v2.10.0-alpine as hadolint
 FROM mstruebing/editorconfig-checker:2.4.0 as editorconfig-checker
 FROM yoheimuta/protolint:latest as protolint
+FROM zricethezav/gitleaks:latest as gitleaks
 #FROM__END
 
 ##################
@@ -223,6 +224,9 @@ RUN ML_THIRD_PARTY_DIR="/third-party/kubeconform" \
 
 # protolint installation
 COPY --from=protolint /usr/local/bin/protolint /usr/bin/
+
+# gitleaks installation
+COPY --from=gitleaks /usr/bin/gitleaks /usr/bin/
 
 # trivy installation
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.22.0 && \
